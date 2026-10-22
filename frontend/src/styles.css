@@ -1,0 +1,447 @@
+:root {
+  --bg: #0a0e14;
+  --panel: #111823;
+  --panel-2: #0d141d;
+  --line: #1e2a3a;
+  --text: #dce6f2;
+  --muted: #8195ab;
+  --accent: #35b7ff;
+  --accent-2: #7ce7c8;
+  --gold: #ffd60a;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, pre { font-family: 'Cascadia Code', 'Consolas', monospace; }
+
+.app { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+.sidebar {
+  background: linear-gradient(180deg, #0c121b, #0a0e14);
+  border-right: 1px solid var(--line); padding: 18px 12px; position: sticky; top: 0;
+  height: 100vh; overflow-y: auto;
+}
+.brand { font-weight: 700; font-size: 15px; letter-spacing: .5px; margin-bottom: 2px; }
+.brand small { display: block; color: var(--muted); font-weight: 400; font-size: 11px; margin-top: 3px; }
+.nav { margin-top: 22px; display: flex; flex-direction: column; gap: 3px; }
+.nav a {
+  color: var(--muted); padding: 9px 12px; border-radius: 8px; font-size: 14px;
+  display: flex; align-items: center; gap: 9px;
+}
+.nav a.active, .nav a:hover { background: var(--panel); color: var(--text); text-decoration: none; }
+.nav .ico { width: 16px; text-align: center; opacity: .9; }
+
+/* A Central CRESCE com a tela e fica CENTRADA na coluna de conteúdo.
+   Antes: max-width fixo de 1200px SEM margin auto — num monitor grande tudo travava
+   em 1200px e ainda grudava à esquerda. Agora: cresce até 1680px (acima disso a linha
+   de texto fica longa demais para ler), centrado, com respiro proporcional à largura. */
+.main {
+  padding: 26px clamp(16px, 2.5vw, 44px);
+  width: 100%; max-width: 1680px; margin-inline: auto;
+}
+.h1 { font-size: 22px; font-weight: 700; margin: 0 0 4px; }
+.sub { color: var(--muted); font-size: 13px; margin-bottom: 22px; }
+
+.grid { display: grid; gap: 14px; }
+.stat-row { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.stat {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
+}
+.stat .n { font-size: 26px; font-weight: 700; }
+.stat .l { color: var(--muted); font-size: 12px; margin-top: 3px; }
+
+.class-block { margin-top: 26px; }
+.class-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+.class-head h3 { margin: 0; font-size: 15px; }
+.class-head .ord { color: var(--accent); font-variant-numeric: tabular-nums; font-weight: 700; }
+.cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px;
+  cursor: pointer; transition: border-color .15s, transform .05s; position: relative; overflow: hidden;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+.card .devname { font-size: 17px; font-weight: 700; letter-spacing: .2px; color: var(--text);
+  line-height: 1.2; padding-right: 22px; }
+.card .ttl { font-size: 11.5px; font-weight: 400; color: var(--muted); margin: 5px 0 9px;
+  line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card .pid { font-size: 10.5px; color: var(--muted); font-family: 'Cascadia Code','Consolas',monospace;
+  font-variant-numeric: tabular-nums; margin-bottom: 8px; opacity: .75; }
+.card .foot { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); }
+.card .star { position: absolute; top: 10px; right: 12px; color: var(--gold); }
+
+.badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 999px;
+  font-size: 10.5px; font-weight: 600; border: 1px solid var(--line); }
+.badge.mk { background: #10202e; color: var(--accent-2); border-color: #1c3a42; }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.pill { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); margin: 18px 0; }
+.tab { padding: 8px 13px; border-radius: 8px 8px 0 0; color: var(--muted); cursor: pointer; font-size: 13px; }
+.tab.active { color: var(--text); background: var(--panel); border: 1px solid var(--line); border-bottom: none; }
+.kv { display: grid; grid-template-columns: 190px 1fr; gap: 8px 16px; font-size: 13px; }
+.kv .k { color: var(--muted); }
+.table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.table th, .table td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); }
+.table th { color: var(--muted); font-weight: 600; font-size: 12px; }
+.legal-note { color: var(--gold); font-size: 12px; }
+.aviso { background: #1a1406; border: 1px solid #3a2e08; color: #ffe08a; padding: 10px 14px;
+  border-radius: 10px; font-size: 12.5px; margin-bottom: 16px; }
+
+/* ---- O sino do monitor (badge de atenção no nav) ---- */
+.sino-badge { display: inline-block; margin-left: 8px; font-size: 10px; font-weight: 700;
+  padding: 1px 7px; border-radius: 999px; background: rgba(255,159,10,.16); color: #ff9f0a;
+  border: 1px solid rgba(255,159,10,.4); letter-spacing: .2px; vertical-align: middle; }
+
+/* ---- Usuários & papéis ---- */
+.role-chip { display: inline-block; margin-left: 6px; font-size: 9.5px; font-weight: 700; padding: 1px 7px;
+  border-radius: 6px; background: rgba(124,231,200,.14); color: var(--accent-2);
+  border: 1px solid rgba(124,231,200,.3); text-transform: lowercase; letter-spacing: .2px; }
+.key-reveal { margin-top: 14px; background: #0e1a12; border: 1px solid #1f7a3f; border-radius: 10px; padding: 12px 14px; }
+.key-reveal-h { font-size: 13px; color: #30d158; margin-bottom: 8px; }
+.key-box { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.key-box code { font-size: 15px; font-family: 'Cascadia Code','Consolas',monospace; color: var(--accent-2);
+  background: var(--panel-2); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line);
+  letter-spacing: .5px; word-break: break-all; flex: 1 1 auto; }
+.key-note { font-size: 11.5px; color: var(--gold); margin-top: 8px; line-height: 1.5; }
+
+/* ---- Login (a criptografia do operador como portão) ---- */
+.gate-loading { display: flex; align-items: center; justify-content: center; height: 100vh;
+  color: var(--muted); font-size: 14px; }
+.login-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+.login-card { width: 100%; max-width: 380px; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 16px; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+.login-brand { font-size: 20px; font-weight: 800; letter-spacing: 1px; text-align: center; }
+.login-sub { font-size: 11.5px; color: var(--muted); text-align: center; margin-top: -6px; }
+.login-lock { font-size: 34px; text-align: center; margin: 6px 0; }
+.login-scheme { font-size: 12px; color: var(--accent-2); text-align: center; line-height: 1.5;
+  background: rgba(124,231,200,.06); border: 1px solid rgba(124,231,200,.2); border-radius: 9px; padding: 8px 10px; }
+.login-scheme b { color: var(--accent-2); }
+.login-input { padding: 13px 14px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--panel-2); color: var(--text); font-size: 15px; outline: none; }
+.login-input:focus { border-color: var(--accent); }
+.login-btn { padding: 13px 16px; border-radius: 10px; border: none; background: var(--accent);
+  color: #04121c; font-weight: 700; font-size: 15px; cursor: pointer; }
+.login-btn:hover { filter: brightness(1.08); }
+.login-btn:disabled { opacity: .6; cursor: default; }
+.login-err { background: #2a0e0e; border: 1px solid #7a2020; color: #ffb0b0; padding: 9px 12px;
+  border-radius: 9px; font-size: 12.5px; text-align: center; }
+.login-note { font-size: 11px; color: var(--muted); line-height: 1.55; text-align: center; }
+.login-beta { font-size: 10.5px; color: var(--muted); text-align: center; font-family: 'Cascadia Code','Consolas',monospace; }
+.login-back { background: none; border: none; color: var(--muted); font-size: 12px; cursor: pointer; text-align: center; padding: 2px; }
+.login-back:hover { color: var(--accent); }
+
+/* ---- Dispositivo (o dispositivo funcionando) ---- */
+.device-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  flex-wrap: wrap; margin-bottom: 14px; }
+.device-beta { font-size: 12px; color: var(--accent-2); text-align: right; font-family: 'Cascadia Code','Consolas',monospace;
+  background: var(--panel-2); border: 1px solid var(--line); border-radius: 9px; padding: 8px 12px; line-height: 1.5; }
+.device-beta b { color: var(--accent); }
+.device-err { background: #2a0e0e; border: 1px solid #7a2020; color: #ffb0b0; padding: 10px 14px;
+  border-radius: 9px; font-size: 13px; margin-bottom: 12px; }
+.device-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.device-col-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase;
+  letter-spacing: .5px; margin-bottom: 8px; }
+.dropzone { border: 2px dashed var(--line); border-radius: 12px; padding: 30px 16px; text-align: center;
+  cursor: pointer; transition: all .15s ease; background: var(--panel-2); }
+.dropzone:hover { border-color: var(--accent); background: rgba(53,183,255,.04); }
+.dropzone.over { border-color: var(--accent); background: rgba(53,183,255,.1); transform: scale(1.01); }
+.dropzone.busy { opacity: .6; cursor: wait; }
+.dz-icon { font-size: 30px; color: var(--accent); }
+.dz-label { font-size: 15px; font-weight: 700; margin-top: 6px; }
+.dz-hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.device-result { margin-top: 14px; background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: 11px; padding: 14px; }
+.dr-ratio { text-align: center; margin-bottom: 8px; }
+.dr-ratio b { font-size: 30px; color: var(--accent-2); }
+.dr-ratio span { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+.dr-flow { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 14px; margin-bottom: 12px; }
+.dr-arrow { color: var(--accent); font-size: 18px; }
+.dr-comp { color: var(--accent-2); font-weight: 700; }
+.dr-kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 12.5px; }
+.dr-kv span { color: var(--muted); }
+.dr-kv b { text-align: right; }
+.dr-sha { font-family: 'Cascadia Code','Consolas',monospace; font-size: 10.5px; color: var(--muted);
+  margin: 10px 0 4px; word-break: break-all; }
+.dr-note { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin: 8px 0 0; }
+.device-toggle { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 12px;
+  color: var(--muted); cursor: pointer; }
+.device-toggle input { width: 16px; height: 16px; cursor: pointer; }
+.device-toggle b { color: var(--accent-2); }
+.device-toggle code { font-size: 11px; }
+/* ---- A decisão que o SINAL tomou (porta única, acom_auto) ----
+   Não é decoração: é a auditoria. Mostra o que a leitura tipou, para onde a lei roteou,
+   o que desempatou, e as rotas que foram MEDIDAS e descartadas. */
+.dr-decision { margin: 10px 0; padding: 9px 11px; background: var(--panel-2);
+  border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px;
+  overflow-wrap: anywhere; }
+.dr-dec-head { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.dr-chip { font-family: 'Cascadia Code','Consolas',monospace; font-size: 10.5px; font-weight: 700;
+  padding: 2px 7px; border-radius: 5px; background: rgba(53,183,255,.16);
+  border: 1px solid rgba(53,183,255,.4); color: #9fd8ff; }
+.dr-chip-ok { background: rgba(48,209,88,.14); border-color: rgba(48,209,88,.4); color: #6ee38a; }
+.dr-chip-lossy { background: rgba(255,214,10,.14); border-color: rgba(255,214,10,.4); color: var(--gold); }
+.dr-dec-arrow { color: var(--muted); font-size: 12px; }
+.dr-dec-tag { margin-left: auto; font-size: 10px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: .5px; }
+.dr-dec-why { margin: 5px 0 0; font-size: 11.5px; color: var(--muted); line-height: 1.55; }
+.dr-dec-gate { color: #c8d0da; }
+.dr-dec-alt { margin-top: 6px; font-size: 11px; color: var(--muted); }
+.dr-dec-alt summary { cursor: pointer; color: var(--accent-2); }
+.dr-dec-alt ul { margin: 5px 0 0; padding-left: 16px; line-height: 1.7; }
+.dr-dec-alt b { font-family: 'Cascadia Code','Consolas',monospace; color: #c8d0da; }
+
+/* ---- TGL-Tensor: a escada do NOME e os DOIS juízes lado a lado ----
+   Lado a lado de propósito: quando o clássico e o Nome discordam, a discordância É o
+   resultado — esconder um dos dois seria escolher a resposta antes de medir. */
+.tgl-ladder { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 7px;
+  font-family: 'Cascadia Code','Consolas',monospace; font-size: 11px; }
+.tgl-judges { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px; margin: 10px 0; }
+.tgl-judge { background: var(--panel-2); border: 1px solid var(--line); border-radius: 9px;
+  padding: 9px 11px; min-width: 0; }
+.tgl-judge-nome { border-color: rgba(53,183,255,.4); background: #0a1420; }
+.tgl-judge-h { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+.tgl-judge-v { font-size: 19px; font-weight: 700; margin-top: 3px; overflow-wrap: anywhere; }
+.tgl-judge-s { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.tgl-judge-x { font-size: 10.5px; color: var(--accent-2); margin-top: 4px; }
+
+.device-foot { margin-top: 18px; font-size: 12px; color: var(--muted); line-height: 1.6;
+  border-top: 1px solid var(--line); padding-top: 12px; }
+.device-foot b { color: var(--text); }
+@media (max-width: 820px) { .device-grid { grid-template-columns: 1fr; } }
+
+/* ---- Reivindicações (síntese fiel) ---- */
+.claim-stats { display: flex; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.claim-stat { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px;
+  padding: 8px 16px; display: flex; flex-direction: column; align-items: center; min-width: 92px; }
+.claim-stat b { font-size: 22px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.claim-stat span { font-size: 11px; color: var(--muted); }
+.claim-section-title { font-size: 13px; font-weight: 700; color: var(--accent-2);
+  margin-bottom: 10px; letter-spacing: .2px; }
+.claim-intro { font-size: 13px; line-height: 1.55; margin: 0 0 12px; padding: 10px 14px;
+  background: rgba(53,183,255,.06); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; }
+.claim-list { display: flex; flex-direction: column; gap: 6px; }
+.claim-item { display: flex; gap: 10px; align-items: flex-start; padding: 9px 12px;
+  border-radius: 9px; border: 1px solid var(--line); background: var(--panel-2); font-size: 13px; line-height: 1.5; }
+.claim-item.independent { border-color: #2f6b8a; background: rgba(53,183,255,.07); }
+.claim-item.dependent { background: transparent; border-color: transparent; border-left: 1px solid var(--line);
+  border-radius: 0; padding: 5px 12px; }
+.claim-num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 7px; display: inline-flex;
+  align-items: center; justify-content: center; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+  background: var(--line); color: var(--muted); }
+.claim-num.ind { background: var(--accent); color: #04121c; }
+.claim-text { flex: 1; }
+.claim-text strong { color: var(--text); }
+/* marcador clicável → cadeia de prova */
+.proof-badge { display: inline-flex; align-items: center; gap: 4px; margin-left: 8px; vertical-align: middle;
+  font-size: 10.5px; font-weight: 700; letter-spacing: .3px; padding: 2px 8px; border-radius: 6px;
+  cursor: pointer; border: 1px solid var(--accent); background: rgba(53,183,255,.1); color: var(--accent);
+  transition: all .12s ease; }
+.proof-badge:hover { background: rgba(53,183,255,.2); }
+.proof-badge.open { background: var(--accent); color: #04121c; }
+.proof-badge.SIM { border-color: var(--gold); color: var(--gold); background: rgba(255,214,10,.08); }
+.proof-badge.SIM:hover { background: rgba(255,214,10,.18); }
+.proof-badge.OPEN, .proof-badge.DATA { border-color: var(--muted); color: var(--muted); background: transparent; }
+.proof-chain { margin: 6px 0 12px; border-left: 2px solid var(--accent); padding: 10px 0 4px 14px; }
+.proof-head { font-size: 12px; color: var(--accent-2); margin-bottom: 10px; }
+.proof-verdict { color: var(--muted); font-weight: 400; }
+.proof-elo { display: flex; gap: 10px; padding: 8px 10px; margin-bottom: 6px; border-radius: 9px;
+  background: var(--panel-2); border: 1px solid var(--line); }
+.proof-elo.bad { border-color: #7a2020; }
+.pe-icon { font-size: 18px; flex-shrink: 0; }
+.pe-body { flex: 1; min-width: 0; }
+.pe-title { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.pe-role { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; color: var(--muted); }
+.pe-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.pe-ok { color: #30d158; font-weight: 700; }
+.pe-bad { color: #ff453a; font-weight: 700; }
+.pe-proves { font-size: 12px; color: #b9c4d2; line-height: 1.5; margin-top: 2px; }
+.pe-proves b { color: var(--accent-2); }
+.pe-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 5px; font-size: 11px; }
+.pe-verified { color: #30d158; font-weight: 600; }
+.pe-hash { font-family: 'Cascadia Code','Consolas',monospace; color: var(--muted); font-size: 10.5px; }
+.pe-open { font-size: 11px; font-weight: 600; }
+
+.claim-marker { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: .3px;
+  padding: 1px 5px; border-radius: 5px; margin-left: 5px; vertical-align: middle;
+  background: rgba(124,231,200,.14); color: var(--accent-2); border: 1px solid rgba(124,231,200,.25); }
+
+.note { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.note input { margin-top: 3px; }
+.note .txt { flex: 1; font-size: 13px; }
+.note .sec { color: var(--muted); font-size: 11px; }
+.btn { background: var(--accent); color: #04121c; border: none; padding: 9px 16px; border-radius: 9px;
+  font-weight: 700; cursor: pointer; font-size: 13px; }
+.btn:hover { filter: brightness(1.1); }
+.btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+.btn.gold { background: var(--gold); color: #1a1406; }
+pre.md { white-space: pre-wrap; word-break: break-word; font-size: 12.5px; line-height: 1.5;
+  background: var(--panel-2); padding: 16px; border-radius: 10px; border: 1px solid var(--line);
+  max-height: 70vh; overflow: auto; }
+input.txt, textarea.txt, select.txt { background: var(--panel-2); border: 1px solid var(--line);
+  color: var(--text); border-radius: 8px; padding: 8px 10px; font-size: 13px; font-family: inherit; }
+.marker-row { display: flex; gap: 5px; flex-wrap: wrap; }
+.muted { color: var(--muted); }
+.integrity-ok { color: var(--accent-2); }
+.integrity-bad { color: #ff453a; }
+
+/* component map (render camada b) */
+.cmap-wrap { display: grid; grid-template-columns: 1fr 260px; gap: 14px; align-items: start; }
+.cmap-svg { width: 100%; background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: 10px; }
+.cmap-detail { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px;
+  padding: 14px; min-height: 200px; position: sticky; top: 12px; }
+.cmap-detail-id { font-family: 'Cascadia Code','Consolas',monospace; color: var(--accent);
+  font-weight: 700; font-size: 13px; }
+.cmap-detail-label { font-size: 15px; font-weight: 700; margin: 3px 0 8px; }
+.cmap-legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 2px;
+  margin-right: 7px; vertical-align: middle; }
+.cmap-consts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.cmap-const { background: var(--panel-2); border: 1px solid var(--line); border-radius: 9px;
+  padding: 10px 12px; font-size: 12.5px; }
+@media (max-width: 820px) {
+  .cmap-wrap { grid-template-columns: 1fr; }
+  .cmap-consts { grid-template-columns: 1fr; }
+}
+
+/* runs ledger */
+.run-verdict { font-size: 12px; }
+.phys-false { color: var(--accent-2); font-size: 11px; }
+
+/* render 3D (camada c) */
+.r3d-wrap { display: grid; grid-template-columns: minmax(0, 1fr) clamp(230px, 18vw, 320px);
+  gap: 14px; align-items: start; }
+/* o render CRESCE com a tela: acompanha a altura da viewport em vez de ficar preso
+   em 520px — num monitor alto ele abre, num notebook ele encolhe sozinho. */
+.r3d-canvas { height: clamp(460px, 70vh, 1100px); background: #0a0e14; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; cursor: grab; }
+.r3d-canvas:active { cursor: grabbing; }
+.r3d-panel { display: flex; flex-direction: column; gap: 12px; }
+.r3d-control { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+.r3d-control label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.r3d-control input[type=range] { width: 100%; }
+.r3d-groups { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.r3d-grouprow { display: flex; align-items: center; gap: 7px; font-size: 12px; padding: 3px 0; cursor: pointer; }
+.r3d-layerlist { margin-top: 6px; border-top: 1px solid var(--line); padding-top: 6px; }
+.r3d-detail { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px;
+  padding: 12px; min-height: 120px; }
+.r3d-tag { background: rgba(10,14,20,.85); color: #dce6f2; font-size: 10px; padding: 1px 6px;
+  border-radius: 5px; font-family: 'Cascadia Code','Consolas',monospace; white-space: nowrap;
+  border: 1px solid #23324a; }
+.r3d-tag.sel { background: rgba(53,183,255,.22); border-color: var(--accent); color: #eaf4ff; }
+.r3d-dim { background: rgba(20,16,6,.9); color: #ffd60a; font-size: 10px; padding: 1px 6px;
+  border-radius: 4px; font-family: 'Cascadia Code','Consolas',monospace; white-space: nowrap;
+  border: 1px solid #4a3c10; font-weight: 700; }
+.r3d-toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.btn.xs { padding: 4px 10px; font-size: 11.5px; }
+.r3d-chk { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--muted); cursor: pointer; }
+/* ---- MODO EXPANDIDO: a tela inteira para mexer no dispositivo ----
+   Aumentar a altura fixa daria mais espaço o tempo todo — e empurraria o resto da página
+   para baixo o tempo todo. O expandido dá a tela inteira SÓ quando se quer manipular, e a
+   devolve depois. O painel de controle continua ao lado (não adianta espaço sem controle).
+   `position: fixed` + `inset: 0` em vez da Fullscreen API: previsível, sem briga com o
+   contexto WebGL, e o ESC continua funcionando como todo mundo espera. */
+.r3d-expanded {
+  position: fixed; inset: 0; z-index: 90; margin: 0;
+  background: var(--bg, #0a0e14); padding: 14px;
+  grid-template-columns: minmax(0, 1fr) clamp(260px, 20vw, 360px);
+  animation: r3d-open .16s ease-out;
+}
+.r3d-expanded .r3d-canvas { height: calc(100vh - 28px); }
+.r3d-expanded .r3d-panel { max-height: calc(100vh - 28px); overflow-y: auto; }
+@keyframes r3d-open { from { opacity: .6; transform: scale(.995); } to { opacity: 1; transform: none; } }
+.r3d-exit {
+  position: absolute; top: 20px; right: calc(clamp(260px, 20vw, 360px) + 28px); z-index: 2;
+  width: 30px; height: 30px; border-radius: 8px; cursor: pointer; font-size: 14px; line-height: 1;
+  background: rgba(10, 14, 20, .82); border: 1px solid var(--line); color: var(--muted);
+}
+.r3d-exit:hover { color: var(--text); border-color: var(--accent); }
+@media (max-width: 820px) {
+  .r3d-wrap { grid-template-columns: 1fr; } .r3d-canvas { height: 380px; }
+  .r3d-expanded { grid-template-columns: 1fr; }
+  .r3d-expanded .r3d-canvas { height: 62vh; }
+  .r3d-expanded .r3d-panel { max-height: 34vh; }
+  .r3d-exit { right: 20px; }
+}
+
+/* ---- Fronteira Teórica ----
+   Os veredictos do selo são tokens monospace longuíssimos e sem espaço:
+   TGL_QUANTUM_GRAVITY_EMERGENCE_REDUCED_TO_THREE_NAMED_HYPOTHESES. O navegador não
+   quebra linha em underscore, então o texto saía por fora das caixas.
+   `overflow-wrap: anywhere` (e não `break-word`) é o certo aqui: além de permitir a
+   quebra dentro do token quando não há outro ponto possível, ele ENTRA no cálculo do
+   min-content — que é o que faz os filhos de flex/grid finalmente encolherem em vez de
+   estourar a caixa. Herda para os descendentes; um lugar só conserta a página toda. */
+.fronteira { overflow-wrap: anywhere; }
+.fronteira code, .fronteira pre { white-space: pre-wrap; }
+.fronteira-split { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 18px; align-items: start; }
+/* o render da fronteira acompanha a tela, como o da patente */
+.fronteira-canvas { height: clamp(380px, 52vh, 760px); background: #0b0f16; border-radius: 10px;
+  overflow: hidden; border: 1px solid #232b38; }
+@media (max-width: 1100px) { .fronteira-split { grid-template-columns: 1fr; } }
+
+/* roadmap progress bar */
+.roadmap-bar { height: 10px; background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: 999px; overflow: hidden; margin: 18px 0 6px; }
+.roadmap-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width .3s; }
+
+/* ===================== MOBILE / TABLET (celular + iPad) ===================== */
+.topbar { display: none; }
+.nav-backdrop { display: none; }
+
+@media (max-width: 820px) {
+  /* uma coluna: a sidebar sai do fluxo e vira gaveta */
+  .app { grid-template-columns: 1fr; }
+
+  .topbar {
+    display: flex; align-items: center; gap: 12px;
+    position: sticky; top: 0; z-index: 60; height: 54px; padding: 0 14px;
+    background: rgba(10,14,20,.94); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-brand { font-weight: 700; font-size: 14px; letter-spacing: .4px; }
+  .hamburger {
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 4px;
+    width: 42px; height: 42px; padding: 10px; background: var(--panel);
+    border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+  }
+  .hamburger span { display: block; height: 2px; background: var(--text); border-radius: 2px; }
+
+  .sidebar {
+    position: fixed; top: 0; left: 0; z-index: 80; height: 100vh; width: 276px; max-width: 84vw;
+    transform: translateX(-102%); transition: transform .25s ease;
+  }
+  .sidebar.open { transform: translateX(0); box-shadow: 0 0 44px rgba(0,0,0,.65); }
+  .nav-backdrop { display: block; position: fixed; inset: 0; z-index: 70; background: rgba(0,0,0,.5); }
+  .nav a { padding: 13px 14px; font-size: 15px; }   /* alvos de toque confortáveis */
+
+  .main { padding: 16px 14px 44px; max-width: 100%; }
+  .h1 { font-size: 19px; }
+  .sub { font-size: 12.5px; margin-bottom: 16px; }
+
+  .cards { grid-template-columns: 1fr; }
+  .kv { grid-template-columns: 1fr; gap: 1px 0; }
+  .kv .k { margin-top: 9px; }
+  .tab { padding: 10px 13px; font-size: 13px; }
+  .cmap-detail { position: static; }
+
+  /* tabelas largas rolam sozinhas, sem estourar a página */
+  .panel { overflow-x: auto; }
+  .table { min-width: 480px; font-size: 12.5px; }
+  .table th, .table td { padding: 8px 8px; }
+
+  /* botões e inputs com toque melhor */
+  .btn { padding: 11px 16px; }
+  input.txt, textarea.txt, select.txt { padding: 10px 12px; font-size: 15px; }
+}
+
+@media (max-width: 460px) {
+  .stat-row { grid-template-columns: 1fr 1fr; }  /* 2 indicadores por linha no celular */
+  .r3d-canvas { height: 320px; }
+}
