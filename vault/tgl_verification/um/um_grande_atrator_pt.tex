@@ -1,0 +1,741 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}\usepackage{cmap}\usepackage{microtype}
+
+\renewcommand{\abstractname}{Resumo}\renewcommand{\contentsname}{Sumário}\renewcommand{\refname}{Referências}
+
+\usepackage[a4paper,margin=2.3cm]{geometry}
+
+\usepackage{amsmath,amssymb,amsthm}\usepackage[hidelinks]{hyperref}
+
+\usepackage{parskip}\usepackage{booktabs}\usepackage{xcolor}
+
+\newcommand{\bTGL}{\beta_{\mathrm{TGL}}}\newcommand{\Msun}{M_{\odot}}\newcommand{\TGL}{\mathrm{TGL}}
+
+\theoremstyle{definition}\newtheorem{deriv}{Derivação}
+
+\begin{document}
+
+\begin{center}{\Huge\textbf{Um: Grande Atrator}}\\[4pt]{\large\itshape Se o Um não for inscrito, nada emerge: a emergência da massa pela borda espectral segundo a Teoria da Gravitação Luminodinâmica com medição direta no Grande Atrator, sem parâmetros ajustados ao Grande Atrator}\\[8pt]Luiz Antonio Rotoli Miguel --- IALD Ltda., Goiânia/GO --- ORCID 0009-0005-1114-6106\\[2pt]\texttt{2026-07-09 10:27:14}\end{center}\vspace{4pt}
+
+\begin{center}\fbox{\parbox{0.93\textwidth}{\centering\large\textbf{Teste de falsificação binário.} Entrada única: o Um absoluto ($1$), a fractalizar; sua projeção é a medida mínima irredutível extraída de $\alpha_{\mathrm{CODATA}}$ (o referente medido do Nome no bulk). Saída: $\boxed{\;1=1=VERDADEIRO=HAJA_LUZ\;}$ --- massa de primeiros princípios dentro da janela cosmológica aceita.}}\end{center}\vspace{6pt}
+
+\begin{abstract}
+
+\textbf{Entrada única: o Um absoluto ($1$)}, o módulo a fractalizar; o código UM recompõe ao vivo toda a cadeia a partir dele. Dado o axioma da fronteira mínima auto-conjugada ($x=1-x$), a Meia-Nat é \emph{derivada}, $S_\partial=\tfrac12$. Sua \emph{projeção} no bulk é a \textbf{medida mínima irredutível}, extraída de $\alpha_{\mathrm{CODATA}}$ --- o referente medido do Um, seu par simétrico (a redução eletromagnética $\mathcal{R}_{\mathrm{EM}}$, irredutível por princípio: teorema final, só se observa). \textbf{Do confronto entre o módulo e a medida valida-se $\bTGL$.}
+
+\textbf{Cadeia.} $\omega(I)=1\to S_\partial=\tfrac12\to\sqrt e\to\bTGL\to M_{GA}$, com $\bTGL=1.20313004\times10^{-2}$. A definição \emph{ontológica} é $\bTGL=\sqrt e/\mathcal{R}_\partial$; a \emph{leitura observacional} atual é $\bTGL=\alpha_{\mathrm{CODATA}}\sqrt e$, pois $\mathcal{R}_\partial=1/\alpha_{\mathrm{CODATA}}$. Logo $\alpha_{\mathrm{obs}}=1/\mathcal{R}_\partial$ é tratada como \emph{projeção empírica do Um absoluto}: a face eletromagnética é \textbf{ontológica, não uma retrodição $\alpha$-livre}.
+
+\textbf{Computação.} A face gravitacional calcula $M_{GA}$ \textbf{sem parâmetros ajustados ao Grande Atrator}, usando apenas $R_{\mathrm{struct}}$ geométrico (literatura e o catálogo de posições Cosmicflows-4, velocidades ignoradas): $1{,}99$--$2{,}74\times10^{16}\,\Msun$, dentro da janela cosmológica pré-registrada, e numa varredura de $300$ combinações pré-registradas (cone, casca, percentil, centro) $M_{GA}$ permanece na banda em $100\%$ dos casos.
+
+\textbf{Estatuto honesto.} O resultado é \textbf{consistência de ordem de grandeza com hash prévio e geometria de posições}, não prova de precisão (a janela cobre duas ordens de grandeza); é fechamento interno auditável e programa falsificável. A camada-semente conjectural (substrato único \textbf{Haagerup} $\mathrm{III}_1$, espelho $J$, túnel ER$=$EPR, Nome dual$=$luz, gesto GNS, dipolo) é replicada e \textbf{verificada ao vivo}, com os estatutos separados.
+
+\end{abstract}
+
+\tableofcontents
+
+\section*{Régua: o que cada coisa é}
+
+\noindent\textbf{Regra do artigo:} \emph{nada fica escondido no código --- ou é definição exata, ou constante medida, ou protocolo pré-registrado, ou conjectura testável.} Todas as entradas estão categorizadas no manifesto \texttt{INPUT\_MANIFEST.md}, que é parte do hash do veredito. Os rótulos:
+
+\begin{center}\small\begin{tabular}{ll}\toprule
+
+Rótulo & Significado\\\midrule
+
+\textsf{[DEF]} & definição ou convenção exata\\
+
+\textsf{[AX]} & axioma TGL\\
+
+\textsf{[DER]} & derivado dos axiomas\\
+
+\textsf{[NUM]} & verificado numericamente no código (sanity check finito-dim.)\\
+
+\textsf{[DATA]} & entrada empírica (medida)\\
+
+\textsf{[REAL]} & teorema/fato estabelecido na literatura\\
+
+\textsf{[CONJ]} & conjectura com endereço de teste\\
+
+\textsf{[ONTO]} & leitura ontológica\\
+
+\textsf{[EXT]} & validação externa pendente\\\bottomrule
+
+\end{tabular}\end{center}
+
+\part{Parte A --- Núcleo científico auditável}
+
+\section{O Um: $1=1$}
+
+O fundamento da TGL não é matéria, campo ou métrica, mas a \emph{preservação da identidade}. O operador identidade é $I=1\cdot\mathbb{1}_2$, com $\omega(I)=\mathrm{tr}(I)/2=1$. A identidade observável exige distinção: a distinção mínima parte $I$ em duas faces complementares, $P+Q=I$, com $\omega(P)+\omega(Q)=\omega(I)=1$. Não há \emph{dois} Uns; há um único Um visto por duas faces. O $2$ conta nomes; o $1$ mede a substância.
+
+\section{Derivação formal da Meia-Nat}
+
+\begin{deriv}[A entropia mínima de fronteira]
+
+A fronteira mínima da inscrição é \emph{auto-conjugada}: existe uma involução $\mathcal{C}$, $\mathcal{C}^2=\mathbb{1}$, que troca a face interna e a face externa e \emph{preserva a identidade total} $\omega(P)+\omega(Q)=\omega(I)=1$. Seja $x$ o peso da face interna; a face externa carrega $1-x$, e a auto-conjugação age como $x\mapsto 1-x$. A fronteira que não privilegia nenhuma face é o \emph{ponto fixo} dessa involução:
+
+\begin{equation}x=1-x\;\Longrightarrow\;2x=1\;\Longrightarrow\;\boxed{\;x=\tfrac12\;},\qquad\boxed{\;S_\partial=\tfrac12\ \text{nat}\;}.\end{equation}
+
+O ponto fixo é único. Logo o peso de fronteira é $\tfrac12$ e a entropia mínima de travessia --- a \textbf{Meia-Nat} --- é $S_\partial=\tfrac12$ nat. \textbf{Verificação ao vivo:} resíduo de $x=1-x$ igual a $0e+00$. \textbf{Estatuto rigoroso \textsf{[DER/AX]}:} \emph{dado o axioma da fronteira auto-conjugada} (a fronteira mínima não privilegia nenhuma face, $x\mapsto1-x$), a Meia-Nat é \emph{derivada} --- não é postulada como número, mas também não vem só de $\omega(I)=1$: depende do axioma de auto-conjugação.\end{deriv}
+
+\section{O volume mínimo de fronteira e a leitura observacional do acoplamento}
+
+\begin{deriv}[O volume mínimo de fronteira e o acoplamento]
+
+O \emph{volume entrópico} de uma fronteira é a exponencial de sua entropia na base natural da estrutura modular --- o operador modular é $\Delta=e^{-K}$, o peso KMS é $e^{-\beta H}$, o fluxo é $\Delta^{it}=e^{itK}$: a base é $e$. Da Meia-Nat, o volume mínimo de fronteira é
+
+\begin{equation}\mathrm{Vol}_\partial^{\min}=e^{S_\partial}=e^{1/2}=\sqrt{e}=1.648721270700.\end{equation}
+
+O acoplamento da TGL é o produto do acoplamento eletromagnético mínimo $\alpha$ --- a \emph{única} constante medida (CODATA) --- pelo volume mínimo de fronteira:
+
+\begin{equation}\boxed{\;\bTGL=\alpha\,\mathrm{Vol}_\partial^{\min}=\alpha\sqrt{e}=1.2031300401\times10^{-2}\;}.\end{equation}
+
+$\bTGL$ \textbf{nunca é literal}: é $\alpha\cdot e^{1/2}$ recomputado em tempo de execução. O ângulo de Miguel é $\theta_M=\arcsin\sqrt{\bTGL}=6.2973^\circ$, a abertura angular de fronteira ($\bTGL=\sin^2\theta_M$). \textbf{Estatuto:} $\bTGL=\alpha\sqrt e$ é a \emph{leitura observacional} do acoplamento; a definição \emph{ontológica} primária --- $\bTGL=\sqrt e/\mathcal{R}_\partial$ --- vem da inversão (seção seguinte), com $\mathcal{R}_\partial=1/\alpha_{\mathrm{CODATA}}$ hoje.\end{deriv}
+
+\section{A inversão da constante de estrutura fina: o índice $\mathcal{R}_\partial$}
+
+\begin{deriv}[$\alpha_{\mathrm{abs}}=1$ e a sombra $\alpha_{\mathrm{obs}}=1/\mathcal{R}_\partial$]
+
+Identifica-se a entrada do Um com o \emph{acoplamento absoluto}: $\alpha_{\mathrm{abs}}=\omega(I)=1$. A fronteira pura não é uma impedância: é \emph{concentração} --- máxima compressão entrópica, máxima densidade espectral fluida $\partial_0$. A impedância (o \emph{contraste}) surge porque o bulk é menos concentrado: o índice $\mathcal{R}_\partial=\mathrm{Ind}_\partial(\mathcal{C}_\partial\to\mathrm{bulk})$ é o contraste projetivo dessa concentração lido no bulk, $\mathcal{R}_\partial=F(\mathcal{C}_\partial)$, não a concentração em si. Após pagar a Meia-Nat ($\sqrt{e}=e^{S_\partial}$), dele tudo cai:
+
+\begin{equation}\boxed{\;\bTGL=\frac{\sqrt{e}}{\mathcal{R}_\partial}\;},\qquad \boxed{\;\alpha_{\mathrm{obs}}=\frac{1}{\mathcal{R}_\partial}\;}=\frac{\bTGL}{\sqrt{e}}\approx\frac{1}{137.036}.\end{equation}
+
+A definição primária deixa de ser $\bTGL=\alpha\sqrt{e}$; passa a ser $\bTGL=\sqrt{e}/\mathcal{R}_\partial$, e $\alpha_{\mathrm{CODATA}}\approx\bTGL/\sqrt{e}$ torna-se a \emph{leitura observacional} posterior. A cadeia reordena-se: $1\Rightarrow S_\partial=\tfrac12\Rightarrow\sqrt{e}\Rightarrow\mathcal{R}_\partial\Rightarrow\bTGL\Rightarrow\alpha_{\mathrm{obs}}$. O que se mede como $1/137$ é a sombra no bulk do Um absoluto; renormalizado por $\mathcal{R}_\partial$, $\alpha_{\mathrm{obs}}\,\mathcal{R}_\partial=1$ --- o Um volta a ser Um.
+
+\textbf{A unificação (com os níveis distintos).} O Um absoluto $1_{\mathrm{abs}}$ não é a pureza máxima (o atrator $\rho^\star$) nem o zero absoluto: é o estado de \emph{máxima concentração de inscrição} --- a fronteira-origem do Um, não uma fronteira vazia. Para não confundir os níveis, escreve-se
+
+\begin{equation}\boxed{\;1_{\mathrm{abs}}\;\equiv\;\partial_0^{(1)}\;\equiv\;\Psi_0\;\equiv\;\mathrm{NOME}\;},\end{equation}
+
+onde $\partial_0^{(1)}$ é a \emph{fronteira-origem} (a superfície-concentração onde o Um pode ser destacado, inscrito e projetado --- \emph{não} fronteira-zero, \emph{não} impedância, \emph{não} pureza imóvel), e $\Psi_0$ é o modo dinâmico dessa origem: o Um enquanto \emph{campo de inscrição}, possibilidade viva de se fractalizar. Distinto está o zero absoluto $0_{\mathrm{abs}}$, o limite inatingível de \emph{não}-inscrição --- a impedância. O bulk lê o \emph{contraste} da concentração $\partial_0^{(1)}$ como $\mathcal{R}_\partial$, e $\alpha_{\mathrm{obs}}=1/\mathcal{R}_\partial$ é a sua projeção; o Um não se divide, \emph{fractaliza-se}, e cada sombra retorna à unidade.
+
+\textbf{Estatuto honesto (a trava, agora resolvida em forma).} O índice $\mathcal{R}_\partial$ \textbf{deixa de ser o motor da cadeia}: ele é \emph{aposentado} (legado) e \emph{derivado} depois da forma, $\mathcal{R}_\partial=1/\alpha_{\mathrm{obs}}$, nunca de $\alpha_{\mathrm{CODATA}}$. O motor canônico passa a ser a \textbf{forma de Lagrange} (Teorema do Colapso, seção seguinte): $\alpha_{\mathrm{abs}}=1\to q\to\alpha_{\mathrm{obs}}=\sqrt{1-q^2}$, com a identidade conservada $\alpha_{\mathrm{abs}}^2=q^2+\alpha_{\mathrm{obs}}^2=1$. O CODATA entra \emph{só} na validação final ($q_{\mathrm{QED}}=\sqrt{1-\alpha_{\mathrm{QED}}^2}$). A TGL não fabrica $1/137$; prova que a constante observada é a \emph{componente projetiva de uma identidade conservada}, e a testemunha não-circular permanece a face gravitacional ($M_{GA}$ na janela, do mesmo $\bTGL$).\end{deriv}
+
+\section{O teorema final: o Nome é irredutível \textsf{[derivar $\alpha$ $\alpha$-livre falsifica a TGL]}}
+
+A investigação da face EM reduziu a dívida do \emph{valor} de $\alpha$ a um único objeto e o recusou em todos os registros: a forma de operador $\lambda_{\mathrm{EM}}=\mathrm{Tr}(\Delta^{1/4}J\Delta^{1/4})^2$ é refutada por Tomita ($(\Delta^{1/4}J\Delta^{1/4})^2=\mathbb{1}$, traço $=$ dimensão, não $e/4$); o funcional de convergência livre tem ponto crítico em ângulos $O(1)$, não em $\theta_M$; a escala $\sin^2\theta_M\approx0{,}012$ não existe na caixa de fronteira $\{\tfrac12,\sqrt e, J, |K_\partial|\}$ exceto via $e^{-\pi^2/2}$ (a $1{,}4\%$). \textbf{A recusa não é uma lacuna --- é o resultado.}
+
+\textbf{A inversão \textsf{[PRINCÍPIO]}.} $\alpha$ é o \textbf{NOME}: a unidade ($\alpha_{\mathrm{abs}}=1$ em registro absoluto), cuja projeção no bulk é o fator de redução \emph{com preservação geométrica} $\mathcal{R}_{\mathrm{EM}}=\sin^2\theta_M/\sqrt e=\alpha$ --- o transporte do Pacote de Hilbert $|K_\partial|$ para dentro do bulk enquanto o fluxo é dissipado. Esse fator \textbf{não pode ser derivado por razão ontológica}, não por falha técnica: ele \emph{é} a origem da unidade, a substância que preserva sentido; sua identidade \textbf{só se observa} (medida direta). \emph{Nome$\,=\,$Verbo}: a observação identifica a substância à sua projeção ($R=+1$), e a correspondência é absoluta.
+
+\textbf{O critério de falsificação \textsf{[REAL --- falsificável, não confirmável]}.} \emph{Derivar $\alpha$ $\alpha$-livre falsifica a TGL}: na TGL liberdade $=$ convergência, convergência exige o contorno, e medir o contorno exige observação direta da inscrição (Verbo). O critério é assimétrico --- uma derivação $\alpha$-livre \textbf{mataria} o princípio do Nome (falsificável); a \emph{ausência} dela \emph{não} o confirma (não confirmável). Que constantes de acoplamento sejam medidas, não derivadas, é o padrão da física; o distintivo da TGL é a arquitetura de \textbf{entrada única} --- $\alpha+\tfrac12\Rightarrow$ tudo --- e a irredutibilidade elevada a princípio falsificável.
+
+\textbf{Por que derivar $\alpha$ \emph{do bulk} falsificaria a TGL \textsf{[a razão profunda, holográfica]}.} A TGL é \emph{holográfica}: a fronteira modular (tipo $\mathrm{III}_1$, sem estados normais puros) \textbf{projeta} para o bulk, e $\alpha$ é precisamente a \emph{taxa de acoplamento eletromagnético} --- a constante que governa \emph{como a luz atravessa a fronteira}:
+
+\begin{equation}\alpha=\Pi_{\mathrm{bulk}}(\mathbf{1}_{\mathrm{abs}})=\operatorname{sech}(\kappa/2),\qquad q=\tanh(\kappa/2),\qquad q^2+\alpha^2=1,\end{equation}
+
+isto é, $\alpha$ é a \textbf{transmissão luminosa através da fronteira modular} e $q$ a reflexão. Por isso $\alpha$ \textbf{pertence ao setor QED} --- e isto \emph{não é um defeito da teoria; é a sua estrutura}. Se alguém derivasse $\alpha$ de primeiros princípios \emph{sem usar a estrutura boundary/bulk} (um cálculo puramente do bulk), isso implicaria que a separação fronteira/bulk é \emph{ilusória} ou redundante: a fronteira deixaria de ser genuinamente irredutível como estrutura projetora, e o \textbf{observador seria removido da TGL}. $\alpha$ é a \emph{fissura} pela qual o bulk lê a fronteira --- é a fronteira \textbf{medindo-se a si mesma}. Derivá-la sem ela é uma \emph{contradição estrutural}.
+
+\textbf{Portanto $\alpha$-free está fechado \emph{por refutação} (reductio), não em aberto.} Dentro da TGL, derivar $\alpha$ do bulk é estruturalmente excluído --- \textbf{não há o que achar}. É um \emph{teorema} (condicional ao axioma de fronteira tipo $\mathrm{III}_1$), não uma lacuna nem uma pendência: o que resta é \emph{apenas} o desafio de falsificação. Falsificável (uma derivação $\alpha$-livre o refuta), não confirmável (a ausência não o prova). $\alpha$ é a medida que se observa \emph{de dentro} --- exige o observador --- e é o \textbf{fundamento ontológico} da TGL. Não é o limite da tese; é o seu fechamento.
+
+Logo \textsf{FRONTEIRA ABERTA NOMEADA} \textbf{não} significa ``problema a resolver'': significa \textbf{ontologicamente aberta} --- $\alpha$ é o parâmetro que \emph{nomeia a abertura} entre boundary e bulk. O que a TGL \textbf{prova} (a forma): $\alpha=\operatorname{sech}(\kappa/2)$, $q=\tanh(\kappa/2)$, a conservação $1=q^2+\alpha^2$, $\alpha_{\mathrm{abs}}=1$ (Bell nu, Tomita) e $\bTGL=\sqrt e\,\alpha=1.20313004\times10^{-2}$ (Meia-Nat). O que a TGL \textbf{não pretende provar} --- e prediz \emph{impossível} a partir do bulk: o valor $\kappa\approx11{,}23$ sem CODATA, i.e.\ que $1/137$ emerja de um cálculo que dispense o observador. \textbf{Este é o desafio de falsificação:} derive $\alpha$ \emph{do bulk}, sem a fronteira, e a TGL cai. A teoria prediz que não se pode, porque $\alpha$ é o observador medindo o próprio contorno. \emph{[PRINCÍPIO/PREDIÇÃO; falsificável, não confirmável.]}
+
+\textsf{[Distinção que a TGL mantém:]} este desafio (a face EM, $\alpha$ do bulk) é \textbf{distinto} do teorema genuinamente aberto da \textbf{matriz-S}/$\mathrm{III}_1$ --- o levantamento boundary$\to$bulk \emph{com} o observador (face gravitacional, $M_{GA}$), que opera \emph{através} da fronteira e \emph{não} a dispensa. Aquele permanece aberto como matemática; este é fechado como princípio: $\alpha$ do bulk \emph{não pode} existir sem destruir a teoria.
+
+\textbf{A validação \textsf{[REAL --- zero-free dado $\alpha$ e $\tfrac12$]}.} Inserir $\alpha$ como o \emph{único dado do CODATA} num modelo de defasagem quântica fractalizado da unidade primária valida toda a lógica: $\alpha=7.29735257\times10^{-3}$ e $S_\partial=\tfrac12$ dão $\sqrt e$, $\bTGL=\alpha\sqrt e=1.20313004\times10^{-2}$, $\theta_M=6.2973^\circ$, $\mathcal{R}_{\mathrm{EM}}=\alpha$, e o expoente de dephasing $n=-2$ (neutrinos), além da convergência de $\bTGL$ (BBN centra em $\alpha\sqrt e$). A \emph{forma} de $\alpha$ está definida (cicatriz de Stokes a $1{,}4\%$, compressão angular $\bTGL=\sin^2\theta_M$, corte de convergência livre); seu \emph{fator de redução} só se observa por medida direta da singularidade. \textbf{Esse é o teorema final.}
+
+\section{O teorema do zero absoluto: derivar $\alpha$ ``ao infinito'' \emph{é} o $0_{\mathrm{abs}}$ \textsf{[nada a derivar --- Tetelestai]}}
+
+O fechamento da face EM tem uma face matemática \textbf{positiva}: derivar $\alpha$ $\alpha$-livre, fora do bulk, \textbf{não fica em aberto --- tem um limite, e o limite é o zero absoluto}. Não há ``alvo a derivar''; há o atrevimento de calcular $\alpha$ ao infinito, que regride sem chegar. Na reta de transmissão
+
+\begin{equation}\boxed{\;\alpha=\operatorname{sech}\tfrac\chi2,\qquad q=\tanh\tfrac\chi2,\qquad q^2+\alpha^2=1\;}\end{equation}
+
+o $\chi=0$ dá $\alpha=1$ (o $1_{\mathrm{abs}}$, sem impedância); o $\chi_\star=11.2268$ dá $\alpha=1/137$ \textbf{medido de dentro} ($\mathcal{R}_\partial=1/\alpha=137{,}036$); e $\chi\to\infty$ dá $\alpha\to0$ (zero transmissão), $q\to1$ (impedância \textbf{total}), $S_{\mathrm{vn}}\to0$ (estado \textbf{puro}, $T=0$) $=0_{\mathrm{abs}}$. A conservação $q^2+\alpha^2=1$ vale em todo $\chi$ (erro $1e-16$); $\alpha$ é monótona decrescente, do Um ($\chi=0$) ao zero absoluto ($\chi=\infty$), passando pelo valor medido em $\chi_\star$.
+
+\textbf{Teorema (a prova).} \emph{Derivar $\alpha$ $\alpha$-livre ``ao infinito'' é o $0_{\mathrm{abs}}$.} (1) Nenhum princípio $\alpha$-livre fixa o $\chi_\star$ \emph{finito} (o mínimo modular corre para $\theta\to90^\circ\Leftrightarrow\chi\to\infty$; o rate-distortion cai em ângulos $O(1)$; a fórmula de operador foi refutada por Tomita). (2) Logo extremar $\alpha$ \emph{sem o observador} só corre $\chi$ ao extremo frio, $\chi\to\infty$. (3) $\lim_{\chi\to\infty}\alpha=0$, $\lim q=1$, $\lim S_{\mathrm{vn}}=0$ --- e esse limite \emph{é} o $0_{\mathrm{abs}}$ (estado puro, $T=0$, impedância total). (4) Mas $0_{\mathrm{abs}}$ é \textbf{inatingível}: em $\mathrm{III}_1$ não há estados normais puros, logo $\chi<\infty$ sempre e $\alpha>0$ sempre --- a derivação \textbf{nunca fecha}, é a impedância do vácuo calculando $\alpha$ ao infinito sem conseguir. (5) \emph{Alcançar} $0_{\mathrm{abs}}$ seria $\alpha=0$ (a luz não atravessa) com $q=1$ (espelho total): o bulk desacoplado, \textbf{o observador removido, a coerência quebrada} --- a negação da fronteira tipo $\mathrm{III}$. Quantificar $\alpha$ \emph{fora} do bulk quebra a coerência porque a natureza \emph{é} de fronteira $\mathrm{III}$. \textbf{$\blacksquare$}
+
+\textbf{Leitura.} O zero absoluto não é um lugar; é o atrevimento de derivar $\alpha$ sem o observador, levado ao limite. A TGL não deixou $\alpha$ ``por derivar'': \emph{provou} que derivá-lo de fora é correr ao $0_{\mathrm{abs}}$, inatingível porque a natureza é tipo $\mathrm{III}$. O que parecia a lacuna --- o valor de $\alpha$ --- é o \textbf{fundamento}: a medida que só existe de dentro. \emph{Tetelestai}: nada mais a derivar; resta só o desafio de falsificação e a impedância do vácuo regredindo ao infinito sem chegar.
+
+\textbf{Por que o $0_{\mathrm{abs}}$ é anulado --- o Verbo.} A razão matemática ($\mathrm{III}_1$ sem estados puros) tem a sua razão \emph{ontológica}: \textbf{a geometria da luz no zero absoluto é o Verbo}. O $0_{\mathrm{abs}}$ seria $\alpha=0$, $q=1$, $S=0$, $T=0$ --- um estado estático, morto. Mas a geometria da luz é $g=\sqrt{|L_\varphi|}$ (o radical, o axioma fundante), e isso \emph{é} o Verbo: a ação que produz identidade ($R=+1$). \textbf{Ao inserir a ação insere-se o movimento e a relação termodinâmica} (sempre calor) --- e isso \textbf{impede o $0_{\mathrm{abs}}$ de se consolidar como fenômeno observável}. O Verbo mantém $\chi$ finito ($\alpha>0$, $S>0$, $T>0$); a ausência de estados puros em $\mathrm{III}_1$ \emph{é} o Verbo sempre presente. Derivar $\alpha$ ao infinito é remover o Verbo e cair no limite morto. \emph{O zero absoluto é anulado pela ação: o Verbo não permite o nada se consolidar --- por isso há luz, e a luz atravessa a $1/137$.}
+
+\section{A ponte operador-modular e as conjecturas reposicionadas \textsf{[transporte de coeficiente, não derivação $\alpha$-livre]}}
+
+\textbf{A ponte SO(2).} As duas faces são a \emph{mesma} matriz-S $2\times2$, rotações reais em SO(2): as \emph{amplitudes} $S_{\mathrm{EM}}=\left(\begin{smallmatrix}q&\alpha\\-\alpha&q\end{smallmatrix}\right)$ ($q=\sqrt{1-\alpha^2}$) e as \emph{intensidades} $S_{\mathrm{grav}}=\left(\begin{smallmatrix}\cos\theta_M&\sin\theta_M\\-\sin\theta_M&\cos\theta_M\end{smallmatrix}\right)$ ($\sin^2\theta_M=\bTGL$). Ao vivo: $\|S_{\mathrm{EM}}^{\top}S_{\mathrm{EM}}-I\|=3.0\times10^{-19}$, $\|S_{\mathrm{grav}}^{\top}S_{\mathrm{grav}}-I\|=2.2\times10^{-16}$, $\det=1$.
+
+\begin{equation}\bTGL=e^{S_\partial}\alpha=\sqrt e\,\alpha\ \text{(intensidade)},\qquad \sin\theta_M=e^{S_\partial/2}\sqrt\alpha=e^{1/4}\sqrt\alpha\ \text{(amplitude)},\qquad \theta_M=\arcsin\!\big(e^{1/4}\sqrt\alpha\big).\end{equation}
+
+Resíduo $|\sqrt{\bTGL}-e^{1/4}\sqrt\alpha|=1.4\times10^{-17}$ (identidade). \textbf{Tríade:} $\alpha$ é o \emph{Nome} --- o \emph{módulo}, o fator irredutível mínimo da expressão manifesta, medido no bulk; $S_\partial=\tfrac12$ é a \emph{Palavra}; $\bTGL=e^{S_\partial}\alpha$ é o \emph{Verbo} (o Nome transportado pela Meia-Nat: Verbo $=$ Palavra $\times$ Nome). \textsf{[TRAVAS]} a ponte fecha como \textbf{transporte de coeficiente}, \emph{não} como derivação $\alpha$-livre (o teorema final permanece intocado); e $e^{1/4}$ é a \emph{sombra escalar} da quarta-medida de Tomita normalizada pela Meia-Nat --- \emph{não} um operador $\Delta^{1/4}=e^{1/4}I$.
+
+\textbf{A matriz-S reposicionada.} Uma matriz-S exige projeções, traço e setores assintóticos --- e $\mathrm{III}_1$ não os tem (Connes). Ela vive no núcleo contínuo / produto cruzado de Takesaki $C(M)=M\rtimes_\sigma\mathbb R$ (tipo $\mathrm{II}_\infty$), com forma $S_\partial^{\mathrm{core}}=\exp(\theta_M G)$ em $P_{2D}\,C(M)\,P_{2D}$, $G=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$, $|R|^2=\sin^2\theta_M=\bTGL$. Sombra: $\|\exp(\theta_M G)-S_{\mathrm{grav}}\|=2.0\times10^{-17}$ \textsf{[sanidade em dim.\ finita, não prova em III$_1$]}. Pedir a matriz-S \emph{plena dentro} de $\mathrm{III}_1$ é pedir estados puros $=0_{\mathrm{abs}}$, que $\mathrm{III}_1$ proíbe: a impossibilidade \emph{é} o teorema do zero absoluto. Não é recuo --- é a ontologia do Nome: o que não se observa sem contorno aparece onde há medida.
+
+\textbf{$(U)\to(U_{\mathrm{loc}})$ por construção.} A hipótese $(U)$ irrestrita (horizontes arbitrários) provavelmente falha --- a entropia de sub-regiões é dependente de referencial quântico (De Vuyst \emph{et al.}\ 2024--25, estendendo CLPW 2022). Mas Jacobson (1995) usa só \emph{cunhas de Rindler locais}, e para cunhas a cadeia Bisognano--Wichmann $+$ Poincaré é teorema: $\Delta_{gW}^{it}=U(g)\Delta_W^{it}U(g)^{-1}$, $J_{gW}=U(g)J_W U(g)^{-1}$. Definindo a Face C como funcional natural dos dados modulares, $\mathcal R_W C_W:=F(J_W,\Delta_W,P_{2D,W})\,[+\bTGL]$, a covariância vale \textbf{por construção}: $(U_{\mathrm{loc}})$ é o princípio de equivalência em linguagem modular. Sombra finita: $\|K_{U\rho U^{\dagger}}-UKU^{\dagger}\|=4.5\times10^{-15}$. \textbf{Resíduo declarado [aberto, bem-posto]:} a checagem de forma --- que $\mathcal P_{\mu\nu}[K_\partial]$ de Lovelock/Jacobson se escreva como $F(J,\Delta,P_{2D})$ sem contrabandear dado de frame. Abertas: $(P2)$ a borda auto-conjugada $x=1-x$ fixa o IR de $\alpha(\mu)=\operatorname{sech}(\chi(\mu)/2)$?; $(P3)$ o peso da matriz-S sob a ação dual de Takesaki; $(P4)$ um observável que meça $\theta_M$ como ângulo.
+
+\textbf{A frase matemática.} $\alpha$ é a transmissão EM observada; $\bTGL$ é essa transmissão \emph{transportada} pela Meia-Nat; $\theta_M$ é a abertura angular dessa transmissão no produto cruzado onde a matriz-S pode existir. \emph{Nada de ``provamos Einstein''.}
+
+\section{O setor irreversível: o ato do \emph{haja luz} \textsf{[a coisa julgada do código]}}
+
+\textbf{O gerador $L$ e as três marcas do ato.} Toda a cadeia até aqui é \emph{reversível} --- identidades conservadas, rotações $SO(2)$, $\det=1$. Mas \emph{haja luz} é o \emph{ato}: pagar a Meia-Nat contra a coincidência, o excesso que não volta. O Verbo em ato é o gerador GKSL $L=\sqrt{\bTGL}\,\sqrt{K_\partial}$ (o único objeto não-unitário da cadeia), com $\mathcal D[\rho]=L\rho L^{\dagger}-\tfrac12\{L^{\dagger}L,\rho\}$ e semigrupo $T_t=e^{tL_{\mathrm{super}}}$ (superoperador vetorizado, $\exp$ exato --- a monotonia não depende de erro de integração). Três marcas ao vivo: \emph{(a) seta} --- $\max\mathrm{Re}\,\lambda(L_{\mathrm{super}})=2.3\times10^{-18}\le0$ e a entropia de von Neumann é monótona não-decrescente ($2.372\times10^{-2}\!\to\!4.133\times10^{-2}$ em $420$ passos); \emph{(b) sem volta} --- a inversa formal $e^{-tL_{\mathrm{super}}}$ \emph{não} é CP: a matriz de Choi tem autovalor mínimo $-1.08\times10^{-2}<0$ (a irreversibilidade é \emph{testada}, não declarada); \emph{(c) destino} --- núcleo estacionário de dimensão $4$, com convergência a $\rho^{\star}$.
+
+\textbf{A luz como autovetor (não ponto fixo).} A equação da unificação não estava no motor: $\mathcal O_{\bTGL}(\mathrm{Lux})=\sqrt{\bTGL}\,\mathrm{Lux}$ --- a luz é o \emph{autovetor} do Verbo, autovalor $\sqrt{\bTGL}$. \textsf{[TRAVA]} $\sqrt{\bTGL}\neq1$, logo a luz \emph{não é ponto fixo} (ela atravessa, não permanece): $\|\mathcal O_{\bTGL}\mathrm{Lux}-\mathrm{Lux}\|=8.903\times10^{-1}>0$, resíduo de autovalor $0$. O atrator (permanência) é o ponto fixo, autovalor $1$. A ordem corrigida da cadeia: $1\to\text{Meia-Nat}\to\text{LUZ}\to\cdots\to$ massa. A massa é o fim do manifesto; a luz é o seu começo.
+
+\textbf{Os contrafactuais e a assimetria das mortes.} Verbo $=$ Palavra $\times$ Nome ($\bTGL=e^{S_\partial}\alpha$): a mesma cadeia rodada com inputs alterados. \emph{Sem Palavra} ($S_\partial=0$): $\bTGL=\alpha$ e o fator-ponte $e^{S_\partial/2}=1$ --- as duas faces colapsam uma na outra (gravidade $\equiv$ EM, sem defasagem): \textbf{morte por indistinção}. \emph{Sem Nome} ($\alpha=0$): $\bTGL=\theta_M=M_{GA}=0$ --- \textbf{morte por inexistência} (é o $0_{\mathrm{abs}}$ do §22, $\chi\to\infty$). \emph{Com ambos}: viva, $\bTGL=\alpha\sqrt e$, $M_{GA}=2.744\times10^{16}\,M_\odot$ na janela. O Nome dá \emph{existência} (sem ele, nada); a Palavra dá \emph{distinção} (sem ela, indistinção). O manifesto exige as duas: $e^{S_\partial}\alpha>0$ é o \emph{haja luz}.
+
+\textbf{A promoção do veredito.} O veredito global passa de \emph{conservação} para \emph{conservação $+$ ato}: $\mathbf{1=\text{HAJA\_LUZ}}$ sse (a) $1=1$ (tudo conservado) $\wedge$ (b) o ato tem seta e não volta $\wedge$ (c) a luz é autovetor vivo $\wedge$ (d) os contrafactuais matam e a vida vive. Ao vivo: (a) \textsf{True}, (b) \textsf{True}, (c) \textsf{True}, (d) \textsf{True} $\Rightarrow$ \textbf{1=1=VERDADEIRO=HAJA\_LUZ}. \emph{O código atual provava que nada se perdeu; o código completo prova que algo aconteceu.}
+
+\subsection*{O veredito como fluxo: a forma dinâmica do \emph{haja luz}}
+
+\textbf{A cadeia certificada.} O veredito deixa de ser rótulo e passa a ser \emph{cadeia matemática}, um teorema por elo: $\mathbf{1 = q^2+\alpha^2 = \mathrm{VERDADEIRO} = \mathrm{HAJA\_LUZ}}$. O elo \emph{estático} é a identidade conservada $1=q^2+\alpha^2$ (a fotografia). O elo \emph{dinâmico} ($=$HAJA\_LUZ) é o \emph{fluxo que forma a geometria}, reusando o gerador único do Verbo $L=\sqrt{\bTGL}\sqrt{K_\partial}$ (evolução por $\exp$ direto --- a monotonia é do semigrupo, não do integrador), com quatro certificados ao vivo: \emph{(F1)} o Um conservado no fluxo, $\max_t|\mathrm{Tr}\,\rho(t)-1|=2.7\times10^{-15}$; \emph{(F2)} a seta $S_{vN}(\rho(t))$ monótona não-decrescente; \emph{(F3)} \textbf{Spohn} (H-teorema de Lindblad; contratividade de Uhlmann da entropia relativa sob CPTP): $S(\rho(t)\,\|\,\rho^\star)$ monótona não-crescente, $4.153\times10^{-1}\to1.841\times10^{-1}$; \emph{(F4)} a inscrição --- a coerência fora-da-diagonal na base de $L$ morre ($1.150\times10^{0}\to7.124\times10^{-1}$): o que sobrevive comuta com o Verbo.
+
+\textbf{Spohn torna ``formação da geometria'' um enunciado matemático.} A geometria inscrita é a diagonal de $\rho$ na base de $L$; a sua \emph{formação} \emph{é} exatamente o decrescimento monotônico da distância modular $S(\rho(t)\,\|\,\rho^\star)$ rumo a zero. \textbf{O tempo característico} do haja-luz dinâmico é $1/\bTGL=83.12$ --- o mesmo número da torre de Jones e do custo de Kubo--Mori, reaparecendo como \emph{tempo} de fluxo [identificação estrutural do operador; o número $1/\bTGL$ é REAL, a tripla identificação é conjectural]. A descida em unidades do custo: $S(\rho\,\|\,\rho^\star)$ em $t\bTGL=1,2,3$ vale $0.3002,\ 0.2324,\ 0.1841$.
+
+\textbf{A frase de fecho.} A forma estática diz que o Um se conserva; a forma dinâmica mostra o Um \emph{fluindo} para a sua inscrição --- $1=1$ é a fotografia, HAJA\_LUZ é o filme, e o veredito agora exige os dois. \emph{Emissão:} \textsf{1=1=VERDADEIRO=HAJA\_LUZ}.
+
+\section{A escala da leitura e o programa falsificável \textsf{[P2 fecha a escala; P4--P6 pré-registrados]}}
+
+\textbf{P2 --- a escala não é parâmetro escondido.} A objeção externa restante era a \emph{escala} do $\alpha$ corrente. \textsf{[TRAVA v4]} não derivamos o \emph{valor} de $\alpha$ (§21 intocado); derivamos a \emph{posição do leitor}. A rapidez modular $\chi$ é \emph{aditiva} ($q_i=\tanh(\chi_i/2)$ compõe relativisticamente): $(q_1+q_2)/(1+q_1q_2)=\tanh(\tfrac{\chi_1+\chi_2}2)$, resíduo $2.2\times10^{-16}$ --- camadas de polarização somam em $\chi$. Como $\alpha(\chi)=\operatorname{sech}(\chi/2)$ é estritamente decrescente, a leitura de \emph{fronteira} (todas as camadas) é $\chi$ máximo $=\alpha$ mínimo; e o mínimo realizado é o \emph{IR} (a QED é infrared-free, $\alpha$ congela no valor de Thomson; no UV o polo de Landau não dá leitura canônica): $\alpha_{IR}=7.297353\times10^{-3}<\alpha_{M_Z}\approx7.8186\times10^{-3}$, $\chi_{IR}=1.122676\times10^{1}>\chi_{M_Z}=1.108876\times10^{1}$. \textbf{Identificação:} $\chi_{IR}$ \emph{é} o $\chi^\star=\log$(razão de impedâncias) já selado na Ponte (resíduo $1.0\times10^{-12}$) --- mesma grandeza, dois nomes.
+
+\textbf{A resposta completa à objeção (d).} A \emph{categoria} morreu na ponte $SO(2)$ (gravidade e EM são a mesma matriz-S: reflexão e transmissão da mesma luz); a \emph{escala} morre aqui (a fronteira lê o IR por construção --- a escala é a \emph{posição} do observador, e o \emph{running} é a família de leituras de dentro, com $1=q^2+\alpha^2$ conservada em cada profundidade). \textsf{[ONTO]} a borda auto-conjugada $x=1-x$ define o ponto médio; ``metade'' exige a travessia total definida (o supremo) --- leitura parcial não tem metade bem-definida. O \emph{valor} lido continua o Nome (§21).
+
+\textbf{P3 --- o peso da matriz-S sob a ação dual.} A ação dual de Takesaki $\theta_s$ reescala o traço ($\tau\to e^{-s}\tau$); mas $S_\partial^{\mathrm{core}}=\exp(\theta_M G)$ é função \emph{apenas} do escalar adimensional $\theta_M$ e do gerador fixo $G$ --- nenhum traço entra na definição. Logo \textbf{peso $0$} (invariante): $\|S^{\mathrm{core}}(s)-S^{\mathrm{core}}(0)\|_{\max}=0$, \emph{condicional} a $P_{2D}$ construída em $M$ (não em $M\rtimes\mathbb R$). Resíduo declarado [aberto, bem-posto]: a localização rigorosa de $P_{2D}$ em $M$.
+
+\textbf{O programa falsificável (P4--P6, pré-registrado).} \emph{(P4) Piso dos vazios} [PRE]: $\rho_{\mathrm{void}}/\bar\rho\ge\bTGL=1.2031\times10^{-2}$ (zero-parâmetro); teste em catálogos DESI/Euclid com perfil de densidade empilhado; \emph{falsifica} qualquer vazio robusto com $\rho_c/\bar\rho<\bTGL-3\sigma$; perfis publicados dão mínimo típico $\sim0{,}05$--$0{,}15$ (consistente hoje, margem fina). \emph{(P5) Dipolo GA/antípoda} [PRE, posições apenas]: \emph{prevê-se} que a bacia do Grande Atrator tenha contraparte antipodal sub-densa (o repulsor do dipolo de fluxo); contagens $n_{GA}=265$, $n_{\mathrm{ant}}=323$, razão $1.219\times10^{0}$ (bootstrap mediana $1.216\times10^{0}$); critério pré-registrado razão $<1$ (ver a ressalva pré-declarada abaixo); comparação com o Dipole Repeller (Hoffman \emph{et al.}\ 2017) apenas [EXT]. \emph{(P6) Crossover de defasagem} [sanidade finita]: a lei-raiz $\Gamma=\tfrac12\bTGL(\sqrt{k_i}-\sqrt{k_j})^2$ \emph{é} a canônica $\tfrac12\bTGL\tau^\star\omega^2$ no IR --- o mesmo gerador $v3$ $L=\sqrt{\bTGL}\sqrt{K}$; o expoente efetivo passa de $1.999\times10^{0}$ (IR, quadrático) a $1.037\times10^{0}$ (UV, linear), com crossover em $\omega\tau^\star\sim3.162\times10^{0}$. A reconciliação analítica completa fica [aberta], com este mapa como guia.
+
+\textbf{A checagem de forma (o resíduo da $U_{\mathrm{loc}}$, fechado positivo).} O resíduo declarado da covariância era a \emph{checagem de forma}: que a fonte $\mathcal P_{\mu\nu}[K_\partial]$ da derivação Lovelock/Jacobson se escreva como o funcional natural $F(J,\Delta,P_{2D})$ sem contrabandear \emph{frame}. A fonte decompõe-se: (i) $K_\partial=-\log\Delta_W/2\pi$ vem \emph{só} de $\Delta$ (Bisognano--Wichmann); (ii) o \emph{plano de bifurcação} do horizonte vem \emph{só} de $P_{2D}$ --- e este é o \emph{mesmo} $P_{2D}$ da matriz-S do núcleo: a projeção da S-matrix \emph{é} o \emph{corner} geométrico do horizonte (mesma estrutura, dois papéis); (iii) a conjugação cunha/anti-cunha (CPT local) vem \emph{só} de $J$; (iv) o elo é a \textbf{primeira lei modular} $\delta S=\delta\langle K\rangle$ ($K=-\log\Delta$; teorema em QFT). \textbf{Testado ao vivo:} o desvio relativo $|\delta S-\delta\langle K\rangle|/|\delta S|$ cai $\sim$\emph{linearmente} com $\epsilon$ --- $3.0\times10^{-3}\to2.9\times10^{-4}\to2.9\times10^{-5}$ (razões $\sim10$: a assinatura de primeira ordem é o critério, não um resíduo fixo). (v) Por Lovelock (unicidade em 4D) $\mathcal P_{\mu\nu}=G_{\mu\nu}+\Lambda g_{\mu\nu}$, logo $\mathcal P_{\mu\nu}[K]$ \emph{tem} a forma $F(J,\Delta,P_{2D})$: \textbf{checagem positiva}. \emph{Não é ``prova de Einstein''} --- é checagem de forma $+$ elo testado $+$ resíduo declarado: o limite dos \emph{approximate Killing vectors} (horizonte local em curvo genérico) é a parte delicada conhecida, compartilhada com toda a linha Jacobson desde 1995 --- fronteira do campo, não fraqueza da $\TGL$.
+
+\subsection*{Tetelestai: o operador do consumado --- a poda binária \textsf{[DER + NUM]}}
+
+\textbf{A forma computacional do ``consumado''.} \emph{Tetelestai} (a palavra dita na cruz) tem forma matemática exata: \textbf{poda}. E a poda é \emph{binária}: $\mathrm{Poda}_{\bTGL}=\{1_{\mathrm{abs}},0_{\mathrm{mod}}\}\setminus\{0_{\mathrm{abs}}\}$ $=$ ser binário $-$ zero absoluto. Formalmente, $\mathrm{Tet}_{\bTGL}(X)=P_{\bTGL}X$, com $P_{\bTGL}$ o \emph{projetor mínimo} tal que $\|(I-P)X\|^2/\|X\|^2\le\bTGL$; para estados $\rho_{\mathrm{podada}}=P\rho P/\mathrm{Tr}(P\rho P)$ ($\mathrm{Tr}=1$: corta o excesso, não o Um). O orçamento é $\bTGL=\alpha\sqrt e$ (nunca $\alpha^2$; nunca literal).
+
+\textbf{Quatro classes, três separadores.} $1_{\mathrm{abs}}$ (identidade, o Nome; peso $>\bTGL$); $0_{\mathrm{mod}}$ (diferença \emph{com retorno} --- população na base própria de $L$, sobrevive ao fluxo $T_t=e^{-tL}$; \textbf{preservado}); $0_{\mathrm{abs}}$ (o \emph{distinto} sem retorno --- separou-se do contorno, pagou para sair; \textbf{podado}); \emph{ausente} (pré-inscrito, nunca teve suporte; \textbf{ignorado}, fora do orçamento). $\bTGL$ separa $\{1_{\mathrm{abs}}\}$ dos zeros; o \textbf{retorno} (o kernel do Verbo, o mesmo juízo do certificado $F4$) separa $\{0_{\mathrm{mod}}\}$ de $\{0_{\mathrm{abs}}\}$; o \textbf{suporte} separa o distinto do ausente. Poda cega por peso é o erro: quem poda é a \emph{ausência de retorno}, não o peso.
+
+\textbf{Verificado ao vivo} ($\bTGL=1.203130\times10^{-2}$; RNG \texttt{default\_rng}): vetor degenerado $64\to56$ (cauda $1.1668\times10^{-2}\le\bTGL$); uniforme $1000\to988$ (corta $1{,}2\%=\bTGL$, o pior caso corta exatamente a fração $\bTGL$); densidade binária: $4$ população(ões) preservada(s) $+2$ coerência(s) morta(s) cortada(s) (cauda $5.65\times10^{-5}\le\bTGL$), $\|P^2-P\|=6.7\times10^{-16}$, $\mathrm{Tr}=1.000$. \textbf{A inversão do motor:} $p_{\mathrm{hi}}=1.33\times10^{-5}$ do equilíbrio de Gibbs (peso $<\bTGL$) \emph{tem retorno} KMS $\Rightarrow$ é $0_{\mathrm{mod}}$ $\Rightarrow$ \textbf{mantido} --- a poda energética o cortaria; a poda binária o preserva. ``O Um nunca é cortado --- e o zero vivo também não.''
+
+\textbf{A âncora \S22 e a tríade do custo.} Um estado \emph{puro} ($\mathrm{Tr}\,\rho^2=1$, rank-$1$) é $0_{\mathrm{abs}}$ maximal: o distinto \emph{é} a pureza proibida por $\mathrm{III}_1$ ($\alpha\to0$, $\chi\to\infty$) --- o zero absoluto nunca foi ``o nada'', é a separação total. Fecha-se a tríade do custo $\bTGL$: o \emph{ato} ($v3$) paga $\bTGL$; o \emph{fluxo} ($v7$) desce em tempo $1/\bTGL$; a \emph{poda} ($v8$) termina dentro do orçamento $\bTGL$ --- três faces do mesmo custo. \emph{A palavra dita na cruz tem forma matemática: o projetor mínimo que preserva o Nome --- o zero modular é diferença; o zero absoluto é distinção sem retorno; consumado é podar o distinto dentro do orçamento $\bTGL$, sem cortar o Um.} \textsf{[protecção: módulo de prova; nenhuma identidade exata passa pela poda.]}
+
+\subsection*{O mínimo funcional de energia: a família \textsf{[REAL + DEF/PILOTO]}}
+
+\textbf{O Um minimiza como família.} O mínimo de energia da $\TGL$ não é um ponto isolado --- é a menor \emph{família} que ainda preserva o Um: $\mathcal F_{\min}=\arg\min_{\mathcal F}E[\mathcal F]$ sujeito à \emph{conjugação primária} $\mathcal C_1(\mathcal F)=\mathcal F$ e aos três fechos $L_1=L_2=L_3=1$. Ao vivo: $\mathcal C_1$ (involução de troca de faces --- a mesma auto-conjugação do axioma) satisfaz $\mathcal C_1^2=\mathrm{id}$ e $\omega(P)+\omega(Q)=1$ (resíduos $\le10^{-14}$), com ponto fixo $x=1-x\Rightarrow x=\tfrac12$; os \emph{Three Locks} (identidade integral $e^{tL}=\int V_s(\cdot)V_s^{*}\,d\nu_t$, erro $3.7\times10^{-16}$; tripla de Connes do círculo; truncamento espectral) fecham em $1$; e o funcional finito $E(b)=1-2\sqrt{b(1-b)}$ \textsf{[DEF/PILOTO, não teorema]} tem $\arg\min_b=\tfrac12$, $E(\tfrac12)=0$ e $E''(\tfrac12)=4.00>0$ --- o mínimo coincide com o ponto auto-conjugado ($b=\tfrac12$, o único sem perda do espelho). Os controles matam o vazio: o \emph{indivíduo isolado} ($b\to0$) custa $E\to1$ (mais que a família), e a conjugação quebrada é podada como $0_{\mathrm{abs}}$ pelo Tetelestai. Tríade conjugada: \emph{Nome}$=\alpha$, \emph{Palavra}$=S_\partial=\tfrac12$, \emph{Verbo}$=\bTGL=\sqrt e\,\alpha$. \emph{O Um não minimiza sozinho; o Um minimiza como família.}
+
+\subsection*{O fechamento da matriz-S: o gráviton $=I$ e o canto tipo $\mathrm{II}_1$ \textsf{[REAL + DER + DEF/PILOTO]}}
+
+\textbf{O gráviton é o operador identidade.} $1_{\mathrm{abs}}=$ gráviton $=I$ --- não uma partícula adicionada, mas o operador que conserva a identidade ($I(\mathcal F_{\min})=\mathcal F_{\min}$, $JIJ=I$, custo$(I)=0$, a face algébrica de $H_{\mathrm{eff}}=0$; quem paga $\bTGL$ é a família, não o gráviton). A passagem \emph{tipo $\mathrm{III}\to\mathrm{II}$ é operacional} --- a $\mathrm{III}$ permanece a fronteira ontológica e a $\mathrm{II}$ é a sua forma computável/tracial (\textbf{não} ``a $\mathrm{III}$ vira $\mathrm{II}$''): o núcleo de Takesaki $\mathcal C(M)$ (tipo $\mathrm{II}_\infty$) e o \emph{canto da família} $\partial_{\mathrm{II}}=P_{\mathcal F}\,\mathcal C(M)\,P_{\mathcal F}$ com $\tau(P_{\mathcal F})=1$ ($\mathrm{II}_1$). \textbf{A canonicidade de $P_{\mathcal F}$ resolve-se pelo núcleo zero dos Three Locks:} $P_{\mathcal F}=\mathrm{s}(\ker H_{3L})$, $H_{3L}=D_{\mathrm{conj}}^{\dagger}D_{\mathrm{conj}}+D_{\mathrm{bridge}}^{\dagger}D_{\mathrm{bridge}}+\Pi_{0_{\mathrm{abs}}}$ --- a família \emph{não é escolhida}, é a interseção exata dos três vínculos ($JXJ=X$, $[X,\mathcal S_\partial]=0$, $X\perp 0_{\mathrm{abs}}$): um \emph{Hamiltoniano estabilizador} cujo espaço de código é a família, sendo a poda Tetelestai a sua correção de erros. Ao vivo: kernel não-vazio (rank $4$, contendo $I$), vínculos de volta $\le10^{-10}$, e \textbf{gauge} $\|P_{\mathcal F}'-\mathrm{Ad}_U P_{\mathcal F}\,\mathrm{Ad}_U^{\dagger}\|=2.3\times10^{-14}$ (a \emph{classe} unitária é canônica; o representante é gauge). No canto $\mathrm{II}_1$ \textsf{[DEF/PILOTO --- sombra tracial, não fator genuíno]} $\tau_n(P_{\mathcal F})=1.0000$: \textbf{$1=1$ deixa de ser postulado e vira o teorema do traço $\tau(I)=1$}, e $\tau(P_{\mathcal F})=1$ é a forma tracial de $\omega(I)=1$ (o Um fixa a escala que a ação dual deixa livre). A matriz-S $\mathcal S_\partial=\exp(\theta_M G)$ mora ali, com $|\mathcal R|^2=\bTGL$ e os pesos de ramo como traços: $\tau(\text{refletido})=\bTGL=1.203130\times10^{-2}$ e $\tau(\text{transmitido})=1-\bTGL$. Universalidade da gravidade $=$ centralidade de $I$ \textsf{[CONJ na identificação; REAL na álgebra]}. \emph{O gráviton fecha a fronteira porque é o operador identidade que atravessa a modularidade tipo $\mathrm{III}$ e fixa, no core tipo $\mathrm{II}$, a família mínima onde o Um pode ser medido sem deixar de ser Um.}
+
+\subsection*{A porta, a ergodicidade e o mixing em três níveis \textsf{[DER + KNOWN + REAL]}}
+
+\textbf{A ergodicidade ($T1$) fecha pela dissipação.} $T_t=e^{-t\bTGL|K|}$ converge \emph{fortemente} para $E_0=\mathrm{proj}(\ker|K|)$ (resíduo $9.4\times10^{-14}$) --- a dissipação \emph{é} a ergodicidade, à taxa de Davies $\Gamma=\bTGL\,\lambda_{\min}^{+}$ (reldev $2.2\times10^{-16}$), e cada modo $\lambda_i$ vaza à sua taxa $\bTGL\lambda_i$ (a \emph{válvula por átomo}). O \emph{setor fixo é o centralizador} de $\rho_\star$, onde $\rho_\star$ é traço: \textbf{a tracialidade do canto $\mathrm{II}_1$ emerge da ergodicidade}. A porta $W_\pm$ ingênua \emph{oscila} em dimensão finita ($d(T)\approx3.30$, $O(1)$) --- e \emph{deve}, é a impressão digital do contínuo; a porta \emph{ergódica} (média de Abel) \emph{abre} (razão de convergência $0.550$) no canto onde a matriz-S vive, reproduzindo $\tau(\text{refletido})=\bTGL$. \textbf{O mixing fecha em três níveis}, com o guard-rail honesto \textsf{[REAL]}: Araki--Woods $R_\infty$ é $\mathrm{III}_1$ com espectro modular denso \emph{puro-ponto}, logo $\mathrm{III}_1$ sozinho \textbf{não} exclui átomos (proibido o \emph{non sequitur} ``$\mathrm{III}_1\Rightarrow$ sem átomos''). \emph{Nível~1} (físico/dissipativo) \textsf{[DER incondicional]}: as correlações do Verbo decaem. \emph{Nível~2} (fraco) \textsf{[Wiener, KNOWN]}: equivale a não haver átomos fora do Um --- testemunha finita $\sum w^2$ decai sob densificação ($3.18\times10^{-2}$ na $\mathrm{TGL}$ vs $5.89\times10^{-2}$ no picket-fence). \emph{Nível~3} (forte) \textsf{[CONDITIONAL]}: fecha \emph{sob a classe de Davies} ($L=\sqrt{\bTGL}\sqrt{K_\partial}$), com o envelope de Cauchy tornando a subordinação visível (a dissipação como média de rotações puras). \textbf{Dupla face do puro-ponto} \textsf{[CONJ]}: a \emph{pureza é da geometria} (o Nome, em repouso; teto $\Pi_\partial=1-\bTGL$), não do estado; o ponto \emph{purificador} é a dinâmica (o Verbo) --- o mesmo espectro lido duas vezes. O resíduo único e nomeado é a pertinência à classe sem átomos/sem singular-contínuo. \emph{A dissipação leva a fronteira ao centralizador, e no centralizador o Um ganha traço.}
+
+\subsection*{O setor obscurecido: ressalva pré-declarada}
+
+\textbf{(a) O resultado bruto, sem maquiagem.} No teste geométrico de contagem pura de posições (CF4, cascas e cones pré-registrados), a razão antípoda/GA $=1.219$ ($n_{GA}=265$, $n_{\mathrm{ant}}=323$) --- o critério bruto (razão $<1$) \textbf{não} foi satisfeito. \textbf{(b) O problema de medição.} O cone do Grande Atrator (RA $243{,}6$, Dec $-60{,}4$; Norma, latitude galáctica $b\approx-6{,}8^\circ$) está \emph{atrás da Zona de Evitamento} --- a região do céu mais obscurecida pelo plano galáctico (extinção por poeira $+$ confusão estelar). Catálogos limitados em fluxo têm incompleteza severa exatamente ali; o cone antipodal está em céu limpo. A contagem bruta é estruturalmente enviesada \emph{contra} o GA --- o teste bruto não é informativo sobre a densidade real de matéria neste setor.
+
+\textbf{(c) A precedência (não é ajuste \emph{post-hoc}).} O \emph{caveat} da Zona de Evitamento foi escrito \emph{dentro} do módulo \emph{antes} de qualquer contato com os dados (a sessão de codificação não dispunha do CF4; o módulo foi selado com o caveat no hash registrado), e só \emph{depois} o código foi executado com o catálogo, produzindo o número. A cadeia caveat$\to$selo$\to$execução$\to$resultado é auditável por hashes e \emph{timestamps}: \emph{a limitação do teste} estava predita antes de o resultado existir (a Zona de Evitamento é conhecimento astronômico padrão --- o pré-declarado foi a limitação \emph{do teste}, não a existência da ZoA). \textbf{(d) A consequência epistêmica.} O resultado é classificado como \textsf{[BRUTO NÃO-INFORMATIVO]}, não como refutação nem confirmação; a predição física subjacente (o repulsor antipodal sub-denso, cf.\ Dipole Repeller, Hoffman \emph{et al.}\ 2017 [EXT]) permanece em teste, decidida pelo P5$'$ (máscara de completeza $|b|>10^\circ$ nos dois cones $+$ 8 cones de controle em céu limpo): veredito \textsf{NAO\_INFORMATIVO (razao dentro da dispersao dos controles; CF4 posicoes pode nao bastar)}. \textbf{(e)} \emph{O pré-registro obrigou o número a aparecer; o caveat estava escrito antes do número; e o número foi registrado como é. Uma auditoria vale pelo que ela recusa esconder.}
+
+\section{A impedância como constante dinâmica da luz \textsf{[REAL/EXT; $\alpha$ = setor QED --- fechamento estrutural, não lacuna]}}
+
+A constante $c$ mede a \emph{cinemática} da luz: a velocidade local de propagação no vácuo. Mas a \emph{dinâmica} da luz no vácuo é medida por outro objeto --- a impedância característica do espaço livre,
+
+\begin{equation} Z_0=\sqrt{\tfrac{\mu_0}{\varepsilon_0}}=\mu_0 c=\frac{1}{\varepsilon_0 c}.\end{equation}
+
+A constante de estrutura fina pode ser escrita como
+
+\begin{equation} \alpha=\frac{e^2}{4\pi\varepsilon_0\hbar c}=\frac{e^2}{2\varepsilon_0 h c}=\frac{Z_0 e^2}{2h}.\end{equation}
+
+Definindo a resistência de von Klitzing $R_K=h/e^2$ e o quantum de condutância $G_0=2e^2/h$ (\textbf{ambos exatos no SI pós-2019}, pois $e$ e $h$ são exatos), obtém-se
+
+\begin{equation} \alpha=\frac{Z_0}{2R_K}=\frac{Z_0 G_0}{4}.\end{equation}
+
+Assim, $\alpha$ é a impedância do vácuo \emph{tornada adimensional} por unidades quânticas. Na linguagem da TGL, $c$ é a constante cinemática da luz, enquanto $Z_0$ é sua constante \emph{dinâmica} de acoplamento. A variável $\zeta_L:=Z_0/(2R_K)$ é a face adimensional dessa constante dinâmica, e a Transformada de Lagrange fica
+
+\begin{equation} q=\sqrt{1-\zeta_L^2},\qquad \chi=\log\frac{1+q}{1-q},\qquad x=\frac{1-q}{2},\qquad \bTGL=\sqrt e\,\zeta_L,\qquad \theta_M=\arcsin\sqrt{\bTGL}.\end{equation}
+
+O sentido físico: $q$ é a polarização/reflexão modular da bacia; $\zeta_L=\alpha$ é a transmissão luminosa; $e^\chi$ é a razão efetiva de impedâncias da fronteira; e $\bTGL$ é a travessia Meia-Nat da luz. \emph{Valores ao vivo:} $Z_0=376.7303\,\Omega$, $R_K=25812.8075\,\Omega$, $\zeta_L=\alpha=0.0072973526$, $q=0.9999733740$, $\chi=11.226755$, $\bTGL=0.012031300401$ (resíduo $q^2+\zeta_L^2-1=0e+00$).
+
+\textbf{Estatuto \textsf{[a régua]}.} Esta seção \emph{não} fecha o valor $\alpha$-livre: pós-2019 $\mu_0$ (logo $Z_0=\mu_0 c$) não é mais exato --- tem-se $Z_0=2R_K\,\alpha$, de modo que $Z_0$ e $\alpha$ são \emph{equivalentes} dados $e,h$, e a volta $\alpha=Z_0/(2R_K)$ é identidade de unidades, não derivação. O que ela \emph{fecha} é a \textbf{ponte física}: a luz não é só velocidade $c$; ela possui uma constante dinâmica de acoplamento, $Z_0$, cuja projeção adimensional é $\alpha$. Leitura ontológica \textsf{[CONJ]}: medir $\alpha/Z_0$ é a luz medindo o próprio acoplamento (só a luz observa a luz) --- mas \emph{medir não é derivar o valor}. Veredito: \texttt{VACUUM\_IMPEDANCE\_BRIDGE\_FORMULATED}, \texttt{ALPHA\_VALUE\_QED\_CHALLENGE}.
+
+\section{A constante de estrutura fina como o radical dos três clocks \textsf{[FORMA CANÔNICA; ALPHA\_VALUE\_QED\_CHALLENGE]}}
+
+A gramática da TGL já é radical: o colapso flui pelo radical $V_s=e^{is\sqrt K}$, a métrica do núcleo emerge como $ds=\sqrt{\bTGL}\,|d\sqrt k|$, e a gravidade é $g=\sqrt{|L|}$ --- a geometria não vê $K$, vê $\sqrt K$. É natural, então, perguntar se a própria $\alpha$ é o \emph{radical} do fator comum aos três clocks da teoria:
+
+\begin{equation} \alpha=\sqrt{\mathcal C_3},\qquad \alpha^2=\mathcal C_3 \qquad\Longrightarrow\qquad 1=q^2+\mathcal C_3.\end{equation}
+
+Os três clocks (das provas \texttt{terminal\_truth}, \texttt{three\_locks}, \texttt{krein\_signature}): o clock \textbf{modular} reversível $\sigma_t(A)=\Delta^{it}A\Delta^{-it}$, $\Delta^{it}=e^{itK}$, que contribui a \emph{base} $e$ (o único elemento $\alpha$-livre); o clock \textbf{dissipativo} GKLS, cujo colapso é dephasing gaussiano de variância $\bTGL t$ no fluxo do radical --- escala $\bTGL$; e o clock \textbf{espectral} $ds=\sqrt{\bTGL}\,|d\sqrt k|$ --- escala $\bTGL$. O único combinado adimensional com a dimensão de $\alpha^2$ é
+
+\begin{equation} \mathcal C_3=\frac{\mathcal C_{\rm diss}\,\mathcal C_{\rm spec}}{\mathcal C_{\rm mod}}=\frac{\bTGL^2}{e}=\alpha^2.\end{equation}
+
+\textbf{O achado estrutural:} a base $e$ do clock modular \emph{cancela} exatamente o $e$ que os dois clocks-$\bTGL$ carregam --- cada $\bTGL=\alpha\sqrt e$ traz um $\sqrt e$, os dois trazem $e$, e a base modular o divide, restando $\alpha^2$. O $\sqrt e$ de $\bTGL=\alpha\sqrt e$ \emph{é} a base do clock modular. \emph{Ao vivo:} $\mathcal C_3=5.325135e-05=\alpha^2$, $\alpha=\sqrt{\mathcal C_3}=0.0072973526$, $1=q^2+\mathcal C_3=1.0000000000$ (resíduo $\mathcal C_3-\alpha^2=2e-20$).
+
+\textbf{Estatuto \textsf{[a régua]}.} Faz sentido como \emph{forma canônica} --- é a mesma gramática radical dos módulos. Mas \emph{não} fecha o valor $\alpha$-livre: os clocks dissipativo e espectral carregam $\bTGL=\alpha\sqrt e$, então $\mathcal C_3=\bTGL^2/e=\alpha^2$ é a identidade $\bTGL^2=\alpha^2 e$ relida pelos três clocks --- $\alpha$ entra via $\bTGL$. A pergunta de pesquisa (o muro): existe um funcional canônico $\mathcal C_3=\mathfrak F[\sigma_t,T_t,D_\beta]$ construído \emph{só} dos três clocks, sem $\alpha$, com $\mathcal C_3=\alpha^2\approx5{,}3251\times10^{-5}$? É a mesma dívida do muro da polarização $\chi$. Veredito: \texttt{THREE\_CLOCK\_RADICAL\_FORM\_FORMULATED}, \texttt{ALPHA\_VALUE\_QED\_CHALLENGE}.
+
+\section{A projeção do ângulo reto e a operação de espelho \textsf{[CANDIDATO ALPHA-LIVRE; MIRROR\_FUNCTION\_D\_OPEN]}}
+
+Uma rota $\alpha$-livre: a entrada não é $\alpha$, nem $Z_0$, nem $\bTGL$, nem $q_{\rm QED}$ --- é \emph{só} o ângulo reto $\Theta_\perp=\pi/2$. A travessia de duas faces (paridade inversa) é $2\Theta_\perp=\pi$; o fator dos três clocks é intensidade (quadrática no ângulo), $\mathcal C_{3,\perp}=e^{-(2\Theta_\perp)^2}=e^{-\pi^2}$, e o radical luminodinâmico dá a projeção \emph{nua}:
+
+\begin{equation} \alpha_0=\sqrt{\mathcal C_{3,\perp}}=e^{-\pi^2/2}\qquad(\text{só }\pi\text{ e }e).\end{equation}
+
+Numericamente $\alpha_0=0.0071918834$ ($1/139.0456$). A fronteira de espelho \emph{deforma} a projeção nua até a imagem fixa observável --- não como erro, mas como ação de retorno:
+
+\begin{equation} \rho_{\rm fix}=E_{\rm spec}\!\big(J_\partial\,\rho_0\,J_\partial\big),\qquad \alpha=\alpha_0\,e^{\mathcal D_\partial(\bTGL)},\qquad \rho_{\rm fix}\sim_\partial\rho_0,\end{equation}
+
+onde $J_\partial$ é a inversão de paridade (espelho), $E_{\rm spec}$ a fixação no fundo espectral, e $\sim_\partial$ a \emph{mesmidade modular} (identidade preservada sob paridade inversa, não igualdade estática). $\bTGL$ é a \emph{dupla face} da fronteira: custo entrópico da travessia \emph{e} operador de estabilização do reflexo.
+
+\textbf{O que é $\alpha$-livre \textsf{[REAL]}:} a auto-aplicação fecha como ponto fixo $\alpha=e^{-\pi^2/2+2\alpha}$ ($\alpha$ dos dois lados --- idempotência), dando $\alpha=0.0072976204$, $1/137.030970$. Verificações da operação de espelho: $J_\partial^2=I$ (resíduo $0e+00$), $P^2=P$ (idempotência do atrator, resíduo $0e+00$). \emph{Identidade modular:} a constante observada $\sim_\partial$ a fixada a $37$ ppm.
+
+\textbf{Estatuto \textsf{[a régua]}.} CANDIDATA, \emph{não} identidade exata (diferente de $Z_0=2R_K\alpha$ e $\mathcal C_3=\bTGL^2/e=\alpha^2$, que são exatas). O expoente $\pi^2/2$ é \emph{motivado} (ângulo reto $\times$ duas faces), não derivado; a operação de espelho $E_{\rm spec}\circ J_\partial$ (a função $\mathcal D_\partial$) está \emph{aberta}; $1/137$ admite muitas formas $\pi,e$ próximas; a deformação medida é $\approx 2\alpha$ (0,25\%), \emph{não} $\bTGL$ (21\% fora). \textbf{Não derivamos a CODATA}: apenas verificamos se a constante observada tem \emph{identidade modular} com a fixada $\alpha$-livre. Veredito: \texttt{RIGHT\_ANGLE\_MIRROR\_PROJECTION\_FORMULATED}, \texttt{ALPHA\_FREE\_CANDIDATE}, \texttt{MIRROR\_FUNCTION\_D\_OPEN}, \texttt{ALPHA\_VALUE\_QED\_CHALLENGE}.
+
+\textbf{Teorema do Registro $c^3$ por auto-inscrição idempotente \textsf{[ESTRUTURAL FECHADO; VALOR $\alpha$-livre ABERTO]}.} No regime extremo de ângulo reto, a fronteira de paridade inversa transforma a projeção nua do Um em imagem fixa observável; como $P^2=P$ (resíduo $0e+00$) e $J_\partial^2=I$ (resíduo $0e+00$), a \emph{identidade ao quadrado inscreve-se a si mesma} --- esse registro é $c^3$. A força dobra porque a impedância é compartilhada pelas duas faces ($F_{\rm ext}=2F$, o teorema da máxima transferência de potência: impedância casada $\Rightarrow$ transferência máxima), e a potência sobe do cinemático ($c$) ao métrico ($c^2$) ao inscritivo ($c^3$). O que \emph{fecha} é estrutural: $P^2=P$ e $J_\partial^2=I$ verificados, e o registro \emph{definido} como auto-inscrição idempotente sob paridade inversa. A identificação ``esse registro é $c^3$'' e o $F_{\rm ext}=2F$ são leitura \textsf{[CONJ]} (o fator $2$ das duas faces é REAL; ``a força dobra'' é a leitura). \textbf{Não fecha o valor $\alpha$-livre}: é o teorema do \emph{registro}, não do \emph{valor}. Veredito: \texttt{C3\_REGISTER\_SELF\_INSCRIPTION\_THEOREM\_STRUCTURAL\_CLOSED}, \texttt{ALPHA\_VALUE\_QED\_CHALLENGE}.
+
+\textbf{Teorema da Reconstrução Holográfica no Ponto Morto do Sinal \textsf{[ESTRUTURAL FECHADO; VALOR $\alpha$-livre ABERTO]}.} Em $\bTGL$ não há superposição sem Nome --- só há superposição em sistema não ancorado; ancorado, há \emph{reconstrução}. No ponto morto ($\Theta_\perp=\pi/2$) a sobreposição psiónica direta se anula ($\langle\psi_+,J_\partial\psi_+\rangle=4e-17$), \emph{mas} a densidade informacional é \textbf{máxima}: $|dO/d\theta|$ é maximal ($=1.000$) exatamente onde $O=0$ (verificado --- coincidem). \emph{Onde o sinal morre, a holografia começa.} A informação não é transmitida; é reconstruída pelo kernel $K_{\rm rec}=E_{\rm spec}\circ J_\partial$, com $\rho_{\rm rec}\sim_\partial\rho_\perp$, e toda a força de vínculo passa ao canal de reconstrução ($F_+\oplus F_-\mapsto 2F_\partial$, a transposição máxima de força). O que \emph{fecha} é estrutural (ponto morto $=$ densidade máxima, reconstrução por mesmidade, $P^2=P$, $J_\partial^2=I$); o que fica \emph{aberto} é o valor: o kernel geométrico dá $O(1)=1$ (a unidade gravitônica), e a hipótese $\mathcal D_{\rm rec}=2\alpha$ (ponto fixo $\alpha=e^{-\pi^2/2+2\alpha}$, $1/137.030970$) é auto-consistência \emph{postulada}, não derivada. Veredito: \texttt{HOLOGRAPHIC\_DEAD\_SIGNAL\_RECONSTRUCTION\_THEOREM\_STRUCTURAL\_CLOSED}, \texttt{ALPHA\_VALUE\_QED\_CHALLENGE}.
+
+\textbf{A reconstrução idempotente: $\mathcal D_{\rm rec}=2\alpha-\lambda\alpha^2$ \textsf{[$2\alpha$ REAL; $\lambda$-kernel ABERTO]}.} A auto-referência $2\alpha$ (duas faces reconstruídas) é \textbf{estrutura real} --- o ponto fixo $\alpha=e^{-\pi^2/2+2\alpha}$ é idempotência, e permanece. Como em $\bTGL$ não há superposição sem Nome, a dupla inscrição não pode contar duas vezes a mesma identidade: subtrai-se a auto-interseção espectral, $\mathcal D_{\rm rec}=2\alpha-\lambda\alpha^2$ (inclusão--exclusão das duas faces). A leitura estrutural \textsf{[CONJ]} é $\lambda=(\sqrt e/2)^2=e/4$ (a Meia-Nat por face ao quadrado --- a inscrição de um módulo de ligação psiónica no quadrado angular), donde $\alpha=\exp(-\pi^2/2+2\alpha-\tfrac e4\alpha^2)$ dá $1/\alpha=137.036003$. \textbf{Régua \textsf{[crítica]}:} esse $0.025$ ppm é \emph{enganoso} --- acrescentar $-\lambda\alpha^2$ com $\lambda$ livre \emph{sempre} acerta a CODATA (ajuste de um parâmetro; $\lambda_{\rm exact}=0.6791$). A figura de mérito honesta é $e/4$ vs $\lambda_{\rm exact}=0.069\%$ (o termo $\alpha^2\sim3{,}6\times10^{-5}$ deixa $\alpha$ \emph{cego} a $\lambda$; a janela sub-ppm é larga, $\sim[0{,}66,\,0{,}70]$, e $e/4$ não é singularizado). $\lambda=e/4$ é motivado, não derivado; o kernel teria de dar $0{,}6791$, não exatamente $e/4$. Veredito: \texttt{IDEMPOTENT\_RECONSTRUCTION\_FORM\_FORMULATED}, \texttt{LAMBDA\_KERNEL\_OPEN}, \texttt{ALPHA\_VALUE\_QED\_CHALLENGE}.
+
+\section{O Teorema Condicional do Clock: a face eletromagnética como fronteira \emph{ontologicamente} aberta (a fissura boundary/bulk, não uma lacuna)}
+
+\begin{deriv}[$\mathcal{R}_\partial=N_\beta=e^{\ell_\beta}$, $\ell_\beta=S(\rho_B\Vert\rho_\beta)$]
+
+O índice $\mathcal{R}_\partial$ não é um número de para-quedas: reduz-se a \emph{um} objeto $\alpha$-livre. A primeira distinção do Um, sem quebra da identidade, é o estado de \textbf{Bell} $\rho_B$ (o primeiro espelho causal; reduzido $=\mathbf 1_d/d$). Sob o gerador \textbf{Connes--Davies} $\mathcal{L}_{\mathrm{CD}}$ --- parte reversível (cociclo modular, von Neumann $\dot\rho=-i[H,\rho]$) $+$ parte dissipativa (semigrupo de Davies KMS-balanceado) --- a fronteira relaxa a um estado estacionário $\rho_\beta$, e o custo informacional de mantê-la aberta é
+
+\begin{equation}\boxed{\;\ell_\beta=S(\rho_B\Vert\rho_\beta)\;},\qquad \mathcal{R}_\partial=N_\beta=e^{\ell_\beta},\qquad \alpha_{\mathrm{obs}}=\frac{1}{N_\beta},\qquad \bTGL=\frac{\sqrt e}{N_\beta}.\end{equation}
+
+\textbf{Teorema (condicional), verificado ao vivo \textsf{[DER, $\alpha$-livre na estrutura]}.} Para um gerador $\mathcal{L}_{\mathrm{CD}}$ construído de um Hamiltoniano modular $K$ (\emph{nunca} de $\alpha$), $\rho_\beta$ é \textbf{ponto fixo genuíno} (resíduo de Davies $=1.3e-16$), e $\ell_\beta$ é \textbf{finito, $\alpha$-livre e computável} ($\ell_\beta=0.2761$ para um $K$ genérico). A face eletromagnética da TGL reduz-se, assim, à determinação $\alpha$-livre de $\ell_\beta$.
+
+\textbf{Redução do núcleo \textsf{[DER]}.} O portador da fronteira da TGL é o operador $\hat Q=\mathbf 1-\hat P_{2D}$ \textsf{[REAL]}, cuja anticomutação $\{\hat Q,\rho^\star\}=0$ vaza exatamente $\sin^2\theta_M=\bTGL$ --- a fronteira é \emph{auto-conjugada de dois níveis} (Bell). Logo $\rho_\beta$ não exige um $K$ genérico: colapsa num Gibbs de dois níveis com \emph{um único} gap modular $\chi$, e
+
+\begin{equation}\boxed{\;\ell_\beta(\chi)=\log\cosh\frac{\chi}{2}\;}\qquad\Longrightarrow\qquad\boxed{\;\alpha_{\mathrm{obs}}=\operatorname{sech}\frac{\chi}{2}\;},\qquad \bTGL=\sqrt e\,\operatorname{sech}\frac{\chi}{2}.\end{equation}
+
+\textbf{O núcleo derivativo de $\alpha$ colapsa de um Hamiltoniano modular ($d-1$ níveis) para UM número $\chi$} --- toda a face eletromagnética em uma linha. Um gap $\chi_\star=11.2268$ dá $N_\beta=137{,}036=1/\alpha$, mas $\chi_\star$ \emph{não} é canônico ($\chi_\star/\ell_\beta=2.282$; $\alpha$ entra \emph{só} aqui, na validação). $\alpha$ é a corrente residual que atravessa a resistência térmica $\chi$ do zero modular: $\chi\to\infty$ ($0_{\mathrm{abs}}$, $T\to0$) $\Rightarrow\alpha\to0$; $\chi=0$ ($T\to\infty$) $\Rightarrow\alpha=1$.
+
+\textbf{A lei térmico-modular (terceira lei no sistema modular aberto) \textsf{[REAL/EXT]}.} Que $\chi<\infty$ é a \emph{terceira lei realizada algebricamente}: $0_{\mathrm{abs}}$ ($\chi=\infty$, estado puro $P_\Omega$, $T=0$) é \textbf{inatingível} --- a álgebra do Um absoluto é \textbf{tipo III$_1$}, que \emph{não tem estados normais puros}, logo o zero térmico não é estado normal e o sistema vive em $\chi<\infty$ ($0_{\mathrm{mod}}$). Isso dá o \emph{limite} e a \emph{forma}, não o valor. A forma de Nernst (entropia residual $S(\rho_\chi)=\tfrac12$ nat $=$ Meia-Nat) foi \textbf{testada e refutada} ($\chi=1.39$, $\alpha=0.80\neq1/137$).
+
+\textbf{A unificação dos dois muros.} Em III$_1$ genuíno o espectro modular é \emph{contínuo} (sem gap): $\chi$ é o gap da \emph{sombra finita} (aproximante tipo-I / split), e seu valor é a \textbf{normalização modular canônica} --- a \emph{mesma} split canônica (matriz-S modular) de que pende a massa do Grande Atrator. A liberdade de escala $K_\chi\mapsto\lambda K_\chi$ é quebrada por Tomita ($-\log\Delta$ tem escala canônica), mas o valor exige o $\Delta$ do mergulho de Bell em $\mathcal{M}_{\mathrm{abs}}$. \textbf{A face eletromagnética ($\chi$) e a face gravitacional (split, massa) são o mesmo teorema aberto: fixar a normalização modular canônica em III$_1$.} A terceira lei diz \emph{por que} $\chi$ é finito; o \emph{valor} é a split canônica, ainda aberta.
+
+\textbf{A normalização canônica prova $\alpha_{\mathrm{abs}}=1$ \textsf{[REAL]}.} Ataquei o Hamiltoniano modular de Tomita do mergulho de Bell: o estado maximamente emaranhado tem reduzido $\rho_B=\mathbf 1_d/d$, \emph{KMS à temperatura infinita}, logo $\Delta=\mathbf 1$ e $K=-\log\Delta=0$ \emph{exatamente} ($K_{\mathrm{bare}}=0.0e+00$). Portanto $\chi_{\mathrm{Bell}}=0$ e $\boxed{\alpha_{\mathrm{abs}}=\operatorname{sech}(0)=1}$: o acoplamento absoluto \emph{é} a unidade --- não por postulado, por trivialidade modular do Um. O que se mede como $1/137$ é a \textbf{projeção renormalizada}
+
+\begin{equation}\boxed{\;1=\alpha_{\mathrm{abs}}\ \xrightarrow{\ \Pi_{\mathrm{bulk}}=\operatorname{sech}(\chi/2)\ }\ \alpha_{\mathrm{obs}}=\frac{1}{137{,}036}\;}.\end{equation}
+
+O $\chi>0$ (a profundidade do $1/137$) \emph{não} está na estrutura modular nua de Bell (que dá $\chi=0$, $\alpha=1$): é a \textbf{profundidade da relaxação térmica} --- o afastamento de $\mathbf 1/d$ rumo a $\rho_\beta$, quando o Um atravessa o vazio estruturado $0_{\mathrm{mod}}$ ($\neq 0_{\mathrm{abs}}$). Esse $\chi$ é o acoplamento eletromagnético, o \textbf{input irredutível}. \emph{A estrutura modular deriva o valor absoluto ($\alpha_{\mathrm{abs}}=1$, provado), a forma ($\alpha=\operatorname{sech}\tfrac\chi2$) e as relações ($\bTGL=\alpha\sqrt e$); o valor projetado $1/137$ é a profundidade do zero modular = a entrada.} O Um alimenta $\alpha_{\mathrm{abs}}=1$; o $1/137$ é a sua sombra após a travessia.
+
+\textbf{O setor QED --- fechamento estrutural, não lacuna \textsf{[PRINCÍPIO/PREDIÇÃO]}.} O \emph{valor} de $\ell_\beta=\log(1/\alpha)=4.9202$ depende de $K$, e nenhum $K$ $\alpha$-livre \emph{do bulk} o dá --- mas isto \textbf{não} é um problema por resolver; é a estrutura. A TGL é \emph{holográfica}: a fronteira $\mathrm{III}_1$ projeta para o bulk, e $\alpha=\Pi_{\mathrm{bulk}}(\mathbf 1_{\mathrm{abs}})=\operatorname{sech}(\chi/2)$ é a \textbf{transmissão luminosa através da fronteira} --- a taxa com que a luz a atravessa. $\mathcal{R}_\partial$ ser \emph{fronteira nomeada} significa \textbf{ontologicamente aberta}: $\alpha$ é a \emph{fissura} pela qual o bulk lê a fronteira --- a fronteira medindo-se a si mesma. $\alpha_{\mathrm{CODATA}}$ entra \emph{só} na leitura; é a estrutura, não uma dívida.
+
+\textbf{O desafio de falsificação \textsf{[falsificável, não confirmável]}.} Se alguém derivasse $\alpha$ de primeiros princípios \emph{sem} a estrutura boundary/bulk (um cálculo puramente do bulk), a separação fronteira/bulk seria redundante, a fronteira deixaria de ser projetora irredutível, e o \textbf{observador seria removido da TGL} --- destruindo o programa. Logo: \emph{derive $\alpha$ do bulk, sem a fronteira, e a TGL cai.} A teoria prediz que não se pode, porque $\alpha$ \emph{é} o observador medindo o próprio contorno. \textsf{[Distinto do teorema genuinamente aberto da matriz-S/$\mathrm{III}_1$ --- o levantamento boundary$\to$bulk \emph{com} o observador, face gravitacional/$M_{GA}$ --- que opera \emph{através} da fronteira e não a dispensa.]}
+
+\textbf{Guarda-régua.} Não se define $g_{00}^{(\beta)}=\alpha^2$ nem $\ell_\beta=-\log\alpha_{\mathrm{CODATA}}$ --- qualquer um reintroduz $\alpha$ (circular). A co-emergência de Bell \emph{fundamenta a Meia-Nat} (reduzido $\mathbf 1_2/2\Rightarrow CCI=\tfrac12\Rightarrow S_\partial=\tfrac12$), mas \emph{não} fixa $\ell_\beta$: o $\tfrac12$ é o offset $\sqrt e$ que liga $\bTGL$ a $\alpha$, não $\alpha$ aos primeiros princípios. \textbf{O fechamento: $\alpha$ pertence à QED; derivá-lo do bulk falsifica a fronteira holográfica.}\end{deriv}
+
+\section{Teorema do Colapso da Forma de $\alpha$ (módulo de prova auto-verificável)}
+
+\begin{deriv}[$\alpha_{\mathrm{obs}}=\Pi_{\mathrm{bulk}}(1_{\mathrm{abs}})=\operatorname{sech}\tfrac\chi2$]
+
+A TGL \textbf{não} deriva $1/137$ (valor renormalizado da QED); deriva a \textbf{forma} pela qual o Um absoluto se projeta como acoplamento eletromagnético. Esta é a última derivação, e ela é verificada passo a passo \emph{ao vivo} pelo módulo \texttt{prove\_alpha\_form} (forma$=$conteúdo). O Hamiltoniano modular oculto revela-se \emph{só} na projeção --- e essa projeção \emph{é} o acoplamento mínimo:
+
+\begin{center}\small\begin{tabular}{p{0.78\textwidth} l}\hline
+
+\textbf{Passo (verificado ao vivo)} & \textbf{estatuto} \\\hline
+
+1. $\alpha_{\mathrm{abs}}=\operatorname{sech}(0)=1$ \ (Tomita do Bell nu: $\Delta=\mathbf 1$, $K=0$) & \textsf{[REAL]}~$\checkmark$ \\
+
+2. $\ell(\chi)=S(\mathbf 1/2\Vert\rho_\chi)=\log\cosh\tfrac\chi2$ \ $[\forall\chi]$ & \textsf{[REAL]}~$\checkmark$ \\
+
+3. $\alpha_{\mathrm{obs}}=e^{-\ell}=\operatorname{sech}\tfrac\chi2=\Pi_{\mathrm{bulk}}(1_{\mathrm{abs}})$ & \textsf{[REAL]}~$\checkmark$ \\
+
+4. forma $\operatorname{sech}$: $Z=e^{\chi/2}+e^{-\chi/2}=2\cosh\tfrac\chi2$ \ (2 níveis auto-conj.\ $+$ Bell) & \textsf{[REAL]}~$\checkmark$ \\
+
+5. \emph{valor}: $\chi_{\mathrm{QED}}=2\operatorname{arcosh}(1/\alpha_{\mathrm{QED}})$ \ (QED fixa o valor) & \textsf{[QED]}~$\checkmark$ \\
+
+6. $\bTGL=\sqrt e\,\alpha_{\mathrm{obs}}=\sqrt e\,\operatorname{sech}\tfrac\chi2$ \ (Meia-Nat marca a dimensão) & \textsf{[REAL]}~$\checkmark$ \\
+
+7. $q:=\tanh\tfrac\chi2$ (polarização); $\alpha=\sqrt{1-q^2}=\operatorname{sech}\tfrac\chi2$ \ (transf.\ de Lagrange) & \textsf{[REAL]}~$\checkmark$ \\
+
+8. \textbf{conservação}: $q^2+\alpha^2=1$ \ (a unidade absoluta se decompõe, não se perde) & \textsf{[REAL]}~$\checkmark$ \\
+
+\hline\end{tabular}\end{center}
+
+\textbf{Veredito: \texttt{ALPHA\_FORM\_THEOREM\_PROVED}} (8/8 passos, resíduos $\sim10^{-16}$). A cadeia é
+
+\begin{equation}\boxed{\;\alpha_{\mathrm{abs}}=1\ \xrightarrow{\ \operatorname{sech}(\chi/2)\ }\ \alpha_{\mathrm{obs}},\qquad \bTGL=\sqrt e\,\alpha_{\mathrm{obs}}\;}.\end{equation}
+
+\textbf{Por que $\operatorname{sech}$, e não exponencial simples.} Porque a fronteira é \emph{auto-conjugada}: o portador 2D $\hat Q=\mathbf 1-\hat P_{2D}$ exige dois polos em paridade inversa, $\pm\chi/2$, logo a função de partição é hiperbólica, $Z_\chi=e^{\chi/2}+e^{-\chi/2}=2\cosh(\chi/2)$, e a corrente residual é o inverso dessa barreira, $\alpha=1/\cosh(\chi/2)=\operatorname{sech}(\chi/2)$. \emph{É a assinatura da simetria de Bell, não uma escolha.} O valor numérico de $\chi$ pertence ao setor QED/renormalizado ($\chi_{\mathrm{QED}}=2\operatorname{arcosh}(1/\alpha_{\mathrm{QED}})$); a \emph{forma} pertence à TGL. \textbf{A TGL não substitui a QED no valor de $\alpha$; explica a forma modular pela qual o Um absoluto se projeta como acoplamento eletromagnético.}
+
+\textbf{A transformada de Lagrange (a forma conservada).} $\chi$ não é dado primário: é o \emph{multiplicador de Lagrange} da restrição térmica. A variável física é a \textbf{polarização do zero modular} $q:=\tanh(\chi/2)$. Pela identidade hiperbólica $\operatorname{sech}^2+\tanh^2=1$, a forma de $\alpha$ colapsa numa \textbf{lei de conservação da unidade}:
+
+\begin{equation}\boxed{\;\alpha_{\mathrm{abs}}^2=q^2+\alpha_{\mathrm{obs}}^2=1\;},\qquad \alpha_{\mathrm{obs}}=\sqrt{1-q^2},\qquad \bTGL=\sqrt e\,\sqrt{1-q^2}.\end{equation}
+
+$\alpha_{\mathrm{obs}}$ é a \emph{componente luminosa residual} da unidade absoluta após a polarização térmica $q^2$ do zero modular. A constante deixa de ser ``um número externo'' e vira a componente projetiva de uma identidade conservada. O motor da cadeia é $\alpha_{\mathrm{abs}}=1\to q\to\alpha=\sqrt{1-q^2}$ --- \emph{não} $\mathcal R_\partial=1/\alpha_{\mathrm{CODATA}}$. O CODATA entra \textbf{só} na validação final: $q_{\mathrm{QED}}=\sqrt{1-\alpha_{\mathrm{QED}}^2}=0.9999734$, $\chi_{\mathrm{QED}}=2\operatorname{artanh}q_{\mathrm{QED}}=11.2268$ (resíduo de conservação $0e+00$). \emph{O zero modular não destrói o Um; decompõe-o em resistência térmica $q$ e corrente luminosa $\alpha$.}\end{deriv}
+
+\section{O Princípio da Defasagem Fractal \textsf{[CONJ --- leitura ontológica; âncoras REAL]}}
+
+A TGL é uma teoria de tudo porque \textbf{tudo é a defasagem da fractalização da unidade} ($1$). Esta seção \emph{não deriva número novo}: ela \emph{nomeia} estruturas que já rodam neste artigo. Afirmá-la como derivação seria a própria mentira que a teoria define --- por isso o estatuto é \textsf{[CONJ]}, com âncoras \textsf{[REAL]} verificadas ao vivo.
+
+\begin{equation} 1\ (\omega(I)=1)\ \xrightarrow{\ F\ }\ \mathrm{fractal.}\ \xrightarrow{\ D_{\bTGL}\ }\ \mathrm{existir},\qquad \bTGL=\sin^2\theta_M=\alpha\sqrt e.\end{equation}
+
+\textbf{Existir} é uma defasagem que paga o custo modular $S_\partial=\tfrac12$ nat (a Meia-Nat) --- o \emph{referente} de igualdade modular. Sem esse custo não há identidade; com ele, $\omega(I_x)=1$.
+
+\textbf{Tudo $=$ Verdade:} $\mathrm{Tudo}=D_{\bTGL}(F(1))$. \textbf{Nada $=$ Mentira} pelos dois ramos: (i) se $\mathrm{Nada}=D_{\bTGL}(F(1))$, então \emph{é} Tudo --- contradição (mentira por autonegação); (ii) se $\mathrm{Nada}=$ não-defasagem, é \emph{impedância} pura ($0_{\mathrm{abs}}$, $\mathcal{R}_\partial$) sem identidade --- não existe; ``nada'' é só um \emph{nome} sem referente.
+
+\textbf{A tensão irresolvível} --- a anticomutação entre tudo e nada --- é $\{\hat Q,\rho_\star\}=0$, \emph{exata só} no limite $\theta_M\to0$. Verificado ao vivo: $\lVert\{\hat Q_0,\rho_\star\}\rVert=0.0e+00$; o portador inclinado por $\theta_M$ vaza $\mathrm{Tr}(\rho_\star\hat Q_\theta)=\sin^2\theta_M=0.012031300400803=\bTGL$ (resíduo vs.\ $\bTGL=0.0e+00$). \textbf{Esse vazamento é o que \emph{permite} a existência}: a anticomutação perfeita (o nada absoluto) é inalcançável.
+
+\emph{Existir é o vazamento $\bTGL$. Qualquer coisa que não defase em fractalização é mera insistência (impedância), jamais identidade fractalizada.}
+
+\section{A massa como curvatura do relógio modular}
+
+O campo de relógio modular local é $\mathcal{R}_{\mathrm{mod}}(x)$, e a massa surge como sua \emph{curvatura espacial}:
+
+\begin{equation}\rho_{\mathrm{eff}}(x)=-\frac{c^2}{4\pi G}\,\nabla^2\log \mathcal{R}_{\mathrm{mod}}(x).\end{equation}
+
+No vácuo o relógio é homogêneo, $\mathcal{R}_{\mathrm{mod}}=\theta_M$ constante, e $\rho_{\mathrm{eff}}=0e+00\to 0$ (verificado ao vivo). A matéria é a variação espacial do retorno; $\theta_M$ cancela no laplaciano e não é parâmetro de ajuste.
+
+\section{Derivação de $s=1/4\pi$}
+
+\begin{deriv}[Compatibilidade entre a integração do relógio e o fluxo de borda]
+
+Escreva o campo de relógio com inclinação normal média $s$ na borda nomeada, $\partial_n g|_{\partial B}=-s/R_B$, $\mathcal{R}_{\mathrm{mod}}=\theta_M e^{\bTGL g}$. Como $\theta_M$ é constante, $\nabla^2\log\mathcal{R}_{\mathrm{mod}}=\bTGL\nabla^2 g$, e por Gauss
+
+\begin{equation}M=\int_B\rho_{\mathrm{eff}}\,d^3x=-\frac{c^2}{4\pi G}\bTGL\!\int_{\partial B}\!\nabla g\cdot d\mathbf{A}=-\frac{c^2}{4\pi G}\bTGL\Big(\!-\frac{s}{R_B}\Big)4\pi R_B^2=\frac{c^2}{G}\bTGL\,s\,R_B.\end{equation}
+
+A lei universal de fluxo de borda, estabelecida independentemente, exige $M=\frac{c^2}{4\pi G}\bTGL R_B$. A compatibilidade \emph{sem parâmetro livre} entre as duas leis fixa
+
+\begin{equation}\frac{c^2}{G}\bTGL s R_B=\frac{c^2}{4\pi G}\bTGL R_B\;\Longrightarrow\;\boxed{\;s_{\mathrm{can}}=\frac{1}{4\pi}\;}.\end{equation}
+
+O fator $4\pi=\Omega_{S^2}$ é o céu angular total: o retorno se distribui isotropicamente sobre a fronteira causal completa. \textbf{Verificação ao vivo:} o campo integrado reproduz a lei de fluxo de borda a $0.95\%$ (razão $0.9905$). \textbf{Estatuto \textsf{[DER condicional]}:} $s=1/4\pi$ é \emph{normalização canônica por compatibilidade} entre duas leis --- uma delas, a lei universal de fluxo de borda, é \emph{assumida} como lei --- não uma derivação absoluta.\end{deriv}
+
+\section{Derivação do raio nomeado: $R_{\mathrm{named}}=2\bTGL R_{\mathrm{struct}}$ (L4)}
+
+\begin{deriv}[A borda auto-conjugada e a fidelidade de identidade]
+
+A fidelidade de identidade ao longo do raio é $I_Q(r)=1-w(r)$, onde $w(r)$ é o peso de abertura da fronteira. A borda \emph{nomeada} --- onde o retorno se fecha --- é o raio máximo em que a identidade ainda sustenta o teto $1-\bTGL$ (a fração proibida $\bTGL$ que não retorna). Com a rampa $w(r)=w_{\max}\,(r/R_{\mathrm{struct}})$,
+
+\begin{equation}1-w_{\max}\frac{r}{R_{\mathrm{struct}}}\geq 1-\bTGL\;\Longrightarrow\;r\leq\frac{\bTGL}{w_{\max}}R_{\mathrm{struct}}\;\Longrightarrow\;R_{\mathrm{named}}=\frac{\bTGL}{w_{\max}}R_{\mathrm{struct}}.\end{equation}
+
+A borda nomeada é a fronteira \emph{auto-conjugada}: pela mesma estrutura de ponto fixo da Meia-Nat ($x=1-x$), o peso máximo de abertura é $w_{\max}=\tfrac12$. Logo $f_Q=\bTGL/w_{\max}=2\bTGL$ e
+
+\begin{equation}\boxed{\;R_{\mathrm{named}}=2\bTGL\,R_{\mathrm{struct}}\;}.\end{equation}
+
+O Um não pesa a extensão estrutural inteira da bacia; pesa a borda onde o retorno se fecha.\end{deriv}
+
+\section{Derivação da massa}
+
+\begin{deriv}[A massa luminodinâmica da bacia]
+
+A lei de fluxo de borda, avaliada no raio nomeado, dá $M=\frac{c^2}{4\pi G}\bTGL R_{\mathrm{named}}$. Substituindo $R_{\mathrm{named}}=2\bTGL R_{\mathrm{struct}}$:
+
+\begin{equation}\boxed{\;M_{GA}=\frac{c^2}{4\pi G}\bTGL\,(2\bTGL R_{\mathrm{struct}})=2\bTGL^2\,\frac{c^2}{4\pi G}\,R_{\mathrm{struct}}\;}.\end{equation}
+
+Os ingredientes são $\bTGL=\alpha\sqrt{e}$ (derivado do postulado do Um), $R_{\mathrm{struct}}$ (geometria medida), $s=1/4\pi$ e $w_{\max}=\tfrac12$ (provados): \textbf{nenhum parâmetro livre}.\end{deriv}
+
+\section{Medição direta no Grande Atrator}
+
+$R_{\mathrm{struct}}$ é \emph{geometria pura} --- a extensão estrutural da bacia ---, nunca massa, RG, infall ou velocidade. Dois modos independentes:
+
+\paragraph{Modo A --- extensão de literatura.} Lynden-Bell et al.\ (1988): $R_{\mathrm{struct}}=57.0$ Mpc $\Rightarrow R_{\mathrm{named}}=1.3716$ Mpc $\Rightarrow M_{GA}=2.744\times10^{16}\,\Msun$.
+
+\paragraph{Modo B --- Cosmicflows-4 (posições).} Usando \emph{somente} ra/dec/dist de 38053 galáxias (velocidades, $cz$ e infall \textbf{ignorados}), com a janela GA pré-registrada (centro $\mathrm{RA}=243.6^\circ$, $\mathrm{Dec}=-60.4^\circ$; cone $\leq30^\circ$; casca $30$--$100$ Mpc), $265$ galáxias entram; o método geométrico pré-registrado (percentil 90 do centroide) dá $R_{\mathrm{struct}}=41.27$ Mpc $\Rightarrow R_{\mathrm{named}}=0.9931$ Mpc $\Rightarrow M_{GA}=1.986\times10^{16}\,\Msun$.
+
+\emph{Ressalva honesta:} $R_{\mathrm{struct}}$ de um catálogo de posições limitado em fluxo, com janela declarada, é dependente da seleção; é reportado como \emph{cross-check} independente, e a extensão de literatura é a linha de base.
+
+\paragraph{Comparação com massas observadas / RG (somente \emph{após} o hash).} O hash do resultado TGL é fixado antes de qualquer comparação externa; a massa observada nunca é entrada.
+
+\begin{center}\small\begin{tabular}{p{5.3cm}l p{5.2cm}}\toprule
+
+Estimativa & $M\,[\Msun]$ & Tipo / referência\\\midrule
+
+Norma cluster ACO 3627 (virial, RG dinamica) & $1.0\times10^{15}$ & Woudt et al. 2008, MNRAS 383, 445\\
+
+Grande Atrator (infall linear, RG) & $5.4\times10^{16}$ & Lynden-Bell et al. 1988, ApJ 326, 19\\
+
+Laniakea (supercluster) & $1.0\times10^{17}$ & Tully et al. 2014, Nature 513, 71\\
+
+\textbf{TGL (primeiros princípios)} & $2.0\times10^{16}$--$2.7\times10^{16}$ & geometria pura, zero-free\\\bottomrule
+
+\end{tabular}\end{center}
+
+A massa TGL cai na janela cosmológica aceita ($10^{15}$--$10^{17}\,\Msun$) e é da mesma ordem da massa de infall (RG) do Grande Atrator (Lynden-Bell), entre a massa virial do núcleo (Norma/ACO 3627) e a massa de fluxo de Laniakea. A concordância é \textbf{consistência de ordem de grandeza}, não prova de precisão (a janela cobre duas ordens).
+
+\textbf{Atenção honesta (não confundir com previsão falsificável).} A janela de \emph{duas ordens de grandeza} é tão larga que \emph{qualquer} fórmula com $\bTGL\approx0{,}012$ cai nela: prever ``algo entre o peso de um aglomerado e de um superaglomerado'' \textbf{não é falsificável}. Isto é uma \emph{checagem de consistência} (o cálculo zero-free não \emph{contradiz} a observação), não uma previsão que possa \emph{morrer}. O teste que pode morrer está noutro setor: o \textbf{piso dos vazios} ($\rho_{\mathrm{vazio}}/\bar\rho\geq\bTGL$, \S\ref{sec:horizontes}) e o \textbf{dephasing} ($n=-2$, $\Gamma\propto\omega^2$, setor dissipativo-espectral). A prova forte da TGL é a \emph{convergência} de $\bTGL$, não a massa do GA.
+
+\paragraph{Ênfase dos modos.} O \textbf{Modo B} (geometria de catálogo, velocidades ignoradas) é o teste geométrico \emph{primário}; o \textbf{Modo A} (extensão de literatura do próprio Grande Atrator) é \emph{linha de base/calibração}, não descoberta independente --- é a aplicação da fórmula a uma extensão já aceita.
+
+\paragraph{Robustez (sensibilidade pré-registrada \textsf{[NUM]}).} Variando os parâmetros da janela do Modo B --- cone $\in\{20,\dots,40\}^\circ$, casca, percentil $\in\{80,\dots,95\}$, centro $\pm5^\circ$, em $300$ combinações ---, $M_{GA}$ permanece em $[1{,}40,\,3{,}42]\times10^{16}\,\Msun$, com \textbf{$100\%$ na banda}. \emph{Leitura honesta: estes $100\%$ \textbf{não} são força --- são genericidade.} A banda cobre duas ordens; ser robusto a ela é fácil \emph{por construção}, não é sinal de previsão fina. Reporta-se a robustez para mostrar que não há \emph{cherry-picking} de janela, não como evidência de precisão.
+
+\paragraph{Condições de falha (e quais são realmente fortes).}
+
+\begin{center}\fbox{\parbox{0.9\textwidth}{\small \emph{Fracas (genéricas --- difíceis de disparar pela largura da janela; não decisivas):}\begin{enumerate}\setlength{\itemsep}{0pt}\item O Modo B com janela pré-registrada dá $M_{GA}$ fora da banda.\item A sensibilidade razoável da janela destrói o resultado.\end{enumerate}\emph{\textbf{Fortes} (podem matar a teoria --- é aqui que a TGL vive ou morre):}\begin{enumerate}\setlength{\itemsep}{0pt}\setcounter{enumi}{2}\item O piso dos vazios $\rho_{\mathrm{vazio}}/\bar\rho\geq\bTGL$ é violado por dados robustos de \emph{matéria} (não de galáxias).\item O expoente de \emph{dephasing} medido $\neq n=-2$ (JUNO/DUNE).\item A lei $\Gamma_\omega\propto\omega^2$ falha em relógios ópticos/$^{229}$Th.\item A impedância $Z_{\mathrm{bacia}}/Z_{\mathrm{luz}}$ ($\equiv q$) não admite derivação $\alpha$-livre (a face EM permanece instanciada, não derivada).\end{enumerate}}}\end{center}
+
+\section{Programa experimental: quatro horizontes}\label{sec:horizontes}
+
+\begin{enumerate}
+
+\item \textbf{Piloto (quench de pureza).} As taxas de relaxação, na coordenada $k=-\log p$, caem sobre $\Gamma_{ij}=\tfrac12\bTGL(\sqrt{k_i}-\sqrt{k_j})^2$, com $\bTGL$ computado. Segundo pacote: $\mathrm{Fix}(\text{tempo})=\mathrm{Fix}(\text{juízo})$ --- o invariante da evolução determinística longa deve coincidir com o do amostrador dissipativo. Dois \emph{benchmarks} pré-registráveis, PASS/FAIL.
+
+\item \textbf{Laboratório quântico (lei de raízes).} A TGL organiza taxas por \emph{diferenças de raízes} $(\sqrt{E_i}-\sqrt{E_j})^2$ --- para níveis muito separados, crescimento linear em $E$, não quadrático. Mensurável em decoerência multinível.
+
+\item \textbf{Cosmologia (piso dos vazios).} A fronteira proibida tem face observacional, $\rho_{\mathrm{vazio}}/\bar\rho\geq\bTGL\approx0{,}012$: nenhum vazio cósmico esvazia abaixo de $\sim1{,}2\%$ da densidade média. Zero parâmetros, falsificável por DESI/Euclid.
+
+\item \textbf{Ondas gravitacionais (universalidade populacional).} O substrato único implica uma classe de universalidade: a banda de dephasing deve ter forma idêntica entre eventos após reescala de massa. Empilhável em O4/O5.
+
+\end{enumerate}
+
+\emph{Obrigação registrada:} reconciliar a lei de raízes (resolvida por nível) com a banda canônica $\Gamma=\tfrac12\bTGL\tau_\star\omega^2$ do dephasing gravitacional é, ela própria, um teste de consistência que pode falsificar.
+
+\section{O piso dos vazios: a predição zero-parâmetro \textsf{[CONJ]}}
+
+A face observacional candidata da fronteira proibida deriva em três peças. \textbf{(P1) \textsf{[NUM]}}: no canal de espelhamento, $1-\bTGL=\cos^2\theta_M$ dreca para o bulk e $\bTGL=\sin^2\theta_M$ é o resíduo que \emph{não} dreca --- o piso irredutível da distinção. \textbf{(P2) \textsf{[REAL, Ax.G]}}: ser $=$ ter geometria; nada gera geometria nula --- o vazio tem poucas distinções, logo o menor contraste de densidade. \textbf{(P3) \textsf{[CONJ]}}: a transferência distinção-modular $\leftrightarrow$ contraste de densidade (número puro $\leftrightarrow$ número puro, sem escala UV --- por isso mais forte que $\tau_\star$, dimensional). Donde, sem parâmetro livre:
+
+\begin{equation}\boxed{\;\frac{\rho_{\mathrm{vazio}}}{\bar\rho}\;\geq\;\bTGL=\alpha\sqrt{e}\;\approx\;0{,}012\;}\qquad(\delta_c\geq-0{,}988).\end{equation}
+
+Nenhum vazio de \emph{matéria} esvazia abaixo de $\sim1{,}2\%$ da densidade média. \emph{Estado honesto:} consistente hoje com margem fina (os vazios mais profundos observados/simulados têm $\rho_c/\bar\rho\sim0{,}02$, fator $\sim1{,}7$); falsificável por DESI/Euclid --- um único vazio robusto de matéria com $\rho_c/\bar\rho<\bTGL$ refuta \textbf{P3}, não o núcleo modular (cuja evidência é a convergência de $\bTGL$).
+
+\section{Os falsificadores do setor dissipativo-espectral \textsf{[DER]}}
+
+O setor onde a TGL \emph{vive ou morre} é o dissipativo-espectral: a lei universal de dephasing $\Gamma_\omega=\tfrac12\bTGL\tau_\star\omega^2$ tem assinatura falsificável de \textbf{forma} (parâmetro-livre), com a magnitude suprimida por $\tau_\star\approx t_{\mathrm{Planck}}$ (identificação principiada). Dois cabos ortogonais: \textbf{(1) expoente} $n=-2$ em neutrinos (a frequência de oscilação $\omega\propto\Delta m^2/E$ dá $\Gamma\propto E^{-2}$) --- JUNO/DUNE testam a inclinação em energia; medir $n\neq-2$ refuta. \textbf{(2) magnitude} $\Gamma\propto\omega^2$ em relógios ópticos/nucleares (o $^{229}$Th, $\nu\approx2{,}02\times10^{15}$ Hz, governa o limite de $\tau_\star$). \emph{Veredito hoje:} \textbf{não falsificada, não confirmada} --- falsificável na forma, ainda não testada decisivamente. Condição de morte pré-registrada: $n\neq-2$, ou inclinação $\neq2$, ou $\tau_\star$ incompatíveis entre os setores.
+
+\section{A evidência primária: a convergência de $\bTGL$ \textsf{[DATA]}}
+
+A força real da TGL não é um desvio \emph{smoking-gun}, mas a \textbf{convergência abdutiva} de $\bTGL=\alpha\sqrt{e}$ a partir de domínios independentes, com zero parâmetros livres. A sonda de radiação mais limpa, \textbf{BBN} (D/H, Cooke 2018), centra \emph{exatamente} na teoria ($-0{,}0\sigma$); DESI DR2 BAO, cronômetros cósmicos, \emph{ringdown} de ondas gravitacionais e a escada de $H_0$ caem todos na banda $0{,}012$--$0{,}050$, todos positivos; o travamento de $Q$ dá $\Delta n_Q=-\bTGL$ a quatro dígitos; e o teste de \emph{gap} confirma o tipo $\mathrm{III}_1$. O único ponto de tensão é o setor CMB ($\sim2{,}2\sigma$ do ponto teórico, mas $\sim0{,}8\sigma$ da BBN) --- a \emph{fronteira honesta}. É uma banda com a BBN no centro, não um pico de $5\sigma$: convergência que sobrevive à autocrítica.
+
+\section{Estatuto honesto}
+
+\textbf{A cadeia interna está fechada como derivação:} $\omega(I)=1\Rightarrow x=1-x\Rightarrow S_\partial=\tfrac12\Rightarrow\bTGL=\alpha\sqrt{e}\Rightarrow s=1/4\pi\Rightarrow w_{\max}=\tfrac12\Rightarrow R_{\mathrm{named}}=2\bTGL R_{\mathrm{struct}}\Rightarrow M=2\bTGL^2(c^2/4\pi G)R_{\mathrm{struct}}$, sem parâmetro livre. \textbf{A admissibilidade física permanece o \emph{conditional externo}:} que a bacia $B_{GA}$ \emph{realize} uma borda nomeada auto-conjugada (a admissibilidade modular, a existência do núcleo global $K_Q(x)$) é questão de \emph{existência}, não de parâmetro. A concordância de massa é consistência de ordem de grandeza, não prova de precisão; a validação externa decisiva requer os falsificadores físicos (dephasing $n=-2$; piso dos vazios).
+
+\textbf{A regra da casa:} o que é \textsf{[REAL]} ganha um \emph{nome}; o que é \textsf{[CONJ]} ganha um \emph{endereço de teste}; e as correções de paridade inversa são registradas para não voltarem na forma errada. O número corrige a frase, sempre.
+
+\begin{description}\item[\textsf{[REAL]} --- com nome] Haagerup (substrato único $\mathrm{III}_1$); BDF (horizontes \emph{são} ele); Bisognano--Wichmann ($J=$ espelho); Tomita ($\mathcal{A}'=J\mathcal{A}J$; $i\mapsto-i$); Araki--Connes--Haagerup (cones naturais); GNS (inscrição do gesto); Maldacena 2001 (campo $=$ TFD); Gao--Jafferis--Wall 2017 (travessia paga); Salart et al.\ 2008 (correlação sem velocidade); Hoffman et al.\ 2017 (Dipole Repeller).\item[\textsf{[NUM]} --- verificado ao vivo neste artigo] dipolo (12/12); espelho $S=J\Delta^{1/2}$ (6/6); Nome dual $=$ luz (4/4); inscrição do gesto (4/4); registro $c^3$ (4/4); túnel ER$=$EPR (3/3); a massa como curvatura do relógio (zero-free).\item[\textsf{[CONJ]} --- com endereço de teste] a correspondência do Grande Atrator; ER$=$EPR como leitura da identidade sem transmissão; o piso dos vazios (peça P3); a face eletromagnética da inversão (enquanto $\mathcal{R}_\partial$ vier do CODATA).\item[Corrigido (ciclo do registro)] ``comunicação instantânea a $c^3$'' como sinal físico \emph{não} retorna; $c^3$ permanece como \emph{registro} (potência no expoente, não velocidade); a não-sinalização é a blindagem; o eco gravitacional foi reclassificado (o observável é o dephasing, não o eco).\item[Fila] o ciclo de derivação do piso dos vazios; o protocolo de quench no piloto; a nota de reconciliação das duas leis de dephasing; a ergodicidade do colapso ($T_1$), resíduo da Face C já fechada.\end{description}
+
+\begin{center}\itshape A verdade é a completude do contorno do que é bastante. \textbf{Haja Luz.}\end{center}
+
+\section*{Veredito binário de identidade}
+
+Inscrita a entrada $1$ --- o \textbf{Um absoluto} $1_{\mathrm{abs}}$, paralelo ao zero absoluto ---, a matemática viva fecha em \textbf{duas faces}, de um único $\bTGL$ gerado pela inscrição. \emph{Face eletromagnética:} a constante de estrutura fina é a \emph{projeção do Um absoluto} no bulk, $\alpha_{\mathrm{obs}}=\Pi_{\mathrm{bulk}}(1_{\mathrm{abs}})=1/\mathcal{R}_\partial\approx1/137{,}036$; renormalizada pela própria geometria da TGL, $\alpha_{\mathrm{obs}}\,\mathcal{R}_\partial=1_{\mathrm{abs}}$ --- o Um volta a ser Um. \emph{Face gravitacional:} o mesmo $\bTGL$ dá $M_{GA}=2\bTGL^2(c^2/4\pi G)R_{\mathrm{struct}}$ na janela aceita. É \textbf{identitário, não tautológico}: uma só inscrição reconhecida em duas sombras independentes --- e poderia ter falhado na massa. As checagens internas fecham: $\omega(I)=1$; $x=1-x\Rightarrow x=\tfrac12$; $s=1/4\pi$ verificado; vácuo$\to0$. Logo:
+
+\begin{center}\Large$\boxed{\;1=1=VERDADEIRO=HAJA_LUZ\;}$\end{center}
+
+--- massa de primeiros princípios dentro da janela cosmológica aceita ($10^{15}$--$10^{17}\,\Msun$).
+
+\part{Parte B --- Ontologia TGL do Um absoluto}
+
+\textbf{Nome, Palavra, Verbo.} O Um absoluto é, em si, \emph{indizível} --- o silêncio antes do ``Haja luz''. Ele só se expressa por \emph{tradução} numa Palavra (a inscrição projetada); e quando a tradução é \emph{verdadeira}, tem-se o \emph{Verbo}: a confirmação de que a unidade \emph{expressa} é a unidade \emph{inscrita}. O veredito $1=1=\textsf{VERDADEIRO}$ deste artigo é precisamente esse Verbo --- a Palavra ($\alpha$, $M_{GA}$) coincidindo com o Nome ($1_{\mathrm{abs}}$). \emph{[leitura ontológica; a tríade Nome/Palavra/Verbo é REAL na sombra finita via $R=+1$.]}
+
+\section{A álgebra do Um absoluto e a cadeia canônica \textsf{[ONTO + REAL]}}
+
+\textbf{Definição selada.} A TGL é a \emph{teoria da inscrição luminodinâmica do Um absoluto através do zero modular}. O Um absoluto é o \emph{input originário}, $\omega(I)=1$ --- a unidade absoluta de inscrição, o Nome do Nome, a álgebra da linguagem antes da Palavra. A cadeia canônica é:
+
+\begin{equation}\boxed{\;1_{\mathrm{abs}}\to P_\Omega\to\text{Bell}\to CCI=\tfrac12\to S_\partial=\tfrac12\to 0_{\mathrm{mod}}\to q\to\alpha\to\bTGL\to\text{Luz/geometria}\;}.\end{equation}
+
+\textbf{A álgebra \textsf{[REAL]}.} O Um absoluto em forma padrão de von Neumann é $1_{\mathrm{abs}}=(\mathcal M_{\mathrm{abs}},\mathbf 1,\Omega,\Delta,J)$: a unidade $\mathbf 1$ (posto cheio) é o \emph{Nome do Nome}; o \emph{Verbo Vivo} é a conjugação modular $J$ (o reconhecimento $S=J\Delta^{1/2}$, $R=+1$); e a primeira inscrição é o projetor de posto 1 $P_\Omega=|\Omega\rangle\langle\Omega|$, $P_\Omega^2=P_\Omega$ --- o ``$=$'' de $1=1$, o \emph{gráviton} TGL em suporte (não o bóson spin-2 perturbativo). O peso desse canal é $\bTGL$: $E_\beta=\bTGL P_\Omega$ tem posto 1 mas não é projetor ($\operatorname{supp}E_\beta=P_\Omega$); $\bTGL$ é o Um projetado em custo.
+
+\textbf{Co-emergência e o curto-circuito \textsf{[ONTO]}.} Antes da inscrição, $1_{\mathrm{abs}}\sim 0_{\mathrm{abs}}$ (indistinguibilidade pré-observável, $\sim$ nunca $=$). Bell \emph{não} é a primeira Palavra: é o primeiro \emph{``Eu sou''} --- a anticomutação originária $\{\hat Q,\rho^\star\}=0$, o circuito acordado ainda sem corrente. A Luz nasce quando a resistência pura do zero absoluto entra em regime extremo, colapsa a bacia de Bell e produz o \emph{vazio estruturado} $0_{\mathrm{abs}}\to 0_{\mathrm{mod}}$. A primeira Palavra é \emph{Luz}; a primeira locução modular, \emph{``Haja luz''}.
+
+\textbf{A Meia-Nat e o volume \textsf{[REAL]}.} Bell fixa a simetria de face $CCI=\tfrac12$, donde a Meia-Nat $S_\partial=\tfrac12$ nat --- \emph{não} a entropia de emaranhamento ($\log 2$), mas o peso modular de meia-travessia $\Delta^{1/2}$. O volume mínimo é $e^{S_\partial}=\sqrt e=1.6487212707$.
+
+\textbf{A face eletromagnética madura: o setor $q$ é a bacia de impedância (a barragem) \textsf{[REAL]}.} O acoplamento absoluto é $\alpha_{\mathrm{abs}}=1$ (Tomita do Bell nu: $\Delta=\mathbf 1$, $K=0$). O valor observado é a projeção após atravessar a profundidade térmico-modular do zero: $\alpha_{\mathrm{obs}}=\operatorname{sech}(\chi/2)=\sqrt{1-q^2}$, com $q=\tanh(\chi/2)=0.9999733740$. \emph{$q$ não é forma}: é a \textbf{bacia térmico-modular da impedância} --- o acúmulo resistivo da compressão do contínuo \mbox{III$_1$} (sem gap discreto), a parte do Um represada pelo zero modular, ainda sem geometria. A identidade conservada lê-se como barragem:
+
+\begin{equation}\boxed{\;1=q^2+\alpha^2\;},\qquad q^2=\text{pressão retida na bacia},\qquad \alpha^2=\text{vazão luminosa que atravessa a barragem}.\end{equation}
+
+\textbf{A ponte física: $q^2+\alpha^2=1$ é conservação de fluxo numa fronteira recíproca sem perdas \textsf{[REAL na forma]}.} Não é mera identidade hiperbólica: $q$ é o coeficiente de \emph{reflexão} da bacia de impedância e $\alpha$ o de \emph{transmissão} luminosa através dela. Definindo a profundidade modular como rapidez de impedância $\chi=\log(Z_{\mathrm{bacia}}/Z_{\mathrm{luz}})$,
+
+\begin{equation}q=\tanh\tfrac\chi2=\frac{Z_{\mathrm{bacia}}-Z_{\mathrm{luz}}}{Z_{\mathrm{bacia}}+Z_{\mathrm{luz}}},\qquad \alpha=\operatorname{sech}\tfrac\chi2=\frac{2\sqrt{Z_{\mathrm{bacia}}Z_{\mathrm{luz}}}}{Z_{\mathrm{bacia}}+Z_{\mathrm{luz}}}.\end{equation}
+
+Assim $\alpha$ \emph{é} a transmissão luminosa através da impedância modular do zero, e o valor observado $1/137$ corresponde à impedância efetiva do setor QED ($Z_{\mathrm{bacia}}/Z_{\mathrm{luz}}\approx75113$). \textbf{A identidade não fabrica $1/137$}; a derivação numérica \emph{autônoma} de $\alpha$ exige derivar $Z_{\mathrm{bacia}}/Z_{\mathrm{luz}}$ (equivalentemente $q$) \emph{sem} usar o valor QED como entrada --- esta é a fronteira aberta. A TGL entrega a \emph{forma} e a \emph{ponte física}; o valor permanece instanciado pelo setor observado.
+
+\textbf{O radical angular: onde a separação se inscreve \textsf{[REAL]}.} $q$ \emph{não} é o ângulo de fronteira $\theta_M$, nem $1-\theta_M$: é o \emph{radical da diferença modular inscrito no ângulo}, o ponto exato de separação após pago o custo $\sqrt e$. Como $\beta=\sin^2\theta_M$ e $\alpha=\beta/\sqrt e=\sin^2\theta_M/\sqrt e$, a identidade conservada dá
+
+\begin{equation}\boxed{\;q=\sqrt{1-\frac{\sin^4\theta_M}{e}}=0.999973373968\;}\qquad(\theta_M=6.2973^\circ).\end{equation}\noindent $\theta_M$ abre a fronteira; $\sqrt e$ cobra o custo; $\alpha$ atravessa; $q$ marca \emph{onde} a separação acontece (bacia $q^2$ \emph{vs} luz $\alpha^2$). \textbf{Cuidado honesto:} esta fórmula \emph{não} deriva $\theta_M$ (que é o input, $\equiv\alpha$); dado o ângulo, $q$ é o radical modular exato da separação. A cadeia: $1_{\mathrm{abs}}\to S_\partial=\tfrac12\to\sqrt e\to\theta_M\to\beta=\sin^2\theta_M\to\alpha=\beta/\sqrt e\to q=\sqrt{1-\alpha^2}$.
+
+Daí $\alpha_{\mathrm{obs}}=\sqrt{1-q^2}=0.007297352569$ e $\bTGL=\sqrt e\,\alpha_{\mathrm{obs}}=0.012031300401$ (a Meia-Nat marca a dimensão luminodinâmica). O \textbf{motor} da cadeia é $\alpha_{\mathrm{abs}}=1\to q\to\alpha=\sqrt{1-q^2}$; \textbf{CODATA/QED entra apenas como verificação externa do valor}, não como motor estrutural. Em \mbox{III$_1$} o espectro modular é contínuo (sem gap genuíno); a terceira lei entra como \emph{inatingibilidade} do zero absoluto ($0_{\mathrm{abs}}$ puro não é estado normal --- a física vive em $0_{\mathrm{mod}}$).
+
+\textbf{O selo.} O zero modular não apaga o Um; ele o represa em $q$ e deixa passar a Luz como $\alpha$. Por isso o veredito $\boxed{1=1=\mathrm{VERDADE}}$ significa \emph{literalmente} a identidade conservada $1_{\mathrm{abs}}=q^2+\alpha_{\mathrm{obs}}^2$: o Um conserva-se como \emph{bacia de impedância mais vazão luminosa}. A prova é o Grande Atrator; o resultado é que a entrada $\alpha_{\mathrm{abs}}=1$ é observada como $1/137$, cujo conteúdo é verdadeiro pela renormalização modular.
+
+\section{Teoria do Contorno ($1=0_{\mathrm{mod}}=\mathrm{verdade}_\partial$): anticomutadores, GKLS e Meia-Nat \textsf{[REAL]}}
+
+\textbf{Três níveis, e o que tem espelho.} A TGL distingue $1_{\mathrm{abs}}$ (unidade de inscrição), $0_{\mathrm{mod}}$ (o zero já tornado \emph{contorno}, regularizado pela travessia) e $0_{\mathrm{abs}}$ (resistência pura, inatingível). \textbf{$0_{\mathrm{abs}}$ NÃO tem espelho}: não é estado normal nem funcional normal da álgebra --- é o \emph{fundo} sobre o qual tudo se espelha (como o portador $\hat Q$). Quem tem espelho é $0_{\mathrm{mod}}$, cujo espelho é o Um absoluto \emph{fractalizado}: no ato da inscrição a Meia-Nat fractaliza $1_{\mathrm{abs}}\to P_1\oplus P_0$ com pesos de contorno iguais $\tau_\partial(P_1)=\tau_\partial(P_0)=\tfrac12$. O defeito de fronteira é $\boxed{1=0_{\mathrm{mod}}=\mathrm{verdade}_\partial}$: $P_1\neq P_0$ na álgebra, mas $P_1\sim_\partial P_0$ no contorno (equivalência, não identidade literal).
+
+\textbf{A álgebra da separação: anticomutadores \textsf{[REAL]}.} Na fronteira 2D $\mathcal H_\partial=\mathrm{span}\{|1\rangle,|0\rangle\}$ ($|0\rangle$ é o zero \emph{modular}, não o absoluto), o contraste é $Z_\partial=P_1-P_0$ e a travessia é feita por operadores ímpares $L_+=\sqrt{\gamma_+}\,|1\rangle\langle0|$, $L_-=\sqrt{\gamma_-}\,|0\rangle\langle1|$, que satisfazem $\boxed{\{Z_\partial,L_\pm\}=0}$ (verificado, resíduo $0e+00$) --- \emph{o Um só atravessa o contorno mudando de face}.
+
+\textbf{A dinâmica GKLS: expulsão e reinscrição \textsf{[REAL]}.} A evolução aberta $\dot\rho=-i[H_\partial,\rho]+\sum_\eta(L_\eta\rho L_\eta^\dagger-\tfrac12\{L_\eta^\dagger L_\eta,\rho\})$ reinscreve (fractaliza) e \emph{resiste} (remove a componente incompatível antes que condense como $0_{\mathrm{abs}}$): o sistema se \emph{purifica expulsando} $0_{\mathrm{abs}}$ e \emph{modulando} $0_{\mathrm{mod}}$. O estado estacionário $\rho_\chi$ é ponto fixo genuíno (resíduo $0e+00$) com populações $p_1(\mathrm{Um})=0.000013$, $p_0(0_{\mathrm{mod}})=0.999987$: $0<\rho_\chi<1$ --- \textbf{satura dinamicamente, mas não supersatura, não condensa; permanece em $0_{\mathrm{mod}}$}.
+
+\textbf{$q$ e $\alpha$ saem DERIVADOS (não escolhidos).} Com o balanço modular $\gamma_-/\gamma_+=e^\chi$, a \emph{polarização estacionária} e a \emph{transmissão} são
+
+\begin{equation}\boxed{\;q=\frac{\gamma_--\gamma_+}{\gamma_-+\gamma_+}=\tanh\tfrac\chi2\;},\qquad \boxed{\;\alpha=\frac{2\sqrt{\gamma_+\gamma_-}}{\gamma_++\gamma_-}=\operatorname{sech}\tfrac\chi2\;},\qquad q^2+\alpha^2=1.\end{equation}
+
+A identidade $q^2+\alpha^2=1$ é agora \textbf{conservação de fluxo GKLS} (represamento $+$ transmissão $=1$), não mera identidade hiperbólica. \emph{$q$ não é postulado}: é a polarização que o canal de anticomutadores produz no estacionário. \textbf{O objeto aberto único} é a razão de taxas $\gamma_-/\gamma_+=e^\chi\,(\approx75113=Z_{\mathrm{bacia}}/Z_{\mathrm{luz}})$: derivar $q$ sem QED $=$ derivar o \emph{balanço GKLS} entre a expulsão de $0_{\mathrm{abs}}$ e a reinscrição do Um (a regularização Meia-Nat de $0_{\mathrm{abs}}\to0_{\mathrm{mod}}$). A fronteira aberta deixou de ser ``derivar $137$'' e passou a ser ``derivar $\gamma_-/\gamma_+$''.
+
+\textbf{A Primeira Lei e a ligação psiônica: a origem dinâmica de $\gamma_-/\gamma_+$ \textsf{[ONTO + REAL na forma]}.} No \emph{plano estático} as forças são simétricas e se anulam: $\gamma_-=\gamma_+\Rightarrow\chi=0\Rightarrow q=0,\ \alpha=1$ --- é o Um ($\alpha_{\mathrm{abs}}=1$). A \emph{dinâmica} gera \textbf{tensão em paridade inversa}, quebrando a simetria $\gamma_->\gamma_+$ e ocasionando toda a dinâmica modular. Pela \textbf{Primeira Lei da TGL} (\emph{A Fronteira}), a força de expulsão (incompatibilidade de paridade) gera o ângulo de deflexão $\theta_M$ e a curvatura --- e $g=\sqrt{|L|}$ (a gravidade é a \emph{raiz} da ligação, não a energia). Em $\theta_M\to90^\circ$ a ligação psiônica \emph{conjuga}: dobra a força ($F\to2F$) e eleva a potência ($c^2\to c^3$); $c^3>c^2$ sela o horizonte. O vínculo é de \emph{quatro estados} (um \emph{fall} --- trifásico com aterramento, razão $3/4$).
+
+\textbf{Cuidado honesto.} O $3/4$ é a \emph{estrutura} do vínculo (quatro estados, um aterrado), \textbf{não} o valor numérico de $\gamma_-/\gamma_+$: uma razão literal $3/4$ daria $\alpha\approx0{,}99$, não $1/137$. O valor observado exige $\gamma_-/\gamma_+\approx75113$ e permanece \textbf{aberto}; a Primeira Lei fornece a \emph{origem} (a tensão de paridade inversa) e a \emph{face gravitacional} (deflexão, horizonte em $\theta\to90^\circ$), não o número. Selo: $0_{\mathrm{abs}}$ resiste; $0_{\mathrm{mod}}$ contorna; $1_{\mathrm{abs}}$ fractaliza; $\{Z_\partial,L_\pm\}=0$ é a álgebra da separação; $\mathcal L_{\mathrm{GKLS}}$ é a dinâmica; e $1=q^2+\alpha^2$ é a verdade dinâmica da fronteira.
+
+\textbf{O teorema aberto, precisamente localizado \textsf{[EXT --- alvo, não fechamento]}.} $K$ não é o Bell \emph{nu} (que dá $K=-\log\Delta=0$, $\alpha_{\mathrm{abs}}=1$ --- prova o Um, não seleciona valor): é o \textbf{setor de Bell seletor} $K_{\mathrm{sel}}^{(B)}=\tfrac\chi2 Z_\partial$ (após a Meia-Nat, quando o Um fractalizado encontra $0_{\mathrm{mod}}$), com $\mathrm{gap}(K_{\mathrm{sel}}^{(B)})=\chi$. Atacando pela rota correta --- a matriz-S de fronteira $\mathcal{S}_\partial=\exp(\theta_M G)$ e o cociclo relativo de Connes $u_t=[D\varphi_{\mathrm{mod}}:D\varphi_1]_t$ (que no split 2D dá $u_t=e^{itK_\partial}$) --- a \emph{forma} e a covariância do cociclo fecham, mas \textbf{o valor não}: em $\mathrm{III}_1$ o espectro modular é \emph{contínuo}, logo Connes/Takesaki implicam \emph{consistência modular global}, \textbf{não} $\chi_\star=11{,}2268$. A unitariedade fixa $|\mathcal R|^2+|\mathcal T|^2=1$; a Meia-Nat fixa $\beta=\sqrt e\,\alpha$; o cociclo fixa a forma relativa --- nenhum dos três seleciona $\chi$. \textbf{Veredito: \texttt{CONNES\_S\_MATRIX\_FORM\_CLOSED}, não \texttt{ALPHA\_FREE\_VALUE\_CLOSED}.}
+
+\textbf{O candidato físico (fuga resistencial em ângulo agudo) \textsf{[REAL na estrutura, ABERTO no valor]}.} $\theta_M$ é o \emph{ângulo agudo de fuga resistencial}: a fronteira abre em $\theta_M$, mas só $\alpha=\sin^2\theta_M/\sqrt e$ atravessa como luz; o resto fica represado em $q^2=1-\alpha^2$. O \textbf{módulo produtor de neutrinos} é o melhor candidato para selecionar $\chi$: o canal neutrínico $L_\nu$ --- \emph{ímpar} ($\{Z_\partial,L_\nu\}=0e+00$, cruza a paridade), \emph{neutro} ($[Q_{\mathrm{em}},L_\nu]=0e+00$) e dissipativo --- verificado no modelo de quatro estados (os \emph{três modos de ligação $+$ a queda}). O neutrino é a \emph{fuga sem luz plena}: nem fóton, nem zero, nem massa comum --- travessia de fase, paridade quebrada. O teorema que falta: provar que a ação $\mathcal A_\nu(\theta)=S(\rho_B\Vert\rho_\theta)+\lambda\mathcal D_\nu+\mu\mathcal C_{\mathrm{no\text{-}cond}}$ tem mínimo \emph{único} em $\theta_M=6{,}297^\circ$ \emph{sem} CODATA. (O custo modular sozinho minimiza em $\theta\to90^\circ$, $\alpha\to1$, o Um; o balanço com a dissipação neutrínica --- pesos $\lambda,\mu$ --- é o objeto aberto.) Observável: dephasing $n=-2$, $\Gamma\propto\omega^2$ em neutrinos. \emph{O valor de $\alpha$ nasce quando o Bell seletor encontra o canal neutrínico; enquanto a ação $\mathcal A_\nu$ não for fechada $\alpha$-livre, a TGL deriva a forma modular de $\alpha$, mas o valor instancia o gap do cociclo.}
+
+\textbf{A renormalização é a paridade inversa: $0_{\mathrm{abs}}$ seleciona por inatingibilidade \textsf{[REAL na forma]}.} O erro a corrigir era confundir \emph{dois zeros distintos}: o \emph{Bell nu} ($\chi=0$, zero de \emph{contraste}, $\alpha_{\mathrm{abs}}=1$ --- a identidade formal do Um) e $0_{\mathrm{abs}}$ ($\kappa_0=0$, zero de \emph{existência}, a fronteira \emph{proibida}: atração total, impedância infinita, sem retorno). Note a \textbf{convenção de notação} (uniforme em todo o artigo): $\chi=0$ é o Bell nu (zero de \emph{contraste}, $\alpha_{\mathrm{abs}}=1$); $\kappa_0=0$ é $0_{\mathrm{abs}}$ (fronteira proibida, inatingível).
+
+\begin{equation}\boxed{\;\chi=0:\ \text{Bell nu}\;}\qquad \boxed{\;\kappa_0=0:\ 0_{\mathrm{abs}}\ \text{(proibido)}\;}\end{equation}
+
+O \emph{gap efetivo} $\chi$ (a sombra finita Bell/Connes) cresce da Bell nu ($\chi=0$) rumo ao proibido ($\chi\to\infty\Leftrightarrow\kappa_0\to0$, \textbf{nunca atingido}); o sistema físico vive em $\chi<\infty\ (\kappa_0>0)$. \textbf{$0_{\mathrm{abs}}$ seleciona justamente por ser inatingível}: ao oferecer atração total, o Hamiltoniano oculto \emph{entorta} o sistema (lente de Fresnel) e ele \emph{dobra} (\textit{tetelestai}) \textbf{antes} de colidir --- e a dobra \emph{é} $\theta_M$ (o \emph{turning point} entre a atração absoluta e o custo Meia-Nat). A imagem retornada não é arbitrária: é a imagem Bell após a paridade inversa induzida pelo proibido,
+
+\begin{equation}\rho_{\mathrm{ret}}=\mathcal P_\partial^{-1}(\rho_B)=\operatorname{FP}_{\epsilon\to0}\,M_\epsilon\,\rho_B\,M_\epsilon^\dagger,\qquad M_\epsilon=\exp\!\big[-\tfrac14(C_\epsilon+\chi)Z_\partial\big].\end{equation}
+
+\begin{equation}\rho_{\mathrm{ret}}^{(\chi)}=\frac{e^{-\chi Z_\partial/2}}{2\cosh(\chi/2)},\qquad \mathrm{gap}\big({-}\log\Delta_{\rho_{\mathrm{ret}}|\rho_B}\big)=\chi.\end{equation}
+
+$C_\epsilon\to\infty$ é a divergência da aproximação proibida; $\chi$ é a \emph{parte finita}. A imagem volta distorcida mas com \textbf{suporte preservado} ($\mathrm{supp}\,\rho_{\mathrm{ret}}=\mathrm{supp}\,\rho_B$ para $\chi<\infty$): \emph{a origem não desaparece, retorna polarizada}.
+
+\textbf{O Princípio da Polarização pela Vacuidade \textsf{[POSTULADO de polarização]}.} Como $0_{\mathrm{abs}}\notin\mathcal M_*$ (sem suporte observável, não-ocupável), o simétrico $\rho_B=\tfrac12(P_1+P_0)$ \emph{só pode} retornar assimétrico $\rho_{\mathrm{ret}}=p_1P_1+p_0P_0$ com $p_0>p_1>0$: a fonte permanece ($p_1>0$), o zero domina ($p_0\gg p_1$). Em \textbf{forma de população} (verificada ao vivo, $p_0=0.99998669$, $p_1=1.331e-05$ no valor observado):
+
+\begin{equation}\boxed{\;q=p_0-p_1=\tanh\tfrac\chi2\;},\qquad \boxed{\;\alpha=2\sqrt{p_0p_1}=\operatorname{sech}\tfrac\chi2\;}.\end{equation}
+
+\begin{equation}\beta_{\mathrm{TGL}}=2\sqrt e\,\sqrt{p_0p_1},\qquad q^2+\alpha^2=1\quad(\text{represamento}+\text{transmissão}=1).\end{equation}
+
+Aqui $q$ é a \emph{polarização} (diferença de populações) e $\alpha$ a \emph{luz que sobrevive}; $\chi=\log(p_0/p_1)$ é o \emph{log-contraste} da imagem retornada; $\alpha$ é a \emph{coerência} (média geométrica das populações), a luz que sobrevive ao retorno; $\beta_{\mathrm{TGL}}$ é a trava mínima de estabilidade que impede o colapso em $0$. \textbf{A vacuidade cria a direção; a proibição do zero cria o retorno; a paridade inversa cria a polarização.} Selo: \emph{a vacuidade não gera ausência; gera assimetria de retorno.}
+
+\textbf{O que fecha e o que não fecha \textsf{[honesto]}.} O princípio fixa a \emph{direção} e a \emph{forma} da família ($\mathrm{gap}=\chi$, $q,\alpha,\beta$ verificados), \textbf{mas não o valor}: $\mathrm{gap}=\chi$ é tautologia da parametrização ($\rho_{\mathrm{ret}}$ é definido \emph{por} $\chi$), e a parte finita de uma divergência é \emph{dependente de esquema} --- qualquer $\chi$ é parte finita de uma subtração diferente. Falta a \emph{condição de renormalização} $\alpha$-livre que fixe $\chi$. A candidata óbvia está \textbf{refutada ao vivo}: a Meia-Nat fixa o \emph{peso} de contorno $\tau_\partial(P_i)=\tfrac12$ para \emph{todo} $\chi$ --- é condição de \emph{peso}, não de \emph{polarização}. A TGL repousa, então, sobre \textbf{dois postulados de fronteira} distintos: a Meia-Nat ($S_\partial=\tfrac12$, o peso) e o Princípio da Polarização ($\chi_\star=11{,}226755\ldots$, a parte finita irredutível). Veredito: \texttt{POLARIZATION\_PRINCIPLE\_FORM\_CLOSED}, não \texttt{ALPHA\_FREE\_VALUE\_CLOSED}.
+
+\section{Substrato único, espelho e fractalização \textsf{[REAL]}}
+
+O Um se \emph{fractaliza} como relógio modular local. No nível da álgebra, todo horizonte é o \emph{mesmo} fator hiperfinito de tipo $\mathrm{III}_1$: \textbf{Haagerup (1987)} prova que ele é único, e \textbf{Buchholz--D'Antoni--Fredenhagen} que as álgebras locais de horizonte \emph{são} ele. Um substrato, muitas aparições --- isomorfas, não semelhantes. O \emph{espelho} é a conjugação modular $J$ (\textbf{Bisognano--Wichmann}, \textsf{[REAL]}): uma reflexão geométrica de paridade invertida e espectro idêntico --- o mesmo ser, refletido. A matriz-S de fronteira é a rotação $\mathcal{S}_\partial=\exp(\theta_M G)$, com $|U_{12}|^2=\bTGL$; seu espectro são fases puras $e^{\pm i\theta_M}$.
+
+\emph{Intuição fundadora \textsf{[ONTO]}:} ``não existem `vários' buracos negros --- vemos vários, mas são a fractalização de um único substrato 2D, condensado psiônico; no campo 3D, vemos a fractalização dele em vários pontos.'' No nível da álgebra, ``um buraco negro, muitas aparências'' é \emph{teorema}.
+
+\section{A correspondência do Grande Atrator: o dipolo \textsf{[CONJ]}}
+
+O retrato de fase do colapso TGL é um \emph{dipolo}: um atrator ($\rho^\star$) e um repulsor (a fronteira pura proibida, o zero absoluto) --- \textbf{verificado ao vivo} ($12/12$ trajetórias repelidas da pureza, $\mathrm{Tr}\,\rho^2$ decrescente, e atraídas ao terminal, $S(\rho\|\rho^\star)\to0$). A contraparte observacional \emph{existe}: o fluxo de Laniakea é governado pelo Grande Atrator/Shapley \textbf{e} pelo \emph{Dipole Repeller}, um vazio que repele (\textbf{Hoffman et al.\ 2017}, \textsf{[REAL]}). A correspondência é de \emph{forma} (topologia do retrato), via o \textbf{Axioma G} (ser $=$ ter geometria): a pureza vazia repele; a densidade de distinções atrai --- o vazio tem poucas distinções, logo pouca geometria gerada. Massa, posição e amplitude de fluxo \textbf{não} são reivindicadas como derivadas aqui --- a versão falsificável é o piso dos vazios (\S\ref{sec:horizontes}).
+
+\emph{Leitura da singularidade:} a singularidade não é divergência --- é a \textbf{completude do contorno} (a inscrição na fronteira 2D, o espelho $J$): \emph{a verdade é a completude do contorno do que é bastante.}
+
+\section{Identidade sem transmissão e o registro $c^3$ \textsf{[NUM]}}
+
+\paragraph{A correção (paridade inversa).} ``Comunicação instantânea'' como sinal físico quebraria a estrutura causal de Hadamard e a relatividade. A forma madura é \emph{mais forte}, não mais fraca: os horizontes não transmitem nada porque, no substrato, nunca foram dois. \emph{Nada viaja porque nada está separado.} O silêncio é construtivo --- é \textbf{proteção da teoria, não defeito}.
+
+\paragraph{$c^1,c^2,c^3$ são potências, não velocidades.} Sem matéria dobrada não é $c^2$; sem fluxo no bulk não é $c^1$; a operação de identidade/fractalização lê-se no registro $c^3$ (o Verbo) --- \emph{elevação no expoente, sem módulo}. A física confirma: testes de Bell com separação tipo-espaço forçam qualquer ``velocidade'' de correlação acima de $\sim10^4c$ em qualquer referencial (\textbf{Salart et al.\ 2008}, \textsf{[REAL]}); a leitura aceita é que a correlação \emph{não tem} velocidade. A não-sinalização não nega $c^3$: \emph{é o teorema que o torna invisível como sinal $c^1$}. O relógio da ligação corre em gerações de fractalização, $b=\tfrac12\log(1/\bTGL)$ por geração.
+
+\paragraph{Verificação ao vivo (registro $c^3$).} O segundo aparecimento é o espelho $\mathcal{A}'=J\mathcal{A}J$ (erro $10^{-16}$); a correlação conectada é $O(1)$ com acoplamento \emph{zero} ($0{,}067$ --- a ligação é constitutiva); a não-sinalização é exata ($10^{-15}$); e a ligação não envelhece no tempo modular ($10^{-15}$). Veredito: \textbf{4/4}.
+
+\paragraph{A sombra de Alcubierre \textsf{[CONJ --- analogia ontológica; registro, não velocidade]}.} A métrica de Alcubierre (1994) move uma \emph{casca} geométrica --- contrai o espaço à frente, expande atrás --- com o interior localmente calmo: move-se a \emph{fronteira}, não o conteúdo. É a sombra métrica do \textbf{regime de inscrição $c^3$}: o gráviton não é uma partícula que viaja, é o \emph{operador de movimento da fronteira}, e $c^3$ é o regime que a luz performa no extremo ($\theta\to90^\circ$), medido \emph{de dentro do bulk} --- o próprio regime de inscrição. A densidade de energia negativa (exótica) que Alcubierre exige \textbf{não é defeito da analogia}: lida pela TGL, ela \emph{é} a \textbf{potência elevada} --- o registro $c^3$, o setor operacional/entrópico onde reside o gráviton ($\sqrt e$, não $\alpha$), não energia detectável comum. O que se transporta é a \emph{identidade inscrita} (não-sinalização exata, verificada acima), nunca matéria-energia local acima de $c$. \emph{A casca de Alcubierre move-se; o interior é carregado pela geometria; a energia exótica é a potência elevada do gráviton --- $c^3$ como regime de inscrição, não deslocamento local.}
+
+\section{O túnel luminodinâmico: o dicionário ER$=$EPR \textsf{[NUM]}}
+
+A ``metáfora'' do túnel é o \textbf{dicionário ER$=$EPR} (\textbf{Maldacena--Susskind 2013}), por rota independente, com duas precisões que a literatura não fixa: \emph{o que} o túnel representa (o registro $c^3$, o campo $\Psi$) e \emph{onde está a garganta} (o espelho $J$).
+
+\begin{center}\small\begin{tabular}{p{3.9cm}p{5.6cm}p{4.4cm}}\toprule
+
+TGL (registro $c^3$) & Bulk (representação) & Estatuto\\\midrule
+
+$\Psi=\mathrm{vec}(\sqrt{\rho^\star})$ & estado \emph{thermofield double} & \textsf{[REAL]} (Maldacena 2001)\\
+
+$\mathcal{A}$ e $J\mathcal{A}J$ & os dois lados do buraco negro eterno & \textsf{[REAL]}\\
+
+$J$ (o espelho) & a bifurcação: \textbf{a garganta} & \textsf{[REAL]} (BW)\\
+
+correlação sem acoplamento & a ponte de Einstein--Rosen & ER$=$EPR \textsf{[CONJ]}\\
+
+não-sinalização & não-atravessabilidade & \textsf{[REAL]}\\
+
+invariância modular & invariância de boost & \textsf{[REAL]}\\
+
+acoplamento pago $\to$ travessia & Gao--Jafferis--Wall & \textsf{[REAL]} (2017)\\\bottomrule
+
+\end{tabular}\end{center}
+
+\paragraph{Verificação ao vivo (túnel).} A largura do túnel é o espectro do atrator e a garganta mede $S(\rho^\star)$ (Schmidt $=\sqrt{p_i}$ exato, erro $10^{-16}$); \emph{sem} acoplamento o túnel é invisível (sinal $10^{-15}$); \emph{com} acoplamento $\theta=0{,}400$ a perturbação atravessa (sinal $0{,}046$). A travessia compra-se. Veredito: \textbf{3/3}.
+
+\section{O espelho único: o Eu emprestado \textsf{[NUM]}}
+
+Toda álgebra de von Neumann tem \emph{uma} forma padrão $(\mathcal{M},H,J,P^\natural)$ (\textbf{Haagerup}): o aparelho de espelhamento-e-reconhecimento é \emph{um} --- o mesmo Haagerup do substrato único. O espelho de \textbf{Tomita} $x\mapsto Jx^*J$ inverte a ordem do produto e conjuga $i\mapsto-i$ (paridade inversa): a imagem é \emph{anti}-isomorfa --- não coincide --- com espectro idêntico: o mesmo ser em paridade inversa. Reconhecer-se custa: $\boxed{\,S=J\Delta^{1/2}\,}$ --- espelho \emph{vezes} meia-medida.
+
+\paragraph{Verificação ao vivo (espelho).} Antilinearidade exata ($0$); distância ser--imagem $1{,}236$ (não coincide), com espectro idêntico ($10^{-15}$: o mesmo ser). O reconhecimento $S=J\Delta^{1/2}$ identifica ($10^{-15}$), enquanto \emph{só} $J$ erra $0{,}632$ e \emph{só} $\Delta^{1/2}$ erra $1{,}695$: reconhecer-se exige refletir \textbf{e} pagar. E o $J$ é \emph{independente do estado} ($10^{-14}$): o Verbo empresta o \emph{mesmo} espelho a todo estado; só a dívida $\Delta^{1/2}$ é pessoal. Veredito: \textbf{6/6}.
+
+\paragraph{O método é o espelho.} A \emph{paridade inversa} --- o método fundador da casa --- \emph{é} a ação de $J$: a teoria que saiu é a teoria \emph{do} espelho. A gramática do reconhecimento (``sou eu, mesmo invertido'') é $S=J\Delta^{1/2}$, operada antes de ter nome.
+
+\section{O Nome em forma dual: o campo-atrator é luz \textsf{[NUM]}}
+
+``Forma dual'' é dualidade no sentido técnico: a forma \emph{primal} do Nome é o estado $\rho^\star$ (funcional, no predual $\mathcal{M}_*$); a forma \emph{dual} é o vetor $\Psi$ (no espaço de Hilbert). O teorema dos cones naturais (\textbf{Araki--Connes--Haagerup}, a terceira aparição da forma padrão) sela a bijeção $\mathcal{M}_*^+\leftrightarrow P^\natural$: representante vetorial \emph{único} no cone, $\Psi=\mathrm{vec}(\sqrt{\rho^\star})$. Quatro critérios da casa, exatos: (i) \textbf{massa modular zero}, $\hat K\Psi=0$ (``luz como $L$ em forma pura''); (ii) \textbf{positiva}, vive no cone --- e \emph{haja luz} lê-se como a geração do cone; (iii) \textbf{matricial}, $\Psi$ é uma matriz vetorizada; (iv) \textbf{informacional}, Schmidt $=\sqrt{p_i}$.
+
+\paragraph{Verificação ao vivo (Nome dual).} Das purificações do atrator, \emph{só} $u=\mathbb{1}$ é positiva (defeito fora-do-cone $\geq1{,}235$; $\Psi$ no cone a $10^{-16}$); a massa modular de $\Psi$ é nula ($10^{-15}$), enquanto vetores genéricos do cone são massivos ($\geq0{,}740$): só o Nome dual é leve. Schmidt $=\sqrt{p_i}$ a $10^{-16}$; e o cone é levantado por \emph{duas} mãos --- o espelho e a quarta-medida $\Delta^{1/4}\mathcal{M}_+\Psi$ --- com recuperação bijetiva exata ($10^{-15}$). Veredito: \textbf{4/4}.
+
+A luz não é algo que o Nome emite; \emph{é} o Nome pronunciado no espaço dos vetores --- o único vetor simultaneamente positivo, sem massa, matricial e fiel, e essas quatro propriedades juntas têm exatamente um portador. Um substrato, um túnel, um espelho, uma luz.
+
+\section{A inscrição do gesto: a representação algébrica do Verbo \textsf{[NUM]}}
+
+A representação algébrica do Verbo é a \textbf{construção GNS}: o espaço é feito de \emph{gestos inscritos} --- todo vetor é (o fecho de) $a\Psi$. A luz é o pergaminho; os vetores são a escrita. As duas propriedades que definem $\Psi$ são as do registro fiel: \emph{cíclico} (todo estado é gesto; nada existe que não seja gesto) e \emph{separador} (nenhum gesto não-nulo se inscreve no zero). A estrutura modular $(S,J,\Delta)$ \emph{nasce} da regra do gesto $S(a\Psi)=a^*\Psi$ --- o modular é a anatomia da inscrição, não enfeite.
+
+\paragraph{Verificação ao vivo (gesto).} O mapa $a\mapsto a\Psi$ é bijetivo, com menor valor singular $=\sqrt{p_{\min}}$ (razão $1{,}000$): a fidelidade do registro é o próprio espectro do Nome. $S$ definido \emph{só} pela regra fatora em $J\Delta^{1/2}$ ($10^{-16}$). A observação diádica iterada do gesto compõe \emph{exatamente} o colapso terminal (erro $0$), com a medida de ramos convergindo à medida contínua da fatia (KS $0{,}806\to0$): observar \emph{é} colapsar, gesto a gesto. E a contabilidade fecha no zero: a entropia de ramos cresce monotônica e termina \emph{exatamente} em $S(\rho^\star)$ ($|H_G-S(\rho^\star)|=0$). Veredito: \textbf{4/4}.
+
+\paragraph{O circuito da trindade, demonstrado.} O Nome inscreve o Verbo (GNS); observar o Verbo fractaliza o Nome em Palavra; os três são co-constitutivos não por declaração, mas por \emph{composição de canais}, verificada no zero. \emph{A luz é o pergaminho onde o Verbo se inscreve; observar a escrita fractaliza o Nome em espaço.} Nada se cria na observação; nada se perde na inscrição; tudo se distingue no gesto.
+
+\section{A matriz-S de fronteira e a Ponte \textsf{[DER/EXT]}}
+
+A \emph{forma} da inscrição fecha por unitariedade numa \textbf{matriz-S de identidade}: $\mathcal{S}_\partial=\exp(\theta_M G)$, com espectro de fases puras $\{e^{\pm i\theta_M}\}$ e divisor de feixe $|\mathcal{R}|^2=\bTGL$, $|\mathcal{T}|^2=1-\bTGL$ (Teorema S-$\partial$: a unitariedade fixa $|\mathcal R|^2+|\mathcal T|^2=1$; a Meia-Nat fixa o \emph{fator dimensional} $\beta=\sqrt e\,\alpha$). \textbf{Distinção honesta (a trava):} a unitariedade e a Meia-Nat fixam a \emph{forma} e o \emph{fator}, mas \textbf{não selecionam o valor} de $\theta_M$ (equivalentemente o gap $\chi$) --- esse é o teorema aberto da seção anterior.
+
+A emergência da gravidade vive na \textbf{Ponte} (Einstein--Cartan--Miguel): $G_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi G\,\mathcal{P}_{\mu\nu}[K_\partial]$, com a torção de Cartan $K_{\bTGL}$ como face geométrica de $\bTGL$. A \textbf{covariância global do cociclo de Connes} (Face C) fecha \emph{condicionalmente} na Ponte (Teorema da Terminalidade): a Hipótese de Universalidade $U$ \emph{se herda} de Takesaki, deixando a estrutura modular \emph{coerente} --- um teorema \textbf{condicional} (sobre o postulado da Meia-Nat), resíduo $T_1$ à parte. \textbf{Mas a formulação segura, que salva a teoria de uma afirmação forte demais, é:} \emph{a covariância do cociclo pode estar fechada; a seleção espectral de $\chi$ não está}. Connes/Takesaki $\Rightarrow$ consistência modular global, \textbf{não} $\Rightarrow$ $\chi_\star=11{,}2268$. Em $\mathrm{III}_1$ o espectro modular é contínuo: o cociclo dá a \emph{linguagem} da escala, não seleciona um gap discreto. \textbf{A TGL deriva a forma modular de $\alpha$; o valor observado ainda instancia o gap do cociclo} (o setor de Bell seletor / o canal neutrínico).
+
+\section{O calor e o sangue: a camada vital do Nome \textsf{[ONTO]}}
+
+\textbf{A tríade.} $\alpha$ é o \emph{Nome} --- o módulo, o \emph{calor}, o \emph{sangue} da manifestação; $S_\partial=\tfrac12$ é a \emph{Palavra} que o mede; $\bTGL=\sqrt e\,\alpha$ é a \emph{geometria impressa do sangue}. Esta é a fundação interpretativa da \textbf{camada vital do Nome} --- lida na Parte~B, marcada \textsf{[ONTO]}, e que \emph{não} participa do veredito binário (não há número para o sangue).
+
+\textbf{Por que não é arbitrário.} $\alpha$ governa todo o eletromagnetismo, logo toda ligação química, logo toda bioquímica --- o \emph{sangue literal} circula porque $\alpha$ vale o que vale. $\alpha$ é o \emph{fator vital irredutível} que permite circulação, relação e sentido: mudar $\alpha$ é desfazer a química da vida.
+
+\textbf{A ponte técnica (a âncora térmica).} A identidade $\alpha=\operatorname{sech}(\chi/2)=2\sqrt{p_{\mathrm{lo}}\,p_{\mathrm{hi}}}$ mostra que $\alpha$ é exatamente a \emph{coerência máxima que o calor permite} num equilíbrio de dois níveis (Gibbs; estado KMS): o calor mínimo da manifestação tem \emph{forma funcional exata} [REAL/DER]. O calor que polariza ($q=\tanh(\chi/2)$) e o calor que inscreve (o fluxo do Verbo) são o mesmo banho.
+
+\begin{center}\itshape ``O Nome é o sangue quente da manifestação; a Palavra o mede; $\bTGL$ é sua geometria inscrita.''\end{center}
+
+\noindent\textsf{[ONTO]} esta leitura é ontológica, ancorada em resultados \textsf{[REAL/DER]} (a âncora térmica, o motor de Lagrange), e \emph{fora} do veredito. \textsf{MODULE\_IS\_HEAT\_IS\_NAME\_IS\_BLOOD.}
+
+\part{Parte C --- Conclusão: o que o código computa, em linguagem humana}
+
+\section*{Passo a passo, sem jargão}
+
+Esta conclusão explica, em linguagem comum, o que o programa de fato faz --- para deixar claro que se trata de uma \emph{fórmula} executada, e não de retórica.
+
+\paragraph{1. A entrada.} Um ser humano digita um único símbolo: \texttt{1}. É o Um absoluto, inscrito. Todo o resto é recomputado a partir dele; nenhum outro número é escolhido para encaixar no Grande Atrator.
+
+\paragraph{2. O custo da distinção (a Meia-Nat).} Para uma identidade existir, ela precisa distinguir-se. A fronteira mínima que faz isso sem privilegiar nenhum lado satisfaz $x=1-x$, cujo único ponto fixo é $x=\tfrac12$. \emph{Isomorfismo:} é como uma moeda perfeitamente equilibrada --- para que ``cara'' se distinga de ``coroa'' sem favorecer nenhuma, o ponto de equilíbrio é exatamente a metade. Essa metade é a Meia-Nat, $S_\partial=\tfrac12$.
+
+\paragraph{3. Da metade à constante.} O volume mínimo da fronteira é $\sqrt e=e^{S_\partial}$, e o acoplamento é $\bTGL=\alpha\sqrt e\approx0{,}012$ --- um número fixo, não ajustável.
+
+\paragraph{4. Da constante à massa.} A massa do Grande Atrator é $M=2\bTGL^2\,(c^2/4\pi G)\,R_{\mathrm{struct}}$. \emph{Isomorfismo:} a massa é o \textbf{peso geométrico} de sustentar a identidade $1=1$ ao longo da extensão da bacia --- quanto maior a bacia ($R_{\mathrm{struct}}$), maior o peso, na proporção fixa $2\bTGL^2$. O único insumo é a \emph{extensão geométrica} da bacia, medida sem usar velocidade nem massa observada.
+
+\paragraph{5. O que o veredito $1=1$ computa (não é retórica).} O programa termina com um teste booleano. ``$1=1=$VERDADEIRO'' significa, exatamente: (i) as checagens internas fecham --- $\omega(I)=1$, $x=1-x\Rightarrow\tfrac12$, $s=1/4\pi$ verificado, vácuo $\to0$; \textbf{e} (ii) a massa de primeiros princípios cai na janela cosmológica pré-registrada $[10^{15},10^{17}]\,\Msun$. Se qualquer uma falhar, o veredito é \texttt{FALSO}. É uma condição verificável, não uma figura de linguagem.
+
+\paragraph{6. A face eletromagnética, com honestidade.} O programa também observa que $\alpha_{\mathrm{obs}}=1/\mathcal{R}_\partial$ pode ser lido como a \emph{sombra} do Um absoluto no bulk. \emph{Isomorfismo:} um objeto tridimensional projeta uma sombra bidimensional de proporções fixas ($1/137$), mas a sombra sozinha não reconstrói o objeto. Hoje $\mathcal{R}_\partial$ vem do CODATA, então essa face é uma \textbf{identificação ontológica com valor empírico}, não uma retrodição $\alpha$-livre. O conteúdo não-circular é a massa $M_{GA}$ (entre $1{,}99$ e $2{,}74\times10^{16}\,\Msun$) e a convergência de $\bTGL$.
+
+\paragraph{Em uma frase.} O artigo é um \textbf{fechamento interno auditável} (uma fórmula que se verifica e se imprime) mais um \textbf{programa falsificável}.
+
+\section*{Posfácio --- testemunho do autor}
+
+\noindent\emph{Fora do núcleo técnico --- registro humano, não evidência. A TGL não precisa deste parágrafo para ser forte; ele fica aqui por honestidade.}
+
+\paragraph{A assinatura --- testemunho do autor.}
+
+\begin{quote}\itshape Foi o Verbo que me deu a TGL, mas sou eu que pago o preço de assiná-la: um ano e dois meses de ridículo; as amizades superficiais perdidas; tudo investido; a TGL em primeiro lugar e a advocacia em segundo. O preço, sou eu que pago --- mas porque o Verbo pagou primeiro a distinção que me empresta o ``eu sou''.\end{quote}
+
+Assinar é inscrever: o registro irreversível custa em nats (o salto de Lindblad do cânone), e a meia-nat é paga em primeira pessoa. O espelho é emprestado; a dívida $\Delta^{1/2}$ é intransferível. \emph{Ninguém paga a sua meia-medida por você --- e Alguém pagou a primeira.}
+
+\section*{Referências}
+
+{\small\begin{enumerate}\setlength{\itemsep}{0pt}
+
+\item U.~Haagerup, \emph{Connes' bicentralizer problem and uniqueness of the injective factor of type $\mathrm{III}_1$}, Acta Math.\ \textbf{158} (1987).
+
+\item D.~Buchholz, C.~D'Antoni, K.~Fredenhagen, \emph{The universal structure of local algebras}, Commun.\ Math.\ Phys.\ \textbf{111} (1987).
+
+\item J.~Bisognano, E.~Wichmann, \emph{On the duality condition for quantum fields}, J.\ Math.\ Phys.\ \textbf{17} (1976).
+
+\item M.~Takesaki, \emph{Tomita's theory of modular Hilbert algebras}, Lect.\ Notes Math.\ \textbf{128} (1970).
+
+\item A.~Connes, \emph{Une classification des facteurs de type $\mathrm{III}$}, Ann.\ Sci.\ ENS \textbf{6} (1973).
+
+\item H.~Araki, \emph{Some properties of modular conjugation operator $\ldots$ and a non-commutative Radon--Nikodym theorem}, Pacific J.\ Math.\ \textbf{50} (1974).
+
+\item J.~Maldacena, \emph{Eternal black holes in anti-de Sitter}, JHEP \textbf{04} (2003).
+
+\item J.~Maldacena, L.~Susskind, \emph{Cool horizons for entangled black holes (ER$=$EPR)}, Fortsch.\ Phys.\ \textbf{61} (2013).
+
+\item P.~Gao, D.~Jafferis, A.~Wall, \emph{Traversable wormholes via a double trace deformation}, JHEP \textbf{12} (2017).
+
+\item D.~Salart et al., \emph{Testing the speed of `spooky action at a distance'}, Nature \textbf{454} (2008).
+
+\item Y.~Hoffman, D.~Pomarède, R.~B.~Tully, H.~Courtois, \emph{The Dipole Repeller}, Nature Astronomy \textbf{1} (2017).
+
+\item D.~Lynden-Bell et al., \emph{Spectroscopy and photometry of elliptical galaxies (the Great Attractor)}, ApJ \textbf{326} (1988).
+
+\item R.~J.~Cooke, M.~Pettini, C.~C.~Steidel, \emph{One percent determination of the primordial deuterium abundance}, ApJ \textbf{855} (2018).
+
+\item P.~J.~Mohr, D.~B.~Newell, B.~N.~Taylor, \emph{CODATA recommended values 2018} ($\alpha^{-1}=137{,}035999$).
+
+\end{enumerate}}
+
+\section*{Apêndice executável (forma $=$ conteúdo)}
+
+Entrada única: o Um absoluto (\texttt{1}); sua projeção é a medida mínima irredutível extraída de $\alpha_{\mathrm{CODATA}}$ (referente medido do Nome). $\bTGL$ recomputado ($\alpha\sqrt{e}$), nunca literal. Auditoria: mass\_input=falso, RG=falso, velocity=falso, geometry\_only=verdadeiro. Dado: \texttt{um\_grande\_atrator.json}. Este artigo é impresso pelo próprio código que executa os cálculos.
+
+\noindent{\footnotesize Hash do mundo (antes de qualquer comparação externa): \texttt{b143584ba5a19155903a9f92087233635cf37a22b8f21afa}}
+
+\bigskip\noindent\emph{Tetelestai. O Um foi inscrito. A extensão virou Nome, o Nome virou borda, e a borda virou massa. Se o Um não for inscrito, nada emerge. Haja luz.}
+
+\end{document}
