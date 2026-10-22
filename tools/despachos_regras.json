@@ -1,0 +1,35 @@
+{
+ "_leia": "Tabela de gravidade e prazo por código de despacho da RPI. TUDO [LEGAL]: proposta do Claude em 22/09/2026 a partir da LPI 9.279/96 e da tabela de códigos do INPI; aprovada pelo operador para uso na Sentinela (decisão D7 de 22/09/2026), a rever a qualquer momento. A regra decide a COR e a DATA; a IALD nativa só lê e explica. Código desconhecido = AMARELO, 'ler'. Contagem: art. 222 (exclui o dia do começo, inclui o do vencimento) e art. 223 (começa no 1º dia útil após a publicação); vencimento em dia não útil: marcado 'fim_seguro' = último dia útil anterior.",
+ "cores": {"vermelho": "exige ATO em prazo ou é perda/arquivamento", "amarelo": "ler e decidir; sem prazo fatal conhecido", "verde": "informativo; confirmar e arquivar"},
+ "codigos": {
+  "2.5":  {"titulo": "Exigência Formal Preliminar", "cor": "vermelho", "prazo_dias": 30, "contagem": "corridos", "ato": "Cumprir a exigência: GRU código 206 + documentos corrigidos (LPI art. 21). Sem cumprimento: 15.21, depósito não efetuado.", "parecer": true},
+  "2.10": {"titulo": "Notificação de recebimento do pedido", "cor": "verde", "prazo_dias": null, "ato": "Nenhum. Confirmar e arquivar."},
+  "2.1":  {"titulo": "Pedido considerado depositado (exame formal concluído)", "cor": "verde", "prazo_dias": null, "ato": "Nenhum. Registrar: a partir daqui o pedido vale para prioridade, divisão e certificado de adição (Portaria 14/2024 art. 6)."},
+  "3.1":  {"titulo": "Publicação do pedido", "cor": "verde", "prazo_dias": null, "ato": "Nenhum obrigatório. Lembrar: exame em 36 meses do depósito (art. 33)."},
+  "6.1":  {"titulo": "Exigência técnica", "cor": "vermelho", "prazo_dias": 90, "contagem": "corridos", "ato": "Responder à exigência técnica no prazo (LPI art. 36: 90 dias). Sem resposta: arquivamento (art. 36 §1º).", "parecer": true},
+  "6.6":  {"titulo": "Parecer (ciência)", "cor": "vermelho", "prazo_dias": 90, "contagem": "corridos", "ato": "Manifestar-se sobre o parecer (art. 36: 90 dias). Conferir o prazo no próprio despacho.", "parecer": true},
+  "6.7":  {"titulo": "Exigência / parecer (outros)", "cor": "vermelho", "prazo_dias": 60, "contagem": "corridos", "ato": "Responder no prazo que o despacho indicar (art. 224: 60 dias quando não houver outro). Conferir.", "parecer": true},
+  "7.1":  {"titulo": "Pedido de exame requerido", "cor": "verde", "prazo_dias": null, "ato": "Nenhum."},
+  "9.1":  {"titulo": "Deferimento", "cor": "vermelho", "prazo_dias": 60, "contagem": "corridos", "ato": "Pagar a retribuição de expedição da carta-patente em 60 dias (art. 38); com sobretaxa, mais 30 (art. 38 §1º). Sem pagamento: arquivamento (art. 38 §2º)."},
+  "9.2":  {"titulo": "Indeferimento", "cor": "vermelho", "prazo_dias": 60, "contagem": "corridos", "ato": "Recurso ao Presidente do INPI em 60 dias (art. 212).", "parecer": true},
+  "11.1.1": {"titulo": "Arquivamento definitivo", "cor": "vermelho", "prazo_dias": null, "ato": "Sem recurso administrativo (art. 212 §2º). Avaliar via judicial: mandado de segurança em 120 dias da publicação (Lei 12.016 art. 23) ou ação ordinária."},
+  "11.2": {"titulo": "Arquivamento — exame não requerido", "cor": "vermelho", "prazo_dias": 60, "contagem": "corridos", "ato": "Desarquivar em 60 dias com retribuição específica (art. 33 §1º); depois disso, arquivamento definitivo."},
+  "15.21": {"titulo": "Documentação arquivada e depósito não efetuado", "cor": "vermelho", "prazo_dias": null, "ato": "Sem recurso do art. 212 (§2º) e 60 dias vencidos; avaliar justa causa (art. 221), autotutela (Lei 9.784) e mandado de segurança em 120 dias da publicação. Ler o parecer da exigência anterior (2.5).", "parecer": true},
+  "16.1": {"titulo": "Concessão da patente (carta-patente)", "cor": "verde", "prazo_dias": null, "ato": "Nenhum imediato. Anuidades seguem (art. 84)."},
+  "18.1": {"titulo": "Extinção por falta de pagamento de anuidade", "cor": "vermelho", "prazo_dias": 90, "contagem": "corridos", "ato": "Restauração em 3 meses com retribuição específica (art. 87)."}
+ },
+ "prefixos": {
+  "6.":  {"cor": "vermelho", "prazo_dias": 60, "contagem": "corridos", "ato": "Exigência ou parecer: responder no prazo do despacho (padrão art. 224: 60 dias). CONFERIR o código.", "parecer": true},
+  "9.":  {"cor": "vermelho", "prazo_dias": 60, "contagem": "corridos", "ato": "Decisão: pagar (deferimento) ou recorrer (indeferimento) em 60 dias. CONFERIR o código."},
+  "11.": {"cor": "vermelho", "prazo_dias": null, "ato": "Arquivamento: ler o código; avaliar desarquivamento, recurso ou via judicial."},
+  "15.": {"cor": "vermelho", "prazo_dias": null, "ato": "Exame formal com desfecho negativo: ler o código."},
+  "18.": {"cor": "vermelho", "prazo_dias": null, "ato": "Extinção: ler o código; restauração se couber."},
+  "21.": {"cor": "vermelho", "prazo_dias": null, "ato": "Nulidade/anotações: ler o código."},
+  "2.":  {"cor": "amarelo", "prazo_dias": null, "ato": "Exame formal: ler."},
+  "3.":  {"cor": "verde", "prazo_dias": null, "ato": "Publicação: informativo."},
+  "7.":  {"cor": "verde", "prazo_dias": null, "ato": "Exame: informativo."},
+  "16.": {"cor": "verde", "prazo_dias": null, "ato": "Concessão: informativo."}
+ },
+ "desconhecido": {"cor": "amarelo", "prazo_dias": null, "ato": "Código não catalogado: LER o despacho e catalogar nesta tabela."},
+ "avisos_antes_do_prazo_dias": [30, 10, 3]
+}
