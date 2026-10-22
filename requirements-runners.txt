@@ -1,0 +1,62 @@
+# Central de Patentes — dependências dos RUNNERS DAS PATENTES (verificação local)
+#
+# ┌─ ONDE INSTALAR ─────────────────────────────────────────────────────────────────────┐
+# │  NO PYTHON DO SISTEMA (C:\Python314\python.exe), **NÃO** no backend\.venv.           │
+# │                                                                                      │
+# │      python -m pip install -r requirements-runners.txt                               │
+# │                                                                                      │
+# │  Se você ATIVOU o backend\.venv antes, DESATIVE (`deactivate`) — senão isto instala  │
+# │  no ambiente errado e os runners continuam falhando, agora por `torch`.              │
+# └──────────────────────────────────────────────────────────────────────────────────────┘
+#
+# POR QUE SÃO DOIS AMBIENTES (e é de propósito):
+#   * `backend\.venv`  → o BACKEND NA NUVEM. Enxuto por decisão: serve o dispositivo ACOM
+#     e a API. Ver `backend/requirements.txt`. Torch/matplotlib ali seriam centenas de MB
+#     de deploy para nada. NÃO instale este arquivo lá.
+#   * python do sistema → os 16 RUNNERS + a Fronteira. Simulação pesada, figuras, torch.
+#
+# POR QUE ESTE ARQUIVO EXISTE: estas dependências eram SILENCIOSAS. Não estavam declaradas
+# em lugar nenhum, e quando o interpretador subiu para Python 3.14 três runners e a própria
+# Fronteira quebraram INTEIROS — um verificador que não roda não verifica nada.
+# Dependência que ninguém declara é dívida que alguém paga depois, no escuro.
+
+numpy>=2.0          # obrigatório em toda a casa. ATENÇÃO: `np.trapz` foi REMOVIDO no numpy
+                    # 2.5 — usar `np.trapezoid` (mesmo método, renomeado). Guardas já postas.
+
+scipy>=1.11         # protótipos de IALD (linalg), MQC (expm/logm), ONCOLOGIA (signal/stats).
+                    # A Fronteira NÃO depende mais dele: tem fallback em numpy puro
+                    # (exponencial por escalonamento-e-quadratura + seção aurea), porque um
+                    # verificador offline não pode cair por falta de biblioteca de terceiro.
+
+matplotlib>=3.8     # SÓ figuras. ACOM e ONCOLOGIA degradam com elegância sem ela ("figura
+                    # pulada") e ainda selam; IALD e MQC importam no topo e não rodam sem.
+                    # A figura é cosmética — o selo é o resultado.
+
+torch>=2.0          # ACOM_MIRROR, ACOM_CRYPTO, PSI_NET, KERNEL_ONTOLOGICO. É a dependência
+                    # mais pesada da casa (~2,5 GB com CUDA) e a razão principal de os
+                    # runners NÃO rodarem no venv do backend. Instalado no sistema:
+                    # 2.11.0+cu128.
+
+# ── SE O `pip install` FALHAR COM "SSL: UNEXPECTED_EOF_WHILE_READING" ──────────────────
+# NÃO é a sua rede, e não é o pacote. `files.pythonhosted.org` resolve para QUATRO endereços
+# IPv6 antes do IPv4; esta máquina tenta IPv6 primeiro e o caminho IPv6 está quebrado, então
+# o handshake TLS morre. `pypi.org` responde 200 (é IPv4), o que faz o erro parecer aleatório
+# — e pacotes já em cache "funcionam", o que engana ainda mais.
+#
+# Diagnóstico em uma linha (200 = o IPv4 está bom; o problema é a preferência IPv6):
+#     curl -sS -o /dev/null -w "%{http_code}\n" --resolve files.pythonhosted.org:443:151.101.248.223 https://files.pythonhosted.org/
+#
+# CORREÇÃO PERMANENTE (PowerShell **como Administrador**) — faz o Windows preferir IPv4
+# quando o IPv6 não tem rota. Conserta pip, curl, e tudo mais na máquina:
+#     netsh interface ipv6 set prefixpolicy ::ffff:0:0/96 60 4
+#
+# CONTORNO SEM ADMIN (foi o usado em 15/07/2026): baixar os wheels por IPv4 e instalar
+# offline. `curl -4` mostrou-se INSTÁVEL aqui (o DNS devolve IPv4 que ora funciona ora não);
+# o que funciona é fixar o IP com `--resolve`:
+#     curl -sS --resolve files.pythonhosted.org:443:151.101.248.223 -O <url-do-wheel>
+#     python -m pip install --no-index --find-links=.wheels_ipv4 <pacote>
+# As URLs saem da API do pypi.org (que responde): https://pypi.org/pypi/<pacote>/json
+
+pypdf>=4.0            # extrator de PDF para o MONITOR DE PATENTES (tools/patent_monitor.py):
+                      # ler a RPI (Revista da Propriedade Industrial). Instalado no python do
+                      # SISTEMA (o backend chama o monitor la'). pip install pypdf.

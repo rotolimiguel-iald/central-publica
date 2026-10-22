@@ -1,0 +1,122 @@
+# ── Central de Patentes — .gitignore (blindagem: segredos e confidenciais NUNCA sobem) ──
+
+# segredos e configuração sensível
+backend/central.env
+backend/*.env
+*.key
+*.pem
+.env
+.env.*
+
+# CONFIDENCIAIS (engenharia nativa IALD — jamais em repositório algum)
+**/iald_stack_v7*
+**/iald_psion_state*
+**/iald_web_server*
+**/token_huggin*
+
+# venvs / dependências
+backend/.venv/
+**/.venv/
+**/venv/
+node_modules/
+
+# build / cache
+frontend/dist/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# dados vivos reconstrutíveis (índice + logs + auditoria + backups)
+backend/data/
+logs/
+backups/
+*.db
+*.db-wal
+*.db-shm
+*.log
+
+# scratch / temporários
+scratchpad*/
+sd_*/
+*.acom
+
+# SO
+Thumbs.db
+.DS_Store
+
+# wheels baixados por IPv4 (contorno do IPv6 quebrado) — binario de terceiro, nao versionar
+.wheels_ipv4/
+
+# Monitor de patentes — store de runtime (regenerado; last_run/audit mudam a cada rodada)
+andamentos/last_run.json
+andamentos/deadline_audit.json
+andamentos/andamentos_para_o_compiler.md
+
+# logs de runtime do uvicorn (o launcher redireciona a saida para ca)
+backend/logs/
+backend/uvicorn*.log
+
+# pesquisa juridica alheia (dominio do Escritorio) — em disco, fora do repo
+/camara_cpc.html
+/cert.pdf
+/ck.txt
+/cnj_comproc.html
+/codex.html
+/cpc_plain.txt
+/datajud.html
+/datajud_api.html
+/dj_.html
+/dj_acesso.html
+/dj_endpoints.html
+/dj_introducao.html
+/dja.html
+/djc.html
+/dje.html
+/dje_docs.html
+/dje_faq.pdf
+/dje_faq.txt
+/dje_manual.pdf
+/dje_manual.txt
+/dje_news.html
+/djen_manual.html
+/djfaq.html
+/ed.html
+/fs.html
+/jusbr.html
+/mni_cnj.html
+/mni_stf.html
+/mni_tjrj.pdf
+/mni_tjrj.txt
+/mni_tjrn.html
+/mni_trf6.html
+/mniclient.html
+/orient.html
+/out236.txt
+/p2.html
+/pcp.json
+/pdpj_sitemap.xml
+/pg.html
+/pg2.html
+/port160.html
+/ps.html
+/rc3.html
+/res331.html
+/res455.html
+/seg.txt
+/senado_cpc.html
+/senado_norma.html
+/tjgo_dj.html
+
+# backups de sessao (regra do backup imediato): ficam no disco, nunca no repositorio
+*.bak_*
+
+# 07/09/2026 — Chatgpt/: saidas de compilacao Lean (derivaveis dos .lean + toolchain; 43.563 .olean = 15,5 GB medidos)
+# ficam FORA do indice; fontes .lean/.md/.json/.py da bancada continuam rastreadas (custodia).
+Chatgpt/**/*.olean
+Chatgpt/**/*.ilean
+Chatgpt/**/*.trace
+Chatgpt/**/*.hash
+
+# 30/09/2026 — ordem do operador: «o git não é meu backup, é a Vitrine da TGL». A bancada do ChatGPT não sobe ao git.
+# Os arquivos seguem no disco; a custódia deles é o snapshot incremental em Central de Patentes_BACKUPS (Chatgpt_<data>_delta_de_<base>).
+/Chatgpt/
