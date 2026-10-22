@@ -1,0 +1,98 @@
+{
+ "proto": {
+  "protocol": {
+   "version": "D1_CAMB_V1",
+   "status": "PRE_REGISTERED_BEFORE_DATA_READ",
+   "form_of": "tgl_paper_unified.py --d1-camb (maio/2026) = tgl_mcmc_camb_v2.py Step 3 CAMB cross-check + tgl_camb_worker.py, SEM alteracao",
+   "hypothesis": {
+    "background": "H^2 = (8 pi G/3) rho_tot [1 + beta |1 + w_eff(z)|]",
+    "beta_theory": "alpha sqrt(e) em runtime",
+    "approximation_DECLARED": "CAMB em LCDM; TGL analitica por cima; r_s deslocado por H_LCDM/H_TGL em z_* (nao --tight-rs)"
+   },
+   "data": {
+    "planck": "2018 comprimido (R = 1,7502; l_A = 301,471; omega_b h^2 = 0,02236; cov Zhai+ 2019)",
+    "desi": "DR1 BAO 12 pontos (Adame+ 2024)",
+    "sh0es": "H0 = 73,04 \u00b1 1,04"
+   },
+   "phases": {
+    "1_bestfits_full": "LCDM (beta = 0) vs TGL (beta fixo) com Planck + DESI + SH0ES; Nelder-Mead; Delta chi^2 = chi^2_TGL - chi^2_LCDM (3 parametros livres em ambos)",
+    "2_no_sh0es": "o mesmo com Planck + DESI; tensao de H0 contra SH0ES para LCDM, TGL fixo e TGL zero-free (1+z_*)^beta",
+    "3_mcmc_free_beta": "emcee 24 walkers x 2000 passos, burn 400, prior plano beta em (-0,05; 0,05); posterior de beta"
+   },
+   "criteria": {
+    "bestfit_success_required": true,
+    "delta_chi2_5sigma": 25.0,
+    "delta_chi2_2sigma": 4.0,
+    "acceptance_min": 0.1,
+    "acceptance_max": 0.7,
+    "chain_min": 38400,
+    "mcmc_rule": "regua relativizada do Nivel 2: FALSIFIED se alpha sqrt(e) fora de 5 sigma (equal-tailed, sigma media); INCAPAZ se sigma(beta) > beta; NOT_FALSIFIED_POWERED se sigma <= beta/2 e alpha sqrt(e) dentro de 3 sigma; TENSION se fora de 3 sigma e nao FALSIFIED; INCONCLUSIVE nos demais"
+   },
+   "allowed_verdicts": {
+    "bestfit": [
+     "D1_LCDM_PREFERRED_5SIGMA",
+     "D1_TGL_BACKGROUND_PREFERRED_5SIGMA",
+     "D1_TENSION_2_TO_5_SIGMA",
+     "D1_NOT_DISTINGUISHED"
+    ],
+    "mcmc": [
+     "D1_BETA_FALSIFIED",
+     "D1_BETA_INCAPAZ",
+     "D1_BETA_NOT_FALSIFIED_POWERED",
+     "D1_BETA_TENSION",
+     "D1_BETA_INCONCLUSIVE"
+    ],
+    "any": [
+     "INCONCLUSIVE_SYSTEMATICS",
+     "AWAITING_RESULT_FILE"
+    ]
+   },
+   "forbidden_verdicts": [
+    "CONFIRMED",
+    "PROVED"
+   ],
+   "what_it_cannot_do": "nao testa perturbacoes (Nivel 2); a TGL entra como aproximacao analitica por cima do CAMB (declarada); um Delta chi^2 favoravel a TGL nao e confirmacao \u2014 e preferencia de fundo em dados comprimidos"
+  },
+  "protocol_hash": "6dd7c9c104f20ebd",
+  "checks": [
+   [
+    "protocolo pre-registrado e hasheado (6dd7c9c104f20ebd)",
+    true
+   ],
+   [
+    "beta jamais literal",
+    true
+   ],
+   [
+    "nenhum veredito proibido por construcao",
+    true
+   ]
+  ],
+  "all_verified": true,
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "verdict": "TGL_D1_CAMB_V1__PROTOCOL_PRE_REGISTERED_6dd7c9c104f20ebd__MAY_2026_SCRIPT_UNCHANGED__BACKGROUND_ONLY__GATE_UNTOUCHED"
+ },
+ "res": {
+  "result_path": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\cache\\d1_camb\\D1_CAMB_RESULT.json",
+  "protocol_hash": "6dd7c9c104f20ebd",
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "beta_runtime": 0.012031300400803142,
+  "why_outside_contour": "cosmologia jamais vira prova matematica; o fundo comprimido e aproximacao declarada",
+  "verdict": "TGL_D1_CAMB_AWAITING_RESULT_FILE",
+  "all_verified": false,
+  "checks": [
+   [
+    "resultado D1_CAMB_V1 em cache/d1_camb",
+    false
+   ]
+  ],
+  "statuses": {
+   "leitura": "[REAL] o um.py nao recalcula: le por hash o relatorio do script de maio e aplica a matriz pre-registrada (6dd7c9c104f20ebd)",
+   "distincao": "[REAL] fundo (aqui) vs perturbacao (Nivel 2, N2_INCAPAZ): sao testes conjugados, nao redundantes"
+  },
+  "runtime_s": 7.271766662597656e-05
+ },
+ "stamp": "2026-09-10T19:01:35"
+}

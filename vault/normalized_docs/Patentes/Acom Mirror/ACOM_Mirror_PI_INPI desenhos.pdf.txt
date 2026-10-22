@@ -1,0 +1,184 @@
+6 Desenhos
+(100) Módulo de
+Entrada
+(102) Computador
+Gravitacional
+g =
+p
+|L|, ∂L
+(104) Nominador
+de Estados
+ψ ∈ H4
+(106) Codicador
+Angular
+θ = arcsin(g/gmax)
+(108) Analisador
+de Paridade
+Fexp , Sψ
+(110) Empacotador
+Espelhado
+ψ (2 bits) + θq ( b bits)
+(112) Compressor
+Entrópico
+(zstd / zlib)
+(114) Módulo de
+Saída
+L (Dados de entrada  luz)
+R (Reexo  saída)
+metadados
+Figure 1: Diagrama em blocos do sistema de reexão dimensional ACOM Mirror.
+Dados de entrada L são processados pelo computador gravitacional (102), nominados
+em estados psiônicos (104) no H4, codicados angularmente (106), analisados quanto
+à paridade (108), empacotados (110), comprimidos (112), e serializados no objeto
+MirrorReflection (114).
+8
+
+(200) INÍCIO  Receber tensor L
+(202) Extrair g =
+p
+|L + ε|, registrar gmax
+(204) Computar ∂L = Li − Li−1
+(206) Determinar sign (L) e sign (∂L)
+(208) Nominar ψ = bit_high × 2 +bit_low em H4
+(210) Computar θ = arcsin(g/gmax)
+(212) Quantizar θq = round (θ/(π/2) × (2b − 1))
+(214) Calcular Fexp = mean (paridades )
+(216) Empacotar ψ (2 bits) + θq ( b bits)
+(218) Comprimir (zstd / zlib)
+(220) SAÍDA  MirrorReflection ( ψ, θ, metadados)
+Figure 2: Fluxograma do método REFLECT ( L → (ψ, θ)): extração gravitacional (202),
+derivada temporal (204), determinação de sinais (206), nominação de estados (208),
+codicação angular (210212), análise de paridade (214), empacotamento (216),
+compressão (218) e saída (220).
+9
+
+(300) INÍCIO  Receber MirrorReflection
+(302) Descomprimir blocos de ψ e θq
+(304) Desempacotar estados ψ e ângulos θq
+(306) Dequantizar: θ = θq/(2b − 1) × (π/2)
+(308) Reconstruir g = gmax × sin(θ)
+(310) Recuperar sign (L) a partir de ψ
+(312) DOBRA DIMENSIONAL: L′ = sign (L) × g2
+(314) Reformar tensor para shape original
+(316) SAÍDA  T ensor L′ reconstruído
+Figure 3: Fluxograma do método MANIFEST ((ψ, θ) → L′): descompressão (302),
+desempacotamento (304), dequantização angular (306), reconstrução gravitacional (308),
+recuperação de sinal (310), dobra dimensional (312), reformação tensorial (314) e
+saída (316).
+10
+
+sign (∂L)
+sign (L)
+L >0, ∂L >0L >0, ∂L <0
+L <0, ∂L >0L <0, ∂L <0
+ψ1
+ASCENSÃO +
+|1⟩ = (0, 1, 0, 0)
+Paridade: +1 (Normal)
+ψ0
+COLAPSO +
+|0⟩ = (1, 0, 0, 0)
+Paridade: −1 (Inversa)
+ψ2
+EMERGÊNCIA −
+|2⟩ = (0, 0, 1, 0)
+Paridade: +1 (Normal)
+ψ3
+QUEDA −
+|3⟩ = (0, 0, 0, 1)
+Paridade: −1 (Inversa)
+H4
+Fexp = 1
+N
+P paridade (ψi)
+Figure 4: Espaço de Hilbert H4 com os quatro estados psiônicos: ψ0 (COLAPSO +,
+paridade inversa), ψ1 (ASCENSÃO +, paridade normal), ψ2 (EMERGÊNCIA −, paridade
+normal), ψ3 (QUEDA −, paridade inversa). Vetores base ortonormais e Força de Expulsão
+Fexp como média das paridades.
+11
+
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1
+0
+π/8
+π/4
+3π/8
+π/2
+θMiguel ≈ 6,29◦
+√
+α2
+ALTA
+RESOLUÇÃO
+(valores pequenos
+de g)
+Menor resolução
+(valores grandes
+de g)
+g/gmax
+θ (radianos)
+θ = arcsin(g/gmax) (ACOM Mirror)
+θ = (g/gmax) × π/2 (linear)
+Figure 5: Função de codicação angular θ = arcsin(g/gmax) (vermelho) comparada com
+codicação linear (azul tracejado). A região sombreada indica onde a codicação angular
+fornece resolução signicativamente superior. O ponto θMiguel ≈ 6,29◦ marca a transição
+ruído/informação (Constante de Miguel).
+Embeddings Pesos NN KV Cache Esparso 95% Gradientes
+0
+2
+4
+6
+8
+3.2
+2.9
+4.1
+5.8
+3.5
+3.85
+3.42
+4.92
+7.14
+4.38
+Tipo de dado
+Taxa de compressão ( ×)
+ACOM Linear v16.1
+ACOM Mirror v17.0
++20,3%
++17,9%
++20,0%
++23,1%
++25,1%
+Correlação > 0,999
+em todos os cenários
+Melhoria média: +21,3%
+Figure 6: Comparativo de taxa de compressão: ACOM Linear v16.1 (azul) versus
+ACOM Mirror v17.0 (vermelho) para cinco tipos de dados. A codicação angular supera
+consistentemente a quantização linear, com melhoria média de +21,3% e correlação acima
+de 0,999.
+12
+
+BULK (3D)
+Dado L
+Tensor multidimensional
+ESPELHO
+BOUNDARY (2D)
+Reexo (ψ, θ)
+ψ ∈ {0, 1, 2, 3}
+θ ∈ [0, π/2]
+2 bits + b bits/elemento
+(comprimido)
+REFLECT
+g =
+p
+|L|, θ = arcsin(g/gmax)
+MANIFEST
+Dobra ×2: L′ = s × [gmax sin θ]2
+L′ ≈ L
+correlação η > 0,999
+(dado re-emerge) O dado não viaja
+ o reexo viaja.
+O dado re-emerge através da
+Dobra Dimensional ( ×2).
+Figure 7: Diagrama da Dobra Dimensional ( ×2): reexão especular Bulk →Boundary. O
+dado L (3D) é projetado no espelho como reexo (ψ, θ) (2D) pela operação REFLECT, e
+re-emerge como L′ pela operação MANIFEST (Dobra ×2). Analogia com correspondência
+holográca AdS/CFT.
+13

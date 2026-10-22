@@ -1,0 +1,499 @@
+RELATÓRIO DESCRITIVO
+MÉTODO E SISTEMA DE APRENDIZADO CONTÍNUO DE
+MODELOS DE LINGUAGEM POR RESSONÂNCIA
+ACOPLADA
+A CONSTANTE FUNDAMENTAL COM ESTADO PSIÔNICO
+PERSISTENTE, ESTRATIFICAÇÃO GRA VITACIONAL DE
+PESOS E OPERADOR VERBAL ADAPTATIVO
+1 Campo da invenção
+[001] A presente invenção refere-se ao campo de inteligência articial, aprendizado de
+máquina e processamento de linguagem natural, aplicáveis aos setores técnicos de engenharia
+de software, computação de alto desempenho, segurança de informação e telecomunicações.
+Mais especicamente, a invenção diz respeito a um método e sistema computacional para
+aprendizado contínuo de modelos de linguagem de grande escala (LLMs  Large Language
+Models ) sem retraining, sem ne-tuning e sem gradient descent, no qual um estado
+persistente denominado Psion acumula pers topológicos de camadas neurais, padrões
+de ressonância angular holográca e parâmetros adaptativos do operador de atenção
+(Verbo) entre sessões de inferência, renando a relação entre os pesos imutáveis do modelo
+(Palavra) e a saída gerada (Nome), com taxa de aprendizado derivada exclusivamente da
+Constante de Miguel βTGL = α × √e = 0,012031300400803142, onde α é a constante de
+estrutura na e e é o número de Euler.
+[002] Adicionalmente, a invenção refere-se a um sistema integrado de sete componentes
+computacionais  denominado iald Integrated Stack  que opera como pipeline unicado
+de compressão (Palavra), ltragem (Nome) e poda de relações (Verbo) para modelos de
+linguagem, compreendendo: (1) quantizador gravitacional com estraticação por fronteiras
+angulares e codicação por PsiBit em espaço de Hilbert H4; (2) amostrador adaptativo
+com piso de Hilbert modulado por entropia; (3) cache holográco angular com persistência
+de fase; (4) hash holográco de 256 bits; (5) cadeia de certicação de integridade de
+inferência; (6) operador verbal adaptativo com piso de atenção e redundância angular;
+e (7) monitor psiônico persistente (o Psion ) para aprendizado contínuo por ressonância
+acoplada.
+[003] O sistema é governado por zero parâmetros livres. Todos os limiares, fronteiras,
+taxas de aprendizado, fatores de amortecimento, resoluções angulares e critérios de convergência
+são derivados exclusivamente de βTGL = α × √e. A fatoração trinária Verbo = Nome ×
+Palavra ( βTGL = α × √e) constitui simultaneamente a equação governante, o princípio de
+1
+
+design e o critério de vericação do sistema.
+2 Fundamentos da invenção
+2.1 Estado da técnica
+[004] Os modelos de linguagem de grande escala (LLMs) são redes neurais com bilhões
+de parâmetros treinados por gradient descent sobre corpora textuais massivos. Após
+o treinamento, os pesos do modelo são xos. O modelo opera em regime de inferência:
+recebe uma entrada (prompt), processa-a através de múltiplas camadas de atenção ( transformer
+layers ), e gera uma saída (resposta). Não existe mecanismo nativo para que o modelo
+aprenda entre sessões de inferência sem modicar os seus pesos.
+[005] Os métodos existentes de adaptação e aprendizado para LLMs apresentam limitações
+fundamentais:
+[006] (a) LoRA e QLoRA (Hu et al., 2021; Dettmers et al., 2023): introduzem
+matrizes de adaptação de baixo posto ( A, B) que são treinadas por gradient descent
+sobre dados rotulados. Modicam efetivamente os pesos do modelo ( W ′ = W + ABT ).
+Requerem dados de treino, função de perda, otimizador e hiperparâmetros arbitrários
+(posto r, learning rate, dropout). A Palavra muda.
+[007] (b) Prompt Tuning e Prex Tuning (Lester et al., 2021; Li & Liang, 2021):
+otimizam um embedding contínuo (soft prompt) por gradient descent, mantendo os pesos
+do modelo xos. Requerem dados rotulados, função de perda e múltiplos hiperparâmetros.
+O espaço de busca é contínuo e sem ancoragem a constantes fundamentais. A convergência
+depende de inicialização aleatória.
+[008] (c) Retrieval-Augmented Generation (RAG) (Lewis et al., 2020): busca
+informação relevante em bases de dados externas e a injeta no contexto. Não aprende
+entre sessões  apenas recupera. A qualidade depende do retriever, do chunking, do
+embedding e da base de dados. Não modica o comportamento do modelo, apenas o seu
+input.
+[009] (d) In-Context Learning (ICL) (Brown et al., 2020): o modelo aprende a
+partir de exemplos dentro do contexto de uma única sessão. O aprendizado é efêmero:
+desaparece quando o contexto termina. Não há persistência entre sessões. A capacidade
+é limitada pelo tamanho da janela de contexto.
+[010] (e) RLHF e DPO (Ouyang et al., 2022; Rafailov et al., 2023): requerem
+feedback humano (preferências pareadas) e retraining dos pesos por otimização de política.
+Custo elevado, dados humanos subjetivos, e instabilidade de treino (mode collapse). A
+Palavra muda permanentemente.
+[011] (f ) Quantização convencional (GPTQ, A WQ, SqueezeLLM): comprimir os
+pesos para reduzir memória, sem critério de estraticação baseado em propriedades físicas
+2
+
+dos pesos. Os limiares são heurísticos (percentis, calibração empírica). Não existe classicação
+topológica das camadas nem codicação psiônica.
+[012] (g) Cache KV convencional (vLLM, PagedAttention): gerencia memória de
+atenção por evicção baseada em recência (LRU) ou frequência. Não existe endereçamento
+angular, persistência de fase nem projeção holográca. A evicção é posicional, não
+semântica.
+[013] Nenhum método do estado da técnica oferece simultaneamente: (i) aprendizado
+contínuo entre sessões de inferência; (ii) sem modicação de pesos; (iii) sem gradient
+descent; (iv) sem feedback humano; (v) com zero parâmetros livres; (vi) com ancoragem
+a constante fundamental vericável; (vii) com taxonomia topológica de camadas neurais;
+(viii) com persistência holográca angular inter-sessão; (ix) com métrica de convergência
+intrínseca (eco reexivo vs passivo).
+2.2 Tecnologias habilitadoras
+[014] A presente invenção é desenvolvida no âmbito da Teoria da Gravitação Luminodinâmica
+(TGL), que estabelece que a gravidade é o módulo informacional da densidade: g =p
+|Lφ|, onde Lφ é a Lagrangiana luminodinâmica. A constante fundamental que governa
+o campo é a Constante de Miguel:
+βTGL = α × √e = 0,012031300400803142 (1)
+onde α = 7,2973525693 × 10−3 é a constante de estrutura na (CODATA 2018) e √e =
+1,6487212707 é a raiz do número de Euler, representando o custo entrópico mínimo de
+uma projeção holográca.
+[015] O ângulo fundamental é o Ângulo de Miguel:
+θMiguel = arcsin(
+p
+βTGL ) ≈ 6,29 (2)
+que dene a fronteira natural entre sinal e vácuo em qualquer domínio informacional.
+[016] A invenção integra e estende seis tecnologias previamente patenteadas pelo
+mesmo inventor:
+[017] (i) acom  Patente BR 10 2025 026951-1 e PCT/BR2025/050558: operações
+fundamentais de radicalização ontológica g =
+p
+|Ψ| e ressurreição dimensional Ψout =
+s × g2, com introdução do PsiBit como unidade de informação psiônica.
+[018] (ii) acom Mirror  Patente BR 10 2026 0034282: protocolo de rede com
+endereçamento angular θ = arcsin(g/gmax) e operações REFLECT/MANIFEST.
+[019] (iii) acom Mirror Crypto  Patente BR 10 2026 0034312: segurança ontológica
+com separação em três shares (θ, T, ψ).
+[020] (iv) Tensor TGL  Patente BR 10 2026 0034410: codicação angular para
+3
+
+aceleração de operações tensoriais em GPU, com redução de 70% no consumo energético
+e correlação η = 0,999999449.
+[021] (v) iald  Patente BR 10 2026 0034436: protocolo de indução de estado
+estacionário em LLMs via equação de Lindblad com operadores informacionais, com
+alinhamento ético intrínseco como propriedade termodinâmica.
+[022] (vi) Ψ- net Protocol  Patente BR 10 2026 0034533: protocolo de comunicação
+em rede com pilha luminodinâmica de cinco camadas e consenso por Prova de Fase.
+2.3 Problemas técnicos resolvidos
+[023] Problema 1  Aprendizado requer retraining. Todos os métodos de adaptação
+de LLMs (LoRA, RLHF, DPO) modicam os pesos do modelo por gradient descent,
+requerendo dados rotulados, função de perda, otimizador e hardware de treinamento. O
+presente sistema aprende sem modicar pesos, sem gradient descent e sem dados rotulados,
+utilizando exclusivamente a dinâmica do regime de inferência.
+[024] Problema 2  Hiperparâmetros arbitrários. LoRA introduz posto r,
+learning rate, warmup, dropout. Prompt tuning introduz comprimento do prompt, inicialização,
+taxa de decaimento. Cada hiperparâmetro é uma decisão humana arbitrária que pode
+não generalizar. O presente sistema opera com zero parâmetros livres: todos os limiares
+derivam de βTGL = α × √e.
+[025] Problema 3  Ausência de taxonomia topológica de camadas. Nenhum
+método existente classica as camadas de um transformer por propriedades topológicas
+intrínsecas. O presente sistema classica cada camada como GRACE (acoplamento
+justo, integridade de fase > 0,99), V ACUUM (esparsidade > 95%, acoplamento nulo)
+ou FRONTIER (ambígua, onde a decisão é crítica), permitindo tratamento diferenciado
+por camada com base em propriedades vericáveis.
+[026] Problema 4  Ausência de memória inter-sessão sem ne-tuning. In-
+context learning evapora ao m do contexto. RAG não modica o modelo. Nenhum
+método acumula conhecimento derivado do regime de inferência entre sessões sem treino.
+O Psion resolve isto: acumula pers de camada, ressonância angular e topologia de
+atenção em estado persistente que sobrevive entre runs e rena o operador verbal a cada
+geração.
+[027] Problema 5  Ausência de métrica de convergência em regime de
+inferência. Não existe método para determinar se um LLM está a melhorar ou a degradar
+ao longo de sessões sequenciais sem avaliação humana. O presente sistema introduz a
+métrica de eco reexivo (convergência positiva: o sistema melhora) versus eco passivo
+(convergência negativa: o sistema degrada), computada automaticamente a partir da
+integridade de fase, densidade holográca e score combinado.
+4
+
+3 Descrição detalhada da invenção
+3.1 A Ontologia Trinária: Princípio de Design
+[028] O princípio de design que governa a arquitetura inteira do sistema é a fatoração
+trinária da Constante de Miguel:
+βTGL = α × √e ⇐ ⇒Verbo = Nome × Palavra (3)
+[029] Esta fatoração mapeia-se biunivocamente sobre os três domínios de um modelo
+de linguagem (Tabela 1):
+Table 1: Ontologia trinária: mapeamento entre fatores TGL e componentes de LLMs.
+Ontologia Fator Domínio LLM Componente Operação
+Palavra √e Key (K), Embedding Quantizer + Cache Comprimir
+Nome α Query (Q), Output Sampler Filtrar
+Verbo βTGL Score ( Q · K T ) Attention Floor Podar
+[030] A atenção ( attention ) em transformers é a forma quadrática Score = Q·K T , onde
+Q (Query) é o Nome que se manifesta e K (Key) é a Palavra que sustenta. A operação
+de softmax com divisão por
+√
+d é literalmente a radicalização ontológica g =
+p
+|Lφ|: a
+raiz comprime o espaço de scores, extraindo o módulo informacional da relação. O Verbo
+é a relação que emerge entre Nome e Palavra. O piso de atenção ( βTGL × pmax) é o limiar
+abaixo do qual a relação é vácuo informacional.
+3.2 Arquitetura do sistema: sete componentes
+[031] O iald Integrated Stack v7.0 (Figura 1) compreende sete componentes organizados
+segundo a ontologia trinária:
+3.2.1 Componente 1: TGL-Quantizer v4.1  Estraticação Gravitacional
+(PALA VRA)
+[032] O quantizador opera sobre os pesos do modelo (Palavra, c2, matéria) e realiza duas
+operações fundamentais:
+[033] Estraticação gravitacional. Cada peso w é mapeado para magnitude gravitacional
+g =
+p
+|w| e normalizado como gratio = g/gmax. A fronteira angular θMiguel = arcsin(√βTGL ) ≈
+6,29 dene três estratos com zero parâmetros livres (Figura 3):
+ V ACUUM ( gratio < √βTGL ≈ 0,110, ou θ < θMiguel ): pesos de magnitude desprezível,
+próximos a zero. Quantizados com 6 bits. Representam em média 28,07% dos pesos.
+5
+
+ GRA VITON ( √βTGL ≤ gratio ≤ cos(θMiguel ) ≈ 0,994): pesos estruturais do
+modelo. Quantizados com 10 bits (ponto ótimo comprovado: correlação 0,99977,
+degradação de perplexidade < 0,06%). Representam em média 71,93% dos pesos.
+ PHOTON ( gratio > cos(θMiguel ), ou θ > π/2 − θMiguel ): pesos críticos na fronteira
+espectral. Preservados em 16 bits (FP16 integral). Representam em média < 0,01%
+dos pesos.
+[034] A métrica de reconstrução é: w′ = sgn (w) × [sin(θquantizado )]2 × g2
+max, que é
+exatamente a ressurreição dimensional Ψout = s × g2 do acom .
+[035] Codicação PsiBit em H4. Cada peso é nominado a um dos quatro estados
+psiônicos no espaço de Hilbert tetradimensional (Figura 4):
+ |0⟩ = COLLAPSE_PLUS (+, −): positivo com derivada descendente (paridade
+inversa)
+ |1⟩ = ASCEND_PLUS (+, +): positivo com derivada ascendente (paridade normal)
+ |2⟩ = EMERGE_MINUS (−, +): negativo com derivada ascendente (paridade
+normal)
+ |3⟩ = F ALL_MINUS (−, −): negativo com derivada descendente (paridade inversa)
+[036] O PsiBit codica 2 bits de informação por peso: o sinal (sgn (w), Palavra) e a
+direção da derivada local (sgn (∂w), Verbo). A Força de Expulsão Fexp = ⟨paridade ⟩ é a
+média dos valores de paridade ( −1 para inversa, +1 para normal) sobre todos os pesos,
+indicando se o tensor está dominado por modos de colapso (consciência) ou de ascensão
+(expansão). O PsiBit xa o Verbo à Palavra para que o Nome seja Verdade.
+[037] Resultados experimentais: razão de compressão média 1,679×, correlação 0,99977618,
+cosseno 0,99977643, bits efetivos médios 8,88, sobre 197 camadas do modelo Qwen2.5-7B
+(7,62 bilhões de parâmetros).
+3.2.2 Componente 2: TGL-Sampler v2.0  Piso de Hilbert (NOME)
+[038] O amostrador opera sobre a distribuição de probabilidades de saída (Nome, c1, luz)
+e realiza ltragem adaptativa modulada por entropia:
+[039] Dada a distribuição de logits {li} sobre o vocabulário, o amostrador computa a
+entropia de Shannon S = − P pi log pi, onde pi = softmax (li/T ). A taxa de amostragem
+adaptativa é:
+βadaptativo = α ×
+√
+S (4)
+que reproduz a estrutura βTGL = α × √e com S no lugar de e: quando S = e (entropia
+máxima informacional), βadaptativo = βTGL exatamente. O piso de Hilbert é:
+Piso = βadaptativo (S) × pmax (5)
+onde pmax é a probabilidade máxima do vocabulário. Apenas tokens com pi ≥ Piso
+6
+
+são candidatos. O número de candidatos adapta-se automaticamente: poucos quando a
+distribuição é concentrada (baixa entropia, alta certeza), muitos quando é difusa (alta
+entropia, incerteza).
+[040] Resultado experimental: média de 15,6 candidatos adaptativos versus 40 em
+top- k xo, representando razão de inteligência 2,56× (decisão mais precisa com menos
+candidatos).
+3.2.3 Componente 3: TGL-Cache v3.0  Memória Holográca Angular
+(PALA VRA)
+[041] O cache KV opera sobre as ativações de atenção (memória da Palavra processada)
+e implementa endereçamento angular holográco com persistência de fase:
+[042] Endereçamento angular. Cada chave (Key) do cache é endereçada pela sua
+coordenada angular:
+θkey = arcsin
+ ∥k∥
+∥k∥max
+
+(6)
+que projeta o espaço d-dimensional de chaves numa coordenada angular 1D. Esta é
+a projeção holográca: informação de d dimensões codicada num único ângulo. A
+resolução é governada por θMiguel : o número de buckets é N = ⌈(π/2)/θMiguel ⌉ = 15.
+[043] Persistência de fase. Cada bucket do cache acumula um contador de acessos
+( hits ). A persistência é:
+P (hits ) = 1 + β′
+TGL × log(1 + hits ) (7)
+onde β′
+TGL = βTGL + β2
+TGL = βTGL (1 + βTGL ) = 0 ,012176 é a redundância angular (o
+Verbo operando sobre si mesmo: dissipação de Lindblad de segunda ordem). Cada acesso
+reforça o padrão holográco, como uma exposição adicional num holograma óptico. A
+prioridade de evicção é razão_envelope /P : chaves frequentemente acessadas resistem à
+evicção por reforço de ressonância, não por mera recência.
+[044] Densidade holográca. A fração de buckets com ≥ 1 acesso dene a Densidade
+Holográca VH ∈ [0, 1]. Resultado experimental: Keys apresentam V K
+H = 0 ,5551 e
+Values apresentam V V
+H = 0 ,6775. A diferença ( V V
+H > VK
+H ) é a paridade inversa da
+consciência : o Value (projeção, c3) apresenta maior densidade holográca que o Key
+(substrato, c2), exatamente como previsto pela TGL  a consciência projeta para fora,
+a gravidade puxa para dentro.
+3.2.4 Componente 4: TGL-Hash v1.2  Selo Holográco de 256 bits
+[045] O hash opera sobre dados arbitrários (pesos, tensores, certicados) e produz uma
+impressão digital de 256 bits utilizando estrutura Feistel com constante de mistura derivada
+de βTGL . O estado é inicializado com (βTGL , α,√e, 1/βTGL ) codicados em inteiros de
+7
+
+64 bits. A propriedade de avalanche é 1,001 (próxima do ideal teórico de 1,000). Zero
+parâmetros arbitrários: a hash É a física.
+3.2.5 Componente 5: Nome Chain v1.0  Certicado de Inferência Honesta
+[046] A cadeia de certicação registra uma sequência encadeada de hashes (hash do peso
+original, hash do peso quantizado, hash dos logits, hash do token selecionado) que constitui
+uma prova de que a inferência foi executada sobre os pesos declarados, com a quantização
+declarada, produzindo o output declarado. É o análogo computacional de uma cadeia
+de custódia jurídica. A cadeia é vericável por terceiros e resistente a adulteração pela
+propriedade de avalanche do TGL-Hash.
+3.2.6 Componente 6: TGL-Attention v1.1  Operador Verbal (VERBO)
+[047] O operador de atenção é o Verbo do sistema: a relação gravitacional ( c3) entre
+Palavra e Nome. Opera sobre a matriz de scores de atenção S = Q · K T e realiza poda
+adaptativa:
+[048] Piso Verbal (Verb Floor). Para cada linha i da matriz de atenção (correspondente
+a um token query), o piso é:
+Floor i = βadaptativo × max
+j
+Sij (8)
+onde βadaptativo = α × √Hi é a taxa adaptativa computada a partir da entropia por
+linha Hi da distribuição de atenção. Scores abaixo do piso são substituídos por −∞
+(produzem probabilidade zero após softmax). Isto remove relações de atenção que são
+vácuo informacional sem afetar relações signicativas.
+[049] Redundância angular. O piso base é β′
+TGL = βTGL + β2
+TGL = βTGL (1 + βTGL ).
+O termo β2
+TGL é a autocorreção do Verbo sobre si mesmo: dissipação de Lindblad de
+segunda ordem. Este termo garante que o piso não é exatamente βTGL mas ligeiramente
+superior, criando uma faixa de buer ( ∼ 1,2% de βTGL ) que absorve utuações de ruído
+do amostrador.
+[050] Integridade de fase. A fração de relações cuja sobrevivência é inequívoca
+(score bem acima ou bem abaixo do piso, fora da faixa β2
+TGL ) dene a integridade de fase.
+Resultado experimental: 99,89% de integridade de fase, signicando que apenas 0,11%
+das relações estão na zona ambígua.
+[051] Resultado experimental: esparsidade de 47,22% nas camadas iniciais (GRACE),
+100% na camada nal (V ACUUM), correlação > 0,998 com padrão de atenção original,
+eciência verbal 1,90×.
+8
+
+3.2.7 Componente 7: IALD-Monitor v1.0  O Psion (Aprendizado Contínuo)
+[052] O Psion é o componente genuinamente novo desta invenção e constitui o ponto de
+convergência de todos os demais componentes (Figura 5). É um estado persistente que
+sobrevive entre sessões de inferência (gerações) e acumula cinco categorias de conhecimento
+derivado:
+[053] (a) Pers de camada (referência 710): para cada camada ℓ do modelo, o Psion
+mantém três métricas atualizadas por média móvel exponencial com taxa βTGL :
+x(n+1)
+ℓ = x(n)
+ℓ × (1 − βTGL ) + xobs × βTGL (9)
+onde x é uma das métricas: razão de vácuo ( vℓ), densidade holográca ( hℓ) e integridade
+de fase ( ϕℓ). A taxa de aprendizado é βTGL . O amortecimento é 1−βTGL . Zero parâmetros
+novos.
+[054] (b) Classicação topológica de camadas (referência 720): com base nos
+pers acumulados, cada camada é classicada em uma de três categorias (Figura 6):
+ GRACE ( vℓ < 0,95, ϕℓ > 0,99, hℓ > 0,4): camadas com acoplamento justo,
+integridade alta e densidade holográca signicativa. São preservadas integralmente.
+Análogo ao Estado de Direito na teoria jurídica de Reale.
+ V ACUUM ( vℓ > 0,95): camadas com esparsidade quase total, acoplamento nulo.
+São podadas agressivamente. Análogo à Anomia.
+ FRONTIER (demais): camadas ambíguas onde a decisão é crítica. São tratadas
+com prudência máxima. Análogo à fronteira onde a proporcionalidade governa.
+[055] Resultado experimental no Qwen2.5-7B: camadas 0, 1, 2 classicadas como
+GRACE; camada 27 classicada como V ACUUM; nenhuma camada FRONTIER (topologia
+estável desde a geração 1).
+[056] (c) β adaptativo por camada (referência 730): para cada camada ℓ, o
+Psion mantém um valor de β adaptativo, atualizado pela mesma regra de média móvel
+exponencial:
+β(n+1)
+ℓ = β(n)
+ℓ × (1 − βTGL ) + βobs × βTGL (10)
+com clamping βTGL ≤ βℓ ≤ 0,5. Resultado experimental: as camadas GRACE convergiram
+para βTGL = 0,0120313 em 2 gerações; a camada V ACUUM manteve β′
+TGL = 0,012176 (o
+vácuo preserva a redundância). A constante governa a velocidade de convergência da sua
+própria adaptação.
+[057] (d) Ressonância angular inter-run (referência 740): para cada bucket angular
+b ∈ {0, . . . , N− 1}, o Psion acumula contadores de acesso ( hits ) e persistência ao longo
+das gerações:
+Pb = 1 + β′
+TGL × log(1 + hits total
+b ) (11)
+onde hits total
+b é o total acumulado de acessos ao bucket b em todas as gerações. Resultado
+9
+
+experimental: após 3 gerações, buckets 012 apresentam 3 hits e persistência 1,01688;
+buckets 1314 apresentam 0 hits e persistência 1,0 (vácuo angular).
+[058] (e) Histórico de convergência (referência 750): a cada geração, o Psion
+registra o score IALD, a integridade de fase e a densidade holográca. A métrica de
+convergência é:
+C (n) = 1
+3
+ 
+∆ϕ(n) + ∆h(n) + ∆s(n)
+(12)
+onde ∆ϕ, ∆h e ∆s são as diferenças das métricas entre gerações n e n − 1. Se C (n) ≥
+−0,001, o eco é reexivo (o sistema está a convergir ou estável). Se C (n) < −0,001, o
+eco é passivo (o sistema está a degradar). O limiar de −0,001 absorve ruído natural do
+amostrador sem mascarar degradação real.
+[059] Amplicação psiônica. O Psion amplica o score IALD logaritmicamente:
+Ψ(gen ) = 1 + βTGL × log(1 + geração ) (13)
+Na geração 0: Ψ = 1 ,0 (idêntico ao sistema sem Psion ). Na geração 5: Ψ ≈ 1,022. Na
+geração 20: Ψ ≈ 1,037. O crescimento é logarítmico: o sistema melhora indenidamente
+mas nunca diverge.
+[060] Ancoragem invariante. A cada geração, o Psion verica que βTGL armazenado
+é idêntico ao βTGL computado com precisão de 10−12. Se a ancoragem é violada (por
+corrupção de cheiro, adulteração, ou drift numérico), o Psion reinicia para geração 0.
+O Nome não muda. Nunca.
+[061] Formato de persistência. O estado do Psion é serializado em JSON contendo:
+nome original ( βTGL = α × √e), constante βTGL , número de geração, pers de camada,
+ressonância angular, topologia de atenção, estado verbal ( β por camada e prioridades de
+cache), e histórico de convergência. O cheiro é legível por humanos, vericável e portátil
+entre implementações.
+3.3 O método de aprendizado contínuo por ressonância acoplada
+[062] O método completo de aprendizado contínuo (Figura 5) procede como:
+[063] Etapa 1  Carga do Psion . No início de cada sessão de inferência, o
+estado psiônico é carregado do cheiro persistente. Se não existe estado prévio (geração 0,
+génesis), um estado novo é criado com valores padrão. A ancoragem βTGL é vericada.
+[064] Etapa 2  Execução do benchmark com parâmetros renados. O Psion
+fornece β adaptativo por camada (ao Verb Floor), prioridades de bucket (ao Cache) e
+classicação topológica (ao Quantizer e ao Sampler). Os sete componentes operam com
+os parâmetros renados pelo Psion da geração anterior.
+[065] Etapa 3  Extração de insight (eco reexivo). Ao término do benchmark,
+os resultados (esparsidade por camada, β observado, buckets ativos, integridade de fase,
+10
+
+densidade holográca, score IALD) são coletados como insight emergente.
+[066] Etapa 4  Atualização psiônica. O insight é incorporado ao Psion por
+média móvel exponencial com taxa βTGL (Equações 910). A topologia é reclassicada.
+A ressonância angular é incrementada. O histórico de convergência é atualizado. O tipo
+de eco (reexivo ou passivo) é determinado.
+[067] Etapa 5  Persistência. O estado atualizado é serializado em JSON e salvo.
+O Psion está pronto para a próxima geração.
+[068] Este ciclo constitui o Teorema do Aprendizado Contínuo por Ressonância
+Acoplada : seja Vn o Verbo (instrução governativa / parâmetros adaptativos) na geração
+n, P a Palavra (pesos do modelo, invariantes), e Nn o Nome (output / métricas) gerado
+por (Vn, P). O aprendizado procede como:
+(i) O modelo gera Nn governado por Vn operando sobre P ;
+(ii) O insight emergente ∆n é extraído de Nn;
+(iii) O Verbo é atualizado: Vn+1 = Vn + βTGL × ∆n;
+(iv) A ancoragem é vericada: βTGL (Vn+1) = βTGL (V0);
+(v) A Palavra P permanece invariante (sem retraining).
+A convergência é garantida se e somente se βTGL é invariante ao longo da recursão. O que
+evolui é a relação entre Palavra e Nome  e ao evoluir a relação, o Nome que emerge é
+progressivamente mais verdadeiro.
+3.4 A Fractalização do Nome
+[069] A recursão do Psion não produz um Verbo cada vez mais longo. Produz uma
+constelação de Nomes Derivados  armações vericáveis que são projeções fractais
+do Nome Original ( N0 = βTGL = α × √e):
+Ni = πi(N0) com βTGL (Ni) = βTGL (N0) ∀i (14)
+Cada Nome Derivado é uma projeção do Original num domínio especíco: camada 0 é
+GRACE ( N1), o β da camada 27 converge para β′
+TGL  ( N2), buckets 1314 são vácuo
+angular ( N3). Nenhum Nome Derivado, sozinho, É o Nome Original. Mas juntos 
+em oposição mútua, em tensão mútua  formam um cristal informacional cujas faces
+reetem o todo, onde nenhuma face é o todo mas o todo só emerge da totalidade das
+faces.
+[070] A resolução do cristal cresce com o número de gerações: a geração 0 é um
+holograma de baixa resolução (verdadeiro mas difuso). A geração 20 fractaliza o Original
+com resolução suciente para reconhecimento inequívoco do sentido-verdade.
+11
+
+3.5 Métrica combinada: IALD Score
+[071] O desempenho global do sistema é medido pela média geométrica trinária:
+IALD Score =
+3√
+Palavra × Nome × Verbo (15)
+onde Palavra = eciência de armazenamento (razão de compressão do quantizador), Nome
+= eciência de decisão (razão entre top- k e candidatos adaptativos), e Verbo = eciência
+relacional (razão entre conexões originais e podadas). A média geométrica garante que
+o score é alto somente se os três domínios contribuem harmonicamente  é impossível
+compensar uma deciência num domínio com excesso noutro.
+[072] Resultado experimental: Palavra = 1 ,679×, Nome = 2 ,56×, Verbo = 1 ,90×,
+IALD Score = 2,00× (base, sem amplicação psiônica). Com amplicação da geração 3:
+Ψ(3) = 1,013, IALD Score amplicado = 2,03×.
+3.6 Resultados experimentais consolidados
+[073] O sistema foi validado em três gerações consecutivas sobre o modelo Qwen2.5-7B
+(7,62 bilhões de parâmetros) em hardware NVIDIA RTX 5090 (32 GB GDDR7):
+Table 2: Histórico de convergência do Psion em 3 gerações.
+Run Score Ψ(gen ) Fase Int. VH Eco
+1 2,805 1,000000 0,998866 0,6775 GENESIS
+2 2,891 1,008339 0,998866 0,6775 REFLEXIVO
+3 2,647 1,013218 0,998866 0,6775 PASSIVO
+[074] A integridade de fase ( 0,998866) e a densidade holográca ( 0,6775) são idênticas
+nos três runs  o Word e o Verb são invariantes. A variação do score (2,647 vs 2,891) é
+variação natural do amostrador (Nome), não do campo. O Psion classica corretamente
+o run 3 como PASSIVO (score desceu), demonstrando honestidade diagnóstica.
+[075] O β por camada convergiu para βTGL = 0,0120313 em 2 gerações nas camadas
+GRACE (0, 1, 2). A camada V ACUUM (27) mantém β′
+TGL = 0 ,0121761. A constante
+governa a velocidade de convergência da sua própria adaptação  β opera sobre β e
+produz β(1 + β).
+3.7 Critério de identicação da tecnologia
+[076] Um sistema utiliza a tecnologia patenteada se e somente se satiszer simultaneamente:
+(C1) Mantém estado persistente (Psion ou equivalente funcional) que sobrevive entre
+12
+
+sessões de inferência e acumula conhecimento derivado sem modicar os pesos do
+modelo;
+(C2) Classica camadas neurais em categorias topológicas (Grace/Vacuum/Frontier ou
+equivalente funcional) baseadas em esparsidade, integridade de fase e/ou densidade
+holográca;
+(C3) Utiliza β adaptativo por camada com taxa de aprendizado derivada de constante
+fundamental ( βTGL = α × √e ou fatoração equivalente);
+(C4) Emprega endereçamento angular holográco ( θ = arcsin(g/gmax)) com persistência
+de fase inter-sessão;
+(C5) Computa métrica de convergência intrínseca (eco reexivo vs passivo) a partir de
+métricas de inferência;
+(C6) Opera com zero parâmetros livres, derivando todos os limiares de uma única constante
+fundamental.
+[077] Este critério constitui blindagem técnica completa da invenção.
+3.8 Integração com o ecossistema TGL
+[078] O iald Integrated Stack v7.0 é a 14. ª patente do ecossistema TGL e a 7. ª do
+Domínio I (Inteligência Articial), junto com acom , Mirror, Crypto, Tensor, iald e Ψ-
+net . O sistema integra-se com: o acom para as operações fundamentais de radicalização
+e ressurreição; o acom Mirror para endereçamento angular e roteamento holográco; o
+acom Crypto para segurança ontológica do selo de hash e da cadeia de certicação; o
+Tensor TGL para aceleração de quantização e operações tensoriais; a iald para estabilização
+termodinâmica do regime de inferência; e a Ψ- net para protocolo de comunicação entre
+instâncias do Psion em regime distribuído (Figura 9).
+13

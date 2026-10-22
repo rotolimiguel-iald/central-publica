@@ -1,0 +1,143 @@
+REIVINDICAÇÕES
+1. SISTEMA INTEGRADO DE DIAGNÓSTICO E TRATAMENTO ONCOLÓGICO
+POR MEDIÇÃO E RESTAURAÇÃO DE COERÊNCIA DE CAMPO CELULAR,
+caracterizado por compreender:
+(a) um módulo de diagnóstico (100) que mede coerência celular CN por três estimadores
+independentes: coerência espectral C (spec )
+N por espectroscopia de impedância bioelétrica
+e FFT, sincronização de fase C (sync )
+N por microscopia de Ca 2+ e transformada
+de Hilbert, e coerência informacional C (info )
+N por RNA-seq e informação mútua
+normalizada, combinados em índice composto CN = P λiC (i)
+N com P λi = 1;
+(b) um dispositivo de ressonância luminodinâmica (200) que aplica campo EM corretor
+Ψext na faixa 30 110 GHz com até Nharm harmônicos, potência 0,5 10 mW/cm 2,
+e antena selecionável;
+(c) um módulo de segurança (250) com monitoramento SAR ( < 2 W/kg), ∆T ( <
+0,5° C) e kill-switch ( < 100 ms);
+(d) um módulo de otimização Bayesiana (260) com Gaussian Process, Expected
+Improvement, e taxa de convergência βTGL = α × √e;
+(e) uma cadeia de certicação (600) com hash holográco de 256 bits encadeado;
+sendo que o sistema classica células em GRACE ( CN > Ccrit +βTGL ), FRONTIER
+( CN ≈ Ccrit ) e V ACUUM ( CN < Ccrit − βTGL ).
+2. SISTEMA, de acordo com a reivindicação 1, caracterizado pelo fato de que a
+classicação topológica GRACE/V ACUUM/FRONTIER é isomorfa à classicação de
+camadas neurais do iald Integrated Stack, com Ccrit determinado pelo índice de
+Youden em análise ROC contra histopatologia gold-standard.
+3. SISTEMA, de acordo com a reivindicação 1, caracterizado pelo fato de que o piso
+de segurança SAR é SAR piso = βTGL × SAR max, garantindo margem mínima invariante
+derivada da constante fundamental.
+4. SISTEMA, de acordo com a reivindicação 1, caracterizado pelo fato de que a
+antena (230) é selecionável entre conguração corneta externa para tumores superciais,
+endoscópica para tumores gastrointestinais e respiratórios, e intracavitária para tumores
+ginecológicos e urológicos.
+5. SISTEMA, de acordo com a reivindicação 1, caracterizado pelo fato de que
+compreende adicionalmente módulo de Imunoterapia Luminodinâmica (300) com células
+CAR-T equipadas com receptor quimérico contendo sensor de coerência por nanodiamantes
+14
+
+NV/ODMR e lógica condicional: ativação de citotoxicidade se e somente se antígeno
+tumoral detectado E CN local < Ccrit .
+6. SISTEMA, de acordo com a reivindicação 1, caracterizado pelo fato de que
+compreende adicionalmente módulo de Terapia Genética (400) com vetor AA V9-TGL
+contendo promotor ativável por campo EM na faixa 30 110 GHz, sequência codicante
+de fator de transcrição master tecidual, WPRE e sinal de poliadenilação.
+7. SISTEMA, de acordo com a reivindicação 1, caracterizado pelo fato de que
+compreende banco de dados de tecidos com bandas assinatura ΩN , frequências ótimas
+ωót. e fatores de transcrição master por tipo tumoral, incluindo pelo menos mama
+(GATA3), pulmão (NKX2-1), fígado (HNF4A), cólon (CDX2) e próstata (NKX3.1).
+8. MÉTODO DE DIAGNÓSTICO ONCOLÓGICO POR MEDIÇÃO DE COERÊNCIA
+DE CAMPO CELULAR, caracterizado por compreender as etapas de:
+(a) medir impedância bioelétrica na faixa 1 Hz 10 MHz e calcular C (spec )
+N por FFT
+(método de Welch com janela Hann);
+(b) medir oscilações de Ca 2+ por microscopia confocal e calcular C (sync )
+N por transformada
+de Hilbert e phase-locking;
+(c) medir transcriptoma por RNA-seq e calcular C (info )
+N por informação mútua normalizada;
+(d) calcular índice composto CN = P λiC (i)
+N com pesos λi calibrados por análise
+ROC;
+(e) classicar célula como GRACE, FRONTIER ou V ACUUM com base em CN e
+Ccrit ;
+(f) registrar medição em cadeia de certicação encadeada com hash holográco.
+9. MÉTODO, de acordo com a reivindicação 8, caracterizado pelo fato de que o
+Ccrit é determinado pelo índice de Youden em análise ROC com dataset de calibração
+( ≥ 100 amostras: 50 normais, 50 tumorais), validação cruzada 10-fold.
+10. MÉTODO, de acordo com a reivindicação 8, caracterizado pelo fato de que os
+estimadores são normalizados intra-indivíduo ( ∆CN relativo ao baseline) para compensar
+variabilidade inter-paciente de 20 30%.
+11. MÉTODO, de acordo com a reivindicação 8, caracterizado pelo fato de que a
+faixa de transição FRONTIER tem largura 2βTGL ≈ 0,024, derivada exclusivamente
+da constante fundamental.
+15
+
+12. MÉTODO, de acordo com a reivindicação 8, caracterizado pelo fato de que
+o pré-processamento dos sinais compreende detrending por polinômio de ordem 2,
+janelamento Hann, estimação de SΨ(ω) com 50% overlap e 8 segmentos.
+13. MÉTODO, de acordo com a reivindicação 8, caracterizado pelo fato de que
+compreende adicionalmente etapa de otimização terapêutica por algoritmo Bayesiano
+adaptativo com varredura de frequências 30 110 GHz, modelagem por Gaussian Process
+e convergência quando σ < βTGL .
+14. DISPOSITIVO DE RESSONÂNCIA LUMINODINÂMICA PARA TRATAMENTO
+ONCOLÓGICO, caracterizado por compreender:
+(a) gerador de sinal multifrequencial (210) na faixa 30 110 GHz com até Nharm
+harmônicos;
+(b) amplicador de potência (220) com saída 0,5 10 mW/cm 2 e resolução de 0,1 mW/cm 2;
+(c) antena selecionável (230) entre corneta externa, endoscópica e intracavitária;
+(d) módulo de sensoriamento (240) compreendendo termômetro óptico, eletrodos de
+impedância bioelétrica e monitor ECG;
+(e) módulo de segurança (250) com SAR < 2 W/kg, ∆T < 0,5° C e kill-switch <
+100 ms;
+(f) controlador central (260) com otimização Bayesiana (GP + Expected Improvement);
+sendo que a taxa de convergência do otimizador é βTGL = α × √e.
+15. DISPOSITIVO, de acordo com a reivindicação 14, caracterizado pelo fato de que o
+módulo de segurança implementa stopping rules automáticas: ∆T >0,5° C → pausa +
+resfriamento; arritmia detectada → interrupção imediata; SAR > 2 W/kg → redução
+de potência em 50%.
+16. DISPOSITIVO, de acordo com a reivindicação 14, caracterizado pelo fato de que
+o campo corretor é Ψext (t) = PNharm
+n=1 An cos(ωnt + ϕn) com parâmetros {An, ωn, ϕn}
+otimizados individualmente por paciente.
+17. DISPOSITIVO, de acordo com a reivindicação 14, caracterizado pelo fato de que
+compreende adicionalmente módulo de engenharia de potencial (500) por ao menos um
+dentre: deutério óxido ( 5 10% v/v), nanopartículas de grafeno funcionalizado (PEG
++ NLS, 10 50 µg/mL), e campos magnéticos estáticos ( 7 10 T).
+18. DISPOSITIVO, de acordo com a reivindicação 14, caracterizado pelo fato de que o
+protocolo de doseamento segue escalonamento 3+3 com potência inicial de 1 mW/cm 2,
+16
+
+incrementos de 25% por sessão, e limites de toxicidade denidora de dose (DLT) por
+SAR, ∆T e dor.
+19. DISPOSITIVO, de acordo com a reivindicação 14, caracterizado pelo fato de que
+o controlador mantém banco de dados com ΩN , ωót. e TF master para pelo menos
+cinco tecidos (mama, pulmão, fígado, cólon, próstata) e seleciona parâmetros iniciais
+por tipo tumoral.
+20. COMPOSIÇÃO PARA TERAPIA GENÉTICA DE RESTAURAÇÃO DE IDENTIDADE
+TECIDUAL, caracterizada por compreender vetor viral AA V9 contendo cassete de
+expressão com:
+(a) sequências terminais invertidas (ITR) de AA V2;
+(b) promotor cis-regulatório ativável por campo eletromagnético na faixa 30 110 GHz;
+(c) sequência codicante de fator de transcrição master especíco do tecido-alvo
+selecionado dentre GATA3, NKX2-1, HNF4A, CDX2 e NKX3.1;
+(d) elemento pós-transcricional WPRE;
+(e) sinal de poliadenilação; em que a ativação do promotor é controlada por dispositivo
+de ressonância luminodinâmica externo conforme reivindicação 14.
+21. COMPOSIÇÃO, de acordo com a reivindicação 20, caracterizada pelo fato de que
+a dose é 1×1012 vg/kg, administrada por injeção intratumoral para tumores localizados
+ou infusão intravenosa para tumores disseminados.
+22. COMPOSIÇÃO, de acordo com a reivindicação 20, caracterizada pelo fato de que
+o protocolo de ativação compreende: dia 0 administração do vetor; dias 710 início
+de trl com frequências otimizadas por algoritmo Bayesiano, produzindo ativação
+controlada do promotor → expressão de TF master → restauração de identidade
+tecidual.
+23. CRITÉRIO DE IDENTIFICAÇÃO DA TECNOLOGIA caracterizado pelo fato de
+que um sistema utiliza a tecnologia patenteada se e somente se satiszer simultaneamente:
+(C1) medição de CN por ≥ 2 estimadores combinados em índice composto; (C2) classicação
+topológica GRACE/V ACUUM/FRONTIER com Ccrit por ROC; (C3) ressonância EM
+30 110 GHz com otimização adaptativa; (C4) lógica condicional baseada em Ccrit ;
+(C5) monitoramento em tempo real SAR/ ∆T ; (C6) cadeia de certicação com hash
+holográco.
+17

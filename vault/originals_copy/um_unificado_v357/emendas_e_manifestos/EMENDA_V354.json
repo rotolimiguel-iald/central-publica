@@ -1,0 +1,49 @@
+{
+ "stamp": "20260915_092339",
+ "V1": {
+  "um_sha16": "aa7fb7c732d46489",
+  "stdout_preservado": "rodada_v354_FALHA1_stdout.txt",
+  "stdout_sha16": "80ef74e3555db512",
+  "causa": "15 #print axioms de lemas privados (_private.TGLExt.V351ModularCutBalance.0.* e _private.TGLExt.V351QuadraticTrace.0.*) inseridos no TGL/Audit.lean canonico; o kernel compilou (44 oleans), a auditoria reprovou (audit rc 1) => TGL_KERNEL_FORMALIZATION_FAILED, 0/5619",
+  "nomes_privados": [
+   "_private.TGLExt.V351ModularCutBalance.0.TGLV350.Regular.cut_balance_after_multiplication",
+   "_private.TGLExt.V351ModularCutBalance.0.TGLV350.Regular.scalar_original_resolvent_balance",
+   "_private.TGLExt.V351ModularCutBalance.0.TGLV350.Regular.scalar_represented_regular_damped_phase",
+   "_private.TGLExt.V351ModularCutBalance.0.TGLV350.Regular.damped_phase_scalar_balance",
+   "_private.TGLExt.V351ModularCutBalance.0.TGLV350.Regular.damped_phase_commutative_balance",
+   "_private.TGLExt.V351ModularCutBalance.0.TGLV350.Regular.damped_phase_operator_balance",
+   "_private.TGLExt.V351ModularCutBalance.0.TGLV350.Regular.scalar_representation_vector_injective",
+   "_private.TGLExt.V351ModularCutBalance.0.TGLV350.Regular.closed_representation_cfc",
+   "_private.TGLExt.V351ModularCutBalance.0.TGLV350.Regular.scalar_resolvent_commutes_represented_regular",
+   "_private.TGLExt.V351QuadraticTrace.0.TGLV350.Regular.represented_positive_root_norm",
+   "_private.TGLExt.V351QuadraticTrace.0.TGLV350.Regular.scalar_inverse_cutoff_weight_form",
+   "_private.TGLExt.V351QuadraticTrace.0.TGLV350.Regular.scalar_root_cut_supremum",
+   "_private.TGLExt.V351QuadraticTrace.0.TGLV350.Regular.root_quadratic_commutation",
+   "_private.TGLExt.V351QuadraticTrace.0.TGLV350.Regular.bounded_root_form_balance",
+   "_private.TGLExt.V351QuadraticTrace.0.TGLV350.Regular.double_cut_form_supremum"
+  ]
+ },
+ "V2": {
+  "o_que_muda": "patch_um_v354.py exclui nomes _private.* dos #print axioms (a verificacao no trio desses lemas fica registrada na recompilacao independente, onde foram impressos pelos proprios modulos); nada mais muda",
+  "restauracao": {
+   "um.py": "c1c761809efcde52",
+   "fontes_removidos": 44,
+   "raiz_e_audit": "reescritos com o conteudo embutido na v353"
+  }
+ },
+ "VERIFICACAO": {
+  "V1": {
+   "script": "verifica_v354.py",
+   "sha256": "b63d7d96a48b896de1a5da44c37cffd14bc799b3b3b7eefefb1a303e066714d1",
+   "saida_preservada": "verifica_v354_V1_REPROVADA_out.txt",
+   "saida_sha256": "d75b76c0faeb71ac6c5d3ad4c2bf7e3e338702ac2afefbd57249a9bfd7d773b7",
+   "resultado": "REPROVADA em 1/21: o comparador de stdout v353/v354 achou duas linhas narrativas que citam a contagem de teoremas auditados (5594 -> 5619: 3_execucao e 7_aprovacao_o_que_permanece); os 20 itens restantes OK, inclusive \"nenhum veredito mudou\" pelo selo v353 guardado em bytes"
+  },
+  "V2": {
+   "stamp": "2026-09-15 09:38:03",
+   "script": "verifica_v354_v2.py",
+   "sha256": "ff6ce7787ffd003a7ea045d680701f22002ae795d8f82becec804ad0d8e071d4",
+   "o_que_muda": "as duas linhas narrativas entram nas linhas de contagem permitidas; nada mais muda"
+  }
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "proto": {
+  "protocol": {
+   "version": "H2_REPRODUCTION_V1",
+   "status": "PRE_REGISTERED_BEFORE_DATA_READ",
+   "form_of": "Tgl_gw_echo_unification_v1.py (fev/2026) H2 + TGL_Echo_Analyzer_v8.py (jan/2026): E_res/E_total -> alpha^2, com _echo_analysis copiada sem alteracao",
+   "hypothesis_2026_CONJECTURE": {
+    "claim": "Echo Ratio = E_res/E_total -> alpha^2 = beta apos subtrair o template alinhado e escalado",
+    "h2_ok": "desvio < 30% e correlacao > 0,90",
+    "beta_source": "SEALED_CODATA_ALPHA * sqrt(e) em runtime"
+   },
+   "modes": {
+    "A_synthetic": "gerador consistente do script (add_echo = False; noise_level 0,1 como no analyze; controlos 0,05 e 0,2) vs template sem ruido",
+    "B_real_raw": "strain do cache na janela [-2, +1] s do GPS, sem branqueamento (como o loader de fevereiro), vs template pycbc get_td_waveform (IMRPhenomD; massas de fonte, como no script)",
+    "C_real_whitened": "strain branqueado (PSD Welch pre-evento; 20-1024 Hz) vs template branqueado com a mesma PSD",
+    "D_off_source": "janelas branqueadas em -10 s e -7 s, mesmo template"
+   },
+   "events": "catalogo de 12 do script (os presentes no cache) e catalogo completo; L1 e H1",
+   "instrument": "pycbc (venv proprio /opt/pycbc_env), lalsuite",
+   "aggregation": "por modo: media, sd, n, fracao h2_ok; z_C = (media_C - beta)/(sd/sqrt n); z_C_vs_D; sintetico segue noise^2 se |media - noise^2|/noise^2 < 0,3 nos tres niveis",
+   "criteria": {
+    "min_events": 10,
+    "max_template_fail_frac": 0.2,
+    "retire_z": 5.0,
+    "consistent_z": 2.0,
+    "off_z": 5.0,
+    "noise_sq_tol": 0.3
+   },
+   "allowed_verdicts": [
+    "H2_IDENTITY_RETIRED",
+    "H2_REAL_CONSISTENT_WITH_ALPHA2",
+    "H2_REAL_NOT_ALPHA2",
+    "INCONCLUSIVE_SYSTEMATICS",
+    "AWAITING_RESULT_FILE"
+   ],
+   "forbidden_verdicts": [
+    "CONFIRMED",
+    "PROVED"
+   ],
+   "what_it_cannot_do": "nao mede o eco (isso e das v341-v348, com a amplitude do kernel e nulos): so diz se a estatistica de 2026 media o que dizia medir"
+  },
+  "protocol_hash": "2fe17b8341465488",
+  "checks": [
+   [
+    "protocolo pre-registrado e hasheado (2fe17b8341465488)",
+    true
+   ],
+   [
+    "beta jamais literal",
+    true
+   ],
+   [
+    "nenhum veredito proibido por construcao",
+    true
+   ]
+  ],
+  "all_verified": true,
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "verdict": "TGL_H2_REPRODUCTION_V1__PROTOCOL_PRE_REGISTERED_2fe17b8341465488__FEB_2026_ECHO_ANALYSIS_COPIED__REAL_DATA_WITH_PYCBC__GATE_UNTOUCHED"
+ },
+ "res": {
+  "result_path": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\cache\\gw\\H2_REPRODUCTION_V1_RESULT.json",
+  "protocol_hash": "2fe17b8341465488",
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "beta_runtime": 0.012031300400803142,
+  "why_outside_contour": "a hipotese de 2026 e CONJECTURE sobre uma estatistica; nada aqui move a matematica nem mede o eco",
+  "verdict": "TGL_H2_REPRODUCTION_AWAITING_RESULT_FILE",
+  "all_verified": false,
+  "checks": [
+   [
+    "resultado H2_REPRODUCTION_V1 em cache/gw",
+    false
+   ]
+  ],
+  "statuses": {
+   "leitura": "[REAL] o um.py nao recalcula: le por hash e aplica a matriz pre-registrada (2fe17b8341465488)",
+   "genealogia": "[REAL] v340 retirou o \u00ab100 sigma\u00bb de dezembro como identidade + teto; aqui fecha-se a linha de janeiro/fevereiro (E_res/E_total -> alpha^2) com o instrumento que faltava"
+  },
+  "runtime_s": 6.818771362304688e-05
+ },
+ "stamp": "2026-09-10T19:21:58"
+}

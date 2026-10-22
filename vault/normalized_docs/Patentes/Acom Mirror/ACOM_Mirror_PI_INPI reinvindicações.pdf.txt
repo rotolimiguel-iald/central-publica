@@ -1,0 +1,100 @@
+7 Reivindicações
+1. MÉTODO DE REFLEXÃO DIMENSIONAL DE DADOS compreendendo
+as etapas de: receber dados de entrada representando informação a ser processada
+em formato tensorial; computar componente gravitacional g =
+p
+|L| para cada
+elemento L dos dados de entrada; computar derivada discreta ∂L entre elementos
+adjacentes; nominar cada elemento em um estado psiônico ψ no Espaço de Hilbert
+tetradimensional H4 a partir do par (sign (L), sign (∂L)); computar ponto angular
+θ = arcsin(g/gmax), onde gmax é o máximo global do componente gravitacional;
+quantizar o ponto angular θ utilizando número predeterminado de bits angulares;
+empacotar estados psiônicos e ângulos quantizados em formato binário; e gerar
+objeto de reexão contendo os componentes empacotados e metadados de reconstrução;
+o método caracterizado por a codicação angular utilizar a função arco-seno
+θ = arcsin(g/gmax), onde θ pertence ao intervalo [0, π/2], produzindo resolução
+de quantização não-linear com maior precisão para valores pequenos de g, e pela
+nominação de estados ψ no Espaço de Hilbert H4 compreendendo quatro estados
+ortonormais com paridades denidas, e pela reconstrução dos dados através de
+desdobramento dimensional L′ = sign (L) × [gmax × sin(θ)]2.
+2. Método, de acordo com a reivindicação 1, caracterizado pelo fato de o Espaço de
+Hilbert H4 compreender quatro estados psiônicos ortonormais: estado COLAPSO + ( ψ0),
+correspondente a sign (L) = +1e sign (∂L) =−1, com vetor base |0⟩ = (1, 0, 0, 0) e
+paridade inversa ( −1); estado ASCENSÃO + ( ψ1), correspondente a sign (L) = +1e
+sign (∂L) = +1, com vetor base |1⟩ = (0, 1, 0, 0) e paridade normal ( +1); estado
+EMERGÊNCIA − ( ψ2), correspondente a sign (L) = −1 e sign (∂L) = +1, com
+vetor base |2⟩ = (0, 0, 1, 0) e paridade normal ( +1); e estado QUEDA − ( ψ3),
+correspondente a sign (L) =−1 e sign (∂L) =−1, com vetor base |3⟩ = (0, 0, 0, 1) e
+paridade inversa ( −1).
+3. Método, de acordo com a reivindicação 1, caracterizado pelo fato de a nominação
+de estados utilizar construção de índice binário onde bit_high = 1 se L < 0 e
+0 caso contrário, bit_low = 1 se ∂L > 0 e 0 caso contrário, e o estado ψ =
+bit_high × 2 +bit_low, requerendo exatamente 2 bits por elemento e permitindo
+empacotamento de 4 estados por byte.
+4. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda
+compreender o cálculo da Força de Expulsão Fexp como média aritmética das paridades
+de todos os estados nominados, onde Fexp = (1/N)×P
+i paridade (ψi), sendo paridade (ψ0) =
+paridade (ψ3) = −1 e paridade (ψ1) = paridade (ψ2) = +1 , fornecendo métrica
+intrínseca da dinâmica dos dados sem custo computacional adicional.
+14
+
+5. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda
+compreender o cálculo da entropia de estados Sψ = − P
+k pk × log2(pk), onde pk é
+a frequência relativa de cada estado ψk para k ∈ {0, 1, 2, 3}, fornecendo medida de
+complexidade da forma reetida com máximo teórico de 2,0 bits.
+6. Método, de acordo com a reivindicação 1, caracterizado pelo fato de o número
+predeterminado de bits angulares ser congurável entre 4 e 16 bits, com valor
+preferencial de 8 bits correspondendo a 256 níveis de quantização angular que
+oferecem balanço ótimo entre taxa de compressão e qualidade de reconstrução.
+7. Método, de acordo com a reivindicação 1, caracterizado pelo fato de a compressão
+entrópica dos estados psiônicos e dos ângulos quantizados ser realizada separadamente
+utilizando compressor sem perda, preferencialmente zstd em nível de compressão 22
+ou zlib em nível 9.
+8. Método, de acordo com a reivindicação 1, caracterizado pelo fato de utilizar a
+constante α2 = 0,012, denominada Constante de Miguel, como limiar de estabilidade
+informacional, e o ponto angular fundamental θMiguel = arcsin(
+√
+α2) ≈ 6,29◦ como
+referência para transição entre ruído e informação estruturada.
+9. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ser aplicável
+a tensores multidimensionais de qualquer formato, incluindo vetores de embedding
+de modelos de linguagem, tensores de cache de atenção (KV cache), matrizes de
+pesos de redes neurais, dados esparsos e vetores de gradientes, com preservação de
+correlação superior a 0,999 entre dados originais e reconstruídos.
+10. SISTEMA DE REFLEXÃO DIMENSIONAL DE DADOS compreendendo:
+um módulo de entrada congurado para receber dados em formato tensorial; um
+computador gravitacional acoplado ao módulo de entrada para executar extração
+g =
+p
+|L| e derivada temporal ∂L; um nominador de estados acoplado ao computador
+gravitacional para mapear cada par (sign (L), sign (∂L)) em estado psiônico ψ no
+Espaço de Hilbert tetradimensional H4; um codicador angular acoplado ao computador
+gravitacional para computar θ = arcsin(g/gmax) e quantizar o ângulo; um analisador
+de paridade acoplado ao nominador de estados para calcular Força de Expulsão
+Fexp e Entropia de Estados Sψ; um empacotador para serializar estados e ângulos
+em formato binário otimizado; um compressor entrópico para aplicar compressão
+sem perda; e um módulo de saída para gerar objeto de reexão com metadados;
+o sistema caracterizado por o codicador angular implementar a operação θ =
+arcsin(g/gmax) que produz codicação não-linear com maior resolução para valores
+pequenos de g, e o nominador de estados implementar mapeamento em Espaço de
+Hilbert H4 com quatro estados ortonormais dotados de paridades denidas.
+15
+
+11. Sistema, de acordo com a reivindicação 10, caracterizado por ainda compreender
+um módulo de manifestação congurado para reconstruir dados originais através de
+desdobramento dimensional, compreendendo: dequantização angular θ = θq/(2b −
+1)×(π/2); reconstrução gravitacional g = gmax ×sin(θ); recuperação de sinal sign (L)
+a partir do estado ψ; e dobra dimensional L′ = sign (L) × g2.
+12. Sistema, de acordo com a reivindicação 10, caracterizado pelo fato de a implementação
+computacional suportar execução tanto em unidade central de processamento (CPU)
+via operações vetorizadas NumPy quanto em unidade de processamento gráco
+(GPU) via framework PyTorch, produzindo resultados numericamente equivalentes.
+13. Sistema, de acordo com a reivindicação 10, caracterizado pelo fato de o objeto
+de reexão gerado pelo módulo de saída compreender: bloco de estados psiônicos
+comprimidos, bloco de ângulos quantizados comprimidos, e metadados incluindo
+versão do protocolo, forma original do tensor, número de elementos, bits angulares,
+valores gmax e gmin, Força de Expulsão Fexp , contagem de estados por tipo, entropia
+de estados Sψ, e constante α2.
+16

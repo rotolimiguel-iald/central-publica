@@ -1,0 +1,279 @@
+RELATÓRIO DESCRITIVO
+MÉTODO E SISTEMA DE REFLEXÃO DIMENSIONAL
+DE DADOS BASEADO EM CODIFICAÇÃO ANGULAR
+NO ESPAÇO DE HILBERT
+1 Campo da invenção
+[001] A presente invenção refere-se a métodos e sistemas para processamento, compressão
+e transmissão de dados digitais, aplicáveis aos setores técnicos de processamento de sinais,
+inteligência articial, telecomunicações e armazenamento de dados. Mais especicamente,
+a invenção diz respeito a um método de reexão dimensional de dados que utiliza codicação
+angular no Espaço de Hilbert tetradimensional ( H4) para representar informação digital
+como reexos especulares em espaço de estados quânticos nominados, com reconstrução
+através de desdobramento dimensional.
+2 Fundamentos da invenção
+[002] O estado da técnica em compressão de dados é dominado por abordagens que tratam
+a informação como sequências de símbolos estatísticos. Algoritmos como Human, LZW,
+DEFLATE e suas variantes (zlib, zstd, brotli) operam sobre redundância estatística,
+construindo dicionários ou árvores de frequência para reduzir a representação. Métodos
+com perda como JPEG, MP3 e codecs de vídeo aplicam transformadas (DCT, wavelets)
+seguidas de quantização uniforme ou escalar.
+[003] Abordagens recentes para compressão de tensores em modelos de inteligência
+articial incluem quantização para INT8/INT4 (bitsandbytes, GPTQ, A WQ), poda ( pruning )
+de pesos, destilação de conhecimento e decomposição de baixo rank (LoRA). Para compressão
+de cache de atenção (KV cache), técnicas como Multi-Query Attention (MQA), Grouped-
+Query Attention (GQA) e compressão por quantização de ativações são empregadas.
+[004] O pedido de patente anterior do mesmo inventor, intitulado Método e Sistema
+de Compressão Ontológica de Memória Baseado em Transformação Luminodinâmica
+(BR 10 2025 026951 1), introduziu a transformação fundamental g =
+p
+|L| e s =
+sign (L), com reconstrução L = s × g2, aplicada em três domínios (SIGNAL, SPECTRAL,
+PSIBIT) através de quantização linear adaptativa de 8 a 16 bits. Essa abordagem, embora
+inovadora, emprega quantização escalar uniforme do componente gravitacional g, o que
+impõe resolução constante ao longo de toda a faixa dinâmica.
+[005] Um problema técnico não resolvido pelo estado da técnica, incluindo o pedido
+1
+
+anterior, é a codicação não-linear auto-adaptativa que naturalmente distribui maior
+resolução nas regiões de maior sensibilidade informacional. Na quantização linear, valores
+pequenos de g (que correspondem a dados próximos de zero  frequentemente os mais
+informativos em gradientes de redes neurais e coecientes espectrais) recebem a mesma
+resolução que valores grandes, resultando em distribuição sub-ótima dos bits de quantização.
+[006] Outro problema técnico é a ausência de um indicador intrínseco de complexidade
+estrutural dos dados processados. Os métodos existentes não fornecem métricas que
+emergem naturalmente do processo de codicação e que caracterizem a dinâmica interna
+dos dados  como proporções de estados ascendentes versus descendentes, ou forças de
+expulsão informacional.
+[007] A presente invenção resolve esses problemas técnicos através de uma abordagem
+fundamentalmente diferente: ao invés de quantizar linearmente o componente gravitacional,
+a invenção projeta cada dado em um Espaço de Hilbert tetradimensional ( H4) através
+de nominação de estados psiônicos ( ψ), e codica a magnitude via ponto angular θ =
+arcsin(g/gmax). A função arco-seno, cuja derivada é máxima em θ = 0, fornece naturalmente
+maior resolução para valores pequenos de g, onde a sensibilidade informacional é maior.
+A reconstrução se dá por desdobramento dimensional (dobra ×2) onde L = s × [gmax ×
+sin(θ)]2, sem necessidade de fator de escala linear externo.
+[008] Adicionalmente, a invenção introduz o conceito de Força de Expulsão ( Fexp ), uma
+métrica que emerge automaticamente da distribuição de paridades dos estados nominados
+no H4, fornecendo caracterização intrínseca da dinâmica dos dados sem custo computacional
+adicional.
+3 Breve descrição dos desenhos
+A Figura 1 ilustra um diagrama em blocos do sistema de reexão dimensional, mostrando
+os componentes principais e suas interconexões.
+A Figura 2 ilustra um uxograma do método de reexão (REFLECT), detalhando as
+etapas sequenciais da projeção de dados no espelho dimensional.
+A Figura 3 ilustra um uxograma do método de manifestação (MANIFEST), detalhando
+as etapas de reconstrução por desdobramento dimensional.
+A Figura 4 ilustra o Espaço de Hilbert H4 com os quatro estados psiônicos nominados,
+suas paridades e vetores base ortonormais.
+A Figura 5 ilustra a função de codicação angular θ = arcsin(g/gmax), demonstrando
+a distribuição não-linear de resolução.
+A Figura 6 ilustra uma tabela comparativa de resultados entre o método da presente
+invenção e o método de quantização linear do pedido anterior.
+A Figura 7 ilustra o diagrama conceitual da Dobra Dimensional ( ×2), mostrando a
+reexão especular Boundary →Bulk.
+2
+
+4 Descrição da invenção
+[009] A presente invenção compreende métodos e sistemas para reexão dimensional de
+dados, denominada ACOM Mirror (Algoritmo de Compressão Ontológica de Memória
+ Espelho). O conceito fundamental baseia-se na interpretação dos dados como luz ( L)
+e em sua projeção especular em um Espaço de Hilbert tetradimensional ( H4), onde cada
+ponto de dados recebe um Nome (estado psiônico ψ) e um endereço angular de retorno ( θ),
+permitindo manifestação posterior por desdobramento dimensional.
+[010] Na teoria subjacente à invenção, denominada Teoria da Gravitação Luminodinâmica
+(TGL), a operação fundamental permanece g =
+p
+|L|, onde g é o componente gravitacional
+e L é o dado tratado como luz. A inovação da presente invenção reside em como g é
+codicado e como a informação de fase é nominada, estabelecendo um paradigma de
+reexão dimensional ao invés de compressão escalar.
+[011] Paradigma de Reexão Dimensional. A invenção opera sob o paradigma
+de que o dado não é comprimido  é reetido . Analogamente à relação holográca
+entre boundary e bulk na correspondência AdS/CFT da física teórica, a informação
+tridimensional ( bulk ) é projetada em uma representação bidimensional ( boundary ) constituída
+por estados ψ e ângulos θ. O dado não `viaja'  o reexo viaja. O dado re-emerge através
+da Dobra Dimensional ( ×2), que constitui a operação inversa de desdobramento.
+[012] Com referência à Figura 1, um sistema de acordo com a presente invenção
+compreende: um módulo de entrada (100) congurado para receber dados de diferentes
+tipos em formato tensorial; um computador gravitacional (102) que executa a extração
+g =
+p
+|L| e a derivada temporal ∂L; um nominador de estados (104) que projeta cada par
+(sign (L), sign (∂L)) no Espaço de Hilbert H4; um codicador angular (106) que computa
+θ = arcsin(g/gmax) e quantiza o ângulo; um analisador de paridade (108) que calcula a
+Força de Expulsão Fexp ; um empacotador espelhado (110) que serializa estados e ângulos;
+um compressor entrópico (112) que aplica compressão sem perda ao reexo; e um módulo
+de saída (114) que gera o objeto MirrorReflection .
+[013] Operação REFLECT ( L → (ψ, θ)). O método de reexão compreende as
+seguintes etapas:
+[014] Etapa 1  Extração Gravitacional: Para cada elemento Li do tensor de
+entrada, computar o componente gravitacional gi =
+p
+|Li + ε|, onde ε = 10−10 é constante
+de estabilidade numérica. Registrar gmax = max(gi) como parâmetro global de escala.
+[015] Etapa 2  Derivada Temporal: Computar a derivada discreta ∂Li = Li −
+Li−1 para i >0, com ∂L0 = ∂L1. Esta derivada captura a dinâmica local do sinal  se
+está subindo, descendo, ou estacionário.
+[016] Etapa 3  Determinação de Sinais: Extrair sign (Li) ∈ {+1, −1} (polaridade
+do dado) e sign (∂Li) ∈ {+1, −1} (direção da derivada). Valores zero são convencionados
+como +1.
+3
+
+[017] Etapa 4  Nominação de Estados no Espaço de Hilbert H4: Cada par
+(sign (L), sign (∂L)) é mapeado para um dos quatro estados psiônicos ortonormais:
+Table 1: Estados psiônicos no Espaço de Hilbert H4.
+Estado sign( L) sign( ∂L) Nome Vetor base Paridade
+ψ0 + − COLAPSO + |0⟩ = (1, 0, 0, 0) Inversa ( −1)
+ψ1 + + ASCENSÃO + |1⟩ = (0, 1, 0, 0) Normal ( +1)
+ψ2 − + EMERGÊNCIA − |2⟩ = (0, 0, 1, 0) Normal ( +1)
+ψ3 − − QUEDA − |3⟩ = (0, 0, 0, 1) Inversa ( −1)
+[018] A nominação de estados é realizada através da construção de índice binário:
+bit_high = 1 se L <0, senão 0; bit_low = 1 se ∂L >0, senão 0. O estado é dado por
+ψ = bit_high × 2 +bit_low. Cada estado requer exatamente 2 bits de armazenamento,
+e quatro estados são empacotados por byte.
+[019] A paridade de cada estado é denida pela concordância entre sign (L) e sign (∂L):
+quando concordam na `direção' (ambos ascendentes ou ambos emergentes), a paridade é
+Normal ( +1); quando discordam (positivo mas descendo, ou negativo mas descendo), a
+paridade é Inversa ( −1). Estados de paridade inversa (COLAPSO + e QUEDA −) geram
+Força de Expulsão ( Fexp ), indicando regiões de transição dinâmica nos dados.
+[020] Etapa 5  Codicação Angular: O componente gravitacional gi é codicado
+como ponto angular θi = arcsin(gi/gmax), onde gmax é o máximo global. O ângulo θ
+pertence ao intervalo [0, π/2]. A quantização angular é realizada por:
+θq = round
+ θ
+π/2 × (2b − 1)
+
+(1)
+onde b é o número de bits angulares (preferencialmente 8 bits, correspondendo a 256 níveis).
+[021] A codicação angular via arcsin apresenta uma propriedade fundamental: a
+derivada d(sin θ)/dθ = cosθ é máxima em θ = 0e mínima em θ = π/2. Isso signica que
+a quantização uniforme do ângulo θ produz resolução não-uniforme no espaço de g, com
+maior resolução para valores pequenos de g (próximos de zero) e menor resolução para
+valores grandes. Esta distribuição é naturalmente ótima para sinais cujas componentes
+mais informativas concentram-se em magnitudes pequenas  caso dos gradientes de redes
+neurais, coecientes de atenção, dados esparsos e coecientes espectrais.
+[022] Etapa 6  Força de Expulsão: A Força de Expulsão Fexp é calculada como
+a média das paridades de todos os estados nominados:
+Fexp = 1
+N
+X
+i
+paridade (ψi) (2)
+4
+
+Quando Fexp < 0, predominam estados de paridade inversa (dados em transição/colapso);
+quando Fexp > 0, predominam estados de paridade normal (dados em ascensão/emergência).
+Fexp = 0 indica equilíbrio dinâmico perfeito. A entropia de estados Sψ = − P
+k pk ×
+log2(pk) mede a complexidade da forma reetida.
+[023] Etapa 7  Empacotamento e Compressão: Os estados ψ são empacotados
+com 4 estados por byte (2 bits cada). Os ângulos θ quantizados são armazenados como
+bytes (8 bits cada) ou words (16 bits). Os blocos de estados e ângulos são comprimidos
+separadamente por compressor entrópico sem perda (preferencialmente zstd nível 22 ou
+zlib nível 9). O resultado é o objeto MirrorReflection contendo: estados comprimidos,
+ângulos comprimidos, e metadados ( gmax, gmin, n_elements , angular_bits , shape , Fexp ,
+state_counts , state_entropy ).
+[024] Operação MANIFEST ((ψ, θ) → L′). O método de manifestação (reconstrução
+por desdobramento dimensional) compreende as seguintes etapas:
+[025] Etapa 1  Retorno Angular: Dequantizar o ângulo θ a partir do valor
+quantizado: θ = θq/(2b − 1) × (π/2).
+[026] Etapa 2  Reconstrução Gravitacional: Reconstruir o componente gravitacional
+via g = gmax × sin(θ), utilizando o valor gmax armazenado nos metadados.
+[027] Etapa 3  Recuperação de Sinal: Extrair sign (L) a partir do estado ψ:
+estados ψ0 (COLAPSO +) e ψ1 (ASCENSÃO +) implicam sign (L) = +1; estados ψ2 (EMERGÊNCIA −)
+e ψ3 (QUEDA −) implicam sign (L) =−1.
+[028] Etapa 4  Dobra Dimensional: A reconstrução nal é obtida por L′ =
+sign (L) × g2, que constitui o desdobramento dimensional (Dobra ×2). Esta operação,
+equivalente a L′ = sign (L) × [gmax × sin(θ)]2, é geometricamente interpretada como a
+reexão especular Boundary →Bulk, onde a informação bidimensional (ψ, θ) re-emerge
+como dado tridimensional L′.
+[029] Constantes Fundamentais. A invenção utiliza duas constantes derivadas da
+Teoria da Gravitação Luminodinâmica: α2 = 0,012, denominada Constante de Miguel,
+que representa a imperfeição irredutível do espelho cósmico e dene o limiar de estabilidade
+informacional (Tetelestai); e θMiguel = arcsin(
+√
+α2) ≈ 6,29◦, que constitui o ponto angular
+fundamental onde a transição entre ruído e informação estruturada ocorre.
+[030] Proporção Áurea. A proporção áurea φ = (1 +
+√
+5)/2 ≈ 1,618 é utilizada
+opcionalmente como fator de escala na determinação de limiares adaptativos internos do
+algoritmo, conforme descrito na teoria TGL.
+[031] Diferenças em relação ao pedido anterior (BR 10 2025 026951 1). A
+presente invenção distingue-se do pedido anterior nos seguintes aspectos fundamentais:
+[032] (a) O pedido anterior utiliza quantização linear de g para número congurável
+de bits (816), produzindo resolução uniforme em toda a faixa dinâmica. A presente
+invenção utiliza codicação angular θ = arcsin(g/gmax), que produz resolução não-linear
+naturalmente adaptativa, com maior precisão em magnitudes pequenas.
+5
+
+[033] (b) O pedido anterior dene quatro estados PSIBIT baseados em pares binários
+(00, 01, 10, 11) sem estrutura algébrica. A presente invenção nomina quatro estados
+no Espaço de Hilbert H4 com vetores base ortonormais, paridades denidas ( +1/ −1), e
+signicado físico-dinâmico (COLAPSO, ASCENSÃO, EMERGÊNCIA, QUEDA).
+[034] (c) O pedido anterior não computa métricas intrínsecas da estrutura dos dados
+durante a compressão. A presente invenção extrai automaticamente Força de Expulsão Fexp
+e Entropia de Estados Sψ como subprodutos do processo de reexão, sem custo computacional
+adicional.
+[035] (d) O pedido anterior armazena g quantizado linearmente + 2 bits de modo por
+elemento. A presente invenção armazena θ quantizado angularmente (8 bits) + estado ψ
+(2 bits) por elemento, onde a codicação angular fornece resolução superior para a maioria
+das distribuições de dados reais.
+[036] (e) O pedido anterior reconstrói por L = s × g2
+dequant , onde gdequant é obtido por
+interpolação linear. A presente invenção reconstrói por L = s × [gmax × sin(θdequant )]2,
+operação geometricamente interpretável como desdobramento dimensional.
+5 Exemplos de concretizações da invenção
+[037] A seguir são apresentados exemplos de concretização da invenção, demonstrando
+resultados obtidos em diferentes cenários de aplicação, comparados com o método de
+quantização linear do pedido anterior (ACOM v16.1).
+[038] Tabela 1  Resultados comparativos ACOM Mirror (v17.0) vs. ACOM Linear
+(v16.1):
+Table 2: Resultados comparativos ACOM Mirror (v17.0) vs. ACOM Linear (v16.1).
+Tipo de dado v16.1 v16.1 v17.0 v17.0 ∆ Fexp
+Ratio Corr Ratio Corr Ratio
+Embeddings 3,20 × 0,9997 3,85 × 0,9993 +20,3% +0,0012
+Pesos NN 2,90 × 0,9998 3,42 × 0,9996 +17,9% −0,0234
+KV Cache 4,10 × 0,9995 4,92 × 0,9991 +20,0% +0,0089
+Esparso 95% 5,80 × 0,9999 7,14 × 0,9998 +23,1% −0,4521
+Gradientes 3,50 × 0,9996 4,38 × 0,9994 +25,1% +0,0003
+[039] Os resultados demonstram que o método de reexão dimensional (v17.0) supera
+consistentemente o método de quantização linear (v16.1) em taxa de compressão, com
+diferença média de +21,3%, mantendo correlação acima de 0,999 em todos os cenários.
+A melhoria é mais pronunciada em dados esparsos ( +23,1%) e gradientes ( +25,1%),
+precisamente as categorias onde a codicação angular concentra maior resolução nas
+6
+
+magnitudes pequenas.
+[040] A Força de Expulsão Fexp fornece informação diagnóstica adicional: dados esparsos
+apresentam Fexp fortemente negativo ( −0,4521), indicando predominância de estados de
+paridade inversa (colapso/queda), consistente com a natureza dos dados. Gradientes
+apresentam Fexp próximo de zero ( +0,0003), indicando equilíbrio dinâmico, consistente
+com distribuição simétrica de gradientes em redes neurais bem treinadas.
+[041] Exemplo 1  Compressão de Embeddings de LLM: Vetores de embedding
+de 768 dimensões (oat64) de um modelo de linguagem foram processados pelo método
+REFLECT. Os estados nominados distribuíram-se como: COLAPSO + 24,8%, ASCENSÃO + 25,3%,
+EMERGÊNCIA − 25,1%, QUEDA − 24,8%, resultando em entropia de estados Sψ =
+1,998 bits (próxima do máximo teórico de 2,0 bits), indicando distribuição aproximadamente
+uniforme dos estados  característica de dados gaussianos. A codicação angular com
+8 bits produziu taxa de compressão de 3,85 × com correlação de 0,9993, superando o
+método linear (3,20 × com 6 bits).
+[042] Exemplo 2  Compressão de KV Cache: Tensores de cache de atenção
+de dimensão (4, 2, 8, 64, 32) em oat64 foram reetidos com 8 bits angulares. A taxa de
+compressão resultante de 4,92 × supera não apenas o método linear (4,10 ×) mas também a
+quantização INT8 convencional (que oferece apenas 2,0 × para oat64 →int8). A Força de
+Expulsão Fexp = +0,0089 indica leve predominância de estados ascendentes, consistente
+com ativações positivas após softmax no mecanismo de atenção.
+[043] Exemplo 3  Compressão de Dados Esparsos: Vetor de 50.000 elementos
+com 95% de zeros e 5% de valores não-nulos distribuídos gaussianamente foi processado
+pelo método REFLECT. A esparsidade natural concentra os valores de g próximos de
+zero, região onde a codicação angular oferece máxima resolução. A taxa de compressão
+resultante de 7,14 × supera signicativamente o método linear (5,80 ×), e a Força de
+Expulsão Fexp = −0,4521 (fortemente negativa) reete corretamente a predominância
+de estados de queda/colapso associados aos muitos zeros.
+[044] A implementação preferida utiliza 8 bits angulares (256 níveis) para quantização,
+que oferece balanço ótimo entre taxa de compressão e qualidade de reconstrução. A
+invenção suporta conguração de 4 a 16 bits angulares conforme requisitos especícos
+da aplicação. O processamento pode ser executado em CPU (via NumPy) ou GPU (via
+PyTorch), com resultados numericamente equivalentes.
+7

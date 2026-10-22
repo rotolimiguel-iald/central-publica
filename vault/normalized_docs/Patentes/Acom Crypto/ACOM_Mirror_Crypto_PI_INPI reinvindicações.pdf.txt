@@ -1,0 +1,82 @@
+7 Reivindicações
+1. MÉTODO DE CRIPTOGRAFIA DE DADOS POR SEPARAÇÃO ONTOLÓGICA
+DE REFLEXÃO DIMENSIONAL compreendendo as etapas de: receber dados
+de entrada em formato tensorial; executar reexão dimensional sobre os dados,
+extraindo componente gravitacional g =
+p
+|L|, derivada discreta ∂L, estados psiônicos ψ
+nominados no Espaço de Hilbert H4 a partir de (sign (L), sign (∂L)), e ângulos θ =
+arcsin(g/gmax) quantizados; gerar identicadores criptogracamente seguros para a
+sessão; ofuscar estados e ângulos empacotados com chaves derivadas do identicador
+de sessão; comprimir cada bloco separadamente; computar hashes de integridade
+para vericação cruzada; e separar a informação em três partes ontologicamente
+independentes; o método caracterizado por as três partes compreenderem: um
+PsiShare ( Ψ) contendo estados psiônicos criptografados que, isoladamente, constituem
+sequência de índices sem signicado numérico; um ThetaShare ( Θ) contendo ângulos
+criptografados que, isoladamente, constituem valores relativos sem polaridade nem
+escala absoluta; e uma MasterKey ( κ) contendo parâmetros de escala e hashes que,
+isoladamente, são insucientes para reconstrução; sendo que a reconstrução dos
+dados requer a reunião simultânea de todas as três partes para execução da Dobra
+Dimensional L′ = sign (L) × [gmax × sin(θ)]2.
+2. Método, de acordo com a reivindicação 1, caracterizado pelo fato de a segurança
+basear-se na incompletude ontológica de cada parte isolada, onde estados sem magnitudes
+são informacionalmente equivalentes a ruído, ângulos sem sinais e escala são valores
+sem referência, e escala sem dados é estruturalmente inútil, sendo esta propriedade
+invariante sob avanços computacionais incluindo computação quântica.
+3. Método, de acordo com a reivindicação 1, caracterizado pelo fato de a ofuscação
+utilizar operação XOR com chaves derivadas do identicador de sessão ( share_id )
+através de hash SHA-256 concatenado com contexto distinto para cada parte, seguido
+de geração pseudo-aleatória por PRNG PCG64 seedado pelos primeiros 4 bytes do
+hash.
+4. Método, de acordo com a reivindicação 1, caracterizado pelo fato de a vericação
+de integridade compreender tripla vericação: hash SHA-256 dos estados no PsiShare,
+hash SHA-256 dos ângulos no ThetaShare, e hashes cruzados na MasterKey correspondentes
+aos hashes das outras duas partes.
+5. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda
+compreender vericação de integridade física através da Força de Expulsão Fexp
+computada como média das paridades dos estados psiônicos, onde o valor esperado
+15
+
+é armazenado na MasterKey e comparado durante descriptograa com limiar de
+tolerância preferencialmente de 0,001.
+6. Método, de acordo com a reivindicação 1, caracterizado pelo fato de a serialização
+utilizar protocolo com magic bytes especícos: Ψ ( 0xCEA8 ) para PsiShare, Θ ( 0xCE98 )
+para ThetaShare e κ ( 0xCEBA ) para MasterKey, seguidos de comprimento de metadados
+em uint32 little-endian, metadados JSON UTF-8 e dados criptografados, permitindo
+armazenamento e transmissão independentes por canais separados.
+7. Método, de acordo com a reivindicação 1, caracterizado pelo fato de o sistema
+simultaneamente criptografar e comprimir os dados, atingindo taxa de compressão
+superior a 3:1 para dados de ponto utuante de 64 bits.
+8. Método, de acordo com a reivindicação 1, caracterizado pelo fato de a validação
+de compatibilidade durante descriptograa compreender vericação de que PsiShare
+e ThetaShare possuem mesmo share_id e n_elements consistente entre todas as
+partes, impedindo reunião de partes de sessões distintas.
+9. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ser aplicável
+à proteção de tensores de inteligência articial incluindo embeddings, pesos de
+redes neurais, KV cache e gradientes, com correlação superior a 0,9999 entre dados
+originais e reconstruídos.
+10. SISTEMA DE CRIPTOGRAFIA POR SEPARAÇÃO ONTOLÓGICA
+DE REFLEXÃO DIMENSIONAL compreendendo: módulo de entrada para
+dados tensoriais; espelho criptográco para reexão dimensional com separação
+ontológica; gerador de chaves para identicadores e chaves derivadas; ofuscador
+XOR; compressor entrópico sem perda; módulo de hashing SHA-256 com vericação
+cruzada; serializador com magic bytes e metadados; e módulo de saída para geração
+de três partes ontologicamente independentes (PsiShare, ThetaShare, MasterKey);
+o sistema caracterizado por a segurança basear-se na separação ontológica em
+componentes estruturalmente incompletos, onde cada parte isolada é informacionalmente
+equivalente a ruído, e a reconstrução requer reunião simultânea de todas as partes.
+11. Sistema, de acordo com a reivindicação 10, caracterizado por ainda compreender
+módulo de descriptograa congurado para: validar compatibilidade por share_id ;
+descomprimir e desofuscar; executar vericação de integridade tripla por hashes
+SHA-256 cruzados; vericar integridade física por Fexp ; e reconstruir dados por
+Dobra Dimensional.
+12. Sistema, de acordo com a reivindicação 10, caracterizado pelo fato de as três
+partes serem exportáveis como bytes independentes para armazenamento distribuído
+16
+
+ou transmissão por canais separados, permitindo custódia dividida em que nenhuma
+entidade individual possui informação suciente para reconstrução.
+13. Sistema, de acordo com a reivindicação 10, caracterizado pelo fato de suportar
+execução em CPU via NumPy e em GPU via PyTorch com resultados numericamente
+equivalentes.
+17

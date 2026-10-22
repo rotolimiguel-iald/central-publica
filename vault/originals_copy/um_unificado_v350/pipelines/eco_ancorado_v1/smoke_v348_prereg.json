@@ -1,0 +1,101 @@
+{
+ "proto": {
+  "protocol": {
+   "version": "ECHO_SEARCH_V1",
+   "status": "PRE_REGISTERED_BEFORE_DATA_READ",
+   "form_of": "search_for_echoes, protocolo de observacao TGL, outubro de 2025 (Observavel 1.2)",
+   "hypothesis_2025_CONJECTURE": {
+    "delay": "t_echo = (2GM/c^3) ln(r_halo/r_H) ~ 0,1-2,0 s",
+    "amplitude_2025": "A_echo/A_prim ~ 0,01-0,1",
+    "amplitude_kernel_REAL": "sqrt(beta) (v341: Smat_reflection), sinal -1",
+    "beta_source": "SEALED_CODATA_ALPHA * sqrt(e) em runtime"
+   },
+   "data": "cache de maio (GWOSC via gwpy, 32 s @ 4096 Hz); H1 E L1 presentes e limpos; PSD Welch dos 14 s pre-evento; branqueamento na banda [50, 300] Hz",
+   "merger": "ancoragem por filtro casado (IMRPhenomD nos parametros do catalogo, \u00b1100 ms do GPS), SNR >= 6 em cada detector",
+   "search": {
+    "window_s": [
+     0.1,
+     2.0
+    ],
+    "statistic": "envoltoria analitica em sigmas (sigma fora da fonte)",
+    "threshold_sigma": 3.0,
+    "min_sep_s": 0.01,
+    "coincidence_s": 0.01,
+    "rank": "media das alturas (como no protocolo) e soma em quadratura"
+   },
+   "background": "a mesma busca em 6 janelas de 1,9 s fora da fonte (pre-evento: inicios em -14, -12, -10, -8, -6, -4 s) por evento",
+   "injection": "primario ajustado (amplitude complexa do filtro casado), parte pos-pico, escalado por sqrt(beta), injetado nas janelas de fundo com tau ~ U[0,1; 2,0] s (6 por evento; mesmo tau nos dois detectores) -> eficiencia eps_i; E_det = soma eps_i",
+   "pattern": "KS de tau/(G M_f/c^3) dos candidatos on-source contra o fundo",
+   "aggregation": "N_on = coincidencias on-source; B_exp = soma das taxas de fundo; z de Poisson; p_excess = P(N >= N_on | B_exp); p_excl = P(N <= N_on | B_exp + E_det)",
+   "criteria": {
+    "detect_z": 5.0,
+    "loud_sigma": 5.0,
+    "loud_events_min": 3,
+    "pattern_p_max": 0.001,
+    "powered_E_det_min": 20.0,
+    "excl_p_max": 2.9e-07,
+    "bg_rate_max_per_window": 1.0,
+    "min_events": 10
+   },
+   "allowed_verdicts": [
+    "DETECTED",
+    "EXCLUDED_AT_SQRT_BETA",
+    "NOT_FALSIFIED_POWERED",
+    "NOT_FALSIFIED_UNDERPOWERED",
+    "INCONCLUSIVE_SYSTEMATICS",
+    "AWAITING_RESULT_FILE"
+   ],
+   "forbidden_verdicts": [
+    "CONFIRMED",
+    "PROVED"
+   ],
+   "what_it_cannot_do": "nao testa as leis MAY/KMS (ms; v341-v347); exclui ou nao a CONJECTURA de 2025 (eco de sqrt(beta) em 0,1-2 s) na eficiencia medida por injecao; picos coincidentes sem padrao sao fundo, nao eco"
+  },
+  "protocol_hash": "2538d15cc8cb7a6a",
+  "checks": [
+   [
+    "protocolo pre-registrado e hasheado (2538d15cc8cb7a6a)",
+    true
+   ],
+   [
+    "beta jamais literal",
+    true
+   ],
+   [
+    "amplitude de injecao = sqrt(beta) do kernel",
+    true
+   ],
+   [
+    "nenhum veredito proibido por construcao",
+    true
+   ]
+  ],
+  "all_verified": true,
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "verdict": "TGL_ECHO_SEARCH_V1__PROTOCOL_PRE_REGISTERED_2538d15cc8cb7a6a__OCTOBER_2025_FORM_INHERITED__BACKGROUND_INJECTION_PATTERN_ADDED__GATE_UNTOUCHED"
+ },
+ "res": {
+  "result_path": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\cache\\gw\\ECHO_SEARCH_V1_RESULT.json",
+  "protocol_hash": "2538d15cc8cb7a6a",
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "beta_runtime": 0.012031300400803142,
+  "why_outside_contour": "a hipotese de 2025 (atraso 0,1-2 s) e CONJECTURE; a amplitude e do kernel; nada aqui move a matematica",
+  "verdict": "TGL_ECHO_SEARCH_AWAITING_RESULT_FILE",
+  "all_verified": false,
+  "checks": [
+   [
+    "resultado ECHO_SEARCH_V1 em cache/gw",
+    false
+   ]
+  ],
+  "statuses": {
+   "leitura": "[REAL] o um.py nao recalcula: le por hash e aplica a matriz pre-registrada (2538d15cc8cb7a6a)",
+   "amplitude": "[REAL, kernel] a eficiencia e medida injetando o primario ajustado x sqrt(beta); beta entra",
+   "hipotese": "[CONJECTURE, 2025] atraso de 0,1-2 s: a lei madura (MAY/KMS, ms) e outra e foi testada nas v341-v347"
+  },
+  "runtime_s": 4.458427429199219e-05
+ },
+ "stamp": "2026-09-10T18:52:53"
+}

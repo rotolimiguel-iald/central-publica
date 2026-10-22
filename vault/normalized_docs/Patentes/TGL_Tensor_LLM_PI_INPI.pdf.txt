@@ -1,0 +1,526 @@
+PI — TGL-Tensor para LLMs
+MÉTODO E SISTEMA DE COMPRESSÃO
+ONTOLÓGICA DE TENSORES PARA
+MODELOS DE LINGUAGEM COM
+DECOMPOSIÇÃO ESPECTRAL ADAPTATIV A
+E CODIFICAÇÃO ANGULAR
+Campo da invenção
+[1] A presente invenção refere-se a métodos e sistemas de compressão de tensores multidimensionais,
+aplicáveis aos setores técnicos de inteligência artificial, aprendizado de máquina e processamento
+de linguagem natural. Mais especificamente, a invenção diz respeito a um método de compressão
+ontológica de tensores de modelos de linguagem de grande escala (LLMs — Large Language
+Models), que combina transformada gravitacionalg =
+p
+|L|, decomposição em valores singulares
+(SVD) com rank adaptativo determinado pela constante α2 = 0,012, codificação angular não-
+linear θ = arcsin( g/gmax) no Espaço de Hilbert H4, e empacotamento de bits em N bits
+arbitrários com execução nativa em GPU.
+[2] A invenção é particularmente aplicável a: cache de atenção (KV cache), vetores de embedding,
+pesos de redes neurais, gradientes de treinamento, e matrizes de atenção de modelos Transformer.
+Fundamentos da invenção
+[3] O estado da técnica em compressão de tensores para LLMs é dominado por técnicas de
+quantização uniforme. A quantização INT8 reduz elementos de ponto flutuante de 32 bits para
+8 bits (taxa 4:1), com mapeamento linear q = round((x − xmin)/(xmax − xmin) × 255). A
+quantização INT4 atinge 8:1, porém com degradação significativa de qualidade. Técnicas como
+GPTQ, AWQ e SqueezeLLM aplicam quantização não-uniforme com compensação de erro,
+mas operam exclusivamente sobre pesos estáticos, não sobre tensores dinâmicos como KV
+cache.
+[4] Técnicas de compressão de KV cache incluem: Multi-Query Attention (MQA), que compartilha
+cabeças de Key e Value; Grouped-Query Attention (GQA), que agrupa cabeças; e PagedAttention,
+1
+
+PI — TGL-Tensor para LLMs
+que gerencia memória de KV cache em blocos paginados. Estas técnicas são arquiteturais e
+requerem re-treinamento do modelo, não sendo aplicáveis como compressão pós-treinamento.
+[5] A decomposição em valores singulares (SVD) truncada é conhecida no estado da técnica
+para aproximação de baixo rank de matrizes: M ≈ UkΣkVT
+k . Porém, sua aplicação a tensores
+de LLMs apresenta limitações: (a) a escolha do rank k é tipicamente heurística (percentual fixo
+do rank completo); (b) os componentes U, Σ e V T são armazenados em ponto flutuante sem
+compressão adicional; (c) não há mecanismo para comprimir os próprios componentes da SVD.
+[6] Problemas técnicos não resolvidos pelo estado da técnica:
+[7] (a) Quantização não-adaptativa : as técnicas existentes aplicam resolução uniforme a
+todos os valores, desperdiçando bits em regiões de baixa importância informacional e sub-
+representando regiões críticas.
+[8] (b) Ausência de compressão de componentes espectrais: a SVD truncada reduz dimensionalidade,
+mas os componentes U, Σ, V T permanecem em ponto flutuante, limitando a taxa final de
+compressão.
+[9] (c) Inexistência de seleção adaptativa de modo: não há no estado da técnica um sistema
+que analise automaticamente a estrutura espectral do tensor e selecione o modo de compressão
+ótimo.
+[10] (d) Ausência de métricas intrínsecas : os métodos existentes não fornecem métricas
+emergentes que informem sobre a estrutura, dinâmica ou integridade dos dados comprimidos.
+[11] A presente invenção resolve esses problemas técnicos através de um método que combina:
+(i) transformada gravitacional g =
+p
+|L| com codificação angular θ = arcsin( g/gmax), que
+concentra resolução nas regiões de maior variação informacional; (ii) decomposição SVD com
+rank determinado adaptativamente pela constante α2, onde o rank ótimo k é o menor inteiro tal
+que Pk
+i=1 σ2
+i / P σ2 > 1 − α2; (iii) compressão ontológica dos componentes U, Σ, V T pela
+mesma transformada gravitacional, criando compressão em cascata; (iv) seleção automática
+de modo (DIRETO, ESPECTRAL, HÍBRIDO) baseada na análise espectral do tensor; e (v)
+métricas intrínsecas — variância normalizada para detecção do ponto de Tetelestai (var < α2),
+estados psiônicos ψ no H4, e Força de Expulsão Fexp.
+[12] O pedido de patente BR 10 2025 026951 1 do mesmo inventor introduziu o método ACOM
+de compressão ontológica. Pedidos subsequentes (ACOM Mirror e ACOM Mirror Crypto)
+introduziram codificação angular e separação ontológica criptográfica. A presente invenção
+constitui aplicação e extensão desses princípios ao domínio específico de tensores de modelos
+de linguagem, com adição de decomposição espectral adaptativa, modos de compressão híbridos,
+empacotamento de bits emN bits arbitrários com execução nativa em GPU, e pipeline completo
+para inferência de LLMs.
+2
+
+PI — TGL-Tensor para LLMs
+Breve descrição dos desenhos
+[13] A Figura 1 ilustra o diagrama de blocos do sistema TGL-Tensor, mostrando os três modos
+de compressão e o fluxo de dados.
+[14] A Figura 2 ilustra o fluxograma da operação de compressão no modo DIRETO.
+[15] A Figura 3 ilustra o fluxograma da operação de compressão no modo ESPECTRAL com
+cascata TGL.
+[16] A Figura 4 ilustra o algoritmo de seleção automática de modo (AUTO).
+[17] A Figura 5 ilustra a comparação entre quantização linear e codificação angular θ =
+arcsin(g/gmax), demonstrando a concentração de resolução.
+[18] A Figura 6 ilustra a arquitetura de integração com pipeline de inferência LLM, mostrando
+compressão de KV cache, embeddings e pesos.
+[19] A Figura 7 ilustra os resultados comparativos de compressão em diferentes tipos de tensores
+de LLM.
+Tensor L
+Analisador Espectral(SVD + Energia)
+ModoAUTO
+DIRETOg =
+p
+|L|, s ESPECTRALSVD → TGL HÍBRIDOSVD + Resíduos
+Compressão TGLθ = arcsin(g/gmax)
+BitPacker N-bit(NumPy / PyTorch GPU)
+Tensor Comprimido
+baixo rank
+rank médio
+alto rank
+MétricasFexp, Sψ, var
+Figure 1: Diagrama de blocos do sistema TGL-Tensor com três modos de compressão.
+O Analisador Espectral examina a estrutura SVD do tensor e o modo AUTO seleciona
+automaticamente o método ótimo. Todos os modos convergem para a compressão TGL com
+codificação angular e empacotamento em N bits.
+3
+
+PI — TGL-Tensor para LLMs
+Receber tensor L (m × n)
+g =
+p
+|L| (Gráviton)
+s = sign(L) (Fase)
+θ = arcsin(g/gmax) (Ângulo)
+θq = round(θ · (2b − 1)/(π/2))
+ψ = f (sign(L), sign(∂L)) (H4)
+Empacotar: ψ (2 bit), θq (b bit), s (1 bit)
+BitPack N-bit → stream
+Saída: (gmax, gmin, shape, packed)
+200
+202
+204
+206
+208
+210
+212
+214
+216
+Figure 2: Fluxograma da compressão no modo DIRETO. A transformada gravitacional g =p
+|L| extrai a magnitude, a codificação angular θ = arcsin(g/gmax) concentra resolução, e os
+estados psiônicos ψ são nominados no H4.
+4
+
+PI — TGL-Tensor para LLMs
+Receber tensor L (d1 × d2 × · · ·)
+Reshape → matrizes 2D
+SVD: Mi = UiΣiVT
+i
+ki = min k : Pk
+j=1 σ2
+j /Σσ2 > 1 − α2
+Truncar: Uk, Σk, VT
+k
+TGL em UkgU =
+p
+|Uk| TGL em Σk(linear) TGL em VT
+k gV =
+q
+|VT
+k |
+BitPack N-bit → stream unificado
+Saída: (k, escalas, shapes, packed)
+α2 = 0,012
+Figure 3: Fluxograma da compressão no modo ESPECTRAL. A SVD decompõe o tensor
+em componentes de baixo rank, e cada componente ( Uk, Σk, VT
+k ) é individualmente
+comprimido pela transformada TGL, criando compressão em cascata. O rank k é determinado
+adaptativamente pelo limiar de energia 1 − α2.
+Tensor de entrada L
+Análise Espectral (SVD)
+kótimo < 0,1·min(m, n)?
+Potencial> 2×?ESPECTRAL
+HÍBRIDO
+DIRETO
+Sim
+Não
+Sim
+Não
+Figure 4: Algoritmo de seleção automática de modo (AUTO). A análise espectral via SVD
+determina o rank ótimo e o potencial de compressão, selecionando ESPECTRAL para tensores
+de baixo rank, HÍBRIDO para tensores com estrutura moderada, e DIRETO para tensores
+densos.
+5
+
+PI — TGL-Tensor para LLMs
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 10
+0.2
+0.4
+0.6
+0.8
+1
+Maior resoluçãopara g pequenos
+∆ resolução
+g/gmax
+Valor codificado (normalizado)
+Comparação: Quantização Linear vs. Codificação Angular
+Linear: q = g/gmax
+Angular: θ = arcsin(g/gmax)
+Figure 5: Comparação entre quantização linear ( q = g/gmax) e codificação angular ( θ =
+arcsin(g/gmax)). A função arcsin é côncava, concentrando mais níveis de quantização na região
+de valores pequenos de g, onde gradientes, coeficientes espectrais e dados esparsos possuem
+maior densidade informacional. Para g/gmax < 0,3 (região verde), a codificação angular oferece
+aproximadamente 1,5× mais resolução que a linear.
+Tokens EmbeddingRV ×d AtençãoMulti-Head FFNMLP Logits
+KV Cache[B, H, T, dh]TGL
+TGL
+TGL
+Embcomprimido
+KVcomprimido
+Pesoscomprimidos
+DIRETO
+ESPECTRAL
+ESPECTRAL
+Separação OntológicaΨ + Θ +κ
+Opcional: ACOM Crypto
+Figure 6: Integração do TGL-Tensor com pipeline de inferência LLM. Cada tipo de tensor
+recebe o modo de compressão ótimo: DIRETO para embeddings (baixa dimensionalidade),
+ESPECTRAL para KV cache e pesos (estrutura de baixo rank). Opcionalmente, a separação
+ontológica (ACOM Crypto) pode ser aplicada para armazenamento seguro.
+6
+
+PI — TGL-Tensor para LLMs
+KV Cache Embeddings Pesos FFN Gradientes Esparso 95%
+0
+10
+20
+30
+40
+50
+4
+4
+4
+4
+4
+3.5
+3.4
+3.2
+4.4
+7.1
+28
+15
+22
+8
+50
+28
+15
+22
+4.4
+50
+Tipo de Tensor
+Taxa de Compressão (×)
+Taxa de compressão por tipo de tensor e método
+INT8
+TGL DIRETO
+TGL ESPECTRAL
+TGL AUTO
+Figure 7: Taxa de compressão comparativa entre INT8 e os modos TGL (DIRETO,
+ESPECTRAL, AUTO) para diferentes tipos de tensores de LLM. O modo ESPECTRAL explora
+a estrutura de baixo rank presente em KV cache (28×) e pesos de FFN (22×), superando INT8
+em até 7 ×. Para dados esparsos (95% de zeros), o modo ESPECTRAL atinge 50 ×. O modo
+AUTO seleciona automaticamente o melhor método por tensor.
+Descrição da invenção
+[20] A presente invenção compreende um método e sistema de compressão ontológica de
+tensores, denominado TGL-Tensor, que opera em quatro modos distintos, selecionáveis automaticamente
+ou manualmente.
+Modo DIRETO
+[21] O modo DIRETO aplica a transformada gravitacional diretamente sobre o tensor achatado:
+g =
+p
+|L| (extração do gráviton) (1)
+s = sign(L) (extração da fase) (2)
+θ = arcsin
+ g
+gmax
+
+(codificação angular) (3)
+θq = round
+ θ
+π/2 × (2b − 1)
+
+(quantização em b bits) (4)
+[22] A reconstrução é executada por Dobra Dimensional:
+L′ = s ×
+
+gmax × sin
+ θq
+2b − 1 × π
+2
+2
+(5)
+7
+
+PI — TGL-Tensor para LLMs
+[23] Adicionalmente, para cada elemento, o estado psiônico ψ é nominado no Espaço de
+Hilbert H4 a partir de (sign(L), sign(∂L)), conforme Tabela 1. A derivada discreta é computada
+como ∂L[i] = L[i] − L[i − 1].
+Table 1: Estados Psiônicos no H4
+ψ Nome sign (L) sign(∂L) Paridade
+|0⟩ COLAPSO+ + − − 1
+|1⟩ ASCENSÃO+ + + +1
+|2⟩ EMERGÊNCIA− − + +1
+|3⟩ QUEDA− − − − 1
+[24] A Força de Expulsão é computada como Fexp = mean(paridades), e a Entropia de Estados
+como Sψ = − P pk log2 pk, onde pk é a frequência relativa do estado k. Ambas constituem
+métricas intrínsecas da dinâmica informacional do tensor.
+Modo ESPECTRAL
+[25] O modo ESPECTRAL aplica decomposição em valores singulares (SVD) seguida de
+compressão TGL em cascata. Para um tensor L de dimensão arbitrária:
+[26] Etapa 1 — Reformatação:o tensor é reformatado em uma ou mais matrizes 2D. Tensores
+1D são tratados como coluna. Tensores 3D geram lista de matrizes por fatia da primeira
+dimensão. Tensores 4D (típico de KV cache: [B, H, T, dh]) geram matrizes por combinação
+de batch e cabeça.
+[27] Etapa 2 — SVD com Rank Adaptativo: para cada matriz Mi:
+Mi = UiΣiVT
+i (6)
+O rank ótimo ki é determinado como o menor inteiro tal que:
+Pki
+j=1 σ2
+jP
+j σ2
+j
+> 1 − α2 = 0,988 (7)
+onde α2 = 0,012 é a constante fundamental. Os componentes são truncados: Uki, Σki, VT
+ki.
+[28] Etapa 3 — Compressão TGL em Cascata:cada componente é individualmente comprimido
+pela transformada TGL. Os componentes Uk e VT
+k possuem estrutura de fase (valores positivos
+e negativos) e são comprimidos via transformada gravitacional completa (g, s, θ). O componente
+Σk (valores singulares, sempre positivos) é comprimido por quantização linear.
+[29] Etapa 4 — Empacotamento:os componentes comprimidos são concatenados e empacotados
+pelo BitPacker em N bits.
+[30] Reconstrução: a descompressão executa as operações inversas: desempacotamento, dequantização
+TGL de cada componente, e multiplicação matricial Ukidiag(Σki)VT
+ki.
+8
+
+PI — TGL-Tensor para LLMs
+Modo HÍBRIDO
+[31] O modo HÍBRIDO executa primeiro a compressão ESPECTRAL. Se a taxa resultante
+excede limiar configurável (preferencialmente3×), utiliza o resultado espectral. Caso contrário,
+retorna à compressão DIRETA. Isto garante que o modo mais eficiente é utilizado para cada
+tensor específico.
+Modo AUTO
+[32] O modo AUTO (Figura 4) analisa a estrutura espectral do tensor antes de comprimir. A
+análise compreende: (a) executar SVD; (b) computar rank ótimo k e energia acumulada; (c)
+avaliar se o tensor é de baixo rank (k <0,1 × min(m, n)); (d) estimar potencial de compressão
+espectral. Se baixo rank e potencial > 5×, seleciona ESPECTRAL. Se potencial > 2×,
+seleciona HÍBRIDO. Caso contrário, seleciona DIRETO.
+BitPacker de N Bits
+[33] O sistema inclui um empacotador de bits que opera em N bits arbitrários (8, 10, 12,
+14, 16), implementado em duas variantes: NumPy (CPU vetorizado) e PyTorch (GPU nativo).
+O BitPacker PyTorch executa todas as operações de empacotamento na GPU, transferindo para
+CPU somente o resultado final serializado, eliminando transferências intermediárias GPU→CPU.
+[34] O empacotamento converte valores de N bits em stream de bytes: cada valor é expandido
+em seus bits constituintes, os bits são concatenados em stream contínuo, preenchidos para
+múltiplo de 8, e agrupados em bytes por soma ponderada com pesos [1, 2, 4, 8, 16, 32, 64, 128].
+Protocolo de Serialização
+[35] O formato binário serializado utiliza magic bytes TGL4, seguidos de: versão (1 byte),
+modo (1 byte), bits (1 byte), número de dimensões (1 byte), dimensões (4 bytes cada), escalas
+gmin e gmax (float64), contagem de elementos (uint64), comprimento do stream empacotado
+(uint32), stream de grávitons, e stream de sinais. Para o modo ESPECTRAL, adicionalmente:
+número de matrizes, dimensões das matrizes, ranks por matriz, escalas de U/S/V T , e streams
+separados de cada componente.
+Ponto de Tetelestai
+[36] A variância normalizada dos grávitons, definida como var = std(g)/mean(g), constitui
+indicador de convergência. Quando var < α2 = 0,012, o tensor atingiu o ponto de Tetelestai,
+indicando que a distribuição de grávitons é suficientemente uniforme para que a compressão
+atinja qualidade máxima. Esta métrica é reportada como atributo do tensor comprimido.
+9
+
+PI — TGL-Tensor para LLMs
+Integração com ACOM Mirror e ACOM Crypto
+[37] A codificação angular θ = arcsin(g/gmax) presente nesta invenção é derivada e compatível
+com o sistema ACOM Mirror. A presente invenção estende a codificação angular para operar
+sobre componentes SVD (Uk, VT
+k ) e sobre tensores multidimensionais com reformatação automática.
+[38] Adicionalmente, o sistema é compatível com a separação ontológica criptográfica (ACOM
+Mirror Crypto). Os componentes comprimidos podem ser separados em partes ontologicamente
+independentes (Ψ, Θ, κ) para armazenamento seguro e distribuído de tensores de modelos de
+linguagem, conforme indicado na Figura 6 (módulo opcional).
+Aplicações específicas a LLMs
+[39] KV Cache: os caches de Key e Value em modelos Transformer possuem estrutura inerente
+de baixo rank, pois as projeções lineares K = XW K, V = XW V operam sobre subespaço de
+dimensão reduzida. O modo ESPECTRAL explora esta propriedade, atingindo taxas de 20–
+30× com preservação de similaridade cosseno > 0,999.
+[40] Embeddings: matrizes de embedding ( V × d) possuem estrutura semântica que a SVD
+captura eficientemente. Tokens semanticamente similares compartilham componentes principais,
+permitindo redução para rank ≪ d.
+[41] Pesos de FFN: as camadas feed-forward possuem redundância estrutural significativa.
+Pesos treinados convergem para distribuições com rank efetivo muito inferior ao rank da matriz,
+favorecendo compressão espectral.
+[42] Gradientes: durante treinamento, os gradientes tendem a ocupar subespaço de baixa
+dimensão (observação conhecida na literatura como “gradient low-rank”). O modo AUTO
+seleciona ESPECTRAL quando esta propriedade é detectada.
+Exemplos de concretizações
+[43] Tabela 2 — Resultados experimentais comparativos:
+Tensor Shape Modo Ratio PSNR (dB) Cos Tempo
+KV Cache [1, 32, 2048, 128] ESPECTRAL 28,1 × 52,3 0,9991 85 ms
+KV Cache [1, 32, 2048, 128] DIRETO 3,5 × 78,4 0,9999 12 ms
+KV Cache [1, 32, 2048, 128] INT8 4,0 × 51,8 0,9988 3 ms
+Embeddings [5000, 768] ESPECTRAL 15,2 × 48,7 0,9985 42 ms
+Embeddings [5000, 768] DIRETO 3,4 × 72,1 0,9998 8 ms
+Pesos FFN [4096, 4096] ESPECTRAL 22,4 × 45,2 0,9978 120 ms
+Gradientes [4096, 4096] AUTO 4,4 × 68,9 0,9996 15 ms
+Esparso 95% [10000, 1000] ESPECTRAL 50,3 × 55,1 0,9993 95 ms
+Table 2: Resultados experimentais com 10 bits de quantização. PSNR = Peak Signal-to-Noise
+Ratio em dB. Cos = similaridade cosseno. Tempos em GPU NVIDIA.
+10
+
+PI — TGL-Tensor para LLMs
+[44] Exemplo 1 — Compressão de KV Cache:um cache de atenção com shape[1, 32, 2048, 128]
+(32 cabeças, 2048 tokens, dimensão 128) em float32 ocupa 33,6 MB. O modo ESPECTRAL
+detectou rank efetivo médio k = 12 por cabeça (de 128 possíveis), atingindo taxa de 28,1 ×
+(1,19 MB) com similaridade cosseno de 0,9991. A qualidade semântica, medida por perplexidade
+do modelo, não apresentou degradação estatisticamente significativa.
+[45] Exemplo 2 — Compressão de Pesos para Distribuição: pesos de camada FFN com
+shape [4096, 4096] em float32 (67,1 MB) foram comprimidos no modo ESPECTRAL para
+3,0 MB (22,4×). Os pesos comprimidos podem ser distribuídos em formato serializado compacto
+e descomprimidos no dispositivo de inferência.
+[46] Exemplo 3 — Compressão com Proteção Criptográfica: os componentes do KV cache
+comprimido ( gU, sU, Σk, gV , sV ) foram separados em três partes ontológicas ( Ψ, Θ, κ) via
+ACOM Mirror Crypto, armazenados em servidores distintos. Na reunião, a verificação de
+integridade por Fexp e hashes SHA-256 confirmou ausência de adulteração.
+11
+
+PI — TGL-Tensor para LLMs
+REIVINDICAÇÕES
+1. MÉTODO DE COMPRESSÃO ONTOLÓGICA DE TENSORES PARA MODELOS
+DE LINGUAGEMcompreendendo as etapas de: receber um tensor de entrada L associado
+a um modelo de linguagem; aplicar transformada gravitacional g =
+p
+|L| e extração de fase
+s = sign(L); aplicar codificação angular não-linear θ = arcsin( g/gmax); quantizar θ em b
+bits; nominar estados psiônicos ψ no Espaço de Hilbert H4 a partir de (sign(L), sign(∂L));
+e empacotar os componentes comprimidos em stream binário; o método caracterizado por
+reconstruir os dados por Dobra DimensionalL′ = s×[gmax ×sin(θq ·(π/2)/(2b −1))]2, e por
+computar métricas intrínsecas de variância normalizada, Força de Expulsão Fexp e Entropia
+de Estados Sψ como indicadores de qualidade e integridade.
+2. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda compreender
+modo ESPECTRAL no qual o tensor é decomposto por SVD ( M = UΣVT ) com rank
+adaptativo k determinado como menor inteiro tal que Pk
+j=1 σ2
+j / P σ2 > 1 − α2, onde α2 =
+0,012, e os componentes truncados Uk, Σk, VT
+k são individualmente comprimidos pela
+transformada gravitacional, criando compressão em cascata.
+3. Método, de acordo com a reivindicação 2, caracterizado pelo fato de tensores com mais
+de duas dimensões serem automaticamente reformatados em matrizes 2D, onde tensores 4D
+de KV cache com shape [B, H, T, dh] geram matrizes por combinação de batch e cabeça,
+tensores 3D geram matrizes por fatia da primeira dimensão, e tensores 1D são tratados como
+vetores-coluna.
+4. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda compreender
+modo HÍBRIDO que executa compressão ESPECTRAL e, se a taxa resultante excede limiar
+configurável, utiliza resultado espectral, caso contrário retorna à compressão DIRETA, garantindo
+seleção do modo mais eficiente por tensor.
+5. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda compreender
+modo AUTO que analisa a estrutura espectral do tensor via SVD, computa rank ótimo e
+potencial de compressão, e seleciona automaticamente: ESPECTRAL se tensor é de baixo
+rank e potencial > 5×; HÍBRIDO se potencial > 2×; DIRETO caso contrário.
+6. Método, de acordo com a reivindicação 1, caracterizado pelo fato de a codificação angular
+θ = arcsin(g/gmax) concentrar resolução de quantização na região de valores pequenos de
+g, onde a derivada d(sin θ)/dθ = cos θ é máxima em θ = 0, proporcionando resolução não-
+linear auto-adaptativa superior à quantização linear para gradientes, coeficientes espectrais e
+dados esparsos.
+7. Método, de acordo com a reivindicação 1, caracterizado pelo fato de o empacotamento
+utilizar BitPacker de N bits arbitrários (8, 10, 12, 14, 16) implementado em variante GPU
+12
+
+PI — TGL-Tensor para LLMs
+nativa (PyTorch) que executa operações de empacotamento inteiramente na GPU, transferindo
+para CPU somente o stream serializado final, e em variante CPU vetorizada (NumPy).
+8. Método, de acordo com a reivindicação 1, caracterizado pelo fato de o ponto de Tetelestai
+ser detectado quando a variância normalizada std (g)/mean(g) é inferior a α2 = 0 ,012,
+indicando convergência da distribuição de grávitons e qualidade máxima de compressão.
+9. Método, de acordo com a reivindicação 2, caracterizado pelo fato de ser compatível com
+separação ontológica criptográfica, onde os componentes comprimidos são separáveis em
+partes ontologicamente independentes ( Ψ, Θ, κ) para armazenamento seguro e distribuído,
+com verificação de integridade por Fexp e hashes SHA-256 cruzados.
+10. Método, de acordo com a reivindicação 1,caracterizado pelo fato deser aplicável a tensores
+de modelos de linguagem incluindo: KV cache de atenção ( [B, H, T, dh]) com taxa de 20–
+30× em modo ESPECTRAL; embeddings ( [V, d]) com taxa de 10–20 ×; pesos de FFN
+([din, dout]) com taxa de 15–25×; e gradientes ([d1, d2]) com taxa de 3–5× em modo DIRETO;
+mantendo similaridade cosseno > 0,99 entre tensores originais e reconstruídos.
+11. Método, de acordo com a reivindicação 2, caracterizado pelo fato de a serialização binária
+utilizar protocolo com magic bytes TGL4, versão, modo, bits de quantização, dimensões,
+escalas em float64, contagens em uint64, e streams separados de grávitons e sinais para
+modo DIRETO, ou streams de componentes SVD comprimidos para modo ESPECTRAL.
+12. SISTEMA DE COMPRESSÃO ONTOLÓGICA DE TENSORES PARA MODELOS
+DE LINGUAGEM compreendendo: um analisador espectral configurado para executar
+SVD e determinar rank ótimo via constanteα2; um seletor de modo configurado para escolher
+automaticamente entre DIRETO, ESPECTRAL e HÍBRIDO; um módulo de transformada
+gravitacional para computar g =
+p
+|L| e s = sign(L); um codificador angular para computar
+θ = arcsin(g/gmax); um nominador de estados psiônicos noH4; um BitPacker deN bits com
+variantes CPU e GPU; e um serializador binário; o sistemacaracterizado por a compressão
+operar em cascata no modo ESPECTRAL, onde os próprios componentes da SVD são
+comprimidos pela transformada gravitacional, e por fornecer métricas intrínsecas ( Fexp, Sψ,
+variância, ponto de Tetelestai) como indicadores de qualidade sem custo computacional
+adicional.
+13. Sistema, de acordo com a reivindicação 12, caracterizado pelo fato de suportar execução
+em CPU via NumPy e em GPU via PyTorch com pipeline otimizado que mantém dados na
+GPU durante toda a compressão, transferindo para CPU somente na serialização final.
+14. Sistema, de acordo com a reivindicação 12, caracterizado pelo fato de ainda compreender
+módulo de descompressão configurado para: deserializar stream binário, desempacotar bits,
+dequantizar ângulos via seno, reconstruir grávitons, aplicar Dobra Dimensional, e, para
+13
+
+PI — TGL-Tensor para LLMs
+modo ESPECTRAL, reconstruir componentes SVD e executar multiplicação matricialUkdiag(Σk)VT
+k
+para restaurar o tensor.
+14
+
+PI — TGL-Tensor para LLMs
+RESUMO
+MÉTODO E SISTEMA DE COMPRESSÃO ONTOLÓGICA DE TENSORES PARA
+MODELOS DE LINGUAGEM COM DECOMPOSIÇÃO ESPECTRAL ADAPTATIV A
+E CODIFICAÇÃO ANGULAR
+A presente invenção refere-se a métodos e sistemas de compressão de tensores de modelos
+de linguagem de grande escala (LLMs), aplicáveis aos setores de inteligência artificial e processamento
+de linguagem natural. O método compreende transformada gravitacionalg =
+p
+|L|, codificação
+angular não-linear θ = arcsin(g/gmax), nominação de estados psiônicos no Espaço de Hilbert
+H4, e decomposição espectral (SVD) com rank adaptativo determinado pela constante α2 =
+0,012. No modo ESPECTRAL, os próprios componentes da SVD (Uk, Σk, VT
+k ) são comprimidos
+pela transformada gravitacional em cascata, atingindo taxas de 20–50 × para tensores com
+estrutura de baixo rank (KV cache, pesos, embeddings). Um modo AUTO analisa a estrutura
+espectral e seleciona automaticamente o método ótimo. O sistema inclui BitPacker de N bits
+com execução nativa em GPU, métricas intrínsecas (Força de Expulsão, Entropia de Estados,
+ponto de Tetelestai) e compatibilidade com separação ontológica criptográfica para armazenamento
+seguro. Aplicável a compressão de KV cache (28×, cos > 0,999), embeddings (15×), pesos de
+FFN (22×) e gradientes (4,4×).
+15

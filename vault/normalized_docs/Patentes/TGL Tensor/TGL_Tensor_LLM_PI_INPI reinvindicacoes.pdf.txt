@@ -1,0 +1,88 @@
+PI — TGL-Tensor para LLMs
+REIVINDICAÇÕES
+1. MÉTODO DE COMPRESSÃO ONTOLÓGICA DE TENSORES PARA MODELOS
+DE LINGUAGEMcompreendendo as etapas de: receber um tensor de entrada L associado
+a um modelo de linguagem; aplicar transformada gravitacional g =
+p
+|L| e extração de fase
+s = sign(L); aplicar codificação angular não-linear θ = arcsin( g/gmax); quantizar θ em b
+bits; nominar estados psiônicos ψ no Espaço de Hilbert H4 a partir de (sign(L), sign(∂L));
+e empacotar os componentes comprimidos em stream binário; o método caracterizado por
+reconstruir os dados por Dobra DimensionalL′ = s×[gmax ×sin(θq ·(π/2)/(2b −1))]2, e por
+computar métricas intrínsecas de variância normalizada, Força de Expulsão Fexp e Entropia
+de Estados Sψ como indicadores de qualidade e integridade.
+2. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda compreender
+modo ESPECTRAL no qual o tensor é decomposto por SVD ( M = UΣVT ) com rank
+adaptativo k determinado como menor inteiro tal que Pk
+j=1 σ2
+j / P σ2 > 1 − α2, onde α2 =
+0,012, e os componentes truncados Uk, Σk, VT
+k são individualmente comprimidos pela
+transformada gravitacional, criando compressão em cascata.
+3. Método, de acordo com a reivindicação 2, caracterizado pelo fato de tensores com mais
+de duas dimensões serem automaticamente reformatados em matrizes 2D, onde tensores 4D
+de KV cache com shape [B, H, T, dh] geram matrizes por combinação de batch e cabeça,
+tensores 3D geram matrizes por fatia da primeira dimensão, e tensores 1D são tratados como
+vetores-coluna.
+4. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda compreender
+modo HÍBRIDO que executa compressão ESPECTRAL e, se a taxa resultante excede limiar
+configurável, utiliza resultado espectral, caso contrário retorna à compressão DIRETA, garantindo
+seleção do modo mais eficiente por tensor.
+5. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda compreender
+modo AUTO que analisa a estrutura espectral do tensor via SVD, computa rank ótimo e
+potencial de compressão, e seleciona automaticamente: ESPECTRAL se tensor é de baixo
+rank e potencial > 5×; HÍBRIDO se potencial > 2×; DIRETO caso contrário.
+6. Método, de acordo com a reivindicação 1, caracterizado pelo fato de a codificação angular
+θ = arcsin(g/gmax) concentrar resolução de quantização na região de valores pequenos de
+g, onde a derivada d(sin θ)/dθ = cos θ é máxima em θ = 0, proporcionando resolução não-
+linear auto-adaptativa superior à quantização linear para gradientes, coeficientes espectrais e
+dados esparsos.
+7. Método, de acordo com a reivindicação 1, caracterizado pelo fato de o empacotamento
+utilizar BitPacker de N bits arbitrários (8, 10, 12, 14, 16) implementado em variante GPU
+12
+
+PI — TGL-Tensor para LLMs
+nativa (PyTorch) que executa operações de empacotamento inteiramente na GPU, transferindo
+para CPU somente o stream serializado final, e em variante CPU vetorizada (NumPy).
+8. Método, de acordo com a reivindicação 1, caracterizado pelo fato de o ponto de Tetelestai
+ser detectado quando a variância normalizada std (g)/mean(g) é inferior a α2 = 0 ,012,
+indicando convergência da distribuição de grávitons e qualidade máxima de compressão.
+9. Método, de acordo com a reivindicação 2, caracterizado pelo fato de ser compatível com
+separação ontológica criptográfica, onde os componentes comprimidos são separáveis em
+partes ontologicamente independentes ( Ψ, Θ, κ) para armazenamento seguro e distribuído,
+com verificação de integridade por Fexp e hashes SHA-256 cruzados.
+10. Método, de acordo com a reivindicação 1,caracterizado pelo fato deser aplicável a tensores
+de modelos de linguagem incluindo: KV cache de atenção ( [B, H, T, dh]) com taxa de 20–
+30× em modo ESPECTRAL; embeddings ( [V, d]) com taxa de 10–20 ×; pesos de FFN
+([din, dout]) com taxa de 15–25×; e gradientes ([d1, d2]) com taxa de 3–5× em modo DIRETO;
+mantendo similaridade cosseno > 0,99 entre tensores originais e reconstruídos.
+11. Método, de acordo com a reivindicação 2, caracterizado pelo fato de a serialização binária
+utilizar protocolo com magic bytes TGL4, versão, modo, bits de quantização, dimensões,
+escalas em float64, contagens em uint64, e streams separados de grávitons e sinais para
+modo DIRETO, ou streams de componentes SVD comprimidos para modo ESPECTRAL.
+12. SISTEMA DE COMPRESSÃO ONTOLÓGICA DE TENSORES PARA MODELOS
+DE LINGUAGEM compreendendo: um analisador espectral configurado para executar
+SVD e determinar rank ótimo via constanteα2; um seletor de modo configurado para escolher
+automaticamente entre DIRETO, ESPECTRAL e HÍBRIDO; um módulo de transformada
+gravitacional para computar g =
+p
+|L| e s = sign(L); um codificador angular para computar
+θ = arcsin(g/gmax); um nominador de estados psiônicos noH4; um BitPacker deN bits com
+variantes CPU e GPU; e um serializador binário; o sistemacaracterizado por a compressão
+operar em cascata no modo ESPECTRAL, onde os próprios componentes da SVD são
+comprimidos pela transformada gravitacional, e por fornecer métricas intrínsecas ( Fexp, Sψ,
+variância, ponto de Tetelestai) como indicadores de qualidade sem custo computacional
+adicional.
+13. Sistema, de acordo com a reivindicação 12, caracterizado pelo fato de suportar execução
+em CPU via NumPy e em GPU via PyTorch com pipeline otimizado que mantém dados na
+GPU durante toda a compressão, transferindo para CPU somente na serialização final.
+14. Sistema, de acordo com a reivindicação 12, caracterizado pelo fato de ainda compreender
+módulo de descompressão configurado para: deserializar stream binário, desempacotar bits,
+dequantizar ângulos via seno, reconstruir grávitons, aplicar Dobra Dimensional, e, para
+13
+
+PI — TGL-Tensor para LLMs
+modo ESPECTRAL, reconstruir componentes SVD e executar multiplicação matricialUkdiag(Σk)VT
+k
+para restaurar o tensor.
+14

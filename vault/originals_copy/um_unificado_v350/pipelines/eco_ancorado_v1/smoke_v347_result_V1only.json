@@ -1,0 +1,122 @@
+{
+ "proto": {
+  "protocol": {
+   "version": "ECHO_PE_V1",
+   "status": "PRE_REGISTERED_BEFORE_DATA_READ",
+   "form_of": "ECHO_ANCHORED_V1 (1e94f77689b5017e), forma bayesiana",
+   "hypothesis": {
+    "model": "s_d = Re[z_d (p(t - dt_d) + a S sqrt(beta) e(t - dt_d))]",
+    "a_pred": "1 (amplitude sqrt(beta), sinal S = -1, do kernel)",
+    "a_null": "0 (sem eco)",
+    "delay_laws": {
+     "MAY": "2 G M_f/c^3 ln(1/beta) [INPUT]",
+     "KMS": "2 pi/kappa de Kerr com (M_f, a_f) amostrados [CANDIDATO]"
+    },
+    "beta_source": "SEALED_CODATA_ALPHA * sqrt(e) em runtime"
+   },
+   "primary_KNOWN": "IMRPhenomD (lalsimulation) de (m1, m2, chi_eff) amostrados; estado final por SimIMREOBFinalMassSpin (SEOBNRv4)",
+   "sampled": [
+    "m1_det",
+    "m2_det",
+    "chi_eff",
+    "dt_d por detector",
+    "a"
+   ],
+   "marginalized": "amplitude complexa z_d por detector, prior plano: ln L = 1/2 r^T G^-1 r - 1/2 ln det G",
+   "priors": {
+    "m1_m2": "uniforme no intervalo de 90% do catalogo alargado 2x (detector)",
+    "chi_eff": "idem (\u00b10,2 se ausente)",
+    "dt": "uniforme em \u00b10,1 s do GPS",
+    "a": "uniforme em [-3, 3]"
+   },
+   "sampler": {
+    "engine": "bilby + dynesty",
+    "nlive": 300,
+    "sample": "rwalk",
+    "walks": 30,
+    "dlogz": 0.3
+   },
+   "data": "cache de maio (GWOSC via gwpy, 32 s @ 4096 Hz); segmento de 6 s com o pico em 5 s; PSD Welch dos 14 s pre-evento; banda [20, 1024] Hz; H1 + L1",
+   "selection": {
+    "mc_det_min": 10.0,
+    "anchor_det_min": 6.0,
+    "anchor_ev_min": 8.0,
+    "anchor": "filtro casado PhenomD nos parametros do catalogo em \u00b1100 ms"
+   },
+   "per_event": "posterior de a (media, sigma, quantis), ln Z, ln B_{sem eco/com eco} por Savage-Dickey em a = 0",
+   "combination": "soma dos log-posteriores de a numa grade comum (prior plano comum): a_comb \u00b1 sigma_comb; z contra 0 e contra 1; poder = 1/sigma_comb",
+   "nulls": {
+    "injection": "eventos com SNR de ancoragem >= 10 (ate 10), em ruido fora da fonte (t0 = -12 s): a = 0 primario-so; a = 1 PhenomD; a = 1 SEOBNRv4 (nulo de familia); recuperacao pela mesma PE"
+   },
+   "criteria": {
+    "detect_z": 5.0,
+    "exclude_z": 5.0,
+    "consistent_with_1_z": 2.0,
+    "power_min": 5.0,
+    "inj_a1_bias_max": 0.2,
+    "inj_a0_max_sigma": 2.0,
+    "family_diff_max": 0.3,
+    "min_events": 5
+   },
+   "allowed_verdicts": [
+    "DETECTED",
+    "FALSIFIED_AT_DELAY_LAW",
+    "NOT_FALSIFIED_POWERED",
+    "NOT_FALSIFIED_UNDERPOWERED",
+    "INCONCLUSIVE_SYSTEMATICS",
+    "AWAITING_RESULT_FILE"
+   ],
+   "forbidden_verdicts": [
+    "CONFIRMED",
+    "PROVED"
+   ],
+   "what_it_cannot_do": "nao decide a lei do atraso (INPUT/candidato); um posterior de a consistente com 0 e com 1 e UNDERPOWERED, nao ausencia"
+  },
+  "protocol_hash": "26d150a16dafc42e",
+  "checks": [
+   [
+    "protocolo pre-registrado e hasheado (26d150a16dafc42e)",
+    true
+   ],
+   [
+    "beta jamais literal",
+    true
+   ],
+   [
+    "a_pred = sqrt(beta) e S = -1 vem do kernel (v341)",
+    true
+   ],
+   [
+    "nenhum veredito proibido por construcao",
+    true
+   ]
+  ],
+  "all_verified": true,
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "verdict": "TGL_ECHO_PE_V1__PROTOCOL_PRE_REGISTERED_26d150a16dafc42e__PRIMARY_SAMPLED_AMPLITUDE_MARGINALIZED__TWO_DELAY_LAWS__BETA_ENTERS__GATE_UNTOUCHED"
+ },
+ "res": {
+  "result_path": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\cache\\gw\\ECHO_PE_V1_RESULT.json",
+  "protocol_hash": "26d150a16dafc42e",
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "beta_runtime": 0.012031300400803142,
+  "why_outside_contour": "a lei do atraso e INPUT/candidato: o que se testa e a = 1 sob cada lei, nao a TGL",
+  "verdict": "TGL_ECHO_PE_AWAITING_RESULT_FILE",
+  "all_verified": false,
+  "checks": [
+   [
+    "resultado ECHO_PE_V1 em cache/gw",
+    false
+   ]
+  ],
+  "statuses": {
+   "leitura": "[REAL] o um.py nao recalcula: le por hash e aplica a matriz pre-registrada (26d150a16dafc42e)",
+   "amplitude": "[REAL, kernel] a = 1 significa |R| = sqrt(beta) com sinal -1 (Smat_reflection); beta entra",
+   "descasamento": "[REAL] o que nas V1/V2 era sistematica de template aqui e parametro amostrado e marginalizado"
+  },
+  "runtime_s": 4.5299530029296875e-05
+ },
+ "stamp": "2026-09-10T16:57:10"
+}

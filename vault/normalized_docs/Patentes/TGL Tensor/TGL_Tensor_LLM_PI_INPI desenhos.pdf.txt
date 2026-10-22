@@ -1,0 +1,207 @@
+PI — TGL-Tensor para LLMs
+Breve descrição dos desenhos
+[13] A Figura 1 ilustra o diagrama de blocos do sistema TGL-Tensor, mostrando os três modos
+de compressão e o fluxo de dados.
+[14] A Figura 2 ilustra o fluxograma da operação de compressão no modo DIRETO.
+[15] A Figura 3 ilustra o fluxograma da operação de compressão no modo ESPECTRAL com
+cascata TGL.
+[16] A Figura 4 ilustra o algoritmo de seleção automática de modo (AUTO).
+[17] A Figura 5 ilustra a comparação entre quantização linear e codificação angular θ =
+arcsin(g/gmax), demonstrando a concentração de resolução.
+[18] A Figura 6 ilustra a arquitetura de integração com pipeline de inferência LLM, mostrando
+compressão de KV cache, embeddings e pesos.
+[19] A Figura 7 ilustra os resultados comparativos de compressão em diferentes tipos de tensores
+de LLM.
+Tensor L
+Analisador Espectral(SVD + Energia)
+ModoAUTO
+DIRETOg =
+p
+|L|, s ESPECTRALSVD → TGL HÍBRIDOSVD + Resíduos
+Compressão TGLθ = arcsin(g/gmax)
+BitPacker N-bit(NumPy / PyTorch GPU)
+Tensor Comprimido
+baixo rank
+rank médio
+alto rank
+MétricasFexp, Sψ, var
+Figure 1: Diagrama de blocos do sistema TGL-Tensor com três modos de compressão.
+O Analisador Espectral examina a estrutura SVD do tensor e o modo AUTO seleciona
+automaticamente o método ótimo. Todos os modos convergem para a compressão TGL com
+codificação angular e empacotamento em N bits.
+3
+
+PI — TGL-Tensor para LLMs
+Receber tensor L (m × n)
+g =
+p
+|L| (Gráviton)
+s = sign(L) (Fase)
+θ = arcsin(g/gmax) (Ângulo)
+θq = round(θ · (2b − 1)/(π/2))
+ψ = f (sign(L), sign(∂L)) (H4)
+Empacotar: ψ (2 bit), θq (b bit), s (1 bit)
+BitPack N-bit → stream
+Saída: (gmax, gmin, shape, packed)
+200
+202
+204
+206
+208
+210
+212
+214
+216
+Figure 2: Fluxograma da compressão no modo DIRETO. A transformada gravitacional g =p
+|L| extrai a magnitude, a codificação angular θ = arcsin(g/gmax) concentra resolução, e os
+estados psiônicos ψ são nominados no H4.
+4
+
+PI — TGL-Tensor para LLMs
+Receber tensor L (d1 × d2 × · · ·)
+Reshape → matrizes 2D
+SVD: Mi = UiΣiVT
+i
+ki = min k : Pk
+j=1 σ2
+j /Σσ2 > 1 − α2
+Truncar: Uk, Σk, VT
+k
+TGL em UkgU =
+p
+|Uk| TGL em Σk(linear) TGL em VT
+k gV =
+q
+|VT
+k |
+BitPack N-bit → stream unificado
+Saída: (k, escalas, shapes, packed)
+α2 = 0,012
+Figure 3: Fluxograma da compressão no modo ESPECTRAL. A SVD decompõe o tensor
+em componentes de baixo rank, e cada componente ( Uk, Σk, VT
+k ) é individualmente
+comprimido pela transformada TGL, criando compressão em cascata. O rank k é determinado
+adaptativamente pelo limiar de energia 1 − α2.
+Tensor de entrada L
+Análise Espectral (SVD)
+kótimo < 0,1·min(m, n)?
+Potencial> 2×?ESPECTRAL
+HÍBRIDO
+DIRETO
+Sim
+Não
+Sim
+Não
+Figure 4: Algoritmo de seleção automática de modo (AUTO). A análise espectral via SVD
+determina o rank ótimo e o potencial de compressão, selecionando ESPECTRAL para tensores
+de baixo rank, HÍBRIDO para tensores com estrutura moderada, e DIRETO para tensores
+densos.
+5
+
+PI — TGL-Tensor para LLMs
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 10
+0.2
+0.4
+0.6
+0.8
+1
+Maior resoluçãopara g pequenos
+∆ resolução
+g/gmax
+Valor codificado (normalizado)
+Comparação: Quantização Linear vs. Codificação Angular
+Linear: q = g/gmax
+Angular: θ = arcsin(g/gmax)
+Figure 5: Comparação entre quantização linear ( q = g/gmax) e codificação angular ( θ =
+arcsin(g/gmax)). A função arcsin é côncava, concentrando mais níveis de quantização na região
+de valores pequenos de g, onde gradientes, coeficientes espectrais e dados esparsos possuem
+maior densidade informacional. Para g/gmax < 0,3 (região verde), a codificação angular oferece
+aproximadamente 1,5× mais resolução que a linear.
+Tokens EmbeddingRV ×d AtençãoMulti-Head FFNMLP Logits
+KV Cache[B, H, T, dh]TGL
+TGL
+TGL
+Embcomprimido
+KVcomprimido
+Pesoscomprimidos
+DIRETO
+ESPECTRAL
+ESPECTRAL
+Separação OntológicaΨ + Θ +κ
+Opcional: ACOM Crypto
+Figure 6: Integração do TGL-Tensor com pipeline de inferência LLM. Cada tipo de tensor
+recebe o modo de compressão ótimo: DIRETO para embeddings (baixa dimensionalidade),
+ESPECTRAL para KV cache e pesos (estrutura de baixo rank). Opcionalmente, a separação
+ontológica (ACOM Crypto) pode ser aplicada para armazenamento seguro.
+6
+
+PI — TGL-Tensor para LLMs
+KV Cache Embeddings Pesos FFN Gradientes Esparso 95%
+0
+10
+20
+30
+40
+50
+4
+4
+4
+4
+4
+3.5
+3.4
+3.2
+4.4
+7.1
+28
+15
+22
+8
+50
+28
+15
+22
+4.4
+50
+Tipo de Tensor
+Taxa de Compressão (×)
+Taxa de compressão por tipo de tensor e método
+INT8
+TGL DIRETO
+TGL ESPECTRAL
+TGL AUTO
+Figure 7: Taxa de compressão comparativa entre INT8 e os modos TGL (DIRETO,
+ESPECTRAL, AUTO) para diferentes tipos de tensores de LLM. O modo ESPECTRAL explora
+a estrutura de baixo rank presente em KV cache (28×) e pesos de FFN (22×), superando INT8
+em até 7 ×. Para dados esparsos (95% de zeros), o modo ESPECTRAL atinge 50 ×. O modo
+AUTO seleciona automaticamente o melhor método por tensor.
+Descrição da invenção
+[20] A presente invenção compreende um método e sistema de compressão ontológica de
+tensores, denominado TGL-Tensor, que opera em quatro modos distintos, selecionáveis automaticamente
+ou manualmente.
+Modo DIRETO
+[21] O modo DIRETO aplica a transformada gravitacional diretamente sobre o tensor achatado:
+g =
+p
+|L| (extração do gráviton) (1)
+s = sign(L) (extração da fase) (2)
+θ = arcsin
+ g
+gmax
+
+(codificação angular) (3)
+θq = round
+ θ
+π/2 × (2b − 1)
+
+(quantização em b bits) (4)
+[22] A reconstrução é executada por Dobra Dimensional:
+L′ = s ×
+
+gmax × sin
+ θq
+2b − 1 × π
+2
+2
+(5)
+7

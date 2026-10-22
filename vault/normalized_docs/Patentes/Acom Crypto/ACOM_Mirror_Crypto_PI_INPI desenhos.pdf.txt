@@ -1,0 +1,224 @@
+6 Desenhos
+L (Dados de entrada)
+(100) Módulo de
+Entrada
+(102) Espelho
+Criptográco
+g, ∂L, ψ, θ
+(104) Gerador
+de Chaves
+share_id, key_id
+(106) Ofuscador
+XOR derivado
+(108) Compressor
+Entrópico
+(110) Hashing
+SHA-256 triplo
+(112) Serializador
+magic bytes + metadados
+(114) Módulo de Saída
+Ψ
+PsiShare
+Θ
+ThetaShare
+κ
+MasterKey
+Canal A Canal B Canal C
+Figure 1: Diagrama em blocos do sistema de criptograa por separação ontológica.
+Dados L são reetidos dimensionalmente (102), ofuscados com chaves derivadas (106),
+comprimidos (108), vericados por SHA-256 (110), serializados (112), e separados em três
+partes ontologicamente independentes: Ψ (PsiShare), Θ (ThetaShare), κ (MasterKey),
+transmissíveis por canais separados.
+8
+
+(200) INÍCIO  Receber tensor L
+(202) Reexão Dimensional: g, ∂L, ψ, θ
+(204) Métricas de integridade: Fexp , Sψ
+(206) Gerar share_id e key_id (128 bits cada)
+(208) Empacotar ψ (2 bits/estado) + θq ( b bits)
+(210) Derivar chaves XOR: HMAC-SHA256(share_id, contexto)
+(212) Ofuscar: XOR(dados empacotados, chave derivada)
+(214) Comprimir: zstd/zlib separadamente
+(216) Hash SHA-256 triplo cruzado ( Ψ, Θ, κ)
+(218) Serializar com magic bytes (0xCEA8, 0xCE98, 0xCEBA)
+(220) SAÍDA  Ψ + Θ + κ separados
+Figure 2: Fluxograma da operação ENCRYPT: reexão dimensional (202), métricas de
+integridade (204), geração de IDs (206), empacotamento (208), derivação de chaves (210),
+ofuscação XOR (212), compressão (214), hashing triplo (216), serialização (218), e saída
+das três partes separadas (220).
+9
+
+(300) INÍCIO  Receber Ψ, Θ, κ
+(302) Validar: share_id idêntico, n_elements consistente
+Compatível?
+(304) Descomprimir + Desofuscar (XOR inverso)
+(306) Vericar hashes SHA-256 triplos cruzados
+Hashes OK?
+(308) Desempacotar ψ e θq
+(310) Vericar Fexp físico vs. esperado ( |∆| < 0,001)
+Fexp OK?
+(312) Reunião: L′ = sign (L) × [gmax sin θ]2
+(314) Reformar tensor para shape original
+(316) SAÍDA  T ensor L′ reconstruído
+REJEIT AR
+Sim
+Não
+Sim
+Não
+Sim
+Não
+Figure 3: Fluxograma da operação DECRYPT: validação de compatibilidade (302),
+descompressão e desofuscação (304), vericação SHA-256 tripla (306),
+desempacotamento (308), vericação física por Fexp (310), reunião dimensional
+(Dobra) (312), e reformação (314). Três pontos de decisão rejeitam dados adulterados.
+10
+
+Ψ (PsiShare)
+Estados {0, 1, 2, 3}
+sem magnitude
+sem escala
+RUÍDO
+Θ (ThetaShare)
+Ângulos [0, π/2]
+sem polaridade
+sem escala absoluta
+RUÍDO
+κ (MasterKey)
+gmax, gmin, shape
+hashes, timestamp
+INÚTIL
+REUNIÃO DIMENSIONAL
+L′ = sign (L) × [gmax × sin(θ)]2
+Dobra ×2
+sign(
+L), sign(
+∂L
+) θq, b bits gmax
+, shape
+Ψ + Θ
+sem κ:
+fator gmax
+desconhecido
+⇒ impossível
+Θ + κ
+sem Ψ:
+polaridade
+desconhecida
+⇒ impossível
+L′ ≈ L η > 0,9999
+SEPARAÇÃO ONTOLÓGICA TRIPARTIDA
+Cada parte isolada = ruído informacional
+Figure 4: Diagrama de separação ontológica tripartida: Ψ contém estados sem magnitude
+(ruído), Θ contém ângulos sem polaridade (ruído), κ contém escala sem dados (inútil).
+Combinações parciais são insucientes. Somente a reunião simultânea das três partes
+permite a Dobra Dimensional.
+11
+
+PsiShare ( Ψ)
+Magic
+0xCEA8
+Tamanho
+uint32 LE
+Metadados
+JSON UTF-8
+Estados
+criptografados
+ThetaShare ( Θ)
+Magic
+0xCE98
+Tamanho
+uint32 LE
+Metadados
+JSON UTF-8
+Ângulos
+criptografados
+MasterKey ( κ)
+Magic
+0xCEBA
+Tamanho
+uint32 LE
+Metadados JSON UTF-8
+( gmax, gmin, shape, hashes, Fexp , Sψ, timestamp)
+MasterKey contém
+ZERO dados 
+apenas parâmetros
+de escala e vericação
+Canais
+separados
+(A, B, C)
+Figure 5: Formato de serialização dos três shares. Cada parte possui magic bytes
+únicos (0xCEA8, 0xCE98, 0xCEBA), tamanho de metadados, metadados JSON, e dados
+criptografados (exceto MasterKey que contém apenas metadados). Partes transmissíveis
+por canais independentes.
+12
+
+Ψ (PsiShare)
+state_hash
+Θ (ThetaShare)
+angle_hash
+κ (MasterKey)
+psi_hash
+theta_hash
+Fexp esperado
+SHA-256
+(estados)
+= ?
+SHA-256
+(ângulos)
+= ?
+Hashes
+cruzados
+= ?
+Computar Fexp
+dos dados
+|∆| < 0,001?
+ACEITAR
+REJEITAR
+Sim Sim
+Sim
+Não
+Não
+Não
+Não
+Vericação física por Fexp detecta
+corrupções que
+preservam checksums
+mas alteram
+estatísticas dos dados
+Figure 6: Diagrama de vericação de integridade quádrupla: SHA-256 dos estados
+versus PsiShare (1), SHA-256 dos ângulos versus ThetaShare (2), hashes cruzados na
+MasterKey (3), e vericação física por Fexp (4). Qualquer falha resulta em rejeição
+imediata.
+13
+
+0 100 200
+0
+2
+4
+6
+8 ·10−3
+Uniforme teórico: 1/256
+Entropia ≈ 7,99 bits/byte
+Valor do byte (0255)
+Frequência relativa
+Ψ (PsiShare)  Entropia de bytes
+0 100 200
+0
+2
+4
+6
+8 ·10−3
+Uniforme teórico: 1/256
+Entropia ≈ 7,98 bits/byte
+Valor do byte (0255)
+Frequência relativa
+Θ (ThetaShare)  Entropia de bytes
+Ambas as partes apresentam distribuição de
+bytes indistinguível de ruído aleatório
+(entropia máxima teórica: 8,0 bits/byte).
+Nenhuma informação é
+recuperável de partes isoladas.
+Figure 7: Análise estatística de entropia de bytes das partes isoladas. PsiShare ( Ψ)
+apresenta entropia de ≈ 7,99 bits/byte e ThetaShare ( Θ) apresenta ≈ 7,98 bits/byte,
+ambas indistinguíveis de ruído aleatório uniforme ( 8,0 bits/byte teórico).
+14

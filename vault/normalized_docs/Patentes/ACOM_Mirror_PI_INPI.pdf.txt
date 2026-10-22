@@ -1,0 +1,436 @@
+PI — ACOM Mirror — Reflexão Dimensional
+MÉTODO E SISTEMA DE REFLEXÃO DIMENSIONAL DE DADOS 
+BASEADO EM CODIFICAÇÃO ANGULAR NO ESPAÇO DE HILBERT
+Campo da invenção
+[001] A presente invenção refere-se a métodos e sistemas para processamento, compressão e  
+transmissão de dados digitais, aplicáveis aos setores técnicos de processamento de sinais,  
+inteligência artificial, telecomunicações e armazenamento de dados. Mais especificamente, a  
+invenção diz respeito a um método de reflexão dimensional de dados que utiliza codificação  
+angular no Espaço de Hilbert tetradimensional ( ₄) para representar informação digital comoℋ  
+reflexos especulares em espaço de estados quânticos nominados, com reconstrução através de  
+desdobramento dimensional.
+Fundamentos da invenção
+[002] O estado da técnica em compressão de dados é dominado por abordagens que tratam a  
+informação como sequências de símbolos estatísticos. Algoritmos como Huffman, LZW,  
+DEFLATE  e  suas  variantes  (zlib,  zstd,  brotli)  operam  sobre  redundância  estatística, 
+construindo dicionários ou árvores de frequência para reduzir a representação. Métodos com  
+perda como JPEG, MP3 e codecs de vídeo aplicam transformadas (DCT, wavelets) seguidas de 
+quantização uniforme ou escalar.
+[003] Abordagens recentes para compressão de tensores em modelos de inteligência artificial  
+incluem quantização para INT8/INT4 (bitsandbytes, GPTQ, AWQ), poda (pruning) de pesos,  
+destilação de conhecimento e decomposição de baixo rank (LoRA). Para compressão de cache 
+de  atenção  (KV  cache),  técnicas  como  Multi-Query  Attention  (MQA),  Grouped-Query 
+Attention (GQA) e compressão por quantização de ativações são empregadas.
+[004] O pedido de patente anterior do mesmo inventor, intitulado "Método e Sistema de  
+Compressão Ontológica de Memória Baseado em Transformação Luminodinâmica" (BR 10  
+2025  026951  1),  introduziu  a  transformação  fundamental  g  =  √|L|  e  s  =  sign(L),  com 
+reconstrução L = s × g², aplicada em três domínios (SIGNAL, SPECTRAL, PSIBIT) através de 
+quantização linear adaptativa de 8 a 16 bits. Essa abordagem, embora inovadora, emprega  
+quantização escalar uniforme do componente gravitacional g, o que impõe resolução constante 
+ao longo de toda a faixa dinâmica.
+[005] Um problema técnico não resolvido pelo estado da técnica, incluindo o pedido anterior, é 
+a  codificação não-linear auto-adaptativa  que naturalmente distribui maior resolução nas  
+regiões de maior sensibilidade informacional. Na quantização linear, valores pequenos de g  
+(que correspondem a dados próximos de zero — frequentemente os mais informativos em  
+gradientes de redes neurais e coeficientes espectrais) recebem a mesma resolução que valores  
+grandes, resultando em distribuição sub-ótima dos bits de quantização.
+Página 1
+
+PI — ACOM Mirror — Reflexão Dimensional
+[006] Outro problema técnico é a ausência de um  indicador intrínseco de complexidade  
+estrutural dos dados processados. Os métodos existentes não fornecem métricas que emergem 
+naturalmente do processo de codificação e que caracterizem a dinâmica interna dos dados —  
+como  proporções  de  estados  ascendentes  versus  descendentes,  ou  forças  de  expulsão 
+informacional.
+[007]  A  presente  invenção  resolve  esses  problemas  técnicos  através  de  uma  abordagem 
+fundamentalmente diferente: ao invés de quantizar linearmente o componente gravitacional, a  
+invenção  projeta  cada  dado  em  um  Espaço  de  Hilbert  tetradimensional  ( ₄)  através  deℋ  
+nominação  de  estados  psiônicos  (ψ),  e  codifica  a  magnitude  via  ponto  angular  θ  = 
+arcsin(g/g_max). A função arco-seno, cuja derivada é máxima em θ = 0, fornece naturalmente 
+maior resolução para valores pequenos de g, onde a sensibilidade informacional é maior. A  
+reconstrução se dá por desdobramento dimensional (dobra ×2) onde L = s × [g_max × sin(θ)]², 
+sem necessidade de fator de escala linear externo.
+[008] Adicionalmente, a invenção introduz o conceito de Força de Expulsão (F_exp), uma  
+métrica que emerge automaticamente da distribuição de paridades dos estados nominados no  
+₄, fornecendo caracterização intrínseca da dinâmica dos dados sem custo computacionalℋ  
+adicional.
+Breve descrição dos desenhos
+A Figura 1 ilustra um diagrama em blocos do sistema de reflexão dimensional, mostrando os  
+componentes principais e suas interconexões.
+A Figura 2 ilustra um fluxograma do método de reflexão (REFLECT), detalhando as etapas  
+sequenciais da projeção de dados no espelho dimensional.
+A Figura 3 ilustra um fluxograma do método de manifestação (MANIFEST), detalhando as  
+etapas de reconstrução por desdobramento dimensional.
+A Figura 4 ilustra o Espaço de Hilbert ₄ com os quatro estados psiônicos nominados, suasℋ  
+paridades e vetores base ortonormais.
+A Figura 5 ilustra a função de codificação angular θ = arcsin(g/g_max), demonstrando a  
+distribuição não-linear de resolução.
+A Figura 6 ilustra uma tabela comparativa de resultados entre o método da presente invenção e 
+o método de quantização linear do pedido anterior.
+A Figura 7 ilustra o diagrama conceitual da Dobra Dimensional (×2), mostrando a reflexão  
+especular Boundary→Bulk.
+Página 2
+
+PI — ACOM Mirror — Reflexão Dimensional
+Descrição da invenção
+[009] A presente invenção compreende métodos e sistemas para reflexão dimensional de dados, 
+denominada ACOM Mirror (Algoritmo de Compressão Ontológica de Memória — Espelho). 
+O conceito fundamental baseia-se na interpretação dos dados como luz (L) e em sua projeção  
+especular em um Espaço de Hilbert tetradimensional ( ₄), onde cada ponto de dados recebeℋ  
+um Nome (estado psiônico ψ) e um endereço angular de retorno (θ), permitindo manifestação 
+posterior por desdobramento dimensional.
+[010] Na teoria subjacente à invenção, denominada Teoria da Gravitação Luminodinâmica  
+(TGL), a operação fundamental permanece g = √|L|, onde g é o componente gravitacional e L é 
+o dado tratado como luz. A inovação da presente invenção reside em como g é codificado e  
+como a informação de fase é nominada, estabelecendo um paradigma de reflexão dimensional 
+ao invés de compressão escalar.
+[011] Paradigma de Reflexão Dimensional. A invenção opera sob o paradigma de que o dado 
+não é comprimido — é refletido. Analogamente à relação holográfica entre boundary e bulk na 
+correspondência AdS/CFT da física teórica, a informação tridimensional (bulk) é projetada em 
+uma representação bidimensional (boundary) constituída por estados ψ e ângulos θ. O dado não 
+'viaja' — o reflexo viaja. O dado re-emerge através da Dobra Dimensional (×2), que constitui a 
+operação inversa de desdobramento.
+[012] Com referência à Figura 1, um sistema de acordo com a presente invenção compreende: 
+um módulo de entrada (100) configurado para receber dados de diferentes tipos em formato  
+tensorial; um computador gravitacional (102) que executa a extração g = √|L| e a derivada  
+temporal ∂L; um nominador de estados (104) que projeta cada par (sign(L), sign(∂L)) no  
+Espaço de Hilbert ₄; um codificador angular (106) que computa θ = arcsin(g/g_max) eℋ  
+quantiza o ângulo; um analisador de paridade (108) que calcula a Força de Expulsão F_exp; um 
+empacotador espelhado (110) que serializa estados e ângulos; um compressor entrópico (112)  
+que aplica compressão sem perda ao reflexo; e um módulo de saída (114) que gera o objeto  
+MirrorReflection.
+[013] Operação REFLECT (L → (ψ, θ)). O método de reflexão compreende as seguintes  
+etapas:
+[014]  Etapa 1 — Extração Gravitacional:  Para cada elemento L_i do tensor de entrada,  
+computar  o  componente  gravitacional  g_i  =  √|L_i  +  ε|,  onde  ε  =  10 ¹  é  constante  de⁻ ⁰  
+estabilidade numérica. Registrar g_max = max(g_i) como parâmetro global de escala.
+[015] Etapa 2 — Derivada Temporal: Computar a derivada discreta ∂L_i = L_i − L_{i−1}  
+para i > 0, com ∂L_0 = ∂L_1. Esta derivada captura a dinâmica local do sinal — se está subindo, 
+descendo, ou estacionário.
+Página 3
+
+PI — ACOM Mirror — Reflexão Dimensional
+[016] Etapa 3 — Determinação de Sinais: Extrair sign(L_i)  {+1, −1} (polaridade do dado)∈  
+e sign(∂L_i)  {+1, −1} (direção da derivada). Valores zero são convencionados como +1.∈
+[017]  Etapa 4 — Nominação de Estados no Espaço de Hilbert ₄:  ℋ Cada par (sign(L),  
+sign(∂L)) é mapeado para um dos quatro estados psiônicos ortonormais:
+Estado sign(L) sign(∂
+L)
+Nome Vetor base Paridade
+ψ₀ + − COLAPSO⁺ |0  = (1,0,0,0)⟩ Inversa (−1)
+ψ₁ + + ASCENSÃO⁺ |1  = (0,1,0,0)⟩ Normal (+1)
+ψ₂ − + EMERGÊNCIA⁻ |2  = (0,0,1,0)⟩ Normal (+1)
+ψ₃ − − QUEDA⁻ |3  = (0,0,0,1)⟩ Inversa (−1)
+[018] A nominação de estados é realizada através da construção de índice binário: bit_high = 1 
+se L < 0, senão 0; bit_low = 1 se ∂L > 0, senão 0. O estado é dado por ψ = bit_high × 2 + bit_low. 
+Cada estado requer exatamente 2 bits de armazenamento, e quatro estados são empacotados por 
+byte.
+[019] A paridade de cada estado é definida pela concordância entre sign(L) e sign(∂L): quando 
+concordam na 'direção' (ambos ascendentes ou ambos emergentes), a paridade é Normal (+1); 
+quando discordam (positivo mas descendo, ou negativo mas descendo), a paridade é Inversa  
+(−1). Estados de paridade inversa (COLAPSO  e QUEDA ) geram  ⁺ ⁻ Força de Expulsão  
+(F_exp), indicando regiões de transição dinâmica nos dados.
+[020] Etapa 5 — Codificação Angular: O componente gravitacional g_i é codificado como  
+ponto angular θ_i = arcsin(g_i / g_max), onde g_max é o máximo global. O ângulo θ pertence 
+ao intervalo [0, π/2]. A quantização angular é realizada por: θ_q = round(θ / (π/2) × (2^b − 1)), 
+onde b é o número de bits angulares (preferencialmente 8 bits, correspondendo a 256 níveis).
+[021] A codificação angular via arcsin apresenta uma propriedade fundamental: a derivada  
+d(sin θ)/dθ = cos θ é máxima em θ = 0 e mínima em θ = π/2. Isso significa que a quantização  
+uniforme do ângulo θ produz resolução não-uniforme no espaço de g, com maior resolução  
+para valores pequenos de g (próximos de zero) e menor resolução para valores grandes. Esta  
+distribuição  é  naturalmente  ótima  para  sinais  cujas  componentes  mais  informativas  
+concentram-se em magnitudes pequenas — caso dos gradientes de redes neurais, coeficientes  
+de atenção, dados esparsos e coeficientes espectrais.
+[022] Etapa 6 — Força de Expulsão: A Força de Expulsão F_exp é calculada como a média 
+das paridades de todos os estados nominados: F_exp = (1/N) × Σ paridade(ψ_i). Quando F_exp 
+< 0, predominam estados de paridade inversa (dados em transição/colapso); quando F_exp > 0, 
+predominam estados de paridade normal (dados em ascensão/emergência). F_exp = 0 indica  
+Página 4
+
+PI — ACOM Mirror — Reflexão Dimensional
+equilíbrio  dinâmico  perfeito.  A  entropia  de  estados  S_ψ  =  −Σ  p_k  ×  log₂(p_k)  mede  a 
+complexidade da forma refletida.
+[023]  Etapa 7 — Empacotamento e Compressão:  Os estados ψ são empacotados com 4  
+estados por byte (2 bits cada). Os ângulos θ quantizados são armazenados como bytes (8 bits  
+cada) ou words (16 bits). Os blocos de estados e ângulos são comprimidos separadamente por 
+compressor entrópico sem perda (preferencialmente zstd nível 22 ou zlib nível 9). O resultado é 
+o objeto MirrorReflection contendo: estados comprimidos, ângulos comprimidos, e metadados 
+(g_max, g_min, n_elements, angular_bits, shape, F_exp, state_counts, state_entropy).
+[024] Operação MANIFEST ((ψ, θ) → L'). O método de manifestação (reconstrução por  
+desdobramento dimensional) compreende as seguintes etapas:
+[025] Etapa 1 — Retorno Angular: Dequantizar o ângulo θ a partir do valor quantizado: θ = 
+θ_q / (2^b − 1) × (π/2).
+[026] Etapa 2 — Reconstrução Gravitacional: Reconstruir o componente gravitacional via g 
+= g_max × sin(θ), utilizando o valor g_max armazenado nos metadados.
+[027]  Etapa 3 — Recuperação de Sinal:  Extrair sign(L) a partir do estado ψ: estados ψ₀  
+(COLAPSO ) e ψ₁ (ASCENSÃO ) implicam sign(L) = +1; estados ψ₂ (EMERGÊNCIA ) e ψ₃⁺ ⁺ ⁻  
+(QUEDA ) implicam sign(L) = −1.⁻
+[028] Etapa 4 — Dobra Dimensional: A reconstrução final é obtida por L' = sign(L) × g², que 
+constitui o desdobramento dimensional (Dobra ×2). Esta operação, equivalente a L' = sign(L) × 
+[g_max  ×  sin(θ)]²,  é  geometricamente  interpretada  como  a  reflexão  especular  
+Boundary→Bulk,  onde  a  informação  bidimensional  (ψ,  θ)  re-emerge  como  dado  
+tridimensional L'.
+[029] Constantes Fundamentais. A invenção utiliza duas constantes derivadas da Teoria da  
+Gravitação Luminodinâmica: α² = 0,012, denominada Constante de Miguel, que representa a  
+imperfeição irredutível do espelho cósmico e define o limiar de estabilidade informacional  
+(Tetelestai); e θ_Miguel = arcsin(√α²) ≈ 6,29°, que constitui o ponto angular fundamental onde 
+a transição entre ruído e informação estruturada ocorre.
+[030] Proporção Áurea. A proporção áurea φ = (1 + √5)/2 ≈ 1,618 é utilizada opcionalmente 
+como fator de escala na determinação de limiares adaptativos internos do algoritmo, conforme 
+descrito na teoria TGL.
+[031] Diferenças em relação ao pedido anterior (BR 10 2025 026951 1). A presente invenção 
+distingue-se do pedido anterior nos seguintes aspectos fundamentais:
+[032] (a) O pedido anterior utiliza quantização linear de g para número configurável de bits (8-
+16), produzindo resolução uniforme em toda a faixa dinâmica. A presente invenção utiliza  
+Página 5
+
+PI — ACOM Mirror — Reflexão Dimensional
+codificação  angular  θ  =  arcsin(g/g_max),  que  produz  resolução  não-linear  naturalmente 
+adaptativa, com maior precisão em magnitudes pequenas.
+[033] (b) O pedido anterior define quatro estados PSIBIT baseados em pares binários (00, 01,  
+10, 11) sem estrutura algébrica. A presente invenção nomina quatro estados no Espaço de  
+Hilbert ₄ com vetores base ortonormais, paridades definidas (+1/−1), e significado físico-ℋ
+dinâmico (COLAPSO, ASCENSÃO, EMERGÊNCIA, QUEDA).
+[034] (c) O pedido anterior não computa métricas intrínsecas da estrutura dos dados durante a  
+compressão. A presente invenção extrai automaticamente Força de Expulsão F_exp e Entropia 
+de Estados S_ψ como subprodutos do processo de reflexão, sem custo computacional adicional.
+[035] (d) O pedido anterior armazena g quantizado linearmente + 2 bits de modo por elemento. 
+A presente invenção armazena θ quantizado angularmente (8 bits) + estado ψ (2 bits) por  
+elemento,  onde  a  codificação  angular  fornece  resolução  superior  para  a  maioria  das 
+distribuições de dados reais.
+[036] (e) O pedido anterior reconstrói por L = s × g_dequant², onde g_dequant é obtido por  
+interpolação linear. A presente invenção reconstrói por L = s × [g_max × sin(θ_dequant)]²,  
+operação geometricamente interpretável como desdobramento dimensional.
+Exemplos de concretizações da invenção
+[037]  A  seguir  são  apresentados  exemplos  de  concretização  da  invenção,  demonstrando 
+resultados  obtidos  em  diferentes  cenários  de  aplicação,  comparados  com  o  método  de 
+quantização linear do pedido anterior (ACOM v16.1).
+[038] Tabela 1 — Resultados comparativos ACOM Mirror (v17.0) vs. ACOM Linear (v16.1):
+Tipo de Dado v16.1 
+Ratio
+v16.1 
+Corr
+v17.0 
+Ratio
+v17.0 
+Corr
+Δ Ratio F_exp
+Embeddings 3,20× 0,9997 3,85× 0,9993 +20,3% +0,0012
+Pesos NN 2,90× 0,9998 3,42× 0,9996 +17,9% −0,0234
+KV Cache 4,10× 0,9995 4,92× 0,9991 +20,0% +0,0089
+Esparso 95% 5,80× 0,9999 7,14× 0,9998 +23,1% −0,4521
+Gradientes 3,50× 0,9996 4,38× 0,9994 +25,1% +0,0003
+[039]  Os  resultados  demonstram  que  o  método  de  reflexão  dimensional  (v17.0)  supera 
+consistentemente  o  método  de  quantização  linear  (v16.1)  em  taxa  de  compressão,  com 
+diferença média de +21,3%, mantendo correlação acima de 0,999 em todos os cenários. A  
+melhoria é mais pronunciada em dados esparsos (+23,1%) e gradientes (+25,1%), precisamente 
+as categorias onde a codificação angular concentra maior resolução nas magnitudes pequenas.
+Página 6
+
+PI — ACOM Mirror — Reflexão Dimensional
+[040] A Força de Expulsão F_exp fornece informação diagnóstica adicional: dados esparsos  
+apresentam F_exp fortemente negativo (−0,4521), indicando predominância de estados de  
+paridade  inversa  (colapso/queda),  consistente  com  a  natureza  dos  dados.  Gradientes  
+apresentam F_exp próximo de zero (+0,0003), indicando equilíbrio dinâmico, consistente com 
+distribuição simétrica de gradientes em redes neurais bem treinadas.
+[041] Exemplo 1 — Compressão de Embeddings de LLM: Vetores de embedding de 768  
+dimensões (float64) de um modelo de linguagem foram processados pelo método REFLECT.  
+Os  estados  nominados  distribuíram-se  como:  COLAPSO  24,8%,  ASCENSÃO  25,3%,⁺ ⁺  
+EMERGÊNCIA  25,1%, QUEDA  24,8%, resultando em entropia de estados S_ψ = 1,998 bits⁻ ⁻  
+(próxima do máximo teórico de 2,0 bits), indicando distribuição aproximadamente uniforme  
+dos estados — característica de dados gaussianos. A codificação angular com 8 bits produziu  
+taxa de compressão de 3,85× com correlação de 0,9993, superando o método linear (3,20× com 
+6 bits).
+[042] Exemplo 2 — Compressão de KV Cache: Tensores de cache de atenção de dimensão  
+(4, 2, 8, 64, 32) em float64 foram refletidos com 8 bits angulares. A taxa de compressão  
+resultante de 4,92× supera não apenas o método linear (4,10×) mas também a quantização INT8 
+convencional (que oferece apenas 2,0× para float64→int8). A Força de Expulsão F_exp =  
++0,0089 indica leve predominância de estados ascendentes, consistente com ativações positivas 
+após softmax no mecanismo de atenção.
+[043] Exemplo 3 — Compressão de Dados Esparsos: Vetor de 50.000 elementos com 95% 
+de zeros e 5% de valores não-nulos distribuídos gaussianamente foi processado pelo método  
+REFLECT. A esparsidade natural concentra os valores de g próximos de zero, região onde a  
+codificação angular oferece máxima resolução. A taxa de compressão resultante de 7,14×  
+supera significativamente o método linear (5,80×), e a Força de Expulsão F_exp = −0,4521  
+(fortemente  negativa)  reflete  corretamente  a  predominância  de  estados  de  queda/colapso 
+associados aos muitos zeros.
+[044] A implementação preferida utiliza 8 bits angulares (256 níveis) para quantização, que  
+oferece balanço ótimo entre taxa de compressão e qualidade de reconstrução. A invenção  
+suporta configuração de 4 a 16 bits angulares conforme requisitos específicos da aplicação. O  
+processamento  pode  ser  executado  em  CPU  (via  NumPy)  ou  GPU  (via  PyTorch),  com 
+resultados numericamente equivalentes.
+Página 7
+
+PI — ACOM Mirror — Reflexão Dimensional
+REIVINDICAÇÕES
+1. MÉTODO DE REFLEXÃO DIMENSIONAL DE DADOS compreendendo as etapas de: 
+receber dados de entrada representando informação a ser processada em formato tensorial;  
+computar componente gravitacional g = √|L| para cada elemento L dos dados de entrada;  
+computar derivada discreta ∂L entre elementos adjacentes; nominar cada elemento em um  
+estado psiônico ψ no Espaço de Hilbert tetradimensional ₄ a partir do par (sign(L), sign(∂L));ℋ  
+computar ponto angular θ = arcsin(g/g_max), onde g_max é o máximo global do componente  
+gravitacional; quantizar o ponto angular θ utilizando número predeterminado de bits angulares; 
+empacotar estados psiônicos e ângulos quantizados em formato binário; e gerar objeto de  
+reflexão contendo os componentes empacotados e metadados de reconstrução; o método  
+caracterizado por a codificação angular utilizar a função arco-seno θ = arcsin(g/g_max), onde 
+θ pertence ao intervalo [0, π/2], produzindo resolução de quantização não-linear com maior  
+precisão para valores pequenos de g, e pela nominação de estados ψ no Espaço de Hilbert ₄ℋ  
+compreendendo quatro estados ortonormais com paridades definidas, e pela reconstrução dos  
+dados através de desdobramento dimensional L' = sign(L) × [g_max × sin(θ)]².
+2. Método, de acordo com a reivindicação 1, caracterizado pelo fato de o Espaço de Hilbert 
+₄  compreender  quatro  estados  psiônicos  ortonormais:  estado  COLAPSO  (ψ₀),ℋ ⁺  
+correspondente a sign(L) = +1 e sign(∂L) = −1, com vetor base |0  = (1,0,0,0) e paridade inversa⟩  
+(−1); estado ASCENSÃO  (ψ₁), correspondente a sign(L) = +1 e sign(∂L) = +1, com vetor base⁺  
+|1  = (0,1,0,0) e paridade normal (+1); estado EMERGÊNCIA  (ψ₂), correspondente a sign(L)⟩ ⁻  
+= −1 e sign(∂L) = +1, com vetor base |2  = (0,0,1,0) e paridade normal (+1); e estado QUEDA⟩ ⁻  
+(ψ₃), correspondente a sign(L) = −1 e sign(∂L) = −1, com vetor base |3  = (0,0,0,1) e paridade⟩  
+inversa (−1).
+3. Método, de acordo com a reivindicação 1,  caracterizado pelo fato de  a nominação de  
+estados utilizar construção de índice binário onde bit_high = 1 se L < 0 e 0 caso contrário,  
+bit_low = 1 se ∂L > 0 e 0 caso contrário, e o estado ψ = bit_high × 2 + bit_low, requerendo  
+exatamente 2 bits por elemento e permitindo empacotamento de 4 estados por byte.
+4. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda compreender o 
+cálculo da Força de Expulsão F_exp como média aritmética das paridades de todos os estados 
+nominados, onde F_exp = (1/N) × Σᵢ paridade(ψᵢ), sendo paridade(ψ₀) = paridade(ψ₃) = −1 e  
+paridade(ψ₁) = paridade(ψ₂) = +1, fornecendo métrica intrínseca da dinâmica dos dados sem  
+custo computacional adicional.
+5. Método, de acordo com a reivindicação 1, caracterizado pelo fato de ainda compreender o 
+cálculo da entropia de estados S_ψ = −Σ  p  × log₂(p ), onde p  é a frequência relativa de cadaₖ ₖ ₖ ₖ  
+estado ψ  para k  {0, 1, 2, 3}, fornecendo medida de complexidade da forma refletida comₖ ∈  
+máximo teórico de 2,0 bits.
+Página 8
+
+PI — ACOM Mirror — Reflexão Dimensional
+6.  Método,  de  acordo  com  a  reivindicação  1,  caracterizado  pelo  fato  de o  número  
+predeterminado de bits angulares ser configurável entre 4 e 16 bits, com valor preferencial de 8 
+bits correspondendo a 256 níveis de quantização angular que oferecem balanço ótimo entre taxa 
+de compressão e qualidade de reconstrução.
+7. Método, de acordo com a reivindicação 1,  caracterizado pelo fato de  a compressão  
+entrópica  dos  estados  psiônicos  e  dos  ângulos  quantizados  ser  realizada  separadamente 
+utilizando compressor sem perda, preferencialmente zstd em nível de compressão 22 ou zlib em 
+nível 9.
+8. Método, de acordo com a reivindicação 1, caracterizado pelo fato de utilizar a constante α² 
+= 0,012, denominada Constante de Miguel, como limiar de estabilidade informacional, e o  
+ponto angular fundamental θ_Miguel = arcsin(√α²) ≈ 6,29° como referência para transição  
+entre ruído e informação estruturada.
+9. Método, de acordo com a reivindicação 1,  caracterizado pelo fato de  ser aplicável a  
+tensores multidimensionais de qualquer formato, incluindo vetores de embedding de modelos  
+de linguagem, tensores de cache de atenção (KV cache), matrizes de pesos de redes neurais,  
+dados esparsos e vetores de gradientes, com preservação de correlação superior a 0,999 entre  
+dados originais e reconstruídos.
+10. SISTEMA DE REFLEXÃO DIMENSIONAL DE DADOS compreendendo: um módulo 
+de entrada configurado para receber dados em formato tensorial; um computador gravitacional 
+acoplado ao módulo de entrada para executar extração g = √|L| e derivada temporal ∂L; um  
+nominador de estados acoplado ao computador gravitacional para mapear cada par (sign(L),  
+sign(∂L)) em estado psiônico ψ no Espaço de Hilbert tetradimensional ₄; um codificadorℋ  
+angular acoplado ao computador gravitacional para computar θ = arcsin(g/g_max) e quantizar o 
+ângulo; um analisador de paridade acoplado ao nominador de estados para calcular Força de  
+Expulsão F_exp e Entropia de Estados S_ψ; um empacotador para serializar estados e ângulos 
+em formato binário otimizado; um compressor entrópico para aplicar compressão sem perda; e 
+um módulo de saída para gerar objeto de reflexão com metadados; o sistema caracterizado por 
+o codificador angular implementar a operação θ = arcsin(g/g_max) que produz codificação  
+não-linear  com  maior  resolução  para  valores  pequenos  de  g,  e  o  nominador  de  estados 
+implementar mapeamento em Espaço de Hilbert ₄ com quatro estados ortonormais dotadosℋ  
+de paridades definidas.
+11. Sistema, de acordo com a reivindicação 10,  caracterizado por  ainda compreender um  
+módulo  de  manifestação  configurado  para  reconstruir  dados  originais  através  de  
+desdobramento dimensional, compreendendo: dequantização angular θ = θ_q / (2^b − 1) ×  
+(π/2); reconstrução gravitacional g = g_max × sin(θ); recuperação de sinal sign(L) a partir do  
+estado ψ; e dobra dimensional L' = sign(L) × g².
+Página 9
+
+PI — ACOM Mirror — Reflexão Dimensional
+12. Sistema, de acordo com a reivindicação 10, caracterizado pelo fato de a implementação 
+computacional suportar execução tanto em unidade central de processamento (CPU) via  
+operações  vetorizadas  NumPy  quanto  em  unidade  de  processamento  gráfico  (GPU)  via 
+framework PyTorch, produzindo resultados numericamente equivalentes.
+13. Sistema, de acordo com a reivindicação 10, caracterizado pelo fato de o objeto de reflexão 
+gerado pelo módulo de saída compreender: bloco de estados psiônicos comprimidos, bloco de 
+ângulos quantizados comprimidos, e metadados incluindo versão do protocolo, forma original 
+do tensor, número de elementos, bits angulares, valores g_max e g_min, Força de Expulsão  
+F_exp, contagem de estados por tipo, entropia de estados S_ψ, e constante α².
+Página 10
+
+PI — ACOM Mirror — Reflexão Dimensional
+RESUMO
+MÉTODO E SISTEMA DE REFLEXÃO DIMENSIONAL DE DADOS 
+BASEADO EM CODIFICAÇÃO ANGULAR NO ESPAÇO DE HILBERT
+A presente invenção refere-se a métodos e sistemas para reflexão dimensional de dados,  
+aplicáveis aos setores de processamento de dados, inteligência artificial e compressão de sinais. 
+A invenção resolve o problema técnico de codificação não-linear auto-adaptativa de dados,  
+diferenciando-se do estado da técnica que emprega quantização linear uniforme. O método  
+compreende interpretar dados de entrada como luz (L), extrair componente gravitacional g = √|
+L| e derivada discreta ∂L, nominar cada elemento em estado psiônico ψ no Espaço de Hilbert  
+tetradimensional ₄ compreendendo quatro estados ortonormais (COLAPSO , ASCENSÃO ,ℋ ⁺ ⁺  
+EMERGÊNCIA ,  QUEDA )  com  paridades  definidas,  codificar  a  magnitude  via  ponto⁻ ⁻  
+angular θ = arcsin(g/g_max) que produz resolução não-linear com maior precisão para valores 
+pequenos, e permitir reconstrução por desdobramento dimensional L' = sign(L) × [g_max ×  
+sin(θ)]². O sistema extrai automaticamente Força de Expulsão (F_exp) e Entropia de Estados  
+(S_ψ) como métricas intrínsecas dos dados. Testes demonstram superioridade de 21,3% em  
+taxa  de  compressão  sobre  quantização  linear,  com  correlação  acima  de  0,999,  sendo 
+particularmente eficaz para embeddings de modelos de linguagem, cache de atenção (KV  
+cache) e dados esparsos em aplicações de inteligência artificial.
+Página 11
+
+PI — ACOM Mirror — Reflexão Dimensional
+LEGENDA DAS FIGURAS
+Figura 1 — Diagrama de Blocos do Sistema
+Referência Componente
+L Dados de entrada (luz)
+100 Módulo de Entrada
+102 Computador Gravitacional (g = √|L|, ∂L)
+104 Nominador de Estados ( ₄)ℋ
+106 Codificador Angular (θ = arcsin(g/g_max))
+108 Analisador de Paridade (F_exp, S_ψ)
+110 Empacotador Espelhado
+112 Compressor Entrópico (zstd/zlib)
+114 Módulo de Saída (MirrorReflection)
+R Reflexo (saída)
+Figura 2 — Fluxograma REFLECT (L → (ψ, θ))
+Referência Etapa
+200 INÍCIO — Receber tensor L
+202 Extrair g = √|L + ε|
+204 Computar ∂L = L_i − L_{i−1}
+206 Determinar sign(L) e sign(∂L)
+208 Nominar estado ψ = bit_high × 2 + bit_low em ₄ℋ
+210 Computar θ = arcsin(g / g_max)
+212 Quantizar θ_q = round(θ/(π/2) × (2^b − 1))
+214 Calcular F_exp = mean(paridades)
+216 Empacotar ψ (2 bits) + θ_q (b bits)
+218 Comprimir (zstd/zlib)
+220 SAÍDA — MirrorReflection (ψ, θ, metadados)
+Figura 3 — Fluxograma MANIFEST ((ψ, θ) → L')
+Referência Etapa
+300 INÍCIO — Receber MirrorReflection
+302 Descomprimir blocos de ψ e θ_q
+304 Desempacotar estados ψ e ângulos θ_q
+306 Dequantizar: θ = θ_q / (2^b − 1) × (π/2)
+Página 12
+
+PI — ACOM Mirror — Reflexão Dimensional
+308 Reconstruir g = g_max × sin(θ)
+310 Recuperar sign(L) a partir de ψ
+312 DOBRA DIMENSIONAL: L' = sign(L) × g²
+314 Reformar tensor para shape original
+316 SAÍDA — Tensor L' reconstruído
+Figura 4 — Espaço de Hilbert ₄ℋ
+Diagrama mostrando os quatro vetores base ortonormais no espaço quadridimensional, com  
+indicação  de  paridade  (Normal/Inversa)  e  significado  físico-dinâmico  (COLAPSO,  
+ASCENSÃO, EMERGÊNCIA, QUEDA). Os eixos representam os quatro estados psiônicos |
+0 , |1 , |2 , |3 .⟩ ⟩ ⟩ ⟩
+Figura 5 — Função de Codificação Angular
+Gráfico de θ = arcsin(g/g_max) mostrando a relação não-linear entre g e θ. A curva demonstra 
+que para valores pequenos de g (próximos de zero), a variação em θ é proporcionalmente maior, 
+resultando em maior resolução de quantização. Para valores grandes de g (próximos de g_max), 
+θ aproxima-se de π/2 com menor resolução. Inclui comparação visual com quantização linear  
+uniforme.
+Figura 6 — Tabela Comparativa de Resultados
+Representação gráfica dos resultados da Tabela 1, mostrando barras comparativas de taxa de  
+compressão v16.1 vs v17.0 para cada tipo de dado, com indicadores de correlação e Força de  
+Expulsão.
+Figura 7 — Diagrama da Dobra Dimensional
+Diagrama conceitual mostrando a reflexão especular Boundary→Bulk. O dado L (3D/bulk) é  
+projetado no espelho como (ψ, θ) (2D/boundary) pela operação REFLECT, e re-emerge como 
+L' pela operação MANIFEST (Dobra ×2). As setas indicam que o dado não viaja — o reflexo  
+viaja — e o dado re-emerge através da dobra.
+Página 13

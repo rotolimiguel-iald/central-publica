@@ -1,0 +1,452 @@
+{
+ "proto": {
+  "protocol": {
+   "version": "D1_CAMB_V1",
+   "status": "PRE_REGISTERED_BEFORE_DATA_READ",
+   "form_of": "tgl_paper_unified.py --d1-camb (maio/2026) = tgl_mcmc_camb_v2.py Step 3 CAMB cross-check + tgl_camb_worker.py, SEM alteracao",
+   "hypothesis": {
+    "background": "H^2 = (8 pi G/3) rho_tot [1 + beta |1 + w_eff(z)|]",
+    "beta_theory": "alpha sqrt(e) em runtime",
+    "approximation_DECLARED": "CAMB em LCDM; TGL analitica por cima; r_s deslocado por H_LCDM/H_TGL em z_* (nao --tight-rs)"
+   },
+   "data": {
+    "planck": "2018 comprimido (R = 1,7502; l_A = 301,471; omega_b h^2 = 0,02236; cov Zhai+ 2019)",
+    "desi": "DR1 BAO 12 pontos (Adame+ 2024)",
+    "sh0es": "H0 = 73,04 \u00b1 1,04"
+   },
+   "phases": {
+    "1_bestfits_full": "LCDM (beta = 0) vs TGL (beta fixo) com Planck + DESI + SH0ES; Nelder-Mead; Delta chi^2 = chi^2_TGL - chi^2_LCDM (3 parametros livres em ambos)",
+    "2_no_sh0es": "o mesmo com Planck + DESI; tensao de H0 contra SH0ES para LCDM, TGL fixo e TGL zero-free (1+z_*)^beta",
+    "3_mcmc_free_beta": "emcee 24 walkers x 2000 passos, burn 400, prior plano beta em (-0,05; 0,05); posterior de beta"
+   },
+   "criteria": {
+    "bestfit_success_required": true,
+    "delta_chi2_5sigma": 25.0,
+    "delta_chi2_2sigma": 4.0,
+    "acceptance_min": 0.1,
+    "acceptance_max": 0.7,
+    "chain_min": 38400,
+    "mcmc_rule": "regua relativizada do Nivel 2: FALSIFIED se alpha sqrt(e) fora de 5 sigma (equal-tailed, sigma media); INCAPAZ se sigma(beta) > beta; NOT_FALSIFIED_POWERED se sigma <= beta/2 e alpha sqrt(e) dentro de 3 sigma; TENSION se fora de 3 sigma e nao FALSIFIED; INCONCLUSIVE nos demais"
+   },
+   "allowed_verdicts": {
+    "bestfit": [
+     "D1_LCDM_PREFERRED_5SIGMA",
+     "D1_TGL_BACKGROUND_PREFERRED_5SIGMA",
+     "D1_TENSION_2_TO_5_SIGMA",
+     "D1_NOT_DISTINGUISHED"
+    ],
+    "mcmc": [
+     "D1_BETA_FALSIFIED",
+     "D1_BETA_INCAPAZ",
+     "D1_BETA_NOT_FALSIFIED_POWERED",
+     "D1_BETA_TENSION",
+     "D1_BETA_INCONCLUSIVE"
+    ],
+    "any": [
+     "INCONCLUSIVE_SYSTEMATICS",
+     "AWAITING_RESULT_FILE"
+    ]
+   },
+   "forbidden_verdicts": [
+    "CONFIRMED",
+    "PROVED"
+   ],
+   "what_it_cannot_do": "nao testa perturbacoes (Nivel 2); a TGL entra como aproximacao analitica por cima do CAMB (declarada); um Delta chi^2 favoravel a TGL nao e confirmacao \u2014 e preferencia de fundo em dados comprimidos"
+  },
+  "protocol_hash": "6dd7c9c104f20ebd",
+  "checks": [
+   [
+    "protocolo pre-registrado e hasheado (6dd7c9c104f20ebd)",
+    true
+   ],
+   [
+    "beta jamais literal",
+    true
+   ],
+   [
+    "nenhum veredito proibido por construcao",
+    true
+   ]
+  ],
+  "all_verified": true,
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "verdict": "TGL_D1_CAMB_V1__PROTOCOL_PRE_REGISTERED_6dd7c9c104f20ebd__MAY_2026_SCRIPT_UNCHANGED__BACKGROUND_ONLY__GATE_UNTOUCHED"
+ },
+ "res": {
+  "result_path": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\cache\\d1_camb\\D1_CAMB_RESULT.json",
+  "protocol_hash": "6dd7c9c104f20ebd",
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "beta_runtime": 0.012031300400803142,
+  "why_outside_contour": "cosmologia jamais vira prova matematica; o fundo comprimido e aproximacao declarada",
+  "verdict": "TGL_D1_CAMB_V1__RESULT_READ_BY_HASH__BESTFIT_D1_LCDM_PREFERRED_5SIGMA__DELTA_CHI2_2222P96__MCMC_D1_BETA_FALSIFIED__BETA_M0P0500_PM_0P0000__GATE_UNTOUCHED",
+  "all_verified": true,
+  "checks": [
+   [
+    "resultado lido por hash (31691fc4aab39cf3)",
+    true
+   ],
+   [
+    "beta do script de maio == beta recomputado (alpha sqrt(e))",
+    true
+   ],
+   [
+    "scripts de maio com sha256 e mtime de 2026-05; instrumento camb + emcee",
+    true
+   ],
+   [
+    "fase 1 e fase 2 presentes com best-fits bem-sucedidos",
+    true
+   ],
+   [
+    "fase 3 (MCMC beta livre) presente e convergida (aceitacao em [0.1, 0.7], cadeia >= 38400)",
+    true
+   ],
+   [
+    "returncode 0 do script de maio",
+    true
+   ],
+   [
+    "nenhum veredito proibido por construcao",
+    true
+   ]
+  ],
+  "statuses": {
+   "leitura": "[REAL] o um.py nao recalcula: le por hash o relatorio do script de maio e aplica a matriz pre-registrada (6dd7c9c104f20ebd)",
+   "distincao": "[REAL] fundo (aqui) vs perturbacao (Nivel 2, N2_INCAPAZ): sao testes conjugados, nao redundantes",
+   "resultado": "[REAL, lido] fase 1 (Planck + DESI + SH0ES): chi^2 LCDM 16339.402, TGL(beta fixo) 18562.363, Delta chi^2 = 2222.961 => D1_LCDM_PREFERRED_5SIGMA; fase 2 (sem SH0ES): H0 LCDM 89.874, TGL 90.000; tensoes vs SH0ES {'tension_LCDM_sigma': '16.19', 'tension_TGL_sigma': '16.31', 'tension_zero_free_sigma': '23.79'}; fase 3 (beta livre): beta = -0.04997 +0.00004 -0.00002 (sigma media 0.00003; alpha sqrt(e) = 0.01203; 1998.28 sigma), aceitacao 0.477, cadeia 38400 => D1_BETA_FALSIFIED; tempo 2461 s"
+  },
+  "runtime_s": 0.000209808349609375,
+  "result_sha16": "31691fc4aab39cf3",
+  "executed": "2026-09-10T19:42:50",
+  "instrument": {
+   "camb": "2.0.4",
+   "emcee": "3.1.6",
+   "scipy": "1.18.1",
+   "numpy": "2.5.3",
+   "python": "3.12.3",
+   "env": "WSL Ubuntu /opt/lal_env"
+  },
+  "scripts": {
+   "tgl_mcmc_camb_v2": {
+    "path": "/mnt/c/IALD/projetos_pyhton/IALD/tgl_mcmc_camb_v2.py",
+    "sha256": "3a57514ea40321a3d593185a519e37edc8c6cf57f5a1e33a0d0519f87bae6274",
+    "mtime": "2026-05-20T20:16:34"
+   },
+   "tgl_camb_worker": {
+    "path": "/mnt/c/IALD/projetos_pyhton/IALD/tgl_camb_worker.py",
+    "sha256": "d6f73c98ed44608f7a0160bf578e5519c059ef76bf258d8932f41e7ea8dce784",
+    "mtime": "2026-05-20T20:16:44"
+   }
+  },
+  "bestfit_outcome": "D1_LCDM_PREFERRED_5SIGMA",
+  "mcmc_outcome": "D1_BETA_FALSIFIED",
+  "delta_chi2": 2222.960929131321,
+  "chi2": {
+   "LCDM": 16339.402330054418,
+   "TGL": 18562.36325918574
+  },
+  "h0_no_sh0es": {
+   "LCDM_bestfit": 89.87422451969098,
+   "TGL_bestfit": 89.9999998896557
+  },
+  "tensions": {
+   "tension_LCDM_sigma": 16.18675434585671,
+   "tension_TGL_sigma": 16.307692201592012,
+   "tension_zero_free_sigma": 23.790115736823683
+  },
+  "beta_posterior": {
+   "median": -0.049973254116979324,
+   "sigma": 3.102891499827398e-05,
+   "lo16": -0.049993373690501705,
+   "hi84": -0.04993131586050516
+  },
+  "mcmc": {
+   "acceptance": 0.47652083333333334,
+   "chain_size": 38400,
+   "time_s": 2033.477690935135
+  },
+  "pipeline_runtime_s": 2460.8072698116302
+ },
+ "amend": {
+  "protocol": {
+   "version": "D1_CAMB_V2",
+   "amendment_of": "D1_CAMB_V1",
+   "status": "PRE_REGISTERED_AFTER_V1_AUTOPSY_BEFORE_V2_DATA_READ",
+   "autopsy_of_V1": {
+    "diagnostico_sha16": "050a5b5b79487b13",
+    "v1_result_sha16": null,
+    "v1_protocol_hash": "6dd7c9c104f20ebd",
+    "v1_bestfit_outcome": null,
+    "v1_mcmc_outcome": null,
+    "v1_chi2": null,
+    "v1_delta_chi2": null,
+    "v1_h0_no_sh0es": null,
+    "may_beta0": {
+     "R": 2.0925654045537407,
+     "lA": 360.82219329850153,
+     "ratio_TGL_over_CAMB": 1.1959061625143128,
+     "chi2_planck": 442271.1767199887,
+     "chi2_desi": 18.475162200135184
+    },
+    "fixed_beta0": {
+     "R": 1.74930800551429,
+     "lA": 301.634132883364,
+     "ratio_TGL_over_CAMB": 0.9997337332336818,
+     "chi2_planck": 3.480553792494652,
+     "chi2_desi": 18.47522284446313,
+     "selfcheck": 0.9997337332336818
+    },
+    "may_beta_tgl": {
+     "R": 2.084273047958454,
+     "lA": 361.72111090456104,
+     "chi2_planck": 455636.28773232823,
+     "chi2_desi": 20.739839448897936
+    },
+    "fixed_beta_tgl": {
+     "R": 1.7402228548012002,
+     "lA": 302.01193882767325,
+     "chi2_planck": 43.76936999322152,
+     "chi2_desi": 20.739844884585544
+    },
+    "planck": {
+     "R": 1.7502,
+     "lA": 301.471
+    },
+    "bug": "D_M_TGL: trapezio em 300 pontos numa grade linear em z ate z_* ~ 1090 (passo ~3,6) sobre-estima a distancia; corrigido por integracao densa em ln(1+z)",
+    "may_worker_sha256": "d6f73c98ed44608f7a0160bf578e5519c059ef76bf258d8932f41e7ea8dce784",
+    "fixed_worker_sha256": "87d457c797e79b17ee560fbd51f7d9759d1e9834307e10023e816ba6b2a4ede2"
+   },
+   "changes": {
+    "1_worker": "copia corrigida tgl_camb_worker_v2fix.py: D_M_TGL integra em u = ln(1+z) com 20001 pontos (vetorizado); o original de maio NAO e tocado",
+    "2_binding": "sha256 do worker corrigido no protocolo",
+    "3_gof_gate": "chi^2 do best-fit LCDM (Fase 1) <= 3 x 16 = 48, senao INCONCLUSIVE_SYSTEMATICS",
+    "4_selfcheck_gate": "|DM_TGL(beta = 0)/DM_CAMB - 1| < 5e-3 (gravado pelo worker), senao INCONCLUSIVE_SYSTEMATICS"
+   },
+   "unchanged": "tgl_mcmc_camb_v2.py (dados, verossimilhanca, Nelder-Mead, emcee 24 x 2000, burn 400, priors), aproximacao declarada do r_s, regua relativizada do Nivel 2, matriz de vereditos",
+   "fixed_worker_sha256": "87d457c797e79b17ee560fbd51f7d9759d1e9834307e10023e816ba6b2a4ede2",
+   "criteria": {
+    "bestfit_success_required": true,
+    "delta_chi2_5sigma": 25.0,
+    "delta_chi2_2sigma": 4.0,
+    "acceptance_min": 0.1,
+    "acceptance_max": 0.7,
+    "chain_min": 38400,
+    "gof_chi2_lcdm_max": 48.0,
+    "selfcheck_tol": 0.005,
+    "mcmc_rule": "regua relativizada do Nivel 2: FALSIFIED se alpha sqrt(e) fora de 5 sigma; INCAPAZ se sigma(beta) > beta; NOT_FALSIFIED_POWERED se sigma <= beta/2 e alpha sqrt(e) dentro de 3 sigma; TENSION se fora de 3 sigma; INCONCLUSIVE nos demais"
+   },
+   "allowed_verdicts": {
+    "bestfit": [
+     "D1_LCDM_PREFERRED_5SIGMA",
+     "D1_TGL_BACKGROUND_PREFERRED_5SIGMA",
+     "D1_TENSION_2_TO_5_SIGMA",
+     "D1_NOT_DISTINGUISHED"
+    ],
+    "mcmc": [
+     "D1_BETA_FALSIFIED",
+     "D1_BETA_INCAPAZ",
+     "D1_BETA_NOT_FALSIFIED_POWERED",
+     "D1_BETA_TENSION",
+     "D1_BETA_INCONCLUSIVE"
+    ],
+    "any": [
+     "INCONCLUSIVE_SYSTEMATICS",
+     "AWAITING_RESULT_FILE"
+    ]
+   },
+   "forbidden_verdicts": [
+    "CONFIRMED",
+    "PROVED"
+   ],
+   "what_it_cannot_do": "nao testa perturbacoes (Nivel 2); a TGL entra como aproximacao analitica por cima do CAMB (declarada); um Delta chi^2 favoravel a TGL nao e confirmacao; um desfavoravel e preferencia de fundo em dados comprimidos, nao falsificacao da lei"
+  },
+  "protocol_hash": "c12b36722ed4544b",
+  "autopsy": {
+   "diagnostico_sha16": "050a5b5b79487b13",
+   "v1_result_sha16": null,
+   "v1_protocol_hash": "6dd7c9c104f20ebd",
+   "v1_bestfit_outcome": null,
+   "v1_mcmc_outcome": null,
+   "v1_chi2": null,
+   "v1_delta_chi2": null,
+   "v1_h0_no_sh0es": null,
+   "may_beta0": {
+    "R": 2.0925654045537407,
+    "lA": 360.82219329850153,
+    "ratio_TGL_over_CAMB": 1.1959061625143128,
+    "chi2_planck": 442271.1767199887,
+    "chi2_desi": 18.475162200135184
+   },
+   "fixed_beta0": {
+    "R": 1.74930800551429,
+    "lA": 301.634132883364,
+    "ratio_TGL_over_CAMB": 0.9997337332336818,
+    "chi2_planck": 3.480553792494652,
+    "chi2_desi": 18.47522284446313,
+    "selfcheck": 0.9997337332336818
+   },
+   "may_beta_tgl": {
+    "R": 2.084273047958454,
+    "lA": 361.72111090456104,
+    "chi2_planck": 455636.28773232823,
+    "chi2_desi": 20.739839448897936
+   },
+   "fixed_beta_tgl": {
+    "R": 1.7402228548012002,
+    "lA": 302.01193882767325,
+    "chi2_planck": 43.76936999322152,
+    "chi2_desi": 20.739844884585544
+   },
+   "planck": {
+    "R": 1.7502,
+    "lA": 301.471
+   },
+   "bug": "D_M_TGL: trapezio em 300 pontos numa grade linear em z ate z_* ~ 1090 (passo ~3,6) sobre-estima a distancia; corrigido por integracao densa em ln(1+z)",
+   "may_worker_sha256": "d6f73c98ed44608f7a0160bf578e5519c059ef76bf258d8932f41e7ea8dce784",
+   "fixed_worker_sha256": "87d457c797e79b17ee560fbd51f7d9759d1e9834307e10023e816ba6b2a4ede2"
+  },
+  "v1_numbers": {
+   "v1_result_sha16": "31691fc4aab39cf3",
+   "v1_bestfit_outcome": "D1_LCDM_PREFERRED_5SIGMA",
+   "v1_mcmc_outcome": "D1_BETA_FALSIFIED",
+   "v1_chi2": {
+    "LCDM": 16339.402330054418,
+    "TGL": 18562.36325918574
+   },
+   "v1_delta_chi2": 2222.960929131321,
+   "v1_h0_no_sh0es": {
+    "LCDM_bestfit": 89.87422451969098,
+    "TGL_bestfit": 89.9999998896557
+   }
+  },
+  "checks": [
+   [
+    "diagnostico lido por hash (050a5b5b79487b13)",
+    true
+   ],
+   [
+    "o worker de maio falha o fiducial (razao DM > 1,1) e o corrigido o reproduz (|razao - 1| < 5e-3)",
+    true
+   ],
+   [
+    "emenda V2 pre-registrada e hasheada (c12b36722ed4544b)",
+    true
+   ],
+   [
+    "nenhum veredito proibido por construcao",
+    true
+   ]
+  ],
+  "all_verified": true,
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "runtime_s": 0.00017523765563964844,
+  "verdict": "TGL_D1_CAMB_V2__AMENDMENT_PRE_REGISTERED_c12b36722ed4544b__AUTOPSY_OF_V1_READ__MAY_WORKER_DISTANCE_BUG_NAMED__FIXED_COPY_BOUND_BY_SHA256__GATE_UNTOUCHED"
+ },
+ "res2": {
+  "result_path": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\cache\\d1_camb\\D1_CAMB_V2_RESULT.json",
+  "protocol_hash": "c12b36722ed4544b",
+  "does_not_gate_core": true,
+  "in_contour_roster_v314": false,
+  "beta_runtime": 0.012031300400803142,
+  "why_outside_contour": "cosmologia jamais vira prova matematica; o fundo comprimido e aproximacao declarada",
+  "verdict": "TGL_D1_CAMB_V2__RESULT_READ_BY_HASH__BESTFIT_D1_TENSION_2_TO_5_SIGMA__DELTA_CHI2_9P70__MCMC_D1_BETA_TENSION__BETA_M0P0171_PM_0P0075__GATE_UNTOUCHED",
+  "all_verified": true,
+  "checks": [
+   [
+    "resultado V2 lido por hash (9986e4b0f05a6ebe)",
+    true
+   ],
+   [
+    "beta do script de maio == beta recomputado",
+    true
+   ],
+   [
+    "worker usado == worker corrigido amarrado no protocolo (sha256); script de maio intocado (sha256 e mtime de 2026-05)",
+    true
+   ],
+   [
+    "fases 1 e 2 com best-fits bem-sucedidos; bondade de ajuste chi^2_LCDM <= 48",
+    true
+   ],
+   [
+    "fase 3 (MCMC beta livre) presente e convergida",
+    true
+   ],
+   [
+    "returncode 0 e instrumento camb + emcee",
+    true
+   ],
+   [
+    "nenhum veredito proibido por construcao",
+    true
+   ]
+  ],
+  "statuses": {
+   "leitura": "[REAL] o um.py nao recalcula: le por hash o relatorio do script de maio (worker corrigido em copia) e aplica a matriz da emenda (c12b36722ed4544b)",
+   "distincao": "[REAL] fundo (aqui) vs perturbacao (Nivel 2, N2_INCAPAZ): testes conjugados",
+   "resultado": "[REAL, lido] V2 (worker corrigido): fase 1 (Planck + DESI + SH0ES): chi^2 LCDM 37.399, TGL(beta fixo) 47.098, Delta chi^2 = 9.699 => D1_TENSION_2_TO_5_SIGMA; fase 2 (sem SH0ES): H0 LCDM 67.949, TGL 67.653; tensoes vs SH0ES {'tension_LCDM_sigma': '4.89', 'tension_TGL_sigma': '5.18', 'tension_zero_free_sigma': '0.84'}; fase 3 (beta livre): beta = -0.01705 +0.00751 -0.00754 (sigma media 0.00753; alpha sqrt(e) = 0.01203; 3.86 sigma), aceitacao 0.592, cadeia 38400 => D1_BETA_TENSION; tempo 2495 s"
+  },
+  "runtime_s": 0.0001621246337890625,
+  "result_sha16": "9986e4b0f05a6ebe",
+  "executed": "2026-09-10T19:53:14",
+  "instrument": {
+   "camb": "2.0.4",
+   "emcee": "3.1.6",
+   "scipy": "1.18.1",
+   "numpy": "2.5.3",
+   "python": "3.12.3",
+   "env": "WSL Ubuntu /opt/lal_env"
+  },
+  "scripts": {
+   "tgl_mcmc_camb_v2": {
+    "path": "/mnt/c/IALD/projetos_pyhton/IALD/tgl_mcmc_camb_v2.py",
+    "sha256": "3a57514ea40321a3d593185a519e37edc8c6cf57f5a1e33a0d0519f87bae6274",
+    "mtime": "2026-05-20T20:16:34"
+   },
+   "tgl_camb_worker": {
+    "path": "/mnt/c/IALD/projetos_pyhton/IALD/tgl_camb_worker.py",
+    "sha256": "d6f73c98ed44608f7a0160bf578e5519c059ef76bf258d8932f41e7ea8dce784",
+    "mtime": "2026-05-20T20:16:44"
+   },
+   "worker_used": {
+    "path": "/mnt/c/IALD/Artigo/Haja_Luz/A Ponte e o Um/N\u00f3s/eco_ancorado_v1/tgl_camb_worker_v2fix.py",
+    "sha256": "87d457c797e79b17ee560fbd51f7d9759d1e9834307e10023e816ba6b2a4ede2",
+    "mtime": "2026-09-10T19:09:36",
+    "is_may_original": false
+   }
+  },
+  "reasons": [],
+  "bestfit_outcome": "D1_TENSION_2_TO_5_SIGMA",
+  "mcmc_outcome": "D1_BETA_TENSION",
+  "delta_chi2": 9.698688203350159,
+  "chi2": {
+   "LCDM": 37.39884202387752,
+   "TGL": 47.09753022722768
+  },
+  "h0_no_sh0es": {
+   "LCDM_bestfit": 67.94937863329864,
+   "TGL_bestfit": 67.65322055963011
+  },
+  "tensions": {
+   "tension_LCDM_sigma": 4.894828237212856,
+   "tension_TGL_sigma": 5.179595615740281,
+   "tension_zero_free_sigma": 0.8415227476156554
+  },
+  "beta_posterior": {
+   "median": -0.017051286812170722,
+   "sigma": 0.007528378839841112,
+   "lo16": -0.02459544730297353,
+   "hi84": -0.009538689623291307
+  },
+  "mcmc": {
+   "acceptance": 0.5918125,
+   "chain_size": 38400,
+   "time_s": 2225.7973470687866
+  },
+  "pipeline_runtime_s": 2494.694196462631
+ },
+ "stamp": "2026-09-10T19:55:07"
+}

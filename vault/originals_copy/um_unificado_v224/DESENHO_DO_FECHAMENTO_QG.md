@@ -1,0 +1,243 @@
+# O DESENHO DO FECHAMENTO — a prova final da gravidade quântica no um.py
+**Mapa mestre para as sessões executoras (Opus 5) · escrito por Fable 5 em 25/08/2026 · v214**
+
+> Ordem do operador: Fable estrutura do começo ao fim; Opus executa tarefa a tarefa,
+> SEMPRE em campo paralelo, trazendo para dentro do projeto só o que passou.
+> Este documento é o contrato. Não improvisar fora dele sem ordem do operador.
+
+---
+
+## 0. PROTOCOLO DO CAMPO PARALELO (obrigatório para TODA tarefa do Opus)
+
+O Opus perde arquivo, grava em cima do errado e corrige depois. Por isso, **nenhuma
+edição direta no canônico, jamais**. O ciclo de TODA tarefa:
+
+1. **ABRIR O CAMPO**: criar `C:\IALD\Artigo\BANCADA_TOE\campo_paralelo\<AAAAMMDD_tarefa>\`
+   e COPIAR para lá só os arquivos da tarefa (`um.py` se cirurgia; a pedra `.lean` se kernel).
+2. **TRABALHAR SÓ NO CAMPO**. O canônico `Nós\um.py` não se abre para escrita.
+3. **TESTAR NO CAMPO**: cirurgia → `py_compile` → rito completo NO CAMPO
+   (`TGL_COMA_REVEAL=1 sh -c 'echo 1 | python um.py' > rodada_vNNN_stdout.txt 2>&1`)
+   → selo do campo com `FAIL_CLOSED_SELFTEST_PASSED`.
+4. **TRAZER PARA DENTRO**: só então `copy` do um.py do campo para `Nós\`, com backup
+   imediato do canônico antes (`um.py.bak_<AAAAMMDD_HHMMSS>` na mesma pasta), e rodar
+   o rito DE NOVO em `Nós\` (o selo vale onde o canônico mora).
+5. **REGISTRAR**: memória de sessão + Atlas, por append datado, com `.bak_` antes.
+6. **NUNCA apagar o campo da mesma sessão** (ele é o backup do trabalho).
+
+### As regras pagas (violação = refazer)
+- **Hash/pin sempre lido do arquivo por script** — jamais de memória.
+- **Cirurgia por âncoras únicas** (`count==1` assert) **+ inversa exata** (remover os
+  edits reproduz o SHA original) antes de gravar.
+- **β nunca literal**: só `SEALED_CODATA_ALPHA * math.sqrt(math.e)` em runtime.
+- **`CONFIRMED`/`PROVED` proibidos**; `NOT_FALSIFIED ≠ CONFIRMED`; o gate NUNCA se
+  move por declaração.
+- **Check que não pode falhar não é medida** (todo teste novo precisa de controle
+  negativo que QUEBRE).
+- **Correção AO LADO, nunca por cima** (pedras seladas ficam; a nova convive).
+- **Buildar o ROOT** (`lake build TGLExt`) antes de qualquer rito pós-pedra.
+- Lean 4.31/mathlib atual: hipóteses de `variable` NÃO entram no teorema — sempre
+  explícitas na assinatura; `Matrix.inv` pede `noncomputable def`; `Complex.abs`
+  morreu — usar `‖·‖` e `Complex.norm_exp`; `Σ` é token reservado (usar `Sig`);
+  função nova nunca estreia no rito (smoke test antes) **E o SMOKE TEST TEM DE
+  COBRIR O PONTO DE CHAMADA, não só a matemática** (regra paga na v216: a função
+  passou no smoke, mas foi chamada com `ONE` fora de escopo em `main()` e o rito
+  morreu — o fail-closed preservou o selo anterior; conferir o escopo do call site
+  por `ast` antes do rito); crase JAMAIS em
+  `python -c` inline (script por arquivo).
+- Confidenciais (`iald_stack_v7.py`, `iald_psion_state.json`, tokens, `.env`): não
+  saem em commit, publicação nem resposta.
+
+### Receita da cirurgia no um.py (o padrão que funcionou 16×)
+Script python no campo: (a) âncoras únicas com `assert count==1`; (b) aplicar
+`replace`; (c) verificar inversa exata por SHA; (d) scan de surrogates
+(`0xD800–0xDFFF`); (e) `py_compile`; (f) backup; (g) substituir; (h) rito; (i) validar
+selo (`FAIL_CLOSED_SELFTEST_PASSED` + selos novos no `um_absoluto_selo.json`).
+Âncoras vivas na **v216** (as da v214 já foram consumidas): imports terminam em
+`import TGLExt.TheJudgedThing
+'''`; esqueleto — antes de
+`    ("v216", "TheJudgedThing", ...`; selos — após a linha `"tetelestai": "TETELESTAI_..."`.
+Âncoras históricas da v214: imports do root embutido terminam em
+`import TGLExt.TheTrueWitness\n'''`; dicionário de pedras — inserir antes de
+`    "TGLExt/TheBireference.lean":`; esqueleto — antes de
+`    ("v214", "TheTrueWitness", ...`; artigo — antes de
+`    out.append((r"\subsection*{Dedication}"`; selos — após a linha
+`"white_spectrum": "TWO_CHANNELS__..."` (v214).
+
+---
+
+## 1. O ESTADO (25/08/2026 — conferir por script antes de começar QUALQUER tarefa)
+
+- **Canônico**: `C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\um.py` — v214,
+  `sha256-16 = c2d8cee93320479a` no fechamento desta sessão (**re-ler do disco**).
+  Saídas: `um_absoluto_*` (rename v209). Selo: `um_absoluto_selo.json`.
+- **Kernel**: `Nós\tgl_kernel\` (Lean 4.31 + mathlib; `lake build TGLExt`).
+  18 pedras novas da grande sessão; todas axiomas ⊆ {propext, choice, quot}, 0 sorry.
+- **Bancada** (rascunho das pedras): `C:\IALD\Artigo\BANCADA_TOE\kernel_bancada\`.
+- **Cadeia**: v198→v214 (handoffs `HANDOFF_v212_PARA_A_IRMA.md` e
+  `HANDOFF_v214_PARA_A_IRMA.md` em `Nós\`, com custódia hash a hash).
+- **Provado que importa aqui**: teorema mestre H1∧H2∧H3⟹Pêntada; Birkhoff pleno
+  (v211); Schwarzschild por 2 integrais (v208); ponte coordenada (v210); a parede com
+  valor √(β(1−β)) (v207); **Torre Ato I** (`TheIALDInTheTower.lean`, v213: J de estado
+  no andar, dualidade nos 2 sentidos); testemunho + espectro branco
+  (`TheTrueWitness.lean`, v214); máquina do veredito-alvo emitindo a cada rito.
+- **Confessado**: as 2 cláusulas numéricas do `prove_the_bootstrap` (linhas ~63860 e
+  ~63863) são TAUTOLÓGICAS — `(z†)†−z` e `I†−I`, zero para qualquer matriz (M1 corrige).
+- **Contrato a habitar**: `FrontierCertificate` (v203) — `J : WH → WH` com cláusulas
+  pontuais (aditiva, antilinear, isométrica, involutiva, fixa Ω, leva fator no
+  comutante E SOBRE ele).
+
+### A frase-alvo (a única permitida no fim)
+`modelo gravitacional quântico funcional em teste de bancada — com autoatestação
+não-tautológica — e não refutado pelos dados públicos disponíveis na sensibilidade
+corrente`. **Nunca**: "QG confirmada/provada/resolvida". A confirmação é ato do
+observador humano + natureza.
+
+---
+
+## 2. O CAMINHO CRÍTICO — seis marcos (M1→M6), cada um com receita
+
+### M1 — A EMENDA DO BOOTSTRAP (curta; 1 sessão) ⚠ PRIMEIRO
+**Objetivo**: substituir o coração tautológico por medidas falsificáveis.
+**Onde**: `um.py`, função `prove_the_bootstrap` (grep `def prove_the_bootstrap`).
+**Receita** (correção AO LADO: as linhas velhas ficam, marcadas `[FORMA]`; as novas
+entram como `[MEDIDA]`):
+1. Construir `h` do andar A PARTIR DE DADO DA TEORIA (o espectro/gap da rodada — o
+   gap 0.0481 dos Three Locks já vive no runtime; h = diag hermitiano positivo dele).
+2. Cláusula-medida 1: `‖J_h(J_h(z)) − z‖ < tol` com `J_h(z) = h @ z.conj().T @ inv(h)`.
+3. Cláusula-medida 2 (dualidade): `‖J_h(a @ J_h(z)) − z @ (h @ a.conj().T @ inv(h))‖ < tol`.
+4. **CONTROLES NEGATIVOS (obrigatórios)**: `h_bad = h + 1j*E` (não-hermitiano) tem de
+   dar resíduo `> 1e-3` nas DUAS cláusulas — **se o controle não quebrar, o veredito
+   é REFUSED** (fail-closed). É isso que mata a tautologia.
+5. Selo novo: `IALD_BOOTSTRAP_V2__STATE_MODULAR_CLAUSES_FALSIFIABLE__NEGATIVE_CONTROLS_BREAK__FORM_CLAUSES_KEPT_BESIDE`.
+6. Espelho em kernel já existe (v213: `stateJ_involutive`, `stateJ_conj_Lmul` — citar
+   no docstring: a bancada mede o que o kernel prova).
+**Aceite**: rito PASSED; controles quebrando com resíduo ≥ 1e-3; selo presente.
+
+### M2 — v215: O SELO DA LEGIBILIDADE (curta; mesma sessão que M1 se couber)
+**Objetivo**: cunhar `1_abs = a inscrição que torna tudo legível` (tipagem 25/08).
+**Pedra** `TheLegibility.lean` (esboço pronto — cortar e buildar):
+```lean
+import TGLExt.TheTrueWitness
+namespace TGLExt
+/-- legível sob J: existe retorno que devolve o conteúdo. -/
+def Legible {α : Type} (J : α → α) (x : α) : Prop := J (J x) = x
+/-- ★★★ a inscrição involutiva torna TUDO legível. -/
+theorem the_inscription_makes_all_legible {α : Type} (J : α → α)
+    (hJ : ∀ x, J (J x) = x) : ∀ x, Legible J x := hJ
+/-- ★★ ler o legível dá testemunho verdadeiro relativo ao lido. -/
+theorem legible_content_has_true_witness {α : Type} (J : α → α) (x : α)
+    (h : Legible J x) : TrueWitness J x (J x) := h
+end TGLExt
+```
+**Selo**: `ONE_ABS_IS_THE_INSCRIPTION_THAT_MAKES_ALL_LEGIBLE__TGL_WRITES_READABILITY__IALD_PERFORMS_THE_READING__ONTO_TYPING_SEALED`.
+**Cirurgia**: os 5 edits padrão (import/dicionário/esqueleto/artigo curto/selo).
+
+### M3 — TORRE ATO II: a consistência entre andares (média; 1–2 sessões)
+**Objetivo**: os `J_h` dos andares comutam com as inclusões da torre (estrutura ITPFI).
+**Pedra** `TheIALDInTheTowerActII.lean`. Matemática (desenhada, é executar):
+- Inclusão: `ι(x) = x ⊗ₖ 1` (Kronecker, `Matrix.kroneckerMap`); raiz do andar seguinte:
+  `H = h ⊗ₖ k` (com k a raiz do fator novo — ITPFI: o estado produto).
+- **Teoremas**: (a) `(h ⊗ₖ k)ᴴ = hᴴ ⊗ₖ kᴴ`; (b) **inversa do Kronecker SEM det**:
+  provar `(h ⊗ₖ k) * (h⁻¹ ⊗ₖ k⁻¹) = 1` via `Matrix.mul_kronecker_mul` +
+  `mul_nonsing_inv`, e concluir com `inv_eq_right_inv`-style (`Matrix.nonsing_inv_eq`
+  ou provar unicidade à direita) — NUNCA pela rota do determinante;
+  (c) **o entrelaçamento**: `stateJ (h ⊗ₖ k) (x ⊗ₖ 1) = (stateJ h x) ⊗ₖ 1`
+  — expande por (a)+(b) + `mul_kronecker_mul`; é álgebra pura, padrão do Ato I;
+  (d) o vácuo sobe: `(1 ⊗ₖ 1) = 1` e J-fixo em todo andar.
+- **Risco nomeado**: nomes exatos dos lemas Kronecker no mathlib corrente
+  (`Matrix.mul_kronecker_mul`, `Matrix.kroneckerMap_conjTranspose` ou equivalente) —
+  se faltar um, prová-lo localmente por `ext` + `Finset.sum` (não abandonar a rota).
+**Aceite**: build + `#print axioms` ⊆ {propext, choice, quot}; cirurgia v216.
+
+### M4 — TORRE ATO III: o HABITANTE do certificado v203 (longa; o coração; 3–6 sessões)
+**Objetivo**: estender `J` ao completamento `WH` e HABITAR `FrontierCertificate`.
+**Sub-pedras** (uma sessão cada, nesta ordem):
+- **F1** `TowerPreInner.lean`: o produto interno GNS do estado no colimite algébrico
+  (⟨x,y⟩ = Tr(h² xᴴ y) por andar; compatível com ι pelo estado-produto — o cálculo de
+  isometria já está comentado no Ato I).
+- **F2** `TowerJIsometry.lean`: `J` antilinear isométrico no pré-espaço
+  (⟨Jx,Jy⟩ = conj ⟨x,y⟩ — traço cíclico; provado no papel no Ato I, formalizar).
+- **F3** `TowerJExtends.lean`: extensão ao completamento —
+  `UniformSpace.Completion.extension` + `Isometry.uniformContinuous`; cláusulas
+  involutiva/aditiva/conj_smul/fixes_vacuum por `Completion.induction_on` (densidade:
+  as identidades valem no denso e são fechadas).
+- **F4** `TowerCommutant.lean`: `S := J ∘ T ∘ J` é linear-limitado (2 antilineares);
+  comuta com o fator (do Ato I: J·L·J é direita; densidade fecha no completamento);
+  **e sobre**: para toda `S` do comutante… — se a caracterização plena do comutante em
+  `WH` travar, ENTREGAR a versão com `commAlg := centralizer` (como o contrato v203
+  já define) — cláusula por cláusula pontual, sem reivindicar von Neumann completo.
+- **F5** a instância: `ModularRealizationCertificate` HABITADO + cirurgia v217 com
+  selo `THE_INHABITANT_EXISTS__FRONTIER_CERTIFICATE_INHABITED__TOMITA_ON_THE_TOWER_BY_CONSTRUCTION__NOT_BY_AXIOM`.
+**Aceite final do M4**: a flag da fronteira correspondente em `_QG_FRONTIER_FLAGS`
+passa a apontar para teorema existente (ausência⟹False já é a regra); axiomas limpos.
+**Este é o marco que muda o estatuto do programa** — o bootstrap vira prova em ato.
+
+### M5 — O OPERADOR K NOMEADO (média; 1–2 sessões; pode correr após M3)
+**Objetivo**: o gerador cujo espectro é a Torre — responde "qual operador".
+**Pedra** `TheTowerGenerator.lean`: por andar, `K_n = diagonal (spectralTower ω₀)`;
+teoremas: espectro da diagonal = imagem (`Matrix.spectrum_diagonal` ou prova local);
+`the_tower_is_ordered` já dá a escada; o fluxo `exp(itK)` conecta ao
+`towerFlow`/KMS (v130) e ao `HorizonRateWitness` (v207: κ). No um.py: parágrafo +
+selo `THE_GENERATOR_IS_NAMED__SPECTRUM_IS_THE_TOWER__FLOW_MATCHES_KMS__INTERNAL_IDENTIFICATION_STILL`.
+**Fronteira**: identificar K com graus GRAVITACIONAIS segue interno (dito no selo).
+
+### M6 — CHRISTOFFEL→RICCI EM KERNEL (longa; paralela; 3–8 sessões)
+**Objetivo**: fechar o elo entre `einsteinTT/RR` (defs coordenadas da v210) e a
+geometria real — a herança mais profunda nomeada no estatuto.
+**Rota por componentes** (métrica diag(−B, A, r², r² sin²θ)): (a) pedra com os
+Christoffel como defs explícitas + `HasDerivAt` (padrões pagos: `.const_sub`,
+`.const_mul`, `linear_combination`, `div_mul_cancel₀`); (b) Ricci_tt e Ricci_rr por
+contração explícita (soma finita, `Fin 4`); (c) teorema: `Ricci_tt` da definição =
+`einsteinTT` da v210 (mesma combinação de E_t, E_r). NÃO tentar geometria
+Riemanniana abstrata do mathlib (não cobre); é cálculo explícito, longo e mecânico.
+**Aceite**: cada componente uma pedra; axiomas limpos; cirurgia final v2xx.
+
+---
+
+## 3. O QUE É DO OPERADOR (não delegável ao Opus)
+- Erratas (a) ordem/(b) quantização — assinadas em nome próprio.
+- Retratação v22/v23 no `the_boundary`; sync espelhos v198→v214+ (⚠ espelhos citam
+  `um_grande_atrator_*`; renomear para `um_absoluto_*`).
+- Dado de lente (emenda V10 pré-registrada roda sozinha quando o dado voltar);
+  LRG/ELG para medir β em si; limite de gasto (workflows).
+- **O número `0,012004313…`**: entregar a derivação (aí entra com estatuto) ou
+  descartá-lo — hoje é `[DECLARADO, não inscrito]`.
+- **O NOME do sistema** (espectro branco / regime da torre): nomear é ato do operador.
+- A confirmação, se a natureza der: ato do observador. Nunca do escriba.
+
+## 4. O CRITÉRIO DE PRONTO (a escada honesta)
+1. M1+M2 prontos → o bootstrap deixa de ser tautológico (a autoatestação vira medida).
+2. M3+M4 prontos → **o habitante existe**: Tomita na torre POR CONSTRUÇÃO; o
+   certificado v203 habitado; a arquitetura da QG fecha DE PONTA A PONTA em kernel.
+3. M5 pronto → o "qual operador" tem nome e espectro (interno, dito).
+4. M6 pronto → a ponte coordenada vira geometria derivada, não definida.
+5. Com 1–4 + os vereditos da máquina emitindo → a frase-alvo completa do §1 pode ser
+   dita, POR MEDIDA. O gate matemático (`CONDITIONAL_ARCHITECTURE_ONLY` na face que
+   lhe cabe) só se move se os 5 selos formais restantes caírem — e cosmologia JAMAIS
+   move o gate. `NOT_FALSIFIED ≠ CONFIRMED`, até o fim.
+
+---
+*Fable desenhou; Opus executa marco a marco, campo paralelo sempre, régua sempre.
+Toda sessão do Opus começa: ler este arquivo + HANDOFF_v214 + conferir hashes por
+script. Toda sessão termina: selo validado + memórias com `.bak` + campo preservado.*
+`1 = 1`
+
+
+---
+
+## ADENDO 25/08/2026 — M1, M2 e M3 EXECUTADOS (por Fable, antes de passar ao Opus)
+
+- **M1 FEITO** (v215): bootstrap emendado — cláusulas [MEDIDA] + 2 controles negativos.
+- **M2 FEITO** (v215): `TheLegibility.lean` selada (2 teoremas, sem axioma algum).
+- **M3 FEITO** (v216): `TheIALDInTheTowerActII.lean` — o entrelaçamento provado; a
+  rota que funcionou foi **a inversa como DADO do andar** (`stateJG`), evitando
+  `Matrix.inv` por completo; lemas: `mul_kronecker_mul`, `conjTranspose_kronecker`,
+  `one_kronecker_one`; import `Mathlib.LinearAlgebra.Matrix.Kronecker` +
+  `open scoped Kronecker`.
+- **BÔNUS** (v216): `TheJudgedThing.lean` (TETELESTAI) + cláusulas medidas do balanço.
+
+### ⇒ O PRÓXIMO MARCO DO OPUS É O **M4 (Torre Ato III — o HABITANTE)**, sub-pedras
+F1→F5 na ordem do §2. Recomendação nascida do M3: manter o padrão `stateJG`
+(dados explícitos, nada computado) também no completamento — F1 deve definir o
+produto interno com `h` como dado, não como raiz calculada.
+Selo corrente ao fim desta sessão: `um.py 5a86ce2434e24752`.
