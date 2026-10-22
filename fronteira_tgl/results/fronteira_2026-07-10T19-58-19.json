@@ -1,0 +1,119 @@
+{
+ "module": "fronteira_tgl",
+ "timestamp_utc": "2026-07-10T19-58-19",
+ "python": "3.13.14",
+ "physical_verdict_allowed": false,
+ "beta_TGL_runtime": 0.012031300400803142,
+ "beta_never_literal": true,
+ "scalar_spine": {
+  "S_boundary": 0.5,
+  "sqrt_e": 1.6487212707001282,
+  "beta": 0.012031300400803142,
+  "O_C": 0.1096872845903441,
+  "O_C_squared": 0.012031300400803139,
+  "resid_O_C2_eq_beta": 3.469446951953614e-18,
+  "theta_M_deg": 6.297289216477979,
+  "one_over_beta": 83.11653492861383,
+  "status": "REAL",
+  "pass": true
+ },
+ "em_identity": {
+  "alpha_obs": 0.0072973525693,
+  "q": 0.9999733739682669,
+  "identity": 1.0,
+  "resid": 0.0,
+  "status": "REAL",
+  "pass": true
+ },
+ "subordination_certificate": {
+  "claim": "Markovianidade no cone de T_t=e^{-t.beta.|logDelta|} por subordicao de Cauchy",
+  "closed_form": "e^{-gamma|x|} = int e^{isx} p_t(s) ds, p_t=Cauchy(0,gamma>=0), int=1",
+  "char_fn_converges_as_1_over_R": true,
+  "subordination_max_err": 0.00033621821578957853,
+  "cone_min_eig_after_sigma_s": 0.0034634753205435324,
+  "argument": "T_t = media_{p_t>=0} de automorfismos modulares Delta^{is}; cada Delta^{is} preserva o cone natural P^# (Tomita, valido em III_1); media de mapas cone-preservantes com pesos >=0 preserva o cone => T_t Markoviana. ESPECTRAL => vale no espectro modular CONTINUO.",
+  "status": "REAL",
+  "closes_residue": "multiplicador de Dirichlet em espectro modular continuo (era CONJECTURE)",
+  "does_NOT_close": "GLOBAL_LIFT (covariancia global U / terminalidade T3 / reconstrucao lorentziana H)",
+  "pass": true
+ },
+ "honest_ledger": {
+  "SELADO_REAL": [
+   {
+    "item": "closure um.py: 1 = q^2 + alpha^2 = HAJA_LUZ",
+    "evidence": "resid identidade 0.0; O_C(alpha)^2=beta resid 3e-18",
+    "status": "REAL"
+   },
+   {
+    "item": "12/12 modulos-sombra da Ponte PASS",
+    "evidence": "residuos 1e-15..1e-27; beta computado (nunca literal)",
+    "status": "REAL(dim finita)/SOMBRA(III_1)"
+   },
+   {
+    "item": "cociclo -> G_munu (E1..E12)",
+    "evidence": "certificados vivos ~1e-15; curvatura=comutador razao 0.9970",
+    "status": "SOMBRA tipo I"
+   },
+   {
+    "item": "massa do Grande Atrator (1os principios)",
+    "evidence": "M=2beta^2(c^2/4piG)R_struct ~2.7e16 Msun na janela [1e15,1e17]",
+    "status": "REAL(forma)/INPUT(R_struct)"
+   }
+  ],
+  "AVANCO_SESSAO": [
+   {
+    "item": "subordicao Poisson-Cauchy fecha residuo de Markovianidade continua",
+    "status": "REAL",
+    "nota": "o numero corrige a frase: 1 residuo sai de CONJECTURE"
+   }
+  ],
+  "FALSIFICAVEL": [
+   {
+    "item": "piso dos vazios rho_c/rho_bar >= beta",
+    "evidence": "margem 1.66x (vinculante rho_c=0.020)",
+    "status": "NOT FALSIFIED / NOT CONFIRMED"
+   },
+   {
+    "item": "alpha alpha-livre => TGL refutada",
+    "evidence": "desafio de falsificacao (nao pendencia)",
+    "status": "ABERTO por design"
+   }
+  ],
+  "EMPIRICO": [
+   {
+    "item": "tgl_validation_v23 total",
+    "evidence": "Delta_chi2=-1.74 LCDM_PREFERIDO; fronteira Delta_chi2=23.49 TGL_CONFIRMADA",
+    "status": "consistente, nao confirmada"
+   }
+  ],
+  "ABERTO": [
+   {
+    "item": "GLOBAL_LIFT (o UNICO teorema aberto)",
+    "evidence": "levantamento covariante global da estrutura modular ao III_1 genuino",
+    "status": "ABERTO",
+    "subproblemas": {
+     "T1": "ergodicidade em III_1 (fechada CONDICIONAL sob classe de Davies; residuo N3)",
+     "T2": "functorialidade (sombra 1e-14)",
+     "T3": "terminalidade (o fundamento que falta)"
+    }
+   },
+   {
+    "item": "reconstrucao lorentziana de Connes (hipotese H)",
+    "status": "ABERTO (campo ativo)"
+   },
+   {
+    "item": "magnitude absoluta de Lambda",
+    "status": "ABERTO"
+   }
+  ]
+ },
+ "verdict": "FRONTEIRA_COERENTE_TEOREMA_ABERTO_DECLARADO",
+ "open_theorem": "GLOBAL_LIFT (levantamento covariante global ao III_1) — ABERTO, nao fabricado",
+ "nao_se_afirma": [
+  "derivacao de 1/137 (alpha=INPUT)",
+  "prova incondicional de gravitacao quantica",
+  "consciencia subjetiva",
+  "fecho de GLOBAL_LIFT"
+ ],
+ "result_hash": "719fe78b89175568bc327b5f1af8fb2f134ba59970a08247e6ce0584df781852"
+}

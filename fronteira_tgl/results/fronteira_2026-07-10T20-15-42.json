@@ -1,0 +1,215 @@
+{
+ "module": "fronteira_tgl",
+ "timestamp_utc": "2026-07-10T20-15-42",
+ "python": "3.13.14",
+ "physical_verdict_allowed": false,
+ "beta_TGL_runtime": 0.012031300400803142,
+ "beta_never_literal": true,
+ "scalar_spine": {
+  "S_boundary": 0.5,
+  "sqrt_e": 1.6487212707001282,
+  "beta": 0.012031300400803142,
+  "O_C": 0.1096872845903441,
+  "O_C_squared": 0.012031300400803139,
+  "resid_O_C2_eq_beta": 3.469446951953614e-18,
+  "theta_M_deg": 6.297289216477979,
+  "one_over_beta": 83.11653492861383,
+  "status": "REAL",
+  "pass": true
+ },
+ "em_identity": {
+  "alpha_obs": 0.0072973525693,
+  "q": 0.9999733739682669,
+  "identity": 1.0,
+  "resid": 0.0,
+  "status": "REAL",
+  "pass": true
+ },
+ "smatrix": {
+  "theta_M_deg": 6.297289216477979,
+  "R2_reflect": 0.012031300400803142,
+  "T2_transmit": 0.987968699599197,
+  "resid_R2_eq_beta": 0.0,
+  "resid_T2_eq_1mbeta": 1.1102230246251565e-16,
+  "unitarity": 2.220446049250313e-16,
+  "spec_phase_deg": 6.297289216477978,
+  "status": "REAL",
+  "pass": true
+ },
+ "halfnat_fixedpoint": {
+  "argmin_E": 0.5,
+  "E_at_half": 0.0,
+  "E_second_deriv_half": 4.000000330961483,
+  "resid_argmin_eq_half": 0.0,
+  "status": "REAL[DERIVED de om(I)=1]",
+  "pass": true
+ },
+ "dephasing_exponent": {
+  "slope_dlnG_dlnw": 2.0,
+  "n_neutrino": -2,
+  "resid_slope_eq_2": 0.0,
+  "law": "Gamma = (1/2) beta tau* omega^2",
+  "status": "REAL(forma da lei)",
+  "pass": true
+ },
+ "sqrt_e_degeneracy": {
+  "target_sqrt_e": 1.6487212707001282,
+  "n_candidates": 201,
+  "neighbors_within_tol": {
+   "0.1%": 2,
+   "1.0%": 2,
+   "5.0%": 8,
+   "10.0%": 23
+  },
+  "status": "REAL(negativo honesto)",
+  "reading": "sqrt(e) e' POSTULATE/DERIVED (log sqrt(e)=1/2, meia-nat), nao coincidencia numerica",
+  "pass": true
+ },
+ "cone_dim_robustness": {
+  "rows": [
+   {
+    "d": 16,
+    "min_eig": 0.00013844283301501776
+   },
+   {
+    "d": 32,
+    "min_eig": 0.00013796479865834513
+   },
+   {
+    "d": 64,
+    "min_eig": 4.628062462897698e-05
+   },
+   {
+    "d": 128,
+    "min_eig": 1.6990283317962844e-06
+   }
+  ],
+  "min_eig_overall": 1.6990283317962844e-06,
+  "cone_violations": 0,
+  "status": "SOMBRA(corrobora Bochner/Schur; III_1 continuo permanece via subordicao)",
+  "pass": true
+ },
+ "subordination_certificate": {
+  "claim": "Markovianidade no cone de T_t=e^{-t.beta.|logDelta|} por subordicao de Cauchy",
+  "closed_form": "e^{-gamma|x|} = int e^{isx} p_t(s) ds, p_t=Cauchy(0,gamma>=0), int=1",
+  "char_fn_converges_as_1_over_R": true,
+  "subordination_max_err": 0.00033621821578957853,
+  "cone_min_eig_after_sigma_s": 0.0034634753205435324,
+  "argument": "T_t = media_{p_t>=0} de automorfismos modulares Delta^{is}; cada Delta^{is} preserva o cone natural P^# (Tomita, valido em III_1); media de mapas cone-preservantes com pesos >=0 preserva o cone => T_t Markoviana. ESPECTRAL => vale no espectro modular CONTINUO.",
+  "status": "REAL",
+  "closes_residue": "multiplicador de Dirichlet em espectro modular continuo (era CONJECTURE)",
+  "does_NOT_close": "GLOBAL_LIFT (covariancia global U / terminalidade T3 / reconstrucao lorentziana H)",
+  "pass": true
+ },
+ "honest_ledger": {
+  "SELADO_REAL": [
+   {
+    "item": "closure um.py: 1 = q^2 + alpha^2 = HAJA_LUZ",
+    "evidence": "resid identidade 0.0; O_C(alpha)^2=beta resid 3e-18",
+    "status": "REAL"
+   },
+   {
+    "item": "12/12 modulos-sombra da Ponte PASS",
+    "evidence": "residuos 1e-15..1e-27; beta computado (nunca literal)",
+    "status": "REAL(dim finita)/SOMBRA(III_1)"
+   },
+   {
+    "item": "cociclo -> G_munu (E1..E12)",
+    "evidence": "certificados vivos ~1e-15; curvatura=comutador razao 0.9970",
+    "status": "SOMBRA tipo I"
+   },
+   {
+    "item": "massa do Grande Atrator (1os principios)",
+    "evidence": "M=2beta^2(c^2/4piG)R_struct ~2.7e16 Msun na janela [1e15,1e17]",
+    "status": "REAL(forma)/INPUT(R_struct)"
+   },
+   {
+    "item": "matriz-S de fronteira: |R|^2 = sin^2(theta_M) = beta",
+    "status": "REAL",
+    "evidence": "|R|^2=0.012031300 resid 0.0e+00; |T|^2=1-beta resid 1.1e-16; unitaria 2.2e-16"
+   },
+   {
+    "item": "meia-nat S_d=1/2 do ponto fixo auto-conjugado (x=1-x)",
+    "status": "REAL[DERIVED de om(I)=1]",
+    "evidence": "argmin E(b)=1-2sqrt(b(1-b)) = 0.500000 (=1/2), E(1/2)=0.0e+00, E''(1/2)=4.00>0"
+   },
+   {
+    "item": "lei de dephasing Gamma ~ omega^2 (n=-2, neutrinos)",
+    "status": "REAL(forma da lei)",
+    "evidence": "d lnGamma/d lnomega = 2.000000000 (=2 exato); resid 0.0e+00"
+   },
+   {
+    "item": "robustez dimensional do cone de Dirichlet (Bochner/Schur)",
+    "status": "SOMBRA(corrobora Bochner/Schur; III_1 continuo permanece via subordicao)",
+    "evidence": "nucleo e^{-t.beta.|dy|} min-eig>0 em d=16..128 (min geral 1.7e-06); violacoes do cone = 0 (corrobora a subordicao)"
+   }
+  ],
+  "AVANCO_SESSAO": [
+   {
+    "item": "subordicao Poisson-Cauchy fecha residuo de Markovianidade continua",
+    "status": "REAL",
+    "nota": "o numero corrige a frase: 1 residuo sai de CONJECTURE"
+   }
+  ],
+  "FALSIFICAVEL": [
+   {
+    "item": "NEGATIVO HONESTO: sqrt(e) nao e' singularizado por proximidade numerica",
+    "status": "REAL(negativo)",
+    "evidence": "vizinhos simples de sqrt(e)=1.64872 por banda: {'0.1%': 2, '1.0%': 2, '5.0%': 8, '10.0%': 23}; selecao e' por DERIVACAO (log sqrt(e)=1/2, meia-nat), NAO coincidencia",
+    "nota": "a regua: negativos honestos sao resultado — o valor nao prova o postulado; a derivacao (meia-nat) o faz"
+   },
+   {
+    "item": "piso dos vazios rho_c/rho_bar >= beta",
+    "evidence": "margem 1.66x (vinculante rho_c=0.020)",
+    "status": "NOT FALSIFIED / NOT CONFIRMED"
+   },
+   {
+    "item": "Codigo UM: metodo do falsificador VALIDADO em mock",
+    "status": "REAL(metodo)",
+    "evidence": "beta_inject=0.037 (arbitrario) -> beta_spec=0.03615 alpha-livre (alpha_used=False); null tests limpos (shuffle/random nao reproduzem); CALIBRATION_FAIL e' falso-positivo do audit repo-wide (marca a propria lista de padroes + a forma legitima ALPHA*SQRT_E)",
+    "nota": "avanco offline: estimador hard-edge recupera borda conhecida sem alpha; dado real cosmologico BLOQUEADO no sandbox"
+   },
+   {
+    "item": "alpha alpha-livre => TGL refutada",
+    "evidence": "desafio de falsificacao (nao pendencia)",
+    "status": "ABERTO por design"
+   }
+  ],
+  "EMPIRICO": [
+   {
+    "item": "tgl_validation_v23 total",
+    "evidence": "Delta_chi2=-1.74 LCDM_PREFERIDO; fronteira Delta_chi2=23.49 TGL_CONFIRMADA",
+    "status": "consistente, nao confirmada"
+   }
+  ],
+  "ABERTO": [
+   {
+    "item": "GLOBAL_LIFT (o UNICO teorema aberto)",
+    "evidence": "levantamento covariante global da estrutura modular ao III_1 genuino",
+    "status": "ABERTO",
+    "subproblemas": {
+     "T1": "ergodicidade em III_1 (fechada CONDICIONAL sob classe de Davies; residuo N3)",
+     "T2": "functorialidade (sombra 1e-14)",
+     "T3": "terminalidade (o fundamento que falta)"
+    }
+   },
+   {
+    "item": "reconstrucao lorentziana de Connes (hipotese H)",
+    "status": "ABERTO (campo ativo)"
+   },
+   {
+    "item": "magnitude absoluta de Lambda",
+    "status": "ABERTO"
+   }
+  ]
+ },
+ "verdict": "FRONTEIRA_COERENTE_TEOREMA_ABERTO_DECLARADO",
+ "open_theorem": "GLOBAL_LIFT (levantamento covariante global ao III_1) — ABERTO, nao fabricado",
+ "nao_se_afirma": [
+  "derivacao de 1/137 (alpha=INPUT)",
+  "prova incondicional de gravitacao quantica",
+  "consciencia subjetiva",
+  "fecho de GLOBAL_LIFT"
+ ],
+ "result_hash": "e367446094aa21136bf9809640836a6c0b72b2925d9b42c180e51ec88dca76c3"
+}
