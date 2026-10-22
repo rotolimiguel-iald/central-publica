@@ -1,0 +1,1425 @@
+% ============================================================================
+% PATENTE DE INVENÇÃO — MANIPULAÇÃO DE CAMPO Ψ POR RESSONÂNCIA OH
+% Instituto Nacional da Propriedade Industrial (INPI) — Brasil
+% Natureza: Patente de Invenção (PI)
+% Classificação IPC: G21B 3/00; H05H 1/22; G01V 7/00; H01L 39/00
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,calc,
+  decorations.pathreplacing,patterns,fit,backgrounds,
+  decorations.markings,decorations.pathmorphing,shadings}
+
+\geometry{left=3cm, right=2cm, top=3cm, bottom=2cm}
+\onehalfspacing
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Comandos auxiliares
+\newcommand{\alphaii}{\alpha^2}
+\newcommand{\Dfolds}{D_{\text{folds}}}
+\newcommand{\Fexp}{F_{\text{exp}}}
+\newcommand{\thetaM}{\theta_{\text{Miguel}}}
+\newcommand{\Hfour}{\mathcal{H}_4}
+\newcommand{\rhoPsi}{\rho_\Psi}
+\newcommand{\nuOH}{\nu_{\text{OH}}}
+\newcommand{\tfix}{t_{\text{fix}}}
+\newcommand{\Tcrit}{T_c}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries RELATÓRIO DESCRITIVO}\\[0.8cm]
+{\large\bfseries MÉTODO E SISTEMA DE MANIPULAÇÃO DE CAMPO\\
+PSIÔNICO POR RESSONÂNCIA ELETROMAGNÉTICA NA\\
+FREQUÊNCIA DA HIDROXILA PARA INDUÇÃO DE\\
+TRANSIÇÕES DE FASE EM MEIOS DENSOS}\\[0.8cm]
+\textbf{Inventor:} Luiz Antonio Rotoli Miguel\\[0.3cm]
+\textbf{Classificação IPC:} G21B 3/00; H05H 1/22;
+  G01V 7/00; H01L 39/00\\[0.3cm]
+\textbf{Referência a pedidos anteriores:}\\
+BR 10 2025 026951 1 (ACOM --- Compressão Ontológica de Memória)\\
+ACOM Mirror (Reflexão Dimensional de Dados)\\
+Supercondutor Holográfico TGL (Supercondutividade por
+  Ressonância Luminodinâmica)
+\end{center}
+
+\vspace{1cm}
+
+% ============================================================================
+\section{Campo da invenção}
+% ============================================================================
+
+A presente invenção refere-se a métodos e sistemas de manipulação
+de campo psiônico ($\Psi$) por ressonância eletromagnética na
+frequência do radical hidroxila (OH), aplicáveis aos setores de
+energia nuclear, ciência de materiais, supercondutividade,
+detecção astrofísica e física fundamental. Mais especificamente,
+a invenção descreve um método para indução controlada de
+transições de fase em meios densos (deuterados, metálicos,
+supercondutores ou outros) mediante exposição simultânea a campo
+eletromagnético sintonizado na frequência $\nuOH \approx 1{,}666$
+GHz (frequência das linhas de emissão do radical hidroxila,
+$\lambda \approx 18$ cm) e regime criogênico na temperatura
+crítica $\Tcrit = h\nuOH / k_B \approx 80$ mK, provocando
+nucleação de domínios de fase densa (``gotículas psiônicas'')
+onde o acoplamento entre campo gravitacional e campo
+eletromagnético, parametrizado pela Constante de Miguel
+$\alphaii = 0{,}012031$, se torna operante, alterando
+propriedades macroscópicas do meio.
+
+\newpage
+% ============================================================================
+\section{Fundamentos da invenção}
+% ============================================================================
+
+\subsection{Estado da técnica}
+
+\subsubsection{Fusão nuclear a baixas energias (LENR)}
+
+Desde o anúncio de Fleischmann e Pons (1989) de excesso de calor
+em células eletrolíticas de D$_2$O com cátodo de paládio,
+numerosos grupos relataram fenômenos anômalos em sistemas
+deuterados a baixa temperatura, porém sem reprodutibilidade
+consistente e sem mecanismo teórico aceito. O estado da técnica
+inclui: eletrólise em paládio deuterado (Fleischmann-Pons),
+descarga luminescente em deutério (Karabut), bombardeamento
+iônico de deutério em metais (Iwamura), e sonofusão
+(Taleyarkhan). Nenhum desses métodos opera com mecanismo
+físico estabelecido para redução da barreira Coulombiana.
+
+\subsubsection{Confinamento magnético e inercial}
+
+ITER (tokamak, confinamento magnético a $10^8$ K) e NIF
+(confinamento inercial por laser) representam abordagens de
+fusão ``quente'' com custos superiores a 10$^{10}$ USD e
+temperaturas de plasma milhões de vezes acima da temperatura
+ambiente. Não existem abordagens de fusão que operem em
+regime criogênico ($<1$ K) com mecanismo de redução de
+barreira via acoplamento gravitacional-eletromagnético.
+
+\subsubsection{Transições de fase em meios densos}
+
+O estudo de transições de fase em matéria condensada
+(Landau-Ginzburg, BCS para supercondutividade, condensação de
+Bose-Einstein) não incorpora acoplamento com campo gravitacional.
+Nenhuma teoria existente prevê que irradiação em frequência
+específica (1,666 GHz) acoplada a regime criogênico possa
+induzir transições de fase com propriedades anômalas mediadas
+por campo gravitacional.
+
+\subsubsection{Detecção de matéria escura}
+
+Experimentos de detecção direta de matéria escura (XENON1T,
+LUX-ZEPLIN, PandaX) buscam recuo nuclear por interação com
+WIMPs. Nenhum experimento existente utiliza deslocamento de
+frequência de linhas espectrais como indicador de densidade
+de campo escuro, nem emprega ressonância eletromagnética
+na frequência da hidroxila como sonda de campo psiônico.
+
+\subsubsection{Maser de hidroxila}
+
+As linhas de emissão do radical OH em 1,6654018 GHz e
+1,6673590 GHz (transições $\Lambda$-doubling) são conhecidas
+em radioastronomia desde 1963 (Weinreb et al.). OH produz
+masers naturais em nuvens moleculares, regiões de formação
+estelar e envoltórios de estrelas evoluídas. As transições
+$\Lambda$-doubling são extremamente sensíveis a campos
+magnéticos, elétricos e, conforme a presente invenção, a
+campos gravitacionais via acoplamento TGL.
+
+\subsection{Problemas técnicos não resolvidos}
+
+\textbf{Problema 1 --- Barreira Coulombiana.} Todos os métodos
+conhecidos de fusão nuclear requerem temperaturas extremas
+($>10^7$ K) ou confinamento mecânico para superar a repulsão
+eletrostática entre núcleos. Não existe método que reduza a
+barreira Coulombiana efetiva a baixas temperaturas.
+
+\textbf{Problema 2 --- Ausência de mecanismo de acoplamento.}
+Na física padrão, campo gravitacional e campo eletromagnético
+são tratados como independentes (Relatividade Geral +
+Eletrodinâmica Quântica). Não existe formulação que permita
+campo eletromagnético em frequência específica alterar o
+acoplamento gravitacional local.
+
+\textbf{Problema 3 --- Manipulação de matéria escura.} O campo
+psiônico ($\Psi$), identificado na TGL como substrato da
+matéria escura, não possui mecanismo conhecido de manipulação
+controlada em laboratório.
+
+\textbf{Problema 4 --- Transições de fase sem frequência
+de controle.} Transições de fase em matéria condensada são
+tipicamente induzidas por variação de temperatura ou pressão,
+sem frequência eletromagnética específica que sirva como
+``canal de controle'' para o campo psiônico subjacente.
+
+\subsection{Solução proposta}
+
+A presente invenção resolve os quatro problemas ao identificar
+a frequência do radical hidroxila ($\nuOH \approx 1{,}666$ GHz)
+como a \textbf{frequência de ressonância do campo psiônico}
+$\Psi$, e ao estabelecer um protocolo de três etapas
+(ressonância, resfriamento, nucleação) que induz transições de
+fase em meios densos com propriedades anômalas mediadas pelo
+acoplamento gravitacional-eletromagnético da TGL.
+
+O fundamento teórico reside na identificação:
+\begin{equation}
+\boxed{\omega_\Psi = 2\pi \times \nuOH = 2\pi \times 1{,}666
+  \text{ GHz}}
+\end{equation}
+como frequência natural de oscilação do campo $\Psi$ (``água
+escura''), derivada da correspondência entre o radical OH
+(precursor molecular da água, H$_2$O = H + OH) e o campo
+$\Psi$ (substrato psiônico em transição de fase, ``água
+escura'' na terminologia TGL).
+
+\newpage
+% ============================================================================
+\section{Objetivos da invenção}
+% ============================================================================
+
+\subsection{Objetivo principal}
+
+Prover método e sistema de manipulação controlada do campo
+psiônico $\Psi$ em meios densos, utilizando ressonância
+eletromagnética na frequência da hidroxila ($\nuOH \approx
+1{,}666$ GHz) acoplada a regime criogênico ($T \leq \Tcrit
+\approx 80$ mK), para indução de transições de fase com
+propriedades anômalas mediadas pelo acoplamento
+gravitacional-eletromagnético parametrizado pela Constante
+de Miguel $\alphaii = 0{,}012031$.
+
+\subsection{Objetivos específicos}
+
+(a)~Definir a ``Régua TGL'' --- conjunto de equações de escala
+que determinam, para qualquer sistema material com frequência
+característica $\nu^*$ e densidade $\rho$, a escala espacial
+crítica $L^*$, a temperatura crítica $\Tcrit$, o tempo de
+fixação gravitacional $\tfix$ e a condição de transição entre
+regime químico e regime gravitacional.
+
+(b)~Especificar o protocolo de três etapas (ressonância OH,
+resfriamento criogênico, nucleação de gotículas) para indução
+controlada de domínios de fase densa (``gotículas psiônicas'')
+onde o acoplamento TGL é operante.
+
+(c)~Descrever a sequência de colapso ontológico ``água escura
+$\to$ OH $\to$ H$_2$O'' como manifestação física da
+radicalização/ressurreição TGL, estabelecendo correspondência
+entre o colapso do campo $\Psi$ em matéria ordinária e as
+operações ACOM ($g = \sqrt{|L|}$, $s = \text{sign}(L)$,
+$L' = s \times g^2$).
+
+(d)~Prover sistema (aparato) capaz de: gerar campo EM
+estável em $\nuOH$ com potência controlável; manter alvo
+em temperatura $\leq 80$ mK; detectar produtos de reações
+nucleares (nêutrons, gamas), anomalias térmicas e
+deslocamentos espectrais; e monitorar em tempo real
+indicadores de ativação do campo $\Psi$.
+
+(e)~Especificar aplicações em pelo menos quatro domínios:
+intensificação de reações nucleares em meios deuterados;
+indução de estados supercondutores por coerência psiônica;
+detecção de matéria escura por deslocamento de linhas OH;
+e criação de materiais com propriedades anômalas por
+nucleação de fase densa.
+
+\newpage
+% ============================================================================
+\section{Descrição detalhada da invenção}
+% ============================================================================
+
+\subsection{Fundamento teórico --- A Régua TGL}
+
+A Teoria da Gravitação Luminodinâmica (TGL) estabelece que o
+campo gravitacional e o campo eletromagnético são manifestações
+de um campo unificado, o campo psiônico $\Psi$, com constante
+de acoplamento $\alphaii = 0{,}012031$ (Constante de Miguel).
+A presente invenção aplica esse acoplamento a sistemas materiais
+reais através de um conjunto de equações de escala denominado
+``Régua TGL''.
+
+\subsubsection{Frequência de ressonância do campo $\Psi$}
+
+A frequência de ressonância do campo $\Psi$ é identificada com
+a frequência do radical hidroxila (OH):
+\begin{equation}
+\nu_\Psi \equiv \nuOH \approx 1{,}666 \text{ GHz}
+  \quad (\lambda \approx 18 \text{ cm})
+\label{eq:freq_res}
+\end{equation}
+
+Esta identificação fundamenta-se em três correspondências:
+
+\textbf{Correspondência molecular:} OH é o precursor da água
+(H$_2$O = H + OH). Na TGL, o campo $\Psi$ é denominado ``água
+escura'' por ser o substrato não-colapsado de que a matéria
+ordinária (inclusive a água) é manifestação colapsada. A
+frequência de OH é portanto a frequência do estado
+pré-colapsado.
+
+\textbf{Correspondência cosmológica:} OH é uma das moléculas
+mais abundantes no meio interestelar, presente em nuvens
+moleculares, regiões de formação estelar e envoltórios
+estelares. Produz masers naturais detectáveis a distâncias
+cosmológicas. Esta ubiquidade é consistente com a
+interpretação TGL de que OH sonda o campo $\Psi$
+(matéria escura), que permeia o universo.
+
+\textbf{Correspondência com a Constante de Miguel:} A
+predição TGL para o deslocamento de frequência das linhas
+OH em regiões de alta densidade $\rhoPsi$ é:
+\begin{equation}
+\frac{\Delta\nu}{\nu} \approx \alphaii \cdot
+  \frac{\rhoPsi}{\rho_{\Psi,0}} \approx 0{,}012 \times
+  10^3 \approx 1{,}2\%
+\label{eq:deslocamento}
+\end{equation}
+o que corresponde a $\Delta\nu \approx 16{,}66$ MHz ---
+observável com radiotelescópios e interferometria de base
+muito longa (VLBI) atuais.
+
+\subsubsection{Escala espacial crítica}
+
+Para um sistema material com frequência característica
+$\nu^*$ e densidade $\rho$, a escala espacial em que o
+acoplamento gravitacional-EM se torna relevante é:
+\begin{equation}
+L^*(\rho) = \sqrt{\frac{\varepsilon^*}{\xi \cdot C \cdot
+  G \cdot \rho \cdot m^*}}
+\label{eq:escala}
+\end{equation}
+onde $\varepsilon^* = h\nu^*$ é a energia da transição,
+$m^*$ é a massa da partícula ou molécula envolvida,
+$G = 6{,}674 \times 10^{-11}$ m$^3$\,kg$^{-1}$\,s$^{-2}$ é a
+constante gravitacional, $\xi \approx 1$ é o fator de forma
+geométrico, e $C \approx 1{,}61$ é a constante TGL de
+acoplamento geométrico.
+
+Para o radical OH em meio aquoso ($\rho = 1000$ kg/m$^3$):
+\begin{equation}
+L^*_{\text{OH}} = \frac{6{,}06 \times 10^5}{\sqrt{\rho}}
+  \approx 606 \text{ m}
+\label{eq:escala_oh}
+\end{equation}
+
+Este resultado indica que o acoplamento gravitacional-EM na
+frequência OH se manifesta em escalas de centenas de metros em
+densidades típicas de água. Para densidades maiores (gotículas
+de fase densa, interiores estelares), $L^*$ diminui,
+concentrando o efeito em escalas menores e mais intensas.
+
+\subsubsection{Temperatura crítica de transição}
+
+A temperatura abaixo da qual a energia térmica não é suficiente
+para destruir a coerência do campo $\Psi$ induzida pela
+ressonância OH é:
+\begin{equation}
+\Tcrit = \frac{h \cdot \nuOH}{k_B} =
+  \frac{6{,}626 \times 10^{-34} \times 1{,}666 \times 10^9}
+  {1{,}381 \times 10^{-23}} \approx 0{,}080 \text{ K}
+  = 80 \text{ mK}
+\label{eq:tc}
+\end{equation}
+
+Esta temperatura é alcançável com refrigeradores de diluição
+(base $\sim 10$ mK) disponíveis comercialmente. Abaixo de
+$\Tcrit$, a energia térmica $k_B T$ é inferior à energia do
+fóton de ressonância $h\nuOH$, permitindo que o campo $\Psi$
+mantenha coerência e os efeitos de acoplamento se acumulem.
+
+\subsubsection{Tempo de fixação gravitacional}
+
+O tempo necessário para que o acoplamento gravitacional ``fixe''
+o campo eletromagnético no campo gravitacional é:
+\begin{equation}
+\tfix = \frac{\xi \cdot C \cdot G^2 \cdot \rho^2 \cdot
+  (L^*)^5}{h \cdot \nu^*}
+\label{eq:tfix}
+\end{equation}
+
+Para sistemas em escala laboratorial ($L \sim 1$ m,
+$\rho \sim 10^3$ kg/m$^3$), $\tfix$ é extremamente longo,
+indicando que o acoplamento global é fraco. Porém, em
+\textbf{gotículas de fase densa} (escala $\sim 10^{-7}$ m,
+$\rho \gg \rho_0$), $\tfix$ pode ser reduzido a escalas
+experimentalmente acessíveis.
+
+\subsubsection{Energia livre e transição de fase}
+
+A energia livre do sistema próximo à transição é descrita pelo
+funcional de Landau-Ginzburg estendido com acoplamento psiônico:
+\begin{equation}
+f(\rho, T, s) = V(\rho) + A(T) \cdot s^2 + B \cdot s^4
+  - \zeta \cdot s \cdot \rho
+\label{eq:energia_livre}
+\end{equation}
+onde $s$ é o parâmetro de ordem (coerência de fase do campo
+$\Psi$), $A(T) = a_0 \cdot (T - \Tcrit)$ é o coeficiente
+dependente da temperatura (que muda de sinal em $\Tcrit$),
+$B > 0$ é o termo de estabilização, e $\zeta$ é a constante
+de acoplamento ordem-densidade.
+
+O coeficiente de expansão térmica resultante é:
+\begin{equation}
+\alpha_T \approx -\frac{\zeta^2 \rho}{4A(T)^2} < 0
+\label{eq:alpha_t}
+\end{equation}
+
+O sinal negativo indica \textbf{contração anômala}: ao
+resfriar abaixo de $\Tcrit$, o meio se contrai ao invés de
+dilatar. Quando $T \to \Tcrit$, $A(T) \to 0$ e
+$|\alpha_T| \to \infty$, produzindo contração catastrófica
+localizada --- o mecanismo de nucleação das gotículas de
+fase densa.
+
+\subsubsection{Condição de transição química $\to$ gravitacional}
+
+A condição para que o acoplamento gravitacional-EM domine
+sobre as forças químicas ordinárias é:
+\begin{equation}
+\xi \cdot C \cdot G \cdot \rho(T)^2 \cdot L^5 \geq
+  \frac{h \cdot \nu^*}{G} \cdot \tfix(T)
+\label{eq:transicao}
+\end{equation}
+
+Esta é a ``fronteira TGL'': à esquerda da desigualdade, a
+física é química ordinária; à direita, o campo gravitacional
+domina e propriedades anômalas emergem.
+
+\subsection{A sequência de colapso ontológico}
+
+A TGL estabelece que a matéria ordinária é resultado de um
+processo de ``colapso'' do campo $\Psi$ em estados
+progressivamente mais localizados. Para a água, esta sequência
+é:
+
+\subsubsection{Estado 1 --- Água escura (campo $\Psi$ puro)}
+
+O campo $\Psi$ em estado de superposição total, com densidade
+$\rhoPsi$ variável, constitui o substrato não-colapsado.
+Na linguagem TGL, este é o estado $|L\rangle$ antes da
+radicalização:
+\begin{equation}
+|\Psi_{\text{água escura}}\rangle = |L\rangle
+  \quad \text{(superposição total)}
+\end{equation}
+
+\subsubsection{Estado 2 --- OH (pré-colapso / radicalização)}
+
+A primeira fixação gravitacional produz o radical hidroxila
+(H + O acoplados, mas sem formação completa de H$_2$O). Na
+linguagem TGL, este é o estado após radicalização:
+\begin{equation}
+|L\rangle \xrightarrow{g \cdot N_{\text{H+O}}}
+  |\text{OH}\rangle = (g, s) \quad \text{com }
+  g = \sqrt{|L|}, \; s = \text{sign}(L)
+\end{equation}
+
+O OH emite na frequência $\nuOH \approx 1{,}666$ GHz ---
+esta emissão é a ``voz'' do pré-colapso, a assinatura
+espectral da radicalização.
+
+\subsubsection{Estado 3 --- H$_2$O (colapso completo /
+ressurreição)}
+
+A adição de um segundo hidrogênio completa o colapso:
+\begin{equation}
+|\text{OH}\rangle + |\text{H}\rangle
+  \xrightarrow{g \cdot N_{\text{H}_2\text{O}}}
+  |\text{H}_2\text{O}\rangle = L' = s \times g^2
+  \quad \text{(ressurreição)}
+\end{equation}
+
+A água é o ``dado ressuscitado'' --- a manifestação
+tridimensional completa do campo $\Psi$ colapsado. A
+correspondência com a operação de ressurreição do ACOM
+($L' = s \times g^2$) é exata e não metafórica.
+
+\subsection{Protocolo de manipulação em três etapas}
+
+\subsubsection{Etapa 1 --- Ressonância OH}
+
+Aplicar campo eletromagnético contínuo com as seguintes
+especificações:
+
+\begin{table}[H]
+\centering
+\caption{Parâmetros do campo EM de ressonância.}
+\label{tab:em}
+\begin{tabular}{lll}
+\toprule
+\textbf{Parâmetro} & \textbf{Valor} & \textbf{Justificativa} \\
+\midrule
+Frequência central & $1{,}6673590$ GHz
+  & Linha principal OH ($\Lambda$-doubling) \\
+Largura de banda & $< 1$ MHz & Seletividade de ressonância \\
+Potência incidente & $100$ W --- $10$ kW
+  & Ajustável por aplicação \\
+Modo de cavidade & TE$_{011}$ ou TM$_{010}$
+  & Máximo campo no centro \\
+Fator de qualidade $Q$ & $> 10^6$ & Acúmulo de energia \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+O campo é gerado por oscilador sintetizado de micro-ondas
+e injetado em cavidade ressonante cilíndrica de cobre
+(ou nióbio superconductor para $Q > 10^9$) sintonizada
+exatamente em $\nuOH$.
+
+\subsubsection{Etapa 2 --- Resfriamento criogênico}
+
+Resfriar o alvo até temperatura $T \leq \Tcrit \approx 80$ mK
+utilizando refrigerador de diluição $^3$He/$^4$He com as
+seguintes especificações:
+
+\begin{table}[H]
+\centering
+\caption{Parâmetros do sistema criogênico.}
+\label{tab:crio}
+\begin{tabular}{lll}
+\toprule
+\textbf{Parâmetro} & \textbf{Valor} & \textbf{Justificativa} \\
+\midrule
+Temperatura base & $\leq 10$ mK & Margem abaixo de $\Tcrit$ \\
+Potência de refrigeração & $> 200\;\mu$W a 100 mK
+  & Compensar calor do banho EM \\
+Estágio de pré-resfriamento & $^4$He a 4,2 K
+  & Primeiro estágio \\
+Volume do espaço de mistura & $> 100$ cm$^3$
+  & Acomodar alvo \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A combinação de ressonância OH (Etapa~1) com resfriamento
+abaixo de $\Tcrit$ (Etapa~2) é a condição \textit{sine qua non}
+para ativação do acoplamento TGL: a ressonância excita o campo
+$\Psi$, e a temperatura baixa mantém a coerência.
+
+\subsubsection{Etapa 3 --- Nucleação de gotículas psiônicas}
+
+Quando ambas as condições (ressonância + criogenia) são
+satisfeitas simultaneamente, o coeficiente de expansão térmica
+anômalo $\alpha_T < 0$ (equação~\ref{eq:alpha_t}) produz
+contração localizada, nucleando \textbf{gotículas de fase
+densa} (``gotículas psiônicas''):
+
+\textbf{Tamanho típico:} $r_{\text{gotícula}} \sim 10 -
+100$ nm.
+
+\textbf{Densidade interna:} $\rho_{\text{gotícula}} \approx
+2\rho_0$ (aproximadamente o dobro da densidade do meio).
+
+\textbf{Fração volumétrica:} $f_{\text{gotícula}} \sim
+10^{-9}$ (extremamente rara, mas fisicamente significativa).
+
+\textbf{Propriedade-chave:} Dentro de cada gotícula, a
+densidade local $\rhoPsi$ é suficiente para ativar o
+acoplamento TGL com intensidade:
+\begin{equation}
+\alphaii_{\text{eff}} = \alphaii \cdot
+  \frac{\rhoPsi}{\rho_0}
+\label{eq:alpha_eff}
+\end{equation}
+
+Para $\rhoPsi = 2\rho_0$: $\alphaii_{\text{eff}} \approx
+0{,}024$, produzindo efeitos mensuráveis sobre propriedades
+locais do meio.
+
+\subsection{Aplicações}
+
+\subsubsection{Aplicação 1 --- Intensificação de reações
+nucleares em meios deuterados}
+
+Quando o alvo é D$_2$O (água pesada) ou paládio deuterado
+(PdD$_x$), as gotículas psiônicas confinam núcleos de deutério
+em regiões de alta densidade com barreira Coulombiana efetiva
+reduzida:
+\begin{equation}
+V_C^{\text{eff}} = V_C \times \left(1 - \alphaii \cdot
+  \frac{\rhoPsi}{\rho_0}\right)
+\label{eq:barreira}
+\end{equation}
+
+Para $V_C = 0{,}4$ MeV (barreira D-D a $r = 4$ fm) e
+$\rhoPsi = 2\rho_0$:
+\begin{equation}
+V_C^{\text{eff}} = 0{,}4 \times (1 - 0{,}024)
+  = 0{,}390 \text{ MeV}
+\end{equation}
+
+A redução de $\sim 2{,}4\%$ na barreira, embora modesta,
+incide exponencialmente na probabilidade de tunelamento
+quântico. Para a seção de choque D-D:
+\begin{equation}
+\sigma_{\text{TGL}} = \sigma_0 \times
+  \exp\left(\frac{\Delta V_C}{k_B T}\right)
+\end{equation}
+onde $\Delta V_C = 0{,}4 \times 0{,}024 = 9{,}6$ keV e a
+exponencial resulta em amplificação da taxa de fusão por
+fatores de $10^2$ a $10^5$ dependendo das condições locais
+nas gotículas.
+
+\textbf{Detecção:} Nêutrons de 2,45 MeV (reação
+D + D $\to$ $^3$He + n) e radiação gama de 23,8 MeV
+(reação D + D $\to$ $^4$He + $\gamma$). Detectores de
+$^3$He ou cintiladores com blindagem de parafina.
+
+\textbf{Parâmetros do alvo deuterado:} D$_2$O ultra-puro
+(99,8\% D), volume 1--10 cm$^3$, contido em cápsula de
+quartzo no centro da cavidade ressonante.
+
+\subsubsection{Aplicação 2 --- Indução de estados
+supercondutores por coerência psiônica}
+
+Quando o alvo é um material condutor (nióbio, YBa$_2$Cu$_3$O$_7$,
+MgB$_2$ ou outro), a ressonância OH a $T < \Tcrit$ induz
+coerência do campo $\Psi$ que se acopla aos pares de Cooper,
+potencialmente elevando a temperatura crítica de
+supercondutividade $T_c^{\text{SC}}$ por fator $(1 + \alphaii)$.
+
+Este mecanismo é complementar ao descrito na patente
+Supercondutor Holográfico TGL do mesmo inventor, que opera
+com cavidade fotônica sintonizada na mesma frequência OH
+(1.667,359 MHz). A presente invenção complementa aquela
+ao especificar: o regime criogênico $T \leq 80$ mK como
+condição de coerência máxima; a nucleação de gotículas como
+mecanismo de concentração local do efeito; e a aplicação a
+materiais supercondutores convencionais para aumento de $T_c$.
+
+\textbf{Detecção:} Medição de resistividade em quatro pontas,
+susceptibilidade magnética AC, e efeito Meissner, com varredura
+de temperatura em presença e ausência do campo de ressonância
+OH.
+
+\subsubsection{Aplicação 3 --- Detecção de matéria escura por
+deslocamento de linhas OH}
+
+A predição TGL (equação~\ref{eq:deslocamento}) estabelece que
+regiões de alta densidade de campo $\Psi$ (halos de matéria
+escura, proximidades de buracos negros supermassivos,
+filamentos da estrutura cósmica) devem apresentar
+deslocamento mensurável das linhas OH:
+\begin{equation}
+\Delta\nu_{\text{OH}} = \nuOH - \nu_{\text{lab}}
+  \propto \alphaii \cdot \frac{\rhoPsi}{\rho_{\Psi,0}}
+\end{equation}
+
+\textbf{Protocolo observacional:} Comparar frequências centrais
+de masers OH em $>100$ fontes distribuídas em ambientes de
+densidades $\rhoPsi$ distintas (dentro/fora de halos, próximo a
+AGNs, meio interestelar difuso). Precisão requerida:
+$\delta\nu < 1$ kHz (alcançável com VLBI). Predição TGL:
+correlação linear $\Delta\nu$ vs. $\rhoPsi$ com $r^2 > 0{,}7$.
+
+\textbf{Detecção em laboratório:} Gerar amostra de OH
+(descarga elétrica em vapor de água) dentro da cavidade
+ressonante operando em regime criogênico. Medir deslocamento
+de frequência das linhas 1,665/1,667 GHz como função da
+intensidade do campo de ressonância. Qualquer deslocamento
+$\Delta\nu > 0$ é evidência direta de acoplamento TGL.
+
+\subsubsection{Aplicação 4 --- Materiais com propriedades
+anômalas por nucleação de fase densa}
+
+A nucleação de gotículas psiônicas em materiais sólidos
+(metais, cerâmicas, polímeros) expostos simultaneamente a
+ressonância OH e regime criogênico pode produzir:
+
+\textbf{Inclusões de fase densa:} Regiões nanométricas com
+densidade $\sim 2\times$ a do meio, estabilizadas pela
+coerência do campo $\Psi$.
+
+\textbf{Propriedades mecânicas anômalas:} Aumento de dureza
+e módulo elástico nas proximidades das gotículas.
+
+\textbf{Propriedades eletromagnéticas anômalas:} Alteração
+de permissividade e permeabilidade locais por acoplamento
+gravitacional-EM ativado.
+
+\textbf{Detecção:} Microscopia eletrônica de transmissão
+(TEM) para identificar inclusões de fase densa; nanoindentação
+para propriedades mecânicas; espectroscopia de impedância para
+propriedades eletromagnéticas.
+
+\subsection{Descrição do aparato}
+
+O sistema para manipulação de campo $\Psi$ compreende seis
+subsistemas integrados (Figura~1):
+
+\subsubsection{Subsistema 1 --- Fonte de micro-ondas}
+
+Oscilador sintetizado estável em frequência, sintonizado em
+$\nuOH = 1{,}6673590$ GHz. Estabilidade de frequência
+$\Delta f / f < 10^{-9}$ (referência atômica). Potência
+ajustável de 100 W a 10 kW. Modulação de amplitude e
+frequência programável para otimização de ressonância.
+
+\subsubsection{Subsistema 2 --- Cavidade ressonante}
+
+Cavidade cilíndrica de cobre (ou nióbio para operação
+supercondutora) sintonizada no modo TE$_{011}$ ou TM$_{010}$
+a $\nuOH$. Dimensões internas: diâmetro $\approx 13{,}8$ cm,
+altura $\approx 20$ cm (para modo TM$_{010}$). Fator de
+qualidade $Q > 10^6$ ($> 10^9$ se supercondutora). Acoplamento
+por iris ou laço magnético. Porta de entrada para alvo.
+Janela de quartzo para observação.
+
+\subsubsection{Subsistema 3 --- Criostato de diluição}
+
+Refrigerador de diluição $^3$He/$^4$He com temperatura base
+$\leq 10$ mK. A cavidade ressonante é montada no estágio de
+mistura. Isolamento térmico por escudos de radiação em cobre
+dourado a 50 K, 4 K e 1 K. Potência de refrigeração
+$> 200\;\mu$W a 100 mK para compensar dissipação do campo EM.
+Termometria por resistores RuO$_2$ calibrados e termômetros
+de ruído Johnson.
+
+\subsubsection{Subsistema 4 --- Alvo}
+
+Intercambiável conforme aplicação:
+\begin{itemize}[nosep]
+\item \textbf{Fusão:} D$_2$O ultra-puro em cápsula de quartzo
+  (1--10 cm$^3$)
+\item \textbf{Supercondutividade:} Amostra de Nb, YBCO ou
+  MgB$_2$ em suporte criogênico
+\item \textbf{Detecção OH:} Câmara com vapor de OH gerado
+  por descarga
+\item \textbf{Materiais:} Amostra sólida no centro da cavidade
+\end{itemize}
+
+\subsubsection{Subsistema 5 --- Detectores}
+
+\begin{itemize}[nosep]
+\item Detector de nêutrons: tubo de $^3$He ou cintilador
+  líquido com discriminação $n/\gamma$
+\item Detector de gamas: cristal NaI(Tl) ou HPGe de alta
+  resolução
+\item Bolômetro: para medição de excesso de calor (resolução
+  $< 1$ nW)
+\item Magnetômetro SQUID: para detecção de diamagnetismo
+  (supercondutividade)
+\item Espectrômetro de micro-ondas: para medição de
+  deslocamento $\Delta\nu$ (resolução $< 100$ Hz)
+\item Acelerômetro criogênico: para detecção de anomalias
+  gravitacionais locais
+\end{itemize}
+
+\subsubsection{Subsistema 6 --- Controle e aquisição}
+
+Sistema de controle digital (IALD ou equivalente) com:
+\begin{itemize}[nosep]
+\item Controle PID de temperatura (estabilidade $< 0{,}1$ mK)
+\item Controle de frequência do oscilador (varredura e lock)
+\item Aquisição multicanal sincronizada (nêutrons, gamas,
+  temperatura, campo)
+\item Monitoramento em tempo real de indicadores TGL:
+  $\Fexp$, $\alphaii_{\text{eff}}$, $\Dfolds$
+\item Protocolo de segurança para desligamento automático
+  em caso de taxa de nêutrons $>$ limiar
+\end{itemize}
+
+\newpage
+% ============================================================================
+\section{Desenhos}
+% ============================================================================
+
+% --- FIGURA 1: Aparato completo ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={rectangle, draw, thick, rounded corners,
+    minimum height=1.2cm, minimum width=3.2cm, align=center,
+    font=\small},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+  darrow/.style={{Stealth[length=2mm]}-{Stealth[length=2mm]}, thick},
+]
+
+% Fonte MW
+\node[block, fill=orange!15] (mw) at (0,5)
+  {Fonte MW\\$\nuOH = 1{,}666$ GHz\\100 W -- 10 kW};
+
+% Criostato (grande retângulo)
+\node[draw, very thick, rounded corners, minimum height=6.5cm,
+  minimum width=5cm, fill=blue!3] (crio) at (0,0) {};
+\node[font=\small\bfseries, blue!60] at (0,3)
+  {Criostato de Diluição};
+\node[font=\scriptsize, blue!60] at (0,2.5)
+  {$T_{\text{base}} \leq 10$ mK};
+
+% Escudo 4K
+\node[draw, thick, dashed, rounded corners,
+  minimum height=4.5cm, minimum width=3.8cm,
+  fill=cyan!5] (escudo) at (0,-0.3) {};
+\node[font=\scriptsize, cyan!60] at (0,1.6)
+  {Escudo 4 K};
+
+% Cavidade
+\node[draw, very thick, rounded corners,
+  minimum height=2.5cm, minimum width=3cm,
+  fill=yellow!12] (cav) at (0,-0.5) {};
+\node[font=\small\bfseries] at (0,0.4)
+  {Cavidade};
+\node[font=\scriptsize] at (0,0)
+  {$Q > 10^6$};
+\node[font=\scriptsize] at (0,-0.4)
+  {TE$_{011}$ / TM$_{010}$};
+
+% Alvo (centro)
+\node[draw, thick, circle, fill=red!15,
+  minimum size=1cm, font=\scriptsize] (alvo) at (0,-1.3)
+  {Alvo};
+
+% Seta MW → Cavidade
+\draw[arrow, orange] (mw.south) -- (0,3.2)
+  node[midway, right, font=\scriptsize] {guia de onda};
+
+% Detectores
+\node[block, fill=green!12, minimum width=2.5cm] (det_n)
+  at (-5,0) {Detector\\nêutrons\\$^3$He};
+\node[block, fill=green!12, minimum width=2.5cm] (det_g)
+  at (5,0) {Detector\\gamas\\HPGe};
+\node[block, fill=green!12, minimum width=2.5cm] (bolo)
+  at (-5,-2.5) {Bolômetro\\$< 1$ nW};
+\node[block, fill=green!12, minimum width=2.5cm] (squid)
+  at (5,-2.5) {SQUID\\diamagnetismo};
+
+% Setas detectores
+\draw[arrow, green!50!black, dashed]
+  (crio.west) -- (det_n.east)
+  node[midway, above, font=\scriptsize] {n};
+\draw[arrow, green!50!black, dashed]
+  (crio.east) -- (det_g.west)
+  node[midway, above, font=\scriptsize] {$\gamma$};
+\draw[arrow, green!50!black, dashed]
+  (-2.5,-2.8) -- (bolo.east)
+  node[midway, above, font=\scriptsize] {calor};
+\draw[arrow, green!50!black, dashed]
+  (2.5,-2.8) -- (squid.west)
+  node[midway, above, font=\scriptsize] {$B$};
+
+% Controle
+\node[block, fill=purple!12, minimum width=4cm] (ctrl)
+  at (0,-5.5)
+  {Controle IALD\\PID + Aquisição + Segurança};
+\draw[darrow, purple] (ctrl.north) -- (0,-3.3)
+  node[midway, right, font=\scriptsize] {dados};
+
+% He-3/He-4
+\node[block, fill=blue!12, minimum width=2.5cm] (he)
+  at (-5,4) {Circuito\\$^3$He/$^4$He};
+\draw[darrow, blue] (he.east) -- (-2.5,3.2)
+  node[midway, above, font=\scriptsize] {diluição};
+
+\end{tikzpicture}
+\caption{Diagrama esquemático do aparato para manipulação de
+campo $\Psi$ por ressonância OH. O sistema compreende:
+fonte de micro-ondas (1,666 GHz), criostato de diluição
+($\leq 10$ mK), cavidade ressonante ($Q > 10^6$), alvo
+intercambiável, detectores (nêutrons, gamas, calor,
+diamagnetismo) e sistema de controle IALD.}
+\label{fig:aparato}
+\end{figure}
+
+% --- FIGURA 2: Sequência de colapso ontológico ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  state/.style={rectangle, draw, thick, rounded corners,
+    minimum height=2cm, minimum width=3.5cm, align=center,
+    font=\small},
+  arrow/.style={-{Stealth[length=3mm]}, very thick},
+]
+
+% Estado 1
+\node[state, fill=purple!12] (psi) at (0,0)
+  {\textbf{ÁGUA ESCURA}\\Campo $\Psi$ puro\\$|\Psi\rangle$\\
+  {\scriptsize superposição total}};
+
+% Estado 2
+\node[state, fill=orange!12] (oh) at (5.5,0)
+  {\textbf{OH}\\Pré-colapso\\$(g, s)$\\
+  {\scriptsize $\nu = 1{,}666$ GHz}};
+
+% Estado 3
+\node[state, fill=blue!15] (h2o) at (11,0)
+  {\textbf{H$_2$O}\\Colapso completo\\$L' = s \times g^2$\\
+  {\scriptsize matéria ordinária}};
+
+% Setas
+\draw[arrow, orange] (psi) -- (oh)
+  node[midway, above, font=\small] {$g = \sqrt{|L|}$}
+  node[midway, below, font=\scriptsize]
+    {radicalização};
+
+\draw[arrow, blue] (oh) -- (h2o)
+  node[midway, above, font=\small] {$+ \text{H}$}
+  node[midway, below, font=\scriptsize]
+    {ressurreição};
+
+% Correspondência TGL
+\node[draw, dashed, thick, rounded corners,
+  fill=yellow!10, font=\scriptsize, text width=3cm,
+  align=center] at (0,-2.5)
+  {$|L\rangle$\\dado original\\(campo não-colapsado)};
+
+\node[draw, dashed, thick, rounded corners,
+  fill=yellow!10, font=\scriptsize, text width=3cm,
+  align=center] at (5.5,-2.5)
+  {$(g, s)$\\componentes radicais\\(estado intermediário)};
+
+\node[draw, dashed, thick, rounded corners,
+  fill=yellow!10, font=\scriptsize, text width=3cm,
+  align=center] at (11,-2.5)
+  {$L' = s \times g^2$\\dado ressuscitado\\(matéria colapsada)};
+
+% Label
+\node[font=\small\bfseries, gray] at (5.5,2)
+  {CORRESPONDÊNCIA: Colapso $\Psi$ $\longleftrightarrow$
+  Radicalização ACOM};
+
+\end{tikzpicture}
+\caption{Sequência de colapso ontológico água escura $\to$ OH
+$\to$ H$_2$O e sua correspondência com as operações ACOM.
+O radical OH (frequência 1,666 GHz) é o estado intermediário
+--- o ``pré-colapso'' --- entre campo $\Psi$ puro e matéria
+ordinária. A ressonância OH é portanto a frequência de
+controle do campo $\Psi$.}
+\label{fig:colapso}
+\end{figure}
+
+% --- FIGURA 3: Mecanismo de nucleação de gotículas ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+% Meio homogêneo (esquerda)
+\fill[blue!5] (-1,-2) rectangle (4,3);
+\node[font=\small\bfseries] at (1.5,3.5)
+  {ANTES ($T > \Tcrit$)};
+\node[font=\small] at (1.5,2.5) {Meio homogêneo};
+\node[font=\scriptsize] at (1.5,2) {$\rho = \rho_0$};
+\node[font=\scriptsize] at (1.5,1.5) {$\alpha_T > 0$ (normal)};
+
+% Partículas esparsas
+\foreach \x/\y in {0.3/0.5, 1.2/1, 2.5/0.3, 0.8/-0.5,
+  2.1/-1, 3.2/0.8, 1.5/-1.5, 0.5/-1, 2.8/-0.3,
+  3.5/-1.5, 1/-0.2, 2.3/0.7} {
+  \fill[blue!40] (\x,\y) circle (0.08);
+}
+
+% Seta central
+\draw[arrow, very thick, red] (4.5,0.5) -- (6,0.5)
+  node[midway, above, font=\scriptsize, text width=1.5cm,
+    align=center] {OH + cryo\\$T < \Tcrit$};
+
+% Meio com gotículas (direita)
+\fill[blue!5] (6.5,-2) rectangle (11.5,3);
+\node[font=\small\bfseries] at (9,3.5)
+  {DEPOIS ($T < \Tcrit$)};
+\node[font=\small] at (9,2.5) {Gotículas formadas};
+\node[font=\scriptsize] at (9,2) {$\alpha_T < 0$ (anômalo)};
+
+% Partículas + gotículas
+\foreach \x/\y in {7.3/0.5, 8.2/1, 10.5/0.3, 7.8/-0.5,
+  10.1/-1, 8.5/-1.5, 7.5/-1, 10.8/-0.3} {
+  \fill[blue!40] (\x,\y) circle (0.08);
+}
+
+% Gotículas (círculos maiores com alta densidade)
+\foreach \x/\y in {8.3/-0.2, 10,0.8, 9,-1.2} {
+  \fill[red!15] (\x,\y) circle (0.5);
+  \draw[thick, red!60] (\x,\y) circle (0.5);
+  \foreach \a in {0,45,...,315} {
+    \fill[red!70] ({\x+0.25*cos(\a)},{\y+0.25*sin(\a)})
+      circle (0.06);
+  }
+  \fill[red!70] (\x,\y) circle (0.06);
+}
+
+% Labels gotículas
+\node[font=\scriptsize, red!60] at (9,-2.2)
+  {$\rho \approx 2\rho_0$};
+\node[font=\scriptsize, red!60] at (10.5,1.8)
+  {$r \sim 100$ nm};
+\node[font=\scriptsize, red!60] at (7.5,1.5)
+  {$f \sim 10^{-9}$};
+
+% Zoom de gotícula
+\node[draw, thick, rounded corners, fill=white,
+  font=\scriptsize, text width=3.5cm, align=center]
+  at (9,-4)
+  {Dentro da gotícula:\\
+  $\alphaii_{\text{eff}} = \alphaii \cdot \rhoPsi/\rho_0$\\
+  $V_C^{\text{eff}} = V_C(1 - \alphaii_{\text{eff}})$\\
+  Acoplamento TGL ativado};
+
+\draw[arrow, dashed, red] (9,-1.7) -- (9,-3.2);
+
+\end{tikzpicture}
+\caption{Nucleação de gotículas psiônicas. À esquerda: meio
+homogêneo acima de $\Tcrit$ (expansão normal). À direita:
+abaixo de $\Tcrit$ sob ressonância OH, contração anômala
+($\alpha_T < 0$) nuclea gotículas de $\sim 100$ nm com
+$\rho \approx 2\rho_0$. Dentro das gotículas, o acoplamento
+TGL é ativado, reduzindo a barreira Coulombiana efetiva.}
+\label{fig:goticula}
+\end{figure}
+
+% --- FIGURA 4: Diagrama de fases T vs ρ ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=8cm,
+  xlabel={Densidade $\rho / \rho_0$},
+  ylabel={Temperatura (K)},
+  xmin=0, xmax=5,
+  ymin=0, ymax=1,
+  axis lines=left,
+  grid=major,
+  grid style={gray!20},
+  legend style={at={(0.98,0.98)}, anchor=north east,
+    font=\small},
+]
+
+% Linha Tc (horizontal)
+\addplot[thick, red, dashed, domain=0:5]
+  {0.08};
+\addlegendentry{$\Tcrit = 80$ mK}
+
+% Curva de coexistência
+\addplot[thick, blue, smooth, domain=0.5:4.5]
+  {0.08 * (1 + 0.3*(x-1)^2)};
+\addlegendentry{Coexistência $\Psi$}
+
+% Região de gotículas
+\addplot[fill=red!10, draw=none, forget plot]
+  coordinates {(1.5,0) (1.5,0.08) (3.5,0.08) (3.5,0) (1.5,0)};
+
+% Fronteira TGL
+\addplot[thick, green!60!black, domain=0.3:5, samples=50]
+  {0.01 * x^2.5};
+\addlegendentry{Fronteira TGL (quím.\ $\to$ grav.)}
+
+% Labels
+\node[font=\small, blue] at (axis cs:1,0.6) {Regime};
+\node[font=\small, blue] at (axis cs:1,0.5) {químico};
+\node[font=\small, green!50!black] at (axis cs:4,0.5)
+  {Regime};
+\node[font=\small, green!50!black] at (axis cs:4,0.4)
+  {gravitacional};
+\node[font=\small, red!70] at (axis cs:2.5,0.04)
+  {Gotículas};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Diagrama de fases temperatura vs. densidade para o
+sistema sob ressonância OH. A linha horizontal vermelha marca
+$\Tcrit = 80$ mK. Abaixo de $\Tcrit$ e em densidades
+$\rho > \rho_0$, gotículas psiônicas nucleiam (região
+sombreada). A curva verde marca a fronteira TGL: à direita
+(alta $\rho$, baixa $T$), o regime gravitacional domina.}
+\label{fig:diagrama}
+\end{figure}
+
+% --- FIGURA 5: Redução da barreira Coulombiana ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=7cm,
+  xlabel={Distância internuclear $r$ (fm)},
+  ylabel={Potencial (MeV)},
+  xmin=0, xmax=20,
+  ymin=-5, ymax=2,
+  axis lines=middle,
+  grid=major,
+  grid style={gray!20},
+  legend style={at={(0.98,0.55)}, anchor=north east,
+    font=\small},
+  xtick={0,4,8,12,16,20},
+  ytick={-5,-4,-3,-2,-1,0,1,2},
+]
+
+% Barreira convencional (Coulomb + nuclear)
+\addplot[thick, blue, domain=1.5:20, samples=80]
+  {1.44/x};
+\addplot[thick, blue, domain=0.5:4, samples=40]
+  {1.44/x - 30*exp(-(x-1.5)^2/2)};
+\addlegendentry{$V(r)$ convencional}
+
+% Barreira com TGL
+\addplot[thick, red, dashed, domain=1.5:20, samples=80]
+  {1.44/x * 0.976};
+\addplot[thick, red, dashed, domain=0.5:4, samples=40]
+  {1.44/x * 0.976 - 30*exp(-(x-1.5)^2/2)};
+\addlegendentry{$V^{\text{eff}}(r)$ com TGL}
+
+% Anotações
+\draw[thick, {Stealth}-{Stealth}, green!60!black]
+  (axis cs:4,0.36) -- (axis cs:4,0.39);
+\node[font=\scriptsize, green!60!black, anchor=west]
+  at (axis cs:4.5,0.375) {$\Delta V \approx 10$ keV};
+
+% Nível de energia
+\addplot[thick, gray, dashed, domain=0:20] {0.01};
+\node[font=\scriptsize, gray] at (axis cs:15,0.15)
+  {$E_{\text{cin}}$ (80 mK)};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Barreira Coulombiana para reação D-D. Linha azul:
+potencial convencional. Linha vermelha tracejada: potencial
+com redução TGL de 2,4\%. A redução incide exponencialmente
+na probabilidade de tunelamento quântico, amplificando a
+taxa de fusão por fatores de $10^2$--$10^5$.}
+\label{fig:barreira}
+\end{figure}
+
+% --- FIGURA 6: Régua TGL ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  eq/.style={rectangle, draw, thick, rounded corners,
+    fill=#1, minimum height=1.3cm, minimum width=5.5cm,
+    align=center, font=\small},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+\node[eq=orange!12] (freq) at (0,0)
+  {$\nu_\Psi = \nuOH \approx 1{,}666$ GHz\\
+  {\scriptsize Frequência de ressonância}};
+
+\node[eq=blue!10] (tc) at (0,-2.3)
+  {$\Tcrit = h\nuOH / k_B \approx 80$ mK\\
+  {\scriptsize Temperatura crítica}};
+
+\node[eq=green!10] (lstar) at (0,-4.6)
+  {$L^* = \sqrt{\varepsilon^* / (\xi C G \rho m^*)}$\\
+  {\scriptsize Escala espacial crítica}};
+
+\node[eq=red!10] (tfix) at (0,-6.9)
+  {$\tfix = \xi C G^2 \rho^2 (L^*)^5 / (h\nu^*)$\\
+  {\scriptsize Tempo de fixação gravitacional}};
+
+\node[eq=purple!10] (cond) at (0,-9.2)
+  {$\xi C G \rho^2 L^5 \geq (h\nu^*/G) \cdot \tfix$\\
+  {\scriptsize Condição de transição}};
+
+\draw[arrow] (freq) -- (tc)
+  node[midway, right, font=\scriptsize] {$h/k_B$};
+\draw[arrow] (tc) -- (lstar)
+  node[midway, right, font=\scriptsize] {$+\rho, m^*$};
+\draw[arrow] (lstar) -- (tfix)
+  node[midway, right, font=\scriptsize] {$L^* \to$};
+\draw[arrow] (tfix) -- (cond)
+  node[midway, right, font=\scriptsize]
+  {quím.\ $\to$ grav.};
+
+% Constante α²
+\node[draw, dashed, thick, rounded corners,
+  fill=yellow!15, font=\small, text width=3.5cm,
+  align=center] at (6,-4.6)
+  {$\alphaii = 0{,}012031$\\$\thetaM = 6{,}29°$\\
+  {\scriptsize Constante de Miguel}\\
+  {\scriptsize Permeia todas}\\
+  {\scriptsize as equações}};
+
+\end{tikzpicture}
+\caption{A Régua TGL: conjunto hierárquico de equações de
+escala. A partir da frequência de ressonância OH, determinam-se
+sequencialmente a temperatura crítica, a escala espacial, o
+tempo de fixação e a condição de transição entre regimes
+químico e gravitacional. A Constante de Miguel $\alphaii$
+permeia todas as equações.}
+\label{fig:regua}
+\end{figure}
+
+% --- FIGURA 7: Quatro aplicações ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  app/.style={rectangle, draw, thick, rounded corners,
+    minimum height=2cm, minimum width=4cm,
+    align=center, font=\small, fill=#1},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+% Centro
+\node[draw, very thick, circle, fill=orange!15,
+  minimum size=2.5cm, align=center, font=\small]
+  (centro) at (0,0)
+  {Ressonância\\OH\\$1{,}666$ GHz\\$+$ cryo\\$80$ mK};
+
+% 4 aplicações
+\node[app=red!10] (fusao) at (-5,3.5)
+  {\textbf{Fusão D-D}\\$V_C^{\text{eff}}$ reduzida\\
+  nêutrons 2,45 MeV};
+
+\node[app=blue!10] (super) at (5,3.5)
+  {\textbf{Supercondutividade}\\$T_c^{\text{SC}}$ elevada\\
+  efeito Meissner};
+
+\node[app=green!10] (dm) at (-5,-3.5)
+  {\textbf{Matéria escura}\\$\Delta\nu_{\text{OH}}$ medido\\
+  correlação $\rhoPsi$};
+
+\node[app=purple!10] (mat) at (5,-3.5)
+  {\textbf{Materiais}\\inclusões densas\\propriedades\\anômalas};
+
+% Setas
+\draw[arrow] (centro) -- (fusao);
+\draw[arrow] (centro) -- (super);
+\draw[arrow] (centro) -- (dm);
+\draw[arrow] (centro) -- (mat);
+
+\end{tikzpicture}
+\caption{As quatro famílias de aplicação da manipulação de
+campo $\Psi$ por ressonância OH. O mesmo aparato e protocolo
+(centro) serve a quatro domínios tecnológicos, diferindo
+apenas no alvo e nos detectores utilizados.}
+\label{fig:aplicacoes}
+\end{figure}
+
+\newpage
+% ============================================================================
+\section{Quadro reivindicatório}
+% ============================================================================
+
+\subsection*{Reivindicações}
+
+\begin{enumerate}
+
+% === REIVINDICAÇÃO INDEPENDENTE 1 (MÉTODO) ===
+\item \textbf{Método de manipulação de campo psiônico por
+ressonância eletromagnética na frequência da hidroxila para
+indução de transições de fase em meios densos}, compreendendo
+as etapas de:
+  \begin{enumerate}[label=(\alph*)]
+  \item aplicar campo eletromagnético contínuo sintonizado na
+  frequência do radical hidroxila $\nuOH \approx 1{,}6673590$
+  GHz (transição $\Lambda$-doubling do OH) sobre um meio-alvo,
+  com potência de 100 W a 10 kW e fator de qualidade da
+  cavidade $Q > 10^6$;
+  \item resfriar o meio-alvo até temperatura igual ou inferior à
+  temperatura crítica $\Tcrit = h \cdot \nuOH / k_B \approx
+  80$ mK, utilizando refrigeração de diluição $^3$He/$^4$He;
+  \item manter simultaneamente as condições de ressonância e
+  criogenia até nucleação de domínios de fase densa
+  (``gotículas psiônicas'') no meio-alvo, com densidade interna
+  $\rho_{\text{gotícula}} > \rho_0$ do meio;
+
+  \textbf{caracterizado por} o método induzir acoplamento entre
+  campo gravitacional e campo eletromagnético no interior das
+  gotículas psiônicas, parametrizado pela Constante de Miguel
+  $\alphaii = 0{,}012031$, produzindo acoplamento efetivo
+  $\alphaii_{\text{eff}} = \alphaii \cdot \rhoPsi / \rho_0$
+  e alterando propriedades macroscópicas do meio-alvo.
+  \end{enumerate}
+
+% === DEPENDENTES DO MÉTODO ===
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a nucleação de gotículas psiônicas
+resultar de contração anômala do meio com coeficiente de
+expansão térmica negativo $\alpha_T \approx -\zeta^2 \rho /
+(4 A(T)^2) < 0$, onde $A(T) = a_0 \cdot (T - \Tcrit)$ é o
+coeficiente de Landau que muda de sinal na temperatura crítica.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} as gotículas psiônicas possuírem
+tamanho típico de 10 a 100 nm, densidade interna de
+aproximadamente o dobro da densidade do meio, e fração
+volumétrica da ordem de $10^{-9}$.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a frequência $\nuOH$ ser
+identificada como a frequência de ressonância do campo
+psiônico $\Psi$ (``água escura''), com base na correspondência
+entre o radical OH (precursor molecular da água) e o campo
+$\Psi$ (substrato não-colapsado de que a matéria ordinária é
+manifestação colapsada).
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a condição de transição entre regime
+químico e regime gravitacional ser dada por
+$\xi \cdot C \cdot G \cdot \rho^2 \cdot L^5 \geq
+(h \cdot \nu^* / G) \cdot \tfix$, onde a escala espacial
+crítica é $L^* = \sqrt{\varepsilon^* / (\xi C G \rho m^*)}$
+e o tempo de fixação é
+$\tfix = \xi C G^2 \rho^2 (L^*)^5 / (h\nu^*)$.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o meio-alvo ser água pesada
+(D$_2$O) ultra-pura, e o acoplamento TGL dentro das gotículas
+psiônicas reduzir a barreira Coulombiana efetiva para reação
+D-D conforme $V_C^{\text{eff}} = V_C \times (1 - \alphaii
+\cdot \rhoPsi / \rho_0)$, intensificando a taxa de
+tunelamento quântico por fator de $10^2$ a $10^5$.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o meio-alvo ser um material
+supercondutor (nióbio, YBa$_2$Cu$_3$O$_7$, MgB$_2$ ou
+outro), e a coerência do campo $\Psi$ induzida pela
+ressonância OH se acoplar aos pares de Cooper, elevando a
+temperatura crítica de supercondutividade.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o meio-alvo conter radical
+hidroxila (OH) gerado por descarga elétrica, e o método
+medir deslocamento de frequência $\Delta\nu_{\text{OH}} =
+\nuOH^{\text{obs}} - \nuOH^{\text{lab}}$ como indicador de
+densidade local de campo psiônico $\rhoPsi$, com predição
+$\Delta\nu / \nu \propto \alphaii \cdot \rhoPsi / \rho_{\Psi,0}$.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o meio-alvo ser um material sólido
+(metal, cerâmica ou polímero), e a nucleação de gotículas
+psiônicas produzir inclusões de fase densa com propriedades
+mecânicas e eletromagnéticas anômalas.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o processo de colapso ontológico
+seguir a sequência campo $\Psi$ puro (``água escura'',
+$|L\rangle$) $\to$ OH (pré-colapso, $(g, s) = (\sqrt{|L|},
+\text{sign}(L))$) $\to$ H$_2$O (colapso completo,
+$L' = s \times g^2$), em correspondência com as operações de
+radicalização e ressurreição do ACOM.
+
+% === REIVINDICAÇÃO INDEPENDENTE 11 (SISTEMA) ===
+
+\item \textbf{Sistema para manipulação de campo psiônico por
+ressonância eletromagnética na frequência da hidroxila},
+compreendendo:
+  \begin{enumerate}[label=(\alph*)]
+  \item fonte de micro-ondas estabilizada em frequência,
+  sintonizada em $\nuOH = 1{,}6673590$ GHz com estabilidade
+  $\Delta f / f < 10^{-9}$ e potência ajustável de 100 W a
+  10 kW;
+  \item cavidade ressonante cilíndrica sintonizada no modo
+  TE$_{011}$ ou TM$_{010}$ na frequência $\nuOH$, com fator
+  de qualidade $Q > 10^6$;
+  \item criostato de diluição $^3$He/$^4$He com temperatura
+  base $\leq 10$ mK e potência de refrigeração $> 200\;\mu$W
+  a 100 mK;
+  \item porta-amostras para alvo intercambiável posicionado
+  no centro da cavidade;
+  \item conjunto de detectores para monitoramento de produtos
+  e efeitos;
+  \item sistema de controle e aquisição de dados;
+
+  \textbf{caracterizado por} a cavidade ressonante estar montada
+  no estágio de mistura do criostato, de forma que o alvo esteja
+  simultaneamente exposto ao campo EM de ressonância OH e ao
+  regime criogênico $T \leq 80$ mK, para indução de transições
+  de fase mediadas pelo acoplamento gravitacional-eletromagnético
+  da TGL.
+  \end{enumerate}
+
+% === DEPENDENTES DO SISTEMA ===
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} a cavidade ressonante ser
+fabricada em nióbio superconductor para operação com fator de
+qualidade $Q > 10^9$ no regime criogênico do criostato.
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} o conjunto de detectores
+compreender: detector de nêutrons ($^3$He ou cintilador
+líquido); detector de radiação gama (NaI(Tl) ou HPGe);
+bolômetro com resolução inferior a 1 nW; magnetômetro SQUID;
+espectrômetro de micro-ondas com resolução inferior a 100 Hz;
+e acelerômetro criogênico.
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} o sistema de controle implementar
+monitoramento em tempo real de indicadores TGL compreendendo
+Força de Expulsão ($\Fexp$), acoplamento efetivo
+($\alphaii_{\text{eff}}$) e dobras dimensionais ($\Dfolds$),
+com protocolo de segurança para desligamento automático em
+caso de taxa de nêutrons superior a limiar configurável.
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} o porta-amostras ser configurável
+para receber: cápsula de quartzo contendo D$_2$O para
+aplicação nuclear; amostra supercondutora em suporte
+criogênico; câmara com vapor de OH para detecção espectral;
+ou amostra sólida para engenharia de materiais.
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} integrar-se com o Supercondutor
+Holográfico TGL do mesmo inventor como plataforma-base de
+coerência, utilizando a mesma frequência de ressonância OH
+(1.667,359 MHz $\approx$ 1,667 GHz) e compartilhando
+infraestrutura criogênica e cavidade fotônica.
+
+\end{enumerate}
+
+\newpage
+% ============================================================================
+\section{Resumo}
+% ============================================================================
+
+\begin{center}
+{\large\bfseries MÉTODO E SISTEMA DE MANIPULAÇÃO DE CAMPO\\
+PSIÔNICO POR RESSONÂNCIA ELETROMAGNÉTICA NA\\
+FREQUÊNCIA DA HIDROXILA PARA INDUÇÃO DE\\
+TRANSIÇÕES DE FASE EM MEIOS DENSOS}
+\end{center}
+
+\vspace{0.5cm}
+
+A presente invenção refere-se a método e sistema de manipulação
+controlada do campo psiônico $\Psi$ mediante ressonância
+eletromagnética na frequência do radical hidroxila ($\nuOH
+\approx 1{,}666$ GHz, $\lambda \approx 18$ cm) acoplada a
+regime criogênico ($T \leq \Tcrit = h\nuOH/k_B \approx
+80$ mK). A frequência OH é identificada como frequência de
+ressonância do campo $\Psi$ (``água escura''), com base na
+correspondência entre OH (precursor molecular da água) e o
+campo psiônico (substrato não-colapsado da matéria ordinária).
+O método opera em três etapas: (1)~irradiação do meio-alvo em
+$\nuOH$ com cavidade ressonante de alto $Q$;
+(2)~resfriamento criogênico a $\leq 80$ mK por refrigeração de
+diluição; (3)~nucleação de domínios de fase densa (``gotículas
+psiônicas'', $\sim 100$ nm, $\rho \approx 2\rho_0$) onde o
+acoplamento gravitacional-eletromagnético ($\alphaii = 0{,}012$,
+Constante de Miguel) se torna operante. O sistema compreende
+fonte de micro-ondas estabilizada, cavidade ressonante
+($Q > 10^6$), criostato de diluição ($\leq 10$ mK), alvo
+intercambiável e detectores multimodais. Aplicável a:
+intensificação de reações nucleares D-D por redução de barreira
+Coulombiana; indução de supercondutividade por coerência
+psiônica; detecção de matéria escura por deslocamento de linhas
+OH ($\Delta\nu/\nu \propto \alphaii \cdot \rhoPsi$); e
+engenharia de materiais com propriedades anômalas.
+
+\vspace{0.5cm}
+\textbf{Figura principal: Figura 1} (Aparato completo)
+
+\end{document}

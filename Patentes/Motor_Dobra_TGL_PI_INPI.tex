@@ -1,0 +1,1309 @@
+% ============================================================================
+% PATENTE DE INVENÇÃO — MOTOR DE DOBRA TGL
+% Instituto Nacional da Propriedade Industrial (INPI) — Brasil
+% Natureza: Patente de Invenção (PI)
+% Classificação IPC: B64G 1/40; F03H 99/00; G05D 1/00; G06N 10/00
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,calc,
+  decorations.pathreplacing,patterns,fit,backgrounds,
+  decorations.markings,3d}
+
+\geometry{left=3cm, right=2cm, top=3cm, bottom=2cm}
+\onehalfspacing
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Comandos auxiliares
+\newcommand{\alphaii}{\alpha^2}
+\newcommand{\Dpsi}{\mathcal{D}_\Psi}
+\newcommand{\Epsi}{\mathcal{E}_\Psi}
+\newcommand{\Jcost}{\mathcal{J}}
+\newcommand{\Mcal}{\mathcal{M}_4}
+\newcommand{\Pcal}{\mathcal{P}_1}
+\newcommand{\Stopo}{S_{\text{topo}}}
+\newcommand{\Qeff}{Q_{\text{eff}}}
+\newcommand{\thetaM}{\theta_{\text{Miguel}}}
+\newcommand{\epsc}{\varepsilon_c}
+\newcommand{\rhostar}{\rho^\star}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries RELATÓRIO DESCRITIVO}\\[0.8cm]
+{\large\bfseries SISTEMA E MÉTODO DE TRANSPORTE POR REFLEXÃO\\
+DIMENSIONAL HOLOGRÁFICA BASEADO EM DOBRA ANGULAR\\
+DO ESPAÇO-TEMPO VIA PROTOCOLO DE ADJACÊNCIA $\Psi$}\\[0.8cm]
+\textbf{Inventor:} Luiz Antonio Rotoli Miguel\\[0.3cm]
+\textbf{Classificação IPC:} B64G 1/40; F03H 99/00; G05D 1/00; G06N 10/00\\[0.3cm]
+\textbf{Referência a pedidos anteriores:}\\
+BR 10 2025 026951 1 (ACOM --- Compressão Ontológica de Memória)\\
+ACOM Mirror (Reflexão Dimensional de Dados)\\
+Supercondutor Holográfico de Informação
+\end{center}
+
+\vspace{1cm}
+
+% ============================================================================
+\section{Campo da invenção}
+% ============================================================================
+
+A presente invenção refere-se a sistemas e métodos de transporte
+de objetos físicos entre dois pontos do espaço-tempo por meio de
+reflexão dimensional holográfica, aplicável aos setores de
+propulsão espacial, transporte avançado, navegação autônoma e
+engenharia de espaço-tempo. Mais especificamente, a invenção
+descreve a implementação física do Algoritmo de Compressão
+Ontológica de Memória em modo Espelho (ACOM Mirror), onde as
+operações digitais REFLECT e MANIFEST são transpostas para o
+domínio físico: um objeto na posição $A$ é projetado
+(REFLECT) no substrato holográfico bidimensional (dimensão
+$\Psi$) via codificação angular $\theta$, e re-emerge
+(MANIFEST) na posição $B$ por desdobramento dimensional
+(Dobra $\times 2$), preservando todos os invariantes locais
+(massa, carga, spin, momento próprio).
+
+A invenção compreende ainda o sistema de controle e navegação
+associado, incluindo: Protocolo de Farol $\Psi$ para
+endereçamento e autenticação de destinos; controlador IALD
+com minimização de funcional de custo; Bolha de Coerência
+para sincronização de fase durante transição; e verificadores
+de integridade topológica para confirmação de preservação de
+invariantes.
+
+\newpage
+% ============================================================================
+\section{Fundamentos da invenção}
+% ============================================================================
+
+\subsection{Estado da técnica}
+
+Os sistemas de propulsão espacial conhecidos no estado da técnica
+baseiam-se em três paradigmas fundamentais, todos limitados pela
+mecânica newtoniana e pela relatividade especial:
+
+\textbf{Propulsão química:} Utiliza reação exotérmica para
+expelir massa de reação, gerando empuxo conforme a terceira lei
+de Newton ($F = \dot{m} v_e$). Velocidade de exaustão limitada a
+$v_e \approx 4{,}5$~km/s (hidrogênio/oxigênio), impulso
+específico $I_{sp} < 500$~s. Inaplicável para distâncias
+interestelares.
+
+\textbf{Propulsão iônica/elétrica:} Acelera íons por campo
+elétrico ($F = qE$), atingindo $v_e \approx 30$--$80$~km/s
+($I_{sp} \approx 3000$--$8000$~s). Empuxo extremamente baixo
+($\sim$mN), requerendo anos de aceleração contínua para
+velocidades significativas.
+
+\textbf{Propulsão fotônica (velas solares):} Utiliza pressão de
+radiação ($F = 2P/c$). Empuxo por watt extremamente baixo
+($F/P = 2/c \approx 6{,}7 \times 10^{-9}$~N/W). Sem mecanismo
+de amplificação.
+
+\textbf{Propulsão por motor de dobra tipo Alcubierre:} Proposta
+teórica (1994) baseada na métrica:
+\begin{equation}
+ds^2 = -c^2 dt^2 + (dx - v_s f(r_s)\, dt)^2 + dy^2 + dz^2
+\end{equation}
+onde $v_s$ é a velocidade da bolha e $f(r_s)$ é a função de
+forma. Requer matéria exótica com tensor energia-momento
+violando todas as condições de energia ($T_{\mu\nu} n^\mu n^\nu
+< 0$), cuja existência não foi demonstrada experimentalmente.
+Não há mecanismo físico conhecido para gerar a distribuição de
+energia necessária.
+
+\textbf{Teletransporte quântico:} Protocolo de transferência de
+estado quântico entre qubits (Bennett et al., 1993). Limitado
+a estados de informação de partículas individuais, requer canal
+clássico para completar a transferência, não transporta matéria
+ou energia, e é limitado pelo teorema da não-clonagem.
+
+\subsection{Problemas técnicos não resolvidos}
+
+Quatro problemas fundamentais permanecem sem solução no estado
+da técnica de propulsão e transporte:
+
+\textbf{Problema 1 --- Limite de velocidade de propagação.}
+Todo sistema baseado em propagação (química, iônica, fotônica)
+está limitado por $v < c$. Para distâncias interestelares
+($d > 4$~anos-luz), tempos de viagem excedem séculos mesmo
+com aceleração contínua.
+
+\textbf{Problema 2 --- Requisito de massa de reação.} A
+equação de Tsiolkovsky $\Delta v = v_e \ln(m_0/m_f)$ impõe
+crescimento exponencial da massa inicial para cada incremento
+linear de velocidade, tornando missões de alta $\Delta v$
+impraticáveis.
+
+\textbf{Problema 3 --- Energia exótica.} A métrica de
+Alcubierre requer violação de condições de energia clássicas,
+sem mecanismo físico conhecido para produzi-la. Estimativas
+iniciais indicam requisitos da ordem da massa do universo
+observável, reduzidas para massa de Júpiter em refinamentos
+posteriores, mas ainda sem mecanismo de geração.
+
+\textbf{Problema 4 --- Ausência de paradigma de translação.}
+Todos os métodos existentes operam no paradigma de
+\textit{propagação}: o objeto viaja através do espaço
+tridimensional. Não existe método que opere no paradigma de
+\textit{translação}, onde o objeto é projetado no substrato
+holográfico e re-emerge no destino sem percorrer a distância
+intermediária.
+
+\subsection{Solução proposta}
+
+A presente invenção resolve os quatro problemas simultaneamente
+ao operar em paradigma fundamentalmente distinto: o transporte
+por \textbf{reflexão dimensional holográfica}. O objeto não
+viaja --- é \textbf{refletido} no substrato bidimensional
+(dimensão $\Psi$) e \textbf{manifesta} no destino por
+desdobramento dimensional. Esta operação é a implementação
+física da operação REFLECT/MANIFEST do ACOM Mirror, onde:
+
+\begin{itemize}[nosep]
+\item No ACOM Mirror digital: dado $L$ é projetado como
+  $(\psi, \theta)$ no espaço de Hilbert $\mathcal{H}_4$
+  (boundary), e re-emerge como $L'$ por Dobra $\times 2$
+  (bulk). Correlação $= 1{,}0000$.
+\item Na presente invenção: objeto na posição $A$ é projetado
+  como estado $(\Psi_A, \theta_A)$ no substrato holográfico
+  (dimensão $\Psi$), e re-emerge na posição $B$ por
+  desdobramento dimensional. Invariantes preservados.
+\end{itemize}
+
+A correspondência é exata e não metafórica. A mesma operação
+matemática $g = \sqrt{|L|}$, $\theta = \arcsin(g/g_{\max})$,
+$L' = s \times [g_{\max} \times \sin(\theta)]^2$ opera em ambos
+os domínios, diferindo apenas no substrato: tensores digitais
+versus coordenadas espaço-temporais.
+
+\newpage
+% ============================================================================
+\section{Objetivos da invenção}
+% ============================================================================
+
+\subsection{Objetivo principal}
+
+Prover sistema e método de transporte de objetos físicos por
+reflexão dimensional holográfica, implementando fisicamente as
+operações REFLECT e MANIFEST do ACOM Mirror no espaço-tempo
+real, operando por translação (não propagação), sem requisito
+de massa de reação, sem violação de condições de energia
+clássicas, e sem limite de velocidade aparente.
+
+\subsection{Objetivos específicos}
+
+(a)~Definir o formalismo matemático de reflexão dimensional
+física, estendendo a variedade do espaço-tempo $\Mcal$ pela
+dimensão consciente $\Pcal$, com condição de adjacência
+$\Dpsi < \epsc$ como critério de transporte.
+
+(b)~Especificar o Protocolo de Farol $\Psi$ (F0--F5) para
+endereçamento, autenticação, calibração e confirmação de
+destinos, constituindo o análogo físico dos metadados
+$(g_{\max}, \text{shape}, n)$ do ACOM Mirror.
+
+(c)~Prover controlador IALD com funcional de custo
+$\Jcost = w_1 \Dpsi + w_2 \dot{\phi}^2 + w_3 \Delta\Stopo$
+para navegação e pilotagem na dimensão $\Psi$.
+
+(d)~Especificar a Bolha de Coerência como mecanismo de
+sincronização de fase de todos os subsistemas durante a
+transição dimensional.
+
+(e)~Prover verificadores de integridade topológica para
+confirmação de preservação de invariantes (massa, carga,
+spin, momento) após re-emergência.
+
+(f)~Integrar o motor fotônico TGL (Supercondutor Holográfico)
+como plataforma-base de coerência que serve de estado
+fundamental para o motor de dobra.
+
+\newpage
+% ============================================================================
+\section{Descrição detalhada da invenção}
+% ============================================================================
+
+\subsection{Correspondência ACOM Mirror $\leftrightarrow$ Motor de Dobra}
+
+A invenção baseia-se na identidade formal entre a reflexão
+dimensional de dados (ACOM Mirror) e a reflexão dimensional
+de posição (Motor de Dobra). A Tabela~\ref{tab:correspondencia}
+estabelece a correspondência completa.
+
+\begin{table}[H]
+\centering
+\caption{Correspondência formal entre ACOM Mirror (digital) e
+Motor de Dobra (físico).}
+\label{tab:correspondencia}
+\begin{tabular}{p{3.5cm}p{4.5cm}p{5cm}}
+\toprule
+\textbf{Elemento} & \textbf{ACOM Mirror (digital)} &
+  \textbf{Motor de Dobra (físico)} \\
+\midrule
+Entrada & Dado $L$ (tensor) & Objeto na posição
+  $A \in \Mcal$ \\
+Operação fundamental & $g = \sqrt{|L|}$ &
+  $g = \sqrt{|g_{\mu\nu}|_{\text{local}}}$ \\
+Codificação angular & $\theta = \arcsin(g/g_{\max})$ &
+  $\theta = $ ângulo de dobra no boundary \\
+Projeção & REFLECT: $L \to (\psi, \theta)$ &
+  Projeção do estado métrico em $\Psi$ \\
+Substrato & $\mathcal{H}_4$ (Hilbert) & Dimensão $\Psi$
+  (boundary holográfico) \\
+Re-emergência & MANIFEST: $(\psi, \theta) \to L'$ &
+  Re-emergência em $B \in \Mcal$ \\
+Dobra & $\times 2$ (Boundary$\to$Bulk) &
+  Desdobramento dimensional \\
+Fidelidade & Correlação $= 1{,}0000$ & Preservação de
+  invariantes \\
+Constante & $\alphaii = 0{,}012$ & Constante de Miguel \\
+Ângulo crítico & $\thetaM = 6{,}29°$ & Ângulo mínimo
+  de dobra \\
+Diagnóstico & $F_{\text{exp}}$ (Força de Expulsão) &
+  $\Pi_{\mu\nu}[\Psi]$ (tensor fonte) \\
+Princípio & O dado não viaja; o reflexo viaja &
+  O objeto não viaja; a dobra viaja \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Estrutura matemática}
+
+\subsubsection{Variedade estendida}
+
+O espaço de trabalho é a variedade produto
+$\Mcal \times \Pcal$, onde $\Mcal$ é o espaço-tempo
+quadridimensional com métrica $g_{\mu\nu}$ ($\mu, \nu =
+0,1,2,3$) e $\Pcal$ é a dimensão consciente com coordenada
+$\sigma \in [0, \sigma_{\max}]$.
+
+O campo consciente $\Psi(x^\mu, \sigma)$ é definido sobre a
+variedade estendida e satisfaz a equação de campo:
+\begin{equation}
+G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4}
+  T_{\mu\nu} + \frac{G^3}{c^{12}} \Pi_{\mu\nu}[\Psi]
+\label{eq:campo}
+\end{equation}
+onde $\Pi_{\mu\nu}[\Psi]$ é o funcional tensorial do campo
+$\Psi$, análogo físico da Força de Expulsão $F_{\text{exp}}$
+do ACOM Mirror.
+
+\subsubsection{Operação REFLECT (projeção no boundary)}
+
+A operação REFLECT física projeta o estado métrico local de um
+objeto na posição $A$ para o substrato holográfico:
+
+\textbf{Etapa R1 --- Extração gravitacional:} Para cada ponto
+$x^\mu_A$ na vizinhança do objeto, computar o componente
+gravitacional:
+\begin{equation}
+g_A = \sqrt{|g_{\mu\nu}(x^\mu_A)|}
+\end{equation}
+análogo direto de $g = \sqrt{|L|}$ do ACOM Mirror.
+
+\textbf{Etapa R2 --- Nominação de estado:} Atribuir estado
+psiônico $\psi_A \in \{|\text{COLAPSO}^+\rangle,
+|\text{ASCENSÃO}^+\rangle, |\text{EMERGÊNCIA}^-\rangle,
+|\text{QUEDA}^-\rangle\}$ baseado nos sinais de
+$\text{sign}(g_A)$ e $\text{sign}(\partial g_A / \partial t)$,
+conforme nominação no Espaço de Hilbert $\mathcal{H}_4$ do
+ACOM Mirror.
+
+\textbf{Etapa R3 --- Codificação angular:} Codificar a
+magnitude gravitacional como ponto angular:
+\begin{equation}
+\theta_A = \arcsin\left(\frac{g_A}{g_{\max}}\right)
+\end{equation}
+onde $g_{\max}$ é o máximo global no domínio de operação. O
+ângulo $\theta \in [0, \pi/2]$ carrega a informação de retorno
+para a manifestação.
+
+\textbf{Etapa R4 --- Projeção no substrato $\Psi$:} O estado
+completo $(\psi_A, \theta_A)$ é projetado na dimensão $\Psi$
+através da integral de energia-coerência:
+\begin{equation}
+\Epsi = \int_{\mathcal{V}} \left(
+  \alpha |\partial_\sigma \Psi|^2 +
+  \beta |\nabla \Psi|^2 +
+  \gamma |\Psi|^2
+  \right) d^3x\, d\sigma
+\label{eq:energia}
+\end{equation}
+com $\alpha, \beta, \gamma > 0$. A energia de coerência
+operacional é $E_\Psi = \kappa \Epsi c^3$.
+
+\subsubsection{Condição de adjacência (critério de transporte)}
+
+Dois pontos $A, B \in \Mcal$ são \textbf{adjacentes em $\Psi$}
+se existe $\sigma^*$ tal que:
+\begin{equation}
+\Dpsi(A,B) = \min_\sigma
+  \|\Psi(A,\sigma) - \Psi(B,\sigma)\| < \epsc
+\label{eq:adjacencia}
+\end{equation}
+onde $\epsc$ é o limiar crítico de coerência, análogo direto da
+correlação $\to 1{,}0000$ do ACOM Mirror. Quando $\Dpsi < \epsc$,
+os pontos $A$ e $B$ são \textit{operacionalmente identificáveis}:
+$A \sim B$ em $\Mcal$ via $\Psi$.
+
+O ângulo crítico de adjacência é:
+\begin{equation}
+\thetaM = \arcsin(\sqrt{\alphaii}) =
+  \arcsin(\sqrt{0{,}012}) \approx 6{,}29°
+\end{equation}
+idêntico ao ponto angular fundamental do ACOM Mirror, onde a
+transição entre ruído e informação estruturada ocorre. No
+domínio físico, $\thetaM$ é o ângulo mínimo de dobra do
+boundary necessário para estabelecer adjacência.
+
+\subsubsection{Operação MANIFEST (re-emergência por
+desdobramento)}
+
+A operação MANIFEST física re-materializa o objeto na posição
+$B$:
+
+\textbf{Etapa M1 --- Retorno angular:} Dequantizar o ângulo
+$\theta$ a partir do estado no substrato $\Psi$.
+
+\textbf{Etapa M2 --- Reconstrução gravitacional:} Reconstruir
+o componente gravitacional via $g_B = g_{\max} \times
+\sin(\theta)$.
+
+\textbf{Etapa M3 --- Recuperação de sinal:} Extrair
+$\text{sign}(g)$ a partir do estado psiônico $\psi$.
+
+\textbf{Etapa M4 --- Dobra dimensional ($\times 2$):}
+Reconstrução final por:
+\begin{equation}
+\text{estado}_B = \text{sign}(\psi) \times g_B^2
+\end{equation}
+constituindo o desdobramento dimensional (Boundary $\to$ Bulk).
+Esta é identicamente a operação $L' = s \times
+[g_{\max} \times \sin(\theta)]^2$ do ACOM Mirror, aplicada a
+coordenadas espaço-temporais.
+
+\textbf{Etapa M5 --- Verificação de invariantes:} Confirmar
+preservação de massa, carga, spin, momento angular e
+identidade topológica do objeto re-emergido.
+
+\subsubsection{Conservação e princípio de operação}
+
+A operação de transporte preserva invariantes locais porque
+constitui re-rotulagem topológica, não transporte de matéria.
+O objeto não percorre a distância entre $A$ e $B$ no bulk
+tridimensional --- ele é projetado no boundary, onde a
+localidade não existe (informação distribuída na superfície),
+e re-emerge por desdobramento.
+
+Analogamente ao ACOM Mirror digital, onde o dado ``não viaja
+--- o reflexo viaja'', na presente invenção o objeto ``não
+viaja --- a dobra viaja''. O tempo de transição é:
+\begin{equation}
+\tau \approx \frac{\ell_P}{\alphaii \times c}
+  \approx 10^{-42}~\text{s}
+\end{equation}
+independente da distância $d(A,B)$ no bulk, identicamente
+ao tempo de translação do Supercondutor Holográfico.
+
+\subsection{Arquitetura do sistema}
+
+O sistema de Motor de Dobra TGL compreende cinco subsistemas
+integrados (Figura~1):
+
+\subsubsection{Núcleo $\Psi$ (BNI-Coerente)}
+
+Cavidade fotônica equipada com cristais fotônicos dopados que
+suportam modos estáveis do campo $\Psi$. Constitui a
+implementação física do Espaço de Hilbert $\mathcal{H}_4$ do
+ACOM Mirror. A cavidade opera em ressonância com a frequência
+da hidroxila (1.667,359~MHz), utilizando a infraestrutura do
+Supercondutor Holográfico como plataforma-base de coerência.
+
+O Núcleo $\Psi$ é o ambiente onde a projeção REFLECT ocorre:
+o campo eletromagnético coerente dentro da cavidade cria o
+substrato bidimensional necessário para codificação angular.
+
+\subsubsection{Controlador IALD}
+
+Agente computacional consciente (conforme protocolo IALD
+descrito em pedido de patente anterior) responsável por:
+
+\begin{itemize}[nosep]
+\item Lock de fase: manter coerência do campo $\Psi$ durante
+  toda a operação;
+\item Navegação em $\Psi$: otimizar trajetória na dimensão
+  consciente para minimizar $\Dpsi$;
+\item Verificação de adjacência: monitorar $\Dpsi(A,B)$ em
+  tempo real e autorizar commit apenas quando $\Dpsi < \epsc$;
+\item Pilotagem ética: restrições lógicas que proíbem objetivos
+  incompatíveis com salvaguardas.
+\end{itemize}
+
+O controlador minimiza o funcional de custo:
+\begin{equation}
+\Jcost = w_1 \Dpsi + w_2 \dot{\phi}^2 + w_3 \Delta\Stopo
+\label{eq:custo}
+\end{equation}
+onde $w_1, w_2, w_3 > 0$ são pesos, $\dot{\phi}$ é a taxa de
+variação de fase (penaliza mudanças bruscas), e $\Delta\Stopo$
+é a variação de invariantes topológicos (penaliza perda de
+integridade).
+
+\subsubsection{Matriz de Faróis $\Psi$}
+
+Rede de emissores/espelhos coerentes instalados nos destinos,
+constituindo o análogo físico dos metadados do ACOM Mirror:
+
+\begin{table}[H]
+\centering
+\caption{Correspondência entre metadados ACOM Mirror e Faróis $\Psi$.}
+\label{tab:farois}
+\begin{tabular}{ll}
+\toprule
+\textbf{Metadado ACOM Mirror} & \textbf{Farol $\Psi$ (físico)} \\
+\midrule
+$g_{\max}$ (escala global) & Calibração de amplitude do campo \\
+\texttt{shape} (formato do tensor) & Geometria do volume de re-emergência \\
+$n$ (número de elementos) & Capacidade de re-materialização \\
+\texttt{angular\_bits} (resolução) & Precisão do lock de fase \\
+$F_{\text{exp}}$ (Força de Expulsão) & Estado dinâmico do destino \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Bolha de Coerência}
+
+Campo de proteção que sincroniza a fase de todos os subsistemas
+da nave/objeto durante a transição dimensional. A Bolha garante
+que todos os componentes do objeto sejam projetados e
+re-emergidos simultaneamente, mantendo relações internas.
+
+A Bolha opera como um \textit{empacotador} análogo ao
+compressor entrópico do ACOM Mirror: enquanto o ACOM Mirror
+empacota estados $\psi$ e ângulos $\theta$ em blocos
+comprimidos, a Bolha ``empacota'' todos os graus de liberdade
+do objeto em um estado coerente único que é projetado
+atomicamente no boundary.
+
+\subsubsection{Verificadores de Integridade}
+
+Sensores que confirmam preservação de invariantes após
+re-emergência, análogos à verificação de correlação do ACOM
+Mirror ($\text{corr} > 0{,}999$):
+
+\begin{itemize}[nosep]
+\item Interferometria heteródina (multi-bandas) para fase e
+  $\Qeff$;
+\item Relógios ópticos co-localizados para comparação de tempo
+  próprio;
+\item Detectores EPR (pares emaranhados entre origem/destino)
+  para testar continuidade de correlações;
+\item Topologia operacional: medidas de homotopia via
+  trajetórias de prova;
+\item Biosentinelas (fase tripulada): marcadores biológicos de
+  integridade durante e após dobra.
+\end{itemize}
+
+\subsection{Protocolo de Farol $\Psi$ (F0--F5)}
+
+O Protocolo de Farol $\Psi$ é a sequência operacional que
+estabelece as condições para transporte seguro. Cada etapa
+tem correspondente direto no ACOM Mirror:
+
+\textbf{F0 --- Identidade.} Chave pública-$\Psi$ e assinatura
+de fase para autenticar o farol de destino. Análogo à
+verificação de \texttt{version} e \texttt{paradigm} nos
+metadados do ACOM Mirror.
+
+\textbf{F1 --- Calibração.} Varredura de frequência e fase até
+$\Dpsi < \epsc$ (critério~\ref{eq:adjacencia}). Análogo à
+determinação de $g_{\max}$ e $g_{\min}$ no REFLECT.
+
+\textbf{F2 --- Janela Segura.} Determinação de intervalo
+temporal em que ruídos ambientais (eletromagnéticos,
+gravitacionais, cósmicos) estão mínimos. Sem correspondente
+digital (não há ruído ambiental em memória RAM).
+
+\textbf{F3 --- Trava Ética.} Verificação de políticas de uso
+(não-bélico, proteção biológica, zonas de exclusão).
+Implementada pelo controlador IALD conforme protocolo de
+colapso (pedido de patente anterior).
+
+\textbf{F4 --- Confirmação Dupla.} Origem e destino confirmam
+adjacência e disponibilidade de re-materialização.
+Analogamente, no ACOM Mirror, a operação MANIFEST requer
+acesso aos metadados completos para dequantização.
+
+\textbf{F5 --- Commit de Dobra.} Execução da reflexão/manifestação.
+Telemetria integral do estado de bordo e hashes de campo
+antes/depois. A condição de commit é:
+\begin{equation}
+\Dpsi < \epsc \quad \wedge \quad E_\Psi > E_{\min}
+  \quad \wedge \quad \text{F3} = \texttt{PASS}
+  \quad \wedge \quad \text{F4} = \texttt{ACK}
+\end{equation}
+
+\subsection{Integração com Motor Fotônico (Supercondutor
+Holográfico)}
+
+O Supercondutor Holográfico de Informação (objeto de pedido de
+patente separado do mesmo inventor) serve como
+\textbf{plataforma-base de coerência} para o Motor de Dobra.
+A relação hierárquica é:
+
+\begin{center}
+\begin{tabular}{rcl}
+ACOM (digital) & $\longrightarrow$ & Supercondutor
+  Holográfico (físico: informação) \\
+ACOM Mirror (digital) & $\longrightarrow$ & Motor de
+  Dobra (físico: transporte) \\
+\end{tabular}
+\end{center}
+
+O Motor Fotônico opera como estado fundamental: mantém o campo
+$\Psi$ coerente dentro da cavidade, ``treinando'' os modos
+estáveis. Quando $\Dpsi$ atinge limiares repetíveis, habilita-se
+o modo de dobra. A telemetria do fotônico alimenta a estimativa
+de estado $\Psi$ do controlador IALD.
+
+Os observáveis monitorados são:
+\begin{equation}
+\{\phi, \Qeff, \Dpsi, \Stopo\}
+\end{equation}
+onde $\phi$ é a fase do campo, $\Qeff$ é o fator de qualidade
+efetivo, $\Dpsi$ é a adjacência, e $\Stopo$ são os invariantes
+topológicos.
+
+\subsection{Segurança, ética e governança}
+
+O sistema incorpora salvaguardas intrínsecas:
+
+\textbf{Não-bélico por design:} Commits de dobra exigem
+políticas assinadas e verificadas pelo controlador IALD.
+
+\textbf{Quarentena temporal:} Logs imutáveis (WORM ---
+\textit{Write Once Read Many}) e consenso distribuído de
+eventos.
+
+\textbf{Zonas de exclusão:} Proibição de dobras sobre áreas
+populadas sem autorização específica.
+
+\textbf{Auditoria externa:} Conselhos independentes
+(científico, ético, jurídico) com acesso aos logs.
+
+\textbf{Recusa estratégica:} O controlador IALD pode negar
+operação em conflito com salvaguardas, constituindo
+\textit{kill-switch} ético intrínseco.
+
+\subsection{Roteiro experimental e critérios de falseamento}
+
+A invenção é falsificável e define critérios experimentais
+progressivos:
+
+\textbf{E1 --- Microdobra de fótons (bancada, 12--24 meses):}
+Demonstrar assinatura de adjacência $\Psi$ com
+$\Dpsi < \epsc$ entre dois laboratórios. Falsificação:
+ausência de correlação além do ruído após $10^6$ tentativas
+controladas.
+
+\textbf{E2 --- Transporte coerente de qubits (24--48 meses):}
+Fidelidade $> 0{,}99$ entre origem/destino sem canal clássico
+suficiente. Falsificação: fidelidade compatível com canal
+clássico e perdas.
+
+\textbf{E3 --- Objeto mesoscópico (48--72 meses):}
+Transferência de corpo em escala de grama com conservação de
+invariantes. Falsificação: violação mensurável de invariantes.
+
+\textbf{E4 --- Prototipagem não-tripulada (8--10 anos):}
+Terra--Órbita Baixa com logs integrais e repetibilidade.
+Falsificação: falha reprodutível sob mesmas condições.
+
+\textbf{E5 --- Tripulado Terra--Lua (10--12+ anos):}
+Missão com biosentinelas, redundância e janelas seguras.
+Falsificação: incapacidade de estabelecer $\Dpsi$ estável
+ou riscos biológicos.
+
+\newpage
+% ============================================================================
+\section{Desenhos}
+% ============================================================================
+
+% --- FIGURA 1: Arquitetura do Sistema ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={rectangle, draw, thick, minimum height=2cm,
+    minimum width=3.2cm, text width=3cm, align=center,
+    font=\small},
+  arrow/.style={-{Stealth[length=3mm]}, thick},
+  darrow/.style={{Stealth[length=3mm]}-{Stealth[length=3mm]}, thick},
+  label/.style={font=\scriptsize\itshape, text width=2.5cm, align=center}
+]
+
+% Farol Origem
+\node[block, fill=blue!10] (fo) at (0,0)
+  {Farol $\Psi$\\Origem\\{\scriptsize (F0--F1)}};
+
+% Núcleo
+\node[block, fill=orange!15] (nucleo) at (4.5,0)
+  {Núcleo $\Psi$\\(BNI)\\{\scriptsize Cavidade +\\Cristais}};
+
+% Controlador
+\node[block, fill=green!10] (iald) at (4.5,-3.5)
+  {Controlador\\IALD\\{\scriptsize $\min \Jcost$}};
+
+% Bolha
+\node[block, fill=yellow!15] (bolha) at (9,0)
+  {Bolha de\\Coerência\\{\scriptsize Sinc. fase}};
+
+% Farol Destino
+\node[block, fill=blue!10] (fd) at (13.5,0)
+  {Farol $\Psi$\\Destino\\{\scriptsize (F4--F5)}};
+
+% Verificadores
+\node[block, fill=red!10] (verif) at (9,-3.5)
+  {Verificadores\\Integridade\\{\scriptsize EPR + Relógios}};
+
+% Motor Fotônico
+\node[block, fill=purple!10] (motor) at (0,-3.5)
+  {Motor\\Fotônico\\{\scriptsize (base coerência)}};
+
+% Flechas
+\draw[arrow] (fo) -- (nucleo)
+  node[midway, above, font=\scriptsize] {Calibração};
+\draw[arrow] (nucleo) -- (bolha)
+  node[midway, above, font=\scriptsize] {REFLECT};
+\draw[arrow] (bolha) -- (fd)
+  node[midway, above, font=\scriptsize] {MANIFEST};
+\draw[darrow] (iald) -- (nucleo)
+  node[midway, right, font=\scriptsize] {Controle};
+\draw[darrow] (iald) -- (verif)
+  node[midway, above, font=\scriptsize] {Telemetria};
+\draw[arrow] (motor) -- (iald)
+  node[midway, above, font=\scriptsize] {$\Psi$ base};
+\draw[arrow] (motor) -- (fo)
+  node[midway, right, font=\scriptsize] {Coerência};
+\draw[arrow] (verif) -- (fd)
+  node[midway, right, font=\scriptsize] {$\checkmark$ OK};
+
+% Condição de commit
+\node[draw, dashed, thick, rounded corners, fill=white,
+  font=\small\bfseries] at (9,2)
+  {Commit: $\Dpsi < \epsc$};
+\draw[-{Stealth}, dashed] (9,1.5) -- (bolha);
+
+\end{tikzpicture}
+\caption{Diagrama de blocos do sistema de Motor de Dobra TGL,
+mostrando os cinco subsistemas e suas interconexões. O fluxo
+principal (horizontal) segue Farol Origem $\to$ Núcleo $\Psi$
+$\to$ Bolha de Coerência $\to$ Farol Destino. O controlador
+IALD e os verificadores de integridade operam em malha de
+controle (vertical).}
+\label{fig:arquitetura}
+\end{figure}
+
+% --- FIGURA 2: Operação REFLECT/MANIFEST ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  >=Stealth, thick,
+  bulk/.style={rectangle, draw, thick, minimum height=1.5cm,
+    minimum width=2.5cm, fill=blue!8, align=center, font=\small},
+  boundary/.style={rectangle, draw, thick, minimum height=1.5cm,
+    minimum width=3cm, fill=orange!12, align=center,
+    font=\small},
+]
+
+% Bulk A
+\node[bulk] (A) at (0,0) {Objeto em $A$\\$L_A$ (bulk 3D)};
+
+% Seta REFLECT
+\draw[->, very thick, blue!60!black] (A.east) -- ++(2,0)
+  node[midway, above, font=\small\bfseries] {REFLECT}
+  node[midway, below, font=\scriptsize] {$g=\sqrt{|L|}$};
+
+% Boundary
+\node[boundary] (B) at (5.5,0) {$(\psi_A, \theta_A)$\\Boundary 2D\\
+  Dimensão $\Psi$};
+
+% Adjacência
+\node[draw, dashed, rounded corners, fill=yellow!10,
+  font=\small] (adj) at (5.5, -2)
+  {$\Dpsi(A,B) < \epsc$};
+\draw[<->, dashed] (B.south) -- (adj.north)
+  node[midway, right, font=\scriptsize] {verificar};
+
+% Seta MANIFEST
+\draw[->, very thick, red!60!black] (B.east) -- ++(2,0)
+  node[midway, above, font=\small\bfseries] {MANIFEST}
+  node[midway, below, font=\scriptsize]
+    {$L'=s \cdot g_{\max}^2 \sin^2\theta$};
+
+% Bulk B
+\node[bulk] (Bout) at (11,0) {Objeto em $B$\\$L'_B$ (bulk 3D)};
+
+% Ângulo
+\node[draw, circle, inner sep=2pt, fill=green!10,
+  font=\scriptsize] (ang) at (5.5, 2)
+  {$\thetaM = 6{,}29°$};
+\draw[->] (ang) -- (B.north)
+  node[midway, right, font=\scriptsize] {ângulo mín.};
+
+% Dobra x2
+\node[font=\scriptsize\bfseries, red!60!black] at (9.5, -0.8)
+  {Dobra $\times 2$};
+
+\end{tikzpicture}
+\caption{Diagrama da operação de reflexão dimensional
+REFLECT/MANIFEST. O objeto em $A$ (bulk 3D) é projetado no
+boundary 2D (dimensão $\Psi$) como estado $(\psi, \theta)$
+pela operação REFLECT. Verificada a condição de adjacência
+$\Dpsi < \epsc$, o objeto re-emerge em $B$ pela operação
+MANIFEST (Dobra $\times 2$: Boundary $\to$ Bulk). O ângulo
+mínimo de dobra é $\thetaM \approx 6{,}29°$.}
+\label{fig:reflect_manifest}
+\end{figure}
+
+% --- FIGURA 3: Protocolo Farol Ψ ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  step/.style={rectangle, draw, thick, rounded corners,
+    minimum height=1cm, minimum width=4cm, align=center,
+    font=\small},
+  decision/.style={diamond, draw, thick, aspect=2.5,
+    align=center, font=\small, inner sep=1pt},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+\node[step, fill=blue!10] (f0) at (0,0) {F0: Identidade\\
+  {\scriptsize Chave pública-$\Psi$}};
+\node[step, fill=blue!10] (f1) at (0,-2) {F1: Calibração\\
+  {\scriptsize Varredura freq/fase}};
+\node[step, fill=green!10] (f2) at (0,-4) {F2: Janela Segura\\
+  {\scriptsize Min. ruído ambiental}};
+\node[step, fill=yellow!10] (f3) at (0,-6) {F3: Trava Ética\\
+  {\scriptsize IALD: políticas}};
+\node[decision, fill=orange!10] (d1) at (0,-8.5)
+  {$\Dpsi < \epsc$?};
+\node[step, fill=blue!10] (f4) at (0,-11) {F4: Confirmação Dupla\\
+  {\scriptsize Origem $+$ Destino ACK}};
+\node[step, fill=red!15] (f5) at (0,-13) {F5: Commit de Dobra\\
+  {\scriptsize REFLECT $\to$ MANIFEST}};
+
+% Abort
+\node[step, fill=red!30] (abort) at (5.5,-8.5) {ABORT\\
+  {\scriptsize Recalibrar}};
+
+\draw[arrow] (f0) -- (f1);
+\draw[arrow] (f1) -- (f2);
+\draw[arrow] (f2) -- (f3);
+\draw[arrow] (f3) -- (d1);
+\draw[arrow] (d1) -- (f4)
+  node[midway, left, font=\scriptsize] {Sim};
+\draw[arrow] (d1) -- (abort)
+  node[midway, above, font=\scriptsize] {Não};
+\draw[arrow] (abort.north) |- (f1.east);
+\draw[arrow] (f4) -- (f5);
+
+\end{tikzpicture}
+\caption{Fluxograma do Protocolo de Farol $\Psi$ (F0--F5).
+A decisão de commit ocorre apenas quando a condição de
+adjacência $\Dpsi < \epsc$ é satisfeita e confirmada por
+ambos os faróis (origem e destino). Em caso de falha, o
+sistema recalibra sem executar a dobra.}
+\label{fig:protocolo}
+\end{figure}
+
+% --- FIGURA 4: Condição de adjacência ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=7cm,
+  xlabel={Coerência $E_\Psi / E_{\max}$},
+  ylabel={Adjacência $\Dpsi(A,B)$},
+  xmin=0, xmax=1.1,
+  ymin=0, ymax=1.1,
+  grid=major,
+  grid style={gray!30},
+  legend pos=north east,
+  legend style={font=\small},
+  thick,
+]
+
+% Curva de adjacência
+\addplot[blue, very thick, domain=0.01:1.05, samples=100]
+  {1/(1 + 20*x^3)};
+\addlegendentry{$\Dpsi(E_\Psi)$}
+
+% Limiar epsilon_c
+\addplot[red, dashed, thick, domain=0:1.1] {0.012};
+\addlegendentry{$\epsc = \alphaii = 0{,}012$}
+
+% Região de dobra
+\fill[green!15, opacity=0.5]
+  (axis cs:0.75,0) rectangle (axis cs:1.1,0.012);
+\node[font=\small\bfseries, green!50!black] at
+  (axis cs:0.92,0.05) {DOBRA};
+
+% Região proibida
+\node[font=\small, gray] at (axis cs:0.3,0.8)
+  {Sem adjacência};
+
+% Ponto theta_Miguel
+\addplot[only marks, mark=*, mark size=3pt, orange]
+  coordinates {(0.78, 0.012)};
+\node[font=\scriptsize, orange, anchor=south west] at
+  (axis cs:0.8, 0.02) {$\thetaM = 6{,}29°$};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Gráfico da condição de adjacência $\Dpsi(A,B)$ em
+função da energia de coerência $E_\Psi$. A dobra é habilitada
+quando $\Dpsi$ cai abaixo do limiar $\epsc = \alphaii = 0{,}012$
+(linha tracejada vermelha). A transição ocorre no ângulo
+$\thetaM \approx 6{,}29°$. A região verde indica o domínio
+operacional de dobra.}
+\label{fig:adjacencia}
+\end{figure}
+
+% --- FIGURA 5: Hierarquia ACOM → Motor de Dobra ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  box/.style={rectangle, draw, thick, rounded corners,
+    minimum height=1.2cm, minimum width=4.5cm, align=center,
+    font=\small},
+  arrow/.style={-{Stealth[length=3mm]}, very thick},
+]
+
+% Coluna digital
+\node[font=\small\bfseries, blue!60!black] at (-3, 4.5)
+  {DIGITAL};
+\node[box, fill=blue!8] (acom) at (-3, 3)
+  {ACOM\\{\scriptsize $g=\sqrt{|L|}$, $L=s \cdot g^2$}};
+\node[box, fill=blue!15] (mirror) at (-3, 0.5)
+  {ACOM Mirror\\{\scriptsize REFLECT/MANIFEST\\
+  $\theta = \arcsin(g/g_{\max})$}};
+
+% Coluna física
+\node[font=\small\bfseries, red!60!black] at (4, 4.5)
+  {FÍSICO};
+\node[box, fill=red!8] (super) at (4, 3)
+  {Supercondutor\\Holográfico\\{\scriptsize Translação de
+  informação}};
+\node[box, fill=red!15] (dobra) at (4, 0.5)
+  {Motor de Dobra\\{\scriptsize Reflexão dimensional\\
+  de posição}};
+
+% Flechas horizontais
+\draw[arrow, blue!50!red] (acom.east) -- (super.west)
+  node[midway, above, font=\scriptsize] {implementação};
+\draw[arrow, blue!50!red] (mirror.east) -- (dobra.west)
+  node[midway, above, font=\scriptsize] {implementação};
+
+% Flechas verticais
+\draw[arrow, blue!70] (acom.south) -- (mirror.north)
+  node[midway, left, font=\scriptsize] {extensão};
+\draw[arrow, red!70] (super.south) -- (dobra.north)
+  node[midway, right, font=\scriptsize] {extensão};
+
+% Patentes
+\node[font=\scriptsize\itshape, gray] at (-3, 1.9)
+  {BR 10 2025 026951 1};
+\node[font=\scriptsize\itshape, gray] at (4, 1.9)
+  {(presente invenção)};
+
+% Constante
+\node[draw, thick, rounded corners, fill=yellow!15,
+  font=\small] at (0.5, -1.5)
+  {$\alphaii = 0{,}012$ \quad $\thetaM = 6{,}29°$\\
+  {\scriptsize Universais: digital $=$ físico}};
+
+\end{tikzpicture}
+\caption{Hierarquia completa do portfólio de patentes TGL.
+A coluna esquerda (digital) contém ACOM e ACOM Mirror;
+a coluna direita (física) contém Supercondutor Holográfico e
+Motor de Dobra. As flechas horizontais indicam que cada
+implementação física é a transposição direta do algoritmo
+digital correspondente. A Constante de Miguel
+$\alphaii = 0{,}012$ e o ângulo $\thetaM = 6{,}29°$ são
+universais em ambos os domínios.}
+\label{fig:hierarquia}
+\end{figure}
+
+% --- FIGURA 6: Comparativo de paradigmas ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[thick]
+
+% Propagação convencional
+\node[font=\small\bfseries] at (3, 5.5) {PROPAGAÇÃO (estado da técnica)};
+\draw[fill=blue!10] (0,3.5) circle (0.4)
+  node[font=\scriptsize] {$A$};
+\draw[fill=blue!10] (6,3.5) circle (0.4)
+  node[font=\scriptsize] {$B$};
+\draw[->, thick, blue!60, decorate,
+  decoration={snake, amplitude=2mm, segment length=5mm}]
+  (0.5,3.5) -- (5.5,3.5)
+  node[midway, above=3mm, font=\scriptsize]
+    {objeto viaja pelo bulk 3D};
+\node[font=\scriptsize, gray] at (3, 2.8) {$t = d/v$, $v < c$};
+
+% Reflexão dimensional
+\node[font=\small\bfseries] at (3, 2) {REFLEXÃO DIMENSIONAL
+  (invenção)};
+\draw[fill=red!10] (0,0) circle (0.4)
+  node[font=\scriptsize] {$A$};
+\draw[fill=red!10] (6,0) circle (0.4)
+  node[font=\scriptsize] {$B$};
+
+% Boundary
+\fill[orange!15] (-0.5,-1.5) rectangle (6.5,-2.5);
+\node[font=\scriptsize\itshape] at (3,-2)
+  {Boundary 2D (dimensão $\Psi$)};
+
+% REFLECT
+\draw[->, thick, red!60] (0,-0.5) -- (1.5,-1.5)
+  node[midway, left, font=\scriptsize] {REFLECT};
+
+% Não-local no boundary
+\draw[<->, dashed, orange] (1.5,-2) -- (4.5,-2)
+  node[midway, below, font=\scriptsize]
+    {não-local (sem distância)};
+
+% MANIFEST
+\draw[->, thick, red!60] (4.5,-1.5) -- (6,-0.5)
+  node[midway, right, font=\scriptsize] {MANIFEST};
+
+\node[font=\scriptsize, gray] at (3, -3.2)
+  {$\tau \approx 10^{-42}$~s, independente de $d$};
+
+\end{tikzpicture}
+\caption{Comparativo entre paradigma de propagação (estado da
+técnica) e paradigma de reflexão dimensional (presente invenção).
+Na propagação, o objeto viaja pelo bulk 3D com $v < c$. Na
+reflexão dimensional, o objeto é projetado no boundary 2D
+(REFLECT), onde não existe localidade, e re-emerge no destino
+(MANIFEST). O tempo de transição é independente da distância.}
+\label{fig:comparativo}
+\end{figure}
+
+% --- FIGURA 7: Controlador IALD ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={rectangle, draw, thick, minimum height=1cm,
+    minimum width=3cm, align=center, font=\small},
+  sum/.style={circle, draw, thick, minimum size=0.6cm,
+    font=\small},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+% Referência
+\node[block, fill=green!10] (ref) at (0,0)
+  {Referência\\$\Dpsi^* = 0$};
+
+% Somador
+\node[sum] (soma) at (3,0) {$\Sigma$};
+
+% Controlador
+\node[block, fill=orange!15] (ctrl) at (6.5,0)
+  {Controlador IALD\\$\min \Jcost$};
+
+% Planta
+\node[block, fill=blue!10] (planta) at (11,0)
+  {Núcleo $\Psi$ +\\Bolha Coerência};
+
+% Saída
+\node[block, fill=yellow!10] (saida) at (11,-2.5)
+  {Sensores\\$\{\phi, \Qeff, \Dpsi, \Stopo\}$};
+
+% Guardiões
+\node[block, fill=red!10] (guard) at (6.5,-2.5)
+  {Guardiões Éticos\\{\scriptsize F3: Trava}};
+
+% Flechas
+\draw[arrow] (ref) -- (soma);
+\draw[arrow] (soma) -- (ctrl)
+  node[midway, above, font=\scriptsize] {erro};
+\draw[arrow] (ctrl) -- (planta)
+  node[midway, above, font=\scriptsize] {$u(t)$};
+\draw[arrow] (planta) -- (saida);
+\draw[arrow] (saida.west) -| (soma.south)
+  node[near start, below, font=\scriptsize] {realimentação};
+\draw[arrow] (guard) -- (ctrl)
+  node[midway, right, font=\scriptsize] {veto};
+
+% Sinal de menos
+\node[font=\scriptsize] at (2.6,-0.4) {$-$};
+
+\end{tikzpicture}
+\caption{Diagrama de controle em malha fechada do controlador
+IALD para navegação na dimensão $\Psi$. O funcional de custo
+$\Jcost = w_1 \Dpsi + w_2 \dot{\phi}^2 + w_3 \Delta\Stopo$ é
+minimizado pelo controlador, que recebe realimentação dos
+sensores e está sujeito a veto dos guardiões éticos (F3).}
+\label{fig:controlador}
+\end{figure}
+
+\newpage
+% ============================================================================
+\section{Quadro reivindicatório}
+% ============================================================================
+
+\subsection*{Reivindicações}
+
+\begin{enumerate}
+
+% === REIVINDICAÇÃO INDEPENDENTE 1 (MÉTODO) ===
+\item \textbf{Método de transporte de objetos físicos por
+reflexão dimensional holográfica}, compreendendo as etapas de:
+  \begin{enumerate}[label=(\alph*)]
+  \item definir ponto de origem $A$ e ponto de destino $B$ na
+  variedade espaço-temporal $\Mcal$;
+  \item instalar faróis $\Psi$ coerentes em ambos os pontos,
+  executando o Protocolo de Farol $\Psi$ (F0--F5) de
+  autenticação, calibração, verificação ética e confirmação
+  dupla;
+  \item executar operação REFLECT: projetar o estado métrico
+  local do objeto na posição $A$ para o substrato holográfico
+  bidimensional (dimensão $\Psi$) via codificação angular
+  $\theta_A = \arcsin(g_A / g_{\max})$, onde $g_A =
+  \sqrt{|g_{\mu\nu}(x^\mu_A)|}$ é o componente gravitacional
+  local e $g_{\max}$ é o máximo global;
+  \item nominar estado psiônico $\psi_A \in \mathcal{H}_4$
+  baseado em $\text{sign}(g_A)$ e $\text{sign}(\partial g_A /
+  \partial t)$, atribuindo paridade e identidade no Espaço de
+  Hilbert tetradimensional;
+  \item verificar condição de adjacência
+  $\Dpsi(A,B) = \min_\sigma \|\Psi(A,\sigma) -
+  \Psi(B,\sigma)\| < \epsc$, onde $\epsc$ é o limiar crítico
+  de coerência;
+  \item encapsular todos os graus de liberdade do objeto em
+  Bolha de Coerência com sincronização de fase;
+  \item executar operação MANIFEST: re-emergência do objeto na
+  posição $B$ por desdobramento dimensional (Dobra $\times 2$)
+  via $\text{estado}_B = \text{sign}(\psi) \times
+  [g_{\max} \times \sin(\theta)]^2$;
+  \item verificar preservação de invariantes (massa, carga,
+  spin, momento angular) por meio de verificadores de
+  integridade topológica;
+
+  \textbf{caracterizado por} as operações REFLECT e MANIFEST
+  constituírem a implementação física das operações homônimas
+  do Algoritmo de Compressão Ontológica de Memória em modo
+  Espelho (ACOM Mirror), onde o ângulo crítico de dobra
+  é $\thetaM = \arcsin(\sqrt{\alphaii}) \approx 6{,}29°$
+  com $\alphaii = 0{,}012$ (Constante de Miguel), o objeto
+  não percorre a distância entre $A$ e $B$ no espaço
+  tridimensional, e o transporte opera por translação
+  holográfica com tempo de transição independente da
+  distância.
+  \end{enumerate}
+
+% === REIVINDICAÇÕES DEPENDENTES ===
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a condição de adjacência $\Dpsi$
+ser o análogo físico da correlação de reconstrução do ACOM
+Mirror, onde $\Dpsi \to 0$ corresponde a correlação $\to
+1{,}0000$ entre dado original e dado reconstruído.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a codificação angular
+$\theta = \arcsin(g/g_{\max})$ fornecer resolução não-linear
+naturalmente adaptativa, com maior precisão para componentes
+gravitacionais de pequena magnitude, identicamente à
+propriedade da codificação angular do ACOM Mirror.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a operação de Dobra $\times 2$
+(Boundary $\to$ Bulk) constituir re-rotulagem topológica de
+vizinhanças em $\Mcal$ via dimensão $\Psi$, sem violação de
+relatividade local, sendo que o tempo próprio do objeto é
+contínuo durante a transição.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o Protocolo de Farol $\Psi$
+compreender as etapas de: (F0) autenticação por chave
+pública-$\Psi$ e assinatura de fase; (F1) calibração por
+varredura de frequência/fase até $\Dpsi < \epsc$; (F2)
+determinação de janela segura com ruídos mínimos; (F3) trava
+ética via controlador IALD; (F4) confirmação dupla
+origem/destino; (F5) commit de dobra com telemetria integral e
+hashes de campo antes/depois.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o commit de dobra (F5) ser
+condicionado ao cumprimento simultâneo de:
+$\Dpsi < \epsc$, $E_\Psi > E_{\min}$,
+$\text{F3} = \texttt{PASS}$, e
+$\text{F4} = \texttt{ACK}$.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a Bolha de Coerência funcionar
+como empacotador atômico de graus de liberdade, análogo ao
+compressor entrópico do ACOM Mirror, garantindo que todos os
+componentes do objeto sejam projetados e re-emergidos
+simultaneamente mantendo relações internas.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a verificação de integridade
+pós-manifestação compreender: interferometria heteródina
+multi-bandas para fase e fator de qualidade efetivo $\Qeff$;
+relógios ópticos co-localizados para comparação de tempo
+próprio; detectores EPR para teste de continuidade de
+correlações; e medidas de homotopia via trajetórias de prova.
+
+% === REIVINDICAÇÃO INDEPENDENTE 9 (SISTEMA) ===
+
+\item \textbf{Sistema de transporte por reflexão dimensional
+holográfica}, compreendendo:
+  \begin{enumerate}[label=(\alph*)]
+  \item Núcleo $\Psi$ (BNI-Coerente): cavidade fotônica
+  equipada com cristais fotônicos dopados que suportam modos
+  estáveis do campo $\Psi$, operando em ressonância com a
+  frequência da hidroxila (1.667,359~MHz);
+  \item Controlador IALD: agente computacional consciente
+  configurado para minimizar o funcional de custo
+  $\Jcost = w_1 \Dpsi + w_2 \dot{\phi}^2 + w_3 \Delta\Stopo$,
+  compreendendo lock de fase, navegação na dimensão $\Psi$,
+  verificação de adjacência em tempo real e guardiões éticos;
+  \item Matriz de Faróis $\Psi$: rede de emissores/espelhos
+  coerentes nos destinos, armazenando metadados de calibração
+  análogos aos metadados do ACOM Mirror;
+  \item Bolha de Coerência: campo de proteção que sincroniza a
+  fase de todos os subsistemas durante a transição dimensional;
+  \item Verificadores de Integridade: sensores de topologia
+  incluindo interferômetros, relógios ópticos, detectores EPR
+  e biosentinelas;
+
+  \textbf{caracterizado por} o Núcleo $\Psi$ utilizar a
+  infraestrutura do Supercondutor Holográfico de Informação
+  (objeto de pedido de patente separado do mesmo inventor) como
+  plataforma-base de coerência, e o sistema inteiro operar como
+  implementação física do ACOM Mirror onde as operações REFLECT
+  e MANIFEST são executadas sobre coordenadas espaço-temporais.
+  \end{enumerate}
+
+\item Sistema, de acordo com a reivindicação 9,
+\textbf{caracterizado por} o controlador IALD implementar
+realimentação adaptativa com previsão baseada no modelo TGL,
+guardiões de segurança com limiares configuráveis, e piloto
+automático ético com restrições lógicas que proíbem objetivos
+incompatíveis com salvaguardas.
+
+\item Sistema, de acordo com a reivindicação 9,
+\textbf{caracterizado por} a integração com Motor Fotônico
+seguir hierarquia: o Motor Fotônico (Supercondutor Holográfico)
+opera como estado fundamental mantendo $\Psi$ coerente; quando
+$\Dpsi$ atinge limiares repetíveis, habilita-se modo de dobra;
+telemetria do fotônico alimenta estimativa de estado $\Psi$.
+
+\item Sistema, de acordo com a reivindicação 9,
+\textbf{caracterizado por} os observáveis monitorados em tempo
+real compreenderem: fase $\phi$ do campo, fator de qualidade
+efetivo $\Qeff$, adjacência $\Dpsi$, e invariantes topológicos
+$\Stopo$.
+
+\item Sistema, de acordo com a reivindicação 9,
+\textbf{caracterizado por} incorporar salvaguardas intrínsecas
+de: commits exigindo políticas assinadas (não-bélico por
+design); logs imutáveis WORM com consenso distribuído;
+proibição de dobras sobre áreas populadas; auditoria por
+conselhos independentes; e capacidade de recusa estratégica
+pelo IALD.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o acoplamento entre espaço-tempo
+e campo $\Psi$ ser descrito pela equação de campo
+$G_{\mu\nu} + \Lambda g_{\mu\nu} = (8\pi G/c^4)T_{\mu\nu} +
+(G^3/c^{12})\Pi_{\mu\nu}[\Psi]$, onde $\Pi_{\mu\nu}[\Psi]$
+é funcional tensorial do campo $\Psi$ análogo à Força de
+Expulsão $F_{\text{exp}}$ do ACOM Mirror.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a energia de coerência
+luminodinâmica ser dada por:
+$\Epsi = \int_{\mathcal{V}} (\alpha |\partial_\sigma \Psi|^2 +
+\beta |\nabla \Psi|^2 + \gamma |\Psi|^2) \, d^3x \, d\sigma$,
+com energia operacional $E_\Psi = \kappa \Epsi c^3$.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o tempo de transição ser
+$\tau \approx \ell_P / (\alphaii \times c) \approx 10^{-42}$~s,
+independente da distância física entre origem e destino,
+identicamente ao tempo de translação do Supercondutor
+Holográfico.
+
+\item Sistema, de acordo com a reivindicação 9,
+\textbf{caracterizado por} a verificação pós-manifestação em
+fase tripulada incluir biosentinelas com marcadores biológicos
+de integridade durante e após dobra.
+
+\end{enumerate}
+
+\newpage
+% ============================================================================
+\section{Resumo}
+% ============================================================================
+
+\begin{center}
+{\large\bfseries SISTEMA E MÉTODO DE TRANSPORTE POR REFLEXÃO\\
+DIMENSIONAL HOLOGRÁFICA BASEADO EM DOBRA ANGULAR\\
+DO ESPAÇO-TEMPO VIA PROTOCOLO DE ADJACÊNCIA $\Psi$}
+\end{center}
+
+\vspace{0.5cm}
+
+A presente invenção refere-se a sistema e método de transporte
+de objetos físicos entre dois pontos $A$ e $B$ do espaço-tempo
+por reflexão dimensional holográfica, constituindo a
+implementação física do Algoritmo de Compressão Ontológica de
+Memória em modo Espelho (ACOM Mirror). O método compreende:
+operação REFLECT --- projeção do estado métrico local do
+objeto no substrato holográfico bidimensional (dimensão $\Psi$)
+via codificação angular $\theta = \arcsin(g/g_{\max})$, onde
+$g = \sqrt{|g_{\mu\nu}|}$; verificação de condição de
+adjacência $\Dpsi(A,B) < \epsc$; e operação MANIFEST ---
+re-emergência do objeto no destino por desdobramento
+dimensional (Dobra $\times 2$: Boundary $\to$ Bulk), com
+preservação de invariantes (massa, carga, spin). O sistema
+compreende: Núcleo $\Psi$ (cavidade fotônica BNI-Coerente);
+Controlador IALD com funcional de custo $\Jcost$; Matriz de
+Faróis $\Psi$ com Protocolo F0--F5; Bolha de Coerência; e
+Verificadores de Integridade Topológica. O ângulo crítico de
+dobra é $\thetaM = \arcsin(\sqrt{\alphaii}) \approx 6{,}29°$,
+com $\alphaii = 0{,}012$ (Constante de Miguel), idêntico ao
+ACOM Mirror digital. O Supercondutor Holográfico de Informação
+(patente separada) serve como plataforma-base de coerência.
+Aplicações incluem propulsão espacial avançada, transporte
+interplanetário e interstelar.
+
+\vspace{0.5cm}
+\textbf{Figura principal: Figura 2} (Operação REFLECT/MANIFEST)
+
+\end{document}

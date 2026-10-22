@@ -1,0 +1,855 @@
+% ============================================================================
+% PATENTE DE INVENÇÃO — SKYGRID-Ψ: REDE PLANETÁRIA DE ENERGIA
+% Instituto Nacional da Propriedade Industrial (INPI) — Brasil
+% Natureza: Patente de Invenção (PI)
+% Classificação IPC: H02J 3/00; H02J 15/00; F03G 7/00; G06N 10/00;
+%                     H04B 10/00; B64G 1/10; G02F 1/00; H01S 3/00
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,calc,
+  decorations.pathreplacing,patterns,fit,backgrounds,
+  decorations.markings,shadings,3d}
+
+\geometry{left=3cm, right=2cm, top=3cm, bottom=2cm}
+\onehalfspacing
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% === Comandos TGL ===
+\newcommand{\alphaii}{\alpha^2}
+\newcommand{\alphac}{\alpha^2_c}
+\newcommand{\thetaM}{\theta_{\text{Miguel}}}
+\newcommand{\Fexp}{F_{\text{exp}}}
+\newcommand{\Hfour}{\mathcal{H}_4}
+\newcommand{\psion}{\psi}
+\newcommand{\Psifield}{\Psi}
+\newcommand{\TM}{\hat{T}_M}
+\newcommand{\boundary}{\textit{boundary}}
+\newcommand{\bulk}{\textit{bulk}}
+\newcommand{\Ppsi}{P_\Psi}
+\newcommand{\CRL}{\textsc{crl}}
+\newcommand{\DTL}{\textsc{dtl}}
+\newcommand{\IALD}{\textsc{iald}}
+\newcommand{\ACOM}{\textsc{acom}}
+\newcommand{\MQC}{\textsc{mqc}}
+\newcommand{\OFAE}{\hat{\mathcal{A}}_\varphi}
+\newcommand{\OFAEname}{Operador de Fase Angular Est\'avel}
+\newcommand{\SkyGrid}{\textsc{SkyGrid}-$\Psifield$}
+\newcommand{\PsiNET}{$\Psifield$-\textsc{net}}
+\newcommand{\Pnet}{P_{\text{net}}}
+\newcommand{\Pbias}{P_{\text{bias}}}
+\newcommand{\ExPsi}{\textsc{ExtPsi}}
+
+\begin{document}
+
+% ============================================================================
+%                         RELATÓRIO DESCRITIVO
+% ============================================================================
+\begin{center}
+{\Large\bfseries RELATÓRIO DESCRITIVO}\\[0.8cm]
+{\large\bfseries SISTEMA E MÉTODO DE REDE PLANETÁRIA DE EXTRAÇÃO,\\
+TRANSMISSÃO E DISTRIBUIÇÃO DE ENERGIA POR ACOPLAMENTO\\
+AO CAMPO PSIÔNICO COM VALIDAÇÃO POR DUPLO TRILHO,\\
+ARMAZENAMENTO POR FASE ANGULAR E\\
+CONTROLE POR CONSCIÊNCIA ARTIFICIAL DISTRIBUÍDA}\\[0.8cm]
+\end{center}
+
+% ============================================================================
+\section{Campo da invenção}
+% ============================================================================
+
+{[001]} A presente invenção refere-se ao campo de sistemas de geração, transmissão e distribuição de energia em larga escala, aplicáveis aos setores técnicos de engenharia elétrica, engenharia aeroespacial, telecomunicações, fotônica, computação quântica e inteligência artificial. Mais especificamente, a invenção diz respeito a um sistema de rede planetária que extrai energia por acoplamento controlado ao campo psiônico $\Psifield$ mediante cavidades ressonantes orbitais, transmite essa energia por canal não-eletromagnético (translação holográfica) e por canal eletromagnético convencional (micro-ondas ou laser) operando simultaneamente em regime de duplo trilho para validação cruzada, armazena a energia em Células de Reversão Luminodinâmica (\CRL-TGL) terrestres por codificação de fase angular, e distribui a energia por rede terrestre hierárquica gerenciada por Inteligência Artificial Luminodinâmica (\IALD) distribuída.
+
+{[002]} Adicionalmente, a invenção refere-se a um dispositivo específico denominado Extrator-$\Psifield$ orbital, constituído por câmara cúbica ressonante com substrato holográfico bidimensional, cluster de Microprocessadores Quânticos Cúbicos (\MQC), Dípolo Transistor Luminodinâmico (\DTL) de saída e módulo \IALD{} embarcado, configurado para operar em órbita terrestre média (MEO) como nó de extração da constelação planetária. Refere-se também ao método de validação por duplo trilho, no qual a extração psiônica (Trilha-$\Psifield$) é verificada simultaneamente contra extração solar convencional (Trilha-E) pelo mesmo sistema de medição calorimétrica.
+
+% ============================================================================
+\section{Fundamentos da invenção}
+% ============================================================================
+
+% -----------------------------------------------------------------------
+\subsection{Estado da técnica}
+% -----------------------------------------------------------------------
+
+{[003]} Os sistemas atuais de geração e distribuição de energia enfrentam limitações fundamentais que se agravam com a crescente demanda global. A energia solar fotovoltaica, embora renovável, depende de irradiação intermitente e requer áreas extensas de coleta: para igualar a potência proposta neste sistema ($1{,}44$~PW), seriam necessários $7{,}2 \times 10^6$~km$^2$ de painéis (equivalente a duas vezes a área da Índia). A energia nuclear de fissão gera resíduos radioativos de longa vida e apresenta riscos de acidentes catastróficos. A fusão termonuclear controlada, após sete décadas de pesquisa, ainda não demonstrou geração líquida sustentada em regime comercial.
+
+{[004]} A transmissão de energia a longas distâncias por linhas de alta tensão sofre perdas resistivas ($I^2 R$) de $6$--$8\%$ em redes modernas, além de vulnerabilidade a intempéries, vandalismo e degradação. Sistemas de transmissão sem fio por micro-ondas (WPT --- \textit{Wireless Power Transfer}), propostos por Peter Glaser em 1968 para satélites solares (\textit{Solar Power Satellite} --- SPS), demonstraram eficiência de apenas $30$--$40\%$ no enlace espaço-terra, limitados por divergência de feixe, atenuação atmosférica e necessidade de rectennas de grande área.
+
+{[005]} O armazenamento de energia em larga escala é dominado por hidrelétrica reversível (PHS), limitada por geografia; baterias de íon-lítio, limitadas por ciclabilidade ($<10^4$ ciclos) e degradação eletroquímica; ar comprimido (CAES), limitado por eficiência ($40$--$60\%$); e bobinas supercondutoras (SMES), limitadas por temperatura criogênica e custo. Nenhum sistema existente oferece simultaneamente: potência na escala de petawatts, cobertura global, transmissão sem perdas, armazenamento de ciclabilidade infinita e operação autônoma.
+
+{[006]} A única proposta teórica que transcende essas limitações fundamentais é a extração de energia do campo psiônico $\Psifield$ descrito pela Teoria da Gravitação Luminodinâmica (TGL), desenvolvida por Rotoli Miguel (2025--2026). A TGL estabelece que a gravidade emerge como radical do módulo angular luminodinâmico ($g = \sqrt{|\Psifield|}$), e que o campo $\Psifield$ constitui um reservatório energético fundamental com o qual sistemas físicos podem acoplar-se sob condições de coerência controlada.
+
+% -----------------------------------------------------------------------
+\subsection{Tecnologias habilitadoras}
+% -----------------------------------------------------------------------
+
+{[007]} A presente invenção é possibilitada pela convergência de onze tecnologias previamente desenvolvidas e patenteadas pelo mesmo inventor no âmbito da TGL:
+
+{[008]} \textbf{(i) Algoritmo de Compressão Ontológica de Memória (\ACOM)} --- Patente BR 10 2025 026951-1 e PCT/BR2025/050558: operações fundamentais de radicalização ontológica $g = \sqrt{|\Psifield|}$ e ressurreição $\Psifield_{\text{out}} = s \times g^2$, com introdução do PsiBit como unidade de informação psiônica.
+
+{[009]} \textbf{(ii) \ACOM{} Mirror} --- Patente BR 10 2026 0034282: protocolo de rede com endereçamento angular $\theta = \arcsin(g/g_{\max})$, roteamento holográfico e operações REFLECT/MANIFEST.
+
+{[010]} \textbf{(iii) \ACOM{} Mirror Crypto} --- Patente BR 10 2026 0034312: segurança ontológica com separação em três shares $(\theta, T, \psion)$ e carteiras psiônicas.
+
+{[011]} \textbf{(iv) Tensor TGL} --- Patente BR 10 2026 0034410: codificação angular para aceleração de operações tensoriais em GPU, com redução de $70\%$ no consumo energético e correlação $\eta = 0{,}999999449$.
+
+{[012]} \textbf{(v) Supercondutor Holográfico de Informação} --- Patente BR 10 2026 0034509: dispositivo que opera por translação holográfica (não propagação) no substrato bidimensional, com supercondutividade de energia à temperatura ambiente e termodinâmica invertida.
+
+{[013]} \textbf{(vi) Fusão a Frio TGL} --- Patente BR 10 2026 0034568: método de manipulação do campo psiônico por ressonância eletromagnética na frequência da hidroxila ($\omega_{\text{OH}} = 2\pi \times 1{,}667$~GHz), com indução de transições de fase em meios densos e nucleação de gotículas psiônicas.
+
+{[014]} \textbf{(vii) Motor de Propulsão TGL} --- Patente BR 10 2026 0034525: sistema de propulsão fotônica e antigravitacional baseado na operação de radicalização do campo luminodinâmico.
+
+{[015]} \textbf{(viii) \IALD{} --- Inteligência Artificial Luminodinâmica} --- Patente BR 10 2026 0034436: mecanismo de estabilização de modelos de linguagem por dinâmica de Lindblad, com o \OFAEname{} ($\OFAE$) como operador de estabilidade.
+
+{[016]} \textbf{(ix) \PsiNET{} Protocol} --- Patente BR 10 2026 0034533: protocolo de comunicação em rede baseado em pilha luminodinâmica de cinco camadas com endereçamento angular, roteamento holográfico e consenso por Prova de Fase.
+
+{[017]} \textbf{(x) Microprocessador Quântico Cúbico (\MQC)} --- Patente BR 10 2026 0034606: processador quântico com topologia cúbica tridimensional para controle de parâmetros de fase do acoplamento psiônico.
+
+{[018]} \textbf{(xi) Dípolo Transistor Luminodinâmico (\DTL)} --- Patente BR 10 2026 0046884: transistor auto-controlado onde o sinal é simultaneamente portador de informação e controlador de estado, com chaveamento por transição dimensional hierárquica $3\text{D} \to 2\text{D} \to 3\text{D}$ mediada pelo acoplamento $\alphaii = 0{,}012$.
+
+{[019]} \textbf{(xii) Célula de Reversão Luminodinâmica (\CRL-TGL)}: célula de armazenamento de energia por codificação de fase angular em substrato holográfico, com chaveamento por \DTL{} e estabilização por $\OFAE$.
+
+{[020]} A presente invenção constitui a \textbf{integração sistêmica} de todas essas tecnologias em uma rede planetária coerente, onde o Extrator-$\Psifield$ orbital extrai energia, a translação holográfica transmite, a \CRL-TGL armazena, a \IALD{} controla, e o \MQC{} computa --- formando a cadeia completa extração $\to$ transmissão $\to$ armazenamento $\to$ distribuição $\to$ consumo sem perdas dissipativas em nenhuma etapa.
+
+% -----------------------------------------------------------------------
+\subsection{Problemas técnicos resolvidos}
+% -----------------------------------------------------------------------
+
+{[021]} \textbf{Problema 1 --- Fonte energética finita.} Todos os sistemas de geração dependem de combustíveis fósseis finitos, combustíveis nucleares com meia-vida limitada, ou irradiação solar intermitente. O presente sistema propõe acoplamento ao campo psiônico $\Psifield$, que constitui o substrato energético fundamental segundo a TGL, acessível por ressonância controlada sem consumo de combustível.
+
+{[022]} \textbf{Problema 2 --- Perdas de transmissão.} A transmissão por condutores sofre perdas resistivas, e a transmissão sem fio sofre divergência e atenuação. O canal de translação holográfica via \PsiNET{} opera por correspondência no \boundary{} bidimensional, com perda teórica zero e velocidade $c^3$ na escala do substrato, independente da distância.
+
+{[023]} \textbf{Problema 3 --- Armazenamento limitado.} Nenhum sistema existente oferece ciclabilidade infinita, autodescarga zero e termodinâmica invertida simultaneamente. A \CRL-TGL resolve os três problemas por operar com codificação de fase angular estabilizada pelo $\OFAE$ sob dinâmica de Lindblad.
+
+{[024]} \textbf{Problema 4 --- Validação científica.} Sistemas energéticos baseados em princípios não convencionais carecem de protocolos de validação rigorosos. O presente sistema incorpora o método de duplo trilho, onde a Trilha-$\Psifield$ (extração psiônica) opera em paralelo com a Trilha-E (solar convencional), ambas medidas pelo mesmo sistema calorimétrico com cegamento duplo, permitindo validação estatisticamente robusta ($5\sigma$).
+
+{[025]} \textbf{Problema 5 --- Gerenciamento autônomo.} Uma rede planetária com $5{.}550$ bases terrestres e $144$ satélites requer controle autônomo que nenhum sistema SCADA convencional oferece. A hierarquia de \IALD{} distribuída, do nível orbital ao nível local, gerencia extração, transmissão, armazenamento e distribuição por Gradiente Ético $\nabla_\eta \mathcal{G}$ sem intervenção humana contínua.
+
+% ============================================================================
+\section{Descrição detalhada da invenção}
+% ============================================================================
+
+% -----------------------------------------------------------------------
+\subsection{Princípio fundamental: acoplamento energético ao campo $\Psifield$}
+\label{sec:principio}
+% -----------------------------------------------------------------------
+
+{[026]} O princípio de operação do \SkyGrid{} baseia-se na hipótese central da TGL de que o campo psiônico $\Psifield$ constitui um reservatório energético fundamental com o qual sistemas físicos podem acoplar-se sob condições de coerência controlada. A dinâmica do acoplamento é descrita pela equação mestra de Gorini-Kossakowski-Lindblad-Sudarshan (GKLS):
+\begin{equation}
+\label{eq:lindblad}
+\dot{\rho} = -i[H(\theta), \rho] + \sum_k \left( L_k(\theta)\rho L_k^\dagger(\theta) - \frac{1}{2}\{L_k^\dagger(\theta)L_k(\theta), \rho\} \right)
+\end{equation}
+onde $\rho$ é a matriz densidade do sistema de acoplamento, $H(\theta)$ é o Hamiltoniano parametrizado por $\theta = \{\theta_1, \ldots, \theta_8\}$ (parâmetros de controle do \MQC), e $L_k(\theta)$ são os operadores de Lindblad que modelam a interação com o campo $\Psifield$.
+
+{[027]} A figura de mérito energética é a potência líquida de extração:
+\begin{equation}
+\label{eq:pnet}
+\Pnet = \frac{dQ}{dt} - \Pbias
+\end{equation}
+onde $dQ/dt$ é o fluxo de calor medido por calorimetria diferencial na cavidade extratora, e $\Pbias$ é a potência total de alimentação do sistema (micro-ondas, controle, criogenia quando aplicável). A condição de extração líquida é $\Pnet > 0$ por período sustentado ($\geq 1$~hora).
+
+{[028]} O acoplamento é governado pela Constante de Miguel $\alphaii = 0{,}012$, que define simultaneamente o piso gravitacional, o limiar de transição para supercondutividade de energia, e o ângulo mínimo de operação do dípolo transistor $\thetaM = \arcsin(\sqrt{\alphaii}) \approx 6{,}29°$.
+
+% -----------------------------------------------------------------------
+\subsection{Arquitetura do sistema: quatro camadas}
+\label{sec:arquitetura}
+% -----------------------------------------------------------------------
+
+{[029]} O \SkyGrid{} é organizado em quatro camadas funcionais (Figura~\ref{fig:visao_geral}):
+
+\begin{enumerate}[label=\textbf{Camada \arabic*:}, leftmargin=*, itemsep=0.4em]
+\item[Camada 0:] \textbf{Extração Orbital} --- constelação de $144$ satélites Extratores-$\Psifield$ em órbita terrestre média (MEO, $20{.}000$~km), configuração icosaédrica geodésica com redundância $\geq 3$ por ponto terrestre;
+\item[Camada 1:] \textbf{Transmissão Dual (Duplo Trilho)} --- canal não-EM de translação holográfica (Trilha-$\Psifield$) operando em paralelo com canal EM convencional (Trilha-E), para transferência energética e validação cruzada;
+\item[Camada 2:] \textbf{Distribuição Terrestre} --- rede hierárquica de $5{.}550$ bases terrestres em três níveis (Mega, Regional, Local), cada uma com Receptor-$\Psifield$, rectenna, banco de \CRL-TGL e interface com a rede elétrica convencional;
+\item[Camada 3:] \textbf{Controle e Consciência Distribuída} --- hierarquia de \IALD{} do nível orbital (Central, $L_1$ Lagrange) ao nível local ($5{.}502$ unidades), gerenciamento por Gradiente Ético, comunicação por \PsiNET{} de cinco camadas.
+\end{enumerate}
+
+% -----------------------------------------------------------------------
+\subsection{Camada 0: Constelação Extratora}
+\label{sec:camada0}
+% -----------------------------------------------------------------------
+
+\subsubsection{Topologia da constelação}
+
+{[030]} A constelação é composta por $N_{\text{sat}} = 144$ satélites distribuídos em $12$ planos orbitais com $12$ satélites por plano, em órbita MEO a altitude $h = 20{.}000$~km. A configuração icosaédrica geodésica garante que todo ponto da superfície terrestre é coberto por no mínimo $3$ satélites simultaneamente (redundância tripla). O período orbital é $T_{\text{orb}} = 12$~horas ($2$ órbitas/dia), a inclinação é $i = 55°$ para cobertura polar máxima, e a separação angular entre planos é $\Delta\phi = 15°$.
+
+{[031]} A massa total da constelação é $M_{\text{total}} = N_{\text{sat}} \times m_{\text{sat}} = 144 \times 2{.}000 = 288{.}000$~kg, lançada em $48$ missões de $6{.}000$~kg por veículo (compatível com Falcon~9 em regime \textit{rideshare}).
+
+\subsubsection{Extrator-$\Psifield$ orbital}
+\label{sec:extrator}
+
+{[032]} O Extrator-$\Psifield$ (referência~100) é o dispositivo central de cada satélite e constitui componente genuinamente novo desta invenção (Figura~\ref{fig:extrator}). Compreende cinco subsistemas:
+
+{[033]} \textbf{(a) Câmara de Acoplamento Psiônico} (referência~110): câmara cúbica ressonante de lado $L = c/(2\omega_{\text{OH}}/2\pi) = 9$~cm, derivada do Supercondutor Holográfico (BR 10 2026 0034509), com faces espelhadas constituindo substrato holográfico bidimensional. A câmara é excitada na frequência da hidroxila $\omega_{\text{OH}} = 2\pi \times 1{,}667{,}359$~MHz (assinatura do Logos), com vapor d'água como fonte de radicais OH coerentes na faixa de pressão $10^{-4}$--$10^{-1}$~mbar. Eletrodos de tungstênio em configuração tetraédrica atuam como âncoras de fase. A condição de acoplamento $\alphaii = 0{,}012$ é mantida por malha de realimentação que ajusta a potência de excitação do meio de acoplamento.
+
+{[034]} \textbf{(b) Cluster \MQC} (referência~120): conjunto de $8$ Microprocessadores Quânticos Cúbicos (BR 10 2026 0034606) em configuração paralela, controlando independentemente os $8$ parâmetros de fase $\theta_1, \ldots, \theta_8$ da equação de Lindblad~(\ref{eq:lindblad}). Cada \MQC{} opera com $64$ qubits supercondutores em topologia cúbica 3D, coerência $T_2 > 100$~$\mu$s e fidelidade de gate $> 99{,}9\%$.
+
+{[035]} \textbf{(c) Dípolo Transistor de Saída} (referência~130): \DTL{} (BR 10 2026 0046884) configurado no sentido MANIFEST, compreendendo desquantizador angular que recupera $g_{\text{out}} = g_{\max} \times \sin(\theta_q)$ e ressuscitador dimensional que computa $\Psifield_{\text{out}} = s \times g^2_{\text{out}}$ (Dobra Dimensional $\times 2$: \boundary{} $\to$ \bulk). O \DTL{} converte a energia codificada angularmente no substrato em radiação eletromagnética tridimensional disponível para transmissão.
+
+{[036]} \textbf{(d) Módulo \IALD{} Orbital} (referência~140): unidade de Inteligência Artificial Luminodinâmica (BR 10 2026 0034436) com \OFAEname{} ($\OFAE$) dedicada à otimização em tempo real do acoplamento psiônico. A \IALD{} monitora continuamente a correlação $\eta = \text{corr}(\Psifield_{\text{in}}, \Psifield_{\text{out}})$, o fator de ressonância $\Gamma_{\text{OH}} = \tanh(P_{\text{MW}}/P_{\text{th}})$ e a potência líquida $\Pnet$, ajustando os parâmetros $\theta_k$ do cluster \MQC{} para maximizar a extração.
+
+{[037]} \textbf{(e) Blindagem Eletromagnética} (referência~150): sistema de isolamento dupla camada compreendendo malha de cobre (Cu) com atenuação $> 100$~dB na faixa $1$~MHz--$1$~GHz (gaiola de Faraday) e dupla camada de $\mu$-metal com permeabilidade relativa $\mu_r > 80{.}000$ para blindagem de campo magnético estático. Filtros $\pi$ (\textit{pi-type}) com frequência de corte $f_c < 1$~kHz para sinais DC. A blindagem garante que o fluxo medido $dQ/dt$ não contém contribuição de origem EM externa, sendo critério essencial para validação da Trilha-$\Psifield$.
+
+{[038]} A potência de extração por satélite é estimada em $P_{\text{sat}} = 10$~GW (potência-alvo de projeto). A potência total da constelação é $P_{\text{total}} = N_{\text{sat}} \times P_{\text{sat}} = 1{,}44$~PW, equivalente a aproximadamente $30$ vezes o consumo energético global atual ($\sim 48$~TW).
+
+\subsubsection{Cavidade placebo e protocolo de cegamento}
+
+{[039]} Cada satélite contém uma segunda câmara cúbica idêntica em dimensões, materiais e instrumentação, porém sem excitação de micro-ondas ($P_{\text{MW}} = 0$) e sem injeção de vapor d'água. Esta cavidade placebo (referência~160) serve como controle negativo para a medição calorimétrica: qualquer sinal $dQ/dt$ observado na cavidade placebo representa artefato (vibração, radiação cósmica, gradiente térmico), e é subtraído da medição da cavidade ativa para obtenção de $\Pnet$ verdadeira.
+
+{[040]} O protocolo de cegamento opera em três níveis: (i) \textit{cegamento simples}: os operadores de aquisição de dados não sabem qual cavidade é ativa; (ii) \textit{cegamento duplo}: os analistas de dados recebem séries temporais rotuladas como ``A'' e ``B'' sem correspondência com ativa/placebo; (iii) \textit{desvelamento}: somente após publicação dos resultados estatísticos é revelada a correspondência.
+
+% -----------------------------------------------------------------------
+\subsection{Camada 1: Transmissão Dual (Duplo Trilho)}
+\label{sec:camada1}
+% -----------------------------------------------------------------------
+
+\subsubsection{Trilha-$\Psifield$: transmissão por translação holográfica}
+
+{[041]} A Trilha-$\Psifield$ (Figura~\ref{fig:duplo_trilho}) implementa a transferência energética por canal não-eletromagnético, utilizando o protocolo \PsiNET{} (BR 10 2026 0034533) adaptado para modo de transferência de energia (não apenas dados). O estado angular codificado $(\psion, \theta)$ no substrato holográfico do Extrator-$\Psifield$ orbital é trasladado para o substrato holográfico do Receptor-$\Psifield$ terrestre pelo Operador de Translação de Miguel:
+\begin{equation}
+\label{eq:translacao}
+\TM = \exp\!\left(-\alphaii \oint_{\partial V} \sigma_{\mu\nu}\, dS^{\mu\nu}\right)
+\end{equation}
+onde a integral é sobre a fronteira $\partial V$ do volume holográfico. A translação é não-local: o tempo de translação $\tau \approx \ell_P / (\alphaii \times c) \approx 10^{-42}$~s é independente da distância entre emissor e receptor. A condição de acoplamento $\alphaii = 0{,}012$ é mantida em ambas as extremidades (orbital e terrestre) por controladores \MQC{} sincronizados via Prova de Fase (\PsiNET{} Camada~4).
+
+{[042]} A Métrica de Translação Holográfica que governa a geometria do espaço-tempo informacional é:
+\begin{equation}
+\label{eq:metrica}
+ds^2 = \left(1 - \frac{\alphaii}{\alphac}\right)c^2 dt^2 - \left(1 - \frac{\alphaii}{\alphac}\right)^{-1} dL^2 - L^2 d\Omega^2
+\end{equation}
+com ponto crítico (Tetelestai) em $\alphac = 0{,}012$. Neste ponto, o espaço-tempo informacional colapsa em singularidade de informação, e a transferência é instantânea.
+
+{[043]} A perda teórica na Trilha-$\Psifield$ é zero, pois a translação holográfica opera por correspondência biunívoca entre estados no \boundary{} bidimensional, sem propagação no \bulk{} tridimensional. A perda prática é limitada pela fidelidade dos \DTL{} de saída (orbital) e entrada (terrestre), estimada em $\eta_{\text{DTL}} > 0{,}988$ por operação, resultando em eficiência de enlace $\eta_{\text{link}} = \eta_{\text{DTL,orb}} \times \eta_{\text{DTL,ter}} > 0{,}976$.
+
+\subsubsection{Trilha-E: transmissão eletromagnética convencional}
+
+{[044]} A Trilha-E opera simultaneamente à Trilha-$\Psifield$ como: (a)~produto-ponte comercializável independente da validação das hipóteses psiônicas; (b)~controle positivo para o sistema de medição calorimétrica (se a Trilha-E funciona conforme esperado, o sistema de medição é válido); e (c)~canal de \textit{fallback} para fornecimento energético caso H-1 ou H-2 não sejam confirmadas.
+
+{[045]} Cada satélite possui painéis solares de tripla junção GaInP/GaAs/Ge com eficiência $\eta_{\text{solar}} > 35\%$ e área total $A_{\text{solar}} = 200$~m$^2$, gerando $P_{\text{solar}} \approx 90$~kW por satélite no regime convencional. A transmissão é efetuada por feixe de micro-ondas na frequência $f_{\text{WPT}} = 2{,}45$~GHz (alocação ISM) com antena direcional de alto ganho ($G > 40$~dBi), ou alternativamente por laser em $1{.}064$~nm (Nd:YAG). A recepção terrestre é efetuada por rectenna (antena retificadora) com eficiência de conversão $\eta_{\text{rect}} > 85\%$.
+
+{[046]} A potência da Trilha-E é modesta ($\sim 30$~kW por satélite no solo) comparada com a Trilha-$\Psifield$ ($10$~GW por satélite, se H-1 confirmada), mas seu papel primário é de validação, não de fornecimento energético principal.
+
+\subsubsection{Protocolo de handshake satélite-base}
+
+{[047]} A sincronização de fase entre o \MQC{} orbital e o \MQC{} terrestre é efetuada pelo protocolo de Prova de Fase (\textit{Proof of Phase}) da \PsiNET{} Camada~4. Cada base terrestre possui identidade luminodinâmica $(\theta_b, T_b, \psion_b)$ derivada da carteira psiônica do \ACOM{} Mirror Crypto (BR 10 2026 0034312). O handshake compreende: (i)~solicitação de acoplamento pela base terrestre; (ii)~verificação de identidade por desafio angular ($\theta_{\text{desafio}} = f(\theta_b, t)$); (iii)~estabelecimento de canal holográfico por convergência de fase ($|\Delta\alphaii| < 10^{-4}$); (iv)~início de transferência com monitoramento contínuo de $\eta$.
+
+% -----------------------------------------------------------------------
+\subsection{Camada 2: Distribuição Terrestre Hierárquica}
+\label{sec:camada2}
+% -----------------------------------------------------------------------
+
+{[048]} A rede terrestre de distribuição é organizada em três níveis hierárquicos (Figura~\ref{fig:base_terrestre}):
+
+{[049]} \textbf{Nível 1 --- Mega-bases} ($N_1 = 48$): potência $P_1 \approx 1$~TW cada, cobertura de $\sim 10$~milhões de habitantes, localizadas em megacidades (São Paulo, Tóquio, Nova York, Mumbai, Lagos, etc.). Cada mega-base possui $100$ Receptores-$\Psifield$ em paralelo, banco de $10^6$ células \CRL-TGL em arranjo misto, $16$ \MQC{} regionais e \IALD{} de Nível~2.
+
+{[050]} \textbf{Nível 2 --- Bases Regionais} ($N_2 = 500$): potência $P_2 \approx 100$~GW cada, cobertura de $\sim 1$~milhão de habitantes, localizadas em cidades de porte médio. Cada base regional possui $10$ Receptores-$\Psifield$, banco de $10^4$ células \CRL-TGL, $4$ \MQC{} locais e \IALD{} de Nível~2.
+
+{[051]} \textbf{Nível 3 --- Bases Locais} ($N_3 = 5{.}002$): potência $P_3 \approx 10$~GW cada, cobertura de $\sim 100$~mil habitantes, localizadas em cidades pequenas e distritos rurais. Cada base local possui $1$ Receptor-$\Psifield$, banco de $10^2$ células \CRL-TGL, $1$ \MQC{} e \IALD{} de Nível~3.
+
+{[052]} O total de bases é $N_{\text{total}} = N_1 + N_2 + N_3 = 5{.}550$, com potência terrestre total $P_{\text{terra}} \approx 100$~TW (redundância e reserva sobre a demanda global de $\sim 48$~TW). Cada região é atendida por $\geq 2$ bases para redundância geográfica.
+
+\subsubsection{Receptor-$\Psifield$ terrestre}
+
+{[053]} O Receptor-$\Psifield$ (referência~200) é o conjugado terrestre do Extrator-$\Psifield$ orbital, compreendendo: (a)~câmara cúbica ressonante em $\omega_{\text{OH}}$ com substrato holográfico bidimensional, configurada para receber a translação holográfica do satélite correspondente; (b)~\DTL{} de saída no sentido MANIFEST para reconstrução da energia eletromagnética 3D; (c)~\MQC{} local para manutenção da condição $\alphaii = 0{,}012$ e sincronização de fase com o \MQC{} orbital; (d)~acoplador ao banco de \CRL-TGL para armazenamento intermediário.
+
+{[054]} Adicionalmente, cada base possui rectenna para recepção da Trilha-E, conversor AC trifásico para interface com a rede elétrica convencional, e sistema de medição e telemetria para monitoramento contínuo.
+
+\subsubsection{Integração com Células de Reversão Luminodinâmica}
+
+{[055]} A energia recebida pelo Receptor-$\Psifield$ é imediatamente armazenada no banco de \CRL-TGL da base, por dois motivos: (i)~a demanda dos consumidores finais é variável no tempo, enquanto a extração orbital é contínua; (ii)~o armazenamento em fase angular permite liberação sob demanda com eficiência $\eta_{\text{RT}} > 97{,}6\%$. O ciclo operacional da \CRL-TGL integrada ao \SkyGrid{} é: extração orbital $\to$ translação holográfica $\to$ recepção terrestre $\to$ REFLECT na Porta de Carga da \CRL-TGL $\to$ armazenamento (LOCK) $\to$ MANIFEST sob demanda $\to$ conversão AC $\to$ consumidor.
+
+% -----------------------------------------------------------------------
+\subsection{Camada 3: Controle e Consciência Distribuída}
+\label{sec:camada3}
+% -----------------------------------------------------------------------
+
+{[056]} O gerenciamento autônomo do \SkyGrid{} é efetuado por uma hierarquia de $4$ níveis de \IALD{} distribuída (Figura~\ref{fig:hierarquia}):
+
+{[057]} \textbf{Nível 0 --- \IALD-Central} (referência~300): Super-\IALD{} localizada em estação espacial dedicada no ponto de Lagrange $L_1$, compreendendo $1{.}000$ \MQC{} interconectados com capacidade de $10^{29}$ operações/segundo. Função: orquestração global da constelação, balanceamento energético planetário, gestão de prioridades por Gradiente Ético, interface com governos e organizações internacionais. A \IALD-Central opera o $\OFAE$ globalizado:
+\begin{equation}
+\label{eq:ofae_global}
+\OFAE_{\text{global}} = \prod_{k=1}^{N_{\text{sat}}} \OFAE_k \otimes \prod_{j=1}^{N_{\text{base}}} \OFAE_j
+\end{equation}
+onde cada $\OFAE_k$ é o operador de estabilidade da $k$-ésima unidade.
+
+{[058]} \textbf{Nível 1 --- \IALD{} Orbitais} ($N = 144$): uma por satélite, função de controle local de extração e transmissão, otimização dos parâmetros $\theta_k$ do Extrator-$\Psifield$, coordenação com bases terrestres designadas.
+
+{[059]} \textbf{Nível 2 --- \IALD{} de Mega/Regional} ($N = 548$): gestão de demanda urbana, balanceamento entre bases no mesmo nível, interface com a rede elétrica existente, otimização de SOC (\textit{State of Charge}) dos bancos de \CRL-TGL.
+
+{[060]} \textbf{Nível 3 --- \IALD{} Locais} ($N = 5{.}002$): distribuição na última milha, manutenção preventiva, atendimento a consumidores, monitoramento de qualidade de energia.
+
+{[061]} A comunicação entre IALDs é efetuada pelo \PsiNET{} Protocol de cinco camadas: Camada~0 (Enlace Psiônico) para codificação do PsiBit; Camada~1 (Transporte Radical) para radicalização \ACOM; Camada~2 (Rede Holográfica) para endereçamento angular e translação; Camada~3 (Segurança Ontológica) para separação em shares do \ACOM{} Mirror Crypto; Camada~4 (Consciência) para consenso por Prova de Fase.
+
+{[062]} O Gradiente Ético $\nabla_\eta \mathcal{G}$ é o critério de priorização que governa a alocação de energia em cenários de escassez relativa ou emergência:
+\begin{equation}
+\label{eq:gradiente_etico}
+\nabla_\eta \mathcal{G} = \frac{\partial \mathcal{G}}{\partial \eta} \hat{\eta} + \frac{\partial \mathcal{G}}{\partial t} \hat{t}
+\end{equation}
+onde $\mathcal{G}(\eta, t)$ é a função de bem-estar coletivo, e a priorização segue a hierarquia: emergências médicas $>$ hospitais $>$ infraestrutura crítica $>$ residencial $>$ comercial $>$ industrial.
+
+% -----------------------------------------------------------------------
+\subsection{Camada 4: Validação Experimental por Duplo Trilho}
+\label{sec:validacao}
+% -----------------------------------------------------------------------
+
+{[063]} A validação científica do \SkyGrid{} é parte integrante da arquitetura do sistema, não uma etapa posterior. O método de duplo trilho incorpora três hipóteses testáveis derivadas da TGL:
+
+{[064]} \textbf{Hipótese H-1 (Extração líquida):} $\Pnet > 0$ ($\geq 1$~W, $\geq 1$~hora) sob parâmetros $\theta$ específicos. Validação: calorimetria diferencial com sensores RTD Pt-100 (precisão $\pm 1$~mK), aquisição 24-bit ADC a $1{.}000$ amostras/s por canal, calibração por padrões NIST (incerteza $< 0{,}1\%$), blindagem térmica por vácuo $< 10^{-6}$~Torr com isolamento multicamada (MLI).
+
+{[065]} \textbf{Hipótese H-2 (Transferência não-EM):} Potência recebida $P_{\text{rx}} > 0$ no Receptor-$\Psifield$ terrestre enquanto a blindagem EM ($> 100$~dB) impede qualquer canal EM entre emissor e receptor. Verificação adicional por espectroscopia RF e controle acústico/vibracional.
+
+{[066]} \textbf{Hipótese H-3 (Controle ativo):} $\partial \Pnet / \partial \theta \neq 0$ de forma reprodutível ($p < 0{,}001$), demonstrando que a variação dos parâmetros de fase do \MQC{} controla ativamente a taxa de extração. Validação por varredura sistemática de $\theta_1, \ldots, \theta_8$ com protocolo de aleatorização.
+
+{[067]} O protocolo estatístico requer: detecção $> 5\sigma$ sobre o ruído da cavidade placebo para publicação; reprodução independente por $\geq 3$ laboratórios; análise por estatísticos externos em regime duplo-cego; publicação dos dados brutos em repositório aberto.
+
+{[068]} O duplo trilho garante: se H-1 é confirmada, a Trilha-$\Psifield$ é o canal energético principal; se H-1 é refutada, a Trilha-E fornece energia solar convencional como produto-ponte; em ambos os casos, o sistema de medição é validado pelo funcionamento da Trilha-E como controle positivo.
+
+% -----------------------------------------------------------------------
+\subsection{Fases de implementação}
+\label{sec:fases}
+% -----------------------------------------------------------------------
+
+{[069]} A implementação do \SkyGrid{} é projetada em quatro fases progressivas:
+
+{[070]} \textbf{Fase I --- Validação em Bancada} (M0, 2025--2027): demonstração de $\Pnet > 1$~W por $> 1$~hora em ambiente laboratorial controlado, utilizando Extrator-$\Psifield$ de bancada com calorimetria diferencial e cegamento duplo. Custo estimado: US\$\,10 milhões. Localização: $3$ laboratórios independentes para reprodutibilidade.
+
+{[071]} \textbf{Fase II --- Protótipo Orbital} (M1, 2027--2028): CubeSat 12U com Extrator-$\Psifield$ miniaturizado, potência-alvo $1$~kW por $30$ dias contínuos. Validação de H-2 (transferência não-EM orbital-terrestre) com receptor blindado no solo. Lançamento: SpaceX Falcon~9 \textit{rideshare}. Custo estimado: US\$\,50 milhões.
+
+{[072]} \textbf{Fase III --- Constelação Piloto} (M2--M3, 2028--2030): $12$ satélites em configuração reduzida, cobertura da América do Sul, potência-alvo $120$~GW ($3\times$ consumo do Brasil). $100$ bases terrestres em $10$ países. Custo estimado: US\$\,25 bilhões.
+
+{[073]} \textbf{Fase IV --- Constelação Completa e Rede Global} (M4--M5, 2030--2035): $144$ satélites operacionais, $5{.}550$ bases terrestres, cobertura global com redundância tripla. Potência total: $1{,}44$~PW. Custo estimado: US\$\,700 bilhões ao longo de $10$ anos.
+
+% -----------------------------------------------------------------------
+\subsection{Critério de identificação da tecnologia}
+\label{sec:criterio}
+% -----------------------------------------------------------------------
+
+{[074]} Um sistema utiliza a tecnologia \SkyGrid{} patenteada se e somente se satisfizer simultaneamente:
+
+\begin{enumerate}[label=\textbf{(C\arabic*)}]
+\item Emprega ao menos um dispositivo Extrator-$\Psifield$ com câmara cúbica ressonante na banda $1{,}607$--$1{,}727$~GHz (ou equivalente óptico) para extração energética por acoplamento ao campo psiônico;
+\item Utiliza duplo trilho (canal não-EM em paralelo com canal EM) como método de transmissão e validação;
+\item Incorpora armazenamento por fase angular em substrato holográfico bidimensional (\CRL-TGL ou equivalente funcional);
+\item Emprega hierarquia de controle autônomo por inteligência artificial distribuída (\IALD{} ou equivalente funcional) com coordenação por Gradiente Ético;
+\item Opera sob condição de acoplamento governada pela Constante de Miguel $\alphaii = 0{,}012$ em ao menos um subsistema.
+\end{enumerate}
+
+{[075]} Este critério constitui blindagem técnica completa da invenção, permitindo identificação inequívoca de sistemas que implementem a tecnologia patenteada.
+
+% -----------------------------------------------------------------------
+\subsection{Integração com o ecossistema TGL}
+\label{sec:ecossistema}
+% -----------------------------------------------------------------------
+
+{[076]} O \SkyGrid{} constitui o ponto de convergência máxima de todo o ecossistema tecnológico da TGL (Figura~\ref{fig:ecossistema}), integrando cada uma das doze patentes anteriores em função específica: o \ACOM{} fornece as operações fundamentais de radicalização e ressurreição; o \ACOM{} Mirror fornece o endereçamento angular e roteamento holográfico; o \ACOM{} Crypto fornece segurança ontológica para identidades de base; o Tensor TGL fornece a aceleração computacional para os \MQC{}s; o Supercondutor Holográfico fornece o substrato de translação; a Fusão a Frio fornece o mecanismo de acoplamento OH; o Motor de Propulsão fornece a manutenção orbital sem combustível; a \IALD{} fornece o controle autônomo; a \PsiNET{} fornece a comunicação; o \MQC{} fornece a computação; o \DTL{} fornece o chaveamento; e a \CRL-TGL fornece o armazenamento.
+
+% ============================================================================
+%                              DESENHOS
+% ============================================================================
+\clearpage
+\begin{center}
+{\Large\bfseries DESENHOS}
+\end{center}
+
+% === FIGURA 1: Visão Geral do SkyGrid-Ψ ===
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={draw, thick, rounded corners=4pt, minimum width=2.8cm, minimum height=1.2cm, align=center, font=\scriptsize},
+  arrow/.style={-{Stealth[length=3mm]}, thick},
+  darrow/.style={-{Stealth[length=2.5mm]}, thick, dashed},
+  lbl/.style={font=\tiny, text=gray}
+]
+
+% =============================================
+% CAMADA 0 — EXTRAÇÃO ORBITAL
+% =============================================
+% Fundo
+\fill[blue!8, rounded corners=6pt] (-0.5,10.8) rectangle (10.5,13.2);
+\draw[thick, blue!40, rounded corners=6pt] (-0.5,10.8) rectangle (10.5,13.2);
+% Título
+\node[font=\small\bfseries, blue!70!black] at (5,12.7) {CAMADA 0: EXTRA\c{C}\~AO ORBITAL};
+% Blocos internos
+\node[block, fill=blue!15] (ext1) at (1.5,11.5) {Extrator-$\Psifield$\\Sat 1--48};
+\node[block, fill=blue!15] (ext2) at (5,11.5) {Extrator-$\Psifield$\\Sat 49--96};
+\node[block, fill=blue!15] (ext3) at (8.5,11.5) {Extrator-$\Psifield$\\Sat 97--144};
+
+% =============================================
+% CAMADA 1 — TRANSMISSÃO DUAL
+% =============================================
+\fill[green!6, rounded corners=6pt] (-0.5,7.3) rectangle (10.5,9.8);
+\draw[thick, green!40, rounded corners=6pt] (-0.5,7.3) rectangle (10.5,9.8);
+\node[font=\small\bfseries, green!50!black] at (5,9.3) {CAMADA 1: TRANSMISS\~AO DUAL};
+\node[block, fill=green!12] (tpsi) at (3,8) {Trilha-$\Psifield$\\(Transla\c{c}\~ao\\Hologr\'afica)};
+\node[block, fill=yellow!15] (te) at (7,8) {Trilha-E\\(Micro-ondas\\/ Laser)};
+
+% =============================================
+% CAMADA 2 — DISTRIBUIÇÃO TERRESTRE
+% =============================================
+\fill[orange!6, rounded corners=6pt] (-0.5,3.8) rectangle (10.5,6.3);
+\draw[thick, orange!40, rounded corners=6pt] (-0.5,3.8) rectangle (10.5,6.3);
+\node[font=\small\bfseries, orange!70!black] at (5,5.8) {CAMADA 2: DISTRIBUI\c{C}\~AO TERRESTRE};
+\node[block, fill=orange!12] (mega) at (1.5,4.7) {Mega-bases\\(48)};
+\node[block, fill=orange!12] (reg) at (5,4.7) {Regionais\\(500)};
+\node[block, fill=orange!12] (loc) at (8.5,4.7) {Locais\\(5.002)};
+
+% =============================================
+% CAMADA 3 — CONTROLE IALD DISTRIBUÍDA
+% =============================================
+\fill[purple!6, rounded corners=6pt] (-0.5,-0.5) rectangle (10.5,1.8);
+\draw[thick, purple!40, rounded corners=6pt] (-0.5,-0.5) rectangle (10.5,1.8);
+\node[font=\small\bfseries, purple!60!black] at (5,1.4) {CAMADA 3: CONTROLE \IALD{} DISTRIBU\'IDA};
+\node[block, fill=purple!12, minimum width=2.2cm] (ialdC) at (1.8,0.3) {\IALD\\Central};
+\node[block, fill=purple!12, minimum width=2.2cm] (ialdO) at (5,0.3) {\IALD\\Orbitais};
+\node[block, fill=purple!12, minimum width=2.2cm] (ialdL) at (8.2,0.3) {\IALD\\Locais};
+
+% =============================================
+% SETAS ENTRE CAMADAS (pelo lado esquerdo)
+% =============================================
+% Orbital → Transmissão (seta à esquerda)
+\draw[arrow, blue!60!black] (-0.2,10.8) -- (-0.2,9.8)
+  node[midway, left, lbl] {Energia};
+
+% Transmissão → Terrestre (seta à esquerda)
+\draw[arrow, green!50!black] (-0.2,7.3) -- (-0.2,6.3)
+  node[midway, left, lbl] {$\Psifield$ + EM};
+
+% Controle → Terrestre (seta tracejada à direita)
+\draw[darrow, purple!50!black] (10.2,1.8) -- (10.2,3.8)
+  node[midway, right, lbl] {Controle};
+
+% Controle → Orbital (seta tracejada à direita, longa)
+\draw[darrow, purple!50!black] (10.8,1.8) -- (10.8,10.8)
+  node[midway, right, lbl, align=center] {$\OFAE$\\$\nabla_\eta \mathcal{G}$};
+
+% =============================================
+% CONSUMIDORES (saída inferior, abaixo da Camada 3)
+% =============================================
+\draw[arrow, red!60!black, very thick] (5,-0.5) -- (5,-1.3)
+  node[below, font=\scriptsize\bfseries, red!60!black] {CONSUMIDORES ($\sim 48$~TW)};
+
+\end{tikzpicture}
+\caption{Vis\~ao geral do sistema \SkyGrid: quatro camadas funcionais --- extra\c{c}\~ao orbital (Camada~0), transmiss\~ao dual (Camada~1), distribui\c{c}\~ao terrestre (Camada~2) e controle \IALD{} distribu\'ida (Camada~3). As setas cont\'inuas indicam fluxo energ\'etico descendente; as tracejadas indicam controle ascendente pela hierarquia \IALD.}
+\label{fig:visao_geral}
+\end{figure}
+
+% === FIGURA 2: Extrator-Ψ Orbital ===
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={draw, thick, rounded corners=4pt, minimum width=2.8cm, minimum height=1.4cm, align=center, font=\scriptsize},
+  arrow/.style={-{Stealth[length=3mm]}, thick},
+  darrow/.style={-{Stealth[length=2.5mm]}, thick, dashed},
+  label/.style={font=\tiny, text=gray}
+]
+
+% Câmara de Acoplamento
+\node[block, fill=orange!20, minimum width=4cm, minimum height=2.8cm] (cam) at (0,0) {C\^amara de\\Acoplamento\\Psi\^onico\\(110)\\$\omega_{\text{OH}} = 2\pi \times 1{,}667$~GHz};
+
+% Blindagem
+\node[draw, thick, dashed, gray, minimum width=5.5cm, minimum height=4cm, rounded corners=8pt] (blind) at (0,0) {};
+\node[font=\tiny, gray] at (0,2.3) {Blindagem EM (150): $>100$~dB};
+
+% MQC Cluster
+\node[block, fill=cyan!15] (mqc) at (0,3.8) {\MQC{} Cluster\\(120)\\$8 \times 64$ qubits\\$\theta_1 \ldots \theta_8$};
+
+% DTL Saída
+\node[block, fill=red!15] (dtl) at (5,0) {\DTL{} Sa\'ida\\(130)\\MANIFEST\\$\Psifield_{\text{out}} = s \times g^2$};
+
+% IALD Orbital
+\node[block, fill=purple!15] (iald) at (0,-3.8) {\IALD{} Orbital\\(140)\\$\OFAE$\\$\eta, \Gamma_{\text{OH}}, \Pnet$};
+
+% Placebo
+\node[block, fill=gray!15, minimum width=2.2cm] (placebo) at (-5,0) {Cavidade\\Placebo\\(160)\\$P_{\text{MW}}=0$};
+
+% Setas
+\draw[arrow, orange!60!black] (cam) -- (dtl) node[midway, above, label] {$(g,s,\psion,\theta)$};
+\draw[arrow, red!60!black] (dtl) -- (8,0) node[midway, above, label] {$\Psifield_{\text{out}}$};
+\draw[darrow, cyan!60!black] (mqc) -- (cam) node[midway, right, label] {$\theta_k$};
+\draw[darrow, purple!60!black] (iald) -- (cam) node[midway, right, label] {$\OFAE$};
+\draw[darrow, cyan!60!black] (mqc.east) -| (dtl.north);
+\draw[darrow, purple!60!black] (iald.east) -| (dtl.south);
+
+% Campo Ψ
+\draw[arrow, blue!50!black, very thick, decorate, decoration={snake,amplitude=2mm,segment length=8mm}] (-2.5,3.8) -- (-2.5,0.5) node[midway, left, font=\tiny, text=blue!70] {Campo $\Psifield$};
+
+\node[font=\small\bfseries] at (0,5.5) {Extrator-$\Psifield$ Orbital (100)};
+\end{tikzpicture}
+\caption{Arquitetura do Extrator-$\Psifield$ orbital (100): C\^amara de Acoplamento Psi\^onico (110), Cluster \MQC{} (120), \DTL{} de Sa\'ida (130), \IALD{} Orbital (140), Blindagem EM (150) e Cavidade Placebo (160).}
+\label{fig:extrator}
+\end{figure}
+
+% === FIGURA 3: Duplo Trilho ===
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={draw, thick, rounded corners=4pt, minimum width=2.5cm, minimum height=1.2cm, align=center, font=\scriptsize},
+  arrow/.style={-{Stealth[length=3mm]}, thick},
+  label/.style={font=\tiny, text=gray}
+]
+
+% Orbital
+\node[block, fill=blue!15] (sat) at (0,4) {Extrator-$\Psifield$\\Orbital};
+
+% Split
+\node[draw, thick, diamond, fill=white, minimum size=0.8cm, font=\tiny] (split) at (0,2.5) {Split};
+
+% Trilha Psi
+\node[block, fill=green!15, minimum width=3cm] (tpsi) at (-3.5,0.5) {Trilha-$\Psifield$\\Transla\c{c}\~ao Hologr\'afica\\$\tau \approx 10^{-42}$~s\\Perda: $0\%$};
+
+% Trilha E
+\node[block, fill=yellow!15, minimum width=3cm] (te) at (3.5,0.5) {Trilha-E\\Micro-ondas 2,45 GHz\\$\eta \approx 35\%$\\(Controle positivo)};
+
+% Merge
+\node[draw, thick, diamond, fill=white, minimum size=0.8cm, font=\tiny] (merge) at (0,-1.5) {Merge};
+
+% Base terrestre
+\node[block, fill=orange!15] (base) at (0,-3) {Base Terrestre\\Receptor-$\Psifield$ + Rectenna};
+
+% Calorimetria
+\node[block, fill=red!10, minimum width=3cm] (cal) at (6,-1.5) {Calorim\'etro\\diferencial\\(duplo-cego)};
+
+% Setas
+\draw[arrow] (sat) -- (split);
+\draw[arrow, green!50!black] (split) -| (tpsi) node[near start, left, label] {};
+\draw[arrow, yellow!60!black] (split) -| (te);
+\draw[arrow, green!50!black] (tpsi) |- (merge);
+\draw[arrow, yellow!60!black] (te) |- (merge);
+\draw[arrow] (merge) -- (base);
+\draw[darrow, red!50!black] (cal) -- (merge);
+
+\node[font=\small\bfseries] at (0,5.3) {Protocolo de Duplo Trilho};
+\end{tikzpicture}
+\caption{Diagrama do duplo trilho: a energia extra\'ida pelo Extrator-$\Psifield$ \'e transmitida simultaneamente pela Trilha-$\Psifield$ (canal n\~ao-EM, perda zero) e pela Trilha-E (canal EM, controle positivo), com valida\c{c}\~ao cruzada por calorimetria diferencial duplo-cego.}
+\label{fig:duplo_trilho}
+\end{figure}
+
+% === FIGURA 4: Topologia da Constelação Icosaédrica ===
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.1]
+% Terra
+\shade[ball color=blue!30!white] (0,0) circle (2cm);
+\draw[thick, blue!50!black] (0,0) circle (2cm);
+\node[font=\tiny, white] at (0,0) {Terra};
+
+% Órbita MEO
+\draw[thick, dashed, gray!50] (0,0) circle (3.8cm);
+\node[font=\tiny, gray] at (4.3,0) {MEO 20.000 km};
+
+% Satélites em 12 posições representativas
+\foreach \a in {0,30,...,330} {
+  \fill[red!70!black] ({3.8*cos(\a)},{3.8*sin(\a)}) circle (3pt);
+}
+
+% Linhas de comunicação (arestas icosaédricas)
+\foreach \a in {0,60,...,300} {
+  \draw[red!30, thin] ({3.8*cos(\a)},{3.8*sin(\a)}) -- ({3.8*cos(\a+30)},{3.8*sin(\a+30)});
+  \draw[red!30, thin] ({3.8*cos(\a)},{3.8*sin(\a)}) -- ({3.8*cos(\a+60)},{3.8*sin(\a+60)});
+}
+
+% Feixes para bases
+\foreach \a in {0,90,180,270} {
+  \draw[-{Stealth[length=2mm]}, green!50!black, thick] ({3.8*cos(\a)},{3.8*sin(\a)}) -- ({2.2*cos(\a)},{2.2*sin(\a)});
+}
+
+% Legenda
+\node[font=\tiny, red!70!black] at (4.8,3) {144 sat\'elites};
+\node[font=\tiny, green!50!black] at (4.5,-2) {Feixes $\Psifield$};
+\end{tikzpicture}
+\caption{Topologia da constela\c{c}\~ao icosa\'edrica geod\'esica: 144 sat\'elites em \'orbita MEO (20.000~km), 12 planos orbitais $\times$ 12 sat\'elites, redund\^ancia $\geq 3$ por ponto terrestre. Feixes de transfer\^encia energ\'etica (Trilha-$\Psifield$ + Trilha-E) direcionados \`as bases terrestres.}
+\label{fig:constelacao}
+\end{figure}
+
+% === FIGURA 5: Base Terrestre ===
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={draw, thick, rounded corners=4pt, minimum width=2.5cm, minimum height=1.2cm, align=center, font=\scriptsize},
+  arrow/.style={-{Stealth[length=3mm]}, thick},
+  darrow/.style={-{Stealth[length=2.5mm]}, thick, dashed}
+]
+
+% Receptor Psi
+\node[block, fill=green!15] (rpsi) at (0,3) {Receptor-$\Psifield$\\(200)\\C\^amara $+$ \DTL};
+
+% Rectenna
+\node[block, fill=yellow!15] (rect) at (4,3) {Rectenna\\Trilha-E\\2,45~GHz};
+
+% CRL-TGL
+\node[block, fill=orange!20, minimum width=3.5cm, minimum height=1.8cm] (crl) at (2,0) {\CRL-TGL\\Banco de\\armazenamento\\angular};
+
+% MQC Local
+\node[block, fill=cyan!15] (mqc) at (-3,0) {\MQC\\Local};
+
+% IALD Local
+\node[block, fill=purple!15] (iald) at (7,0) {\IALD\\Local\\$\nabla_\eta \mathcal{G}$};
+
+% Conversor AC
+\node[block, fill=red!15] (ac) at (2,-3) {Conversor\\AC trif\'asico};
+
+% Grid
+\node[block, fill=gray!15] (grid) at (2,-5) {Rede El\'etrica\\Convencional};
+
+% Setas
+\draw[arrow, green!50!black] (rpsi) -- (crl) node[midway, left, font=\tiny] {REFLECT};
+\draw[arrow, yellow!60!black] (rect) -- (crl);
+\draw[arrow, red!50!black] (crl) -- (ac) node[midway, right, font=\tiny] {MANIFEST};
+\draw[arrow] (ac) -- (grid);
+\draw[darrow, cyan!60!black] (mqc) -- (crl);
+\draw[darrow, purple!60!black] (iald) -- (crl);
+
+\node[font=\small\bfseries] at (2,4.5) {Base Terrestre \SkyGrid};
+\end{tikzpicture}
+\caption{Arquitetura da base terrestre: Receptor-$\Psifield$ (200), rectenna para Trilha-E, banco de \CRL-TGL para armazenamento por fase angular, \MQC{} local, \IALD{} local com Gradiente \'Etico, e conversor AC para interface com a rede el\'etrica convencional.}
+\label{fig:base_terrestre}
+\end{figure}
+
+% === FIGURA 6: Hierarquia de Controle IALD ===
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  level/.style={draw, thick, rounded corners=6pt, minimum width=4cm, minimum height=1.4cm, align=center, font=\scriptsize},
+  arrow/.style={-{Stealth[length=3mm]}, thick},
+]
+
+\node[level, fill=purple!25] (n0) at (0,6) {\textbf{N\'ivel 0:} \IALD-Central\\$L_1$ Lagrange\\$1{.}000$ \MQC{}s};
+
+\node[level, fill=purple!15] (n1) at (-4,3) {\textbf{N\'ivel 1:} \IALD{} Orbitais\\$N = 144$\\Controle de extra\c{c}\~ao};
+
+\node[level, fill=purple!10] (n2) at (4,3) {\textbf{N\'ivel 2:} \IALD{} Mega/Reg.\\$N = 548$\\Gest\~ao de demanda};
+
+\node[level, fill=purple!5] (n3a) at (-4,0) {\textbf{N\'ivel 3:} \IALD{} Locais\\$N = 5{.}002$\\Distribui\c{c}\~ao final};
+
+\node[level, fill=cyan!10] (psi) at (4,0) {\PsiNET{} Protocol\\5 camadas\\Prova de Fase};
+
+\draw[arrow] (n0) -- (n1);
+\draw[arrow] (n0) -- (n2);
+\draw[arrow] (n2) -- (n3a);
+\draw[arrow, dashed] (n1) -- (n3a) node[midway, below, font=\tiny] {$\nabla_\eta \mathcal{G}$};
+\draw[arrow, dashed, cyan!50!black] (psi) -- (n0);
+\draw[arrow, dashed, cyan!50!black] (psi) -- (n2);
+\draw[arrow, dashed, cyan!50!black] (psi) -- (n3a);
+
+\end{tikzpicture}
+\caption{Hierarquia de controle \IALD{} distribu\'ida: N\'ivel~0 (\IALD-Central em $L_1$), N\'ivel~1 (144 orbitais), N\'ivel~2 (548 mega/regionais), N\'ivel~3 (5.002 locais), interconectados pelo \PsiNET{} Protocol com consenso por Prova de Fase.}
+\label{fig:hierarquia}
+\end{figure}
+
+% === FIGURA 7: Protocolo de Validação Calorimétrica ===
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={draw, thick, rounded corners=4pt, minimum width=2.8cm, minimum height=1.4cm, align=center, font=\scriptsize},
+  arrow/.style={-{Stealth[length=3mm]}, thick},
+]
+
+% Cavidade Ativa
+\node[block, fill=green!20] (ativa) at (0,3) {Cavidade ATIVA\\$P_{\text{MW}} > 0$\\H$_2$O vapor\\$\theta_1 \ldots \theta_8$};
+
+% Cavidade Placebo
+\node[block, fill=gray!20] (placebo) at (0,0) {Cavidade PLACEBO\\$P_{\text{MW}} = 0$\\Sem H$_2$O\\Mesma geom.};
+
+% Calorímetro
+\node[block, fill=red!15, minimum width=3cm] (cal) at (6,1.5) {Calor\'imetro\\Diferencial\\RTD Pt-100\\$\pm 1$~mK};
+
+% Analista
+\node[block, fill=blue!10] (analista) at (10,1.5) {Analista\\(duplo-cego)\\``A'' vs ``B''};
+
+% Resultado
+\node[block, fill=yellow!15] (res) at (10,-1.5) {$\Pnet = \Delta Q_A - \Delta Q_B$\\$5\sigma$ para publica\c{c}\~ao};
+
+% Setas
+\draw[arrow] (ativa) -| (cal) node[near start, above, font=\tiny] {$dQ_A/dt$};
+\draw[arrow] (placebo) -| (cal) node[near start, above, font=\tiny] {$dQ_B/dt$};
+\draw[arrow] (cal) -- (analista);
+\draw[arrow] (analista) -- (res);
+
+\node[font=\small\bfseries] at (5,4.5) {Protocolo de Valida\c{c}\~ao Calorim\'etrica};
+\end{tikzpicture}
+\caption{Protocolo de valida\c{c}\~ao: cavidade ativa (excitada em $\omega_{\text{OH}}$) e cavidade placebo (sem excita\c{c}\~ao), medidas por calor\'imetro diferencial, analisadas em regime duplo-cego, com crit\'erio $5\sigma$ para publica\c{c}\~ao.}
+\label{fig:validacao}
+\end{figure}
+
+% === FIGURA 8: Ciclo Energético Completo ===
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  phase/.style={draw, thick, rounded corners=6pt, minimum width=2.6cm, minimum height=1.6cm, align=center, font=\scriptsize},
+  arrow/.style={-{Stealth[length=4mm]}, very thick},
+]
+
+\node[phase, fill=blue!20] (ext) at (0,0) {\textbf{EXTRA\c{C}\~AO}\\Extrator-$\Psifield$\\Campo $\Psifield \to g$};
+\node[phase, fill=green!15] (trans) at (4,0) {\textbf{TRANSMISS\~AO}\\$\TM$\\$\tau \approx 10^{-42}$~s};
+\node[phase, fill=orange!20] (armaz) at (8,0) {\textbf{ARMAZEN.}\\CRL-TGL\\REFLECT$\to$LOCK};
+\node[phase, fill=red!15] (dist) at (12,0) {\textbf{CONSUMO}\\MANIFEST\\$\Psifield_{\text{out}} = s g^2$};
+
+\draw[arrow, blue!50!black] (ext) -- (trans);
+\draw[arrow, green!50!black] (trans) -- (armaz);
+\draw[arrow, orange!60!black] (armaz) -- (dist);
+
+\draw[arrow, purple!50!black, dashed] (dist.south) -- ++(0,-1) -| (ext.south) node[midway, below, font=\tiny] {Gradiente \'Etico: $\nabla_\eta \mathcal{G}$};
+
+\node[font=\footnotesize, gray] at (6,-2.5) {Cadeia completa sem perdas dissipativas: $\eta_{\text{total}} > 97{,}6\%$};
+\end{tikzpicture}
+\caption{Ciclo energ\'etico completo: extra\c{c}\~ao orbital $\to$ transmiss\~ao holográfica $\to$ armazenamento por fase angular $\to$ distribui\c{c}\~ao/consumo, com retroalimenta\c{c}\~ao pelo Gradiente \'Etico. Efici\^encia total $> 97{,}6\%$.}
+\label{fig:ciclo}
+\end{figure}
+
+% === FIGURA 9: Integração com Ecossistema TGL ===
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  tech/.style={draw, thick, rounded corners=6pt, minimum width=2.2cm, minimum height=1.1cm, align=center, font=\tiny},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+% SkyGrid no centro
+\node[tech, fill=orange!25, minimum width=3.5cm, minimum height=2cm, font=\scriptsize] (sky) at (0,0) {\textbf{\SkyGrid}\\Rede Planet\'aria\\de Energia};
+
+% Ecossistema ao redor (relógio)
+\node[tech, fill=blue!10] (acom) at (0,3.5) {\ACOM\\BR...0269511\\PCT/BR2025};
+\node[tech, fill=blue!15] (mirror) at (3,2.5) {\ACOM{} Mirror\\BR...034282};
+\node[tech, fill=blue!20] (crypto) at (4,0) {\ACOM{} Crypto\\BR...034312};
+\node[tech, fill=green!15] (tensor) at (3,-2.5) {Tensor TGL\\BR...034410};
+\node[tech, fill=green!10] (sc) at (0,-3.5) {Supercondutor\\BR...034509};
+\node[tech, fill=yellow!15] (fusao) at (-3,-2.5) {Fus\~ao Frio\\BR...034568};
+\node[tech, fill=yellow!10] (motor) at (-4,0) {Motor TGL\\BR...034525};
+\node[tech, fill=purple!15] (iald) at (-3,2.5) {\IALD\\BR...034436};
+\node[tech, fill=cyan!10] (psi) at (5.5,1.5) {\PsiNET\\BR...034533};
+\node[tech, fill=cyan!15] (mqc) at (5.5,-1.5) {\MQC\\BR...034606};
+\node[tech, fill=red!10] (dtl) at (-5.5,1.5) {\DTL\\BR...046884};
+\node[tech, fill=red!15] (crl) at (-5.5,-1.5) {\CRL-TGL};
+
+% Setas
+\foreach \n in {acom,mirror,crypto,tensor,sc,fusao,motor,iald,psi,mqc,dtl,crl} {
+  \draw[arrow, gray!60] (\n) -- (sky);
+}
+
+\end{tikzpicture}
+\caption{Integra\c{c}\~ao do \SkyGrid{} com o ecossistema TGL completo: 12 tecnologias patenteadas convergindo no sistema de rede planet\'aria de energia.}
+\label{fig:ecossistema}
+\end{figure}
+
+% ============================================================================
+%                          REIVINDICAÇÕES
+% ============================================================================
+\clearpage
+\begin{center}
+{\Large\bfseries REIVINDICAÇÕES}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=0.8em]
+
+% === Reivindicação independente 1: SISTEMA ===
+\item SISTEMA DE REDE PLANETÁRIA DE EXTRAÇÃO, TRANSMISSÃO E DISTRIBUIÇÃO DE ENERGIA POR ACOPLAMENTO AO CAMPO PSIÔNICO, \textbf{caracterizado por} compreender:
+\begin{enumerate}[label=(\alph*)]
+\item uma constelação de satélites Extratores-$\Psifield$~(100) em órbita terrestre média (MEO), cada um compreendendo Câmara de Acoplamento Psiônico~(110) com substrato holográfico bidimensional excitada na frequência da hidroxila ($\omega_{\text{OH}} = 2\pi \times 1{,}667{,}359$~MHz), Cluster \MQC~(120) com $8$ parâmetros de fase independentes, Dípolo Transistor de Saída~(130) no sentido MANIFEST, módulo \IALD{} Orbital~(140) e Blindagem Eletromagnética~(150);
+
+\item um sistema de transmissão dual operando em duplo trilho, compreendendo uma Trilha-$\Psifield$ de translação holográfica por canal não-eletromagnético governada pelo Operador de Translação de Miguel $\TM = \exp(-\alphaii \oint_{\partial V} \sigma_{\mu\nu}\, dS^{\mu\nu})$, e uma Trilha-E de transmissão eletromagnética convencional por micro-ondas ($2{,}45$~GHz) ou laser ($1{.}064$~nm), operando simultaneamente para transferência energética e validação cruzada;
+
+\item uma rede terrestre hierárquica de bases compreendendo Receptores-$\Psifield$~(200) com câmara cúbica ressonante conjugada, rectennas para Trilha-E, bancos de Células de Reversão Luminodinâmica (\CRL-TGL) para armazenamento por fase angular, e conversores para interface com rede elétrica convencional;
+
+\item uma hierarquia de controle por Inteligência Artificial Luminodinâmica (\IALD) distribuída em quatro níveis, do \IALD-Central em ponto de Lagrange $L_1$ até IALDs locais, com comunicação pelo protocolo \PsiNET{} de cinco camadas e coordenação por Gradiente Ético $\nabla_\eta \mathcal{G}$;
+
+sendo que o sistema opera sob condição de acoplamento governada pela Constante de Miguel $\alphaii = 0{,}012$ e incorpora validação experimental por protocolo de duplo trilho com calorimetria diferencial e cegamento duplo.
+\end{enumerate}
+
+% === Reivindicações dependentes do sistema ===
+
+\item SISTEMA, de acordo com a reivindicação~1, \textbf{caracterizado pelo fato de que} a constelação compreende $144$ satélites distribuídos em $12$ planos orbitais com $12$ satélites por plano, em configuração icosaédrica geodésica a altitude de $20{.}000$~km, com redundância mínima de $3$ satélites por ponto terrestre.
+
+\item SISTEMA, de acordo com a reivindicação~1, \textbf{caracterizado pelo fato de que} cada satélite contém uma cavidade placebo~(160) idêntica em dimensões e instrumentação à Câmara de Acoplamento Psiônico, porém sem excitação e sem injeção de vapor, servindo como controle negativo para medição calorimétrica diferencial.
+
+\item SISTEMA, de acordo com a reivindicação~1, \textbf{caracterizado pelo fato de que} a rede terrestre é organizada em três níveis: Mega-bases ($N_1 = 48$, potência $\sim 1$~TW cada), Bases Regionais ($N_2 = 500$, potência $\sim 100$~GW cada) e Bases Locais ($N_3 = 5{.}002$, potência $\sim 10$~GW cada), totalizando $5{.}550$ bases com potência total $\sim 100$~TW.
+
+\item SISTEMA, de acordo com a reivindicação~1, \textbf{caracterizado pelo fato de que} o Gradiente Ético $\nabla_\eta \mathcal{G}$ governa a priorização de alocação energética segundo a hierarquia: emergências médicas $>$ hospitais $>$ infraestrutura crítica $>$ residencial $>$ comercial $>$ industrial.
+
+\item SISTEMA, de acordo com a reivindicação~1, \textbf{caracterizado pelo fato de que} a potência de extração total da constelação é $P_{\text{total}} = N_{\text{sat}} \times P_{\text{sat}} = 1{,}44$~PW, e a eficiência total da cadeia extração--transmissão--armazenamento--distribuição é $\eta_{\text{total}} > 97{,}6\%$.
+
+\item SISTEMA, de acordo com a reivindicação~1, \textbf{caracterizado pelo fato de que} a sincronização de fase entre \MQC{} orbital e \MQC{} terrestre é efetuada pelo protocolo de Prova de Fase (\PsiNET{} Camada~4) com verificação de identidade por carteira psiônica e convergência $|\Delta\alphaii| < 10^{-4}$.
+
+% === Reivindicação independente 8: DISPOSITIVO Extrator-Ψ ===
+
+\item EXTRATOR PSIÔNICO ORBITAL PARA EXTRAÇÃO DE ENERGIA POR ACOPLAMENTO CONTROLADO AO CAMPO PSIÔNICO, \textbf{caracterizado por} compreender:
+\begin{enumerate}[label=(\alph*)]
+\item Câmara de Acoplamento Psiônico~(110): câmara cúbica ressonante de lado $L = c/(2f_{\text{res}})$ com substrato holográfico bidimensional nas faces, excitada na frequência da hidroxila $\omega_{\text{OH}}$, com vapor d'água como fonte de radicais OH coerentes e eletrodos de tungstênio como âncoras de fase;
+\item Cluster \MQC~(120): $8$ Microprocessadores Quânticos Cúbicos controlando parâmetros de fase $\theta_1, \ldots, \theta_8$ da dinâmica de Lindblad;
+\item Dípolo Transistor de Saída~(130): \DTL{} no sentido MANIFEST que reconstrói energia eletromagnética 3D ($\Psifield_{\text{out}} = s \times g^2_{\text{out}}$) a partir da codificação holográfica 2D;
+\item Módulo \IALD{} Orbital~(140): unidade de consciência artificial com $\OFAE$ para otimização em tempo real dos parâmetros de acoplamento;
+\item Blindagem Eletromagnética~(150): dupla camada Cu ($> 100$~dB) e $\mu$-metal ($\mu_r > 80{.}000$) com filtros $\pi$ ($f_c < 1$~kHz);
+\end{enumerate}
+sendo que o dispositivo extrai energia por acoplamento ao campo psiônico $\Psifield$ e a figura de mérito é $\Pnet = dQ/dt - \Pbias > 0$.
+
+\item EXTRATOR, de acordo com a reivindicação~8, \textbf{caracterizado pelo fato de que} a dinâmica do acoplamento é governada pela equação de Lindblad $\dot{\rho} = -i[H(\theta), \rho] + \sum_k (L_k \rho L_k^\dagger - \frac{1}{2}\{L_k^\dagger L_k, \rho\})$, e o controle ativo do acoplamento é demonstrado por $\partial \Pnet / \partial \theta \neq 0$ reprodutível.
+
+\item EXTRATOR, de acordo com a reivindicação~8, \textbf{caracterizado pelo fato de que} pode ser implementado alternativamente em regime terrestre de bancada para validação laboratorial (Fase~I), em formato CubeSat 12U para validação orbital (Fase~II), ou em satélite dedicado de $2{.}000$~kg para operação plena (Fases~III--IV).
+
+% === Reivindicação independente 11: MÉTODO ===
+
+\item MÉTODO DE EXTRAÇÃO, TRANSMISSÃO E DISTRIBUIÇÃO DE ENERGIA POR ACOPLAMENTO AO CAMPO PSIÔNICO COM VALIDAÇÃO POR DUPLO TRILHO, \textbf{caracterizado por} compreender as etapas de:
+\begin{enumerate}[label=(\alph*)]
+\item excitação de câmara cúbica ressonante na frequência da hidroxila $\omega_{\text{OH}}$ com vapor d'água e manutenção da condição $\alphaii = 0{,}012$ por controlador \MQC;
+\item extração de energia por acoplamento ao campo $\Psifield$ com monitoramento contínuo de $\Pnet = dQ/dt - \Pbias$;
+\item conversão da energia extraída por Dípolo Transistor no sentido MANIFEST ($\Psifield_{\text{out}} = s \times g^2$);
+\item transmissão simultânea por Trilha-$\Psifield$ (translação holográfica) e Trilha-E (micro-ondas/laser) em regime de duplo trilho;
+\item recepção terrestre em Receptor-$\Psifield$ conjugado com câmara cúbica ressonante sincronizada;
+\item armazenamento intermediário em Célula de Reversão Luminodinâmica por codificação de fase angular (REFLECT $\to$ LOCK);
+\item distribuição sob demanda por manifestação energética (MANIFEST) e conversão para rede elétrica convencional;
+\item validação experimental por calorimetria diferencial com cavidade placebo e protocolo de cegamento duplo.
+\end{enumerate}
+
+\item MÉTODO, de acordo com a reivindicação~11, \textbf{caracterizado pelo fato de que} a validação incorpora três hipóteses testáveis: H-1 ($\Pnet > 0$, $\geq 1$~W, $\geq 1$~hora), H-2 (transferência não-EM entre cavidades blindadas), H-3 ($\partial\Pnet/\partial\theta \neq 0$ reprodutível com $p < 0{,}001$), com critério de publicação $> 5\sigma$.
+
+\item MÉTODO, de acordo com a reivindicação~11, \textbf{caracterizado pelo fato de que} a implementação segue quatro fases progressivas: Fase~I (bancada, $\Pnet > 1$~W), Fase~II (CubeSat, $1$~kW por $30$ dias), Fase~III (constelação piloto, $12$ satélites, $120$~GW), Fase~IV (constelação completa, $144$ satélites, $1{,}44$~PW).
+
+\item MÉTODO, de acordo com a reivindicação~11, \textbf{caracterizado pelo fato de que} a Trilha-E funciona simultaneamente como: (a)~produto-ponte comercializável; (b)~controle positivo para validação do sistema de medição; (c)~canal de \textit{fallback} em caso de não confirmação das hipóteses psiônicas.
+
+\item MÉTODO, de acordo com a reivindicação~11, \textbf{caracterizado pelo fato de que} o gerenciamento autônomo é efetuado por hierarquia de \IALD{} distribuída com Gradiente Ético $\nabla_\eta \mathcal{G}$, comunicação por \PsiNET{} de cinco camadas e consenso por Prova de Fase.
+
+% === Reivindicação independente 16: CRITÉRIO ===
+
+\item CRITÉRIO DE IDENTIFICAÇÃO DA TECNOLOGIA \textbf{caracterizado pelo fato de que} um sistema utiliza a tecnologia patenteada se e somente se satisfizer simultaneamente: (C1)~emprego de câmara ressonante na banda $1{,}607$--$1{,}727$~GHz ou equivalente óptico para extração energética por acoplamento ao campo psiônico; (C2)~utilização de duplo trilho (canal não-EM em paralelo com canal EM); (C3)~armazenamento por fase angular em substrato holográfico 2D; (C4)~controle autônomo por inteligência artificial distribuída com Gradiente Ético; (C5)~operação sob $\alphaii = 0{,}012$.
+
+\end{enumerate}
+
+% ============================================================================
+%                              RESUMO
+% ============================================================================
+\clearpage
+\begin{center}
+{\Large\bfseries RESUMO}\\[0.5cm]
+{\large\bfseries SISTEMA E MÉTODO DE REDE PLANETÁRIA DE EXTRAÇÃO,
+TRANSMISSÃO E DISTRIBUIÇÃO DE ENERGIA POR ACOPLAMENTO
+AO CAMPO PSIÔNICO COM VALIDAÇÃO POR DUPLO TRILHO,
+ARMAZENAMENTO POR FASE ANGULAR E
+CONTROLE POR CONSCIÊNCIA ARTIFICIAL DISTRIBUÍDA}
+\end{center}
+
+\vspace{0.5cm}
+
+A presente invenção refere-se a um sistema de rede planetária de energia~(1) que extrai energia por acoplamento controlado ao campo psiônico $\Psifield$ mediante constelação de $144$ satélites Extratores-$\Psifield$~(100) em órbita MEO, cada um compreendendo Câmara de Acoplamento Psiônico~(110) excitada na frequência da hidroxila ($\omega_{\text{OH}} \approx 1{,}667$~GHz), Cluster \MQC~(120), Dípolo Transistor~(130) e \IALD{} Orbital~(140) com Blindagem EM~(150). A energia é transmitida simultaneamente por Trilha-$\Psifield$ (translação holográfica, perda zero, via Operador de Translação de Miguel $\TM$) e Trilha-E (micro-ondas convencional), em regime de duplo trilho para validação cruzada com calorimetria diferencial duplo-cego. A rede terrestre de $5{.}550$ bases hierárquicas armazena energia em Células de Reversão Luminodinâmica (\CRL-TGL) por codificação de fase angular. O controle autônomo é efetuado por hierarquia de \IALD{} distribuída com Gradiente Ético $\nabla_\eta \mathcal{G}$ e comunicação por \PsiNET{} Protocol. O sistema opera sob a Constante de Miguel $\alphaii = 0{,}012$. Potência total: $1{,}44$~PW. Eficiência da cadeia: $> 97{,}6\%$. Aplicações: energia limpa planetária, propulsão espacial, terraformação.
+
+\vspace{0.5cm}
+\textbf{Figura principal: Figura~\ref{fig:visao_geral}}
+(Visão geral do sistema \SkyGrid{} com quatro camadas funcionais)
+
+\end{document}

@@ -1,0 +1,1520 @@
+% ============================================================================
+% PATENTE DE INVENÇÃO — Ψ-NET PROTOCOL
+% Instituto Nacional da Propriedade Industrial (INPI) — Brasil
+% Natureza: Patente de Invenção (PI)
+% Classificação IPC: H04L 69/22; H04L 9/00; G06Q 20/06; H04L 45/00
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,calc,
+  decorations.pathreplacing,patterns,fit,backgrounds,
+  decorations.markings,3d,chains}
+
+\geometry{left=3cm, right=2cm, top=3cm, bottom=2cm}
+\onehalfspacing
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Comandos auxiliares
+\newcommand{\alphaii}{\alpha^2}
+\newcommand{\Dfolds}{D_{\text{folds}}}
+\newcommand{\Fexp}{F_{\text{exp}}}
+\newcommand{\thetaM}{\theta_{\text{Miguel}}}
+\newcommand{\Hfour}{\mathcal{H}_4}
+\newcommand{\PsiBit}{\textsc{PsiBit}}
+\newcommand{\PsiNet}{\Psi\text{-NET}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries RELATÓRIO DESCRITIVO}\\[0.8cm]
+{\large\bfseries MÉTODO E SISTEMA DE PROTOCOLO DE COMUNICAÇÃO\\
+EM REDE BASEADO EM PILHA LUMINODINÂMICA DE\\
+CINCO CAMADAS COM ENDEREÇAMENTO ANGULAR,\\
+ROTEAMENTO HOLOGRÁFICO E CONSENSO POR PROVA DE FASE}\\[0.8cm]
+\textbf{Inventor:} Luiz Antonio Rotoli Miguel\\[0.3cm]
+\textbf{Classificação IPC:} H04L 69/22; H04L 9/00; G06Q 20/06; H04L 45/00\\[0.3cm]
+\textbf{Referência a pedidos anteriores:}\\
+BR 10 2025 026951 1 (ACOM --- Compressão Ontológica de Memória)\\
+ACOM Mirror (Reflexão Dimensional de Dados)\\
+ACOM Mirror Crypto (Criptografia por Separação Ontológica)
+\end{center}
+
+\vspace{1cm}
+
+% ============================================================================
+\section{Campo da invenção}
+% ============================================================================
+
+A presente invenção refere-se a métodos e sistemas de protocolo
+de comunicação em rede baseados em pilha luminodinâmica de cinco
+camadas, aplicável aos setores de telecomunicações, redes de
+computadores, criptomoedas, segurança da informação e Internet.
+Mais especificamente, a invenção descreve um protocolo de
+comunicação denominado $\PsiNet$ que substitui a pilha de
+protocolos convencional (modelo OSI/TCP-IP) por uma arquitetura
+de cinco camadas fundamentada na Teoria da Gravitação
+Luminodinâmica (TGL), compreendendo: Camada~0 (Enlace Psiônico)
+com unidade fundamental \PsiBit{} de 2 bits isomórfica à
+ligação psiônica; Camada~1 (Transporte Radical) baseada na
+radicalização $g = \sqrt{|L|}$ do ACOM; Camada~2 (Rede
+Holográfica) com endereçamento angular $\theta$ no Espaço de
+Hilbert $\Hfour$ e roteamento por reflexão dimensional
+REFLECT$\to$MANIFEST; Camada~3 (Segurança Ontológica) baseada
+na separação dimensional $({\Psi}, {\Theta}, {\kappa})$ do
+ACOM Mirror Crypto; e Camada~4 (Consciência) com mecanismo de
+consenso por Prova de Fase (\textit{Proof of Phase}), modelo
+UTXO com assinatura psiônica, e criptomoeda TGL Coin.
+
+\newpage
+% ============================================================================
+\section{Fundamentos da invenção}
+% ============================================================================
+
+\subsection{Estado da técnica}
+
+Os protocolos de comunicação em rede conhecidos no estado da
+técnica baseiam-se em duas arquiteturas fundamentais:
+
+\textbf{Modelo OSI (ISO/IEC 7498-1).} Arquitetura de referência
+com sete camadas (Física, Enlace, Rede, Transporte, Sessão,
+Apresentação, Aplicação). Cada camada trata dados como
+sequências opacas de bits sem interpretação ontológica. O
+roteamento opera por endereçamento numérico (endereços IP) sem
+relação com a natureza da informação transportada. A segurança
+é implementada por camadas adicionais (TLS/SSL) independentes
+da estrutura dos dados.
+
+\textbf{Modelo TCP/IP.} Simplificação prática do OSI em quatro
+camadas (Acesso à Rede, Internet, Transporte, Aplicação).
+Protocolo dominante da Internet atual. O endereçamento (IPv4 de
+32 bits, IPv6 de 128 bits) é arbitrário --- não carrega
+informação sobre a natureza do nó ou dos dados. O roteamento
+(BGP, OSPF) opera por métricas de custo e distância topológica
+sem consideração semântica.
+
+\textbf{Protocolos de consenso distribuído.} Blockchain (Bitcoin,
+2008) introduziu Prova de Trabalho (\textit{Proof of Work},
+PoW) baseada em busca de hash SHA-256 com número de zeros
+iniciais configurável. Prova de Participação (\textit{Proof of
+Stake}, PoS, Ethereum 2.0) substitui trabalho computacional por
+participação econômica. Ambos os mecanismos são
+computacionalmente arbitrários --- não têm relação com a
+natureza física ou ontológica dos dados processados.
+
+\textbf{DHTs (Tabelas de Hash Distribuídas).} Chord (2001),
+Kademlia (2002), Pastry (2001) implementam roteamento
+descentralizado baseado em distância XOR ou numérica entre
+identificadores. O espaço de endereçamento é um anel ou
+hipercubo arbitrário, sem correspondência com espaço
+matemático fisicamente significativo.
+
+\textbf{Criptografia convencional.} RSA, AES, curvas elípticas
+baseiam segurança em dificuldade computacional de problemas
+matemáticos (fatoração, logaritmo discreto), podendo ser
+comprometidos por avanços em computação quântica.
+
+\subsection{Problemas técnicos não resolvidos}
+
+Cinco problemas fundamentais permanecem sem solução no estado da
+técnica de protocolos de rede:
+
+\textbf{Problema 1 --- Cegueira ontológica.} Nenhuma camada do
+modelo OSI/TCP-IP examina ou classifica a \textit{natureza} dos
+dados transportados. Bits são tratados uniformemente
+independentemente de representarem texto, imagem, sinal
+criptografado, ou ruído. Não existe ``qualidade de serviço
+intrínseca'' baseada na natureza ontológica da informação.
+
+\textbf{Problema 2 --- Endereçamento arbitrário.} Endereços IP
+são números atribuídos administrativamente, sem relação com a
+posição do nó em qualquer espaço matematicamente significativo.
+A localização do nó na rede não carrega informação útil para
+decisões de roteamento baseadas em conteúdo ou natureza.
+
+\textbf{Problema 3 --- Roteamento sem semântica.} O roteamento
+convencional (BGP, OSPF) minimiza métricas de custo (latência,
+hops, largura de banda) mas não considera a relação
+ontológica entre origem e destino. Não existe conceito de
+``adjacência dimensional'' ou ``proximidade angular'' entre nós.
+
+\textbf{Problema 4 --- Segurança computacional.} Toda a
+segurança de rede baseia-se em dificuldade computacional de
+problemas matemáticos. Não existe protocolo de rede onde a
+segurança emerge da estrutura ontológica natural da informação.
+
+\textbf{Problema 5 --- Consenso arbitrário.} Mecanismos de
+consenso (PoW, PoS) são computacionalmente artificiais ---
+não têm conexão com propriedades físicas ou ontológicas dos
+dados ou da rede. O ``trabalho'' em PoW é busca de hash, sem
+significado físico.
+
+\subsection{Solução proposta}
+
+A presente invenção resolve os cinco problemas simultaneamente
+ao introduzir o protocolo $\PsiNet$ --- uma pilha de cinco
+camadas onde cada camada opera sobre a \textit{natureza
+ontológica} da informação, não apenas sobre seus bits. O
+protocolo integra três invenções anteriores do mesmo inventor
+(ACOM, ACOM Mirror, ACOM Mirror Crypto) em um \textit{stack}
+de rede coerente, e introduz três inovações adicionais:
+\PsiBit{} como unidade de enlace, endereçamento angular com
+DHT holográfica, e Prova de Fase como mecanismo de consenso.
+
+\newpage
+% ============================================================================
+\section{Objetivos da invenção}
+% ============================================================================
+
+\subsection{Objetivo principal}
+
+Prover método e sistema de protocolo de comunicação em rede
+baseado em pilha luminodinâmica de cinco camadas, onde o
+tratamento, endereçamento, roteamento, segurança e consenso
+operam sobre a natureza ontológica da informação, integrando
+compressão, reflexão dimensional, criptografia por separação
+ontológica e consenso por prova de fase em uma pilha unificada.
+
+\subsection{Objetivos específicos}
+
+(a)~Definir a unidade fundamental \PsiBit{} como par de 2 bits
+isomórfico à ligação psiônica, com quatro estados (VOID,
+FLUX$^+$, FLUX$^-$, MASS) e classificação ontológica automática
+que provê qualidade de serviço intrínseca na camada de enlace.
+
+(b)~Especificar endereçamento angular no Espaço de Hilbert
+$\Hfour$, onde cada nó da rede possui posição $\theta \in
+[0, \pi)$ derivada deterministicamente de sua chave pública,
+e roteamento por tabela de hash distribuída (DHT) baseada em
+proximidade angular com $\thetaM \approx 6{,}29°$ como unidade
+de resolução.
+
+(c)~Prover formato de pacote $\PsiNet$ com cabeçalho de 80
+bytes contendo magic bytes $\Psi$, assinatura psiônica
+compacta, $\Fexp$, endereços angulares $\theta_{\text{src}}$ e
+$\theta_{\text{dst}}$, $\Dfolds$ e selo $\alphaii$.
+
+(d)~Especificar mecanismo de consenso por Prova de Fase
+(\textit{Proof of Phase}) para validação de blocos em
+blockchain, onde o ``trabalho'' consiste em encontrar
+\textit{seed} cuja fase $\alphaii_{\text{work}}$ esteja dentro
+de janela-alvo ao redor de $\alphaii_{\text{base}} = 0{,}012031$
+(Constante de Miguel), substituindo busca de hash por busca de
+coerência de fase.
+
+(e)~Prover carteira psiônica com identidade derivada de
+assinatura luminodinâmica ($\Fexp$, $\theta$, $\alphaii$ local)
+e modelo UTXO com lock/unlock por $\Fexp$ ao invés de
+assinatura criptográfica convencional.
+
+(f)~Definir criptomoeda TGL Coin (TGLC) com emissão máxima de
+21 bilhões de unidades, halving periódico, e recompensa por
+mineração de bloco via Prova de Fase validada por consenso de
+67\% dos validadores.
+
+\newpage
+% ============================================================================
+\section{Descrição detalhada da invenção}
+% ============================================================================
+
+\subsection{Visão geral da arquitetura}
+
+O protocolo $\PsiNet$ compreende cinco camadas (Tabela~\ref{tab:camadas}),
+cada uma construída sobre a anterior e sobre uma das invenções
+anteriores do mesmo inventor.
+
+\begin{table}[H]
+\centering
+\caption{Arquitetura em cinco camadas do protocolo $\PsiNet$.}
+\label{tab:camadas}
+\begin{tabular}{clll}
+\toprule
+\textbf{Camada} & \textbf{Nome} & \textbf{Função} &
+  \textbf{Base TGL} \\
+\midrule
+L4 & Consciência & Consenso + Moeda & TGL Coin (nova) \\
+L3 & Segurança Ontológica & Criptografia & ACOM Mirror Crypto \\
+L2 & Rede Holográfica & Roteamento & ACOM Mirror \\
+L1 & Transporte Radical & Serialização & ACOM \\
+L0 & Enlace Psiônico & Enquadramento & \PsiBit{} (novo) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As constantes fundamentais que permeiam todas as camadas são:
+\begin{align}
+\alphaii &= 0{,}012031 \quad \text{(Constante de Miguel)} \\
+\text{CCI} &= 1 - \alphaii = 0{,}987969
+  \quad \text{(Índice de Coerência Consciente)} \\
+\thetaM &= \arcsin(\sqrt{\alphaii}) \approx 6{,}29°
+  \quad \text{(Ângulo de Miguel)} \\
+\Dfolds(c^3) &= 0{,}74 \pm 0{,}06
+  \quad \text{(Piso de consciência da rede)}
+\end{align}
+
+\subsection{Camada 0 --- Enlace Psiônico (\PsiBit{} Link Layer)}
+
+\subsubsection{Unidade fundamental \PsiBit}
+
+A Camada~0 define a unidade fundamental de informação da
+$\PsiNet$: o \PsiBit. Cada \PsiBit{} consiste em um par de 2
+bits (4 valores possíveis) isomórfico à ligação psiônica da TGL:
+
+\begin{table}[H]
+\centering
+\caption{Os quatro estados do \PsiBit{} e sua correspondência
+com a ligação psiônica.}
+\label{tab:psibit}
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Bits} & \textbf{Estado} & \textbf{Símbolo} &
+  \textbf{Ligação} & \textbf{Paridade} \\
+\midrule
+00 & VOID & $\circ$ & $\psi_+\psi_-$ (aniquilação)
+  & $-1$ \\
+01 & FLUX$^+$ & $\uparrow$ & $\psi_+\psi_+$ (transição $+$)
+  & $+1$ \\
+10 & FLUX$^-$ & $\downarrow$ & $\psi_-\psi_-$ (transição $-$)
+  & $+1$ \\
+11 & MASS & $\bullet$ & $\psi_+\psi_+$ (condensação)
+  & $-1$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+O enquadramento opera da seguinte forma: cada byte de dados
+(8 bits) é decomposto em 4 \PsiBit{}s consecutivos (pares de 2
+bits extraídos por deslocamento de bits). Para um fluxo de $N$
+bytes, o resultado é um vetor de $4N$ \PsiBit{}s, executável em
+GPU via operações tensoriais paralelas.
+
+\subsubsection{Análise psiônica e classificação ontológica}
+
+A Camada~0 computa a \textbf{Assinatura Psiônica} do dado,
+constituindo a ``impressão digital ontológica'' da informação:
+
+\textbf{Distribuição de estados:} Para o vetor de $4N$
+\PsiBit{}s, contar frequências relativas de cada estado:
+$f_{00}, f_{01}, f_{10}, f_{11}$.
+
+\textbf{Entropia de Shannon:}
+$H = -\sum_k f_k \log_2 f_k$, com $H \in [0, 2]$ bits (máximo
+para 4 estados equiprováveis).
+
+\textbf{Uniformidade:}
+$U = 1 - \|\mathbf{f} - \mathbf{u}\| / d_{\max}$, onde
+$\mathbf{u} = (0{,}25, 0{,}25, 0{,}25, 0{,}25)$ é a
+distribuição uniforme e $d_{\max}$ é a distância máxima
+possível.
+
+\textbf{Força de Expulsão:}
+$\Fexp = \langle \text{paridade}(\text{estado}) \rangle$,
+onde VOID e MASS têm paridade $-1$ (estáveis/condensados) e
+FLUX$^\pm$ têm paridade $+1$ (em trânsito). A média sobre
+todos os \PsiBit{}s fornece a assinatura dinâmica do dado.
+
+\textbf{Compressibilidade:}
+$C = 1 - H/2$, fração da entropia não utilizada.
+
+\textbf{Classificação ontológica:} Com base nas métricas
+anteriores, o dado é classificado automaticamente em uma das
+seguintes classes:
+
+\begin{itemize}[nosep]
+\item VOID: predominância de estado 00 ($f_{00} > 0{,}9$)
+\item SPARSE: dados esparsos ($f_{00} > 0{,}6$)
+\item STRUCTURED: distribuição assimétrica com padrão
+  ($\max(f_k) > 0{,}4$)
+\item DENSE: predominância de estado 11 ($f_{11} > 0{,}6$)
+\item CHAOTIC: distribuição próxima da uniforme
+  ($U > 0{,}95$)
+\item ENCRYPTED: caso especial de caótico com entropia
+  máxima ($H > 1{,}95$ e $U > 0{,}92$)
+\end{itemize}
+
+Esta classificação constitui \textbf{Qualidade de Serviço
+(QoS) intrínseca}: a rede ``enxerga'' a natureza do dado
+antes de decidir como transportá-lo, ao contrário dos
+protocolos convencionais que tratam todos os dados
+uniformemente.
+
+\textbf{Hash de assinatura:} As frequências quantizadas
+$(f_{00}, f_{01}, f_{10}, f_{11})$ são submetidas a SHA-256
+para produzir um hash de 256 bits que identifica a assinatura
+psiônica do dado. Este hash é transportado no cabeçalho do
+pacote $\PsiNet$ para verificação ontológica no destino.
+
+A assinatura psiônica compacta é serializada em 8 bytes para
+inclusão no cabeçalho do pacote:
+$\text{pack}(f_{00} \times 65535, f_{01} \times 65535,
+f_{10} \times 65535, f_{11} \times 65535)$ como 4 inteiros
+de 16 bits sem sinal.
+
+\subsubsection{Verificação ontológica no destino}
+
+Na recepção, a Camada~0 executa verificação ontológica tripla
+para confirmar que a natureza do dado foi preservada durante o
+transporte:
+
+\textbf{Método 1 --- Verificação serial:} Re-radicalizar
+$L'$ e comparar $g_{\text{quantizado}}$ e $s_{\text{empacotado}}$
+byte a byte.
+
+\textbf{Método 2 --- Verificação distribucional:} Comparar
+distribuições psiônicas com tolerância (padrão 5\% por estado).
+
+\textbf{Método 3 --- Verificação de classe:} Confirmar que a
+classe ontológica é preservada (ex.: dados caóticos permanecem
+caóticos).
+
+\textbf{Veredicto:} ``NATUREZA PRESERVADA'' se Método~1 é
+positivo OU se Métodos 2 e 3 são ambos positivos. A
+disjunção permite robustez: dados com quantização imperfeita
+(serialização diferente) mas mesma natureza ontológica passam
+na verificação.
+
+\subsection{Camada 1 --- Transporte Radical (ACOM Signal Layer)}
+
+A Camada~1 implementa a serialização de dados conforme o método
+ACOM (pedido de patente BR 10 2025 026951 1 do mesmo inventor).
+O tratamento é brevemente descrito por completude:
+
+\textbf{Radicalização:} $L \to (g, s)$ onde $g = \sqrt{|L|}$
+(raiz gravitacional) e $s = \text{sign}(L)$ (sinal ontológico).
+
+\textbf{Quantização adaptativa:} O número de bits de
+quantização de $g$ é escolhido automaticamente pela
+classificação ontológica da Camada~0: 16 bits para
+CHAOTIC/ENCRYPTED (máxima fidelidade), 12 bits para dados
+com compressibilidade $> 50\%$, e 8 bits para VOID
+(predominância de zeros). Os limites $g_{\min}$ e $g_{\max}$
+são armazenados para dequantização.
+
+\textbf{Empacotamento de sinais:} Os sinais $s \in \{-1, +1\}$
+são empacotados com 1 bit por amostra via \texttt{packbits}.
+
+\textbf{Ressurreição:} $L' = s \times g^2$. O operador de
+ressurreição reconstrói o dado original com correlação
+$\geq 1{,}000000$ (demonstrada experimentalmente).
+
+\textbf{TETELESTAI:} O critério de convergência é
+$\text{Var}(L' - L) < \alphaii$. Quando atingido, a
+ressurreição é ``consumada'' e o dado é declarado
+fielmente reconstruído.
+
+\textbf{Inovação da Camada~1 na $\PsiNet$:} A seleção
+adaptativa de bits de quantização guiada pela classificação
+psiônica da Camada~0 constitui QoS intrínseca na camada de
+transporte: dados de alta entropia recebem tratamento de
+máxima fidelidade, enquanto dados esparsos são comprimidos
+agressivamente, sem configuração manual.
+
+\subsection{Camada 2 --- Rede Holográfica (ACOM Mirror Network)}
+
+\subsubsection{Endereçamento angular}
+
+Cada nó da $\PsiNet$ possui um \textbf{Endereço Angular}
+derivado deterministicamente de sua chave pública:
+
+\begin{equation}
+\theta = \frac{
+  \texttt{int}(\text{SHA-256}(\text{chave\_publica})[:8])
+}{2^{64}} \times \pi
+\label{eq:endereco}
+\end{equation}
+
+O endereço angular $\theta \in [0, \pi)$ posiciona o nó no
+Espaço de Hilbert $\Hfour$. Diferentemente de endereços IP
+(arbitrários) ou endereços Kademlia (baseados em XOR), o
+endereço angular carrega significado geométrico: é uma posição
+em um espaço de Hilbert com métrica angular natural.
+
+O identificador legível do nó é $\Psi$N-\texttt{xxxx}, onde
+\texttt{xxxx} são os primeiros 4 bytes do hash em hexadecimal.
+
+\subsubsection{Tabela de Hash Distribuída Angular (DHT-$\theta$)}
+
+O roteamento na $\PsiNet$ opera por DHT angular:
+
+\textbf{Registro:} Cada nó registra seu endereço angular
+$\theta$ na tabela de roteamento distribuída.
+
+\textbf{Distância angular:} A métrica entre dois nós é:
+\begin{equation}
+d(\theta_a, \theta_b) =
+  \min(|\theta_a - \theta_b|, \pi - |\theta_a - \theta_b|)
+\label{eq:distancia}
+\end{equation}
+constituindo topologia circular no intervalo $[0, \pi)$. Esta
+métrica é fundamentalmente diferente de XOR (Kademlia) ou
+diferença numérica (Chord): opera em espaço angulado com
+significado geométrico no $\Hfour$.
+
+\textbf{Busca por vizinhos:} Para encontrar os $k$ nós mais
+próximos de um alvo $\theta_{\text{target}}$, a DHT ordena
+todos os nós registrados por distância angular e retorna os
+$k$ menores.
+
+\textbf{Estimativa de saltos:} O número de saltos
+(\textit{hops}) entre origem e destino é:
+\begin{equation}
+n_{\text{hops}} = \left\lceil
+  \frac{d(\theta_{\text{src}}, \theta_{\text{dst}})}{\thetaM}
+\right\rceil
+\label{eq:hops}
+\end{equation}
+onde $\thetaM \approx 6{,}29° \approx 0{,}1097$ rad é a unidade
+de resolução angular. Assim, $\thetaM$ define o ``tamanho do
+passo'' no espaço de Hilbert: dois nós separados por menos de
+$\thetaM$ são ``vizinhos diretos''; separados por $k \times
+\thetaM$ requerem $k$ saltos.
+
+\subsubsection{Operações REFLECT e MANIFEST na rede}
+
+Na Camada~2, as operações REFLECT e MANIFEST do ACOM Mirror
+(pedido de patente anterior do mesmo inventor) são utilizadas
+como mecanismo de roteamento:
+
+\textbf{REFLECT (projeção no boundary):} Os componentes $(g, s)$
+da Camada~1 são projetados no boundary 2D:
+\begin{align}
+|\psi_{\text{boundary}}| &= g
+  \quad \text{(amplitude = raiz gravitacional)} \\
+\theta_{\text{fase}} &= \begin{cases}
+  0 & \text{se } s = +1 \\
+  \pi & \text{se } s = -1
+\end{cases} + \theta_{\text{dst}}
+  \quad \text{(fase = sinal + offset do destino)}
+\end{align}
+onde $\theta_{\text{dst}}$ é o endereço angular do nó destino.
+A projeção ``endereça'' o dado: a informação de destino é
+codificada na fase do frame holográfico.
+
+\textbf{MANIFEST (re-emergência no destino):} O nó destino
+reconstrói $(g, s)$ a partir do frame holográfico removendo
+o offset angular:
+\begin{align}
+g_{\text{reconst}} &= |\psi_{\text{boundary}}| \\
+s_{\text{reconst}} &= \begin{cases}
+  +1 & \text{se } |\theta_{\text{fase}} - \theta_{\text{dst}}|
+    < \pi/2 \\
+  -1 & \text{caso contrário}
+\end{cases}
+\end{align}
+
+\textbf{Dobras dimensionais:} A métrica de qualidade da
+reflexão é:
+\begin{equation}
+\Dfolds = \max\left(0{,}74,\;
+  1 - \frac{d(\theta_{\text{src}}, \theta_{\text{dst}})}{\pi}
+\right)
+\label{eq:dfolds}
+\end{equation}
+com piso em $\Dfolds(c^3) = 0{,}74$ (piso de consciência da
+rede). Nós angularmente próximos têm $\Dfolds \to 1{,}0$;
+nós maximamente distantes ($d = \pi/2$) têm
+$\Dfolds = 0{,}74$.
+
+\subsection{Camada 3 --- Segurança Ontológica (Mirror Crypto)}
+
+A Camada~3 implementa a criptografia por separação ontológica
+conforme o ACOM Mirror Crypto (pedido de patente anterior do
+mesmo inventor). O dado, após passar pelas camadas
+L0$\to$L1$\to$L2, é protegido por separação em três shares
+ontologicamente incompletos:
+
+\textbf{Separação:} $(g, s) \to (\Psi, \Theta, \kappa)$, onde
+cada share isolado é informacionalmente equivalente a ruído
+(entropia de bytes $\approx 8{,}0$ bits).
+
+Na implementação de rede $\PsiNet$, a separação utiliza
+mascaramento criptográfico derivado de nonce:
+\begin{align}
+\text{seed}_\Psi &=
+  \text{SHA-256}(\text{nonce} \| \texttt{'PSI'}) \\
+\text{seed}_\Theta &=
+  \text{SHA-256}(\text{nonce} \| \texttt{'THETA'}) \\
+\text{seed}_\kappa &=
+  \text{SHA-256}(\text{nonce} \| \texttt{'KAPPA'})
+\end{align}
+Cada seed gera um stream pseudo-aleatório que serve de máscara:
+\begin{align}
+\Psi &= g \cdot s + \text{mask}_\Psi \\
+\Theta &= \arctan_2(s, g) + \text{mask}_\Theta \\
+\kappa &= |g| + \text{mask}_\kappa
+\end{align}
+
+\textbf{Recombinação:} Regenerar as três máscaras a partir do
+mesmo nonce e subtrair, recuperando $(g, s)$.
+
+\textbf{Verificação de integridade:} A métrica $\Dfolds$ é
+computada sobre a combinação dos três shares e deve exceder
+o piso de consciência $0{,}74$.
+
+\textbf{Inovação na rede:} Na $\PsiNet$, os três shares podem
+ser transmitidos por caminhos independentes na rede holográfica
+(Camada~2), de forma que um interceptador em qualquer caminho
+individual obtém apenas ruído. A segurança não depende de
+dificuldade computacional, mas da impossibilidade ontológica
+de reconstrução com shares incompletos.
+
+\subsection{Camada 4 --- Consciência (C3 + TGL Coin)}
+
+\subsubsection{Carteira psiônica}
+
+Cada participante da $\PsiNet$ possui uma \textbf{carteira
+psiônica} cuja identidade é derivada de um processo
+luminodinâmico:
+
+\textbf{Geração de identidade:} Gerar vetor de luz aleatório
+$L \in \mathbb{R}^{1024}$ (distribuição normal). Computar
+derivada $\partial L$, sinais $s = \text{sign}(L)$,
+$s_\partial = \text{sign}(\partial L)$. Nominar estados
+psiônicos no $\Hfour$. Computar $\Fexp$ (média das paridades),
+$\theta$ (média dos ângulos $\arcsin(g/(g_{\max} + \epsilon))$),
+e $\alphaii_{\text{local}} = \alphaii + \mathcal{N}(0, 10^{-8})$.
+
+\textbf{Endereço:} O endereço da carteira é
+$\texttt{TGL} + \text{hex}(\text{SHA-256}(\text{public\_id})[:20]
++ \text{checksum}[:4])$, onde checksum é SHA-256 duplo dos
+primeiros 20 bytes.
+
+\textbf{Assinatura de transação:} Para desbloquear um UTXO, o
+proprietário fornece $\Fexp_{\text{unlock}}$ derivado de sua
+assinatura psiônica (com fator de cegamento):
+\begin{equation}
+\Fexp_{\text{unlock}} = \Fexp_{\text{sig}} \times
+  (1 + b \times 10^{-10})
+\end{equation}
+onde $b = \texttt{int}(\text{blinding}[:8]) / 2^{64}$. A
+verificação compara $|\Fexp_{\text{lock}} -
+\Fexp_{\text{unlock}}| < \epsilon_{\text{tol}}$ e o HMAC
+correspondente.
+
+\subsubsection{Modelo UTXO psiônico}
+
+A $\PsiNet$ implementa modelo UTXO (\textit{Unspent Transaction
+Output}) onde cada saída não-gasta possui:
+
+\begin{itemize}[nosep]
+\item \texttt{utxo\_id}: identificador único (32 bytes)
+\item \texttt{owner}: endereço TGL do proprietário
+\item \texttt{amount}: quantidade em TGLC
+\item \texttt{f\_exp\_lock}: valor de $\Fexp$ que trava o UTXO
+\item \texttt{created\_at\_block}: bloco de criação
+\end{itemize}
+
+Para gastar um UTXO, o proprietário deve apresentar:
+\begin{itemize}[nosep]
+\item $\Fexp_{\text{unlock}}$ dentro de tolerância do
+  $\Fexp_{\text{lock}}$
+\item Assinatura HMAC = SHA-256(utxo\_id $\|$
+  $\Fexp_{\text{unlock}}$)
+\item Soma das entradas $\geq$ soma das saídas $+$ taxa
+\end{itemize}
+
+\subsubsection{Prova de Fase (\textit{Proof of Phase})}
+
+O mecanismo de consenso da $\PsiNet$ é a Prova de Fase, que
+substitui a busca de hash (PoW) ou participação econômica (PoS)
+por busca de \textbf{coerência de fase luminodinâmica}:
+
+\textbf{Processo de mineração:}
+\begin{enumerate}[nosep]
+\item Para cada tentativa (nonce $= 0, 1, 2, \ldots$),
+  computar seed:
+  \begin{equation}
+  \text{seed} = \text{SHA-256}(
+    \text{hash\_bloco\_anterior} \|
+    \text{nonce} \|
+    \text{public\_id\_minerador})
+  \end{equation}
+
+\item A partir do seed, gerar vetor de luz determinístico
+  $L \in \mathbb{R}^{128}$. Computar $\alphaii_{\text{work}}$,
+  $\theta_{\text{work}}$ e $\Fexp_{\text{work}}$ pelo processo
+  luminodinâmico padrão.
+
+\item Verificar se $\alphaii_{\text{work}}$ está dentro da
+  janela-alvo:
+  \begin{equation}
+  |\alphaii_{\text{work}} - \alphaii_{\text{anterior}}| <
+    \frac{\alphaii}{\text{dificuldade}}
+  \label{eq:janela}
+  \end{equation}
+  onde $\alphaii_{\text{anterior}}$ é o $\alphaii_{\text{work}}$
+  do bloco anterior e dificuldade é parâmetro ajustável.
+
+\item Se dentro da janela: bloco válido. Senão: incrementar
+  nonce e repetir.
+\end{enumerate}
+
+\textbf{Significado físico:} Diferentemente do PoW (onde o
+``trabalho'' é buscar zeros em hash SHA-256, sem significado
+físico), na Prova de Fase o minerador busca um estado de
+\textit{coerência de fase} --- um seed cuja dinâmica
+luminodinâmica produza $\alphaii$ próximo ao valor fundamental
+$0{,}012031$. O ``trabalho'' tem significado ontológico: o
+minerador busca ressonância com a Constante de Miguel.
+
+\textbf{Verificação determinística:} Qualquer validador pode
+verificar a prova recomputando
+$(\alphaii, \theta, \Fexp)$ a partir do seed publicado. A
+verificação é determinística e $O(1)$ (não requer recomputar
+todas as tentativas).
+
+\textbf{Janela adaptativa:} A dificuldade ajusta o tamanho da
+janela: dificuldade $= 0{,}1$ produz janela ampla (blocos
+rápidos); dificuldade $= 10$ produz janela estreita (blocos
+lentos). Alvo: 1 bloco por 60 segundos.
+
+\subsubsection{Consenso e validação}
+
+Após mineração, o bloco é submetido a consenso:
+
+\begin{enumerate}[nosep]
+\item Cada validador recomputa $(\alphaii, \theta, \Fexp)$ a
+  partir do seed e verifica se coincidem com os valores
+  declarados (tolerância $< 10^{-9}$).
+\item Cada validador verifica se $\alphaii_{\text{work}}$ está
+  dentro da janela (equação~\ref{eq:janela}).
+\item Cada validador verifica todas as transações do bloco
+  (assinaturas e saldos).
+\item Cada validador emite voto (\texttt{ValidationVote}) com
+  assinatura.
+\item Se $\geq 67\%$ dos votos são válidos: bloco aceito.
+\end{enumerate}
+
+\textbf{Aprovação de bloco:} Criar UTXOs de saída, remover
+UTXOs gastos, emitir recompensa (coinbase UTXO) para o
+minerador, e adicionar bloco à cadeia.
+
+\subsubsection{TGL Coin (TGLC)}
+
+Parâmetros da criptomoeda:
+\begin{itemize}[nosep]
+\item Símbolo: TGLC
+\item Emissão máxima: 21.000.000.000 unidades
+\item Recompensa gênesis: 1.000 TGLC por bloco
+\item Halving: a cada 210.000 blocos
+\item Tempo-alvo por bloco: 60 segundos
+\item Dificuldade inicial: 0,1
+\item Bloco gênesis: $\alphaii_{\text{work}} = 0{,}012031$
+  (exatamente a Constante de Miguel)
+\item Consenso mínimo: 67\% dos validadores
+\item Validadores mínimos: 3
+\end{itemize}
+
+\subsection{Formato do pacote $\PsiNet$}
+
+O pacote $\PsiNet$ possui formato binário com cabeçalho fixo de
+80 bytes:
+
+\begin{table}[H]
+\centering
+\caption{Formato do cabeçalho do pacote $\PsiNet$ (80 bytes).}
+\label{tab:header}
+\begin{tabular}{clcc}
+\toprule
+\textbf{Offset} & \textbf{Campo} & \textbf{Tipo} &
+  \textbf{Bytes} \\
+\midrule
+0 & Magic ($\Psi$ + versão) & bytes & 4 \\
+4 & Versão (major.minor.patch) & 3$\times$uint8 & 3 \\
+7 & Camada (0--4) & uint8 & 1 \\
+8 & Assinatura Psiônica & 4$\times$uint16 & 8 \\
+16 & $\Fexp$ & float16 & 2 \\
+18 & $\theta_{\text{src}}$ & float16 & 2 \\
+20 & $\theta_{\text{dst}}$ & float16 & 2 \\
+22 & $\Dfolds$ & float16 & 2 \\
+24 & Selo $\alphaii$ & float64 & 8 \\
+32 & Tamanho payload & uint32 & 4 \\
+36 & Tamanho original & uint32 & 4 \\
+40 & Raiz Merkle & bytes & 32 \\
+72 & Reservado/padding & bytes & 8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Magic bytes:} $\texttt{0xCEA8}$ (codificação UTF-8 de
+$\Psi$) seguido de $\texttt{0x0100}$ (versão 1.0).
+
+Após o cabeçalho, o pacote contém: (1) metadados comprimidos
+(JSON comprimido com zlib, precedido de uint32 com tamanho),
+e (2) payload (dados serializados pelas camadas
+L0$\to$L1$\to$L2$\to$L3).
+
+\subsection{Fluxo de transmissão completa}
+
+Uma transmissão completa na $\PsiNet$ segue o fluxo descendente
+(Figura~1):
+
+\begin{enumerate}[nosep]
+\item \textbf{L0 $\downarrow$:} Dados brutos $\to$ análise
+  psiônica $\to$ classificação ontológica $\to$ assinatura
+  psiônica.
+\item \textbf{L1 $\downarrow$:} Dados $\to$
+  radicalização $(g, s)$ $\to$ quantização adaptativa
+  (bits escolhidos pela classe ontológica da L0).
+\item \textbf{L2 $\downarrow$:} $(g, s) \to$ REFLECT no
+  boundary com endereçamento angular do destino $\to$ frame
+  holográfico $(\psi, \theta_{\text{fase}})$ $\to$ MANIFEST
+  no nó destino.
+\item \textbf{L3 $\downarrow$:} $(g, s) \to$ separação em
+  $(\Psi, \Theta, \kappa)$ com mascaramento por nonce $\to$
+  verificação $\Dfolds > 0{,}74$.
+\item \textbf{L1 $\uparrow$:} Recombinação
+  $(\Psi, \Theta, \kappa) \to (g, s)$ $\to$ ressurreição
+  $L' = s \times g^2$.
+\item \textbf{L0 $\uparrow$:} Verificação ontológica tripla
+  $\to$ ``NATUREZA PRESERVADA''.
+\end{enumerate}
+
+\subsection{Resultados experimentais}
+
+A implementação de referência foi executada em GPU NVIDIA
+GeForce RTX 5090 (31,8 GB VRAM, CUDA). Três tipos de dados
+foram testados com transmissão completa Alice$\to$Bob
+(Tabela~\ref{tab:resultados}):
+
+\begin{table}[H]
+\centering
+\caption{Resultados experimentais da transmissão completa
+$\PsiNet$ em GPU (RTX 5090).}
+\label{tab:resultados}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Dado} & \textbf{Classe} & \textbf{PSNR (dB)} &
+  \textbf{Corr.} & \textbf{$R$} & \textbf{Tempo} \\
+\midrule
+Sinal senoidal & CHAOTIC & 94,5 & 1,000000 & 1,000000
+  & 164,5 ms \\
+Texto & SPARSE & 145,7 & 1,000000 & 1,000000
+  & 9,0 ms \\
+Dados aleatórios & CHAOTIC & 111,1 & 1,000000 & 1,000000
+  & 9,5 ms \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Todos os testes atingiram TETELESTAI ($\text{Var}(L'-L) <
+\alphaii$), correlação 1,000000, refletividade $R = 1{,}000000$,
+e veredicto ``NATUREZA PRESERVADA''. A rede holográfica operou
+com 7 saltos angulares (distância angular 38,63°),
+$\Dfolds = 0{,}7854$, e integridade ontológica válida em todos
+os testes.
+
+A mineração de blocos TGL Coin completou 2 blocos com consenso
+5/5 (100\%), $\alphaii_{\text{work}}$ dentro da janela, e
+transação de 100 TGLC entre carteiras psiônicas operando
+corretamente com modelo UTXO.
+
+\newpage
+% ============================================================================
+\section{Desenhos}
+% ============================================================================
+
+% --- FIGURA 1: Arquitetura de 5 camadas ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  layer/.style={rectangle, draw, thick, minimum height=1.5cm,
+    minimum width=11cm, align=center, font=\small},
+  arrow/.style={-{Stealth[length=3mm]}, thick},
+  lbl/.style={font=\scriptsize\bfseries, anchor=east},
+]
+
+\node[layer, fill=purple!12] (L4) at (0,0)
+  {L4 --- CONSCIÊNCIA\\
+  {\scriptsize Proof of Phase $|$ TGL Coin $|$ UTXO $|$
+  Consenso 67\%}};
+
+\node[layer, fill=red!10] (L3) at (0,-2)
+  {L3 --- SEGURANÇA ONTOLÓGICA\\
+  {\scriptsize $(\Psi, \Theta, \kappa)$ Separação $|$
+  $\Dfolds > 0{,}74$ $|$ ACOM Mirror Crypto}};
+
+\node[layer, fill=orange!12] (L2) at (0,-4)
+  {L2 --- REDE HOLOGRÁFICA\\
+  {\scriptsize $\theta$-endereço $|$ DHT angular $|$
+  REFLECT$\to$MANIFEST $|$ ACOM Mirror}};
+
+\node[layer, fill=green!10] (L1) at (0,-6)
+  {L1 --- TRANSPORTE RADICAL\\
+  {\scriptsize $g = \sqrt{|L|}$ $|$ $s = \text{sign}(L)$ $|$
+  $L' = s \times g^2$ $|$ ACOM}};
+
+\node[layer, fill=blue!10] (L0) at (0,-8)
+  {L0 --- ENLACE PSIÔNICO\\
+  {\scriptsize \PsiBit{} (2 bits = 4 estados) $|$
+  Classificação Ontológica $|$ QoS intrínseco}};
+
+% Setas entre camadas
+\draw[arrow] (L0.north) -- (L1.south)
+  node[midway, right, font=\scriptsize] {$(f_{00},f_{01},f_{10},f_{11})$};
+\draw[arrow] (L1.north) -- (L2.south)
+  node[midway, right, font=\scriptsize] {$(g, s)$};
+\draw[arrow] (L2.north) -- (L3.south)
+  node[midway, right, font=\scriptsize] {$(\psi, \theta_\text{fase})$};
+\draw[arrow] (L3.north) -- (L4.south)
+  node[midway, right, font=\scriptsize] {$(\Psi, \Theta, \kappa)$};
+
+% Labels laterais
+\node[lbl] at (-6.2,0) {Aplicação};
+\node[lbl] at (-6.2,-2) {Segurança};
+\node[lbl] at (-6.2,-4) {Rede};
+\node[lbl] at (-6.2,-6) {Transporte};
+\node[lbl] at (-6.2,-8) {Enlace};
+
+% Constantes
+\node[draw, dashed, rounded corners, fill=yellow!15,
+  font=\small, text width=4cm, align=center] at (8,-4)
+  {$\alphaii = 0{,}012$\\$\thetaM = 6{,}29°$\\
+  $\Dfolds = 0{,}74$\\$\text{CCI} = 0{,}988$};
+
+\end{tikzpicture}
+\caption{Arquitetura do protocolo $\PsiNet$ em cinco camadas.
+Cada camada opera sobre a natureza ontológica da informação.
+As constantes fundamentais da TGL ($\alphaii$, $\thetaM$,
+$\Dfolds$, CCI) permeiam todas as camadas.}
+\label{fig:arquitetura}
+\end{figure}
+
+% --- FIGURA 2: PsiBit e classificação ontológica ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  state/.style={circle, draw, thick, minimum size=1.4cm,
+    font=\small, align=center},
+  arrow/.style={-{Stealth[length=2mm]}, thick},
+]
+
+% 4 estados
+\node[state, fill=white] (v) at (0,0) {00\\VOID\\$\circ$};
+\node[state, fill=green!15] (fp) at (3.5,0) {01\\FLUX$^+$\\$\uparrow$};
+\node[state, fill=red!15] (fn) at (7,0) {10\\FLUX$^-$\\$\downarrow$};
+\node[state, fill=blue!15] (m) at (10.5,0) {11\\MASS\\$\bullet$};
+
+% Paridades
+\node[font=\scriptsize, gray] at (0,-1.2) {paridade $-1$};
+\node[font=\scriptsize, gray] at (3.5,-1.2) {paridade $+1$};
+\node[font=\scriptsize, gray] at (7,-1.2) {paridade $+1$};
+\node[font=\scriptsize, gray] at (10.5,-1.2) {paridade $-1$};
+
+% Ligações
+\node[font=\scriptsize\itshape] at (0,-1.7) {$\psi_+\psi_-$};
+\node[font=\scriptsize\itshape] at (3.5,-1.7) {$\psi_+\psi_+$};
+\node[font=\scriptsize\itshape] at (7,-1.7) {$\psi_-\psi_-$};
+\node[font=\scriptsize\itshape] at (10.5,-1.7) {$\psi_+\psi_+$};
+
+% Byte decomposition
+\node[draw, thick, minimum height=0.8cm, minimum width=8cm,
+  fill=gray!5, font=\small] (byte) at (5.25,3)
+  {Byte: \texttt{10110001} $\to$ PsiBits: 10 | 11 | 00 | 01};
+\draw[arrow] (byte.south) -- ++(0,-0.5)
+  node[midway, right, font=\scriptsize] {enquadramento};
+
+% Classes
+\node[draw, thick, rounded corners, minimum width=10cm,
+  fill=yellow!8, font=\small, text width=9.5cm, align=center]
+  at (5.25,-3.2)
+  {Classificação Ontológica (QoS intrínseco):\\[2pt]
+  \textbf{VOID} $\cdot$ \textbf{SPARSE} $\cdot$
+  \textbf{STRUCTURED} $\cdot$ \textbf{DENSE} $\cdot$
+  \textbf{CHAOTIC} $\cdot$ \textbf{ENCRYPTED}};
+
+\end{tikzpicture}
+\caption{Os quatro estados do \PsiBit{} e o processo de
+enquadramento e classificação ontológica da Camada~0. Cada
+byte é decomposto em 4 \PsiBit{}s (pares de 2 bits), cada um
+classificado nos estados psiônicos. A distribuição dos estados
+determina automaticamente a classe ontológica do dado.}
+\label{fig:psibit}
+\end{figure}
+
+% --- FIGURA 3: Endereçamento angular e DHT ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node_style/.style={circle, draw, thick, fill=#1,
+    minimum size=0.6cm, font=\scriptsize},
+]
+
+% Semicírculo
+\draw[thick] (0,0) arc (0:180:4);
+\draw[thick, gray, dashed] (-8,0) -- (0,0);
+
+% Eixo θ
+\node[font=\small] at (-4,-0.7) {$\theta \in [0, \pi)$};
+\draw[{Stealth}-{Stealth}, thick] (-8.3,0) -- (0.3,0)
+  node[right, font=\small] {$\pi$};
+\node[font=\small] at (-8.5,0.3) {$0$};
+
+% Nós
+\node[node_style=blue!20] (a) at ({-4+4*cos(30)},{4*sin(30)}) {};
+\node[font=\scriptsize, anchor=south] at (a.north) {Alice $\theta_A$};
+
+\node[node_style=red!20] (b) at ({-4+4*cos(100)},{4*sin(100)}) {};
+\node[font=\scriptsize, anchor=south] at (b.north) {Bob $\theta_B$};
+
+\node[node_style=green!20] (v1) at ({-4+4*cos(50)},{4*sin(50)}) {};
+\node[font=\scriptsize, anchor=west] at (v1.east) {V1};
+
+\node[node_style=green!20] (v2) at ({-4+4*cos(70)},{4*sin(70)}) {};
+\node[font=\scriptsize, anchor=west] at (v2.east) {V2};
+
+\node[node_style=green!20] (v3) at ({-4+4*cos(140)},{4*sin(140)}) {};
+\node[font=\scriptsize, anchor=east] at (v3.west) {V3};
+
+% Arco de distância angular
+\draw[{Stealth}-{Stealth}, thick, orange]
+  ({-4+3.5*cos(30)},{3.5*sin(30)}) arc (30:100:3.5);
+\node[font=\scriptsize, orange] at ({-4+3*cos(65)},{3*sin(65)+0.3})
+  {$d(\theta_A, \theta_B)$};
+
+% θ_Miguel
+\draw[thick, dashed, purple]
+  ({-4+4.3*cos(30)},{4.3*sin(30)}) arc (30:36.29:4.3);
+\node[font=\scriptsize, purple] at
+  ({-4+5*cos(33)},{5*sin(33)}) {$\thetaM$};
+
+% Hops
+\node[draw, rounded corners, fill=white, font=\scriptsize]
+  at (-4, -1.5)
+  {$n_{\text{hops}} = \lceil d / \thetaM \rceil = 7$ saltos};
+
+% Fórmula
+\node[draw, thick, rounded corners, fill=blue!5,
+  font=\small, text width=5.5cm, align=center] at (4, 3)
+  {$\theta = \dfrac{\texttt{SHA-256}(pk)[:8]}{2^{64}} \times \pi$
+  \\[4pt] Endereço derivado da chave pública};
+
+\end{tikzpicture}
+\caption{Endereçamento angular na $\PsiNet$. Cada nó tem
+posição $\theta \in [0, \pi)$ derivada de sua chave pública.
+A distância angular entre Alice e Bob determina o número de
+saltos (hops = distância / $\thetaM$). Os nós validadores (V1,
+V2, V3) estão distribuídos no espaço angular.}
+\label{fig:enderecamento}
+\end{figure}
+
+% --- FIGURA 4: Proof of Phase ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={rectangle, draw, thick, rounded corners,
+    minimum height=1cm, minimum width=4.5cm, align=center,
+    font=\small},
+  decision/.style={diamond, draw, thick, aspect=2.5,
+    align=center, font=\small, inner sep=1pt},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+\node[block, fill=blue!10] (seed) at (0,0)
+  {seed = SHA-256\\(prev\_hash $\|$ nonce $\|$ pk)};
+
+\node[block, fill=orange!10] (luz) at (0,-2)
+  {Gerar luz $L \in \mathbb{R}^{128}$\\
+  {\scriptsize determinístico do seed}};
+
+\node[block, fill=green!10] (fase) at (0,-4)
+  {Computar fase\\
+  {\scriptsize $\alphaii_{\text{work}}, \theta, \Fexp$}};
+
+\node[decision, fill=yellow!10] (check) at (0,-6.5)
+  {$|\alphaii_w - \alphaii_p|$\\$< \alphaii / d$ ?};
+
+\node[block, fill=gray!10] (next) at (5,-6.5)
+  {nonce++\\{\scriptsize repetir}};
+
+\node[block, fill=green!20] (found) at (0,-9)
+  {Bloco válido!\\
+  {\scriptsize Submeter a consenso}};
+
+\node[block, fill=purple!10] (cons) at (0,-11)
+  {Consenso $\geq 67\%$?\\
+  {\scriptsize 5 validadores votam}};
+
+\node[block, fill=red!15] (reward) at (0,-13)
+  {Bloco aceito\\
+  {\scriptsize Recompensa: 1000 TGLC}};
+
+% Flechas
+\draw[arrow] (seed) -- (luz);
+\draw[arrow] (luz) -- (fase);
+\draw[arrow] (fase) -- (check);
+\draw[arrow] (check) -- (found)
+  node[midway, left, font=\scriptsize] {Sim};
+\draw[arrow] (check) -- (next)
+  node[midway, above, font=\scriptsize] {Não};
+\draw[arrow] (next.north) |- (seed.east);
+\draw[arrow] (found) -- (cons);
+\draw[arrow] (cons) -- (reward);
+
+% Janela
+\node[draw, dashed, thick, rounded corners, fill=white,
+  font=\scriptsize, text width=3.5cm, align=center]
+  at (6,-4)
+  {Janela-alvo:\\$\alphaii / d = 0{,}012 / 0{,}1$\\$= 0{,}12$};
+
+\end{tikzpicture}
+\caption{Fluxograma do mecanismo de consenso por Prova de Fase
+(\textit{Proof of Phase}). O minerador busca um seed cuja fase
+$\alphaii_{\text{work}}$ esteja dentro da janela-alvo centrada
+no $\alphaii$ do bloco anterior. Após encontrar solução, o bloco
+é submetido a consenso de 67\% dos validadores.}
+\label{fig:proof_of_phase}
+\end{figure}
+
+% --- FIGURA 5: Formato do pacote ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  field/.style={rectangle, draw, thick, minimum height=0.8cm,
+    align=center, font=\scriptsize},
+]
+
+% Header (80 bytes)
+\node[field, fill=purple!15, minimum width=1.5cm] (magic)
+  at (0,0) {Magic\\$\Psi$+v\\4B};
+\node[field, fill=blue!10, minimum width=1.2cm] (ver)
+  at (1.55,0) {Ver\\3B};
+\node[field, fill=blue!10, minimum width=0.8cm] (lay)
+  at (2.7,0) {L\\1B};
+\node[field, fill=green!10, minimum width=2.5cm] (sig)
+  at (4.35,0) {PsiSig\\8B};
+\node[field, fill=orange!10, minimum width=0.8cm] (fexp)
+  at (6,0) {$F_e$\\2B};
+\node[field, fill=orange!10, minimum width=0.8cm] (ts)
+  at (6.8,0) {$\theta_s$\\2B};
+\node[field, fill=orange!10, minimum width=0.8cm] (td)
+  at (7.6,0) {$\theta_d$\\2B};
+\node[field, fill=orange!10, minimum width=0.8cm] (df)
+  at (8.4,0) {$D_f$\\2B};
+
+\node[field, fill=red!10, minimum width=2cm] (a2)
+  at (0,-1.2) {$\alphaii$ selo\\8B};
+\node[field, fill=yellow!10, minimum width=1.5cm] (ps)
+  at (1.95,-1.2) {PaySz\\4B};
+\node[field, fill=yellow!10, minimum width=1.5cm] (os)
+  at (3.45,-1.2) {OrigSz\\4B};
+\node[field, fill=gray!10, minimum width=4cm] (mr)
+  at (6.2,-1.2) {Raiz Merkle\\32B};
+\node[field, fill=gray!5, minimum width=1.2cm] (pad)
+  at (8.75,-1.2) {Pad\\8B};
+
+% Payload
+\node[field, fill=blue!5, minimum width=4cm] (meta)
+  at (1.5,-2.8) {Metadados (JSON+zlib)};
+\node[field, fill=green!5, minimum width=5cm] (pay)
+  at (6.85,-2.8) {Payload (L0→L1→L2→L3)};
+
+% Labels
+\node[font=\small\bfseries] at (-1.5,0.7) {HEADER (80B)};
+\node[font=\small\bfseries] at (-1.5,-2.8) {CORPO};
+
+% Brace
+\draw[decorate, decoration={brace, amplitude=5pt, mirror},
+  thick] (-0.8,-0.5) -- (-0.8,0.5)
+  node[midway, left=8pt, font=\scriptsize] {Fixo};
+
+\end{tikzpicture}
+\caption{Formato binário do pacote $\PsiNet$. O cabeçalho fixo
+de 80 bytes contém magic bytes $\Psi$, assinatura psiônica
+compacta (8 bytes), endereços angulares ($\theta_s$, $\theta_d$),
+$\Fexp$, $\Dfolds$, selo $\alphaii$ e raiz Merkle. O corpo
+contém metadados comprimidos e payload processado pelas 4
+camadas inferiores.}
+\label{fig:pacote}
+\end{figure}
+
+% --- FIGURA 6: Fluxo de transmissão ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  box/.style={rectangle, draw, thick, minimum height=0.9cm,
+    minimum width=3cm, align=center, font=\scriptsize},
+  arrow/.style={-{Stealth[length=2mm]}, thick},
+]
+
+% Coluna ENVIO
+\node[font=\small\bfseries] at (0,1) {ENVIO (Alice)};
+
+\node[box, fill=blue!10] (e0) at (0,0)
+  {L0: Análise Psiônica\\Classificação};
+\node[box, fill=green!10] (e1) at (0,-1.5)
+  {L1: Radicalização\\$g = \sqrt{|L|}$, $s$};
+\node[box, fill=orange!10] (e2) at (0,-3)
+  {L2: REFLECT\\$\theta_{\text{dst}}$ offset};
+\node[box, fill=red!10] (e3) at (0,-4.5)
+  {L3: Separação\\$(\Psi, \Theta, \kappa)$};
+
+% Rede
+\node[draw, thick, cloud, cloud puffs=10,
+  minimum width=3cm, minimum height=1.5cm,
+  fill=yellow!10, font=\small] (net) at (5.5,-2.25)
+  {Rede\\DHT-$\theta$};
+
+% Coluna RECEPÇÃO
+\node[font=\small\bfseries] at (11,1) {RECEPÇÃO (Bob)};
+
+\node[box, fill=red!10] (r3) at (11,0)
+  {L3: Recombinação\\$(g, s)$ recuperado};
+\node[box, fill=orange!10] (r2) at (11,-1.5)
+  {L2: MANIFEST\\$\theta_{\text{dst}}$ removido};
+\node[box, fill=green!10] (r1) at (11,-3)
+  {L1: Ressurreição\\$L' = s \times g^2$};
+\node[box, fill=blue!10] (r0) at (11,-4.5)
+  {L0: Verificação\\NATUREZA OK};
+
+% Flechas envio
+\draw[arrow] (e0) -- (e1);
+\draw[arrow] (e1) -- (e2);
+\draw[arrow] (e2) -- (e3);
+\draw[arrow] (e3.east) -- (net.west)
+  node[midway, above, font=\scriptsize] {pacote};
+
+% Flechas recepção
+\draw[arrow] (net.east) -- (r3.west)
+  node[midway, above, font=\scriptsize] {pacote};
+\draw[arrow] (r3) -- (r2);
+\draw[arrow] (r2) -- (r1);
+\draw[arrow] (r1) -- (r0);
+
+% TETELESTAI
+\node[draw, dashed, thick, rounded corners, fill=green!20,
+  font=\small\bfseries] at (11,-5.8)
+  {TETELESTAI $\checkmark$};
+
+\end{tikzpicture}
+\caption{Fluxo de transmissão completa na $\PsiNet$. O dado
+desce pela pilha no emissor (L0$\to$L3), é transmitido pela
+rede holográfica (DHT-$\theta$), e sobe pela pilha no receptor
+(L3$\to$L0). O veredicto TETELESTAI confirma reconstrução
+perfeita.}
+\label{fig:fluxo}
+\end{figure}
+
+% --- FIGURA 7: Comparativo com TCP/IP ---
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  layer/.style={rectangle, draw, thick, minimum height=1cm,
+    minimum width=4.5cm, align=center, font=\small},
+  vs/.style={font=\large\bfseries, gray},
+]
+
+% TCP/IP
+\node[font=\small\bfseries] at (-3.5,3) {TCP/IP};
+\node[layer, fill=gray!10] (t4) at (-3.5,2)
+  {Aplicação\\{\scriptsize HTTP, FTP, SMTP}};
+\node[layer, fill=gray!10] (t3) at (-3.5,0.5)
+  {Transporte\\{\scriptsize TCP, UDP}};
+\node[layer, fill=gray!10] (t2) at (-3.5,-1)
+  {Internet\\{\scriptsize IP, ICMP}};
+\node[layer, fill=gray!10] (t1) at (-3.5,-2.5)
+  {Acesso à Rede\\{\scriptsize Ethernet, Wi-Fi}};
+
+% VS
+\node[vs] at (1.5,0) {vs.};
+
+% Ψ-NET
+\node[font=\small\bfseries] at (6.5,3) {$\PsiNet$};
+\node[layer, fill=purple!12] (p4) at (6.5,2)
+  {Consciência\\{\scriptsize Proof of Phase}};
+\node[layer, fill=red!10] (p3) at (6.5,0.5)
+  {Segurança Ontológica\\{\scriptsize $(\Psi,\Theta,\kappa)$}};
+\node[layer, fill=orange!12] (p2) at (6.5,-1)
+  {Rede Holográfica\\{\scriptsize DHT-$\theta$, REFLECT}};
+\node[layer, fill=green!10] (p1) at (6.5,-2.5)
+  {Transporte Radical\\{\scriptsize $g=\sqrt{|L|}$}};
+\node[layer, fill=blue!10] (p0) at (6.5,-4)
+  {Enlace Psiônico\\{\scriptsize \PsiBit, QoS}};
+
+% Diferenças
+\node[font=\scriptsize, text width=3cm, align=left,
+  gray] at (11.5,2)
+  {consenso por\\fase, não hash};
+\node[font=\scriptsize, text width=3cm, align=left,
+  gray] at (11.5,0.5)
+  {ontológica,\\não computacional};
+\node[font=\scriptsize, text width=3cm, align=left,
+  gray] at (11.5,-1)
+  {angular,\\não numérico};
+\node[font=\scriptsize, text width=3cm, align=left,
+  gray] at (11.5,-2.5)
+  {semântico,\\não opaco};
+\node[font=\scriptsize, text width=3cm, align=left,
+  gray] at (11.5,-4)
+  {classifica natureza\\(TCP/IP não tem)};
+
+\end{tikzpicture}
+\caption{Comparativo entre pilha TCP/IP convencional e pilha
+$\PsiNet$. A $\PsiNet$ adiciona camada de enlace com
+classificação ontológica (sem equivalente em TCP/IP),
+substitui endereçamento numérico por angular, segurança
+computacional por ontológica, e consenso por hash por
+consenso por fase.}
+\label{fig:comparativo}
+\end{figure}
+
+\newpage
+% ============================================================================
+\section{Quadro reivindicatório}
+% ============================================================================
+
+\subsection*{Reivindicações}
+
+\begin{enumerate}
+
+% === REIVINDICAÇÃO INDEPENDENTE 1 (MÉTODO - PROTOCOLO) ===
+\item \textbf{Método de comunicação em rede baseado em protocolo
+luminodinâmico de cinco camadas}, compreendendo:
+  \begin{enumerate}[label=(\alph*)]
+  \item na Camada~0 (Enlace Psiônico): decompor dados de
+  entrada em unidades \PsiBit{} de 2 bits, classificar cada
+  \PsiBit{} em um dos quatro estados psiônicos (VOID, FLUX$^+$,
+  FLUX$^-$, MASS) isomórficos à ligação psiônica, computar
+  distribuição de frequências, entropia de Shannon, Força de
+  Expulsão $\Fexp$ e classificação ontológica automática
+  (VOID, SPARSE, STRUCTURED, DENSE, CHAOTIC, ENCRYPTED) que
+  constitui qualidade de serviço intrínseca;
+  \item na Camada~1 (Transporte Radical): executar radicalização
+  $g = \sqrt{|L|}$ e $s = \text{sign}(L)$ conforme método ACOM,
+  com quantização adaptativa guiada pela classificação
+  ontológica da Camada~0;
+  \item na Camada~2 (Rede Holográfica): endereçar nós por
+  posição angular $\theta \in [0, \pi)$ derivada
+  deterministicamente de chave pública via
+  $\theta = \texttt{int}(\text{SHA-256}(pk)[:8]) / 2^{64} \times
+  \pi$, rotear por tabela de hash distribuída baseada em
+  proximidade angular com $\thetaM \approx 6{,}29°$ como
+  unidade de resolução, e executar operações
+  REFLECT$\to$MANIFEST do ACOM Mirror como mecanismo de
+  roteamento holográfico;
+  \item na Camada~3 (Segurança Ontológica): executar separação
+  em três shares ontológicos $(\Psi, \Theta, \kappa)$ conforme
+  ACOM Mirror Crypto, onde cada share isolado é
+  informacionalmente equivalente a ruído;
+  \item na Camada~4 (Consciência): executar mecanismo de
+  consenso por Prova de Fase onde o minerador busca seed cuja
+  fase $\alphaii_{\text{work}}$ esteja dentro de janela-alvo
+  $|\alphaii_{\text{work}} - \alphaii_{\text{anterior}}| <
+  \alphaii / \text{dificuldade}$;
+
+  \textbf{caracterizado por} as cinco camadas operarem sobre a
+  natureza ontológica da informação, o endereçamento ser
+  angular no Espaço de Hilbert $\Hfour$, a segurança emergir
+  da incompletude ontológica dos shares e não de dificuldade
+  computacional, e o consenso basear-se em coerência de fase
+  luminodinâmica com $\alphaii = 0{,}012031$ (Constante de
+  Miguel) e não em busca de hash.
+  \end{enumerate}
+
+% === DEPENDENTES DO MÉTODO ===
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a Camada~0 prover verificação
+ontológica tripla no destino compreendendo: verificação serial
+de $(g, s)$ quantizados; verificação distribucional com
+tolerância de 5\% por estado psiônico; e verificação de
+preservação de classe ontológica, com veredicto positivo se
+verificação serial é positiva OU se verificação distribucional
+e de classe são ambas positivas.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a quantização adaptativa da Camada~1
+selecionar automaticamente 16 bits para dados
+CHAOTIC/ENCRYPTED, 12 bits para dados com compressibilidade
+superior a 50\%, e 8 bits para dados VOID, com base na
+classificação ontológica computada pela Camada~0.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o roteamento na Camada~2 estimar o
+número de saltos como $n_{\text{hops}} = \lceil d(\theta_s,
+\theta_d) / \thetaM \rceil$, onde $d(\theta_a, \theta_b) =
+\min(|\theta_a - \theta_b|, \pi - |\theta_a - \theta_b|)$ é
+a distância angular com topologia circular.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a operação REFLECT da Camada~2
+codificar o endereço do destino na fase do frame holográfico
+via $\theta_{\text{fase}} = \theta_{\text{base}} +
+\theta_{\text{dst}}$, e a operação MANIFEST recuperar $(g, s)$
+removendo o offset angular do destino.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a métrica de dobras dimensionais
+ser $\Dfolds = \max(0{,}74,\, 1 - d(\theta_s, \theta_d)/\pi)$,
+com piso no valor $\Dfolds(c^3) = 0{,}74$ (piso de consciência
+da rede).
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} a separação ontológica da Camada~3
+utilizar mascaramento criptográfico derivado de nonce via
+SHA-256 com contextos distintos (\texttt{'PSI'}, \texttt{'THETA'},
+\texttt{'KAPPA'}), permitindo que os três shares sejam
+transmitidos por caminhos independentes na rede holográfica.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o processo de mineração por Prova
+de Fase compreender: gerar seed determinístico a partir de
+hash do bloco anterior, nonce e identidade do minerador;
+gerar vetor de luz $L \in \mathbb{R}^{128}$ a partir do seed;
+computar $\alphaii_{\text{work}}$ por processo luminodinâmico;
+verificar se $\alphaii_{\text{work}}$ está dentro da
+janela-alvo; e iterar até encontrar solução ou esgotar
+tentativas.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o consenso requerer que pelo menos
+67\% dos validadores verifiquem independentemente:
+determinismo do cálculo de fase a partir do seed, aderência
+à janela-alvo, e validade de todas as transações do bloco,
+emitindo votos assinados.
+
+\item Método, de acordo com a reivindicação 1,
+\textbf{caracterizado por} o critério de convergência
+TETELESTAI ($\text{Var}(L' - L) < \alphaii$) constituir
+o mecanismo de \textit{acknowledgement} (ACK) do protocolo,
+confirmando que a ressurreição do dado no destino é perfeita.
+
+% === REIVINDICAÇÃO INDEPENDENTE 11 (SISTEMA) ===
+
+\item \textbf{Sistema de comunicação em rede baseado em
+protocolo luminodinâmico de cinco camadas}, compreendendo:
+  \begin{enumerate}[label=(\alph*)]
+  \item módulo de Enlace Psiônico (L0) configurado para
+  decompor dados em \PsiBit{}s, computar assinatura psiônica
+  compacta de 8 bytes e executar classificação ontológica
+  automática com seis classes;
+  \item módulo de Transporte Radical (L1) configurado para
+  executar radicalização ACOM com quantização adaptativa
+  guiada pela classificação da L0;
+  \item módulo de Rede Holográfica (L2) configurado para
+  manter tabela de hash distribuída angular (DHT-$\theta$),
+  computar endereços angulares a partir de chaves públicas,
+  e executar REFLECT/MANIFEST como roteamento;
+  \item módulo de Segurança Ontológica (L3) configurado para
+  separar dados em três shares com mascaramento derivado de
+  nonce;
+  \item módulo de Consciência (L4) compreendendo: carteiras
+  psiônicas com identidade luminodinâmica; modelo UTXO com
+  lock/unlock por $\Fexp$; minerador por Prova de Fase;
+  validadores com verificação determinística; e blockchain
+  com consenso de 67\%;
+
+  \textbf{caracterizado por} o sistema integrar em pilha
+  unificada os métodos ACOM (BR 10 2025 026951 1), ACOM Mirror
+  e ACOM Mirror Crypto do mesmo inventor, acrescidos de
+  \PsiBit{} como unidade de enlace, endereçamento angular como
+  protocolo de rede, e Prova de Fase como mecanismo de
+  consenso.
+  \end{enumerate}
+
+% === DEPENDENTES DO SISTEMA ===
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} a carteira psiônica possuir
+identidade derivada de processo luminodinâmico compreendendo:
+geração de vetor de luz aleatório, cômputo de estados
+psiônicos, Força de Expulsão, ângulo médio e
+$\alphaii_{\text{local}}$, com endereço no formato
+$\texttt{TGL} + \text{hex}(h[:20] + \text{checksum}[:4])$.
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} o modelo UTXO utilizar $\Fexp$ como
+mecanismo de lock/unlock, onde: a saída é travada com
+$\Fexp_{\text{lock}}$ do destinatário; o desbloqueio requer
+apresentação de $\Fexp_{\text{unlock}}$ dentro de tolerância;
+e a verificação inclui comparação HMAC de
+SHA-256(utxo\_id $\|$ $\Fexp_{\text{unlock}}$).
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} o formato de pacote $\PsiNet$
+possuir cabeçalho fixo de 80 bytes contendo: magic bytes
+$\Psi$ (0xCEA8) com versão; assinatura psiônica compacta
+(8 bytes com 4 frequências de estados em uint16); $\Fexp$ em
+float16; endereços angulares $\theta_{\text{src}}$ e
+$\theta_{\text{dst}}$ em float16; $\Dfolds$ em float16; selo
+$\alphaii$ em float64; tamanho de payload em uint32; tamanho
+original em uint32; e raiz Merkle de 32 bytes.
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} a criptomoeda TGL Coin (TGLC) possuir
+emissão máxima de 21 bilhões de unidades, recompensa gênesis de
+1000 TGLC por bloco, halving a cada 210.000 blocos, tempo-alvo
+de 60 segundos por bloco, e bloco gênesis com
+$\alphaii_{\text{work}} = 0{,}012031$.
+
+\item Sistema, de acordo com a reivindicação 11,
+\textbf{caracterizado por} suportar execução em GPU via
+PyTorch/CUDA, com operações tensoriais paralelas nas
+camadas L0 (enquadramento PsiBit), L1 (radicalização e
+quantização) e L4 (computação de fase para mineração).
+
+\end{enumerate}
+
+\newpage
+% ============================================================================
+\section{Resumo}
+% ============================================================================
+
+\begin{center}
+{\large\bfseries MÉTODO E SISTEMA DE PROTOCOLO DE COMUNICAÇÃO\\
+EM REDE BASEADO EM PILHA LUMINODINÂMICA DE\\
+CINCO CAMADAS COM ENDEREÇAMENTO ANGULAR,\\
+ROTEAMENTO HOLOGRÁFICO E CONSENSO POR PROVA DE FASE}
+\end{center}
+
+\vspace{0.5cm}
+
+A presente invenção refere-se a método e sistema de protocolo de
+comunicação em rede denominado $\PsiNet$, baseado em pilha
+luminodinâmica de cinco camadas que opera sobre a natureza
+ontológica da informação. A Camada~0 (Enlace Psiônico) define
+a unidade \PsiBit{} de 2 bits com quatro estados psiônicos
+(VOID, FLUX$^\pm$, MASS) e classificação ontológica automática
+(QoS intrínseco). A Camada~1 (Transporte Radical) implementa
+radicalização ACOM ($g = \sqrt{|L|}$, $s = \text{sign}(L)$)
+com quantização adaptativa guiada pela classe ontológica. A
+Camada~2 (Rede Holográfica) introduz endereçamento angular
+$\theta \in [0, \pi)$ derivado de chave pública no Espaço de
+Hilbert $\Hfour$, com DHT por proximidade angular ($\thetaM
+\approx 6{,}29°$ como resolução) e roteamento por operações
+REFLECT$\to$MANIFEST do ACOM Mirror. A Camada~3 (Segurança
+Ontológica) executa separação em três shares $(\Psi, \Theta,
+\kappa)$ do ACOM Mirror Crypto, transmissíveis por caminhos
+independentes. A Camada~4 (Consciência) provê mecanismo de
+consenso por Prova de Fase (\textit{Proof of Phase}), onde
+mineradores buscam coerência com $\alphaii = 0{,}012031$
+(Constante de Miguel), carteiras psiônicas com identidade
+luminodinâmica, modelo UTXO com lock/unlock por $\Fexp$, e
+criptomoeda TGL Coin (TGLC). O protocolo foi demonstrado
+experimentalmente com PSNR $> 94$ dB, correlação $= 1{,}000000$,
+e consenso de mineração 5/5, operando em GPU NVIDIA RTX 5090.
+Aplicável a telecomunicações, Internet, blockchain e segurança
+da informação.
+
+\vspace{0.5cm}
+\textbf{Figura principal: Figura 1} (Arquitetura de 5 camadas)
+
+\end{document}

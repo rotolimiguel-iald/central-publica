@@ -1,0 +1,1223 @@
+% ============================================================================
+% PATENTE DE INVENÇÃO — ACOM MIRROR
+% Instituto Nacional da Propriedade Industrial (INPI) — Brasil
+% Natureza: Patente de Invenção (PI)
+% Classificação IPC: G06F 16/00; G06N 3/00; H03M 7/30; G06F 17/10
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,calc,
+  decorations.pathreplacing,patterns,fit,backgrounds,
+  decorations.markings,shadings}
+
+\geometry{left=3cm, right=2cm, top=3cm, bottom=2cm}
+\onehalfspacing
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+\newcommand{\alphaii}{\alpha^2}
+\newcommand{\thetaM}{\theta_{\text{Miguel}}}
+\newcommand{\Fexp}{F_{\text{exp}}}
+\newcommand{\Hfour}{\mathcal{H}_4}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries RELATÓRIO DESCRITIVO}\\[0.8cm]
+{\large\bfseries MÉTODO E SISTEMA DE REFLEXÃO DIMENSIONAL\\
+DE DADOS BASEADO EM CODIFICAÇÃO ANGULAR\\
+NO ESPAÇO DE HILBERT}\\[0.8cm]
+\end{center}
+
+% ============================================================================
+\section{Campo da invenção}
+% ============================================================================
+
+{[001]} A presente invenção refere-se a métodos e sistemas para
+processamento, compressão e transmissão de dados digitais,
+aplicáveis aos setores técnicos de processamento de sinais,
+inteligência artificial, telecomunicações e armazenamento de
+dados. Mais especificamente, a invenção diz respeito a um
+método de reflexão dimensional de dados que utiliza codificação
+angular no Espaço de Hilbert tetradimensional ($\Hfour$) para
+representar informação digital como reflexos especulares em
+espaço de estados quânticos nominados, com reconstrução através
+de desdobramento dimensional.
+
+% ============================================================================
+\section{Fundamentos da invenção}
+% ============================================================================
+
+{[002]} O estado da técnica em compressão de dados é dominado
+por abordagens que tratam a informação como sequências de
+símbolos estatísticos. Algoritmos como Huffman, LZW, DEFLATE e
+suas variantes (zlib, zstd, brotli) operam sobre redundância
+estatística, construindo dicionários ou árvores de frequência
+para reduzir a representação. Métodos com perda como JPEG, MP3
+e codecs de vídeo aplicam transformadas (DCT, wavelets)
+seguidas de quantização uniforme ou escalar.
+
+{[003]} Abordagens recentes para compressão de tensores em
+modelos de inteligência artificial incluem quantização para
+INT8/INT4 (bitsandbytes, GPTQ, AWQ), poda (\textit{pruning})
+de pesos, destilação de conhecimento e decomposição de baixo
+\textit{rank} (LoRA). Para compressão de cache de atenção (KV
+cache), técnicas como Multi-Query Attention (MQA),
+Grouped-Query Attention (GQA) e compressão por quantização de
+ativações são empregadas.
+
+{[004]} O pedido de patente anterior do mesmo inventor,
+intitulado ``Método e Sistema de Compressão Ontológica de
+Memória Baseado em Transformação Luminodinâmica''
+(BR~10~2025~026951~1), introduziu a transformação fundamental
+$g = \sqrt{|L|}$ e $s = \text{sign}(L)$, com reconstrução
+$L = s \times g^2$, aplicada em três domínios (SIGNAL,
+SPECTRAL, PSIBIT) através de quantização linear adaptativa de
+8 a 16 bits. Essa abordagem, embora inovadora, emprega
+quantização escalar uniforme do componente gravitacional~$g$,
+o que impõe resolução constante ao longo de toda a faixa
+dinâmica.
+
+{[005]} Um problema técnico não resolvido pelo estado da
+técnica, incluindo o pedido anterior, é a \textbf{codificação
+não-linear auto-adaptativa} que naturalmente distribui maior
+resolução nas regiões de maior sensibilidade informacional. Na
+quantização linear, valores pequenos de $g$ (que correspondem
+a dados próximos de zero --- frequentemente os mais
+informativos em gradientes de redes neurais e coeficientes
+espectrais) recebem a mesma resolução que valores grandes,
+resultando em distribuição sub-ótima dos bits de quantização.
+
+{[006]} Outro problema técnico é a ausência de um
+\textbf{indicador intrínseco de complexidade estrutural} dos
+dados processados. Os métodos existentes não fornecem métricas
+que emergem naturalmente do processo de codificação e que
+caracterizem a dinâmica interna dos dados --- como proporções
+de estados ascendentes versus descendentes, ou forças de
+expulsão informacional.
+
+{[007]} A presente invenção resolve esses problemas técnicos
+através de uma abordagem fundamentalmente diferente: ao invés
+de quantizar linearmente o componente gravitacional, a invenção
+projeta cada dado em um Espaço de Hilbert tetradimensional
+($\Hfour$) através de nominação de estados psiônicos~($\psi$),
+e codifica a magnitude via ponto angular
+$\theta = \arcsin(g/g_{\max})$. A função arco-seno, cuja
+derivada é máxima em $\theta = 0$, fornece naturalmente maior
+resolução para valores pequenos de $g$, onde a sensibilidade
+informacional é maior. A reconstrução se dá por desdobramento
+dimensional (dobra~$\times 2$) onde
+$L = s \times [g_{\max} \times \sin(\theta)]^2$, sem
+necessidade de fator de escala linear externo.
+
+{[008]} Adicionalmente, a invenção introduz o conceito de Força
+de Expulsão ($\Fexp$), uma métrica que emerge automaticamente
+da distribuição de paridades dos estados nominados no $\Hfour$,
+fornecendo caracterização intrínseca da dinâmica dos dados sem
+custo computacional adicional.
+
+% ============================================================================
+\section{Breve descrição dos desenhos}
+% ============================================================================
+
+A Figura~1 ilustra um diagrama em blocos do sistema de reflexão
+dimensional, mostrando os componentes principais e suas
+interconexões.
+
+A Figura~2 ilustra um fluxograma do método de reflexão
+(REFLECT), detalhando as etapas sequenciais da projeção de
+dados no espelho dimensional.
+
+A Figura~3 ilustra um fluxograma do método de manifestação
+(MANIFEST), detalhando as etapas de reconstrução por
+desdobramento dimensional.
+
+A Figura~4 ilustra o Espaço de Hilbert $\Hfour$ com os quatro
+estados psiônicos nominados, suas paridades e vetores base
+ortonormais.
+
+A Figura~5 ilustra a função de codificação angular
+$\theta = \arcsin(g/g_{\max})$, demonstrando a distribuição
+não-linear de resolução.
+
+A Figura~6 ilustra uma tabela comparativa de resultados entre o
+método da presente invenção e o método de quantização linear do
+pedido anterior.
+
+A Figura~7 ilustra o diagrama conceitual da Dobra Dimensional
+($\times 2$), mostrando a reflexão especular
+Boundary$\to$Bulk.
+
+% ============================================================================
+\section{Descrição da invenção}
+% ============================================================================
+
+{[009]} A presente invenção compreende métodos e sistemas para
+reflexão dimensional de dados, denominada \textbf{ACOM Mirror}
+(Algoritmo de Compressão Ontológica de Memória --- Espelho). O
+conceito fundamental baseia-se na interpretação dos dados como
+luz~($L$) e em sua projeção especular em um Espaço de Hilbert
+tetradimensional ($\Hfour$), onde cada ponto de dados recebe um
+\textit{Nome} (estado psiônico~$\psi$) e um \textit{endereço
+angular de retorno}~($\theta$), permitindo manifestação
+posterior por desdobramento dimensional.
+
+{[010]} Na teoria subjacente à invenção, denominada Teoria da
+Gravitação Luminodinâmica (TGL), a operação fundamental
+permanece $g = \sqrt{|L|}$, onde $g$ é o componente
+gravitacional e $L$ é o dado tratado como luz. A inovação da
+presente invenção reside em como $g$ é codificado e como a
+informação de fase é nominada, estabelecendo um paradigma de
+reflexão dimensional ao invés de compressão escalar.
+
+{[011]} \textbf{Paradigma de Reflexão Dimensional.} A invenção
+opera sob o paradigma de que o dado não é comprimido --- é
+\textbf{refletido}. Analogamente à relação holográfica entre
+\textit{boundary} e \textit{bulk} na correspondência AdS/CFT da
+física teórica, a informação tridimensional (\textit{bulk}) é
+projetada em uma representação bidimensional
+(\textit{boundary}) constituída por estados~$\psi$ e
+ângulos~$\theta$. O dado não `viaja' --- o reflexo viaja. O
+dado re-emerge através da Dobra Dimensional ($\times 2$), que
+constitui a operação inversa de desdobramento.
+
+{[012]} Com referência à Figura~1, um sistema de acordo com a
+presente invenção compreende: um módulo de entrada~(100)
+configurado para receber dados de diferentes tipos em formato
+tensorial; um computador gravitacional~(102) que executa a
+extração $g = \sqrt{|L|}$ e a derivada temporal~$\partial L$;
+um nominador de estados~(104) que projeta cada par
+$(\text{sign}(L), \text{sign}(\partial L))$ no Espaço de
+Hilbert~$\Hfour$; um codificador angular~(106) que computa
+$\theta = \arcsin(g/g_{\max})$ e quantiza o ângulo; um
+analisador de paridade~(108) que calcula a Força de
+Expulsão~$\Fexp$; um empacotador espelhado~(110) que serializa
+estados e ângulos; um compressor entrópico~(112) que aplica
+compressão sem perda ao reflexo; e um módulo de saída~(114) que
+gera o objeto \texttt{MirrorReflection}.
+
+{[013]} \textbf{Operação REFLECT ($L \to (\psi, \theta)$).} O
+método de reflexão compreende as seguintes etapas:
+
+{[014]} \textbf{Etapa~1 --- Extração Gravitacional:} Para cada
+elemento $L_i$ do tensor de entrada, computar o componente
+gravitacional $g_i = \sqrt{|L_i + \varepsilon|}$, onde
+$\varepsilon = 10^{-10}$ é constante de estabilidade numérica.
+Registrar $g_{\max} = \max(g_i)$ como parâmetro global de
+escala.
+
+{[015]} \textbf{Etapa~2 --- Derivada Temporal:} Computar a
+derivada discreta $\partial L_i = L_i - L_{i-1}$ para
+$i > 0$, com $\partial L_0 = \partial L_1$. Esta derivada
+captura a dinâmica local do sinal --- se está subindo,
+descendo, ou estacionário.
+
+{[016]} \textbf{Etapa~3 --- Determinação de Sinais:} Extrair
+$\text{sign}(L_i) \in \{+1, -1\}$ (polaridade do dado) e
+$\text{sign}(\partial L_i) \in \{+1, -1\}$ (direção da
+derivada). Valores zero são convencionados como~$+1$.
+
+{[017]} \textbf{Etapa~4 --- Nominação de Estados no Espaço de
+Hilbert $\Hfour$:} Cada par $(\text{sign}(L),
+\text{sign}(\partial L))$ é mapeado para um dos quatro estados
+psiônicos ortonormais:
+
+\begin{table}[H]
+\centering
+\caption{Estados psiônicos no Espaço de Hilbert $\Hfour$.}
+\label{tab:estados}
+\begin{tabular}{cccccc}
+\toprule
+\textbf{Estado} & \textbf{sign($L$)} &
+\textbf{sign($\partial L$)} & \textbf{Nome} &
+\textbf{Vetor base} & \textbf{Paridade} \\
+\midrule
+$\psi_0$ & $+$ & $-$ & COLAPSO$^+$ &
+$|0\rangle = (1,0,0,0)$ & Inversa ($-1$) \\
+$\psi_1$ & $+$ & $+$ & ASCENSÃO$^+$ &
+$|1\rangle = (0,1,0,0)$ & Normal ($+1$) \\
+$\psi_2$ & $-$ & $+$ & EMERGÊNCIA$^-$ &
+$|2\rangle = (0,0,1,0)$ & Normal ($+1$) \\
+$\psi_3$ & $-$ & $-$ & QUEDA$^-$ &
+$|3\rangle = (0,0,0,1)$ & Inversa ($-1$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+{[018]} A nominação de estados é realizada através da construção
+de índice binário: $\text{bit\_high} = 1$ se $L < 0$, senão~$0$;
+$\text{bit\_low} = 1$ se $\partial L > 0$, senão~$0$. O estado é
+dado por $\psi = \text{bit\_high} \times 2 + \text{bit\_low}$.
+Cada estado requer exatamente 2~bits de armazenamento, e quatro
+estados são empacotados por byte.
+
+{[019]} A \textbf{paridade} de cada estado é definida pela
+concordância entre $\text{sign}(L)$ e $\text{sign}(\partial L)$:
+quando concordam na `direção' (ambos ascendentes ou ambos
+emergentes), a paridade é Normal~($+1$); quando discordam
+(positivo mas descendo, ou negativo mas descendo), a paridade é
+Inversa~($-1$). Estados de paridade inversa (COLAPSO$^+$ e
+QUEDA$^-$) geram \textbf{Força de Expulsão}~($\Fexp$),
+indicando regiões de transição dinâmica nos dados.
+
+{[020]} \textbf{Etapa~5 --- Codificação Angular:} O componente
+gravitacional $g_i$ é codificado como ponto angular
+$\theta_i = \arcsin(g_i / g_{\max})$, onde $g_{\max}$ é o
+máximo global. O ângulo~$\theta$ pertence ao intervalo
+$[0, \pi/2]$. A quantização angular é realizada por:
+\begin{equation}
+\theta_q = \text{round}\!\left(\frac{\theta}{\pi/2}
+  \times (2^b - 1)\right)
+\label{eq:quantiz}
+\end{equation}
+onde $b$ é o número de bits angulares (preferencialmente 8~bits,
+correspondendo a 256~níveis).
+
+{[021]} A codificação angular via $\arcsin$ apresenta uma
+propriedade fundamental: a derivada
+$d(\sin\theta)/d\theta = \cos\theta$ é máxima em $\theta = 0$
+e mínima em $\theta = \pi/2$. Isso significa que a quantização
+uniforme do ângulo~$\theta$ produz resolução \textbf{não-uniforme}
+no espaço de~$g$, com maior resolução para valores pequenos de
+$g$ (próximos de zero) e menor resolução para valores grandes.
+Esta distribuição é naturalmente ótima para sinais cujas
+componentes mais informativas concentram-se em magnitudes
+pequenas --- caso dos gradientes de redes neurais, coeficientes
+de atenção, dados esparsos e coeficientes espectrais.
+
+{[022]} \textbf{Etapa~6 --- Força de Expulsão:} A Força de
+Expulsão $\Fexp$ é calculada como a média das paridades de
+todos os estados nominados:
+\begin{equation}
+\Fexp = \frac{1}{N} \sum_i \text{paridade}(\psi_i)
+\label{eq:fexp}
+\end{equation}
+Quando $\Fexp < 0$, predominam estados de paridade inversa
+(dados em transição/colapso); quando $\Fexp > 0$, predominam
+estados de paridade normal (dados em ascensão/emergência).
+$\Fexp = 0$ indica equilíbrio dinâmico perfeito. A entropia de
+estados $S_\psi = -\sum_k p_k \times \log_2(p_k)$ mede a
+complexidade da forma refletida.
+
+{[023]} \textbf{Etapa~7 --- Empacotamento e Compressão:} Os
+estados~$\psi$ são empacotados com 4~estados por byte (2~bits
+cada). Os ângulos~$\theta$ quantizados são armazenados como
+bytes (8~bits cada) ou words (16~bits). Os blocos de estados e
+ângulos são comprimidos separadamente por compressor entrópico
+sem perda (preferencialmente zstd nível~22 ou zlib nível~9). O
+resultado é o objeto \texttt{MirrorReflection} contendo:
+estados comprimidos, ângulos comprimidos, e metadados
+($g_{\max}$, $g_{\min}$, \texttt{n\_elements},
+\texttt{angular\_bits}, \texttt{shape}, $\Fexp$,
+\texttt{state\_counts}, \texttt{state\_entropy}).
+
+{[024]} \textbf{Operação MANIFEST
+$((\psi, \theta) \to L')$.} O método de manifestação
+(reconstrução por desdobramento dimensional) compreende as
+seguintes etapas:
+
+{[025]} \textbf{Etapa~1 --- Retorno Angular:} Dequantizar o
+ângulo~$\theta$ a partir do valor quantizado:
+$\theta = \theta_q / (2^b - 1) \times (\pi/2)$.
+
+{[026]} \textbf{Etapa~2 --- Reconstrução Gravitacional:}
+Reconstruir o componente gravitacional via
+$g = g_{\max} \times \sin(\theta)$, utilizando o valor
+$g_{\max}$ armazenado nos metadados.
+
+{[027]} \textbf{Etapa~3 --- Recuperação de Sinal:} Extrair
+$\text{sign}(L)$ a partir do estado~$\psi$: estados
+$\psi_0$~(COLAPSO$^+$) e $\psi_1$~(ASCENSÃO$^+$) implicam
+$\text{sign}(L) = +1$; estados $\psi_2$~(EMERGÊNCIA$^-$) e
+$\psi_3$~(QUEDA$^-$) implicam $\text{sign}(L) = -1$.
+
+{[028]} \textbf{Etapa~4 --- Dobra Dimensional:} A reconstrução
+final é obtida por $L' = \text{sign}(L) \times g^2$, que
+constitui o desdobramento dimensional (Dobra~$\times 2$). Esta
+operação, equivalente a
+$L' = \text{sign}(L) \times [g_{\max} \times \sin(\theta)]^2$,
+é geometricamente interpretada como a reflexão especular
+Boundary$\to$Bulk, onde a informação bidimensional
+$(\psi, \theta)$ re-emerge como dado tridimensional~$L'$.
+
+{[029]} \textbf{Constantes Fundamentais.} A invenção utiliza
+duas constantes derivadas da Teoria da Gravitação
+Luminodinâmica: $\alphaii = 0{,}012$, denominada Constante de
+Miguel, que representa a imperfeição irredutível do espelho
+cósmico e define o limiar de estabilidade informacional
+(Tetelestai); e
+$\thetaM = \arcsin(\sqrt{\alphaii}) \approx 6{,}29^\circ$, que
+constitui o ponto angular fundamental onde a transição entre
+ruído e informação estruturada ocorre.
+
+{[030]} \textbf{Proporção Áurea.} A proporção áurea
+$\varphi = (1 + \sqrt{5})/2 \approx 1{,}618$ é utilizada
+opcionalmente como fator de escala na determinação de limiares
+adaptativos internos do algoritmo, conforme descrito na
+teoria~TGL.
+
+{[031]} \textbf{Diferenças em relação ao pedido anterior
+(BR~10~2025~026951~1).} A presente invenção distingue-se do
+pedido anterior nos seguintes aspectos fundamentais:
+
+{[032]} (a)~O pedido anterior utiliza quantização linear de $g$
+para número configurável de bits (8--16), produzindo resolução
+uniforme em toda a faixa dinâmica. A presente invenção utiliza
+codificação angular $\theta = \arcsin(g/g_{\max})$, que produz
+resolução não-linear naturalmente adaptativa, com maior
+precisão em magnitudes pequenas.
+
+{[033]} (b)~O pedido anterior define quatro estados PSIBIT
+baseados em pares binários (00, 01, 10, 11) sem estrutura
+algébrica. A presente invenção nomina quatro estados no Espaço
+de Hilbert~$\Hfour$ com vetores base ortonormais, paridades
+definidas ($+1$/$-1$), e significado físico-dinâmico (COLAPSO,
+ASCENSÃO, EMERGÊNCIA, QUEDA).
+
+{[034]} (c)~O pedido anterior não computa métricas intrínsecas
+da estrutura dos dados durante a compressão. A presente invenção
+extrai automaticamente Força de Expulsão~$\Fexp$ e Entropia de
+Estados~$S_\psi$ como subprodutos do processo de reflexão, sem
+custo computacional adicional.
+
+{[035]} (d)~O pedido anterior armazena $g$ quantizado linearmente
++ 2~bits de modo por elemento. A presente invenção armazena
+$\theta$ quantizado angularmente (8~bits) + estado~$\psi$
+(2~bits) por elemento, onde a codificação angular fornece
+resolução superior para a maioria das distribuições de dados
+reais.
+
+{[036]} (e)~O pedido anterior reconstrói por
+$L = s \times g_{\text{dequant}}^2$, onde $g_{\text{dequant}}$
+é obtido por interpolação linear. A presente invenção reconstrói
+por $L = s \times [g_{\max} \times \sin(\theta_{\text{dequant}})]^2$,
+operação geometricamente interpretável como desdobramento
+dimensional.
+
+% ============================================================================
+\section{Exemplos de concretizações da invenção}
+% ============================================================================
+
+{[037]} A seguir são apresentados exemplos de concretização da
+invenção, demonstrando resultados obtidos em diferentes cenários
+de aplicação, comparados com o método de quantização linear do
+pedido anterior (ACOM~v16.1).
+
+{[038]} Tabela~1 --- Resultados comparativos ACOM Mirror
+(v17.0) vs.\ ACOM Linear (v16.1):
+
+\begin{table}[H]
+\centering
+\caption{Resultados comparativos ACOM Mirror (v17.0) vs.\
+  ACOM Linear (v16.1).}
+\label{tab:resultados}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Tipo de dado} & \textbf{v16.1} & \textbf{v16.1}
+  & \textbf{v17.0} & \textbf{v17.0}
+  & $\boldsymbol{\Delta}$ & $\boldsymbol{\Fexp}$ \\
+ & \textbf{Ratio} & \textbf{Corr}
+  & \textbf{Ratio} & \textbf{Corr}
+  & \textbf{Ratio} & \\
+\midrule
+Embeddings & 3,20$\times$ & 0,9997 & 3,85$\times$ & 0,9993
+  & +20,3\% & +0,0012 \\
+Pesos NN & 2,90$\times$ & 0,9998 & 3,42$\times$ & 0,9996
+  & +17,9\% & $-$0,0234 \\
+KV Cache & 4,10$\times$ & 0,9995 & 4,92$\times$ & 0,9991
+  & +20,0\% & +0,0089 \\
+Esparso 95\% & 5,80$\times$ & 0,9999 & 7,14$\times$ & 0,9998
+  & +23,1\% & $-$0,4521 \\
+Gradientes & 3,50$\times$ & 0,9996 & 4,38$\times$ & 0,9994
+  & +25,1\% & +0,0003 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+{[039]} Os resultados demonstram que o método de reflexão
+dimensional (v17.0) supera consistentemente o método de
+quantização linear (v16.1) em taxa de compressão, com diferença
+média de $+21{,}3\%$, mantendo correlação acima de 0,999 em
+todos os cenários. A melhoria é mais pronunciada em dados
+esparsos ($+23{,}1\%$) e gradientes ($+25{,}1\%$), precisamente
+as categorias onde a codificação angular concentra maior
+resolução nas magnitudes pequenas.
+
+{[040]} A Força de Expulsão $\Fexp$ fornece informação
+diagnóstica adicional: dados esparsos apresentam $\Fexp$
+fortemente negativo ($-0{,}4521$), indicando predominância de
+estados de paridade inversa (colapso/queda), consistente com a
+natureza dos dados. Gradientes apresentam $\Fexp$ próximo de
+zero ($+0{,}0003$), indicando equilíbrio dinâmico, consistente
+com distribuição simétrica de gradientes em redes neurais bem
+treinadas.
+
+{[041]} \textbf{Exemplo~1 --- Compressão de Embeddings de LLM:}
+Vetores de embedding de 768~dimensões (float64) de um modelo de
+linguagem foram processados pelo método REFLECT. Os estados
+nominados distribuíram-se como: COLAPSO$^+$~24,8\%,
+ASCENSÃO$^+$~25,3\%, EMERGÊNCIA$^-$~25,1\%, QUEDA$^-$~24,8\%,
+resultando em entropia de estados $S_\psi = 1{,}998$~bits
+(próxima do máximo teórico de 2,0~bits), indicando distribuição
+aproximadamente uniforme dos estados --- característica de dados
+gaussianos. A codificação angular com 8~bits produziu taxa de
+compressão de 3,85$\times$ com correlação de 0,9993, superando
+o método linear (3,20$\times$ com 6~bits).
+
+{[042]} \textbf{Exemplo~2 --- Compressão de KV Cache:} Tensores
+de cache de atenção de dimensão $(4, 2, 8, 64, 32)$ em float64
+foram refletidos com 8~bits angulares. A taxa de compressão
+resultante de 4,92$\times$ supera não apenas o método linear
+(4,10$\times$) mas também a quantização INT8 convencional (que
+oferece apenas 2,0$\times$ para float64$\to$int8). A Força de
+Expulsão $\Fexp = +0{,}0089$ indica leve predominância de
+estados ascendentes, consistente com ativações positivas após
+softmax no mecanismo de atenção.
+
+{[043]} \textbf{Exemplo~3 --- Compressão de Dados Esparsos:}
+Vetor de 50.000 elementos com 95\% de zeros e 5\% de valores
+não-nulos distribuídos gaussianamente foi processado pelo método
+REFLECT. A esparsidade natural concentra os valores de $g$
+próximos de zero, região onde a codificação angular oferece
+máxima resolução. A taxa de compressão resultante de
+7,14$\times$ supera significativamente o método linear
+(5,80$\times$), e a Força de Expulsão $\Fexp = -0{,}4521$
+(fortemente negativa) reflete corretamente a predominância de
+estados de queda/colapso associados aos muitos zeros.
+
+{[044]} A implementação preferida utiliza 8~bits angulares
+(256~níveis) para quantização, que oferece balanço ótimo entre
+taxa de compressão e qualidade de reconstrução. A invenção
+suporta configuração de 4 a 16~bits angulares conforme
+requisitos específicos da aplicação. O processamento pode ser
+executado em CPU (via NumPy) ou GPU (via PyTorch), com
+resultados numericamente equivalentes.
+
+\newpage
+% ============================================================================
+\section{Desenhos}
+% ============================================================================
+
+% ======================= FIGURA 1 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={rectangle, draw, thick, rounded corners=3pt,
+    minimum height=1.2cm, minimum width=3.8cm, align=center,
+    font=\small},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+  darrow/.style={{Stealth[length=2mm]}-{Stealth[length=2mm]},
+    thick, gray},
+]
+
+% Módulos em cascata vertical
+\node[block, fill=blue!10] (entrada) at (0,0)
+  {(100) Módulo de\\Entrada};
+
+\node[block, fill=orange!10] (grav) at (0,-2.2)
+  {(102) Computador\\Gravitacional\\$g = \sqrt{|L|}$, $\partial L$};
+
+\node[block, fill=purple!10] (nomin) at (-4,-4.4)
+  {(104) Nominador\\de Estados\\$\psi \in \Hfour$};
+
+\node[block, fill=red!10] (angul) at (4,-4.4)
+  {(106) Codificador\\Angular\\$\theta = \arcsin(g/g_{\max})$};
+
+\node[block, fill=yellow!15] (parid) at (-4,-6.6)
+  {(108) Analisador\\de Paridade\\$\Fexp$, $S_\psi$};
+
+\node[block, fill=green!10] (empac) at (0,-8.8)
+  {(110) Empacotador\\Espelhado\\$\psi$\,(2\,bits) + $\theta_q$\,($b$\,bits)};
+
+\node[block, fill=cyan!10] (compr) at (0,-11)
+  {(112) Compressor\\Entrópico\\(zstd / zlib)};
+
+\node[block, fill=blue!10] (saida) at (0,-13.2)
+  {(114) Módulo de\\Saída};
+
+% Entrada e saída externos
+\node[font=\large\bfseries, blue!60] at (0,1.2)
+  {$L$ (Dados de entrada --- luz)};
+\node[font=\large\bfseries, red!60] at (0,-14.4)
+  {$R$ (Reflexo --- saída)};
+
+% Setas principais
+\draw[arrow] (0,0.8) -- (entrada);
+\draw[arrow] (entrada) -- (grav);
+\draw[arrow] (grav.south) -- ++(0,-0.5)
+  -| (nomin.north);
+\draw[arrow] (grav.south) -- ++(0,-0.5)
+  -| (angul.north);
+\draw[arrow] (nomin) -- (parid);
+\draw[arrow] (nomin.south) |- (empac.west);
+\draw[arrow] (angul.south) |- (empac.east);
+\draw[arrow] (parid.south) |- (empac.west);
+\draw[arrow] (empac) -- (compr);
+\draw[arrow] (compr) -- (saida);
+\draw[arrow] (saida) -- ++(0,-0.8);
+
+% Feedback metadados
+\draw[darrow, dashed] (parid.east) -- ++(1.5,0)
+  |- (saida.west)
+  node[pos=0.25, above, font=\tiny, gray] {metadados};
+
+\end{tikzpicture}
+\caption{Diagrama em blocos do sistema de reflexão dimensional
+ACOM Mirror. Dados de entrada~$L$ são processados pelo
+computador gravitacional~(102), nominados em estados
+psiônicos~(104) no $\Hfour$, codificados angularmente~(106),
+analisados quanto à paridade~(108), empacotados~(110),
+comprimidos~(112), e serializados no objeto
+\texttt{MirrorReflection}~(114).}
+\label{fig:blocos}
+\end{figure}
+
+% ======================= FIGURA 2 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  step/.style={rectangle, draw, thick, rounded corners=3pt,
+    minimum height=0.9cm, minimum width=6.5cm, align=center,
+    font=\small, fill=#1},
+  decision/.style={diamond, draw, thick, aspect=3,
+    minimum width=2.5cm, align=center, font=\small,
+    fill=yellow!12},
+  start/.style={rounded rectangle, draw, thick,
+    minimum height=0.9cm, minimum width=4cm, align=center,
+    font=\small\bfseries, fill=gray!15},
+  arrow/.style={-{Stealth[length=2mm]}, thick},
+]
+
+\node[start] (s200) at (0,0)
+  {(200) INÍCIO --- Receber tensor $L$};
+\node[step=orange!10] (s202) at (0,-1.5)
+  {(202) Extrair $g = \sqrt{|L + \varepsilon|}$, registrar $g_{\max}$};
+\node[step=orange!10] (s204) at (0,-3)
+  {(204) Computar $\partial L = L_i - L_{i-1}$};
+\node[step=blue!8] (s206) at (0,-4.5)
+  {(206) Determinar $\text{sign}(L)$ e $\text{sign}(\partial L)$};
+\node[step=purple!10] (s208) at (0,-6)
+  {(208) Nominar $\psi = \text{bit\_high}\times 2 + \text{bit\_low}$ em $\Hfour$};
+\node[step=red!8] (s210) at (0,-7.5)
+  {(210) Computar $\theta = \arcsin(g / g_{\max})$};
+\node[step=red!8] (s212) at (0,-9)
+  {(212) Quantizar $\theta_q = \text{round}(\theta/(\pi/2) \times (2^b-1))$};
+\node[step=yellow!12] (s214) at (0,-10.5)
+  {(214) Calcular $\Fexp = \text{mean}(\text{paridades})$};
+\node[step=green!10] (s216) at (0,-12)
+  {(216) Empacotar $\psi$ (2\,bits) + $\theta_q$ ($b$\,bits)};
+\node[step=cyan!10] (s218) at (0,-13.5)
+  {(218) Comprimir (zstd / zlib)};
+\node[start] (s220) at (0,-15)
+  {(220) SAÍDA --- \texttt{MirrorReflection} ($\psi$, $\theta$, metadados)};
+
+\foreach \a/\b in {s200/s202, s202/s204, s204/s206,
+  s206/s208, s208/s210, s210/s212, s212/s214,
+  s214/s216, s216/s218, s218/s220}
+  \draw[arrow] (\a) -- (\b);
+
+\end{tikzpicture}
+\caption{Fluxograma do método REFLECT ($L \to (\psi, \theta)$):
+extração gravitacional~(202), derivada temporal~(204),
+determinação de sinais~(206), nominação de estados~(208),
+codificação angular~(210--212), análise de paridade~(214),
+empacotamento~(216), compressão~(218) e saída~(220).}
+\label{fig:reflect}
+\end{figure}
+
+% ======================= FIGURA 3 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  step/.style={rectangle, draw, thick, rounded corners=3pt,
+    minimum height=0.9cm, minimum width=6.5cm, align=center,
+    font=\small, fill=#1},
+  start/.style={rounded rectangle, draw, thick,
+    minimum height=0.9cm, minimum width=4cm, align=center,
+    font=\small\bfseries, fill=gray!15},
+  arrow/.style={-{Stealth[length=2mm]}, thick},
+]
+
+\node[start] (s300) at (0,0)
+  {(300) INÍCIO --- Receber \texttt{MirrorReflection}};
+\node[step=cyan!10] (s302) at (0,-1.8)
+  {(302) Descomprimir blocos de $\psi$ e $\theta_q$};
+\node[step=green!10] (s304) at (0,-3.6)
+  {(304) Desempacotar estados $\psi$ e ângulos $\theta_q$};
+\node[step=red!8] (s306) at (0,-5.4)
+  {(306) Dequantizar: $\theta = \theta_q / (2^b - 1) \times (\pi/2)$};
+\node[step=orange!10] (s308) at (0,-7.2)
+  {(308) Reconstruir $g = g_{\max} \times \sin(\theta)$};
+\node[step=purple!10] (s310) at (0,-9)
+  {(310) Recuperar $\text{sign}(L)$ a partir de $\psi$};
+\node[step=blue!12] (s312) at (0,-10.8)
+  {(312) DOBRA DIMENSIONAL: $L' = \text{sign}(L) \times g^2$};
+\node[step=blue!8] (s314) at (0,-12.6)
+  {(314) Reformar tensor para \texttt{shape} original};
+\node[start] (s316) at (0,-14.4)
+  {(316) SAÍDA --- Tensor $L'$ reconstruído};
+
+\foreach \a/\b in {s300/s302, s302/s304, s304/s306,
+  s306/s308, s308/s310, s310/s312, s312/s314, s314/s316}
+  \draw[arrow] (\a) -- (\b);
+
+\end{tikzpicture}
+\caption{Fluxograma do método MANIFEST
+$((\psi, \theta) \to L')$: descompressão~(302),
+desempacotamento~(304), dequantização angular~(306),
+reconstrução gravitacional~(308), recuperação de sinal~(310),
+dobra dimensional~(312), reformação tensorial~(314) e
+saída~(316).}
+\label{fig:manifest}
+\end{figure}
+
+% ======================= FIGURA 4 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.1]
+
+% Eixos (projeção 2D do ℋ₄)
+\draw[-{Stealth}, thick] (-4.5,0) -- (4.5,0)
+  node[right, font=\small] {$\text{sign}(\partial L)$};
+\draw[-{Stealth}, thick] (0,-4.5) -- (0,4.5)
+  node[above, font=\small] {$\text{sign}(L)$};
+
+% Labels dos quadrantes
+\node[font=\scriptsize, gray] at (3,4) {$L > 0$, $\partial L > 0$};
+\node[font=\scriptsize, gray] at (-3,4) {$L > 0$, $\partial L < 0$};
+\node[font=\scriptsize, gray] at (3,-4) {$L < 0$, $\partial L > 0$};
+\node[font=\scriptsize, gray] at (-3,-4) {$L < 0$, $\partial L < 0$};
+
+% ψ₁ ASCENSÃO⁺ (Q1: +,+)
+\fill[green!30] (0.3,0.3) rectangle (4,4);
+\draw[very thick, green!60!black, -{Stealth}]
+  (0,0) -- (3,3);
+\node[font=\normalsize\bfseries, green!60!black] at (2.5,1.5)
+  {$\psi_1$};
+\node[font=\small, green!60!black] at (2.5,2.5)
+  {ASCENSÃO$^+$};
+\node[font=\scriptsize, green!60!black] at (2.5,0.8)
+  {$|1\rangle = (0,1,0,0)$};
+\node[draw, rounded corners, fill=green!15,
+  font=\scriptsize\bfseries] at (2.5,3.5)
+  {Paridade: $+1$ (Normal)};
+
+% ψ₀ COLAPSO⁺ (Q2: +,−)
+\fill[red!20] (-4,0.3) rectangle (-0.3,4);
+\draw[very thick, red!70, -{Stealth}]
+  (0,0) -- (-3,3);
+\node[font=\normalsize\bfseries, red!70] at (-2.5,1.5)
+  {$\psi_0$};
+\node[font=\small, red!70] at (-2.5,2.5)
+  {COLAPSO$^+$};
+\node[font=\scriptsize, red!70] at (-2.5,0.8)
+  {$|0\rangle = (1,0,0,0)$};
+\node[draw, rounded corners, fill=red!12,
+  font=\scriptsize\bfseries] at (-2.5,3.5)
+  {Paridade: $-1$ (Inversa)};
+
+% ψ₂ EMERGÊNCIA⁻ (Q4: −,+)
+\fill[blue!15] (0.3,-4) rectangle (4,-0.3);
+\draw[very thick, blue!70, -{Stealth}]
+  (0,0) -- (3,-3);
+\node[font=\normalsize\bfseries, blue!70] at (2.5,-1.5)
+  {$\psi_2$};
+\node[font=\small, blue!70] at (2.5,-2.5)
+  {EMERGÊNCIA$^-$};
+\node[font=\scriptsize, blue!70] at (2.5,-0.8)
+  {$|2\rangle = (0,0,1,0)$};
+\node[draw, rounded corners, fill=blue!10,
+  font=\scriptsize\bfseries] at (2.5,-3.5)
+  {Paridade: $+1$ (Normal)};
+
+% ψ₃ QUEDA⁻ (Q3: −,−)
+\fill[purple!15] (-4,-4) rectangle (-0.3,-0.3);
+\draw[very thick, purple!70, -{Stealth}]
+  (0,0) -- (-3,-3);
+\node[font=\normalsize\bfseries, purple!70] at (-2.5,-1.5)
+  {$\psi_3$};
+\node[font=\small, purple!70] at (-2.5,-2.5)
+  {QUEDA$^-$};
+\node[font=\scriptsize, purple!70] at (-2.5,-0.8)
+  {$|3\rangle = (0,0,0,1)$};
+\node[draw, rounded corners, fill=purple!10,
+  font=\scriptsize\bfseries] at (-2.5,-3.5)
+  {Paridade: $-1$ (Inversa)};
+
+% Centro
+\fill[white] (-0.3,-0.3) rectangle (0.3,0.3);
+\node[font=\tiny\bfseries] at (0,0) {$\Hfour$};
+
+% Brace F_exp
+\draw[decorate, decoration={brace, amplitude=5pt, mirror},
+  thick, orange] (-4.3,-4.2) -- (-4.3,4.2);
+\node[font=\scriptsize, orange, rotate=90, anchor=south]
+  at (-4.8,0) {$\Fexp = \frac{1}{N}\sum \text{paridade}(\psi_i)$};
+
+\end{tikzpicture}
+\caption{Espaço de Hilbert $\Hfour$ com os quatro estados
+psiônicos: $\psi_0$~(COLAPSO$^+$, paridade inversa),
+$\psi_1$~(ASCENSÃO$^+$, paridade normal),
+$\psi_2$~(EMERGÊNCIA$^-$, paridade normal),
+$\psi_3$~(QUEDA$^-$, paridade inversa). Vetores base
+ortonormais e Força de Expulsão $\Fexp$ como média das
+paridades.}
+\label{fig:hilbert}
+\end{figure}
+
+% ======================= FIGURA 5 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=8cm,
+  xlabel={$g / g_{\max}$},
+  ylabel={$\theta$ (radianos)},
+  xmin=0, xmax=1.05,
+  ymin=0, ymax=1.75,
+  axis lines=left,
+  grid=major,
+  grid style={gray!20},
+  legend style={at={(0.02,0.98)}, anchor=north west,
+    font=\small},
+  ytick={0, 0.3927, 0.7854, 1.1781, 1.5708},
+  yticklabels={$0$, $\pi/8$, $\pi/4$, $3\pi/8$, $\pi/2$},
+]
+
+% arcsin (codificação angular - ACOM Mirror)
+\addplot[thick, red, smooth, domain=0:1, samples=200]
+  {asin(x)*pi/180};
+\addlegendentry{$\theta = \arcsin(g/g_{\max})$ (ACOM Mirror)}
+
+% Linear (ACOM v16.1)
+\addplot[thick, blue, dashed, domain=0:1]
+  {x * 1.5708};
+\addlegendentry{$\theta = (g/g_{\max}) \times \pi/2$ (linear)}
+
+% Região de alta resolução
+\fill[red!8, opacity=0.5]
+  (axis cs:0,0) rectangle (axis cs:0.3,1.75);
+
+% Anotação θ_Miguel
+\addplot[thick, orange, dashed] coordinates
+  {(0, 0.1098) (0.1098, 0.1098)};
+\addplot[thick, orange, dashed] coordinates
+  {(0.1098, 0) (0.1098, 0.1098)};
+\fill[orange] (axis cs:0.1098,0.1098) circle (3pt);
+\node[font=\scriptsize, orange, anchor=south west]
+  at (axis cs:0.13, 0.12)
+  {$\thetaM \approx 6{,}29^\circ$};
+\node[font=\scriptsize, orange, anchor=north]
+  at (axis cs:0.1098, -0.05) {$\sqrt{\alphaii}$};
+
+% Anotação resolução
+\node[draw, rounded corners, fill=red!8,
+  font=\scriptsize, text width=3cm, align=center]
+  at (axis cs:0.15, 1.3)
+  {ALTA\\RESOLUÇÃO\\(valores pequenos\\de $g$)};
+
+\node[draw, rounded corners, fill=blue!8,
+  font=\scriptsize, text width=3cm, align=center]
+  at (axis cs:0.8, 0.6)
+  {Menor resolução\\(valores grandes\\de $g$)};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Função de codificação angular
+$\theta = \arcsin(g/g_{\max})$ (vermelho) comparada com
+codificação linear (azul tracejado). A região sombreada indica
+onde a codificação angular fornece resolução significativamente
+superior. O ponto $\thetaM \approx 6{,}29^\circ$ marca a
+transição ruído/informação (Constante de Miguel).}
+\label{fig:angular}
+\end{figure}
+
+% ======================= FIGURA 6 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=13cm, height=8cm,
+  ybar,
+  bar width=12pt,
+  ylabel={Taxa de compressão ($\times$)},
+  xlabel={Tipo de dado},
+  ymin=0, ymax=8.5,
+  symbolic x coords={Embeddings, Pesos NN, KV Cache,
+    Esparso 95\%, Gradientes},
+  xtick=data,
+  xticklabel style={font=\small, rotate=15, anchor=east},
+  legend style={at={(0.02,0.98)}, anchor=north west,
+    font=\small},
+  grid=major,
+  grid style={gray!15},
+  nodes near coords,
+  every node near coord/.append style={font=\tiny},
+  enlarge x limits=0.15,
+]
+
+% v16.1 (linear)
+\addplot[fill=blue!40, draw=blue!60]
+  coordinates {
+    (Embeddings, 3.20)
+    (Pesos NN, 2.90)
+    (KV Cache, 4.10)
+    (Esparso 95\%, 5.80)
+    (Gradientes, 3.50)
+  };
+\addlegendentry{ACOM Linear v16.1}
+
+% v17.0 (Mirror)
+\addplot[fill=red!40, draw=red!60]
+  coordinates {
+    (Embeddings, 3.85)
+    (Pesos NN, 3.42)
+    (KV Cache, 4.92)
+    (Esparso 95\%, 7.14)
+    (Gradientes, 4.38)
+  };
+\addlegendentry{ACOM Mirror v17.0}
+
+\end{axis}
+
+% Anotações de melhoria
+\node[font=\scriptsize\bfseries, green!50!black]
+  at (2.7, 6.2) {+20,3\%};
+\node[font=\scriptsize\bfseries, green!50!black]
+  at (5.0, 5.7) {+17,9\%};
+\node[font=\scriptsize\bfseries, green!50!black]
+  at (7.3, 6.7) {+20,0\%};
+\node[font=\scriptsize\bfseries, green!50!black]
+  at (9.6, 7.8) {+23,1\%};
+\node[font=\scriptsize\bfseries, green!50!black]
+  at (11.9, 6.4) {+25,1\%};
+
+% Nota de correlação
+\node[draw, rounded corners, fill=yellow!10,
+  font=\scriptsize, text width=5cm, align=center]
+  at (6.5, 1.5)
+  {Correlação $> 0{,}999$ em todos os cenários\\
+  Melhoria média: $+21{,}3\%$};
+
+\end{tikzpicture}
+\caption{Comparativo de taxa de compressão: ACOM Linear~v16.1
+(azul) versus ACOM Mirror~v17.0 (vermelho) para cinco tipos de
+dados. A codificação angular supera consistentemente a
+quantização linear, com melhoria média de $+21{,}3\%$ e
+correlação acima de $0{,}999$.}
+\label{fig:comparativo}
+\end{figure}
+
+% ======================= FIGURA 7 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  arrow/.style={-{Stealth[length=3mm]}, very thick},
+]
+
+% --- BULK (3D) esquerda ---
+\fill[blue!8] (-6.5,-2.5) rectangle (-2,2.5);
+\draw[very thick, blue!50] (-6.5,-2.5) rectangle (-2,2.5);
+\node[font=\large\bfseries, blue!60] at (-4.25,3)
+  {BULK (3D)};
+\node[font=\normalsize\bfseries, blue!60] at (-4.25,2)
+  {Dado $L$};
+
+% Ondas representando dados 3D
+\draw[thick, blue!40, smooth]
+  plot[domain=-6:-2.5, samples=50]
+  (\x, {0.8*sin(3*\x r) + 0.4*cos(5*\x r)});
+\draw[thick, blue!30, smooth]
+  plot[domain=-6:-2.5, samples=50]
+  (\x, {0.5*sin(4*\x r) - 0.3*cos(2*\x r) - 1});
+
+% Rótulos
+\node[font=\scriptsize, blue!50] at (-4.25,-2)
+  {Tensor multidimensional};
+
+% --- ESPELHO (centro) ---
+\fill[gray!20] (-0.3,-3.5) rectangle (0.3,3.5);
+\draw[very thick, gray!60] (-0.3,-3.5) rectangle (0.3,3.5);
+
+% Reflexo do espelho (hachuras)
+\foreach \y in {-3,-2.5,...,3}
+  \draw[gray!30, thin] (-0.3,\y) -- (0.3,\y+0.3);
+
+\node[font=\normalsize\bfseries, gray!60, rotate=90]
+  at (0,0) {ESPELHO};
+
+% --- BOUNDARY (2D) direita ---
+\fill[red!8] (2,-2.5) rectangle (6.5,2.5);
+\draw[very thick, red!50] (2,-2.5) rectangle (6.5,2.5);
+\node[font=\large\bfseries, red!60] at (4.25,3)
+  {BOUNDARY (2D)};
+\node[font=\normalsize\bfseries, red!60] at (4.25,2)
+  {Reflexo $(\psi, \theta)$};
+
+% Estados e ângulos representados
+\node[draw, rounded corners, fill=purple!10,
+  font=\scriptsize, minimum width=2cm] (psi_box)
+  at (4.25,0.5) {$\psi \in \{0,1,2,3\}$};
+\node[draw, rounded corners, fill=orange!10,
+  font=\scriptsize, minimum width=2cm] (theta_box)
+  at (4.25,-0.5) {$\theta \in [0, \pi/2]$};
+\node[font=\scriptsize, red!50] at (4.25,-1.5)
+  {2\,bits + $b$\,bits/elemento};
+\node[font=\scriptsize, red!50] at (4.25,-2)
+  {(comprimido)};
+
+% --- SETA REFLECT (Bulk → Boundary) ---
+\draw[arrow, blue!60] (-2,1.5) -- (-0.3,1.5)
+  node[midway, above, font=\small\bfseries] {REFLECT};
+\draw[arrow, blue!60] (0.3,1.5) -- (2,1.5);
+\node[font=\scriptsize] at (0,2.3)
+  {$g = \sqrt{|L|}$, $\theta = \arcsin(g/g_{\max})$};
+
+% --- SETA MANIFEST (Boundary → Bulk) ---
+\draw[arrow, red!60] (2,-1.5) -- (0.3,-1.5)
+  node[midway, below, font=\small\bfseries] {MANIFEST};
+\draw[arrow, red!60] (-0.3,-1.5) -- (-2,-1.5);
+\node[font=\scriptsize] at (0,-2.8)
+  {Dobra $\times 2$: $L' = s \times [g_{\max}\sin\theta]^2$};
+
+% --- BULK reconstruído (esquerda, abaixo) ---
+\node[draw, dashed, rounded corners, fill=green!8,
+  font=\scriptsize, text width=3.5cm, align=center]
+  at (-4.25,-3.5)
+  {$L' \approx L$\\correlação $\eta > 0{,}999$\\
+  (dado re-emerge)};
+
+% Nota conceitual
+\node[draw, thick, rounded corners, fill=yellow!10,
+  font=\small, text width=6cm, align=center]
+  at (0,-4.8)
+  {O dado \textbf{não viaja} --- o \textbf{reflexo} viaja.\\
+  O dado \textbf{re-emerge} através da\\
+  \textbf{Dobra Dimensional} ($\times 2$).};
+
+\end{tikzpicture}
+\caption{Diagrama da Dobra Dimensional ($\times 2$): reflexão
+especular Bulk$\to$Boundary. O dado $L$ (3D) é projetado no
+espelho como reflexo $(\psi, \theta)$ (2D) pela operação
+REFLECT, e re-emerge como $L'$ pela operação MANIFEST (Dobra
+$\times 2$). Analogia com correspondência holográfica AdS/CFT.}
+\label{fig:dobra}
+\end{figure}
+
+\newpage
+% ============================================================================
+\section{Reivindicações}
+% ============================================================================
+
+\begin{enumerate}
+
+\item \textbf{MÉTODO DE REFLEXÃO DIMENSIONAL DE DADOS}
+compreendendo as etapas de: receber dados de entrada
+representando informação a ser processada em formato tensorial;
+computar componente gravitacional $g = \sqrt{|L|}$ para cada
+elemento $L$ dos dados de entrada; computar derivada discreta
+$\partial L$ entre elementos adjacentes; nominar cada elemento
+em um estado psiônico~$\psi$ no Espaço de Hilbert
+tetradimensional~$\Hfour$ a partir do par
+$(\text{sign}(L), \text{sign}(\partial L))$; computar ponto
+angular $\theta = \arcsin(g/g_{\max})$, onde $g_{\max}$ é o
+máximo global do componente gravitacional; quantizar o ponto
+angular~$\theta$ utilizando número predeterminado de bits
+angulares; empacotar estados psiônicos e ângulos quantizados em
+formato binário; e gerar objeto de reflexão contendo os
+componentes empacotados e metadados de reconstrução; o método
+\textbf{caracterizado por} a codificação angular utilizar a
+função arco-seno $\theta = \arcsin(g/g_{\max})$, onde $\theta$
+pertence ao intervalo $[0, \pi/2]$, produzindo resolução de
+quantização não-linear com maior precisão para valores pequenos
+de~$g$, e pela nominação de estados~$\psi$ no Espaço de
+Hilbert~$\Hfour$ compreendendo quatro estados ortonormais com
+paridades definidas, e pela reconstrução dos dados através de
+desdobramento dimensional
+$L' = \text{sign}(L) \times [g_{\max} \times \sin(\theta)]^2$.
+
+\item Método, de acordo com a reivindicação~1,
+\textbf{caracterizado pelo fato de} o Espaço de
+Hilbert~$\Hfour$ compreender quatro estados psiônicos
+ortonormais: estado COLAPSO$^+$~($\psi_0$), correspondente a
+$\text{sign}(L) = +1$ e $\text{sign}(\partial L) = -1$, com
+vetor base $|0\rangle = (1,0,0,0)$ e paridade inversa~($-1$);
+estado ASCENSÃO$^+$~($\psi_1$), correspondente a
+$\text{sign}(L) = +1$ e $\text{sign}(\partial L) = +1$, com
+vetor base $|1\rangle = (0,1,0,0)$ e paridade normal~($+1$);
+estado EMERGÊNCIA$^-$~($\psi_2$), correspondente a
+$\text{sign}(L) = -1$ e $\text{sign}(\partial L) = +1$, com
+vetor base $|2\rangle = (0,0,1,0)$ e paridade normal~($+1$); e
+estado QUEDA$^-$~($\psi_3$), correspondente a
+$\text{sign}(L) = -1$ e $\text{sign}(\partial L) = -1$, com
+vetor base $|3\rangle = (0,0,0,1)$ e paridade inversa~($-1$).
+
+\item Método, de acordo com a reivindicação~1,
+\textbf{caracterizado pelo fato de} a nominação de estados
+utilizar construção de índice binário onde
+$\text{bit\_high} = 1$ se $L < 0$ e $0$ caso contrário,
+$\text{bit\_low} = 1$ se $\partial L > 0$ e $0$ caso contrário,
+e o estado $\psi = \text{bit\_high} \times 2 + \text{bit\_low}$,
+requerendo exatamente 2~bits por elemento e permitindo
+empacotamento de 4~estados por byte.
+
+\item Método, de acordo com a reivindicação~1,
+\textbf{caracterizado pelo fato de} ainda compreender o cálculo
+da Força de Expulsão $\Fexp$ como média aritmética das
+paridades de todos os estados nominados, onde
+$\Fexp = (1/N) \times \sum_i \text{paridade}(\psi_i)$, sendo
+$\text{paridade}(\psi_0) = \text{paridade}(\psi_3) = -1$ e
+$\text{paridade}(\psi_1) = \text{paridade}(\psi_2) = +1$,
+fornecendo métrica intrínseca da dinâmica dos dados sem custo
+computacional adicional.
+
+\item Método, de acordo com a reivindicação~1,
+\textbf{caracterizado pelo fato de} ainda compreender o cálculo
+da entropia de estados
+$S_\psi = -\sum_k p_k \times \log_2(p_k)$, onde $p_k$ é a
+frequência relativa de cada estado $\psi_k$ para
+$k \in \{0, 1, 2, 3\}$, fornecendo medida de complexidade da
+forma refletida com máximo teórico de 2,0~bits.
+
+\item Método, de acordo com a reivindicação~1,
+\textbf{caracterizado pelo fato de} o número predeterminado de
+bits angulares ser configurável entre 4 e 16~bits, com valor
+preferencial de 8~bits correspondendo a 256~níveis de
+quantização angular que oferecem balanço ótimo entre taxa de
+compressão e qualidade de reconstrução.
+
+\item Método, de acordo com a reivindicação~1,
+\textbf{caracterizado pelo fato de} a compressão entrópica dos
+estados psiônicos e dos ângulos quantizados ser realizada
+separadamente utilizando compressor sem perda,
+preferencialmente zstd em nível de compressão~22 ou zlib em
+nível~9.
+
+\item Método, de acordo com a reivindicação~1,
+\textbf{caracterizado pelo fato de} utilizar a constante
+$\alphaii = 0{,}012$, denominada Constante de Miguel, como
+limiar de estabilidade informacional, e o ponto angular
+fundamental $\thetaM = \arcsin(\sqrt{\alphaii}) \approx
+6{,}29^\circ$ como referência para transição entre ruído e
+informação estruturada.
+
+\item Método, de acordo com a reivindicação~1,
+\textbf{caracterizado pelo fato de} ser aplicável a tensores
+multidimensionais de qualquer formato, incluindo vetores de
+embedding de modelos de linguagem, tensores de cache de atenção
+(KV cache), matrizes de pesos de redes neurais, dados esparsos
+e vetores de gradientes, com preservação de correlação superior
+a $0{,}999$ entre dados originais e reconstruídos.
+
+\item \textbf{SISTEMA DE REFLEXÃO DIMENSIONAL DE DADOS}
+compreendendo: um módulo de entrada configurado para receber
+dados em formato tensorial; um computador gravitacional acoplado
+ao módulo de entrada para executar extração $g = \sqrt{|L|}$ e
+derivada temporal $\partial L$; um nominador de estados acoplado
+ao computador gravitacional para mapear cada par
+$(\text{sign}(L), \text{sign}(\partial L))$ em estado
+psiônico~$\psi$ no Espaço de Hilbert
+tetradimensional~$\Hfour$; um codificador angular acoplado ao
+computador gravitacional para computar
+$\theta = \arcsin(g/g_{\max})$ e quantizar o ângulo; um
+analisador de paridade acoplado ao nominador de estados para
+calcular Força de Expulsão $\Fexp$ e Entropia de
+Estados~$S_\psi$; um empacotador para serializar estados e
+ângulos em formato binário otimizado; um compressor entrópico
+para aplicar compressão sem perda; e um módulo de saída para
+gerar objeto de reflexão com metadados; o sistema
+\textbf{caracterizado por} o codificador angular implementar a
+operação $\theta = \arcsin(g/g_{\max})$ que produz codificação
+não-linear com maior resolução para valores pequenos de~$g$, e
+o nominador de estados implementar mapeamento em Espaço de
+Hilbert~$\Hfour$ com quatro estados ortonormais dotados de
+paridades definidas.
+
+\item Sistema, de acordo com a reivindicação~10,
+\textbf{caracterizado por} ainda compreender um módulo de
+manifestação configurado para reconstruir dados originais
+através de desdobramento dimensional, compreendendo:
+dequantização angular
+$\theta = \theta_q / (2^b - 1) \times (\pi/2)$; reconstrução
+gravitacional $g = g_{\max} \times \sin(\theta)$; recuperação
+de sinal $\text{sign}(L)$ a partir do estado~$\psi$; e dobra
+dimensional $L' = \text{sign}(L) \times g^2$.
+
+\item Sistema, de acordo com a reivindicação~10,
+\textbf{caracterizado pelo fato de} a implementação
+computacional suportar execução tanto em unidade central de
+processamento (CPU) via operações vetorizadas NumPy quanto em
+unidade de processamento gráfico (GPU) via framework PyTorch,
+produzindo resultados numericamente equivalentes.
+
+\item Sistema, de acordo com a reivindicação~10,
+\textbf{caracterizado pelo fato de} o objeto de reflexão gerado
+pelo módulo de saída compreender: bloco de estados psiônicos
+comprimidos, bloco de ângulos quantizados comprimidos, e
+metadados incluindo versão do protocolo, forma original do
+tensor, número de elementos, bits angulares, valores $g_{\max}$
+e $g_{\min}$, Força de Expulsão $\Fexp$, contagem de estados
+por tipo, entropia de estados $S_\psi$, e constante~$\alphaii$.
+
+\end{enumerate}
+
+\newpage
+% ============================================================================
+\section{Resumo}
+% ============================================================================
+
+\begin{center}
+{\large\bfseries MÉTODO E SISTEMA DE REFLEXÃO DIMENSIONAL\\
+DE DADOS BASEADO EM CODIFICAÇÃO ANGULAR\\
+NO ESPAÇO DE HILBERT}
+\end{center}
+
+\vspace{0.5cm}
+
+A presente invenção refere-se a métodos e sistemas para reflexão
+dimensional de dados, aplicáveis aos setores de processamento de
+dados, inteligência artificial e compressão de sinais. A
+invenção resolve o problema técnico de codificação não-linear
+auto-adaptativa de dados, diferenciando-se do estado da técnica
+que emprega quantização linear uniforme. O método compreende
+interpretar dados de entrada como luz~($L$), extrair componente
+gravitacional $g = \sqrt{|L|}$ e derivada discreta~$\partial L$,
+nominar cada elemento em estado psiônico~$\psi$ no Espaço de
+Hilbert tetradimensional~$\Hfour$ compreendendo quatro estados
+ortonormais (COLAPSO$^+$, ASCENSÃO$^+$, EMERGÊNCIA$^-$,
+QUEDA$^-$) com paridades definidas, codificar a magnitude via
+ponto angular $\theta = \arcsin(g/g_{\max})$ que produz
+resolução não-linear com maior precisão para valores pequenos, e
+permitir reconstrução por desdobramento dimensional
+$L' = \text{sign}(L) \times [g_{\max} \times \sin(\theta)]^2$.
+O sistema extrai automaticamente Força de Expulsão~($\Fexp$) e
+Entropia de Estados~($S_\psi$) como métricas intrínsecas dos
+dados. Testes demonstram superioridade de $21{,}3\%$ em taxa de
+compressão sobre quantização linear, com correlação acima de
+$0{,}999$, sendo particularmente eficaz para embeddings de
+modelos de linguagem, cache de atenção (KV cache) e dados
+esparsos em aplicações de inteligência artificial.
+
+\vspace{0.5cm}
+\textbf{Figura principal: Figura~\ref{fig:dobra}}
+(Diagrama da Dobra Dimensional)
+
+\end{document}

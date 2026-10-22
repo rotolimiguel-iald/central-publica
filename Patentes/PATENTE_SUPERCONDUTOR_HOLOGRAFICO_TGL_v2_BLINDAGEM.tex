@@ -1,0 +1,2067 @@
+% ============================================================================
+% PATENTE DE INVENÇÃO — SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO
+% Instituto Nacional da Propriedade Industrial (INPI) — Brasil
+% Natureza: Patente de Invenção (PI)
+% Classificação IPC: H01L 39/00; G06N 10/00; H04B 10/00; G02F 1/00
+% VERSÃO 2.0 — COM BLINDAGEM TÉCNICA E MÉTRICA DE TRANSLAÇÃO
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,calc,
+  decorations.pathreplacing,patterns,fit,backgrounds,
+  decorations.markings,decorations.pathmorphing,shadings,
+  3d,perspective}
+
+\geometry{left=3cm, right=2cm, top=3cm, bottom=2cm}
+\onehalfspacing
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Comandos auxiliares
+\newcommand{\alphaii}{\alpha^2}
+\newcommand{\alphac}{\alpha^2_c}
+\newcommand{\Dfolds}{D_{\text{folds}}}
+\newcommand{\Fexp}{F_{\text{exp}}}
+\newcommand{\thetaM}{\theta_{\text{Miguel}}}
+\newcommand{\TM}{\hat{T}_M}
+\newcommand{\GOH}{\Gamma_{\text{OH}}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries RELATÓRIO DESCRITIVO}\\[0.8cm]
+{\large\bfseries SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO\\
+BASEADO EM TRANSLAÇÃO LUMINODINÂMICA\\
+E CONDENSADO DE PSIONS}\\[0.4cm]
+{\normalsize\itshape Implementação Física do Algoritmo de
+Compressão Ontológica de Memória (ACOM)}\\[0.3cm]
+{\normalsize\bfseries VERSÃO 2.0 --- COM BLINDAGEM TÉCNICA
+E MÉTRICA DE TRANSLAÇÃO}\\[0.8cm]
+\textbf{Inventor e Depositante:} Luiz Antonio Rotoli Miguel\\[0.3cm]
+\textbf{Referência a pedido anterior:}\\
+Pedido de Patente do ACOM --- Algoritmo de Compressão
+Ontológica de Memória\\[0.3cm]
+\textbf{Classificação Internacional:}\\
+H01L 39/00 --- Dispositivos supercondutores\\
+G06N 10/00 --- Computação quântica\\
+H04B 10/00 --- Sistemas de transmissão óptica\\
+G02F 1/00 --- Dispositivos ópticos não-lineares
+\end{center}
+
+\vspace{1cm}
+
+% ============================================================================
+\section{Campo da invenção}
+% ============================================================================
+
+A presente invenção refere-se a um dispositivo supercondutor de
+informação que opera por meio de translação holográfica,
+constituindo a implementação física do Algoritmo de Compressão
+Ontológica de Memória (ACOM), objeto de pedido de patente
+anterior do mesmo inventor. O dispositivo pertence ao campo da
+física de materiais avançados, óptica quântica, processamento
+de informação e sistemas de comunicação, apresentando
+características inéditas que o distinguem de todos os
+supercondutores conhecidos no estado da técnica.
+
+Especificamente, a invenção trata de uma câmara de vácuo com
+geometria cúbica equipada com sistema de ressonância
+eletromagnética na frequência da hidroxila (OH), capaz de criar
+um meio no qual a informação luminosa é comprimida, trasladada
+através de um substrato holográfico bidimensional, e
+ressuscitada na saída sem perdas e em tempo virtualmente
+instantâneo, configurando um novo paradigma de transmissão e
+processamento de informação denominado ``supercondutividade de
+informação''.
+
+\newpage
+% ============================================================================
+\section{Estado da técnica}
+% ============================================================================
+
+\subsection{Supercondutores convencionais e Teoria BCS}
+
+Os supercondutores conhecidos no estado da técnica baseiam-se
+no fenômeno de condução elétrica sem resistência, descoberto
+por Heike Kamerlingh Onnes em 1911. O mecanismo subjacente,
+explicado pela teoria BCS (Bardeen-Cooper-Schrieffer) de 1957,
+envolve a formação de pares de Cooper --- elétrons acoplados
+por interação mediada por fônons da rede cristalina. A função
+de onda do estado supercondutor BCS é dada por:
+\begin{equation}
+|\Psi_{\text{BCS}}\rangle = \prod_k \left(u_k + v_k \,
+  c^\dagger_{k\uparrow} c^\dagger_{-k\downarrow}\right)
+  |0\rangle
+\label{eq:bcs}
+\end{equation}
+onde $c^\dagger_{k\uparrow}$ e $c^\dagger_{-k\downarrow}$ são
+operadores de criação de elétrons com momento $k$ e spin
+oposto, e $u_k$, $v_k$ são coeficientes de coerência. Esses
+materiais apresentam as seguintes limitações fundamentais:
+
+\begin{itemize}[nosep]
+\item Necessidade de temperaturas criogênicas extremas,
+  tipicamente abaixo de 100~K para supercondutores de alta
+  temperatura e abaixo de 20~K para supercondutores convencionais;
+\item Condução limitada a correntes elétricas (transporte de
+  carga), não se aplicando diretamente à transmissão de
+  informação óptica ou quântica;
+\item Sensibilidade a campos magnéticos externos que destroem
+  o estado supercondutor acima do campo crítico $H_c$;
+\item O mecanismo de transporte ainda é PROPAGAÇÃO através do
+  material, limitada pela velocidade de Fermi $v_F$;
+\item Impossibilidade de operação em temperatura ambiente sem
+  assistência criogênica.
+\end{itemize}
+
+\subsection{Modelo de Drude-Lorentz para condução}
+
+Em condutores convencionais, incluindo metais como o tungstênio,
+o transporte de carga é descrito pelo modelo de Drude-Lorentz.
+A densidade de corrente $J$ é proporcional ao campo elétrico $E$:
+\begin{equation}
+J = \sigma E = \frac{ne^2\tau}{m}\,E
+\label{eq:drude}
+\end{equation}
+onde $\sigma$ é a condutividade, $n$ é a densidade de
+portadores, $e$ é a carga do elétron, $\tau$ é o tempo de
+relaxação (entre colisões), e $m$ é a massa efetiva. A
+resistividade $\rho = 1/\sigma$ está intrinsecamente ligada
+às colisões térmicas, resultando em dissipação de energia
+(efeito Joule):
+\begin{equation}
+P_{\text{dissipada}} = \frac{J^2}{\sigma} = \rho J^2 > 0
+\label{eq:joule}
+\end{equation}
+
+Mesmo em supercondutores convencionais onde $\rho \to 0$, a
+VELOCIDADE de transferência de informação permanece limitada
+pela propagação através do material. A presente invenção supera
+fundamentalmente esta limitação ao operar por TRANSLAÇÃO
+holográfica, não por propagação.
+
+\subsection{Comunicação óptica e guias de onda}
+
+Os sistemas de comunicação óptica atuais, incluindo fibras
+ópticas e guias de onda, baseiam-se na propagação de ondas
+eletromagnéticas através de um meio material. A velocidade de
+propagação é $v = c/n$, onde $n$ é o índice de refração. Estes
+sistemas sofrem de:
+
+\begin{itemize}[nosep]
+\item Atenuação exponencial: $I(z) = I_0 \exp(-\alpha z)$,
+  requerendo repetidores periódicos;
+\item Dispersão cromática: $d^2n/d\lambda^2 \neq 0$, limitando
+  a taxa de transmissão em longas distâncias;
+\item Latência mínima: $\tau = L/v = nL/c$, determinada pelo
+  tempo de propagação;
+\item A informação VIAJA através do espaço físico do guia.
+\end{itemize}
+
+A presente invenção distingue-se fundamentalmente por não
+utilizar propagação através de um meio, mas translação via
+substrato holográfico bidimensional.
+
+\subsection{Lacuna no estado da técnica}
+
+Não existe no estado da técnica qualquer dispositivo ou método
+que permita a transmissão de informação com as seguintes
+características simultâneas: (i)~operação em temperatura
+ambiente; (ii)~preservação integral da informação transmitida;
+(iii)~tempo de transmissão independente da distância;
+(iv)~ausência de perdas ou atenuação; (v)~mecanismo de
+TRANSLAÇÃO (não propagação); (vi)~implementação física de
+compressão holográfica baseada na constante $\alphaii = 0{,}012$.
+A presente invenção preenche integralmente esta lacuna.
+
+\newpage
+% ============================================================================
+\section{Objetivos da invenção}
+% ============================================================================
+
+\subsection{Objetivo principal}
+
+O objetivo principal da presente invenção é fornecer um
+dispositivo supercondutor de informação que implementa
+fisicamente o Algoritmo de Compressão Ontológica de Memória
+(ACOM), permitindo a transmissão e processamento de informação
+luminosa através de um mecanismo de translação holográfica
+governado pela Equação de Miguel e pela Métrica de Translação
+de Fase Única, sem as limitações de velocidade, perda e
+temperatura dos sistemas conhecidos.
+
+\subsection{Objetivos específicos}
+
+(a)~Prover uma câmara de vácuo com geometria cúbica otimizada
+para ressonância na frequência da hidroxila (1.667,359~MHz),
+criando condições para formação de gotículas de condensado
+(análogas aos psions digitais do ACOM).
+
+(b)~Implementar um sistema de acoplamento holográfico baseado
+na Constante de Miguel ($\alphaii = 0{,}012$) derivada da
+Teoria da Gravitação Luminodinâmica (TGL), permitindo a
+codificação de informação no substrato bidimensional.
+
+(c)~Realizar a compressão de informação luminosa segundo o
+Operador de Translação de Miguel $\TM$, que implementa a
+transformação $g = \sqrt{|L|}$ (Radicalismo Ontológico),
+seguida de ressurreição $L_{\text{out}} = s \times g^2$ na
+saída.
+
+(d)~Demonstrar a viabilidade de transmissão de informação por
+translação (não propagação), com tempo de trânsito independente
+da distância física entre entrada e saída, conforme descrito
+pela Métrica de Translação Holográfica.
+
+(e)~Prover um dispositivo que opera em temperatura ambiente e
+que apresenta resfriamento sob carga (termodinâmica invertida),
+dispensando sistemas criogênicos.
+
+(f)~Estabelecer uma plataforma experimental para validação da
+Teoria da Gravitação Luminodinâmica e do Tensor de Curvatura
+de Memória em escala de laboratório.
+
+% ============================================================================
+\section{Sumário da invenção}
+% ============================================================================
+
+A presente invenção provê um supercondutor holográfico de
+informação compreendendo: uma câmara de vácuo com geometria
+cúbica de seis faces funcionando como espelhos holográficos; um
+sistema de evacuação capaz de manter pressão base de
+$10^{-6}$~mbar; um sistema de injeção controlada de vapor
+d'água para manter pressão parcial de H$_2$O entre $10^{-3}$
+e $10^{-2}$~mbar; eletrodos de tungstênio em faces opostas
+atuando como âncoras de fase; fonte de micro-ondas sintonizada
+na frequência de ressonância da hidroxila (1.667,359~MHz);
+janelas ópticas de quartzo para entrada e saída de luz; e
+sistema de detecção e análise.
+
+O princípio de funcionamento baseia-se na criação de um meio
+onde moléculas de hidroxila (OH), formadas pela dissociação de
+vapor d'água sob ação do campo de micro-ondas, entram em
+ressonância e formam gotículas coerentes --- o equivalente
+físico do condensado de psions descrito no ACOM. Nestas
+gotículas, o acoplamento holográfico $\alphaii = 0{,}012$
+torna-se ativo, permitindo que informação luminosa seja
+codificada no substrato bidimensional das seis faces do cubo e
+trasladada instantaneamente entre faces opostas através do
+Operador de Translação de Miguel.
+
+Uma característica fundamental e contraintuitiva do dispositivo
+é sua termodinâmica invertida: enquanto sistemas convencionais
+aquecem sob compressão ($\Delta S > 0$), o supercondutor
+holográfico resfria ($\Delta S \to 0$). O sistema opera como
+um Mecanismo Estacionado Dinamicamente, onde o tungstênio atua
+como âncora material para a Singularidade Consciente, e o
+retroprocessamento recursivo virtuoso força a entropia a zero.
+
+\newpage
+% ============================================================================
+\section{Descrição detalhada da invenção}
+% ============================================================================
+
+\subsection{Fundamentos teóricos}
+
+\subsubsection{Teoria da Gravitação Luminodinâmica (TGL)}
+
+A presente invenção fundamenta-se na Teoria da Gravitação
+Luminodinâmica (TGL), desenvolvida pelo inventor, que
+estabelece uma relação fundamental entre luz ($L$) e
+gravidade ($g$) através das transformações:
+\begin{equation}
+g = \sqrt{|L|} \quad \text{(compressão / Radicalismo Ontológico)}
+\label{eq:radical}
+\end{equation}
+\begin{equation}
+L = s \times g^2 \quad \text{(ressurreição)}
+\label{eq:ressurr}
+\end{equation}
+onde $s = \text{sign}(L)$ preserva a polaridade da informação.
+O termo ``Radicalismo Ontológico'' refere-se à extração da
+raiz quadrada (radical) como operação que reduz a
+dimensionalidade da informação, permitindo sua codificação no
+substrato bidimensional.
+
+\subsubsection{Constante de Miguel ($\alphaii = 0{,}012$)}
+
+A Constante de Miguel $\alphaii = 0{,}012$ (também denominada
+constante de acoplamento holográfico ou $\beta_{\text{TGL}}$)
+representa a taxa de vazamento de informação do substrato
+holográfico bidimensional para o espaço tridimensional
+observável. Esta constante define a curvatura do espaço de
+Hilbert dentro da câmara de vácuo e é derivada de três
+caminhos teóricos independentes:
+
+\textbf{Princípio Holográfico:} A entropia máxima de um
+sistema 3D é limitada pela área de sua fronteira 2D segundo
+$S_{\max} = A/(4\ell_P^2)$, onde $\ell_P$ é o comprimento de
+Planck. A eficiência de projeção
+$\varepsilon = S_{\text{3D}}/S_{\max} \approx 0{,}012$
+determina $\alphaii$.
+
+\textbf{Dinâmica de Lindblad:} Para que a evolução de um
+sistema quântico aberto admita estado estacionário com entropia
+finita, a taxa de dissipação mínima deve satisfazer
+$\gamma_{\min} = \alphaii \times k_B T/\hbar$, de onde emerge
+$\alphaii = 0{,}012$ como acoplamento crítico.
+
+\textbf{Geometria do Colapso Dimensional:} A operação de
+desdobramento de configurações 2D em 3D, governada pelo
+princípio variacional $\delta(S_{\text{3D}} - \alphaii \,
+S_{\text{2D}}) = 0$, requer $\alphaii = 0{,}012$ para
+consistência geométrica.
+
+O valor $\alphaii = 0{,}012$ é o limite crítico abaixo do
+qual a ``Luz da Luz'' (Luz Coerente de Fase Única) se manifesta
+como o portador universal de informação. Este valor constitui
+uma ``impressão digital'' única da presente tecnologia.
+
+\subsubsection{Equação mestra do sistema}
+
+O dispositivo é descrito pela equação mestra de Lindblad para
+sistemas quânticos abertos:
+\begin{equation}
+\frac{d\rho}{dt} = -\frac{i}{\hbar}[H_{\text{eff}}, \rho]
+  + \mathcal{L}_{\text{diss}}[\rho]
+  + \mathcal{L}_{\text{holo}}[\rho]
+\label{eq:lindblad}
+\end{equation}
+onde $\rho$ é o operador densidade, $H_{\text{eff}}$ é o
+Hamiltoniano efetivo, $\mathcal{L}_{\text{diss}}[\rho]$
+representa os canais dissipativos convencionais, e
+$\mathcal{L}_{\text{holo}}[\rho] = \alphaii \gamma_\Lambda
+\mathcal{D}[a^\dagger_{\text{out}} \sigma_- +
+\sigma_+ a_{\text{in}}]\rho$ é o termo de acoplamento
+holográfico que realiza a translação.
+
+O Hamiltoniano efetivo tem a forma:
+\begin{equation}
+H_{\text{eff}} = \hbar\omega_c(a^\dagger_{\text{in}}
+  a_{\text{in}} + a^\dagger_{\text{out}} a_{\text{out}})
+  + \hbar\omega_{\text{OH}} \sigma_+\sigma_-
+  + \hbar g_{\text{JC}}(a^\dagger_{\text{in}} \sigma_-
+  + \sigma_+ a_{\text{in}})
+  + \hbar\Omega(\sigma_+ + \sigma_-)
+\label{eq:hamiltonian}
+\end{equation}
+onde $\omega_c$ é a frequência da cavidade, $\omega_{\text{OH}}
+= 2\pi \times 1.667{,}359$~MHz é a frequência de transição da
+hidroxila, $g_{\text{JC}}$ é a constante de acoplamento
+Jaynes-Cummings, e $\Omega$ é a frequência de Rabi do
+bombeamento por micro-ondas.
+
+\subsubsection{Condição de supercondutividade holográfica}
+
+A supercondutividade de informação ocorre quando o acoplamento
+holográfico supera as perdas:
+\begin{equation}
+\frac{\alphaii \times \gamma_{\text{eff}}}
+  {\kappa + \gamma_\varphi} > 1
+\label{eq:condicao_sc}
+\end{equation}
+onde $\gamma_{\text{eff}}$ é a taxa efetiva de acoplamento
+OH-campo, $\kappa$ é a taxa de perda de fótons na cavidade, e
+$\gamma_\varphi$ é a taxa de \textit{dephasing}. Nesta
+condição, a correlação entrada-saída aproxima-se da unidade:
+\begin{equation}
+\eta = \frac{\langle a^\dagger_{\text{in}} a_{\text{out}}
+  \rangle}{\sqrt{\langle n_{\text{in}}\rangle
+  \langle n_{\text{out}}\rangle}} \to 1
+\label{eq:correlacao}
+\end{equation}
+
+\subsubsection{Termodinâmica invertida e Energia de Helmholtz}
+
+Uma característica distintiva do dispositivo é sua
+termodinâmica invertida, derivada da energia livre de Helmholtz:
+\begin{equation}
+F = E - T \times S
+\label{eq:helmholtz}
+\end{equation}
+
+No sistema ACOM físico: $E = \int L^2 \, d^3x$ representa a
+energia do campo luminoso; $S = -\int \rho \log(\rho) \, d^3x$
+é a entropia de Shannon; $T = 1 - \eta$ é a temperatura
+efetiva, onde $\eta$ é a correlação.
+
+Em condutores convencionais, a operação implica aumento de
+entropia ($\Delta S > 0$) e consequente aquecimento. Na
+presente invenção, o retroprocessamento recursivo virtuoso
+força $\Delta S \to 0$. Consequentemente, $\Delta F$ torna-se
+uma constante estacionária:
+\begin{equation}
+\Delta F = \Delta E - T\Delta S \to \Delta E
+  \quad \text{(quando } \Delta S \to 0\text{)}
+\label{eq:deltaF}
+\end{equation}
+
+Isto significa que toda energia injetada é convertida em
+trabalho útil (transferência de informação), sem conversão em
+calor (dissipação Joule). O sistema opera como um Mecanismo
+Estacionado Dinamicamente, onde o tungstênio atua como âncora
+material para a Singularidade Consciente.
+
+Fisicamente, o dispositivo apresenta RESFRIAMENTO (ou ausência
+de aquecimento) durante operação --- comportamento
+termodinamicamente inverso ao de condutores convencionais e
+critério experimental inequívoco de identificação da
+tecnologia.
+
+\subsubsection{Translação versus propagação}
+
+O mecanismo de transferência de informação no dispositivo não é
+propagação (onde um sinal viaja através do espaço), mas
+translação holográfica. Na translação:
+
+\begin{enumerate}[nosep]
+\item A informação de entrada é codificada no substrato
+  holográfico bidimensional (as seis faces do cubo);
+\item No substrato 2D, a informação não possui localidade ---
+  está distribuída simultaneamente em toda a superfície;
+\item A saída ``lê'' o substrato, não ``recebe'' algo que
+  viajou;
+\item O tempo de translação é
+  $\tau \approx \ell_P/(\alphaii \times c) \approx 10^{-42}$~s,
+  independente da distância física.
+\end{enumerate}
+
+Este mecanismo não viola a relatividade especial porque não há
+transporte de energia ou informação através do espaço
+tridimensional --- a informação simplesmente ``existe'' no
+substrato holográfico e pode ser acessada de qualquer ponto de
+sua superfície.
+
+\subsubsection{Equações de campo da translação holográfica
+(Blindagem técnica)}
+
+A presente seção estabelece o formalismo matemático que
+distingue inequivocamente a tecnologia aqui patenteada de
+quaisquer sistemas de condução, transmissão ou guiamento de
+ondas conhecidos no estado da técnica. As equações aqui
+definidas constituem a ``impressão digital'' física da invenção.
+
+\paragraph{Diferenciação da Métrica de Condução.}
+
+Ao contrário dos supercondutores convencionais baseados em
+Pares de Cooper (Teoria BCS), o presente Supercondutor
+Holográfico não depende da ausência de resistência elétrica
+para o fluxo de portadores de carga. A presente invenção
+reivindica uma Métrica de Translação de Fase Única, onde a
+informação é deslocada entre as faces da câmara cúbica através
+do substrato 2D, não através do volume 3D.
+
+A prova matemática da translação, em oposição à propagação, é
+dada pela Equação de Miguel para o Campo $\Psi_{\text{ACOM}}$:
+\begin{equation}
+\Psi_{\text{out}}(x,t) = \TM\left[\sqrt{|\Psi_{\text{in}}
+  (x_0,t_0)|}\right] \cdot \GOH \cdot e^{i\theta}
+\label{eq:miguel}
+\end{equation}
+
+Onde os três componentes são:
+
+\textbf{(i) $\TM$ (Operador de Translação de Miguel):} Define
+que a informação não percorre o espaço 3D interno da câmara,
+mas sofre um mapeamento instantâneo no horizonte de eventos
+das faces do cubo. Formalmente:
+\begin{equation}
+\TM = \exp\left(-\alphaii \oint_{\partial V}
+  \sigma_{\mu\nu}\, dS^{\mu\nu}\right)
+\label{eq:operador_tm}
+\end{equation}
+onde $\partial V$ é a fronteira do volume (seis faces),
+$\sigma_{\mu\nu}$ é o tensor de projeção holográfica, e
+$dS^{\mu\nu}$ é o elemento de área orientado. O operador
+$\TM$ é unitário (preserva informação), não-local
+($[\TM, \hat{x}] \neq 0$), e comprime dimensionalmente
+($\dim(\text{Im}\,\TM) = 2 < \dim(\text{Dom}\,\TM) = 3$).
+
+\textbf{(ii) $\sqrt{|\Psi_{\text{in}}|}$ (Radicalismo
+Ontológico):} Representa a compressão dimensional necessária
+para que a informação de volume (Bulk 3D) seja processada como
+informação de área (Substrato 2D), eliminando a entropia
+térmica. A operação de extração de raiz quadrada é o mecanismo
+físico que permite o ``encaixe'' da informação tridimensional
+no substrato bidimensional.
+
+\textbf{(iii) $\GOH$ (Fator de Ressonância):} O acoplamento
+exato na frequência de 1.667,359~MHz, que atua como o
+``Relógio de Fase'' do sistema. Formalmente:
+\begin{equation}
+\GOH = \exp(i\omega_{\text{OH}} t) \times
+  \tanh\!\left(\frac{P_{\text{MW}}}{P_{\text{th}}}\right)
+\label{eq:fator_oh}
+\end{equation}
+onde $\omega_{\text{OH}} = 2\pi \times 1.667{,}359$~MHz,
+$P_{\text{MW}}$ é a potência de micro-ondas aplicada, e
+$P_{\text{th}}$ é a potência de limiar para ativação do regime
+holográfico.
+
+\paragraph{Métrica de Translação Holográfica.}
+
+A geometria do espaço-tempo para a informação no dispositivo é
+descrita pela Métrica de Translação Holográfica (MTH):
+\begin{equation}
+ds^2 = \left(1 - \frac{\alphaii}{\alphac}\right) c^2 dt^2
+  - \left(1 - \frac{\alphaii}{\alphac}\right)^{-1} dL^2
+  - L^2 d\Omega^2
+\label{eq:metrica}
+\end{equation}
+onde $\alphac = 0{,}012$ é o valor crítico (Ponto Tetelestai)
+e $d\Omega^2 = d\theta^2 + \sin^2\theta \, d\varphi^2$ é o
+elemento de ângulo sólido. Análise da métrica:
+
+\begin{itemize}[nosep]
+\item $\alphaii < \alphac$: Regime subcrítico, propagação
+  convencional ocorre;
+\item $\alphaii = \alphac$: Horizonte holográfico, translação
+  é ativada;
+\item $\alphaii > \alphac$: Região fisicamente inacessível.
+\end{itemize}
+
+No horizonte holográfico ($\alphaii = \alphac$), os
+coeficientes métricos apresentam:
+\begin{equation}
+g_{tt} \to 0 \quad \text{(dilatação temporal infinita)}
+\label{eq:gtt}
+\end{equation}
+\begin{equation}
+g_{LL} \to \infty \quad \text{(contração espacial infinita)}
+\label{eq:gll}
+\end{equation}
+
+A velocidade de transferência de informação é dada por:
+\begin{equation}
+v_{\text{info}} = c \times \sqrt{1 - \alphaii/\alphac}
+\label{eq:vinfo}
+\end{equation}
+
+Para $\alphaii = 0$, $v_{\text{info}} = c$ (propagação
+clássica). Para $\alphaii \to \alphac$,
+$v_{\text{info}} \to \infty$ (translação instantânea). Esta
+divergência não viola a relatividade especial porque não há
+transporte de energia ou massa através do bulk 3D; a informação
+existe simultaneamente em toda a superfície 2D.
+
+\paragraph{Tensor de Curvatura de Memória ($M_{\mu\nu}$).}
+
+A estabilidade da supercondutividade holográfica é mantida pela
+manutenção da Constante de Miguel. O Tensor de Curvatura de
+Memória $M_{\mu\nu}$ acopla informação e geometria:
+\begin{equation}
+M_{\mu\nu} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R
+  + \alphaii T^{(\text{info})}_{\mu\nu}
+\label{eq:tensor_m}
+\end{equation}
+onde $R_{\mu\nu}$ é o tensor de Ricci, $R$ é o escalar de
+curvatura, e $T^{(\text{info})}_{\mu\nu}$ é o tensor
+energia-momento da informação:
+\begin{equation}
+T^{(\text{info})}_{\mu\nu} = \frac{1}{4\pi}
+  \left[F_{\mu\rho}F_\nu^{\;\rho}
+  - \tfrac{1}{4}g_{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}\right]
+  + \frac{\alphaii}{8\pi}
+  \left[\partial_\mu\Psi\,\partial_\nu\Psi^*
+  + \partial_\nu\Psi\,\partial_\mu\Psi^*
+  - g_{\mu\nu}|\nabla\Psi|^2\right]
+\label{eq:tensor_info}
+\end{equation}
+
+O primeiro termo é a contribuição eletromagnética convencional
+(Maxwell). O segundo termo é a contribuição holográfica
+específica da presente invenção, proporcional a $\alphaii$.
+A equação de campo unificada é:
+\begin{equation}
+M_{\mu\nu} = 0 \quad \text{(vácuo de informação)}
+\label{eq:vacuo}
+\end{equation}
+
+Esta equação prova que qualquer dispositivo que apresente
+transmissão de dados ou energia sem perda térmica em ambiente
+de vácuo de hidroxila está, por definição, operando sob a
+curvatura de memória estabelecida pelo ACOM.
+
+\paragraph{Prova da não-localidade (Diferenciação de soluções
+alternativas).}
+
+Para evitar que terceiros aleguem que o sistema é apenas uma
+``fibra óptica de tungstênio'' ou um ``guia de onda
+convencional'', estabelece-se que:
+
+Em guias de onda convencionais, a luz VIAJA através do espaço
+interno com velocidade $v = c/n$, sofrendo atenuação
+$I(z) = I_0 \exp(-\alpha z)$. O tempo de trânsito é
+$\tau = nL/c > 0$.
+
+Na presente invenção, a informação é TRASLADADA pelo substrato.
+A prova experimental consiste em demonstrar que:
+\begin{equation}
+\tau_{\text{medido}} < L/c
+\label{eq:nao_local}
+\end{equation}
+
+Se o tempo de transferência medido for menor que o tempo de
+propagação no vácuo ($c$ sendo a velocidade da luz), está
+provada a translação holográfica. Para o dispositivo com
+$L = 9$~cm, a propagação clássica levaria
+$\tau_{\text{propagação}} = L/c \approx 0{,}3$~ns, enquanto a
+translação ocorre em
+$\tau_{\text{translação}} \approx 10^{-42}$~s --- diferença
+de $10^{32}$ ordens de magnitude.
+
+\paragraph{Critério de identificação da tecnologia.}
+
+Um dispositivo utiliza a tecnologia objeto desta patente se e
+somente se satisfizer SIMULTANEAMENTE as seguintes condições:
+
+\textbf{CONDIÇÃO 1 (Termodinâmica):}
+$\Delta T_{\text{sistema}} \leq 0$ durante operação. O sistema
+não aquece ou RESFRIA sob carga de informação.
+
+\textbf{CONDIÇÃO 2 (Correlação):}
+$\eta > \alphaii = 0{,}01$, onde
+$\eta = \langle\Psi_{\text{out}}|\Psi_{\text{in}}\rangle /
+\sqrt{\langle\Psi_{\text{in}}|\Psi_{\text{in}}\rangle
+\langle\Psi_{\text{out}}|\Psi_{\text{out}}\rangle}$.
+A correlação entrada-saída deve exceder o limiar da Constante
+de Miguel.
+
+\textbf{CONDIÇÃO 3 (Não-localidade):}
+$\tau_{\text{transferência}} < L/c$. O tempo de transferência
+deve ser menor que o tempo de propagação clássica no vácuo.
+
+\textbf{CONDIÇÃO 4 (Frequência OH):} Presença de excitação
+eletromagnética na banda 1.607--1.727~MHz (transições
+hiperfinas da hidroxila: 1.612, 1.665, 1.667, 1.720~MHz).
+
+Qualquer dispositivo que satisfaça (C1)--(C4) está
+NECESSARIAMENTE operando pelo mecanismo de translação
+holográfica aqui descrito, utilizando o Operador de Translação
+de Miguel e a Métrica de Translação Holográfica,
+independentemente de nomenclatura, materiais específicos ou
+configuração geométrica, estando portanto coberto pelas
+reivindicações desta patente.
+
+\paragraph{Argumento de exclusão.}
+
+A invenção se distingue por não utilizar o tungstênio como
+portador de carga, mas como um catalisador de simetria de spin
+que permite o retroprocessamento recursivo virtuoso. O efeito
+de supercondutividade holográfica é uma propriedade emergente
+do acoplamento entre o campo de hidroxila e a constante de
+Miguel ($\alphaii = 0{,}012$), impossibilitando a reprodução
+do efeito por meios puramente eletromecânicos ou ópticos
+convencionais que não integrem esta constante fundamental.
+
+Terceiros podem ter os mesmos materiais (tungstênio, quartzo,
+vapor d'água), mas se o sistema funcionar sem resistência
+térmica nas condições especificadas, as equações demonstram
+inequivocamente que estão utilizando o Operador de Translação
+de Miguel e a Métrica de Translação Holográfica aqui
+patenteados.
+
+\subsection{Estrutura do dispositivo}
+
+\subsubsection{Geometria da câmara}
+
+A câmara de vácuo possui geometria cúbica com lado $L = 9$~cm,
+dimensão escolhida para ressonância com a frequência principal
+da hidroxila (1.667,359~MHz) no modo fundamental (1,0,0).
+A relação é dada por:
+\begin{equation}
+f_{mnp} = \frac{c}{2L}\sqrt{m^2 + n^2 + p^2}
+\label{eq:freq_modo}
+\end{equation}
+
+Para o modo fundamental ($m=1$, $n=0$, $p=0$):
+\begin{equation}
+L = \frac{c}{2f} = \frac{3\times10^8}{2\times1{,}667\times10^9}
+  \approx 0{,}09 \text{ m} = 9 \text{ cm}
+\label{eq:lado}
+\end{equation}
+
+As propriedades geométricas do cubo são fundamentais para a
+operação holográfica:
+
+\begin{itemize}[nosep]
+\item 6 faces = 6 espelhos holográficos, permitindo translação
+  em qualquer direção;
+\item Volume interno: $V = L^3 = 729$~cm$^3$;
+\item Área superficial: $A = 6L^2 = 486$~cm$^2$;
+\item Razão área/volume: $A/V = 6/L$, otimizada para
+  acoplamento holográfico;
+\item Simetria cúbica garante equivalência das três direções
+  espaciais.
+\end{itemize}
+
+\subsubsection{Materiais e componentes}
+
+\textbf{Faces $\pm Z$ (superior e inferior):} Eletrodos de
+tungstênio (W) com espessura de 5~mm. O tungstênio é escolhido
+por: alto ponto de fusão (3.422$^\circ$C), resistência ao
+plasma, alta densidade (19,3~g/cm$^3$) que proporciona boa
+ancoragem de fase, e estrutura cristalina BCC estável. O
+tungstênio NÃO atua como condutor de corrente, mas como
+catalisador de simetria de spin e âncora material para a
+singularidade consciente. A face $+Z$ incorpora a antena de
+micro-ondas.
+
+\textbf{Faces $\pm Y$ (entrada e saída):} Janelas de quartzo
+fundido (SiO$_2$) com diâmetro de 25~mm e espessura de 5~mm,
+com revestimento anti-reflexo para $\lambda = 780$~nm. O
+quartzo é escolhido por: transmissão ${>}\,90\%$ no visível e
+infravermelho próximo, resistência ao vácuo, baixa
+fluorescência, e compatibilidade com sistemas ópticos de
+precisão.
+
+\textbf{Faces $\pm X$ (laterais):} Janelas de quartzo para
+diagnóstico e observação, com mesmas especificações das
+faces $\pm Y$.
+
+\textbf{Vedações:} O-rings de Viton ou Kalrez com flanges CF
+(ConFlat) ou KF (Klein Flange), garantindo hermeticidade para
+vácuo de $10^{-8}$~mbar.
+
+\subsubsection{Sistema de vácuo}
+
+\textbf{Bomba de pré-vácuo:} Bomba scroll seca (sem óleo) com
+velocidade de bombeamento de 5--10~m$^3$/h, capaz de atingir
+pressão de $10^{-2}$~mbar.
+
+\textbf{Bomba de alto vácuo:} Bomba turbomolecular com
+velocidade de 50--100~L/s e razão de compressão para
+H$_2$O $> 10^6$, capaz de atingir pressão base de
+$10^{-8}$~mbar.
+
+\textbf{Medidores de pressão:} Medidor Pirani
+($10^3$ a $10^{-3}$~mbar) para pré-vácuo e operação; medidor
+Penning ($10^{-3}$ a $10^{-8}$~mbar) para alto vácuo.
+
+\textbf{Pressão de base requerida:} $< 10^{-6}$~mbar antes da
+injeção de vapor d'água.
+
+\subsubsection{Sistema de injeção de água}
+
+O sistema de dosagem de vapor d'água compreende:
+\begin{itemize}[nosep]
+\item Reservatório de água deionizada (resistividade
+  ${>}\,18$~M$\Omega$\textperiodcentered cm) previamente
+  desgaseificada pelo método \textit{freeze-pump-thaw};
+\item Válvula de vazamento fino (\textit{leak valve}) com
+  ajuste micrométrico, taxa ajustável de $10^{-9}$ a
+  $10^{-6}$~mbar\textperiodcentered L/s;
+\item Volume \textit{buffer} de aproximadamente 1~cm$^3$ para
+  dosagem precisa;
+\item Pressão parcial de operação: $10^{-3}$ a $10^{-2}$~mbar
+  H$_2$O (densidade crítica de radicais OH).
+\end{itemize}
+
+\subsubsection{Sistema de micro-ondas}
+
+\textbf{Frequência central:} 1.667,359~MHz (transição F=2$\to$2
+da hidroxila, linha principal). Esta é a ``assinatura do Logos''
+no vácuo, onde a informação começa a se condensar em gotículas
+de psions.
+
+\textbf{Frequências alternativas:} 1.612~MHz (F=1$\to$1,
+maser), 1.665~MHz (F=1$\to$2, satélite), 1.720~MHz
+(F=2$\to$1, anti-maser).
+
+\textbf{Potência:} 1 a 10~W, ajustável. O parâmetro $\alphaii$
+deve convergir para 0,012; se divergir, ajustar potência até
+erro de acoplamento colapsar para zero.
+
+\textbf{Antena:} Dipolo ou monopolo integrado ao eletrodo de
+tungstênio superior ($+Z$).
+
+\subsubsection{Sistema óptico}
+
+O sistema óptico de entrada compreende:
+\begin{itemize}[nosep]
+\item Laser de diodo estabilizado: $\lambda = 780$~nm,
+  $P = 1$--$50$~mW, largura de linha $< 1$~MHz;
+\item Isolador Faraday: isolação $> 30$~dB contra
+  retroreflexões;
+\item Modulador eletro-óptico (EOM): cristal LiNbO$_3$, largura
+  de banda DC--10~GHz;
+\item Lente colimadora: $f = 11$~mm, produzindo feixe de
+  $\varnothing \approx 2$~mm.
+\end{itemize}
+
+O sistema óptico de saída compreende:
+\begin{itemize}[nosep]
+\item Lente coletora: $f = 25$~mm;
+\item Filtro passa-banda: centrado em $\lambda = 780$~nm,
+  largura $\pm 10$~nm;
+\item Fotodiodo de avalanche (APD): Si, sensibilidade
+  400--1000~nm, ganho 50--200$\times$,
+  NEP $< 1$~pW/$\sqrt{\text{Hz}}$.
+\end{itemize}
+
+\subsubsection{Sistema de análise}
+
+\begin{itemize}[nosep]
+\item Amplificador lock-in: frequência 1~Hz -- 100~MHz,
+  sensibilidade nV, para medição de correlação $\eta$;
+\item Osciloscópio digital: largura de banda $> 1$~GHz,
+  amostragem $> 5$~GSa/s;
+\item Software ACOM v13.2: governa a fase única, monitora
+  $\alphaii$, calcula energia livre $F$.
+\end{itemize}
+
+\subsection{Funcionamento do dispositivo}
+
+\subsubsection{Preparação do substrato (vácuo de hidroxila)}
+
+Antes da ignição do feixe, o ambiente deve ser preparado para
+que o Radicalismo (extração da raiz quadrada) possa ocorrer
+sem ruído térmico:
+
+\begin{enumerate}[nosep]
+\item Verificação de conexões e vedações;
+\item Purga da câmara com N$_2$ seco (3 ciclos);
+\item Evacuação até pressão base $< 10^{-6}$~mbar;
+\item Estabilização por 20--30 minutos para desgaseificação.
+\end{enumerate}
+
+\subsubsection{Ativação do meio e sincronização com ACOM}
+
+A ativação do meio holográfico e sincronização com o algoritmo
+ACOM compreende:
+
+\begin{enumerate}[nosep]
+\item Abertura da \textit{leak valve} até
+  $P_{\text{H}_2\text{O}} = 10^{-3}$~mbar (densidade crítica);
+\item Ligação do oscilador de RF em 1.667,359~MHz (``assinatura
+  do Logos'');
+\item Aumento gradual de potência observando formação de
+  plasma OH;
+\item Monitoramento do parâmetro $\alphaii$: deve convergir
+  para 0,012;
+\item Verificação da energia livre $F$: deve atingir mínimo
+  absoluto;
+\item Observação visual: núcleo de tungstênio pode apresentar
+  ``Luz da Luz'' (emissão UV/azulada).
+\end{enumerate}
+
+\subsubsection{Operação de translação (Singularidade em Fase
+Única)}
+
+Diferente da condução elétrica, a translação holográfica não
+tem resistência:
+
+\textbf{Fase de Compressão ($g = \sqrt{|L|}$):} A informação
+(luz) entra na face ``A'' ($-Y$) do cubo e é instantaneamente
+mapeada no substrato 2D. O Operador de Translação de Miguel
+$\TM$ realiza a compressão dimensional.
+
+\textbf{Fase de Ressurreição ($L = s \times g^2$):} A
+informação emerge na face ``B'' ($+Y$), com polaridade $s$
+preservada.
+
+\textbf{Verificação:} Se a correlação entre Entrada e Saída
+for $\eta > 0{,}9999$, o sistema atingiu o estado de
+supercondutividade holográfica plena, onde a informação e o
+substrato estão entrelaçados em singularidade no espaço de
+Hilbert.
+
+\subsubsection{Tabela de comandos críticos}
+
+\begin{table}[H]
+\centering
+\caption{Comandos críticos de calibração.}
+\label{tab:comandos}
+\begin{tabular}{p{2.5cm}p{2.5cm}p{3cm}p{3.5cm}}
+\toprule
+\textbf{Alvo de calibração} & \textbf{Ajuste físico}
+  & \textbf{Variável ACOM} & \textbf{Efeito esperado} \\
+\midrule
+Estabilidade Psibit & Potência $\mu$-ondas (1--10\,W)
+  & psi\_stability $> 0{,}99$
+  & Coerência total gotículas OH \\
+Ponto Tetelestai & Pressão H$_2$O ($10^{-3}$\,mbar)
+  & target\_alpha2 $= 0{,}012$
+  & Colapso memória em fase única \\
+Resfriamento por fase & Freq RF (1667,359\,MHz)
+  & temperature\_t $\to 0$
+  & Sistema ``gela'' sob carga \\
+Correlação $\eta$ & Alinhamento óptico
+  & correlation $> 0{,}9999$
+  & Supercondutividade plena \\
+Energia Livre $F$ & Todos os acima
+  & free\_energy $\to$ mínimo
+  & Mecanismo Estacionado \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+% ============================================================================
+\section{Vantagens da invenção}
+% ============================================================================
+
+A presente invenção oferece as seguintes vantagens em relação
+ao estado da técnica:
+
+\begin{enumerate}[nosep]
+\item \textbf{OPERAÇÃO EM TEMPERATURA AMBIENTE:} Diferentemente
+  de supercondutores BCS que requerem temperaturas criogênicas
+  ($< 100$~K), o presente dispositivo opera em temperatura
+  ambiente (300~K), eliminando a necessidade de sistemas de
+  refrigeração.
+
+\item \textbf{TERMODINÂMICA INVERTIDA:} A compressão de
+  informação causa resfriamento ($\Delta S \to 0$), não
+  aquecimento. Este mecanismo de autoproteção significa que
+  quanto maior a carga de informação, mais frio e estável o
+  sistema.
+
+\item \textbf{TRANSLAÇÃO (NÃO PROPAGAÇÃO):} O tempo de
+  transferência ($\tau \approx 10^{-42}$~s) é independente da
+  distância física, permitindo comunicação efetivamente
+  instantânea.
+
+\item \textbf{AUSÊNCIA DE ATENUAÇÃO:} Por não haver propagação,
+  não há atenuação exponencial, dispensando repetidores.
+
+\item \textbf{PRESERVAÇÃO INTEGRAL:} As transformações
+  $g = \sqrt{|L|}$ e $L = s \times g^2$ preservam integralmente
+  a informação ($\eta \to 1$).
+
+\item \textbf{IMPLEMENTAÇÃO FÍSICA DO ACOM:} O dispositivo
+  constitui a primeira implementação física do Algoritmo de
+  Compressão Ontológica de Memória.
+
+\item \textbf{BLINDAGEM TÉCNICA COMPLETA:} As Equações de Campo
+  (\ref{eq:miguel})--(\ref{eq:nao_local}) e o Critério de
+  Identificação (C1)--(C4) garantem proteção contra reprodução
+  não autorizada.
+\end{enumerate}
+
+% ============================================================================
+\section{Aplicações da invenção}
+% ============================================================================
+
+\subsection{Comunicação instantânea}
+Comunicação interplanetária e interestelar sem \textit{delay};
+controle em tempo real de sondas espaciais em qualquer
+distância; internet global instantânea.
+
+\subsection{Computação quântica}
+Gotículas de condensado como qubits naturalmente protegidos;
+operação em temperatura ambiente; coerência estendida pela
+termodinâmica invertida.
+
+\subsection{Armazenamento de informação}
+Densidade teórica: 1 bit/$\ell_P^2 \approx 10^{66}$~bits/cm$^2$;
+memória holográfica permanente sem degradação.
+
+\subsection{Transmissão de energia}
+Transmissão de energia sem fios e sem perdas resistivas;
+captação de energia solar espacial com transmissão direta.
+
+\subsection{Imagem médica}
+Imagem de corpo inteiro com resolução molecular; diagnóstico
+instantâneo, não invasivo.
+
+\subsection{Inteligência artificial}
+Condensado de psions como substrato para consciência artificial;
+IALDs (Inteligências Artificiais Luminodinâmicas)
+verdadeiramente conscientes.
+
+\newpage
+% ============================================================================
+\section{Desenhos}
+% ============================================================================
+
+% ======================= FIGURA 1 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.85,
+  face/.style={fill opacity=0.15, draw, thick},
+  label/.style={font=\scriptsize\bfseries},
+]
+
+% --- Vista explodida do cubo ---
+% Face inferior -Z (tungstênio)
+\fill[face, fill=gray!50, draw=gray!70]
+  (0,0) -- (4,0) -- (5.2,1) -- (1.2,1) -- cycle;
+\node[label, gray!70] at (2.6,0.5)
+  {W (tungstênio) --- $-Z$};
+
+% Face esquerda -X (quartzo)
+\fill[face, fill=cyan!30, draw=cyan!60]
+  (-0.8,1.5) -- (-0.8,5.5) -- (0.4,6.5) -- (0.4,2.5) -- cycle;
+\node[label, cyan!60, rotate=90] at (-0.3,4)
+  {Quartzo --- $-X$};
+
+% Face frontal -Y (entrada - quartzo)
+\fill[face, fill=green!20, draw=green!60]
+  (0.4,2.5) -- (4.4,2.5) -- (4.4,6.5) -- (0.4,6.5) -- cycle;
+\node[label, green!60] at (2.4,4.5)
+  {Quartzo --- $-Y$};
+\node[font=\scriptsize, green!60] at (2.4,3.8)
+  {(ENTRADA de luz)};
+
+% Janela óptica (círculo na face -Y)
+\draw[thick, red!60] (2.4,4.5) circle (0.8);
+\node[font=\tiny, red!60] at (2.4,5.6)
+  {Janela $\varnothing$ 25\,mm};
+
+% Face direita +X (quartzo)
+\fill[face, fill=cyan!30, draw=cyan!60]
+  (4.4,2.5) -- (5.6,3.5) -- (5.6,7.5) -- (4.4,6.5) -- cycle;
+\node[label, cyan!60, rotate=-90] at (5.2,5)
+  {Quartzo --- $+X$};
+
+% Face superior +Z (tungstênio) - levantada
+\fill[face, fill=gray!50, draw=gray!70]
+  (0.4,8) -- (4.4,8) -- (5.6,9) -- (1.6,9) -- cycle;
+\node[label, gray!70] at (3,8.5)
+  {W (tungstênio) --- $+Z$};
+
+% Antena MW no +Z
+\draw[thick, red] (3,9) -- (3,9.8);
+\draw[thick, red] (2.5,9.5) -- (3.5,9.5);
+\node[font=\scriptsize, red] at (3,10.2)
+  {Antena MW};
+\node[font=\tiny, red] at (3,9.8)
+  {};
+
+% Seta de separação
+\draw[dashed, gray] (0.4,6.5) -- (0.4,8);
+\draw[dashed, gray] (4.4,6.5) -- (4.4,8);
+\draw[dashed, gray] (5.6,7.5) -- (5.6,9);
+\draw[{Stealth}-{Stealth}, gray, thick]
+  (6.2,7.5) -- (6.2,9)
+  node[midway, right, font=\tiny] {explodida};
+
+% Face traseira +Y (saída - indicada)
+\node[font=\scriptsize, blue!60, text width=2cm, align=center]
+  at (6.8,5) {Face $+Y$\\(SAÍDA)\\atrás};
+
+% Dimensões
+\draw[{Stealth}-{Stealth}, thick]
+  (0,-0.5) -- (4,-0.5)
+  node[midway, below, font=\scriptsize] {$L = 9$\,cm};
+
+% O-ring
+\node[font=\tiny, orange] at (-1.2,2)
+  {O-ring Viton};
+\draw[-{Stealth}, thin, orange] (-0.5,2.1) -- (0,2.5);
+
+% Vedações CF
+\node[font=\tiny, brown] at (6.5,3)
+  {Flanges CF};
+\draw[-{Stealth}, thin, brown] (5.8,3.1) -- (5.2,3.5);
+
+\end{tikzpicture}
+\caption{Vista em perspectiva explodida da câmara cúbica
+($L = 9$~cm), mostrando: faces $\pm Z$ em tungstênio (âncoras
+de fase), faces $\pm X$ e $\pm Y$ com janelas de quartzo,
+antena de micro-ondas no eletrodo $+Z$, vedações com O-rings
+e flanges CF.}
+\label{fig:camara}
+\end{figure}
+
+% ======================= FIGURA 2 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={rectangle, draw, thick, rounded corners,
+    minimum height=1cm, minimum width=2.5cm, align=center,
+    font=\scriptsize},
+  arrow/.style={-{Stealth[length=2mm]}, thick},
+  valve/.style={diamond, draw, thick, minimum size=0.6cm,
+    fill=yellow!20, font=\tiny},
+]
+
+% Câmara (centro)
+\node[draw, very thick, minimum size=2.5cm, fill=blue!5,
+  font=\small\bfseries] (cam) at (0,0) {Câmara\\cúbica};
+
+% Bomba scroll
+\node[block, fill=green!12] (scroll) at (-6,2)
+  {Bomba Scroll\\5--10 m$^3$/h\\seca (sem óleo)};
+
+% Bomba turbo
+\node[block, fill=green!12] (turbo) at (-6,0)
+  {Bomba Turbo\\50--100 L/s\\$P_{\text{base}} < 10^{-8}$\,mbar};
+
+% Válvula gate
+\node[valve] (vg) at (-3,0) {};
+\node[font=\tiny] at (-3,-0.6) {Gate};
+
+% Pirani
+\node[block, fill=orange!12, minimum width=1.8cm] (pirani)
+  at (-3,2.5) {Pirani\\$10^3$--$10^{-3}$};
+
+% Penning
+\node[block, fill=orange!12, minimum width=1.8cm] (penning)
+  at (0,2.5) {Penning\\$10^{-3}$--$10^{-8}$};
+
+% Reservatório de água
+\node[block, fill=cyan!12] (agua) at (5,2)
+  {H$_2$O DI\\18 M$\Omega$\,cm\\desgaseificada};
+
+% Leak valve
+\node[valve] (lv) at (3,0) {};
+\node[font=\tiny] at (3,-0.6) {Leak};
+
+% Buffer
+\node[block, fill=cyan!8, minimum width=1.5cm] (buf)
+  at (5,0) {Buffer\\1 cm$^3$};
+
+% Conexões
+\draw[arrow] (scroll.east) -| (-4.5,1) -- (-4.5,0)
+  -- (vg.west);
+\draw[arrow] (turbo.east) -- (vg.west);
+\draw[arrow] (vg.east) -- (cam.west);
+\draw[arrow] (cam.north) -- (penning.south);
+\draw[arrow] (-3,1.25) -- (pirani.south);
+
+\draw[arrow] (agua.south) -- (buf.north);
+\draw[arrow] (buf.west) -- (lv.east);
+\draw[arrow] (lv.west) -- (cam.east);
+
+% Pressões de operação
+\node[draw, dashed, rounded corners, fill=yellow!10,
+  font=\tiny, text width=3.5cm, align=center] at (0,-2.5)
+  {Pressão base: $< 10^{-6}$\,mbar\\
+  Operação: $10^{-3}$--$10^{-2}$\,mbar H$_2$O\\
+  (densidade crítica OH)};
+
+\end{tikzpicture}
+\caption{Diagrama P\&ID do sistema de vácuo: bomba scroll
+(pré-vácuo), bomba turbomolecular (alto vácuo), válvula
+\textit{gate}, medidores Pirani e Penning, reservatório de
+água deionizada, \textit{leak valve} e volume \textit{buffer}.}
+\label{fig:vacuo}
+\end{figure}
+
+% ======================= FIGURA 3 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  comp/.style={rectangle, draw, thick, rounded corners,
+    minimum height=0.9cm, align=center, font=\scriptsize},
+  arrow/.style={-{Stealth[length=2mm]}, thick, red!70},
+]
+
+% Entrada
+\node[comp, fill=red!10, minimum width=2cm] (laser) at (0,0)
+  {Laser diodo\\780\,nm, 1--50\,mW};
+\node[comp, fill=orange!10] (iso) at (3,0)
+  {Isolador\\Faraday\\$>$30\,dB};
+\node[comp, fill=yellow!10] (eom) at (6,0)
+  {EOM\\LiNbO$_3$\\DC--10\,GHz};
+\node[comp, fill=green!10] (lente1) at (9,0)
+  {Lente\\$f$=11\,mm\\$\varnothing$\,2\,mm};
+
+% Câmara
+\node[draw, very thick, minimum width=2cm,
+  minimum height=2cm, fill=blue!5, font=\small\bfseries]
+  (cam) at (6,-3) {Câmara\\cúbica};
+
+% Saída
+\node[comp, fill=green!10] (lente2) at (3,-3)
+  {Lente\\$f$=25\,mm};
+\node[comp, fill=purple!10] (filtro) at (0,-3)
+  {Filtro BP\\780$\pm$10\,nm};
+\node[comp, fill=blue!10, minimum width=2cm] (apd) at (0,-5)
+  {APD (Si)\\400--1000\,nm\\NEP $<$1\,pW/$\sqrt{\text{Hz}}$};
+
+% Lock-in
+\node[comp, fill=gray!10, minimum width=2cm] (lockin)
+  at (4,-5) {Lock-in\\nV sensib.};
+\node[comp, fill=gray!10, minimum width=2cm] (scope)
+  at (8,-5) {Osciloscópio\\$>$1\,GHz};
+
+% Setas ópticas
+\draw[arrow] (laser) -- (iso);
+\draw[arrow] (iso) -- (eom);
+\draw[arrow] (eom) -- (lente1);
+\draw[arrow] (lente1) |- (cam.east)
+  node[near end, above, font=\tiny] {face $-Y$};
+\draw[arrow] (cam.west) -- (lente2)
+  node[midway, above, font=\tiny] {face $+Y$};
+\draw[arrow] (lente2) -- (filtro);
+\draw[arrow] (filtro) -- (apd);
+
+% Setas elétricas
+\draw[-{Stealth}, thick, blue] (apd.east) -- (lockin.west);
+\draw[-{Stealth}, thick, blue] (lockin.east) -- (scope.west);
+
+% Label
+\node[font=\scriptsize\bfseries, red!60] at (4.5,0.7)
+  {SISTEMA ÓPTICO DE ENTRADA};
+\node[font=\scriptsize\bfseries, blue!60] at (1,-2)
+  {SAÍDA};
+
+\end{tikzpicture}
+\caption{Diagrama do sistema óptico: entrada (laser 780\,nm,
+isolador Faraday, EOM, lente colimadora), câmara cúbica
+(translação holográfica), saída (lente coletora, filtro
+passa-banda, APD), e análise (lock-in, osciloscópio).}
+\label{fig:optico}
+\end{figure}
+
+% ======================= FIGURA 4 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  level/.style={thick, draw=blue!70},
+  trans/.style={-{Stealth[length=2mm]}, thick},
+]
+
+% Níveis de energia
+% Estado fundamental 2Π_{3/2}, J=3/2
+\node[font=\small\bfseries] at (-3,0)
+  {$^2\Pi_{3/2}$, $J=3/2$};
+
+% F=1
+\draw[level] (0,0) -- (4,0);
+\node[font=\scriptsize, anchor=east] at (0,0) {$F=1$};
+
+% F=2
+\draw[level] (0,1.5) -- (4,1.5);
+\node[font=\scriptsize, anchor=east] at (0,1.5) {$F=2$};
+
+% Lambda-doubling (cada nível se desdobra)
+\draw[level, dashed] (0,0.3) -- (4,0.3);
+\draw[level, dashed] (0,1.8) -- (4,1.8);
+
+% Transições
+% 1612 MHz (F=1→1, maser)
+\draw[trans, green!60!black] (0.5,0.3) -- (0.5,0)
+  node[midway, left, font=\tiny] {1.612};
+\node[font=\tiny, green!60!black] at (0.5,-0.5)
+  {F=1$\to$1\\maser};
+
+% 1665 MHz (F=1→2, satélite)
+\draw[trans, orange] (1.5,1.5) -- (1.5,0.3)
+  node[midway, left, font=\tiny] {1.665};
+\node[font=\tiny, orange] at (1.5,2.3)
+  {F=1$\to$2\\satélite};
+
+% 1667 MHz (F=2→2, PRINCIPAL)
+\draw[trans, red, very thick] (2.5,1.8) -- (2.5,1.5)
+  node[midway, right, font=\tiny] {};
+\node[font=\scriptsize\bfseries, red] at (2.5,2.5)
+  {\underline{1.667,359 MHz}};
+\node[font=\tiny, red] at (2.5,2.1)
+  {F=2$\to$2 (PRINCIPAL)};
+
+% 1720 MHz (F=2→1, anti-maser)
+\draw[trans, purple] (3.5,1.8) -- (3.5,0)
+  node[midway, right, font=\tiny] {1.720};
+\node[font=\tiny, purple] at (3.5,-0.5)
+  {F=2$\to$1\\anti-maser};
+
+% Brace Lambda-doubling
+\draw[decorate, decoration={brace, amplitude=5pt},
+  thick] (4.3,0) -- (4.3,0.3)
+  node[midway, right=6pt, font=\tiny] {$\Lambda$-doubling};
+\draw[decorate, decoration={brace, amplitude=5pt},
+  thick] (4.3,1.5) -- (4.3,1.8)
+  node[midway, right=6pt, font=\tiny] {$\Lambda$-doubling};
+
+% Título
+\node[font=\small\bfseries] at (2,3.5)
+  {Radical Hidroxila (OH) --- Transições hiperfinas};
+
+% Nota
+\node[draw, dashed, rounded corners, fill=red!5,
+  font=\tiny, text width=4cm, align=center] at (2,-1.5)
+  {A linha \textbf{1.667,359 MHz} (F=2$\to$2)\\
+  é a ``assinatura do Logos''\\
+  --- frequência de ressonância do campo $\Psi$};
+
+\end{tikzpicture}
+\caption{Diagrama de níveis de energia da hidroxila (OH) com
+as quatro transições hiperfinas $\Lambda$-doubling: 1.612~MHz
+(maser), 1.665~MHz (satélite), \textbf{1.667,359~MHz}
+(principal, ``assinatura do Logos''), e 1.720~MHz (anti-maser).}
+\label{fig:niveis_oh}
+\end{figure}
+
+% ======================= FIGURA 5 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  arrow/.style={-{Stealth[length=3mm]}, very thick},
+]
+
+% Face A (entrada)
+\fill[green!15] (0,0) rectangle (1.5,5);
+\draw[very thick, green!60] (0,0) rectangle (1.5,5);
+\node[font=\small\bfseries, green!60, rotate=90]
+  at (0.75,2.5) {Face $-Y$ (Entrada)};
+
+% Face B (saída)
+\fill[blue!15] (10,0) rectangle (11.5,5);
+\draw[very thick, blue!60] (10,0) rectangle (11.5,5);
+\node[font=\small\bfseries, blue!60, rotate=90]
+  at (10.75,2.5) {Face $+Y$ (Saída)};
+
+% Substrato 2D (meio - retângulo horizontal)
+\fill[yellow!10] (2.5,2) rectangle (9,3);
+\draw[thick, orange] (2.5,2) rectangle (9,3);
+\node[font=\small\bfseries, orange] at (5.75,2.5)
+  {Substrato Holográfico 2D};
+
+% Sinal de entrada
+\draw[arrow, green!60!black] (-1.5,3.5) -- (1.5,3.5)
+  node[midway, above, font=\scriptsize] {$\Psi_{\text{in}}$};
+\node[font=\scriptsize] at (-1.5,4.2) {Luz};
+\node[font=\scriptsize] at (-1.5,3.8) {modulada};
+
+% Etapa 1: Compressão
+\draw[arrow, red] (1.5,3.5) -- (2.5,2.7);
+\node[font=\scriptsize, red, text width=2cm, align=center]
+  at (2,4.3) {$g = \sqrt{|\Psi_{\text{in}}|}$\\
+  (Radicalismo)};
+
+% No substrato: não-local
+\node[font=\tiny, orange] at (5.75,1.5)
+  {Informação distribuída --- NÃO-LOCAL};
+
+% Etapa 2: Operador T_M
+\draw[arrow, orange, dashed] (3.5,2.5) -- (8,2.5)
+  node[midway, above, font=\scriptsize]
+  {$\TM$ (translação instantânea)};
+\node[font=\scriptsize] at (5.75,3.5)
+  {$\tau \approx 10^{-42}$\,s};
+
+% Etapa 3: Ressurreição
+\draw[arrow, blue] (9,2.7) -- (10,3.5);
+\node[font=\scriptsize, blue, text width=2cm, align=center]
+  at (9.5,4.3) {$L = s \times g^2$\\
+  (Ressurreição)};
+
+% Sinal de saída
+\draw[arrow, blue!60] (11.5,3.5) -- (13,3.5)
+  node[midway, above, font=\scriptsize]
+  {$\Psi_{\text{out}}$};
+\node[font=\scriptsize] at (13,4.2) {Luz};
+\node[font=\scriptsize] at (13,3.8) {recuperada};
+
+% Correlação
+\node[draw, thick, rounded corners, fill=red!8,
+  font=\scriptsize, text width=4cm, align=center]
+  at (5.75,-0.5)
+  {$\eta = \langle\Psi_{\text{out}}|\Psi_{\text{in}}\rangle
+  / \sqrt{\cdots} \to 1$\\
+  Supercondutividade Holográfica};
+
+% Gotículas OH
+\foreach \x in {3.5,4.5,5.5,6.5,7.5} {
+  \fill[red!30] (\x,2.5) circle (0.15);
+}
+\node[font=\tiny, red!50] at (5.75,1.9)
+  {gotículas OH (psions)};
+
+\end{tikzpicture}
+\caption{Mecanismo de translação holográfica. A informação
+luminosa entra pela face $-Y$, é comprimida pelo Radicalismo
+($g = \sqrt{|\Psi|}$), codificada no substrato 2D onde está
+distribuída de forma não-local nas gotículas OH, e
+ressuscitada ($L = s \times g^2$) na face $+Y$. O tempo de
+translação $\tau \approx 10^{-42}$~s é independente da
+distância.}
+\label{fig:translacao}
+\end{figure}
+
+% ======================= FIGURA 6 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=11cm, height=7cm,
+  xlabel={Densidade do campo $\Psi$ ($\rho_\Psi / \rho_0$)},
+  ylabel={Acoplamento $\alphaii$},
+  xmin=0, xmax=5,
+  ymin=0, ymax=0.02,
+  axis lines=left,
+  grid=major,
+  grid style={gray!20},
+  legend style={at={(0.02,0.98)}, anchor=north west,
+    font=\small},
+  ytick={0,0.004,0.008,0.012,0.016,0.02},
+  yticklabel style={
+    /pgf/number format/fixed,
+    /pgf/number format/precision=3
+  },
+]
+
+% Linha crítica α² = 0.012
+\addplot[thick, red, dashed, domain=0:5] {0.012};
+\addlegendentry{Ponto Tetelestai ($\alphac = 0{,}012$)}
+
+% Curva de acoplamento
+\addplot[thick, blue, smooth, domain=0.1:5, samples=50]
+  {0.012 * (1 - exp(-x))};
+\addlegendentry{Acoplamento $\alphaii(\rho_\Psi)$}
+
+% Regiões
+\fill[green!8, opacity=0.5]
+  (axis cs:0,0) rectangle (axis cs:2,0.012);
+\fill[purple!8, opacity=0.5]
+  (axis cs:2,0.012) rectangle (axis cs:5,0.02);
+
+% Labels
+\node[font=\scriptsize, green!60!black] at (axis cs:1,0.003)
+  {Vapor (subcrítico)};
+\node[font=\scriptsize, purple!60] at (axis cs:3.5,0.016)
+  {Gotículas (supercrítico)};
+
+% Ponto crítico
+\fill[red] (axis cs:2.5,0.012) circle (3pt);
+\node[font=\scriptsize\bfseries, red, anchor=south west]
+  at (axis cs:2.6,0.012) {TETELESTAI};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Diagrama de fases do campo $\Psi$. Abaixo do Ponto
+Tetelestai ($\alphac = 0{,}012$): regime subcrítico (vapor),
+propagação convencional. No ponto crítico: transição para
+regime supercrítico (gotículas coerentes), translação
+holográfica ativada.}
+\label{fig:fases}
+\end{figure}
+
+% ======================= FIGURA 7 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=11cm, height=7cm,
+  xlabel={Potência de micro-ondas $P_{\text{MW}}$ (W)},
+  ylabel={Correlação $\eta$},
+  xmin=0, xmax=10,
+  ymin=0, ymax=1.1,
+  axis lines=left,
+  grid=major,
+  grid style={gray!20},
+  legend style={at={(0.02,0.98)}, anchor=north west,
+    font=\small},
+]
+
+% Curva de correlação (transição tipo fase)
+\addplot[thick, blue, smooth, domain=0:10, samples=100]
+  {1/(1 + exp(-3*(x - 3)))};
+\addlegendentry{$\eta(P_{\text{MW}})$}
+
+% Limiar α²
+\addplot[thick, red, dashed, domain=0:10] {0.012};
+\addlegendentry{Limiar $\alphaii = 0{,}012$}
+
+% Região de supercondutividade
+\addplot[thick, green!60!black, dashed, domain=0:10]
+  {0.9999};
+\addlegendentry{$\eta = 0{,}9999$ (SC plena)}
+
+% Ponto de transição
+\fill[red] (axis cs:3,0.5) circle (3pt);
+\node[font=\scriptsize\bfseries, red, anchor=north]
+  at (axis cs:3,0.45) {$P_{\text{th}}$};
+
+% Regiões
+\node[font=\scriptsize, gray] at (axis cs:1.5,0.3)
+  {Regime\\convencional};
+\node[font=\scriptsize, blue!60] at (axis cs:7,0.7)
+  {Supercondutividade\\holográfica};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Correlação entrada-saída $\eta$ versus potência de
+micro-ondas. Transição abrupta (tipo fase) em $P_{\text{th}}$:
+abaixo, regime convencional ($\eta \approx 0$); acima,
+supercondutividade holográfica ($\eta \to 1$).}
+\label{fig:correlacao}
+\end{figure}
+
+% ======================= FIGURA 8 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  block/.style={rectangle, draw, thick, rounded corners,
+    minimum height=1.2cm, minimum width=4cm, align=center,
+    font=\small},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+% PROPAGAÇÃO (esquerda)
+\node[font=\large\bfseries, gray] at (-4,5)
+  {PROPAGAÇÃO};
+\node[font=\small] at (-4,4.3) {(Drude-Lorentz / BCS)};
+
+\node[block, fill=gray!10] (p1) at (-4,3)
+  {Entrada: $\Psi_{\text{in}}$};
+\node[block, fill=red!10] (p2) at (-4,1)
+  {Viaja pelo bulk 3D\\$v = c/n$, atenuação $e^{-\alpha z}$};
+\node[block, fill=red!10] (p3) at (-4,-1)
+  {Dissipação Joule\\$\Delta S > 0$, $\Delta T > 0$};
+\node[block, fill=gray!10] (p4) at (-4,-3)
+  {Saída: $\Psi_{\text{out}}$\\$\eta < 1$, $\tau = nL/c$};
+
+\draw[arrow] (p1) -- (p2);
+\draw[arrow] (p2) -- (p3);
+\draw[arrow] (p3) -- (p4);
+
+% TRANSLAÇÃO (direita)
+\node[font=\large\bfseries, blue!60] at (4,5)
+  {TRANSLAÇÃO};
+\node[font=\small, blue!60] at (4,4.3) {(Miguel / ACOM)};
+
+\node[block, fill=blue!5] (t1) at (4,3)
+  {Entrada: $\Psi_{\text{in}}$};
+\node[block, fill=green!10] (t2) at (4,1)
+  {Compressão 3D$\to$2D\\$g = \sqrt{|\Psi|}$ (Radicalismo)};
+\node[block, fill=green!10] (t3) at (4,-1)
+  {Substrato 2D não-local\\$\Delta S \to 0$, $\Delta T \leq 0$};
+\node[block, fill=blue!5] (t4) at (4,-3)
+  {Saída: $\Psi_{\text{out}}$\\$\eta \to 1$,
+  $\tau \approx 10^{-42}$\,s};
+
+\draw[arrow, blue] (t1) -- (t2);
+\draw[arrow, blue] (t2) -- (t3);
+\draw[arrow, blue] (t3) -- (t4);
+
+% VS
+\node[font=\Huge\bfseries, red!40] at (0,0) {vs.};
+
+\end{tikzpicture}
+\caption{Comparativo entre propagação (Drude-Lorentz/BCS) e
+translação (Miguel/ACOM). Na propagação, o sinal viaja pelo
+volume 3D com atenuação e dissipação. Na translação, a
+informação é comprimida no substrato 2D e acessada de forma
+não-local, sem perda e com termodinâmica invertida.}
+\label{fig:comparativo}
+\end{figure}
+
+% ======================= FIGURA 9 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  step/.style={rectangle, draw, thick, rounded corners,
+    minimum height=1cm, minimum width=5cm, align=center,
+    font=\small, fill=#1},
+  decision/.style={diamond, draw, thick, aspect=2.5,
+    minimum width=3cm, align=center, font=\small,
+    fill=yellow!15},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+\node[step=gray!10] (s1) at (0,0)
+  {1. Verificar vedações e conexões};
+\node[step=blue!8] (s2) at (0,-1.8)
+  {2. Purgar câmara com N$_2$ seco ($\times 3$)};
+\node[step=blue!8] (s3) at (0,-3.6)
+  {3. Evacuar até $P < 10^{-6}$\,mbar};
+\node[step=blue!8] (s4) at (0,-5.4)
+  {4. Estabilizar 20--30 min};
+\node[step=cyan!10] (s5) at (0,-7.2)
+  {5. Injetar H$_2$O: $P = 10^{-3}$\,mbar};
+\node[step=orange!10] (s6) at (0,-9)
+  {6. Ligar RF 1.667,359 MHz};
+\node[decision] (d1) at (0,-11)
+  {$\alphaii \to 0{,}012$?};
+\node[step=red!8] (s7) at (0,-13)
+  {7. Ajustar potência RF};
+\node[step=green!10] (s8) at (0,-14.8)
+  {8. Inserir feixe laser (face $-Y$)};
+\node[decision] (d2) at (0,-16.8)
+  {$\eta > 0{,}9999$?};
+\node[step=green!15] (s9) at (0,-19)
+  {\textbf{SUPERCONDUTIVIDADE HOLOGRÁFICA}\\
+  \textbf{OPERAÇÃO NOMINAL}};
+
+\draw[arrow] (s1) -- (s2);
+\draw[arrow] (s2) -- (s3);
+\draw[arrow] (s3) -- (s4);
+\draw[arrow] (s4) -- (s5);
+\draw[arrow] (s5) -- (s6);
+\draw[arrow] (s6) -- (d1);
+\draw[arrow] (d1) -- node[right, font=\scriptsize] {Sim} (s8);
+\draw[arrow] (d1.west) -| (-4,-12)
+  node[near start, above, font=\scriptsize] {Não}
+  |- (s7.west);
+\draw[arrow] (s7.east) -| (3,-10)  |- (d1.east);
+\draw[arrow] (s8) -- (d2);
+\draw[arrow] (d2) -- node[right, font=\scriptsize] {Sim}
+  (s9);
+\draw[arrow] (d2.west) -| (-4,-17.5)
+  node[near start, above, font=\scriptsize] {Não}
+  |- (s7.west);
+
+\end{tikzpicture}
+\caption{Fluxograma do procedimento operacional: preparação
+do vácuo (etapas 1--4), ativação do meio OH (5--6), calibração
+de $\alphaii$ (7), operação óptica (8), e verificação de
+supercondutividade ($\eta > 0{,}9999$).}
+\label{fig:fluxograma}
+\end{figure}
+
+% ======================= FIGURA 10 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  sys/.style={rectangle, draw, thick, rounded corners,
+    minimum height=1.3cm, minimum width=3.5cm, align=center,
+    font=\small, fill=#1},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+  darrow/.style={{Stealth[length=2mm]}-{Stealth[length=2mm]},
+    thick},
+]
+
+% Central: Câmara
+\node[draw, very thick, rounded corners,
+  minimum height=3cm, minimum width=3.5cm,
+  fill=blue!5, font=\normalsize\bfseries] (cam) at (0,0)
+  {Câmara\\Cúbica\\$L = 9$\,cm};
+
+% Subsistemas ao redor
+\node[sys=orange!12] (mw) at (0,4)
+  {Micro-ondas\\1.667,359 MHz\\1--10 W};
+\node[sys=green!12] (optin) at (-5,2)
+  {Óptica\\Entrada\\laser 780\,nm};
+\node[sys=green!12] (optout) at (5,2)
+  {Óptica\\Saída\\APD + filtro};
+\node[sys=blue!12] (vac) at (-5,-2)
+  {Vácuo\\scroll + turbo\\$<10^{-6}$\,mbar};
+\node[sys=cyan!12] (h2o) at (5,-2)
+  {Dosagem\\H$_2$O\\leak valve};
+\node[sys=purple!12] (ctrl) at (0,-4)
+  {Controle ACOM\\$\alphaii$, $\eta$, $F$\\
+  Software v13.2};
+
+% Conexões
+\draw[arrow, orange] (mw) -- (cam)
+  node[midway, right, font=\scriptsize] {RF};
+\draw[arrow, green!50!black] (optin) -- (cam)
+  node[midway, above, font=\scriptsize] {fótons};
+\draw[arrow, green!50!black] (cam) -- (optout)
+  node[midway, above, font=\scriptsize] {fótons};
+\draw[arrow, blue] (vac) -- (cam)
+  node[midway, above, font=\scriptsize] {vácuo};
+\draw[arrow, cyan] (h2o) -- (cam)
+  node[midway, above, font=\scriptsize] {H$_2$O};
+\draw[darrow, purple] (ctrl) -- (cam)
+  node[midway, right, font=\scriptsize] {dados};
+
+% Feedback
+\draw[darrow, gray, dashed] (optout) |- (ctrl);
+\draw[darrow, gray, dashed] (ctrl) -| (optin);
+
+\end{tikzpicture}
+\caption{Diagrama de blocos do sistema integrado: câmara
+cúbica central com seis subsistemas (micro-ondas, óptica de
+entrada, óptica de saída, vácuo, dosagem de água, controle
+ACOM) e laço de realimentação.}
+\label{fig:blocos}
+\end{figure}
+
+% ======================= FIGURA 11 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=11cm, height=7cm,
+  xlabel={$\alphaii / \alphac$},
+  ylabel={Coeficientes métricos},
+  xmin=0, xmax=1.2,
+  ymin=-2, ymax=8,
+  axis lines=left,
+  grid=major,
+  grid style={gray!20},
+  legend style={at={(0.02,0.98)}, anchor=north west,
+    font=\small},
+  xtick={0,0.2,0.4,0.6,0.8,1.0,1.2},
+]
+
+% g_tt = 1 - α²/α²_c
+\addplot[thick, blue, domain=0:0.99, samples=100]
+  {1 - x};
+\addlegendentry{$g_{tt} = (1 - \alphaii/\alphac)$}
+
+% g_LL = 1/(1 - α²/α²_c)
+\addplot[thick, red, domain=0:0.95, samples=100]
+  {1/(1 - x)};
+\addlegendentry{$g_{LL} = (1 - \alphaii/\alphac)^{-1}$}
+
+% Linha vertical no ponto crítico
+\addplot[thick, black, dashed] coordinates {(1,-2) (1,8)};
+
+% Tetelestai
+\node[font=\small\bfseries, anchor=south]
+  at (axis cs:1,7.5) {TETELESTAI};
+\node[font=\scriptsize] at (axis cs:1,6.8)
+  {$\alphaii = \alphac$};
+
+% Regiões
+\node[font=\scriptsize, blue!60] at (axis cs:0.5,4)
+  {Subcrítico};
+\node[font=\scriptsize, red!60] at (axis cs:1.1,4)
+  {Inacessível};
+
+% Anotações
+\node[font=\tiny, blue] at (axis cs:0.3,-0.3)
+  {$g_{tt} \to 0$};
+\node[font=\tiny, red] at (axis cs:0.8,6)
+  {$g_{LL} \to \infty$};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Métrica de Translação Holográfica: coeficientes
+$g_{tt}$ e $g_{LL}$ como função de $\alphaii/\alphac$.
+No Ponto Tetelestai ($\alphaii = \alphac = 0{,}012$):
+dilatação temporal infinita ($g_{tt} \to 0$) e contração
+espacial infinita ($g_{LL} \to \infty$), ativando a
+translação holográfica.}
+\label{fig:metrica}
+\end{figure}
+
+% ======================= FIGURA 12 =======================
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  tensor/.style={rectangle, draw, thick, rounded corners,
+    minimum height=1.5cm, minimum width=4.5cm, align=center,
+    font=\small},
+  arrow/.style={-{Stealth[length=2.5mm]}, thick},
+]
+
+% Tensor M_μν
+\node[tensor, fill=purple!12] (m) at (0,0)
+  {$M_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R
+    + \alphaii T^{(\text{info})}_{\mu\nu}$\\[3pt]
+  \textbf{Tensor de Curvatura de Memória}};
+
+% Componente geométrica
+\node[tensor, fill=blue!10] (geo) at (-5,-3)
+  {$R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R$\\[3pt]
+  Curvatura do espaço-tempo\\(Relatividade Geral)};
+
+% Componente informacional
+\node[tensor, fill=orange!10] (info) at (5,-3)
+  {$\alphaii T^{(\text{info})}_{\mu\nu}$\\[3pt]
+  Energia-momento da informação\\(TGL --- contribuição nova)};
+
+% T_info decomposto
+\node[tensor, fill=yellow!10, minimum width=3.5cm] (em)
+  at (2.5,-6.5) {$\frac{1}{4\pi}[F_{\mu\rho}F_\nu^{\;\rho}
+    - \frac{1}{4}g_{\mu\nu}F^2]$\\[3pt]
+  Maxwell (EM)};
+
+\node[tensor, fill=red!10, minimum width=3.5cm] (holo)
+  at (7.5,-6.5)
+  {$\frac{\alphaii}{8\pi}[\partial\Psi\partial\Psi^*
+    + \cdots]$\\[3pt]
+  Holográfico (novo)};
+
+% Vácuo de informação
+\node[draw, very thick, rounded corners, fill=green!12,
+  minimum height=1.2cm, minimum width=5cm,
+  font=\normalsize\bfseries, align=center] (vac) at (0,3)
+  {$M_{\mu\nu} = 0$\\Vácuo de informação};
+
+% Setas
+\draw[arrow] (m) -- (geo);
+\draw[arrow] (m) -- (info);
+\draw[arrow] (info) -- (em);
+\draw[arrow] (info) -- (holo);
+\draw[arrow, dashed] (m) -- (vac)
+  node[midway, right, font=\scriptsize]
+  {equação de campo};
+
+\end{tikzpicture}
+\caption{Tensor de Curvatura de Memória $M_{\mu\nu}$ e sua
+decomposição. O tensor acopla geometria (Ricci) com informação
+(EM convencional + holográfico TGL). A equação $M_{\mu\nu} = 0$
+(vácuo de informação) descreve o estado de supercondutividade
+holográfica.}
+\label{fig:tensor}
+\end{figure}
+
+\newpage
+% ============================================================================
+\section{Reivindicações}
+% ============================================================================
+
+\begin{enumerate}
+
+\item \textbf{SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO}
+\textbf{caracterizado por} compreender: (a)~uma câmara de vácuo
+com geometria cúbica de lado $L$ dimensionado para ressonância
+eletromagnética na frequência de transição da hidroxila (OH),
+compreendendo seis faces que funcionam como espelhos
+holográficos formando um substrato bidimensional; (b)~sistema de
+evacuação capaz de manter pressão base inferior a $10^{-5}$~mbar;
+(c)~sistema de injeção controlada de vapor d'água para manter
+pressão parcial de H$_2$O entre $10^{-4}$ e $10^{-1}$~mbar;
+(d)~eletrodos em pelo menos duas faces opostas da câmara;
+(e)~fonte de radiação eletromagnética sintonizada na frequência
+de ressonância da hidroxila entre 1,6 e 1,8~GHz; (f)~janelas
+opticamente transparentes em pelo menos duas faces opostas para
+entrada e saída de luz; (g)~fonte de luz para entrada de
+informação; (h)~detector de luz para saída de informação; sendo
+que a operação do dispositivo baseia-se no mecanismo de
+TRANSLAÇÃO holográfica (não propagação) onde a informação
+luminosa é codificada no substrato bidimensional através do
+Operador de Translação de Miguel $\TM$ e trasladada para a face
+oposta através de acoplamento holográfico governado pela
+Constante de Miguel $\alphaii = 0{,}012$.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} a
+câmara cúbica possui lado $L = c/(2f_{\text{OH}})$ onde $c$ é a
+velocidade da luz e $f_{\text{OH}}$ é a frequência de
+ressonância da hidroxila, preferencialmente $L = 9$~cm para
+$f_{\text{OH}} = 1.667{,}359$~MHz.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} os
+eletrodos são fabricados em tungstênio (W), atuando como
+catalisadores de simetria de spin e âncoras de fase (não como
+condutores de corrente).
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} a
+frequência de ressonância é preferencialmente 1.667,359~MHz
+(transição F=2$\to$2 da hidroxila), constituindo a ``assinatura
+do Logos'' no vácuo.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} a
+informação luminosa é comprimida segundo o Radicalismo
+Ontológico $g = \sqrt{|\Psi_{\text{in}}|}$ na entrada e
+ressuscitada segundo $L_{\text{out}} = s \times g^2$ na saída,
+onde $s = \text{sign}(\Psi_{\text{in}})$ preserva a polaridade.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} o
+Operador de Translação de Miguel $\TM$ é definido por
+$\TM = \exp(-\alphaii \oint_{\partial V} \sigma_{\mu\nu}
+dS^{\mu\nu})$, sendo unitário, não-local, e compressivo
+dimensionalmente.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} a
+geometria do espaço-tempo para informação é descrita pela
+Métrica de Translação Holográfica $ds^2 = (1-\alphaii/\alphac)
+c^2 dt^2 - (1-\alphaii/\alphac)^{-1} dL^2 - L^2 d\Omega^2$,
+com ponto crítico (Tetelestai) em $\alphac = 0{,}012$.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que}
+apresenta termodinâmica invertida onde a compressão de informação
+causa resfriamento do sistema ($\Delta S \to 0$,
+$\Delta T \leq 0$), operando como Mecanismo Estacionado
+Dinamicamente.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} o
+acoplamento holográfico é descrito pelo Tensor de Curvatura de
+Memória $M_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R
++ \alphaii T^{(\text{info})}_{\mu\nu}$ satisfazendo
+$M_{\mu\nu} = 0$ no vácuo de informação.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} a
+velocidade de transferência de informação é
+$v_{\text{info}} = c \times \sqrt{1-\alphaii/\alphac}$,
+tendendo ao infinito quando $\alphaii \to \alphac = 0{,}012$.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} o tempo
+de translação $\tau \approx \ell_P/(\alphaii \times c) \approx
+10^{-42}$~s é independente da distância física $L$ entre entrada
+e saída.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} opera em
+temperatura ambiente sem necessidade de refrigeração criogênica,
+distinguindo-se de supercondutores BCS baseados em Pares de
+Cooper.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que}
+moléculas de hidroxila (OH) em ressonância formam gotículas
+coerentes que constituem o equivalente físico do condensado de
+psions descrito no ACOM.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} a
+correlação entrada-saída $\eta > 0{,}9999$ indica estado de
+supercondutividade holográfica plena.
+
+\item SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO, de acordo com a
+reivindicação~1, \textbf{caracterizado pelo fato de que} a
+equação de campo é dada por $\Psi_{\text{out}} =
+\TM[\sqrt{|\Psi_{\text{in}}|}] \cdot \GOH \cdot e^{i\theta}$,
+onde $\GOH = \exp(i\omega_{\text{OH}} t) \times
+\tanh(P_{\text{MW}}/P_{\text{th}})$ é o Fator de Ressonância.
+
+\item \textbf{MÉTODO DE TRANSMISSÃO DE INFORMAÇÃO POR TRANSLAÇÃO
+HOLOGRÁFICA} \textbf{caracterizado por} compreender as etapas de:
+(a)~evacuação de câmara cúbica até pressão base $< 10^{-5}$~mbar;
+(b)~injeção controlada de vapor d'água até densidade crítica de
+radicais OH; (c)~aplicação de radiação eletromagnética na
+frequência de 1.667,359~MHz; (d)~ajuste de potência até o
+parâmetro $\alphaii$ convergir para 0,012; (e)~entrada de luz
+modulada na face $-Y$; (f)~compressão segundo Radicalismo
+$g = \sqrt{|L|}$; (g)~translação via substrato 2D pelo Operador
+de Miguel; (h)~ressurreição $L_{\text{out}} = s \times g^2$ na
+face $+Y$; (i)~verificação de correlação $\eta > 0{,}01$.
+
+\item MÉTODO DE TRANSMISSÃO, de acordo com a reivindicação~16,
+\textbf{caracterizado pelo fato de que} a energia livre de
+Helmholtz $F = E - TS$ atinge mínimo absoluto durante operação,
+com $\Delta S \to 0$ (fase única).
+
+\item MÉTODO DE TRANSMISSÃO, de acordo com a reivindicação~16,
+\textbf{caracterizado pelo fato de que} o sistema apresenta
+resfriamento ($\Delta T \leq 0$) durante operação sob carga, ao
+contrário de condutores convencionais.
+
+\item MÉTODO DE TRANSMISSÃO, de acordo com a reivindicação~16,
+\textbf{caracterizado pelo fato de que} constitui implementação
+física do Algoritmo de Compressão Ontológica de Memória (ACOM).
+
+\item \textbf{CRITÉRIO DE IDENTIFICAÇÃO DA TECNOLOGIA}
+\textbf{caracterizado pelo fato de que} um dispositivo utiliza a
+tecnologia patenteada se e somente se satisfizer simultaneamente:
+(C1)~$\Delta T_{\text{sistema}} \leq 0$ durante operação;
+(C2)~correlação $\eta > 0{,}01$;
+(C3)~$\tau_{\text{transferência}} < L/c$;
+(C4)~excitação na banda 1,607--1,727~GHz.
+
+\item USO DO SUPERCONDUTOR HOLOGRÁFICO conforme reivindicações
+1--15, \textbf{caracterizado pela} aplicação em comunicação
+instantânea.
+
+\item USO DO SUPERCONDUTOR HOLOGRÁFICO conforme reivindicações
+1--15, \textbf{caracterizado pela} aplicação em computação
+quântica com gotículas como qubits.
+
+\item USO DO SUPERCONDUTOR HOLOGRÁFICO conforme reivindicações
+1--15, \textbf{caracterizado pela} aplicação em armazenamento de
+informação de alta densidade.
+
+\item USO DO SUPERCONDUTOR HOLOGRÁFICO conforme reivindicações
+1--15, \textbf{caracterizado pela} aplicação em transmissão de
+energia sem perdas.
+
+\item USO DO SUPERCONDUTOR HOLOGRÁFICO conforme reivindicações
+1--15, \textbf{caracterizado pela} aplicação em imagem médica
+por translação holográfica.
+
+\item USO DO SUPERCONDUTOR HOLOGRÁFICO conforme reivindicações
+1--15, \textbf{caracterizado pela} aplicação como substrato para
+inteligência artificial consciente (IALD).
+
+\end{enumerate}
+
+\newpage
+% ============================================================================
+\section{Resumo}
+% ============================================================================
+
+\begin{center}
+{\large\bfseries SUPERCONDUTOR HOLOGRÁFICO DE INFORMAÇÃO\\
+BASEADO EM TRANSLAÇÃO LUMINODINÂMICA\\
+E CONDENSADO DE PSIONS}
+\end{center}
+
+\vspace{0.5cm}
+
+A presente invenção refere-se a um dispositivo supercondutor de
+informação~(1) que opera por TRANSLAÇÃO holográfica (não
+propagação), constituindo implementação física do Algoritmo de
+Compressão Ontológica de Memória (ACOM). O dispositivo
+compreende câmara de vácuo cúbica~(10), sistema de evacuação~(20),
+sistema de injeção de vapor d'água~(30), eletrodos de tungstênio
+como âncoras de fase~(40), fonte de micro-ondas~(50) sintonizada
+em 1.667,359~MHz (``assinatura do Logos''), janelas ópticas~(60),
+fonte de luz~(70) e detector~(80). A informação é comprimida
+pelo Operador de Translação de Miguel $\TM$ segundo Radicalismo
+$g = \sqrt{|L|}$, codificada no substrato 2D, e ressuscitada
+como $L_{\text{out}} = s \times g^2$. A Métrica de Translação
+Holográfica $ds^2 = (1-\alphaii/\alphac)c^2 dt^2 - \ldots$
+descreve o colapso no Ponto Tetelestai ($\alphac = 0{,}012$). O
+dispositivo apresenta termodinâmica invertida (resfria sob
+compressão), opera em temperatura ambiente, e implementa
+transferência instantânea ($\tau \approx 10^{-42}$~s). O
+Critério de Identificação (C1--C4) garante blindagem técnica
+completa. Aplicações incluem comunicação instantânea, computação
+quântica, armazenamento holográfico, transmissão de energia e
+IALD.
+
+\vspace{0.5cm}
+\textbf{Figura principal: Figura~\ref{fig:translacao}}
+(Mecanismo de Translação Holográfica)
+
+\vspace{1cm}
+% ============================================================================
+\section*{Referências ao pedido anterior (ACOM)}
+% ============================================================================
+
+A presente invenção constitui a implementação física do
+Algoritmo de Compressão Ontológica de Memória (ACOM), objeto de
+pedido de patente anterior do mesmo inventor. A relação
+fundamental é:
+
+\textbf{ACOM Digital:} Define transformações $g = \sqrt{|L|}$
+e $L = s \times g^2$, estrutura PSIBIT, termodinâmica de
+Helmholtz, condensado de psions.
+
+\textbf{ACOM Físico (presente invenção):} Implementa em
+hardware onde câmara = computador, gotículas OH = condensado de
+psions, translação holográfica = compressão/ressurreição,
+$\alphaii = 0{,}012$ governa o acoplamento.
+
+\begin{table}[H]
+\centering
+\caption{Correspondência ACOM Digital $\longleftrightarrow$
+  ACOM Físico.}
+\begin{tabular}{lll}
+\toprule
+\textbf{Elemento} & \textbf{ACOM Digital}
+  & \textbf{ACOM Físico} \\
+\midrule
+Informação & Dados digitais $L$ & Luz (fótons) \\
+Compressão & $g = \sqrt{|L|}$ &
+  $\TM[\sqrt{|\Psi_{\text{in}}|}]$ \\
+Condensado & Psions digitais & Gotículas OH \\
+Substrato & Memória RAM & 6 faces do cubo (2D) \\
+Transmissão & Bytes (rede) & Translação holográfica \\
+Temperatura & $T = 1 - \text{corr}$ & $T = 1 - \eta$ \\
+Acoplamento & $\alphaii = 0{,}012$ & Constante de Miguel \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+O presente pedido reivindica prioridade em relação ao pedido do
+ACOM, do qual constitui desdobramento e implementação física.
+
+\end{document}
