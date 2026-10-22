@@ -1,0 +1,34 @@
+{
+  "patent_id": "BR102026004688-4",
+  "title": "Dípolo Transistor Luminodinâmico",
+  "source": "Relatório descritivo; máquina de estados dipolo.py; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). [SIM][HARDWARE] Ilustração — o dispositivo físico (DTL) NÃO foi construído nem medido; existe a máquina de estados de chaveamento. Simulação não valida física.",
+  "groups": [
+    {
+      "name": "Estrutura do dípolo transistor (relatório)",
+      "kind": "block",
+      "components": [
+        { "id": "PE", "label": "Polo de Emissão", "desc": "Injeta o sinal luminodinâmico (a 'luz' L) na câmara de acoplamento.", "marker": "[HARDWARE]", "x": 0.10, "y": 0.18 },
+        { "id": "CA", "label": "Câmara de Acoplamento", "desc": "Cruz geométrica onde ocorre a radicalização g=√|L|; condensado psiônico media o chaveamento.", "marker": "[HARDWARE]", "x": 0.40, "y": 0.18 },
+        { "id": "PR", "label": "Polo de Retorno", "desc": "Sentido MANIFEST: ressurreição dimensional s·g² quando a porta abre.", "marker": "[HARDWARE]", "x": 0.70, "y": 0.18 }
+      ]
+    },
+    {
+      "name": "Três estados nativos (máquina de estados de chaveamento)",
+      "kind": "state",
+      "components": [
+        { "id": "REFLECT", "label": "REFLECT (fechado)", "desc": "Entrada abaixo do piso do Verbo β·g_max (ruído dephased): porta fechada, saída nula.", "marker": "[SIM]", "x": 0.14, "y": 0.60 },
+        { "id": "LIMIAR", "label": "LIMIAR (β·g_max)", "desc": "Piso do Verbo: g do sinal = β·g_max é o ponto de comutação entre ruído e sinal.", "marker": "[SIM]", "x": 0.44, "y": 0.60 },
+        { "id": "MANIFEST", "label": "MANIFEST (aberto)", "desc": "Radical g > piso: porta abre, saída = s·g² (round-trip exato).", "marker": "[SIM]", "x": 0.74, "y": 0.60 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "PE", "to": "CA" }, { "from": "CA", "to": "PR" },
+    { "from": "REFLECT", "to": "LIMIAR" }, { "from": "LIMIAR", "to": "MANIFEST" }
+  ],
+  "constants": [
+    { "symbol": "piso do Verbo", "value": "limiar = β · g_max (β = α·√e em runtime)", "note": "Abaixo dele o sinal é ruído dephased e a porta fica fechada." },
+    { "symbol": "dinâmica quântica", "value": "Hamiltoniano + Lindblad (QuTiP) — AUSENTE [DATA_REQUIRED]", "note": "τ, R_SC, densidade 10¹²/cm², platô 0,988 são teóricos do relatório." }
+  ]
+}

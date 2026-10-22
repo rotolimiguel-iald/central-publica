@@ -1,0 +1,882 @@
+{
+  "patent_id": "BR102026003431-2",
+  "dir": "BR102026003431-2_ACOM_CRYPTO",
+  "claims_total": 13,
+  "claims_fully_resolved": 13,
+  "elos_total": 64,
+  "elos_resolved": 64,
+  "claims": [
+    {
+      "n": 1,
+      "marker": "REAL",
+      "independent": true,
+      "statement": "MÉTODO de criptografia por separação ontológica de reflexão dimensional: recebe tensor L; reflexão dimensional (g=√|L|, ∂L, estado ψ no H4, θ=arcsin(g/g_max)); gera identificadores seguros; ofusca ψ e θ empacotados com chaves derivadas do share_id; comprime separadamente; hashes cruzados; separa em três partes ontologicamente independentes (PsiShare Ψ, ThetaShare Θ, MasterKey κ); caracterizado por a reconstrução exigir a reunião simultânea das três partes para a Dobra L′=sign(L)·[g_max·sin(θ)]².",
+      "verdict": "comprovada na LÓGICA — reconstrução medida (corr>0,9999) + insuficiência de todo subconjunto próprio (a reunião das 3 é necessária); segurança = separação ontológica, XOR≠AEAD [SIM na segurança]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente) no depósito INPI BR102026003431-2",
+          "proves": "redação oficial da reivindicação de método [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_not_literal",
+          "proves": "a constante TGL que rege a reflexão é β=ALPHA_FINE_CODATA_2018·√e DERIVADA em runtime, nunca literal — disciplina da régua [REAL/DER]",
+          "value": "β=α·√e=0,012031300400803142 (runtime; θ_Miguel=6,2973°); protótipo tinha 0,012 literal",
+          "resolved": true,
+          "detail": "teste 'beta_injected_not_literal' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "beta_injected_not_literal",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — serialization_roundtrip_magic_bytes",
+          "proves": "o ciclo encrypt→separar Ψ/Θ/κ→reimportar→Dobra reconstrói o tensor a partir da reunião das três partes [REAL medido]",
+          "value": "corr após reunir+reimportar as 3 partes = 0,9999831767",
+          "resolved": true,
+          "detail": "teste 'serialization_roundtrip_magic_bytes' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "serialization_roundtrip_magic_bytes",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — proper_subsets_insufficient_for_value_reconstruction",
+          "proves": "NENHUM subconjunto próprio reconstrói o VALOR → a reunião simultânea das três partes é NECESSÁRIA (o 'caracterizado por') [REAL medido]",
+          "value": "6 subconjuntos próprios, todos rel_rmse≥0,50 (mín psi_only=0,636)",
+          "resolved": true,
+          "detail": "teste 'proper_subsets_insufficient_for_value_reconstruction' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "proper_subsets_insufficient_for_value_reconstruction",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Engine real do operador — CryptoMirror/ACOMMirrorCrypto",
+          "proves": "implementa reflexão g=√|L|/∂L/ψ/θ, separação Ψ/Θ/κ e a Dobra L′=sign(L)·[g_max·sinθ]² [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        },
+        {
+          "role": "dado",
+          "title": "Correlação de reconstrução medida (per-case do run)",
+          "proves": "reconstrução da engine real medida nesta máquina (sintético) [REAL medido]",
+          "value": "corr(recon) = 0,99998 nos 5 casos (1k, 100k, 1M, embeddings, KV cache)",
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DEFENSE]",
+          "proves": "a ofuscação XOR derivada do share_id NÃO substitui AEAD padrão (o próprio código declara); a novidade é a separação ontológica. Tensores sintéticos; simulação não valida a segurança (physical_verdict_allowed=false).",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 2,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Segurança fundada na incompletude ontológica das partes (não em dificuldade computacional), alegadamente invariante a avanços computacionais, inclusive quânticos.",
+      "verdict": "parcial/honesta — incompletude estrutural MEDIDA (partes ≈ ruído, subconjuntos insuficientes em todo tamanho); invariância quântica é ARGUMENTO ontológico, não prova [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — isolated_parts_byte_entropy",
+          "proves": "cada parte isolada ≈ ruído estatístico (incompletude estrutural) [REAL medido]",
+          "value": "casos ≥100k: H≥7,992 bits/byte (Ψ e Θ)",
+          "resolved": true,
+          "detail": "teste 'isolated_parts_byte_entropy' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "isolated_parts_byte_entropy",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — byte_entropy_size_curve_saturates",
+          "proves": "a indistinguibilidade das partes é efeito de tamanho de amostra (H≤log2(#bytes)), medido não fabricado [REAL/SIM]",
+          "value": "H(Θ) 6,03→7,9996 bits/byte ao crescer o payload (teto 8)",
+          "resolved": true,
+          "detail": "teste 'byte_entropy_size_curve_saturates' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "byte_entropy_size_curve_saturates",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — subset_leakage_matrix_insufficient_all_sizes",
+          "proves": "a insuficiência de valor é ESTÁVEL em tamanho — a incompletude não some ao crescer o dado [REAL medido]",
+          "value": "1k/100k/1M: nenhum subconjunto rel_rmse<0,5 (max|corr|=0,99999 só de FORMA)",
+          "resolved": true,
+          "detail": "teste 'subset_leakage_matrix_insufficient_all_sizes' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "subset_leakage_matrix_insufficient_all_sizes",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DEFENSE][SIM]",
+          "proves": "a invariância a avanços quânticos é um ARGUMENTO ontológico (incompletude estrutural), NÃO prova criptográfica. A indistinguibilidade medida é ESTATÍSTICA; XOR≠AEAD; confidencialidade plena exige AEAD por cima dos shares. Vazamento estrutural MEDIDO e declarado (Ψ isolado correlaciona ~E|L|/σ; Ψ+Θ recupera FORMA sem ESCALA).",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 3,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Ofuscação XOR com chave derivada de SHA-256(share_id ∥ contexto) e PRNG PCG64 seedado.",
+      "verdict": "comprovada na forma — mecanismo de derivação de chave + XOR real, saída ≈ ruído medida; [DEFENSE] XOR≠AEAD",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "KeyGenerator.derive_key + _xor_bytes",
+          "proves": "chave de ofuscação derivada via SHA-256(share_id ∥ contexto) + PCG64 seedado; XOR aplicado aos dados empacotados [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — isolated_parts_byte_entropy",
+          "proves": "a saída ofuscada é indistinguível de ruído estatístico — efeito do XOR derivado [REAL medido]",
+          "value": "H(Ψ)/H(Θ) ≈ 7,99 bits/byte (≥100k)",
+          "resolved": true,
+          "detail": "teste 'isolated_parts_byte_entropy' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "isolated_parts_byte_entropy",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DEFENSE]",
+          "proves": "XOR determinístico derivado do share_id é OFUSCAÇÃO, não AEAD (o próprio código declara): indistinguibilidade ESTATÍSTICA, não prova criptográfica.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 4,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Verificação de integridade por hashes SHA-256 triplos cruzados (estados, ângulos e hashes cruzados na MasterKey).",
+      "verdict": "comprovada — verificação tripla SHA-256 implementada e caminho de decriptação exercido; fronteira (g_max sem MAC) declarada honestamente",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "CryptoMirror — hashes SHA-256 cruzados e verificação na decriptação",
+          "proves": "computa e confere state_hash/angle_hash/psi_hash/theta_hash; levanta se algum não confere [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — scale_tamper_gmax_uncovered_declared_limitation",
+          "proves": "o caminho de decriptação executa as verificações SHA-256/F_exp (passam para estados/ângulos válidos) e DECLARA a fronteira: g_max (escala em κ) não é coberto por MAC → corrompe silenciosamente [REAL/DEFENSE]",
+          "value": "adulterar g_max → rel_rmse 1,25 (NÃO rejeitado)",
+          "resolved": true,
+          "detail": "teste 'scale_tamper_gmax_uncovered_declared_limitation' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "scale_tamper_gmax_uncovered_declared_limitation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "a rejeição POSITIVA por hash de estados/ângulos e por hash cruzado da κ está implementada no protótipo e é exercida no runner (pontos de adulteração, todos rejeitados); nesta cadeia cito o código e o teste de limitação declarada, sem inventar elo de teste. A integridade cobre estados/ângulos/F_exp, não a escala.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 5,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Verificação física por Força de Expulsão F_exp=(1/N)Σ paridade(ψ_i), limiar preferencial 0,001.",
+      "verdict": "comprovada — F_exp computada e verificada no código, valor medido; verificador físico nativo real (custo zero adicional)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "CryptoMirror — F_exp como verificador de integridade físico",
+          "proves": "computa F_exp com paridade(ψ0)=paridade(ψ3)=−1, paridade(ψ1)=paridade(ψ2)=+1 e compara ao esperado, rejeitando por divergência [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — scale_tamper_gmax_uncovered_declared_limitation",
+          "proves": "a decriptação executa a verificação física F_exp (passa para dados válidos) — parte do caminho exercida [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'scale_tamper_gmax_uncovered_declared_limitation' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "scale_tamper_gmax_uncovered_declared_limitation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "dado",
+          "title": "F_exp e populações ψ medidas (medio_100k)",
+          "proves": "F_exp emerge como verificador nativo dos próprios dados (custo zero adicional) [REAL medido]",
+          "value": "F_exp≈0,498; ψ0=12463, ψ1=37383, ψ2=37534, ψ3=12620",
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "o limiar preferencial e a rejeição por divergência de F_exp estão no protótipo e são exercidos no runner (ponto de adulteração de F_exp, rejeitado). Não fabricado.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 6,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Protocolo de serialização com magic bytes 0xCEA8 (Ψ) / 0xCE98 (Θ) / 0xCEBA (κ), comprimento em uint32 little-endian e metadados JSON UTF-8.",
+      "verdict": "comprovada — magic bytes e roundtrip export/import verificados nesta run",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — serialization_roundtrip_magic_bytes",
+          "proves": "protocolo de magic bytes + comprimento uint32 LE + JSON UTF-8 reimportado reconstrói [REAL]",
+          "value": "magic Ψ=cea8, Θ=ce98, κ=ceba; export 25307/100242/485 B; corr roundtrip 0,999983",
+          "resolved": true,
+          "detail": "teste 'serialization_roundtrip_magic_bytes' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "serialization_roundtrip_magic_bytes",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "export_shares/import_shares (MAGIC_PSI/THETA/KEY)",
+          "proves": "serializador com magic bytes e cabeçalhos uint32 LE [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 7,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Criptografia e compressão entrópica simultâneas, alcançando razão de compressão > 3:1 para dados float64.",
+      "verdict": "comprovada — razão ≈ 6,40× (>3:1) MEDIDA na engine real; compressão simultânea (zstd/zlib) no código",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Compressor entrópico por parte (zstd nível 22 / zlib nível 9)",
+          "proves": "compressão sem perda por parte, simultânea à ofuscação XOR [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        },
+        {
+          "role": "dado",
+          "title": "Razão de compressão medida (per-case do run)",
+          "proves": "compressão simultânea > 3:1 MEDIDA nos 5 casos da engine real [REAL medido]",
+          "value": "≈6,40× por caso (média 6,38×) em float64 — > 3:1",
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "a razão é medida nos casos per-case do run; entre os testes-cabeçalho selados nesta cadeia nenhum trava explicitamente a razão, por isso reporto como DADO medido, não como elo de teste.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 8,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Validação de compatibilidade das partes por share_id e n_elements antes da reconstrução.",
+      "verdict": "comprovada — validação de compatibilidade no código; o roundtrip só reconstrói com partes compatíveis",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "decrypt — validação de share_id e n_elements",
+          "proves": "confere compatibilidade de share_id e n_elements das partes e rejeita partes incompatíveis [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — serialization_roundtrip_magic_bytes",
+          "proves": "reconstruir a partir das 3 partes reimportadas exige a validação de compatibilidade passar [REAL]",
+          "value": "3 partes compatíveis reimportadas → corr 0,99998",
+          "resolved": true,
+          "detail": "teste 'serialization_roundtrip_magic_bytes' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "serialization_roundtrip_magic_bytes",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "a rejeição de share_id/n_elements incompatíveis está implementada e é exercida no runner (ponto de adulteração de share_id, rejeitado 'Shares incompatíveis: IDs diferentes'); aqui cito código + o roundtrip que exige compatibilidade, sem inventar elo de teste.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 9,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Aplicável a tensores de IA (embeddings, pesos, KV cache, gradientes) preservando correlação > 0,9999.",
+      "verdict": "correlação > 0,9999 MEDIDA em embeddings e KV cache (sintéticos); pesos/gradientes e semântica de LLM real não exercitados [SIM/DATA_REQUIRED]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — sync_handshake_hilbert_tunnel",
+          "proves": "tensor de IA (embeddings) atravessa a dobra sincronizada e re-emerge com correlação > 0,9999 [REAL medido]",
+          "value": "túnel transmite embeddings 1000×384 com corr 0,9999820 (>0,9999)",
+          "resolved": true,
+          "detail": "teste 'sync_handshake_hilbert_tunnel' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "sync_handshake_hilbert_tunnel",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "dado",
+          "title": "Correlação per-case em tensores de IA (do run)",
+          "proves": "embeddings e KV cache reconstruídos com corr > 0,9999 pela engine direta [REAL medido]",
+          "value": "embeddings_1000×384 corr 0,999982; kv_cache_4×2×8×64×32 corr 0,999982 (>0,9999)",
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        },
+        {
+          "role": "codigo",
+          "title": "Engine aplica a mesma reflexão a tensores arbitrários",
+          "proves": "encrypt/decrypt operam sobre tensores de forma arbitrária [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [SIM][DATA_REQUIRED]",
+          "proves": "tensores SINTÉTICOS (seed fixa); NENHUM modelo/token HuggingFace. Testados embeddings e KV cache; PESOS e GRADIENTES não foram exercitados separadamente; métrica semântica de LLM real (ex. Recall@k) NÃO medida.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 10,
+      "marker": "REAL",
+      "independent": true,
+      "statement": "SISTEMA de criptografia por separação ontológica: módulos (100)–(114); caracterizado por a segurança basear-se na separação ontológica em componentes estruturalmente incompletos (cada parte isolada ≡ ruído) e a reconstrução exigir a reunião simultânea de todas as partes.",
+      "verdict": "comprovada na LÓGICA — sistema completo roda (21/21), partes isoladas ≡ ruído, reunião total exigida; a segurança é a separação ontológica [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (independente, sistema) no depósito INPI",
+          "proves": "redação oficial da reivindicação de sistema [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — isolated_parts_byte_entropy",
+          "proves": "cada parte isolada ≡ ruído — o 'estruturalmente incompleto' do sistema [REAL medido]",
+          "value": "H≥7,992 bits/byte (≥100k)",
+          "resolved": true,
+          "detail": "teste 'isolated_parts_byte_entropy' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "isolated_parts_byte_entropy",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — proper_subsets_insufficient_for_value_reconstruction",
+          "proves": "a reconstrução exige a reunião de TODAS as partes (nenhum subconjunto basta) [REAL medido]",
+          "value": "todos os subconjuntos rel_rmse≥0,50",
+          "resolved": true,
+          "detail": "teste 'proper_subsets_insufficient_for_value_reconstruction' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "proper_subsets_insufficient_for_value_reconstruction",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — serialization_roundtrip_magic_bytes",
+          "proves": "módulos (112) serializador e (114) saída em 3 canais independentes exercitados [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'serialization_roundtrip_magic_bytes' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "serialization_roundtrip_magic_bytes",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Runner que orquestra os módulos (100)–(114) da engine real",
+          "proves": "integra os módulos do sistema (entrada→espelho→gerador de chaves→ofuscador→compressor→hashing→serializador→saída); 21/21 verificações passam nesta run [REAL na lógica]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_acom_crypto.py",
+          "code_path": "runner/one_acom_crypto.py",
+          "live_sha256": "59737e96fae4c5503a7217434010497c5d4fd8b88d896adf02f38081840f88ab"
+        },
+        {
+          "role": "dispositivo",
+          "title": "Dispositivo — ACOM Crypto securizando a plataforma (Túnel de Hilbert)",
+          "proves": "o sistema roda como a segurança viva da Central: login por Túnel de Hilbert, segredo errado negado, token adulterado/expirado rejeitado (dogfooding) [REAL na forma]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "dispositivo/acom_crypto_auth.py",
+          "code_path": "dispositivo/acom_crypto_auth.py",
+          "live_sha256": "44ad90e447a164188410e3f7fb8be329185ebe9d9fa26cb7a730effa3e62a5bb"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DEFENSE][SIM]",
+          "proves": "o sistema RODA e integra os módulos; a alegação de segurança é a SEPARAÇÃO ONTOLÓGICA + integridade, não uma cifra padrão provada. XOR≠AEAD; o dispositivo usa HMAC-SHA256 (a AEAD que a própria patente manda usar). Simulação não valida segurança física (physical_verdict_allowed=false).",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 11,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Módulo de descriptografia: valida share_id, desofusca, verificação tripla SHA-256, verificação física F_exp e Dobra Dimensional L′=sign(L)·[g_max·sin(θ)]².",
+      "verdict": "comprovada — o módulo de descriptografia reconstrói e roda o caminho de integridade; fronteira (g_max sem MAC) declarada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "decrypt_from_parts — o caminho completo de descriptografia",
+          "proves": "valida share_id → desofusca (XOR) → verificação tripla SHA-256 → verificação física F_exp → Dobra L′=sign(L)·[g_max·sinθ]² [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — serialization_roundtrip_magic_bytes",
+          "proves": "o módulo de descriptografia reconstrói a partir das 3 partes reimportadas [REAL]",
+          "value": "corr 0,99998 após reimportar e decifrar",
+          "resolved": true,
+          "detail": "teste 'serialization_roundtrip_magic_bytes' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "serialization_roundtrip_magic_bytes",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — scale_tamper_gmax_uncovered_declared_limitation",
+          "proves": "o caminho de decriptação executa as verificações (SHA-256/F_exp) e declara a fronteira: g_max sem MAC [REAL/DEFENSE]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'scale_tamper_gmax_uncovered_declared_limitation' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "scale_tamper_gmax_uncovered_declared_limitation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "dispositivo",
+          "title": "Dispositivo — verificação/decisão de acesso rodando de verdade",
+          "proves": "verificação em tempo constante (HMAC), rejeita prova/token inválidos e desafio expirado [REAL na forma]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "dispositivo/acom_crypto_auth.py",
+          "code_path": "dispositivo/acom_crypto_auth.py",
+          "live_sha256": "44ad90e447a164188410e3f7fb8be329185ebe9d9fa26cb7a730effa3e62a5bb"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "rejeição por SHA-256/F_exp/share_id/magic bytes implementada e exercida no runner (pontos de adulteração, todos rejeitados). Confidencialidade+integridade plenas exigem AEAD por cima de κ (g_max não é coberto).",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 12,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Partes exportáveis como bytes independentes, transmissíveis por canais independentes para custódia dividida.",
+      "verdict": "comprovada na forma — 3 blobs independentes + Túnel de Hilbert com chave convergente entre nodos; custódia/canais independentes reais",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — serialization_roundtrip_magic_bytes",
+          "proves": "partes exportáveis como bytes independentes para custódia dividida [REAL]",
+          "value": "3 blobs independentes (25307/100242/485 B) reimportados reconstroem",
+          "resolved": true,
+          "detail": "teste 'serialization_roundtrip_magic_bytes' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "serialization_roundtrip_magic_bytes",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — sync_handshake_hilbert_tunnel",
+          "proves": "transmissão por nodos/canais independentes com acordo de chave sem transmitir a chave [REAL na lógica]",
+          "value": "nodos A/B derivam a MESMA session_key; túnel corr 0,99998; α²_sync=0,012252",
+          "resolved": true,
+          "detail": "teste 'sync_handshake_hilbert_tunnel' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "sync_handshake_hilbert_tunnel",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Handshake de Sincronia Miguel — SyncNode/HilbertTunnel",
+          "proves": "pulso→eco→túnel: ambos os nodos derivam a mesma session_key sem transmiti-la [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_2_sync.py",
+          "code_path": "prototype_src/Acom_v17_2_sync.py",
+          "live_sha256": "f3dad9c7bc8e98fc3fdd1993f2b11e1f25f6256a31f08147d56c9bccf8917471"
+        },
+        {
+          "role": "dispositivo",
+          "title": "Dispositivo — Túnel de Hilbert aplicado ao login da plataforma",
+          "proves": "acordo de chave convergente cliente/servidor (Diffie-Hellman à la TGL) securizando a Central [REAL na forma]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "dispositivo/acom_crypto_auth.py",
+          "code_path": "dispositivo/acom_crypto_auth.py",
+          "live_sha256": "44ad90e447a164188410e3f7fb8be329185ebe9d9fa26cb7a730effa3e62a5bb"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DEFENSE]",
+          "proves": "para custódia dividida real, envolver cada blob em AEAD padrão (XOR≠AEAD). α²_sync=0,012252 EMERGE centrada em β=α·√e injetado (nunca literal).",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 13,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Execução em CPU (NumPy/torch cpu) e GPU (PyTorch/torch cuda) numericamente equivalentes.",
+      "verdict": "comprovada — GPU CUDA real; |Δ|max≈9,5e-7 e corr≈1,0 (equivalência numérica ~float32) [REAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dependente) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 33,
+          "indexed_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "live_sha256": "41f58f082c1f9d0fd3d8a0950fe9a3a6061507d192cbf636924c7cf5fdbbda6d",
+          "ref": "documento id=33 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — cpu_gpu_numeric_equivalence",
+          "proves": "CPU (torch cpu) e GPU (torch cuda) numericamente equivalentes na engine real [REAL]",
+          "value": "device_gpu=cuda; |Δ|max=9,5367e-7; corr=0,9999999999999996",
+          "resolved": true,
+          "detail": "teste 'cpu_gpu_numeric_equivalence' consta no runner + selo presente",
+          "result_hash": "fb687fce32197291fe299ed101bb0e80a465bb33cfe24de330859d1a85bb660c",
+          "run": "ACOM_CRYPTO@2026-07-10T11-46-24",
+          "ref": "selo ACOM_CRYPTO@2026-07-10T11-46-24",
+          "test": "cpu_gpu_numeric_equivalence",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Mesma engine em device cpu e cuda",
+          "proves": "ACOMMirrorCrypto parametrizada por device roda idêntica em CPU/GPU [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Acom_v17_mirror_crypto.py",
+          "code_path": "prototype_src/Acom_v17_mirror_crypto.py",
+          "live_sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "equivalência NUMÉRICA ~precisão float32 (|Δ|<1e-3), não bit-exata. Run real com CUDA disponível (torch 2.9.1+cu130).",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    }
+  ]
+}

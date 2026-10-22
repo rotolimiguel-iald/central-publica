@@ -1,0 +1,85 @@
+{
+ "patent_id": "BR102026005707-0",
+ "slug": "oncologia",
+ "timestamp": "2026-07-09T22-30-29",
+ "runner": "one_oncologia.py",
+ "markers": [
+  "[MEDICAL]",
+  "[SIM]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "ONCOLOGY_SIGNAL_LOGIC_DEMONSTRATED",
+ "max_verdict": "ONCOLOGY_SIGNAL_LOGIC_DEMONSTRATED ([MEDICAL][SIM] — estimadores de coerência, classificação topológica com ROC, otimização Bayesiana e cadeia de hash fecham em séries SINTÉTICAS; SEM conteúdo clínico, diagnóstico ou tratamento)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form_and_frontier",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "frontier_2beta": 0.024062600801606285
+  },
+  {
+   "test": "coherence_estimators_spec_sync_info",
+   "passed": true,
+   "composite_coherent": 0.47041031244527004,
+   "composite_incoherent": 0.035164907979045125,
+   "coherent_detail": {
+    "spectral": 0.10663893383870808,
+    "plv": 0.9582228368486146,
+    "nmi": 0.34636916664848727
+   },
+   "note": "C_N espectral (Welch), sincronia (PLV/Hilbert), inf. mútua normalizada; índice composto separa séries coerentes de incoerentes"
+  },
+  {
+   "test": "topological_classification_and_roc",
+   "passed": true,
+   "youden_max": 1.0,
+   "auc_abs": 1.0,
+   "classes": {
+    "GRACE": 200,
+    "FRONTIER": 0,
+    "VACUUM": 200
+   },
+   "c_crit": 0.23222742498297966,
+   "note": "GRACE/FRONTIER/VACUUM com C_crit sintético; ROC/índice de Youden"
+  },
+  {
+   "test": "bayesian_optimization_GP_EI",
+   "passed": true,
+   "x_best": 12.118644067796609,
+   "true_optimum": 12.0,
+   "iterations": 15,
+   "sigma_final": 0.06259194318580452,
+   "stop_threshold_beta": 0.012031300400803142,
+   "note": "GP + Expected Improvement em ΔC_N(ω) sintético; parada σ<β, ≤15 iter"
+  },
+  {
+   "test": "decision_gate_and_hash_chain",
+   "passed": true,
+   "gate_open": true,
+   "gate_inputs": [
+    true,
+    true,
+    true
+   ],
+   "hash_chain_head": "53ef532e33caeca2",
+   "note": "porta lógica AND/limiar + cadeia de hash 256 bits encadeada (auditoria)"
+  }
+ ],
+ "summary": {
+  "tests_passed": 5,
+  "tests_total": 5,
+  "composite_coherent": 0.47041031244527004,
+  "auc_abs": 1.0,
+  "bo_x_best": 12.118644067796609,
+  "clinical_content": "NONE_by_design_MEDICAL_trava"
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "[MEDICAL] TRAVA MÁXIMA: apenas processamento de sinal em séries SINTÉTICAS. NÃO é diagnóstico, NÃO é tratamento, NÃO há dado de paciente, dose ou protocolo. Código QuTiP original não localizado — reimplementação abstrata. Simulação não valida física nem eficácia clínica."
+}

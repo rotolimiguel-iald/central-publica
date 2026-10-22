@@ -1,0 +1,673 @@
+{
+ "patent_id": "BR102026003431-2",
+ "title": "ACOM Crypto — Sistema de Separação Ontológica (Ψ/Θ/κ)",
+ "kind": "device",
+ "note": "[SIM][PILOTO] O sistema de criptografia por separação ontológica de reflexão dimensional: os módulos (100)–(114), o tetraedro do espaço de Hilbert ℋ₄ (4 estados psiônicos) e os três canais de saída independentes Ψ (ruído) · Θ (ruído) · κ (inútil) — só a reunião das três partes reconstrói. Ofuscação XOR ≠ AEAD; nada valida física/segurança. Gire e clique um módulo. | PLANAR: algoritmo = plano; mesh generico -> base-plano(s) do mecanismo.",
+ "camera": {
+  "position": [
+   2.2,
+   1.6,
+   2.6
+  ]
+ },
+ "groups": [
+  {
+   "name": "entrada",
+   "color": "#7ce7c8",
+   "label": "entrada/saída (100/114)",
+   "count": 2,
+   "explodable": true
+  },
+  {
+   "name": "espelho",
+   "color": "#ffd60a",
+   "label": "espelho criptográfico (102)",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "h4",
+   "color": "#3366cc",
+   "label": "espaço de Hilbert ℋ₄ (4 estados)",
+   "count": 4,
+   "explodable": true
+  },
+  {
+   "name": "pipeline",
+   "color": "#3366cc",
+   "label": "pipeline cripto (104–112)",
+   "count": 5,
+   "explodable": true
+  },
+  {
+   "name": "canais",
+   "color": "#a855f7",
+   "label": "canais independentes Ψ/Θ/κ",
+   "count": 3,
+   "explodable": true
+  },
+  {
+   "name": "graviton",
+   "color": "#7dd3fc",
+   "label": "gráviton g=√|L| (magnitude)",
+   "count": 1,
+   "explodable": true
+  }
+ ],
+ "nodes": [
+  {
+   "id": "m100",
+   "label": "(100) Módulo de Entrada",
+   "desc": "Recebe os dados em formato tensorial L (float64). Porta de entrada do pipeline de separação ontológica.",
+   "shape": "box",
+   "position": [
+    -2.5,
+    0,
+    0
+   ],
+   "size": 0.13,
+   "color": "#7ce7c8",
+   "group": "entrada",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m102",
+   "label": "(102) Espelho Criptográfico",
+   "desc": "Executa a REFLEXÃO DIMENSIONAL com separação ontológica: g=√|L|, ∂L, nomina ψ no ℋ₄ e θ=arcsin(g/g_max). Núcleo da invenção. β=α·√e injetado (nunca literal).",
+   "shape": "sphere",
+   "position": [
+    -1.35,
+    0,
+    0
+   ],
+   "size": 0.2,
+   "color": "#ffd60a",
+   "group": "espelho",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive",
+   "texture": "holo"
+  },
+  {
+   "id": "psi0",
+   "label": "ψ0 COLAPSO+ |0⟩",
+   "desc": "(+,−) paridade −1 — colapso. Vértice do ℋ₄ (nominação ψ de sign L, sign ∂L); θ codifica a magnitude. [pop=12.5% · paridade -1 · COMPUTADO em N=100000].",
+   "shape": "sphere",
+   "position": [
+    -1.03,
+    1.27,
+    0.32
+   ],
+   "size": 0.1,
+   "color": "#cc2222",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive",
+   "computed": {
+    "population": 0.12463,
+    "count": 12463,
+    "parity": -1
+   },
+   "texture": "spectral"
+  },
+  {
+   "id": "psi1",
+   "label": "ψ1 ASCENSÃO+ |1⟩",
+   "desc": "(+,+) paridade +1 — ascensão. Vértice do ℋ₄ (nominação ψ de sign L, sign ∂L); θ codifica a magnitude. [pop=37.4% · paridade +1 · COMPUTADO em N=100000].",
+   "shape": "sphere",
+   "position": [
+    -1.03,
+    0.63,
+    -0.32
+   ],
+   "size": 0.1,
+   "color": "#33aa55",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive",
+   "computed": {
+    "population": 0.37383,
+    "count": 37383,
+    "parity": 1
+   },
+   "texture": "spectral"
+  },
+  {
+   "id": "psi2",
+   "label": "ψ2 EMERGÊNCIA− |2⟩",
+   "desc": "(−,+) paridade +1 — emergência. Vértice do ℋ₄ (nominação ψ de sign L, sign ∂L); θ codifica a magnitude. [pop=37.5% · paridade +1 · COMPUTADO em N=100000].",
+   "shape": "sphere",
+   "position": [
+    -1.67,
+    1.27,
+    -0.32
+   ],
+   "size": 0.1,
+   "color": "#3366cc",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive",
+   "computed": {
+    "population": 0.37534,
+    "count": 37534,
+    "parity": 1
+   },
+   "texture": "spectral"
+  },
+  {
+   "id": "psi3",
+   "label": "ψ3 QUEDA− |3⟩",
+   "desc": "(−,−) paridade −1 — queda. Vértice do ℋ₄ (nominação ψ de sign L, sign ∂L); θ codifica a magnitude. [pop=12.6% · paridade -1 · COMPUTADO em N=100000].",
+   "shape": "sphere",
+   "position": [
+    -1.67,
+    0.63,
+    0.32
+   ],
+   "size": 0.1,
+   "color": "#ee8800",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive",
+   "computed": {
+    "population": 0.1262,
+    "count": 12620,
+    "parity": -1
+   },
+   "texture": "spectral"
+  },
+  {
+   "id": "m104",
+   "label": "(104) Gerador de Chaves",
+   "desc": "KeyGenerator: share_id e key_id (16 bytes via secrets.token_bytes); chaves de ofuscação derivadas por SHA-256(share_id‖contexto)+PCG64.",
+   "shape": "box",
+   "position": [
+    -0.55,
+    -0.75,
+    0
+   ],
+   "size": 0.11,
+   "color": "#3366cc",
+   "group": "pipeline",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m106",
+   "label": "(106) Ofuscador XOR",
+   "desc": "XOR dos dados empacotados (ψ 2 bits/elem; θ_q b bits) com as chaves derivadas. [DEFENSE] ofuscação, não AEAD.",
+   "shape": "box",
+   "position": [
+    0.05,
+    0,
+    0
+   ],
+   "size": 0.11,
+   "color": "#3366cc",
+   "group": "pipeline",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m108",
+   "label": "(108) Compressor Entrópico",
+   "desc": "Compressão sem perda por parte (zstd nível 22 ou zlib 9). Ratio medido >3:1 (real: ~6,4× nos casos sintéticos).",
+   "shape": "box",
+   "position": [
+    0.65,
+    0,
+    0
+   ],
+   "size": 0.11,
+   "color": "#3366cc",
+   "group": "pipeline",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m110",
+   "label": "(110) Hashing SHA-256 triplo",
+   "desc": "state_hash, angle_hash cruzados + hashes esperados na κ. Verificação quádrupla no decrypt (3 hashes + F_exp físico).",
+   "shape": "box",
+   "position": [
+    1.2,
+    0.65,
+    0
+   ],
+   "size": 0.11,
+   "color": "#3366cc",
+   "group": "pipeline",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m112",
+   "label": "(112) Serializador",
+   "desc": "Magic bytes de protocolo (Ψ 0xCEA8 · Θ 0xCE98 · κ 0xCEBA), comprimento uint32 LE, metadados JSON UTF-8. export/import verificado.",
+   "shape": "box",
+   "position": [
+    1.65,
+    0,
+    0
+   ],
+   "size": 0.11,
+   "color": "#3366cc",
+   "group": "pipeline",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m114",
+   "label": "(114) Módulo de Saída",
+   "desc": "Emite três objetos SEPARADOS transmissíveis por canais independentes (custódia dividida).",
+   "shape": "box",
+   "position": [
+    2.2,
+    0,
+    0
+   ],
+   "size": 0.12,
+   "color": "#7ce7c8",
+   "group": "entrada",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "chan_psi",
+   "label": "Canal A — PsiShare Ψ",
+   "desc": "Estados/sinais no ℋ₄, sem magnitude. Isolado ≡ RUÍDO (H=7.992 bits/byte MEDIDO nesta run). Um dos três canais independentes.",
+   "shape": "sphere",
+   "position": [
+    3.15,
+    0.85,
+    0
+   ],
+   "size": 0.14,
+   "color": "#cc2222",
+   "group": "canais",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive",
+   "computed": {
+    "byte_entropy_bits": 7.992049405587384,
+    "bytes": 25010
+   }
+  },
+  {
+   "id": "chan_theta",
+   "label": "Canal B — ThetaShare Θ",
+   "desc": "Ângulos arcsin em [0,π/2], sem polaridade nem escala. Isolado ≡ RUÍDO (H=7.998 bits/byte MEDIDO).",
+   "shape": "sphere",
+   "position": [
+    3.15,
+    0,
+    0
+   ],
+   "size": 0.14,
+   "color": "#33aa55",
+   "group": "canais",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive",
+   "computed": {
+    "byte_entropy_bits": 7.998266061573081,
+    "bytes": 100012
+   }
+  },
+  {
+   "id": "chan_kappa",
+   "label": "Canal C — MasterKey κ",
+   "desc": "Escala (g_max=2.1416, g_min=0.0046), shape, hashes, F_exp=+0.4983 esperado. Sem dados. Isolado ≡ INÚTIL. Reunião das 3 → Dobra L′=sign(L)·[g_max·sinθ]² (corr=0.999983 MEDIDO).",
+   "shape": "sphere",
+   "position": [
+    3.15,
+    -0.85,
+    0
+   ],
+   "size": 0.14,
+   "color": "#ee8800",
+   "group": "canais",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive",
+   "computed": {
+    "g_max": 2.141587257385254,
+    "g_min": 0.0046373032964766026,
+    "f_exp": 0.49834,
+    "recon_corr": 0.9999831767418225
+   }
+  },
+  {
+   "id": "graviton",
+   "label": "Gráviton g = √|L|",
+   "desc": "Portador da MAGNITUDE na reflexão dimensional: g=√|L| (nomeado 'Gráviton' no algoritmo). g_max=2.1416 · g_min=0.0046 · ⟨g⟩=0.8224 COMPUTADOS. A escala g_max vive na κ; θ=arcsin(g/g_max) vai à Θ. β=0.012031 injetado.",
+   "shape": "sphere",
+   "position": [
+    -1.35,
+    -1.45,
+    0
+   ],
+   "size": 0.16,
+   "color": "#7dd3fc",
+   "group": "graviton",
+   "marker": "[SIM]",
+   "layer": "core",
+   "material": "emissive",
+   "computed": {
+    "g_max": 2.141587257385254,
+    "g_min": 0.0046373032964766026,
+    "g_mean": 0.8223614900094678
+   },
+   "texture": "phase"
+  }
+ ],
+ "edges": [
+  {
+   "from": "m100",
+   "to": "m102"
+  },
+  {
+   "from": "m102",
+   "to": "psi0"
+  },
+  {
+   "from": "m102",
+   "to": "psi1"
+  },
+  {
+   "from": "m102",
+   "to": "psi2"
+  },
+  {
+   "from": "m102",
+   "to": "psi3"
+  },
+  {
+   "from": "psi0",
+   "to": "psi1"
+  },
+  {
+   "from": "psi1",
+   "to": "psi2"
+  },
+  {
+   "from": "psi2",
+   "to": "psi3"
+  },
+  {
+   "from": "psi3",
+   "to": "psi0"
+  },
+  {
+   "from": "psi0",
+   "to": "psi2"
+  },
+  {
+   "from": "psi1",
+   "to": "psi3"
+  },
+  {
+   "from": "m102",
+   "to": "m106"
+  },
+  {
+   "from": "m104",
+   "to": "m106"
+  },
+  {
+   "from": "m106",
+   "to": "m108"
+  },
+  {
+   "from": "m108",
+   "to": "m110"
+  },
+  {
+   "from": "m110",
+   "to": "m112"
+  },
+  {
+   "from": "m112",
+   "to": "m114"
+  },
+  {
+   "from": "m114",
+   "to": "chan_psi"
+  },
+  {
+   "from": "m114",
+   "to": "chan_theta"
+  },
+  {
+   "from": "m114",
+   "to": "chan_kappa"
+  },
+  {
+   "from": "m102",
+   "to": "graviton"
+  },
+  {
+   "from": "graviton",
+   "to": "chan_kappa"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "ℋ₄",
+   "value": "tetraedro de 4 estados psiônicos",
+   "note": "ψ=f(sign L, sign ∂L); paridades ±1"
+  },
+  {
+   "symbol": "Dobra",
+   "value": "L′ = sign(L)·[g_max·sin θ]²",
+   "note": "reconstrução exige Ψ+Θ+κ simultâneas"
+  },
+  {
+   "symbol": "β",
+   "value": "α·√e ≈ 0,012031",
+   "note": "θ_Miguel=arcsin√β≈6,297°; β nunca literal (injetado)"
+  },
+  {
+   "symbol": "magic",
+   "value": "Ψ 0xCEA8 · Θ 0xCE98 · κ 0xCEBA",
+   "note": "protocolo de serialização (uint32 LE, JSON UTF-8)"
+  },
+  {
+   "symbol": "beta_runtime",
+   "value": "0.012031300401",
+   "note": "α·√e injetado em runtime (nunca literal); θ_Miguel=arcsin√β"
+  },
+  {
+   "symbol": "N_measure",
+   "value": "100000 elementos",
+   "note": "caso medio_100k · compress 6.40× · H(Ψ)=7.992 H(Θ)=7.998 bits/byte (MEDIDO)"
+  },
+  {
+   "symbol": "vazamento_max",
+   "value": "|corr|≤1.000",
+   "note": "maior correlação de subconjunto próprio na matriz (nenhum reconstrói o VALOR)"
+  }
+ ],
+ "schema": 2,
+ "layers": [
+  {
+   "id": "space",
+   "name": "Espaco de Hilbert / substrato computacional",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "io",
+   "name": "Entrada / saida",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "transform",
+   "name": "Transformacao",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo (raiz / estado)",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "meshes": [
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1,
+   "material": "emissive",
+   "opacity": 0.45,
+   "texture": "holo",
+   "color": "#ffd60a",
+   "marker": "[SIM]",
+   "id": "shard0",
+   "position": [
+    -1.35,
+    0.4,
+    0
+   ],
+   "scale": [
+    0.22,
+    1.4,
+    0.02
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "label": "espelho criptografico — superficie de reflexao dimensional",
+   "desc": "Reflexao dimensional L<->g^2: g=sqrt|L|, theta=arcsin(g/g_max). A face auto-conjugada que separa magnitude(->Theta), paridade/sinais(->Psi) e escala(->kappa). Os 4 vertices H4 straddle este plano. beta=alpha*sqrt(e) injetado (nunca literal)."
+  },
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1,
+   "material": "emissive",
+   "opacity": 0.4,
+   "texture": "phase",
+   "color": "#1f2b45",
+   "marker": "[SIM]",
+   "id": "shard1",
+   "position": [
+    0,
+    -1.05,
+    0
+   ],
+   "scale": [
+    2.75,
+    0.02,
+    0.85
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "label": "plano do algoritmo — mesa de reflexao (espaco de fase theta/paridade)",
+   "desc": "ALGORITMO E PLANO: o metodo se inscreve nesta superficie. Cada L vira um ponto (quadrante de paridade H4, angulo theta, escala g_max). A separacao rasga este plano em 3 leituras que so juntas reconstroem."
+  },
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1,
+   "material": "emissive",
+   "opacity": 0.8,
+   "texture": "spectral",
+   "color": "#cc2222",
+   "marker": "[SIM]",
+   "id": "shard2",
+   "position": [
+    3.15,
+    0.85,
+    -0.5
+   ],
+   "scale": [
+    0.8,
+    0.36,
+    0.02
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "label": "share Psi — reticulo de paridade H4 (2 bits/elem)",
+   "desc": "Sinais/direcoes: psi=f(sign L, sign dL), 4 estados discretos {0,1,2,3}. Sem magnitude. Isolado = RUIDO (H~8 bits/byte). Atras do canal A. Altura ajustada p/ nao sobrepor o painel Theta."
+  },
+  {
+   "id": "share_theta",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    3.15,
+    0,
+    -0.5
+   ],
+   "scale": [
+    0.8,
+    0.36,
+    0.02
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "texture": "phase",
+   "color": "#33aa55",
+   "opacity": 0.8,
+   "material": "emissive",
+   "layer": "space",
+   "marker": "[SIM]",
+   "label": "share Theta — varredura angular arcsin [0,pi/2]",
+   "desc": "Angulos theta=arcsin(g/g_max): magnitudes relativas continuas, sem polaridade nem escala. Isolado = RUIDO. Atras do canal B."
+  },
+  {
+   "id": "share_kappa",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    3.15,
+    -0.85,
+    -0.5
+   ],
+   "scale": [
+    0.9,
+    0.09,
+    0.02
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "texture": "grid",
+   "color": "#ee8800",
+   "opacity": 0.85,
+   "material": "emissive",
+   "layer": "space",
+   "marker": "[SIM]",
+   "label": "share kappa — regua de escala g_max (so a escala)",
+   "desc": "MasterKey: g_max/g_min, shape, hashes SHA-256, F_exp esperado. Nenhum dado. Regua ESTREITA = so a escala; isolado = INUTIL. Atras do canal C."
+  }
+ ],
+ "generated_by": "one_acom_crypto.py (forma=conteudo)"
+}

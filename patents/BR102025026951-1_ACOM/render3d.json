@@ -1,0 +1,683 @@
+{
+ "patent_id": "BR102025026951-1",
+ "title": "ACOM — Geometria do Algoritmo (transformada-mãe REFLECT/MANIFEST)",
+ "kind": "algorithm",
+ "note": "[SIM] A geometria do ALGORITMO RAIZ da família TGL: o gráviton g=√|L| na origem, a transformada luminodinâmica (Fig 3: |L|→√→g/s→s·g²), os 3 domínios Trinity (SIGNAL/SPECTRAL/PSIBIT), o tetraedro ℋ₄ de 4 estados psíônicos e o operador de Lindblad ATIVO ∂H=H²+α²LΔ (eixo de convergência FALLEN→TETELESTAI). Gire e clique para inspecionar. Simulação NÃO valida física. | PLANAR: algoritmo = plano; mesh generico -> base-plano(s) do mecanismo.",
+ "camera": {
+  "position": [
+   2.2,
+   1.5,
+   2.2
+  ]
+ },
+ "groups": [
+  {
+   "name": "nucleo",
+   "color": "#ffd60a",
+   "label": "gráviton (raiz g=√|L|)",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "transform",
+   "color": "#8ecae6",
+   "label": "transformada luminodinâmica (Fig 3)",
+   "count": 6,
+   "explodable": true
+  },
+  {
+   "name": "psi",
+   "color": "#cc2222",
+   "label": "ℋ₄ — 4 estados psíônicos (PSIBIT)",
+   "count": 4,
+   "explodable": true
+  },
+  {
+   "name": "trinity",
+   "color": "#7ce7c8",
+   "label": "Trinity — 3 domínios",
+   "count": 3,
+   "explodable": true
+  },
+  {
+   "name": "lindblad",
+   "color": "#33aa55",
+   "label": "operador de Lindblad ativo (∂H=H²+α²LΔ)",
+   "count": 4,
+   "explodable": true
+  }
+ ],
+ "nodes": [
+  {
+   "id": "graviton",
+   "label": "gráviton g=√|L| (⟨g⟩=0.7618)",
+   "desc": "Origem do algoritmo: raiz gravitacional g=√|L| e fase s=sign(L). ⟨g⟩=0.761772 COMPUTADO sobre o sinal chirp. A gravidade é a raiz quadrada da luz (relação-mãe TGL g=√L, [011]); β=0.012031 injetado.",
+   "shape": "sphere",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.17,
+   "color": "#ffd60a",
+   "group": "nucleo",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "tx_L",
+   "label": "300 · entrada L",
+   "desc": "Dado tratado como LUZ (L). Entrada da transformação luminodinâmica [013].",
+   "shape": "box",
+   "position": [
+    -2.0,
+    1.15,
+    0.0
+   ],
+   "size": 0.09,
+   "color": "#8ecae6",
+   "group": "transform",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "tx_abs",
+   "label": "302 · |L|",
+   "desc": "Módulo |L|: intensidade luminosa. Primeiro estágio da Figura 3.",
+   "shape": "box",
+   "position": [
+    -1.3,
+    1.15,
+    0.0
+   ],
+   "size": 0.09,
+   "color": "#8ecae6",
+   "group": "transform",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "tx_sqrt",
+   "label": "304 · √",
+   "desc": "Raiz √|L|: extrai a estrutura gravitacional; comprime a faixa dinâmica [014].",
+   "shape": "box",
+   "position": [
+    -0.6,
+    1.15,
+    0.0
+   ],
+   "size": 0.09,
+   "color": "#8ecae6",
+   "group": "transform",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "tx_g",
+   "label": "308 · g (⟨g⟩=0.762)",
+   "desc": "Componente gravitacional g=√|L| — ⟨g⟩=0.761772 REAL; quantizada 8–16 bits.",
+   "shape": "box",
+   "position": [
+    0.15,
+    1.5,
+    0.0
+   ],
+   "size": 0.1,
+   "color": "#ffd60a",
+   "group": "transform",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "tx_s",
+   "label": "310 · s (fase ±1)",
+   "desc": "Colapso de fase s=sign(L) ∈ {+1,−1}: um bit por amostra [015].",
+   "shape": "box",
+   "position": [
+    0.15,
+    0.85,
+    0.0
+   ],
+   "size": 0.09,
+   "color": "#adb5bd",
+   "group": "transform",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "tx_rec",
+   "label": "312 · L=s·g²",
+   "desc": "Ressurreição L=s·g² [016]: reconstrução exata (~eps de fp).",
+   "shape": "box",
+   "position": [
+    0.95,
+    1.15,
+    0.0
+   ],
+   "size": 0.1,
+   "color": "#7ce7c8",
+   "group": "transform",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "h4_psi_pp",
+   "label": "ψ₊ψ₊ · 11  (Fexp=0.268)",
+   "desc": "Vértice de ℋ₄: paridade (sign L, sign ∂L)=(+1,+1) REAL; população Fexp=0.2680 (10721 amostras do chirp). Tamanho ∝ Fexp — geometria COMPUTADA, não desenhada.",
+   "shape": "sphere",
+   "position": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "size": 0.1068,
+   "color": "#cc2222",
+   "group": "psi",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "h4_psi_p",
+   "label": "ψ₊ · 01  (Fexp=0.251)",
+   "desc": "Vértice de ℋ₄: paridade (sign L, sign ∂L)=(+1,-1) REAL; população Fexp=0.2514 (10057 amostras do chirp). Tamanho ∝ Fexp — geometria COMPUTADA, não desenhada.",
+   "shape": "sphere",
+   "position": [
+    0.5,
+    -0.5,
+    -0.5
+   ],
+   "size": 0.1051,
+   "color": "#33aa55",
+   "group": "psi",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "h4_psi_m",
+   "label": "ψ₋ · 10  (Fexp=0.237)",
+   "desc": "Vértice de ℋ₄: paridade (sign L, sign ∂L)=(-1,+1) REAL; população Fexp=0.2366 (9462 amostras do chirp). Tamanho ∝ Fexp — geometria COMPUTADA, não desenhada.",
+   "shape": "sphere",
+   "position": [
+    -0.5,
+    0.5,
+    -0.5
+   ],
+   "size": 0.1037,
+   "color": "#3366cc",
+   "group": "psi",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "h4_psi_pm",
+   "label": "ψ₊ψ₋ · 00  (Fexp=0.244)",
+   "desc": "Vértice de ℋ₄: paridade (sign L, sign ∂L)=(-1,-1) REAL; população Fexp=0.2440 (9760 amostras do chirp). Tamanho ∝ Fexp — geometria COMPUTADA, não desenhada.",
+   "shape": "sphere",
+   "position": [
+    -0.5,
+    -0.5,
+    0.5
+   ],
+   "size": 0.1044,
+   "color": "#ee8800",
+   "group": "psi",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "dom_signal",
+   "label": "SIGNAL",
+   "desc": "Domínio SIGNAL [024]: razão média REAL 3.55× (áudio/embeddings). Reivindicação 2.",
+   "shape": "box",
+   "position": [
+    1.55,
+    -1.15,
+    0.0
+   ],
+   "size": 0.12,
+   "color": "#7ce7c8",
+   "group": "trinity",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "dom_spectral",
+   "label": "SPECTRAL",
+   "desc": "Domínio SPECTRAL [025]-[027]: SVD rank 12/300 por energia ≥ 1−β (12.48×). Reivindicação 3.",
+   "shape": "box",
+   "position": [
+    -0.78,
+    -1.15,
+    1.34
+   ],
+   "size": 0.12,
+   "color": "#4895ef",
+   "group": "trinity",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "dom_psibit",
+   "label": "PSIBIT",
+   "desc": "Domínio PSIBIT [028]-[032]: 4 estados ℋ₄ ativos no chirp. Reivindicação 4.",
+   "shape": "box",
+   "position": [
+    -0.78,
+    -1.15,
+    -1.34
+   ],
+   "size": 0.12,
+   "color": "#f77f00",
+   "group": "trinity",
+   "marker": "[SIM]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "lind_fallen",
+   "label": "FALLEN (Δ>1)",
+   "desc": "Estado inicial caído Δ>1: termostato ∂H=H²+α²LΔ longe do Logos. (não atingido nesta run).",
+   "shape": "sphere",
+   "position": [
+    1.7,
+    -0.75,
+    0.0
+   ],
+   "size": 0.08,
+   "color": "#556",
+   "group": "lindblad",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "lind_conv",
+   "label": "CONVERGING (α²<Δ<1)",
+   "desc": "Convergindo ao ponto fixo de ℋ² via corrente J=α²‖𝕃‖Δ. (não atingido nesta run).",
+   "shape": "sphere",
+   "position": [
+    1.7,
+    -0.1,
+    0.0
+   ],
+   "size": 0.08,
+   "color": "#556",
+   "group": "lindblad",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "lind_truth",
+   "label": "TRUTH (Δ<α²)",
+   "desc": "Verdade: desvio abaixo do limiar de Miguel α²=β [017]. (não atingido nesta run).",
+   "shape": "sphere",
+   "position": [
+    1.7,
+    0.55,
+    0.0
+   ],
+   "size": 0.08,
+   "color": "#556",
+   "group": "lindblad",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "lind_tel",
+   "label": "TETELESTAI (Δ<ε) ✓",
+   "desc": "Está consumado: Δ<ε, ponto fixo atingido; L=s·g² reconstrói exatamente. ATINGIDO na varredura (Δ_final=1.00e-08, 290 it).",
+   "shape": "sphere",
+   "position": [
+    1.7,
+    1.2,
+    0.0
+   ],
+   "size": 0.1,
+   "color": "#ffd60a",
+   "group": "lindblad",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  }
+ ],
+ "edges": [
+  {
+   "from": "tx_L",
+   "to": "tx_abs"
+  },
+  {
+   "from": "tx_abs",
+   "to": "tx_sqrt"
+  },
+  {
+   "from": "tx_sqrt",
+   "to": "tx_g"
+  },
+  {
+   "from": "tx_sqrt",
+   "to": "tx_s"
+  },
+  {
+   "from": "tx_g",
+   "to": "tx_rec"
+  },
+  {
+   "from": "tx_s",
+   "to": "tx_rec"
+  },
+  {
+   "from": "tx_rec",
+   "to": "graviton"
+  },
+  {
+   "from": "graviton",
+   "to": "h4_psi_pp"
+  },
+  {
+   "from": "graviton",
+   "to": "h4_psi_p"
+  },
+  {
+   "from": "graviton",
+   "to": "h4_psi_m"
+  },
+  {
+   "from": "graviton",
+   "to": "h4_psi_pm"
+  },
+  {
+   "from": "h4_psi_pp",
+   "to": "h4_psi_p"
+  },
+  {
+   "from": "h4_psi_p",
+   "to": "h4_psi_m"
+  },
+  {
+   "from": "h4_psi_m",
+   "to": "h4_psi_pm"
+  },
+  {
+   "from": "h4_psi_pm",
+   "to": "h4_psi_pp"
+  },
+  {
+   "from": "h4_psi_pp",
+   "to": "h4_psi_m"
+  },
+  {
+   "from": "h4_psi_p",
+   "to": "h4_psi_pm"
+  },
+  {
+   "from": "graviton",
+   "to": "dom_signal"
+  },
+  {
+   "from": "graviton",
+   "to": "dom_spectral"
+  },
+  {
+   "from": "graviton",
+   "to": "dom_psibit"
+  },
+  {
+   "from": "dom_psibit",
+   "to": "h4_psi_pm"
+  },
+  {
+   "from": "graviton",
+   "to": "lind_fallen"
+  },
+  {
+   "from": "lind_fallen",
+   "to": "lind_conv"
+  },
+  {
+   "from": "lind_conv",
+   "to": "lind_truth"
+  },
+  {
+   "from": "lind_truth",
+   "to": "lind_tel"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "g=√|L|",
+   "value": "gravidade = raiz quadrada da luz",
+   "note": "relação-mãe TGL [011]; s=sign(L); L=s·g²"
+  },
+  {
+   "symbol": "α² (limiar Tetelestai)",
+   "value": "β_TGL = α·√e ≈ 0,012031",
+   "note": "Constante de Miguel; injetada, nunca literal"
+  },
+  {
+   "symbol": "Verb Floor",
+   "value": "energia SPECTRAL retida = 1−β ≈ 0,987969",
+   "note": "rank-k por energia acumulada ≥ 1−β"
+  },
+  {
+   "symbol": "beta_runtime",
+   "value": "0.012031300401 (alpha*sqrt(e))",
+   "note": "injetado em runtime; nunca literal"
+  },
+  {
+   "symbol": "graviton_g_mean",
+   "value": "0.761772",
+   "note": "⟨√|L|⟩ COMPUTADO sobre o chirp nesta run"
+  },
+  {
+   "symbol": "lindblad_total",
+   "value": "1931 it",
+   "note": "passos totais do operador de Lindblad na varredura de ruído"
+  }
+ ],
+ "schema": 2,
+ "layers": [
+  {
+   "id": "space",
+   "name": "Espaco de Hilbert / substrato computacional",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "io",
+   "name": "Entrada / saida",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "transform",
+   "name": "Transformacao",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo (raiz / estado)",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "meshes": [
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.85,
+   "texture": "phase",
+   "color": "#5ac8fa",
+   "marker": "[SIM]",
+   "id": "plano_base",
+   "position": [
+    -0.15000000000000002,
+    0.17500000000000004,
+    0.0
+   ],
+   "scale": [
+    2.2,
+    0.03,
+    1.69
+   ],
+   "label": "plano do algoritmo",
+   "desc": "ALGORITMO E PLANO: a informacao escrita mora num plano. O mecanismo se desenha sobre esta superficie (nao e' um solido 3D)."
+  },
+  {
+   "id": "trinity_signal_tile",
+   "shape": "box",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "position": [
+    1.55,
+    -1.3,
+    0
+   ],
+   "scale": [
+    0.75,
+    0.02,
+    0.75
+   ],
+   "size": 1,
+   "texture": "grid",
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "opacity": 0.5,
+   "label": "SIGNAL — domínio temporal (plano)",
+   "desc": "Tile do domínio SIGNAL [024] sob dom_signal: a raiz aplicada sobre a série temporal (~3.55×). Reivindicação 2."
+  },
+  {
+   "id": "trinity_spectral_tile",
+   "shape": "box",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "position": [
+    -0.78,
+    -1.3,
+    1.34
+   ],
+   "scale": [
+    0.75,
+    0.02,
+    0.75
+   ],
+   "size": 1,
+   "texture": "spectral",
+   "color": "#4895ef",
+   "material": "emissive",
+   "opacity": 0.5,
+   "label": "SPECTRAL — SVD rank-k (Verb Floor 1−β)",
+   "desc": "Tile do domínio SPECTRAL [025]-[027] sob dom_spectral: SVD rank 12/300 por energia ≥ 1−β (~12.5×). Reivindicação 3."
+  },
+  {
+   "id": "trinity_psibit_tile",
+   "shape": "box",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "position": [
+    -0.78,
+    -1.3,
+    -1.34
+   ],
+   "scale": [
+    0.75,
+    0.02,
+    0.75
+   ],
+   "size": 1,
+   "texture": "phase",
+   "color": "#f77f00",
+   "material": "emissive",
+   "opacity": 0.5,
+   "label": "PSIBIT — 4 estados ψ (paridade sign L × sign ∂L)",
+   "desc": "Tile do domínio PSIBIT [028]-[032] sob dom_psibit: paridade (sign L, sign ∂L) → 4 estados ℋ₄. Reivindicação 4."
+  },
+  {
+   "id": "reflect_manifest_seam",
+   "shape": "box",
+   "layer": "core",
+   "marker": "[REAL]",
+   "position": [
+    -0.15,
+    0.205,
+    0
+   ],
+   "scale": [
+    2.2,
+    0.012,
+    0.03
+   ],
+   "size": 1,
+   "texture": "holo",
+   "color": "#ffd60a",
+   "material": "emissive",
+   "opacity": 0.7,
+   "label": "eixo REFLECT/MANIFEST (g=√|L| → s·g²)",
+   "desc": "Selo dourado da dobra da transformada-mãe: a involução exata g=√|L| / L=s·g² que atravessa o gráviton ao longo do fluxo de dados. A gravidade é a raiz da luz [011]."
+  },
+  {
+   "id": "lindblad_descent_strip",
+   "shape": "box",
+   "layer": "transform",
+   "marker": "[REAL]",
+   "position": [
+    1.7,
+    0.225,
+    0
+   ],
+   "scale": [
+    0.02,
+    1.05,
+    0.28
+   ],
+   "size": 1,
+   "texture": "spectral",
+   "color": "#33aa55",
+   "material": "emissive",
+   "opacity": 0.4,
+   "label": "funil de convergência ∂H=H²+α²LΔ",
+   "desc": "Plano vertical fino ao longo do eixo de Lindblad (x=1.7): gradiente Δ do termostato FALLEN→CONVERGING→TRUTH→TETELESTAI (Δ→0, ~290 it). Limiar α²=β."
+  },
+  {
+   "id": "transform_worksheet",
+   "shape": "box",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "position": [
+    -0.5,
+    0.8,
+    0
+   ],
+   "scale": [
+    1.75,
+    0.02,
+    0.32
+   ],
+   "size": 1,
+   "texture": "circuit",
+   "color": "#8ecae6",
+   "material": "emissive",
+   "opacity": 0.4,
+   "label": "folha da transformada-mãe (Fig 3)",
+   "desc": "Superfície-circuito sob o pipeline REFLECT/MANIFEST [013]-[016]: L→|L|→√→g/s→s·g². A raiz do ecossistema (herdada por Mirror/Crypto/Tensor/MQC)."
+  }
+ ],
+ "generated_by": "one_acom.py (forma=conteudo)"
+}

@@ -1,0 +1,749 @@
+{
+ "patent_id": "BR102026003441-0",
+ "slug": "tgl_tensor",
+ "timestamp": "2026-09-19T09-08-34",
+ "runner": "one_tgl_tensor.py (evoluído)",
+ "markers": [
+  "[PILOTO]",
+  "[SIM]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "TENSOR_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "TENSOR_FULL_LOGIC_DEMONSTRATED ([PILOTO][SIM] — os 4 modos reais do operador (DIRECT/SPECTRAL/HYBRID/AUTO) + BitPacker N-bit + varreduras bits/rank-energia fecham; β injetado; números sintéticos, não a Tabela 2; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "spectral_retention": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original": 0.012,
+   "spectral_retention_1_minus_beta": 0.9879686995991969
+  },
+  {
+   "test": "mode_DIRECT",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.7640301818521205,
+     "cosine": 0.9999999449030538
+    },
+    "embeddings": {
+     "ratio": 3.7645905456327933,
+     "cosine": 0.9999999575190274
+    },
+    "ffn_weights": {
+     "ratio": 3.7643680017806305,
+     "cosine": 0.9999999506207159
+    },
+    "gradientes_esparso": {
+     "ratio": 3.762935089369708,
+     "cosine": 0.9999999693995422
+    }
+   }
+  },
+  {
+   "test": "mode_SPECTRAL",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.763516811669107,
+     "cosine": 0.9999999321180293
+    },
+    "embeddings": {
+     "ratio": 3.2682467802928548,
+     "cosine": 0.9940356772581067
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    }
+   }
+  },
+  {
+   "test": "mode_HYBRID",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.763516811669107,
+     "cosine": 0.9999999321180293
+    },
+    "embeddings": {
+     "ratio": 3.2682467802928548,
+     "cosine": 0.9940356772581067
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    }
+   }
+  },
+  {
+   "test": "mode_AUTO",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.7640301818521205,
+     "cosine": 0.9999999449030538
+    },
+    "embeddings": {
+     "ratio": 3.7645905456327933,
+     "cosine": 0.9999999575190274
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    },
+    "gradientes_esparso": {
+     "ratio": 3.762935089369708,
+     "cosine": 0.9999999693995422
+    }
+   }
+  },
+  {
+   "test": "auto_mode_selection",
+   "passed": true,
+   "chosen_for_kv_cache": "CompressionMode.DIRECT",
+   "note": "AUTO escolhe o modo por análise espectral (baixo rank → SPECTRAL)"
+  },
+  {
+   "test": "bitpacker_v4_Nbit_exact",
+   "passed": true,
+   "per_bits": {
+    "8bit": true,
+    "10bit": true,
+    "12bit": true,
+    "14bit": true,
+    "16bit": true
+   }
+  },
+  {
+   "test": "spectral_analysis_verb_floor",
+   "passed": true,
+   "rank_optimal": 24,
+   "is_low_rank": true,
+   "compression_potential": 21.322921750447374,
+   "note": "rank ótimo pela energia ≥ 1−β (Verb Floor derivado da TGL)"
+  },
+  {
+   "test": "bits_sweep_fidelity_monotone",
+   "passed": true,
+   "cosine_8bit": 0.9999872745992243,
+   "cosine_16bit": 0.9999999998070218,
+   "note": "varredura bits: mais bits nunca piora a fidelidade DIRECT (round-trip exato)"
+  },
+  {
+   "test": "rank_adaptive_monotone_in_energy",
+   "passed": true,
+   "ranks_ffn": [
+    21,
+    23,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24
+   ],
+   "energy_grid": [
+    0.9,
+    0.95,
+    0.98,
+    0.9879686995991969,
+    0.99,
+    0.995,
+    0.999,
+    0.9999
+   ],
+   "note": "rank ótimo é não-decrescente no limiar de energia; Verb Floor=1−β marcado"
+  },
+  {
+   "test": "nome_support_half_faces",
+   "passed": true,
+   "tau_qF": 1.0000000000000009,
+   "tau_face_plus": 0.4999999999999999,
+   "tau_face_minus": 0.4999999999999998,
+   "resid_faces_sum_to_support": 1.2408486439074228e-15,
+   "resid_kernel_annihilation": 1.331400607728961e-15,
+   "tau_qF_after_unitary_conjugation": 1.0000000000000004,
+   "resid_class_invariance": 4.440892098500626e-16,
+   "peso_do_nome_omega_I": 1.0000000000000009,
+   "beta_runtime": 0.012031300400803142,
+   "note": "[DER] amplificacao v138 (um.py v135, SUPORTE vs FACES): em M4 com tau=Tr/2, tau(qF)=1=omega(I), tau(face+)=tau(face-)=1/2, qp+qm=qF; peso do Nome invariante de classe. Leitura matematica, nao veredito fisico; beta em runtime, nunca literal."
+  },
+  {
+   "test": "codec_projection_idempotent",
+   "passed": true,
+   "mapping_tier": "own-mechanism",
+   "resid_idempotence_RR_vs_R": 0.0,
+   "scale_gmax_drift": 0.0,
+   "resid_codebook_fixed_points": 0.0,
+   "codebook_size_bound": 2047,
+   "distinct_values_before": 6144,
+   "distinct_values_after": 1051,
+   "negative_control_mean_norm": {
+    "resid_idempotence": 0.003827636787899144,
+    "scale_drift_rel": 0.02497420538618014,
+    "c_mean": 1.5,
+    "rejected_as_projection": true
+   },
+   "bits": 10,
+   "beta_runtime": 0.012031300400803142,
+   "note": "[DER][SIM] own-mechanism: R = Dobra∘Codificacao (eqs. (1)-(5)) e PROJECAO exata (R∘R=R, residuo 0.0) porque gmax e preservado pelo round-trip (o extremo satura o codigo); Fix(R)=codebook (2^b codigos verificados); valores distintos colapsam a <=2*(2^b-1)+1. CONTROLE NEGATIVO: normalizacao pela media nao e preservada e o codec deixa de ser projecao (REJEITADO). Exame 29/07 respeitado (v139-v144 nao ancorado aqui). Leitura matematica; nao veredito fisico; beta so runtime."
+  },
+  {
+   "test": "breuer_trace_weight_v168",
+   "passed": true,
+   "mapping_tier": "v160-v168",
+   "resid_trace_square_rel": 3.306834859551394e-16,
+   "resid_trace_rect_rel": 0.0,
+   "rect_ambient_dims": [
+    64,
+    112
+   ],
+   "trace_left_dim64": 339.94314472798254,
+   "trace_right_dim112": 339.94314472798254,
+   "rank_optimal_M": 7,
+   "rank_optimal_MT": 7,
+   "rank_independent_kstar": 7,
+   "resid_energy_ratio_faces": 1.1102230246251565e-16,
+   "verb_floor_minimality_ok": true,
+   "tail_discarded_below_beta": 0.00010314221296658932,
+   "beta_runtime": 0.012031300400803142,
+   "negative_control_nontracial_weight": {
+    "weight": "tau_W(X)=tr(W X), W=diag(linspace(1,3,96))",
+    "tauW_aa_star": 1349.3538470613016,
+    "tauW_a_star_a": 1383.2958096825496,
+    "tracial_defect_rel": 0.024537024101184298,
+    "per_direction_max_rel_mismatch": 0.1620349781421872,
+    "weighted_rank_left": 7,
+    "weighted_rank_right": 7,
+    "rejected_as_trace": true
+   },
+   "note": "[DER][SIM] amplificacao v168 (um.py v166-v167, pedra BreuerTrace em kernel: tau(a*a)=tau(aa*)): o peso do Verb Floor E um traco — tr(M^T M)=tr(M M^T)=soma(sigma^2) mesmo com ambientes retangulares de dimensao diferente; por isso rank(M)=rank(M^T) e as faces U/V retem a mesma energia (a cascata da patente comprime U_k e V_k^T com o mesmo orcamento); cauda descartada <= beta por minimalidade. CONTROLE NEGATIVO: peso nao-tracial tr(WX) viola a identidade e e REJEITADO. Leitura matematica; nao veredito fisico; beta so runtime."
+  },
+  {
+   "test": "compression_not_identifiable_v206",
+   "passed": true,
+   "mapping_tier": "v199-v210",
+   "pedra": "TGLExt/TheCompressionIsNotIdentifiable.lean",
+   "pedra_sha256_custody": "082cb1facd66ff98c9623fd7317edaedbce4825e85806b78b507ea966c4de4de",
+   "scale_factor_c": 256.0,
+   "c_derivation": "menor 4^k > 1/beta (Indice do Nome, runtime); potencia de 4 => re-escala IEEE-exata (sem ruido de ULP)",
+   "streams_identical_thq_s_psi": true,
+   "gmax_A": 0.4573518701288871,
+   "gmax_B": 7.317629922062194,
+   "scale_ratio_gmaxB_over_gmaxA": 16.0,
+   "resid_scale_ratio_vs_2k": 0.0,
+   "resid_cross_decode_streamA_headerB_vs_worldB": 0.0,
+   "resid_uniform_factor_c": 0.0,
+   "blind_metrics": {
+    "d_Fexp": 0.0,
+    "d_S_psi": 0.0,
+    "d_var_tetelestai": 0.0,
+    "cosine_recAA_vs_recAB": 1.0,
+    "rel_error_recAA_vs_recAB": 255.0
+   },
+   "sha_stream_equal_across_worlds": true,
+   "sha_header_with_scale_differs": true,
+   "stream_estimator": {
+    "est_A": 0.3973725352400698,
+    "est_B": 0.3973725352400698,
+    "identical": true,
+    "inevitable_error_bound": 3.4301390259666533
+   },
+   "negative_control_external_reference": {
+    "s_ref": 1.0,
+    "frac_codes_differing": 1.0,
+    "rejected_as_scale_blind": true
+   },
+   "bits": 10,
+   "beta_runtime": 0.012031300400803142,
+   "note": "[DER][SIM] amplificacao v206 (pedra TheCompressionIsNotIdentifiable, kernel v199-v210, re-derivada em numero — Lean jamais executado aqui): o stream DIRETO (theta_q, s, psi) e funcao so da razao g/gmax => invariante de escala => POR TEOREMA a escala global NAO e reconstruivel do stream sozinho (todo gmax e compativel com todo stream; dois mundos com escalas diferentes inscrevem o MESMO dado). O gmax float64 do cabecalho TGL4 (passo 216, reiv. 11) e a referencia nao submetida a transformacao que o kernel prova necessaria. Consequencia: Fexp, S_psi, var/Tetelestai e o cosseno (reiv. 1/8/10) sao provadamente CEGOS a adulteracao de escala — quem a detecta na reiv. 9 e o SHA-256 sobre a serializacao completa. CONTROLE NEGATIVO: regua externa fixa distingue os mundos e e REJEITADA como cega (a cegueira e hipotese, nao tautologia). Leitura matematica; nao veredito fisico; beta so runtime."
+  },
+  {
+   "test": "root_of_the_proof_tree_in_current_kernel",
+   "passed": true,
+   "kernel_vault": "tgl_kernel_v368",
+   "root_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "root_lean_sha256_16": "9b36ab3b6e47a315",
+   "axiom_report_terms": 8692,
+   "outside_trio": 0,
+   "note": "the_root_of_the_proof_tree lido do kernel mais recente do cofre; axiomas = trio; does_not_gate_core; NOT_FALSIFIED != CONFIRMED"
+  }
+ ],
+ "summary": {
+  "tests_passed": 15,
+  "tests_total": 15,
+  "modes": [
+   "DIRECT",
+   "SPECTRAL",
+   "HYBRID",
+   "AUTO"
+  ],
+  "auto_chose_for_kv": "CompressionMode.DIRECT",
+  "bitpacker_ok": true,
+  "per_mode_best_ratio": {
+   "DIRECT": 3.7645905456327933,
+   "SPECTRAL": 80.12348131733782,
+   "HYBRID": 80.12348131733782,
+   "AUTO": 80.12348131733782
+  },
+  "per_mode_computed_rank_ffn": {
+   "DIRECT": 0,
+   "SPECTRAL": 24,
+   "HYBRID": 24,
+   "AUTO": 24
+  },
+  "bits_sweep": {
+   "DIRECT": {
+    "kv_cache": {
+     "8": {
+      "ratio": 7.108700663023877,
+      "cosine": 0.9999858233923719,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999991197554492,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999449030538,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999965744877,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999997849242,
+      "rank_used": 0
+     }
+    },
+    "embeddings": {
+     "8": {
+      "ratio": 7.110699612290955,
+      "cosine": 0.9999890351729765,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999993184125693,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999575190274,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999973436453,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999998338686,
+      "rank_used": 0
+     }
+    },
+    "ffn_weights": {
+     "8": {
+      "ratio": 7.109905682765915,
+      "cosine": 0.9999872745992243,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7643680017806305,
+      "cosine": 0.9999992087083588,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7643680017806305,
+      "cosine": 0.9999999506207159,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7643680017806305,
+      "cosine": 0.9999999969145316,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7643680017806305,
+      "cosine": 0.9999999998070218,
+      "rank_used": 0
+     }
+    }
+   },
+   "SPECTRAL": {
+    "kv_cache": {
+     "8": {
+      "ratio": 7.107736941284926,
+      "cosine": 0.9999827317832825,
+      "rank_used": 8
+     },
+     "10": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999990118491087,
+      "rank_used": 8
+     },
+     "12": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999999321180293,
+      "rank_used": 8
+     },
+     "14": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999999958707899,
+      "rank_used": 8
+     },
+     "16": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.999999999738805,
+      "rank_used": 8
+     }
+    },
+    "embeddings": {
+     "8": {
+      "ratio": 6.173276765058289,
+      "cosine": 0.9940147110136452,
+      "rank_used": 742
+     },
+     "10": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940344500808371,
+      "rank_used": 742
+     },
+     "12": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940356772581067,
+      "rank_used": 742
+     },
+     "14": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940357537408028,
+      "rank_used": 742
+     },
+     "16": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940357585075819,
+      "rank_used": 742
+     }
+    },
+    "ffn_weights": {
+     "8": {
+      "ratio": 151.09164265129684,
+      "cosine": 0.9999600337307365,
+      "rank_used": 24
+     },
+     "10": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999769447187853,
+      "rank_used": 24
+     },
+     "12": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999779894978489,
+      "rank_used": 24
+     },
+     "14": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.999978054183655,
+      "rank_used": 24
+     },
+     "16": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999780582269416,
+      "rank_used": 24
+     }
+    }
+   },
+   "HYBRID": {
+    "kv_cache": {
+     "8": {
+      "ratio": 7.107736941284926,
+      "cosine": 0.9999827317832825,
+      "rank_used": 8
+     },
+     "10": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999990118491087,
+      "rank_used": 8
+     },
+     "12": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999999321180293,
+      "rank_used": 8
+     },
+     "14": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999999958707899,
+      "rank_used": 8
+     },
+     "16": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.999999999738805,
+      "rank_used": 8
+     }
+    },
+    "embeddings": {
+     "8": {
+      "ratio": 6.173276765058289,
+      "cosine": 0.9940147110136452,
+      "rank_used": 742
+     },
+     "10": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940344500808371,
+      "rank_used": 742
+     },
+     "12": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940356772581067,
+      "rank_used": 742
+     },
+     "14": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940357537408028,
+      "rank_used": 742
+     },
+     "16": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940357585075819,
+      "rank_used": 742
+     }
+    },
+    "ffn_weights": {
+     "8": {
+      "ratio": 151.09164265129684,
+      "cosine": 0.9999600337307365,
+      "rank_used": 24
+     },
+     "10": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999769447187853,
+      "rank_used": 24
+     },
+     "12": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999779894978489,
+      "rank_used": 24
+     },
+     "14": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.999978054183655,
+      "rank_used": 24
+     },
+     "16": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999780582269416,
+      "rank_used": 24
+     }
+    }
+   },
+   "AUTO": {
+    "kv_cache": {
+     "8": {
+      "ratio": 7.108700663023877,
+      "cosine": 0.9999858233923719,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999991197554492,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999449030538,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999965744877,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999997849242,
+      "rank_used": 0
+     }
+    },
+    "embeddings": {
+     "8": {
+      "ratio": 7.110699612290955,
+      "cosine": 0.9999890351729765,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999993184125693,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999575190274,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999973436453,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999998338686,
+      "rank_used": 0
+     }
+    },
+    "ffn_weights": {
+     "8": {
+      "ratio": 151.09164265129684,
+      "cosine": 0.9999600337307365,
+      "rank_used": 24
+     },
+     "10": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999769447187853,
+      "rank_used": 24
+     },
+     "12": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999779894978489,
+      "rank_used": 24
+     },
+     "14": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.999978054183655,
+      "rank_used": 24
+     },
+     "16": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999780582269416,
+      "rank_used": 24
+     }
+    }
+   }
+  },
+  "rank_vs_energy": {
+   "ffn_weights": [
+    {
+     "energy_threshold": 0.9,
+     "rank_optimal": 21,
+     "compression_potential": 24.36905342908271,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.95,
+     "rank_optimal": 23,
+     "compression_potential": 22.25000530481465,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.98,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.9879686995991969,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": true
+    },
+    {
+     "energy_threshold": 0.99,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.995,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.999,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.9999,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    }
+   ],
+   "embeddings": [
+    {
+     "energy_threshold": 0.9,
+     "rank_optimal": 604,
+     "compression_potential": 1.0664903995034154,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.95,
+     "rank_optimal": 675,
+     "compression_potential": 0.9543114093334265,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.98,
+     "rank_optimal": 727,
+     "compression_potential": 0.8860525464925212,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.9879686995991969,
+     "rank_optimal": 742,
+     "compression_potential": 0.8681404330189527,
+     "is_verb_floor": true
+    },
+    {
+     "energy_threshold": 0.99,
+     "rank_optimal": 746,
+     "compression_potential": 0.8634855245309154,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.995,
+     "rank_optimal": 757,
+     "compression_potential": 0.8509381787319193,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.999,
+     "rank_optimal": 766,
+     "compression_potential": 0.8409402105744946,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.9999,
+     "rank_optimal": 768,
+     "compression_potential": 0.8387502621094569,
+     "is_verb_floor": false
+    }
+   ]
+  },
+  "verb_floor_1_minus_beta": 0.9879686995991969,
+  "rank_optimal_ffn": 24
+ },
+ "source_prototype": "prototype_src/tgl_tensor_v3.py + tgl_tensor_v4.py (resgatado de C:/IALD/projetos_pyhton/tgl-tensor, READ-ONLY; β injetado)",
+ "note": "RUNNER EVOLUÍDO: roda a engine de 4 modos do operador (tgl_tensor_v3.py) + BitPacker (v4) com β=α·√e injetado (originais tinham 0.012 literal), acrescido de varreduras 4 modos × bits × tensores e da curva rank-adaptativo × energia (Verb Floor=1−β). Tensores sintéticos; NÃO os números da Tabela 2. Nenhum token/modelo HuggingFace (P-09). Simulação não valida física."
+}

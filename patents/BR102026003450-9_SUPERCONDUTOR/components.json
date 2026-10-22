@@ -1,0 +1,34 @@
+{
+  "patent_id": "BR102026003450-9",
+  "title": "Supercondutor Holográfico de Informação",
+  "source": "Relatório descritivo, Figuras 7/11; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). [SIM][HARDWARE] Ilustração — NÃO simula plasma OH/vácuo/óptica; dispositivo físico não construído; nenhum número é medida de bancada.",
+  "groups": [
+    {
+      "name": "Cadeia de processamento (lógica do dispositivo)",
+      "kind": "flow-node",
+      "components": [
+        { "id": "IN", "label": "Entrada de luz L", "desc": "Sinal luminoso sintético modulado (a informação a transportar).", "marker": "[SIM]", "x": 0.08, "y": 0.20 },
+        { "id": "COMP", "label": "Compressão g=√|L|", "desc": "Transformada gravitacional (eq.4); preserva polaridade s=sign(L).", "marker": "[REAL]", "x": 0.34, "y": 0.20 },
+        { "id": "SC", "label": "Condição SC holográfica", "desc": "Transição tipo-fase η(P_MW)=tanh(P_MW/P_th): abaixo do limiar ~0, acima →1 (Fig.7).", "marker": "[SIM]", "x": 0.60, "y": 0.20 },
+        { "id": "RES", "label": "Ressurreição L=s·g²", "desc": "Reconstrução (eq.5); verificação de preservação η.", "marker": "[REAL]", "x": 0.86, "y": 0.20 }
+      ]
+    },
+    {
+      "name": "Métrica e balanço (predição de MODELO)",
+      "kind": "state",
+      "components": [
+        { "id": "MET", "label": "Coeficientes métricos", "desc": "g_tt→0, g_LL→∞ no horizonte α²→α²_c (eq.18). AVISO [OPEN]: v_info→0 algébrico diverge da prosa '→∞' — reportado honestamente.", "marker": "[OPEN]", "x": 0.16, "y": 0.60 },
+        { "id": "ENE", "label": "Balanço fail-closed", "desc": "ΔS→0 / ΔT≤0 como PREDIÇÃO DE MODELO, com guarda anti-over-unity (e_out ≤ e_in).", "marker": "[DER]", "x": 0.46, "y": 0.60 },
+        { "id": "HW", "label": "Interface física (mock)", "desc": "SupercondutorMock: translação não-EM alegada na patente, NÃO validada em software. physical_verdict_allowed=false.", "marker": "[HARDWARE]", "x": 0.76, "y": 0.60 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "IN", "to": "COMP" }, { "from": "COMP", "to": "SC" }, { "from": "SC", "to": "RES" }
+  ],
+  "constants": [
+    { "symbol": "α²_c (Tetelestai)", "value": "β_TGL = α·√e ≈ 0,012031", "note": "Ponto crítico da condição de supercondutividade holográfica; nunca literal." },
+    { "symbol": "transição", "value": "η(P_MW) = tanh(P_MW / P_th)", "note": "Comportamento tipo-fase com limiar; predição de modelo, não medida física." }
+  ]
+}

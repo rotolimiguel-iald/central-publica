@@ -1,0 +1,72 @@
+{
+ "patent_id": "BR102026004849-6",
+ "slug": "celula_reversao",
+ "timestamp": "2026-07-09T22-17-51",
+ "runner": "one_celula_reversao.py",
+ "markers": [
+  "[SIM]",
+  "[ENERGY]",
+  "[CONJ]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "REVERSAL_PHASE_STORAGE_DEMONSTRATED",
+ "max_verdict": "REVERSAL_PHASE_STORAGE_DEMONSTRATED ([SIM][ENERGY][CONJ][PILOTO] — ciclo REFLECT/LOCK/MANIFEST e retenção da FASE angular fecham; retenção NÃO é conservação de energia física; autodescarga zero / termodinâmica invertida / supercondutividade de energia são [CONJ] sem dado)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "eta_rt_target_report": 0.976,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142
+  },
+  {
+   "test": "reflect_lock_manifest_cycle",
+   "passed": true,
+   "stored_faces": 6,
+   "g_max": 2.0720955410149684,
+   "cycle_correlation": 0.9999999992509051,
+   "note": "carga (θ=arcsin(g/gmax)) nas 6 faces → descarga s·(gmax·sinθ)²"
+  },
+  {
+   "test": "angular_phase_retention_vs_bits",
+   "passed": true,
+   "retention_by_bits": {
+    "8": 1.0001818673009726,
+    "12": 1.0000127185490428,
+    "16": 0.9999993895436027,
+    "20": 1.0000000121849801
+   },
+   "deviation_from_1": {
+    "8": 0.0001818673009725824,
+    "12": 1.2718549042833871e-05,
+    "16": 6.104563973208244e-07,
+    "20": 1.2184980135998558e-08
+   },
+   "honest_note": "RETENÇÃO DA FASE ANGULAR por armazenamento exato — NÃO é conservação de energia física. Fica ~1,0 em todos os bits; o desvio de 1,0 (ruído de quantização, pode ser ±) DIMINUI com mais bits. [SIM][PILOTO]"
+  },
+  {
+   "test": "eta_rt_target_declared_not_asserted",
+   "passed": true,
+   "eta_rt_target_report": 0.976,
+   "physical_verdict_allowed": false,
+   "honest_note": "η_RT>0,976 é ALVO do relatório [ENERGY][CONJ]; NÃO afirmado como medição — não há hardware. Autodescarga zero, termodinâmica invertida e supercondutividade de energia são [CONJ] sem qualquer dado."
+  }
+ ],
+ "summary": {
+  "tests_passed": 4,
+  "tests_total": 4,
+  "angular_retention_16bit": 0.9999993895436027,
+  "cycle_correlation": 0.9999999992509051,
+  "eta_rt_target_report": 0.976,
+  "energy_claims": "CONJ_no_hardware_data"
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "TRAVA [ENERGY]: a retenção ~1,0 demonstrada é da FASE ANGULAR (armazenamento exato), NÃO conservação de energia física. Autodescarga zero, ciclabilidade infinita, η_RT>97,6%, termodinâmica invertida e supercondutividade de energia à temperatura ambiente são [CONJ] do relatório, sem medição. Simulação nunca valida física. Não usar como especificação de produto."
+}

@@ -1,0 +1,890 @@
+{
+ "patent_id": "BR102026003452-5",
+ "slug": "motor_dobra",
+ "timestamp": "2026-08-19T17-58-23",
+ "runner": "one_motor_dobra.py",
+ "markers": [
+  "[SIM]",
+  "[HARDWARE]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "WARP_DIGITAL_TWIN_DEMONSTRATED",
+ "max_verdict": "WARP_DIGITAL_TWIN_DEMONSTRATED ([SIM][HARDWARE] — REFLECT/MANIFEST, gate de adjacência e Farol Ψ com veto ético fecham como DIGITAL-TWIN; transporte físico, dobra e τ≈10⁻⁴² s NÃO simulados nem alegados)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_theta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "theta_miguel_deg": 6.297289216477979
+  },
+  {
+   "test": "reflect_manifest_invariant_preservation",
+   "passed": true,
+   "roundtrip_correlation": 0.9999999997933802,
+   "note": "REFLECT L→(ψ,θ), MANIFEST (ψ,θ)→s·(gmax·sinθ)²; correlação = preservação de invariante ALGORÍTMICA (não transporte físico)"
+  },
+  {
+   "test": "adjacency_gate_D_psi",
+   "passed": true,
+   "d_near": 0.0037425846446253954,
+   "d_far": 2.4202841449528285,
+   "eps_c": 0.5,
+   "note": "D_Ψ(A,B)<ε_c habilita a dobra (estados adjacentes); estados distantes inibem"
+  },
+  {
+   "test": "roundtrip_correlation_converges_in_angular_bits",
+   "passed": true,
+   "corr_at_2bits": 0.9206481443879866,
+   "corr_at_16bits": 0.9999999997933802,
+   "monotone_nondecreasing": true,
+   "curve": [
+    {
+     "angular_bits": 2,
+     "corr": 0.9206481443879866
+    },
+    {
+     "angular_bits": 3,
+     "corr": 0.9833085639388994
+    },
+    {
+     "angular_bits": 4,
+     "corr": 0.996094781275092
+    },
+    {
+     "angular_bits": 5,
+     "corr": 0.9990806863676348
+    },
+    {
+     "angular_bits": 6,
+     "corr": 0.9997836103747221
+    },
+    {
+     "angular_bits": 7,
+     "corr": 0.999946310634131
+    },
+    {
+     "angular_bits": 8,
+     "corr": 0.999986426721594
+    },
+    {
+     "angular_bits": 9,
+     "corr": 0.999996653492666
+    },
+    {
+     "angular_bits": 10,
+     "corr": 0.9999991581984436
+    },
+    {
+     "angular_bits": 11,
+     "corr": 0.9999997887221088
+    },
+    {
+     "angular_bits": 12,
+     "corr": 0.9999999469872786
+    },
+    {
+     "angular_bits": 13,
+     "corr": 0.9999999867791097
+    },
+    {
+     "angular_bits": 14,
+     "corr": 0.9999999967351111
+    },
+    {
+     "angular_bits": 15,
+     "corr": 0.9999999991643445
+    },
+    {
+     "angular_bits": 16,
+     "corr": 0.9999999997933802
+    }
+   ],
+   "note": "correlação round-trip cresce monotonicamente com angular_bits (perda = só quantização de θ); DIGITAL-TWIN, não física"
+  },
+  {
+   "test": "reflect_manifest_multi_payload_invariant",
+   "passed": true,
+   "payload_correlations": {
+    "gaussian_iid": 0.9999999997933802,
+    "sinusoid_2d": 0.999999999941332,
+    "radial_gaussian": 0.9999999998467752,
+    "linear_ramp": 0.9999999999129301,
+    "sparse_spikes": 0.9999999998457221,
+    "checkerboard": 0.9999999999999958
+   },
+   "corr_min": 0.9999999997933802,
+   "note": "invariante REFLECT/MANIFEST preservado em 6 famílias de sinal (gaussiano, senoide, gaussiana radial, rampa, esparso, xadrez); s·(gmax·sinθ)² recupera L a menos da quantização"
+  },
+  {
+   "test": "adjacency_commit_boundary_D_psi_vs_noise",
+   "passed": true,
+   "eps_c": 0.5,
+   "sigma_boundary": 1.4425463489632258,
+   "n_commit": 20,
+   "n_abort": 4,
+   "curve": [
+    {
+     "sigma": 0.001,
+     "d_psi": 0.00043124597664112585,
+     "commit": true
+    },
+    {
+     "sigma": 0.0014481874607860505,
+     "d_psi": 0.0012872263267741076,
+     "commit": true
+    },
+    {
+     "sigma": 0.0020972469215779503,
+     "d_psi": 0.0006825120879917108,
+     "commit": true
+    },
+    {
+     "sigma": 0.003037206694001333,
+     "d_psi": 0.0013893123543480647,
+     "commit": true
+    },
+    {
+     "sigma": 0.00439844465006819,
+     "d_psi": 0.0020502006801264875,
+     "commit": true
+    },
+    {
+     "sigma": 0.00636977238919024,
+     "d_psi": 0.0025620126495969724,
+     "commit": true
+    },
+    {
+     "sigma": 0.009224624502086507,
+     "d_psi": 0.001575721011203547,
+     "commit": true
+    },
+    {
+     "sigma": 0.013358985534381458,
+     "d_psi": 0.003676522210148537,
+     "commit": true
+    },
+    {
+     "sigma": 0.019346315339713472,
+     "d_psi": 0.0026602709894911983,
+     "commit": true
+    },
+    {
+     "sigma": 0.028017091287385883,
+     "d_psi": 0.012441336832135929,
+     "commit": true
+    },
+    {
+     "sigma": 0.04057400029009036,
+     "d_psi": 0.019260589814911213,
+     "commit": true
+    },
+    {
+     "sigma": 0.05875875845403846,
+     "d_psi": 0.009916092401740356,
+     "commit": true
+    },
+    {
+     "sigma": 0.08509369720449483,
+     "d_psi": 0.014978293965987923,
+     "commit": true
+    },
+    {
+     "sigma": 0.12323162528347453,
+     "d_psi": 0.02014985966277256,
+     "commit": true
+    },
+    {
+     "sigma": 0.17846249450781304,
+     "d_psi": 0.025310889235600088,
+     "commit": true
+    },
+    {
+     "sigma": 0.25844714676681446,
+     "d_psi": 0.0753084140495423,
+     "commit": true
+    },
+    {
+     "sigma": 0.37427991722363274,
+     "d_psi": 0.040440667703656945,
+     "commit": true
+    },
+    {
+     "sigma": 0.5420274829473058,
+     "d_psi": 0.17530121266182938,
+     "commit": true
+    },
+    {
+     "sigma": 0.7849574042057139,
+     "d_psi": 0.255523911436186,
+     "commit": true
+    },
+    {
+     "sigma": 1.1367654700218823,
+     "d_psi": 0.38194847066546544,
+     "commit": true
+    },
+    {
+     "sigma": 1.6462494995402526,
+     "d_psi": 0.5786428129160225,
+     "commit": false
+    },
+    {
+     "sigma": 2.3840778825595046,
+     "d_psi": 1.0277673644049785,
+     "commit": false
+    },
+    {
+     "sigma": 3.452591695060036,
+     "d_psi": 1.8253628488404863,
+     "commit": false
+    },
+    {
+     "sigma": 5.0,
+     "d_psi": 2.4224868596853053,
+     "commit": false
+    }
+   ],
+   "note": "gate de commit tem fronteira bem definida: D_Ψ cresce com o ruído σ e cruza ε_c em σ*; abaixo dela a dobra é autorizada, acima é abortada"
+  },
+  {
+   "test": "commit_fraction_monotone_in_eps_c",
+   "passed": true,
+   "commit_fraction_at_eps_c": 0.8333333333333334,
+   "curve": [
+    {
+     "eps_c": 0.0,
+     "commit_fraction": 0.0
+    },
+    {
+     "eps_c": 0.06522080009409156,
+     "commit_fraction": 0.6666666666666666
+    },
+    {
+     "eps_c": 0.13044160018818313,
+     "commit_fraction": 0.7083333333333334
+    },
+    {
+     "eps_c": 0.1956624002822747,
+     "commit_fraction": 0.75
+    },
+    {
+     "eps_c": 0.26088320037636625,
+     "commit_fraction": 0.7916666666666666
+    },
+    {
+     "eps_c": 0.32610400047045784,
+     "commit_fraction": 0.7916666666666666
+    },
+    {
+     "eps_c": 0.3913248005645494,
+     "commit_fraction": 0.8333333333333334
+    },
+    {
+     "eps_c": 0.4565456006586409,
+     "commit_fraction": 0.8333333333333334
+    },
+    {
+     "eps_c": 0.5217664007527325,
+     "commit_fraction": 0.8333333333333334
+    },
+    {
+     "eps_c": 0.5869872008468241,
+     "commit_fraction": 0.875
+    },
+    {
+     "eps_c": 0.6522080009409157,
+     "commit_fraction": 0.875
+    },
+    {
+     "eps_c": 0.7174288010350072,
+     "commit_fraction": 0.875
+    },
+    {
+     "eps_c": 0.7826496011290988,
+     "commit_fraction": 0.875
+    },
+    {
+     "eps_c": 0.8478704012231904,
+     "commit_fraction": 0.875
+    },
+    {
+     "eps_c": 0.9130912013172818,
+     "commit_fraction": 0.875
+    },
+    {
+     "eps_c": 0.9783120014113734,
+     "commit_fraction": 0.875
+    },
+    {
+     "eps_c": 1.043532801505465,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.1087536015995565,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.1739744016936482,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.2391952017877397,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.3044160018818314,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.3696368019759229,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.4348576020700143,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.500078402164106,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.5652992022581975,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.630520002352289,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.6957408024463807,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.7609616025404722,
+     "commit_fraction": 0.9166666666666666
+    },
+    {
+     "eps_c": 1.8261824026345637,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 1.8914032027286554,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 1.9566240028227468,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 2.0218448029168385,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 2.08706560301093,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 2.1522864031050215,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 2.217507203199113,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 2.282728003293205,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 2.3479488033872964,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 2.413169603481388,
+     "commit_fraction": 0.9583333333333334
+    },
+    {
+     "eps_c": 2.4783904035754794,
+     "commit_fraction": 1.0
+    },
+    {
+     "eps_c": 2.543611203669571,
+     "commit_fraction": 1.0
+    }
+   ],
+   "note": "fração de commit é monotônica não-decrescente em ε_c (mais permissivo ⇒ mais dobras autorizadas): a régua de autorização é bem-ordenada"
+  },
+  {
+   "test": "farol_psi_state_machine_ethical_veto",
+   "passed": true,
+   "commit_sequence": [
+    "F0_IDLE",
+    "F1_ALIGN",
+    "F2_LOCK",
+    "F3_ETHICAL_OK",
+    "F4_COMMIT",
+    "F5_MANIFEST"
+   ],
+   "veto_sequence": [
+    "F0_IDLE",
+    "F1_ALIGN",
+    "F2_LOCK",
+    "F3_ETHICAL_VETO"
+   ],
+   "note": "F0–F5 com commit condicional; veto ético F3 impede a dobra"
+  },
+  {
+   "test": "device_interface_mock_no_physics",
+   "passed": true,
+   "mock_status": "HARDWARE_MOCK",
+   "note": "transporte por reflexao dimensional; interface apenas"
+  },
+  {
+   "test": "null_cone_radial_blind",
+   "passed": true,
+   "kappa_runtime": 0.10968728459034412,
+   "resid_max": 5.773159728050814e-17,
+   "resid_G_tt_max": 0.0,
+   "resid_G_ss_max": 0.0,
+   "resid_Gkk_theorem_max": 0.0,
+   "resid_null_norm_max": 5.773159728050814e-17,
+   "resid_G22_minus_beta_max": 0.0,
+   "points": [
+    0.0,
+    0.4,
+    0.9
+   ],
+   "note": "amplificacao v138 [DER]: cone nulo cego no radial (um.py v120/v133, digital-twin) — G_tt=G_ss=0 (Bianchi) e G_kk=(c^2+d^2)*G22 re-derivados numericamente; kappa=sqrt(beta) em runtime => custo transversal por unidade (c^2+d^2) = beta. [ONTO] a direcao da viagem e cega, o custo vive no transversal. Matematica pura; NAO e propulsao nem veredito fisico."
+  },
+  {
+   "test": "observer_inside_idempotent_fold",
+   "passed": true,
+   "angular_bits": 8,
+   "lam_runtime": 0.9879686995991969,
+   "resid_idempotent_T2_T": 0.0,
+   "loss_first_pass": 0.003043894814203263,
+   "one_minus_corr_read_permanent": 0.0,
+   "resid_homogeneity": 2.909650687445133e-16,
+   "rival_idem_defect": 0.01203130040080317,
+   "rival_idem_defect_minus_beta": 2.7755575615628914e-17,
+   "rival_fixed_displacement": 0.012031300400803108,
+   "rival_fixed_displacement_minus_beta": 3.469446951953614e-17,
+   "rival_leak_per_pass": 0.012031300400803135,
+   "rival_leak_minus_beta": 6.938893903907228e-18,
+   "rival_decay_resid_vs_lam_pow_nm1": 2.220446049250313e-16,
+   "rival_decay_full_resid_vs_lam_pow_n": 1.6653345369377348e-16,
+   "n_passes": 64,
+   "rival_zero_is_fixed": 0.0,
+   "note": "amplificacao v144 [DER/ONTO]: O RESGATE DO OBSERVADOR (um.py pedra 100, ObserverInside) no operador do dispositivo — T=MANIFEST o REFLECT e projecao INVERSA IDEMPOTENTE (T^2=T bitwise) que LE O PERMANENTE sem perda (1-corr=0 no ponto fixo) e NAO e a identidade (perda de 1o passe > 0: o transiente morre na fronteira). FALSIDADE DE GENERO tipada: o fluxo vazante R=(1-beta)*T nao tem ponto fixo nao-nulo (T^2=T + homogeneidade => L*=0); defeito de idempotencia do rival = beta EXATO; deslocamento de todo candidato permanente = beta EXATO; decaimento exato em DUAS leituras: passe n/passe 1 = (1-beta)^(n-1) e passe n/T(L0) = (1-beta)^n (n=64); R(0)=0 => so 0 permanece => sem observador interno => transporte REJEITADO. beta em runtime; matematica do mecanismo [SIM][HARDWARE]; NAO e propulsao nem veredito fisico."
+  },
+  {
+   "test": "ergodic_mean_section_birkhoff",
+   "passed": true,
+   "theta_m_runtime": 0.10990843077787468,
+   "resid_isometry": 2.220446049250313e-16,
+   "resid_equivariant_UP_PU_P": 0.0,
+   "resid_projection": 0.0,
+   "resid_dirichlet_exact_rate": 3.86843335142828e-16,
+   "birkhoff_ladder": [
+    {
+     "N": 8,
+     "err_to_P": 0.96858434711094,
+     "bound_1_over_N_sin": 2.2757660580358565,
+     "dirichlet_block_theta": 0.9685843471109398,
+     "dirichlet_block_2theta": 0.8778044870213979
+    },
+    {
+     "N": 64,
+     "err_to_P": 0.104320109554865,
+     "bound_1_over_N_sin": 0.28447075725448207,
+     "dirichlet_block_theta": 0.10432010955486484,
+     "dirichlet_block_2theta": 0.09719914713613585
+    },
+    {
+     "N": 512,
+     "err_to_P": 0.00488365662924452,
+     "bound_1_over_N_sin": 0.03555884465681026,
+     "dirichlet_block_theta": 0.00488365662924435,
+     "dirichlet_block_2theta": 0.004844692394449354
+    },
+    {
+     "N": 4096,
+     "err_to_P": 0.003965723678299435,
+     "bound_1_over_N_sin": 0.004444855582101282,
+     "dirichlet_block_theta": 0.0039657236782990515,
+     "dirichlet_block_2theta": 0.0017937478852561978
+    }
+   ],
+   "err_first_N8": 0.96858434711094,
+   "err_last_N4096": 0.003965723678299435,
+   "bound_last": 0.004444855582101282,
+   "trace_defect": 0.0007596658657078592,
+   "trace_bound": 0.013341286857990721,
+   "trace_P_weight_permanent": 2.0,
+   "lam_runtime": 0.9879686995991969,
+   "leak_mean_c_N_closed": 0.02029212278530611,
+   "resid_leak_closed_form": 1.3183898417423734e-16,
+   "dist_leak_mean_to_P": 0.979707877214694,
+   "norm_leak_mean": 0.02029212278530598,
+   "leak_bound": 0.02029212278530611,
+   "N_big": 4096,
+   "note": "amplificacao v168 [DER/ONTO]: A SECAO ERGODICA (um.py v166-v167, Item A em kernel: ErgodicMeanSection + EquivariantSection + BreuerTrace) na dinamica angular do dispositivo — U = I (+) R(theta_M) (+) R(2 theta_M), theta_M = arcsin(sqrt(beta)) em runtime; a media de Birkhoff (1/N) sum U^k converge a projecao invariante P (setor permanente) com taxa de Dirichlet EXATA |sin(N t/2)|/(N sin(t/2)); U P = P U = P (secao equivariante); Tr(P) = peso do permanente (o peso e' traco). NEGATIVOS: M_N != P em N finito; rival vazante (1-beta)*U tem media -> 0 (forma fechada c_N=(1-(1-beta)^N)/(N beta) conferida) => a projecao invariante e' DESTRUIDA pelo vazamento => transporte REJEITADO na face ergodica. beta/theta_M em runtime; [SIM][HARDWARE] digital-twin — NAO e' propulsao nem veredito fisico."
+  }
+ ],
+ "summary": {
+  "tests_passed": 12,
+  "tests_total": 12,
+  "roundtrip_correlation": 0.9999999997933802,
+  "roundtrip_corr_16bits": 0.9999999997933802,
+  "multi_payload_corr_min": 0.9999999997933802,
+  "adjacency_eps_c": 0.5,
+  "commit_sigma_boundary": 1.4425463489632258,
+  "observer_idempotent_resid": 0.0,
+  "observer_rival_defect_eq_beta": 0.01203130040080317,
+  "ergodic_birkhoff_err_N4096": 0.003965723678299435,
+  "ergodic_dirichlet_rate_resid": 3.86843335142828e-16,
+  "ergodic_leak_mean_norm": 0.02029212278530598,
+  "sweeps": {
+   "angular_bits_curve": [
+    [
+     2,
+     0.9206481443879866
+    ],
+    [
+     3,
+     0.9833085639388994
+    ],
+    [
+     4,
+     0.996094781275092
+    ],
+    [
+     5,
+     0.9990806863676348
+    ],
+    [
+     6,
+     0.9997836103747221
+    ],
+    [
+     7,
+     0.999946310634131
+    ],
+    [
+     8,
+     0.999986426721594
+    ],
+    [
+     9,
+     0.999996653492666
+    ],
+    [
+     10,
+     0.9999991581984436
+    ],
+    [
+     11,
+     0.9999997887221088
+    ],
+    [
+     12,
+     0.9999999469872786
+    ],
+    [
+     13,
+     0.9999999867791097
+    ],
+    [
+     14,
+     0.9999999967351111
+    ],
+    [
+     15,
+     0.9999999991643445
+    ],
+    [
+     16,
+     0.9999999997933802
+    ]
+   ],
+   "payload_correlations": {
+    "gaussian_iid": 0.9999999997933802,
+    "sinusoid_2d": 0.999999999941332,
+    "radial_gaussian": 0.9999999998467752,
+    "linear_ramp": 0.9999999999129301,
+    "sparse_spikes": 0.9999999998457221,
+    "checkerboard": 0.9999999999999958
+   },
+   "d_psi_vs_sigma": [
+    [
+     0.001,
+     0.00043124597664112585
+    ],
+    [
+     0.0014481874607860505,
+     0.0012872263267741076
+    ],
+    [
+     0.0020972469215779503,
+     0.0006825120879917108
+    ],
+    [
+     0.003037206694001333,
+     0.0013893123543480647
+    ],
+    [
+     0.00439844465006819,
+     0.0020502006801264875
+    ],
+    [
+     0.00636977238919024,
+     0.0025620126495969724
+    ],
+    [
+     0.009224624502086507,
+     0.001575721011203547
+    ],
+    [
+     0.013358985534381458,
+     0.003676522210148537
+    ],
+    [
+     0.019346315339713472,
+     0.0026602709894911983
+    ],
+    [
+     0.028017091287385883,
+     0.012441336832135929
+    ],
+    [
+     0.04057400029009036,
+     0.019260589814911213
+    ],
+    [
+     0.05875875845403846,
+     0.009916092401740356
+    ],
+    [
+     0.08509369720449483,
+     0.014978293965987923
+    ],
+    [
+     0.12323162528347453,
+     0.02014985966277256
+    ],
+    [
+     0.17846249450781304,
+     0.025310889235600088
+    ],
+    [
+     0.25844714676681446,
+     0.0753084140495423
+    ],
+    [
+     0.37427991722363274,
+     0.040440667703656945
+    ],
+    [
+     0.5420274829473058,
+     0.17530121266182938
+    ],
+    [
+     0.7849574042057139,
+     0.255523911436186
+    ],
+    [
+     1.1367654700218823,
+     0.38194847066546544
+    ],
+    [
+     1.6462494995402526,
+     0.5786428129160225
+    ],
+    [
+     2.3840778825595046,
+     1.0277673644049785
+    ],
+    [
+     3.452591695060036,
+     1.8253628488404863
+    ],
+    [
+     5.0,
+     2.4224868596853053
+    ]
+   ],
+   "commit_fraction_vs_eps_c": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.06522080009409156,
+     0.6666666666666666
+    ],
+    [
+     0.13044160018818313,
+     0.7083333333333334
+    ],
+    [
+     0.1956624002822747,
+     0.75
+    ],
+    [
+     0.26088320037636625,
+     0.7916666666666666
+    ],
+    [
+     0.32610400047045784,
+     0.7916666666666666
+    ],
+    [
+     0.3913248005645494,
+     0.8333333333333334
+    ],
+    [
+     0.4565456006586409,
+     0.8333333333333334
+    ],
+    [
+     0.5217664007527325,
+     0.8333333333333334
+    ],
+    [
+     0.5869872008468241,
+     0.875
+    ],
+    [
+     0.6522080009409157,
+     0.875
+    ],
+    [
+     0.7174288010350072,
+     0.875
+    ],
+    [
+     0.7826496011290988,
+     0.875
+    ],
+    [
+     0.8478704012231904,
+     0.875
+    ],
+    [
+     0.9130912013172818,
+     0.875
+    ],
+    [
+     0.9783120014113734,
+     0.875
+    ],
+    [
+     1.043532801505465,
+     0.9166666666666666
+    ],
+    [
+     1.1087536015995565,
+     0.9166666666666666
+    ],
+    [
+     1.1739744016936482,
+     0.9166666666666666
+    ],
+    [
+     1.2391952017877397,
+     0.9166666666666666
+    ],
+    [
+     1.3044160018818314,
+     0.9166666666666666
+    ],
+    [
+     1.3696368019759229,
+     0.9166666666666666
+    ],
+    [
+     1.4348576020700143,
+     0.9166666666666666
+    ],
+    [
+     1.500078402164106,
+     0.9166666666666666
+    ],
+    [
+     1.5652992022581975,
+     0.9166666666666666
+    ],
+    [
+     1.630520002352289,
+     0.9166666666666666
+    ],
+    [
+     1.6957408024463807,
+     0.9166666666666666
+    ],
+    [
+     1.7609616025404722,
+     0.9166666666666666
+    ],
+    [
+     1.8261824026345637,
+     0.9583333333333334
+    ],
+    [
+     1.8914032027286554,
+     0.9583333333333334
+    ],
+    [
+     1.9566240028227468,
+     0.9583333333333334
+    ],
+    [
+     2.0218448029168385,
+     0.9583333333333334
+    ],
+    [
+     2.08706560301093,
+     0.9583333333333334
+    ],
+    [
+     2.1522864031050215,
+     0.9583333333333334
+    ],
+    [
+     2.217507203199113,
+     0.9583333333333334
+    ],
+    [
+     2.282728003293205,
+     0.9583333333333334
+    ],
+    [
+     2.3479488033872964,
+     0.9583333333333334
+    ],
+    [
+     2.413169603481388,
+     0.9583333333333334
+    ],
+    [
+     2.4783904035754794,
+     1.0
+    ],
+    [
+     2.543611203669571,
+     1.0
+    ]
+   ]
+  },
+  "seal": "digital-twin; propulsão NÃO demonstrada; sem protótipo"
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "DIGITAL-TWIN — simulação não valida física; sem protótipo; propulsão NÃO demonstrada. REFLECT/MANIFEST é preservação de invariante algorítmica, não transporte físico [HARDWARE]."
+}

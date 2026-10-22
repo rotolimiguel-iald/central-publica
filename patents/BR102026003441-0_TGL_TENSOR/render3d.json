@@ -1,0 +1,462 @@
+{
+ "patent_id": "BR102026003441-0",
+ "title": "TGL Tensor — Geometria do Algoritmo (ℋ₄)",
+ "kind": "algorithm",
+ "note": "[PILOTO][SIM] A geometria do ALGORITMO de compressão: o gráviton g=√|L| na origem, o tetraedro do espaço de Hilbert ℋ₄ (4 estados psiônicos) e os 4 modos de compressão. Tudo tem geometria na TGL. Gire e clique para inspecionar. | PLANAR: algoritmo = plano; mesh generico -> base-plano(s) do mecanismo.",
+ "camera": {
+  "position": [
+   2.0,
+   1.4,
+   2.0
+  ]
+ },
+ "groups": [
+  {
+   "name": "nucleo",
+   "color": "#ffd60a",
+   "label": "gráviton (raiz g=√|L|)",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "h4",
+   "color": "#3366cc",
+   "label": "espaço de Hilbert ℋ₄ (4 estados)",
+   "count": 4,
+   "explodable": true
+  },
+  {
+   "name": "modos",
+   "color": "#7ce7c8",
+   "label": "modos de compressão",
+   "count": 4,
+   "explodable": true
+  }
+ ],
+ "nodes": [
+  {
+   "id": "graviton",
+   "label": "gráviton g=√|L|",
+   "desc": "Raiz gravitacional g=√|L|, fase s=sign(L). Toda compressão nasce daqui (radicalismo ontológico). β=0.012031300 = α·√e; retenção 1−β=0.987969.",
+   "shape": "sphere",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.18,
+   "color": "#ffd60a",
+   "group": "nucleo",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "psi0",
+   "label": "COLAPSO+ |0⟩",
+   "desc": "(+,−) paridade −1 — colapso. Vértice COMPUTADO do tetraedro ℋ₄ (r=0.7/√3, ψ de (sign L, sign ∂L)); θ=arcsin(g/gmax) codifica a magnitude.",
+   "shape": "sphere",
+   "position": [
+    0.40414518843273806,
+    0.40414518843273806,
+    0.40414518843273806
+   ],
+   "size": 0.12,
+   "color": "#cc2222",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "psi1",
+   "label": "ASCENSÃO+ |1⟩",
+   "desc": "(+,+) paridade +1 — ascensão. Vértice COMPUTADO do tetraedro ℋ₄ (r=0.7/√3, ψ de (sign L, sign ∂L)); θ=arcsin(g/gmax) codifica a magnitude.",
+   "shape": "sphere",
+   "position": [
+    0.40414518843273806,
+    -0.40414518843273806,
+    -0.40414518843273806
+   ],
+   "size": 0.12,
+   "color": "#33aa55",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "psi2",
+   "label": "EMERGÊNCIA− |2⟩",
+   "desc": "(−,+) paridade +1 — emergência. Vértice COMPUTADO do tetraedro ℋ₄ (r=0.7/√3, ψ de (sign L, sign ∂L)); θ=arcsin(g/gmax) codifica a magnitude.",
+   "shape": "sphere",
+   "position": [
+    -0.40414518843273806,
+    0.40414518843273806,
+    -0.40414518843273806
+   ],
+   "size": 0.12,
+   "color": "#3366cc",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "psi3",
+   "label": "QUEDA− |3⟩",
+   "desc": "(−,−) paridade −1 — queda. Vértice COMPUTADO do tetraedro ℋ₄ (r=0.7/√3, ψ de (sign L, sign ∂L)); θ=arcsin(g/gmax) codifica a magnitude.",
+   "shape": "sphere",
+   "position": [
+    -0.40414518843273806,
+    -0.40414518843273806,
+    0.40414518843273806
+   ],
+   "size": 0.12,
+   "color": "#ee8800",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "DIRECT",
+   "label": "modo DIRECT",
+   "desc": "Modo de compressão: g,s,θ diretos. Melhor razão COMPUTADA nesta run = 3.8× (rank_used ffn=0). Opera sobre ℋ₄ + decomposição espectral.",
+   "shape": "box",
+   "position": [
+    1.2998999999999998,
+    -0.9,
+    0.0
+   ],
+   "size": 0.1254,
+   "color": "#7ce7c8",
+   "group": "modos",
+   "marker": "[REAL]",
+   "layer": "io",
+   "material": "emissive",
+   "best_ratio": 3.765,
+   "rank_used_ffn": 0
+  },
+  {
+   "id": "SPECTRAL",
+   "label": "modo SPECTRAL",
+   "desc": "Modo de compressão: SVD + rank adaptativo ≥1−β. Melhor razão COMPUTADA nesta run = 80.1× (rank_used ffn=24). Opera sobre ℋ₄ + decomposição espectral.",
+   "shape": "box",
+   "position": [
+    7.959591871058221e-17,
+    -0.9,
+    1.2998999999999998
+   ],
+   "size": 0.1474,
+   "color": "#7ce7c8",
+   "group": "modos",
+   "marker": "[REAL]",
+   "layer": "io",
+   "material": "emissive",
+   "best_ratio": 80.123,
+   "rank_used_ffn": 24
+  },
+  {
+   "id": "HYBRID",
+   "label": "modo HYBRID",
+   "desc": "Modo de compressão: SVD + resíduo. Melhor razão COMPUTADA nesta run = 80.1× (rank_used ffn=24). Opera sobre ℋ₄ + decomposição espectral.",
+   "shape": "box",
+   "position": [
+    -1.2998999999999998,
+    -0.9,
+    1.5919183742116442e-16
+   ],
+   "size": 0.1474,
+   "color": "#7ce7c8",
+   "group": "modos",
+   "marker": "[REAL]",
+   "layer": "io",
+   "material": "emissive",
+   "best_ratio": 80.123,
+   "rank_used_ffn": 24
+  },
+  {
+   "id": "AUTO",
+   "label": "modo AUTO",
+   "desc": "Modo de compressão: escolhe pela estrutura. Melhor razão COMPUTADA nesta run = 80.1× (rank_used ffn=24). Opera sobre ℋ₄ + decomposição espectral. — AUTO escolheu DIRECT p/ KV cache.",
+   "shape": "box",
+   "position": [
+    -2.3878775613174663e-16,
+    -0.9,
+    -1.2998999999999998
+   ],
+   "size": 0.1474,
+   "color": "#7ce7c8",
+   "group": "modos",
+   "marker": "[REAL]",
+   "layer": "io",
+   "material": "emissive",
+   "best_ratio": 80.123,
+   "rank_used_ffn": 24
+  }
+ ],
+ "edges": [
+  {
+   "from": "graviton",
+   "to": "psi0"
+  },
+  {
+   "from": "graviton",
+   "to": "psi1"
+  },
+  {
+   "from": "graviton",
+   "to": "psi2"
+  },
+  {
+   "from": "graviton",
+   "to": "psi3"
+  },
+  {
+   "from": "psi0",
+   "to": "psi1"
+  },
+  {
+   "from": "psi1",
+   "to": "psi2"
+  },
+  {
+   "from": "psi2",
+   "to": "psi3"
+  },
+  {
+   "from": "psi3",
+   "to": "psi0"
+  },
+  {
+   "from": "psi0",
+   "to": "psi2"
+  },
+  {
+   "from": "psi1",
+   "to": "psi3"
+  },
+  {
+   "from": "graviton",
+   "to": "DIRECT"
+  },
+  {
+   "from": "graviton",
+   "to": "SPECTRAL"
+  },
+  {
+   "from": "graviton",
+   "to": "HYBRID"
+  },
+  {
+   "from": "graviton",
+   "to": "AUTO"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "ℋ₄",
+   "value": "tetraedro de 4 estados psiônicos",
+   "note": "ψ = f(sign L, sign ∂L); paridades ±1"
+  },
+  {
+   "symbol": "retenção",
+   "value": "1 − β ≈ 0,987968",
+   "note": "Verb Floor: energia espectral preservada; β=α·√e nunca literal"
+  },
+  {
+   "symbol": "beta_TGL",
+   "value": "0.012031300401 (alpha*sqrt(e))",
+   "note": "acoplamento; retencao espectral 1-beta=0.987968700 (nunca literal)"
+  },
+  {
+   "symbol": "rank_ffn",
+   "value": "24",
+   "note": "rank otimo COMPUTADO (energia>=1-beta); potencial 21.3x"
+  }
+ ],
+ "schema": 2,
+ "layers": [
+  {
+   "id": "space",
+   "name": "Espaco de Hilbert / substrato computacional",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "io",
+   "name": "Entrada / saida",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "transform",
+   "name": "Transformacao",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo (raiz / estado)",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "meshes": [
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.5,
+   "texture": "grid",
+   "color": "#b39dff",
+   "marker": "[SIM]",
+   "id": "posto0",
+   "position": [
+    0.0,
+    -0.8999999999999999,
+    0.0
+   ],
+   "scale": [
+    1.6498999999999997,
+    0.03,
+    1.6498999999999997
+   ],
+   "label": "posto 0",
+   "desc": "TENSOR: planos de posto empilhados = decomposicao em camadas."
+  },
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.6,
+   "texture": "grid",
+   "color": "#b39dff",
+   "marker": "[SIM]",
+   "id": "posto1",
+   "position": [
+    0.0,
+    -0.24792740578363093,
+    0.0
+   ],
+   "scale": [
+    1.6498999999999997,
+    0.03,
+    1.6498999999999997
+   ],
+   "label": "posto 1",
+   "desc": "TENSOR: planos de posto empilhados = decomposicao em camadas."
+  },
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.7,
+   "texture": "grid",
+   "color": "#b39dff",
+   "marker": "[SIM]",
+   "id": "posto2",
+   "position": [
+    0.0,
+    0.40414518843273806,
+    0.0
+   ],
+   "scale": [
+    1.6498999999999997,
+    0.03,
+    1.6498999999999997
+   ],
+   "label": "posto 2",
+   "desc": "TENSOR: planos de posto empilhados = decomposicao em camadas."
+  },
+  {
+   "id": "angular_gauge",
+   "layer": "transform",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    0.6,
+    0.4,
+    0
+   ],
+   "scale": [
+    0.5,
+    0.5,
+    0.02
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#ffd60a",
+   "material": "emissive",
+   "opacity": 0.5,
+   "texture": "phase",
+   "marker": "[SIM]",
+   "label": "θ = arcsin(g/gmax) — codificação angular",
+   "desc": "Disco de fase entre o gráviton (g=√|L|) e os modos: θ=arcsin(g/gmax) mapeia a magnitude em ângulo, resolução máxima em g pequeno (d(sinθ)/dθ=cosθ máx em 0); quantizado b bits θq. Reivindicação de título (CODIFICAÇÃO ANGULAR)."
+  },
+  {
+   "id": "verb_floor_spectrum",
+   "layer": "transform",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    -1.15,
+    -0.25,
+    0
+   ],
+   "scale": [
+    0.02,
+    0.75,
+    1.2
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#b39dff",
+   "material": "emissive",
+   "opacity": 0.45,
+   "texture": "spectral",
+   "marker": "[SIM]",
+   "label": "espectro σᵢ · Verb Floor (1−β = retenção)",
+   "desc": "Aleta espectral lateral aos planos de posto: o espectro de valores singulares σᵢ e o corte Verb Floor — rank ótimo = menor k com energia acumulada ≥ 1−β (β=α·√e). É o β que decide QUANTOS planos de posto reter no modo SPECTRAL/AUTO."
+  },
+  {
+   "id": "bitstream_tape",
+   "layer": "io",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    0,
+    -1.2,
+    0
+   ],
+   "scale": [
+    1.65,
+    0.02,
+    0.15
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "opacity": 0.7,
+   "texture": "circuit",
+   "marker": "[SIM]",
+   "label": "bitstream: ψ(2) · θq(b) · s(1) → BitPack N-bit",
+   "desc": "Fita plana de saída (algoritmo=plano): o stream serializado empacotado por BitPacker N-bit (8/10/12/14/16), ψ 2bit + θq b bit + s 1 bit, magic TGL4 (gmax,gmin,shape,packed). A informação escrita cai como superfície plana sob o dispositivo."
+  }
+ ],
+ "generated_by": "one_tgl_tensor.py (forma=conteudo)"
+}

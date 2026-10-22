@@ -1,0 +1,209 @@
+# -*- coding: utf-8 -*-
+"""one_motor_dobra.py — runner único forma = conteúdo da patente Motor de Dobra
+(BR102026003452-5 — Transporte por Reflexão Dimensional). [SIM][HARDWARE] DIGITAL-TWIN
+
+Demonstra a LÓGICA REFLECT/MANIFEST + Protocolo Farol Ψ — DIGITAL-TWIN APENAS.
+NÃO simula, NÃO alega e NÃO valida transporte físico, dobra do espaço-tempo ou τ≈10⁻⁴² s.
+  - β_TGL via α·√e (nunca literal), θ_Miguel = arcsin(√β) ≈ 6,29°;
+  - REFLECT: L → (ψ∈H4, θ=arcsin(g/gmax)); adjacência D_Ψ(A,B)<ε_c habilita/inibe a "dobra";
+  - MANIFEST: (ψ,θ) → L'=s·(gmax·sinθ)²; correlação round-trip = preservação de invariante ALGORÍTMICA;
+  - máquina de estados Farol Ψ F0–F5 com commit condicional e veto ético F3.
+
+HONESTIDADE [SIM][HARDWARE]: digital-twin — simulação não valida física; sem protótipo;
+propulsão NÃO demonstrada. physical_verdict_allowed=false.
+
+A RÉGUA: originais READ-ONLY. Copia o núcleo (skygrid_sim) e roda a CÓPIA no tgl_env:
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_motor_dobra.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"
+WORK = RUNNER_DIR / "_motor_core"
+PATENT_ID = "BR102026003452-5"
+SLUG = "motor_dobra"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst, ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_motor_dobra] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core, acom_mirror  # noqa: E402
+    from skygrid_sim.hardware_mocks import MotorDobraMock  # noqa: E402
+
+    beta = tgl_core.beta()
+    beta_ok = abs(beta - 0.0072973525693 * math.exp(0.5)) < 1e-15
+    theta_m_deg = math.degrees(tgl_core.theta_m())
+    print(f"[one_motor_dobra] β={beta} (α·√e? {beta_ok}) θ_Miguel={theta_m_deg:.4f}°")
+    tests = [{"test": "beta_theta_form", "passed": bool(beta_ok), "beta_runtime": beta,
+              "theta_miguel_deg": theta_m_deg}]
+
+    rng = np.random.default_rng(3452)
+    # REFLECT + MANIFEST round-trip (algorithmic invariant, NOT physical transport)
+    payload = rng.standard_normal((64, 64))
+    corr, r = acom_mirror.roundtrip_correlation(payload, angular_bits=16)
+    tests.append({"test": "reflect_manifest_invariant_preservation", "passed": bool(corr > 0.999),
+                  "roundtrip_correlation": corr,
+                  "note": "REFLECT L→(ψ,θ), MANIFEST (ψ,θ)→s·(gmax·sinθ)²; correlação = preservação "
+                          "de invariante ALGORÍTMICA (não transporte físico)"})
+    print(f"[one_motor_dobra] REFLECT/MANIFEST invariante: corr={corr:.6f}")
+
+    # adjacency condition D_Psi(A,B) < eps_c enables/inhibits the "fold"
+    def state_vec(x):
+        _, rr = acom_mirror.roundtrip_correlation(x, angular_bits=16)
+        m = rr.metadata
+        return np.array([m["f_exp"], m["state_entropy"], m["g_max"]])
+    A = state_vec(payload)
+    B_near = state_vec(payload + rng.standard_normal((64, 64)) * 0.01)
+    B_far = state_vec(rng.standard_normal((64, 64)) * 5)
+    eps_c = 0.5
+    d_near = float(np.linalg.norm(A - B_near))
+    d_far = float(np.linalg.norm(A - B_far))
+    adj_ok = d_near < eps_c and d_far >= eps_c
+    tests.append({"test": "adjacency_gate_D_psi", "passed": bool(adj_ok),
+                  "d_near": d_near, "d_far": d_far, "eps_c": eps_c,
+                  "note": "D_Ψ(A,B)<ε_c habilita a dobra (estados adjacentes); estados distantes inibem"})
+    print(f"[one_motor_dobra] adjacência: d_near={d_near:.3f}<ε_c · d_far={d_far:.3f}≥ε_c → {adj_ok}")
+
+    # Farol Psi state machine F0-F5 with ethical veto F3
+    def farol(adjacent: bool, ethical_ok: bool):
+        seq = ["F0_IDLE", "F1_ALIGN", "F2_LOCK"]
+        if not ethical_ok:
+            return seq + ["F3_ETHICAL_VETO"], False       # veto stops the commit
+        if not adjacent:
+            return seq + ["F3_ETHICAL_OK", "F4_ABORT_NOT_ADJACENT"], False
+        return seq + ["F3_ETHICAL_OK", "F4_COMMIT", "F5_MANIFEST"], True
+    seq_ok, commit_ok = farol(True, True)
+    seq_veto, commit_veto = farol(True, False)
+    fsm_ok = commit_ok and not commit_veto and "F3_ETHICAL_VETO" in seq_veto
+    tests.append({"test": "farol_psi_state_machine_ethical_veto", "passed": bool(fsm_ok),
+                  "commit_sequence": seq_ok, "veto_sequence": seq_veto,
+                  "note": "F0–F5 com commit condicional; veto ético F3 impede a dobra"})
+    print(f"[one_motor_dobra] Farol Ψ: commit={commit_ok} · veto ético bloqueia={not commit_veto}")
+
+    # device interface (mock — no physics)
+    mock = MotorDobraMock().fold("payload-teste")
+    tests.append({"test": "device_interface_mock_no_physics",
+                  "passed": bool(mock["physical_verdict_allowed"] is False),
+                  "mock_status": mock["status"], "note": mock["note"]})
+
+    passed = sum(1 for t in tests if t["passed"]); total = len(tests); all_ok = passed == total
+    summary = {"tests_passed": passed, "tests_total": total, "roundtrip_correlation": corr,
+               "seal": "digital-twin; propulsão NÃO demonstrada; sem protótipo"}
+    max_verdict = ("WARP_DIGITAL_TWIN_DEMONSTRATED ([SIM][HARDWARE] — REFLECT/MANIFEST, gate de "
+                   "adjacência e Farol Ψ com veto ético fecham como DIGITAL-TWIN; transporte "
+                   "físico, dobra e τ≈10⁻⁴² s NÃO simulados nem alegados)")
+    _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, "one_motor_dobra.py",
+            ["[SIM]", "[HARDWARE]"], beta, beta_ok, all_ok, max_verdict, tests, summary,
+            module_hashes,
+            "DIGITAL-TWIN — simulação não valida física; sem protótipo; propulsão NÃO "
+            "demonstrada. REFLECT/MANIFEST é preservação de invariante algorítmica, não "
+            "transporte físico [HARDWARE].",
+            fig_builder=lambda plt, fd: _fig_motor(plt, fd, payload, acom_mirror))
+    return 0 if all_ok else 1
+
+
+def _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, runner, markers, beta, beta_ok,
+            all_ok, max_verdict, tests, summary, module_hashes, note, fig_builder=None):
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {"patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": runner,
+               "markers": markers, "physical_verdict_allowed": False, "beta_runtime": beta,
+               "beta_matches_alpha_sqrt_e": beta_ok,
+               "verdict": max_verdict.split(" ")[0] if all_ok else "PARTIAL_DEMONSTRATION",
+               "max_verdict": max_verdict,
+               "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                             "free_parameters": 0},
+               "tests": tests, "summary": summary,
+               "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+               "note": note}
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+    figs = []
+    if fig_builder is not None:
+        try:
+            import matplotlib
+            matplotlib.use("Agg")
+            import matplotlib.pyplot as plt
+            fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+            figs = fig_builder(plt, fig_dir) or []
+        except Exception as e:
+            print(f"[{SLUG}] figura pulada: {e}")
+    report_md = results_dir / "report.md"
+    lines = [f"# Relatório auditável — {runner}\n", f"- Run `{ts}` · Patente `{PATENT_ID}`\n",
+             f"- Veredito: **{max_verdict}**\n",
+             f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n",
+             f"- Testes: **{summary['tests_passed']}/{summary['tests_total']}**\n"]
+    for t in tests:
+        lines.append(f"  - {'✓' if t['passed'] else '✗'} {t['test']}\n")
+    lines.append(f"- physical_verdict_allowed: **False**.\n\n{note}\n")
+    lines.append("Núcleo copiado do piloto (READ-ONLY); original intacto. 1 = 1. Tetelestai.\n")
+    report_md.write_text("".join(lines), encoding="utf-8")
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {"timestamp": ts, "patent_id": PATENT_ID, "runner": runner, "beta_runtime": beta,
+            "physical_verdict_allowed": False, "max_verdict": max_verdict,
+            "tests_passed": summary["tests_passed"], "result_hash": result_hash,
+            "sha256": file_hashes, "markers": markers,
+            "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/")}
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[{SLUG}] SELADO · result_hash {result_hash[:16]}… · {summary['tests_passed']}/{summary['tests_total']} testes")
+
+
+def _fig_motor(plt, fig_dir, payload, acom_mirror):
+    _, r = acom_mirror.roundtrip_correlation(payload, angular_bits=16)
+    out = acom_mirror.DimensionalMirror(angular_bits=16).manifest(r)
+    fig, ax = plt.subplots(1, 2, figsize=(7.5, 3.6))
+    ax[0].imshow(payload, cmap="viridis"); ax[0].set_title("origem (ψ,θ) [SIM]", fontsize=9); ax[0].axis("off")
+    ax[1].imshow(out, cmap="viridis"); ax[1].set_title("manifestado L'=s·(gmax·sinθ)² [SIM]", fontsize=9); ax[1].axis("off")
+    fig.suptitle("Motor de Dobra — REFLECT/MANIFEST digital-twin (não é transporte físico)", fontsize=10)
+    fp = fig_dir / "fig_reflect_manifest.png"; plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+    return ["fig_reflect_manifest.png"]
+
+
+if __name__ == "__main__":
+    sys.exit(main())

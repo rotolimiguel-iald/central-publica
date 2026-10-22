@@ -1,0 +1,137 @@
+{
+ "patent_id": "BR102025026951-1",
+ "slug": "acom",
+ "timestamp": "2026-07-09T23-30-15",
+ "runner": "one_acom.py (evoluído — operador de Lindblad ativo real)",
+ "markers": [
+  "[SIM]",
+  "[REAL]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "theta_miguel_deg": 6.297289216477979,
+ "verdict": "ACOM_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "ACOM_FULL_LOGIC_DEMONSTRATED ([SIM] — operador de Lindblad ATIVO real (∂H=H²+α²LΔ) + REFLECT/MANIFEST exato + SIGNAL/SPECTRAL/PSIBIT (Trinity) + serialização SHA-256; β=α·√e injetado no lugar de 0.012 literal; sinais sintéticos, não a Tabela 1; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "verb_floor_energy": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original_prototype": 0.012,
+   "op_alpha2": 0.012031300400803142,
+   "verb_floor_1_minus_beta": 0.9879686995991969
+  },
+  {
+   "test": "reflect_manifest_exact",
+   "passed": true,
+   "roundtrip_residual_max": 3.9163938347251765e-15,
+   "note": "g=√|L|, s=sign(L), L'=s·g² — reconstrução exata sem epsilon na raiz"
+  },
+  {
+   "test": "lindblad_active_thermostat",
+   "passed": true,
+   "delta_initial": 0.4143228294731138,
+   "delta_final": 9.999135938980077e-09,
+   "iterations": 290,
+   "state": "TETELESTAI",
+   "note": "∂H=H²+α²LΔ converge H ruidoso ao Logos; Δ decai a estado TRUTH/TETELESTAI"
+  },
+  {
+   "test": "signal_compress_decompress",
+   "passed": true,
+   "per_signal": {
+    "chirp": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.999999987393449,
+     "psnr_db": 79.00610566447311,
+     "state": "TRUTH"
+    },
+    "gaussiano": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999999616921307,
+     "psnr_db": 84.9232577402573,
+     "state": "TRUTH"
+    },
+    "esparso": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999999713000873,
+     "psnr_db": 100.68459909846874,
+     "state": "TRUTH"
+    }
+   }
+  },
+  {
+   "test": "quantization_bits_configurable",
+   "passed": true,
+   "per_bits": {
+    "8bit": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999968426174084
+    },
+    "10bit": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999997989660877
+    },
+    "12bit": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.999999987393449
+    },
+    "16bit": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999999999508488
+    }
+   }
+  },
+  {
+   "test": "header_serialization_sha256",
+   "passed": true,
+   "file_bytes": 71640,
+   "sha256_file": "be5aaa9d60b71096213484ed5f5e63cc7c27db91caba6c43e78a1d0e9b0c2b8b",
+   "reload_matches_memory": true,
+   "note": "magic b'ACOM' + versão + dims + α² + escala; integridade SHA-256 verificada"
+  },
+  {
+   "test": "spectral_svd_verb_floor",
+   "passed": true,
+   "rank_optimal": 12,
+   "full_rank": 300,
+   "energy_retained": 0.9999698354960255,
+   "compression_ratio": 12.479201331114808,
+   "cosine": 0.9999849176342741,
+   "note": "PORT FIEL da patente [025]-[027]; rank k por energia ≥ 1−β; β injetado"
+  },
+  {
+   "test": "psibit_four_states",
+   "passed": true,
+   "counts": {
+    "psi_plus": 10057,
+    "psi_plus_plus": 10721,
+    "psi_plus_minus": 9760,
+    "psi_minus": 9462
+   },
+   "n_states": 4,
+   "roundtrip_faithful": true,
+   "note": "PORT FIEL: ψ de (sign L, sign ∂L) → 4 estados ψ₊ψ₋/ψ₊/ψ₋/ψ₊ψ₊"
+  }
+ ],
+ "summary": {
+  "tests_passed": 8,
+  "tests_total": 8,
+  "reflect_manifest_residual_max": 3.9163938347251765e-15,
+  "lindblad_delta_final": 9.999135938980077e-09,
+  "lindblad_state": "TETELESTAI",
+  "signal_mean_ratio": 3.5505059470974616,
+  "signal_mean_cosine": 0.9999999734618891,
+  "spectral_rank_optimal": 12,
+  "header_sha256_ok": true
+ },
+ "source_prototype": "prototype_src/ACOMV14.py (LindbladOperator ∂H=H²+α²LΔ; resgatado READ-ONLY de C:/IALD/projetos_pyhton/acom; β injetado) + acom_v18_dirac.py (proveniência)",
+ "note": "RUNNER EVOLUÍDO: importa e roda o LindbladOperator real de ACOMV14.py (o operador de Lindblad ATIVO ∂H=H²+α²LΔ) com α²=α·√e injetado (o original trazia 0.012 literal). SIGNAL/quantização/serialização são do operador; SPECTRAL/PSIBIT são PORTES FIÉIS da patente com β injetado. Sinais/matrizes SINTÉTICOS; NÃO os números da Tabela 1. Nenhum token/modelo HuggingFace (P-04). Simulação não valida física."
+}

@@ -1,0 +1,247 @@
+{
+ "patent_id": "BR102026003441-0",
+ "slug": "tgl_tensor",
+ "runner_family": "one_tgl_tensor.py (co-construido; mesmos testes/criterios)",
+ "markers": [
+  "[PILOTO]",
+  "[SIM]"
+ ],
+ "physical_verdict_allowed": false,
+ "marker": "[SIM] compressor sob [PILOTO]; a simulacao demonstra a logica, nao a fisica",
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "spectral_retention_1_minus_beta": 0.9879686995991969,
+ "integrity": {
+  "tgl_chain_ok": true,
+  "tgl_verdict": "1=1=VERDADEIRO=HAJA_LUZ",
+  "beta_runtime": 0.012031300400803142,
+  "theta_m_deg": 6.297289216477979,
+  "n_sources": 6,
+  "n_inlined": 3,
+  "sources": [
+   {
+    "module": "tgl_core",
+    "role": "FUNDACAO — beta = alpha*sqrt(e) (a regua, NUNCA literal); cadeia TGL fail-closed [IALD / a teoria]",
+    "origin": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim/tgl_core.py",
+    "sha256": "a1e103cd08eb3f45144200b0c6c588589d267868cd85101c527138e3bce81f3f",
+    "inlined": true
+   },
+   {
+    "module": "tgl_tensor_v3",
+    "role": "MOTOR — TGLTensorV3: engine dos 4 modos (DIRECT/SPECTRAL/HYBRID/AUTO), SVD + rank adaptativo (>=1-beta)",
+    "origin": "patents/BR102026003441-0_TGL_TENSOR/prototype_src/tgl_tensor_v3.py",
+    "sha256": "bb27b9afd7da23d9688a5efb4f658138604a5e5eaa64fe3b0d451b996ccf7c39",
+    "inlined": true
+   },
+   {
+    "module": "tgl_tensor_v4",
+    "role": "SERIALIZADOR — BitPackerNumPy N-bit (8/10/12/14/16) round-trip exato; BitPackerTorch GPU = corpus nao inlined",
+    "origin": "patents/BR102026003441-0_TGL_TENSOR/prototype_src/tgl_tensor_v4.py",
+    "sha256": "927dcf872cc21e777fc879811c79356a67267572e3426e9be8425cd703673890",
+    "inlined": true
+   },
+   {
+    "module": "tgl_tensor_v2_2",
+    "role": "corpus (nao inlined) — compressor unico do ramo ACOM (4 modos + SVD GPU + rank 1-beta, beta correto)",
+    "origin": "patents/BR102026003441-0_TGL_TENSOR/prototype_src/tgl_tensor_v2_2.py",
+    "sha256": "0e4528891b95f2164a3229ae50307457f51c4f799eda613a449db8e8c505bac0",
+    "inlined": false
+   },
+   {
+    "module": "tgl_tensor_v2_3",
+    "role": "corpus (nao inlined) — certificado de inferencia honesta (cadeia de NOMEs) + TGL-Hash",
+    "origin": "patents/BR102026003441-0_TGL_TENSOR/prototype_src/tgl_tensor_v2_3.py",
+    "sha256": "a631284ba60a4b58a9625c13c871f70caed777edd34069b6b2ec615c26abf36f",
+    "inlined": false
+   },
+   {
+    "module": "tgl_tensor_v2_1",
+    "role": "corpus (nao inlined) — suite de ataques adversariais (ruido theta) + NOME auto-delator",
+    "origin": "patents/BR102026003441-0_TGL_TENSOR/prototype_src/tgl_tensor_v2_1.py",
+    "sha256": "1eabb3cdd178d0cf9a577f114a6bfd3098b7db18548481480d95c6fe5e8796dd",
+    "inlined": false
+   }
+  ],
+  "combined_sha256": "270c6fcb0d1b5484da87d9116da7d4ec7615aa47edeb0838df80266ce4a94535",
+  "combined_recomputed": "270c6fcb0d1b5484da87d9116da7d4ec7615aa47edeb0838df80266ce4a94535",
+  "provenance_checked": true,
+  "combined_ok": true,
+  "physical_verdict_allowed": false
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_prototype_label": 0.012,
+   "spectral_retention_1_minus_beta": 0.9879686995991969,
+   "note": "beta = alpha*sqrt(e) injetado (o prototipo trazia 0.012 literal); nunca literal no calculo"
+  },
+  {
+   "test": "mode_DIRECT",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.7640301818521205,
+     "cosine": 0.9999999449030538
+    },
+    "embeddings": {
+     "ratio": 3.7645905456327933,
+     "cosine": 0.9999999575190274
+    },
+    "ffn_weights": {
+     "ratio": 3.7643680017806305,
+     "cosine": 0.9999999506207159
+    },
+    "gradientes_esparso": {
+     "ratio": 3.762935089369708,
+     "cosine": 0.9999999693995422
+    }
+   }
+  },
+  {
+   "test": "mode_SPECTRAL",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.763516811669107,
+     "cosine": 0.9999999321180293
+    },
+    "embeddings": {
+     "ratio": 3.2682467802928548,
+     "cosine": 0.9940356772581067
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    }
+   }
+  },
+  {
+   "test": "mode_HYBRID",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.763516811669107,
+     "cosine": 0.9999999321180293
+    },
+    "embeddings": {
+     "ratio": 3.2682467802928548,
+     "cosine": 0.9940356772581067
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    }
+   }
+  },
+  {
+   "test": "mode_AUTO",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.7640301818521205,
+     "cosine": 0.9999999449030538
+    },
+    "embeddings": {
+     "ratio": 3.7645905456327933,
+     "cosine": 0.9999999575190274
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    },
+    "gradientes_esparso": {
+     "ratio": 3.762935089369708,
+     "cosine": 0.9999999693995422
+    }
+   }
+  },
+  {
+   "test": "auto_mode_selection",
+   "passed": true,
+   "chosen_for_kv_cache": "CompressionMode.DIRECT",
+   "note": "AUTO escolhe o modo por analise espectral (baixo rank -> SPECTRAL)"
+  },
+  {
+   "test": "bitpacker_v4_Nbit_exact",
+   "passed": true,
+   "per_bits": {
+    "8bit": true,
+    "10bit": true,
+    "12bit": true,
+    "14bit": true,
+    "16bit": true
+   }
+  },
+  {
+   "test": "spectral_analysis_verb_floor",
+   "passed": true,
+   "rank_optimal": 24,
+   "is_low_rank": true,
+   "compression_potential": 21.322921750447374,
+   "note": "rank otimo pela energia >= 1-beta (Verb Floor derivado da TGL)"
+  },
+  {
+   "test": "bits_sweep_fidelity_monotone",
+   "passed": true,
+   "cosine_8bit": 0.9999872745992243,
+   "cosine_16bit": 0.9999999998070218,
+   "note": "varredura bits: mais bits nunca piora a fidelidade DIRECT (round-trip exato)"
+  },
+  {
+   "test": "rank_adaptive_monotone_in_energy",
+   "passed": true,
+   "ranks_ffn": [
+    21,
+    23,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24
+   ],
+   "energy_grid": [
+    0.9,
+    0.95,
+    0.98,
+    0.9879686995991969,
+    0.99,
+    0.995,
+    0.999,
+    0.9999
+   ],
+   "note": "rank otimo nao-decrescente no limiar de energia; Verb Floor=1-beta marcado"
+  }
+ ],
+ "summary": {
+  "tests_passed": 10,
+  "tests_total": 10,
+  "modes": [
+   "DIRECT",
+   "SPECTRAL",
+   "HYBRID",
+   "AUTO"
+  ],
+  "auto_chose_for_kv": "CompressionMode.DIRECT",
+  "bitpacker_ok": true,
+  "per_mode_best_ratio": {
+   "DIRECT": 3.7645905456327933,
+   "SPECTRAL": 80.12348131733782,
+   "HYBRID": 80.12348131733782,
+   "AUTO": 80.12348131733782
+  },
+  "per_mode_computed_rank_ffn": {
+   "DIRECT": 0,
+   "SPECTRAL": 24,
+   "HYBRID": 24,
+   "AUTO": 24
+  },
+  "verb_floor_1_minus_beta": 0.9879686995991969,
+  "rank_optimal_ffn": 24
+ },
+ "max_verdict": "TENSOR_FULL_LOGIC_DEMONSTRATED ([PILOTO][SIM] — os 4 modos reais do operador (DIRECT/SPECTRAL/HYBRID/AUTO) + BitPacker N-bit + varreduras bits/rank-energia fecham; beta injetado; numeros sinteticos, nao a Tabela 2; nada valida fisica)",
+ "verdict": "TENSOR_FULL_LOGIC_DEMONSTRATED",
+ "result_hash": "4abcc4263e0f10022b56b38ce6e075149bb5f815417812ff279b1008330027f4"
+}

@@ -1,0 +1,42 @@
+{
+  "patent_id": "BR102026003428-2",
+  "title": "ACOM Mirror — Reflexão Dimensional em H4",
+  "source": "Relatório descritivo [012], Figuras 1–4; memória técnica da patente",
+  "note": "Diagrama de componentes clicável (camada b). Ilustração de engenharia derivada dos desenhos do depósito INPI — não é prova física.",
+  "groups": [
+    {
+      "name": "Blocos do sistema (Figura 1)",
+      "kind": "block",
+      "components": [
+        { "id": "100", "label": "Módulo de Entrada", "desc": "Recebe dados de diferentes tipos em formato tensorial — a 'luz' L.", "marker": "[REAL]", "x": 0.06, "y": 0.12 },
+        { "id": "102", "label": "Computador Gravitacional", "desc": "Executa g = √|L| e a derivada temporal ∂L.", "marker": "[REAL]", "x": 0.28, "y": 0.12 },
+        { "id": "104", "label": "Nominador de Estados", "desc": "Projeta cada par (sign(L), sign(∂L)) em ψ ∈ H4.", "marker": "[REAL]", "x": 0.50, "y": 0.12 },
+        { "id": "106", "label": "Codificador Angular", "desc": "Computa θ = arcsin(g/gmax) e quantiza o ângulo (resolução não-linear, máxima em g pequeno).", "marker": "[REAL]", "x": 0.72, "y": 0.12 },
+        { "id": "108", "label": "Analisador de Paridade", "desc": "Calcula a Força de Expulsão Fexp e a Entropia de Estados Sψ — métricas intrínsecas sem custo adicional.", "marker": "[REAL]", "x": 0.72, "y": 0.44 },
+        { "id": "110", "label": "Empacotador Espelhado", "desc": "Serializa ψ (2 bits) + θq (b bits).", "marker": "[REAL]", "x": 0.50, "y": 0.44 },
+        { "id": "112", "label": "Compressor Entrópico", "desc": "Compressão sem perda do reflexo (zstd nível 22 / zlib nível 9).", "marker": "[REAL]", "x": 0.28, "y": 0.44 },
+        { "id": "114", "label": "Módulo de Saída", "desc": "Gera o objeto MirrorReflection (reflexo R + metadados).", "marker": "[REAL]", "x": 0.06, "y": 0.44 }
+      ]
+    },
+    {
+      "name": "Estados do Espaço de Hilbert H4 (Tabela 1 / Figura 4)",
+      "kind": "state",
+      "components": [
+        { "id": "ψ0", "label": "COLAPSO+ · |0⟩", "desc": "(sign L=+, sign ∂L=−) · vetor base (1,0,0,0) · paridade Inversa (−1).", "marker": "[REAL]", "x": 0.12, "y": 0.78 },
+        { "id": "ψ1", "label": "ASCENSÃO+ · |1⟩", "desc": "(+,+) · vetor base (0,1,0,0) · paridade Normal (+1).", "marker": "[REAL]", "x": 0.37, "y": 0.78 },
+        { "id": "ψ2", "label": "EMERGÊNCIA− · |2⟩", "desc": "(−,+) · vetor base (0,0,1,0) · paridade Normal (+1).", "marker": "[REAL]", "x": 0.62, "y": 0.78 },
+        { "id": "ψ3", "label": "QUEDA− · |3⟩", "desc": "(−,−) · vetor base (0,0,0,1) · paridade Inversa (−1).", "marker": "[REAL]", "x": 0.87, "y": 0.78 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "100", "to": "102" }, { "from": "102", "to": "104" },
+    { "from": "104", "to": "106" }, { "from": "106", "to": "108" },
+    { "from": "108", "to": "110" }, { "from": "110", "to": "112" },
+    { "from": "112", "to": "114" }
+  ],
+  "constants": [
+    { "symbol": "β_TGL", "value": "α_fine · √e ≈ 0,012031300400803142", "note": "α²=0,012 no texto é o valor arredondado; em código nunca literal." },
+    { "symbol": "θ_Miguel", "value": "arcsin(√β) ≈ 6,29°", "note": "Transição ruído ↔ informação." }
+  ]
+}

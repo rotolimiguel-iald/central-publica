@@ -1,0 +1,144 @@
+{
+ "patent_id": "BR102026003450-9",
+ "slug": "supercondutor",
+ "timestamp": "2026-07-15T22-08-35",
+ "runner": "one_supercondutor.py",
+ "markers": [
+  "[SIM]",
+  "[HARDWARE]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "SUPERCONDUCTOR_LOGIC_DEMONSTRATED",
+ "max_verdict": "SUPERCONDUCTOR_LOGIC_DEMONSTRATED ([SIM][HARDWARE] — ACOM preservação, transição tipo-fase e balanço fail-closed fecham no MODELO; dispositivo físico NÃO construído; não simula plasma/vácuo/óptica)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form_and_critical_point",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_c": 0.012031300400803142
+  },
+  {
+   "test": "acom_compress_resurrect_preservation",
+   "passed": true,
+   "max_residual": 1.0310988667854205e-16,
+   "polarity_preserved": true,
+   "note": "g=√|L| (eq.4), L=s·g² (eq.5), η e s preservados"
+  },
+  {
+   "test": "holographic_sc_phase_transition",
+   "passed": true,
+   "P_th": 1.0,
+   "eta_below_threshold": 0.198018073386137,
+   "eta_above_threshold": 0.9865697560984518,
+   "note": "η(P_MW)=tanh(P_MW/P_th): abaixo do limiar ~0, acima →1 (transição tipo-fase)"
+  },
+  {
+   "test": "metric_coefficients",
+   "passed": true,
+   "g_tt_at_low": 0.9168834650713862,
+   "g_LL_at_high": 1000.0000000001102,
+   "v_info_endpoints": [
+    0.9168834650713862,
+    0.0009999999999998899
+   ],
+   "note": "eq.18: g_tt→0, g_LL→∞ no horizonte α²→α²_c. AVISO [OPEN]: aqui v_info→0 (algébrico), divergente da prosa do relatório 'v_info→∞'. Reportado honestamente."
+  },
+  {
+   "test": "energy_balance_fail_closed",
+   "passed": true,
+   "delta_S_endpoints": [
+    3.1544633063648576e-11,
+    0.004479641052637227
+   ],
+   "over_unity_detected": false,
+   "e_out_over_e_in": 0.999,
+   "note": "ΔS→0 é PREDIÇÃO DE MODELO; guarda anti-over-unity ativa (e_out ≤ e_in). [DER]"
+  },
+  {
+   "test": "transition_scale_invariance_Pth_sweep",
+   "passed": true,
+   "P_th_values": [
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    3.0
+   ],
+   "width_norm_mean": 1.3718844806423331,
+   "width_norm_ptp": 2.220446049250313e-16,
+   "P50_over_Pth_mean": 0.5493062568410104,
+   "note": "η=tanh(P/P_th): largura 10-90% escala ∝ P_th (auto-similar); P_½/P_th=atanh(0.5)=0,5493 constante. [DER]"
+  },
+  {
+   "test": "metric_critical_exponent",
+   "passed": true,
+   "v_info_exponent_fit": 1.0,
+   "g_tt_horizon": 0.0004999999999999449,
+   "g_LL_horizon": 2000.0000000002203,
+   "v_info_horizon": 0.0004999999999999449,
+   "note": "v_info(α²)~(1-α²/α²_c)^p; ajuste p≈1 (algébrico, não →∞). AVISO [OPEN]: diverge da prosa 'v_info→∞'. Reportado honestamente."
+  },
+  {
+   "test": "coherence_plateau_converges_1_minus_beta",
+   "passed": true,
+   "plateau_target_1_minus_beta": 0.9879686995991969,
+   "plateau_mean": 0.9879574856627157,
+   "gains_scanned": [
+    0.5,
+    1.0,
+    2.0,
+    4.0
+   ],
+   "plateaus": [
+    0.9879238458896276,
+    0.9879686975628417,
+    0.9879686995991969,
+    0.9879686995991969
+   ],
+   "note": "|ρ01|(t)→(1−β): platô = informação preservada; independe do ganho k (só τ muda). β=α·√e injetado, nunca literal. [DER]"
+  },
+  {
+   "test": "device_interface_mock_no_physics",
+   "passed": true,
+   "mock_status": "HARDWARE_MOCK",
+   "note": "translacao nao-EM alegada na patente; NAO validada em software"
+  }
+ ],
+ "summary": {
+  "tests_passed": 9,
+  "tests_total": 9,
+  "alpha2_c": 0.012031300400803142,
+  "acom_residual": 1.0310988667854205e-16,
+  "v_info_note": "algebraic v_info->0 vs prose ->inf [OPEN]",
+  "over_unity_guard": "active",
+  "transition_width_norm": 1.3718844806423331,
+  "metric_critical_exponent": 1.0,
+  "coherence_plateau": 0.9879574856627157,
+  "coherence_plateau_target": 0.9879686995991969,
+  "sweeps": {
+   "P_th_scan": [
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    3.0
+   ],
+   "alpha2_points": 600,
+   "coherence_gains": [
+    0.5,
+    1.0,
+    2.0,
+    4.0
+   ]
+  }
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "Demonstração [SIM] da lógica do dispositivo (sinal + balanço de modelo). NÃO simula plasma OH/vácuo/óptica; NÃO prova translação [HARDWARE]. Divergência v_info→0 (algébrico) vs prosa →∞ registrada [OPEN]. Simulação não valida física."
+}

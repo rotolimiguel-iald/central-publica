@@ -1,0 +1,185 @@
+{
+ "patent_id": "BR102026003456-8",
+ "slug": "fusao_frio",
+ "timestamp": "2026-08-19T17-59-39",
+ "runner": "one_fusao_frio.py",
+ "markers": [
+  "[ENERGY]",
+  "[SIM]",
+  "[CONJ]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "COLD_FUSION_MATH_DEMONSTRATED",
+ "max_verdict": "COLD_FUSION_MATH_DEMONSTRATED ([ENERGY][SIM][CONJ] — Régua TGL, T_c da linha OH, Landau-Ginzburg, colapso ACOM reversível e barreira como FUNÇÕES fecham; amplificação é TEÓRICA, não medida; SEM qualquer instrução operacional)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form_and_coupling_scaling",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_e_2rho0": 0.024062600801606285,
+   "note": "β=α·√e≈0,012031; α²_e=2β≈0,024 para ρ_Ψ=2ρ₀ (escalonamento puro)"
+  },
+  {
+   "test": "critical_temperature_from_OH_line",
+   "passed": true,
+   "T_c_K": 0.08002061131564829,
+   "T_c_mK": 80.0206113156483,
+   "nu_OH_GHz": 1.667359,
+   "note": "T_c = h·ν_OH/k_B a partir da linha OH — apenas fórmula (≈80 mK)"
+  },
+  {
+   "test": "tgl_ruler_formulas",
+   "passed": true,
+   "L_star_endpoints": [
+    58.77226547675138,
+    143.96206144543237
+   ],
+   "t_x_endpoints": [
+    166.23306985722766,
+    27.70551164287128
+   ],
+   "transition_boundary_rho": 1.0012531328320802,
+   "note": "L*(ρ)=√ρ/β e t_x(ρ)=1/(βρ) como fórmulas puras; fronteira de transição"
+  },
+  {
+   "test": "tgl_ruler_powerlaw_exponents",
+   "passed": true,
+   "exponent_L_star": 0.4999999999999983,
+   "exponent_t_x": -1.000000000000001,
+   "note": "expoentes de lei de potência: L*∝ρ^{+1/2}, t_x∝ρ^{-1} (fórmulas puras, α-livre na forma)"
+  },
+  {
+   "test": "landau_ginzburg_order_parameter",
+   "passed": true,
+   "s_below_Tc": 0.7071067811865476,
+   "s_above_Tc": 0.0,
+   "alpha_T_sign_flip": true,
+   "note": "f(ρ,T,s) Landau-Ginzburg: s≠0 abaixo de T_c, s=0 acima; α_T muda de sinal em T_c"
+  },
+  {
+   "test": "landau_free_energy_double_well",
+   "passed": true,
+   "critical_exponent_beta_MF": 0.5,
+   "double_well_argmin": 0.707,
+   "s_star_theory": 0.7071067811865476,
+   "f_min": -0.1249999885995,
+   "f_min_theory": -0.125,
+   "note": "campo médio: β_MF=1/2; f(s)=α_T s²+½s⁴ tem mínimos s*=√(−α_T) e f_min=−α_T²/2"
+  },
+  {
+   "test": "acom_collapse_reversible",
+   "passed": true,
+   "max_residual": 2.170464178893045e-16,
+   "note": "|L⟩→(g,s)→L'=s·g² reversível até ~eps (eqs.11–13)"
+  },
+  {
+   "test": "barrier_amplification_function_theoretical",
+   "passed": true,
+   "amplification_at_dV0": 1.0,
+   "amplification_at_dV5": 148.4131591025766,
+   "note": "σ_TGL/σ₀=exp(ΔV_C/k_BT) como FUNÇÃO teórica (eqs.14–17). AMPLIFICAÇÃO TEÓRICA, NÃO MEDIDA. [CONJ]"
+  },
+  {
+   "test": "amplification_along_ruler_theoretical",
+   "passed": true,
+   "amp_min": 1.0620027390972255,
+   "amp_max": 1.4346759602274444,
+   "ln_amp_slope": 0.12031300400803151,
+   "kappa_beta": 0.12031300400803142,
+   "note": "σ_TGL/σ₀=exp(ΔV_C(ρ)/k_BT) com ΔV_C∝β·ρ — FUNÇÃO teórica ao longo da régua, monotônica, ln-linear com inclinação κ·β. AMPLIFICAÇÃO TEÓRICA, NÃO MEDIDA. [CONJ]"
+  },
+  {
+   "test": "log_dense_incommensurable_mark",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "integer_incommensurability_2b_ne_3a_upto": 10,
+   "min_positive_gap_by_K": {
+    "3": 0.11778303565638337,
+    "6": 0.052116001139012935,
+    "10": 0.013551033378355726
+   },
+   "gap_falls_with_range": true,
+   "min_gap_Kmax_over_beta": 1.1263149391109155,
+   "note": "[DER][SIM] amplificacao v138 (um.py v131, a marca log-densa): (1/2,1/3) incomensuraveis (2^b != 3^a exato) e o menor gap de {m*log2+n*log3} CAI com K=3,6,10 — espectro de razoes log-DENSO; assinatura abstrata da Regua TGL de razoes. [ENERGY]: nenhum parametro operacional, nenhuma temperatura/energia nova; nao e veredito fisico."
+  },
+  {
+   "test": "deepening_v2_acom_radicalization_tower",
+   "passed": true,
+   "tower_levels": 8,
+   "sign_minted_once_conserved": true,
+   "resurrection_residual": 3.745977817092096e-14,
+   "log_contraction_slope_fit": -0.6931471805599454,
+   "log_contraction_slope_theory": -0.6931471805599453,
+   "fixed_points_of_sqrt": [
+    0.0,
+    1.0
+   ],
+   "no_third_fixed_point_min_gap": 0.024715959533304188,
+   "linearization_rate_at_1": 0.4999998807907673,
+   "N_star_measured": 7,
+   "N_star_predicted": 7,
+   "mean_abs_lnL": 0.8744026047418886,
+   "beta_runtime": 0.012031300400803142,
+   "negative_sign_dropped_residual": 1.9418136174112341,
+   "negative_wrong_radical_slope": -1.0986122886681093,
+   "note": "[DER][SIM] deepening_v2 (own-mechanism, eqs.11-13): torre de radicalizacao ACOM — sinal cunhado 1x e conservado; ressurreicao N-fold exata; contracao log com inclinacao -ln2 por ajuste; pontos fixos de sqrt = {0,1} com taxa 1/2 no atrator; N* medido vs previsto pela regua beta (runtime). NEGATIVOS: sem-sinal REJEITADO (residuo grande); raiz cubica REJEITADA (-ln3 != -ln2). [ENERGY]: so matematica abstrata; nao e veredito fisico."
+  },
+  {
+   "test": "amplification_v168_ergodic_mean_section",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "rotation_angles": [
+    0.6931471805599453,
+    1.0986122886681098
+   ],
+   "theorem_constant_C": 2.943972160909413,
+   "err_by_N": {
+    "50": 0.0588060947147827,
+    "200": 0.0029197636240644955,
+    "800": 0.002636558236746665,
+    "3200": 0.0005975229855215602,
+    "4096": 0.0003025296927894205
+   },
+   "theorem_bound_holds_all_N": true,
+   "equivariance_defect_le_2_over_N": true,
+   "err_final_N4096": 0.0003025296927894205,
+   "N_star_measured": 256,
+   "N_star_bound_pow2": 256,
+   "invariant_rank_trace": 1.9999999999999996,
+   "memorial_M_rho_trace": 0.28979716496837493,
+   "memorial_M_rho_norm": 0.28979716496837493,
+   "negative_no_invariant_mean_norm": 0.0005975229855215122,
+   "negative_no_invariant_trace": 0.0016067133864297836,
+   "negative_nonunitary_idem_defect": 127790.90705722316,
+   "true_idem_defect_N800": 0.0026303070871461103,
+   "note": "[DER][SIM] amplificacao v168 (um.py v166-v167, ErgodicMeanSection): a media de Birkhoff (1/N) sum U^k converge a projecao invariante (erro <= C/N por teorema; equivariancia <= 2/N; regua beta em runtime: N* medido vs bound). Angulos log2/log3 = as razoes da marca log-densa como fases. Eco memorial M[rho]=Tr[rho Pi_N] por duas vias [DER]. NEGATIVOS: sem-invariante REJEITADO (traco ~0 nao e posto >= 1); nao-unitario REJEITADO (idempotencia quebra). [ENERGY]: so matrizes abstratas; NAO e veredito fisico."
+  }
+ ],
+ "summary": {
+  "tests_passed": 12,
+  "tests_total": 12,
+  "T_c_mK": 80.0206113156483,
+  "alpha2_e_2rho0": 0.024062600801606285,
+  "amplification": "theoretical_not_measured",
+  "transition_boundary_rho": 1.0012531328320802,
+  "ruler_exponent_L_star": 0.4999999999999983,
+  "ruler_exponent_t_x": -1.000000000000001,
+  "lg_critical_exponent_beta_MF": 0.5,
+  "amplification_max_theoretical": 1.4346759602274444,
+  "amplification_ln_slope": 0.12031300400803151,
+  "tower_log_contraction_slope": -0.6931471805599454,
+  "tower_N_star_measured": 7,
+  "ergodic_err_final_N4096": 0.0003025296927894205,
+  "ergodic_N_star_measured": 256,
+  "operational_content": "NONE_by_design_ENERGY_trava"
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "[ENERGY] TRAVA MÁXIMA: só matemática abstrata + constantes CODATA. SEM parâmetros de criostato/MW, SEM manuseio de D₂O/deutério, SEM thresholds de nêutrons. Amplificação é teórica [CONJ], não medida. Nenhum dado experimental. Simulação não valida física."
+}

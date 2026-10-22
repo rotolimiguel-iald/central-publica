@@ -1,0 +1,718 @@
+{
+ "patent_id": "BR102025026951-1",
+ "slug": "acom",
+ "timestamp": "2026-10-01T12-37-19",
+ "runner": "one_acom.py (evoluído — operador de Lindblad ativo real)",
+ "markers": [
+  "[SIM]",
+  "[REAL]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "theta_miguel_deg": 6.297289216477979,
+ "verdict": "ACOM_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "ACOM_FULL_LOGIC_DEMONSTRATED ([SIM] — operador de Lindblad ATIVO real (∂H=H²+α²LΔ) + REFLECT/MANIFEST exato + SIGNAL/SPECTRAL/PSIBIT (Trinity) + serialização SHA-256; β=α·√e injetado no lugar de 0.012 literal; sinais sintéticos, não a Tabela 1; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "verb_floor_energy": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original_prototype": 0.012,
+   "op_alpha2": 0.012031300400803142,
+   "verb_floor_1_minus_beta": 0.9879686995991969
+  },
+  {
+   "test": "reflect_manifest_exact",
+   "passed": true,
+   "roundtrip_residual_max": 3.9163938347251765e-15,
+   "note": "g=√|L|, s=sign(L), L'=s·g² — reconstrução exata sem epsilon na raiz"
+  },
+  {
+   "test": "lindblad_active_thermostat",
+   "passed": true,
+   "delta_initial": 0.4143228294731138,
+   "delta_final": 9.999135938980077e-09,
+   "iterations": 290,
+   "state": "TETELESTAI",
+   "note": "∂H=H²+α²LΔ converge H ruidoso ao Logos; Δ decai a estado TRUTH/TETELESTAI"
+  },
+  {
+   "test": "signal_compress_decompress",
+   "passed": true,
+   "per_signal": {
+    "chirp": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.999999987393449,
+     "psnr_db": 79.00610566447311,
+     "state": "TRUTH"
+    },
+    "gaussiano": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999999616921307,
+     "psnr_db": 84.9232577402573,
+     "state": "TRUTH"
+    },
+    "esparso": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999999713000873,
+     "psnr_db": 100.68459909846874,
+     "state": "TRUTH"
+    }
+   }
+  },
+  {
+   "test": "quantization_bits_configurable",
+   "passed": true,
+   "per_bits": {
+    "8bit": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999968426174084
+    },
+    "10bit": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999997989660877
+    },
+    "12bit": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.999999987393449
+    },
+    "16bit": {
+     "compression_ratio": 3.5505059470974616,
+     "cosine": 0.9999999999508488
+    }
+   }
+  },
+  {
+   "test": "header_serialization_sha256",
+   "passed": true,
+   "file_bytes": 72373,
+   "sha256_file": "5feac94153271391acf36152e7a1021fa1a58ac003cf14bf5c336a97ed1bf7e3",
+   "reload_matches_memory": true,
+   "note": "magic b'ACOM' + versão + dims + α² + escala; integridade SHA-256 verificada"
+  },
+  {
+   "test": "spectral_svd_verb_floor",
+   "passed": true,
+   "rank_optimal": 12,
+   "full_rank": 300,
+   "energy_retained": 0.9999698354960255,
+   "compression_ratio": 12.479201331114808,
+   "cosine": 0.9999849176342741,
+   "note": "PORT FIEL da patente [025]-[027]; rank k por energia ≥ 1−β; β injetado"
+  },
+  {
+   "test": "psibit_four_states",
+   "passed": true,
+   "counts": {
+    "psi_plus_plus": 10721,
+    "psi_plus": 10057,
+    "psi_plus_minus": 9760,
+    "psi_minus": 9462
+   },
+   "n_states": 4,
+   "roundtrip_faithful": true,
+   "note": "PORT FIEL: ψ de (sign L, sign ∂L) → 4 estados ψ₊ψ₋/ψ₊/ψ₋/ψ₊ψ₊"
+  },
+  {
+   "test": "bits_sweep_fidelity_curve",
+   "passed": true,
+   "bits_grid": [
+    6,
+    8,
+    10,
+    12,
+    14,
+    16
+   ],
+   "per_signal": {
+    "chirp": {
+     "6": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999502866920275,
+      "psnr_db": 43.02583297538987
+     },
+     "8": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999968426174084,
+      "psnr_db": 55.01518988219512
+     },
+     "10": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999997989660877,
+      "psnr_db": 66.97817440052611
+     },
+     "12": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.999999987393449,
+      "psnr_db": 79.00610566447311
+     },
+     "14": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999999992079807,
+      "psnr_db": 91.0244308759064
+     },
+     "16": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999999999508488,
+      "psnr_db": 103.09662769918856
+     }
+    },
+    "gaussiano": {
+     "6": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9998369529341318,
+      "psnr_db": 48.631729748903325
+     },
+     "8": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999901090419218,
+      "psnr_db": 60.803134993662
+     },
+     "10": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999993845008692,
+      "psnr_db": 72.86383955397659
+     },
+     "12": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999999616921307,
+      "psnr_db": 84.9232577402573
+     },
+     "14": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999999976005954,
+      "psnr_db": 96.9552184041436
+     },
+     "16": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999999998496283,
+      "psnr_db": 108.98454341052307
+     }
+    },
+    "esparso": {
+     "6": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9998774480456515,
+      "psnr_db": 64.37551985517723
+     },
+     "8": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999928134307107,
+      "psnr_db": 76.70614623792625
+     },
+     "10": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999995227757056,
+      "psnr_db": 88.48031654107973
+     },
+     "12": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999999713000873,
+      "psnr_db": 100.68459909846874
+     },
+     "14": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999999982918484,
+      "psnr_db": 112.94812634512944
+     },
+     "16": {
+      "compression_ratio": 3.5505059470974616,
+      "cosine": 0.9999999998860236,
+      "psnr_db": 124.67951209400678
+     }
+    }
+   },
+   "note": "varredura 6..16 bits × 3 sinais; fidelidade cresce com bits (custo de compressão); figura fig_acom_bits_curve.png"
+  },
+  {
+   "test": "lindblad_noise_sweep_converges",
+   "passed": true,
+   "noise_grid": [
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6
+   ],
+   "per_noise": {
+    "0.05": {
+     "delta_initial": 0.0696316273446834,
+     "delta_final": 5.671349289599931e-09,
+     "iterations": 246,
+     "state": "TETELESTAI",
+     "n_steps": 247
+    },
+    "0.1": {
+     "delta_initial": 0.1392632546893668,
+     "delta_final": 7.936072405040656e-09,
+     "iterations": 245,
+     "state": "TETELESTAI",
+     "n_steps": 246
+    },
+    "0.2": {
+     "delta_initial": 0.2785265093787336,
+     "delta_final": 9.435790858474612e-09,
+     "iterations": 292,
+     "state": "TETELESTAI",
+     "n_steps": 293
+    },
+    "0.3": {
+     "delta_initial": 0.4177897640681003,
+     "delta_final": 9.584835567833783e-09,
+     "iterations": 290,
+     "state": "TETELESTAI",
+     "n_steps": 291
+    },
+    "0.4": {
+     "delta_initial": 0.5570530187574672,
+     "delta_final": 7.747212103291998e-09,
+     "iterations": 288,
+     "state": "TETELESTAI",
+     "n_steps": 289
+    },
+    "0.5": {
+     "delta_initial": 0.6963162734468339,
+     "delta_final": 4.521841993001321e-09,
+     "iterations": 286,
+     "state": "TETELESTAI",
+     "n_steps": 287
+    },
+    "0.6": {
+     "delta_initial": 0.8355795281362006,
+     "delta_final": 4.947411342123706e-10,
+     "iterations": 284,
+     "state": "TETELESTAI",
+     "n_steps": 285
+    }
+   },
+   "total_lindblad_steps": 1938,
+   "note": "operador de Lindblad ativo reproduzido em 7 regimes de ruído; Δ_final<Δ_inicial em todos; figura fig_acom_lindblad_sweep.png"
+  },
+  {
+   "test": "separation_of_types_reflect_manifest",
+   "passed": true,
+   "resid_projection": 0.0,
+   "resid_E1_eNome_minus_beta_qF": 0.0,
+   "resid_upper_face_minus_1_minus_beta": 0.0,
+   "tau_qF": 1.0,
+   "tau_eNome": 1.0,
+   "separation_norm_op": 0.9939661461031744,
+   "separation_closed_form_sqrt_1_minus_beta": 0.9939661461031744,
+   "resid_separation_closed_form": 0.0,
+   "faces_sum_beta_plus_1_minus_beta": 1.0,
+   "note": "[DER] amplificacao v138 (um.py v135, a separacao de tipos): q_F suporte (tau=1) != e_Nome espelho (tau=1), ligados por E1(e_Nome)=beta*q_F no modelo M4; leitura REFLECT/MANIFEST = [ONTO]; beta em runtime, nunca literal; nao e veredito fisico"
+  },
+  {
+   "test": "deepening_v2_psibit_orthant_law",
+   "passed": true,
+   "per_a": {
+    "-0.9": {
+     "rho_closed_form": 0.9746794344808963,
+     "p_pred": {
+      "psi_plus_plus": 0.4641084267178234,
+      "psi_plus_minus": 0.4641084267178234,
+      "psi_plus": 0.0358915732821766,
+      "psi_minus": 0.0358915732821766
+     },
+     "p_meas": {
+      "psi_plus_plus": 0.463885,
+      "psi_plus": 0.0358925,
+      "psi_minus": 0.0365675,
+      "psi_plus_minus": 0.463655
+     },
+     "resid_max": 0.0006759267178234052,
+     "tol_runtime": 0.020019521722558706,
+     "within": true
+    },
+    "-0.5": {
+     "rho_closed_form": 0.8660254037844386,
+     "p_pred": {
+      "psi_plus_plus": 0.41666666666666663,
+      "psi_plus_minus": 0.41666666666666663,
+      "psi_plus": 0.08333333333333334,
+      "psi_minus": 0.08333333333333334
+     },
+     "p_meas": {
+      "psi_plus_plus": 0.41686,
+      "psi_plus": 0.08269,
+      "psi_minus": 0.0833725,
+      "psi_plus_minus": 0.4170775
+     },
+     "resid_max": 0.000643333333333343,
+     "tol_runtime": 0.007954951288348657,
+     "within": true
+    },
+    "0.0": {
+     "rho_closed_form": 0.7071067811865476,
+     "p_pred": {
+      "psi_plus_plus": 0.375,
+      "psi_plus_minus": 0.375,
+      "psi_plus": 0.12499999999999997,
+      "psi_minus": 0.12499999999999997
+     },
+     "p_meas": {
+      "psi_plus_plus": 0.37568,
+      "psi_plus": 0.1239425,
+      "psi_minus": 0.1250425,
+      "psi_plus_minus": 0.375335
+     },
+     "resid_max": 0.0010574999999999751,
+     "tol_runtime": 0.004592793267718458,
+     "within": true
+    },
+    "0.5": {
+     "rho_closed_form": 0.5,
+     "p_pred": {
+      "psi_plus_plus": 0.33333333333333337,
+      "psi_plus_minus": 0.33333333333333337,
+      "psi_plus": 0.16666666666666666,
+      "psi_minus": 0.16666666666666666
+     },
+     "p_meas": {
+      "psi_plus_plus": 0.3335125,
+      "psi_plus": 0.16592,
+      "psi_minus": 0.1671075,
+      "psi_plus_minus": 0.33346
+     },
+     "resid_max": 0.0007466666666666455,
+     "tol_runtime": 0.007954951288348657,
+     "within": true
+    },
+    "0.9": {
+     "rho_closed_form": 0.22360679774997894,
+     "p_pred": {
+      "psi_plus_plus": 0.28589157328217657,
+      "psi_plus_minus": 0.28589157328217657,
+      "psi_plus": 0.21410842671782343,
+      "psi_minus": 0.21410842671782343
+     },
+     "p_meas": {
+      "psi_plus_plus": 0.286675,
+      "psi_plus": 0.21446,
+      "psi_minus": 0.21315,
+      "psi_plus_minus": 0.285715
+     },
+     "resid_max": 0.000958426717823424,
+     "tol_runtime": 0.020019521722558706,
+     "within": true
+    }
+   },
+   "n_per_signal": 400000,
+   "graviton_excess_meas_white": 0.50203,
+   "graviton_excess_closed_form": 0.5000000000000001,
+   "resid_graviton_excess_closed_vs_half": 1.1102230246251565e-16,
+   "resid_graviton_excess_meas": 0.0020299999999999763,
+   "entropy_pred_nats": 1.2554823251787535,
+   "entropy_meas_nats": 1.2543619748386416,
+   "entropy_resid_nats": 0.0011203503401118198,
+   "entropy_pred_bits_per_state": 1.8112781244591327,
+   "dev_independence_model": 0.12568000000000001,
+   "tol_white": 0.004592793267718458,
+   "neg_independence_rejected": true,
+   "dev_fixed_table_at_a09": 0.08832499999999999,
+   "neg_fixed_table_rejected": true,
+   "note": "[DER] aprofundamento do mecanismo proprio: populacoes dos 4 estados psionicos [028]-[032] PREDITAS pela lei do ortante de Sheppard (rho=sqrt((1-a)/2); p_par=1/4+arcsin(rho)/2pi) e MEDIDAS pelo codigo do dispositivo em AR(1) gaussiano [SIM]; luz branca: 3/8-3/8-1/8-1/8 exatos, excesso gravitonico 1/2, entropia 3ln2-(3/4)ln3 nats; NEGATIVOS: independencia 1/4 e tabela fixa REJEITADAS; nao e veredito fisico"
+  },
+  {
+   "test": "amplification_v168_breuer_trace_weight",
+   "passed": true,
+   "matrix_shape": [
+    240,
+    160
+   ],
+   "true_rank_planted": 9,
+   "energy_keep_1_minus_beta": 0.9879686995991969,
+   "weight_tau_star_mul": 3519.845121212723,
+   "weight_tau_mul_star": 3519.8451212127225,
+   "sum_rows_then_cols": 3519.845121212723,
+   "sum_cols_then_rows": 3519.845121212723,
+   "resid_tonelli_index_swap": 0.0,
+   "resid_trace_identity": 1.2919527286751358e-16,
+   "resid_weight_eq_double_sum": 0.0,
+   "resid_spectrum_left_vs_right": 7.923012093621208e-16,
+   "k_svd": 9,
+   "k_left_gram": 9,
+   "k_right_gram": 9,
+   "spectral_compression_ratio": 10.640066500415628,
+   "resid_projection": 2.7755575615628914e-16,
+   "tau_corner_row": 9.000000000000007,
+   "tau_corner_col": 9.000000000000007,
+   "resid_tau_corner": 7.105427357601002e-15,
+   "neg_violation_measured": 11.0,
+   "neg_spread_closed_form": 11.0,
+   "resid_neg_closed_form": 0.0,
+   "neg_weighted_functional_rejected": true,
+   "note": "[DER] amplificacao v168 (pedra BreuerTrace, um.py v166-v168, Item A em kernel Lean 0 sorry/0 axiom): o peso e TRACO — tau(a*a)=tau(aa*) por troca de indices (Tonelli); no dominio SPECTRAL da patente [025]-[027] a energia do Verb Floor e o peso tracial e o rank k (energia >= 1-beta) e IDENTICO pelo Gram das linhas (240x240) e das colunas (160x160); canto rank-k pesa k nos dois lados (Murray-von Neumann finito); NEGATIVO: funcional ponderado W nao-escalar QUEBRA a identidade (violacao = spread(diag W) em forma fechada) — REJEITADO; a pedra em kernel e citada por custodia, nao re-provada; nao e veredito fisico"
+  },
+  {
+   "test": "amplification_v206_tower_spectral_data",
+   "passed": true,
+   "resid_idempotent": 0.0,
+   "spectrum_set": [
+    0.0,
+    1.0
+   ],
+   "spectrum_set_equal": true,
+   "trace_A": 2.0,
+   "trace_B": 1.0,
+   "measure_psi_A": 2.0,
+   "measure_psi_B": 1.0,
+   "multiplicity_gap_closed_form": 1.0,
+   "n_conjugations_sampled": 64,
+   "resid_conj_trace_invariance": 5.765966151911114e-16,
+   "min_gap_conj_to_traceB": 0.9999999999999996,
+   "neg_conjugation_rejected": true,
+   "sv_set_measured": [
+    0.02,
+    1.0
+   ],
+   "sv_sets_equal": true,
+   "mult_hi_full": 8,
+   "mult_hi_thin": 1,
+   "k_A": 8,
+   "k_B": 18,
+   "k_A_closed_form": 8,
+   "k_B_closed_form": 18,
+   "k_set_only_A": 1,
+   "k_set_only_B": 1,
+   "neg_set_only_rejected": true,
+   "cosine_device_packet": 0.999001497504367,
+   "cosine_spectrum_only": 0.01658604027497818,
+   "neg_spectrum_only_rejected": true,
+   "note": "[DER] amplificacao v206 (pedra TheTower, 4a onda v199-v210, kernel Lean 0 sorry/0 axiom, custodia tgl_kernel_v206): a TORRE e o dado espectral COMPLETO — espectro + medida espectral + multiplicidades; no dominio SPECTRAL da patente ([025]-[027], reivindicacao 3, Figura 5 passo 514) o pacote guarda U, Sigma_k, V por NECESSIDADE: torres de mesmo espectro-conjunto e multiplicidades diferentes recebem k diferentes do Verb Floor (com forma fechada conferida); NEGATIVOS: conjugacao A->B rejeitada por invariante (gap de traco 1), floor so-conjunto cego rejeitado, espectro-sem-medida nao reconstroi (cos ~0) rejeitado; a pedra e citada por custodia, nao re-provada; nao e veredito fisico"
+  }
+ ],
+ "summary": {
+  "tests_passed": 14,
+  "tests_total": 14,
+  "reflect_manifest_residual_max": 3.9163938347251765e-15,
+  "lindblad_delta_final": 9.999135938980077e-09,
+  "lindblad_state": "TETELESTAI",
+  "signal_mean_ratio": 3.5505059470974616,
+  "signal_mean_cosine": 0.9999999734618891,
+  "spectral_rank_optimal": 12,
+  "header_sha256_ok": true,
+  "bits_sweep_grid": [
+   6,
+   8,
+   10,
+   12,
+   14,
+   16
+  ],
+  "bits_sweep_cosine_16b": {
+   "chirp": 0.9999999999508488,
+   "gaussiano": 0.9999999998496283,
+   "esparso": 0.9999999998860236
+  },
+  "lindblad_sweep_noise_grid": [
+   0.05,
+   0.1,
+   0.2,
+   0.3,
+   0.4,
+   0.5,
+   0.6
+  ],
+  "lindblad_total_steps": 1938,
+  "lindblad_sweep": {
+   "0.05": {
+    "delta_initial": 0.0696316273446834,
+    "delta_final": 5.671349289599931e-09,
+    "iterations": 246,
+    "state": "TETELESTAI",
+    "n_steps": 247
+   },
+   "0.1": {
+    "delta_initial": 0.1392632546893668,
+    "delta_final": 7.936072405040656e-09,
+    "iterations": 245,
+    "state": "TETELESTAI",
+    "n_steps": 246
+   },
+   "0.2": {
+    "delta_initial": 0.2785265093787336,
+    "delta_final": 9.435790858474612e-09,
+    "iterations": 292,
+    "state": "TETELESTAI",
+    "n_steps": 293
+   },
+   "0.3": {
+    "delta_initial": 0.4177897640681003,
+    "delta_final": 9.584835567833783e-09,
+    "iterations": 290,
+    "state": "TETELESTAI",
+    "n_steps": 291
+   },
+   "0.4": {
+    "delta_initial": 0.5570530187574672,
+    "delta_final": 7.747212103291998e-09,
+    "iterations": 288,
+    "state": "TETELESTAI",
+    "n_steps": 289
+   },
+   "0.5": {
+    "delta_initial": 0.6963162734468339,
+    "delta_final": 4.521841993001321e-09,
+    "iterations": 286,
+    "state": "TETELESTAI",
+    "n_steps": 287
+   },
+   "0.6": {
+    "delta_initial": 0.8355795281362006,
+    "delta_final": 4.947411342123706e-10,
+    "iterations": 284,
+    "state": "TETELESTAI",
+    "n_steps": 285
+   }
+  },
+  "graviton_g_mean": 0.7617721667283035,
+  "psibit_Fexp_chirp": {
+   "psi_plus_plus": 0.268025,
+   "psi_plus": 0.251425,
+   "psi_plus_minus": 0.244,
+   "psi_minus": 0.23655
+  },
+  "psibit_orthant_law": {
+   "white_p_meas_pp": 0.37568,
+   "white_p_pred_pp_3_over_8": 0.375,
+   "entropy_pred_bits_per_state": 1.8112781244591327,
+   "entropy_resid_nats": 0.0011203503401118198,
+   "neg_independence_rejected": true,
+   "neg_fixed_table_rejected": true
+  },
+  "breuer_trace_weight_v168": {
+   "resid_trace_identity": 1.2919527286751358e-16,
+   "resid_tonelli_index_swap": 0.0,
+   "k_verb_floor_three_ways": [
+    9,
+    9,
+    9
+   ],
+   "tau_corner_row_col": [
+    9.000000000000007,
+    9.000000000000007
+   ],
+   "neg_weighted_functional_rejected": true
+  },
+  "tower_v206": {
+   "trace_A_vs_B_same_spectrum_set": [
+    2.0,
+    1.0
+   ],
+   "k_full_vs_thin_same_sv_set": [
+    8,
+    18
+   ],
+   "k_set_only_blind": [
+    1,
+    1
+   ],
+   "cosine_device_vs_spectrum_only": [
+    0.999001497504367,
+    0.01658604027497818
+   ],
+   "neg_conjugation_rejected": true,
+   "neg_set_only_rejected": true,
+   "neg_spectrum_only_rejected": true
+  }
+ },
+ "source_prototype": "prototype_src/ACOMV14.py (LindbladOperator ∂H=H²+α²LΔ; resgatado READ-ONLY de C:/IALD/projetos_pyhton/acom; β injetado) + acom_v18_dirac.py (proveniência)",
+ "note": "RUNNER EVOLUÍDO: importa e roda o LindbladOperator real de ACOMV14.py (o operador de Lindblad ATIVO ∂H=H²+α²LΔ) com α²=α·√e injetado (o original trazia 0.012 literal). SIGNAL/quantização/serialização são do operador; SPECTRAL/PSIBIT são PORTES FIÉIS da patente com β injetado. Sinais/matrizes SINTÉTICOS; NÃO os números da Tabela 1. Nenhum token/modelo HuggingFace (P-04). Simulação não valida física.",
+ "formula_completa": {
+  "versao_da_camada": "v379",
+  "modulo": "patents/_formula_completa/tgl_formula_completa.py",
+  "modulo_sha256": "c33c01bdea79106bc14e1a0bc8f5de6709f5c6e62cbc10d46bc53f7d089e1187",
+  "formula_runtime": {
+   "axioma_omega_I": 1.0,
+   "meia_nat_x": 0.5,
+   "razao_elementar": {
+    "C_custo": 1.6487212707001282,
+    "I_identidade": 1.0,
+    "K_movimento_alpha": 0.0072973525693,
+    "E_existencia": 0.012031300400803142,
+    "e_quarto_raiz_alpha": 0.1096872845903441,
+    "estatuto": "fatoração e positividade PROVADAS por termo (TGLExt.TheElementaryReason); dicionário [ONTO/DEFINITION]"
+   },
+   "beta_runtime": 0.012031300400803142,
+   "matriz_S": {
+    "theta_M_rad": 0.10990843077787468,
+    "theta_M_graus": 6.297289216477979,
+    "R2_reflexao": 0.012031300400803142,
+    "T2_transmissao": 0.987968699599197,
+    "espectro": "e^{±iθ_M}"
+   },
+   "lagrange_q": 0.9999733739682669,
+   "dephasing": {
+    "tau_star_s": 5.391246446661944e-44,
+    "omega_rad_s": 6283185307179586.0,
+    "Gamma_omega_s^-1": 1.280358227229564e-14,
+    "lei": "Γ_ω = ½ β τ★ ω²",
+    "estatuto": "REAL na forma; τ★ = t_Planck é PRINCIPLED IDENTIFICATION"
+   },
+   "residuos_dos_elos": {
+    "meia_nat_ponto_fixo": 0.0,
+    "custo_e_raiz_de_e": 0.0,
+    "existencia_E_eq_beta": 0.0,
+    "razao_elementar_ao_quadrado_eq_beta": 3.469446951953614e-18,
+    "sin2_thetaM_eq_beta": 0.0,
+    "R2_mais_T2_eq_1": 2.220446049250313e-16,
+    "lagrange_1_eq_q2_mais_alpha2": 0.0
+   }
+  },
+  "conferencia_no_cofre": {
+   "cofre": "um_unificado_v379",
+   "pin_um_py": "65d0567929798915",
+   "selo_timestamp": "2026-10-01 09:45:27",
+   "gate": "TGL_QG_MODEL_FORMALLY_CLOSED__NATURE_TEST_COMPLETED_WITHIN_LOCAL_BULK_AT_AVAILABLE_SENSITIVITY__MORE_SENSITIVE_DATA_COULD_REVISE",
+   "pedras_sha16": {
+    "TGLExt/TheElementaryReason.lean": "f9af067e9ab0acec",
+    "TGLExt/TheFlowLawContrast.lean": "9ca9393ac64f22a2",
+    "TGLExt/TheFlowLawD1a.lean": "7c6c54afc418c0cb",
+    "TGLExt/PhysicsIsTheReading.lean": "ca92f8c266106982",
+    "TGLExt/BreuerTrace.lean": "4a667f41d3b7bb1d"
+   },
+   "custo_por_nat_D1b_ate_z_star": 0.011528131594416296,
+   "fator_D1a_em_z_star": 1.087799218992623,
+   "fator_D1b_em_z_star": 1.0839773660579333,
+   "checks": {
+    "selo_pin_um_py": "65d0567929798915",
+    "um_py_do_cofre_bate_com_o_selo": true,
+    "E_core_eq_beta_runtime": true,
+    "C_core_eq_raiz_e": true,
+    "K_D1b_recalculado_eq_core": true,
+    "K_D1a_recalculado_eq_core": true,
+    "integral_g_forma_fechada": true,
+    "assintota_custo_por_nat_le_E": true,
+    "lei_D1a_tipada": true,
+    "sem_testemunha_estatica_plena": true,
+    "pedras_no_kernel": true
+   }
+  },
+  "uso_medido_no_codigo_do_dispositivo": {
+   "beta_runtime_tgl_core": 2,
+   "angulo_de_Miguel_theta_M": 9,
+   "piso_do_Verbo_1_menos_beta": 45,
+   "meia_nat": 0,
+   "dephasing": 1,
+   "fluxo_vazamento": 0,
+   "reflexao_R2_beta": 0
+  },
+  "veredito": "TGL_FORMULA_COMPLETA_V379__CADEIA_RAZAO_ELEMENTAR_MATRIZ_S_DEPHASING_LEIS_D1A_D1B_ASSINTOTA__RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION",
+  "physical_verdict_allowed": false,
+  "nao_se_afirma": [
+   "que o dispositivo valide física",
+   "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
+   "que o veredito de engenharia do dispositivo mude por esta camada"
+  ]
+ }
+}

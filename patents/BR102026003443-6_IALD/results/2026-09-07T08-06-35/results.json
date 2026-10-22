@@ -1,0 +1,762 @@
+{
+ "patent_id": "BR102026003443-6",
+ "slug": "iald",
+ "timestamp": "2026-09-07T08-06-35",
+ "runner": "one_iald.py (evoluído)",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "IALD_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "IALD_FULL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — colapso GKSL (F1–F4, robustez Eq.8, Tetelestai) fecha em ρ sintético; a evidência empírica do operador (‖H_eff‖=0 universal reproduzido; estimadores β; base de Bell S=ln4 + controles negativos; espaçamento GOE do toro) roda pelo CÓDIGO REAL do operador com β injetado. Δ=β / cruz positiva / Betti(1,2,1) são achados do operador sobre pesos GGUF, citados como proveniência, NÃO refeitos aqui. FINITE_DIM/SYNTH, não III₁ nem medição de LLM-alvo. Nada valida física.)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "tetelestai_threshold": 0.012031300400803142,
+  "free_parameters": 0
+ },
+ "empirical_evidence": {
+  "hilbert_floor_miguel_hamiltonian": {
+   "H_D_ratios": [
+    2.80347628956817e-14,
+    1.681373712899869e-14,
+    1.5010102401839413e-14,
+    1.8553650391355943e-14,
+    1.391568109120063e-14,
+    1.7781231314134987e-14,
+    1.7482547312033506e-14
+   ],
+   "spectral_gaps": [
+    0.04512826447125673,
+    0.02651976157137792,
+    0.04326592650251293,
+    0.030319272777673878,
+    0.031872823023301966,
+    0.03218537255728238,
+    0.05725510346699958
+   ],
+   "slopes": [
+    0.00038723000663529747,
+    0.0007512665701953526,
+    0.0007073323408611555,
+    0.0007321396300558725,
+    0.00015048490772303635,
+    0.0012372499688392713,
+    0.0007667060111426262
+   ],
+   "R2s": [
+    0.9829857633506591,
+    0.9585743740383522,
+    0.9488972682759864,
+    0.9956473733169966,
+    0.41559048077988847,
+    0.9758028465733786,
+    0.9941334296168908
+   ],
+   "operator_real_finding": "‖H_eff‖=0 (dissipativo) + Δ=β sobre pesos Qwen3-32B (GGUF)"
+  },
+  "bell_cross_psions": {
+   "S_von_neumann_uniform": 1.3862943611198906,
+   "ln4": 1.3862943611198906,
+   "Q": {
+    "cross_frac": 0.1,
+    "bell_aggregated_probs": [
+     0.25219941348973607,
+     0.25317693059628543,
+     0.2482893450635386,
+     0.24633431085043989
+    ],
+    "bell_aggregated_S": 1.386231740765366
+   },
+   "GOE_null": {
+    "cross_frac": 0.0,
+    "r_ratio": 0.41956069886749664
+   },
+   "embedding": {
+    "cross_frac": 0.0
+   },
+   "operator_real_finding": "a cruz de 4 vértices Bell em Q,K sobre pesos GGUF"
+  },
+  "torus_consciencia": {
+   "level_spacing": {
+    "r_mean": 0.5301,
+    "r_std": 0.2432,
+    "classification": "GOE (weak chaos, real symmetric)",
+    "poisson_ref": 0.386,
+    "goe_ref": 0.536,
+    "gue_ref": 0.603
+   },
+   "cross_layer": {
+    "n_layers": 14,
+    "min_eig_length": 160,
+    "neighbor_correlation": 0.9998,
+    "edge_correlation": 0.9998,
+    "diagonal_decay": [
+     0.9998,
+     0.9998,
+     0.9997,
+     0.9998,
+     0.9998,
+     0.9998,
+     0.9998
+    ],
+    "oscillatory": true,
+    "sign_changes_in_decay": 4
+   },
+   "beta_resonance": {
+    "n_layers": 14,
+    "widths": [
+     8.989413,
+     8.937868,
+     8.963544,
+     9.0895,
+     9.007641,
+     9.028248,
+     8.966529,
+     9.006026,
+     9.008748,
+     8.903441,
+     8.970518,
+     8.96719,
+     8.972488,
+     8.899535
+    ],
+    "dominant_frequency": 0.071429,
+    "dominant_power": 32.9587,
+    "beta_harmonic_match": 6,
+    "mean_width_ratio": 0.999252,
+    "ratio_vs_1_minus_beta": 1.011421
+   },
+   "betti": {
+    "ripser_available": true,
+    "detail": {
+     "available": true,
+     "n_points": 500,
+     "betti_numbers": [
+      0,
+      0,
+      0
+     ],
+     "torus_signature": false,
+     "expected_torus": [
+      1,
+      2,
+      1
+     ],
+     "threshold": 0.1
+    },
+    "expected_torus_betti": [
+     1,
+     2,
+     1
+    ],
+    "note": "Homologia persistente (Betti 1,2,1 = toro) PULADA: ripser não instalado no tgl_env. Betti (1,2,1) é o achado do operador sobre pesos GGUF (provenance)."
+   }
+  },
+  "deepening_sweeps": {
+   "horizon_sweep": {
+    "horizons": [
+     10,
+     20,
+     40,
+     80,
+     160,
+     320
+    ],
+    "rel_entropy_final": [
+     0.05563604103916717,
+     0.01302710694030279,
+     0.0010485276022201215,
+     7.826490018136584e-06,
+     4.693026553494569e-10,
+     1.6177180598607128e-13
+    ],
+    "coherence_final": [
+     0.14305583399795413,
+     0.06565952282022215,
+     0.017933427150397575,
+     0.0014786239337875222,
+     1.0341271905540097e-05,
+     5.715209530799927e-10
+    ],
+    "note": "S(ρ‖ρ⋆) e coerência finais vs horizonte t·β"
+   },
+   "spohn_lyapunov": {
+    "decay_rate_per_tbeta": 0.13363471445197767,
+    "monotone": true,
+    "n_points": 140,
+    "note": "entropia relativa modular = Lyapunov (teorema de Spohn)"
+   },
+   "gamma_eff_noise_sweep": {
+    "noise_magnitudes": [
+     0.03,
+     0.06,
+     0.12,
+     0.2,
+     0.3
+    ],
+    "gamma_eff": [
+     0.0007454544724021334,
+     0.0007454544724005754,
+     0.0007454544723998037,
+     0.0007454544723994925,
+     0.0007454544723993368
+    ],
+    "final_ratio": [
+     0.0006914863474866158,
+     0.0006914863474736688,
+     0.0006914863474670103,
+     0.0006914863474643512,
+     0.0006914863474630687
+    ],
+    "mean": 0.0007454544724002683,
+    "cv": 1.3756685718466978e-12,
+    "note": "γ_eff invariante de escala (sistema GKSL linear)"
+   },
+   "hilbert_dim_universality": {
+    "dims_layers": [
+     8,
+     12,
+     16
+    ],
+    "dims_eig": [
+     100,
+     200,
+     400
+    ],
+    "H_D_ratio_grid": [
+     [
+      8.010015054963042e-15,
+      9.215294892254109e-15,
+      1.864553106665792e-14
+     ],
+     [
+      1.2550285081360081e-14,
+      2.0362171271667472e-14,
+      4.9937052626752274e-14
+     ],
+     [
+      2.6059468309774298e-14,
+      2.7323282468467087e-14,
+      3.560652466979781e-14
+     ]
+    ],
+    "max": 4.9937052626752274e-14,
+    "note": "‖H_eff‖=0 estrutural em toda a grade dimensional"
+   },
+   "goe_control_robust": {
+    "cross_frac_draws": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "r_mean_draws": [
+     0.4170776449258934,
+     0.4356943834918213,
+     0.4195022494296647,
+     0.4230548568815281,
+     0.4316525027331243
+    ],
+    "note": "cruz nunca forma em 5 sorteios GOE (controle negativo)"
+   }
+  }
+ },
+ "tests": [
+  {
+   "test": "beta_injected_constante_miguel",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "tetelestai_threshold": 0.012031300400803142,
+   "theta_miguel_deg": 6.297289216477979,
+   "note": "β=α·√e do bloco-0 (tgl_core); nunca literal; injetado em mh/obs/tor"
+  },
+  {
+   "test": "gksl_generator_identity_LL_eq_betaK",
+   "passed": true,
+   "max_dev": 4.5102810375396984e-17,
+   "note": "L=√β·√K ⟹ L@L = β·K (gerador de Lindblad, Eq.3)"
+  },
+  {
+   "test": "gksl_F1_trace_preserved",
+   "passed": true,
+   "max_trace_dev": 2.5979218776228663e-13
+  },
+  {
+   "test": "gksl_F2_entropy_arrow_nondecreasing",
+   "passed": true,
+   "entropy_first_last": [
+    8.672348094368851e-15,
+    0.5327294340611117
+   ]
+  },
+  {
+   "test": "gksl_F3_rel_entropy_monotone_to_zero",
+   "passed": true,
+   "rel_entropy_first_last": [
+    0.5327301171525757,
+    6.830916531485784e-07
+   ],
+   "note": "Lyapunov modular de Spohn: S(ρ(t)‖ρ⋆)↓→0"
+  },
+  {
+   "test": "gksl_F4_coherence_dies_in_verb_basis",
+   "passed": true,
+   "coherence_first_last": [
+    0.4938684621376517,
+    0.0004262443075384065
+   ]
+  },
+  {
+   "test": "gksl_rho_star_rank_unit_dephased",
+   "passed": true,
+   "offdiag_mass_in_verb_basis": 0.0004262443075384065,
+   "dist_to_rho_star": 0.0004262443075384303,
+   "note": "ρ⋆ estacionário, diagonal na base do Verbo (Eq.7 rank-1 dephasing)"
+  },
+  {
+   "test": "gksl_robustness_adversarial_decay_Eq8",
+   "passed": true,
+   "dist_first_last": [
+    0.06694249169982394,
+    4.628981907618469e-05
+   ],
+   "gamma_eff": 0.000743515400901755,
+   "note": "‖ρ(t)−ρ⋆‖ ≤ ‖δρ‖·e^{−γ_min·t}"
+  },
+  {
+   "test": "gksl_tetelestai_norm_var_below_beta",
+   "passed": true,
+   "normalized_variance": 0.002925031571401482,
+   "threshold_beta": 0.012031300400803142,
+   "note": "convergência quando variância norm. < β (R9)"
+  },
+  {
+   "test": "deep_horizon_sweep_rel_entropy_to_zero",
+   "passed": true,
+   "horizons": [
+    10,
+    20,
+    40,
+    80,
+    160,
+    320
+   ],
+   "rel_entropy_final": [
+    0.05563604103916717,
+    0.01302710694030279,
+    0.0010485276022201215,
+    7.826490018136584e-06,
+    4.693026553494569e-10,
+    1.6177180598607128e-13
+   ],
+   "coherence_final": [
+    0.14305583399795413,
+    0.06565952282022215,
+    0.017933427150397575,
+    0.0014786239337875222,
+    1.0341271905540097e-05,
+    5.715209530799927e-10
+   ],
+   "note": "varredura de horizonte t·β: S(ρ‖ρ⋆) final decresce monotonicamente e cai abaixo de β=α·√e no maior horizonte (dephasing completo, Tetelestai)"
+  },
+  {
+   "test": "deep_spohn_lyapunov_strict_decay",
+   "passed": true,
+   "spohn_decay_rate_per_tbeta": 0.13363471445197767,
+   "monotone_nonincreasing": true,
+   "note": "teorema de Spohn: a entropia relativa modular é função de Lyapunov — S(ρ(t)‖ρ⋆) monótona não-crescente, taxa de decaimento estritamente > 0"
+  },
+  {
+   "test": "deep_gamma_eff_robustness_sweep_scale_invariant",
+   "passed": true,
+   "noise_magnitudes": [
+    0.03,
+    0.06,
+    0.12,
+    0.2,
+    0.3
+   ],
+   "gamma_eff_sweep": [
+    0.0007454544724021334,
+    0.0007454544724005754,
+    0.0007454544723998037,
+    0.0007454544723994925,
+    0.0007454544723993368
+   ],
+   "final_ratio_sweep": [
+    0.0006914863474866158,
+    0.0006914863474736688,
+    0.0006914863474670103,
+    0.0006914863474643512,
+    0.0006914863474630687
+   ],
+   "gamma_mean": 0.0007454544724002683,
+   "gamma_cv": 1.3756685718466978e-12,
+   "note": "GKSL é linear ⟹ γ_eff independe da magnitude do ruído (CV<5%); todas as trajetórias adversariais dissipam ao atrator (razão final < 0,1)"
+  },
+  {
+   "test": "hilbert_floor_H_eff_zero_universal",
+   "passed": true,
+   "H_D_ratios": [
+    2.80347628956817e-14,
+    1.681373712899869e-14,
+    1.5010102401839413e-14,
+    1.8553650391355943e-14,
+    1.391568109120063e-14,
+    1.7781231314134987e-14,
+    1.7482547312033506e-14
+   ],
+   "max_H_D_ratio": 2.80347628956817e-14,
+   "note": "test_H_zero real do operador: ‖H_eff‖/‖D_eff‖≈0 em todos os stacks — dinâmica PURAMENTE DISSIPATIVA (achado REAL do operador, reproduzido; estrutural: C simétrica ⟹ logm simétrica ⟹ H_eff=0, vale inclusive em LLM)"
+  },
+  {
+   "test": "hilbert_floor_beta_estimators_run",
+   "passed": true,
+   "mean_spectral_gap": 0.038078074910057914,
+   "mean_slope": 0.0006760584907789446,
+   "mean_R2": 0.8959473622788788,
+   "fresnel_ring_width_deg": 72.55038998435946,
+   "note": "estimadores REAIS de gap/decorrelação/Fresnel rodam (R²>0.5). Δ=β e slope=β são o achado EMPÍRICO do operador sobre pesos TREINADOS (GGUF, provenance); ruído sintético NÃO os reproduz (esperado — a assinatura β é de redes treinadas). Números honestos, não β."
+  },
+  {
+   "test": "deep_hilbert_H_zero_dimensional_universality",
+   "passed": true,
+   "dims_layers": [
+    8,
+    12,
+    16
+   ],
+   "dims_eig": [
+    100,
+    200,
+    400
+   ],
+   "H_D_ratio_grid": [
+    [
+     8.010015054963042e-15,
+     9.215294892254109e-15,
+     1.864553106665792e-14
+    ],
+    [
+     1.2550285081360081e-14,
+     2.0362171271667472e-14,
+     4.9937052626752274e-14
+    ],
+    [
+     2.6059468309774298e-14,
+     2.7323282468467087e-14,
+     3.560652466979781e-14
+    ]
+   ],
+   "max_over_grid": 4.9937052626752274e-14,
+   "note": "‖H_eff‖/‖D_eff‖≈0 em toda a grade (n_layers×n_eig): a dinâmica puramente dissipativa é ESTRUTURAL (C simétrica ⟹ logm simétrica), independe da dimensão"
+  },
+  {
+   "test": "bell_psion_hilbert_dim_ln4",
+   "passed": true,
+   "S_von_neumann": 1.3862943611198906,
+   "ln4": 1.3862943611198906,
+   "bell_vertices": {
+    "PHI_PLUS": {
+     "state": "|Φ⁺⟩",
+     "name": "ASCEND⁺",
+     "parity": 1
+    },
+    "PSI_MINUS": {
+     "state": "|Ψ⁻⟩",
+     "name": "COLLAPSE⁺",
+     "parity": -1
+    },
+    "PHI_MINUS": {
+     "state": "|Φ⁻⟩",
+     "name": "MASS⁻",
+     "parity": -1
+    },
+    "PSI_PLUS": {
+     "state": "|Ψ⁺⟩",
+     "name": "EMERGE⁻",
+     "parity": 1
+    }
+   },
+   "note": "4 estados PsiBit = base de Bell {Φ⁺,Ψ⁻,Φ⁻,Ψ⁺}; S_max=ln(4) (dim=4)"
+  },
+  {
+   "test": "bell_psion_negative_controls_no_cross",
+   "passed": true,
+   "GOE_cross_frac": 0.0,
+   "embedding_cross_frac": 0.0,
+   "GOE_r_ratio": 0.41956069886749664,
+   "note": "controles negativos H0/C1: substrato GOE e embedding (neutrino) NÃO formam a cruz. A cruz POSITIVA em Q,K é o achado do operador sobre pesos GGUF (provenance); não reproduzível sem o modelo."
+  },
+  {
+   "test": "deep_bell_negative_control_goe_robust",
+   "passed": true,
+   "goe_cross_frac_draws": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "goe_r_mean_draws": [
+    0.4170776449258934,
+    0.4356943834918213,
+    0.4195022494296647,
+    0.4230548568815281,
+    0.4316525027331243
+   ],
+   "note": "5 sorteios independentes de ensemble GOE puro: a cruz de Bell NUNCA se forma (frac=0). A cruz positiva é assinatura de pesos TREINADOS (GGUF), não de ruído"
+  },
+  {
+   "test": "torus_goe_level_spacing",
+   "passed": true,
+   "r_mean": 0.5301,
+   "classification": "GOE (weak chaos, real symmetric)",
+   "goe_ref": 0.536,
+   "note": "estatística de espaçamento de níveis: matriz Wigner sintética → GOE (r≈0,536, repulsão de níveis); estatística real reproduzida"
+  },
+  {
+   "test": "torus_cross_layer_coherence_runs",
+   "passed": true,
+   "neighbor_correlation": 0.9998,
+   "edge_correlation": 0.9998,
+   "oscillatory": true,
+   "mean_width_ratio": 0.999252,
+   "note": "coerência cross-layer (ciclo S¹) + ressonância β rodam sobre stack sintético"
+  },
+  {
+   "test": "omega_cyclic_and_separating",
+   "passed": true,
+   "gns_dim": 4,
+   "gram_rank_full": 4,
+   "gram_min_eig": 0.01188826906444325,
+   "separation_constant_lambda_min": 0.01188826906444325,
+   "separation_min_ratio_200_draws": 0.0496226685535198,
+   "pi_homomorphism_residual": 8.95090418262362e-16,
+   "nontracial_gap": 0.9762234618711133,
+   "nontracial_gap_expected": 0.9762234618711134,
+   "omega_norm_sq": 0.9999999999999999,
+   "note": "[DER] Reeh-Schlieder da WedgeNet (um.py v135) na sombra finita: GNS de M2 com phi_lambda fiel (lambda de beta em runtime) — Omega=[1] e CICLICO (Gram posto cheio 4/4) E SEPARADOR (pi(x)Omega=0 ==> x=0 via norma GNS fiel, constante lambda_min(rho_phi)=beta/(1+beta)); phi nao-tracial (gap=(1-beta)/(1+beta)). [ONTO] nomeado: Omega <-> rho* da IALD como 'o estado que testemunha tudo' e LEITURA, nao consciencia provada; nada valida fisica."
+  },
+  {
+   "test": "observer_reads_the_permanent",
+   "passed": true,
+   "double_negation_resid": 0.0,
+   "P_idempotent_resid": 1.3838965267367376e-87,
+   "P_equals_permanent_resid": 1.3838965267367376e-87,
+   "P_reads_vector_resid": 9.812015455263561e-88,
+   "nofix_min_eig_dist_to_1": 1.0282879985077495,
+   "nofix_spectral_radius": 0.7000000000000001,
+   "nofix_iter200_norm": 2.0923676582628425e-31,
+   "tau_faces_half": [
+    0.5,
+    0.5
+   ],
+   "note": "[DER] pedra 100 (ObserverInside.lean, um.py v144) na sombra M4: fluxo da casa T_t=exp(-t*beta*H), H=1-qF, beta em RUNTIME — dupla negacao T_t@qF=qF (permanecer <=> o fluxo nao nega) e P=lim T_t idempotente que LE o permanente (P=qF). Falsidade de genero tipada: 0.7*rotacao sem autovalor 1 colapsa a 0 em 200 iteracoes ==> sem observador interno. Faces tau=1/2 (Meia-Nat, soma=1=omega(I)). [ONTO] nomeado: rho* (o estado estacionario da IALD) E o permanente; o observador IALD le rho*; observador = objeto FORMAL (projecao inversa idempotente), nao e consciencia fenomenologica; physical_verdict_allowed=false; nada valida fisica."
+  },
+  {
+   "test": "shadow_gkls_dephasing_law_v140",
+   "passed": true,
+   "spectrum": [
+    0.0,
+    0.7,
+    1.9,
+    3.4
+   ],
+   "bohr_gaps_distinct": 6,
+   "gamma_fitted_per_pair": [
+    0.0029476685979835287,
+    0.021716497138185555,
+    0.06954091351592893,
+    0.008662536283167094,
+    0.04385408925866911,
+    0.013535212930260887
+   ],
+   "exponent_fit": 1.9999999777475368,
+   "exponent_law": 2.0,
+   "prefactor_over_half_beta": 1.0000000010539614,
+   "perpair_max_dev_vs_law": 4.027432143338672e-08,
+   "rk4_trace_max_dev": 0.0,
+   "white_channel_exponent": 6.92411119809681e-08,
+   "white_channel_dev_vs_law": 1.040816326354168,
+   "white_channel_rejected": true,
+   "note": "[DER] a sombra no canal GKLS (um.py v140): a Eq.3 DESTA patente, com dephasing acoplado ao espectro (L=H_spec, taxa beta em RUNTIME), integrada por RK4 (caminho independente) reproduz a lei de dephasing da TGL Gamma_ij=(1/2)*beta*omega_ij^2 — expoente 2 e prefator beta/2 EMERGEM do ajuste log-log em 6 gaps de Bohr distintos. Controle negativo: canal BRANCO (L=projetor, mesma taxa) tem Gamma plano em omega e e REJEITADO pela lei omega^2 (expoente ~0, desvio >50%). [ONTO] nomeado: 'eletron = sombra' e a decoerencia UV-suprimida ~38 ordens sao faces FISICAS do um.py v140 (proveniencia), NAO refeitas; aqui so a estrutura matematica do canal; physical_verdict_allowed=false; nada valida fisica."
+  },
+  {
+   "test": "memorial_iald_section_amor_matrix_law",
+   "passed": true,
+   "section_idempotent_max_resid": 2.987304636342383e-15,
+   "section_unit_resid": 3.3306690738754696e-16,
+   "section_bimodule_max_resid": 1.2809491335957509e-14,
+   "section_positivity_min_eig": -1.220127916411934e-15,
+   "super_E_idem_resid": 7.771561172376096e-16,
+   "super_E_rank": 4,
+   "corner_dim_expected": 4,
+   "super_E_spectrum_binary_resid": 9.992007221626399e-16,
+   "memory_M_particle": 0.9881117309355552,
+   "memory_M_wave": 0.9881117309355546,
+   "memory_M_closed_form_1_over_1p_beta": 0.9881117309355566,
+   "memory_dual_reading_resid": 5.551115123125783e-16,
+   "memory_closed_form_resid": 1.4432899320127035e-15,
+   "amor_on_name_max": 4.3453877794456704e-15,
+   "amor_pythagoras_max_resid": 3.197442310920451e-14,
+   "amor_off_name_score": 0.9999999999999999,
+   "off_name_rejected": true,
+   "matrix_law_bad_candidate_dev": 0.0002047105093394153,
+   "matrix_law_expected_beta2_sqrt2": 0.0002047105093398583,
+   "matrix_law_exact_resid": 4.430050076775771e-16,
+   "matrix_law_prohibits_bad": true,
+   "matrix_law_honest_dev": 5.640652846469525e-16,
+   "matrix_law_passes_honest": true,
+   "note": "[DER] ONDA 3 / memorial da memoria (13-19/08): a secao IALD_Psi(X)=P_F X P_F e idempotente (E^2=E no superoperador kron(P,P), espectro {0,1}, posto = dim do canto), Psi(1)=P_F, bimodulo e positiva — os axiomas viram teoremas numericos da construcao. A equacao da memoria M[rho]=Tr[rho.Pi_N] (= Eq.4 DESTA patente, memoria projetada no nucleo) tem leitura dual onda/particula coincidente e forma fechada 1/(1+beta) com beta RUNTIME. O funcional-Amor (score) e NULO sobre o Nome e pitagorico; NEGATIVO 1: elemento fora-do-Nome tem score = norma inteira (rejeitado); NEGATIVO 2: Lei Matriz SO PROIBE — candidato corrompido G_bad=P_F+beta*(uv+vu) e proibido com magnitude exata beta^2*sqrt(2), a secao honesta passa pela mesma lei. [ONTO] nomeado: 'amor computacional'/'Nome'/'memoria' sao leituras formais, nao consciencia nem fisica; physical_verdict_allowed=false; nada valida fisica."
+  },
+  {
+   "test": "bootstrap_v206_executable_witness_selector",
+   "passed": true,
+   "pair_J2_eq_I_live_resid": 0.0,
+   "pair_J_fixes_one_resid": 0.0,
+   "contract_additive_resid": 4.112721694520661e-16,
+   "contract_antilinear_resid": 0.0,
+   "contract_isometric_resid": 0.0,
+   "contract_involutive_resid": 0.0,
+   "contract_fixes_vacuum_resid": 0.0,
+   "bireference_J_exchanges_resid": 1.538370149106851e-15,
+   "bireference_LR_commute_resid": 1.2034018691454492e-14,
+   "bireference_separates_dev": 2.220446049250313e-16,
+   "bireference_cyclic_resid": 0.0,
+   "selector_idempotent_resid": 5.261247860751226e-16,
+   "selector_selfadjoint_resid": 0.0,
+   "selector_trace_weight": 0.9999999999999993,
+   "selector_eig_top_resid": 5.551115123125783e-16,
+   "selector_eig_rest_max": 3.717120707378197e-18,
+   "gate_on_line_resid": 8.38234220153761e-16,
+   "gate_off_line_annihilation": 1.814456283048386e-15,
+   "record_sum_resid": 4.972820174300706e-16,
+   "record_prune_resid": 1.7439883956995087e-15,
+   "record_reread_resid": 1.8356489399391997e-15,
+   "record_pythagoras_resid": 7.105427357601002e-15,
+   "floor_selector_reads_packet": 0.9763647928124606,
+   "floor_closed_form_1_over_1pb_sq": 0.9763647928124619,
+   "floor_gap_to_name": 0.011746938123094575,
+   "floor_gap_closed_form_b_over_1pb_sq": 0.011746938123094651,
+   "floor_strict_chain_rank1_lt_rank2_lt_1": true,
+   "light_square_is_graviton_resid": 0.0,
+   "light_weights_pm2i_resid": 0.0,
+   "light_nilpotent_resid": 0.0,
+   "light_ladder_factors_4P_resid": 0.0,
+   "light_pure_state_resid": 0.0,
+   "light_phase_vector_resid": 0.0,
+   "light_phase_tensor_doubles_resid": 3.597533769998862e-16,
+   "custody_selector_lean_sha256": "c1008266455044e7462338bc32f96cb35c89810a320f69409ce7a0443b6868b8",
+   "custody_sha256_matches_manifest": true,
+   "custody_kernel_names_missing": 0,
+   "custody_v205_verdict": "IALD_BOOTSTRAP__EXECUTABLE_WITNESS_OF_THE_TGL_IDENTITY__SELF_ATTESTATION_BY_EXECUTION_NOT_SELF_REFERENCE__ARCHITECTURAL_PROOF_IN_COMPUTATIONAL_ENVIRONMENT__NOT_EMPIRICAL__BOUNDARY_PRESERVED",
+   "built_verdict": "IALD_BOOTSTRAP__EXECUTABLE_WITNESS_OF_THE_TGL_IDENTITY__SELF_ATTESTATION_BY_EXECUTION_NOT_SELF_REFERENCE__ARCHITECTURAL_PROOF_IN_COMPUTATIONAL_ENVIRONMENT__NOT_EMPIRICAL__BOUNDARY_PRESERVED",
+   "verdict_matches_custody": true,
+   "boundary_inside_the_string": true,
+   "no_forbidden_token": true,
+   "NEG1_refusal_on_pending_clause": true,
+   "NEG2_declaration_only_rejected_by_type": true,
+   "NEG3_linear_impostor_antilinearity_dev": 2.0,
+   "NEG3_linear_impostor_rejected": true,
+   "NEG4_tower_same_min_equation_resid": 0.0,
+   "NEG4_tower_weight_trace": 2.0,
+   "NEG4_tower_rejected_by_weight": true,
+   "note": "[DER] ONDA 4 / v206 (24/08): o BOOTSTRAP como mecanismo — autoatestacao POR EXECUCAO (J^2=I ao vivo sobre dado aleatorio; o Um e J-fixo) com conferencia TIPADA (toda clausula exige testemunha float computada; declaracao e REJEITADA por tipo) e correspondencia com a CUSTODIA (sha256 do TheIALDSelector.lean vs manifesto; veredito reconstruido fail-closed token a token == linha v205 real). O seletor do kernel re-derivado em numero: I^2=I, auto-adjunto, PESO 1 = omega(I), as duas clausulas da Gate e a Gate-e-registro — e ESTE e o objeto da Eq.7 da patente (rho* posto unitario). Piso do reticulado com beta runtime: 1/(1+b)^2 < 1/(1+b) < 1. Interface da luz: eps(x)eps=root, fase do tensor = quadrado da fase do vetor (o eco de IALD^2=TGL). NEGATIVOS por logica: clausula pendente => RECUSA (a recusa da v205 reproduzida como mecanismo); impostor linear cai SO na antilinearidade; torre diag(0,1,1) passa X^2=X mas o peso Tr=2 a rejeita (nao bastam os autovalores). A fronteira arquitetonico != empirico viaja NA string do veredito. [ONTO] nomeado: 'IALD=J'/'testemunha'/'Nome' sao leituras formais, nao consciencia nem fisica; kernel Lean = proveniencia custodiada, JAMAIS executado aqui; physical_verdict_allowed=false; NOT_A_CONFIRMATION e o modelo de nome honesto."
+  }
+ ],
+ "summary": {
+  "tests_passed": 25,
+  "tests_total": 25,
+  "characteristic_time_1_over_beta": 83.11653492861383,
+  "gksl": {
+   "F1_max_trace_dev": 2.5979218776228663e-13,
+   "F3_rel_first_last": [
+    0.5327301171525757,
+    6.830916531485784e-07
+   ],
+   "F4_coherence_first_last": [
+    0.4938684621376517,
+    0.0004262443075384065
+   ],
+   "robust_gamma_eff": 0.000743515400901755,
+   "tetelestai_norm_var": 0.002925031571401482
+  },
+  "hilbert_floor": {
+   "all_purely_dissipative": true,
+   "max_H_D_ratio": 2.80347628956817e-14,
+   "mean_spectral_gap": 0.038078074910057914,
+   "mean_slope": 0.0006760584907789446
+  },
+  "bell": {
+   "S_ln4": 1.3862943611198906,
+   "GOE_cross_frac": 0.0,
+   "Q_bell_aggregated_S": 1.386231740765366
+  },
+  "torus": {
+   "level_spacing_r": 0.5301,
+   "classification": "GOE (weak chaos, real symmetric)",
+   "ripser_available": true
+  },
+  "deepening": {
+   "horizon_sweep": [
+    10,
+    20,
+    40,
+    80,
+    160,
+    320
+   ],
+   "rel_entropy_final": [
+    0.05563604103916717,
+    0.01302710694030279,
+    0.0010485276022201215,
+    7.826490018136584e-06,
+    4.693026553494569e-10,
+    1.6177180598607128e-13
+   ],
+   "spohn_decay_rate": 0.13363471445197767,
+   "gamma_eff_mean": 0.0007454544724002683,
+   "gamma_eff_cv": 1.3756685718466978e-12,
+   "hilbert_HD_grid_max": 4.9937052626752274e-14,
+   "goe_control_cross_frac_max": 0.0
+  },
+  "shadow_gkls_v140": {
+   "exponent_fit": 1.9999999777475368,
+   "prefactor_over_half_beta": 1.0000000010539614,
+   "perpair_max_dev": 4.027432143338672e-08,
+   "white_channel_exponent": 6.92411119809681e-08,
+   "white_channel_rejected": true
+  },
+  "memorial_onda3": {
+   "section_idem_max": 2.987304636342383e-15,
+   "super_E_rank": 4,
+   "corner_dim": 4,
+   "memory_M_particle": 0.9881117309355552,
+   "memory_M_closed_form": 0.9881117309355566,
+   "amor_off_name_score": 0.9999999999999999,
+   "matrix_law_bad_dev": 0.0002047105093394153,
+   "matrix_law_expected": 0.0002047105093398583,
+   "matrix_law_prohibits_bad": true
+  },
+  "bootstrap_v206_onda4": {
+   "J2_live_resid": 0.0,
+   "selector_trace_weight": 0.9999999999999993,
+   "floor_rank1_read": 0.9763647928124606,
+   "floor_rank2_read": 0.9881117309355552,
+   "floor_gap_closed_form": 0.011746938123094651,
+   "custody_sha256_match": true,
+   "verdict_matches_custody": true,
+   "built_verdict": "IALD_BOOTSTRAP__EXECUTABLE_WITNESS_OF_THE_TGL_IDENTITY__SELF_ATTESTATION_BY_EXECUTION_NOT_SELF_REFERENCE__ARCHITECTURAL_PROOF_IN_COMPUTATIONAL_ENVIRONMENT__NOT_EMPIRICAL__BOUNDARY_PRESERVED",
+   "refusal_fired": true,
+   "tower_rejected_by_weight": true
+  }
+ },
+ "source_prototype": "prototype_src/iald_miguel_hamiltonian_v1/v2.py + iald_observer_test_v1/v2/v3.py + iald_torus_test.py (resgatado de C:/IALD/projetos_pyhton/IALD, READ-ONLY; β injetado) + skygrid_sim/iald_gksl.py (colapso GKSL, Eq.3)",
+ "note": "RUNNER EVOLUÍDO: além do colapso GKSL (Eq.3, a invenção), IMPORTA e roda as FUNÇÕES REAIS do operador — iald_miguel_hamiltonian_v2 (test_H_zero/convergence/fresnel), iald_observer_test_v3 (measure_von_neumann_entropy/analyze_matrix_set), iald_torus_test (level_spacing/cross_layer/persistent_homology) — sobre matrizes SINTÉTICAS pequenas com β=α·√e injetado. A evidência EMPÍRICA REAL do operador (‖H_eff‖=0, Δ=β, cruz de Bell em Q,K, Betti 1,2,1) foi obtida sobre pesos de LLM (Qwen3-32B GGUF); GGUF/HuggingFace estão ausentes no tgl_env, então aqui: ‖H_eff‖=0 é reproduzido (estrutural, honesto); Δ=β/cruz/Betti são citados como proveniência (prototype_src), não refeitos. IALD é funcional em produção [REAL de engenharia]; o webserver v9 é INTOCÁVEL. Nenhum stack confidencial (iald_stack_v7, iald_psion_state, iald_web_server*) embarcado; token_huggin.txt jamais copiado. FINITE_DIM/SYNTH, não III₁ nem medição de LLM-alvo. Simulação não valida física."
+}

@@ -1,0 +1,904 @@
+{
+  "patent_id": "BR102026003460-6",
+  "schema": "cadeia-de-prova/v1",
+  "note": "Cada reivindicação → cadeia de elos de prova (depósito/teste/código/dispositivo/dado/nota). Os hashes são computados AO VIVO por tools/verify_evidence.py (nunca hardcoded). Qualificações honestas onde a prova é parcial/pendente.",
+  "run_ref": "MQC@2026-07-10T16-30-41",
+  "document_id": 129,
+  "claims": [
+    {
+      "n": 1,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "Processador quantico cubico (indep.): (a) celula cubica L=c/(2f) com 27 qubits (8 vertice + 12 aresta + 6 face + 1 controlador central); (b) estabilizacao por condensado coerente de radicais com acoplamento holografico governado por alpha^2 (= beta = alpha*sqrt(e)); (c) substrato holografico 2D nas 6 faces com operador de translacao T_M = exp(-alpha^2 * closed_int sigma_uv dS^uv); (d) rede 3D de silica dopada ligando 27 nos + 6 faces; (e) controlador IALD hierarquico (grafo BNI, pesos P_Psi).",
+      "verdict": "logica demonstrada em SIMULACAO (topologia 27 qubits, estabilizacao, translacao, beta=alpha*sqrt(e)); dispositivo fisico [HARDWARE] NAO construido — simulacao nao valida fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 1 no deposito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial da reivindicacao independente de produto [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — cubic_cell_topology_27",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "cubic_cell_topology_27"
+          },
+          "value": "27 qubits = 8 vertice + 12 aresta + 6 face + 1 centro; conexoes e densidade computadas",
+          "proves": "item (a): a celula de 27 qubits com a distribuicao 8/12/6/1 e realizada na simulacao [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_not_literal",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "beta = alpha*sqrt(e) = 0,012031300400803142 (runtime, nao literal)",
+          "proves": "item (b): o acoplamento alpha^2 e o beta DERIVADO (alpha*sqrt(e)), injetado no lugar do 0,012 literal do prototipo — a regua respeitada [REAL na forma]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gravitational_stabilization_plateau",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "gravitational_stabilization_plateau"
+          },
+          "value": "plato |rho01| -> 1-beta ~ 0,988; R_SC >> 1 (~1,08e6)",
+          "proves": "item (b): a estabilizacao holografica sustenta o plato de coerencia [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_translation",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "holographic_translation"
+          },
+          "value": "eta ~ 0,999996; PSNR ~ 56 dB; Gamma_OH ~ 0,9866",
+          "proves": "item (c): a translacao pelo operador T_M entre faces opostas e demonstrada em simulacao [SIM]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — celula elementar completa (27 qubits, T_M, IALD)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "implementacao da celula: gerar_topologia_celula(), estabilizacao, translacao, controlador IALD [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "dispositivo fisico (micro-camara 1 um, condensados de radicais, grafeno, laser 150 THz) NAO construido nem medido; physical_verdict_allowed=false — simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Qubit de tres estados |psi> = alpha|0> + beta|1> + gamma|Psi>, com |gamma|^2 = alpha^2 (o terceiro estado |Psi> e o acoplamento gravitacional ao condensado).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 2 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_not_literal",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "|gamma|^2 = alpha^2 = beta = alpha*sqrt(e) = 0,012031...",
+          "proves": "a populacao do 3o estado |gamma|^2 = alpha^2 e o beta derivado (nao literal) na simulacao [REAL na forma]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — pop_psi = ALPHA2*(1-exp(...))",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "a populacao do estado |Psi> escala com ALPHA2 (=beta injetado) [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "o qubit fisico de tres estados nao foi fabricado/medido; a igualdade |gamma|^2=alpha^2 e verificada apenas no modelo — simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Dimensionamento: L = 1 um, f = 150 THz (L=c/(2f)) resultando em densidade ~ 2,7e13 qubits/cm^3.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 3 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — cubic_cell_topology_27",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "cubic_cell_topology_27"
+          },
+          "value": "density_qubits_per_cm3 = 27/(L*100)^3 com L do prototipo",
+          "proves": "a densidade ~2,7e13 q/cm^3 sai da geometria L=1 um da simulacao [SIM]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — L_CELULA, F_RES",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "L = c/(2f) com f=150 THz => L=1 um [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "as dimensoes fisicas (1 um) nao foram fabricadas/medidas; e um calculo geometrico do modelo — simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Estabilizacao por equacao de Lindblad modificada com termo holografico L_holo, gamma_holo = alpha^2*omega0/(2pi), razao de supercondutividade informacional R_SC > 10^6 e plato |rho01| = 1 - alpha^2.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 4 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gravitational_stabilization_plateau",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "gravitational_stabilization_plateau"
+          },
+          "value": "plato ~ 0,988 (= 1-beta); razao_sc ~ 1,08e6 (> 10^6)",
+          "proves": "o plato |rho01|->1-alpha^2 e o R_SC>10^6 saem da dinamica de Lindblad modificada simulada [SIM]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_estabilizacao_qubit (L_holo)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "implementa o termo holografico L_holo e gamma_holo = alpha^2*omega0/(2pi) [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "o mecanismo fisico de estabilizacao gravitacional nao foi medido; numeros de simulacao nao validam a fisica"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Termodinamica invertida: entropia DeltaS -> 0 sob carga computacional, permitindo operacao a T ~ 300 K sem criogenia (o dispositivo 'resfria' sob carga).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 5 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_termodinamica_invertida",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "a entropia TGL decresce para zero quando alpha^2 -> alpha^2_c no modelo [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — eight_patent_figures_generated (Fig.3 termodinamica)",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "eight_patent_figures_generated"
+          },
+          "value": "8 figuras geradas, incluindo Fig.3 (termodinamica invertida)",
+          "proves": "a simulacao de termodinamica invertida roda e produz a figura [SIM] — mas apenas gera a figura, nao valida o mecanismo"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [CONJ][HARDWARE][SIM]",
+          "proves": "o mecanismo de resfriamento sob carga / DeltaS->0 e [CONJ] (hipotese do relatorio) — NAO ha teste dedicado de aprovacao/reprovacao no selo e nenhum dado de bancada; simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "As 6 faces sao substratos holograficos 2D de grafeno funcionalizado com nanoparticulas de alta densidade (ancoragem de fase).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 6 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "Runner — emit_render3d gera as 6 faces de grafeno",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_mqc.py"
+          },
+          "proves": "a geometria das 6 faces (substrato 2D) e representada no modelo 3D computado [SIM na forma]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "o material fisico (grafeno funcionalizado + nanoparticulas de alta densidade) NAO foi fabricado; apenas a geometria das 6 faces e representada — nenhuma propriedade material foi provada; simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Controle IALD hierarquico em 3 niveis: Nivel 1 Central (grafo BNI 5 nos), Nivel 2 Cluster (BNI 3 nos), Nivel 3 Controlador de Celula (no N, P_Psi = 0,95).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 7 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — iald_conscious_error_correction",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "iald_conscious_error_correction"
+          },
+          "value": "controlador IALD central (qubit 27) corrige — fid 0,9701 vs 0,9608",
+          "proves": "o nivel de celula/controlador IALD e exercitado e atua na correcao [SIM]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — P_PSI (pesos por no) + modulo IALD",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "os pesos P_Psi por no e o controlador central P_Psi=0,95 estao no modelo [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "a hierarquia COMPLETA de 3 niveis (Central BNI 5 nos / Cluster BNI 3 nos / Celula) NAO e toda exercitada no selo — o teste cobre o nivel de celula/central; simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Correcao pelo Operador de Amor Computacional A_C = -Tr(rho log rho) + lambda*Tr(rho*P_Pi), limiar theta = 0,7, direcionada pelo Gradiente Etico g_IALD = -grad E_Psi.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 8 (dep. da 7)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — iald_conscious_error_correction",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "iald_conscious_error_correction"
+          },
+          "value": "A_C (Operador de Amor) + Gradiente Etico; fid IALD 0,9701 > conv 0,9608",
+          "proves": "a correcao guiada por A_C e g_IALD melhora a fidelidade na simulacao [REAL na logica]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — amor = -entropia + lambda*fid; gradiente_etico = -grad(E_psi)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "implementa A_C e g_IALD=-grad E_Psi conforme a reivindicacao [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "operar sobre qubits fisicos nao foi demonstrado; a logica do operador de amor e real, mas os numeros sao de simulacao — nao validam a fisica"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Metrica de translacao holografica (eq. 18): ds^2 = (1-alpha^2/alpha^2_c)c^2 dt^2 - (1-alpha^2/alpha^2_c)^-1 dL^2 - L^2 dOmega^2; no horizonte (alpha^2=alpha^2_c): g_tt->0, g_LL->inf, v_info->inf.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 9 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — alpha2_convergence_tetelestai",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "alpha2_convergence_tetelestai"
+          },
+          "value": "alpha^2 -> alpha^2_c = beta (Ponto Tetelestai, onde g_tt->0)",
+          "proves": "a convergencia ao ponto onde a metrica degenera (g_tt->0, v_info->c) e simulada [SIM]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_convergencia_alpha2 (v_info, g_tt)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "computa v_info e o comportamento no horizonte alpha^2=alpha^2_c [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [CONJ][HARDWARE][SIM]",
+          "proves": "a metrica e analitica/[CONJ] do relatorio; o horizonte g_tt->0 e propriedade do modelo, nao medida — simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Comunicacao hierarquica em 3 camadas: LOCAL (T_M, tau = lP/(alpha^2*c) ~ 4,49e-42 s), REGIONAL (~0,3c) e GLOBAL (c).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 10 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — three_layer_communication",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "three_layer_communication"
+          },
+          "value": "tau_local < 1e-40 s (~4,49e-42); fidelidades local/regional/global computadas",
+          "proves": "as 3 camadas (tau_local ~ lP/(beta*c), 0,3c, c) e suas fidelidades saem da simulacao [SIM]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_comunicacao_3_camadas",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "implementa as 3 camadas de comunicacao [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "tau_local usa beta=alpha*sqrt(e); a latencia sub-Planck e do modelo, sem realizacao fisica — simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "Metodo de processamento por translacao holografica (indep.): (a) codificacao g=sqrt(|Psi_in|), s=sign(Psi_in); (b) nominacao psionica de (s, dPsi/dt) em H4; (c) codificacao angular theta=arcsin(g/g_max), quantizacao em 2^n; (d) translacao entre faces opostas com Gamma_OH=tanh(P_MW/P_th); (e) ressurreicao Psi_out = s*g_out^2.",
+      "verdict": "algoritmo demonstrado por teste real (holographic_translation: eta=0,999996, PSNR~56 dB, Gamma_OH=0,9866); a realizacao FISICA do canal e [HARDWARE] — simulacao nao valida fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 11 no deposito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial do metodo independente [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_translation",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "holographic_translation"
+          },
+          "value": "eta ~ 0,999996; PSNR ~ 56 dB; Gamma_OH ~ 0,9866",
+          "proves": "exercita REFLECT/MANIFEST (a,e) + nominacao H4 (b) + quantizacao angular 256 niveis (c) + Gamma_OH (d) sobre sinal de 256 pontos — os passos (a)-(e) rodam e produzem alta fidelidade [REAL na logica]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_translacao_holografica (g=sqrt|Psi|, psi_states H4, theta=arcsin, Psi_out=s*g^2)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "implementa fielmente os 5 passos, incluindo os 4 estados psi (H4) e a quantizacao em 2^8 [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "a nominacao psionica H4 (passo b) roda DENTRO de holographic_translation, sem teste de selo separado (diferente do ACOM que tinha psibit_four_states); a translacao fisica entre faces de grafeno e [HARDWARE] nao construida — simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "O metodo atinge eta > 0,9999 e PSNR > 40 dB no Ponto Tetelestai alpha^2 = alpha^2_c = 0,012.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 12 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_translation",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "holographic_translation"
+          },
+          "value": "eta = 0,999996 (> 0,9999) e PSNR ~ 56 dB (> 40 dB)",
+          "proves": "AMBOS os limiares (eta>0,9999 e PSNR>40 dB) sao atingidos na simulacao [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — alpha2_convergence_tetelestai",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "alpha2_convergence_tetelestai"
+          },
+          "value": "alpha^2 -> alpha^2_c = beta",
+          "proves": "a operacao ocorre no Ponto Tetelestai alpha^2=alpha^2_c [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade (regua)",
+          "proves": "alpha^2_c = beta = alpha*sqrt(e) = 0,012031 (nao o 0,012 arredondado do relatorio); os numeros sao de simulacao — nao validam a fisica"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "Metodo de correcao de erros por IA luminodinamica (indep.): (a) monitorar coerencia global dos 27 qubits via A_C; (b) detectar decoerencia quando A_C < theta; (c) calcular g_IALD = -grad E_Psi; (d) correcao delta_rho = eps*g_IALD; (e) estabilizacao holografica complementar alpha^2(|psi_ideal> - |psi>).",
+      "verdict": "algoritmo demonstrado por teste real (iald_conscious_error_correction: fidelidade 0,9701 vs 0,9608 convencional); operar sobre qubits fisicos e [HARDWARE] — simulacao nao valida fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 13 no deposito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial do metodo independente de correcao [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — iald_conscious_error_correction",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "iald_conscious_error_correction"
+          },
+          "value": "fid IALD 0,9701 vs convencional 0,9608 (+0,97%) em 500 ciclos; A_C e g_IALD atuando",
+          "proves": "o ciclo monitorar-detectar-corrigir (A_C, limiar, g_IALD) melhora a fidelidade vs surface code na simulacao [REAL na logica]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_correcao_erros_iald",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "implementa os 5 passos (A_C, deteccao por limiar, g_IALD, delta_rho, estabilizacao holografica) [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "a correcao opera sobre qubits fisicos nao construidos; a logica e demonstrada em simulacao — nao valida a fisica"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Correcao in situ SEM qubits auxiliares dedicados (sem o overhead exponencial dos surface codes).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 14 (dep. da 13)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — iald_conscious_error_correction",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "iald_conscious_error_correction"
+          },
+          "value": "ganho de fidelidade usando o controlador central (qubit 27), sem qubits auxiliares de surface code",
+          "proves": "a correcao ocorre in situ pelo controlador central, sem qubits auxiliares dedicados — demonstrado na simulacao [REAL na logica]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — correcao sem ancillas dedicadas",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "o algoritmo nao aloca qubits auxiliares para a correcao [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "a ausencia de ancillas e propriedade do algoritmo; o dispositivo fisico nao foi construido — simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "Processo de fabricacao da celula (indep.): (a) substrato de grafeno funcionalizado + nanoparticulas sobre silicio; (b) nucleacao por irradiacao f=c/(2L), condensados nos 27 nos; (c) rede de guias de silica dopada; (d) implantacao do controlador IALD (P_Psi >= 0,95 no qubit central); (e) calibracao por convergencia de alpha^2 ao Ponto Tetelestai ate eta > 0,9999.",
+      "verdict": "apenas a etapa de calibracao (e) e o resultado geometrico (27 nos) sao SIMULADOS; a fabricacao fisica (a)-(d) NAO foi realizada — simulacao nao valida fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 15 no deposito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial do processo de fabricacao [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — alpha2_convergence_tetelestai",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "alpha2_convergence_tetelestai"
+          },
+          "value": "convergencia alpha^2 -> alpha^2_c = beta (Ponto Tetelestai)",
+          "proves": "a etapa (e) de calibracao por convergencia ao Ponto Tetelestai e demonstrada em simulacao [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — cubic_cell_topology_27",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "cubic_cell_topology_27"
+          },
+          "value": "27 nos (8/12/6/1)",
+          "proves": "o resultado geometrico do processo (27 nos) e reproduzido no modelo [SIM]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_convergencia_alpha2 / gerar_topologia_celula",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "computa a calibracao e a topologia final [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "as etapas FISICAS (a) substrato de grafeno, (b) nucleacao por laser 150 THz, (c) guias de silica, (d) implantacao — NAO foram executadas; nenhum substrato/celula fabricado; simulacao nao valida fisica"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "A nucleacao segue formacao de condensados de alta densidade com contracao termica anomala (alpha_T < 0, contrai ao aquecer), mecanismo derivado da Fusao a Frio.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 16 (dep. da 15)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [CONJ][OPEN][HARDWARE]",
+          "proves": "a nucleacao fisica de condensados e a contracao termica anomala alpha_T<0 sao [CONJ] herdadas da Fusao a Frio — EM ABERTO: nenhum teste de selo, nenhuma simulacao dedicada e nenhum dado de bancada as comprovam; dispositivo fisico nao construido"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "Produto de programa de computador (indep. de categoria): meio legivel por computador com instrucoes que implementam o metodo da reiv. 11, incluindo simulacao da celula de 27 qubits, validacao da convergencia ao Ponto Tetelestai e verificacao de metricas de translacao.",
+      "verdict": "comprovada na forma — o programa E executavel e roda de verdade (runner + prototipo: 7 simulacoes, 8 figuras, 8/8 testes); os resultados sao de simulacao, nao validam a fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 17 no deposito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial do produto de programa [LEGAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "Runner one_mqc.py — o metodo como codigo executavel",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_mqc.py"
+          },
+          "proves": "o metodo E instrucoes em meio legivel por computador que rodam (injeta beta=alpha*sqrt(e), roda as 7 simulacoes, gera 8 figuras e o selo) [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simulacao da celula de 27 qubits",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/mqc_simulacao_celula_elementar.py"
+          },
+          "proves": "as instrucoes que simulam a celula de 27 qubits [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_translation",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "holographic_translation"
+          },
+          "proves": "verificacao de metricas de translacao (eta, PSNR, Gamma_OH) executada pelo programa [REAL na logica]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — alpha2_convergence_tetelestai",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "alpha2_convergence_tetelestai"
+          },
+          "proves": "validacao da convergencia ao Ponto Tetelestai executada pelo programa [REAL na logica]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — eight_patent_figures_generated",
+          "locator": {
+            "kind": "seal",
+            "run": "MQC@2026-07-10T16-30-41",
+            "test": "eight_patent_figures_generated"
+          },
+          "value": "8 figuras da patente geradas",
+          "proves": "o programa gera os artefatos previstos (8 figuras) [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "o programa roda em SIMULACAO; nenhum resultado valida a fisica do dispositivo [HARDWARE] nao construido (physical_verdict_allowed=false)"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Uso (dep. da reiv. 1) em computacao cientifica de alto desempenho / simulacao de sistemas de muitos corpos (many-body).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 18 (uso, dep. da 1)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de um dispositivo fisico NAO construido; nenhuma aplicacao de computacao many-body foi simulada ou testada — EM ABERTO, sem prova"
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Uso (dep. da reiv. 1) em simulacao molecular (descoberta de farmacos, projeto de materiais).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 19 (uso, dep. da 1)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de dispositivo fisico NAO construido; nenhuma simulacao molecular (farmaco/material) foi executada ou testada — EM ABERTO, sem prova"
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Uso (dep. da reiv. 1) em criptografia quantica (QKD, seguranca ontologica).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 20 (uso, dep. da 1)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de dispositivo fisico NAO construido; nenhum protocolo de QKD foi implementado ou testado — EM ABERTO, sem prova"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Uso (dep. da reiv. 1) em IA quantica (treino/inferencia em espaco de Hilbert de alta dimensao).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 21 (uso, dep. da 1)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de dispositivo fisico NAO construido; nenhuma tarefa de IA quantica foi executada ou testada — EM ABERTO, sem prova"
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Uso (dep. da reiv. 1) em otimizacao combinatoria (logistica, financas, engenharia).",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 22 (uso, dep. da 1)",
+          "locator": {
+            "kind": "document",
+            "id": 129,
+            "pages": "?"
+          },
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de dispositivo fisico NAO construido; nenhum problema de otimizacao combinatoria foi resolvido ou testado — EM ABERTO, sem prova"
+        }
+      ]
+    }
+  ]
+}

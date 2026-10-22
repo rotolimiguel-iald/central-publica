@@ -1,0 +1,348 @@
+# -*- coding: utf-8 -*-
+"""one_acom_crypto.py — runner único forma = conteúdo da patente ACOM Crypto
+(BR102026003431-2 — Criptografia por Separação Ontológica de Reflexão Dimensional).
+
+Demonstra a LÓGICA da invenção com números REAIS de execução:
+  - ENCRYPT: reflexão dimensional → três partes ontologicamente distintas
+    (PsiShare Ψ = estados/sinais · ThetaShare Θ = ângulos/magnitudes · MasterKey κ = escala+hashes);
+  - DECRYPT: reunião das três partes → verificação tripla SHA-256 + Fexp físico → Dobra;
+  - insuficiência dos subconjuntos próprios (Ψ; Θ; κ; Ψ+Θ; Θ+κ; Ψ+κ) — MEDIDA, não afirmada;
+  - três pontos de rejeição de adulteração (SHA-256, share_id, Fexp).
+Certifica com hash e gera figuras + relatório auditável. β_TGL nunca literal.
+
+HONESTIDADE [PILOTO/DEFENSE]: a ofuscação XOR derivada do share_id NÃO substitui
+criptografia padrão (AEAD) — a alegação do piloto é a SEPARAÇÃO ONTOLÓGICA + integridade.
+Vazamentos estruturais parciais dos subconjuntos são medidos e REPORTADOS como estão
+(o número corrige a frase). Nada aqui valida física nem segurança de produção
+(physical_verdict_allowed=false).
+
+A RÉGUA: protótipos originais READ-ONLY. Este runner COPIA o núcleo destilado
+(skygrid_sim) do piloto e roda a CÓPIA. Rode no tgl_env (numpy):
+
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_acom_crypto.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+import zlib
+from dataclasses import replace
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"   # READ-ONLY
+WORK = RUNNER_DIR / "_crypto_core"
+PATENT_ID = "BR102026003431-2"
+SLUG = "acom_crypto"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst,
+                    ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def byte_entropy(b: bytes) -> float:
+    if not b:
+        return 0.0
+    counts = np.bincount(np.frombuffer(b, dtype=np.uint8), minlength=256)
+    p = counts[counts > 0] / len(b)
+    return float(-(p * np.log2(p)).sum())
+
+
+def rel_rmse(L: np.ndarray, L2: np.ndarray) -> float:
+    return float(np.sqrt(np.mean((L - L2) ** 2)) / (np.sqrt(np.mean(L ** 2)) + 1e-300))
+
+
+def corr(a: np.ndarray, b: np.ndarray) -> float:
+    a, b = a.ravel(), b.ravel()
+    if a.std() == 0 or b.std() == 0:
+        return 0.0
+    return float(np.corrcoef(a, b)[0, 1])
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_acom_crypto] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core  # noqa: E402 (copied core)
+    from skygrid_sim.acom_crypto import ACOMMirrorCrypto, _derive_key, _xor  # noqa: E402
+    from skygrid_sim.acom_mirror import _unpack2bits, SIGN_L_OF_STATE  # noqa: E402
+
+    beta = tgl_core.beta()
+    beta_expected = 0.0072973525693 * math.exp(0.5)   # alpha (INPUT CODATA) * sqrt(e)
+    beta_ok = abs(beta - beta_expected) < 1e-15
+    print(f"[one_acom_crypto] β runtime = {beta} (= α·√e? {beta_ok})")
+
+    tests = [{"test": "beta_form", "passed": bool(beta_ok), "beta_runtime": beta}]
+
+    rng = np.random.default_rng(23)
+    cases = {
+        "pequeno_1k": rng.standard_normal(1_000),
+        "medio_100k": rng.standard_normal(100_000),
+        "grande_1M": rng.standard_normal(1_000_000),
+        "embeddings_1000x384": rng.standard_normal((1_000, 384)),
+        "kv_cache": rng.standard_normal((4, 2, 8, 64, 32)),
+    }
+
+    engine = ACOMMirrorCrypto(angular_bits=8)
+    per_case = {}
+    for name, L in cases.items():
+        enc = engine.encrypt(L)
+        L2 = engine.decrypt(enc.psi_share, enc.theta_share, enc.master_key)
+        c = corr(np.asarray(L, dtype=np.float64), L2)
+        n = int(np.asarray(L).size)
+        psi_b = len(enc.psi_share.encrypted_states)
+        th_b = len(enc.theta_share.encrypted_angles)
+        ratio = (n * 8) / (psi_b + th_b)
+        ent_psi = byte_entropy(enc.psi_share.encrypted_states)
+        ent_th = byte_entropy(enc.theta_share.encrypted_angles)
+        per_case[name] = {
+            "test": f"encrypt_decrypt_{name}",
+            "passed": bool(c > 0.999 and ratio > 3.0),
+            "correlation": c, "compression_ratio": float(ratio),
+            "n_elements": n, "psi_bytes": psi_b, "theta_bytes": th_b,
+            "f_exp": float(enc.psi_share.f_exp),
+            "state_entropy": float(enc.psi_share.state_entropy),
+            "byte_entropy_psi_bits": ent_psi, "byte_entropy_theta_bits": ent_th,
+        }
+        tests.append(per_case[name])
+        print(f"[one_acom_crypto] {name}: corr={c:.6f} ratio={ratio:.2f} "
+              f"H(Ψ)={ent_psi:.3f} H(Θ)={ent_th:.3f} bits/byte")
+
+    # byte entropy is bounded by log2(#bytes); only test cases with enough bytes to
+    # fill the 256-bin histogram. Small case reported for honesty, not gated.
+    big_ents = [v for name, pc in per_case.items() if pc["n_elements"] >= 100_000
+                for v in (pc["byte_entropy_psi_bits"], pc["byte_entropy_theta_bits"])]
+    all_ents = [v for pc in per_case.values()
+                for v in (pc["byte_entropy_psi_bits"], pc["byte_entropy_theta_bits"])]
+    tests.append({"test": "isolated_parts_byte_entropy",
+                  "passed": bool(min(big_ents) > 7.9),
+                  "min_bits_per_byte_ge100k": min(big_ents),
+                  "min_bits_per_byte_all": min(all_ents),
+                  "note": "indistinguibilidade ESTATÍSTICA (não prova criptográfica) — "
+                          "propriedade de separação, não cifra padrão [DEFENSE]. "
+                          "Testado só em casos ≥100k elementos: H(byte)≤log2(#bytes), "
+                          "então payloads pequenos (1k → poucos bytes) têm H<8 por "
+                          "tamanho de amostra, não por vazamento."})
+    ents = all_ents
+
+    # ---- subset insufficiency, MEASURED on medio_100k ------------------------
+    L = np.asarray(cases["medio_100k"], dtype=np.float64)
+    enc = engine.encrypt(L)
+    mk = enc.master_key
+    n = mk.n_elements
+
+    psi_raw = _xor(zlib.decompress(enc.psi_share.encrypted_states),
+                   _derive_key(enc.psi_share.share_id, "psi_obfuscation",
+                               len(zlib.decompress(enc.psi_share.encrypted_states))))
+    theta_raw = _xor(zlib.decompress(enc.theta_share.encrypted_angles),
+                     _derive_key(enc.theta_share.share_id, "theta_obfuscation",
+                                 len(zlib.decompress(enc.theta_share.encrypted_angles))))
+    states = _unpack2bits(psi_raw, n)
+    signs = SIGN_L_OF_STATE[states]
+    theta = np.frombuffer(theta_raw, dtype=np.uint8)[:n].astype(np.float64) / 255 * (math.pi / 2)
+
+    guess_gmax = 1.0   # attacker without kappa does not know the scale
+    subsets = {
+        "psi_only": signs * 1.0,                                  # signs, no magnitude
+        "theta_only": (guess_gmax * np.sin(theta)) ** 2,          # magnitudes, no sign/scale
+        "kappa_only": np.zeros(n),                                # no payload at all
+        "psi_theta": signs * (guess_gmax * np.sin(theta)) ** 2,   # shape, wrong scale
+        "theta_kappa": (mk.g_max * np.sin(theta)) ** 2,           # |L| shape, no polarity
+        "psi_kappa": signs * (mk.g_max * math.sin(math.pi / 4)) ** 2,  # no angles: theta guess
+    }
+    subset_report = {}
+    for name, L2 in subsets.items():
+        subset_report[name] = {"correlation": corr(L, L2), "rel_rmse": rel_rmse(L, L2)}
+    # value reconstruction fails for every proper subset (rel RMSE >= 50%)
+    insuff_ok = all(v["rel_rmse"] >= 0.50 for v in subset_report.values())
+    tests.append({
+        "test": "proper_subsets_insufficient_for_value_reconstruction",
+        "passed": bool(insuff_ok), "subsets": subset_report,
+        "honest_note": "VAZAMENTO ESTRUTURAL MEDIDO E DECLARADO: sinais isolados (Ψ) "
+                       "correlacionam ~E|L|/σ com dados gaussianos; Ψ+Θ recupera FORMA "
+                       "sem ESCALA (corr alta, valor errado — κ retém g_max); Θ+κ recupera "
+                       "|L| sem polaridade. NENHUM subconjunto reconstrói o VALOR "
+                       "(rel_rmse≥50%). Confidencialidade plena exige AEAD padrão por "
+                       "cima dos shares (nota [DEFENSE] do módulo).",
+    })
+    print("[one_acom_crypto] subconjuntos (corr | rel_rmse): " + " · ".join(
+        f"{k}={v['correlation']:+.3f}|{v['rel_rmse']:.2f}" for k, v in subset_report.items()))
+
+    # ---- three tamper rejection points ---------------------------------------
+    def expect_raise(fn, label):
+        try:
+            fn()
+            return {"test": label, "passed": False, "raised": None}
+        except ValueError as e:
+            return {"test": label, "passed": True, "raised": str(e)[:120]}
+
+    tampered_states = bytearray(zlib.decompress(enc.psi_share.encrypted_states))
+    tampered_states[0] ^= 0x01
+    psi_tampered = replace(enc.psi_share,
+                           encrypted_states=zlib.compress(bytes(tampered_states), 9))
+    tests.append(expect_raise(
+        lambda: engine.decrypt(psi_tampered, enc.theta_share, mk),
+        "tamper_sha256_rejects_bitflip"))
+
+    enc_other = engine.encrypt(rng.standard_normal(100_000))
+    tests.append(expect_raise(
+        lambda: engine.decrypt(enc.psi_share, enc_other.theta_share, mk),
+        "tamper_share_id_mismatch_rejected"))
+
+    mk_bad_fexp = replace(mk, expected_f_exp=mk.expected_f_exp + 0.5,
+                          psi_hash=mk.psi_hash, theta_hash=mk.theta_hash)
+    tests.append(expect_raise(
+        lambda: engine.decrypt(enc.psi_share, enc.theta_share, mk_bad_fexp),
+        "tamper_f_exp_physical_check_rejects"))
+    for t in tests[-3:]:
+        print(f"[one_acom_crypto] {t['test']}: rejeitado? {t['passed']}")
+
+    passed = sum(1 for t in tests if t["passed"])
+    summary = {
+        "tests_passed": passed, "tests_total": len(tests),
+        "correlation_min": min(pc["correlation"] for pc in per_case.values()),
+        "compression_ratio_mean": sum(pc["compression_ratio"] for pc in per_case.values()) / len(per_case),
+        "byte_entropy_min_bits_ge100k": min(big_ents),
+        "byte_entropy_min_bits_all": min(all_ents),
+        "subset_insufficiency": subset_report,
+    }
+    all_ok = passed == len(tests)
+    max_verdict = ("CRYPTO_SEPARATION_DEMONSTRATED ([SIM][PILOTO] — separação Ψ/Θ/κ, "
+                   "verificação tripla e rejeição de adulteração reais; vazamento "
+                   "estrutural parcial MEDIDO e declarado; não é AEAD)")
+
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {
+        "patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": "one_acom_crypto.py",
+        "markers": ["[SIM]", "[PILOTO]", "[DEFENSE]"], "physical_verdict_allowed": False,
+        "beta_runtime": beta, "beta_matches_alpha_sqrt_e": beta_ok,
+        "verdict": "CRYPTO_SEPARATION_DEMONSTRATED" if all_ok else "PARTIAL_DEMONSTRATION",
+        "max_verdict": max_verdict,
+        "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                      "free_parameters": 0},
+        "tests": tests, "summary": summary,
+        "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+        "note": "Demonstração [SIM] da lógica de separação ontológica; a ofuscação XOR do "
+                "piloto NÃO é cifra padrão — para produção, AEAD sobre os shares. Números "
+                "de desempenho são desta máquina, não os da Tabela 2 do relatório. "
+                "Simulação não valida física nem segurança.",
+    }
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    figs = []
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+
+        # Fig A — byte histograms of isolated parts (patent Fig. 7 analog)
+        fig, axes = plt.subplots(1, 2, figsize=(9, 3))
+        for ax, blob, lbl in ((axes[0], enc.psi_share.encrypted_states, "PsiShare Ψ"),
+                              (axes[1], enc.theta_share.encrypted_angles, "ThetaShare Θ")):
+            h = np.bincount(np.frombuffer(blob, dtype=np.uint8), minlength=256)
+            ax.bar(range(256), h, width=1.0)
+            ax.set_title(f"{lbl} isolada — H={byte_entropy(blob):.3f} bits/byte", fontsize=9)
+            ax.set_xlabel("valor do byte")
+        fig.suptitle("ACOM Crypto — partes isoladas ≈ ruído estatístico [SIM]", fontsize=10)
+        fp = fig_dir / "fig_entropia_partes.png"
+        plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append("fig_entropia_partes.png")
+
+        # Fig B — subset insufficiency (rel RMSE per subset)
+        names = list(subset_report.keys())
+        rmses = [min(subset_report[k]["rel_rmse"], 2.0) for k in names]
+        plt.figure(figsize=(7.5, 3.4))
+        plt.bar(names, rmses, color="#8888cc")
+        plt.axhline(0.5, color="crimson", lw=1, label="limiar 50% (insuficiência de valor)")
+        plt.ylabel("RMSE relativo (cap 2,0)")
+        plt.title("Subconjuntos próprios: erro de reconstrução de VALOR [SIM]")
+        plt.xticks(rotation=20, fontsize=8); plt.legend(fontsize=8); plt.grid(alpha=.3, axis="y")
+        fp = fig_dir / "fig_insuficiencia_subconjuntos.png"
+        plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append("fig_insuficiencia_subconjuntos.png")
+    except Exception as e:
+        print(f"[one_acom_crypto] figuras puladas: {e}")
+
+    report_md = results_dir / "report.md"
+    report_md.write_text(
+        f"# Relatório auditável — ACOM Crypto one_acom_crypto.py\n\n"
+        f"- Run `{ts}` · Patente `{PATENT_ID}` (prioridade interna 66 → ACOM raiz 05/12/2025)\n"
+        f"- Veredito: **{max_verdict}**\n"
+        f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n"
+        f"- Testes: **{passed}/{len(tests)}**\n"
+        f"- ENCRYPT→DECRYPT (5 casos): corr mín `{summary['correlation_min']:.6f}` · "
+        f"ratio médio `{summary['compression_ratio_mean']:.2f}` (>3:1)\n"
+        f"- Entropia de bytes das partes isoladas (casos ≥100k): mín "
+        f"`{summary['byte_entropy_min_bits_ge100k']:.3f}` bits/byte "
+        f"(indistinguibilidade estatística, não prova criptográfica; payloads pequenos "
+        f"têm H<8 por tamanho de amostra)\n"
+        f"- Insuficiência dos 6 subconjuntos próprios para reconstrução de VALOR: "
+        f"**{insuff_ok}** (rel_rmse≥50% em todos) — vazamento estrutural parcial MEDIDO "
+        f"e declarado em results.json (o número corrige a frase)\n"
+        f"- Três pontos de rejeição de adulteração (SHA-256 / share_id / Fexp): exercitados\n"
+        f"- physical_verdict_allowed: **False**.\n\n"
+        f"[DEFENSE] A ofuscação XOR do piloto não substitui AEAD; a alegação é a separação "
+        f"ontológica + integridade. Pendência jurídica P-12 (anexo do depósito) registrada "
+        f"em PENDENCIAS.md — não afeta esta demonstração de lógica.\n"
+        f"Núcleo copiado do piloto (READ-ONLY); original intacto. 1 = 1. Tetelestai.\n",
+        encoding="utf-8")
+
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {
+        "timestamp": ts, "patent_id": PATENT_ID, "runner": "one_acom_crypto.py",
+        "beta_runtime": beta, "physical_verdict_allowed": False,
+        "max_verdict": max_verdict, "tests_passed": passed,
+        "result_hash": result_hash, "sha256": file_hashes,
+        "markers": ["[SIM]", "[PILOTO]", "[DEFENSE]"],
+        "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/"),
+    }
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[one_acom_crypto] SELADO · result_hash {result_hash[:16]}… · {passed}/{len(tests)} testes")
+    print(f"[one_acom_crypto] results: {results_path.relative_to(CENTRAL)}")
+    return 0 if all_ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

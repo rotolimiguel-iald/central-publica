@@ -1,0 +1,38 @@
+{
+  "patent_id": "BR102026003452-5",
+  "title": "Motor de Dobra / Propulsão Fotônica — Transporte por Reflexão Dimensional",
+  "source": "Relatório descritivo; Protocolo Farol Ψ; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). [SIM][HARDWARE] DIGITAL-TWIN — simulação não valida física; sem protótipo; propulsão NÃO demonstrada; transporte físico, dobra do espaço-tempo e τ≈10⁻⁴² s NÃO simulados nem alegados.",
+  "groups": [
+    {
+      "name": "Ciclo REFLECT / MANIFEST (digital-twin)",
+      "kind": "flow-node",
+      "components": [
+        { "id": "REF", "label": "REFLECT", "desc": "L (tensor sintético) → (ψ∈H4, θ=arcsin(g/gmax)). Reusa a lógica ACOM Mirror.", "marker": "[SIM]", "x": 0.10, "y": 0.20 },
+        { "id": "ADJ", "label": "Gate de adjacência D_Ψ", "desc": "D_Ψ(A,B) < ε_c habilita a 'dobra' (estados adjacentes); estados distantes inibem.", "marker": "[SIM]", "x": 0.40, "y": 0.20 },
+        { "id": "MAN", "label": "MANIFEST", "desc": "(ψ,θ) → L' = sign(ψ)·(gmax·sin θ)². Correlação round-trip = preservação de invariante ALGORÍTMICA (não física).", "marker": "[SIM]", "x": 0.70, "y": 0.20 }
+      ]
+    },
+    {
+      "name": "Máquina de estados Farol Ψ (F0–F5)",
+      "kind": "state",
+      "components": [
+        { "id": "F0", "label": "F0 IDLE", "desc": "Repouso — sem alvo.", "marker": "[SIM]", "x": 0.06, "y": 0.60 },
+        { "id": "F1", "label": "F1 ALIGN", "desc": "Alinhamento de fase com o farol Ψ.", "marker": "[SIM]", "x": 0.24, "y": 0.60 },
+        { "id": "F2", "label": "F2 LOCK", "desc": "Trava de fase.", "marker": "[SIM]", "x": 0.42, "y": 0.60 },
+        { "id": "F3", "label": "F3 VETO ÉTICO", "desc": "Veto ético: se a checagem ética falha, a dobra é IMPEDIDA (não há commit).", "marker": "[SIM]", "x": 0.60, "y": 0.60 },
+        { "id": "F4", "label": "F4 COMMIT", "desc": "Commit condicional (só se ético E adjacente).", "marker": "[SIM]", "x": 0.78, "y": 0.60 },
+        { "id": "F5", "label": "F5 MANIFEST", "desc": "Manifestação do payload no destino (digital-twin).", "marker": "[SIM]", "x": 0.92, "y": 0.60 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "REF", "to": "ADJ" }, { "from": "ADJ", "to": "MAN" },
+    { "from": "F0", "to": "F1" }, { "from": "F1", "to": "F2" }, { "from": "F2", "to": "F3" },
+    { "from": "F3", "to": "F4" }, { "from": "F4", "to": "F5" }
+  ],
+  "constants": [
+    { "symbol": "θ_Miguel", "value": "arcsin(√β) ≈ 6,29° (β = α·√e em runtime)", "note": "Ângulo de reflexão dimensional; nunca literal." },
+    { "symbol": "selo", "value": "digital-twin; propulsão NÃO demonstrada; sem protótipo", "note": "physical_verdict_allowed=false — nada aqui valida física." }
+  ]
+}

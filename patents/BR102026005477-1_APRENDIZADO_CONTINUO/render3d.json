@@ -1,0 +1,739 @@
+{
+ "patent_id": "BR102026005477-1",
+ "title": "Aprendizado Contínuo — Geometria do Algoritmo (Psion + ontologia trinária)",
+ "kind": "algorithm",
+ "note": "[PILOTO][SIM] A geometria do ALGORITMO de aprendizado sem re-treino: o Psion no centro (motor que aprende entre sessões por EMA a taxa β_TGL, sem gradiente), a ontologia trinária Verbo=Nome×Palavra (7 componentes), o tetraedro PsiBit H4 (2 bits/peso) e os submódulos 710–770 do dispositivo. Zero parâmetros livres — tudo deriva de β=α·√e. Gire e clique para inspecionar. Benchmark em LLM real é etapa separada; nada valida física. | PLANAR: algoritmo = plano; mesh generico -> base-plano(s) do mecanismo.",
+ "camera": {
+  "position": [
+   2.0,
+   1.4,
+   2.0
+  ]
+ },
+ "groups": [
+  {
+   "name": "psion",
+   "color": "#cc2222",
+   "label": "Psion (motor de aprendizado contínuo [7])",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "h4",
+   "color": "#3366cc",
+   "label": "PsiBit H4 (4 estados, 2 bits/peso)",
+   "count": 4,
+   "explodable": true
+  },
+  {
+   "name": "palavra",
+   "color": "#3366cc",
+   "label": "PALAVRA √e — Quantizer[1] + Cache[3]",
+   "count": 2,
+   "explodable": true
+  },
+  {
+   "name": "nome",
+   "color": "#33aa55",
+   "label": "NOME α — Sampler[2]",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "verbo",
+   "color": "#7ce7c8",
+   "label": "VERBO β — Attention/Verb Floor[6]",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "selo",
+   "color": "#ee8800",
+   "label": "Selo — Hash[4] + Nome Chain[5]",
+   "count": 2,
+   "explodable": true
+  },
+  {
+   "name": "modules",
+   "color": "#ffd60a",
+   "label": "Submódulos do Psion 710–770",
+   "count": 7,
+   "explodable": true
+  }
+ ],
+ "nodes": [
+  {
+   "id": "psion",
+   "label": "Psion — motor de aprendizado contínuo [7]",
+   "desc": "O estado psiônico persistente (componente 7): acumula perfis por EMA a taxa β_TGL=0.012031, SEM gradiente. Meia-vida de convergência COMPUTADA nesta run: 57.3 gerações. Origem do algoritmo.",
+   "shape": "sphere",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.2,
+   "color": "#cc2222",
+   "group": "psion",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "psi0",
+   "label": "PsiBit QUEDA (−,−) |0⟩",
+   "desc": "Estado do PsiBit em H4 (2 bits/peso: sgn(w), sgn(∂w)). Paridade +1. Ocupação COMPUTADA nesta run: 24.9% dos pesos. F_exp global=⟨paridade⟩=-0.0029.",
+   "shape": "sphere",
+   "position": [
+    0.42,
+    0.42,
+    0.42
+   ],
+   "size": 0.09,
+   "color": "#cc2222",
+   "group": "h4",
+   "marker": "[SIM]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "psi1",
+   "label": "PsiBit ASCENSÃO (−,+) |1⟩",
+   "desc": "Estado do PsiBit em H4 (2 bits/peso: sgn(w), sgn(∂w)). Paridade -1. Ocupação COMPUTADA nesta run: 24.9% dos pesos. F_exp global=⟨paridade⟩=-0.0029.",
+   "shape": "sphere",
+   "position": [
+    0.42,
+    -0.42,
+    -0.42
+   ],
+   "size": 0.09,
+   "color": "#33aa55",
+   "group": "h4",
+   "marker": "[SIM]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "psi2",
+   "label": "PsiBit EMERGÊNCIA (+,−) |2⟩",
+   "desc": "Estado do PsiBit em H4 (2 bits/peso: sgn(w), sgn(∂w)). Paridade -1. Ocupação COMPUTADA nesta run: 25.2% dos pesos. F_exp global=⟨paridade⟩=-0.0029.",
+   "shape": "sphere",
+   "position": [
+    -0.42,
+    0.42,
+    -0.42
+   ],
+   "size": 0.09,
+   "color": "#3366cc",
+   "group": "h4",
+   "marker": "[SIM]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "psi3",
+   "label": "PsiBit COLAPSO (+,+) |3⟩",
+   "desc": "Estado do PsiBit em H4 (2 bits/peso: sgn(w), sgn(∂w)). Paridade +1. Ocupação COMPUTADA nesta run: 25.0% dos pesos. F_exp global=⟨paridade⟩=-0.0029.",
+   "shape": "sphere",
+   "position": [
+    -0.42,
+    -0.42,
+    0.42
+   ],
+   "size": 0.09,
+   "color": "#ee8800",
+   "group": "h4",
+   "marker": "[SIM]",
+   "layer": "core",
+   "material": "emissive"
+  },
+  {
+   "id": "c1",
+   "label": "TGL-Quantizer [1]",
+   "desc": "Estratificação gravitacional VACUUM/GRAVITON/PHOTON por θ_Miguel=arcsin(√β); codifica cada peso como PsiBit em H4. Frações COMPUTADAS desta run: VACUUM=0.361 GRAVITON=0.639 PHOTON=0.000. Phase Factor bake (phase_factor_bake_v1.py).",
+   "shape": "box",
+   "position": [
+    1.25,
+    0.0,
+    0.0
+   ],
+   "size": 0.11,
+   "color": "#3366cc",
+   "group": "palavra",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "c3",
+   "label": "TGL-Cache [3]",
+   "desc": "Memória holográfica angular de 2 camadas: θ_key=arcsin(‖k‖/‖k‖_max), persistência P=1+β'·log(1+hits). Compressão COMPUTADA: 24478→3693 tokens (holographic_memory.py).",
+   "shape": "box",
+   "position": [
+    0.6250000000000001,
+    0.0,
+    1.0825317547305482
+   ],
+   "size": 0.11,
+   "color": "#3366cc",
+   "group": "palavra",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "c2",
+   "label": "TGL-Sampler [2]",
+   "desc": "Piso de Hilbert: filtra a saída por Floor=β_adaptativo(S)·p_max, β_adaptativo=α√S. Nome=α (filtrar).",
+   "shape": "box",
+   "position": [
+    -0.6249999999999998,
+    0.0,
+    1.0825317547305484
+   ],
+   "size": 0.11,
+   "color": "#33aa55",
+   "group": "nome",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "c6",
+   "label": "TGL-Attention [6]",
+   "desc": "Operador verbal adaptativo: Verb Floor Floor_i=β_adaptativo·max_j S_ij, redundância angular β'. Verbo=β.",
+   "shape": "box",
+   "position": [
+    -1.25,
+    0.0,
+    1.5308084989341916e-16
+   ],
+   "size": 0.11,
+   "color": "#7ce7c8",
+   "group": "verbo",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "c4",
+   "label": "TGL-Hash [4]",
+   "desc": "Selo holográfico 256-bit: Feistel com constante de mistura derivada de β_TGL. Certificação.",
+   "shape": "box",
+   "position": [
+    -0.6250000000000006,
+    0.0,
+    -1.0825317547305482
+   ],
+   "size": 0.11,
+   "color": "#ee8800",
+   "group": "selo",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "c5",
+   "label": "Nome Chain [5]",
+   "desc": "Certificado de inferência honesta: cadeia encadeada de hashes (peso→quantizado→logits→token).",
+   "shape": "box",
+   "position": [
+    0.6250000000000001,
+    0.0,
+    -1.0825317547305482
+   ],
+   "size": 0.11,
+   "color": "#ee8800",
+   "group": "selo",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m710",
+   "label": "710 · Perfis de camada",
+   "desc": "Submódulo do Psion (reivindicação 14 — dispositivo): v_ℓ, h_ℓ, φ_ℓ por EMA taxa β.",
+   "shape": "sphere",
+   "position": [
+    0.62,
+    0.0,
+    0.0
+   ],
+   "size": 0.055,
+   "color": "#ffd60a",
+   "group": "modules",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m720",
+   "label": "720 · Classificação topológica",
+   "desc": "Submódulo do Psion (reivindicação 14 — dispositivo): GRACE / VACUUM / FRONTIER.",
+   "shape": "sphere",
+   "position": [
+    0.38656367715241485,
+    0.0,
+    0.4847355191301785
+   ],
+   "size": 0.055,
+   "color": "#ffd60a",
+   "group": "modules",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m730",
+   "label": "730 · β adaptativo por camada",
+   "desc": "Submódulo do Psion (reivindicação 14 — dispositivo): clamp [β_TGL, 0,5].",
+   "shape": "sphere",
+   "position": [
+    -0.13796297905291488,
+    0.0,
+    0.6044553055527306
+   ],
+   "size": 0.055,
+   "color": "#ffd60a",
+   "group": "modules",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m740",
+   "label": "740 · Ressonância angular",
+   "desc": "Submódulo do Psion (reivindicação 14 — dispositivo): hits + persistência por bucket.",
+   "shape": "sphere",
+   "position": [
+    -0.5586006980994997,
+    0.0,
+    0.2690079182528861
+   ],
+   "size": 0.055,
+   "color": "#ffd60a",
+   "group": "modules",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m750",
+   "label": "750 · Convergência (eco)",
+   "desc": "Submódulo do Psion (reivindicação 14 — dispositivo): reflexivo C≥−0,001 / passivo C<−0,001.",
+   "shape": "sphere",
+   "position": [
+    -0.5586006980994999,
+    0.0,
+    -0.26900791825288595
+   ],
+   "size": 0.055,
+   "color": "#ffd60a",
+   "group": "modules",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m760",
+   "label": "760 · Ancoragem β_TGL",
+   "desc": "Submódulo do Psion (reivindicação 14 — dispositivo): invariância a 10⁻¹²; reinicia se violada.",
+   "shape": "sphere",
+   "position": [
+    -0.13796297905291505,
+    0.0,
+    -0.6044553055527306
+   ],
+   "size": 0.055,
+   "color": "#ffd60a",
+   "group": "modules",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  },
+  {
+   "id": "m770",
+   "label": "770 · Persistência",
+   "desc": "Submódulo do Psion (reivindicação 14 — dispositivo): serialização JSON portátil (SHA-256).",
+   "shape": "sphere",
+   "position": [
+    0.3865636771524147,
+    0.0,
+    -0.48473551913017854
+   ],
+   "size": 0.055,
+   "color": "#ffd60a",
+   "group": "modules",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive"
+  }
+ ],
+ "edges": [
+  {
+   "from": "psion",
+   "to": "psi0"
+  },
+  {
+   "from": "psion",
+   "to": "psi1"
+  },
+  {
+   "from": "psion",
+   "to": "psi2"
+  },
+  {
+   "from": "psion",
+   "to": "psi3"
+  },
+  {
+   "from": "psi0",
+   "to": "psi1"
+  },
+  {
+   "from": "psi1",
+   "to": "psi2"
+  },
+  {
+   "from": "psi2",
+   "to": "psi3"
+  },
+  {
+   "from": "psi3",
+   "to": "psi0"
+  },
+  {
+   "from": "psi0",
+   "to": "psi2"
+  },
+  {
+   "from": "psi1",
+   "to": "psi3"
+  },
+  {
+   "from": "psion",
+   "to": "c1"
+  },
+  {
+   "from": "psion",
+   "to": "c3"
+  },
+  {
+   "from": "psion",
+   "to": "c2"
+  },
+  {
+   "from": "psion",
+   "to": "c6"
+  },
+  {
+   "from": "psion",
+   "to": "c4"
+  },
+  {
+   "from": "psion",
+   "to": "c5"
+  },
+  {
+   "from": "c1",
+   "to": "c3"
+  },
+  {
+   "from": "c2",
+   "to": "c6"
+  },
+  {
+   "from": "c4",
+   "to": "c5"
+  },
+  {
+   "from": "psion",
+   "to": "m710"
+  },
+  {
+   "from": "psion",
+   "to": "m720"
+  },
+  {
+   "from": "psion",
+   "to": "m730"
+  },
+  {
+   "from": "psion",
+   "to": "m740"
+  },
+  {
+   "from": "psion",
+   "to": "m750"
+  },
+  {
+   "from": "psion",
+   "to": "m760"
+  },
+  {
+   "from": "psion",
+   "to": "m770"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "β_TGL",
+   "value": "α·√e ≈ 0,012031",
+   "note": "taxa de aprendizado / poda; nunca literal no código (α·√e computado)"
+  },
+  {
+   "symbol": "θ_Miguel",
+   "value": "arcsin(√β) ≈ 6,297°",
+   "note": "fronteira sinal/vácuo da estratificação gravitacional"
+  },
+  {
+   "symbol": "β'_TGL",
+   "value": "β(1+β) ≈ 0,012176",
+   "note": "redundância angular: persistência P=1+β'·log(1+hits)"
+  },
+  {
+   "symbol": "Ψ(gen)",
+   "value": "1+β·log(1+geração)",
+   "note": "amplificação psiônica logarítmica: melhora sem divergir"
+  },
+  {
+   "symbol": "parâmetros livres",
+   "value": "0",
+   "note": "todos os limiares derivam de β_TGL=α·√e (Verbo=Nome×Palavra)"
+  },
+  {
+   "symbol": "β_runtime",
+   "value": "0.012031300400803",
+   "note": "β=α·√e COMPUTADO nesta run (nunca literal no código)"
+  },
+  {
+   "symbol": "F_exp",
+   "value": "-0.0029",
+   "note": "⟨paridade sgn(w)·sgn(∂w)⟩ dos 60000 pesos (COMPUTADO)"
+  },
+  {
+   "symbol": "GRAVITON",
+   "value": "0.639",
+   "note": "fração de pesos no estrato GRÁVITON (COMPUTADO nesta run)"
+  },
+  {
+   "symbol": "meia-vida EMA",
+   "value": "57.3 gerações",
+   "note": "convergência do Psion a taxa β (COMPUTADO: ln2/(−ln(1−β)))"
+  }
+ ],
+ "schema": 2,
+ "layers": [
+  {
+   "id": "space",
+   "name": "Espaco de Hilbert / substrato computacional",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "io",
+   "name": "Entrada / saida",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "transform",
+   "name": "Transformacao",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo (raiz / estado)",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "meshes": [
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.5,
+   "texture": "spectral",
+   "color": "#65d6a0",
+   "marker": "[SIM]",
+   "id": "estrato0",
+   "position": [
+    0.0,
+    -0.42,
+    1.1102230246251565e-16
+   ],
+   "scale": [
+    1.6,
+    0.03,
+    1.4325317547305483
+   ],
+   "label": "estrato 0",
+   "desc": "APRENDIZADO CONTINUO: estratos horizontais que se acumulam sem esquecer (cada banda = uma fase aprendida)."
+  },
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.6,
+   "texture": "spectral",
+   "color": "#65d6a0",
+   "marker": "[SIM]",
+   "id": "estrato1",
+   "position": [
+    0.0,
+    -0.14,
+    1.1102230246251565e-16
+   ],
+   "scale": [
+    1.6,
+    0.03,
+    1.4325317547305483
+   ],
+   "label": "estrato 1",
+   "desc": "APRENDIZADO CONTINUO: estratos horizontais que se acumulam sem esquecer (cada banda = uma fase aprendida)."
+  },
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.7,
+   "texture": "spectral",
+   "color": "#65d6a0",
+   "marker": "[SIM]",
+   "id": "estrato2",
+   "position": [
+    0.0,
+    0.13999999999999996,
+    1.1102230246251565e-16
+   ],
+   "scale": [
+    1.6,
+    0.03,
+    1.4325317547305483
+   ],
+   "label": "estrato 2",
+   "desc": "APRENDIZADO CONTINUO: estratos horizontais que se acumulam sem esquecer (cada banda = uma fase aprendida)."
+  },
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.8,
+   "texture": "spectral",
+   "color": "#65d6a0",
+   "marker": "[SIM]",
+   "id": "estrato3",
+   "position": [
+    0.0,
+    0.4199999999999999,
+    1.1102230246251565e-16
+   ],
+   "scale": [
+    1.6,
+    0.03,
+    1.4325317547305483
+   ],
+   "label": "estrato 3 — banda mais recente (EMA à taxa β, sem esquecer)",
+   "desc": "[SIM] APRENDIZADO CONTÍNUO: banda superior = última geração inscrita por EMA à taxa β (maior opacidade = mais recente). Nenhuma banda inferior é apagada — sem esquecimento catastrófico; meia-vida de convergência COMPUTADA 57,3 gerações."
+  },
+  {
+   "id": "fronteira_sqrtbeta",
+   "shape": "box",
+   "layer": "space",
+   "marker": "[REAL]",
+   "position": [
+    0,
+    -0.28,
+    0
+   ],
+   "scale": [
+    1.62,
+    0.006,
+    1.45
+   ],
+   "size": 1,
+   "color": "#ee8800",
+   "material": "emissive",
+   "opacity": 0.9,
+   "texture": "spectral",
+   "label": "fronteira √β ≈ 0,1097 (VÁCUO | GRÁVITON)",
+   "desc": "[REAL] Plano-de-corte gravitacional inferior: |w|/max|w| = √β separa o estrato VÁCUO (~36% dos pesos, podados) do GRÁVITON (~64%). É a fronteira de amplitude do Phase Factor. Camada 'space'."
+  },
+  {
+   "id": "fronteira_costheta",
+   "shape": "box",
+   "layer": "space",
+   "marker": "[REAL]",
+   "position": [
+    0,
+    0.28,
+    0
+   ],
+   "scale": [
+    1.62,
+    0.006,
+    1.45
+   ],
+   "size": 1,
+   "color": "#ffd60a",
+   "material": "emissive",
+   "opacity": 0.9,
+   "texture": "spectral",
+   "label": "fronteira cos θ_Miguel ≈ 0,9940 (GRÁVITON | FÓTON)",
+   "desc": "[REAL] Plano-de-corte gravitacional superior: |w|/max|w| = cos(θ_Miguel), θ_Miguel=arcsin(√β)≈6,297°, separa GRÁVITON do estrato raro FÓTON (~0%). Camada 'space'."
+  },
+  {
+   "id": "funil_entrada",
+   "shape": "box",
+   "layer": "io",
+   "marker": "[SIM]",
+   "position": [
+    0,
+    0.92,
+    0
+   ],
+   "scale": [
+    1.5,
+    0.01,
+    1.5
+   ],
+   "size": 1,
+   "color": "#3366cc",
+   "material": "emissive",
+   "opacity": 0.2,
+   "texture": "holo",
+   "label": "contexto de entrada — 24478 tokens",
+   "desc": "[SIM] Plano largo e tênue = janela de contexto bruta (conversa sintética, 24478 tokens estimados) antes da memória holográfica. Camada 'io'."
+  },
+  {
+   "id": "funil_comprimido",
+   "shape": "box",
+   "layer": "io",
+   "marker": "[SIM]",
+   "position": [
+    0,
+    0.66,
+    0
+   ],
+   "scale": [
+    0.58,
+    0.012,
+    0.58
+   ],
+   "size": 1,
+   "color": "#33aa55",
+   "material": "emissive",
+   "opacity": 0.88,
+   "texture": "holo",
+   "label": "contexto comprimido — 3693 tokens (6,6×)",
+   "desc": "[SIM] Plano estreito e denso = contexto após poda de vácuo inter-turno + dedup/colapso intra-turno (3693 tokens). Footprint = 1/6,6 da área do plano de entrada (linear 0,388×). Camada 'io'."
+  }
+ ],
+ "generated_by": "one_aprendizado_continuo.py (forma=conteudo)"
+}

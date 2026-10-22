@@ -1,0 +1,858 @@
+{
+  "patent_id": "BR102026005707-0",
+  "schema": "cadeia-de-prova/v1",
+  "note": "Cada reivindicação → cadeia de elos de prova (depósito/teste/código/dispositivo/dado/nota). Os hashes são computados AO VIVO por tools/verify_evidence.py (nunca hardcoded). Qualificações honestas onde a prova é parcial/pendente.",
+  "run_ref": "ONCOLOGIA@2026-07-10T11-47-19",
+  "document_id": 139,
+  "claims": [
+    {
+      "n": 1,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "SISTEMA integrado de diagnóstico e terapia: módulo de diagnóstico (100) com três estimadores de coerência em índice composto C_N (Σλ_i=1); dispositivo de ressonância (200) 30–110 GHz, ≤N_harm harmônicos, 0,5–10 mW/cm², antena selecionável; módulo de segurança (250) SAR<2 W/kg, ΔT<0,5 °C, kill-switch<100 ms; otimização Bayesiana (260) GP+EI com taxa β_TGL=α·√e; cadeia de certificação (600) hash 256 bits; classificação GRACE/FRONTIER/VACUUM.",
+      "verdict": "lógica de sinal demonstrada em séries SINTÉTICAS; dispositivos físicos apenas simulados e sem conteúdo clínico [MEDICAL][SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial da reivindicação independente 1 [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — coherence_estimators_spec_sync_info",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "coherence_estimators_spec_sync_info"
+          },
+          "value": "composto coerente=0,470 vs incoerente=0,035",
+          "proves": "os três estimadores (espectral Welch/Hann, PLV/Hilbert, informação mútua norm.) no índice composto C_N separam séries coerentes de incoerentes — FORMA do módulo 100 [SIM, sinal sintético]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — topological_classification_and_roc",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "topological_classification_and_roc"
+          },
+          "value": "Youden máx=1,0; AUC=1,0; GRACE=200/FRONTIER=0/VACUUM=200",
+          "proves": "classificação topológica GRACE/FRONTIER/VACUUM com C_crit sintético e ROC/Youden [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — bayesian_optimization_convergence",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "bayesian_optimization_convergence"
+          },
+          "value": "Δσ=0,9355; melhor-até-agora não-crescente",
+          "proves": "otimização Bayesiana GP+EI (módulo 260) converge com o limiar de parada em β [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_frontier",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "beta_form_and_frontier"
+          },
+          "value": "β=0,012031300400803 (α·√e); 2β=0,024063",
+          "proves": "β_TGL=α·√e injetado em runtime, NUNCA literal — taxa do otimizador e largura FRONTIER [REAL na forma matemática]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — decision_gate_and_hash_chain",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "decision_gate_and_hash_chain"
+          },
+          "value": "cadeia de 4 elos; cabeça 53ef532e33caeca2",
+          "proves": "cadeia de certificação de hash 256 bits encadeada (módulo 600) [REAL na forma criptográfica]"
+        },
+        {
+          "role": "codigo",
+          "title": "one_oncologia.py — runner forma=conteúdo",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_oncologia.py"
+          },
+          "proves": "implementação executável que integra os módulos de processamento de sinal do sistema [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — dispositivos físicos e trava [MEDICAL]",
+          "proves": "gerador RF 30–110 GHz, amplificador, antena e segurança física (SAR/ΔT/kill-switch) são DEMONSTRADOS SÓ NA LÓGICA — simulação não valida física; sinal sintético, sem conteúdo clínico, não valida diagnóstico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Isomorfismo do índice C_N com as camadas do iald Integrated Stack; C_crit calibrado por índice de Youden contra histopatologia.",
+      "verdict": "C_crit por Youden demonstrado em rótulos SINTÉTICOS; isomorfismo é mapeamento conceitual; comparação com histopatologia NÃO realizada [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — topological_classification_and_roc",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "topological_classification_and_roc"
+          },
+          "value": "Youden máx=1,0; C_crit=0,232 (sintético)",
+          "proves": "C_crit obtido pelo índice de Youden sobre curva ROC — FORMA da calibração [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — isomorfismo e histopatologia",
+          "proves": "o isomorfismo com o iald Integrated Stack é mapeamento conceitual não testado; a calibração de C_crit contra HISTOPATOLOGIA não foi feita (rótulos sintéticos); sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Piso de segurança SAR_piso = β_TGL × SAR_max (margem mínima invariante ≈ 1,2%).",
+      "verdict": "β_TGL=α·√e comprovado em runtime; SAR_piso é margem física derivada dele, não validada fisicamente [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_frontier",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "beta_form_and_frontier"
+          },
+          "value": "β=0,012031300400803 (α·√e)",
+          "proves": "β_TGL=α·√e disponível em runtime (nunca literal); SAR_piso=β·SAR_max é margem bem-definida ≈1,2% [REAL na forma matemática]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — segurança física",
+          "proves": "SAR_piso é parâmetro de um dispositivo físico não construído; simulação não valida física; sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Antena selecionável — corneta externa (superficial <5 mm), endoscópica (GI/respiratório), intracavitária (ginecológico/urológico).",
+      "verdict": "componente de hardware descrito; nenhum teste computacional o exercita; simulação/spec, não valida física [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — hardware não testado",
+          "proves": "a seleção de antena é característica de HARDWARE físico; nenhum teste do runner a exercita; simulação não valida física; sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Módulo iml (300): CAR-T com receptor quimérico luminodinâmico e sensor de coerência NV/ODMR; porta lógica dupla (antígeno detectado E C_N local < C_crit → citotoxicidade).",
+      "verdict": "a FORMA da porta lógica AND/limiar é demonstrada; o dispositivo biológico CAR-T e o sensor NV/ODMR não são testados [SIM][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — decision_gate_and_hash_chain",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "decision_gate_and_hash_chain"
+          },
+          "value": "porta AND com 3 entradas; gate_open=true",
+          "proves": "a FORMA da porta lógica dupla (AND de condições de limiar) é demonstrada abstratamente [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — componente biológico",
+          "proves": "o receptor CAR-T e o sensor NV/ODMR são componentes biológicos/físicos não construídos nem simulados fisicamente; sinal sintético, sem conteúdo clínico, não valida terapia [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Módulo tgrn (400): vetor AAV9-TGL com promotor EM-ativável (30–110 GHz), TF master tecidual, WPRE e polyA.",
+      "verdict": "composição biológica descrita; nenhuma demonstração computacional; em aberto [OPEN][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — lacuna",
+          "proves": "o vetor genético AAV9-TGL é composição biológica; nenhum teste do runner o comprova; não há simulação física; em aberto, sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "independent": false,
+      "marker": "DATA",
+      "statement": "Banco de dados de tecidos (Ω_N, ω_ótima, TF master): mama GATA3, pulmão NKX2-1, fígado HNF4A, cólon CDX2, próstata NKX3.1.",
+      "verdict": "tabela de parâmetros presente no relatório (Tabela 1), não exercitada pelo runner; dado documental [DATA]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — tabela não exercitada",
+          "proves": "a Tabela 1 (5 tecidos, TF master e frequências ótimas) consta do relatório de depósito, porém NÃO é exercitada por nenhum teste; dado biológico documental, não validado experimentalmente [MEDICAL][DATA]"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "MÉTODO de diagnóstico, etapas (a)–(f): impedância→C_N^spec (Welch/Hann); Ca²⁺→C_N^sync (Hilbert/phase-locking); RNA-seq→C_N^info (informação mútua normalizada); índice composto C_N; classificação GRACE/FRONTIER/VACUUM; registro em cadeia com hash.",
+      "verdict": "as etapas de processamento de sinal e a classificação são demonstradas em séries SINTÉTICAS; sinais de origem clínica não usados [SIM][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (independente — MÉTODO de diagnóstico)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial da reivindicação independente 8 [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — coherence_estimators_spec_sync_info",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "coherence_estimators_spec_sync_info"
+          },
+          "value": "spec=0,107; PLV=0,958; NMI=0,346; composto=0,470",
+          "proves": "as três etapas estimadoras (espectral Welch/Hann, sincronia PLV/Hilbert, informação mútua normalizada) e o índice composto [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — topological_classification_and_roc",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "topological_classification_and_roc"
+          },
+          "value": "GRACE=200/FRONTIER=0/VACUUM=200; AUC=1,0",
+          "proves": "etapa de classificação topológica GRACE/FRONTIER/VACUUM [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — decision_gate_and_hash_chain",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "decision_gate_and_hash_chain"
+          },
+          "value": "cadeia de 4 elos; cabeça 53ef532e33caeca2",
+          "proves": "etapa de registro em cadeia com hash 256 bits [REAL na forma criptográfica]"
+        },
+        {
+          "role": "codigo",
+          "title": "one_oncologia.py — o método como código executável",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_oncologia.py"
+          },
+          "proves": "o método é instruções executáveis que rodam sobre séries sintéticas [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — entradas sintéticas",
+          "proves": "os sinais de entrada (impedância, Ca²⁺, RNA-seq) são SINTÉTICOS; sem conteúdo clínico, sem dado de paciente; não valida diagnóstico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "C_crit por índice de Youden, dataset ≥100 amostras (50/50), validação cruzada 10-fold.",
+      "verdict": "C_crit por Youden demonstrado em coorte SINTÉTICA (N=400); 10-fold específico não executado [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — topological_classification_and_roc",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "topological_classification_and_roc"
+          },
+          "value": "coorte sintética N=400; Youden máx=1,0; C_crit=0,232",
+          "proves": "C_crit pelo índice de Youden sobre coorte rotulada (≥100 amostras) — FORMA da calibração [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — 10-fold e histopatologia",
+          "proves": "a validação cruzada 10-fold específica não foi executada; rótulos sintéticos, sem histopatologia; sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Normalização intra-indivíduo (ΔC_N vs. baseline) para variabilidade de 20–30%.",
+      "verdict": "normalização intra-indivíduo não é exercitada pelo runner; em aberto [OPEN][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — lacuna",
+          "proves": "nenhum teste demonstra a normalização ΔC_N vs baseline por indivíduo; exigiria dado longitudinal de paciente (indisponível, mesmo sintético); em aberto, sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Faixa FRONTIER com largura 2β_TGL ≈ 0,024.",
+      "verdict": "largura 2β=0,024063 comprovada em runtime (β=α·√e); a faixa delimita a classe FRONTIER na classificação [SIM/REAL na forma]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_frontier",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "beta_form_and_frontier"
+          },
+          "value": "2β=0,024062600801606285",
+          "proves": "a largura FRONTIER = 2β_TGL é calculada em runtime a partir de β=α·√e (nunca literal) [REAL na forma matemática]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — topological_classification_and_roc",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "topological_classification_and_roc"
+          },
+          "value": "classes GRACE/FRONTIER/VACUUM com faixa 2β",
+          "proves": "a faixa 2β delimita a classe FRONTIER na classificação topológica [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Pré-processamento: detrending polinomial ordem 2, janela Hann, 50% overlap, 8 segmentos.",
+      "verdict": "janela Hann e segmentação (Welch) usadas no estimador espectral; detrending polinomial ordem 2 não explícito [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — coherence_estimators_spec_sync_info",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "coherence_estimators_spec_sync_info"
+          },
+          "value": "estimador espectral por Welch/Hann (nperseg=256)",
+          "proves": "o estimador espectral usa janela Hann com segmentação/overlap (Welch) — FORMA do pré-processamento [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — detrending",
+          "proves": "o detrending polinomial de ordem 2 não é explicitamente aplicado no runner; sinal sintético, sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Etapa de otimização Bayesiana 30–110 GHz, processo Gaussiano, convergência σ < β_TGL.",
+      "verdict": "otimização Bayesiana GP+EI convergente com parada σ<β demonstrada em ΔC_N(ω) sintético [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — bayesian_optimization_convergence",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "bayesian_optimization_convergence"
+          },
+          "value": "Δσ=0,9355; melhor-até-agora não-crescente; σ_final=0,0626",
+          "proves": "convergência da otimização Bayesiana (GP surrogate + EI); a incerteza σ encolhe rumo ao limiar β [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_frontier",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "beta_form_and_frontier"
+          },
+          "value": "β=0,012031300400803 = limiar de parada",
+          "proves": "o limiar de convergência σ<β_TGL usa β=α·√e em runtime [REAL na forma matemática]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — domínio físico",
+          "proves": "a faixa 30–110 GHz é domínio de um dispositivo físico não construído; a otimização roda sobre função-alvo ΔC_N(ω) SINTÉTICA; sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "DISPOSITIVO de ressonância luminodinâmica: gerador (210), amplificador (220), antena (230), sensoriamento (240), segurança (250), controlador com GP+EI (260); taxa de convergência β_TGL = α·√e.",
+      "verdict": "a lógica de controle (GP+EI, σ<β) e a constante β são demonstradas; o hardware RF é simulado, não construído [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 14 (independente — DISPOSITIVO)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial da reivindicação independente 14 [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — bayesian_optimization_convergence",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "bayesian_optimization_convergence"
+          },
+          "value": "Δσ=0,9355; convergência monotônica",
+          "proves": "o controlador GP+EI (módulo 260) converge — a lógica de controle do dispositivo [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_frontier",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "beta_form_and_frontier"
+          },
+          "value": "β=0,012031300400803 (α·√e)",
+          "proves": "a taxa de convergência β_TGL=α·√e em runtime, NUNCA literal [REAL na forma matemática]"
+        },
+        {
+          "role": "codigo",
+          "title": "one_oncologia.py — lógica de controle executável",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_oncologia.py"
+          },
+          "proves": "a lógica de controle do dispositivo como código executável [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — hardware não construído",
+          "proves": "o gerador RF 30–110 GHz, amplificador, antena e sensoriamento são HARDWARE físico não construído; simulação não valida física; sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Stopping rules automáticas: ΔT>0,5 °C → pausa; arritmia → interrupção; SAR>2 W/kg → −50% potência.",
+      "verdict": "a FORMA de porta de limiar (condição→ação) é demonstrada abstratamente; os interlocks físicos de segurança não são validados [SIM][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 15 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — decision_gate_and_hash_chain",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "decision_gate_and_hash_chain"
+          },
+          "value": "porta AND/limiar; gate_open=true",
+          "proves": "a FORMA lógica de regra de parada por limiar (condição→ação) é demonstrada genericamente [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — interlocks físicos",
+          "proves": "os limiares físicos de segurança (ΔT, arritmia, SAR) e as ações do dispositivo NÃO são fisicamente validados; simulação não valida física; sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Campo corretor Ψ_ext(t) = Σ A_n cos(ω_n t + ϕ_n), otimizado por paciente.",
+      "verdict": "a lógica de otimização dos parâmetros do campo é demonstrada em alvo sintético; a geração física do campo e o ajuste 'por paciente' não [SIM][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 16 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — bayesian_optimization_convergence",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "bayesian_optimization_convergence"
+          },
+          "value": "convergência monotônica; Δσ=0,9355",
+          "proves": "a otimização dos parâmetros do campo corretor (frequência/fase) — FORMA do ajuste adaptativo [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — campo físico e paciente",
+          "proves": "Ψ_ext é um campo EM físico não gerado; o ajuste 'por paciente' usaria dado clínico, aqui inexistente (só sintético); sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Módulo de engenharia de potencial V(Ψ) (500): D₂O 5–10% v/v, nanopartículas de grafeno funcionalizado, campos magnéticos estáticos 7–10 T.",
+      "verdict": "composição físico-química descrita; nenhuma demonstração computacional; em aberto [OPEN][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 17 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — lacuna",
+          "proves": "D₂O, grafeno funcionalizado e campos magnéticos 7–10 T são componentes físico-químicos; nenhum teste os comprova; em aberto, sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Doseamento por escalonamento 3+3, início 1 mW/cm², +25%/sessão, DLT por SAR/ΔT/dor.",
+      "verdict": "protocolo de escalonamento de dose é conteúdo clínico; NÃO demonstrado nem simulado; em aberto [OPEN][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 18 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — conteúdo clínico proibido",
+          "proves": "o protocolo de doseamento 3+3 é procedimento CLÍNICO; nenhum teste o comprova; a trava [MEDICAL] proíbe conteúdo clínico; em aberto, não valida tratamento [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "independent": false,
+      "marker": "DATA",
+      "statement": "Banco de dados de ≥5 tecidos; seleção de parâmetros iniciais por tipo tumoral.",
+      "verdict": "tabela de tecidos documentada no relatório, não exercitada pelo runner; dado documental [DATA][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 19 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — banco não exercitado",
+          "proves": "o banco de ≥5 tecidos consta do relatório (Tabela 1) porém não é exercitado por teste; dado documental, não validado; sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "independent": true,
+      "marker": "OPEN",
+      "statement": "COMPOSIÇÃO para terapia genética: vetor AAV9 com ITR (AAV2), promotor EM-ativável (30–110 GHz), TF master (GATA3/NKX2-1/HNF4A/CDX2/NKX3.1), WPRE, polyA; ativação controlada pelo dispositivo da reivindicação 14.",
+      "verdict": "composição biológica descrita; nenhuma demonstração computacional da composição; em aberto [OPEN][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 20 (independente — COMPOSIÇÃO)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial da reivindicação independente 20 [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — composição não demonstrada",
+          "proves": "o vetor AAV9 e seus elementos (ITR, promotor EM-ativável, TF master, WPRE, polyA) são composição biológica; nenhum teste a comprova; a ligação 'ativação pelo dispositivo' remete à lógica de controle da reivindicação 14 (demonstrada só na forma), mas a composição em si permanece em aberto; sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Dose 1 × 10¹² vg/kg, via intratumoral ou intravenosa.",
+      "verdict": "dose e via são conteúdo clínico; não demonstrados; em aberto [OPEN][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 21 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — conteúdo clínico proibido",
+          "proves": "dose e via de administração são parâmetros CLÍNICOS; nenhum teste os comprova; a trava [MEDICAL] proíbe conteúdo clínico; em aberto [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Protocolo de ativação: dia 0 vetor; dias 7–10 início de trl otimizado.",
+      "verdict": "cronograma de ativação é conteúdo clínico; não demonstrado; em aberto [OPEN][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 22 (dependente)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — conteúdo clínico proibido",
+          "proves": "o cronograma de ativação (dia 0 e dias 7–10) é protocolo CLÍNICO; nenhum teste o comprova; em aberto, não valida tratamento [MEDICAL]"
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "CRITÉRIO de identificação da tecnologia por condições simultâneas C1–C6: (C1) ≥2 estimadores de coerência; (C2) classificação topológica com C_crit por ROC; (C3) ressonância 30–110 GHz adaptativa; (C4) lógica condicional por C_crit; (C5) monitoramento SAR/ΔT; (C6) cadeia de certificação com hash.",
+      "verdict": "a arquitetura lógica (C1, C2, C4, C6) é demonstrada em séries SINTÉTICAS; as condições de hardware físico (C3, C5) são apenas simuladas [SIM][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 23 (independente — CRITÉRIO C1–C6)",
+          "locator": {
+            "kind": "document",
+            "id": 139,
+            "pages": "?"
+          },
+          "proves": "redação oficial da reivindicação independente 23 [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — coherence_estimators_spec_sync_info (C1)",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "coherence_estimators_spec_sync_info"
+          },
+          "value": "3 estimadores: spec=0,107, PLV=0,958, NMI=0,346",
+          "proves": "C1 — uso de ≥2 estimadores de coerência (aqui 3) [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — topological_classification_and_roc (C2)",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "topological_classification_and_roc"
+          },
+          "value": "GRACE/FRONTIER/VACUUM; C_crit por ROC/Youden",
+          "proves": "C2 — classificação topológica com C_crit calibrado por ROC [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — bayesian_optimization_convergence (C3, na forma)",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "bayesian_optimization_convergence"
+          },
+          "value": "otimização adaptativa convergente",
+          "proves": "C3 (na forma) — adaptação/otimização de frequência de ressonância; o hardware 30–110 GHz é físico, não construído [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — decision_gate_and_hash_chain (C4 e C6)",
+          "locator": {
+            "kind": "seal",
+            "run": "ONCOLOGIA@2026-07-10T11-47-19",
+            "test": "decision_gate_and_hash_chain"
+          },
+          "value": "porta AND/limiar + cadeia de hash 256 bits (cabeça 53ef532e…)",
+          "proves": "C4 — lógica condicional por limiar (C_crit) E C6 — cadeia de certificação com hash 256 bits [SIM/REAL na forma criptográfica]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — C3/C5 físicos",
+          "proves": "C5 (monitoramento físico SAR/ΔT) e o hardware de C3 são componentes físicos não construídos; simulação não valida física; sinal sintético, sem conteúdo clínico [MEDICAL]"
+        }
+      ]
+    }
+  ]
+}

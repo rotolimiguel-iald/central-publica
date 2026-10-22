@@ -1,0 +1,68 @@
+{
+ "patent_id": "BR102026006129-8",
+ "slug": "kernel_ontologico",
+ "timestamp": "2026-07-09T22-17-21",
+ "runner": "one_kernel_ontologico.py",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "KERNEL_ONTOLOGICAL_LOGIC_DEMONSTRATED",
+ "max_verdict": "KERNEL_ONTOLOGICAL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — cosmogênese, filtro do Verbo (poda por β) idempotente e kernel de duas camadas fecham na versão de nó; benchmark de verborragia em LLM real ausente)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "verb_floor": 0.04141835715524202,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142
+  },
+  {
+   "test": "cosmogenesis_uniform_initial_attention",
+   "passed": true,
+   "n": 512,
+   "sum": 1.0,
+   "uniform_value": 0.001953125,
+   "note": "estado-zero: atenção uniforme (nenhum nome privilegiado antes do 1º ato)"
+  },
+  {
+   "test": "verb_filter_prune_and_renormalize",
+   "passed": true,
+   "floor": 0.04141835715524202,
+   "kept": 864,
+   "cut": 1136,
+   "sum_after": 1.0,
+   "note": "corta componentes < β·max(w) e renormaliza → distribuição válida"
+  },
+  {
+   "test": "verb_filter_idempotent",
+   "passed": true,
+   "max_delta_second_pass": 0.0,
+   "note": "aplicar o filtro de novo não muda nada (ponto fixo da poda)"
+  },
+  {
+   "test": "two_layer_kernel_reflect_manifest_filter",
+   "passed": true,
+   "kept": 982,
+   "cut": 42,
+   "sum_out": 0.9999999999999999,
+   "note": "duas camadas: reflexão dimensional (acom_mirror) → re-emergência → filtro do Verbo"
+  }
+ ],
+ "summary": {
+  "tests_passed": 5,
+  "tests_total": 5,
+  "verb_floor": 0.04141835715524202,
+  "kept_of": "864/2000",
+  "verborragia_benchmark": "DATA_REQUIRED_Qwen3-32B_RTX5090"
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "Demonstração [SIM][PILOTO] da lógica do kernel na versão de NÓ (vetor de atenção sintético). O benchmark de verborragia (3.000+ → ~150 palavras, Qwen3-32B/RTX 5090) exige modelo/hardware reais [DATA_REQUIRED]. Simulação não valida a física da TGL."
+}

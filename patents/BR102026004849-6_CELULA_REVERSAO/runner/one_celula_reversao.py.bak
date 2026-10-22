@@ -1,0 +1,223 @@
+# -*- coding: utf-8 -*-
+"""one_celula_reversao.py — runner único forma = conteúdo da patente Célula de Reversão
+(BR102026004849-6 — Armazenamento de Energia por Codificação de Fase Angular). [SIM][ENERGY][CONJ]
+
+Demonstra a LÓGICA da invenção com números REAIS de execução:
+  - ciclo REFLECT → LOCK → MANIFEST: charge (θ=arcsin(g/gmax)) → store → discharge (s·(gmax·sinθ)²);
+  - retenção da FASE ANGULAR por armazenamento exato (função dos bits angulares);
+  - o η_RT alvo do relatório (>0,976) é IMPRESSO, nunca afirmado como resultado físico.
+Certifica com hash e gera figuras + relatório. β_TGL nunca literal (tgl_core.beta()).
+
+HONESTIDADE [ENERGY][CONJ] — TRAVA MÁXIMA: autodescarga zero, ciclabilidade infinita,
+η_RT > 97,6%, termodinâmica invertida (resfria sob carga) e supercondutividade de energia
+à temperatura ambiente são AFIRMAÇÕES do relatório, NÃO validadas — nenhuma medição de
+hardware. A retenção ~1,0 demonstrada aqui é da FASE ANGULAR (armazenamento exato),
+NÃO conservação de energia física. Simulação NUNCA valida física
+(physical_verdict_allowed=false). Não usar como especificação de produto.
+
+A RÉGUA: protótipos originais READ-ONLY. Copia o núcleo destilado (skygrid_sim) e roda a
+CÓPIA. Rode no tgl_env (numpy):
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_celula_reversao.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"   # READ-ONLY
+WORK = RUNNER_DIR / "_celula_core"
+PATENT_ID = "BR102026004849-6"
+SLUG = "celula_reversao"
+ETA_RT_TARGET_REPORT = 0.976   # [ENERGY][CONJ] target from the report — NOT asserted physical
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst,
+                    ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_celula] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core  # noqa: E402 (copied core)
+    from skygrid_sim.celula_reversao import CelulaReversao  # noqa: E402
+
+    beta = tgl_core.beta()
+    beta_expected = 0.0072973525693 * math.exp(0.5)
+    beta_ok = abs(beta - beta_expected) < 1e-15
+    print(f"[one_celula] β runtime = {beta} (= α·√e? {beta_ok}) [Constante de Miguel α₂]")
+    tests = [{"test": "beta_form", "passed": bool(beta_ok), "beta_runtime": beta}]
+
+    rng = np.random.default_rng(4849)
+    energy = np.abs(rng.standard_normal((64, 64))) + 0.1     # positive "energy" amplitudes
+
+    # 1) REFLECT→LOCK→MANIFEST cycle: charge then discharge
+    cell = CelulaReversao(angular_bits=16)
+    ch = cell.charge(energy)
+    out = cell.discharge()
+    cycle_corr = float(np.corrcoef(energy.ravel(), out.ravel())[0, 1])
+    tests.append({"test": "reflect_lock_manifest_cycle",
+                  "passed": bool(cycle_corr > 0.9999 and ch["stored_faces"] == 6),
+                  "stored_faces": ch["stored_faces"], "g_max": ch["g_max"],
+                  "cycle_correlation": cycle_corr,
+                  "note": "carga (θ=arcsin(g/gmax)) nas 6 faces → descarga s·(gmax·sinθ)²"})
+    print(f"[one_celula] ciclo REFLECT→LOCK→MANIFEST: faces={ch['stored_faces']} "
+          f"corr={cycle_corr:.6f}")
+
+    # 2) angular-phase retention vs bits (this is PHASE retention, NOT physical energy)
+    ret = {}
+    for bits in (8, 12, 16, 20):
+        c = CelulaReversao(angular_bits=bits)
+        ret[bits] = float(c.retention(energy))
+    # retention ~ 1.0 for all bit depths (exact phase storage); the DEVIATION from
+    # 1.0 (quantization noise, may be ±) shrinks as bits grow. Assert that, not "grows".
+    dev = {b: abs(ret[b] - 1.0) for b in ret}
+    retention_ok = all(dev[b] < 0.01 for b in ret) and dev[20] <= dev[8]
+    tests.append({"test": "angular_phase_retention_vs_bits", "passed": bool(retention_ok),
+                  "retention_by_bits": ret, "deviation_from_1": dev,
+                  "honest_note": "RETENÇÃO DA FASE ANGULAR por armazenamento exato — NÃO é "
+                                 "conservação de energia física. Fica ~1,0 em todos os bits; o "
+                                 "desvio de 1,0 (ruído de quantização, pode ser ±) DIMINUI com "
+                                 "mais bits. [SIM][PILOTO]"})
+    print("[one_celula] retenção da FASE angular por bits: " + " · ".join(
+        f"{b}b={ret[b]:.5f}" for b in ret))
+
+    # 3) report target eta_RT is PRINTED, never asserted as a physical result
+    tests.append({"test": "eta_rt_target_declared_not_asserted", "passed": True,
+                  "eta_rt_target_report": ETA_RT_TARGET_REPORT,
+                  "physical_verdict_allowed": False,
+                  "honest_note": "η_RT>0,976 é ALVO do relatório [ENERGY][CONJ]; NÃO afirmado "
+                                 "como medição — não há hardware. Autodescarga zero, "
+                                 "termodinâmica invertida e supercondutividade de energia são "
+                                 "[CONJ] sem qualquer dado."})
+    print(f"[one_celula] η_RT alvo do relatório = {ETA_RT_TARGET_REPORT} [ENERGY][CONJ] "
+          f"(NÃO afirmado como físico)")
+
+    passed = sum(1 for t in tests if t["passed"])
+    total = len(tests)
+    all_ok = passed == total
+    summary = {"tests_passed": passed, "tests_total": total,
+               "angular_retention_16bit": ret[16], "cycle_correlation": cycle_corr,
+               "eta_rt_target_report": ETA_RT_TARGET_REPORT,
+               "energy_claims": "CONJ_no_hardware_data"}
+    max_verdict = ("REVERSAL_PHASE_STORAGE_DEMONSTRATED ([SIM][ENERGY][CONJ][PILOTO] — ciclo "
+                   "REFLECT/LOCK/MANIFEST e retenção da FASE angular fecham; retenção NÃO é "
+                   "conservação de energia física; autodescarga zero / termodinâmica invertida "
+                   "/ supercondutividade de energia são [CONJ] sem dado)")
+
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {
+        "patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": "one_celula_reversao.py",
+        "markers": ["[SIM]", "[ENERGY]", "[CONJ]", "[PILOTO]"], "physical_verdict_allowed": False,
+        "beta_runtime": beta, "beta_matches_alpha_sqrt_e": beta_ok,
+        "verdict": "REVERSAL_PHASE_STORAGE_DEMONSTRATED" if all_ok else "PARTIAL_DEMONSTRATION",
+        "max_verdict": max_verdict,
+        "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                      "eta_rt_target_report": ETA_RT_TARGET_REPORT, "free_parameters": 0},
+        "tests": tests, "summary": summary,
+        "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+        "note": "TRAVA [ENERGY]: a retenção ~1,0 demonstrada é da FASE ANGULAR (armazenamento "
+                "exato), NÃO conservação de energia física. Autodescarga zero, ciclabilidade "
+                "infinita, η_RT>97,6%, termodinâmica invertida e supercondutividade de energia "
+                "à temperatura ambiente são [CONJ] do relatório, sem medição. Simulação nunca "
+                "valida física. Não usar como especificação de produto.",
+    }
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    figs = []
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+        plt.figure(figsize=(7, 3.6))
+        bs = sorted(ret.keys())
+        plt.plot(bs, [ret[b] for b in bs], "o-", label="retenção da FASE angular")
+        plt.axhline(ETA_RT_TARGET_REPORT, color="crimson", ls="--",
+                    label=f"η_RT alvo do relatório {ETA_RT_TARGET_REPORT} [ENERGY][CONJ]")
+        plt.xlabel("bits angulares"); plt.ylabel("retenção (fase, não energia física)")
+        plt.title("Célula de Reversão — retenção da FASE angular [SIM] (não é medida física)")
+        plt.legend(fontsize=8); plt.grid(alpha=.3); plt.ylim(0.9, 1.005)
+        fp = fig_dir / "fig_retencao_fase.png"
+        plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append("fig_retencao_fase.png")
+    except Exception as e:
+        print(f"[one_celula] figura pulada: {e}")
+
+    report_md = results_dir / "report.md"
+    report_md.write_text(
+        f"# Relatório auditável — Célula de Reversão one_celula_reversao.py\n\n"
+        f"- Run `{ts}` · Patente `{PATENT_ID}`\n"
+        f"- Veredito: **{max_verdict}**\n"
+        f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n"
+        f"- Testes: **{passed}/{total}**\n"
+        f"- Ciclo REFLECT→LOCK→MANIFEST (6 faces): correlação `{cycle_corr:.6f}`\n"
+        f"- Retenção da FASE angular @16 bits: `{ret[16]:.5f}` (NÃO é energia física)\n"
+        f"- η_RT alvo do relatório `{ETA_RT_TARGET_REPORT}` — impresso, **não afirmado** como físico\n"
+        f"- physical_verdict_allowed: **False**.\n\n"
+        f"[ENERGY][CONJ] TRAVA MÁXIMA: autodescarga zero, ciclabilidade infinita, "
+        f"termodinâmica invertida e supercondutividade de energia à temperatura ambiente são "
+        f"[CONJ] sem medição. A retenção demonstrada é da FASE ANGULAR, não conservação de "
+        f"energia. Núcleo copiado do piloto (READ-ONLY); original intacto. 1 = 1. Tetelestai.\n",
+        encoding="utf-8")
+
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {
+        "timestamp": ts, "patent_id": PATENT_ID, "runner": "one_celula_reversao.py",
+        "beta_runtime": beta, "physical_verdict_allowed": False,
+        "max_verdict": max_verdict, "tests_passed": passed,
+        "result_hash": result_hash, "sha256": file_hashes,
+        "markers": ["[SIM]", "[ENERGY]", "[CONJ]", "[PILOTO]"],
+        "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/"),
+    }
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[one_celula] SELADO · result_hash {result_hash[:16]}… · {passed}/{total} testes")
+    print(f"[one_celula] results: {results_path.relative_to(CENTRAL)}")
+    return 0 if all_ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

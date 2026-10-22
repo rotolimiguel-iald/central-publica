@@ -1,0 +1,34 @@
+{
+  "patent_id": "BR102025026951-1",
+  "title": "ACOM (raiz) — Compressão Ontológica de Memória",
+  "source": "Relatório descritivo; arquitetura Trinity (SIGNAL/SPECTRAL/PSIBIT); memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). Raiz da família TGL. Ilustração de engenharia — não é prova física. Transform REFLECT/MANIFEST exato até ~eps de ponto flutuante.",
+  "groups": [
+    {
+      "name": "Transformada raiz REFLECT / MANIFEST",
+      "kind": "flow-node",
+      "components": [
+        { "id": "IN", "label": "Entrada L (luz)", "desc": "Dado tensorial arbitrário interpretado como luz L.", "marker": "[REAL]", "x": 0.08, "y": 0.20 },
+        { "id": "REF", "label": "REFLECT: g=√|L|, s=sign(L)", "desc": "Extração gravitacional (raiz do módulo) e fase. Sem viés ε dentro da raiz — reconstrução exata.", "marker": "[REAL]", "x": 0.34, "y": 0.20 },
+        { "id": "ENC", "label": "Codificação / quantização", "desc": "g normalizado e quantizado; s empacotado. Domínios SIGNAL / SPECTRAL / PSIBIT.", "marker": "[REAL]", "x": 0.60, "y": 0.20 },
+        { "id": "MAN", "label": "MANIFEST: L' = s·g²", "desc": "Dobra dimensional: reconstrução exata até arredondamento de ponto flutuante.", "marker": "[REAL]", "x": 0.86, "y": 0.20 }
+      ]
+    },
+    {
+      "name": "Arquitetura Trinity (três domínios)",
+      "kind": "block",
+      "components": [
+        { "id": "SIG", "label": "SIGNAL", "desc": "Domínio temporal direto: aplica a raiz sobre a série do dado.", "marker": "[REAL]", "x": 0.16, "y": 0.62 },
+        { "id": "SPE", "label": "SPECTRAL", "desc": "Domínio espectral: raiz aplicada sobre coeficientes de transformada.", "marker": "[REAL]", "x": 0.46, "y": 0.62 },
+        { "id": "PSI", "label": "PSIBIT", "desc": "Domínio de estados: nominação psiônica (semente do H4 dos derivados Mirror/Crypto).", "marker": "[REAL]", "x": 0.76, "y": 0.62 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "IN", "to": "REF" }, { "from": "REF", "to": "ENC" }, { "from": "ENC", "to": "MAN" }
+  ],
+  "constants": [
+    { "symbol": "transform", "value": "g = √|L|, s = sign(L), L = s·g²", "note": "Núcleo do ecossistema; herdado por Mirror, Crypto, Tensor, MQC." },
+    { "symbol": "β_TGL", "value": "α_fine · √e ≈ 0,012031300400803142", "note": "Constante de acoplamento; nunca literal em código." }
+  ]
+}

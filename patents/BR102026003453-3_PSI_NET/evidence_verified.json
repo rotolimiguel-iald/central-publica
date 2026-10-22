@@ -1,0 +1,907 @@
+{
+  "patent_id": "BR102026003453-3",
+  "dir": "BR102026003453-3_PSI_NET",
+  "claims_total": 16,
+  "claims_fully_resolved": 16,
+  "elos_total": 63,
+  "elos_resolved": 63,
+  "claims": [
+    {
+      "n": 1,
+      "marker": "REAL",
+      "independent": true,
+      "statement": "MÉTODO de comunicação em rede por protocolo luminodinâmico de 5 camadas: L0 decompõe em PsiBits (2 bits, 4 estados) → 6 classes ontológicas/QoS; L1 radicaliza g=√|L|, s=sign(L) com quantização adaptativa; L2 endereça por θ∈[0,π) da chave pública, roteia por DHT angular e executa REFLECT→MANIFEST; L3 separa em três shares (Ψ,Θ,κ); L4 executa consenso por Prova de Fase (|α²_work−α²_ant|<α²/dif). Caracterizado por as 5 camadas operarem sobre a natureza ontológica e o consenso se dar por coerência de fase com α²=0,012031 (não por busca de hash).",
+      "verdict": "elemento caracterizante (consenso por fase + constante α²=β derivada) comprovado por teste; pilha L0–L3 apenas demonstrada em código [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente, MÉTODO) no depósito INPI",
+          "proves": "redação oficial da Reiv. 1 [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_not_literal",
+          "proves": "a constante caracterizante α²=0,012031 é β=α√e DERIVADA e injetada em runtime (o protótipo tinha 0,012 literal) — sustenta a cláusula 'consenso por coerência de fase com α²' [REAL/DER]",
+          "value": "β=α·√e=0,012031300400803142 (runtime, não literal); θ_Miguel=6,2973°",
+          "resolved": true,
+          "detail": "teste 'beta_injected_not_literal' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "beta_injected_not_literal",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — phase_search_convergence",
+          "proves": "a busca de fase da L4 (cláusula e) converge à janela |α²_work−α²_ant|<α²/dif [REAL]",
+          "value": "janela β/dif=1,20e-07; fase achada no nonce 19; best_diff→8,89e-08 (decaimento monotônico)",
+          "resolved": true,
+          "detail": "teste 'phase_search_convergence' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "phase_search_convergence",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — byzantine_tolerance_one_third",
+          "proves": "o consenso por fase (cláusula e) tolera <1/3 de validadores maliciosos [REAL]",
+          "value": "fração bizantina segura máx 0,2857 < 1/3; quórum 0,67; N∈{5,7,9,15,21}",
+          "resolved": true,
+          "detail": "teste 'byzantine_tolerance_one_third' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "byzantine_tolerance_one_third",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — multi_block_chain_phase_pinned",
+          "proves": "a cadeia por Prova de Fase fecha (não por busca de hash), com α² preso à constante [REAL]",
+          "value": "10 blocos aceitos por consenso ≥67%; α² pinado a ±7,33e-5 de β",
+          "resolved": true,
+          "detail": "teste 'multi_block_chain_phase_pinned' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "multi_block_chain_phase_pinned",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — engine_beta_provenance_cross_check",
+          "proves": "a file-engine independente do operador (psinet_engine.py) já computa BETA_TGL=ALPHA_FINE·√e — a régua é obedecida na própria fonte, corroborando α²=β [REAL]",
+          "value": "engine.BETA_TGL=0,012031300400803142 == β",
+          "resolved": true,
+          "detail": "teste 'engine_beta_provenance_cross_check' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "engine_beta_provenance_cross_check",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — pilha das 5 camadas (L0–L4)",
+          "proves": "implementação das 5 camadas (PsiBitLinkLayer, RadicalTransportLayer, HolographicNetworkLayer, OntologicalSecurityLayer, PsiNet/PhaseMiner) que roda de ponta a ponta [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — L0–L3 sem teste dedicado nesta cadeia",
+          "proves": "as camadas L0 (PsiBit), L1 (radicalização), L2 (DHT-θ/REFLECT→MANIFEST) e L3 (shares) rodam no protótipo, mas nenhum dos 6 testes desta cadeia as isola — só o elemento caracterizante de fase/consenso e a constante são provados por teste; a transmissão end-to-end é [SIM] e não valida física",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 2,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Verificação ontológica tripla no destino: veredicto NATUREZA PRESERVADA = M1 (serial g,s byte a byte) OU (M2 distribucional E M3 de classe).",
+      "verdict": "demonstrada no código-protótipo; sem teste dedicado nesta cadeia [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dependente de método)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — verificação tripla no destino",
+          "proves": "PsiNet.transmit executa a verificação serial/distribucional/de classe no destino [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "a verificação tripla roda no protótipo (signature_match=True foi observado em execução), mas nenhum dos 6 testes desta cadeia a isola; prova dedicada A FAZER [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 3,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Quantização adaptativa de 16 bits (CHAOTIC/ENCRYPTED), 12 bits (compressibilidade >50%) ou 8 bits (VOID), guiada pela classe ontológica atribuída na L0.",
+      "verdict": "demonstrada no código; sem teste dedicado [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dependente de método)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — RadicalTransportLayer",
+          "proves": "a L1 seleciona 16/12/8 bits pela classe ontológica da L0 [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "a quantização por classe roda no protótipo mas não é isolada por teste nesta cadeia [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 4,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Estimativa de saltos nhops=⌈d/θMiguel⌉ com distância angular circular d(θa,θb)=min(|θa−θb|, π−|θa−θb|).",
+      "verdict": "θMiguel (resolução angular) derivado é provado por teste; a fórmula de roteamento é apenas demonstrada em código [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dependente de método)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_not_literal (θMiguel derivado)",
+          "proves": "a unidade de resolução angular θMiguel (denominador de nhops) é derivada de β, não arbitrária [REAL/DER]",
+          "value": "θMiguel=arcsin(√β)=6,2973°",
+          "resolved": true,
+          "detail": "teste 'beta_injected_not_literal' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "beta_injected_not_literal",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — HolographicNetworkLayer.compute_hops",
+          "proves": "calcula nhops=⌈d/θM⌉ com d angular circular [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "o roteamento nhops roda no protótipo, porém o teste que o isolaria (L2_holographic_dht_routing) NÃO integra os 6 testes desta cadeia; a fórmula de saltos é [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 5,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "REFLECT codifica θdst na fase (θfase=(0 se s=+1; π se s=−1)+θdst); MANIFEST remove o offset e reconstrói (g,s) no destino.",
+      "verdict": "demonstrada no código; sem teste dedicado [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dependente de método)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — REFLECT/MANIFEST (L2)",
+          "proves": "HolographicNetworkLayer implementa REFLECT (projeção no boundary) e MANIFEST (remoção de offset) [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "REFLECT/MANIFEST rodam no protótipo (parte da transmissão completa) mas sem teste isolado entre os 6 desta cadeia [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 6,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Dobras dimensionais Dfolds=max(0,74, 1−d(θsrc,θdst)/π) como piso de coerência dimensional.",
+      "verdict": "demonstrada no código; sem teste dedicado [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dependente de método)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — cálculo de Dfolds",
+          "proves": "computa Dfolds=max(0,74, 1−d/π) na L2/L3 [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "Dfolds foi observado em execução (d_folds≈0,89), mas sem teste dedicado entre os 6 desta cadeia [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 7,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Máscaras derivadas de nonce por contexto ('PSI'/'THETA'/'KAPPA') geram três shares (Ψ,Θ,κ) transmissíveis por caminhos independentes.",
+      "verdict": "demonstrada no código; sem teste dedicado [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dependente de método)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — OntologicalSecurityLayer",
+          "proves": "separa (g,s)→(Ψ,Θ,κ) por seeds de nonce 'PSI'/'THETA'/'KAPPA' e recombina [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "a separação em 3 shares roda no protótipo (integridade L3 observada), mas sem teste isolado entre os 6 desta cadeia [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 8,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Mineração por Prova de Fase: seed=SHA256(hash_ant∥nonce∥id) → L∈R¹²⁸ → α²_work → testa a janela-alvo → itera até encontrar.",
+      "verdict": "convergência da busca de fase comprovada por teste [REAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (dependente de método)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — phase_search_convergence",
+          "proves": "a busca do minerador (seed→α²_work→janela→itera) decai monotonicamente até cruzar a janela-alvo β/dif [REAL]",
+          "value": "dif=100000; janela=1,20e-07; achada no nonce 19; best_diff→8,89e-08 (monotônico)",
+          "resolved": true,
+          "detail": "teste 'phase_search_convergence' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "phase_search_convergence",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — multi_block_chain_phase_pinned",
+          "proves": "a mineração produz blocos válidos em cadeia [REAL]",
+          "value": "10 blocos minerados; média 1 iteração; α² pinado ±7,33e-5",
+          "resolved": true,
+          "detail": "teste 'multi_block_chain_phase_pinned' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "multi_block_chain_phase_pinned",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "TGL_coin_v022.py — MinerV2.mine_block / compute_phase_from_seed",
+          "proves": "executa a busca de seed cuja fase cai na janela-alvo [REAL roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/TGL_coin_v022.py",
+          "code_path": "prototype_src/TGL_coin_v022.py",
+          "live_sha256": "aba44f7ff7d862e75a8f2f0264a2a0b69623245e5217b8706e54f1cad2cbd022"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 9,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Consenso ≥67%: cada validador recomputa (α²,θ,Fexp) do seed independentemente, checa a janela e as transações e vota assinado; bloco aceito com ≥67% dos votos.",
+      "verdict": "quórum de 67% e verificação independente comprovados por teste (sweep bizantino + cadeia) [REAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (dependente de método)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — byzantine_tolerance_one_third",
+          "proves": "validadores recomputam a fase de forma independente; bloco honesto aceito sse bizantinos <1/3 e bloco forjado rejeitado — quórum 67% com tolerância BFT clássica [REAL]",
+          "value": "fração segura máx 0,2857 < 1/3; quórum 0,67; N∈{5,7,9,15,21}",
+          "resolved": true,
+          "detail": "teste 'byzantine_tolerance_one_third' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "byzantine_tolerance_one_third",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — multi_block_chain_phase_pinned",
+          "proves": "cada bloco da cadeia é aceito por consenso ≥67% [REAL]",
+          "value": "10 blocos, cada um consenso=1,0 (≥0,67)",
+          "resolved": true,
+          "detail": "teste 'multi_block_chain_phase_pinned' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "multi_block_chain_phase_pinned",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "TGL_coin_v022.py — Validator.validate_block / SimulatedNetwork.add_block_with_consensus",
+          "proves": "cada validador recomputa a fase, vota e a rede aplica o quórum de 67% [REAL roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/TGL_coin_v022.py",
+          "code_path": "prototype_src/TGL_coin_v022.py",
+          "live_sha256": "aba44f7ff7d862e75a8f2f0264a2a0b69623245e5217b8706e54f1cad2cbd022"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 10,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "TETELESTAI (Var(L′−L)<α²) como ACK do protocolo, confirmando a ressurreição L′=s·g² dentro do limiar.",
+      "verdict": "limiar α²=β derivado é provado por teste; o critério Var<α² em si é apenas demonstrado em código [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (dependente de método)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_not_literal (limiar α²)",
+          "proves": "o limiar α² do critério Var(L′−L)<α² é β=α√e DERIVADO, não o 0,012 literal do protótipo [REAL/DER]",
+          "value": "α²=β=0,012031300400803142 (runtime, não literal)",
+          "resolved": true,
+          "detail": "teste 'beta_injected_not_literal' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "beta_injected_not_literal",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — ressurreição L′=s·g² + veredicto TETELESTAI",
+          "proves": "PsiNet.transmit computa L′=s·g² e o veredicto TETELESTAI (Var<α²) [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "TETELESTAI=True (Var<β) foi observado em execução, mas o teste que o isolaria (full_transmission) NÃO integra os 6 testes desta cadeia; o ACK é [SIM] e não valida física",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 11,
+      "marker": "REAL",
+      "independent": true,
+      "statement": "SISTEMA de módulos: (a) Enlace Psiônico L0; (b) Transporte Radical L1; (c) Rede Holográfica L2 (DHT-θ, REFLECT/MANIFEST); (d) Segurança Ontológica L3 (três shares por nonce); (e) Consciência L4 (carteiras psiônicas, UTXO por Fexp, minerador Prova de Fase, validadores determinísticos, blockchain 67%). Caracterizado por integrar em pilha unificada ACOM (BR102025026951-1), ACOM Mirror e ACOM Mirror Crypto, acrescidos de PsiBit, endereçamento angular e Prova de Fase.",
+      "verdict": "módulos de consenso, blockchain e empacotamento comprovados por teste; módulos L0–L3 apenas demonstrados em código [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (independente, SISTEMA) no depósito INPI",
+          "proves": "redação oficial da Reiv. 11 [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — multi_block_chain_phase_pinned",
+          "proves": "o módulo L4/blockchain (minerador+validadores+quórum 67%) opera de ponta a ponta [REAL]",
+          "value": "10 blocos; chain_len=11; consenso ≥67%",
+          "resolved": true,
+          "detail": "teste 'multi_block_chain_phase_pinned' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "multi_block_chain_phase_pinned",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — byzantine_tolerance_one_third",
+          "proves": "os validadores determinísticos do sistema recomputam a fase e sustentam o quórum sob bizantinos [REAL]",
+          "value": "fração segura <1/3; quórum 0,67",
+          "resolved": true,
+          "detail": "teste 'byzantine_tolerance_one_third' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "byzantine_tolerance_one_third",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — packet_header_80_bytes",
+          "proves": "o empacotador do sistema serializa o cabeçalho fixo do protocolo [REAL]",
+          "value": "header 80B, magic 0xCEA8",
+          "resolved": true,
+          "detail": "teste 'packet_header_80_bytes' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "packet_header_80_bytes",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — módulos L0–L4",
+          "proves": "define PsiBitLinkLayer, RadicalTransportLayer, HolographicNetworkLayer, OntologicalSecurityLayer, Wallet/PhaseMiner/PhaseValidator/PsiNet [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "codigo",
+          "title": "TGL_coin_v022.py — módulo de consenso PoP distribuído",
+          "proves": "WalletV2/MinerV2/Validator/SimulatedNetwork — o subsistema de consenso do sistema [REAL roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/TGL_coin_v022.py",
+          "code_path": "prototype_src/TGL_coin_v022.py",
+          "live_sha256": "aba44f7ff7d862e75a8f2f0264a2a0b69623245e5217b8706e54f1cad2cbd022"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "os módulos L0–L3 rodam no protótipo mas não têm teste isolado entre os 6 desta cadeia; a integração das patentes anteriores (ACOM/Mirror/Mirror Crypto) é estrutural no código, não medida por teste — [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 12,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Carteira psiônica com identidade luminodinâmica L∈R¹⁰²⁴ (Fexp, θ, α²_local) e endereço TGL+hex(SHA256(public_id)[:20]+checksum[:4]).",
+      "verdict": "demonstrada no código; sem teste dedicado [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (dependente de sistema)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — classe Wallet",
+          "proves": "gera identidade luminodinâmica e endereço TGL+hex [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "carteiras são instanciadas e usadas na transmissão/mineração do protótipo, mas a geração de endereço não é isolada por teste entre os 6 desta cadeia [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 13,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "UTXO psiônico com lock/unlock por Fexp (|Fexp_lock−Fexp_unlock|<ε_tol) e HMAC SHA256(utxo_id∥Fexp_unlock).",
+      "verdict": "demonstrada no código; sem teste dedicado [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dependente de sistema)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — modelo UTXO",
+          "proves": "UTXO com f_exp_lock e verificação HMAC no gasto [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "um UTXO coinbase foi criado e o saldo creditado na execução da L4, mas o lock/unlock por Fexp+HMAC não é isolado por teste entre os 6 desta cadeia [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 14,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Pacote com cabeçalho fixo de 80 bytes: magic 0xCEA8, assinatura psiônica 8B, θsrc/θdst/Fexp/Dfolds em float16, selo α² em float64 e Raiz Merkle 32B.",
+      "verdict": "comprovada por teste — header de 80 bytes, magic 0xCEA8, selo α²=β [REAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 14 (dependente de sistema)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — packet_header_80_bytes",
+          "proves": "PsiNetPacket.serialize_header produz exatamente 80 bytes com magic Ψ 0xCEA8 e selo α² gravado = β injetado (não literal) [REAL]",
+          "value": "header_len=80; magic=0xCEA8; selo α²=0,012031300400803142",
+          "resolved": true,
+          "detail": "teste 'packet_header_80_bytes' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "packet_header_80_bytes",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — PsiNetPacket.serialize_header",
+          "proves": "monta os offsets do cabeçalho (assinatura 8B, floats16, selo float64, Merkle 32B) [REAL roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 15,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Criptomoeda TGL Coin: emissão máxima 21.000.000.000; recompensa gênesis 1.000 TGLC/bloco; halving a cada 210.000 blocos; alvo 60 s/bloco; gênesis α²_work=0,012031.",
+      "verdict": "cadeia minerada e gênesis α²=β provados por teste; parâmetros de emissão são constantes de código [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 15 (dependente de sistema)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — multi_block_chain_phase_pinned",
+          "proves": "a blockchain TGLC minera e credita coinbase por consenso ≥67% [REAL]",
+          "value": "10 blocos minerados e aceitos; coinbase por bloco; saldo minerador 1010 TGLC",
+          "resolved": true,
+          "detail": "teste 'multi_block_chain_phase_pinned' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "multi_block_chain_phase_pinned",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_not_literal (gênesis α²_work)",
+          "proves": "o α²_work do gênesis é β=α√e DERIVADO, não o literal do protótipo [REAL/DER]",
+          "value": "gênesis α²_work=β=0,012031300400803142 (runtime; original 0,012 literal)",
+          "resolved": true,
+          "detail": "teste 'beta_injected_not_literal' consta no runner + selo presente",
+          "result_hash": "298f61755cd2155de846a13f17c13a23f516cc49a47480dfc1cda69d74aa4f9e",
+          "run": "PSI_NET@2026-07-10T16-30-48",
+          "ref": "selo PSI_NET@2026-07-10T16-30-48",
+          "test": "beta_injected_not_literal",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "TGL_coin_v022.py — tokenomics e emissão coinbase",
+          "proves": "constantes 21B/1000-por-bloco/halving 210.000/60 s e a emissão coinbase [SIM roda]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/TGL_coin_v022.py",
+          "code_path": "prototype_src/TGL_coin_v022.py",
+          "live_sha256": "aba44f7ff7d862e75a8f2f0264a2a0b69623245e5217b8706e54f1cad2cbd022"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "os parâmetros numéricos de emissão (21 bilhões, halving 210.000, alvo 60 s) são constantes declaradas no código, NÃO verificados numericamente por teste dedicado entre os 6 desta cadeia [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 16,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Execução em GPU via PyTorch/CUDA nas camadas L0/L1/L4.",
+      "verdict": "o código é torch (GPU-capable), mas a cadeia rodou FORÇADA em CPU — prova de GPU pendente [SIM/OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 16 (dependente de sistema)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 296,
+          "indexed_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "live_sha256": "2c2692b31c495f871c67eaace7b2edec4c757c794047983cffdf627b3733afc3",
+          "ref": "documento id=296 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Psi_net_protocol_v1.py — camadas L0/L1/L4 em torch (device configurável)",
+          "proves": "as camadas L0/L1/L4 são implementadas em torch com device configurável (caminho CUDA presente no código) [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/Psi_net_protocol_v1.py",
+          "code_path": "prototype_src/Psi_net_protocol_v1.py",
+          "live_sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — GPU não exercida",
+          "proves": "o runner FORÇOU CPU (torch.cuda.is_available=lambda:False; CUDA_VISIBLE_DEVICES='') para determinismo/portabilidade — a execução GPU/CUDA NÃO foi exercida nesta cadeia. O código suporta GPU, mas a prova de desempenho GPU (RTX 5090 do relatório) é [SIM/OPEN], pendente e não valida física",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    }
+  ]
+}

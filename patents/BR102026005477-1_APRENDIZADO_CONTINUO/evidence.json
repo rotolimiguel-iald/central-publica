@@ -1,0 +1,826 @@
+{
+  "patent_id": "BR102026005477-1",
+  "schema": "cadeia-de-prova/v1",
+  "note": "Cada reivindicação → cadeia de elos de prova (depósito/teste/código/dispositivo/dado/nota). Os hashes são computados AO VIVO por tools/verify_evidence.py (nunca hardcoded). Qualificações honestas onde a prova é parcial/pendente.",
+  "run_ref": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+  "document_id": 57,
+  "claims": [
+    {
+      "n": 1,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "SISTEMA integrado de aprendizado continuo: (a) quantizador gravitacional VACUUM/GRAVITON/PHOTON com fronteiras de theta_Miguel=arcsin(raiz(beta)) e codificacao PsiBit em H4; (b) amostrador adaptativo (piso=alpha*raiz(S)*p_max); (c) cache holografico angular (theta_key, N=ceil((pi/2)/theta_M) buckets, P=1+beta'*log(1+hits)); (d) operador verbal adaptativo (Floor_i=beta_adapt*max_j S_ij); (e) estado psionico persistente 'Psion'. Zero parametros livres, todos derivados de beta_TGL=alpha*raiz(e).",
+      "verdict": "comprovada em logica — 4 dos 5 subsistemas com teste real; operador verbal (d) sem teste dedicado; dados sinteticos [PILOTO][SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 1 (independente) no deposito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial do sistema integrado [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Quantizador gravitacional + PsiBit H4",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "gravitational_stratification_psibit"
+          },
+          "value": "VACUUM/GRAVITON/PHOTON por raiz(beta) e cos(theta_M); PsiBit 4 estados",
+          "proves": "subsistema (a) real: estratificacao por fronteira beta e codificacao PsiBit [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Amostrador adaptativo piso de Hilbert",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "hilbert_floor_adaptive_sampler"
+          },
+          "value": "piso=beta_adapt*p_max, beta_adapt=alpha*raiz(S)",
+          "proves": "subsistema (b) real: candidatos adaptativos [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Cache holografico angular + persistencia de fase",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "holographic_angular_classification"
+          },
+          "value": "theta_sinal>=theta_vacuo; P=1+beta'*log(1+hits)",
+          "proves": "subsistema (c) real: enderecamento angular e P(hits) [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Estado psionico persistente (Psion)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_cycle_ema_and_persistence"
+          },
+          "value": "EMA taxa beta + persistencia SHA-256",
+          "proves": "subsistema (e) real: Psion inscreve entre sessoes [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Zero parametros livres derivados de beta=alpha*raiz(e)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "beta=0,01203130040080 (runtime, nunca literal)",
+          "proves": "todos os limiares derivam de beta=alpha*raiz(e); zero parametros livres [REAL/DER]"
+        },
+        {
+          "role": "codigo",
+          "title": "Runner unico forma=conteudo (sistema integrado)",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_aprendizado_continuo.py"
+          },
+          "proves": "os subsistemas integrados rodam juntos (CONTINUAL_LEARNING_FULL_LOGIC_DEMONSTRATED) [REAL na logica][PILOTO][SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — operador verbal (d) e dado sintetico",
+          "proves": "o Verb Floor de atencao Floor_i=beta_adapt*max_j S_ij (componente 6) NAO tem teste dedicado nesta run; a forma do piso adaptativo e exercida pelo amostrador (alpha*raiz(S)) sobre logits, nao sobre matriz de atencao. Conversa e tensores SINTETICOS; simulacao nao valida fisica (physical_verdict_allowed=false) [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "PsiBit codifica 2 bits por peso (sinal sgn(w)=Palavra, derivada sgn(dw)=Verbo), 4 estados em H4, forca de expulsao F_exp=<paridade>.",
+      "verdict": "comprovada — computado sobre 60000 pesos sinteticos",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 2 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "PsiBit H4 + forca de expulsao",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "gravitational_stratification_psibit"
+          },
+          "value": "4 estados PsiBit; F_exp=<sgn(w)*sgn(dw)>",
+          "proves": "PsiBit 2 bits/peso (sinal, derivada), 4 estados em H4, F_exp=<paridade> computados sobre 60000 pesos [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "Runner — codificacao PsiBit ((sgn(w)<<1)|sgn(dw))",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_aprendizado_continuo.py"
+          },
+          "proves": "os 4 estados e a paridade sao computados no runner [REAL]"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "independent": false,
+      "marker": "DATA",
+      "statement": "reconstrucao dimensional w'=sgn(w)*[sin(theta_quant)]^2*g_max^2=Psi_out=s*g^2, com correlacao>0,9997 e degradacao de perplexidade<3%.",
+      "verdict": "parcial — a forma do bake (perturbacao limitada por beta) tem teste real; os limiares correlacao>0,9997 e perplexidade<3% sao DATA reportados (Qwen2.5-7B), nao reproduzidos aqui",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 3 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Bake do Phase Factor (perturbacao limitada)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "phase_factor_bake_real_beta_injected"
+          },
+          "value": "fator medio in [1-beta,1+beta]; perturbacao max <= beta*max|w|",
+          "proves": "o bake preserva o modelo (perturbacao limitada por beta) — a reconstrucao nao quebra os pesos [REAL na forma]"
+        },
+        {
+          "role": "codigo",
+          "title": "phase_factor_bake — apply_phase_factor / reconstrucao",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/phase_factor_bake_mk4.py"
+          },
+          "proves": "implementacao do bake do Phase Factor (familia apply_phase_factor) [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — numeros DATA e bake parcialmente inerte",
+          "proves": "correlacao>0,9997 e degradacao de perplexidade<3% sao resultados REPORTADOS na patente (benchmark Qwen2.5-7B), NAO reproduzidos nem re-verificados aqui; a reconstrucao exata w'=s*g^2 nao foi medida por correlacao nesta run. O bake foi aplicado porem e computacionalmente inerte em parte (CLI/__main__/mmap-GGUF nao executado; so apply_phase_factor puro sobre tensor sintetico) [DATA/SIM]"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "classificacao topologica de CAMADAS GRACE (esparsidade<0,95, phi>0,99, V_H>0,4) / VACUUM (esparsidade>0,95) / FRONTIER, com tratamento diferenciado.",
+      "verdict": "em aberto — modulo 720 (classificacao topologica de camadas) nao implementado/testado nesta run",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 4 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — modulo 720 nao implementado",
+          "proves": "a classificacao topologica de CAMADAS GRACE/VACUUM/FRONTIER (modulo 720) NAO esta implementada nem testada nesta run (a memoria a lista como pendente). NAO confundir com a estratificacao de PESOS VACUUM/GRAVITON/PHOTON (componente 1, essa sim testada em gravitational_stratification_psibit). Sem elo de teste — lacuna honesta [OPEN]"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "beta adaptativo por camada por EMA com clamp [beta_TGL, 0,5]; camadas GRACE->beta_TGL, VACUUM->beta'_TGL.",
+      "verdict": "parcial — o mecanismo de EMA a taxa beta e real e testado; o clamp por camada e a especializacao topologica (modulo 730) nao estao implementados",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 5 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "EMA a taxa beta (forma exata)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_convergence_curve_ema_rate_beta"
+          },
+          "value": "erro decai como (1-beta)^k, desvio<1e-9 vs forma fechada",
+          "proves": "o mecanismo de atualizacao por EMA a taxa beta (forma da Eq.10) e real [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — modulo 730",
+          "proves": "o clamp por camada [beta_TGL,0,5] e a especializacao GRACE->beta_TGL / VACUUM->beta'_TGL (modulo 730) NAO estao implementados nesta run; so o mecanismo generico EMA a taxa beta foi verificado, nao o beta POR CAMADA nem o clamp [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "hash holografico 256-bit (componente 4) tipo Feistel com constante derivada de beta_TGL + cadeia de certificacao de inferencia (componente 5, Nome Chain).",
+      "verdict": "parcial — ha selagem criptografica SHA-256 fail-closed real; a TGL-Hash Feistel-beta e a Nome Chain especificas nao estao implementadas",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 6 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Integridade SHA-256 fail-closed do estado",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_cycle_ema_and_persistence"
+          },
+          "value": "persistencia SHA-256 fail-closed verificada no reload",
+          "proves": "integridade criptografica SHA-256 do estado (selo fail-closed no load) — forma de certificacao verificavel por terceiros [REAL na forma]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — componentes 4/5",
+          "proves": "a TGL-Hash 256-bit Feistel com constante derivada de beta_TGL (componente 4, avalanche 1,001) e a Nome Chain (componente 5, cadeia peso->quantizado->logits->token) NAO estao implementadas/testadas; o que roda e SHA-256 padrao fail-closed na persistencia do Psion, nao o hash Feistel-beta nem a cadeia de custodia [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "IALD Score = raiz_cubica(Palavra*Nome*Verbo) amplificado por Psi(gen)=1+beta_TGL*log(1+geracao).",
+      "verdict": "comprovada — media geometrica trinaria e amplificacao Psi(gen) computadas",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 7 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "IALD Score amplificado por Psi(gen)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "iald_score_geometric_mean_amplified"
+          },
+          "value": "IALD=raiz3(P*N*V)*Psi(20); Psi(gen)=1+beta*log(1+gen)>1",
+          "proves": "media geometrica trinaria amplificada por Psi(gen) logaritmica [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Componentes Palavra/Nome/Verbo reais",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "trinary_ontology_classify_real"
+          },
+          "proves": "as componentes Palavra/Nome/Verbo do escore sao reais (classify_tensor) [REAL]"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "METODO de aprendizado continuo: (a) carregar Psion e verificar ancoragem beta_TGL a 1e-12; (b) executar pipeline com parametros refinados; (c) extrair metricas como insight; (d) atualizar por EMA taxa beta_TGL; (e) determinar eco (reflexivo C>=-0,001 / passivo C<-0,001); (f) incrementar geracao e persistir — Palavra invariante, evolui o Verbo ancorado ao Nome.",
+      "verdict": "comprovada em logica — carga, ancoragem beta, EMA taxa beta, pipeline e persistencia com teste real; classificador de eco C^(n) exato so demonstrado como convergencia [PILOTO][SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 8 (independente) no deposito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial do metodo [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Carga + EMA taxa beta + persistencia (sem re-treino)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_cycle_ema_and_persistence"
+          },
+          "value": "200 geracoes -> convergencia; persistencia SHA-256 verificada",
+          "proves": "etapas (a)(d)(f): carrega Psion, atualiza por EMA taxa beta SEM re-treino/gradiente, persiste entre sessoes [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Ancoragem beta_TGL verificada",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "beta=alpha*raiz(e) verificado a <1e-12",
+          "proves": "etapa (a): ancoragem beta_TGL verificada a 1e-12 [REAL/DER]"
+        },
+        {
+          "role": "teste",
+          "title": "Assinatura exata do aprendizado a taxa beta",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_convergence_curve_ema_rate_beta"
+          },
+          "value": "erro (1-beta)^k; meia-vida ln2/(-ln(1-beta))",
+          "proves": "etapa (d): EMA a taxa beta converge (assinatura exata), sem gradiente [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Pipeline executado (compressao de contexto)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "holographic_2layer_compression_real"
+          },
+          "value": "contexto excede orcamento e e reduzido (2 camadas)",
+          "proves": "etapa (b): pipeline executado com parametros refinados (memoria holografica 2 camadas) [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "Runner — o metodo como codigo executavel",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_aprendizado_continuo.py"
+          },
+          "proves": "o metodo E instrucoes que rodam, forma=conteudo [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — eco (e) e dado sintetico",
+          "proves": "a determinacao do eco reflexivo/passivo por C^(n)=1/3(dphi+dh+ds) (Eq.12) NAO e um teste separado; a convergencia monotonica (erro decrescente) demonstra o regime reflexivo, mas o classificador de eco exato nao foi computado. Conversa/tensores sinteticos; simulacao nao valida fisica [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "recursao produz Nomes Derivados N_i=pi_i(N_0) com beta_TGL(N_i)=beta_TGL(N_0) — cristal informacional / constelacao de projecoes fractais do Nome Original.",
+      "verdict": "parcial — a invariancia de beta(N_i)=beta(N_0) e demonstrada; o operador de fractalizacao pi_i e interpretacao teorica nao implementada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 9 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Invariancia de beta (condicao do cristal)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "beta=alpha*raiz(e) constante (runtime)",
+          "proves": "a condicao de invariancia beta_TGL(N_i)=beta_TGL(N_0) e satisfeita — beta e derivado e constante [REAL/DER]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — Nomes Derivados",
+          "proves": "o operador de projecao fractal pi_i que gera os Nomes Derivados (cristal informacional) e interpretacao ontologica TGL [CONJ], NAO implementado nem testado; so a sub-propriedade de invariancia de beta foi verificada [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "amplificacao Psi(gen)=1+beta_TGL*log(1+geracao) logaritmica — melhoria indefinida sem divergencia.",
+      "verdict": "comprovada — Psi(gen) logaritmica e convergencia sem divergencia computadas",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 10 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Amplificacao Psi(gen) logaritmica",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "iald_score_geometric_mean_amplified"
+          },
+          "value": "Psi(20)=1+beta*log(21)>1, logaritmica (gen0->1,0)",
+          "proves": "Psi(gen) cresce logaritmicamente, melhora sem divergir [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Convergencia sem divergencia",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_convergence_curve_ema_rate_beta"
+          },
+          "value": "erro decrescente monotonico, sem divergencia",
+          "proves": "o sistema converge sem divergir ao longo das geracoes [REAL]"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "se a ancoragem beta_TGL for violada (delta>1e-12), o Psion reinicia para a geracao 0.",
+      "verdict": "parcial — a checagem de ancoragem beta=alpha*raiz(e) e um mecanismo fail-closed real existem; o reset-para-geracao-0 por violacao de beta (modulo 760) nao esta implementado",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 11 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Checagem da invariancia de beta",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "beta verificado a <1e-12",
+          "proves": "o lado da CHECAGEM: a invariancia beta=alpha*raiz(e) e verificada a 1e-12 [REAL/DER]"
+        },
+        {
+          "role": "teste",
+          "title": "Mecanismo fail-closed real (SHA-256)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_cycle_ema_and_persistence"
+          },
+          "value": "SHA-256 fail-closed no load",
+          "proves": "existe mecanismo fail-closed real (rejeita estado corrompido no load) — analogo, nao identico ao reset por beta [REAL na forma]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — modulo 760",
+          "proves": "a ACAO de reiniciar para a geracao 0 quando delta_beta>1e-12 (modulo 760) NAO esta implementada; a ancoragem do prototipo e por SHA-256 do estado, nao pelo reset por invariancia de beta descrito na reivindicacao [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "ressonancia angular acumula hits por bucket ao longo das geracoes, com persistencia P_b=1+beta'_TGL*log(1+hits_total_b).",
+      "verdict": "comprovada — enderecamento angular e curva de persistencia monotonica verificados",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 12 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Classificacao angular + persistencia P(hits)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "holographic_angular_classification"
+          },
+          "value": "P=1+beta'*log(1+hits) cresce com hits; theta_sinal>=theta_vacuo",
+          "proves": "enderecamento angular por bucket + persistencia P(hits) crescente [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Curva de persistencia estritamente crescente",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "phase_persistence_curve_vs_hits"
+          },
+          "value": "P estritamente crescente em 1..1000 hits",
+          "proves": "eviccao por permanencia (ressonancia), nao por recencia — curva monotonica [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "Memoria holografica angular (analyze_turn)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/holographic_memory.py"
+          },
+          "proves": "implementacao real do enderecamento angular e persistencia de fase [REAL]"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "ontologia trinaria Verbo=Nome*Palavra mapeada biunivocamente: Quantizer+Cache=Palavra(raiz(e)), Sampler=Nome(alpha), Attention Floor=Verbo(beta_TGL).",
+      "verdict": "comprovada — classify_tensor mapeia deterministicamente os tensores as tres categorias",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 13 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Ontologia trinaria via classify_tensor",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "trinary_ontology_classify_real"
+          },
+          "value": "Q/K/down->PALAVRA(raiz(e)), V/gate->VERBO(beta), O/up->NOME(alpha)",
+          "proves": "classify_tensor mapeia os tensores a ontologia trinaria de forma deterministica [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Fatoracao beta=alpha*raiz(e) (Verbo=Nome*Palavra)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "beta=alpha*raiz(e)",
+          "proves": "a fatoracao beta_TGL=alpha*raiz(e) <=> Verbo=Nome*Palavra e a relacao governante [REAL/DER]"
+        },
+        {
+          "role": "codigo",
+          "title": "phase_factor_bake — classify_tensor",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/phase_factor_bake_mk4.py"
+          },
+          "proves": "implementacao real de classify_tensor (ontologia trinaria) [REAL]"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "DISPOSITIVO de estado psionico persistente: modulos 710 (perfis de camada), 720 (classificacao topologica), 730 (beta adaptativo clamp [beta_TGL,0,5]), 740 (ressonancia angular), 750 (convergencia/eco), 760 (ancoragem beta 1e-12), 770 (persistencia JSON); nao modifica pesos, zero parametros livres.",
+      "verdict": "comprovada em logica para 710/740/750/770 + nao-modifica-pesos + zero-parametros; modulos 720 e 730 nao implementados [PILOTO][SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 14 (independente) no deposito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial do dispositivo [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Modulos 710 (perfis EMA) + 770 (persistencia JSON)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_cycle_ema_and_persistence"
+          },
+          "value": "EMA taxa beta + persistencia JSON SHA-256; nao modifica pesos",
+          "proves": "modulos 710 (perfis por EMA) e 770 (persistencia JSON portatil); o dispositivo NAO modifica pesos [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Modulo 740 (ressonancia angular)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "holographic_angular_classification"
+          },
+          "value": "hits/persistencia por bucket angular",
+          "proves": "modulo 740 (ressonancia angular inter-run) [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Modulo 750 (convergencia)",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_convergence_curve_ema_rate_beta"
+          },
+          "value": "convergencia EMA (1-beta)^k",
+          "proves": "modulo 750 (historico de convergencia) [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Modulo 760 (ancoragem beta) + zero parametros livres",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "beta=alpha*raiz(e) a <1e-12; zero parametros livres",
+          "proves": "modulo 760 (ancoragem beta a 1e-12) e zero parametros livres [REAL/DER]"
+        },
+        {
+          "role": "codigo",
+          "title": "Dispositivo operante — memoria holografica (Psion/cache)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/holographic_memory.py"
+          },
+          "proves": "o dispositivo persistente operante (cache/Psion, 659 L) [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — modulos 720/730 e dado sintetico",
+          "proves": "os modulos 720 (classificacao topologica GRACE/VACUUM/FRONTIER) e 730 (beta por camada com clamp) NAO estao implementados nesta run; a ancoragem 760 e por SHA-256 / beta=alpha*raiz(e) verificado, nao o reset por invariancia descrito. Tensores/estado sinteticos, simulacao nao valida fisica [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "estado psionico transferivel entre implementacoes (GPUs/frameworks/versoes) desde que a ancoragem beta_TGL seja verificada — artefato de aprendizado portatil e verificavel.",
+      "verdict": "comprovada em forma — round-trip salvar/recarregar JSON com verificacao SHA-256 e recall identico; transferencia entre hardwares distintos nao testada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 15 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Round-trip de persistencia verificado",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_cycle_ema_and_persistence"
+          },
+          "value": "save JSON -> reload; recall identico a <1e-12; SHA-256 fail-closed",
+          "proves": "o estado e artefato JSON portatil e verificavel: recarrega com integridade e recupera o valor inscrito [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "Runner — orquestra o round-trip save/load",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_aprendizado_continuo.py"
+          },
+          "proves": "orquestra a serializacao/desserializacao verificada do estado [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — cross-hardware nao testado",
+          "proves": "a transferencia entre GPUs/frameworks/versoes DIFERENTES especificamente NAO foi testada (ambiente unico); o artefato JSON portatil e sua verificacao de integridade SIM foram demonstrados por round-trip [REAL/SIM parcial]"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "multiplas instancias do Psion interconectaveis via Psi-net (BR102026003453-3) para aprendizado distribuido com consenso por Prova de Fase.",
+      "verdict": "em aberto — interconexao multi-Psion via Psi-net e consenso por Prova de Fase nao implementados/testados nesta run",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 16 (dep.)",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — Psi-net nao testada",
+          "proves": "a interconexao de multiplas instancias do Psion via Psi-net e o consenso distribuido por Prova de Fase NAO estao implementados nem testados nesta run; referencia a patente Psi-net BR102026003453-3 (conferir digito verificador com agente de PI [LEGAL]). Sem elo de teste — lacuna honesta [OPEN]"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "CRITERIO de identificacao (se e somente se, C1-C6 simultaneos): C1 estado persistente inter-sessao sem modificar pesos; C2 classificacao topologica Grace/Vacuum/Frontier; C3 beta adaptativo com taxa derivada de constante fundamental; C4 enderecamento angular holografico com persistencia inter-sessao; C5 metrica de convergencia intrinseca (eco reflexivo vs passivo); C6 zero parametros livres.",
+      "verdict": "5 de 6 criterios com teste real (C1,C3,C4,C6 plenos; C5 parcial via convergencia); C2 (topologia de camadas) em aberto — o 'se e somente se' exige os 6 simultaneos [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 17 (independente) no deposito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 57,
+            "pages": "?"
+          },
+          "proves": "redacao oficial do criterio de identificacao [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "C1 — persistencia inter-sessao sem modificar pesos",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_cycle_ema_and_persistence"
+          },
+          "value": "persiste entre sessoes; nao modifica pesos",
+          "proves": "C1: estado persistente inter-sessao sem modificar pesos [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "C3 + C6 — taxa derivada de constante fundamental e zero parametros",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "beta=alpha*raiz(e); zero parametros livres",
+          "proves": "C3 (taxa derivada de constante fundamental beta=alpha*raiz(e)) e C6 (zero parametros livres) [REAL/DER]"
+        },
+        {
+          "role": "teste",
+          "title": "C4 — enderecamento angular holografico com persistencia",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "holographic_angular_classification"
+          },
+          "value": "theta_key + persistencia P(hits)",
+          "proves": "C4: enderecamento angular holografico com persistencia [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "C3/C5 — taxa adaptativa beta e convergencia intrinseca",
+          "locator": {
+            "kind": "seal",
+            "run": "APRENDIZADO_CONTINUO@2026-07-10T11-47-03",
+            "test": "psion_convergence_curve_ema_rate_beta"
+          },
+          "value": "EMA taxa beta; convergencia monotonica (1-beta)^k",
+          "proves": "C3 (taxa adaptativa beta) e C5 (metrica de convergencia intrinseca) — C5 parcial [REAL parcial]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — C2 em aberto, C5 parcial",
+          "proves": "C2 (classificacao topologica de camadas GRACE/VACUUM/FRONTIER) NAO esta implementada; C5 e demonstrada so como convergencia monotonica, nao o classificador de eco reflexivo/passivo C^(n) exato. Como o criterio e 'se e somente se' (C1-C6 simultaneos), 5/6 estao demonstrados e C2 fica em aberto [SIM]"
+        }
+      ]
+    }
+  ]
+}

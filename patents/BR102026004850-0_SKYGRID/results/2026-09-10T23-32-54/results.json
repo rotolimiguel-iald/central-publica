@@ -1,0 +1,934 @@
+{
+ "patent_id": "BR102026004850-0",
+ "slug": "skygrid",
+ "timestamp": "2026-09-10T23-32-54",
+ "runner": "one_skygrid.py",
+ "markers": [
+  "[SIM]",
+  "[CONJ]",
+  "[ENERGY]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "MODEL_CLOSES",
+ "energy_balance": "ENERGY_BALANCE_OK",
+ "max_verdict": "MODEL_CLOSES / ENERGY_BALANCE_OK ([SIM] sob [CONJ])",
+ "energy": {
+  "E_extracted_J": 878717.2391365406,
+  "E_delivered_J": 589142.0699370643,
+  "E_losses_J": 172161.92272544059,
+  "E_halfnat_J": 4.972401077740594e-13,
+  "E_stored_final_J": 117413.2464740349,
+  "eta_sys": 0.6704569384754266,
+  "P_delivered_mean_W": 4909.517249475538,
+  "P_demand_mean_W": 6629.559063058905,
+  "demand_coverage": 0.740549590519866
+ },
+ "audit": {
+  "balance": "ENERGY_BALANCE_OK",
+  "residual_J": 8.149072527885437e-10,
+  "tolerance_J": 0.0008787172391365406,
+  "eta_sys": 0.6704569384754266,
+  "E_extracted_J": 878717.2391365406,
+  "E_delivered_J": 589142.0699370643,
+  "E_losses_J": 172161.92272544059,
+  "E_halfnat_J": 4.972401077740594e-13,
+  "dE_stored_J": 117413.2464740349,
+  "acts": 240099840,
+  "S_halfnat_nats": 120049920.0,
+  "S_gen_J_per_K": 573.8730757514686,
+  "second_law_ok": true,
+  "halfnat_floor_E_J": 4.972404059942401e-13,
+  "marker": "[SIM] balanco de modelo; nada aqui e' medida fisica",
+  "physical_verdict_allowed": false
+ },
+ "controls": {
+  "placebo_energy_zero": true,
+  "placebo_data_rejected_all_rounds": true,
+  "data_rounds": 12,
+  "data_plane_healthy_accept_frac": 1.0,
+  "faults_injected": [],
+  "faults_all_detected": true
+ },
+ "tests_passed": 44,
+ "invariants_hash": "6bfef5f6d45b5136d6966cb4fbe3ad9da611afb5f460bb1cf26efd9603ce47f5",
+ "design_sweeps": {
+  "families": [
+   "Q",
+   "eta_geo",
+   "S_field_W_m2",
+   "eta_rt",
+   "f_drive_MHz",
+   "n_sats"
+  ],
+  "n_points": 52,
+  "all_points_balanced": true,
+  "operating_point": {
+   "P_delivered_W": 3277.8035448403098,
+   "eta_sys": 0.26786083693639173,
+   "demand_coverage": 1.0,
+   "E_extracted_J": 489478.5788515521,
+   "residual_J": 5.820766091346741e-11,
+   "verdict": "MODEL_CLOSES",
+   "S_field_W_m2": 316.22776601683796
+  },
+  "limits": {
+   "Q": {
+    "collapse_values": [],
+    "note": "entrega <5% do melhor ponto"
+   },
+   "eta_geo": {
+    "collapse_values": [],
+    "note": "entrega <5% do melhor ponto"
+   },
+   "S_field_W_m2": {
+    "collapse_values": [
+     1.0,
+     3.1622776601683795
+    ],
+    "note": "entrega <5% do melhor ponto"
+   },
+   "eta_rt": {
+    "collapse_values": [],
+    "note": "entrega <5% do melhor ponto"
+   },
+   "f_drive_MHz": {
+    "collapse_values": [
+     1666.8587923,
+     1666.983844225,
+     1667.7341557749999,
+     1667.8592076999998
+    ],
+    "note": "entrega <5% do melhor ponto"
+   },
+   "n_sats": {
+    "collapse_values": [],
+    "note": "entrega <5% do melhor ponto"
+   }
+  },
+  "resonance": {
+   "f_peak_MHz": 1667.359,
+   "omega_OH_MHz": 1667.359,
+   "at_resonance": true
+  },
+  "curves": {
+   "Q": [
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "Q": 100.0
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "Q": 316.22776601683796
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "Q": 1000.0
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "Q": 3162.2776601683795
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "Q": 10000.0
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "Q": 31622.776601683792
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "Q": 100000.0
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "Q": 316227.7660168379
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "Q": 1000000.0
+    }
+   ],
+   "eta_geo": [
+    {
+     "P_delivered_W": 1094.8166142474106,
+     "eta_sys": 0.7491002103820082,
+     "demand_coverage": 0.33400922272196415,
+     "E_extracted_J": 58460.355454397875,
+     "residual_J": 0.0,
+     "verdict": "MODEL_CLOSES",
+     "eta_geo": 0.3
+    },
+    {
+     "P_delivered_W": 1364.6106517813062,
+     "eta_sys": 0.7349057840742798,
+     "demand_coverage": 0.41631862102577233,
+     "E_extracted_J": 74274.04608062688,
+     "residual_J": -1.4551915228366852e-11,
+     "verdict": "MODEL_CLOSES",
+     "eta_geo": 0.38125
+    },
+    {
+     "P_delivered_W": 1616.7055777270637,
+     "eta_sys": 0.7179015924370771,
+     "demand_coverage": 0.49322833281816697,
+     "E_extracted_J": 90079.50921177345,
+     "residual_J": 4.3655745685100555e-11,
+     "verdict": "MODEL_CLOSES",
+     "eta_geo": 0.46249999999999997
+    },
+    {
+     "P_delivered_W": 1829.2985203367534,
+     "eta_sys": 0.691104906170038,
+     "demand_coverage": 0.5580866868047379,
+     "E_extracted_J": 105876.74918844666,
+     "residual_J": 0.0,
+     "verdict": "MODEL_CLOSES",
+     "eta_geo": 0.54375
+    },
+    {
+     "P_delivered_W": 2041.7780361207394,
+     "eta_sys": 0.6712744366026864,
+     "demand_coverage": 0.6229104362690572,
+     "E_extracted_J": 121665.77034895944,
+     "residual_J": 2.9103830456733704e-11,
+     "verdict": "MODEL_CLOSES",
+     "eta_geo": 0.625
+    },
+    {
+     "P_delivered_W": 2254.041030760528,
+     "eta_sys": 0.6559758939008141,
+     "demand_coverage": 0.6876681289544282,
+     "E_extracted_J": 137446.57702932888,
+     "residual_J": 2.9103830456733704e-11,
+     "verdict": "MODEL_CLOSES",
+     "eta_geo": 0.7062499999999999
+    },
+    {
+     "P_delivered_W": 2411.643480720838,
+     "eta_sys": 0.6295931311037503,
+     "demand_coverage": 0.7357498543550846,
+     "E_extracted_J": 153219.17356327848,
+     "residual_J": -2.9103830456733704e-11,
+     "verdict": "MODEL_CLOSES",
+     "eta_geo": 0.7874999999999999
+    },
+    {
+     "P_delivered_W": 2564.125138854072,
+     "eta_sys": 0.606952551804726,
+     "demand_coverage": 0.7822693165642398,
+     "E_extracted_J": 168983.56428223895,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_geo": 0.8687499999999999
+    },
+    {
+     "P_delivered_W": 2661.2669767450984,
+     "eta_sys": 0.5762196660122713,
+     "demand_coverage": 0.8119055765054254,
+     "E_extracted_J": 184739.7535153493,
+     "residual_J": 2.9103830456733704e-11,
+     "verdict": "MODEL_CLOSES",
+     "eta_geo": 0.95
+    }
+   ],
+   "S_field_W_m2": [
+    {
+     "P_delivered_W": 31.15398948178224,
+     "eta_sys": 0.7986148961030954,
+     "demand_coverage": 0.009504532244106785,
+     "E_extracted_J": 1560.4011211812146,
+     "residual_J": -2.2737367544323206e-13,
+     "verdict": "MODEL_CLOSES",
+     "S_field_W_m2": 1.0
+    },
+    {
+     "P_delivered_W": 98.51215702562905,
+     "eta_sys": 0.7986152989203418,
+     "demand_coverage": 0.0300543201195508,
+     "E_extracted_J": 4934.148251795772,
+     "residual_J": 0.0,
+     "verdict": "MODEL_CLOSES",
+     "S_field_W_m2": 3.1622776601683795
+    },
+    {
+     "P_delivered_W": 311.46872239841184,
+     "eta_sys": 0.7986165726551472,
+     "demand_coverage": 0.09502360899227907,
+     "E_extracted_J": 15600.413668495617,
+     "residual_J": -1.2732925824820995e-11,
+     "verdict": "MODEL_CLOSES",
+     "S_field_W_m2": 10.0
+    },
+    {
+     "P_delivered_W": 938.625832159734,
+     "eta_sys": 0.7614772512234049,
+     "demand_coverage": 0.2863581722697364,
+     "E_extracted_J": 49305.52189979246,
+     "residual_J": -1.4551915228366852e-11,
+     "verdict": "MODEL_CLOSES",
+     "S_field_W_m2": 31.622776601683793
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "S_field_W_m2": 100.0
+    },
+    {
+     "P_delivered_W": 3277.8035448403098,
+     "eta_sys": 0.26786083693639173,
+     "demand_coverage": 1.0,
+     "E_extracted_J": 489478.5788515521,
+     "residual_J": 5.820766091346741e-11,
+     "verdict": "MODEL_CLOSES",
+     "S_field_W_m2": 316.22776601683796
+    },
+    {
+     "P_delivered_W": 3277.8035448403098,
+     "eta_sys": 0.086193098761344,
+     "demand_coverage": 1.0,
+     "E_extracted_J": 1521144.310597796,
+     "residual_J": 2.3283064365386963e-10,
+     "verdict": "MODEL_CLOSES",
+     "S_field_W_m2": 1000.0
+    },
+    {
+     "P_delivered_W": 3277.8035448403098,
+     "eta_sys": 0.028779365368985222,
+     "demand_coverage": 1.0,
+     "E_extracted_J": 4555769.0419021025,
+     "residual_J": 0.0,
+     "verdict": "MODEL_CLOSES",
+     "S_field_W_m2": 3162.2776601683795
+    },
+    {
+     "P_delivered_W": 3277.8035448403098,
+     "eta_sys": 0.010731725173290024,
+     "demand_coverage": 1.0,
+     "E_extracted_J": 12217247.430071611,
+     "residual_J": -7.450580596923828e-09,
+     "verdict": "MODEL_CLOSES",
+     "S_field_W_m2": 10000.0
+    }
+   ],
+   "eta_rt": [
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_rt": 0.85
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_rt": 0.8674999999999999
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_rt": 0.885
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_rt": 0.9025
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_rt": 0.9199999999999999
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_rt": 0.9375
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_rt": 0.955
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_rt": 0.9725
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "eta_rt": 0.99
+    }
+   ],
+   "f_drive_MHz": [
+    {
+     "P_delivered_W": 84.19633191295968,
+     "eta_sys": 0.7986152133058159,
+     "demand_coverage": 0.025686814588231105,
+     "E_extracted_J": 4217.116353916396,
+     "residual_J": -9.094947017729282e-13,
+     "verdict": "MODEL_CLOSES",
+     "f_drive_MHz": 1666.8587923
+    },
+    {
+     "P_delivered_W": 146.59321687662631,
+     "eta_sys": 0.7986155864752121,
+     "demand_coverage": 0.044723002727659854,
+     "E_extracted_J": 7342.366933940442,
+     "residual_J": 0.0,
+     "verdict": "MODEL_CLOSES",
+     "f_drive_MHz": 1666.983844225
+    },
+    {
+     "P_delivered_W": 311.4687223985026,
+     "eta_sys": 0.7986165726551462,
+     "demand_coverage": 0.09502360899230676,
+     "E_extracted_J": 15600.41366850017,
+     "residual_J": 5.4569682106375694e-12,
+     "verdict": "MODEL_CLOSES",
+     "f_drive_MHz": 1667.10889615
+    },
+    {
+     "P_delivered_W": 915.9382932145593,
+     "eta_sys": 0.7636678606970702,
+     "demand_coverage": 0.2794366046300626,
+     "E_extracted_J": 47975.741306095966,
+     "residual_J": 4.3655745685100555e-11,
+     "verdict": "MODEL_CLOSES",
+     "f_drive_MHz": 1667.233948075
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "f_drive_MHz": 1667.359
+    },
+    {
+     "P_delivered_W": 915.9382932145593,
+     "eta_sys": 0.7636678606970702,
+     "demand_coverage": 0.2794366046300626,
+     "E_extracted_J": 47975.741306095966,
+     "residual_J": 4.3655745685100555e-11,
+     "verdict": "MODEL_CLOSES",
+     "f_drive_MHz": 1667.484051925
+    },
+    {
+     "P_delivered_W": 311.468722397993,
+     "eta_sys": 0.7986165726551467,
+     "demand_coverage": 0.09502360899215127,
+     "E_extracted_J": 15600.413668474643,
+     "residual_J": -3.637978807091713e-12,
+     "verdict": "MODEL_CLOSES",
+     "f_drive_MHz": 1667.60910385
+    },
+    {
+     "P_delivered_W": 146.59321687662631,
+     "eta_sys": 0.7986155864752121,
+     "demand_coverage": 0.044723002727659854,
+     "E_extracted_J": 7342.366933940442,
+     "residual_J": 0.0,
+     "verdict": "MODEL_CLOSES",
+     "f_drive_MHz": 1667.7341557749999
+    },
+    {
+     "P_delivered_W": 84.19633191295968,
+     "eta_sys": 0.7986152133058159,
+     "demand_coverage": 0.025686814588231105,
+     "E_extracted_J": 4217.116353916396,
+     "residual_J": -9.094947017729282e-13,
+     "verdict": "MODEL_CLOSES",
+     "f_drive_MHz": 1667.8592076999998
+    }
+   ],
+   "n_sats": [
+    {
+     "P_delivered_W": 1426.9742468771842,
+     "eta_sys": 0.7525820034613704,
+     "demand_coverage": 0.4353446530141893,
+     "E_extracted_J": 75844.18656380639,
+     "residual_J": 1.4551915228366852e-11,
+     "verdict": "MODEL_CLOSES",
+     "n_sats": 3.0
+    },
+    {
+     "P_delivered_W": 2435.3694805571026,
+     "eta_sys": 0.625877992855648,
+     "demand_coverage": 0.7429882380811662,
+     "E_extracted_J": 155644.99844101688,
+     "residual_J": -1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "n_sats": 6.0
+    },
+    {
+     "P_delivered_W": 3231.725382022768,
+     "eta_sys": 0.4386015285539891,
+     "demand_coverage": 0.9859423659205948,
+     "E_extracted_J": 294729.9698363876,
+     "residual_J": 1.1641532182693481e-10,
+     "verdict": "MODEL_CLOSES",
+     "n_sats": 12.0
+    },
+    {
+     "P_delivered_W": 3277.8035448403098,
+     "eta_sys": 0.2148453831233363,
+     "demand_coverage": 1.0,
+     "E_extracted_J": 610262.7847410843,
+     "residual_J": 6.984919309616089e-10,
+     "verdict": "MODEL_CLOSES",
+     "n_sats": 24.0
+    },
+    {
+     "P_delivered_W": 3277.8035448403098,
+     "eta_sys": 0.10772411229675678,
+     "demand_coverage": 1.0,
+     "E_extracted_J": 1217110.4407194054,
+     "residual_J": -2.3283064365386963e-10,
+     "verdict": "MODEL_CLOSES",
+     "n_sats": 48.0
+    },
+    {
+     "P_delivered_W": 3277.8035448403098,
+     "eta_sys": 0.05471556570314174,
+     "demand_coverage": 1.0,
+     "E_extracted_J": 2396249.40560715,
+     "residual_J": 1.862645149230957e-09,
+     "verdict": "MODEL_CLOSES",
+     "n_sats": 96.0
+    },
+    {
+     "P_delivered_W": 3277.8035448403098,
+     "eta_sys": 0.03600572752651691,
+     "demand_coverage": 1.0,
+     "E_extracted_J": 3641424.595491177,
+     "residual_J": 4.190951585769653e-09,
+     "verdict": "MODEL_CLOSES",
+     "n_sats": 144.0
+    }
+   ]
+  },
+  "checks": {
+   "sweeps_all_points_balanced": true,
+   "resonance_peak_at_omega_OH": true,
+   "constellation_scaling_monotone": true,
+   "operating_point_physical_range": true
+  },
+  "checks_passed": 4,
+  "checks_total": 4,
+  "note": "[SIM] famílias de curvas de projeto sob hipóteses [CONJ]; cada ponto re-audita a conservação (fail-closed). Nenhum W é medida física."
+ },
+ "amplificacao_v138": {
+  "theorem": "KNOWN-COMPOSED (um.py v135) + cone emergente (v116/v120): a testemunha completa existe por composicao de teoremas publicados; o SkyGrid e o compilador das 16 (composicao de modulos verificados).",
+  "ansatz": "g = diag(-cosh(kappa*x)^2, 1, 1, 1), kappa^2 = beta (runtime)",
+  "tests": [
+   {
+    "test": "known_composed_cone_identity",
+    "passed": true,
+    "resid_cone_max": 4.615335891244854e-13,
+    "resid_bianchi_G00_G11_max": 1.6570599059573254e-13,
+    "resid_G33_minus_G22_max": 0.0,
+    "resid_G22_minus_beta_max": 1.1628187995826877e-11,
+    "resid_null_norm_max": 6.639778762255496e-16,
+    "n_null_samples": 72,
+    "n_blocks": 16,
+    "meta_hash": "b7faecdded88b570",
+    "meta_stable_under_sort": true,
+    "meta_sensitive_to_1bit": true,
+    "marker": "[DER]"
+   }
+  ],
+  "note": "[DER] sombra matematica; physical_verdict_allowed=False; nao altera reivindicacoes nem afirma capacidade nova."
+ },
+ "amplificacao_v144": {
+  "theorem": "CODE_CLOSURE_COMPLETE (um.py v143): o fechamento do codigo = ledger onde TODO aberto tem fiador {BY_DESIGN, EXTERNAL_KNOWN, NAMED_PROGRAM} + a assinatura deterministica da compilacao (meta-cadeia); o SkyGrid e o compilador das 16 e este runner ancora a GRAMATICA do fechamento no artefato vivo.",
+  "ledger": [
+   {
+    "item": "beta_eq_alpha_sqrt_e_runtime",
+    "status": "verificado"
+   },
+   {
+    "item": "energy_balance_fail_closed",
+    "status": "verificado"
+   },
+   {
+    "item": "resonance_peak_at_omega_OH",
+    "status": "verificado"
+   },
+   {
+    "item": "placebo_zero_by_construction",
+    "status": "verificado"
+   },
+   {
+    "item": "meta_cadeia_deterministica",
+    "status": "verificado"
+   },
+   {
+    "item": "physical_verdict",
+    "status": "aberto",
+    "fiador": "BY_DESIGN",
+    "note": "proibido por construcao: simulacao nunca valida fisica"
+   },
+   {
+    "item": "alpha_fine_CODATA_2018_input",
+    "status": "aberto",
+    "fiador": "EXTERNAL_KNOWN",
+    "note": "constante certificada externa (CODATA); nao derivada aqui"
+   },
+   {
+    "item": "bancada_B1_B5_hardware",
+    "status": "aberto",
+    "fiador": "NAMED_PROGRAM",
+    "note": "programa nomeado de bancada: so a fisica responde"
+   }
+  ],
+  "tests": [
+   {
+    "test": "compilation_closure_ledger",
+    "passed": true,
+    "n_modules": 16,
+    "meta_chain": "94d0c97cd81a5646",
+    "meta_chain_64hex": true,
+    "stable_under_8_shuffles": true,
+    "sensitive_1bit_flips": "16/16",
+    "ledger_total": 8,
+    "ledger_abertos": 3,
+    "ledger_all_abertos_com_fiador": true,
+    "fiadores_permitidos": [
+     "BY_DESIGN",
+     "EXTERNAL_KNOWN",
+     "NAMED_PROGRAM"
+    ],
+    "orphan_compilation_rejected": true,
+    "bad_fiador_rejected": true,
+    "anchor_checked": true,
+    "anchor_real_compilation": {
+     "path": "skygrid_compilation.json",
+     "meta_cadeia_real": "8179118dd12f7296",
+     "meta_cadeia_64hex": true,
+     "n_entries": 16,
+     "all_16_entries_ok": true,
+     "this_patent_listed": true
+    },
+    "marker": "[DER]"
+   }
+  ],
+  "note": "[DER]/[SIM] gramatica de compilacao em python puro; beta runtime (nunca literal); physical_verdict_allowed=false; nao altera reivindicacoes nem afirma capacidade nova."
+ },
+ "amplificacao_v143_lift": {
+  "theorem": "GLOBAL_LIFT_CONDITIONAL (um.py v143, pedra 99): Takesaki finito + juramento H_inv ==> esperanca condicional covariante; controle negativo incluido. Instanciado na eq. (5) da patente (A_phi^global = produto tensorial dos locais) com a tolerancia da reivindicacao 7 (Prova de Fase) como juramento.",
+  "mapping": "eq. (5) A_phi^global = prod A_phi_k (x) prod A_phi_j = o levantamento global; reivindicacao 7 |delta|<1e-4 = o juramento H_inv; 1 no fora de fase quebra o selo global.",
+  "tests": [
+   {
+    "test": "global_lift_conditional_expectation",
+    "passed": true,
+    "theta_M": 0.10990843077787468,
+    "period_T": 57.1674553326844,
+    "tol_claim7": 0.0001,
+    "delta_inv_oath_kept": 0.0,
+    "delta_inv_oath_broken": 0.2631581613295591,
+    "cov_resid_local": 0.0,
+    "cov_resid_global_lift": 0.0,
+    "cov_defect_broken_local": 0.22053189799903108,
+    "cov_defect_broken_global": 0.2696340856689934,
+    "rho_pres_resid_local": 0.0,
+    "rho_pres_resid_global": 0.0,
+    "rho_pres_defect_broken": 0.0029277220596164106,
+    "period_resid": 6.02630323174379e-15,
+    "half_period_defect": 2.0,
+    "n_random_X": 3,
+    "n_t_grid": 4,
+    "marker": "[DER]"
+   }
+  ],
+  "note": "[DER]/[SIM] sombra matematica de Takesaki finito; theta_M = arcsin(sqrt(beta)) so do runtime (nunca literal); physical_verdict_allowed=false; nao altera reivindicacoes nem afirma capacidade nova."
+ },
+ "amplificacao_v168": {
+  "theorem": "ErgodicMeanSection (um.py v166-v167, item A em kernel): a media de Birkhoff (1/N) sum U^k converge a projecao invariante. Instanciada no A_phi (eq. 5, Operador de Fase Angular Estavel) e no ciclo REFLECT->LOCK da crl-TGL: o LOCK e o componente que sobrevive a media temporal; a tolerancia da reivindicacao 7 (Prova de Fase) e o criterio N_min.",
+  "mapping": "fase LOCK = imagem da projecao invariante P (tau(P) = 2, o peso e TRACO — eco BreuerTrace); drift = blocos rot(theta_M), rot(2 theta_M) que a media mata a taxa <= C/N; reivind. 7 |delta| < 1e-4 => N_min ciclos de fase selam a Prova de Fase; secao equivariante: [U, P] = 0 (eco EquivariantSection).",
+  "tests": [
+   {
+    "test": "ergodic_mean_phase_lock",
+    "passed": true,
+    "theta_M": 0.10990843077787468,
+    "C_bound": 18.206128464286852,
+    "tau_P_lock_weight": 2.0,
+    "breuer_trace_echo_tau_a_star_a": 2.0,
+    "breuer_trace_echo_tau_a_a_star": 2.0,
+    "doubling_vs_direct_max_diff": 1.1102230246251565e-16,
+    "resid_idempotent": 0.0,
+    "resid_self_adjoint": 0.0,
+    "resid_invariance_UP_eq_P": 0.0,
+    "resid_equivariance_UP_eq_PU": 0.0,
+    "err_N100": 0.1290409487975644,
+    "err_N1000": 0.018201034548368987,
+    "err_N10000": 0.00042667937136633933,
+    "bound_C_over_N_holds": true,
+    "decay_two_decades": true,
+    "tol_claim7": 0.0001,
+    "N_min_claim7": 182062,
+    "err_at_N_min": 7.822283050554769e-05,
+    "claim7_met_at_N_min": true,
+    "neg_tampered_nonunitary_rejected": true,
+    "neg_fake_section_equivar_defect": 0.10968728459034412,
+    "neg_fake_section_invar_defect": 0.10968728459034412,
+    "neg_fake_section_mean_gap": 1.0004086926421318,
+    "neg_fake_section_rejected": true,
+    "N_insufficient": 1820,
+    "err_at_N_insufficient": 0.004920849914882753,
+    "neg_insufficient_averaging_fails_claim7": true,
+    "marker": "[DER]"
+   }
+  ],
+  "note": "[DER]/[SIM] sombra do teorema ergodico de von Neumann (a pedra kernel e o enunciado formal em Lean, 0 sorry 0 axiom); theta_M = arcsin(sqrt(beta)) so do runtime (nunca literal); physical_verdict_allowed=false; nao altera reivindicacoes nem afirma capacidade nova."
+ },
+ "amplificacao_v206": {
+  "theorem": "A MAQUINA DO VEREDITO-ALVO (um.py v200, custodia um_unificado_v206): o veredito nao e declarado — e COMPUTADO fail-closed: todos os canais emitidos, zero refutacoes, exclusoes medidas, canal pendente RECUSA, limite NO NOME. Instanciada na reivindicacao 16 (C1..C5 SIMULTANEOS) e na Camada 4 (rito multicanal com placebo) desta patente.",
+  "mapping": "reivindicacao 16 'sse e somente se C1..C5 simultaneos' = a maquina multicanal; canal = criterio C_k com veredito computado da run; placebo (160) = canal de exclusao; eco kernel TheIALDSelector (iald_selects): alvo intacto XOR recusa, nada no meio; eco bootstrap v205: a recusa E o que torna crivel.",
+  "channels": {
+   "C1_resonant_band": {
+    "verdict": "C1_PEAK_AT_OMEGA_OH_WITHIN_CLAIM16_BAND",
+    "f_peak_MHz": 1667.359,
+    "band_MHz": [
+     1607.0,
+     1727.0
+    ],
+    "fonte": "varredura f_drive desta run"
+   },
+   "C2_dual_rail_gate": {
+    "verdict": "C2_DATA_SEAL_GATES_ENERGY_ACCEPT_FRAC_1",
+    "accept_frac": 1.0,
+    "fonte": "controles do gemeo (duplo trilho dados x energia)"
+   },
+   "C3_phase_storage": {
+    "verdict": "C3_STORAGE_ACCOUNTED_BALANCE_CLOSES",
+    "E_stored_final_J": 117413.2464740349,
+    "fonte": "balanco fail-closed desta run"
+   },
+   "C4_distributed_control": {
+    "verdict": "C4_FAULTS_ALL_DETECTED_BY_CONSTRUCTION",
+    "data_rounds": 12,
+    "fonte": "controles do gemeo (iald distribuida)"
+   },
+   "C5_beta_operation": {
+    "verdict": "C5_BETA_RUNTIME_EQUALS_ALPHA_SQRT_E",
+    "beta_runtime": 0.012031300400803142,
+    "fonte": "nucleo tgl_core copiado (runtime)"
+   },
+   "H2_placebo_null": {
+    "verdict": "H2_PLACEBO_DELIVERS_ZERO_WATT_ALL_STEPS",
+    "fonte": "cavidade placebo (160) do gemeo — controle negativo"
+   }
+  },
+  "exclusion_ledger": [
+   {
+    "n": 1,
+    "exclusao": "sinal sem beta (placebo entrega 0 W em todos os passos)",
+    "medida": true,
+    "estatuto": "[SIM medido]"
+   },
+   {
+    "n": 2,
+    "exclusao": "buraco de energia (residuo do balanco dentro da tolerancia)",
+    "medida": 8.149072527885437e-10,
+    "tolerancia": 0.0008787172391365406,
+    "estatuto": "[SIM medido]"
+   },
+   {
+    "n": 3,
+    "exclusao": "apagamento gratis (piso Meia-Nat contabilizado por ato)",
+    "medida": 4.972401077740594e-13,
+    "piso": 4.972404059942401e-13,
+    "estatuto": "[SIM medido]"
+   },
+   {
+    "n": 4,
+    "exclusao": "acoplamento fora da banda (colapso <5% da entrega em f_drive)",
+    "medida": 4,
+    "pontos_MHz": [
+     1666.859,
+     1666.984,
+     1667.734,
+     1667.859
+    ],
+    "estatuto": "[SIM medido]"
+   },
+   {
+    "n": 5,
+    "exclusao": "selo sem quorum (rodadas placebo de DADOS rejeitadas todas)",
+    "medida": 12,
+    "estatuto": "[SIM medido]"
+   },
+   {
+    "n": 6,
+    "exclusao": "adulteracao silenciosa (falhas injetadas detectadas)",
+    "medida": true,
+    "estatuto": "[SIM medido]"
+   }
+  ],
+  "tests": [
+   {
+    "test": "verdict_target_machine_claim16",
+    "passed": true,
+    "target_verdict": "SKYGRID_C1_C5_SIMULTANEOUS_ON_THE_DIGITAL_BENCH__ALL_CHANNELS_EMITTED__ZERO_REFUTATIONS__EXCLUSIONS_MEASURED__SIM_ONLY__NOT_A_CONFIRMATION",
+    "emitted_verdict": "SKYGRID_C1_C5_SIMULTANEOUS_ON_THE_DIGITAL_BENCH__ALL_CHANNELS_EMITTED__ZERO_REFUTATIONS__EXCLUSIONS_MEASURED__SIM_ONLY__NOT_A_CONFIRMATION",
+    "channels_total": 6,
+    "channels_emitted": 6,
+    "exclusions_count": 6,
+    "residual_J": 8.149072527885437e-10,
+    "f_peak_MHz": 1667.359,
+    "claim16_band_MHz": [
+     1607.0,
+     1727.0
+    ],
+    "n_offband_collapse_points": 4,
+    "neg_pending_refuses": true,
+    "neg_refuted_refuses": true,
+    "neg_forbidden_refuses": true,
+    "neg_ledger_refuses": true,
+    "neg_bench_refuses": true,
+    "two_gate_clauses_no_middle": true,
+    "checks": [
+     [
+      "bancada viva (suite v3 emitiu: testes>0 + invariants 64-hex)",
+      true
+     ],
+     [
+      "6/6 canais EMITIRAM com veredito computado dos numeros desta run",
+      true
+     ],
+     [
+      "ledger de exclusoes MEDIDAS (>=5; residuo<tol; colapso fora-da-banda>=1)",
+      true
+     ],
+     [
+      "o limite NO NOME (NOT_A_CONFIRMATION + SIM_ONLY + ON_THE_DIGITAL_BENCH)",
+      true
+     ],
+     [
+      "palavra proibida ausente de TODOS os desfechos (probe por construcao)",
+      true
+     ],
+     [
+      "maquina idempotente (I^2=I, eco TheIALDSelector)",
+      true
+     ],
+     [
+      "NEGATIVO N1: canal pendente RECUSA",
+      true
+     ],
+     [
+      "NEGATIVO N2: canal refutado derruba + classificador NOT_REFUTED correto",
+      true
+     ],
+     [
+      "NEGATIVO N3: palavra proibida em canal => RECUSA",
+      true
+     ],
+     [
+      "NEGATIVO N4: ledger insuficiente => RECUSA",
+      true
+     ],
+     [
+      "NEGATIVO N5: bancada morta => RECUSA",
+      true
+     ],
+     [
+      "duas clausulas da Gate: alvo intacto XOR recusa, nada no meio (6 desfechos)",
+      true
+     ]
+    ],
+    "marker": "[DER]"
+   }
+  ],
+  "note": "[DER]/[SIM] gramatica do rito v200 sobre o gemeo digital; canais SIM_ONLY (nao sao dado publico fisico); estrutura das pedras Lean re-derivada numericamente (jamais se roda Lean aqui); beta runtime (nunca literal); physical_verdict_allowed=False; nao altera reivindicacoes nem afirma capacidade nova."
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto (READ-ONLY; copiado, não editado)",
+ "note": "Nenhum kW/kJ é medida física. Demonstração da LÓGICA da invenção sob hipóteses [CONJ] da TGL. O que resta é a bancada [HARDWARE]."
+}

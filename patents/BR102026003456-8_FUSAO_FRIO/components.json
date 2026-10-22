@@ -1,0 +1,33 @@
+{
+  "patent_id": "BR102026003456-8",
+  "title": "Fusão a Frio — Manipulação de Campo Psiônico por Ressonância OH",
+  "source": "Relatório descritivo; APENAS a matemática abstrata; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). [ENERGY] TRAVA MÁXIMA: só matemática abstrata + constantes CODATA. SEM parâmetros de criostato/MW, SEM manuseio de D₂O/deutério, SEM thresholds de nêutrons. Amplificação é teórica [CONJ], não medida. Nenhuma instrução operacional.",
+  "groups": [
+    {
+      "name": "Lógica matemática (o que o runner demonstra)",
+      "kind": "flow-node",
+      "components": [
+        { "id": "TC", "label": "T_c = h·ν_OH/k_B", "desc": "Temperatura crítica a partir da linha OH (ν_OH=1,6673590 GHz) — apenas fórmula, ≈80 mK. Constantes CODATA.", "marker": "[SIM]", "x": 0.10, "y": 0.20 },
+        { "id": "REGUA", "label": "Régua TGL L*(ρ), t_x(ρ)", "desc": "Fórmulas puras L*(ρ)=√ρ/β, t_x(ρ)=1/(βρ) e fronteira de transição (varredura sintética de ρ/ρ₀).", "marker": "[SIM]", "x": 0.38, "y": 0.20 },
+        { "id": "LG", "label": "Landau-Ginzburg s(T)", "desc": "Parâmetro de ordem s(T) atravessando T_c; sinal de α_T(T) muda em T_c. Curva teórica.", "marker": "[SIM]", "x": 0.66, "y": 0.20 },
+        { "id": "ACOM", "label": "Colapso ACOM reversível", "desc": "|L⟩ → (g,s) → L'=s·g² reversível até ~eps (eqs.11–13).", "marker": "[REAL]", "x": 0.90, "y": 0.20 }
+      ]
+    },
+    {
+      "name": "Afirmações teóricas (NÃO medidas — [ENERGY][CONJ])",
+      "kind": "state",
+      "components": [
+        { "id": "AMP", "label": "Amplificação σ_TGL/σ₀", "desc": "exp(ΔV_C/k_BT) como FUNÇÃO teórica (eqs.14–17). AMPLIFICAÇÃO TEÓRICA, NÃO MEDIDA. [CONJ]", "marker": "[CONJ]", "x": 0.22, "y": 0.62 },
+        { "id": "PROIB", "label": "Proibições operacionais", "desc": "SEM criostato/MW, SEM D₂O/deutério, SEM nêutrons: apenas matemática. Trava [ENERGY] do programa.", "marker": "[ENERGY]", "x": 0.58, "y": 0.62 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "TC", "to": "REGUA" }, { "from": "REGUA", "to": "LG" }, { "from": "LG", "to": "ACOM" }
+  ],
+  "constants": [
+    { "symbol": "β_TGL / α²_e", "value": "β=α·√e≈0,012031; α²_e=2β≈0,024 (ρ_Ψ=2ρ₀)", "note": "Escalonamento puro de acoplamento; nunca literal." },
+    { "symbol": "T_c", "value": "h·ν_OH/k_B ≈ 80 mK", "note": "Só fórmula com constantes CODATA; nenhuma condição operacional." }
+  ]
+}

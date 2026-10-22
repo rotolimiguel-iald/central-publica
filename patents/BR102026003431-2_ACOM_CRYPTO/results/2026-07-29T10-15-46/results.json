@@ -1,0 +1,561 @@
+{
+ "patent_id": "BR102026003431-2",
+ "slug": "acom_crypto",
+ "timestamp": "2026-07-29T10-15-46",
+ "runner": "one_acom_crypto.py (evoluído)",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]",
+  "[DEFENSE]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "ACOM_CRYPTO_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "ACOM_CRYPTO_FULL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — a engine torch real do operador (separação Ψ/Θ/κ + verificação tripla + F_exp + magic bytes + export/import + CPU/GPU) e o Handshake de Sincronia Miguel fecham; β injetado; vazamento estrutural parcial MEDIDO e declarado; XOR≠AEAD; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original": 0.012,
+   "theta_miguel_deg": 6.297289216477979
+  },
+  {
+   "test": "encrypt_decrypt_pequeno_1k",
+   "passed": true,
+   "correlation": 0.9999874942243034,
+   "compression_ratio": 6.304176516942475,
+   "n_elements": 1000,
+   "psi_bytes": 259,
+   "theta_bytes": 1010,
+   "f_exp": 0.46000000834465027,
+   "state_entropy": 1.8408021926879883,
+   "byte_entropy_psi_bits": 7.16669992666445,
+   "byte_entropy_theta_bits": 7.824731041855296
+  },
+  {
+   "test": "encrypt_decrypt_medio_100k",
+   "passed": true,
+   "correlation": 0.9999831767418225,
+   "compression_ratio": 6.398873798211515,
+   "n_elements": 100000,
+   "psi_bytes": 25010,
+   "theta_bytes": 100012,
+   "f_exp": 0.49834001064300537,
+   "state_entropy": 1.8125816583633423,
+   "byte_entropy_psi_bits": 7.991886385560134,
+   "byte_entropy_theta_bits": 7.998152662699852
+  },
+  {
+   "test": "encrypt_decrypt_grande_1M",
+   "passed": true,
+   "correlation": 0.9999821005005594,
+   "compression_ratio": 6.399754249436822,
+   "n_elements": 1000000,
+   "psi_bytes": 250015,
+   "theta_bytes": 1000033,
+   "f_exp": 0.4998219907283783,
+   "state_entropy": 1.8114184141159058,
+   "byte_entropy_psi_bits": 7.999284979431171,
+   "byte_entropy_theta_bits": 7.999800328807822
+  },
+  {
+   "test": "encrypt_decrypt_embeddings_1000x384",
+   "passed": true,
+   "correlation": 0.9999819861059448,
+   "compression_ratio": 6.3996000249984375,
+   "n_elements": 384000,
+   "psi_bytes": 96012,
+   "theta_bytes": 384018,
+   "f_exp": 0.4990676939487457,
+   "state_entropy": 1.8120027780532837,
+   "byte_entropy_psi_bits": 7.9981379435277935,
+   "byte_entropy_theta_bits": 7.999489969434736
+  },
+  {
+   "test": "encrypt_decrypt_kv_cache_4x2x8x64x32",
+   "passed": true,
+   "correlation": 0.999981774677392,
+   "compression_ratio": 6.399140740379099,
+   "n_elements": 131072,
+   "psi_bytes": 32778,
+   "theta_bytes": 131084,
+   "f_exp": 0.50018310546875,
+   "state_entropy": 1.8111227750778198,
+   "byte_entropy_psi_bits": 7.994323524667923,
+   "byte_entropy_theta_bits": 7.9984273444995875
+  },
+  {
+   "test": "isolated_parts_byte_entropy",
+   "passed": true,
+   "min_bits_per_byte_ge100k": 7.991886385560134,
+   "min_bits_per_byte_all": 7.16669992666445,
+   "note": "indistinguibilidade ESTATÍSTICA (não prova criptográfica) — propriedade de separação, não cifra padrão [DEFENSE]. Gate só em casos ≥100k: H(byte)≤log2(#bytes), payloads pequenos têm H<8 por tamanho de amostra, não por vazamento."
+  },
+  {
+   "test": "proper_subsets_insufficient_for_value_reconstruction",
+   "passed": true,
+   "subsets": {
+    "psi_only": {
+     "correlation": 0.7981086649030738,
+     "rel_rmse": 0.6355096298904882
+    },
+    "theta_only": {
+     "correlation": -0.008827763246007127,
+     "rel_rmse": 1.025507215870437
+    },
+    "kappa_only": {
+     "correlation": 0.0,
+     "rel_rmse": 1.0
+    },
+    "psi_theta": {
+     "correlation": 0.9999831767397536,
+     "rel_rmse": 0.7819764526109725
+    },
+    "theta_kappa": {
+     "correlation": -0.008827763246007148,
+     "rel_rmse": 1.4208672328482643
+    },
+    "psi_kappa": {
+     "correlation": 0.7981086649030709,
+     "rel_rmse": 1.61241486348315
+    }
+   },
+   "honest_note": "VAZAMENTO ESTRUTURAL MEDIDO E DECLARADO (nas internals REAIS do operador): Ψ isolado correlaciona ~E|L|/σ; Ψ+Θ recupera FORMA sem ESCALA (κ retém g_max); Θ+κ recupera |L| sem polaridade. NENHUM subconjunto reconstrói o VALOR (rel_rmse≥50%). Confidencialidade plena exige AEAD padrão por cima dos shares [DEFENSE]."
+  },
+  {
+   "test": "tamper_sha256_rejects_bitflip",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: Hash de estados não confere"
+  },
+  {
+   "test": "tamper_share_id_mismatch_rejected",
+   "passed": true,
+   "raised": "Shares incompatíveis: IDs diferentes"
+  },
+  {
+   "test": "tamper_f_exp_physical_check_rejects",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: F_exp não confere (esperado: 0.9983, obtido: 0.4983)"
+  },
+  {
+   "test": "tamper_theta_bitflip_angle_hash_rejects",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: Hash de ângulos não confere"
+  },
+  {
+   "test": "tamper_masterkey_psi_hash_rejects",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: PsiShare não corresponde à MasterKey"
+  },
+  {
+   "test": "tamper_magic_bytes_corrupted_rejects",
+   "passed": true,
+   "raised": "Invalid PsiShare magic"
+  },
+  {
+   "test": "tamper_kappa_swap_other_encryption_rejects",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: PsiShare não corresponde à MasterKey"
+  },
+  {
+   "test": "scale_tamper_gmax_uncovered_declared_limitation",
+   "passed": true,
+   "rel_rmse_after_scale_tamper": 1.249949116668408,
+   "note": "HONESTIDADE [DEFENSE]: g_max (escala em κ) NÃO tem MAC — adulterá-lo NÃO é rejeitado e corrompe silenciosamente a reconstrução (rel_rmse medido). A integridade cobre estados/ângulos/F_exp, não a escala; confidencialidade+integridade plenas exigem AEAD por cima de κ."
+  },
+  {
+   "test": "serialization_roundtrip_magic_bytes",
+   "passed": true,
+   "magic_psi": "cea8",
+   "magic_theta": "ce98",
+   "magic_key": "ceba",
+   "psi_export_bytes": 25307,
+   "theta_export_bytes": 100242,
+   "key_export_bytes": 485,
+   "correlation_after_roundtrip": 0.9999831767418225,
+   "note": "custódia dividida: 3 blobs independentes (magic 0xCEA8/0xCE98/0xCEBA, uint32 LE, JSON UTF-8) reimportados reconstroem (reiv. 6, 12)."
+  },
+  {
+   "test": "cpu_gpu_numeric_equivalence",
+   "passed": true,
+   "device_gpu": "cuda",
+   "max_abs_diff": 9.5367431640625e-07,
+   "correlation": 0.999999999999996,
+   "note": "reiv. 13: CPU (torch cpu) e GPU (torch cuda) numericamente equivalentes (diferença ~float32, |Δ|<1e-3)."
+  },
+  {
+   "test": "sync_handshake_hilbert_tunnel",
+   "passed": true,
+   "session_key_match_both_nodes": true,
+   "alpha2_sync": 0.012252166876532657,
+   "alpha2_sync_minus_beta": 0.00022086647572951493,
+   "theta_sync_deg": 6.355064119243758,
+   "tunnel_correlation": 0.9999819863826259,
+   "note": "Handshake Miguel (pulso→eco→túnel): ambos os nodos derivam o MESMO α²_sync e session_key da luz primordial compartilhada; a chave EMERGE centrada em β=α·√e injetado. Dado transmitido re-emerge pela dobra sincronizada."
+  },
+  {
+   "test": "wedge_commutant_locality_shared_invariant",
+   "passed": true,
+   "commutator_max_abs": 0.0,
+   "n_generator_pairs": 16,
+   "theta_modular_deg": 6.297289216477979,
+   "class_invariant_wedge_A": 0.011886548211468662,
+   "class_invariant_wedge_B": 0.011886548211468877,
+   "beta_times_one_minus_beta": 0.011886548211468777,
+   "residual_A": 1.1449174941446927e-16,
+   "residual_B": 1.0061396160665481e-16,
+   "residual_A_vs_B": 2.1510571102112408e-16,
+   "note": "[DER] amplificacao v138 (WedgeNet, um.py v135): localidade por centralizador -- blocos M2(+)M2 comutam EXATO ([A,B]=0) e compartilham o invariante de sincronizacao beta*(1-beta) (funcao de classe do gauge do Nome; beta runtime, nunca literal). [CONJ] pulso/eco = par de cunhas. NAO e veredito fisico (physical_verdict_allowed=false); nao altera reivindicacoes."
+  },
+  {
+   "test": "chain_of_custody_fail_closed",
+   "passed": true,
+   "n_blobs_pinned": 5,
+   "acquired_first_pass": 5,
+   "acquired_second_pass": 0,
+   "simulated_downloads_total": 5,
+   "tamper_refused": true,
+   "refusal_message": "custody REFUSED evidence_02: sha256 divergente do pinado",
+   "ledger_intact_after_refusal": true,
+   "root_sha256": "d7dbc4249f8fce275134b557e940ac6e74aa13b5c30c4aa4cafabd8b53e482bc",
+   "root_deterministic_under_sort": true,
+   "root_sensitive_to_1bit": true,
+   "beta_provenance_runtime": 0.012031300400803142,
+   "note": "[DER] amplificacao v144 (cadeia de custodia, um.py v139): razao de 5 provas pinadas por sha256; acquire idempotente e FAIL-CLOSED (1 bit => recusa; a recusa e o teste); hash-de-hashes deterministico sob sort e sensivel a 1 bit; beta runtime como marca de proveniencia (nunca literal). [CONJ] Nome Chain em miniatura. Nao toca o auth de producao; physical_verdict_allowed=false."
+  },
+  {
+   "test": "takesaki_finite_covariant_expectation_oath",
+   "passed": true,
+   "flow_times": [
+    1.0,
+    83.11653492861383
+   ],
+   "n_generators": 16,
+   "n_cross_generators": 8,
+   "covariance_residual_oath_kept": 0.0,
+   "omega_preservation_residual_oath_kept": 0.0,
+   "cross_channel_leak_oath_kept": 0.0,
+   "covariance_defect_oath_broken": 0.17918293170700547,
+   "omega_defect_oath_broken": 0.10385710451105036,
+   "cross_channel_leak_oath_broken": 0.17918293170700547,
+   "delta_numeric_trace": 0.21280402343879207,
+   "delta_closed_form": 0.21280402343879207,
+   "delta_residual": 0.0,
+   "channel1_weight_by_construction": 0.012031300400803142,
+   "note": "[DER] amplificacao v144b (Lema 3 tipado, pedra 99, um.py v143): Takesaki finito — juramento H_inv (estado bloco-diagonal nos canais M2(+)M2) => E covariante e omega-preservante (residuos ~0); CONTROLE NEGATIVO: estado que acopla os canais QUEBRA a covariancia e VAZA entre canais (defeitos medidos > 1e-3 — o mecanismo rejeita). Forma fechada (1-2b)*2*sqrt(b(1-b)) recuperada do traco numerico (beta runtime, nunca literal). channel1_weight = beta e POR CONSTRUCAO (informativo, nao gateado). [CONJ] custodia covariante exige o juramento do canal. NAO e veredito fisico (physical_verdict_allowed=false); nao altera reivindicacoes."
+  },
+  {
+   "test": "byte_entropy_size_curve_saturates",
+   "passed": true,
+   "H_theta_first": 5.943249216414264,
+   "H_theta_last": 7.999611790959239,
+   "saturation_min_bits_large": 7.998662361796868,
+   "n_points": 14,
+   "note": "H(byte)→8 conforme o payload cresce (limitado por log2(#bytes)); a curva MEDE que a indistinguibilidade estatística das partes é efeito de tamanho de amostra, não de vazamento. [SIM] (não é prova criptográfica)."
+  },
+  {
+   "test": "subset_leakage_matrix_insufficient_all_sizes",
+   "passed": true,
+   "matrix": {
+    "pequeno_1k": {
+     "psi_only": {
+      "correlation": 0.805046289907329,
+      "rel_rmse": 0.6238020418388648
+     },
+     "theta_only": {
+      "correlation": -0.07777009312377668,
+      "rel_rmse": 1.0522762320589634
+     },
+     "kappa_only": {
+      "correlation": 0.0,
+      "rel_rmse": 1.0
+     },
+     "psi_theta": {
+      "correlation": 0.999987494217053,
+      "rel_rmse": 0.740873128703351
+     },
+     "theta_kappa": {
+      "correlation": -0.0777700931237767,
+      "rel_rmse": 1.467997159642861
+     },
+     "psi_kappa": {
+      "correlation": 0.8050462899073302,
+      "rel_rmse": 1.2694608316623244
+     }
+    },
+    "medio_100k": {
+     "psi_only": {
+      "correlation": 0.7981086649030738,
+      "rel_rmse": 0.6355096298904882
+     },
+     "theta_only": {
+      "correlation": -0.008827763246007127,
+      "rel_rmse": 1.025507215870437
+     },
+     "kappa_only": {
+      "correlation": 0.0,
+      "rel_rmse": 1.0
+     },
+     "psi_theta": {
+      "correlation": 0.9999831767397536,
+      "rel_rmse": 0.7819764526109725
+     },
+     "theta_kappa": {
+      "correlation": -0.008827763246007148,
+      "rel_rmse": 1.4208672328482643
+     },
+     "psi_kappa": {
+      "correlation": 0.7981086649030709,
+      "rel_rmse": 1.61241486348315
+     }
+    },
+    "grande_1M": {
+     "psi_only": {
+      "correlation": 0.7979085428385773,
+      "rel_rmse": 0.6358310607903064
+     },
+     "theta_only": {
+      "correlation": -0.0016281281149438953,
+      "rel_rmse": 1.021808207013032
+     },
+     "kappa_only": {
+      "correlation": 0.0,
+      "rel_rmse": 1.0
+     },
+     "psi_theta": {
+      "correlation": 0.9999821004998627,
+      "rel_rmse": 0.7915675944247232
+     },
+     "theta_kappa": {
+      "correlation": -0.0016281281149438968,
+      "rel_rmse": 1.4153255556502597
+     },
+     "psi_kappa": {
+      "correlation": 0.7979085428385788,
+      "rel_rmse": 1.7112129653761516
+     }
+    }
+   },
+   "max_abs_subset_correlation": 0.999987494217053,
+   "note": "matriz subconjunto×tamanho (1k/100k/1M): em NENHUM tamanho um subconjunto próprio reconstrói o VALOR (rel_rmse≥0,5). O vazamento estrutural (corr de Ψ isolado, forma de Ψ+Θ) é ESTÁVEL em tamanho — medido, não fabricado."
+  }
+ ],
+ "summary": {
+  "tests_passed": 24,
+  "tests_total": 24,
+  "correlation_min": 0.999981774677392,
+  "compression_ratio_mean": 6.38030906599367,
+  "byte_entropy_min_bits_ge100k": 7.991886385560134,
+  "byte_entropy_min_bits_all": 7.16669992666445,
+  "subset_insufficiency": {
+   "psi_only": {
+    "correlation": 0.7981086649030738,
+    "rel_rmse": 0.6355096298904882
+   },
+   "theta_only": {
+    "correlation": -0.008827763246007127,
+    "rel_rmse": 1.025507215870437
+   },
+   "kappa_only": {
+    "correlation": 0.0,
+    "rel_rmse": 1.0
+   },
+   "psi_theta": {
+    "correlation": 0.9999831767397536,
+    "rel_rmse": 0.7819764526109725
+   },
+   "theta_kappa": {
+    "correlation": -0.008827763246007148,
+    "rel_rmse": 1.4208672328482643
+   },
+   "psi_kappa": {
+    "correlation": 0.7981086649030709,
+    "rel_rmse": 1.61241486348315
+   }
+  },
+  "cpu_gpu_equivalence": 9.5367431640625e-07,
+  "alpha2_sync": 0.012252166876532657,
+  "entropy_size_curve": {
+   "sizes": [
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048,
+    4096,
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "H_psi": [
+    4.483856189774723,
+    5.211210541203448,
+    5.895170106765953,
+    6.565042666838965,
+    7.148997027627855,
+    7.613262052534122,
+    7.788534714329945,
+    7.918419824094944,
+    7.961025643925812,
+    7.977628024930356,
+    7.98948950329228,
+    7.993002294247376,
+    7.9970146146168055,
+    7.998662361796868
+   ],
+   "H_theta": [
+    5.943249216414264,
+    6.701939655905851,
+    7.28339028312355,
+    7.582876928946797,
+    7.800747631155996,
+    7.896695043866321,
+    7.953080021151761,
+    7.980535202623419,
+    7.989382087378074,
+    7.994045269109677,
+    7.997427778719565,
+    7.998453364101799,
+    7.99934583565374,
+    7.999611790959239
+   ],
+   "ratio": [
+    5.224489795918367,
+    5.752808988764045,
+    6.041297935103245,
+    6.215477996965099,
+    6.3015384615384615,
+    6.350387596899225,
+    6.375097276264592,
+    6.387524366471735,
+    6.393756097560976,
+    6.3968765251342115,
+    6.398437881376617,
+    6.399140740379099,
+    6.399511756000061,
+    6.399677750601548
+   ],
+   "corr": [
+    0.9999931228625075,
+    0.9999911528774014,
+    0.9999921712245939,
+    0.9999896812406004,
+    0.9999920070073853,
+    0.9999871868421765,
+    0.9999857797065411,
+    0.9999875264403968,
+    0.9999850696416112,
+    0.9999852723322405,
+    0.9999842593478488,
+    0.9999785580834264,
+    0.9999834567233317,
+    0.9999798172422981
+   ]
+  },
+  "subset_leakage_matrix": {
+   "pequeno_1k": {
+    "psi_only": {
+     "correlation": 0.805046289907329,
+     "rel_rmse": 0.6238020418388648
+    },
+    "theta_only": {
+     "correlation": -0.07777009312377668,
+     "rel_rmse": 1.0522762320589634
+    },
+    "kappa_only": {
+     "correlation": 0.0,
+     "rel_rmse": 1.0
+    },
+    "psi_theta": {
+     "correlation": 0.999987494217053,
+     "rel_rmse": 0.740873128703351
+    },
+    "theta_kappa": {
+     "correlation": -0.0777700931237767,
+     "rel_rmse": 1.467997159642861
+    },
+    "psi_kappa": {
+     "correlation": 0.8050462899073302,
+     "rel_rmse": 1.2694608316623244
+    }
+   },
+   "medio_100k": {
+    "psi_only": {
+     "correlation": 0.7981086649030738,
+     "rel_rmse": 0.6355096298904882
+    },
+    "theta_only": {
+     "correlation": -0.008827763246007127,
+     "rel_rmse": 1.025507215870437
+    },
+    "kappa_only": {
+     "correlation": 0.0,
+     "rel_rmse": 1.0
+    },
+    "psi_theta": {
+     "correlation": 0.9999831767397536,
+     "rel_rmse": 0.7819764526109725
+    },
+    "theta_kappa": {
+     "correlation": -0.008827763246007148,
+     "rel_rmse": 1.4208672328482643
+    },
+    "psi_kappa": {
+     "correlation": 0.7981086649030709,
+     "rel_rmse": 1.61241486348315
+    }
+   },
+   "grande_1M": {
+    "psi_only": {
+     "correlation": 0.7979085428385773,
+     "rel_rmse": 0.6358310607903064
+    },
+    "theta_only": {
+     "correlation": -0.0016281281149438953,
+     "rel_rmse": 1.021808207013032
+    },
+    "kappa_only": {
+     "correlation": 0.0,
+     "rel_rmse": 1.0
+    },
+    "psi_theta": {
+     "correlation": 0.9999821004998627,
+     "rel_rmse": 0.7915675944247232
+    },
+    "theta_kappa": {
+     "correlation": -0.0016281281149438968,
+     "rel_rmse": 1.4153255556502597
+    },
+    "psi_kappa": {
+     "correlation": 0.7979085428385788,
+     "rel_rmse": 1.7112129653761516
+    }
+   }
+  },
+  "max_abs_subset_correlation": 0.999987494217053,
+  "n_payload_cases": 5,
+  "n_sweep_sizes": 14,
+  "f_exp_measured": 0.49834,
+  "psi_state_counts": {
+   "0": 12463,
+   "1": 37383,
+   "2": 37534,
+   "3": 12620
+  },
+  "n_tamper_points": 7
+ },
+ "source_prototype": "prototype_src/Acom_v17_mirror_crypto.py + Acom_v17_2_sync.py (resgatado de C:/IALD/projetos_pyhton/acom, READ-ONLY; β injetado)",
+ "note": "RUNNER EVOLUÍDO: roda a engine torch do operador (Acom_v17_mirror_crypto.py) + o Handshake Miguel (Acom_v17_2_sync.py) com β=α·√e INJETADO em ALPHA2/ALPHA2_BASE (originais tinham 0.012 literal). Tensores sintéticos; NÃO os números da Tabela 2. Nenhum token/modelo HuggingFace. Ofuscação XOR ≠ AEAD (separação ontológica + integridade). Simulação não valida física nem segurança."
+}

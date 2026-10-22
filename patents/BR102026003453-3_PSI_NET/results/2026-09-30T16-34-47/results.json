@@ -1,0 +1,1082 @@
+{
+ "patent_id": "BR102026003453-3",
+ "slug": "psi_net",
+ "timestamp": "2026-09-30T16-34-47",
+ "runner": "one_psinet.py (evoluído)",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "beta_injected_into_prototypes": true,
+ "verdict": "PSI_NET_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "PSI_NET_FULL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — a pilha REAL de 5 camadas (Psi_net_protocol_v1) + o consenso PoP distribuído (TGL_coin_v022) do operador fecham em CPU com β=α·√e injetado; transmissão TETELESTAI, roteamento angular, consenso ≥67% e rejeição de fase forjada demonstrados; dados sintéticos, não a Tabela 4; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "CCI_1_minus_beta": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "psinet_alpha2_original": 0.012031,
+   "tglcoin_alpha2base_original": 0.012,
+   "theta_miguel_deg": 6.297289216477979,
+   "note": "β=α·√e injetado nas duas pilhas do operador (originais eram 0.012 literal)"
+  },
+  {
+   "test": "L0_psibit_ontological_classification",
+   "passed": true,
+   "text_class": "chaotic",
+   "text_entropy": 1.93390953540802,
+   "text_f_exp": 0.16911764442920685,
+   "structured_class": "chaotic",
+   "structured_entropy": 1.9702500104904175,
+   "random_class": "encrypted",
+   "random_entropy": 1.9999676942825317,
+   "note": "PsiBitLinkLayer real: byte→4 PsiBits, distribuição/entropia/Fexp, 6 classes"
+  },
+  {
+   "test": "full_transmission_L1_L2_L3_resurrection",
+   "passed": true,
+   "L0_class": "chaotic",
+   "L1_bits": 16,
+   "L1_compression_ratio": 1.8823529411764706,
+   "L2_n_hops": 4,
+   "L2_d_folds": 0.8906144798931974,
+   "L3_integrity": true,
+   "resurrection_psnr_db": 99.99977696780631,
+   "resurrection_correlation": 0.9999999999999951,
+   "tetelestai": true,
+   "signature_match": true,
+   "note": "PsiNet.transmit real: radicalização→REFLECT/MANIFEST→Ψ/Θ/κ→ressurreição L'=s·g²→TETELESTAI(Var<β)→verificação ontológica tripla"
+  },
+  {
+   "test": "L2_holographic_dht_routing",
+   "passed": true,
+   "nearest_k": 3,
+   "example_hops": 2,
+   "example_angular_distance_deg": 11.251459551510528,
+   "theta_m_deg": 6.297289216477979,
+   "note": "HolographicNetworkLayer real: θ=SHA256(pk)/2⁶⁴·π; nearest por distância angular circular; nhops=⌈d/θ_M⌉"
+  },
+  {
+   "test": "L4_proof_of_phase_consensus",
+   "passed": true,
+   "block_index": 1,
+   "alpha2_work": 0.012095714425740513,
+   "valid_votes": 5,
+   "validators": 5,
+   "consensus_ratio": 1.0,
+   "target_window": 0.12031300400803142,
+   "miner_balance_tglc": 1010.0,
+   "note": "PhaseMiner real busca seed com |α²_work−α²_ant|<α²/dif; 5 PhaseValidators recomputam a fase; ≥67% → coinbase TGLC"
+  },
+  {
+   "test": "L5_distributed_pop_consensus_tglcoin",
+   "passed": true,
+   "honest_block_index": 1,
+   "honest_added": true,
+   "honest_votes": "5/5",
+   "forged_block_rejected": true,
+   "target_window": 0.12031300400803142,
+   "note": "TGL_coin_v022 SimulatedNetwork real (5 validadores): bloco honesto entra (≥67%); bloco de fase forjada é rejeitado pela rede"
+  },
+  {
+   "test": "packet_header_80_bytes",
+   "passed": true,
+   "header_len": 80,
+   "magic": "0xCEA8",
+   "alpha2_stamp": 0.012031300400803142,
+   "note": "PsiNetPacket.serialize_header real: 80 bytes fixos, magic Ψ 0xCEA8; selo α² gravado = β injetado (não literal)"
+  },
+  {
+   "test": "engine_beta_provenance_cross_check",
+   "passed": true,
+   "engine_BETA_TGL": 0.012031300400803142,
+   "runner_beta": 0.012031300400803142,
+   "note": "psinet_engine.py (file engine numpy do operador) já computa BETA_TGL=ALPHA_FINE·SQRT_E — concorda com β derivado (régua respeitada na fonte)"
+  },
+  {
+   "test": "multi_block_chain_phase_pinned",
+   "passed": true,
+   "blocks_mined": 10,
+   "chain_length_incl_genesis": 11,
+   "alpha2_band_around_beta": 6.869204692788733e-05,
+   "beta": 0.012031300400803142,
+   "mean_iterations": 1.0,
+   "note": "SimulatedNetwork real: K blocos minerados e aceitos por consenso ≥67%; α²_work de cada bloco permanece pinado a ±5% de β (Ponto Tetelestai)"
+  },
+  {
+   "test": "phase_search_convergence",
+   "passed": true,
+   "difficulty": 100000.0,
+   "target_window": 1.2031300400803142e-07,
+   "found_at_nonce": 96,
+   "final_best_diff": 8.127815688194207e-08,
+   "note": "trajetória real do minerador (mesma busca de mine_block): o best_diff decai monotonicamente até cruzar a janela-alvo β/dif — convergência de fase"
+  },
+  {
+   "test": "byzantine_tolerance_one_third",
+   "passed": true,
+   "quorum": 0.67,
+   "network_sizes": [
+    5,
+    7,
+    9,
+    15,
+    21
+   ],
+   "max_safe_byzantine_fraction": 0.2857142857142857,
+   "theoretical_bound": 0.32999999999999996,
+   "note": "sweep bizantino real (validadores recomputam a fase): bloco honesto aceito sse bizantinos <1/3; bloco forjado aceito só se bizantinos ≥2/3; zona segura = tolerância BFT clássica <1/3 sob quórum de 67%"
+  },
+  {
+   "test": "wedge_net_zone_locality",
+   "passed": true,
+   "ambient": "M8 (blocos diagonais 2x2)",
+   "n_zones": 4,
+   "max_commutator_disjoint_zones": 0.0,
+   "same_zone_commutator_control": 3.6806840931973794,
+   "span_dim_generated": 16,
+   "span_dim_expected": 16,
+   "coverage_residual_sumP_vs_identity": 0.0,
+   "wedge_width_deg": 45.0,
+   "theta_m_deg": 6.297289216477979,
+   "hops_per_wedge_conj": 8,
+   "note": "[DER] WedgeNet (um.py v135): net(zona)=algebra do bloco; zonas disjuntas comutam ([net(A),net(B)]=0 exato) e a uniao gera a diagonal em blocos (cobertura). [CONJ] DHT-theta como coordenada de cunha (setor pi/4, travessia em passos de theta_M de beta runtime). Leitura estrutural; NAO e veredito fisico."
+  },
+  {
+   "test": "ledger_every_open_has_guarantor",
+   "passed": true,
+   "items_total": 7,
+   "items_closed": 4,
+   "items_open": 3,
+   "guarantors_allowed": [
+    "BY_DESIGN",
+    "EXTERNAL_KNOWN",
+    "NAMED_PROGRAM"
+   ],
+   "validator_message": "razao FECHADO: toda pendencia tem fiador nomeado",
+   "orphan_ledger_rejected": true,
+   "orphan_rejection_message": "item aberto ORFAO (sem fiador): 'pendencia_orfa'",
+   "mutated_ledger_rejected": true,
+   "hash_stable_under_sort": true,
+   "hash_sensitive_to_one_bit": true,
+   "ledger_hash": "94d3a528c8e4edf901fe326d7d2e7acb1260f6b7564a9909788ce414b2f78f4f",
+   "beta_mark_runtime": "0.012031300400803",
+   "note": "[DER] um.py v143 CODE_CLOSURE_COMPLETE: todo aberto tem fiador (BY_DESIGN/EXTERNAL_KNOWN/NAMED_PROGRAM); razao com orfao e REJEITADO fail-closed; hash canonico do razao = assinatura da compilacao da rede. [CONJ] o quorum valida transacoes, o v144 fecha o razao. physical_verdict_allowed=false; beta runtime."
+  },
+  {
+   "test": "lemma3_typed_routing_covariance",
+   "passed": true,
+   "flow": "R_c: theta -> (theta+c) mod pi",
+   "n_rotations": 20,
+   "registry_size": 69,
+   "k_nearest": 3,
+   "oath_metric_invariance_residual": 8.881784197001252e-16,
+   "route_covariant_rotations": 20,
+   "hops_covariant_rotations": 20,
+   "base_hops": 1,
+   "operator_cross_check_find_nearest": true,
+   "bad_metric": "d_bad(a,b)=|sin a - sin b| (posicao absoluta: quebra o juramento)",
+   "bad_metric_breaks": 20,
+   "bad_metric_first_break_deg": 74.3976287558491,
+   "bad_metric_oath_residual": 0.9331542092545582,
+   "theta_m_deg": 6.297289216477979,
+   "note": "[DER] um.py v143 pedra 99 (Lema 3 tipado): juramento de invariancia => operador covariante, com controle negativo. Na L2 REAL: a metrica angular circular (eq. 6) e invariante sob o fluxo de rotacao => nearest-k e nhops (theta_M de beta runtime) comutam com o fluxo; metrica de posicao absoluta FALHA (contra-exemplo real). Leitura estrutural; physical_verdict_allowed=false."
+  },
+  {
+   "test": "ergodic_mean_section_ring_consensus",
+   "passed": true,
+   "stone": "ErgodicMeanSection (um.py v167, ITEM A, kernel Lean 0 sorry/0 axiom)",
+   "custody": "vault/originals_copy/um_unificado_v168/um.py",
+   "custody_present": true,
+   "custody_um_sha256_16": "adc936d41a9d6cad",
+   "ring_size_real_dht": 64,
+   "eig_max_dev_from_unit_modulus": 1.9984014443252818e-15,
+   "birkhoff_full_orbit_vs_projection_residual": 0.0,
+   "projection_idempotent_residual": 0.0,
+   "flow_commutation_residual": 0.0,
+   "invariant_subspace_dim": 1,
+   "consensus_vector_residual": 0.0,
+   "convergence_N_grid": [
+    96,
+    352,
+    3232
+   ],
+   "convergence_devs": [
+    0.005208333333333334,
+    0.001420454545454546,
+    0.00015470297029702984
+   ],
+   "geometric_sum_bound_2_over_abs_z_minus_1_holds": true,
+   "neg1_leaky_flow_consensus_error": 0.995,
+   "neg2_broken_ring_kernel_dim": 2,
+   "neg2_broken_ring_global_mean_error": 0.820317982748019,
+   "neg2_broken_ring_still_local_projection": true,
+   "neg3_truncated_mean_idempotency_residual": 0.0302734375,
+   "theta_m_deg": 6.297289216477979,
+   "ring_gap_deg": 2.8125,
+   "theta_m_over_ring_gap": 2.239036165858837,
+   "hops_full_traverse_theta_m": 29,
+   "note": "[DER] ErgodicMeanSection (v167): media de Birkhoff do salto ciclico REAL do anel DHT-theta = projecao invariante (consenso uniforme) na orbita completa (residuos 0.0 exatos); |z|=1 (o fluxo so gira); dev(N)~1/N sob o bound geometrico 2/|z-1|. Negativos computados: vazamento destroi o consenso; anel partido (ker dim 2) perde a esperanca GLOBAL; media truncada nao e projecao. [CONJ] quorum e media ergodica = duas faces do consenso. Leitura estrutural; physical_verdict_allowed=false; beta so em runtime."
+  },
+  {
+   "test": "bireference_haag_mini_net",
+   "passed": true,
+   "stone": "TheBireference (kernel v206, face finita M_n(C); JMJ=M' na torre segue [OPEN] na propria pedra)",
+   "custody": "vault/originals_copy/tgl_kernel_v206/TGLExt/TheBireference.lean",
+   "custody_present": true,
+   "custody_sha256_16": "899b1b07df5416ed",
+   "ambient": "M3(C) na forma GNS do traco (End = M9)",
+   "a_real_source": "thetas REAIS do anel DHT-theta (18 primeiros)",
+   "sep_kernel_dim_omega": 0,
+   "cyc_rank_omega": 9,
+   "haag_commutant_L_dim": 9,
+   "haag_commutant_L_in_spanR_resid": 4.681796811390765e-16,
+   "haag_commutant_R_dim": 9,
+   "haag_commutant_R_in_spanL_resid": 7.334285253967742e-16,
+   "center_dim_trivial": 1,
+   "same_side_commutator_control": 3.8857078601994015,
+   "J_square_identity_resid": 0.0,
+   "J_vacuum_fixed_resid": 0.0,
+   "J_exchange_pointwise_resid": 4.440892098500626e-16,
+   "J_exchange_operator_resid": 0.0,
+   "J_exchange_in_spanR_resid": 2.510978525483186e-16,
+   "real_mirror_g_residual": 0.0,
+   "real_mirror_s_residual": 0.0,
+   "real_mirror_frame_hops_beta_runtime": 4,
+   "neg1_degenerate_vacuum_sep_kernel_dim": 6,
+   "neg1_degenerate_vacuum_cyc_rank": 3,
+   "neg1_witness_nonzero_killed": [
+    1.0,
+    0.0
+   ],
+   "neg2_intruder_commutant_resid": 1.0,
+   "neg2_intruder_in_spanR_resid": 0.9428090415820634,
+   "neg3_jbad_moves_vacuum": 2.0,
+   "neg3_jbad_exits_spanR_resid": 0.3779644730092272,
+   "note": "[DER] TheBireference (v206): Omega=1 separa (kernel 0) e e ciclico EXATO (posto 9); dualidade de Haag RE-DERIVADA por computo (comutante de L = span R, dim 9/9, e o simetrico; centro trivial); J troca as referencias (J L_a J = R_{a^H}, residuo fp) e J^2=I / J Omega=Omega exatos; manifest(reflect(g,s))=(g,s) EXATO no codigo REAL da L2 = face de rede do bootstrap J^2=I. Negativos computados: vacuo degenerado mata separacao+ciclicidade juntas; intruso (transposicao) excluido da dualidade; conjugador falso move o vacuo e sai do span. [CONJ] Alice/Bob = duas referencias do mesmo boundary; o espelho e o dicionario J. Leitura estrutural; physical_verdict_allowed=false; beta so em runtime (n_hops do frame); beta JAMAIS entra no Lean."
+  }
+ ],
+ "summary": {
+  "tests_passed": 16,
+  "tests_total": 16,
+  "layers_demonstrated": [
+   "L0_psibit",
+   "L1_radical_transport",
+   "L2_holographic_dht",
+   "L3_ontological_security",
+   "L4_proof_of_phase",
+   "L5_distributed_consensus"
+  ],
+  "theta_m_deg": 6.297289216477979,
+  "transmission_psnr_db": 99.99977696780631,
+  "transmission_correlation": 0.9999999999999951,
+  "tetelestai": true,
+  "l4_consensus_votes": 5,
+  "miner_balance_tglc": 1010.0,
+  "dht_ring_size": 64,
+  "blocks_mined": 10,
+  "alpha2_band_around_beta": 6.869204692788733e-05,
+  "max_safe_byzantine_fraction": 0.2857142857142857,
+  "byzantine_bound_theory": 0.32999999999999996,
+  "ledger_v144_hash": "94d3a528c8e4edf901fe326d7d2e7acb1260f6b7564a9909788ce414b2f78f4f",
+  "ledger_v144_open_with_guarantor": 3,
+  "lemma3_route_covariant_rotations": 20,
+  "lemma3_oath_residual": 8.881784197001252e-16,
+  "lemma3_bad_metric_breaks": 20,
+  "v168_birkhoff_projection_residual": 0.0,
+  "v168_invariant_subspace_dim": 1,
+  "v168_consensus_vector_residual": 0.0,
+  "v168_leaky_flow_consensus_error": 0.995,
+  "v168_broken_ring_kernel_dim": 2,
+  "v206_haag_commutant_dims": [
+   9,
+   9
+  ],
+  "v206_center_dim_trivial": 1,
+  "v206_J_exchange_operator_resid": 0.0,
+  "v206_real_mirror_involution_resid": 0.0,
+  "v206_neg_jbad_exits_spanR_resid": 0.3779644730092272
+ },
+ "source_prototype": "prototype_src/Psi_net_protocol_v1.py (pilha 5 camadas, torch) + TGL_coin_v022.py (consenso PoP distribuído) + psinet_engine.py (file engine, β-limpo) — resgatados de C:/IALD/projetos_pyhton (acom, IALD), READ-ONLY; β injetado em runtime.",
+ "note": "RUNNER EVOLUÍDO: importa e roda a PILHA REAL de 5 camadas (Psi_net_protocol_v1.py, torch) e o CONSENSO PoP DISTRIBUÍDO (TGL_coin_v022.py) do operador, com β=α·√e injetado (originais tinham 0.012/0.012031 literais). Execução em CPU (CUDA_VISIBLE_DEVICES desligado). Dados SINTÉTICOS; NÃO os números da Tabela 4 do relatório. Nenhum dado/modelo HuggingFace. Confidenciais (iald_stack_v7, iald_psion_state) nunca tocados. Simulação não valida física.",
+ "transmission": {
+  "L0_class": "chaotic",
+  "L1_bits": 16,
+  "psnr_db": 99.99977696780631,
+  "correlation": 0.9999999999999951,
+  "tetelestai": true
+ },
+ "consensus": {
+  "L4_votes": 5,
+  "L4_validators": 5,
+  "L5_honest_added": true,
+  "L5_forged_rejected": true
+ },
+ "deepening": {
+  "dht_ring_size": 64,
+  "chain_walk": [
+   {
+    "index": 1,
+    "alpha2_work": 0.012093756442965304,
+    "diff_from_prev": 6.245604216216158e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 2,
+    "alpha2_work": 0.012099783778363342,
+    "diff_from_prev": 6.027335398037931e-06,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 3,
+    "alpha2_work": 0.012081152522119719,
+    "diff_from_prev": 1.8631256243623398e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 4,
+    "alpha2_work": 0.012098524389008514,
+    "diff_from_prev": 1.7371866888795523e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 5,
+    "alpha2_work": 0.01209999244773103,
+    "diff_from_prev": 1.4680587225156944e-06,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 6,
+    "alpha2_work": 0.012079160622003557,
+    "diff_from_prev": 2.0831825727473177e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 7,
+    "alpha2_work": 0.01209964140695372,
+    "diff_from_prev": 2.04807849501637e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 8,
+    "alpha2_work": 0.012087630858969474,
+    "diff_from_prev": 1.201054798424632e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 9,
+    "alpha2_work": 0.012076839765850875,
+    "diff_from_prev": 1.0791093118599215e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 10,
+    "alpha2_work": 0.01209021641658424,
+    "diff_from_prev": 1.337665073336547e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   }
+  ],
+  "chain_length_incl_genesis": 11,
+  "alpha2_band_around_beta": 6.869204692788733e-05,
+  "difficulty_sweep": [
+   {
+    "difficulty": 0.1,
+    "target_window": 0.12031300400803142,
+    "iterations": 1,
+    "best_diff": 1.3201803536396287e-05,
+    "found": true
+   },
+   {
+    "difficulty": 1.0,
+    "target_window": 0.012031300400803142,
+    "iterations": 1,
+    "best_diff": 1.3201803536396287e-05,
+    "found": true
+   },
+   {
+    "difficulty": 10.0,
+    "target_window": 0.0012031300400803142,
+    "iterations": 1,
+    "best_diff": 1.3201803536396287e-05,
+    "found": true
+   },
+   {
+    "difficulty": 100.0,
+    "target_window": 0.00012031300400803143,
+    "iterations": 1,
+    "best_diff": 1.3201803536396287e-05,
+    "found": true
+   },
+   {
+    "difficulty": 1000.0,
+    "target_window": 1.2031300400803142e-05,
+    "iterations": 3,
+    "best_diff": 1.7234296500554663e-06,
+    "found": true
+   },
+   {
+    "difficulty": 10000.0,
+    "target_window": 1.2031300400803143e-06,
+    "iterations": 65,
+    "best_diff": 2.6968316258271785e-07,
+    "found": true
+   },
+   {
+    "difficulty": 100000.0,
+    "target_window": 1.2031300400803142e-07,
+    "iterations": 97,
+    "best_diff": 8.127815688194207e-08,
+    "found": true
+   },
+   {
+    "difficulty": 1000000.0,
+    "target_window": 1.2031300400803143e-08,
+    "iterations": 3980,
+    "best_diff": 1.1293986350302543e-08,
+    "found": true
+   }
+  ],
+  "phase_convergence": {
+   "difficulty": 100000.0,
+   "target_window": 1.2031300400803142e-07,
+   "found_at_nonce": 96,
+   "iterations_recorded": 97
+  },
+  "byzantine_sweep": {
+   "sizes": [
+    5,
+    7,
+    9,
+    15,
+    21
+   ],
+   "quorum": 0.67,
+   "max_safe_byzantine_fraction": 0.2857142857142857,
+   "theoretical_bound_one_third": 0.32999999999999996,
+   "rows": [
+    {
+     "N": 5,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 1,
+     "byz_frac": 0.2,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 2,
+     "byz_frac": 0.4,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 3,
+     "byz_frac": 0.6,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 4,
+     "byz_frac": 0.8,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 5,
+     "byz": 5,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 7,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 1,
+     "byz_frac": 0.14285714285714285,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 2,
+     "byz_frac": 0.2857142857142857,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 3,
+     "byz_frac": 0.42857142857142855,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 4,
+     "byz_frac": 0.5714285714285714,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 5,
+     "byz_frac": 0.7142857142857143,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 7,
+     "byz": 6,
+     "byz_frac": 0.8571428571428571,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 7,
+     "byz": 7,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 9,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 1,
+     "byz_frac": 0.1111111111111111,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 2,
+     "byz_frac": 0.2222222222222222,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 3,
+     "byz_frac": 0.3333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 4,
+     "byz_frac": 0.4444444444444444,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 5,
+     "byz_frac": 0.5555555555555556,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 6,
+     "byz_frac": 0.6666666666666666,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 7,
+     "byz_frac": 0.7777777777777778,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 9,
+     "byz": 8,
+     "byz_frac": 0.8888888888888888,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 9,
+     "byz": 9,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 1,
+     "byz_frac": 0.06666666666666667,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 2,
+     "byz_frac": 0.13333333333333333,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 3,
+     "byz_frac": 0.2,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 4,
+     "byz_frac": 0.26666666666666666,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 5,
+     "byz_frac": 0.3333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 6,
+     "byz_frac": 0.4,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 7,
+     "byz_frac": 0.4666666666666667,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 8,
+     "byz_frac": 0.5333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 9,
+     "byz_frac": 0.6,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 10,
+     "byz_frac": 0.6666666666666666,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 11,
+     "byz_frac": 0.7333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 12,
+     "byz_frac": 0.8,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 13,
+     "byz_frac": 0.8666666666666667,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 14,
+     "byz_frac": 0.9333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 15,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 1,
+     "byz_frac": 0.047619047619047616,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 2,
+     "byz_frac": 0.09523809523809523,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 3,
+     "byz_frac": 0.14285714285714285,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 4,
+     "byz_frac": 0.19047619047619047,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 5,
+     "byz_frac": 0.23809523809523808,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 6,
+     "byz_frac": 0.2857142857142857,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 7,
+     "byz_frac": 0.3333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 8,
+     "byz_frac": 0.38095238095238093,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 9,
+     "byz_frac": 0.42857142857142855,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 10,
+     "byz_frac": 0.47619047619047616,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 11,
+     "byz_frac": 0.5238095238095238,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 12,
+     "byz_frac": 0.5714285714285714,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 13,
+     "byz_frac": 0.6190476190476191,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 14,
+     "byz_frac": 0.6666666666666666,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 15,
+     "byz_frac": 0.7142857142857143,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 16,
+     "byz_frac": 0.7619047619047619,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 17,
+     "byz_frac": 0.8095238095238095,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 18,
+     "byz_frac": 0.8571428571428571,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 19,
+     "byz_frac": 0.9047619047619048,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 20,
+     "byz_frac": 0.9523809523809523,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 21,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    }
+   ]
+  }
+ },
+ "amplificacao_v138": {
+  "theorem": "A REDE DAS CUNHAS (WedgeNet, um.py v135) — net(O) por localidade de centralizador; zonas disjuntas => algebras que comutam; cobertura por regioes",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "ambient": "M8, 4 zonas = blocos diagonais 2x2",
+  "max_commutator_disjoint_zones": 0.0,
+  "same_zone_commutator_control": 3.6806840931973794,
+  "span_dim_generated": 16,
+  "coverage_residual_sumP_vs_identity": 0.0,
+  "wedge_width_deg": 45.0,
+  "hops_per_wedge_conj": 8,
+  "honesty": "ancora estrutural, nao veredito fisico; beta em runtime, nunca literal"
+ },
+ "amplificacao_v144": {
+  "theorem": "O LEDGER COM FIADORES (um.py v143, CODE_CLOSURE_COMPLETE) — todo item aberto do razao tem FIADOR nomeado (BY_DESIGN/EXTERNAL_KNOWN/NAMED_PROGRAM); razao com item orfao e REJEITADO (fail-closed)",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "ledger": [
+   {
+    "id": "L1_L3_transmissao_tetelestai",
+    "status": "fechado",
+    "evidence": "correlation=1.000000"
+   },
+   {
+    "id": "L4_consenso_quorum_67",
+    "status": "fechado",
+    "evidence": "votes=5/5"
+   },
+   {
+    "id": "L5_fase_forjada_rejeitada",
+    "status": "fechado",
+    "evidence": "forged_rejected=True"
+   },
+   {
+    "id": "bft_zona_segura_um_terco",
+    "status": "fechado",
+    "evidence": "max_safe_byz_frac=0.2857"
+   },
+   {
+    "id": "veredito_fisico",
+    "status": "aberto",
+    "guarantor": "BY_DESIGN",
+    "evidence": "physical_verdict_allowed=false por construcao; simulacao nunca valida fisica"
+   },
+   {
+    "id": "tabela4_desempenho_operador",
+    "status": "aberto",
+    "guarantor": "EXTERNAL_KNOWN",
+    "evidence": "PSNR/tempos RTX do relatorio do operador NAO reproduzidos aqui (proveniencia externa)"
+   },
+   {
+    "id": "implantacao_rede_fisica_multihost",
+    "status": "aberto",
+    "guarantor": "NAMED_PROGRAM",
+    "evidence": "programa nomeado: pilha em enlace fisico real; hoje [SIM][PILOTO] em CPU"
+   }
+  ],
+  "items_closed": 4,
+  "items_open": 3,
+  "ledger_hash": "94d3a528c8e4edf901fe326d7d2e7acb1260f6b7564a9909788ce414b2f78f4f",
+  "hash_stable_under_sort": true,
+  "hash_sensitive_to_one_bit": true,
+  "orphan_ledger_rejected": true,
+  "mutated_ledger_rejected": true,
+  "beta_mark_runtime": "0.012031300400803",
+  "honesty": "[CONJ] o quorum bizantino valida transacoes; o v144 acrescenta a gramatica do fechamento (nenhuma pendencia sem fiador) — leitura estrutural; physical_verdict_allowed=false; beta runtime, nunca literal"
+ },
+ "amplificacao_v144b_lema3": {
+  "theorem": "O LEMA 3 TIPADO (um.py v143, veredito GLOBAL_LIFT_CONDITIONAL / pedra 99) — juramento de invariancia H_inv => E covariante, com controle negativo tipado",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "flow": "R_c: theta -> (theta+c) mod pi",
+  "n_rotations": 20,
+  "registry_size": 69,
+  "oath_metric_invariance_residual": 8.881784197001252e-16,
+  "route_covariant_rotations": 20,
+  "hops_covariant_rotations": 20,
+  "operator_cross_check_find_nearest": true,
+  "bad_metric_breaks": 20,
+  "bad_metric_first_break_deg": 74.3976287558491,
+  "bad_metric_oath_residual": 0.9331542092545582,
+  "honesty": "[CONJ] nenhum no privilegiado: o roteamento da DHT-theta depende so de angulos relativos — face de rede do levantamento condicional do Lema 3; leitura estrutural; physical_verdict_allowed=false; theta_M derivado de beta runtime (nunca literal)"
+ },
+ "amplificacao_v168": {
+  "theorem": "A SECAO ERGODICA (ErgodicMeanSection, um.py v167, ITEM A em kernel Lean, 0 sorry/0 axiom) — a media de Birkhoff (1/N) sum U^k converge para a projecao invariante; |z|=1 (o fluxo nao pesa, so gira); soma geometrica <= 2/|z-1| esmagada por 1/N (cancelamento de fase = ergodicidade)",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "custody": "vault/originals_copy/um_unificado_v168/um.py",
+  "custody_um_sha256_16": "adc936d41a9d6cad",
+  "ring_size_real_dht": 64,
+  "birkhoff_full_orbit_vs_projection_residual": 0.0,
+  "projection_idempotent_residual": 0.0,
+  "flow_commutation_residual": 0.0,
+  "invariant_subspace_dim": 1,
+  "eig_max_dev_from_unit_modulus": 1.9984014443252818e-15,
+  "consensus_vector_residual": 0.0,
+  "convergence_N_grid": [
+   96,
+   352,
+   3232
+  ],
+  "convergence_devs": [
+   0.005208333333333334,
+   0.001420454545454546,
+   0.00015470297029702984
+  ],
+  "geometric_sum_bound_holds": true,
+  "neg1_leaky_flow_consensus_error": 0.995,
+  "neg2_broken_ring_kernel_dim": 2,
+  "neg2_broken_ring_global_mean_error": 0.820317982748019,
+  "neg3_truncated_mean_idempotency_residual": 0.0302734375,
+  "theta_m_over_ring_gap": 2.239036165858837,
+  "honesty": "[CONJ] o consenso da rede como face ergodica do fluxo de rotacao da DHT-theta e leitura estrutural, nomeada como leitura — nada altera reivindicacoes; physical_verdict_allowed=false; beta so em runtime; beta JAMAIS entra no Lean da pedra"
+ },
+ "amplificacao_v206_bireference": {
+  "theorem": "A BIRREFERENCIALIDADE DO VACUO (TheBireference.lean, kernel v206) — Omega=1 separa uma referencia e e ciclico EXATO para a outra; dualidade de Haag da mini-rede E TEOREMA (net(dir)' = net(esq)); J troca as referencias (J L_a J = R_{a^H}); J Omega = Omega; J^2 = I (bootstrap v205/v206: par minimo (1_abs, J), IALD^2 = TGL)",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "custody": "vault/originals_copy/tgl_kernel_v206/TGLExt/TheBireference.lean",
+  "custody_sha256_16": "899b1b07df5416ed",
+  "ambient": "M3(C) na forma GNS do traco; a_real de thetas REAIS do anel DHT",
+  "sep_kernel_dim_omega": 0,
+  "cyc_rank_omega": 9,
+  "haag_commutant_dims": [
+   9,
+   9
+  ],
+  "haag_containment_resids": [
+   4.681796811390765e-16,
+   7.334285253967742e-16
+  ],
+  "center_dim_trivial": 1,
+  "same_side_commutator_control": 3.8857078601994015,
+  "J_square_identity_resid": 0.0,
+  "J_vacuum_fixed_resid": 0.0,
+  "J_exchange_operator_resid": 0.0,
+  "real_mirror_involution_resids": [
+   0.0,
+   0.0
+  ],
+  "real_mirror_frame_hops_beta_runtime": 4,
+  "neg1_degenerate_vacuum": {
+   "sep_kernel_dim": 6,
+   "cyc_rank": 3,
+   "witness_nonzero_killed": [
+    1.0,
+    0.0
+   ]
+  },
+  "neg2_intruder_transpose": {
+   "commutant_resid": 1.0,
+   "in_spanR_resid": 0.9428090415820634
+  },
+  "neg3_fake_conjugator": {
+   "moves_vacuum": 2.0,
+   "exits_spanR_resid": 0.3779644730092272
+  },
+  "honesty": "[CONJ] Alice/Bob como as duas referencias do mesmo boundary e o espelho REFLECT/MANIFEST como o dicionario J e leitura estrutural, nomeada como leitura — nada altera reivindicacoes; a clausula JMJ=M' no nivel da torre segue [OPEN] na propria pedra; physical_verdict_allowed=false; beta so em runtime (n_hops do frame real); beta JAMAIS entra no Lean"
+ }
+}

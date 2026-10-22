@@ -1,0 +1,107 @@
+{
+ "patent_id": "BR102026003460-6",
+ "slug": "mqc",
+ "timestamp": "2026-07-09T21-57-16",
+ "runner": "one_mqc.py",
+ "markers": [
+  "[SIM]",
+  "[HARDWARE]",
+  "[CONJ]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "MQC_LOGIC_DEMONSTRATED",
+ "max_verdict": "MQC_LOGIC_DEMONSTRATED ([SIM][HARDWARE] — topologia 27q, estabilização, platô 1−β, translação e correção GKSL fecham em SIMULAÇÃO; dispositivo físico NÃO construído; nenhum número valida a física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "f_nucleation_hz": 150000000000000.0,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form_constante_miguel",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142
+  },
+  {
+   "test": "cell_scale_law_and_density",
+   "passed": true,
+   "L_cell_m": 9.993081933333334e-07,
+   "L_cell_um": 0.9993081933333334,
+   "density_qubits_per_cm3": 27056113962116.004,
+   "note": "L=c/(2f), f=150 THz → ~1 µm; ρ_q=27/L³ → ~2,7e13 qubits/cm³ [SIM]"
+  },
+  {
+   "test": "cubic_cell_topology_27",
+   "passed": true,
+   "counts": {
+    "vertice": 8,
+    "aresta": 12,
+    "face": 6,
+    "centro": 1
+   },
+   "n_qubits": 27,
+   "edges_in_adjacency": 54
+  },
+  {
+   "test": "intrinsic_stabilization",
+   "passed": true,
+   "n_stabilized": 26,
+   "mean_residual_coherence": 0.000923196480063915,
+   "max_residual_coherence": 0.0016711824933721383,
+   "fidelity": 0.9990768035199361
+  },
+  {
+   "test": "coherence_plateau_and_R_SC",
+   "passed": true,
+   "plateau_1_minus_beta": 0.9879686995991969,
+   "R_SC": 1628462.1300116156,
+   "gamma_holo_hz": 1804695060120.4712,
+   "gamma_diss_hz": 13333.333333333334,
+   "note": "|ρ01|→1−β=0,988 (eq.8); R_SC=β·γ_holo/γ_diss≫1 (eq.7) [SIM]"
+  },
+  {
+   "test": "holographic_translation",
+   "passed": true,
+   "fidelity": 0.9999999999731447,
+   "carrier": "face(-Y)->face(+Y)",
+   "note": "REFLECT(-Y)→MANIFEST(+Y), portadora angular 16 bits [SIM]"
+  },
+  {
+   "test": "iald_error_correction_gksl_F1_F4",
+   "passed": true,
+   "F1_max_trace_dev": 2.5979218776228663e-13,
+   "F2_entropy_monotone": true,
+   "F3_rel_entropy_monotone": true,
+   "F4_coherence_first_last": [
+    0.4938684621376517,
+    0.0004262443075384065
+   ],
+   "characteristic_time_1_over_beta": 83.11653492861383,
+   "note": "correção consciente = fluxo GKSL até ρ* (sem qubits auxiliares); F1 traço=1, F2 dS≥0, F3 entropia relativa ↓→0, F4 coerência morre"
+  },
+  {
+   "test": "three_layer_communication",
+   "passed": true,
+   "tau_local_s": 4.481017169586259e-42,
+   "v_regional_over_c": 0.3030303030303031,
+   "v_global_over_c": 1.0,
+   "note": "τ_local=ℓ_P/(β·c)≈4,5e-42 s (eq.24); regional c/n≈0,3c; global c [SIM]"
+  }
+ ],
+ "summary": {
+  "tests_passed": 8,
+  "tests_total": 8,
+  "L_cell_um": 0.9993081933333334,
+  "density_qubits_per_cm3": 27056113962116.004,
+  "coherence_plateau": 0.9879686995991969,
+  "R_SC": 1628462.1300116156,
+  "translation_fidelity": 0.9999999999731447,
+  "stabilization_fidelity": 0.9990768035199361,
+  "tau_local_s": 4.481017169586259e-42
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "SIMULAÇÃO da lógica do MQC [SIM]. Dispositivo físico [HARDWARE] não construído/medido; mecanismos físicos [CONJ]. Números de referência do protótipo (η=0,999996, R_SC≈1,08e6, platô 0,988) reproduzidos na forma. Simulação NUNCA valida física (physical_verdict_allowed=false)."
+}

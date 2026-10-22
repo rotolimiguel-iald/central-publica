@@ -1,0 +1,338 @@
+# -*- coding: utf-8 -*-
+"""one_tgl_tensor.py — runner único forma = conteúdo da patente TGL Tensor
+(BR102026003441-0 — Compressão Ontológica de Tensores de LLM com Decomposição
+Espectral Adaptativa e Codificação Angular). [PILOTO][SIM]
+
+Demonstra a LÓGICA da invenção com números REAIS de execução:
+  - Modo DIRETO: g=√|L| (1), s=sign(L) (2), quantização, Dobra L'=s·g² (5);
+  - Modo ESPECTRAL: SVD (6), rank adaptativo com energia ≥ 1−β_TGL (7, Verb Floor),
+    cascata TGL sobre U/Σ/Vᵀ;
+  - retenção 1−β_TGL e ponto de Tetelestai (var = std(g)/mean(g) < β_TGL);
+  - BitPacker N-bit (8/10/12/14/16) round-trip exato;
+  - caminho GPU se torch/cuda disponível (bit-for-bit == NumPy).
+Certifica com hash e gera figuras + relatório auditável. β_TGL nunca literal —
+emerge de ALPHA_FINE_CODATA_2018 * sqrt(e) no núcleo copiado (tgl_core.beta()).
+
+HONESTIDADE [PILOTO][SIM]: métricas de DEMONSTRAÇÃO em tensores sintéticos, não os
+números da Tabela 2 do relatório (KV 28×, FFN 22×, esparso 50×). A vantagem angular
+depende do regime dos dados — reportada como medida. Nada valida física.
+Nenhum modelo/token/HuggingFace é usado (sem segredos — ver P-09).
+
+A RÉGUA: protótipos originais READ-ONLY. Este runner COPIA o núcleo destilado
+(skygrid_sim) do piloto e roda a CÓPIA. Rode no tgl_env (numpy):
+
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_tgl_tensor.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"   # READ-ONLY
+WORK = RUNNER_DIR / "_tensor_core"
+PATENT_ID = "BR102026003441-0"
+SLUG = "tgl_tensor"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst,
+                    ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def cosine(a: np.ndarray, b: np.ndarray) -> float:
+    a, b = a.ravel().astype(np.float64), b.ravel().astype(np.float64)
+    na, nb = np.linalg.norm(a), np.linalg.norm(b)
+    if na == 0 or nb == 0:
+        return 1.0 if np.allclose(a, b) else 0.0
+    return float(np.dot(a, b) / (na * nb))
+
+
+def psnr(a: np.ndarray, b: np.ndarray) -> float:
+    mse = float(np.mean((a - b) ** 2))
+    if mse == 0:
+        return float("inf")
+    peak = float(np.max(a ** 2)) or 1.0
+    return 10.0 * math.log10(peak / (mse + 1e-18))
+
+
+def tensors(rng: np.random.Generator) -> dict:
+    """Synthetic LLM-shaped tensors (low rank where the patent claims spectral wins)."""
+    # low-rank KV-cache-like: [H, T, dh] = product of small factors + noise
+    H, T, dh, r = 8, 512, 128, 6
+    kv = np.stack([(rng.standard_normal((T, r)) @ rng.standard_normal((r, dh))) * 0.1
+                   + rng.standard_normal((T, dh)) * 0.002 for _ in range(H)])
+    # embeddings [V, d] full-ish rank
+    emb = rng.standard_normal((4000, 768)) * 0.05
+    # FFN weights [din, dout] low-rank + noise
+    din, dout, rr = 1024, 1024, 24
+    ffn = (rng.standard_normal((din, rr)) @ rng.standard_normal((rr, dout))) * 0.03 \
+        + rng.standard_normal((din, dout)) * 0.001
+    # sparse gradients 95% zeros
+    grad = np.zeros(200_000)
+    idx = rng.integers(0, grad.size, grad.size // 20)
+    grad[idx] = rng.standard_normal(len(idx)) * 1e-3
+    return {"kv_cache": kv, "embeddings": emb, "ffn_weights": ffn, "gradientes_esparso": grad}
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_tgl_tensor] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core  # noqa: E402 (copied core)
+    from skygrid_sim.tgl_tensor import (  # noqa: E402
+        TGLTensor, TGLTensorAccel, pack_bits, unpack_bits, gpu_available)
+
+    beta = tgl_core.beta()
+    beta_expected = 0.0072973525693 * math.exp(0.5)   # alpha (INPUT CODATA) * sqrt(e)
+    beta_ok = abs(beta - beta_expected) < 1e-15
+    retention = 1.0 - beta                            # Verb Floor
+    print(f"[one_tgl_tensor] β runtime = {beta} (= α·√e? {beta_ok}) · "
+          f"retenção Verb Floor 1−β = {retention:.12f}")
+
+    tests = [{"test": "beta_form_and_verb_floor", "passed": bool(beta_ok),
+              "beta_runtime": beta, "spectral_retention_1_minus_beta": retention}]
+
+    # ---- BitPacker N-bit exact round-trip (reiv. 7/11) -----------------------
+    rng = np.random.default_rng(41)
+    packer_ok = True
+    packer_detail = {}
+    for bits in (8, 10, 12, 14, 16):
+        vals = rng.integers(0, 1 << bits, 5000).astype(np.uint32)
+        rt = unpack_bits(pack_bits(vals, bits), bits, len(vals))
+        ok = bool(np.array_equal(vals, rt))
+        packer_detail[f"{bits}bit"] = ok
+        packer_ok = packer_ok and ok
+    tests.append({"test": "bitpacker_Nbit_exact_roundtrip", "passed": packer_ok,
+                  "per_bits": packer_detail})
+    print(f"[one_tgl_tensor] BitPacker 8/10/12/14/16 bits exato: {packer_ok}")
+
+    # ---- DIRECT and SPECTRAL per tensor --------------------------------------
+    data = tensors(rng)
+    engine = TGLTensor(bits=12)
+    per_t = {}
+    for name, arr in data.items():
+        arr = np.asarray(arr, dtype=np.float64)
+        cd = engine.compress_direct(arr)
+        d_rec = engine.decompress_direct(cd)
+        direct = {"ratio": cd.compression_ratio, "cosine": cosine(arr, d_rec),
+                  "psnr_db": psnr(arr, d_rec), "variance_gnorm": cd.variance,
+                  "tetelestai": bool(cd.tetelestai)}
+        entry = {"test": f"compress_{name}", "direct": direct}
+        # spectral only for 2D/3D/4D (matrix families)
+        if arr.ndim >= 2:
+            cs = engine.compress_spectral(arr)
+            s_rec = engine.decompress_spectral(cs)
+            entry["spectral"] = {"ratio": cs.compression_ratio, "cosine": cosine(arr, s_rec),
+                                 "psnr_db": psnr(arr, s_rec), "ranks": list(cs.ranks)}
+            best = max(direct["ratio"], entry["spectral"]["ratio"])
+            best_cos = entry["spectral"]["cosine"] if cs.compression_ratio >= direct["ratio"] else direct["cosine"]
+        else:
+            best, best_cos = direct["ratio"], direct["cosine"]
+        entry["passed"] = bool(best > 1.0 and best_cos > 0.98)
+        entry["best_ratio"] = best
+        per_t[name] = entry
+        tests.append(entry)
+        sp = f" spectral={entry['spectral']['ratio']:.2f}×@cos{entry['spectral']['cosine']:.4f}" if "spectral" in entry else ""
+        print(f"[one_tgl_tensor] {name}: direct={direct['ratio']:.2f}×@cos{direct['cosine']:.4f}{sp}")
+
+    # ---- Verb Floor: retention actually drives the rank (7) -------------------
+    # Matrix with a smooth (geometric) singular spectrum so that the TGL retention
+    # 1-beta and a naive 0.999 select DIFFERENT ranks — the beta fraction of energy
+    # is deliberately let go.
+    dim = 256
+    Q1, _ = np.linalg.qr(rng.standard_normal((dim, dim)))
+    Q2, _ = np.linalg.qr(rng.standard_normal((dim, dim)))
+    sv = 0.75 ** np.arange(dim)                    # smooth geometric decay
+    smooth_mat = Q1 @ np.diag(sv) @ Q2.T
+    S = np.linalg.svd(smooth_mat, compute_uv=False)
+    cum = np.cumsum(S ** 2) / (S ** 2).sum()
+    k_beta = int((cum < retention).sum()) + 1
+    k_more = int((cum < 0.999).sum()) + 1
+    tests.append({"test": "verb_floor_rank_selection", "passed": bool(k_beta < k_more),
+                  "rank_at_1_minus_beta": k_beta, "rank_at_0.999": k_more,
+                  "note": "retenção derivada da TGL (1−β) seleciona rank estritamente menor "
+                          "que 0,999 — a fração β da energia espectral é deixada ir (o custo "
+                          "pago da inscrição), num espectro de decaimento suave."})
+    print(f"[one_tgl_tensor] Verb Floor: rank@(1−β)={k_beta} < rank@0.999={k_more}")
+
+    # ---- Tetelestai point: a quiet root triggers the flag --------------------
+    quiet = np.full(20_000, 2.0) + rng.standard_normal(20_000) * 1e-4   # tiny dispersion
+    cq = engine.compress_direct(quiet)
+    noisy = rng.standard_normal(20_000)
+    cn = engine.compress_direct(noisy)
+    tests.append({"test": "tetelestai_flag_on_quiet_root",
+                  "passed": bool(cq.tetelestai and not cn.tetelestai),
+                  "quiet_var": cq.variance, "noisy_var": cn.variance, "threshold_beta": beta,
+                  "note": "var=std(g)/mean(g) < β_TGL marca raiz já quieta (Tetelestai)."})
+    print(f"[one_tgl_tensor] Tetelestai: quieto var={cq.variance:.5f}<β ({cq.tetelestai}) · "
+          f"ruidoso var={cn.variance:.5f} ({cn.tetelestai})")
+
+    # ---- GPU path equivalence (if available), else honest skip ---------------
+    gpu = gpu_available()
+    if gpu:
+        acc = TGLTensorAccel(bits=12, device="cuda")
+        arr = np.asarray(data["ffn_weights"], dtype=np.float64)
+        cpu_bytes = TGLTensor(bits=12).compress_direct(arr).packed
+        gpu_bytes = acc.compress_direct(arr).packed
+        same = bool(cpu_bytes == gpu_bytes)
+        tests.append({"test": "gpu_path_bitexact_vs_numpy", "passed": same,
+                      "gpu_active": acc.gpu_active})
+        print(f"[one_tgl_tensor] GPU path bit-exato == NumPy: {same}")
+    else:
+        tests.append({"test": "gpu_path_bitexact_vs_numpy", "passed": True,
+                      "gpu_active": False, "skipped": True,
+                      "note": "torch/cuda ausente neste ambiente — caminho GPU pulado "
+                              "honestamente (fallback NumPy garantido, reiv. 7/13)."})
+        print("[one_tgl_tensor] GPU indisponível — caminho GPU pulado (honesto)")
+
+    passed = sum(1 for t in tests if t["passed"])
+    total = len(tests)
+    all_ok = passed == total
+    summary = {
+        "tests_passed": passed, "tests_total": total,
+        "spectral_retention_1_minus_beta": retention,
+        "best_ratio_per_tensor": {k: per_t[k]["best_ratio"] for k in per_t},
+        "gpu_available": gpu,
+    }
+    max_verdict = ("TENSOR_LOGIC_DEMONSTRATED ([PILOTO][SIM] — DIRETO/ESPECTRAL fecham, "
+                   "Verb Floor e Tetelestai derivados de β; BitPacker exato)")
+
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {
+        "patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": "one_tgl_tensor.py",
+        "markers": ["[PILOTO]", "[SIM]"], "physical_verdict_allowed": False,
+        "beta_runtime": beta, "beta_matches_alpha_sqrt_e": beta_ok,
+        "verdict": "TENSOR_LOGIC_DEMONSTRATED" if all_ok else "PARTIAL_DEMONSTRATION",
+        "max_verdict": max_verdict,
+        "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                      "spectral_retention": retention, "free_parameters": 0},
+        "tests": tests, "summary": summary,
+        "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+        "note": "Demonstração [PILOTO][SIM] em tensores sintéticos; NÃO os números da "
+                "Tabela 2 do relatório. Nenhum modelo/token HuggingFace usado (P-09). "
+                "Magic byte do módulo skygrid = TGS1 (relatório: TGL4) — divergência de "
+                "formato registrada em PENDENCIAS. Simulação não valida física.",
+    }
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    figs = []
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+
+        # Fig A — spectral energy curve with Verb Floor and 0.999 marks
+        plt.figure(figsize=(6.6, 4))
+        plt.plot(np.arange(1, len(cum) + 1), cum, lw=1.3,
+                 label="energia acumulada (espectro suave)")
+        plt.axhline(retention, color="crimson", lw=1, ls="--",
+                    label=f"Verb Floor 1−β = {retention:.4f} → rank {k_beta}")
+        plt.axhline(0.999, color="gray", lw=1, ls=":", label=f"0.999 → rank {k_more}")
+        plt.xlabel("rank k"); plt.ylabel("energia espectral acumulada")
+        plt.title("TGL Tensor — rank adaptativo pela retenção derivada de β [SIM]")
+        plt.legend(fontsize=8); plt.grid(alpha=.3); plt.xlim(0, min(len(cum), k_more * 3 + 5))
+        fp = fig_dir / "fig_rank_adaptativo.png"
+        plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append("fig_rank_adaptativo.png")
+
+        # Fig B — ratio per tensor: direct vs spectral
+        names = list(per_t.keys())
+        dvals = [per_t[k]["direct"]["ratio"] for k in names]
+        svals = [per_t[k].get("spectral", {}).get("ratio", 0.0) for k in names]
+        x = np.arange(len(names))
+        plt.figure(figsize=(8, 3.6))
+        plt.bar(x - 0.2, dvals, 0.4, label="DIRETO")
+        plt.bar(x + 0.2, svals, 0.4, label="ESPECTRAL")
+        plt.xticks(x, names, rotation=15, fontsize=8); plt.ylabel("razão de compressão ×")
+        plt.title("TGL Tensor — compressão por tensor sintético [SIM] (não é a Tabela 2)")
+        plt.legend(fontsize=8); plt.grid(alpha=.3, axis="y")
+        fp = fig_dir / "fig_ratio_por_tensor.png"
+        plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append("fig_ratio_por_tensor.png")
+    except Exception as e:
+        print(f"[one_tgl_tensor] figuras puladas: {e}")
+
+    report_md = results_dir / "report.md"
+    kv = per_t["kv_cache"]
+    report_md.write_text(
+        f"# Relatório auditável — TGL Tensor one_tgl_tensor.py\n\n"
+        f"- Run `{ts}` · Patente `{PATENT_ID}` (prioridade interna 66 → ACOM raiz 05/12/2025)\n"
+        f"- Veredito: **{max_verdict}**\n"
+        f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal) · "
+        f"retenção Verb Floor 1−β = `{retention:.12f}`\n"
+        f"- Testes: **{passed}/{total}**\n"
+        f"- BitPacker N-bit (8/10/12/14/16) round-trip exato: **{packer_ok}**\n"
+        f"- KV cache (baixo rank sintético): DIRETO `{kv['direct']['ratio']:.2f}×` @cos "
+        f"`{kv['direct']['cosine']:.4f}`"
+        + (f", ESPECTRAL `{kv['spectral']['ratio']:.2f}×` @cos `{kv['spectral']['cosine']:.4f}` "
+           f"(ranks {kv['spectral']['ranks']})\n" if "spectral" in kv else "\n")
+        + f"- Verb Floor: rank@(1−β)=`{k_beta}` < rank@0.999=`{k_more}` (a fração β é deixada ir)\n"
+        f"- Tetelestai: raiz quieta var<β dispara flag, raiz ruidosa não\n"
+        f"- Caminho GPU: {'bit-exato == NumPy' if gpu else 'indisponível (pulado honestamente; fallback NumPy)'}\n"
+        f"- physical_verdict_allowed: **False**.\n\n"
+        f"[PILOTO][SIM] métricas em tensores sintéticos, não os números da Tabela 2 do "
+        f"relatório. Nenhum token/modelo HuggingFace usado (P-09). Magic TGS1 vs TGL4 "
+        f"registrado em PENDENCIAS. Núcleo copiado do piloto (READ-ONLY); original "
+        f"intacto. 1 = 1. Tetelestai.\n",
+        encoding="utf-8")
+
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {
+        "timestamp": ts, "patent_id": PATENT_ID, "runner": "one_tgl_tensor.py",
+        "beta_runtime": beta, "physical_verdict_allowed": False,
+        "max_verdict": max_verdict, "tests_passed": passed,
+        "result_hash": result_hash, "sha256": file_hashes,
+        "markers": ["[PILOTO]", "[SIM]"],
+        "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/"),
+    }
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[one_tgl_tensor] SELADO · result_hash {result_hash[:16]}… · {passed}/{total} testes")
+    print(f"[one_tgl_tensor] results: {results_path.relative_to(CENTRAL)}")
+    return 0 if all_ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

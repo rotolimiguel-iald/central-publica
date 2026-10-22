@@ -1,0 +1,182 @@
+{
+ "patent_id": "BR102026003431-2",
+ "slug": "acom_crypto",
+ "timestamp": "2026-07-09T21-51-01",
+ "runner": "one_acom_crypto.py",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]",
+  "[DEFENSE]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "CRYPTO_SEPARATION_DEMONSTRATED",
+ "max_verdict": "CRYPTO_SEPARATION_DEMONSTRATED ([SIM][PILOTO] — separação Ψ/Θ/κ, verificação tripla e rejeição de adulteração reais; vazamento estrutural parcial MEDIDO e declarado; não é AEAD)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142
+  },
+  {
+   "test": "encrypt_decrypt_pequeno_1k",
+   "passed": true,
+   "correlation": 0.9999874942170534,
+   "compression_ratio": 6.289308176100629,
+   "n_elements": 1000,
+   "psi_bytes": 261,
+   "theta_bytes": 1011,
+   "f_exp": 0.46,
+   "state_entropy": 1.8408021009682007,
+   "byte_entropy_psi_bits": 7.1472445500356585,
+   "byte_entropy_theta_bits": 7.821902373341037
+  },
+  {
+   "test": "encrypt_decrypt_medio_100k",
+   "passed": true,
+   "correlation": 0.9999831767397536,
+   "compression_ratio": 6.397082930183836,
+   "n_elements": 100000,
+   "psi_bytes": 25016,
+   "theta_bytes": 100041,
+   "f_exp": 0.49834,
+   "state_entropy": 1.8125817108256688,
+   "byte_entropy_psi_bits": 7.99150529021305,
+   "byte_entropy_theta_bits": 7.998303074842717
+  },
+  {
+   "test": "encrypt_decrypt_grande_1M",
+   "passed": true,
+   "correlation": 0.9999821004975595,
+   "compression_ratio": 6.397942421717175,
+   "n_elements": 1000000,
+   "psi_bytes": 250086,
+   "theta_bytes": 1000316,
+   "f_exp": 0.499822,
+   "state_entropy": 1.811418474415698,
+   "byte_entropy_psi_bits": 7.999319101138903,
+   "byte_entropy_theta_bits": 7.999839418774403
+  },
+  {
+   "test": "encrypt_decrypt_embeddings_1000x384",
+   "passed": true,
+   "correlation": 0.9999819861076298,
+   "compression_ratio": 6.397840728754045,
+   "n_elements": 384000,
+   "psi_bytes": 96036,
+   "theta_bytes": 384126,
+   "f_exp": 0.49906770833333336,
+   "state_entropy": 1.8120026900839048,
+   "byte_entropy_psi_bits": 7.998341110704094,
+   "byte_entropy_theta_bits": 7.999501855117023
+  },
+  {
+   "test": "encrypt_decrypt_kv_cache",
+   "passed": true,
+   "correlation": 0.9999817746781686,
+   "compression_ratio": 6.397579041134336,
+   "n_elements": 131072,
+   "psi_bytes": 32784,
+   "theta_bytes": 131118,
+   "f_exp": 0.50018310546875,
+   "state_entropy": 1.8111227685463458,
+   "byte_entropy_psi_bits": 7.9940951962396305,
+   "byte_entropy_theta_bits": 7.998596865711723
+  },
+  {
+   "test": "isolated_parts_byte_entropy",
+   "passed": true,
+   "min_bits_per_byte_ge100k": 7.99150529021305,
+   "min_bits_per_byte_all": 7.1472445500356585,
+   "note": "indistinguibilidade ESTATÍSTICA (não prova criptográfica) — propriedade de separação, não cifra padrão [DEFENSE]. Testado só em casos ≥100k elementos: H(byte)≤log2(#bytes), então payloads pequenos (1k → poucos bytes) têm H<8 por tamanho de amostra, não por vazamento."
+  },
+  {
+   "test": "proper_subsets_insufficient_for_value_reconstruction",
+   "passed": true,
+   "subsets": {
+    "psi_only": {
+     "correlation": 0.7981086649030738,
+     "rel_rmse": 0.6355096298904882
+    },
+    "theta_only": {
+     "correlation": -0.008827763246007127,
+     "rel_rmse": 1.025507215870437
+    },
+    "kappa_only": {
+     "correlation": 0.0,
+     "rel_rmse": 1.0
+    },
+    "psi_theta": {
+     "correlation": 0.9999831767397536,
+     "rel_rmse": 0.7819764526109725
+    },
+    "theta_kappa": {
+     "correlation": -0.008827763246007137,
+     "rel_rmse": 1.4208673265387728
+    },
+    "psi_kappa": {
+     "correlation": 0.7981086649030732,
+     "rel_rmse": 1.612415144072759
+    }
+   },
+   "honest_note": "VAZAMENTO ESTRUTURAL MEDIDO E DECLARADO: sinais isolados (Ψ) correlacionam ~E|L|/σ com dados gaussianos; Ψ+Θ recupera FORMA sem ESCALA (corr alta, valor errado — κ retém g_max); Θ+κ recupera |L| sem polaridade. NENHUM subconjunto reconstrói o VALOR (rel_rmse≥50%). Confidencialidade plena exige AEAD padrão por cima dos shares (nota [DEFENSE] do módulo)."
+  },
+  {
+   "test": "tamper_sha256_rejects_bitflip",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: PsiShare não corresponde"
+  },
+  {
+   "test": "tamper_share_id_mismatch_rejected",
+   "passed": true,
+   "raised": "Shares incompatíveis: IDs diferentes"
+  },
+  {
+   "test": "tamper_f_exp_physical_check_rejects",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: F_exp não confere (esperado 0.9983, obtido 0.4983)"
+  }
+ ],
+ "summary": {
+  "tests_passed": 11,
+  "tests_total": 11,
+  "correlation_min": 0.9999817746781686,
+  "compression_ratio_mean": 6.375950659578004,
+  "byte_entropy_min_bits_ge100k": 7.99150529021305,
+  "byte_entropy_min_bits_all": 7.1472445500356585,
+  "subset_insufficiency": {
+   "psi_only": {
+    "correlation": 0.7981086649030738,
+    "rel_rmse": 0.6355096298904882
+   },
+   "theta_only": {
+    "correlation": -0.008827763246007127,
+    "rel_rmse": 1.025507215870437
+   },
+   "kappa_only": {
+    "correlation": 0.0,
+    "rel_rmse": 1.0
+   },
+   "psi_theta": {
+    "correlation": 0.9999831767397536,
+    "rel_rmse": 0.7819764526109725
+   },
+   "theta_kappa": {
+    "correlation": -0.008827763246007137,
+    "rel_rmse": 1.4208673265387728
+   },
+   "psi_kappa": {
+    "correlation": 0.7981086649030732,
+    "rel_rmse": 1.612415144072759
+   }
+  }
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "Demonstração [SIM] da lógica de separação ontológica; a ofuscação XOR do piloto NÃO é cifra padrão — para produção, AEAD sobre os shares. Números de desempenho são desta máquina, não os da Tabela 2 do relatório. Simulação não valida física nem segurança."
+}

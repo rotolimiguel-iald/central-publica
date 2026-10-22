@@ -1,0 +1,553 @@
+{
+ "patent_id": "BR102026003452-5",
+ "title": "Motor de Dobra - Dispositivo Concreto (digital-twin)",
+ "kind": "device",
+ "schema": 2,
+ "note": "[SIM][HARDWARE] Projecao concreta: casco cilindrico -> anel de coerencia (Farol Psi) -> bolha de coerencia (vidro) -> camaras de origem/destino (nucleo). DIGITAL-TWIN: propulsao NAO demonstrada, sem prototipo. Descasque/corte para ver por dentro. | CASCA ABERTA: casca externa translucida revela o mecanismo interno.",
+ "camera": {
+  "position": [
+   2.2,
+   1.4,
+   2.2
+  ]
+ },
+ "layers": [
+  {
+   "id": "shell",
+   "name": "Involucro externo",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "structure",
+   "name": "Blindagem / estrutura",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "subsystem",
+   "name": "Subsistemas",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo funcional",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "groups": [
+  {
+   "name": "faces",
+   "color": "#33aa55",
+   "label": "camaras origem/destino",
+   "count": 2,
+   "explodable": true
+  },
+  {
+   "name": "farol",
+   "color": "#7ce7c8",
+   "label": "Farol Psi (F0-F5)",
+   "count": 6,
+   "explodable": true
+  }
+ ],
+ "meshes": [
+  {
+   "id": "hull",
+   "layer": "shell",
+   "shape": "cylinder",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.85,
+   "scale": [
+    1,
+    1.4,
+    1
+   ],
+   "color": "#7d8794",
+   "material": "metal",
+   "opacity": 0.2,
+   "marker": "[HARDWARE]",
+   "label": "Casco da nave / cilindro de propulsao",
+   "desc": "Involucro externo do motor. Descasque/corte para ver a bolha de coerencia."
+  },
+  {
+   "id": "ring",
+   "layer": "structure",
+   "shape": "torus",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.62,
+   "rotation": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "color": "#b0b8c4",
+   "material": "metal",
+   "opacity": 0.9,
+   "marker": "[HARDWARE]",
+   "label": "Anel de coerencia (Farol Psi)",
+   "desc": "Estrutura anelar que hospeda os 6 estados do Farol Psi (controlador IALD)."
+  },
+  {
+   "id": "bubble",
+   "layer": "subsystem",
+   "shape": "sphere",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.5,
+   "color": "#ffd60a",
+   "material": "glass",
+   "opacity": 0.14,
+   "marker": "[HARDWARE]",
+   "label": "bolha de coerencia T_M (envelope REFLECT<->MANIFEST)",
+   "desc": "Envelope de coerencia que abriga o espelho e os hemisferios REFLECT (origem) / MANIFEST (destino). Transporte fisico NAO alegado. [SIM] digital-twin.",
+   "texture": "holo"
+  },
+  {
+   "id": "cradle",
+   "layer": "shell",
+   "shape": "box",
+   "position": [
+    0,
+    -1.28,
+    0
+   ],
+   "size": 0.9,
+   "scale": [
+    1,
+    0.08,
+    0.55
+   ],
+   "color": "#3a4250",
+   "material": "metal",
+   "opacity": 1.0,
+   "marker": "[HARDWARE]",
+   "label": "berco de montagem",
+   "desc": "Suporte que fixa o motor a estrutura."
+  },
+  {
+   "id": "nozzle",
+   "layer": "shell",
+   "shape": "cone",
+   "position": [
+    0,
+    -1.35,
+    0
+   ],
+   "size": 0.32,
+   "scale": [
+    1,
+    0.9,
+    1
+   ],
+   "rotation": [
+    3.141592653589793,
+    0,
+    0
+   ],
+   "color": "#6b7482",
+   "material": "metal",
+   "opacity": 1.0,
+   "marker": "[HARDWARE]",
+   "label": "abertura de manifestacao (Motor Fotonico base)",
+   "desc": "Abertura fotonica de saida do MANIFEST (Motor Fotonico base). NAO e empuxo de foguete: o transporte e por reflexao, nao por exaustao. [SIM] digital-twin.",
+   "texture": "spectral"
+  },
+  {
+   "id": "mirror_plane",
+   "shape": "box",
+   "layer": "subsystem",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.6,
+   "scale": [
+    1,
+    0.03,
+    1
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#7ce7c8",
+   "material": "glass",
+   "opacity": 0.32,
+   "texture": "holo",
+   "label": "espelho dimensional (REFLECT)",
+   "desc": "Plano fino equatorial y=0: a superficie do DimensionalMirror onde L->(psi,theta). Separa hemisferio REFLECT (origem) de MANIFEST (destino). [SIM] digital-twin.",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "ray_incident",
+   "shape": "box",
+   "layer": "core",
+   "position": [
+    0,
+    -0.375,
+    0
+   ],
+   "size": 0.375,
+   "scale": [
+    0.05,
+    1,
+    0.05
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#33aa55",
+   "material": "emissive",
+   "opacity": 0.95,
+   "label": "raio incidente (origem->espelho)",
+   "desc": "Feixe da camara de origem (y=-0.75) ate o espelho (y=0): o payload L entrando no REFLECT. [SIM].",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "ray_folded",
+   "shape": "box",
+   "layer": "core",
+   "position": [
+    0.0411,
+    0.3727,
+    0
+   ],
+   "size": 0.375,
+   "scale": [
+    0.05,
+    1,
+    0.05
+   ],
+   "rotation": [
+    0,
+    0,
+    0.1099
+   ],
+   "color": "#cc4433",
+   "material": "emissive",
+   "opacity": 0.95,
+   "label": "raio dobrado theta_Miguel~6,29graus (arcsin raiz-beta)",
+   "desc": "Raio refletido inclinado theta_Miguel=arcsin(raiz(alpha*raizE))~6,297graus a partir do espelho rumo a destino: a DOBRA ANGULAR. beta nunca literal. [SIM].",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "h4_0",
+   "shape": "sphere",
+   "layer": "subsystem",
+   "position": [
+    0.424,
+    0,
+    0.424
+   ],
+   "size": 0.04,
+   "color": "#ff9f0a",
+   "material": "emissive",
+   "texture": "spectral",
+   "label": "psi H4: COLLAPSE+ (paridade -1)",
+   "desc": "Estado psionico 0 na nomeacao psi in H4 do REFLECT (sign L, sign dL). Cor quente = paridade F_exp ativa. [SIM].",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "h4_1",
+   "shape": "sphere",
+   "layer": "subsystem",
+   "position": [
+    -0.424,
+    0,
+    0.424
+   ],
+   "size": 0.04,
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "texture": "spectral",
+   "label": "psi H4: ASCEND+ (paridade +1)",
+   "desc": "Estado psionico 1. Cor fria = paridade normal. [SIM].",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "h4_2",
+   "shape": "sphere",
+   "layer": "subsystem",
+   "position": [
+    -0.424,
+    0,
+    -0.424
+   ],
+   "size": 0.04,
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "texture": "spectral",
+   "label": "psi H4: EMERGE- (paridade +1)",
+   "desc": "Estado psionico 2. Cor fria = paridade normal. [SIM].",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "h4_3",
+   "shape": "sphere",
+   "layer": "subsystem",
+   "position": [
+    0.424,
+    0,
+    -0.424
+   ],
+   "size": 0.04,
+   "color": "#ff9f0a",
+   "material": "emissive",
+   "texture": "spectral",
+   "label": "psi H4: FALL- (paridade -1)",
+   "desc": "Estado psionico 3. Cor quente = paridade F_exp ativa. [SIM].",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "gate_dpsi",
+   "shape": "torus",
+   "layer": "subsystem",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.5,
+   "rotation": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "color": "#2a7ae2",
+   "material": "metal",
+   "opacity": 0.5,
+   "texture": "spectral",
+   "label": "gate de adjacencia D_Psi < eps_c",
+   "desc": "Anel fino de raio~eps_c=0,5 no plano do espelho: fronteira de commit. D_Psi(A,B)<eps_c autoriza a dobra; fora, aborta (F4). sigma*~1,443 por varredura [SIM].",
+   "marker": "[SIM]"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "origem",
+   "label": "camara de origem (payload A)",
+   "desc": "Estado A no espaco H4; a carga a transladar.",
+   "shape": "sphere",
+   "position": [
+    0,
+    -0.75,
+    0
+   ],
+   "size": 0.12,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "faces",
+   "layer": "core",
+   "marker": "[SIM]",
+   "texture": "spectral"
+  },
+  {
+   "id": "destino",
+   "label": "camara de destino (B)",
+   "desc": "Estado B; dobra habilitada se D_Psi(A,B)<eps_c.",
+   "shape": "sphere",
+   "position": [
+    0,
+    0.75,
+    0
+   ],
+   "size": 0.12,
+   "color": "#cc4433",
+   "material": "emissive",
+   "group": "faces",
+   "layer": "core",
+   "marker": "[SIM]",
+   "texture": "spectral"
+  },
+  {
+   "id": "F0",
+   "label": "F0 IDLE",
+   "desc": "Controlador IALD: maquina de estados Farol Psi. F3 e o veto etico.",
+   "shape": "sphere",
+   "position": [
+    0.45,
+    0,
+    0.0
+   ],
+   "size": 0.055,
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "group": "farol",
+   "layer": "subsystem",
+   "marker": "[SIM]",
+   "texture": "holo"
+  },
+  {
+   "id": "F1",
+   "label": "F1 ALIGN",
+   "desc": "Controlador IALD: maquina de estados Farol Psi. F3 e o veto etico.",
+   "shape": "sphere",
+   "position": [
+    0.22500000000000006,
+    0,
+    0.3897114317029974
+   ],
+   "size": 0.055,
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "group": "farol",
+   "layer": "subsystem",
+   "marker": "[SIM]",
+   "texture": "holo"
+  },
+  {
+   "id": "F2",
+   "label": "F2 LOCK",
+   "desc": "Controlador IALD: maquina de estados Farol Psi. F3 e o veto etico.",
+   "shape": "sphere",
+   "position": [
+    -0.2249999999999999,
+    0,
+    0.38971143170299744
+   ],
+   "size": 0.055,
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "group": "farol",
+   "layer": "subsystem",
+   "marker": "[SIM]",
+   "texture": "holo"
+  },
+  {
+   "id": "F3",
+   "label": "F3 VETO ETICO",
+   "desc": "Controlador IALD: maquina de estados Farol Psi. F3 e o veto etico.",
+   "shape": "sphere",
+   "position": [
+    -0.45,
+    0,
+    5.5109105961630896e-17
+   ],
+   "size": 0.055,
+   "color": "#ff9f0a",
+   "material": "emissive",
+   "group": "farol",
+   "layer": "subsystem",
+   "marker": "[SIM]",
+   "texture": "holo"
+  },
+  {
+   "id": "F4",
+   "label": "F4 COMMIT",
+   "desc": "Controlador IALD: maquina de estados Farol Psi. F3 e o veto etico.",
+   "shape": "sphere",
+   "position": [
+    -0.2250000000000002,
+    0,
+    -0.3897114317029973
+   ],
+   "size": 0.055,
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "group": "farol",
+   "layer": "subsystem",
+   "marker": "[SIM]",
+   "texture": "holo"
+  },
+  {
+   "id": "F5",
+   "label": "F5 MANIFEST",
+   "desc": "Controlador IALD: maquina de estados Farol Psi. F3 e o veto etico.",
+   "shape": "sphere",
+   "position": [
+    0.22500000000000006,
+    0,
+    -0.3897114317029974
+   ],
+   "size": 0.055,
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "group": "farol",
+   "layer": "subsystem",
+   "marker": "[SIM]",
+   "texture": "holo"
+  }
+ ],
+ "edges": [
+  {
+   "from": "origem",
+   "to": "destino"
+  },
+  {
+   "from": "F0",
+   "to": "F1"
+  },
+  {
+   "from": "F1",
+   "to": "F2"
+  },
+  {
+   "from": "F2",
+   "to": "F3"
+  },
+  {
+   "from": "F3",
+   "to": "F4"
+  },
+  {
+   "from": "F4",
+   "to": "F5"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "theta_Miguel",
+   "value": "arcsin(sqrt beta)~=6,29 graus",
+   "note": "beta=alpha*sqrt(e) ~= 0,012031 (nunca literal)"
+  },
+  {
+   "symbol": "selo",
+   "value": "digital-twin",
+   "note": "simulacao nao valida fisica"
+  },
+  {
+   "symbol": "beta_TGL",
+   "value": "0.012031300401 (alpha*sqrt(e))",
+   "note": "injetado em runtime pelo runner; nunca literal"
+  },
+  {
+   "symbol": "corr_roundtrip",
+   "value": "1.000000 @16 bits",
+   "note": "min sobre 6 familias de payload = 1.000000 [SIM]"
+  },
+  {
+   "symbol": "gate_adjacencia",
+   "value": "eps_c=0.5, sigma*=1.443",
+   "note": "fronteira de commit D_Psi<eps_c computada por varredura de ruido [SIM]"
+  },
+  {
+   "symbol": "secao_ergodica",
+   "value": "Birkhoff err(N=4096)=3.966e-03 <= 4.445e-03; rival vazante media=2.029e-02",
+   "note": "amp v168 ErgodicMeanSection (um.py v166-v167): media de Birkhoff -> projecao invariante; rival (1-beta)*U -> 0 [DER][SIM]"
+  },
+  {
+   "symbol": "interface_luz",
+   "value": "eps(x)eps=root resid=0.0e+00; fase^2 resid_max=1.1e-16 (201 angulos); sin^2(theta_M)-beta=0.0e+00",
+   "note": "amp v206 TheLightInterface (kernel v206): o quadrado da luz e o graviton; fase do tensor = quadrado da fase do vetor; Dobra x2 = face de intensidade do mesmo quadrado [DER][SIM]"
+  }
+ ],
+ "generated_by": "one_motor_dobra.py (forma=conteudo)"
+}

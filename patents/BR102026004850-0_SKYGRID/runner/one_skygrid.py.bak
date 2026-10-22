@@ -1,0 +1,224 @@
+# -*- coding: utf-8 -*-
+"""one_skygrid.py — runner único forma = conteúdo da patente SkyGrid
+(BR102026004850-0). [ENERGY][SIM][CONJ]
+
+Demonstra a LÓGICA da invenção (gêmeo digital de energia), certifica com hash e
+gera figuras + relatório auditável. NÃO valida física: physical_verdict_allowed=False;
+o veredito máximo é MODEL_CLOSES / ENERGY_BALANCE_OK ([SIM] sob [CONJ]). β nunca literal
+(emerge de ALPHA_FINE_CODATA_2018 * sqrt(e) no núcleo copiado do piloto).
+
+A RÉGUA: o protótipo original em Patentes\\Skygrid\\SkyGrid_Piloto é READ-ONLY. Este
+runner COPIA o núcleo mínimo (skygrid_sim + skygrid_physics + tests) para um workdir
+próprio e roda a CÓPIA — jamais edita o original. Rode com o tgl_env (tem numpy):
+
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_skygrid.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import shutil
+import subprocess
+import sys
+import tempfile
+from datetime import datetime
+from pathlib import Path
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"   # READ-ONLY original
+MEMORY_MD = CENTRAL / "memory" / "patents" / "BR102026004850-0_SKYGRID.md"
+
+WORK = RUNNER_DIR / "_piloto_core"          # copied core (transient, rebuilt each run)
+CORE_DIRS = ["skygrid_sim", "skygrid_physics", "tests"]
+
+PATENT_ID = "BR102026004850-0"
+SLUG = "skygrid"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    """Copy the minimal headless core from the READ-ONLY piloto. Returns file hashes."""
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    module_hashes: dict[str, str] = {}
+    for d in CORE_DIRS:
+        src = PILOTO / d
+        if not src.exists():
+            continue
+        dst = WORK / d
+        shutil.copytree(src, dst, ignore=shutil.ignore_patterns("__pycache__"))
+        for f in sorted(dst.rglob("*.py")):
+            module_hashes[str(f.relative_to(WORK)).replace("\\", "/")] = _sha_file(f)
+    return module_hashes
+
+
+def run_energy_twin() -> tuple[dict, dict]:
+    """Import the copied EnergyTwin and run it headless. Returns (report, series)."""
+    sys.path.insert(0, str(WORK))
+    from skygrid_physics.energy_twin import EnergyTwin  # noqa: E402 (copied core)
+    with tempfile.TemporaryDirectory() as td:
+        tw = EnergyTwin(n_sats=12, n_bases=12, seed=11, duration_s=120.0, dt_s=1.0,
+                        state_path=str(Path(td) / "state.json"))
+        report = tw.run()
+        series = getattr(tw, "series", {})
+    return report, series
+
+
+def run_test_suite() -> dict:
+    """Run the copied v3 suite as a subprocess (cwd=WORK) to get tests + invariants hash.
+    The suite writes SKYGRID_V3_SELO.json into WORK — never into the original."""
+    v3 = WORK / "tests" / "run_tests_v3.py"
+    if not v3.exists():
+        return {}
+    try:
+        subprocess.run([sys.executable, str(v3)], cwd=str(WORK), check=True,
+                       capture_output=True, timeout=600)
+    except Exception as e:  # keep the run honest — record the failure, don't fake it
+        return {"suite_error": str(e)[:300]}
+    selo = WORK / "SKYGRID_V3_SELO.json"
+    if selo.exists():
+        return json.loads(selo.read_text(encoding="utf-8"))
+    return {}
+
+
+def make_figures(series: dict, out_dir: Path) -> list[str]:
+    """Optional technical figures from the twin's time series (needs matplotlib)."""
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except Exception:
+        return []
+    out_dir.mkdir(parents=True, exist_ok=True)
+    figs = []
+    t = series.get("t") or series.get("time") or list(range(len(next(iter(series.values()), []))))
+    power_keys = [k for k in series if any(s in k.lower() for s in
+                  ("deliver", "demand", "power", "p_"))][:4]
+    if power_keys:
+        plt.figure(figsize=(8, 4))
+        for k in power_keys:
+            y = series[k]
+            plt.plot(t[:len(y)], y, label=k, linewidth=1.4)
+        plt.title("SkyGrid — potência ao longo da janela [SIM] (não é medida física)")
+        plt.xlabel("t (s)"); plt.ylabel("W"); plt.legend(fontsize=8); plt.grid(alpha=.3)
+        p = out_dir / "fig_power.png"; plt.savefig(p, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append(p.name)
+    store_keys = [k for k in series if any(s in k.lower() for s in ("stor", "soc", "e_"))][:3]
+    if store_keys:
+        plt.figure(figsize=(8, 4))
+        for k in store_keys:
+            y = series[k]
+            plt.plot(t[:len(y)], y, label=k, linewidth=1.4)
+        plt.title("SkyGrid — energia/armazenamento [SIM]")
+        plt.xlabel("t (s)"); plt.ylabel("J"); plt.legend(fontsize=8); plt.grid(alpha=.3)
+        p = out_dir / "fig_energy.png"; plt.savefig(p, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append(p.name)
+    return figs
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_skygrid] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: piloto não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+
+    module_hashes = copy_core()
+    print(f"[one_skygrid] núcleo copiado: {len(module_hashes)} módulos (cópia, original intacto)")
+
+    report, series = run_energy_twin()
+    beta = report.get("beta_runtime")
+    verdict = report.get("verdict")
+    balance = (report.get("audit") or {}).get("balance")
+    max_verdict = f"{verdict} / {balance} ([SIM] sob [CONJ])"
+    print(f"[one_skygrid] EnergyTwin: {max_verdict} · β={beta}")
+
+    suite = run_test_suite()
+    tests_passed = suite.get("bloco9_tests") or suite.get("tests_passed")
+    invariants_hash = suite.get("invariants_hash_v3") or suite.get("invariants_hash")
+    print(f"[one_skygrid] suite v3: {tests_passed} testes · invariants {str(invariants_hash)[:16]}…")
+
+    # honest cross-check: beta must equal alpha*sqrt(e) recomputed, never a literal
+    import math
+    beta_expected = 0.0072973525693 * math.exp(0.5)
+    beta_ok = beta is not None and abs(beta - beta_expected) < 1e-15
+
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {
+        "patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts,
+        "runner": "one_skygrid.py", "markers": ["[SIM]", "[CONJ]", "[ENERGY]"],
+        "physical_verdict_allowed": False,
+        "beta_runtime": beta, "beta_matches_alpha_sqrt_e": beta_ok,
+        "verdict": verdict, "energy_balance": balance, "max_verdict": max_verdict,
+        "energy": report.get("energy"), "audit": report.get("audit"),
+        "controls": report.get("controls"),
+        "tests_passed": tests_passed, "invariants_hash": invariants_hash,
+        "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto (READ-ONLY; copiado, não editado)",
+        "note": "Nenhum kW/kJ é medida física. Demonstração da LÓGICA da invenção sob "
+                "hipóteses [CONJ] da TGL. O que resta é a bancada [HARDWARE].",
+    }
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    figs = make_figures(series, results_dir / "figures")
+    print(f"[one_skygrid] figuras: {len(figs)}")
+
+    # report
+    report_md = results_dir / "report.md"
+    report_md.write_text(
+        f"# Relatório auditável — SkyGrid one_skygrid.py\n\n"
+        f"- Run: `{ts}` · Patente: `{PATENT_ID}`\n"
+        f"- Veredito máximo: **{max_verdict}**\n"
+        f"- β runtime: `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n"
+        f"- Testes v3: **{tests_passed}** · invariants_hash: `{invariants_hash}`\n"
+        f"- physical_verdict_allowed: **False** — simulação não valida física.\n"
+        f"- η_sys: `{(report.get('energy') or {}).get('eta_sys')}` · "
+        f"resíduo: `{(report.get('audit') or {}).get('residual_J')} J`\n\n"
+        f"Núcleo copiado do piloto (READ-ONLY) para `runner/_piloto_core/`; original intacto.\n\n"
+        f"**[ENERGY][SIM][CONJ]** · Controle interno. 1 = 1. Tetelestai.\n",
+        encoding="utf-8")
+
+    # seal.json — SHA-256 de tudo
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {
+        "timestamp": ts, "patent_id": PATENT_ID, "runner": "one_skygrid.py",
+        "beta_runtime": beta, "physical_verdict_allowed": False,
+        "max_verdict": max_verdict, "tests_passed": tests_passed,
+        "invariants_hash": invariants_hash, "result_hash": result_hash,
+        "sha256": file_hashes, "markers": ["[SIM]", "[CONJ]", "[ENERGY]"],
+        "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/"),
+    }
+    seal_path = seal_dir / "seal.json"
+    seal_path.write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    print(f"[one_skygrid] SELADO · result_hash {result_hash[:16]}…")
+    print(f"[one_skygrid] results: {results_path.relative_to(CENTRAL)}")
+    print(f"[one_skygrid] seal:    {seal_path.relative_to(CENTRAL)}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

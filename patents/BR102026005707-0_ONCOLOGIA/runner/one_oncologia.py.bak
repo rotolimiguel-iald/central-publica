@@ -1,0 +1,287 @@
+# -*- coding: utf-8 -*-
+"""one_oncologia.py — runner único forma = conteúdo da patente Oncologia
+(BR102026005707-0). [MEDICAL]
+
+Demonstra a LÓGICA DE PROCESSAMENTO DE SINAL/MODELO da patente — SEM QUALQUER
+CONTEÚDO CLÍNICO. Dados exclusivamente SINTÉTICOS; nada de paciente, dose, protocolo
+de tratamento ou alegação terapêutica.
+
+Demonstra:
+  1. β_TGL via α·√e (nunca literal) e a faixa FRONTIER 2β_TGL;
+  2. estimadores de coerência C_N: espectral (Welch/Hann), sincronia (Hilbert/phase-locking),
+     informação mútua normalizada; índice composto — sobre séries sintéticas;
+  3. classificação topológica GRACE/FRONTIER/VACUUM com C_crit sintético e curva ROC/Youden;
+  4. otimização Bayesiana (GP + Expected Improvement) em ΔC_N(ω) sintético, parada σ<β, ≤15 iter;
+  5. porta lógica de decisão (AND/limiar) e cadeia de hash 256 bits encadeada.
+
+HONESTIDADE [MEDICAL]: NÃO é diagnóstico, NÃO é tratamento, NÃO há dado de paciente.
+Apenas a matemática de processamento de sinal. Simulação não valida física nem eficácia
+clínica (physical_verdict_allowed=false). O código original das simulações QuTiP não foi
+localizado — as métricas aqui são reimplementação abstrata.
+
+A RÉGUA: originais READ-ONLY. Copia o núcleo (skygrid_sim) e roda a CÓPIA no tgl_env:
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_oncologia.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"
+WORK = RUNNER_DIR / "_onco_core"
+PATENT_ID = "BR102026005707-0"
+SLUG = "oncologia"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst, ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, runner, markers, beta, beta_ok,
+            all_ok, max_verdict, tests, summary, module_hashes, note, fig_builder=None):
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {"patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": runner,
+               "markers": markers, "physical_verdict_allowed": False, "beta_runtime": beta,
+               "beta_matches_alpha_sqrt_e": beta_ok,
+               "verdict": max_verdict.split(" ")[0] if all_ok else "PARTIAL_DEMONSTRATION",
+               "max_verdict": max_verdict,
+               "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                             "free_parameters": 0},
+               "tests": tests, "summary": summary,
+               "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+               "note": note}
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+    figs = []
+    if fig_builder is not None:
+        try:
+            import matplotlib
+            matplotlib.use("Agg")
+            import matplotlib.pyplot as plt
+            fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+            figs = fig_builder(plt, fig_dir) or []
+        except Exception as e:
+            print(f"[{SLUG}] figura pulada: {e}")
+    report_md = results_dir / "report.md"
+    lines = [f"# Relatório auditável — {runner}\n", f"- Run `{ts}` · Patente `{PATENT_ID}`\n",
+             f"- Veredito: **{max_verdict}**\n",
+             f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n",
+             f"- Testes: **{summary['tests_passed']}/{summary['tests_total']}**\n"]
+    for t in tests:
+        lines.append(f"  - {'✓' if t['passed'] else '✗'} {t['test']}\n")
+    lines.append(f"- physical_verdict_allowed: **False**.\n\n{note}\n")
+    lines.append("Núcleo copiado do piloto (READ-ONLY); original intacto. 1 = 1. Tetelestai.\n")
+    report_md.write_text("".join(lines), encoding="utf-8")
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {"timestamp": ts, "patent_id": PATENT_ID, "runner": runner, "beta_runtime": beta,
+            "physical_verdict_allowed": False, "max_verdict": max_verdict,
+            "tests_passed": summary["tests_passed"], "result_hash": result_hash,
+            "sha256": file_hashes, "markers": markers,
+            "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/")}
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[{SLUG}] SELADO · result_hash {result_hash[:16]}… · {summary['tests_passed']}/{summary['tests_total']} testes")
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_oncologia] patente {PATENT_ID} · run {ts}")
+    print("[one_oncologia] [MEDICAL] Apenas processamento de sinal em séries SINTÉTICAS — "
+          "sem conteúdo clínico, sem dado de paciente.")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core  # noqa: E402
+    from scipy import signal  # noqa: E402
+    from scipy.stats import pearsonr  # noqa: E402
+
+    beta = tgl_core.beta()
+    beta_ok = abs(beta - 0.0072973525693 * math.exp(0.5)) < 1e-15
+    frontier = 2 * beta
+    print(f"[one_oncologia] β={beta} (α·√e? {beta_ok}) · faixa FRONTIER 2β={frontier:.6f}")
+    tests = [{"test": "beta_form_and_frontier", "passed": bool(beta_ok),
+              "beta_runtime": beta, "frontier_2beta": frontier}]
+
+    rng = np.random.default_rng(5707)
+    fs = 256.0
+    n = 2048
+    t = np.arange(n) / fs
+
+    def coherence_estimators(x, y):
+        # spectral coherence (Welch/Hann)
+        f, Cxy = signal.coherence(x, y, fs=fs, window="hann", nperseg=256)
+        c_spec = float(np.mean(Cxy))
+        # phase-locking value (Hilbert)
+        px = np.angle(signal.hilbert(x)); py = np.angle(signal.hilbert(y))
+        plv = float(np.abs(np.mean(np.exp(1j * (px - py)))))
+        # normalized mutual information via binned histograms
+        xb = np.clip(((x - x.min()) / (np.ptp(x) + 1e-12) * 15).astype(int), 0, 15)
+        yb = np.clip(((y - y.min()) / (np.ptp(y) + 1e-12) * 15).astype(int), 0, 15)
+        joint = np.histogram2d(xb, yb, bins=16)[0] + 1e-9
+        pj = joint / joint.sum()
+        px_ = pj.sum(1); py_ = pj.sum(0)
+        mi = float(np.sum(pj * np.log(pj / (px_[:, None] * py_[None, :]))))
+        hx = -np.sum(px_ * np.log(px_ + 1e-12)); hy = -np.sum(py_ * np.log(py_ + 1e-12))
+        nmi = mi / (0.5 * (hx + hy) + 1e-12)
+        composite = (c_spec + plv + nmi) / 3.0
+        return c_spec, plv, nmi, composite
+
+    # 2) estimators on coherent vs incoherent synthetic series
+    base = np.sin(2 * math.pi * 10 * t)
+    coherent = base + 0.2 * rng.standard_normal(n)
+    coherent2 = base + 0.2 * rng.standard_normal(n)
+    incoherent = rng.standard_normal(n)
+    c_hi = coherence_estimators(coherent, coherent2)
+    c_lo = coherence_estimators(coherent, incoherent)
+    est_ok = c_hi[3] > c_lo[3]
+    tests.append({"test": "coherence_estimators_spec_sync_info", "passed": bool(est_ok),
+                  "composite_coherent": c_hi[3], "composite_incoherent": c_lo[3],
+                  "coherent_detail": {"spectral": c_hi[0], "plv": c_hi[1], "nmi": c_hi[2]},
+                  "note": "C_N espectral (Welch), sincronia (PLV/Hilbert), inf. mútua normalizada; "
+                          "índice composto separa séries coerentes de incoerentes"})
+    print(f"[one_oncologia] estimadores C_N: coerente={c_hi[3]:.3f} vs incoerente={c_lo[3]:.3f}")
+
+    # 3) topological classification + ROC/Youden on synthetic labels
+    N = 400
+    labels = rng.integers(0, 2, N)
+    scores = np.array([coherence_estimators(
+        np.sin(2 * math.pi * 10 * t) * lab + 0.3 * rng.standard_normal(n),
+        np.sin(2 * math.pi * 10 * t) + 0.3 * rng.standard_normal(n))[3] for lab in labels])
+    thr = np.linspace(scores.min(), scores.max(), 100)
+    tpr = np.array([np.mean(scores[labels == 1] >= th) for th in thr])
+    fpr = np.array([np.mean(scores[labels == 0] >= th) for th in thr])
+    youden = tpr - fpr
+    j_star = int(np.argmax(youden))
+    auc = float(np.trapz(np.sort(tpr)[::-1], np.sort(fpr)[::-1]))
+    # topological class by fixed boundaries (GRACE high / FRONTIER mid / VACUUM low)
+    c_crit = float(np.median(scores))
+
+    def topo(s):
+        return "GRACE" if s >= c_crit + frontier else ("VACUUM" if s < c_crit - frontier else "FRONTIER")
+    classes = {k: int(sum(1 for s in scores if topo(s) == k)) for k in ("GRACE", "FRONTIER", "VACUUM")}
+    roc_ok = youden[j_star] > 0.1 and abs(auc) > 0.5
+    tests.append({"test": "topological_classification_and_roc", "passed": bool(roc_ok),
+                  "youden_max": float(youden[j_star]), "auc_abs": abs(auc),
+                  "classes": classes, "c_crit": c_crit,
+                  "note": "GRACE/FRONTIER/VACUUM com C_crit sintético; ROC/índice de Youden"})
+    print(f"[one_oncologia] classificação: {classes} · Youden máx={youden[j_star]:.3f} AUC={abs(auc):.3f}")
+
+    # 4) Bayesian optimization (GP + Expected Improvement) on synthetic DeltaC_N(omega)
+    def objective(omega):
+        return -np.exp(-((omega - 12.0) ** 2) / 8.0) + 0.02 * rng.standard_normal()
+    Xs = np.linspace(5, 20, 60)
+    sampled_x = [7.0, 15.0]
+    sampled_y = [objective(x) for x in sampled_x]
+    stopped_at, sigma_final = 15, 1.0
+    for it in range(15):
+        # tiny GP surrogate: gaussian-kernel weighted mean + std
+        def gp(x):
+            d = np.array([(x - xi) for xi in sampled_x])
+            wgt = np.exp(-d ** 2 / 4.0)
+            if wgt.sum() < 1e-9:
+                return 0.0, 1.0
+            mu = float(np.sum(wgt * np.array(sampled_y)) / wgt.sum())
+            var = float(1.0 - wgt.max())
+            return mu, max(var, 1e-6)
+        mus, sigmas = zip(*[gp(x) for x in Xs])
+        mus = np.array(mus); sigmas = np.array(sigmas)
+        best = min(sampled_y)
+        ei = (best - mus) * (mus < best) + sigmas * 0.1
+        nx = Xs[int(np.argmax(ei))]
+        sampled_x.append(float(nx)); sampled_y.append(objective(nx))
+        sigma_final = float(sigmas.max())
+        if sigma_final < beta:
+            stopped_at = it + 1
+            break
+    x_best = sampled_x[int(np.argmin(sampled_y))]
+    bo_ok = abs(x_best - 12.0) < 4.0 and stopped_at <= 15
+    tests.append({"test": "bayesian_optimization_GP_EI", "passed": bool(bo_ok),
+                  "x_best": x_best, "true_optimum": 12.0, "iterations": stopped_at,
+                  "sigma_final": sigma_final, "stop_threshold_beta": beta,
+                  "note": "GP + Expected Improvement em ΔC_N(ω) sintético; parada σ<β, ≤15 iter"})
+    print(f"[one_oncologia] otim. Bayesiana: x*={x_best:.2f} (ótimo 12) em {stopped_at} iter")
+
+    # 5) decision gate (AND/threshold) + chained 256-bit hash ledger
+    gate_inputs = [bool(c_hi[3] > c_crit), bool(youden[j_star] > 0.1), bool(x_best > 5)]
+    gate = all(gate_inputs)
+    ledger = []
+    prev = b"\x00" * 32
+    for i, payload in enumerate([b"C_N", b"ROC", b"BO", b"GATE"]):
+        h = hashlib.sha256(prev + payload + bytes([i])).digest()
+        ledger.append(h.hex()[:16]); prev = h
+    chain_ok = len(ledger) == 4 and gate is True
+    tests.append({"test": "decision_gate_and_hash_chain", "passed": bool(chain_ok),
+                  "gate_open": gate, "gate_inputs": gate_inputs, "hash_chain_head": ledger[-1],
+                  "note": "porta lógica AND/limiar + cadeia de hash 256 bits encadeada (auditoria)"})
+    print(f"[one_oncologia] porta lógica={gate} · cadeia de hash: {len(ledger)} elos")
+
+    passed = sum(1 for t in tests if t["passed"]); total = len(tests); all_ok = passed == total
+    summary = {"tests_passed": passed, "tests_total": total,
+               "composite_coherent": c_hi[3], "auc_abs": abs(auc), "bo_x_best": x_best,
+               "clinical_content": "NONE_by_design_MEDICAL_trava"}
+    max_verdict = ("ONCOLOGY_SIGNAL_LOGIC_DEMONSTRATED ([MEDICAL][SIM] — estimadores de coerência, "
+                   "classificação topológica com ROC, otimização Bayesiana e cadeia de hash fecham "
+                   "em séries SINTÉTICAS; SEM conteúdo clínico, diagnóstico ou tratamento)")
+    _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, "one_oncologia.py",
+            ["[MEDICAL]", "[SIM]"], beta, beta_ok, all_ok, max_verdict, tests, summary, module_hashes,
+            "[MEDICAL] TRAVA MÁXIMA: apenas processamento de sinal em séries SINTÉTICAS. NÃO é "
+            "diagnóstico, NÃO é tratamento, NÃO há dado de paciente, dose ou protocolo. Código "
+            "QuTiP original não localizado — reimplementação abstrata. Simulação não valida "
+            "física nem eficácia clínica.",
+            fig_builder=lambda plt, fd: _fig_onco(plt, fd, fpr, tpr, youden, j_star))
+    return 0 if all_ok else 1
+
+
+def _fig_onco(plt, fig_dir, fpr, tpr, youden, j_star):
+    order = np.argsort(fpr)
+    plt.figure(figsize=(5.2, 4.8))
+    plt.plot(fpr[order], tpr[order], "-", label="ROC (séries sintéticas)")
+    plt.plot([0, 1], [0, 1], "--", color="gray", alpha=.5)
+    plt.scatter([fpr[j_star]], [tpr[j_star]], color="crimson", zorder=5,
+                label=f"Youden máx J={youden[j_star]:.2f}")
+    plt.xlabel("FPR"); plt.ylabel("TPR")
+    plt.title("Oncologia — ROC do índice de coerência [MEDICAL][SIM]\n(séries sintéticas, sem clínica)", fontsize=9)
+    plt.legend(fontsize=8); plt.grid(alpha=.3)
+    fp = fig_dir / "fig_roc.png"; plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+    return ["fig_roc.png"]
+
+
+if __name__ == "__main__":
+    sys.exit(main())

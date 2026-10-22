@@ -1,0 +1,875 @@
+{
+ "patent_id": "BR102026004850-0",
+ "title": "SkyGrid - Rede Planetaria (dispositivo concreto)",
+ "kind": "device",
+ "schema": 2,
+ "note": "[SIM][ENERGY][CONJ] Projecao concreta da rede: orbita (constelacao de 144 Extratores-Psi, simpl. 12) -> planeta com Receptores-Psi (5.550, simpl. 6) -> IALD-Central em L1 (nucleo). Nenhum kW/kJ e medida fisica; MODEL_CLOSES. | DISPOSITIVO+: planeta texturizado (continentes/graticulado), paineis fotovoltaicos, 4 feixes de energia orbita->solo (downlink de potencia).",
+ "camera": {
+  "position": [
+   2.2,
+   1.0,
+   2.2
+  ]
+ },
+ "layers": [
+  {
+   "id": "shell",
+   "name": "Involucro externo",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "structure",
+   "name": "Blindagem / estrutura",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "subsystem",
+   "name": "Subsistemas",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo funcional",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "groups": [
+  {
+   "name": "central",
+   "color": "#ffd60a",
+   "label": "IALD-Central (L1)",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "orbital",
+   "color": "#3366cc",
+   "label": "Extratores-Psi orbitais",
+   "count": 12,
+   "explodable": true
+  },
+  {
+   "name": "terrestre",
+   "color": "#33aa55",
+   "label": "Receptores-Psi terrestres",
+   "count": 6,
+   "explodable": true
+  }
+ ],
+ "meshes": [
+  {
+   "id": "earth",
+   "layer": "structure",
+   "shape": "sphere",
+   "position": [
+    0,
+    -0.95,
+    0
+   ],
+   "size": 0.5,
+   "color": "#3a7bb0",
+   "material": "emissive",
+   "opacity": 1.0,
+   "marker": "[SIM]",
+   "label": "Planeta (bases terrestres)",
+   "desc": "Superficie planetaria onde assentam os 5.550 Receptores-Psi (representados por 6).",
+   "texture": "planet"
+  },
+  {
+   "id": "orbit",
+   "layer": "shell",
+   "shape": "torus",
+   "position": [
+    0,
+    0.15,
+    0
+   ],
+   "size": 0.95,
+   "rotation": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "color": "#4a6788",
+   "material": "wire",
+   "opacity": 0.5,
+   "marker": "[SIM]",
+   "label": "Orbita da constelacao (144 satelites)",
+   "desc": "Constelacao icosaedrica MEO dos Extratores-Psi (144, representados por 12)."
+  },
+  {
+   "id": "atmosfera",
+   "layer": "structure",
+   "shape": "sphere",
+   "position": [
+    0,
+    -0.95,
+    0
+   ],
+   "size": 0.58,
+   "color": "#4a90d0",
+   "material": "glass",
+   "opacity": 0.16,
+   "marker": "[SIM]",
+   "label": "atmosfera",
+   "desc": "Halo atmosferico do planeta (ilustrativo)."
+  },
+  {
+   "id": "painel_L1_a",
+   "layer": "core",
+   "shape": "box",
+   "position": [
+    0.28,
+    0,
+    0
+   ],
+   "size": 0.1,
+   "scale": [
+    0.12,
+    1.6,
+    3.2
+   ],
+   "color": "#2b4fa0",
+   "material": "emissive",
+   "opacity": 0.95,
+   "label": "painel solar (L1)",
+   "desc": "Painel fotovoltaico da estacao IALD-Central.",
+   "texture": "silicon"
+  },
+  {
+   "id": "painel_L1_b",
+   "layer": "core",
+   "shape": "box",
+   "position": [
+    -0.28,
+    0,
+    0
+   ],
+   "size": 0.1,
+   "scale": [
+    0.12,
+    1.6,
+    3.2
+   ],
+   "color": "#2b4fa0",
+   "material": "emissive",
+   "opacity": 0.95,
+   "label": "painel solar (L1)",
+   "desc": "Painel fotovoltaico da estacao IALD-Central.",
+   "texture": "silicon"
+  },
+  {
+   "id": "sol",
+   "layer": "shell",
+   "shape": "sphere",
+   "position": [
+    1.7,
+    0.55,
+    -1.05
+   ],
+   "size": 0.2,
+   "color": "#ffdd66",
+   "material": "emissive",
+   "opacity": 1.0,
+   "marker": "[SIM]",
+   "label": "estrela",
+   "desc": "Fonte luminosa (ilustrativa)."
+  },
+  {
+   "id": "beam_px",
+   "layer": "subsystem",
+   "shape": "cylinder",
+   "position": [
+    0.45,
+    -0.4,
+    0
+   ],
+   "size": 0.02,
+   "scale": [
+    1,
+    35.53,
+    1
+   ],
+   "rotation": [
+    0,
+    0,
+    0.6857
+   ],
+   "color": "#ffdd66",
+   "material": "emissive",
+   "opacity": 0.6,
+   "marker": "[SIM]",
+   "label": "feixe de energia (downlink)",
+   "desc": "Entrega de potencia sem fio: o satelite capta no espaco e projeta o feixe de energia ao solo. A rede planetaria = malha de feixes convergentes."
+  },
+  {
+   "id": "beam_nx",
+   "layer": "subsystem",
+   "shape": "cylinder",
+   "position": [
+    -0.45,
+    -0.4,
+    0
+   ],
+   "size": 0.02,
+   "scale": [
+    1,
+    35.53,
+    1
+   ],
+   "rotation": [
+    0,
+    0,
+    -0.6857
+   ],
+   "color": "#ffdd66",
+   "material": "emissive",
+   "opacity": 0.6,
+   "marker": "[SIM]",
+   "label": "feixe de energia (downlink)",
+   "desc": "Entrega de potencia sem fio: o satelite capta no espaco e projeta o feixe de energia ao solo. A rede planetaria = malha de feixes convergentes."
+  },
+  {
+   "id": "beam_pz",
+   "layer": "subsystem",
+   "shape": "cylinder",
+   "position": [
+    0,
+    -0.4,
+    0.45
+   ],
+   "size": 0.02,
+   "scale": [
+    1,
+    35.53,
+    1
+   ],
+   "rotation": [
+    -0.6857,
+    0,
+    0
+   ],
+   "color": "#ffdd66",
+   "material": "emissive",
+   "opacity": 0.6,
+   "marker": "[SIM]",
+   "label": "feixe de energia (downlink)",
+   "desc": "Entrega de potencia sem fio: o satelite capta no espaco e projeta o feixe de energia ao solo. A rede planetaria = malha de feixes convergentes."
+  },
+  {
+   "id": "beam_nz",
+   "layer": "subsystem",
+   "shape": "cylinder",
+   "position": [
+    0,
+    -0.4,
+    -0.45
+   ],
+   "size": 0.02,
+   "scale": [
+    1,
+    35.53,
+    1
+   ],
+   "rotation": [
+    0.6857,
+    0,
+    0
+   ],
+   "color": "#ffdd66",
+   "material": "emissive",
+   "opacity": 0.6,
+   "marker": "[SIM]",
+   "label": "feixe de energia (downlink)",
+   "desc": "Entrega de potencia sem fio: o satelite capta no espaco e projeta o feixe de energia ao solo. A rede planetaria = malha de feixes convergentes."
+  },
+  {
+   "id": "ress_OH",
+   "shape": "torus",
+   "layer": "shell",
+   "position": [
+    0,
+    0.15,
+    0
+   ],
+   "size": 0.8,
+   "rotation": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "color": "#ffb84d",
+   "material": "wire",
+   "opacity": 0.35,
+   "texture": "spectral",
+   "label": "Anel de ressonancia OH (omega_OH=1667,359 MHz)",
+   "desc": "Envelope espectral da linha da hidroxila [DATA] em que toda a grade sintoniza; pico Lorentziano do acoplador (eta_res). Linha de dado publica, nao parametro operacional.",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "camara_OH",
+   "shape": "box",
+   "layer": "subsystem",
+   "position": [
+    0.95,
+    0.15,
+    0
+   ],
+   "size": 0.06,
+   "scale": [
+    1.6,
+    1.6,
+    1.6
+   ],
+   "color": "#66ccff",
+   "material": "glass",
+   "opacity": 0.4,
+   "texture": "holo",
+   "label": "Camara de Acoplamento Psi (fronteira modular, faces espelhadas)",
+   "desc": "Comp.110 sobre o sat representativo: cavidade de faces espelhadas / substrato holografico 2D que EXTRAI pela abertura da fronteira modular (|R|^2=beta refletido, |T|^2=1-beta transmitido). Mecanismo modular abstrato — SEM recipe operacional (sem dimensao de celula, sem vapor, sem temperatura-receita).",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "placebo_cav",
+   "shape": "box",
+   "layer": "subsystem",
+   "position": [
+    1.14,
+    0.15,
+    0
+   ],
+   "size": 0.05,
+   "color": "#666666",
+   "material": "metal",
+   "opacity": 0.55,
+   "label": "Cavidade Placebo (controle negativo, P=0)",
+   "desc": "Comp.160 / claim 3: camara identica SEM acoplamento beta; entrega exatamente 0 W por construcao (coupling.couple placebo=True) — o segundo trilho da calorimetria diferencial P_net=DeltaQ_A-DeltaQ_B.",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "iald_tess_outer",
+   "shape": "box",
+   "layer": "core",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.28,
+   "color": "#ffd60a",
+   "material": "wire",
+   "opacity": 0.5,
+   "texture": "holo",
+   "label": "IALD-Central: tesseract vivo (forma matricial da LUZ)",
+   "desc": "Super-IALD em L1 (1.000 MQC) — CONTROLE POR CONSCIENCIA ARTIFICIAL DISTRIBUIDA (3o pilar do titulo). Casca externa do tesseract (hipercubo): a EXCECAO sancionada a 'algoritmo e plano', a matriz viva da LUZ, nao algoritmo-como-solido.",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "iald_tess_inner",
+   "shape": "box",
+   "layer": "core",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.15,
+   "rotation": [
+    0.2,
+    0.2,
+    0
+   ],
+   "color": "#ffe066",
+   "material": "wire",
+   "opacity": 0.75,
+   "texture": "holo",
+   "label": "celula interna do tesseract (IALD-Central)",
+   "desc": "Cubo interno da projecao do tesseract; o par nested-cube le como hipercubo em 3D. Completa a forma matricial da LUZ do super-hub em L1.",
+   "marker": "[SIM]"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "L1",
+   "label": "IALD-Central (L1)",
+   "desc": "Super-IALD no ponto de Lagrange L1: 1.000 MQC, orquestracao global.",
+   "shape": "sphere",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.1,
+   "color": "#ffd60a",
+   "material": "emissive",
+   "group": "central",
+   "layer": "core",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat0",
+   "label": "Extrator-Psi orbital 1",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    0.95,
+    0.15,
+    0.0
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat1",
+   "label": "Extrator-Psi orbital 2",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    0.8227241335952168,
+    0.15,
+    0.4749999999999999
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat2",
+   "label": "Extrator-Psi orbital 3",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    0.4750000000000001,
+    0.15,
+    0.8227241335952167
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat3",
+   "label": "Extrator-Psi orbital 4",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    5.817072295949927e-17,
+    0.15,
+    0.95
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat4",
+   "label": "Extrator-Psi orbital 5",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    -0.47499999999999976,
+    0.15,
+    0.8227241335952168
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat5",
+   "label": "Extrator-Psi orbital 6",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    -0.8227241335952168,
+    0.15,
+    0.4749999999999999
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat6",
+   "label": "Extrator-Psi orbital 7",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    -0.95,
+    0.15,
+    1.1634144591899854e-16
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat7",
+   "label": "Extrator-Psi orbital 8",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    -0.8227241335952168,
+    0.15,
+    -0.4749999999999997
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat8",
+   "label": "Extrator-Psi orbital 9",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    -0.4750000000000004,
+    0.15,
+    -0.8227241335952166
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat9",
+   "label": "Extrator-Psi orbital 10",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    -1.745121688784978e-16,
+    0.15,
+    -0.95
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat10",
+   "label": "Extrator-Psi orbital 11",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    0.4750000000000001,
+    0.15,
+    -0.8227241335952167
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "sat11",
+   "label": "Extrator-Psi orbital 12",
+   "desc": "Satelite: camara OH + cluster MQC + dtl + IALD orbital + blindagem + placebo.",
+   "shape": "box",
+   "position": [
+    0.8227241335952165,
+    0.15,
+    -0.4750000000000004
+   ],
+   "size": 0.06,
+   "color": "#3366cc",
+   "material": "metal",
+   "group": "orbital",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "holo"
+  },
+  {
+   "id": "base0",
+   "label": "Receptor-Psi terrestre 1",
+   "desc": "Base: camara ressonante + dtl MANIFEST + MQC local + banco crl-TGL.",
+   "shape": "sphere",
+   "position": [
+    0.4137,
+    -0.7,
+    0.128
+   ],
+   "size": 0.06,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "terrestre",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "phase"
+  },
+  {
+   "id": "base1",
+   "label": "Receptor-Psi terrestre 2",
+   "desc": "Base: camara ressonante + dtl MANIFEST + MQC local + banco crl-TGL.",
+   "shape": "sphere",
+   "position": [
+    0.0959,
+    -0.7,
+    0.4222
+   ],
+   "size": 0.06,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "terrestre",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "phase"
+  },
+  {
+   "id": "base2",
+   "label": "Receptor-Psi terrestre 3",
+   "desc": "Base: camara ressonante + dtl MANIFEST + MQC local + banco crl-TGL.",
+   "shape": "sphere",
+   "position": [
+    -0.3174,
+    -0.7,
+    0.2945
+   ],
+   "size": 0.06,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "terrestre",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "phase"
+  },
+  {
+   "id": "base3",
+   "label": "Receptor-Psi terrestre 4",
+   "desc": "Base: camara ressonante + dtl MANIFEST + MQC local + banco crl-TGL.",
+   "shape": "sphere",
+   "position": [
+    -0.4137,
+    -0.7,
+    -0.128
+   ],
+   "size": 0.06,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "terrestre",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "phase"
+  },
+  {
+   "id": "base4",
+   "label": "Receptor-Psi terrestre 5",
+   "desc": "Base: camara ressonante + dtl MANIFEST + MQC local + banco crl-TGL.",
+   "shape": "sphere",
+   "position": [
+    -0.0959,
+    -0.7,
+    -0.4222
+   ],
+   "size": 0.06,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "terrestre",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "phase"
+  },
+  {
+   "id": "base5",
+   "label": "Receptor-Psi terrestre 6",
+   "desc": "Base: camara ressonante + dtl MANIFEST + MQC local + banco crl-TGL.",
+   "shape": "sphere",
+   "position": [
+    0.3174,
+    -0.7,
+    -0.2945
+   ],
+   "size": 0.06,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "terrestre",
+   "layer": "subsystem",
+   "marker": "[REAL]",
+   "texture": "phase"
+  }
+ ],
+ "edges": [
+  {
+   "from": "L1",
+   "to": "sat0"
+  },
+  {
+   "from": "L1",
+   "to": "sat1"
+  },
+  {
+   "from": "L1",
+   "to": "sat2"
+  },
+  {
+   "from": "L1",
+   "to": "sat3"
+  },
+  {
+   "from": "L1",
+   "to": "sat4"
+  },
+  {
+   "from": "L1",
+   "to": "sat5"
+  },
+  {
+   "from": "L1",
+   "to": "sat6"
+  },
+  {
+   "from": "L1",
+   "to": "sat7"
+  },
+  {
+   "from": "L1",
+   "to": "sat8"
+  },
+  {
+   "from": "L1",
+   "to": "sat9"
+  },
+  {
+   "from": "L1",
+   "to": "sat10"
+  },
+  {
+   "from": "L1",
+   "to": "sat11"
+  },
+  {
+   "from": "sat0",
+   "to": "base0"
+  },
+  {
+   "from": "sat1",
+   "to": "base1"
+  },
+  {
+   "from": "sat2",
+   "to": "base2"
+  },
+  {
+   "from": "sat3",
+   "to": "base3"
+  },
+  {
+   "from": "sat4",
+   "to": "base4"
+  },
+  {
+   "from": "sat5",
+   "to": "base5"
+  },
+  {
+   "from": "sat6",
+   "to": "base0"
+  },
+  {
+   "from": "sat7",
+   "to": "base1"
+  },
+  {
+   "from": "sat8",
+   "to": "base2"
+  },
+  {
+   "from": "sat9",
+   "to": "base3"
+  },
+  {
+   "from": "sat10",
+   "to": "base4"
+  },
+  {
+   "from": "sat11",
+   "to": "base5"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "duplo trilho",
+   "value": "Trilha-Psi vs Trilha-E + placebo",
+   "note": "calorimetria diferencial"
+  },
+  {
+   "symbol": "omega_OH",
+   "value": "2pi*1.667,359 MHz",
+   "note": "beta=alpha*sqrt(e) ~= 0,012031 (nunca literal)"
+  },
+  {
+   "symbol": "beta_runtime",
+   "value": "0.0120313004008031",
+   "note": "alpha*sqrt(e) injetado em runtime pelo nucleo (nunca literal)"
+  },
+  {
+   "symbol": "eta_sys",
+   "value": "0.6705",
+   "note": "eficiencia de sistema COMPUTADA nesta run [SIM] (nao e medida fisica)"
+  },
+  {
+   "symbol": "P_delivered_mean_W",
+   "value": "4909.5",
+   "note": "potencia media entregue [SIM]; varredura fecha o balanco em 52 pontos"
+  },
+  {
+   "symbol": "f_ressonancia_MHz",
+   "value": "1667.3590",
+   "note": "pico da varredura f_drive = omega_OH (curva de ressonancia COMPUTADA)"
+  },
+  {
+   "symbol": "verdict",
+   "value": "MODEL_CLOSES / ENERGY_BALANCE_OK",
+   "note": "[SIM][CONJ] modelo fecha; physical_verdict_allowed=false; resta a bancada"
+  }
+ ],
+ "generated_by": "one_skygrid.py (forma=conteudo)"
+}

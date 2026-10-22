@@ -1,0 +1,37 @@
+{
+  "patent_id": "BR102026003453-3",
+  "title": "Ψ-NET — Protocolo de Comunicação em Pilha Luminodinâmica de 5 camadas",
+  "source": "Relatório descritivo; Psi_net_protocol_v1.py; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). [SIM][PILOTO] Ilustração — lógica do protocolo demonstrada em simulação; não valida física nem desempenho de produção.",
+  "groups": [
+    {
+      "name": "Pilha luminodinâmica de 5 camadas",
+      "kind": "block",
+      "components": [
+        { "id": "L1", "label": "PsiBit link", "desc": "bytes → PsiBits (estados H4, 2 bits); assinatura: distribuição, entropia, Fexp, classe ontológica (GRACE/FRONTIER/VACUUM por uniformidade).", "marker": "[REAL]", "x": 0.10, "y": 0.14 },
+        { "id": "L2", "label": "Transporte radical", "desc": "radicalização L → (g=√|L|, s); ressurreição s·g². Round-trip exato até ~eps.", "marker": "[REAL]", "x": 0.32, "y": 0.14 },
+        { "id": "L3", "label": "Rede holográfica", "desc": "endereço angular θ derivado da chave pública (SHA-256); roteamento por distância angular circular; estimativa de saltos ~θ_M.", "marker": "[REAL]", "x": 0.54, "y": 0.14 },
+        { "id": "L4", "label": "Segurança ontológica", "desc": "shares Ψ (sinais) / Θ (magnitudes quantizadas); integridade por SHA-256 — adulteração é rejeitada na recombinação.", "marker": "[REAL]", "x": 0.76, "y": 0.14 },
+        { "id": "L5", "label": "Prova de Fase", "desc": "fase determinística (α²_work, θ, Fexp) de uma luz-semente; bloco válido quando a fase cai na janela β/dificuldade em torno da fase anterior.", "marker": "[REAL]", "x": 0.44, "y": 0.50 }
+      ]
+    },
+    {
+      "name": "Consenso por quórum (L5b)",
+      "kind": "state",
+      "components": [
+        { "id": "PV", "label": "PhaseValidator ×N", "desc": "cada validador RECOMPUTA independentemente a tripla de fase da luz-semente (tolerância 1e-9) e checa a janela β/dificuldade. MIN_VALIDATORS=3.", "marker": "[REAL]", "x": 0.16, "y": 0.82 },
+        { "id": "Q", "label": "Quórum ≥67%", "desc": "bloco entra só quando a fração de votos SIM atinge 0,67. Um validador bizantino não forja bloco nem veta bloco honesto.", "marker": "[REAL]", "x": 0.46, "y": 0.82 },
+        { "id": "BF", "label": "Bloco de fase forjada", "desc": "fase declarada ≠ recomputada da semente → cada validador honesto vota NÃO → rejeitado por construção (controle negativo).", "marker": "[DEFENSE]", "x": 0.76, "y": 0.82 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "L1", "to": "L2" }, { "from": "L2", "to": "L3" },
+    { "from": "L3", "to": "L4" }, { "from": "L4", "to": "L5" },
+    { "from": "PV", "to": "Q" }
+  ],
+  "constants": [
+    { "symbol": "janela de consenso", "value": "β / dificuldade (β = α·√e em runtime)", "note": "A permanência modular define a janela de fase; nunca literal em código." },
+    { "symbol": "θ_M (salto)", "value": "arcsin(√β) ≈ 6,30°", "note": "Distância angular de um salto na rede holográfica." }
+  ]
+}

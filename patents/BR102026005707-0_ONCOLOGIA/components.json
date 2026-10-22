@@ -1,0 +1,35 @@
+{
+  "patent_id": "BR102026005707-0",
+  "title": "Oncologia — Processamento de Sinal de Coerência (lógica de modelo)",
+  "source": "Relatório descritivo; APENAS processamento de sinal em séries sintéticas; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). [MEDICAL] TRAVA MÁXIMA: apenas processamento de sinal em séries SINTÉTICAS. NÃO é diagnóstico, NÃO é tratamento, NÃO há dado de paciente, dose ou protocolo. Simulação não valida física nem eficácia clínica.",
+  "groups": [
+    {
+      "name": "Estimadores de coerência C_N (séries sintéticas)",
+      "kind": "block",
+      "components": [
+        { "id": "SPEC", "label": "C_N espectral (Welch/Hann)", "desc": "Coerência espectral média entre séries sintéticas (eq.3).", "marker": "[SIM]", "x": 0.10, "y": 0.18 },
+        { "id": "SYNC", "label": "C_N sincronia (Hilbert/PLV)", "desc": "Phase-locking value via transformada de Hilbert (eq.4).", "marker": "[SIM]", "x": 0.38, "y": 0.18 },
+        { "id": "INFO", "label": "C_N informação mútua", "desc": "Informação mútua normalizada por histogramas (eq.5).", "marker": "[SIM]", "x": 0.66, "y": 0.18 },
+        { "id": "COMP", "label": "Índice composto", "desc": "Média dos três estimadores (eq.6); separa séries coerentes de incoerentes.", "marker": "[SIM]", "x": 0.90, "y": 0.18 }
+      ]
+    },
+    {
+      "name": "Classificação, otimização e auditoria",
+      "kind": "flow-node",
+      "components": [
+        { "id": "TOPO", "label": "Classificação topológica", "desc": "GRACE / FRONTIER / VACUUM com C_crit sintético; curva ROC e índice de Youden.", "marker": "[SIM]", "x": 0.14, "y": 0.60 },
+        { "id": "BO", "label": "Otimização Bayesiana", "desc": "GP + Expected Improvement em ΔC_N(ω) sintético; parada σ<β, ≤15 iterações.", "marker": "[SIM]", "x": 0.44, "y": 0.60 },
+        { "id": "GATE", "label": "Porta lógica + cadeia de hash", "desc": "Porta AND/limiar de decisão + cadeia de hash 256 bits encadeada (auditoria; sem semântica clínica).", "marker": "[SIM]", "x": 0.74, "y": 0.60 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "SPEC", "to": "COMP" }, { "from": "SYNC", "to": "COMP" }, { "from": "INFO", "to": "COMP" },
+    { "from": "TOPO", "to": "BO" }, { "from": "BO", "to": "GATE" }
+  ],
+  "constants": [
+    { "symbol": "faixa FRONTIER", "value": "2·β_TGL ≈ 0,024 (β = α·√e em runtime)", "note": "Largura da faixa de fronteira na classificação topológica; nunca literal." },
+    { "symbol": "escopo", "value": "séries SINTÉTICAS; sem clínica", "note": "physical_verdict_allowed=false — nada aqui é diagnóstico, tratamento ou dado de paciente." }
+  ]
+}

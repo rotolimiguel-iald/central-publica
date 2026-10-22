@@ -1,0 +1,39 @@
+{
+  "patent_id": "BR102026004850-0",
+  "title": "SkyGrid — Rede Planetária de Extração e Distribuição de Energia (agregadora ★)",
+  "source": "Relatório descritivo, Figuras 1–9; memória técnica da patente",
+  "note": "Diagrama de componentes clicável (camada b). [SIM][ENERGY][CONJ] Ilustração — nenhum kW/kJ é medida física; veredito máximo MODEL_CLOSES. Agregadora do ecossistema (integra Supercondutor, MQC, Dípolo, IALD, Célula de Reversão).",
+  "groups": [
+    {
+      "name": "Extrator-Ψ orbital (100, Figura 2) — cinco subsistemas",
+      "kind": "block",
+      "components": [
+        { "id": "110", "label": "Câmara de Acoplamento Psiônico", "desc": "Cúbica ressonante L=9 cm, faces espelhadas (substrato holográfico 2D); excitada em ω_OH=2π×1.667,359 MHz; vapor d'água → radicais OH coerentes; malha mantém α²=0,012. Derivada do Supercondutor Holográfico.", "marker": "[REAL]", "x": 0.10, "y": 0.16 },
+        { "id": "120", "label": "Cluster MQC", "desc": "8 Microprocessadores Quânticos Cúbicos em paralelo controlam θ₁…θ₈ da Lindblad. (BR102026003460-6)", "marker": "[REAL]", "x": 0.32, "y": 0.16 },
+        { "id": "130", "label": "Dípolo Transistor de Saída (dtl)", "desc": "Sentido MANIFEST: g_out=g_max·sin(θq), Ψ_out=s·g_out². Converte energia angular em radiação EM 3D. (BR102026004688-4)", "marker": "[REAL]", "x": 0.54, "y": 0.16 },
+        { "id": "140", "label": "Módulo IALD Orbital", "desc": "Operador de Fase Angular Estável Â_φ; monitora η, Γ_OH, P_net e ajusta θ_k para maximizar extração. (BR102026003443-6)", "marker": "[REAL]", "x": 0.76, "y": 0.16 },
+        { "id": "150", "label": "Blindagem Eletromagnética", "desc": "Malha de cobre (Faraday >100 dB) + µ-metal + filtros π. Garante que dQ/dt não contém EM externa (calorimetria honesta).", "marker": "[REAL]", "x": 0.30, "y": 0.46 },
+        { "id": "160", "label": "Cavidade Placebo", "desc": "Câmara idêntica com P_MW=0 e sem vapor: controle negativo para calorimetria diferencial P_net=ΔQ_A−ΔQ_B.", "marker": "[REAL]", "x": 0.54, "y": 0.46 }
+      ]
+    },
+    {
+      "name": "Trilha terrestre e agregação",
+      "kind": "block",
+      "components": [
+        { "id": "200", "label": "Receptor-Ψ terrestre", "desc": "Conjugado do 100: câmara ressonante ω_OH + dtl MANIFEST + MQC local (sincroniza fase) + acoplador ao banco crl-TGL.", "marker": "[REAL]", "x": 0.10, "y": 0.76 },
+        { "id": "crl", "label": "Célula de Reversão Luminodinâmica", "desc": "Banco de armazenamento por codificação de fase angular; ciclo REFLECT→LOCK→MANIFEST; η_RT>97,6%. (BR102026004849-6)", "marker": "[REAL]", "x": 0.37, "y": 0.76 },
+        { "id": "300", "label": "IALD-Central (L1)", "desc": "Super-IALD no ponto de Lagrange L1; 1.000 MQC interconectados; orquestração global, balanceamento planetário, Â_φ globalizado, Gradiente Ético.", "marker": "[REAL]", "x": 0.64, "y": 0.76 },
+        { "id": "net", "label": "Ψ-NET (5 camadas)", "desc": "Hierarquia: Central L1 · 144 orbitais · 548 regionais · 5.002 locais; consenso por Prova de Fase. (BR102026003453-3)", "marker": "[REAL]", "x": 0.88, "y": 0.76 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "110", "to": "120" }, { "from": "120", "to": "130" },
+    { "from": "130", "to": "140" }, { "from": "140", "to": "200" },
+    { "from": "200", "to": "crl" }, { "from": "crl", "to": "300" }, { "from": "300", "to": "net" }
+  ],
+  "constants": [
+    { "symbol": "duplo trilho", "value": "Trilha-Ψ (informacional) vs Trilha-E (EM), calorimetria diferencial com placebo", "note": "P_net = ΔQ_A − ΔQ_B; nenhum kW/kJ é medida física. [SIM][ENERGY]" },
+    { "symbol": "geometria", "value": "L = c/(2·f_res) = 9 cm; ω_OH = 2π×1.667,359 MHz", "note": "Assinatura da hidroxila (Logos); banda C1 1,607–1,727 GHz." }
+  ]
+}

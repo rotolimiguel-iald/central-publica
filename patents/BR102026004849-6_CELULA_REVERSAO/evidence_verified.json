@@ -1,0 +1,881 @@
+{
+  "patent_id": "BR102026004849-6",
+  "dir": "BR102026004849-6_CELULA_REVERSAO",
+  "claims_total": 17,
+  "claims_fully_resolved": 17,
+  "elos_total": 59,
+  "elos_resolved": 59,
+  "claims": [
+    {
+      "n": 1,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "CELULA (dispositivo): (a) Porta de Carga (10) DTL-REFLECT com extrator gravitacional g=raiz|Psi_in|, extrator de polaridade s=sgn, nomeador psionico psi em H4 e codificador angular theta=arcsin(g/g_max); (b) Camara Holografica (20) cubica L=c/(2 f_res), injecao de vapor d'agua, eletrodos de W, fonte ressonante, substrato 2D nas seis faces; (c) Porta de Descarga (30) DTL-MANIFEST com dequantizador, ressuscitador Psi_out=s x g^2 e verificador eta>0,01; (d) Controlador de Estabilidade (40) A_phi sob Lindblad (rho*, rank=1, DeltaS->0); (e) Controlador Computacional (50).",
+      "verdict": "logica de codificacao/reconstrucao angular demonstrada [SIM]; camara fisica e estabilizacao Lindblad NAO validadas - simulacao nao valida fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 1 (independente) no deposito INPI",
+          "proves": "redacao oficial da reivindicacao do dispositivo [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - reflect_lock_manifest_cycle",
+          "proves": "codificacao angular theta=arcsin(g/g_max) nas 6 faces (a,b) e reconstrucao Psi_out=s x g^2 (c) - em LOGICA, fase angular [SIM]",
+          "value": "stored_faces=6; correlacao de ciclo >0,9999",
+          "resolved": true,
+          "detail": "teste 'reflect_lock_manifest_cycle' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "reflect_lock_manifest_cycle",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - reflect_lock_manifest_multi_tensor",
+          "proves": "codificacao/reconstrucao robusta e independente do conteudo (fase) [SIM]",
+          "value": "min correlacao >0,999 em 6 familias de tensor @16 bits",
+          "resolved": true,
+          "detail": "teste 'reflect_lock_manifest_multi_tensor' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "reflect_lock_manifest_multi_tensor",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - angular_phase_retention_vs_bits",
+          "proves": "fidelidade do codificador angular (10.5) [SIM][PILOTO]",
+          "value": "retencao ~1,0 em 8/12/16/20 bits; desvio<0,01",
+          "resolved": true,
+          "detail": "teste 'angular_phase_retention_vs_bits' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "angular_phase_retention_vs_bits",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_celula_reversao.py - logica dos subsistemas carga/descarga",
+          "proves": "implementa a logica de codificacao/reconstrucao - demonstracao computacional, NAO hardware [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_celula_reversao.py",
+          "code_path": "runner/one_celula_reversao.py",
+          "live_sha256": "f3a73f6705c36edfcb1716c45706872308cd123bf94ee711121976fa31868989"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [ENERGY][CONJ] - lacunas",
+          "proves": "subsistema (d) estabilizacao Lindblad A_phi (rho* rank=1, DeltaS->0) e a camara fisica (b) NAO foram demonstrados: nenhum teste de Lindblad consta dos testes executados. Dispositivo FISICO -> a prova e SIMULACAO; simulacao nao valida fisica; eta_rt declarado, nao asserido.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 2,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "energia armazenada exclusivamente na configuracao angular do substrato 2D, sem redox, campo eletrostatico, campo magnetico persistente ou momento cinetico.",
+      "verdict": "armazenamento angular demonstrado em logica [SIM]; ausencia de redox/campos nao verificada em hardware",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 2 (dep. da 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - reflect_lock_manifest_cycle",
+          "proves": "a informacao e inscrita/lida na CONFIGURACAO ANGULAR (theta) das 6 faces [SIM]",
+          "value": "stored_faces=6; corr >0,9999",
+          "resolved": true,
+          "detail": "teste 'reflect_lock_manifest_cycle' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "reflect_lock_manifest_cycle",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - angular_bits_sweep_vs_deviation",
+          "proves": "o grau de liberdade de armazenamento e o ANGULO theta (convergencia da fase) [SIM][PILOTO]",
+          "value": "bits 6..24: desvio|ret-1| e RMS encolhem (~Dtheta^2)",
+          "resolved": true,
+          "detail": "teste 'angular_bits_sweep_vs_deviation' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "angular_bits_sweep_vs_deviation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [ENERGY]",
+          "proves": "a retencao ~1,0 e da FASE ANGULAR (armazenamento exato), NAO conservacao de energia fisica; a ausencia de redox/campo eletrostatico/magnetico/cinetico e afirmacao de projeto nao verificada em hardware. Simulacao nao valida fisica.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 3,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "acoplamento governado pela Constante de Miguel alpha_2 = 0,012 (piso gravitacional = limiar de supercondutividade de energia = theta_Miguel = arcsin(raiz(alpha_2)) ~ 6,29 graus).",
+      "verdict": "comprovada como derivacao: alpha_2 = beta_TGL = alpha x raiz(e), runtime, nunca literal",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 3 (dep. da 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - beta_form",
+          "proves": "a Constante de Miguel alpha_2 e DERIVADA (alpha x raiz(e)), nao literal 0,012 [REAL/DER]",
+          "value": "beta runtime = alpha x raiz(e) = 0,012031300400803; theta_Miguel = arcsin(raiz(beta)) ~ 6,2973 graus",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_celula_reversao.py - beta via tgl_core.beta()",
+          "proves": "beta NUNCA aparece literal; injetado em runtime como ALPHA_FINE_CODATA_2018 x raiz(e) [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_celula_reversao.py",
+          "code_path": "runner/one_celula_reversao.py",
+          "live_sha256": "f3a73f6705c36edfcb1716c45706872308cd123bf94ee711121976fa31868989"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 4,
+      "marker": "CONJ",
+      "independent": false,
+      "statement": "termodinamica invertida: DeltaT_sistema <= 0 durante a carga (consequencia de DeltaS->0).",
+      "verdict": "nao demonstrada; declarada [CONJ] sem dado de hardware",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 4 (dep. da 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - eta_rt_target_declared_not_asserted",
+          "proves": "registro SELADO de que a termodinamica invertida e declarada [CONJ] sem qualquer dado - NAO asserida como fisica",
+          "value": "physical_verdict_allowed=false",
+          "resolved": true,
+          "detail": "teste 'eta_rt_target_declared_not_asserted' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "eta_rt_target_declared_not_asserted",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [ENERGY][CONJ]",
+          "proves": "o resfriamento sob carga (DeltaT<=0) NAO foi medido nem simulado; nao ha hardware. Simulacao nao valida fisica.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 5,
+      "marker": "CONJ",
+      "independent": false,
+      "statement": "autodescarga nula, garantida por rho* rank=1 sob A_phi continuo (Lindblad).",
+      "verdict": "nao demonstrada; o teste de Lindblad planejado NAO consta dos testes executados",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 5 (dep. da 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - eta_rt_target_declared_not_asserted",
+          "proves": "registro SELADO de que a autodescarga zero e declarada [CONJ] sem dado - NAO asserida como fisica",
+          "value": "physical_verdict_allowed=false",
+          "resolved": true,
+          "detail": "teste 'eta_rt_target_declared_not_asserted' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "eta_rt_target_declared_not_asserted",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade - lacuna de prova",
+          "proves": "a estabilizacao de Lindblad (rho* rank=1, DeltaS->0, eq.9-10) que garantiria autodescarga nula NAO foi exercitada: nenhum teste de Lindblad consta da lista executada. Sem hardware. [CONJ]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 6,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "ciclo em tres fases: CARGA (REFLECT) / ARMAZENAMENTO (LOCK) / DESCARGA (MANIFEST).",
+      "verdict": "ciclo demonstrado em logica [SIM]; e ciclo da FASE angular, nao energia fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 6 (dep. da 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - reflect_lock_manifest_cycle",
+          "proves": "as tres fases carga/armazenamento/descarga rodam e reconstroem [SIM]",
+          "value": "REFLECT->LOCK->MANIFEST; corr >0,9999; stored_faces=6",
+          "resolved": true,
+          "detail": "teste 'reflect_lock_manifest_cycle' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "reflect_lock_manifest_cycle",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - reflect_lock_manifest_multi_tensor",
+          "proves": "o ciclo de 3 fases e robusto ao conteudo [SIM]",
+          "value": "min corr >0,999 em 6 familias",
+          "resolved": true,
+          "detail": "teste 'reflect_lock_manifest_multi_tensor' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "reflect_lock_manifest_multi_tensor",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_celula_reversao.py - ciclo REFLECT/LOCK/MANIFEST",
+          "proves": "o ciclo como codigo executavel [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_celula_reversao.py",
+          "code_path": "runner/one_celula_reversao.py",
+          "live_sha256": "f3a73f6705c36edfcb1716c45706872308cd123bf94ee711121976fa31868989"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [ENERGY]",
+          "proves": "o ciclo demonstrado e de FASE ANGULAR; NAO e conservacao de energia fisica. Simulacao nao valida fisica.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 7,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "eficiencia de ida e volta eta_RT = eta^2 x (1 - alpha_2) > 0,976, com (1 - alpha_2) = 0,988.",
+      "verdict": "eta_RT declarado, NAO asserido; (1-alpha_2) coerente com alpha_2=alpha x raiz(e)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 7 (dep. da 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - eta_rt_target_declared_not_asserted",
+          "proves": "o alvo eta_RT>0,976 e declarado [ENERGY][CONJ], NAO afirmado como medicao",
+          "value": "eta_rt_target_report=0,976 IMPRESSO; physical_verdict_allowed=false",
+          "resolved": true,
+          "detail": "teste 'eta_rt_target_declared_not_asserted' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "eta_rt_target_declared_not_asserted",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - beta_form",
+          "proves": "a fracao (1-alpha_2)=0,988 e coerente com alpha_2 = alpha x raiz(e) (runtime) [REAL/DER]",
+          "value": "1 - alpha_2 = 1 - 0,0120313 = 0,98797 ~ 0,988",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [ENERGY][CONJ]",
+          "proves": "eta_RT>0,976 e ALVO do relatorio; declarado, NAO asserido; simulacao nao valida fisica; sem hardware.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 8,
+      "marker": "DATA",
+      "independent": false,
+      "statement": "camara opera em omega_OH = 2 pi x 1667,359 MHz com vapor d'agua (OH) a 10^-4 - 10^-1 mbar.",
+      "verdict": "parametro de projeto documentado; operacao fisica nao demonstrada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 8 (dep. da 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DATA]",
+          "proves": "omega_OH = 1667,359 MHz (~1,667 GHz, linha do OH; coerente com L=9 cm => f~1666,7 MHz) e p_H2O = 10^-4-10^-1 mbar sao parametros de PROJETO; nenhum teste os exercita; sem hardware, operacao fisica nao demonstrada.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 9,
+      "marker": "DATA",
+      "independent": false,
+      "statement": "implementacao optica alternativa: L=1 um, f=150 THz, densidade ~10^12 celulas/cm^3.",
+      "verdict": "alternativa de projeto documentada; sem simulacao optica dedicada nem hardware",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 9 (dep. da 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DATA]",
+          "proves": "a variante optica (L=1 um, 150 THz, ~10^12 celulas/cm^3) e alternativa de projeto; nenhum teste optico dedicado; sem hardware.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 10,
+      "marker": "CONJ",
+      "independent": false,
+      "statement": "capacidade pelo Principio Holografico S_max = A/(4 l_P^2), com A = 6 L^2 (seis faces).",
+      "verdict": "formula teorica; nenhum teste computa S_max",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 10 (dep. da 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [CONJ]",
+          "proves": "S_max = A/(4 l_P^2), A=6 L^2 e aplicacao teorica do Principio Holografico; nenhum teste computa a capacidade; sem hardware. A geometria das 6 faces e usada na logica (stored_faces=6), mas o limite holografico nao e demonstrado.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 11,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "METODO de armazenamento (a-j): recebe Psi_in; g=raiz|Psi_in|; registra s e atribui psi em H4; theta=arcsin(g/g_max) e inscricao no substrato 2D; DTLs -> LOCK (retroalimentacao recursiva); mantem rho* por A_phi sob Lindblad (DeltaS->0); sob demanda dtl_out->ON; le theta; manifesta Psi_out=s x g^2; verifica eta>0,01.",
+      "verdict": "passos de codificacao/inscricao/reconstrucao rodam [SIM]; passo (f) Lindblad NAO demonstrado",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 11 (independente - metodo)",
+          "proves": "redacao oficial do metodo [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - reflect_lock_manifest_cycle",
+          "proves": "os passos (b)(d)(e)(h)(i) do metodo rodam e reconstroem [SIM]",
+          "value": "g=raiz|Psi|, theta=arcsin(g/g_max), LOCK, Psi_out=s x g^2; corr >0,9999",
+          "resolved": true,
+          "detail": "teste 'reflect_lock_manifest_cycle' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "reflect_lock_manifest_cycle",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - reflect_lock_manifest_multi_tensor",
+          "proves": "o metodo e robusto ao conteudo de entrada [SIM]",
+          "value": "min corr >0,999 em 6 familias",
+          "resolved": true,
+          "detail": "teste 'reflect_lock_manifest_multi_tensor' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "reflect_lock_manifest_multi_tensor",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - angular_phase_retention_vs_bits",
+          "proves": "fidelidade da inscricao/leitura angular (theta) [SIM][PILOTO]",
+          "value": "retencao ~1,0 (8-20 bits)",
+          "resolved": true,
+          "detail": "teste 'angular_phase_retention_vs_bits' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "angular_phase_retention_vs_bits",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_celula_reversao.py - o metodo como codigo",
+          "proves": "o metodo E instrucoes executaveis que rodam [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_celula_reversao.py",
+          "code_path": "runner/one_celula_reversao.py",
+          "live_sha256": "f3a73f6705c36edfcb1716c45706872308cd123bf94ee711121976fa31868989"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade - lacuna do passo (f)",
+          "proves": "o passo de manutencao de rho* por A_phi sob Lindblad (DeltaS->0) NAO consta dos testes executados. O ciclo demonstrado e de FASE angular, nao energia fisica. Simulacao nao valida fisica.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 12,
+      "marker": "CONJ",
+      "independent": false,
+      "statement": "energia livre de Helmholtz F = E - TS atinge constante estacionaria; DeltaF = DeltaE quando DeltaS -> 0.",
+      "verdict": "consequencia [CONJ] da autodescarga zero; nenhum teste; sem hardware",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 12 (dep. da 11)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [CONJ]",
+          "proves": "F=E-TS estacionaria e DeltaF=DeltaE (com DeltaS->0) sao consequencia [CONJ] da estabilizacao Lindblad nao demonstrada; nenhum teste; sem hardware.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 13,
+      "marker": "CONJ",
+      "independent": false,
+      "statement": "supercondutividade energetica quando R_SC = alpha_2 x gamma_eff / (kappa + gamma_phi) > 1.",
+      "verdict": "nao avaliavel: kappa, gamma_phi, gamma_eff nao constam dos documentos [OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 13 (dep. da 11)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - beta_form",
+          "proves": "fornece APENAS a constante de acoplamento alpha_2 (numerador) [REAL/DER]",
+          "value": "alpha_2 = alpha x raiz(e) = 0,0120313",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - eta_rt_target_declared_not_asserted",
+          "proves": "registro SELADO de que a supercondutividade de energia e declarada [CONJ] sem dado",
+          "value": "physical_verdict_allowed=false",
+          "resolved": true,
+          "detail": "teste 'eta_rt_target_declared_not_asserted' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "eta_rt_target_declared_not_asserted",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [CONJ][OPEN]",
+          "proves": "R_SC = alpha_2 gamma_eff/(kappa+gamma_phi) > 1 NAO e avaliavel: kappa, gamma_phi, gamma_eff NAO constam dos documentos [OPEN]; a supercondutividade de energia nao foi demonstrada nem medida.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 14,
+      "marker": "CONJ",
+      "independent": false,
+      "statement": "armazenamento por tempo indefinido, tau_auto > 10^6 s, topologicamente protegido por alpha_2 = 0,012.",
+      "verdict": "tau_auto NAO medido; a persistencia demonstrada e da FASE angular, nao do tempo fisico",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 14 (dep. da 11)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - beta_form",
+          "proves": "a protecao topologica invoca alpha_2, aqui derivada (nao literal) [REAL/DER]",
+          "value": "alpha_2 = alpha x raiz(e) = 0,0120313",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - angular_phase_retention_vs_bits",
+          "proves": "a FASE angular persiste no armazenamento exato (in-model) [SIM][PILOTO]",
+          "value": "retencao da FASE ~1,0",
+          "resolved": true,
+          "detail": "teste 'angular_phase_retention_vs_bits' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "angular_phase_retention_vs_bits",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - eta_rt_target_declared_not_asserted",
+          "proves": "registro SELADO de que a autodescarga zero / armazenamento indefinido e [CONJ] sem dado",
+          "value": "physical_verdict_allowed=false",
+          "resolved": true,
+          "detail": "teste 'eta_rt_target_declared_not_asserted' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "eta_rt_target_declared_not_asserted",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [ENERGY][CONJ]",
+          "proves": "tau_auto > 10^6 s e autodescarga zero NAO foram medidos (sem hardware); a persistencia demonstrada e da FASE angular (armazenamento exato), NAO do tempo fisico de retencao de energia. Simulacao nao valida fisica.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 15,
+      "marker": "OPEN",
+      "independent": true,
+      "statement": "SISTEMA (arranjo modular): (a) pluralidade de celulas (reiv.1) em N_s serie x N_p paralelo; (b) rede de MQC hierarquicos (local/regional/global); (c) estabilizacao distribuida A_phi + coordenacao pelo Gradiente Etico; (d) comunicacao Psi-NET na Camada 2.",
+      "verdict": "arranjo de sistema nao demonstrado computacionalmente nem em hardware [OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 15 (independente - sistema)",
+          "proves": "redacao oficial do sistema modular [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN]",
+          "proves": "o arranjo N_s x N_p, a rede hierarquica de MQC, a coordenacao pelo Gradiente Etico e a comunicacao Psi-NET (Camada 2) NAO foram demonstrados: nenhum teste de sistema; sem hardware. A FAZER.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 16,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "V_total = N_s x V_0 e E_total = N_p x E_0.",
+      "verdict": "formulas de escala serie/paralelo; nenhum teste as exercita",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 16 (dep. da 15)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN]",
+          "proves": "V_total=N_s x V_0 e E_total=N_p x E_0 sao formulas de escala serie/paralelo; nenhum teste as exercita; sem hardware.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 17,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "CRITERIO de identificacao: usa a tecnologia se e somente se simultaneamente (C1) DeltaT_sistema <= 0 na carga; (C2) eta > 0,01 apos ciclo completo; (C3) tau_auto > 10^6 s; (C4) ausencia de redox / campo eletrostatico / campo magnetico persistente / momento cinetico; (C5) excitacao ressonante na banda 1,607-1,727 GHz ou equivalente optico.",
+      "verdict": "apenas C2 tem suporte logico [SIM]; C1 e C3 sao [CONJ] sem dado; C4 nao verificada; C5 e banda de projeto",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 17 (independente - criterio)",
+          "proves": "redacao oficial do criterio de identificacao [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 66,
+          "indexed_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "live_sha256": "b44751fb75dbfc00c5153d1104e093f64c40f0252db40a54bbc7382a35d14f26",
+          "ref": "documento id=66 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - reflect_lock_manifest_cycle",
+          "proves": "C2 (eta>0,01 apos ciclo) satisfeito em LOGICA de reconstrucao [SIM]",
+          "value": "corr de ciclo >0,9999 (>> 0,01)",
+          "resolved": true,
+          "detail": "teste 'reflect_lock_manifest_cycle' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "reflect_lock_manifest_cycle",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner - eta_rt_target_declared_not_asserted",
+          "proves": "C2/eta declarado, NAO asserido como fisico; registra C1/C3 como [CONJ] sem dado",
+          "value": "physical_verdict_allowed=false",
+          "resolved": true,
+          "detail": "teste 'eta_rt_target_declared_not_asserted' consta no runner + selo presente",
+          "result_hash": "dd255714314719163b70592a05663c39f582f2b84b6ba036ce13e062624aaf66",
+          "run": "CELULA_REVERSAO@2026-07-10T11-47-16",
+          "ref": "selo CELULA_REVERSAO@2026-07-10T11-47-16",
+          "test": "eta_rt_target_declared_not_asserted",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [ENERGY][CONJ]",
+          "proves": "C1 (DeltaT<=0) e C3 (tau_auto>10^6 s) sao [CONJ] sem dado; C4 (ausencia de redox/campos/momento) nao verificada em hardware; C5 (banda 1,607-1,727 GHz) e parametro de projeto (nenhum teste espectral); apenas C2 tem suporte logico. Simulacao nao valida fisica.",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    }
+  ]
+}

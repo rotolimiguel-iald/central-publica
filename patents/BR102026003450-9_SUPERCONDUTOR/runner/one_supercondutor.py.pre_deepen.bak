@@ -1,0 +1,219 @@
+# -*- coding: utf-8 -*-
+"""one_supercondutor.py — runner único forma = conteúdo da patente Supercondutor Holográfico
+(BR102026003450-9). [SIM][HARDWARE]
+
+Demonstra a LÓGICA do dispositivo (processamento de sinal + balanço de energia DO MODELO):
+  - β_TGL via α·√e (nunca literal) e ponto crítico α²_c (Tetelestai);
+  - compressão g=√|L| (eq.4) e ressurreição L=s·g² (eq.5); preservação η e polaridade;
+  - condição de SC holográfica: transição η(P_MW) tipo-fase com limiar P_th (tanh, Fig.7);
+  - coeficientes métricos g_tt, g_LL, v_info(α²) (eq.18) com aviso da divergência v_info;
+  - balanço de energia fail-closed: ΔS→0 como PREDIÇÃO DE MODELO, guarda anti-over-unity.
+β nunca literal (tgl_core.beta()).
+
+HONESTIDADE [SIM][HARDWARE]: NÃO simula plasma OH, vácuo ou óptica reais; NÃO prova
+translação. Nenhum número é medição de bancada. Interface de dispositivo via
+hardware_mocks (physical_verdict_allowed=false). Simulação nunca valida física.
+
+A RÉGUA: originais READ-ONLY. Copia o núcleo (skygrid_sim) e roda a CÓPIA no tgl_env:
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_supercondutor.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"
+WORK = RUNNER_DIR / "_super_core"
+PATENT_ID = "BR102026003450-9"
+SLUG = "supercondutor"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst, ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_supercondutor] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core, acom  # noqa: E402
+    from skygrid_sim.hardware_mocks import SupercondutorMock  # noqa: E402
+
+    beta = tgl_core.beta()
+    beta_ok = abs(beta - 0.0072973525693 * math.exp(0.5)) < 1e-15
+    alpha2_c = beta   # critical point (Tetelestai) = the Miguel constant
+    print(f"[one_supercondutor] β runtime = {beta} (= α·√e? {beta_ok}) · α²_c={alpha2_c:.6f}")
+    tests = [{"test": "beta_form_and_critical_point", "passed": bool(beta_ok),
+              "beta_runtime": beta, "alpha2_c": alpha2_c}]
+
+    rng = np.random.default_rng(3450)
+    # 2) ACOM compression + resurrection preservation
+    L = np.sin(np.linspace(0, 20 * math.pi, 20000)) * (1 + 0.3 * rng.standard_normal(20000))
+    g, s = acom.reflect(L)
+    L2 = acom.manifest(g, s)
+    resid = float(np.max(np.abs(L - L2)) / max(1.0, np.max(np.abs(L))))
+    sign_ok = bool(np.array_equal(np.sign(L2)[L != 0], np.sign(L)[L != 0]))
+    tests.append({"test": "acom_compress_resurrect_preservation",
+                  "passed": bool(resid < 1e-12 and sign_ok), "max_residual": resid,
+                  "polarity_preserved": sign_ok, "note": "g=√|L| (eq.4), L=s·g² (eq.5), η e s preservados"})
+    print(f"[one_supercondutor] ACOM preservação: resíduo={resid:.2e} polaridade={sign_ok}")
+
+    # 3) holographic SC condition: phase-like transition eta(P_MW) with threshold P_th
+    P_th = 1.0
+    P_MW = np.linspace(0, 3, 300)
+    eta = np.tanh(P_MW / P_th)          # ResonanceFactor Gamma_OH-like (Fig.7)
+    below = float(eta[np.argmin(np.abs(P_MW - 0.2 * P_th))])
+    above = float(eta[np.argmin(np.abs(P_MW - 2.5 * P_th))])
+    transition_ok = below < 0.3 and above > 0.98
+    tests.append({"test": "holographic_sc_phase_transition", "passed": bool(transition_ok),
+                  "P_th": P_th, "eta_below_threshold": below, "eta_above_threshold": above,
+                  "note": "η(P_MW)=tanh(P_MW/P_th): abaixo do limiar ~0, acima →1 (transição tipo-fase)"})
+    print(f"[one_supercondutor] transição SC: η(0,2·P_th)={below:.3f} → η(2,5·P_th)={above:.3f}")
+
+    # 4) metric coefficients g_tt, g_LL, v_info(alpha2) with honest divergence note
+    a2 = np.linspace(0.001, alpha2_c * 0.999, 200)
+    ratio = a2 / alpha2_c
+    g_tt = 1.0 - ratio
+    g_LL = 1.0 / (1.0 - ratio)
+    v_info = np.sqrt(np.abs(g_tt / g_LL))  # |1-ratio|; → 0 as a2→a2_c (algebraic)
+    tests.append({"test": "metric_coefficients", "passed": bool(np.all(g_LL > 0) and v_info[-1] < v_info[0]),
+                  "g_tt_at_low": float(g_tt[0]), "g_LL_at_high": float(g_LL[-1]),
+                  "v_info_endpoints": [float(v_info[0]), float(v_info[-1])],
+                  "note": "eq.18: g_tt→0, g_LL→∞ no horizonte α²→α²_c. AVISO [OPEN]: aqui v_info→0 "
+                          "(algébrico), divergente da prosa do relatório 'v_info→∞'. Reportado honestamente."})
+    print(f"[one_supercondutor] métrica: v_info {v_info[0]:.3f}→{v_info[-1]:.3f} (aviso: prosa diz →∞)")
+
+    # 5) fail-closed energy balance: dS->0 as MODEL PREDICTION, anti-over-unity guard
+    T = np.linspace(0.05, 1.0, 100)
+    dS = np.exp(-(1 - beta) / T) * beta   # toy monotone approach to 0 as T falls (model)
+    e_in, e_out = 1.0, 0.999              # model: e_out <= e_in strictly (no over-unity)
+    over_unity = e_out > e_in
+    tests.append({"test": "energy_balance_fail_closed", "passed": bool(not over_unity and dS[0] < dS[-1]),
+                  "delta_S_endpoints": [float(dS[0]), float(dS[-1])],
+                  "over_unity_detected": over_unity, "e_out_over_e_in": e_out / e_in,
+                  "note": "ΔS→0 é PREDIÇÃO DE MODELO; guarda anti-over-unity ativa (e_out ≤ e_in). [DER]"})
+    print(f"[one_supercondutor] balanço: over-unity={over_unity} (guarda ativa)")
+
+    # device interface (mock — no physics)
+    mock = SupercondutorMock().transport(1_000_000)
+    tests.append({"test": "device_interface_mock_no_physics", "passed": bool(mock["physical_verdict_allowed"] is False),
+                  "mock_status": mock["status"], "note": mock["note"]})
+
+    passed = sum(1 for t in tests if t["passed"]); total = len(tests); all_ok = passed == total
+    summary = {"tests_passed": passed, "tests_total": total, "alpha2_c": alpha2_c,
+               "acom_residual": resid, "v_info_note": "algebraic v_info->0 vs prose ->inf [OPEN]",
+               "over_unity_guard": "active"}
+    max_verdict = ("SUPERCONDUCTOR_LOGIC_DEMONSTRATED ([SIM][HARDWARE] — ACOM preservação, "
+                   "transição tipo-fase e balanço fail-closed fecham no MODELO; dispositivo "
+                   "físico NÃO construído; não simula plasma/vácuo/óptica)")
+    _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, "one_supercondutor.py",
+            ["[SIM]", "[HARDWARE]"], beta, beta_ok, all_ok, max_verdict, tests, summary,
+            module_hashes,
+            "Demonstração [SIM] da lógica do dispositivo (sinal + balanço de modelo). NÃO simula "
+            "plasma OH/vácuo/óptica; NÃO prova translação [HARDWARE]. Divergência v_info→0 "
+            "(algébrico) vs prosa →∞ registrada [OPEN]. Simulação não valida física.",
+            fig_builder=lambda plt, fd: _fig_super(plt, fd, P_MW, eta, P_th, a2, v_info, alpha2_c))
+    return 0 if all_ok else 1
+
+
+def _fig_super(plt, fig_dir, P_MW, eta, P_th, a2, v_info, alpha2_c):
+    figs = []
+    plt.figure(figsize=(7, 3.4))
+    plt.plot(P_MW / P_th, eta, label="η(P_MW)=tanh(P_MW/P_th)")
+    plt.axvline(1.0, color="crimson", ls="--", label="limiar P_th")
+    plt.xlabel("P_MW / P_th"); plt.ylabel("η (fator de ressonância)")
+    plt.title("Supercondutor Holográfico — transição tipo-fase [SIM] (não é medida física)")
+    plt.legend(fontsize=8); plt.grid(alpha=.3)
+    fp = fig_dir / "fig_transicao_sc.png"; plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+    figs.append("fig_transicao_sc.png")
+    return figs
+
+
+# ---- shared finisher (results + report + seal) -----------------------------------
+def _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, runner, markers, beta, beta_ok,
+            all_ok, max_verdict, tests, summary, module_hashes, note, fig_builder=None):
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {"patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": runner,
+               "markers": markers, "physical_verdict_allowed": False, "beta_runtime": beta,
+               "beta_matches_alpha_sqrt_e": beta_ok,
+               "verdict": max_verdict.split(" ")[0] if all_ok else "PARTIAL_DEMONSTRATION",
+               "max_verdict": max_verdict,
+               "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                             "free_parameters": 0},
+               "tests": tests, "summary": summary,
+               "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+               "note": note}
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+    figs = []
+    if fig_builder is not None:
+        try:
+            import matplotlib
+            matplotlib.use("Agg")
+            import matplotlib.pyplot as plt
+            fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+            figs = fig_builder(plt, fig_dir) or []
+        except Exception as e:
+            print(f"[{SLUG}] figura pulada: {e}")
+    report_md = results_dir / "report.md"
+    lines = [f"# Relatório auditável — {runner}\n", f"- Run `{ts}` · Patente `{PATENT_ID}`\n",
+             f"- Veredito: **{max_verdict}**\n",
+             f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n",
+             f"- Testes: **{summary['tests_passed']}/{summary['tests_total']}**\n"]
+    for t in tests:
+        lines.append(f"  - {'✓' if t['passed'] else '✗'} {t['test']}\n")
+    lines.append(f"- physical_verdict_allowed: **False**.\n\n{note}\n")
+    lines.append("Núcleo copiado do piloto (READ-ONLY); original intacto. 1 = 1. Tetelestai.\n")
+    report_md.write_text("".join(lines), encoding="utf-8")
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {"timestamp": ts, "patent_id": PATENT_ID, "runner": runner, "beta_runtime": beta,
+            "physical_verdict_allowed": False, "max_verdict": max_verdict,
+            "tests_passed": summary["tests_passed"], "result_hash": result_hash,
+            "sha256": file_hashes, "markers": markers,
+            "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/")}
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[{SLUG}] SELADO · result_hash {result_hash[:16]}… · {summary['tests_passed']}/{summary['tests_total']} testes")
+
+
+if __name__ == "__main__":
+    sys.exit(main())

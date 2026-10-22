@@ -1,0 +1,34 @@
+{
+  "patent_id": "BR102026004849-6",
+  "title": "Célula de Reversão Luminodinâmica — Armazenamento por Fase Angular",
+  "source": "Relatório descritivo; celula_reversao.py; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). [ENERGY][CONJ] TRAVA MÁXIMA: autodescarga zero, ciclabilidade infinita, η_RT>97,6%, termodinâmica invertida e supercondutividade de energia à temperatura ambiente são [CONJ] sem medição. A retenção demonstrada é da FASE ANGULAR, não conservação de energia. Não usar como especificação de produto.",
+  "groups": [
+    {
+      "name": "Portas e substrato (relatório)",
+      "kind": "block",
+      "components": [
+        { "id": "CH", "label": "Porta de Carga (REFLECT)", "desc": "Amplitude de energia L → fase angular θ=arcsin(g/gmax), g=√|L|, sinal s. Codifica na entrada.", "marker": "[REAL]", "x": 0.12, "y": 0.20 },
+        { "id": "LOCK", "label": "LOCK — 6 faces internas", "desc": "Armazena (s, θ_quantizado, g_max) no substrato holográfico das 6 faces. Controlador de fase Lindblad mantém a fase (no piloto: armazenamento exato).", "marker": "[REAL]", "x": 0.44, "y": 0.20 },
+        { "id": "DIS", "label": "Porta de Descarga (MANIFEST)", "desc": "L' = s·(g_max·sin θ)². Ressurreição da amplitude a partir da fase.", "marker": "[REAL]", "x": 0.76, "y": 0.20 }
+      ]
+    },
+    {
+      "name": "Afirmações do relatório (NÃO validadas — [ENERGY][CONJ])",
+      "kind": "state",
+      "components": [
+        { "id": "ZD", "label": "Autodescarga zero", "desc": "Afirmação do relatório; nenhuma medição de hardware. [CONJ]", "marker": "[CONJ]", "x": 0.10, "y": 0.62 },
+        { "id": "ETA", "label": "η_RT > 97,6%", "desc": "Eficiência round-trip alvo; impressa pelo runner, NUNCA afirmada como resultado físico. [ENERGY][CONJ]", "marker": "[ENERGY]", "x": 0.34, "y": 0.62 },
+        { "id": "TI", "label": "Termodinâmica invertida", "desc": "Resfria sob carga (ΔS→0); hipótese do relatório sem dado. [CONJ]", "marker": "[CONJ]", "x": 0.58, "y": 0.62 },
+        { "id": "SC", "label": "Supercondutividade de energia", "desc": "À temperatura ambiente; [CONJ] sem medição. Não é especificação de produto.", "marker": "[CONJ]", "x": 0.82, "y": 0.62 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "CH", "to": "LOCK" }, { "from": "LOCK", "to": "DIS" }
+  ],
+  "constants": [
+    { "symbol": "ciclo", "value": "REFLECT → LOCK → MANIFEST (fase angular)", "note": "Retenção ~1,0 é da FASE angular por armazenamento exato — NÃO conservação de energia física." },
+    { "symbol": "α₂ (Constante de Miguel)", "value": "β_TGL = α·√e ≈ 0,012031", "note": "Governa o ciclo; nunca literal em código." }
+  ]
+}

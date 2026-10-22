@@ -1,0 +1,115 @@
+{
+ "patent_id": "BR102026003456-8",
+ "slug": "fusao_frio",
+ "timestamp": "2026-07-15T21-35-46",
+ "runner": "one_fusao_frio.py",
+ "markers": [
+  "[ENERGY]",
+  "[SIM]",
+  "[CONJ]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "COLD_FUSION_MATH_DEMONSTRATED",
+ "max_verdict": "COLD_FUSION_MATH_DEMONSTRATED ([ENERGY][SIM][CONJ] — Régua TGL, T_c da linha OH, Landau-Ginzburg, colapso ACOM reversível e barreira como FUNÇÕES fecham; amplificação é TEÓRICA, não medida; SEM qualquer instrução operacional)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form_and_coupling_scaling",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_e_2rho0": 0.024062600801606285,
+   "note": "β=α·√e≈0,012031; α²_e=2β≈0,024 para ρ_Ψ=2ρ₀ (escalonamento puro)"
+  },
+  {
+   "test": "critical_temperature_from_OH_line",
+   "passed": true,
+   "T_c_K": 0.08002061131564829,
+   "T_c_mK": 80.0206113156483,
+   "nu_OH_GHz": 1.667359,
+   "note": "T_c = h·ν_OH/k_B a partir da linha OH — apenas fórmula (≈80 mK)"
+  },
+  {
+   "test": "tgl_ruler_formulas",
+   "passed": true,
+   "L_star_endpoints": [
+    58.77226547675138,
+    143.96206144543237
+   ],
+   "t_x_endpoints": [
+    166.23306985722766,
+    27.70551164287128
+   ],
+   "transition_boundary_rho": 1.0012531328320802,
+   "note": "L*(ρ)=√ρ/β e t_x(ρ)=1/(βρ) como fórmulas puras; fronteira de transição"
+  },
+  {
+   "test": "tgl_ruler_powerlaw_exponents",
+   "passed": true,
+   "exponent_L_star": 0.499999999999999,
+   "exponent_t_x": -1.0000000000000004,
+   "note": "expoentes de lei de potência: L*∝ρ^{+1/2}, t_x∝ρ^{-1} (fórmulas puras, α-livre na forma)"
+  },
+  {
+   "test": "landau_ginzburg_order_parameter",
+   "passed": true,
+   "s_below_Tc": 0.7071067811865476,
+   "s_above_Tc": 0.0,
+   "alpha_T_sign_flip": true,
+   "note": "f(ρ,T,s) Landau-Ginzburg: s≠0 abaixo de T_c, s=0 acima; α_T muda de sinal em T_c"
+  },
+  {
+   "test": "landau_free_energy_double_well",
+   "passed": true,
+   "critical_exponent_beta_MF": 0.5000000000000001,
+   "double_well_argmin": 0.707,
+   "s_star_theory": 0.7071067811865476,
+   "f_min": -0.1249999885995,
+   "f_min_theory": -0.125,
+   "note": "campo médio: β_MF=1/2; f(s)=α_T s²+½s⁴ tem mínimos s*=√(−α_T) e f_min=−α_T²/2"
+  },
+  {
+   "test": "acom_collapse_reversible",
+   "passed": true,
+   "max_residual": 2.170464178893045e-16,
+   "note": "|L⟩→(g,s)→L'=s·g² reversível até ~eps (eqs.11–13)"
+  },
+  {
+   "test": "barrier_amplification_function_theoretical",
+   "passed": true,
+   "amplification_at_dV0": 1.0,
+   "amplification_at_dV5": 148.4131591025766,
+   "note": "σ_TGL/σ₀=exp(ΔV_C/k_BT) como FUNÇÃO teórica (eqs.14–17). AMPLIFICAÇÃO TEÓRICA, NÃO MEDIDA. [CONJ]"
+  },
+  {
+   "test": "amplification_along_ruler_theoretical",
+   "passed": true,
+   "amp_min": 1.0620027390972255,
+   "amp_max": 1.4346759602274444,
+   "ln_amp_slope": 0.12031300400803147,
+   "kappa_beta": 0.12031300400803142,
+   "note": "σ_TGL/σ₀=exp(ΔV_C(ρ)/k_BT) com ΔV_C∝β·ρ — FUNÇÃO teórica ao longo da régua, monotônica, ln-linear com inclinação κ·β. AMPLIFICAÇÃO TEÓRICA, NÃO MEDIDA. [CONJ]"
+  }
+ ],
+ "summary": {
+  "tests_passed": 9,
+  "tests_total": 9,
+  "T_c_mK": 80.0206113156483,
+  "alpha2_e_2rho0": 0.024062600801606285,
+  "amplification": "theoretical_not_measured",
+  "transition_boundary_rho": 1.0012531328320802,
+  "ruler_exponent_L_star": 0.499999999999999,
+  "ruler_exponent_t_x": -1.0000000000000004,
+  "lg_critical_exponent_beta_MF": 0.5000000000000001,
+  "amplification_max_theoretical": 1.4346759602274444,
+  "amplification_ln_slope": 0.12031300400803147,
+  "operational_content": "NONE_by_design_ENERGY_trava"
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "[ENERGY] TRAVA MÁXIMA: só matemática abstrata + constantes CODATA. SEM parâmetros de criostato/MW, SEM manuseio de D₂O/deutério, SEM thresholds de nêutrons. Amplificação é teórica [CONJ], não medida. Nenhum dado experimental. Simulação não valida física."
+}

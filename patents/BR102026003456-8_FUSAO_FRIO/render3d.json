@@ -1,0 +1,475 @@
+{
+ "patent_id": "BR102026003456-8",
+ "title": "Fusao a Frio - Geometria Matematica (Landau-Ginzburg)",
+ "kind": "algorithm",
+ "note": "[ENERGY] APENAS a geometria matematica: transicao de fase em T_c=80 mK (Landau-Ginzburg), ressonancia OH, colapso ACOM. SEM parametro operacional, SEM D2O, SEM neutrons. Amplificacao e teorica [CONJ]. | PLANAR: algoritmo = plano; mesh generico -> base-plano(s) do mecanismo.",
+ "camera": {
+  "position": [
+   1.7,
+   1.2,
+   1.7
+  ]
+ },
+ "groups": [
+  {
+   "name": "transicao",
+   "color": "#ffd60a",
+   "label": "T_c (transicao)",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "fases",
+   "color": "#33aa55",
+   "label": "fases s(T)",
+   "count": 2,
+   "explodable": true
+  },
+  {
+   "name": "resonancia",
+   "color": "#3366cc",
+   "label": "ressonancia OH",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "acom",
+   "color": "#7ce7c8",
+   "label": "colapso ACOM",
+   "count": 1,
+   "explodable": true
+  }
+ ],
+ "nodes": [
+  {
+   "id": "Tc",
+   "label": "T_c ~= 80 mK",
+   "desc": "Temperatura critica T_c=h*nu_OH/k_B. Ponto de transicao da fase (Landau-Ginzburg).",
+   "shape": "sphere",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.15,
+   "color": "#ffd60a",
+   "group": "transicao",
+   "marker": "[ENERGY]",
+   "layer": "core",
+   "material": "emissive",
+   "texture": "spectral"
+  },
+  {
+   "id": "ordem-",
+   "label": "s(T)!=0 (T<T_c)",
+   "desc": "Minimo degenerado inferior s*=-sqrt(-alpha_T) (T<T_c): ancora o braco inferior da forquilha, parceiro simetrico de poco_sup.",
+   "shape": "sphere",
+   "position": [
+    -1,
+    -0.5,
+    0
+   ],
+   "size": 0.11,
+   "color": "#33aa55",
+   "group": "fases",
+   "marker": "[SIM]",
+   "layer": "io",
+   "material": "emissive",
+   "texture": "holo"
+  },
+  {
+   "id": "ordem+",
+   "label": "s(T)=0 (T>T_c)",
+   "desc": "Parametro de ordem nulo s=0 acima de T_c (fase desordenada): repousa SOBRE o eixo s=0 (y=0). alpha_T>0 para T>T_c.",
+   "shape": "sphere",
+   "position": [
+    0.9,
+    0,
+    0
+   ],
+   "size": 0.11,
+   "color": "#cc2222",
+   "group": "fases",
+   "marker": "[SIM]",
+   "layer": "io",
+   "material": "emissive",
+   "texture": "grid"
+  },
+  {
+   "id": "OH",
+   "label": "ressonancia OH nu=1,6673590 GHz",
+   "desc": "Linha da hidroxila; base da T_c. So a matematica - sem parametro operacional.",
+   "shape": "box",
+   "position": [
+    0,
+    0.9,
+    0
+   ],
+   "size": 0.1,
+   "color": "#3366cc",
+   "group": "resonancia",
+   "marker": "[ENERGY]",
+   "layer": "io",
+   "material": "emissive"
+  },
+  {
+   "id": "ACOM",
+   "label": "colapso ACOM |L>->s*g^2",
+   "desc": "Reversibilidade do colapso ontologico (eqs.11-13).",
+   "shape": "box",
+   "position": [
+    0,
+    -0.9,
+    0
+   ],
+   "size": 0.1,
+   "color": "#7ce7c8",
+   "group": "acom",
+   "marker": "[REAL]",
+   "layer": "io",
+   "material": "emissive"
+  }
+ ],
+ "edges": [
+  {
+   "from": "OH",
+   "to": "Tc"
+  },
+  {
+   "from": "Tc",
+   "to": "ordem-"
+  },
+  {
+   "from": "Tc",
+   "to": "ordem+"
+  },
+  {
+   "from": "Tc",
+   "to": "ACOM"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "T_c",
+   "value": "h*nu_OH/k_B ~= 80 mK",
+   "note": "so formula; constantes CODATA"
+  },
+  {
+   "symbol": "beta_TGL",
+   "value": "beta=alpha*sqrt(e) ~= 0,012031 (nunca literal)",
+   "note": "acoplamento; alpha2_e=2beta para rho_Psi=2rho_0"
+  },
+  {
+   "symbol": "beta_TGL_runtime",
+   "value": "0.012031300401",
+   "note": "alpha*sqrt(e) injetado em runtime (nunca literal)"
+  },
+  {
+   "symbol": "T_c_mK",
+   "value": "80.0206",
+   "note": "h*nu_OH/k_B computado nesta run (~80 mK)"
+  },
+  {
+   "symbol": "transition_rho",
+   "value": "1.0013",
+   "note": "fronteira L*.beta=1 (regua TGL, varredura rho)"
+  },
+  {
+   "symbol": "critical_exponent_beta_MF",
+   "value": "0.500000",
+   "note": "expoente critico campo medio ~1/2 (Landau-Ginzburg)"
+  },
+  {
+   "symbol": "amplification_max",
+   "value": "1.4347",
+   "note": "exp(dV_C/kT) teorica max ao longo da regua [CONJ], NAO medida"
+  },
+  {
+   "symbol": "ergodic_N_star",
+   "value": "256",
+   "note": "primeira potencia de 2 com ||M_N - P|| < beta (secao da media ergodica, amplificacao v168)"
+  },
+  {
+   "symbol": "light_theta_star",
+   "value": "0.01203200",
+   "note": "primeiro angulo em que fase do vetor e do tensor se separam alem de beta = 2 arcsin(beta/2) (interface da luz, amplificacao v206)"
+  }
+ ],
+ "schema": 2,
+ "layers": [
+  {
+   "id": "space",
+   "name": "Espaco de Hilbert / substrato computacional",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "io",
+   "name": "Entrada / saida",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "transform",
+   "name": "Transformacao",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo (raiz / estado)",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "meshes": [
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.85,
+   "texture": "phase",
+   "color": "#ffd166",
+   "marker": "[SIM]",
+   "id": "plano_base",
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.25,
+    1.25,
+    0.03
+   ],
+   "label": "plano do algoritmo",
+   "desc": "ALGORITMO E PLANO: a informacao escrita mora num plano. O mecanismo se desenha sobre esta superficie (nao e' um solido 3D)."
+  },
+  {
+   "id": "eixo_Tc",
+   "shape": "box",
+   "position": [
+    0,
+    0,
+    0.05
+   ],
+   "scale": [
+    0.02,
+    1,
+    0.02
+   ],
+   "size": 1,
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#ffd60a",
+   "material": "emissive",
+   "opacity": 0.9,
+   "texture": "spectral",
+   "layer": "space",
+   "marker": "[SIM]",
+   "label": "linha critica T_c",
+   "desc": "Linha vertical x=0: T=T_c, onde alpha_T=(T-T_c)/T_c troca de sinal (bifurcacao)."
+  },
+  {
+   "id": "eixo_T",
+   "shape": "box",
+   "position": [
+    0,
+    0,
+    0.045
+   ],
+   "scale": [
+    1.1,
+    0.015,
+    0.02
+   ],
+   "size": 1,
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#cc6666",
+   "material": "emissive",
+   "opacity": 0.6,
+   "texture": "grid",
+   "layer": "space",
+   "marker": "[SIM]",
+   "label": "eixo T/T_c (ramo s=0)",
+   "desc": "Eixo horizontal T/T_c; para T>T_c (x>0) e' o ramo de equilibrio s=0 (fase desordenada)."
+  },
+  {
+   "id": "forquilha_sup",
+   "shape": "box",
+   "position": [
+    -0.5,
+    0.25,
+    0.05
+   ],
+   "scale": [
+    0.559,
+    0.02,
+    0.02
+   ],
+   "size": 1,
+   "rotation": [
+    0,
+    0,
+    2.678
+   ],
+   "color": "#33aa55",
+   "material": "emissive",
+   "opacity": 0.9,
+   "texture": "spectral",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "label": "ramo ordenado s=+sqrt(-alpha_T)",
+   "desc": "Ramo superior da forquilha: s*=+sqrt(-alpha_T) emergindo para T<T_c."
+  },
+  {
+   "id": "forquilha_inf",
+   "shape": "box",
+   "position": [
+    -0.5,
+    -0.25,
+    0.05
+   ],
+   "scale": [
+    0.559,
+    0.02,
+    0.02
+   ],
+   "size": 1,
+   "rotation": [
+    0,
+    0,
+    -2.678
+   ],
+   "color": "#33aa55",
+   "material": "emissive",
+   "opacity": 0.9,
+   "texture": "spectral",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "label": "ramo ordenado s=-sqrt(-alpha_T)",
+   "desc": "Ramo inferior da forquilha: s*=-sqrt(-alpha_T) para T<T_c. Os dois ramos +/- sao os minimos degenerados do poco-duplo."
+  },
+  {
+   "id": "poco_sup",
+   "shape": "box",
+   "position": [
+    -1,
+    0.5,
+    0.06
+   ],
+   "scale": [
+    0.08,
+    0.08,
+    0.02
+   ],
+   "size": 1,
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#2f9e4f",
+   "material": "emissive",
+   "opacity": 0.95,
+   "texture": "holo",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "label": "minimo s*=+sqrt(-alpha_T)",
+   "desc": "Minimo degenerado superior do poco-duplo (f_min=-alpha_T^2/2)."
+  },
+  {
+   "id": "acom_fold_L",
+   "shape": "box",
+   "position": [
+    -0.225,
+    -0.9,
+    0.05
+   ],
+   "scale": [
+    0.27,
+    0.02,
+    0.02
+   ],
+   "size": 1,
+   "rotation": [
+    0,
+    0,
+    2.554
+   ],
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "opacity": 0.9,
+   "texture": "spectral",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "label": "dobra ACOM (braco esq.)",
+   "desc": "Braco esquerdo da parabola de dobra L'=s*g^2 (reflect g=sqrt|L|)."
+  },
+  {
+   "id": "acom_fold_R",
+   "shape": "box",
+   "position": [
+    0.225,
+    -0.9,
+    0.05
+   ],
+   "scale": [
+    0.27,
+    0.02,
+    0.02
+   ],
+   "size": 1,
+   "rotation": [
+    0,
+    0,
+    0.588
+   ],
+   "color": "#7ce7c8",
+   "material": "emissive",
+   "opacity": 0.9,
+   "texture": "spectral",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "label": "dobra ACOM (braco dir.)",
+   "desc": "Braco direito simetrico da parabola de dobra L'=s*g^2 (manifest)."
+  },
+  {
+   "id": "regua_tgl",
+   "shape": "box",
+   "position": [
+    0,
+    1.12,
+    0.045
+   ],
+   "scale": [
+    1.1,
+    0.03,
+    0.02
+   ],
+   "size": 1,
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#f4a259",
+   "material": "emissive",
+   "opacity": 0.8,
+   "texture": "grid",
+   "layer": "space",
+   "marker": "[SIM]",
+   "label": "Regua TGL (leis de potencia)",
+   "desc": "Escala graduada: L*(rho)=sqrt(rho)/beta (~rho^{+1/2}) e t_x(rho)=1/(beta*rho) (~rho^{-1}); fronteira L*.beta=1 em rho~1.0013."
+  }
+ ],
+ "generated_by": "one_fusao_frio.py (forma=conteudo)"
+}

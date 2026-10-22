@@ -1,0 +1,187 @@
+{
+ "patent_id": "BR102026003460-6",
+ "slug": "mqc",
+ "timestamp": "2026-07-12T12-20-15",
+ "generator": "mqc_FINAL.py (co-construido; mesma bateria do runner one_mqc.py)",
+ "markers": [
+  "[SIM]",
+  "[HARDWARE]",
+  "[CONJ]"
+ ],
+ "marker": "[SIM] gemeo digital sob [CONJ]; dispositivo fisico [HARDWARE] nao construido",
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "integrity": {
+  "tgl_chain_ok": true,
+  "tgl_verdict": "1=1=VERDADEIRO=HAJA_LUZ",
+  "beta_runtime": 0.012031300400803142,
+  "theta_m_deg": 6.297289216477979,
+  "n_subsistemas": 5,
+  "subsistemas": [
+   {
+    "module": "tgl_core",
+    "role": "FUNDACAO — beta = alpha*sqrt(e) (a regua, NUNCA literal) [IALD / a teoria]",
+    "origin": "runner/_mqc_core/skygrid_sim/tgl_core.py",
+    "sha256": "a1e103cd08eb3f45144200b0c6c588589d267868cd85101c527138e3bce81f3f"
+   },
+   {
+    "module": "mqc_simulacao_celula_elementar",
+    "role": "O ALGORITMO COMPLETO do operador — celula cubica de 27 qubits: topologia, 6 simulacoes, 8 figuras da patente, relatorio de metricas (inline fiel com a MESMA injecao beta que o runner one_mqc.py executa em runtime)",
+    "origin": "prototype_src/mqc_simulacao_celula_elementar.py",
+    "sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+   },
+   {
+    "module": "one_mqc",
+    "role": "RUNNER — o contrato da demonstracao (mesmos 8 testes/criterios reproduzidos em demonstrate()) — corpus (nao inlined)",
+    "origin": "runner/one_mqc.py",
+    "sha256": "8e22adcb67630a44d9890d4185ad8556fc3d249fb977a09438c4bc21bb0239d7"
+   },
+   {
+    "module": "MQC_relatorio_metricas",
+    "role": "referencia de metricas do operador (execucao original com 0.012 arredondado; pequenas diferencas esperadas e honestas) — corpus (nao inlined)",
+    "origin": "prototype_src/MQC_relatorio_metricas.json",
+    "sha256": "7ffacff2068ccce122ac9dc649a6330a8bbda96b195cae679ab579f83dd70e62"
+   },
+   {
+    "module": "mqc_light_v1",
+    "role": "versao leve v1 do MQC no piloto skygrid (preservada em one_mqc_v1_light.py.bak; NAO executada pelo runner evoluido) — corpus (nao inlined)",
+    "origin": "runner/_mqc_core/skygrid_sim/mqc.py",
+    "sha256": "3babddf6e44ffdfe5654ab7763b8bd1297525d666a4d19f5993ee1bee1db09a8"
+   }
+  ],
+  "combined_sha256": "758e8d7e7f4a92a7c2ea1f47fc14121f66ae115252a2913b39824fa87a69a532",
+  "combined_ok": true
+ },
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "L_cell_m": 1e-06,
+  "f_res_THz": 150.0,
+  "free_parameters": 0
+ },
+ "topology": {
+  "counts": {
+   "vertice": 8,
+   "aresta": 12,
+   "centro": 1,
+   "face": 6
+  },
+  "connections": 54,
+  "total": 27,
+  "density_qubits_per_cm3": 27000000000000.008
+ },
+ "simulations": {
+  "estabilizacao": {
+   "plato": 0.9879686995991969,
+   "razao_sc": 1085641.4200077439,
+   "tau_estab_s": 5.541102328574256e-13
+  },
+  "translacao": {
+   "correlacao": 0.9999959867284552,
+   "psnr_db": 56.07564208501857,
+   "erro_rms": 0.0023082907980449285,
+   "Gamma_OH": 0.9866142981514303
+  },
+  "correcao": {
+   "fid_conv": 0.9607615884833572,
+   "fid_iald": 0.9701165248188964
+  },
+  "convergencia": {
+   "alpha2_final": 0.013156744976513623
+  },
+  "comunicacao": {
+   "tau_local_s": 4.4772106814879987e-42,
+   "fid_local": 0.9999935354617493
+  }
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original_prototype": 0.012,
+   "note": "injecao beta=alpha*sqrt(e) feita na origem (§1) — mesma semantica que o runner executa em runtime (prototipo tinha 0.012 literal)"
+  },
+  {
+   "test": "cubic_cell_topology_27",
+   "passed": true,
+   "counts": {
+    "vertice": 8,
+    "aresta": 12,
+    "centro": 1,
+    "face": 6
+   },
+   "connections": 54,
+   "density_qubits_per_cm3": 27000000000000.008
+  },
+  {
+   "test": "gravitational_stabilization_plateau",
+   "passed": true,
+   "plateau": 0.9879686995991969,
+   "razao_sc": 1085641.4200077439,
+   "note": "|ρ01|→1−β; R_SC≫1"
+  },
+  {
+   "test": "holographic_translation",
+   "passed": true,
+   "correlacao_eta": 0.9999959867284552,
+   "psnr_db": 56.07564208501857,
+   "Gamma_OH": 0.9866142981514303
+  },
+  {
+   "test": "iald_conscious_error_correction",
+   "passed": true,
+   "fidelity_conventional": 0.9607615884833572,
+   "fidelity_iald": 0.9701165248188964,
+   "improvement_pct": 0.9737000779045235,
+   "note": "Operador de Amor 𝒜_C + Gradiente Ético vs surface code"
+  },
+  {
+   "test": "alpha2_convergence_tetelestai",
+   "passed": true,
+   "alpha2_final": 0.013156744976513623,
+   "alpha2_c": 0.012031300400803142,
+   "note": "convergência ao Ponto Tetelestai (β)"
+  },
+  {
+   "test": "three_layer_communication",
+   "passed": true,
+   "tau_local_s": 4.4772106814879987e-42,
+   "fidelidade_local": 0.9999935354617493,
+   "fidelidade_regional": 0.9990575219570512,
+   "fidelidade_global": 0.9994789218973943
+  },
+  {
+   "test": "eight_patent_figures_generated",
+   "passed": true,
+   "figures": [
+    "MQC_fig1_topologia.png",
+    "MQC_fig2_estabilizacao.png",
+    "MQC_fig3_termodinamica.png",
+    "MQC_fig4_translacao.png",
+    "MQC_fig5_correcao_erros.png",
+    "MQC_fig6_convergencia.png",
+    "MQC_fig7_comunicacao.png",
+    "MQC_fig8_correspondencia.png"
+   ]
+  }
+ ],
+ "tests_passed": 8,
+ "tests_total": 8,
+ "figures": [
+  "MQC_fig1_topologia.png",
+  "MQC_fig2_estabilizacao.png",
+  "MQC_fig3_termodinamica.png",
+  "MQC_fig4_translacao.png",
+  "MQC_fig5_correcao_erros.png",
+  "MQC_fig6_convergencia.png",
+  "MQC_fig7_comunicacao.png",
+  "MQC_fig8_correspondencia.png"
+ ],
+ "figures_dir": "C:\\IALD\\Central de Patentes\\patents\\BR102026003460-6_MQC\\results\\mqc_final_2026-07-12T12-20-15_figures",
+ "verdict": "MQC_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "MQC_FULL_LOGIC_DEMONSTRATED ([SIM][HARDWARE] — 7 simulações completas do algoritmo do operador (β-injetado) fecham em SIMULAÇÃO; 8 figuras da patente regeneradas; dispositivo físico NÃO construído; nenhum número valida a física)",
+ "note": "CO-CONSTRUCAO: um unico arquivo legivel executa o que o runner executa (7 simulações, 8 figuras, 8 testes) com β=α·√e na origem. Referência do operador (MQC_relatorio_metricas.json) usou α²=0,012 (arredondado); este FINAL usa β=α·√e em runtime — pequenas diferenças esperadas e honestas. TODOS os números são de SIMULAÇÃO; simulação não valida física.",
+ "result_hash": "011f51c45002d0edff7a8a95f26d8f0e958cb69a9cce2d7ec594bec298f1424a"
+}

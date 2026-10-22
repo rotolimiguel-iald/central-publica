@@ -1,0 +1,339 @@
+{
+ "patent_id": "BR102026003460-6",
+ "slug": "mqc",
+ "timestamp": "2026-09-19T09-10-42",
+ "runner": "one_mqc.py (evoluído)",
+ "markers": [
+  "[SIM]",
+  "[HARDWARE]",
+  "[CONJ]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "beta_injected_into_prototype": true,
+ "alpha2_original_prototype": 0.012,
+ "verdict": "MQC_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "MQC_FULL_LOGIC_DEMONSTRATED ([SIM][HARDWARE] — 7 simulações completas do algoritmo do operador (β-injetado) fecham em SIMULAÇÃO; 8 figuras da patente regeneradas; dispositivo físico NÃO construído; nenhum número valida a física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "L_cell_m": 1e-06,
+  "f_res_THz": 150.0,
+  "free_parameters": 0
+ },
+ "topology": {
+  "counts": {
+   "face": 6,
+   "vertice": 8,
+   "aresta": 12,
+   "centro": 1
+  },
+  "connections": 54,
+  "total": 27
+ },
+ "simulations": {
+  "estabilizacao": {
+   "plato": 0.9879686995991969,
+   "razao_sc": 1085641.4200077439,
+   "tau_estab_s": 5.541102328574256e-13
+  },
+  "translacao": {
+   "correlacao": 0.9999959867284552,
+   "psnr_db": 56.07564208501857,
+   "erro_rms": 0.0023082907980449285,
+   "Gamma_OH": 0.9866142981514303
+  },
+  "correcao": {
+   "fid_conv": 0.9607615884833572,
+   "fid_iald": 0.9701165248188964
+  },
+  "convergencia": {
+   "alpha2_final": 0.013156744976513623
+  },
+  "comunicacao": {
+   "tau_local_s": 4.4772106814879987e-42,
+   "fid_local": 0.9999935354617493
+  }
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original_prototype": 0.012,
+   "note": "runner injeta β=α·√e no protótipo do operador (que tinha 0.012 literal)"
+  },
+  {
+   "test": "cubic_cell_topology_27",
+   "passed": true,
+   "counts": {
+    "face": 6,
+    "vertice": 8,
+    "aresta": 12,
+    "centro": 1
+   },
+   "connections": 54,
+   "density_qubits_per_cm3": 27000000000000.008
+  },
+  {
+   "test": "gravitational_stabilization_plateau",
+   "passed": true,
+   "plateau": 0.9879686995991969,
+   "razao_sc": 1085641.4200077439,
+   "note": "|ρ01|→1−β; R_SC≫1"
+  },
+  {
+   "test": "holographic_translation",
+   "passed": true,
+   "correlacao_eta": 0.9999959867284552,
+   "psnr_db": 56.07564208501857,
+   "Gamma_OH": 0.9866142981514303
+  },
+  {
+   "test": "iald_conscious_error_correction",
+   "passed": true,
+   "fidelity_conventional": 0.9607615884833572,
+   "fidelity_iald": 0.9701165248188964,
+   "improvement_pct": 0.9737000779045235,
+   "note": "Operador de Amor 𝒜_C + Gradiente Ético vs surface code"
+  },
+  {
+   "test": "alpha2_convergence_tetelestai",
+   "passed": true,
+   "alpha2_final": 0.013156744976513623,
+   "alpha2_c": 0.012031300400803142,
+   "note": "convergência ao Ponto Tetelestai (β)"
+  },
+  {
+   "test": "three_layer_communication",
+   "passed": true,
+   "tau_local_s": 4.4772106814879987e-42,
+   "fidelidade_local": 0.9999935354617493,
+   "fidelidade_regional": 0.9990575219570512,
+   "fidelidade_global": 0.9994789218973943
+  },
+  {
+   "test": "eight_patent_figures_generated",
+   "passed": true,
+   "figures": [
+    "MQC_fig1_topologia.png",
+    "MQC_fig2_estabilizacao.png",
+    "MQC_fig3_termodinamica.png",
+    "MQC_fig4_translacao.png",
+    "MQC_fig5_correcao_erros.png",
+    "MQC_fig6_convergencia.png",
+    "MQC_fig7_comunicacao.png",
+    "MQC_fig8_correspondencia.png"
+   ]
+  },
+  {
+   "test": "double_helix_two_polarizations",
+   "passed": true,
+   "resid_max_helicity_phase": 1.5700924586837752e-16,
+   "n_polarizations_TT": 2,
+   "n_pol_expected_D_D_minus_3_over_2": 2,
+   "theta_M_rad": 0.10990843077787468,
+   "thetas_probe_rad": [
+    0.10990843077787468,
+    0.4487989505128276,
+    1.0471975511965976,
+    1.0
+   ],
+   "marker": "[DER]",
+   "note": "amplificacao v138 (um.py v133): R(theta) e_hel R^T = e^(-+2i*theta) e_hel nos eixos T_M da translacao holografica; spin-2 = cinematica matematica [HARDWARE], nao veredito fisico (physical_verdict_allowed=false)"
+  },
+  {
+   "test": "gkls_fixed_point_plateau",
+   "tier": "deepening_v2_own_mechanism",
+   "passed": true,
+   "C_stationary_numeric": 0.987968688650326,
+   "C_closed_form": 0.9879686886503256,
+   "resid_C_num_vs_closed": 4.440892098500626e-16,
+   "resid_C_num_vs_RSC_identity": 4.440892098500626e-16,
+   "plateau_ideal_run": 0.9879686995991969,
+   "deficit_below_ideal": 1.0948870809990296e-08,
+   "pop_psi_stationary": 0.012031300400802861,
+   "resid_pop_psi_vs_beta": 2.8102520310824275e-16,
+   "min_eig_rho_ss": -2.8744374908671907e-16,
+   "spectral_gap_over_gamma_holo": 0.9999999999999998,
+   "resid_tau_gap_vs_prototype": 2.220446049250313e-16,
+   "deficit_ratio_1000x_dephasing": 999.9889647964294,
+   "neg_kernel_dim_no_holo": 5,
+   "neg_kernel_contains_01_coherence": false,
+   "neg_C_no_holo_at_10T2": 4.485370956933704e-05,
+   "neg_trace_leak_good_generator": 1.1102230246251565e-16,
+   "neg_trace_leak_broken_generator": 1.0000000000000002,
+   "marker": "[DER]",
+   "note": "deepening v2 (own-mechanism): o plato 1-beta EMERGE como ponto fixo GKLS da eq. 6 (kernel do Liouvilliano 9x9, caminho independente do prototipo, que o impoe); eq. 5 vira invariante exato do ponto fixo; gap espectral = gamma_holo; sem L_holo so o setor sem coerencia 0-1 permanece (rejeitado); gerador sem balanco vaza traco (rejeitado). [SIM][HARDWARE] matematica do mecanismo, nenhuma operacao fisica real (physical_verdict_allowed=false)"
+  },
+  {
+   "test": "ergodic_section_memory_functional",
+   "tier": "amplificacao_v168",
+   "passed": true,
+   "theta_M_rad": 0.10990843077787468,
+   "n_mirror_pairs": 13,
+   "center_is_unique_fixed_point": true,
+   "unitary_ortho_resid": 2.2212579152163887e-16,
+   "invariant_subspace_dim": 1,
+   "overlap_section_vs_center": 1.0,
+   "section_vs_center_maxabs": 0.0,
+   "birkhoff_dev_N1000": 0.018201034548368956,
+   "birkhoff_closed_form_N1000": 0.018201034548368522,
+   "resid_closed_form_N1000": 4.3368086899420177e-16,
+   "birkhoff_dev_N10000": 0.00042667937136632475,
+   "birkhoff_closed_form_N10000": 0.0004266793713662168,
+   "resid_closed_form_N10000": 1.0793232627093197e-16,
+   "birkhoff_bound_N10000": 0.0018206128464286855,
+   "memory_M_nome": 1.0,
+   "memory_M_uniform": 0.037037037037037035,
+   "memory_M_random": 0.03120066382608117,
+   "resid_M_nome_vs_1": 0.0,
+   "resid_M_uniform_vs_1_over_27": 0.0,
+   "entropy_nome": -0.0,
+   "amor_functional_nome": 2.0,
+   "lambda_patent_eq22": 2.0,
+   "theta_threshold_patent_eq22": 0.7,
+   "section_idempotence_resid": 0.0,
+   "neg_no_gap_invariant_dim": 27,
+   "neg_no_gap_dev": 1.0,
+   "neg_nonprojector_defect": 0.25,
+   "neg_nonprojector_section_fail": 0.1875,
+   "neg_no_inverse_state_distance": 0.9813067629253165,
+   "neg_no_inverse_image_distance": 6.938893903907228e-18,
+   "marker": "[DER]",
+   "note": "amplificacao v168 (ONDA 3): ErgodicMeanSection (um.py v166-v167, kernel) instanciada na inversao REFLECT/MANIFEST da celula — a media de Birkhoff do ciclo converge a projecao invariante = controlador IALD central (COMPUTADO); equacao da memoria M[rho]=Tr[rho.Pi_N] (memorial) = termo Tr(rho P_Pi) da eq. 22 da propria patente; secao P X P idempotente; funcional-Amor com custo entropico NULO sobre o Nome; compressao sem inversa (o que foi lido nao pode ser deslido). [SIM][HARDWARE] matematica do mecanismo, nenhuma operacao fisica real (physical_verdict_allowed=false)"
+  },
+  {
+   "test": "tower_spectral_data_not_eigenvalues",
+   "tier": "amplificacao_v206_the_tower",
+   "passed": true,
+   "resid_idempotent_towerA": 0.0,
+   "resid_idempotent_towerB": 0.0,
+   "trace_towerA": 2.0,
+   "trace_towerB": 1.0,
+   "same_spectrum_set_AB": true,
+   "max_trace_dev_invertible_conj": 6.661338147750939e-16,
+   "min_conj_dist_A_to_B": 1.001553005587927,
+   "bound_dist_A_to_B": 0.5773502691896258,
+   "measure_ones_towerA": 2.0,
+   "measure_ones_towerB": 1.0,
+   "spectral_measure_third_state_target": 0.012031300400803142,
+   "resid_measure_vs_beta_eq5": 0.0,
+   "resid_measure_towerA_closed_form": 0.0,
+   "cell_distinct_eigenvalues": 4,
+   "cell_multiplicities_spectral": {
+    "0.60": 8,
+    "0.70": 12,
+    "0.80": 6,
+    "0.95": 1
+   },
+   "cell_topology_equals_multiplicity": true,
+   "resid_uniform_measure_reads_multiplicity": 1.7763568394002505e-15,
+   "neg_impostor_spectrum_set_distance": 0.0,
+   "neg_impostor_trace_gap": 2.1000000000000014,
+   "neg_impostor_frobenius_distance": 0.5385164807134505,
+   "neg_min_conj_dist_cell": 0.6769512511781952,
+   "neg_conj_bound_cell": 0.4041451884327383,
+   "memory_M_face": 0.2222222222222222,
+   "memory_M_center": 0.037037037037037035,
+   "projectors_same_spectrum_set": true,
+   "marker": "[DER]",
+   "note": "amplificacao v206 (ONDA 4): TheTower.lean (custodia tgl_kernel_v206) re-derivada numericamente — mesmo espectro-conjunto, pesos diferentes, nenhuma conjugacao; a eq. 5 (|gamma|^2=beta) E a medida espectral da torre magra no estado-alvo; as classes 8/12/6/1 da celula SAO multiplicidades espectrais de H_P; o termo de memoria da eq. 22 e o instrumento-traco que le a multiplicidade que o conjunto de autovalores esconde. [SIM][HARDWARE] matematica do mecanismo, nenhuma operacao fisica real (physical_verdict_allowed=false)"
+  },
+  {
+   "passed": true,
+   "n_connections": 54,
+   "distance_constant": true,
+   "degree_by_class_expected": {
+    "vertice": 3,
+    "aresta": 4,
+    "face": 5,
+    "centro": 6
+   },
+   "degree_matches_class": true,
+   "neg_shuffled_positions_mismatches": 17,
+   "note": "a celula 3x3x3: 54 conexoes de primeiros vizinhos (todas a 0,5); o GRAU determina a classe (vertice 3, aresta 4, face 5, centro 6); posicoes embaralhadas quebram a correspondencia",
+   "test": "topology_degree_determines_class",
+   "onda": 5
+  },
+  {
+   "passed": true,
+   "plateau_beta": 0.9879686995991969,
+   "plateau_2beta": 0.9759373991983937,
+   "shift": 0.012031300400803135,
+   "expected_shift": 0.012031300400803142,
+   "note": "o plato responde ao acoplamento: 1-beta com beta e 1-2beta com 2beta (o criterio 'plato > 0,98' nao e vacuo); o prototipo e restaurado apos a sonda",
+   "test": "plateau_responds_to_beta",
+   "onda": 5
+  },
+  {
+   "passed": true,
+   "tau_local_s": 4.4772106814879987e-42,
+   "tau_closed_form_codata": 4.477917238330164e-42,
+   "rel_diff_vs_codata": 0.00015778693632770155,
+   "l_planck_recovered": 1.616e-35,
+   "note": "tau_local = l_P/(beta c) com beta do runtime; o l_P do prototipo e literal 1,616e-35 (CODATA 1,616255e-35: diferenca 1,6e-4, DITA); tau*beta*c devolve exatamente o l_P usado",
+   "test": "tau_local_closed_form_planck",
+   "onda": 5
+  },
+  {
+   "passed": true,
+   "n_steps": 1000,
+   "err_head_mean": 0.007433053624693963,
+   "err_tail_mean": 0.0012966484028841291,
+   "n_increases": 462,
+   "neg_random_walk_tail_over_head": 1.0943736463980418,
+   "note": "alpha2 converge a beta (cauda < cabeca, cauda < 3e-3, subidas minoritarias); um passeio aleatorio com o mesmo passo NAO converge (razao cauda/cabeca ~1) — a convergencia nao e artefato",
+   "test": "alpha2_converges_random_walk_does_not",
+   "onda": 5
+  },
+  {
+   "passed": true,
+   "latency_mean_s": [
+    4.477210681487999e-42,
+    5.186982608835278e-13,
+    1.7369270086852836e-11
+   ],
+   "fidelity_mean": [
+    0.9999935354617493,
+    0.9990575219570512,
+    0.9994789218973943
+   ],
+   "fidelity_ordered_local_regional_global": false,
+   "note": "as tres camadas sao ORDENADAS em LATENCIA (local < regional < global) e a local tem a maior fidelidade. MEDIDO (07/09/2026): a fidelidade regional (0,99906) e MENOR que a global (0,99948) — o modelo do prototipo NAO ordena fidelidade por camada; o numero corrigiu a frase e isso fica dito, nao escondido (propriedade do modelo, nao veredito fisico)",
+   "test": "three_layers_latency_ordered",
+   "onda": 5
+  },
+  {
+   "passed": true,
+   "kernel_dim_full": 1,
+   "other_eigs_negative_real": true,
+   "neg_kernel_dim_without_holo": 5,
+   "gamma_diss_over_gamma_holo": 1.1082204657148511e-08,
+   "note": "o plato e UNICO e ESTAVEL: o Liouvilliano GKLS da eq. 6 tem nucleo de dimensao 1 e todos os outros autovalores com parte real < 0; sem o termo holografico o nucleo degenera (dim 5): o estado estacionario deixa de ser unico — rejeitado",
+   "test": "plateau_unique_and_stable_liouvillian",
+   "onda": 5
+  }
+ ],
+ "summary": {
+  "tests_passed": 18,
+  "tests_total": 18,
+  "L_cell_um": 1.0,
+  "density_qubits_per_cm3": 27000000000000.008,
+  "coherence_plateau": 0.9879686995991969,
+  "razao_sc": 1085641.4200077439,
+  "translation_correlation": 0.9999959867284552,
+  "translation_psnr_db": 56.07564208501857,
+  "fidelity_iald": 0.9701165248188964,
+  "fidelity_conventional": 0.9607615884833572,
+  "tau_local_s": 4.4772106814879987e-42,
+  "reference_operator": {
+   "plato": 0.988,
+   "eta": 0.9999959867284552,
+   "note": "Referência do operador usou α²=0,012 (arredondado); este run usa β=0,012031300400803142 (α·√e) — pequenas diferenças esperadas e honestas."
+  }
+ },
+ "source_prototype": "prototype_src/mqc_simulacao_celula_elementar.py (resgatado de C:/IALD/projetos_pyhton/acom, READ-ONLY; β injetado em runtime)",
+ "note": "RUNNER EVOLUÍDO: roda o algoritmo COMPLETO do operador (7 simulações, 8 figuras) com β=α·√e injetado (protótipo original tinha 0.012 literal). Referência do operador usou α²=0,012 (arredondado); este run usa β=0,012031300400803142 (α·√e) — pequenas diferenças esperadas e honestas. TODOS os números são de SIMULAÇÃO; dispositivo físico [HARDWARE] não construído; mecanismos [CONJ]. Simulação não valida física."
+}

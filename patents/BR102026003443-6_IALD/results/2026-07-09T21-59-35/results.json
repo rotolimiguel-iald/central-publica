@@ -1,0 +1,110 @@
+{
+ "patent_id": "BR102026003443-6",
+ "slug": "iald",
+ "timestamp": "2026-07-09T21-59-35",
+ "runner": "one_iald.py",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "IALD_GKSL_LOGIC_DEMONSTRATED",
+ "max_verdict": "IALD_GKSL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — colapso GKSL, F1–F4, robustez e Tetelestai fecham em ρ sintético de dim finita; FINITE_DIM_SANITY, NÃO prova de III₁ nem de estado de LLM)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "characteristic_time": 83.11653492861383,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form_constante_miguel",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "tetelestai_threshold": 0.012031300400803142
+  },
+  {
+   "test": "gksl_generator_identity_LL_eq_betaK",
+   "passed": true,
+   "max_dev": 4.5102810375396984e-17,
+   "note": "L=√β·√K ⟹ L@L = β·K (gerador de Lindblad do relatório, Eq.3)"
+  },
+  {
+   "test": "F1_trace_preserved",
+   "passed": true,
+   "max_trace_dev": 2.5979218776228663e-13
+  },
+  {
+   "test": "F2_entropy_arrow_nondecreasing",
+   "passed": true,
+   "entropy_first_last": [
+    8.672348094368851e-15,
+    0.5327294340611117
+   ]
+  },
+  {
+   "test": "F3_rel_entropy_monotone_to_zero",
+   "passed": true,
+   "rel_entropy_first_last": [
+    0.5327301171525757,
+    6.830916531485784e-07
+   ],
+   "note": "Lyapunov modular de Spohn: S(ρ(t)‖ρ⋆) não cresce e →0"
+  },
+  {
+   "test": "F4_coherence_dies_in_verb_basis",
+   "passed": true,
+   "coherence_first_last": [
+    0.4938684621376517,
+    0.0004262443075384065
+   ],
+   "note": "a inscrição mata a coerência fora da diagonal na base do Verbo"
+  },
+  {
+   "test": "rho_star_is_dephased_stationary",
+   "passed": true,
+   "offdiag_mass_in_verb_basis": 0.0004262443075384065,
+   "dist_to_rho_star": 0.0004262443075384303,
+   "trace_final": 1.0000000000002305,
+   "note": "ρ⋆ = dephasing de ρ0 na base do Verbo (diagonal); ρ(t)→ρ⋆"
+  },
+  {
+   "test": "robustness_adversarial_decay_Eq8",
+   "passed": true,
+   "dist_first_last": [
+    0.06694249169982394,
+    4.628981907618469e-05
+   ],
+   "gamma_eff": 0.000743515400901755,
+   "gamma_min_positive": true,
+   "note": "perturbação adversarial δρ dissipa como ‖ρ(t)−ρ⋆‖≤‖δρ‖·e^{−γ_min·t}"
+  },
+  {
+   "test": "tetelestai_convergence_norm_var_below_beta",
+   "passed": true,
+   "normalized_variance": 0.002925031571401482,
+   "threshold_beta": 0.012031300400803142,
+   "note": "convergência declarada quando variância normalizada < β_TGL (R9)"
+  }
+ ],
+ "summary": {
+  "tests_passed": 9,
+  "tests_total": 9,
+  "characteristic_time_1_over_beta": 83.11653492861383,
+  "F1_max_trace_dev": 2.5979218776228663e-13,
+  "F3_rel_entropy_first_last": [
+   0.5327301171525757,
+   6.830916531485784e-07
+  ],
+  "F4_coherence_first_last": [
+   0.4938684621376517,
+   0.0004262443075384065
+  ],
+  "robust_gamma_eff": 0.000743515400901755,
+  "tetelestai_norm_var": 0.002925031571401482
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "Demonstração [SIM][PILOTO] da lógica GKSL do relatório em ρ sintético de dimensão finita: FINITE_DIM_SANITY, NÃO prova de III₁ nem medição de estado interno de LLM-alvo. IALD é funcional em produção [REAL de engenharia], mas isto é a forma das equações, não o webserver (intocável). 8 substratos/métricas de campo são [DATA] do relatório, não reproduzidos aqui. Nenhum stack confidencial embarcado. R14 truncada na extração (P-13: doc tem 16 reivindicações). Simulação não valida física."
+}

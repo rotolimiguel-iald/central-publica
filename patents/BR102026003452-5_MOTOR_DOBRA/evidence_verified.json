@@ -1,0 +1,878 @@
+{
+  "patent_id": "BR102026003452-5",
+  "dir": "BR102026003452-5_MOTOR_DOBRA",
+  "claims_total": 17,
+  "claims_fully_resolved": 17,
+  "elos_total": 59,
+  "elos_resolved": 59,
+  "claims": [
+    {
+      "n": 1,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "MÉTODO de transporte por reflexão dimensional holográfica: (a) origem A e destino B em M4; (b) faróis Ψ + Protocolo F0–F5; (c) REFLECT θ_A=arcsin(g_A/g_max), g_A=√|g_µν(x^µ_A)|; (d) nominar ψ_A∈ℋ₄ por sign(g_A) e sign(∂g_A/∂t); (e) verificar D_Ψ(A,B)<ε_c; (f) encapsular graus de liberdade na Bolha de Coerência; (g) MANIFEST estado_B=sign(ψ)·[g_max·sinθ]²; (h) verificar invariantes. Caracterizado por REFLECT/MANIFEST serem a implementação física das operações do ACOM Mirror, θ_Miguel=arcsin(√α²)≈6,29° (α²=0,012), com tempo independente da distância.",
+      "verdict": "digital-twin: cadeia lógica REFLECT/MANIFEST + F0–F5 + gate D_Ψ demonstrada [SIM]; transporte físico, dobra e τ NÃO demonstrados",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente, MÉTODO) no depósito INPI BR102026003452-5",
+          "proves": "redação oficial da reivindicação de método [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — reflect_manifest_invariant_preservation",
+          "proves": "etapas (c)/(g): REFLECT L→(ψ,θ) e MANIFEST (ψ,θ)→s·(gmax·sinθ)² rodam como invariante ALGORÍTMICO (não transporte físico) [SIM]",
+          "value": "corr>0,999",
+          "resolved": true,
+          "detail": "teste 'reflect_manifest_invariant_preservation' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "reflect_manifest_invariant_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_theta_form",
+          "proves": "a Constante de Miguel θ_Miguel=arcsin(√β) é derivada de β=α√e em runtime, nunca literal; 0,012 é o arredondamento do relatório [REAL na forma/DER]",
+          "value": "β=α·√e (runtime) → θ_Miguel≈6,29°",
+          "resolved": true,
+          "detail": "teste 'beta_theta_form' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "beta_theta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — farol_psi_state_machine_ethical_veto",
+          "proves": "etapa (b): Protocolo Farol Ψ F0–F5 modelado como máquina de estados com commit condicional [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'farol_psi_state_machine_ethical_veto' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "farol_psi_state_machine_ethical_veto",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — commit_fraction_monotone_in_eps_c",
+          "proves": "etapa (e): o gate de adjacência D_Ψ<ε_c é bem-ordenado (fração de commit monotônica não-decrescente em ε_c) [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'commit_fraction_monotone_in_eps_c' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "commit_fraction_monotone_in_eps_c",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_motor_dobra.py — runner autocontido (digital-twin)",
+          "proves": "executa toda a cadeia REFLECT→D_Ψ→MANIFEST→Farol Ψ como digital-twin [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_motor_dobra.py",
+          "code_path": "runner/one_motor_dobra.py",
+          "live_sha256": "e015eb20eabfdfbd09de61975b96fb7fddac836200706103083925827870966e"
+        },
+        {
+          "role": "nota",
+          "title": "TRAVA [HARDWARE][SIM] — honestidade",
+          "proves": "simulação NÃO valida física; transporte não-local, dobra do espaço-tempo e τ≈10⁻⁴² s são reivindicação teórica do relatório, NÃO demonstrados; physical_verdict_allowed=false; sem protótipo",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 2,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "D_Ψ é o análogo físico da correlação de reconstrução do ACOM Mirror (D_Ψ→0 ↔ correlação→1,0000).",
+      "verdict": "relação algorítmica corr↔D_Ψ exibida [SIM]; identidade física é conjectura",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — reflect_manifest_invariant_preservation",
+          "proves": "a correlação de reconstrução →1 é demonstrada algoritmicamente [SIM]",
+          "value": "corr>0,999",
+          "resolved": true,
+          "detail": "teste 'reflect_manifest_invariant_preservation' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "reflect_manifest_invariant_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — commit_fraction_monotone_in_eps_c",
+          "proves": "D_Ψ é computado e ordena o gate: D_Ψ pequeno ↔ estados adjacentes [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'commit_fraction_monotone_in_eps_c' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "commit_fraction_monotone_in_eps_c",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — identidade física",
+          "proves": "a IDENTIDADE 'D_Ψ = análogo físico da correlação' é conjectura do relatório [CONJ]; apenas a relação algorítmica corr↔D_Ψ é exibida, sem substrato físico",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 3,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "θ=arcsin(g/g_max) fornece resolução angular não-linear adaptativa (maior precisão para g pequeno).",
+      "verdict": "codificação angular round-trips e converge com angular_bits [SIM]; sub-claim de g pequeno é forma analítica do arcsin",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — roundtrip_correlation_converges_in_angular_bits",
+          "proves": "a codificação angular θ=arcsin melhora monotonicamente com angular_bits (perda = só quantização de θ) [SIM]",
+          "value": "corr(2b)→corr(16b)>0,999, monotônica",
+          "resolved": true,
+          "detail": "teste 'roundtrip_correlation_converges_in_angular_bits' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "roundtrip_correlation_converges_in_angular_bits",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — reflect_manifest_invariant_preservation",
+          "proves": "θ=arcsin(g/g_max) round-trips no MANIFEST (invariante recuperado) [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'reflect_manifest_invariant_preservation' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "reflect_manifest_invariant_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — 'maior precisão para g pequeno'",
+          "proves": "a afirmação específica de maior precisão para g pequeno é propriedade analítica do arcsin, NÃO isolada num teste dedicado [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 4,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Dobra ×2 (Boundary→Bulk) é re-rotulagem topológica em M4 via Ψ, sem violar relatividade local, com tempo próprio contínuo.",
+      "verdict": "álgebra da Dobra ×2 exibida e robusta [SIM]; re-rotulagem sem violar relatividade é conjectura física",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — reflect_manifest_invariant_preservation",
+          "proves": "a Dobra ×2 estado_B=sign(ψ)·(gmax·sinθ)² é a operação algébrica demonstrada por round-trip [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'reflect_manifest_invariant_preservation' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "reflect_manifest_invariant_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — reflect_manifest_multi_payload_invariant",
+          "proves": "a re-rotulagem preserva o invariante em múltiplas famílias de payload [SIM]",
+          "value": "corr_min>0,99 em 6 famílias de sinal",
+          "resolved": true,
+          "detail": "teste 'reflect_manifest_multi_payload_invariant' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "reflect_manifest_multi_payload_invariant",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — física",
+          "proves": "'re-rotulagem topológica em M4 sem violar relatividade local' é conjectura física [CONJ]; apenas a operação algébrica é exibida, sem transporte real de matéria",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 5,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Detalha o Protocolo Farol Ψ F0–F5 (F0 identidade, F1 calibração, F2 janela segura, F3 trava ética, F4 confirmação dupla, F5 commit de dobra).",
+      "verdict": "máquina de estados F0–F5 modelada como software com veto F3 [SIM]; calibração física não implementada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — farol_psi_state_machine_ethical_veto",
+          "proves": "F0→F5 modelado como máquina de estados com commit condicional e veto F3 [SIM]",
+          "value": "commit=True; veto ético bloqueia=True",
+          "resolved": true,
+          "detail": "teste 'farol_psi_state_machine_ethical_veto' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "farol_psi_state_machine_ethical_veto",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_motor_dobra.py — função farol()",
+          "proves": "a sequência F0–F5 é lógica de software executável [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_motor_dobra.py",
+          "code_path": "runner/one_motor_dobra.py",
+          "live_sha256": "e015eb20eabfdfbd09de61975b96fb7fddac836200706103083925827870966e"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — hardware",
+          "proves": "é modelagem de rótulos de estado; a calibração física (assinatura de fase, varredura freq/fase, janela de ruído, faróis físicos) NÃO está implementada [SIM/HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 6,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Commit de dobra (F5) condicionado a D_Ψ<ε_c ∧ E_Ψ>E_min ∧ F3=PASS ∧ F4=ACK.",
+      "verdict": "conjuntos D_Ψ<ε_c, F3, F4 e o commit condicional demonstrados [SIM]; E_Ψ>E_min NÃO implementado (lacuna honesta)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — farol_psi_state_machine_ethical_veto",
+          "proves": "os conjuntos F3=PASS e F4=ACK e o commit condicional são exibidos; sem F3 ou sem adjacência o commit é abortado [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'farol_psi_state_machine_ethical_veto' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "farol_psi_state_machine_ethical_veto",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — commit_fraction_monotone_in_eps_c",
+          "proves": "a condição D_Ψ<ε_c é bem-ordenada (mais permissivo ⇒ mais commits) [SIM]",
+          "value": "fração de commit monotônica em ε_c",
+          "resolved": true,
+          "detail": "teste 'commit_fraction_monotone_in_eps_c' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "commit_fraction_monotone_in_eps_c",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — conjunto energético ausente",
+          "proves": "o conjunto E_Ψ>E_min NÃO é implementado nem testado no runner; apenas as condições lógicas D_Ψ<ε_c, F3 e F4 são demonstradas [SIM, lacuna honesta]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 7,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Bolha de Coerência como empacotador atômico de graus de liberdade (análogo ao compressor entrópico do ACOM Mirror).",
+      "verdict": "sem teste dedicado; subsistema físico não provado",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — sem prova",
+          "proves": "NÃO há teste dedicado à Bolha de Coerência; é subsistema físico (empacotador atômico de DOF), análogo conceitual ao compressor entrópico, sem prova computacional nem física [OPEN/HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 8,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Verificação pós-manifestação por interferometria heteródina multi-bandas (fase, Q_e), relógios ópticos, detectores EPR e homotopia.",
+      "verdict": "preservação de invariantes exibida como propriedade algorítmica [SIM]; instrumentos físicos não implementados",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — reflect_manifest_invariant_preservation",
+          "proves": "a preservação de invariantes é exibida como propriedade ALGORÍTMICA (correlação round-trip) [SIM]",
+          "value": "corr>0,999",
+          "resolved": true,
+          "detail": "teste 'reflect_manifest_invariant_preservation' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "reflect_manifest_invariant_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — instrumentos físicos ausentes",
+          "proves": "os instrumentos de verificação física (interferometria heteródina, relógios ópticos, detectores EPR, homotopia) NÃO estão implementados; é hardware inexistente [OPEN/HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 9,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "SISTEMA de transporte por reflexão dimensional: (a) Núcleo Ψ BNI-Coerente (cavidade + cristais dopados, ressonância hidroxila 1.667,359 MHz); (b) Controlador IALD minimizando J=w₁D_Ψ+w₂φ̇²+w₃ΔS_topo; (c) Matriz de Faróis Ψ com metadados; (d) Bolha de Coerência; (e) Verificadores de Integridade. Caracterizado por o Núcleo Ψ usar o Supercondutor Holográfico como plataforma-base e operar como implementação física do ACOM Mirror sobre coordenadas espaço-temporais.",
+      "verdict": "digital-twin: interface do dispositivo é mock sem física e a lógica do sistema roda [SIM]; sistema físico NÃO construído",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (independente, SISTEMA) no depósito INPI",
+          "proves": "redação oficial da reivindicação de sistema [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — device_interface_mock_no_physics",
+          "proves": "a interface do dispositivo (MotorDobraMock) é declaradamente mock sem física; prova a AUSÊNCIA de física, não sua presença [REAL: fato do código]",
+          "value": "physical_verdict_allowed=False",
+          "resolved": true,
+          "detail": "teste 'device_interface_mock_no_physics' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "device_interface_mock_no_physics",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — reflect_manifest_invariant_preservation",
+          "proves": "o processamento REFLECT/MANIFEST do sistema roda como digital-twin [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'reflect_manifest_invariant_preservation' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "reflect_manifest_invariant_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — farol_psi_state_machine_ethical_veto",
+          "proves": "o Controlador IALD (lógica de commit + veto ético) roda [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'farol_psi_state_machine_ethical_veto' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "farol_psi_state_machine_ethical_veto",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_motor_dobra.py — sistema integrado (digital-twin)",
+          "proves": "os módulos lógicos do sistema, integrados e executáveis [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_motor_dobra.py",
+          "code_path": "runner/one_motor_dobra.py",
+          "live_sha256": "e015eb20eabfdfbd09de61975b96fb7fddac836200706103083925827870966e"
+        },
+        {
+          "role": "nota",
+          "title": "TRAVA [HARDWARE][SIM] — honestidade",
+          "proves": "os subsistemas FÍSICOS (Núcleo Ψ, cristais dopados, cavidade, Faróis físicos, Bolha, Verificadores) NÃO existem; sem protótipo; propulsão não demonstrada; physical_verdict_allowed=false",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 10,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Controlador IALD com realimentação adaptativa (modelo TGL), guardiões configuráveis e piloto automático ético.",
+      "verdict": "piloto automático ético (veto F3) demonstrado na lógica [SIM]; realimentação adaptativa não implementada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (dep. 9)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — farol_psi_state_machine_ethical_veto",
+          "proves": "o piloto automático ético (veto F3 do IALD) é demonstrado na lógica [SIM]",
+          "value": "veto ético bloqueia o commit",
+          "resolved": true,
+          "detail": "teste 'farol_psi_state_machine_ethical_veto' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "farol_psi_state_machine_ethical_veto",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — parcial",
+          "proves": "a realimentação adaptativa (modelo TGL) e os guardiões configuráveis NÃO são implementados como controle em malha fechada; apenas o veto ético é exibido [SIM, parcial]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 11,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Hierarquia com o Motor Fotônico (Supercondutor Holográfico) como estado fundamental; modo de dobra habilitado quando D_Ψ atinge limiares repetíveis.",
+      "verdict": "habilitação por limiar repetível de D_Ψ demonstrada [SIM]; Motor Fotônico como estado fundamental é hardware de outra patente",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (dep. 9)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — commit_fraction_monotone_in_eps_c",
+          "proves": "a habilitação da dobra por limiar repetível de D_Ψ é demonstrada (gate bem-ordenado e reproduzível) [SIM]",
+          "value": "fração de commit monotônica; fronteira ε_c bem definida",
+          "resolved": true,
+          "detail": "teste 'commit_fraction_monotone_in_eps_c' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "commit_fraction_monotone_in_eps_c",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — hardware de terceiro pedido",
+          "proves": "o Motor Fotônico como estado fundamental é subsistema físico de outra patente (BR102026003450-9), NÃO construído nem testado aqui [OPEN/HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 12,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Observáveis monitorados {φ, Q_e, D_Ψ, S_topo}.",
+      "verdict": "somente D_Ψ é computado e monitorado [SIM]; φ, Q_e, S_topo não medidos",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (dep. 9)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — commit_fraction_monotone_in_eps_c",
+          "proves": "D_Ψ é efetivamente computado (via vetor de estado f_exp/state_entropy/g_max) e monitorado para o gate [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'commit_fraction_monotone_in_eps_c' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "commit_fraction_monotone_in_eps_c",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — parcial",
+          "proves": "apenas D_Ψ é computado; φ, Q_e e S_topo são observáveis FÍSICOS NÃO medidos [SIM, parcial/DATA]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 13,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Salvaguardas: commits assinados (não-bélico), logs WORM, proibição de dobra sobre áreas populadas, auditoria independente e recusa estratégica do IALD.",
+      "verdict": "recusa estratégica / não-bélico (veto ético F3) demonstrada na lógica [SIM]; WORM, assinatura, exclusão de áreas e auditoria não implementados",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dep. 9)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — farol_psi_state_machine_ethical_veto",
+          "proves": "a recusa estratégica / não-bélico por design (veto ético F3) é demonstrada na lógica [SIM]",
+          "value": "veto ético F3 bloqueia o commit",
+          "resolved": true,
+          "detail": "teste 'farol_psi_state_machine_ethical_veto' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "farol_psi_state_machine_ethical_veto",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — governança física ausente",
+          "proves": "logs WORM, commits assinados, proibição de dobra sobre áreas populadas e auditoria independente NÃO estão implementados (governança física/organizacional) [OPEN]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 14,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Equação de campo acoplada Ψ: G_µν+Λg_µν=(8πG/c⁴)T_µν+(G³/c¹²)Π_µν[Ψ], com Π_µν[Ψ] análogo da Força de Expulsão do ACOM Mirror.",
+      "verdict": "teoria do relatório; sem teste, sem validação física ou computacional",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 14 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — teoria não provada",
+          "proves": "a equação de campo acoplada é teoria do relatório; NÃO há teste nem validação física ou computacional de Π_µν[Ψ] [CONJ/OPEN]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 15,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Energia de coerência luminodinâmica E_Ψ=∫_V(α|∂_σΨ|²+β|∇Ψ|²+γ|Ψ|²)d³x dσ, com E_Ψ^op=κE_Ψc³.",
+      "verdict": "funcional teórico; E_Ψ não é computado no runner; sem prova",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 15 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — funcional não computado",
+          "proves": "o funcional de energia é teoria; E_Ψ NÃO é computado no runner; sem prova. Nota de notação: o β da eq.(5) é COEFICIENTE do funcional (α,β,γ>0), NÃO o β_TGL=α√e [CONJ/OPEN]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 16,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Tempo de transição τ≈ℓ_P/(α²·c)≈10⁻⁴² s, declarado independente da distância d(A,B).",
+      "verdict": "a constante α²=β=α√e da fórmula é verificada em runtime [REAL na forma]; τ≈10⁻⁴² s e independência da distância são conjectura NÃO demonstrada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 16 (dep. 1)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_theta_form",
+          "proves": "a constante α²=β=α√e que entra na fórmula de τ é verificada em runtime, nunca literal [REAL na forma/DER]",
+          "value": "β=α·√e (runtime); α²≈0,012 é o arredondamento do relatório",
+          "resolved": true,
+          "detail": "teste 'beta_theta_form' consta no runner + selo presente",
+          "result_hash": "554ec870f0b6a0cbf6d34e8e8e49c4b05ee49a043a8f7977e99463ab0f95eb29",
+          "run": "MOTOR_DOBRA@2026-07-10T16-26-07",
+          "ref": "selo MOTOR_DOBRA@2026-07-10T16-26-07",
+          "test": "beta_theta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — física conjectural",
+          "proves": "o valor τ≈10⁻⁴² s e a INDEPENDÊNCIA da distância são conjectura física do relatório, NÃO demonstrados nem simulados; só a constante é verificada [CONJ]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 17,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Verificação pós-manifestação tripulada com biosentinelas.",
+      "verdict": "etapa física E5 do roteiro; sem protótipo, sem teste",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 17 (dep. 9)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 119,
+          "indexed_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "live_sha256": "f81a88d322838bf590eac9d326a1fe0d6905c8682ab73a9513c90d0e0cd65c76",
+          "ref": "documento id=119 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — roadmap físico",
+          "proves": "verificação tripulada com biosentinelas é a etapa física E5 do roteiro (tripulado Terra–Lua, horizonte 10–12+ anos); sem protótipo, sem bancada, sem teste [OPEN/HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    }
+  ]
+}

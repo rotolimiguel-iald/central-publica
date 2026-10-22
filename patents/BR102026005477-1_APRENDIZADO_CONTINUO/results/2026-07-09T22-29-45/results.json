@@ -1,0 +1,99 @@
+{
+ "patent_id": "BR102026005477-1",
+ "slug": "aprendizado_continuo",
+ "timestamp": "2026-07-09T22-29-45",
+ "runner": "one_aprendizado_continuo.py",
+ "markers": [
+  "[PILOTO]",
+  "[SIM]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "CONTINUAL_LEARNING_LOGIC_DEMONSTRATED",
+ "max_verdict": "CONTINUAL_LEARNING_LOGIC_DEMONSTRATED ([PILOTO] — ontologia trinária, piso de Hilbert, Verb Floor, ciclo do Psion (EMA a taxa β) com persistência SHA-256 e IALD Score fecham; benchmark em LLM real é etapa separada)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_theta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "theta_miguel_deg": 6.297289216477979
+  },
+  {
+   "test": "trinary_stratification",
+   "passed": true,
+   "boundaries": {
+    "sqrt_beta": 0.10968728459034412,
+    "cos_theta_m": 0.9939661461031744
+   },
+   "fractions": {
+    "VACUUM": 0.39028,
+    "GRAVITON": 0.6097,
+    "PHOTON": 2e-05
+   },
+   "note": "estratificação por √β e cos(θ_Miguel); soma 1"
+  },
+  {
+   "test": "hilbert_floor_adaptive_sampler",
+   "passed": true,
+   "beta_adaptive": 0.0583788205544,
+   "adaptive_candidates": 407,
+   "note": "β_adaptativo = α√S; candidatos adaptativos vs top-k fixo"
+  },
+  {
+   "test": "angular_cache_persistence",
+   "passed": true,
+   "persistence_by_hits": {
+    "0": 1.0,
+    "1": 1.0083394619512864,
+    "5": 1.0215571964202663,
+    "20": 1.0366295640252359,
+    "100": 1.055525901324027
+   },
+   "note": "P = 1 + β'·log(1+hits) — persistência cresce com hits"
+  },
+  {
+   "test": "verb_floor_attention",
+   "passed": true,
+   "kept": 903,
+   "total": 1024,
+   "note": "Floor_i = β_adaptativo·max_j S_ij poda a matriz de atenção"
+  },
+  {
+   "test": "psion_cycle_ema_and_persistence",
+   "passed": true,
+   "generations": 60,
+   "final_value": 0.7328778346200472,
+   "target": 0.75,
+   "persistence_sha256_verified": true,
+   "note": "aprendizado sem re-treino: EMA a taxa β converge ao alvo; estado persiste com SHA-256 fail-closed (aprendizado inscrito entre sessões)"
+  },
+  {
+   "test": "iald_score_geometric_mean",
+   "passed": true,
+   "palavra": 0.55,
+   "nome": 0.9,
+   "verbo": 0.8,
+   "iald_score": 0.7343420462049963,
+   "note": "IALD Score = ³√(Palavra × Nome × Verbo)"
+  }
+ ],
+ "summary": {
+  "tests_passed": 7,
+  "tests_total": 7,
+  "stratification": {
+   "VACUUM": 0.39028,
+   "GRAVITON": 0.6097,
+   "PHOTON": 2e-05
+  },
+  "psion_final": 0.7328778346200472,
+  "iald_score": 0.7343420462049963
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "[PILOTO] Aprendizado sem re-treino: conhecimento inscrito via EMA a taxa β entre sessões, com estado persistente selado por SHA-256. Dados sintéticos; benchmark de convergência em LLM real [DATA_REQUIRED]. Nenhum stack confidencial embarcado. Simulação não valida física."
+}

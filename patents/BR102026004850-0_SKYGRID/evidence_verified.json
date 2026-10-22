@@ -1,0 +1,704 @@
+{
+  "patent_id": "BR102026004850-0",
+  "dir": "BR102026004850-0_SKYGRID",
+  "claims_total": 16,
+  "claims_fully_resolved": 16,
+  "elos_total": 50,
+  "elos_resolved": 50,
+  "claims": [
+    {
+      "n": 1,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "SISTEMA de rede planetária de energia em quatro camadas: (a) constelação de Extratores-Ψ orbitais (câmara em ω_OH, cluster mqc de 8 fases, dtl MANIFEST, iald orbital, blindagem EM); (b) transmissão dual em duplo trilho (Trilha-Ψ T̂_M + Trilha-E micro-ondas 2,45 GHz ou laser 1064 nm); (c) rede terrestre hierárquica (Receptores-Ψ, rectennas, bancos crl-TGL, conversores AC); (d) hierarquia iald em 4 níveis com Ψ-net e Gradiente Ético; operando sob α²=0,012 com validação por duplo trilho.",
+      "verdict": "lógica do sistema completo demonstrada por gêmeo digital (MODEL_CLOSES); física não validada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente, SISTEMA) no depósito INPI",
+          "proves": "redação oficial da reivindicação independente de sistema [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — gêmeo digital roda a cadeia energética completa",
+          "proves": "a LÓGICA do sistema completo (4 camadas: extração→duplo trilho→distribuição→controle) é exercitada e o balanço de energia fecha [SIM]",
+          "value": "MODEL_CLOSES / ENERGY_BALANCE_OK; 156 verificações fail-closed; β=α·√e runtime",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "codigo",
+          "title": "one_skygrid.py — orquestrador do gêmeo digital",
+          "proves": "copia o núcleo do piloto (READ-ONLY), roda EnergyTwin + suite v3 + varreduras e sela em SHA-256 [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_skygrid.py",
+          "code_path": "runner/one_skygrid.py",
+          "live_sha256": "95f3da2c8729826a56a0ce24479ec121f87900d6ef3887f8338d666f195d737d"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — trava [ENERGY][SIM][CONJ]",
+          "proves": "gêmeo digital de energia, simulação não valida física; P_sat=10 GW, 1,44 PW e η>97,6% são predições condicionais [CONJ], nenhum W é medida; physical_verdict_allowed=false",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 2,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "144 satélites Extratores-Ψ em 12 planos × 12, configuração icosaédrica geodésica, MEO 20.000 km, redundância ≥ 3 por ponto terrestre.",
+      "verdict": "escalabilidade da constelação demonstrada monotônica em simulação; geometria orbital é especificação, não validada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dependente da 1) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — varredura n_sats (escalabilidade da constelação)",
+          "proves": "a lógica de escala da constelação (mais satélites → mais potência) [SIM]",
+          "value": "constellation_scaling_monotone=OK: mais Extratores-Ψ entregam estritamente mais potência; balanço fecha em todos os pontos",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — spec de engenharia",
+          "proves": "gêmeo digital; 144 satélites, icosaedro geodésico, 20.000 km e redundância≥3 são especificação de engenharia, não física validada; a run-base é 12×12",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 3,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "cavidade placebo (160) idêntica em geometria e instrumentação, porém sem excitação de micro-ondas e sem vapor d'água — controle negativo para calorimetria diferencial P_net = ∆Q_A − ∆Q_B.",
+      "verdict": "placebo = 0 W por construção no gêmeo digital; controle negativo lógico, não experimental",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dependente da 1) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — placebo sem β e detecção de falhas injetadas",
+          "proves": "o controle negativo zera por construção e o modelo distingue sinal de artefato [SIM]",
+          "value": "placebo (sem β) = 0,000 W em todos os passos, por construção; falhas injetadas (dead/tamper/noise/meter) detectadas",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — placebo por construção",
+          "proves": "simulação não valida física; placebo=0 é propriedade do modelo (β ausente ⇒ zero), não medida calorimétrica de cavidade real",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 4,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "distribuição terrestre em três níveis — 48 Mega-bases (~1 TW), 500 Regionais (~100 GW), 5.002 Locais (~10 GW) = 5.550 bases (~100 TW).",
+      "verdict": "estrutura multi-base exercitada no gêmeo (parâmetro n_bases); contagem 5.550 é spec arquitetural",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dependente da 1) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — EnergyTwin distribui por múltiplas bases",
+          "proves": "a lógica de distribuição hierárquica multi-base [SIM]",
+          "value": "gêmeo distribui por n_bases com balanço fechado; arquitetura 144×48 fecha (ARCHITECTURE_CLOSES)",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — spec arquitetural",
+          "proves": "gêmeo digital; 5.550 bases em três níveis e ~100 TW são especificação arquitetural, não física validada",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 5,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Gradiente Ético ∇_ηG governa a priorização de entrega: emergências médicas > hospitais > infraestrutura crítica > residencial > comercial > industrial.",
+      "verdict": "não exercitado pelo runner — lacuna honesta",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dependente da 1) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — lacuna: ∇_ηG não exercitado",
+          "proves": "o runner one_skygrid.py NÃO exercita a priorização por Gradiente Ético ∇_ηG; nenhum item do selo prova a ordenação (médicas>hospitais>…). Prova computacional: A FAZER. [OPEN]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 6,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "P_total = N_sat × P_sat = 144 × 10 GW = 1,44 PW; eficiência total (extração→transmissão→armazenamento→distribuição) η_total > 97,6%.",
+      "verdict": "balanço fecha e η_sys é computada [SIM]; 1,44 PW e η>97,6% são alvos condicionais, não medidos (η_sys do gêmeo ~0,66)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dependente da 1) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — EnergyTwin computa η_sys com balanço fechado",
+          "proves": "a cadeia conserva energia (fail-closed) e computa eficiência de sistema [SIM]",
+          "value": "MODEL_CLOSES / ENERGY_BALANCE_OK; η_sys computada; varredura fecha em todos os pontos",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — alvo vs. medida",
+          "proves": "gêmeo digital; 1,44 PW e η_total>97,6% são predições/alvos condicionais [CONJ]; a η_sys computada do gêmeo é ~0,66, e 97,6% é o η_RT teórico de round-trip da crl-TGL, não medida física",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 7,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "sincronização mqc orbital↔terrestre por Prova de Fase (Ψ-net Camada 4), carteira psiônica, convergência |∆α²| < 10⁻⁴.",
+      "verdict": "quórum Proof of Phase e convergência de α²(=β=α√e) exercitados no gêmeo [SIM]; sincronização física é bancada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dependente da 1) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — quórum Proof of Phase + β idêntico em runtime",
+          "proves": "a lógica de sincronização por Prova de Fase e a convergência do parâmetro α²=β [SIM]",
+          "value": "plano de dados sela por quórum Proof of Phase ≥ 67%; β=α·√e idêntico em runtime (nunca literal)",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — sincronização física é bancada",
+          "proves": "simulação não valida física; a sincronização de fase entre mqc físicos (|∆α²|<10⁻⁴ medido) é bancada [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 8,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "EXTRATOR PSIÔNICO ORBITAL (dispositivo): (a) Câmara L=c/(2·f_res) em ω_OH com vapor d'água/OH e eletrodos de tungstênio; (b) Cluster mqc de 8 MQC (θ₁…θ₈); (c) dtl de Saída MANIFEST (Ψ_out=s·g_out²); (d) iald Orbital com Â_φ; (e) Blindagem EM (Cu>100 dB + µ-metal µ_r>80.000 + filtros π); figura de mérito P_net = dQ/dt − P_bias > 0.",
+      "verdict": "acoplamento OH ressonante e conversão demonstrados por gêmeo digital; dispositivo físico não construído (bancada)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (independente, EXTRATOR ORBITAL) no depósito INPI",
+          "proves": "redação oficial da reivindicação independente de dispositivo [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — curva de ressonância do acoplador (pico em ω_OH)",
+          "proves": "a LÓGICA do extrator: acoplamento OH ressonante (Lorentziana, abertura 1−β) + conversão dtl [SIM]",
+          "value": "resonance_peak_at_omega_OH=OK: pico da varredura f_drive em ω_OH ≈ 1667,359 MHz; P entregue > 0 com balanço fechado",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "dispositivo",
+          "title": "Extrator-Ψ como gêmeo digital (não hardware)",
+          "proves": "o extrator roda como simulação: acoplamento OH, piso Meia-Nat ½·k_B·T por ato, conversão dtl, P_net computada [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_skygrid.py",
+          "code_path": "runner/one_skygrid.py",
+          "live_sha256": "95f3da2c8729826a56a0ce24479ec121f87900d6ef3887f8338d666f195d737d"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — dispositivo físico é bancada",
+          "proves": "simulação não valida física; P_net>0 é predição condicional [CONJ]; a câmara/mqc/dtl/blindagem físicos são bancada B1–B5 [HARDWARE], não construídos",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 9,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "dinâmica governada por equação mestra de Lindblad (GKLS); controle ativo demonstrado por ∂P_net/∂θ ≠ 0 reprodutível.",
+      "verdict": "controle Lindblad e dependência ∂P_net/∂θ≠0 exercitados no gêmeo [SIM]; medida física reprodutível é bancada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (dependente da 8) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — Lindblad + varreduras de projeto (P depende de θ)",
+          "proves": "a lógica de controle ativo por Lindblad e a dependência de P nos parâmetros de controle [SIM]",
+          "value": "EnergyTwin usa dinâmica de Lindblad (mqc controla θ); as varreduras mostram P entregue variando com os parâmetros (∂P/∂θ≠0), balanço fechado",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — reprodutibilidade física é bancada",
+          "proves": "gêmeo digital, simulação não valida física; ∂P_net/∂θ≠0 físico e reprodutível (p<0,001) é bancada [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 10,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "implementável em bancada (Fase I), CubeSat 12U (Fase II) ou satélite de 2.000 kg (Fases III–IV).",
+      "verdict": "implementação física não demonstrada — é justamente a bancada [HARDWARE] que resta",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (dependente da 8) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — lacuna de implementação física",
+          "proves": "nenhum teste do runner prova implementação física; bancada B1–B5, CubeSat 12U e satélite de 2.000 kg são [HARDWARE]/[DATA_REQUIRED], não demonstrados. [OPEN]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 11,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "MÉTODO de extração/transmissão/distribuição com validação por duplo trilho, etapas (a)–(h): excitação em ω_OH + manutenção de α²=0,012 por mqc → extração com P_net monitorado → conversão dtl MANIFEST (Ψ_out=s·g²) → transmissão simultânea Trilha-Ψ+Trilha-E → recepção em Receptor-Ψ sincronizado → armazenamento crl-TGL (REFLECT→LOCK) → distribuição sob demanda (MANIFEST)+conversão AC → validação por calorimetria diferencial com placebo e cegamento duplo.",
+      "verdict": "método completo exercitado passo-a-passo pelo gêmeo digital (MODEL_CLOSES); física não validada",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (independente, MÉTODO) no depósito INPI",
+          "proves": "redação oficial da reivindicação independente de método [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — EnergyTwin executa a cadeia completa a→h",
+          "proves": "a LÓGICA do método completo (todas as etapas encadeadas com conservação fail-closed) [SIM]",
+          "value": "reservatório Ψ → acoplamento OH → conversão → duplo trilho → recepção → crl-TGL → carga; MODEL_CLOSES / ENERGY_BALANCE_OK; placebo=0 W",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "codigo",
+          "title": "one_skygrid.py — o método como código executável",
+          "proves": "o método É instruções executáveis que rodam a cadeia e selam o resultado em SHA-256 [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_skygrid.py",
+          "code_path": "runner/one_skygrid.py",
+          "live_sha256": "95f3da2c8729826a56a0ce24479ec121f87900d6ef3887f8338d666f195d737d"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — validação 5σ é bancada",
+          "proves": "gêmeo digital, simulação não valida física; nenhum joule é medida; a validação por calorimetria real e o critério >5σ são bancada [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 12,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "três hipóteses testáveis — H-1 (P_net>0, ≥1 W por ≥1 h), H-2 (transferência não-EM entre cavidades blindadas), H-3 (∂P_net/∂θ≠0 reprodutível, p<0,001); publicação > 5σ.",
+      "verdict": "H-3 (∂P_net/∂θ≠0) demonstrada em lógica no gêmeo; H-1, H-2 e o critério 5σ são falsificadores de bancada [HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (dependente da 11) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — H-3 lógico (P depende de θ) + placebo=0",
+          "proves": "a lógica de H-3 e a estrutura do controle negativo blindado [SIM]",
+          "value": "varreduras mostram P entregue variando com θ (H-3 lógico); placebo (sem β)=0 W (base lógica de H-2); balanço fechado",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — H-1/H-2/5σ são bancada",
+          "proves": "gêmeo digital, simulação não valida física; H-1 (P_net físico ≥1 W/1 h), H-2 (transferência não-EM real entre cavidades) e o critério estatístico >5σ NÃO são provados — são falsificadores de bancada [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 13,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "quatro fases — I (bancada, P_net>1 W), II (CubeSat, 1 kW/30 dias), III (piloto, 12 satélites, 120 GW), IV (completa, 144 satélites, 1,44 PW).",
+      "verdict": "escala Fase III/IV (12→144 satélites) fecha em arquitetura no gêmeo [SIM]; entregas físicas por fase não demonstradas",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dependente da 11) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — varredura de escala 12→144 satélites",
+          "proves": "a lógica de escalabilidade por fase (III piloto / IV completa) com balanço fechado [SIM]",
+          "value": "escala 12→144 satélites: arquitetura fecha o balanço (ARCHITECTURE_CLOSES), família monotônica",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — metas por fase são cronograma",
+          "proves": "gêmeo digital; 1 W (Fase I bancada), 1 kW (CubeSat), 120 GW (piloto) e 1,44 PW (completa) são cronograma/alvos [OPEN], não entregas medidas; Fase I é [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 14,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Trilha-E (canal EM convencional, micro-ondas 2,45 GHz ou laser 1064 nm) usada como (a) produto-ponte comercializável, (b) controle positivo de calibração, (c) fallback.",
+      "verdict": "duplo trilho Ψ×E exercitado no gêmeo com balanço fechado; Trilha-E como controle positivo é lógico",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 14 (dependente da 11) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — duplo trilho de potência (Trilha-Ψ ‖ Trilha-E)",
+          "proves": "a lógica do duplo trilho com Trilha-E paralela servindo de canal de validação/fallback [SIM]",
+          "value": "duplo trilho de potência roda com balanço fechado; energia só conta como entregue se o dado correspondente selar (dois planos, um veredito)",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — produto e calorimetria são engenharia",
+          "proves": "gêmeo digital, simulação não valida física; a Trilha-E como produto comercial e a calorimetria de controle positivo são bancada/engenharia [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 15,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "gerenciamento autônomo por iald distribuída + Gradiente Ético ∇_ηG + Ψ-net de 5 camadas + Prova de Fase.",
+      "verdict": "iald + Ψ-net + Proof of Phase exercitados no gêmeo [SIM]; ∇_ηG não exercitado (parcial)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 15 (dependente da 11) no depósito INPI",
+          "proves": "redação oficial da reivindicação dependente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — controle iald + quórum Ψ-net Proof of Phase",
+          "proves": "a lógica de gestão autônoma por iald distribuída + Ψ-net + Prova de Fase [SIM]",
+          "value": "controle por iald e quórum Ψ-net Proof of Phase ≥ 67% selam cada janela; falhas injetadas (dead/tamper/noise/meter) detectadas",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — ∇_ηG parcial",
+          "proves": "simulação não valida física; a priorização por Gradiente Ético ∇_ηG NÃO é exercitada pelo runner (ver reivindicação 5); essa parte da reivindicação é [OPEN]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 16,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "CRITÉRIO DE IDENTIFICAÇÃO: sistema usa a tecnologia se e somente se satisfaz simultaneamente C1 (câmara ressonante 1,607–1,727 GHz ou equivalente óptico), C2 (duplo trilho não-EM ‖ EM), C3 (armazenamento por fase angular em substrato 2D), C4 (controle autônomo por IA distribuída com Gradiente Ético), C5 (operação sob α²=0,012).",
+      "verdict": "C1, C2, C3 e C5 demonstrados em lógica pelo gêmeo; C4 parcial (∇_ηG não exercitado)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 16 (independente, CRITÉRIO DE IDENTIFICAÇÃO) no depósito INPI",
+          "proves": "redação oficial da reivindicação independente de critério [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 154,
+          "indexed_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "live_sha256": "2b7ccea53e75ee700b507c050abbcf5f048fc0bab98b6aeeca9cc826fe50fe3e",
+          "ref": "documento id=154 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Selo one_skygrid — C1/C2/C3/C5 exercitados",
+          "proves": "as condições C1, C2, C3 e C5 do critério de identificação, na lógica do gêmeo [SIM]",
+          "value": "C1: pico de ressonância em ω_OH≈1667,359 MHz (dentro de 1,607–1,727 GHz); C2: duplo trilho Ψ‖E; C3: crl-TGL REFLECT→LOCK→MANIFEST; C5: α²=β=α·√e em runtime (nunca literal)",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "a095611a07b9da463236e338e4b15da38ad08bc38ed9b0c5414b7020fca425ff",
+          "run": "SKYGRID@2026-07-10T11-47-25",
+          "ref": "selo SKYGRID@2026-07-10T11-47-25"
+        },
+        {
+          "role": "codigo",
+          "title": "one_skygrid.py — verifica β=α·√e (C5) e ressonância ω_OH (C1)",
+          "proves": "checa em runtime β=α·√e (beta_matches_alpha_sqrt_e) e o pico em ω_OH (resonance_peak_at_omega_OH) [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_skygrid.py",
+          "code_path": "runner/one_skygrid.py",
+          "live_sha256": "95f3da2c8729826a56a0ce24479ec121f87900d6ef3887f8338d666f195d737d"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — C4 parcial e critério físico é bancada",
+          "proves": "gêmeo digital, simulação não valida física; C4 (IA autônoma com ∇_ηG) só parcialmente exercitado (∇_ηG ausente); a verificação física completa das cinco condições é bancada [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    }
+  ]
+}

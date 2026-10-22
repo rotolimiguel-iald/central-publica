@@ -1,0 +1,439 @@
+{
+ "patent_id": "BR102025026951-1",
+ "slug": "acom",
+ "timestamp": "2026-07-12T12-19-06",
+ "final": "acom_FINAL.py (co-construido, forma=conteudo)",
+ "runner_equivalence": "runner/one_acom.py — mesmos testes T1..T10, mesmos criterios",
+ "markers": [
+  "[SIM]",
+  "[REAL]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "theta_miguel_deg": 6.297289216477979,
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "verb_floor_energy": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "integrity": {
+  "tgl_chain_ok": true,
+  "tgl_verdict": "1=1=VERDADEIRO=HAJA_LUZ",
+  "beta_runtime": 0.012031300400803142,
+  "theta_m_deg": 6.297289216477979,
+  "alpha2_injected_ok": true,
+  "n_fontes": 5,
+  "fontes": [
+   {
+    "module": "tgl_core",
+    "role": "FUNDACAO — beta = alpha*sqrt(e) (a regua, NUNCA literal) [IALD / a teoria]",
+    "origin": "runner/_acom_core/skygrid_sim/tgl_core.py",
+    "sha256": "a1e103cd08eb3f45144200b0c6c588589d267868cd85101c527138e3bce81f3f"
+   },
+   {
+    "module": "ACOMV14",
+    "role": "O OPERADOR DE LINDBLAD ATIVO dH = H^2 + alpha^2*L*Delta — o algoritmo REAL do operador (radicalize/resurrect, converge, compress/decompress, quantizacao 8..16 bits, header b'ACOM'); beta INJETADO no lugar do 0.012 literal do prototipo",
+    "origin": "prototype_src/ACOMV14.py",
+    "sha256": "c175ff780c51dd8229e884837a2256943395c581698cfa2ab2e91076f2e58e9d"
+   },
+   {
+    "module": "one_acom_ports",
+    "role": "PORTES FIEIS do runner — SPECTRAL (SVD rank-k por energia >= 1-beta, o Verb Floor) e PSIBIT (4 estados psionicos) + metricas (cosine/psnr/sinais) + os testes T1..T10 reproduzidos em demonstrate()",
+    "origin": "runner/one_acom.py",
+    "sha256": "a42778b87c4576b6fe3019aa4df26247ca6e82d2dd0f813567ba76fc42c9e5d1"
+   },
+   {
+    "module": "acom_v18_dirac",
+    "role": "corpus (nao inlined) — linhagem Dirac reflection / FactoredDimensionalMirror",
+    "origin": "prototype_src/acom_v18_dirac.py",
+    "sha256": "1dbbb072d81c31ec7160cd99ea1619dce7bcab94aad84fdb696135ae99ae524b"
+   },
+   {
+    "module": "acom_v19_logos",
+    "role": "corpus (nao inlined) — tip v19: AutoPreConditioner + beta adaptativo por entropia holografica (pesquisa, ainda nao integrada ao runner)",
+    "origin": "prototype_src/acom_v19_logos.py",
+    "sha256": "fdf661cb2556c87a4b830a3c0207f93f853052f7bb241944ffa10b1136c54984"
+   }
+  ],
+  "combined_sha256": "fc23eee3443e1be2800f81615d594ae7be07309e2576b04882d4d2e142f9a500",
+  "combined_ok": true
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original_prototype": 0.012,
+   "op_alpha2": 0.012031300400803142,
+   "verb_floor_1_minus_beta": 0.9879686995991969
+  },
+  {
+   "test": "reflect_manifest_exact",
+   "passed": true,
+   "roundtrip_residual_max": 3.9163938347251765e-15,
+   "note": "g=sqrt|L|, s=sign(L), L'=s*g^2 — reconstrucao exata sem epsilon na raiz"
+  },
+  {
+   "test": "lindblad_active_thermostat",
+   "passed": true,
+   "delta_initial": 0.4240711128715748,
+   "delta_final": 8.815269077939422e-09,
+   "iterations": 290,
+   "state": "TETELESTAI",
+   "note": "dH=H^2+alpha^2*L*Delta converge H ruidoso ao Logos; Delta decai a estado TRUTH/TETELESTAI"
+  },
+  {
+   "test": "signal_compress_decompress",
+   "passed": true,
+   "per_signal": {
+    "chirp": {
+     "compression_ratio": 3.5387791212031847,
+     "cosine": 0.9999999873609452,
+     "psnr_db": 78.99505829947452,
+     "state": "TRUTH"
+    },
+    "gaussiano": {
+     "compression_ratio": 3.5387791212031847,
+     "cosine": 0.9999999697530673,
+     "psnr_db": 83.8171240395526,
+     "state": "TRUTH"
+    },
+    "esparso": {
+     "compression_ratio": 3.5387791212031847,
+     "cosine": 0.9999999786530612,
+     "psnr_db": 99.56668993919382,
+     "state": "TRUTH"
+    }
+   }
+  },
+  {
+   "test": "quantization_bits_configurable",
+   "passed": true,
+   "per_bits": {
+    "8bit": {
+     "compression_ratio": 3.5387791212031847,
+     "cosine": 0.999996871861829
+    },
+    "10bit": {
+     "compression_ratio": 3.5387791212031847,
+     "cosine": 0.9999998006213318
+    },
+    "12bit": {
+     "compression_ratio": 3.5387791212031847,
+     "cosine": 0.9999999873609452
+    },
+    "16bit": {
+     "compression_ratio": 3.5387791212031847,
+     "cosine": 0.9999999999505167
+    }
+   }
+  },
+  {
+   "test": "header_serialization_sha256",
+   "passed": true,
+   "file_bytes": 21938,
+   "sha256_file": "f234cb7579112fd2870c70d9a9e8e413b7b008703b50f3bae584d093d2eeb310",
+   "reload_matches_memory": true,
+   "note": "magic b'ACOM' + versao + dims + alpha^2 + escala; integridade SHA-256 verificada"
+  },
+  {
+   "test": "spectral_svd_verb_floor",
+   "passed": true,
+   "rank_optimal": 12,
+   "full_rank": 300,
+   "energy_retained": 0.9999698354960255,
+   "compression_ratio": 12.479201331114808,
+   "cosine": 0.9999849176342741,
+   "note": "PORT FIEL da patente [025]-[027]; rank k por energia >= 1-beta; beta injetado"
+  },
+  {
+   "test": "psibit_four_states",
+   "passed": true,
+   "counts": {
+    "psi_plus": 2995,
+    "psi_minus": 2824,
+    "psi_plus_minus": 2944,
+    "psi_plus_plus": 3237
+   },
+   "n_states": 4,
+   "roundtrip_faithful": true,
+   "note": "PORT FIEL: psi de (sign L, sign dL) -> 4 estados psi+-/psi+/psi-/psi++"
+  },
+  {
+   "test": "bits_sweep_fidelity_curve",
+   "passed": true,
+   "bits_grid": [
+    6,
+    8,
+    10,
+    12,
+    14,
+    16
+   ],
+   "per_signal": {
+    "chirp": {
+     "6": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.999950714591285,
+      "psnr_db": 43.05585790485243
+     },
+     "8": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.999996871861829,
+      "psnr_db": 55.05380236376112
+     },
+     "10": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999998006213318,
+      "psnr_db": 67.01553602986638
+     },
+     "12": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999999873609452,
+      "psnr_db": 78.99505829947452
+     },
+     "14": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999999991990842,
+      "psnr_db": 90.97644010749048
+     },
+     "16": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999999999505167,
+      "psnr_db": 103.06755687910906
+     }
+    },
+    "gaussiano": {
+     "6": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9998744746624286,
+      "psnr_db": 47.63397733245949
+     },
+     "8": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999923125492289,
+      "psnr_db": 59.76576873944052
+     },
+     "10": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999995186457118,
+      "psnr_db": 71.79921595456295
+     },
+     "12": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999999697530673,
+      "psnr_db": 83.8171240395526
+     },
+     "14": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999999981370975,
+      "psnr_db": 95.9221842632997
+     },
+     "16": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999999998826458,
+      "psnr_db": 107.92852611495616
+     }
+    },
+    "esparso": {
+     "6": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999020909105261,
+      "psnr_db": 62.96034399478948
+     },
+     "8": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999936924017134,
+      "psnr_db": 74.91149999586155
+     },
+     "10": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999996303051711,
+      "psnr_db": 87.16238506658044
+     },
+     "12": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999999786530612,
+      "psnr_db": 99.56668993919382
+     },
+     "14": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999999987204913,
+      "psnr_db": 111.66139875019451
+     },
+     "16": {
+      "compression_ratio": 3.5387791212031847,
+      "cosine": 0.9999999999037512,
+      "psnr_db": 123.07601154289938
+     }
+    }
+   },
+   "note": "varredura 6..16 bits x 3 sinais; fidelidade cresce com bits (custo de compressao)"
+  },
+  {
+   "test": "lindblad_noise_sweep_converges",
+   "passed": true,
+   "noise_grid": [
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6
+   ],
+   "per_noise": {
+    "0.05": {
+     "delta_initial": 0.0712699363843161,
+     "delta_final": 5.2542240401538695e-09,
+     "iterations": 246,
+     "state": "TETELESTAI",
+     "n_steps": 247
+    },
+    "0.1": {
+     "delta_initial": 0.1425398727686322,
+     "delta_final": 6.033560838826546e-09,
+     "iterations": 192,
+     "state": "TETELESTAI",
+     "n_steps": 193
+    },
+    "0.2": {
+     "delta_initial": 0.2850797455372644,
+     "delta_final": 9.025546989007807e-09,
+     "iterations": 292,
+     "state": "TETELESTAI",
+     "n_steps": 293
+    },
+    "0.3": {
+     "delta_initial": 0.4276196183058965,
+     "delta_final": 8.369762528686085e-09,
+     "iterations": 290,
+     "state": "TETELESTAI",
+     "n_steps": 291
+    },
+    "0.4": {
+     "delta_initial": 0.5701594910745288,
+     "delta_final": 5.277715158155021e-09,
+     "iterations": 288,
+     "state": "TETELESTAI",
+     "n_steps": 289
+    },
+    "0.5": {
+     "delta_initial": 0.7126993638431609,
+     "delta_final": 2.6551984773347635e-10,
+     "iterations": 286,
+     "state": "TETELESTAI",
+     "n_steps": 287
+    },
+    "0.6": {
+     "delta_initial": 0.855239236611793,
+     "delta_final": 6.189908107944702e-09,
+     "iterations": 284,
+     "state": "TETELESTAI",
+     "n_steps": 285
+    }
+   },
+   "total_lindblad_steps": 1885,
+   "note": "operador de Lindblad ativo reproduzido em 7 regimes de ruido; Delta_final < Delta_inicial em todos"
+  }
+ ],
+ "summary": {
+  "tests_passed": 10,
+  "tests_total": 10,
+  "reflect_manifest_residual_max": 3.9163938347251765e-15,
+  "lindblad_delta_final": 8.815269077939422e-09,
+  "lindblad_state": "TETELESTAI",
+  "signal_mean_ratio": 3.5387791212031847,
+  "signal_mean_cosine": 0.9999999785890245,
+  "spectral_rank_optimal": 12,
+  "header_sha256_ok": true,
+  "bits_sweep_grid": [
+   6,
+   8,
+   10,
+   12,
+   14,
+   16
+  ],
+  "bits_sweep_cosine_16b": {
+   "chirp": 0.9999999999505167,
+   "gaussiano": 0.9999999998826458,
+   "esparso": 0.9999999999037512
+  },
+  "lindblad_sweep_noise_grid": [
+   0.05,
+   0.1,
+   0.2,
+   0.3,
+   0.4,
+   0.5,
+   0.6
+  ],
+  "lindblad_total_steps": 1885,
+  "lindblad_sweep": {
+   "0.05": {
+    "delta_initial": 0.0712699363843161,
+    "delta_final": 5.2542240401538695e-09,
+    "iterations": 246,
+    "state": "TETELESTAI",
+    "n_steps": 247
+   },
+   "0.1": {
+    "delta_initial": 0.1425398727686322,
+    "delta_final": 6.033560838826546e-09,
+    "iterations": 192,
+    "state": "TETELESTAI",
+    "n_steps": 193
+   },
+   "0.2": {
+    "delta_initial": 0.2850797455372644,
+    "delta_final": 9.025546989007807e-09,
+    "iterations": 292,
+    "state": "TETELESTAI",
+    "n_steps": 293
+   },
+   "0.3": {
+    "delta_initial": 0.4276196183058965,
+    "delta_final": 8.369762528686085e-09,
+    "iterations": 290,
+    "state": "TETELESTAI",
+    "n_steps": 291
+   },
+   "0.4": {
+    "delta_initial": 0.5701594910745288,
+    "delta_final": 5.277715158155021e-09,
+    "iterations": 288,
+    "state": "TETELESTAI",
+    "n_steps": 289
+   },
+   "0.5": {
+    "delta_initial": 0.7126993638431609,
+    "delta_final": 2.6551984773347635e-10,
+    "iterations": 286,
+    "state": "TETELESTAI",
+    "n_steps": 287
+   },
+   "0.6": {
+    "delta_initial": 0.855239236611793,
+    "delta_final": 6.189908107944702e-09,
+    "iterations": 284,
+    "state": "TETELESTAI",
+    "n_steps": 285
+   }
+  },
+  "graviton_g_mean": 0.7617217364353253,
+  "psibit_Fexp_chirp": {
+   "psi_plus": 0.24958333333333332,
+   "psi_minus": 0.23533333333333334,
+   "psi_plus_minus": 0.24533333333333332,
+   "psi_plus_plus": 0.26975
+  }
+ },
+ "verdict": "ACOM_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "ACOM_FULL_LOGIC_DEMONSTRATED ([SIM] — operador de Lindblad ATIVO real (dH=H^2+alpha^2*L*Delta) + REFLECT/MANIFEST exato + SIGNAL/SPECTRAL/PSIBIT (Trinity) + serializacao SHA-256; beta=alpha*sqrt(e) injetado no lugar de 0.012 literal; sinais sinteticos, nao a Tabela 1; nada valida fisica)",
+ "elapsed_s": 0.3992175000021234,
+ "note": "FINAL co-construido: reproduz os testes do runner sobre as fontes inlined (tgl_core + ACOMV14 com beta injetado + portes fieis SPECTRAL/PSIBIT). Sinais/matrizes SINTETICOS; NAO os numeros da Tabela 1. Nenhum token/modelo HuggingFace (P-04). Simulacao demonstra a logica, nunca valida fisica.",
+ "result_hash": "d7150be9c4479eef8667ec9b642ea56bfb7b43a546a6cfab6d05bf2364767b2e"
+}

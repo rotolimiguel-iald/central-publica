@@ -1,0 +1,810 @@
+{
+  "patent_id": "BR102026004688-4",
+  "dir": "BR102026004688-4_DIPOLO_TRANSISTOR",
+  "claims_total": 15,
+  "claims_fully_resolved": 15,
+  "elos_total": 55,
+  "elos_resolved": 55,
+  "claims": [
+    {
+      "n": 1,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "DISPOSITIVO — dipolo transistor luminodinamico: polo de emissao (10) radicaliza g=raiz|Psi_in| extraindo simultaneamente s=sign(Psi_in) e s_ponto=sign(dPsi/dt); camara de acoplamento (20) com controlador que mantem alpha^2=0,012 (Constante de Miguel); polo de retorno (30) executa Psi_out=s x g^2_out (Dobra Dimensional x2); substrato holografico (40) H4 com endereco theta=arcsin(g/g_max) e translacao T_M; cruz geometrica (50) com condensado psi+psi-. Caracterizado por Psi_in ser simultaneamente portador e controlador (sem campo externo) e chaveamento hierarquico 3D->2D->3D mediado por alpha^2=0,012.",
+      "verdict": "logica de chaveamento simulada (radical->manifest round-trip exato, piso beta); dispositivo fisico nao construido — simulacao nao valida fisica [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 1 (independente — dispositivo) no deposito INPI",
+          "proves": "redacao oficial da reivindicacao [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form",
+          "proves": "o alpha^2=0,012 que o controlador mantem e beta=alpha*raiz(e) injetado em runtime, nunca literal [REAL/DER]",
+          "value": "beta = alpha*raiz(e) ~ 0,012031 (runtime, nunca literal)",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gate_open_manifest_exact",
+          "proves": "radicalizacao g=raiz|Psi_in|, s=sign e ressurreicao Psi_out=s*g^2 exatas quando a porta abre [SIM]",
+          "value": "estado=MANIFEST, round-trip err=0,0 (<1e-12)",
+          "resolved": true,
+          "detail": "teste 'gate_open_manifest_exact' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "gate_open_manifest_exact",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — verb_floor_threshold_semantics",
+          "proves": "chaveamento pelo piso do Verbo beta*g_max — o proprio sinal governa a porta, sem campo externo [SIM]",
+          "value": "piso beta*g_max; fracao acima=0,9997",
+          "resolved": true,
+          "detail": "teste 'verb_floor_threshold_semantics' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "verb_floor_threshold_semantics",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_dipolo.py — FSM DipoloTransistor.gate()",
+          "proves": "implementacao da logica de chaveamento (nucleo copiado READ-ONLY do piloto) [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_dipolo.py",
+          "code_path": "runner/one_dipolo.py",
+          "live_sha256": "422f196eb87e17d30bec58ccc2fab4329158354838a37bb3936bd4b2e2bde73e"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE]",
+          "proves": "o dispositivo fisico (DTL) NAO foi construido nem medido; s_ponto=sign(dPsi/dt), substrato H4, endereco theta=arcsin(g/g_max), operador T_M e a cruz geometrica psi+psi- NAO sao implementados na FSM; simulacao nao valida fisica (physical_verdict_allowed=false)",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 2,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Detalha o polo de emissao (10): guia de onda de entrada (11), divisor Y-branch (12), extrator gravitacional (13) que computa g=raiz|Psi_in| por fotodetector de avalanche + circuito de raiz quadrada, e extrator de polaridade (14) s=sign(Psi_in) e s_ponto=sign(dPsi/dt) por comparador ultrarrapido (<100 ps).",
+      "verdict": "a logica g=raiz|Psi| e s=sign e simulada; os componentes fisicos nao existem — simulacao nao valida fisica [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 2 (dependente de 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gate_open_manifest_exact",
+          "proves": "a logica do extrator gravitacional (g=raiz|Psi_in|) e do extrator de polaridade (s=sign) esta demonstrada em codigo [SIM]",
+          "value": "g=raiz|Psi| e s=sign computados; round-trip exato",
+          "resolved": true,
+          "detail": "teste 'gate_open_manifest_exact' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "gate_open_manifest_exact",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_dipolo.py — computa g=raiz(abs(L)), s=sign(L)",
+          "proves": "extracao gravitacional/polaridade como codigo executavel [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_dipolo.py",
+          "code_path": "runner/one_dipolo.py",
+          "live_sha256": "422f196eb87e17d30bec58ccc2fab4329158354838a37bb3936bd4b2e2bde73e"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE]",
+          "proves": "os componentes fisicos (fotodetector de avalanche, circuito de raiz quadrada, divisor Y-branch, comparador <100 ps) NAO foram construidos; s_ponto=sign(dPsi/dt) (derivada temporal) nao e computado no runner; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 3,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Detalha a camara de acoplamento (20): cavidade ressonante cubica (21) L=c/(2*f_res), meio de acoplamento (22) de radicais, eletrodos de tungstenio (23) como ancoras de fase (nao condutores de corrente), e controlador (24) que mantem alpha^2=0,012 por malha de realimentacao.",
+      "verdict": "o setpoint alpha^2=beta=alpha*raiz(e) e real em runtime; cavidade/eletrodos/meio nao construidos — simulacao nao valida fisica [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 3 (dependente de 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form",
+          "proves": "o valor alpha^2=0,012 que o controlador (24) mantem e beta=alpha*raiz(e) injetado em runtime, nunca literal [REAL/DER]",
+          "value": "beta = alpha*raiz(e) ~ 0,012031 (runtime)",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE]",
+          "proves": "a cavidade ressonante cubica, o meio de radicais e os eletrodos de W sao hardware NAO construido; a malha de realimentacao fisica nao foi medida; apenas o setpoint numerico alpha^2=beta e demonstrado; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 4,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Tres estados de operacao: ON (modo c1, Gamma=tanh(P_in/P_th)>1-alpha^2 e <psi+psi->!=0), OFF (Gamma<<1, <psi+psi-> -> 0) e LOCK (modo c3, CCI=1/2, loop recursivo ativo = memoria).",
+      "verdict": "ON/OFF simulados como FSM de 2 estados (MANIFEST/REFLECT); o terceiro estado LOCK/CCI=1/2 NAO e demonstrado [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 4 (dependente de 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gate_open_manifest_exact",
+          "proves": "estado ON demonstrado (porta aberta, MANIFEST) [SIM]",
+          "value": "estado=MANIFEST",
+          "resolved": true,
+          "detail": "teste 'gate_open_manifest_exact' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "gate_open_manifest_exact",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gate_closed_on_absent_signal",
+          "proves": "estado OFF demonstrado (porta fechada, REFLECT) em sinal ausente/dephased [SIM]",
+          "value": "estado=REFLECT, saida nula",
+          "resolved": true,
+          "detail": "teste 'gate_closed_on_absent_signal' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "gate_closed_on_absent_signal",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — fsm_three_state_switching",
+          "proves": "chaveamento deterministico entre estados por presenca/ausencia de sinal [SIM]",
+          "value": "sequencia MANIFEST->REFLECT->MANIFEST",
+          "resolved": true,
+          "detail": "teste 'fsm_three_state_switching' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "fsm_three_state_switching",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — fsm_transition_coverage",
+          "proves": "as 4 transicoes da FSM entre REFLECT/MANIFEST sao cobertas [SIM]",
+          "value": "cobertura 100% (4/4), deterministica",
+          "resolved": true,
+          "detail": "teste 'fsm_transition_coverage' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "fsm_transition_coverage",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — terceiro estado",
+          "proves": "o estado LOCK (CCI=1/2, loop recursivo) NAO e demonstrado: a FSM implementada tem apenas 2 estados (REFLECT/MANIFEST); apesar do nome 'fsm_three_state_switching', o ciclo exercitado e de 2 estados; <psi+psi-> e Gamma=tanh nao sao modelados; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 5,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Cada polo suporta tres niveis |0>, |1>, |Psi>; populacao do terceiro estado |gamma|^2=alpha^2=0,012; razao de supercondutividade R_SC>10^6.",
+      "verdict": "o valor |gamma|^2=alpha^2=beta e real em runtime; o sistema de tres niveis e R_SC>10^6 nao foram modelados [OPEN][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 5 (dependente de 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form (ancora do valor alpha^2)",
+          "proves": "a populacao |gamma|^2=alpha^2=0,012 e beta=alpha*raiz(e) em runtime, nunca literal [REAL/DER] — apenas o numero, nao o sistema de tres niveis",
+          "value": "beta = alpha*raiz(e) ~ 0,012031",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DATA_REQUIRED]",
+          "proves": "o sistema quantico de tres niveis |0>,|1>,|Psi>, a populacao efetiva e a razao R_SC>10^6 NAO foram modelados — dinamica quantica (QuTiP) ausente; R_SC e teorico; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 6,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Termodinamica invertida (Delta_S -> 0, Delta_T <= 0) com potencia P_DTL=alpha^2 x h_barra*omega0 x f_clock, abaixo do limite de Landauer por fator (1-alpha^2).",
+      "verdict": "o fator alpha^2 (=beta) e real em runtime; a termodinamica invertida e o custo sub-Landauer sao teoricos, nao medidos [OPEN][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 6 (dependente de 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form (ancora do fator alpha^2)",
+          "proves": "o fator alpha^2 de P_DTL e o ganho sub-Landauer (1-alpha^2) usam beta=alpha*raiz(e) runtime [REAL/DER] — apenas a constante",
+          "value": "beta = alpha*raiz(e) ~ 0,012031",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE]",
+          "proves": "a termodinamica invertida (Delta_S->0, Delta_T<=0), a potencia P_DTL e o custo abaixo de Landauer NAO foram demonstrados nem medidos — numeros teoricos do relatorio; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 7,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Angulo de Miguel theta_Miguel=arcsin(raiz(alpha^2))~6,29 graus, angulo minimo de operacao do dipolo (estabelece o condensado psionico).",
+      "verdict": "theta_Miguel e derivavel de beta=alpha*raiz(e) mas nao e computado nem usado como limiar no runner [OPEN][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 7 (dependente de 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form (constante-fonte de theta_Miguel)",
+          "proves": "beta=alpha*raiz(e) e real em runtime; theta_Miguel=arcsin(raiz(beta)) e derivavel dele [REAL/DER]",
+          "value": "beta = alpha*raiz(e) ~ 0,012031",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — divergencia de limiar",
+          "proves": "theta_Miguel~6,29 graus NAO e computado nem testado explicitamente; a porta usa o limiar beta*g_max (dipolo.py), e nao g_max*sin(theta_Miguel)=g_max*raiz(beta) da patente — divergencia registrada de ~9x; angulo teorico; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 8,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Implementacao optica preferencial: L=1 um, f=150 THz (Si3N4 + espelhos dieletricos, eletrodos W), tau_switch~0,88 ps, densidade ~10^12 dispositivos/cm^2.",
+      "verdict": "parametros fisicos teoricos; dispositivo optico nao construido nem medido [OPEN][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 8 (dependente de 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE]",
+          "proves": "os parametros da implementacao optica (L=1 um, f=150 THz, tau_switch=0,88 ps, densidade 10^12/cm^2) sao teoricos/derivados do relatorio; tau_switch nao e computado no runner; dispositivo nao construido; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 9,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Implementacao em micro-ondas: L=9 cm, f=1,667 GHz (transicao F=2->2 da hidroxila OH), vapor d'agua a 10^-4 a 10^-1 mbar.",
+      "verdict": "parametros fisicos teoricos; dispositivo de micro-ondas nao construido nem medido [OPEN][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 9 (dependente de 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE]",
+          "proves": "os parametros da implementacao em micro-ondas (L=9 cm, f=1,667 GHz, vapor d'agua) sao teoricos; tau_switch~79,6 ns nao e computado no runner; dispositivo nao construido; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 10,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Modo LOCK (CCI=1/2): memoria optica nao-volatil que retem o estado sem energia de manutencao (loop recursivo).",
+      "verdict": "o estado LOCK e CCI=1/2 NAO sao demonstrados — a FSM tem apenas REFLECT/MANIFEST [OPEN][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 10 (dependente de 1)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — LOCK ausente",
+          "proves": "o estado LOCK, a condicao CCI=1/2 e a memoria optica nao-volatil (loop recursivo) NAO sao demonstrados; a FSM implementada tem 2 estados (REFLECT/MANIFEST) e nao expoe LOCK (o atributo _latched existe em dipolo.py mas nao e usado como memoria); simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 11,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "METODO de chaveamento por radicalizacao luminodinamica: receber Psi_in; radicalizar g=raiz|Psi_in| com s e s_ponto; nominar psi em H4 a partir de (s,s_ponto); codificar theta=arcsin(g/g_max); projetar no substrato 2D (3D->2D); trasladar por T_M com alpha^2=0,012; ressuscitar Psi_out=s x g^2_out (2D->3D). Caracterizado por Psi_in operar como portador E agente de controle, sem campo externo.",
+      "verdict": "radicalizacao e ressurreicao (s*g^2) simuladas com round-trip exato; nominacao H4, s_ponto, theta e T_M nao implementadas [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 11 (independente — metodo) no deposito INPI",
+          "proves": "redacao oficial da reivindicacao [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gate_open_manifest_exact",
+          "proves": "os passos radicalizar g=raiz|Psi_in| e ressuscitar Psi_out=s*g^2 sao exatos [SIM]",
+          "value": "round-trip err=0,0",
+          "resolved": true,
+          "detail": "teste 'gate_open_manifest_exact' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "gate_open_manifest_exact",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — verb_floor_threshold_semantics",
+          "proves": "Psi_in opera como portador e agente de controle (piso beta*g_max), sem campo externo [SIM]",
+          "value": "fracao acima do piso=0,9997",
+          "resolved": true,
+          "detail": "teste 'verb_floor_threshold_semantics' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "verb_floor_threshold_semantics",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — multi_signal_family_gating",
+          "proves": "o metodo aplica-se a familias de sinal diversas (gaussiano, pico, uniforme, exponencial, bimodal, ausente) com reconstrucao exata [SIM]",
+          "value": "6 familias; round-trip err=0,0 nas que abrem; ausente fecha",
+          "resolved": true,
+          "detail": "teste 'multi_signal_family_gating' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "multi_signal_family_gating",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_dipolo.py — pipeline do metodo",
+          "proves": "o metodo como instrucoes executaveis [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_dipolo.py",
+          "code_path": "runner/one_dipolo.py",
+          "live_sha256": "422f196eb87e17d30bec58ccc2fab4329158354838a37bb3936bd4b2e2bde73e"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE]",
+          "proves": "a nominacao psi em H4, a extracao s_ponto=sign(dPsi/dt), a codificacao theta=arcsin(g/g_max) e a translacao T_M NAO sao implementadas; a projecao 3D->2D e conceitual; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 12,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "A transicao ON/OFF opera como transicao de fase abrupta, Gamma=tanh(P_in/P_th), com ponto otimo Gamma=1-alpha^2=0,988.",
+      "verdict": "ON/OFF abrupto por limiar demonstrado; a curva Gamma=tanh e o ponto 0,988 sao teoricos (o runner mede curva de sobrevivencia do radical) [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 12 (dependente de 11)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gate_closed_on_absent_signal",
+          "proves": "transicao abrupta para OFF quando o radical cai abaixo do piso [SIM]",
+          "value": "REFLECT, saida nula",
+          "resolved": true,
+          "detail": "teste 'gate_closed_on_absent_signal' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "gate_closed_on_absent_signal",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — verb_floor_threshold_sweep",
+          "proves": "curva caracteristica de limiar (fracao do radical acima de f*g_max) demonstrada; beta e um ponto dela [SIM]",
+          "value": "101 pontos, curva monotonica nao-crescente, fracao@beta=0,9997",
+          "resolved": true,
+          "detail": "teste 'verb_floor_threshold_sweep' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "verb_floor_threshold_sweep",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — curva nao e tanh",
+          "proves": "a curva demonstrada e a de SOBREVIVENCIA do radical (fracao acima de f*g_max), NAO a Gamma=tanh(P_in/P_th) da reivindicacao; o ponto otimo Gamma=1-alpha^2=0,988 e teorico, nao computado; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 13,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "A dinamica segue uma equacao mestra de Lindblad modificada com L_holo de taxa gamma_holo=alpha^2*omega0/(2pi), convergindo ao estado estacionario de posto unitario rho* = |Psi><Psi|.",
+      "verdict": "a taxa gamma_holo usa alpha^2=beta real; a dinamica de Lindblad e a convergencia a rho* NAO foram implementadas [OPEN][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 13 (dependente de 11)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form (ancora do alpha^2 de gamma_holo)",
+          "proves": "o alpha^2 da taxa gamma_holo=alpha^2*omega0/(2pi) e beta=alpha*raiz(e) runtime [REAL/DER] — apenas a constante",
+          "value": "beta = alpha*raiz(e) ~ 0,012031",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DATA_REQUIRED]",
+          "proves": "a equacao mestra de Lindblad modificada (L_holo, L_rad) e a convergencia ao estado estacionario rho*=|Psi><Psi| NAO foram implementadas — dinamica quantica (QuTiP) ausente; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 14,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Modo de amplificacao em cascata (N estagios, ganho por estagio G=1-alpha^2=0,988) e modo de logica ternaria (operadores NOT_Psi, RADICAL, MANIFEST sobre |0>, |1>, |Psi>).",
+      "verdict": "o fator 1-alpha^2 e real (=1-beta); cascata e logica ternaria de 3 niveis NAO sao demonstradas [OPEN][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 14 (dependente de 11)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form (ancora do fator 1-alpha^2)",
+          "proves": "o ganho por estagio G=1-alpha^2 usa beta=alpha*raiz(e) runtime [REAL/DER] — apenas a constante",
+          "value": "beta = alpha*raiz(e) ~ 0,012031",
+          "resolved": true,
+          "detail": "teste 'beta_form' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "beta_form",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — cascata/ternario ausentes",
+          "proves": "o modo cascata (N estagios) e a logica ternaria (NOT_Psi/RADICAL/MANIFEST sobre |0>,|1>,|Psi>) NAO foram demonstrados; a FSM tem 2 estados, nao 3; nenhum teste de cascata/ternario no runner; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 15,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "SISTEMA de processamento luminodinamico: rede de dipolos transistores (conforme reiv. 1) interligados por guias de onda opticos, controlados por agente IALD que minimiza J=w1*D_Psi + w2*phi_ponto^2 + w3*Delta_S_topo; cada dipolo opera como chaveamento + memoria + roteador, compativel com Supercondutor Holografico, ACOM Mirror, MQC e Psi-NET.",
+      "verdict": "o bloco elementar (um dipolo) chaveia em simulacao; a rede, o agente IALD e a integracao NAO foram demonstrados [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 15 (independente — sistema) no deposito INPI",
+          "proves": "redacao oficial da reivindicacao [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 73,
+          "indexed_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "live_sha256": "9290cefd8db01113c92395af5c98d3825859b0ce05f0440ae95368ae68110a90",
+          "ref": "documento id=73 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner one_dipolo — 9/9 testes",
+          "proves": "o bloco elementar (um dipolo transistor) chaveia de verdade em simulacao — todos os testes da run passam [SIM]",
+          "value": "9/9 testes — DIPOLO_SWITCHING_LOGIC_DEMONSTRATED",
+          "resolved": true,
+          "detail": "selo do run presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — multi_signal_family_gating",
+          "proves": "o dipolo processa/roteia sinais diversos como bloco de chaveamento [SIM]",
+          "value": "6 familias roteadas pela porta",
+          "resolved": true,
+          "detail": "teste 'multi_signal_family_gating' consta no runner + selo presente",
+          "result_hash": "f29e595f58c14aed00df1bc36f39b4b848ddfe28377e33d68da63590f24ea7d6",
+          "run": "DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "ref": "selo DIPOLO_TRANSISTOR@2026-07-10T11-47-13",
+          "test": "multi_signal_family_gating",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_dipolo.py — bloco elementar do sistema",
+          "proves": "o dipolo como unidade de chaveamento executavel [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_dipolo.py",
+          "code_path": "runner/one_dipolo.py",
+          "live_sha256": "422f196eb87e17d30bec58ccc2fab4329158354838a37bb3936bd4b2e2bde73e"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — rede/agente ausentes",
+          "proves": "a REDE de dipolos, o agente IALD minimizando J, os modos memoria (LOCK) e roteador, e a integracao com Supercondutor Holografico/ACOM Mirror/MQC/Psi-NET NAO foram demonstrados — apenas um dipolo isolado; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    }
+  ]
+}

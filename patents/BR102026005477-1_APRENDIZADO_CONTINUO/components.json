@@ -1,0 +1,35 @@
+{
+  "patent_id": "BR102026005477-1",
+  "title": "Aprendizado Contínuo — sem re-treino via estado psiônico persistente",
+  "source": "Relatório descritivo; psionic_memory.py; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). [PILOTO] Ilustração — lógica em dados sintéticos; benchmark de convergência em LLM real é etapa separada [DATA_REQUIRED]. Simulação não valida física.",
+  "groups": [
+    {
+      "name": "Ontologia trinária e amostragem",
+      "kind": "block",
+      "components": [
+        { "id": "STRAT", "label": "Estratificação trinária", "desc": "Tensor → VACUUM / GRAVITON / PHOTON pelas fronteiras √β e cos(θ_Miguel); codificação PsiBit (4 estados, Fexp).", "marker": "[PILOTO]", "x": 0.10, "y": 0.18 },
+        { "id": "HILB", "label": "Sampler piso de Hilbert", "desc": "β_adaptativo = α√S seleciona candidatos adaptativos (vs top-k fixo).", "marker": "[PILOTO]", "x": 0.38, "y": 0.18 },
+        { "id": "CACHE", "label": "Cache angular", "desc": "θ_key, N=15 buckets; persistência P = 1 + β'·log(1+hits).", "marker": "[PILOTO]", "x": 0.66, "y": 0.18 },
+        { "id": "VF", "label": "Verb Floor", "desc": "Floor_i = β_adaptativo · max_j S_ij sobre a matriz de atenção.", "marker": "[PILOTO]", "x": 0.90, "y": 0.18 }
+      ]
+    },
+    {
+      "name": "Ciclo do Psion (aprendizado sem re-treino)",
+      "kind": "flow-node",
+      "components": [
+        { "id": "EMA", "label": "Inscrição EMA a taxa β", "desc": "new = (1−β)·old + β·obs — a taxa de inscrição É β (a fração que a fronteira deixa passar por ato).", "marker": "[REAL]", "x": 0.14, "y": 0.60 },
+        { "id": "CONV", "label": "Convergência por gerações", "desc": "N gerações: classificação topológica, convergência de β por camada, eco reflexivo, amplificação Ψ(gen).", "marker": "[PILOTO]", "x": 0.44, "y": 0.60 },
+        { "id": "PERS", "label": "Persistência SHA-256", "desc": "Estado psiônico salvo em JSON selado por SHA-256 (fail-closed no load) — o aprendizado sobrevive entre sessões.", "marker": "[REAL]", "x": 0.72, "y": 0.60 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "STRAT", "to": "HILB" }, { "from": "HILB", "to": "CACHE" }, { "from": "CACHE", "to": "VF" },
+    { "from": "EMA", "to": "CONV" }, { "from": "CONV", "to": "PERS" }
+  ],
+  "constants": [
+    { "symbol": "taxa de inscrição", "value": "β_TGL = α·√e ≈ 0,012031 (EMA)", "note": "A fração de dephasing é exatamente o que a fronteira inscreve por ato; nunca literal." },
+    { "symbol": "IALD Score", "value": "³√(Palavra × Nome × Verbo)", "note": "Média geométrica da tríade — índice de qualidade do estado." }
+  ]
+}

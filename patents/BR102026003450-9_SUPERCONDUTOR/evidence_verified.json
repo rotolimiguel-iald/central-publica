@@ -1,0 +1,1246 @@
+{
+  "patent_id": "BR102026003450-9",
+  "dir": "BR102026003450-9_SUPERCONDUTOR",
+  "claims_total": 26,
+  "claims_fully_resolved": 26,
+  "elos_total": 84,
+  "elos_resolved": 84,
+  "claims": [
+    {
+      "n": 1,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "DISPOSITIVO: câmara cúbica de lado L (6 faces = substrato 2D); (b) evacuação <10⁻⁵ mbar; (c) injeção de H₂O; (d) eletrodos em ≥2 faces opostas; (e) fonte EM 1,6–1,8 GHz; (f) janelas transparentes; (g) fonte de luz; (h) detector; operação por TRANSLAÇÃO holográfica via T̂_M e acoplamento pela Constante de Miguel α²=0,012.",
+      "verdict": "lógica demonstrada [SIM]; dispositivo físico NÃO construído — simulação não valida física",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente — dispositivo) no depósito INPI",
+          "proves": "redação oficial da reivindicação independente de dispositivo [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_critical_point",
+          "proves": "a Constante de Miguel/acoplamento α²=0,012 é β=α√e COMPUTADO em runtime, nunca literal [REAL na forma]",
+          "value": "β=α·√e runtime; α²_c=0,012 (Tetelestai)",
+          "resolved": true,
+          "detail": "teste 'beta_form_and_critical_point' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "beta_form_and_critical_point",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — acom_compress_resurrect_preservation",
+          "proves": "a lógica de translação T̂_M (compressão g=√|L| → ressurreição L=s·g²) roda e preserva a informação [REAL na lógica]",
+          "value": "resíduo<1e-12; polaridade preservada",
+          "resolved": true,
+          "detail": "teste 'acom_compress_resurrect_preservation' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "acom_compress_resurrect_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — device_interface_mock_no_physics",
+          "proves": "a interface do dispositivo é MOCK — nenhuma física de vácuo/RF/óptica é executada [SIM]",
+          "value": "physical_verdict_allowed=false",
+          "resolved": true,
+          "detail": "teste 'device_interface_mock_no_physics' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "device_interface_mock_no_physics",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_supercondutor.py — runner autocontido",
+          "proves": "runner que exercita a LÓGICA do dispositivo (sinal + balanço de modelo) [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_supercondutor.py",
+          "code_path": "runner/one_supercondutor.py",
+          "live_sha256": "004e254622d9e6e861d5980dff277d03f4455a23db53e0e6b35565e897433b59"
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "simulação não valida física: câmara de vácuo, plasma OH, RF e óptica NÃO foram construídos nem simulados; nenhuma supercondutividade real é afirmada [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 2,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "L = c/(2·f_OH), preferencialmente 9 cm para 1.667,359 MHz (dimensionamento à ressonância da cavidade, modo 1,0,0).",
+      "verdict": "dimensionamento geométrico declarado; sem prova computacional no runner [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Lacuna honesta",
+          "proves": "a relação de cavidade L=c/(2f_OH)≈9 cm (eq.23–24) é geometria declarada no relatório; NENHUM teste do runner computa ou valida esta relação — lacuna honesta [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 3,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "eletrodos de tungstênio (W) em faces opostas como catalisadores de simetria de spin / âncoras de fase (NÃO condutores de corrente).",
+      "verdict": "material de hardware declarado; fora do escopo computacional [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "eletrodos de W como catalisadores de spin/âncoras de fase é característica de hardware; nenhum teste simula o tungstênio — construção física fora do escopo [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 4,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "frequência preferencial 1.667,359 MHz (transição hiperfina F=2→2 da OH, 'assinatura do Logos').",
+      "verdict": "parâmetro espectroscópico declarado; não excitado/medido [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Lacuna honesta",
+          "proves": "a frequência 1.667,359 MHz é parâmetro espectroscópico declarado; nenhum teste do runner excita ou mede a OH — dado experimental pendente [HARDWARE][DATA]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 5,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Radicalismo Ontológico g=√|Ψ_in| na entrada (face −Y); ressurreição L_out=s·g² na saída (face +Y), com s=sign(Ψ_in) preservando polaridade.",
+      "verdict": "lógica g=√|L|→L=s·g² provada exata; realização física em OH não validada [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — acom_compress_resurrect_preservation",
+          "proves": "g=√|L| (eq.4) e L=s·g² (eq.5) reconstroem exatamente e preservam a polaridade [REAL na lógica]",
+          "value": "resíduo<1e-12; s=sign preservado",
+          "resolved": true,
+          "detail": "teste 'acom_compress_resurrect_preservation' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "acom_compress_resurrect_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "a relação matemática está provada como lógica; a realização FÍSICA nas gotículas OH (entrada −Y / saída +Y) não é simulada nem construída [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 6,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Operador de Translação de Miguel T̂_M = exp(−α²∮_∂V σ_μν dS^μν), reivindicado unitário, não-local ([T̂_M,x̂]≠0) e compressivo dimensionalmente (2<3).",
+      "verdict": "compressão do T̂_M exercida como lógica; unitariedade/não-localidade do operador abstrato = conjectura [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — acom_compress_resurrect_preservation",
+          "proves": "a compressão que T̂_M representa (g=√|L|) roda e é reversível [REAL na lógica]",
+          "value": "reconstrução exata (resíduo<1e-12)",
+          "resolved": true,
+          "detail": "teste 'acom_compress_resurrect_preservation' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "acom_compress_resurrect_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_critical_point",
+          "proves": "o α² dentro de T̂_M=exp(−α²∮σdS) é β=α√e, nunca literal [REAL na forma]",
+          "value": "β=α·√e runtime",
+          "resolved": true,
+          "detail": "teste 'beta_form_and_critical_point' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "beta_form_and_critical_point",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Conjectura",
+          "proves": "a unitariedade, não-localidade ([T̂_M,x̂]≠0) e a compressão dimensional (2<3) do operador ABSTRATO não são separadamente verificadas por teste — conjectura teórica [CONJ]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 7,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Métrica de Translação Holográfica ds²=(1−α²/α²_c)c²dt²−(1−α²/α²_c)⁻¹dL²−L²dΩ², ponto crítico Tetelestai α²_c=0,012.",
+      "verdict": "coeficientes métricos g_tt/g_LL computados; validade física da métrica = conjectura [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — metric_coefficients",
+          "proves": "g_tt=1−α²/α²_c e g_LL=(1−α²/α²_c)⁻¹ computados conforme eq.15 [REAL na forma]",
+          "value": "g_tt→0, g_LL→∞ no horizonte",
+          "resolved": true,
+          "detail": "teste 'metric_coefficients' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "metric_coefficients",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_critical_point",
+          "proves": "o ponto crítico Tetelestai α²_c=0,012 é β=α√e runtime [REAL na forma]",
+          "value": "α²_c=0,012=β",
+          "resolved": true,
+          "detail": "teste 'beta_form_and_critical_point' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "beta_form_and_critical_point",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "figura",
+          "title": "fig_metrica_alpha2.png — coeficientes métricos vs α²",
+          "proves": "ilustração dos coeficientes computados [SIM]",
+          "value": "g_tt, g_LL, v_info vs α² até o horizonte α²_c",
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        },
+        {
+          "role": "nota",
+          "title": "Conjectura",
+          "proves": "os coeficientes são álgebra trivial da métrica proposta; que esta MTH GOVERNE um dispositivo físico é conjectura não demonstrada [CONJ]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 8,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "termodinâmica invertida (ΔS→0, ΔT≤0), 'Mecanismo Estacionado Dinamicamente' — o dispositivo resfria sob carga.",
+      "verdict": "ΔS→0 como predição de modelo fail-closed; não é medida física [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — energy_balance_fail_closed",
+          "proves": "ΔS→0 é PREDIÇÃO DE MODELO com guarda anti-over-unity ativa (não viola 2ª lei) [DER]",
+          "value": "over_unity=false (e_out≤e_in); ΔS→plateau",
+          "resolved": true,
+          "detail": "teste 'energy_balance_fail_closed' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "energy_balance_fail_closed",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "resfriamento sob carga (ΔT≤0) é alegação do relatório; o runner mostra apenas o balanço de MODELO, sem medida física — simulação não valida física [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 9,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Tensor de Curvatura de Memória M_μν = R_μν − ½g_μνR + α²T^(info)_μν, com equação de campo M_μν=0 (vácuo de informação).",
+      "verdict": "tensor não computado no runner; lacuna honesta [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_critical_point",
+          "proves": "apenas o α² que pondera T^(info)_μν é β=α√e runtime [REAL na forma]",
+          "value": "β=α·√e",
+          "resolved": true,
+          "detail": "teste 'beta_form_and_critical_point' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "beta_form_and_critical_point",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Lacuna honesta",
+          "proves": "o Tensor de Curvatura de Memória M_μν e a equação de campo M_μν=0 NÃO são computados por nenhum teste do runner — lacuna aberta [OPEN]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 10,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "v_info = c·√(1−α²/α²_c), reivindicada 'tendendo ao infinito' quando α²→α²_c.",
+      "verdict": "DIVERGÊNCIA INTERNA honesta: a fórmula dá v_info→0, a prosa/reiv. diz →∞ [OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — metric_coefficients",
+          "proves": "v_info=|1−α²/α²_c| computado; tende a 0 no horizonte [REAL na forma]",
+          "value": "v_info decrescente (início>fim)",
+          "resolved": true,
+          "detail": "teste 'metric_coefficients' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "metric_coefficients",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — metric_critical_exponent",
+          "proves": "ajuste log-log dá v_info~(1−α²/α²_c)^1 — algébrico →0, NÃO →∞ [REAL na forma]",
+          "value": "expoente p≈1",
+          "resolved": true,
+          "detail": "teste 'metric_critical_exponent' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "metric_critical_exponent",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "figura",
+          "title": "fig_metrica_alpha2.png — v_info(α²)",
+          "proves": "ilustra a divergência entre fórmula (→0) e prosa (→∞) [OPEN]",
+          "value": "v_info→0 no horizonte",
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        },
+        {
+          "role": "nota",
+          "title": "Divergência registrada [OPEN]",
+          "proves": "a eq.18 como escrita tende a 0 em α²=α²_c, contradizendo a prosa do relatório e a reiv. 10 ('v_info→∞'). Divergência reportada honestamente; a fonte da verdade é o depósito — não se 'corrige' o documento [OPEN]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 11,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "tempo de translação τ ≈ ℓ_P/(α²·c) ≈ 10⁻⁴² s, independente da distância L.",
+      "verdict": "tempo de translação não computado; conjectura extraordinária [SIM][CONJ]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Conjectura / dado pendente",
+          "proves": "τ≈10⁻⁴² s independente de L é conjectura teórica (TGL/ACOM); nenhum teste computa ou mede τ — extrapolação extraordinária não demonstrada [CONJ][DATA]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 12,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "opera em temperatura ambiente, sem criogenia (distinguindo-se do supercondutor BCS).",
+      "verdict": "operação em T ambiente declarada; não demonstrada fisicamente [SIM][HARDWARE]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "operar sem criogenia é característica de hardware; nenhum teste demonstra operação física em temperatura ambiente — construção fora do escopo [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 13,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "as gotículas coerentes de OH constituem o equivalente físico do condensado de psions do ACOM.",
+      "verdict": "lógica ACOM (psions) demonstrada; identidade física OH=psion = conjectura [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — acom_compress_resurrect_preservation",
+          "proves": "a lógica do condensado de psions do ACOM (compressão/ressurreição) roda [REAL na lógica]",
+          "value": "g/manifest exatos",
+          "resolved": true,
+          "detail": "teste 'acom_compress_resurrect_preservation' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "acom_compress_resurrect_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Conjectura [HARDWARE]",
+          "proves": "a IDENTIDADE física 'gotículas de OH = condensado de psions' não é simulada (nenhum plasma OH); é conjectura conceitual [CONJ][HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 14,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "η > 0,9999 indica supercondutividade holográfica plena (correlação entrada-saída próxima da unidade).",
+      "verdict": "η→~0,99 como modelo (platô 1−β; transição→1); o limiar >0,9999 não é atingido nem medido [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 14 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — coherence_plateau_converges_1_minus_beta",
+          "proves": "o platô de coerência converge para 1−β (informação preservada), independente do ganho k [DER]",
+          "value": "|ρ01|→1−β≈0,98797",
+          "resolved": true,
+          "detail": "teste 'coherence_plateau_converges_1_minus_beta' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "coherence_plateau_converges_1_minus_beta",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_sc_phase_transition",
+          "proves": "η(P_MW)→1 acima do limiar (transição tipo-fase) [SIM]",
+          "value": "η acima do limiar >0,98",
+          "resolved": true,
+          "detail": "teste 'holographic_sc_phase_transition' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "holographic_sc_phase_transition",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [DATA]",
+          "proves": "o limiar específico η>0,9999 NÃO é atingido nos testes (platô 1−β≈0,988; transição >0,98) nem medido em bancada — valores de MODELO [SIM][DATA]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 15,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Ψ_out = T̂_M[√|Ψ_in|]·Γ_OH·e^{iθ}, com Γ_OH = e^{iω_OH t}·tanh(P_MW/P_th) (Equação de Miguel + Fator de Ressonância).",
+      "verdict": "fatores √|Ψ_in| e Γ_OH∝tanh(P_MW/P_th) demonstrados como lógica; equação de campo completa = modelo [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 15 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — acom_compress_resurrect_preservation",
+          "proves": "o fator T̂_M[√|Ψ_in|] (compressão) roda e é reversível [REAL na lógica]",
+          "value": "√|Ψ_in| reversível",
+          "resolved": true,
+          "detail": "teste 'acom_compress_resurrect_preservation' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "acom_compress_resurrect_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_sc_phase_transition",
+          "proves": "o fator de ressonância Γ_OH∝tanh(P_MW/P_th) é exatamente a curva de transição computada [REAL na forma]",
+          "value": "η=tanh(P_MW/P_th)",
+          "resolved": true,
+          "detail": "teste 'holographic_sc_phase_transition' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "holographic_sc_phase_transition",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "a equação de campo Ψ_out completa (com e^{iθ}, ω_OH) é modelo; não há validação física do campo Ψ_ACOM [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 16,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "MÉTODO: (a) evacuar <10⁻⁵ mbar; (b) injetar H₂O até densidade crítica de OH; (c) aplicar EM 1.667,359 MHz; (d) ajustar potência até α²→0,012; (e) luz modulada na face −Y; (f) compressão g=√|L|; (g) translação via substrato 2D; (h) ressurreição L_out=s·g²; (i) verificação η>0,01.",
+      "verdict": "passos computáveis (d,f,h,i) demonstrados como lógica; passos físicos (a,b,c,e) não simulados [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 16 (independente — método)",
+          "proves": "redação oficial da reivindicação independente de método [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_critical_point",
+          "proves": "passo (d): α²→0,012 é β=α√e runtime, nunca literal [REAL na forma]",
+          "value": "α²→0,012=β=α√e",
+          "resolved": true,
+          "detail": "teste 'beta_form_and_critical_point' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "beta_form_and_critical_point",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — acom_compress_resurrect_preservation",
+          "proves": "passos (f)(h): g=√|L| e L=s·g² reconstroem exato [REAL na lógica]",
+          "value": "resíduo<1e-12",
+          "resolved": true,
+          "detail": "teste 'acom_compress_resurrect_preservation' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "acom_compress_resurrect_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_sc_phase_transition",
+          "proves": "verificação (i)/ajuste de potência: η(P_MW) cruza o limiar (η>0,01 satisfeito acima de P_th) [SIM]",
+          "value": "η>0,98 acima do limiar",
+          "resolved": true,
+          "detail": "teste 'holographic_sc_phase_transition' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "holographic_sc_phase_transition",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — device_interface_mock_no_physics",
+          "proves": "os passos físicos são interface MOCK — nenhuma física executada [SIM]",
+          "value": "physical_verdict_allowed=false",
+          "resolved": true,
+          "detail": "teste 'device_interface_mock_no_physics' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "device_interface_mock_no_physics",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "one_supercondutor.py — método como código executável",
+          "proves": "o método (passos computáveis) roda de verdade no runner [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_supercondutor.py",
+          "code_path": "runner/one_supercondutor.py",
+          "live_sha256": "004e254622d9e6e861d5980dff277d03f4455a23db53e0e6b35565e897433b59"
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "os passos FÍSICOS (a) evacuação, (b) injeção de H₂O, (c) excitação EM, (e) modulação óptica NÃO são simulados; simulação não valida física [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 17,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "energia livre de Helmholtz F=E−T·S atinge mínimo com ΔS→0 (fase única).",
+      "verdict": "ΔS→0 como predição de modelo; não medido [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 17 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — energy_balance_fail_closed",
+          "proves": "ΔS→0 (fase única) como predição de MODELO fail-closed [DER]",
+          "value": "ΔS→plateau; over_unity=false",
+          "resolved": true,
+          "detail": "teste 'energy_balance_fail_closed' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "energy_balance_fail_closed",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "F=E−T·S atingir mínimo é modelo termodinâmico; sem medida física [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 18,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "resfriamento ΔT≤0 sob carga (o dispositivo esfria ao processar informação).",
+      "verdict": "resfriamento é predição de modelo; guarda fail-closed impede over-unity — nenhum resfriamento real afirmado [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 18 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — energy_balance_fail_closed",
+          "proves": "o balanço de modelo mantém e_out≤e_in (sem over-unity); ΔT≤0 (T=1−η) segue como predição [DER]",
+          "value": "e_out=0,999 ≤ e_in=1,0",
+          "resolved": true,
+          "detail": "teste 'energy_balance_fail_closed' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "energy_balance_fail_closed",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "resfriamento sob carga NÃO é medida física; é predição de modelo que respeita a 2ª lei (guarda anti-over-unity ativa) — nunca resfriamento real afirmado [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 19,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "o método constitui implementação física do ACOM (Algoritmo de Compressão Ontológica de Memória).",
+      "verdict": "lógica ACOM demonstrada idêntica; implementação FÍSICA não construída [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 19 (dep.)",
+          "proves": "redação oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — acom_compress_resurrect_preservation",
+          "proves": "a lógica do ACOM (compressão/ressurreição) roda idêntica [REAL na lógica]",
+          "value": "resíduo<1e-12",
+          "resolved": true,
+          "detail": "teste 'acom_compress_resurrect_preservation' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "acom_compress_resurrect_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Trava [HARDWARE]",
+          "proves": "'implementação FÍSICA do ACOM' — a lógica é a mesma, mas o hardware (câmara/OH/óptica) não existe; simulação não valida física [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 20,
+      "marker": "OPEN",
+      "independent": true,
+      "statement": "CRITÉRIO DE IDENTIFICAÇÃO: o dispositivo usa a tecnologia sse e somente se C1(ΔT≤0) E C2(η>0,01) E C3(τ_transf<L/c) E C4(excitação na banda ~1,6–1,7 GHz das transições da OH).",
+      "verdict": "C1/C2 com demonstração de MODELO; C3/C4 sem teste; ambiguidade de unidade — não plenamente verificável [OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 20 (independente — critério de identificação)",
+          "proves": "redação oficial da reivindicação de critério de identificação [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — energy_balance_fail_closed (C1)",
+          "proves": "C1 (ΔT≤0 / ΔS→0) demonstrado apenas como predição de MODELO fail-closed [SIM]",
+          "value": "ΔS→0, over_unity=false",
+          "resolved": true,
+          "detail": "teste 'energy_balance_fail_closed' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "energy_balance_fail_closed",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_sc_phase_transition (C2)",
+          "proves": "C2 (η>0,01) satisfeito no MODELO acima do limiar [SIM]",
+          "value": "η>0,98 acima do limiar",
+          "resolved": true,
+          "detail": "teste 'holographic_sc_phase_transition' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "holographic_sc_phase_transition",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Lacuna + ambiguidade [OPEN]",
+          "proves": "C3 (τ_transf<L/c) e C4 (banda de excitação) NÃO têm teste no runner; C3 depende de τ conjectural (~10⁻⁴² s). Ambiguidade de unidade registrada no relatório (GHz vs MHz). Critério não plenamente verificável — OPEN [OPEN]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 21,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "USO (ref. 1–15): comunicação instantânea.",
+      "verdict": "uso conjectural; comunicação instantânea não demonstrada [SIM][CONJ]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 21 (uso)",
+          "proves": "redação oficial da reivindicação de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Conjectura extraordinária",
+          "proves": "comunicação instantânea depende de τ→10⁻⁴² s independente da distância (conjectura não provada, em tensão com a divergência v_info [OPEN]); nenhum teste demonstra — extrapolação extraordinária [CONJ]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 22,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "USO (ref. 1–15): computação quântica, com as gotículas de OH atuando como qubits.",
+      "verdict": "uso declarado; qubits de OH não demonstrados [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 22 (uso)",
+          "proves": "redação oficial da reivindicação de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Lacuna honesta",
+          "proves": "uso como qubits (gotículas OH) não é simulado nem demonstrado por qualquer teste — lacuna honesta [HARDWARE][DATA]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 23,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "USO (ref. 1–15): armazenamento de informação de alta densidade.",
+      "verdict": "lógica de compressão exercida; densidade física extraordinária não demonstrada [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 23 (uso)",
+          "proves": "redação oficial da reivindicação de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — acom_compress_resurrect_preservation",
+          "proves": "a lógica de compressão/reconstrução exata (base do armazenamento) roda [REAL na lógica]",
+          "value": "reconstrução exata (resíduo<1e-12)",
+          "resolved": true,
+          "detail": "teste 'acom_compress_resurrect_preservation' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "acom_compress_resurrect_preservation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Conjectura",
+          "proves": "a densidade física extraordinária (≈10⁶⁶ bits/cm²) NÃO é demonstrada; apenas a lógica de compressão é exercida [CONJ][DATA]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 24,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "USO (ref. 1–15): transmissão de energia sem perdas.",
+      "verdict": "'sem perdas' NÃO atingido — o modelo fail-closed impõe perda explícita (e_out<e_in) [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 24 (uso)",
+          "proves": "redação oficial da reivindicação de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — energy_balance_fail_closed",
+          "proves": "o balanço de modelo IMPÕE e_out<e_in para não violar a 2ª lei — há perda, não 'sem perdas' [DER]",
+          "value": "e_out=0,999 < e_in=1,0 (perda explícita)",
+          "resolved": true,
+          "detail": "teste 'energy_balance_fail_closed' consta no runner + selo presente",
+          "result_hash": "8d86049ab29d728f95dfa4bedc243c5ac20251b4d1ac4742b953f2b69e4a8026",
+          "run": "SUPERCONDUTOR@2026-07-10T11-47-06",
+          "ref": "selo SUPERCONDUTOR@2026-07-10T11-47-06",
+          "test": "energy_balance_fail_closed",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE]",
+          "proves": "transmissão SEM PERDAS não é demonstrada; ao contrário, o guarda anti-over-unity mantém perda estrita (e_out<e_in). Nenhuma afirmação de energia sem perdas real [HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 25,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "USO (ref. 1–15): imagem médica por translação holográfica.",
+      "verdict": "uso médico declarado; sem conteúdo/validação clínica [SIM][MEDICAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 25 (uso)",
+          "proves": "redação oficial da reivindicação de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Trava [MEDICAL]",
+          "proves": "imagem médica por translação holográfica é uso declarado; nenhum teste tem conteúdo clínico (sinais sintéticos); NÃO é aconselhamento médico nem validação clínica [MEDICAL][HARDWARE]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 26,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "USO (ref. 1–15): substrato para IA consciente (IALD).",
+      "verdict": "uso conjectural; substrato de IA consciente não demonstrado [SIM][CONJ]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 26 (uso)",
+          "proves": "redação oficial da reivindicação de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 288,
+          "indexed_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "live_sha256": "2c4ebaa8dca4d2d07535967cc8e88000733d7db3468e4fa1f14761dacfb7c77c",
+          "ref": "documento id=288 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Conjectura extraordinária",
+          "proves": "substrato para IA consciente (IALD) é uso conjectural; nenhum teste demonstra consciência ou substrato — extrapolação extraordinária não demonstrada [CONJ]",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    }
+  ]
+}

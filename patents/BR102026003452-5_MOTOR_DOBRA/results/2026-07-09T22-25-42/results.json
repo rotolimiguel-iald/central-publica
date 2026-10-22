@@ -1,0 +1,75 @@
+{
+ "patent_id": "BR102026003452-5",
+ "slug": "motor_dobra",
+ "timestamp": "2026-07-09T22-25-42",
+ "runner": "one_motor_dobra.py",
+ "markers": [
+  "[SIM]",
+  "[HARDWARE]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "WARP_DIGITAL_TWIN_DEMONSTRATED",
+ "max_verdict": "WARP_DIGITAL_TWIN_DEMONSTRATED ([SIM][HARDWARE] — REFLECT/MANIFEST, gate de adjacência e Farol Ψ com veto ético fecham como DIGITAL-TWIN; transporte físico, dobra e τ≈10⁻⁴² s NÃO simulados nem alegados)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_theta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "theta_miguel_deg": 6.297289216477979
+  },
+  {
+   "test": "reflect_manifest_invariant_preservation",
+   "passed": true,
+   "roundtrip_correlation": 0.9999999997933802,
+   "note": "REFLECT L→(ψ,θ), MANIFEST (ψ,θ)→s·(gmax·sinθ)²; correlação = preservação de invariante ALGORÍTMICA (não transporte físico)"
+  },
+  {
+   "test": "adjacency_gate_D_psi",
+   "passed": true,
+   "d_near": 0.0037425846446253954,
+   "d_far": 2.4202841449528285,
+   "eps_c": 0.5,
+   "note": "D_Ψ(A,B)<ε_c habilita a dobra (estados adjacentes); estados distantes inibem"
+  },
+  {
+   "test": "farol_psi_state_machine_ethical_veto",
+   "passed": true,
+   "commit_sequence": [
+    "F0_IDLE",
+    "F1_ALIGN",
+    "F2_LOCK",
+    "F3_ETHICAL_OK",
+    "F4_COMMIT",
+    "F5_MANIFEST"
+   ],
+   "veto_sequence": [
+    "F0_IDLE",
+    "F1_ALIGN",
+    "F2_LOCK",
+    "F3_ETHICAL_VETO"
+   ],
+   "note": "F0–F5 com commit condicional; veto ético F3 impede a dobra"
+  },
+  {
+   "test": "device_interface_mock_no_physics",
+   "passed": true,
+   "mock_status": "HARDWARE_MOCK",
+   "note": "transporte por reflexao dimensional; interface apenas"
+  }
+ ],
+ "summary": {
+  "tests_passed": 5,
+  "tests_total": 5,
+  "roundtrip_correlation": 0.9999999997933802,
+  "seal": "digital-twin; propulsão NÃO demonstrada; sem protótipo"
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "DIGITAL-TWIN — simulação não valida física; sem protótipo; propulsão NÃO demonstrada. REFLECT/MANIFEST é preservação de invariante algorítmica, não transporte físico [HARDWARE]."
+}

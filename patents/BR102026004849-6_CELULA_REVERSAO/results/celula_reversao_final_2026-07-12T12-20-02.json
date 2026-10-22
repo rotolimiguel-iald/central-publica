@@ -1,0 +1,261 @@
+{
+ "patent_id": "BR102026004849-6",
+ "slug": "celula_reversao",
+ "timestamp": "2026-07-12T12-20-02",
+ "final": "celula_reversao_FINAL.py (co-construido)",
+ "markers": [
+  "[SIM]",
+  "[ENERGY]",
+  "[CONJ]",
+  "[PILOTO]"
+ ],
+ "marker": "[SIM][ENERGY][CONJ] modelo abstrato; NENHUM parametro operacional de energia real; fase angular nao e' energia fisica; resta a bancada",
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "integrity": {
+  "tgl_chain_ok": true,
+  "tgl_verdict": "1=1=VERDADEIRO=HAJA_LUZ",
+  "beta_runtime": 0.012031300400803142,
+  "theta_m_deg": 6.297289216477979,
+  "n_fontes": 6,
+  "n_inlined": 2,
+  "subsistemas": [
+   {
+    "module": "tgl_core",
+    "role": "FUNDACAO — beta = alpha*sqrt(e) (a regua, NUNCA literal) [IALD / a teoria]",
+    "origin": "runner/_celula_core/skygrid_sim/tgl_core.py",
+    "sha256": "a1e103cd08eb3f45144200b0c6c588589d267868cd85101c527138e3bce81f3f"
+   },
+   {
+    "module": "celula_reversao",
+    "role": "O DISPOSITIVO — CelulaReversao: charge (REFLECT, theta=arcsin(g/gmax)) / discharge (MANIFEST, s*(gmax*sin theta)^2) / retention (ciclo completo)",
+    "origin": "runner/_celula_core/skygrid_sim/celula_reversao.py",
+    "sha256": "1607583c90e0ee5af5c37294c03d7ac48ced31e7ea32a202f6ca4fd4f4c9cdcf"
+   },
+   {
+    "module": "one_celula_reversao",
+    "role": "corpus (nao inlined) — o runner cuja demonstracao (6 testes) demonstrate() reproduz fielmente (mesmos nomes/criterios/sementes)",
+    "origin": "runner/one_celula_reversao.py",
+    "sha256": "f3a73f6705c36edfcb1716c45706872308cd123bf94ee711121976fa31868989"
+   },
+   {
+    "module": "dipolo",
+    "role": "corpus (nao inlined) — Dipolo Transistor (chaveamento REFLECT/MANIFEST, eq.14): semantica do ciclo ja embutida em CelulaReversao; o runner nao o executa",
+    "origin": "runner/_celula_core/skygrid_sim/dipolo.py",
+    "sha256": "95726b51555a1d5a17b4ba01247215eede7c8d022d52c83d3df01720e29c226d"
+   },
+   {
+    "module": "iald_gksl",
+    "role": "corpus (nao inlined) — Lindblad/GKSL (estabilizacao A_phi, eq.9-10, subsistema 40): no piloto a estabilizacao e' armazenamento exato",
+    "origin": "runner/_celula_core/skygrid_sim/iald_gksl.py",
+    "sha256": "e61f81ef649e18e419a16664f63e90c2da832ec7cde6363c8e7adaefe0e5dd08"
+   },
+   {
+    "module": "mqc",
+    "role": "corpus (nao inlined) — Controlador Computacional MQC (subsistema 50)",
+    "origin": "runner/_celula_core/skygrid_sim/mqc.py",
+    "sha256": "3babddf6e44ffdfe5654ab7763b8bd1297525d666a4d19f5993ee1bee1db09a8"
+   }
+  ],
+  "combined_sha256": "87fa96d14c95e8c4d21d347604171bc60dfc731a7fdfd8a076fa7962d8c87c40",
+  "combined_ok": true
+ },
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "eta_rt_target_report": 0.976,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142
+  },
+  {
+   "test": "reflect_lock_manifest_cycle",
+   "passed": true,
+   "stored_faces": 6,
+   "g_max": 2.0720955410149684,
+   "cycle_correlation": 0.9999999992509051,
+   "note": "carga (theta=arcsin(g/gmax)) nas 6 faces -> descarga s*(gmax*sin theta)^2"
+  },
+  {
+   "test": "angular_phase_retention_vs_bits",
+   "passed": true,
+   "retention_by_bits": {
+    "8": 1.0001818673009726,
+    "12": 1.0000127185490428,
+    "16": 0.9999993895436027,
+    "20": 1.0000000121849801
+   },
+   "deviation_from_1": {
+    "8": 0.0001818673009725824,
+    "12": 1.2718549042833871e-05,
+    "16": 6.104563973208244e-07,
+    "20": 1.2184980135998558e-08
+   },
+   "honest_note": "RETENCAO DA FASE ANGULAR por armazenamento exato — NAO e' conservacao de energia fisica. Fica ~1,0 em todos os bits; o desvio de 1,0 (ruido de quantizacao, pode ser +/-) DIMINUI com mais bits. [SIM][PILOTO]"
+  },
+  {
+   "test": "angular_bits_sweep_vs_deviation",
+   "passed": true,
+   "bits": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+   ],
+   "deviation_from_1": {
+    "6": 0.00013627884839884086,
+    "7": 0.000178808761671978,
+    "8": 0.0001818673009725824,
+    "9": 2.1925860785976248e-05,
+    "10": 1.3491296925627339e-05,
+    "11": 3.8629548488877674e-05,
+    "12": 1.2718549042833871e-05,
+    "13": 1.0442301777047192e-05,
+    "14": 1.8917326579659388e-06,
+    "15": 1.482624773396779e-06,
+    "16": 6.104563973208244e-07,
+    "17": 6.365025583265904e-07,
+    "18": 2.5919941193386364e-08,
+    "19": 6.235274385701928e-08,
+    "20": 1.2184980135998558e-08,
+    "21": 1.2613322275534244e-08,
+    "22": 1.4703587014608388e-08,
+    "23": 1.960907436426851e-09,
+    "24": 8.981480004166542e-10
+   },
+   "rms_reconstruction": {
+    "6": 0.023564688282460288,
+    "7": 0.01166428179683736,
+    "8": 0.005888423590149765,
+    "9": 0.0029109987076711206,
+    "10": 0.0014472786431693773,
+    "11": 0.0007332522990089564,
+    "12": 0.0003616575770023,
+    "13": 0.000182590925464804,
+    "14": 9.025785696992959e-05,
+    "15": 4.504937875206738e-05,
+    "16": 2.2830858517738464e-05,
+    "17": 1.1177439739153504e-05,
+    "18": 5.677363673322389e-06,
+    "19": 2.837275871701492e-06,
+    "20": 1.4087818161180693e-06,
+    "21": 7.023717840222051e-07,
+    "22": 3.54767048202429e-07,
+    "23": 1.7547011436021366e-07,
+    "24": 8.764247637693247e-08
+   },
+   "dtheta_step_rad": {
+    "6": 0.024933275028490423,
+    "7": 0.012368475014133044,
+    "8": 0.006159985595274104,
+    "9": 0.0030739654144714217,
+    "10": 0.0015354802803469174,
+    "11": 0.000767365083925206,
+    "12": 0.00038358884659216034,
+    "13": 0.00019177100803258412,
+    "14": 9.587965127234918e-05,
+    "15": 4.7938362584151635e-05,
+    "16": 2.3968815545813636e-05,
+    "17": 1.1984316338434105e-05,
+    "18": 5.992135310860471e-06,
+    "19": 2.9960619408737894e-06,
+    "20": 1.4980295418018706e-06,
+    "21": 7.490144137426903e-07,
+    "22": 3.745071175818477e-07,
+    "23": 1.8725353646855748e-07,
+    "24": 9.362676265368814e-08
+   },
+   "dev_head_maxlow": 0.0001818673009725824,
+   "dev_tail_maxhigh": 1.4703587014608388e-08,
+   "rms_head_maxlow": 0.023564688282460288,
+   "rms_tail_maxhigh": 7.023717840222051e-07,
+   "honest_note": "Varredura FINA de bits (6..24): o desvio-de-1 e o RMS de reconstrucao da FASE encolhem com mais bits (erro de quantizacao ~dtheta^2). E' convergencia da FASE ANGULAR, NAO de energia fisica. [SIM][PILOTO]"
+  },
+  {
+   "test": "reflect_lock_manifest_multi_tensor",
+   "passed": true,
+   "families": {
+    "gaussiano_abs": {
+     "cycle_correlation": 0.9999999994082902,
+     "rms": 2.062145001402209e-05
+    },
+    "uniforme": {
+     "cycle_correlation": 0.9999999997965396,
+     "rms": 1.703144571397682e-05
+    },
+    "esparso": {
+     "cycle_correlation": 0.9999999998280046,
+     "rms": 1.4160972515688226e-05
+    },
+    "gradiente": {
+     "cycle_correlation": 0.9999999995731567,
+     "rms": 1.2202241650688007e-05
+    },
+    "senoidal": {
+     "cycle_correlation": 0.9999999997485295,
+     "rms": 6.713034412489081e-06
+    },
+    "exponencial": {
+     "cycle_correlation": 0.999999999384749,
+     "rms": 3.486619093042812e-05
+    }
+   },
+   "min_cycle_correlation": 0.999999999384749,
+   "n_tensors": 6,
+   "honest_note": "Ciclo REFLECT/LOCK/MANIFEST em 6 familias de tensor (16 bits): a fidelidade da FASE ANGULAR e' alta e independe do conteudo. E' reconstrucao de FASE, NAO energia fisica. [SIM][PILOTO]"
+  },
+  {
+   "test": "eta_rt_target_declared_not_asserted",
+   "passed": true,
+   "eta_rt_target_report": 0.976,
+   "physical_verdict_allowed": false,
+   "honest_note": "eta_RT>0,976 e' ALVO do relatorio [ENERGY][CONJ]; NAO afirmado como medicao — nao ha hardware. Autodescarga zero, termodinamica invertida e supercondutividade de energia sao [CONJ] sem qualquer dado."
+  }
+ ],
+ "summary": {
+  "tests_passed": 6,
+  "tests_total": 6,
+  "angular_retention_16bit": 0.9999993895436027,
+  "cycle_correlation": 0.9999999992509051,
+  "eta_rt_target_report": 0.976,
+  "energy_claims": "CONJ_no_hardware_data",
+  "bits_sweep": {
+   "range": [
+    6,
+    24
+   ],
+   "dev_head_maxlow": 0.0001818673009725824,
+   "dev_tail_maxhigh": 1.4703587014608388e-08,
+   "rms_head_maxlow": 0.023564688282460288,
+   "rms_tail_maxhigh": 7.023717840222051e-07
+  },
+  "multi_tensor": {
+   "n": 6,
+   "min_cycle_correlation": 0.999999999384749
+  }
+ },
+ "verdict": "REVERSAL_PHASE_STORAGE_DEMONSTRATED",
+ "max_verdict": "REVERSAL_PHASE_STORAGE_DEMONSTRATED ([SIM][ENERGY][CONJ][PILOTO] — ciclo REFLECT/LOCK/MANIFEST e retencao da FASE angular fecham; retencao NAO e' conservacao de energia fisica; autodescarga zero / termodinamica invertida / supercondutividade de energia sao [CONJ] sem dado)",
+ "note": "TRAVA [ENERGY]: a retencao ~1,0 demonstrada e' da FASE ANGULAR (armazenamento exato), NAO conservacao de energia fisica. Autodescarga zero, ciclabilidade infinita, eta_RT>97,6%, termodinamica invertida e supercondutividade de energia a temperatura ambiente sao [CONJ] do relatorio, sem medicao. Simulacao nunca valida fisica. Nao usar como especificacao de produto.",
+ "result_hash": "cd09806db0b88ad05523898456f7864d4b5d3717d33f3937ef8edab916c76059"
+}

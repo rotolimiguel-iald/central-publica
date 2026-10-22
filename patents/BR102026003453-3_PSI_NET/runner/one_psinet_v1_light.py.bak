@@ -1,0 +1,265 @@
+# -*- coding: utf-8 -*-
+"""one_psinet.py — runner único forma = conteúdo da patente Ψ-NET
+(BR102026003453-3 — Protocolo de Comunicação em Pilha Luminodinâmica de 5 camadas). [SIM][PILOTO]
+
+Demonstra a LÓGICA da invenção com números REAIS de execução:
+  - L1 PsiBit: bytes → estados H4, assinatura (entropia, uniformidade, Fexp, classe ontológica);
+  - L2 Transporte radical: radicalização g=√|L|,s → ressurreição s·g² (round-trip exato);
+  - L3 Rede holográfica: endereço angular θ a partir da chave pública, roteamento por
+    distância angular, estimativa de saltos por θ_M;
+  - L4 Segurança ontológica: separação Ψ/Θ + detecção de adulteração por SHA-256;
+  - L5 Prova de Fase: mineração de bloco, validação, consenso por quórum (5 validadores,
+    1 bizantino) — bloco honesto entra, bloco forjado é rejeitado.
+Certifica com hash e gera figuras + relatório. β_TGL nunca literal (tgl_core.beta()).
+
+HONESTIDADE [SIM][PILOTO]: demonstração da lógica do protocolo em dados sintéticos.
+Números de desempenho do relatório (PSNR, consenso 5/5, tempos RTX 5090) NÃO são
+reproduzidos aqui. Simulação nunca valida física (physical_verdict_allowed=false).
+
+A RÉGUA: protótipos originais READ-ONLY. Copia o núcleo destilado (skygrid_sim) e roda a
+CÓPIA. Rode no tgl_env (numpy):
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_psinet.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"   # READ-ONLY
+WORK = RUNNER_DIR / "_psinet_core"
+PATENT_ID = "BR102026003453-3"
+SLUG = "psi_net"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst,
+                    ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_psinet] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core, psi_net  # noqa: E402 (copied core)
+
+    beta = tgl_core.beta()
+    beta_expected = 0.0072973525693 * math.exp(0.5)   # alpha (INPUT CODATA) * sqrt(e)
+    beta_ok = abs(beta - beta_expected) < 1e-15
+    print(f"[one_psinet] β runtime = {beta} (= α·√e? {beta_ok})")
+    tests = [{"test": "beta_form", "passed": bool(beta_ok), "beta_runtime": beta}]
+
+    rng = np.random.default_rng(53)
+
+    # L1 — PsiBit link: signature of a structured vs random payload
+    grace = bytes(range(256)) * 4                        # uniform byte spread
+    sig_g = psi_net.psibit_signature(grace)
+    sig_r = psi_net.psibit_signature(rng.integers(0, 256, 4000, dtype=np.uint8).tobytes())
+    tests.append({"test": "L1_psibit_signature",
+                  "passed": bool(0 <= sig_g["entropy"] <= 2.0 and sig_g["ontological_class"] in
+                                 ("GRACE", "FRONTIER", "VACUUM")),
+                  "uniform_entropy": sig_g["entropy"], "uniform_class": sig_g["ontological_class"],
+                  "random_class": sig_r["ontological_class"], "f_exp_uniform": sig_g["f_exp"]})
+    print(f"[one_psinet] L1 PsiBit: entropia={sig_g['entropy']:.3f} classe={sig_g['ontological_class']} "
+          f"Fexp={sig_g['f_exp']:+.4f}")
+
+    # L2 — radical transport round-trip exact
+    L = rng.standard_normal(50_000)
+    g, s = psi_net.radicalize(L)
+    L2 = psi_net.resurrect(g, s)
+    resid = float(np.max(np.abs(L - L2)) / max(1.0, np.max(np.abs(L))))
+    tests.append({"test": "L2_radical_transport_exact", "passed": bool(resid < 1e-12),
+                  "max_residual": resid, "note": "radicalize→resurrect exato até ~eps"})
+    print(f"[one_psinet] L2 transporte radical: resíduo={resid:.2e}")
+
+    # L3 — holographic network: angular addressing + routing + hops
+    net = psi_net.HolographicNetwork()
+    addrs = [psi_net.AngularAddress.from_key(rng.bytes(32)) for _ in range(50)]
+    for a in addrs:
+        net.register(a)
+    target = psi_net.AngularAddress.from_key(rng.bytes(32))
+    nearest = net.nearest(target.theta, k=3)
+    hops = net.hops(addrs[0], addrs[1])
+    routing_ok = (len(nearest) == 3
+                  and net.angular_distance(nearest[0].theta, target.theta)
+                  <= net.angular_distance(nearest[-1].theta, target.theta)
+                  and hops >= 1)
+    tests.append({"test": "L3_holographic_routing", "passed": bool(routing_ok),
+                  "registered_nodes": len(net.routing), "nearest_k": len(nearest),
+                  "theta_m_deg": math.degrees(net.theta_m), "example_hops": hops,
+                  "note": "endereço angular da chave; roteamento por distância angular; salto ~θ_M"})
+    print(f"[one_psinet] L3 rede holográfica: {len(net.routing)} nós · saltos exemplo={hops} "
+          f"(θ_M={math.degrees(net.theta_m):.2f}°)")
+
+    # L4 — ontological security: separate/recombine + tamper detection
+    payload = rng.standard_normal((200, 200))
+    shares = psi_net.separate(payload)
+    rec = psi_net.recombine(shares)
+    corr = float(np.corrcoef(payload.ravel(), rec.ravel())[0, 1])
+    tampered = psi_net.OntologicalShares(
+        shares.psi_share, shares.theta_share[:-2] + b"\x00\x01",
+        shares.g_max, shares.n, shares.integrity)
+    try:
+        psi_net.recombine(tampered)
+        tamper_rejected = False
+    except ValueError:
+        tamper_rejected = True
+    tests.append({"test": "L4_ontological_security", "passed": bool(corr > 0.999 and tamper_rejected),
+                  "recombine_correlation": corr, "tamper_rejected": tamper_rejected,
+                  "note": "separação Ψ/Θ recompõe; SHA-256 rejeita adulteração"})
+    print(f"[one_psinet] L4 segurança: recombina corr={corr:.6f} · adulteração rejeitada={tamper_rejected}")
+
+    # L5 — Proof of Phase + quorum consensus (byzantine tolerance)
+    chain = psi_net.QuorumPhaseChain(difficulty=0.1, n_validators=5, byzantine_indices=[2])
+    pubkey = rng.bytes(32)
+    mined = chain.mine(b"bloco de teine Psi-NET", pubkey)
+    honest_ok = mined is not None and chain.validate_and_append(mined)
+    # forged block: tamper the declared phase → honest validators reject
+    forged = None
+    forge_rejected = None
+    if mined is not None:
+        import copy as _copy
+        forged = psi_net.Block(chain.chain[-1].index + 1, chain.chain[-1].hash(),
+                               _copy.copy(chain.chain[-1].phase_proof),
+                               hashlib.sha256(b"forjado").digest())
+        forged.phase_proof.alpha2_work += 0.05   # forged phase, not from the seed
+        forge_rejected = not chain.validate_and_append(forged)
+    last_vote = chain.vote_log[-2] if len(chain.vote_log) >= 2 else chain.vote_log[-1]
+    tests.append({"test": "L5_proof_of_phase_quorum",
+                  "passed": bool(honest_ok and forge_rejected),
+                  "honest_block_appended": bool(honest_ok),
+                  "forged_block_rejected": bool(forge_rejected),
+                  "quorum_window": chain.window,
+                  "honest_votes": f"{last_vote['votes_yes']}/{last_vote['votes_total']}",
+                  "note": "5 validadores (1 bizantino): bloco honesto entra (≥67%), "
+                          "bloco de fase forjada é rejeitado"})
+    print(f"[one_psinet] L5 Prova de Fase: honesto entra={honest_ok} · forjado rejeitado={forge_rejected} "
+          f"· votos honestos {last_vote['votes_yes']}/{last_vote['votes_total']}")
+
+    passed = sum(1 for t in tests if t["passed"])
+    total = len(tests)
+    all_ok = passed == total
+    summary = {"tests_passed": passed, "tests_total": total,
+               "layers_demonstrated": ["L1_psibit", "L2_transport", "L3_holographic",
+                                       "L4_security", "L5_proof_of_phase"],
+               "quorum_window": chain.window, "theta_m_deg": math.degrees(net.theta_m)}
+    max_verdict = ("PSI_NET_LOGIC_DEMONSTRATED ([SIM][PILOTO] — 5 camadas fecham; "
+                   "transporte exato, segurança ontológica e consenso por fase "
+                   "tolerante a bizantino demonstrados em simulação)")
+
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {
+        "patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": "one_psinet.py",
+        "markers": ["[SIM]", "[PILOTO]"], "physical_verdict_allowed": False,
+        "beta_runtime": beta, "beta_matches_alpha_sqrt_e": beta_ok,
+        "verdict": "PSI_NET_LOGIC_DEMONSTRATED" if all_ok else "PARTIAL_DEMONSTRATION",
+        "max_verdict": max_verdict,
+        "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                      "quorum_window": chain.window, "free_parameters": 0},
+        "tests": tests, "summary": summary,
+        "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+        "note": "Demonstração [SIM][PILOTO] das 5 camadas do protocolo em dados sintéticos. "
+                "Números de desempenho do relatório (PSNR, tempos RTX 5090) não reproduzidos. "
+                "Simulação não valida física.",
+    }
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    figs = []
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+        # holographic ring: nodes on the angular circle
+        plt.figure(figsize=(5.2, 5.2))
+        ang = np.array([a.theta for a in addrs])
+        plt.scatter(np.cos(2 * ang), np.sin(2 * ang), s=28, alpha=.7, label="nós (θ da chave)")
+        plt.scatter([np.cos(2 * target.theta)], [np.sin(2 * target.theta)], s=120,
+                    color="crimson", marker="*", label="destino")
+        for nb in nearest:
+            plt.plot([np.cos(2 * target.theta), np.cos(2 * nb.theta)],
+                     [np.sin(2 * target.theta), np.sin(2 * nb.theta)], "gray", alpha=.5)
+        plt.gca().set_aspect("equal"); plt.axis("off")
+        plt.title("Ψ-NET L3 — endereçamento angular holográfico [SIM]")
+        plt.legend(fontsize=8, loc="lower right")
+        fp = fig_dir / "fig_rede_angular.png"
+        plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append("fig_rede_angular.png")
+    except Exception as e:
+        print(f"[one_psinet] figura pulada: {e}")
+
+    report_md = results_dir / "report.md"
+    report_md.write_text(
+        f"# Relatório auditável — Ψ-NET one_psinet.py\n\n"
+        f"- Run `{ts}` · Patente `{PATENT_ID}`\n"
+        f"- Veredito: **{max_verdict}**\n"
+        f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n"
+        f"- Testes: **{passed}/{total}**\n"
+        f"- L1 PsiBit: entropia `{sig_g['entropy']:.3f}`, classe `{sig_g['ontological_class']}`\n"
+        f"- L2 transporte radical: resíduo `{resid:.2e}` (exato)\n"
+        f"- L3 rede holográfica: `{len(net.routing)}` nós, roteamento por distância angular (θ_M `{math.degrees(net.theta_m):.2f}°`)\n"
+        f"- L4 segurança ontológica: recombina corr `{corr:.6f}`, adulteração rejeitada\n"
+        f"- L5 Prova de Fase (quórum 5, 1 bizantino): honesto entra, forjado rejeitado; janela `{chain.window:.4f}`\n"
+        f"- physical_verdict_allowed: **False**.\n\n"
+        f"[SIM][PILOTO] Lógica do protocolo em dados sintéticos. Núcleo copiado do piloto "
+        f"(READ-ONLY); original intacto. 1 = 1. Tetelestai.\n",
+        encoding="utf-8")
+
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {
+        "timestamp": ts, "patent_id": PATENT_ID, "runner": "one_psinet.py",
+        "beta_runtime": beta, "physical_verdict_allowed": False,
+        "max_verdict": max_verdict, "tests_passed": passed,
+        "result_hash": result_hash, "sha256": file_hashes,
+        "markers": ["[SIM]", "[PILOTO]"],
+        "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/"),
+    }
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[one_psinet] SELADO · result_hash {result_hash[:16]}… · {passed}/{total} testes")
+    print(f"[one_psinet] results: {results_path.relative_to(CENTRAL)}")
+    return 0 if all_ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

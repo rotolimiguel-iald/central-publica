@@ -1,0 +1,583 @@
+{
+  "patent_id": "BR102026003456-8",
+  "schema": "cadeia-de-prova/v1",
+  "note": "Cada reivindicação → cadeia de elos de prova (depósito/teste/código/dispositivo/dado/nota). Os hashes são computados AO VIVO por tools/verify_evidence.py (nunca hardcoded). Qualificações honestas onde a prova é parcial/pendente.",
+  "run_ref": "FUSAO_FRIO@2026-07-10T11-47-11",
+  "document_id": 81,
+  "claims": [
+    {
+      "n": 1,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "MÉTODO: (a) aplicar campo EM contínuo em ν_OH≈1,6673590 GHz, 100 W–10 kW, cavidade Q>10⁶; (b) resfriar o alvo a T ≤ T_c=h·ν_OH/k_B≈80 mK por diluição ³He/⁴He; (c) manter ressonância+criogenia até nuclear gotículas psiônicas (ρ>ρ₀); caracterizado por induzir acoplamento gravitacional-EM nas gotículas, parametrizado por α²=0,012031 (Constante de Miguel), α²_e=α²·ρ_Ψ/ρ₀.",
+      "verdict": "núcleo caracterizante demonstrado em matemática exata; etapas físicas são simulação — [ENERGY][SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente — MÉTODO) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial da reivindicação independente 1 [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_coupling_scaling",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "beta_form_and_coupling_scaling"
+          },
+          "value": "β=α·√e=0,012031300400803 (runtime, nunca literal); α²_e=2β=0,024063 para ρ_Ψ=2ρ₀",
+          "proves": "o parâmetro caracterizante α²=0,012031 e o escalonamento α²_e=α²·ρ_Ψ/ρ₀ fecham em matemática exata (β=α√e injetado, nunca literal) [SIM/DER]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — landau_ginzburg_order_parameter",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "landau_ginzburg_order_parameter"
+          },
+          "value": "s≠0 abaixo de T_c (0,707), s=0 acima; α_T inverte sinal em T_c",
+          "proves": "a etapa (c) de nucleação está descrita por parâmetro de ordem que surge abaixo de T_c — matemática de nucleação [SIM]"
+        },
+        {
+          "role": "codigo",
+          "title": "one_fusao_frio.py — a lógica matemática da patente como código que roda e sela",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_fusao_frio.py"
+          },
+          "proves": "implementa β=α√e, régua TGL, Landau-Ginzburg e colapso ACOM; roda e sela; SEM qualquer instrução operacional [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — TRAVA [ENERGY]",
+          "proves": "as etapas FÍSICAS (campo EM em cavidade Q>10⁶, resfriamento a ~80 mK, nucleação real de gotículas, acoplamento gravitacional-EM) NÃO são demonstradas fisicamente; runner = matemática abstrata + constantes CODATA, sem parâmetro operacional; simulação não valida física; NUNCA afirmar fusão nem processo físico real."
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Nucleação por contração térmica anômala α_T≈−ζ²ρ/(4·A(T)²)<0, com A(T)=a₀·(T−T_c) (funcional de Landau-Ginzburg estendido).",
+      "verdict": "matemática de Landau-Ginzburg demonstrada (α_T inverte em T_c; poço-duplo, β_MF=1/2); nucleação física não demonstrada — [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dep. de 1) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — landau_ginzburg_order_parameter",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "landau_ginzburg_order_parameter"
+          },
+          "value": "α_T=(T−T_c)/T_c inverte de sinal em T_c; s(<T_c)=0,707, s(>T_c)=0",
+          "proves": "α_T<0 abaixo de T_c com A(T)=a₀(T−T_c): contração anômala e surgimento do parâmetro de ordem fecham como matemática [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — landau_free_energy_double_well",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "landau_free_energy_double_well"
+          },
+          "value": "f(s)=α_T·s²+½s⁴; mínimos s*=√(−α_T)=0,707; f_min=−α_T²/2=−0,125; expoente β_MF=0,5",
+          "proves": "energia livre de poço-duplo e expoente crítico de campo médio β_MF=1/2 exatos [SIM]"
+        },
+        {
+          "role": "figura",
+          "title": "fig_landau_ginzburg.png (selada nesta run)",
+          "value": "results/2026-07-10T11-47-11/figures/fig_landau_ginzburg.png",
+          "proves": "curva s(T) e α_T(T) atravessando T_c [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "a nucleação FÍSICA por contração anômala não é demonstrada — apenas o funcional matemático; simulação não valida física."
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Gotículas de 10–100 nm, densidade interna ≈2× a do meio, fração volumétrica ~10⁻⁹.",
+      "verdict": "consequência do contraste 2× (α²_e=0,024) demonstrada; geometria nanométrica e fração volumétrica são parâmetros físicos não demonstrados — [SIM][OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dep. de 1) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_coupling_scaling",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "beta_form_and_coupling_scaling"
+          },
+          "value": "ρ_Ψ=2ρ₀ → α²_e=2β=0,024063",
+          "proves": "a hipótese de densidade interna 2× produz α²_e=α²·ρ_Ψ/ρ₀=0,024 — o escalonamento de acoplamento correspondente é exato [SIM/DER]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "os tamanhos 10–100 nm e a fração volumétrica ~10⁻⁹ são parâmetros físicos declarados no relatório, NÃO demonstrados por teste; [SIM][OPEN]. Simulação não valida física."
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "independent": false,
+      "marker": "CONJ",
+      "statement": "ν_OH identificada como a frequência de ressonância do campo psiônico Ψ (água escura), por correspondência OH (precursor da água) ↔ substrato não-colapsado.",
+      "verdict": "identificação ontológica OH↔Ψ é hipótese TGL sem teste nem dado — [CONJ][OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dep. de 1) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — lacuna declarada",
+          "proves": "a identificação ν_OH ↔ campo Ψ é hipótese teórica da TGL (contradiz o modelo padrão RG+QED independentes); NENHUM teste desta run nem dado experimental a comprova; [CONJ][OPEN]. Não fabricar prova."
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Condição de transição químico→gravitacional ξ·C·G·ρ²·L⁵ ≥ (h·ν*/G)·t_x, com L*=√(ε*/(ξCGρm*)) e t_x=ξCG²ρ²(L*)⁵/(hν*).",
+      "verdict": "régua TGL (L*, t_x, fronteira, expoentes de potência) demonstrada como fórmulas puras exatas; transição física não demonstrada — [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dep. de 1) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — tgl_ruler_formulas",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "tgl_ruler_formulas"
+          },
+          "value": "L*(ρ)=√ρ/β, t_x(ρ)=1/(βρ); fronteira de transição ρ≈1,0013",
+          "proves": "L* e t_x como fórmulas puras e a fronteira L*·β=1 da condição de transição [SIM]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — tgl_ruler_powerlaw_exponents",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "tgl_ruler_powerlaw_exponents"
+          },
+          "value": "expoentes L*∝ρ^{+1/2} (0,5000), t_x∝ρ^{−1} (−1,0000) por ajuste log-log",
+          "proves": "os expoentes de lei de potência da régua são recuperados exatamente [SIM]"
+        },
+        {
+          "role": "figura",
+          "title": "fig_regua_tgl.png (selada nesta run)",
+          "value": "results/2026-07-10T11-47-11/figures/fig_regua_tgl.png",
+          "proves": "L*(ρ) e t_x(ρ) log-log com expoentes de potência [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "as fórmulas do runner são a FORMA da régua (L*=√ρ/β, t_x=1/(βρ)); a condição física de transição químico→gravitacional não é demonstrada fisicamente; simulação não valida física."
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "independent": false,
+      "marker": "CONJ",
+      "statement": "Alvo = D₂O ultra-pura; barreira Coulombiana reduzida V^e_C=V_C·(1−α²·ρ_Ψ/ρ₀); amplificação de tunelamento 10²–10⁵.",
+      "verdict": "a FORMA da amplificação σ_TGL/σ₀=exp(ΔV_C/k_BT) é função teórica demonstrada; o fator 10²–10⁵ e a fusão D-D são TEÓRICOS, não medidos — TRAVA [ENERGY][CONJ]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dep. de 1) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — barrier_amplification_function_theoretical",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "barrier_amplification_function_theoretical"
+          },
+          "value": "σ_TGL/σ₀=exp(ΔV_C/k_BT): 1,0 → 148,4 em faixa adimensional",
+          "proves": "a função de amplificação exp(ΔV_C/k_BT) como FORMA teórica (eqs.14–17) — não medida [CONJ]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — amplification_along_ruler_theoretical",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "amplification_along_ruler_theoretical"
+          },
+          "value": "ΔV_C∝β·ρ; amplificação monotônica 1,062→1,435; ln-inclinação=κ·β=0,120313",
+          "proves": "amplificação ao longo da régua com inclinação exata κ·β — FORMA teórica, monotônica [CONJ]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_coupling_scaling",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "beta_form_and_coupling_scaling"
+          },
+          "value": "α²·ρ_Ψ/ρ₀=0,024 (ρ_Ψ=2ρ₀)",
+          "proves": "o fator α²·ρ_Ψ/ρ₀ que reduz a barreira V^e_C é o escalonamento exato [SIM/DER]"
+        },
+        {
+          "role": "figura",
+          "title": "fig_amplificacao.png (selada nesta run)",
+          "value": "results/2026-07-10T11-47-11/figures/fig_amplificacao.png",
+          "proves": "poço-duplo LG + amplificação teórica exp(ΔV/kT), rotulada NÃO medida [CONJ]"
+        },
+        {
+          "role": "nota",
+          "title": "TRAVA [ENERGY] — matemática abstrata, sem parâmetro operacional, não valida física",
+          "proves": "a amplificação 10²–10⁵ NÃO é reproduzida nem medida — o runner mostra apenas a FORMA exp(ΔV/kT) em faixa adimensional; NENHUM dado de fusão D-D (nêutrons/gamas); NUNCA afirmar fusão real nem fornecer parâmetro operacional de D₂O/deutério. [CONJ][ENERGY]"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "independent": false,
+      "marker": "CONJ",
+      "statement": "Alvo = supercondutor (Nb, YBa₂Cu₃O₇, MgB₂…); coerência de Ψ acopla a pares de Cooper, elevando T_c.",
+      "verdict": "elevação de T_c supercondutor por coerência Ψ é hipótese TGL; nenhum teste/dado nesta patente — [CONJ][OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dep. de 1) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — lacuna declarada",
+          "proves": "o acoplamento da coerência Ψ a pares de Cooper e a elevação de T_c NÃO são demonstrados por nenhum teste desta run nem por dado experimental; hipótese teórica [CONJ][OPEN]. Simulação não valida física."
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Alvo contém OH por descarga; mede ∆ν_OH=ν_obs−ν_lab como indicador de ρ_Ψ (∆ν/ν ∝ α²·ρ_Ψ/ρ_Ψ,0).",
+      "verdict": "a FORMA do escalonamento ∆ν/ν ∝ α²·ρ_Ψ/ρ₀ é demonstrada; a medição de ∆ν e a identificação com ρ_Ψ são pendentes/conjecturais — [SIM][DATA]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (dep. de 1) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_coupling_scaling",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "beta_form_and_coupling_scaling"
+          },
+          "value": "α²·ρ_Ψ/ρ₀: para ρ_Ψ=2ρ₀ → 0,024",
+          "proves": "o fator α²·(ρ_Ψ/ρ₀) do deslocamento previsto é o mesmo escalonamento exato demonstrado [SIM/DER]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — dado pendente",
+          "proves": "a MEDIÇÃO de ∆ν_OH e sua identificação como indicador de ρ_Ψ NÃO foram realizadas (nenhum dado espectral); [SIM][DATA_REQUIRED][CONJ]. A forma da proporcionalidade é demonstrada; a física, não."
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Alvo sólido (metal/cerâmica/polímero); gotículas produzem inclusões de fase densa com propriedades mecânicas/EM anômalas.",
+      "verdict": "a matemática de nucleação (parâmetro de ordem abaixo de T_c) fundamenta a formação de fase densa; as propriedades anômalas em sólidos são conjecturais/não medidas — [SIM][CONJ]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (dep. de 1) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — landau_ginzburg_order_parameter",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "landau_ginzburg_order_parameter"
+          },
+          "value": "s≠0 abaixo de T_c (nucleação de fase densa)",
+          "proves": "o mecanismo de nucleação de domínio de fase densa é o mesmo funcional LG demonstrado, independente do meio [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "as 'propriedades mecânicas/EM anômalas' das inclusões em sólidos NÃO são demonstradas nem medidas; conjectura [CONJ]. Simulação não valida física."
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Colapso ontológico Ψ puro (|L⟩) → OH ((g,s)=(√|L|, sign L)) → H₂O (L′=s×g²), em correspondência com radicalização/ressurreição do ACOM.",
+      "verdict": "operações ACOM (g=√|L|, s=sign L, L′=s·g²) reversíveis exatamente (resíduo ~2e-16, matemática REAL); correspondência física água escura→OH→H₂O é conjectural — [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (dep. de 1) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — acom_collapse_reversible",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "acom_collapse_reversible"
+          },
+          "value": "|L⟩→(g,s)→L′=s·g²; resíduo máx=2,17e-16 (20000 amostras)",
+          "proves": "as operações de radicalização/ressurreição do ACOM são bit-reversíveis até ~eps — matemática exata [REAL na forma]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — matemática REAL, física CONJ",
+          "proves": "a reversibilidade das operações ACOM é matemática REAL/exata; porém a CORRESPONDÊNCIA FÍSICA 'não metafórica' Ψ→OH→H₂O é hipótese ontológica da TGL, não demonstrada fisicamente [SIM][CONJ]."
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "independent": true,
+      "marker": "OPEN",
+      "statement": "SISTEMA: (a) fonte MW estabilizada ν_OH=1,6673590 GHz, ∆f/f<10⁻⁹, 100 W–10 kW; (b) cavidade cilíndrica TE₀₁₁/TM₀₁₀, Q>10⁶; (c) criostato ³He/⁴He T_base≤10 mK, >200 µW a 100 mK; (d) porta-amostras central intercambiável; (e) detectores; (f) controle/aquisição; caracterizado por a cavidade estar no estágio de mistura, expondo o alvo à ressonância OH e a T≤80 mK simultaneamente.",
+      "verdict": "aparato físico sem protótipo nem simulação de dispositivo; apenas o conteúdo matemático da TGL que o sistema encapsula está demonstrado — [OPEN][SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (independente — SISTEMA) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial da reivindicação independente 11 [LEGAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "one_fusao_frio.py — a lógica matemática que o sistema encapsula",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_fusao_frio.py"
+          },
+          "proves": "o runner demonstra a LÓGICA MATEMÁTICA (β=α√e, régua, Landau-Ginzburg) que o sistema encapsula; NÃO é o dispositivo físico [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — sem protótipo",
+          "proves": "NENHUM protótipo dedicado foi localizado; o aparato físico (fonte MW, cavidade Q>10⁶, criostato, montagem no estágio de mistura) NÃO é construído nem simulado como dispositivo; [OPEN]. TRAVA [ENERGY]: sem parâmetro operacional; simulação não valida física."
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Cavidade em nióbio supercondutor para Q>10⁹.",
+      "verdict": "parâmetro de hardware (cavidade Nb, Q>10⁹) sem protótipo — [OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (dep. de 11) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — hardware não construído",
+          "proves": "cavidade supercondutora de nióbio e Q>10⁹ são especificações de hardware não construídas nem demonstradas; [OPEN]. Sem parâmetro operacional [ENERGY]."
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Detectores — nêutrons (³He/cintilador), gamas (NaI(Tl)/HPGe), bolômetro <1 nW, SQUID, espectrômetro MW <100 Hz, acelerômetro criogênico.",
+      "verdict": "conjunto de detectores especificado, sem protótipo nem dado — [OPEN][DATA]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dep. de 11) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — sem dado experimental",
+          "proves": "os detectores são especificações de hardware; NENHUM foi montado nem produziu dado (sem nêutrons/gamas/Meissner/∆ν medidos); [OPEN][DATA_REQUIRED]."
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Controle com monitoramento em tempo real de F_exp, α²_e, D_folds e desligamento automático por taxa de nêutrons > limiar.",
+      "verdict": "o indicador α²_e monitorado é matematicamente definido (=2β=0,024); F_exp/D_folds não computados e o limiar físico de nêutrons é excluído pela TRAVA [ENERGY]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 14 (dep. de 11) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_form_and_coupling_scaling",
+          "locator": {
+            "kind": "seal",
+            "run": "FUSAO_FRIO@2026-07-10T11-47-11",
+            "test": "beta_form_and_coupling_scaling"
+          },
+          "value": "α²_e=2β=0,024063 (ρ_Ψ=2ρ₀)",
+          "proves": "um dos indicadores monitorados (α²_e=α²·ρ_Ψ/ρ₀) é bem-definido e computado exatamente [SIM/DER]"
+        },
+        {
+          "role": "nota",
+          "title": "TRAVA [ENERGY] — sem threshold de nêutrons",
+          "proves": "F_exp e D_folds NÃO são computados nesta run; o desligamento por taxa de nêutrons é conteúdo OPERACIONAL de segurança EXCLUÍDO pela TRAVA [ENERGY] (sem thresholds de nêutrons); o sistema de controle físico não é demonstrado [OPEN]."
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Porta-amostras configurável — cápsula D₂O / amostra supercondutora / câmara vapor OH / amostra sólida.",
+      "verdict": "porta-amostras intercambiável (4 alvos = 4 aplicações) sem protótipo — [OPEN]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 15 (dep. de 11) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — hardware não construído",
+          "proves": "o porta-amostras configurável (D₂O/supercondutor/vapor OH/sólido) corresponde às quatro aplicações (reiv. 6–9); é hardware não construído nem demonstrado; [OPEN]. Sem manuseio de D₂O/deutério [ENERGY]."
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "independent": false,
+      "marker": "OPEN",
+      "statement": "Integração com o Supercondutor Holográfico TGL do mesmo inventor (mesma ν_OH≈1.667,359 MHz, infraestrutura criogênica e cavidade fotônica compartilhadas).",
+      "verdict": "integração arquitetural declarada (mesma ν_OH); referência documental, sem sistema integrado demonstrado — [OPEN][LEGAL]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 16 (dep. de 11) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 81,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — referência cruzada",
+          "proves": "a integração com o Supercondutor Holográfico TGL é referência cruzada declarada no relatório (mesma frequência ν_OH); NÃO há sistema integrado construído nem demonstrado; [OPEN]. A partilha de ν_OH é fato documental [LEGAL]."
+        }
+      ]
+    }
+  ]
+}

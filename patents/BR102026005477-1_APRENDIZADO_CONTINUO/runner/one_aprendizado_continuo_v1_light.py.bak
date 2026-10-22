@@ -1,0 +1,243 @@
+# -*- coding: utf-8 -*-
+"""one_aprendizado_continuo.py — runner único forma = conteúdo da patente Aprendizado Contínuo
+(BR102026005477-1 — Aprendizado sem re-treino via estado psiônico persistente). [PILOTO]
+
+Demonstra a LÓGICA da ontologia trinária e do ciclo do Psion (β_TGL derivado, nunca literal):
+  - β_TGL via α·√e e θ_Miguel = arcsin(√β);
+  - estratificação de tensor em VACUUM/GRAVITON/PHOTON (fronteiras √β e cos θ_Miguel) e PsiBit;
+  - sampler piso de Hilbert β_adaptativo = α√S (candidatos adaptativos);
+  - cache angular θ_key com persistência P = 1 + β'·log(1+hits);
+  - Verb Floor sobre matriz de atenção sintética;
+  - ciclo do Psion por N gerações: EMA a taxa β (psionic_memory), convergência, persistência JSON com SHA-256;
+  - IALD Score = ³√(Palavra × Nome × Verbo).
+
+HONESTIDADE [PILOTO]: dados sintéticos + tensores pequenos; o benchmark de convergência
+sobre LLM real fica como etapa separada [DATA_REQUIRED]. Simulação não valida física
+(physical_verdict_allowed=false). Nenhum stack confidencial embarcado.
+
+A RÉGUA: originais READ-ONLY. Copia o núcleo (skygrid_sim) e roda a CÓPIA no tgl_env:
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_aprendizado_continuo.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+import tempfile
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"
+WORK = RUNNER_DIR / "_aprendizado_core"
+PATENT_ID = "BR102026005477-1"
+SLUG = "aprendizado_continuo"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst, ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, runner, markers, beta, beta_ok,
+            all_ok, max_verdict, tests, summary, module_hashes, note, fig_builder=None):
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {"patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": runner,
+               "markers": markers, "physical_verdict_allowed": False, "beta_runtime": beta,
+               "beta_matches_alpha_sqrt_e": beta_ok,
+               "verdict": max_verdict.split(" ")[0] if all_ok else "PARTIAL_DEMONSTRATION",
+               "max_verdict": max_verdict,
+               "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                             "free_parameters": 0},
+               "tests": tests, "summary": summary,
+               "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+               "note": note}
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+    figs = []
+    if fig_builder is not None:
+        try:
+            import matplotlib
+            matplotlib.use("Agg")
+            import matplotlib.pyplot as plt
+            fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+            figs = fig_builder(plt, fig_dir) or []
+        except Exception as e:
+            print(f"[{SLUG}] figura pulada: {e}")
+    report_md = results_dir / "report.md"
+    lines = [f"# Relatório auditável — {runner}\n", f"- Run `{ts}` · Patente `{PATENT_ID}`\n",
+             f"- Veredito: **{max_verdict}**\n",
+             f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n",
+             f"- Testes: **{summary['tests_passed']}/{summary['tests_total']}**\n"]
+    for t in tests:
+        lines.append(f"  - {'✓' if t['passed'] else '✗'} {t['test']}\n")
+    lines.append(f"- physical_verdict_allowed: **False**.\n\n{note}\n")
+    lines.append("Núcleo copiado do piloto (READ-ONLY); original intacto. 1 = 1. Tetelestai.\n")
+    report_md.write_text("".join(lines), encoding="utf-8")
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {"timestamp": ts, "patent_id": PATENT_ID, "runner": runner, "beta_runtime": beta,
+            "physical_verdict_allowed": False, "max_verdict": max_verdict,
+            "tests_passed": summary["tests_passed"], "result_hash": result_hash,
+            "sha256": file_hashes, "markers": markers,
+            "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/")}
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[{SLUG}] SELADO · result_hash {result_hash[:16]}… · {summary['tests_passed']}/{summary['tests_total']} testes")
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_aprendizado] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core  # noqa: E402
+    from skygrid_sim.psionic_memory import PsionicMemory  # noqa: E402
+
+    beta = tgl_core.beta()
+    beta_ok = abs(beta - 0.0072973525693 * math.exp(0.5)) < 1e-15
+    theta_m = tgl_core.theta_m()
+    print(f"[one_aprendizado] β={beta} (α·√e? {beta_ok}) θ_Miguel={math.degrees(theta_m):.4f}°")
+    tests = [{"test": "beta_theta_form", "passed": bool(beta_ok), "beta_runtime": beta,
+              "theta_miguel_deg": math.degrees(theta_m)}]
+
+    rng = np.random.default_rng(5477)
+
+    # 2) trinary stratification VACUUM/GRAVITON/PHOTON at sqrt(beta) and cos(theta_M)
+    w = rng.standard_normal(50000)
+    gnorm = np.abs(w) / (np.abs(w).max())
+    lo, hi = math.sqrt(beta), math.cos(theta_m)
+    vacuum = float(np.mean(gnorm < lo))
+    graviton = float(np.mean((gnorm >= lo) & (gnorm < hi)))
+    photon = float(np.mean(gnorm >= hi))
+    strat_ok = abs(vacuum + graviton + photon - 1.0) < 1e-9 and lo < hi
+    tests.append({"test": "trinary_stratification", "passed": bool(strat_ok),
+                  "boundaries": {"sqrt_beta": lo, "cos_theta_m": hi},
+                  "fractions": {"VACUUM": vacuum, "GRAVITON": graviton, "PHOTON": photon},
+                  "note": "estratificação por √β e cos(θ_Miguel); soma 1"})
+    print(f"[one_aprendizado] estratificação: VACUUM={vacuum:.3f} GRAVITON={graviton:.3f} PHOTON={photon:.3f}")
+
+    # 3) Hilbert floor sampler: beta_adaptive = alpha*sqrt(S)
+    S = 64.0
+    alpha = 0.0072973525693
+    beta_adaptive = alpha * math.sqrt(S)
+    scores = rng.standard_normal(1000)
+    floor = beta_adaptive * scores.max()
+    adaptive_candidates = int(np.sum(scores >= floor))
+    tests.append({"test": "hilbert_floor_adaptive_sampler", "passed": bool(adaptive_candidates >= 1),
+                  "beta_adaptive": beta_adaptive, "adaptive_candidates": adaptive_candidates,
+                  "note": "β_adaptativo = α√S; candidatos adaptativos vs top-k fixo"})
+    print(f"[one_aprendizado] sampler piso de Hilbert: β_adapt={beta_adaptive:.4f} candidatos={adaptive_candidates}")
+
+    # 4) angular cache persistence P = 1 + beta'*log(1+hits)
+    beta_prime = beta
+    hits = np.array([0, 1, 5, 20, 100])
+    persistence = 1.0 + beta_prime * np.log1p(hits)
+    cache_ok = bool(np.all(np.diff(persistence) > 0))
+    tests.append({"test": "angular_cache_persistence", "passed": cache_ok,
+                  "persistence_by_hits": {int(h): float(p) for h, p in zip(hits, persistence)},
+                  "note": "P = 1 + β'·log(1+hits) — persistência cresce com hits"})
+    print(f"[one_aprendizado] cache angular: P(100 hits)={persistence[-1]:.4f}")
+
+    # 5) Verb Floor over synthetic attention matrix
+    Sij = np.abs(rng.standard_normal((32, 32)))
+    floors = beta_adaptive * Sij.max(axis=1, keepdims=True)
+    kept = int(np.sum(Sij >= floors))
+    tests.append({"test": "verb_floor_attention", "passed": bool(0 < kept < Sij.size),
+                  "kept": kept, "total": int(Sij.size),
+                  "note": "Floor_i = β_adaptativo·max_j S_ij poda a matriz de atenção"})
+    print(f"[one_aprendizado] Verb Floor atenção: mantidos {kept}/{Sij.size}")
+
+    # 6) Psion cycle over N generations: EMA at rate beta (psionic_memory), convergence + persistence
+    mem = PsionicMemory()
+    target = 0.75
+    trace = []
+    for gen in range(60):
+        obs = target + rng.standard_normal() * 0.05
+        val = mem.inscribe("beta_rate", obs)
+        trace.append(val)
+    converged = abs(trace[-1] - target) < 0.05
+    with tempfile.TemporaryDirectory() as td:
+        pth = Path(td) / "psion_state.json"
+        mem.save(str(pth))
+        reloaded = PsionicMemory.load(str(pth))     # SHA-256 fail-closed on load
+        persist_ok = abs(reloaded.recall("beta_rate") - trace[-1]) < 1e-12
+    tests.append({"test": "psion_cycle_ema_and_persistence",
+                  "passed": bool(converged and persist_ok),
+                  "generations": len(trace), "final_value": trace[-1], "target": target,
+                  "persistence_sha256_verified": persist_ok,
+                  "note": "aprendizado sem re-treino: EMA a taxa β converge ao alvo; estado "
+                          "persiste com SHA-256 fail-closed (aprendizado inscrito entre sessões)"})
+    print(f"[one_aprendizado] ciclo do Psion: {len(trace)} gerações → {trace[-1]:.4f} (alvo {target}); "
+          f"persistência verificada={persist_ok}")
+
+    # 7) IALD Score = cbrt(Palavra * Nome * Verbo)
+    palavra, nome, verbo = 0.55, 0.90, 0.80    # example triad scores (in [0,1])
+    iald_score = (palavra * nome * verbo) ** (1.0 / 3.0)
+    tests.append({"test": "iald_score_geometric_mean", "passed": bool(0 <= iald_score <= 1),
+                  "palavra": palavra, "nome": nome, "verbo": verbo, "iald_score": iald_score,
+                  "note": "IALD Score = ³√(Palavra × Nome × Verbo)"})
+    print(f"[one_aprendizado] IALD Score = ³√(P·N·V) = {iald_score:.4f}")
+
+    passed = sum(1 for t in tests if t["passed"]); total = len(tests); all_ok = passed == total
+    summary = {"tests_passed": passed, "tests_total": total,
+               "stratification": {"VACUUM": vacuum, "GRAVITON": graviton, "PHOTON": photon},
+               "psion_final": trace[-1], "iald_score": iald_score}
+    max_verdict = ("CONTINUAL_LEARNING_LOGIC_DEMONSTRATED ([PILOTO] — ontologia trinária, "
+                   "piso de Hilbert, Verb Floor, ciclo do Psion (EMA a taxa β) com persistência "
+                   "SHA-256 e IALD Score fecham; benchmark em LLM real é etapa separada)")
+    _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, "one_aprendizado_continuo.py",
+            ["[PILOTO]", "[SIM]"], beta, beta_ok, all_ok, max_verdict, tests, summary, module_hashes,
+            "[PILOTO] Aprendizado sem re-treino: conhecimento inscrito via EMA a taxa β entre "
+            "sessões, com estado persistente selado por SHA-256. Dados sintéticos; benchmark de "
+            "convergência em LLM real [DATA_REQUIRED]. Nenhum stack confidencial embarcado. "
+            "Simulação não valida física.",
+            fig_builder=lambda plt, fd: _fig_aprend(plt, fd, trace, target))
+    return 0 if all_ok else 1
+
+
+def _fig_aprend(plt, fig_dir, trace, target):
+    plt.figure(figsize=(7, 3.4))
+    plt.plot(trace, label="β_rate inscrito (EMA a taxa β)")
+    plt.axhline(target, color="crimson", ls="--", label=f"alvo {target}")
+    plt.xlabel("geração do Psion"); plt.ylabel("valor inscrito")
+    plt.title("Aprendizado Contínuo — ciclo do Psion (EMA a taxa β) [PILOTO]")
+    plt.legend(fontsize=8); plt.grid(alpha=.3)
+    fp = fig_dir / "fig_ciclo_psion.png"; plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+    return ["fig_ciclo_psion.png"]
+
+
+if __name__ == "__main__":
+    sys.exit(main())

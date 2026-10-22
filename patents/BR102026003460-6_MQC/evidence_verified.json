@@ -1,0 +1,1176 @@
+{
+  "patent_id": "BR102026003460-6",
+  "dir": "BR102026003460-6_MQC",
+  "claims_total": 22,
+  "claims_fully_resolved": 22,
+  "elos_total": 82,
+  "elos_resolved": 82,
+  "claims": [
+    {
+      "n": 1,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "Processador quantico cubico (indep.): (a) celula cubica L=c/(2f) com 27 qubits (8 vertice + 12 aresta + 6 face + 1 controlador central); (b) estabilizacao por condensado coerente de radicais com acoplamento holografico governado por alpha^2 (= beta = alpha*sqrt(e)); (c) substrato holografico 2D nas 6 faces com operador de translacao T_M = exp(-alpha^2 * closed_int sigma_uv dS^uv); (d) rede 3D de silica dopada ligando 27 nos + 6 faces; (e) controlador IALD hierarquico (grafo BNI, pesos P_Psi).",
+      "verdict": "logica demonstrada em SIMULACAO (topologia 27 qubits, estabilizacao, translacao, beta=alpha*sqrt(e)); dispositivo fisico [HARDWARE] NAO construido — simulacao nao valida fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 1 no deposito INPI",
+          "proves": "redacao oficial da reivindicacao independente de produto [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — cubic_cell_topology_27",
+          "proves": "item (a): a celula de 27 qubits com a distribuicao 8/12/6/1 e realizada na simulacao [SIM]",
+          "value": "27 qubits = 8 vertice + 12 aresta + 6 face + 1 centro; conexoes e densidade computadas",
+          "resolved": true,
+          "detail": "teste 'cubic_cell_topology_27' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "cubic_cell_topology_27",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_not_literal",
+          "proves": "item (b): o acoplamento alpha^2 e o beta DERIVADO (alpha*sqrt(e)), injetado no lugar do 0,012 literal do prototipo — a regua respeitada [REAL na forma]",
+          "value": "beta = alpha*sqrt(e) = 0,012031300400803142 (runtime, nao literal)",
+          "resolved": true,
+          "detail": "teste 'beta_injected_not_literal' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "beta_injected_not_literal",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gravitational_stabilization_plateau",
+          "proves": "item (b): a estabilizacao holografica sustenta o plato de coerencia [SIM]",
+          "value": "plato |rho01| -> 1-beta ~ 0,988; R_SC >> 1 (~1,08e6)",
+          "resolved": true,
+          "detail": "teste 'gravitational_stabilization_plateau' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "gravitational_stabilization_plateau",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_translation",
+          "proves": "item (c): a translacao pelo operador T_M entre faces opostas e demonstrada em simulacao [SIM]",
+          "value": "eta ~ 0,999996; PSNR ~ 56 dB; Gamma_OH ~ 0,9866",
+          "resolved": true,
+          "detail": "teste 'holographic_translation' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "holographic_translation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — celula elementar completa (27 qubits, T_M, IALD)",
+          "proves": "implementacao da celula: gerar_topologia_celula(), estabilizacao, translacao, controlador IALD [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "dispositivo fisico (micro-camara 1 um, condensados de radicais, grafeno, laser 150 THz) NAO construido nem medido; physical_verdict_allowed=false — simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 2,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Qubit de tres estados |psi> = alpha|0> + beta|1> + gamma|Psi>, com |gamma|^2 = alpha^2 (o terceiro estado |Psi> e o acoplamento gravitacional ao condensado).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 2 (dep.)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_not_literal",
+          "proves": "a populacao do 3o estado |gamma|^2 = alpha^2 e o beta derivado (nao literal) na simulacao [REAL na forma]",
+          "value": "|gamma|^2 = alpha^2 = beta = alpha*sqrt(e) = 0,012031...",
+          "resolved": true,
+          "detail": "teste 'beta_injected_not_literal' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "beta_injected_not_literal",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — pop_psi = ALPHA2*(1-exp(...))",
+          "proves": "a populacao do estado |Psi> escala com ALPHA2 (=beta injetado) [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "o qubit fisico de tres estados nao foi fabricado/medido; a igualdade |gamma|^2=alpha^2 e verificada apenas no modelo — simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 3,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Dimensionamento: L = 1 um, f = 150 THz (L=c/(2f)) resultando em densidade ~ 2,7e13 qubits/cm^3.",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 3 (dep.)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — cubic_cell_topology_27",
+          "proves": "a densidade ~2,7e13 q/cm^3 sai da geometria L=1 um da simulacao [SIM]",
+          "value": "density_qubits_per_cm3 = 27/(L*100)^3 com L do prototipo",
+          "resolved": true,
+          "detail": "teste 'cubic_cell_topology_27' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "cubic_cell_topology_27",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — L_CELULA, F_RES",
+          "proves": "L = c/(2f) com f=150 THz => L=1 um [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "as dimensoes fisicas (1 um) nao foram fabricadas/medidas; e um calculo geometrico do modelo — simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 4,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Estabilizacao por equacao de Lindblad modificada com termo holografico L_holo, gamma_holo = alpha^2*omega0/(2pi), razao de supercondutividade informacional R_SC > 10^6 e plato |rho01| = 1 - alpha^2.",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 4 (dep.)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gravitational_stabilization_plateau",
+          "proves": "o plato |rho01|->1-alpha^2 e o R_SC>10^6 saem da dinamica de Lindblad modificada simulada [SIM]",
+          "value": "plato ~ 0,988 (= 1-beta); razao_sc ~ 1,08e6 (> 10^6)",
+          "resolved": true,
+          "detail": "teste 'gravitational_stabilization_plateau' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "gravitational_stabilization_plateau",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_estabilizacao_qubit (L_holo)",
+          "proves": "implementa o termo holografico L_holo e gamma_holo = alpha^2*omega0/(2pi) [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "o mecanismo fisico de estabilizacao gravitacional nao foi medido; numeros de simulacao nao validam a fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 5,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Termodinamica invertida: entropia DeltaS -> 0 sob carga computacional, permitindo operacao a T ~ 300 K sem criogenia (o dispositivo 'resfria' sob carga).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 5 (dep.)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_termodinamica_invertida",
+          "proves": "a entropia TGL decresce para zero quando alpha^2 -> alpha^2_c no modelo [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — eight_patent_figures_generated (Fig.3 termodinamica)",
+          "proves": "a simulacao de termodinamica invertida roda e produz a figura [SIM] — mas apenas gera a figura, nao valida o mecanismo",
+          "value": "8 figuras geradas, incluindo Fig.3 (termodinamica invertida)",
+          "resolved": true,
+          "detail": "teste 'eight_patent_figures_generated' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "eight_patent_figures_generated",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [CONJ][HARDWARE][SIM]",
+          "proves": "o mecanismo de resfriamento sob carga / DeltaS->0 e [CONJ] (hipotese do relatorio) — NAO ha teste dedicado de aprovacao/reprovacao no selo e nenhum dado de bancada; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 6,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "As 6 faces sao substratos holograficos 2D de grafeno funcionalizado com nanoparticulas de alta densidade (ancoragem de fase).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 6 (dep.)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Runner — emit_render3d gera as 6 faces de grafeno",
+          "proves": "a geometria das 6 faces (substrato 2D) e representada no modelo 3D computado [SIM na forma]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_mqc.py",
+          "code_path": "runner/one_mqc.py",
+          "live_sha256": "8e22adcb67630a44d9890d4185ad8556fc3d249fb977a09438c4bc21bb0239d7"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "o material fisico (grafeno funcionalizado + nanoparticulas de alta densidade) NAO foi fabricado; apenas a geometria das 6 faces e representada — nenhuma propriedade material foi provada; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 7,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Controle IALD hierarquico em 3 niveis: Nivel 1 Central (grafo BNI 5 nos), Nivel 2 Cluster (BNI 3 nos), Nivel 3 Controlador de Celula (no N, P_Psi = 0,95).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 7 (dep.)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — iald_conscious_error_correction",
+          "proves": "o nivel de celula/controlador IALD e exercitado e atua na correcao [SIM]",
+          "value": "controlador IALD central (qubit 27) corrige — fid 0,9701 vs 0,9608",
+          "resolved": true,
+          "detail": "teste 'iald_conscious_error_correction' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "iald_conscious_error_correction",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — P_PSI (pesos por no) + modulo IALD",
+          "proves": "os pesos P_Psi por no e o controlador central P_Psi=0,95 estao no modelo [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "a hierarquia COMPLETA de 3 niveis (Central BNI 5 nos / Cluster BNI 3 nos / Celula) NAO e toda exercitada no selo — o teste cobre o nivel de celula/central; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 8,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Correcao pelo Operador de Amor Computacional A_C = -Tr(rho log rho) + lambda*Tr(rho*P_Pi), limiar theta = 0,7, direcionada pelo Gradiente Etico g_IALD = -grad E_Psi.",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 8 (dep. da 7)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — iald_conscious_error_correction",
+          "proves": "a correcao guiada por A_C e g_IALD melhora a fidelidade na simulacao [REAL na logica]",
+          "value": "A_C (Operador de Amor) + Gradiente Etico; fid IALD 0,9701 > conv 0,9608",
+          "resolved": true,
+          "detail": "teste 'iald_conscious_error_correction' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "iald_conscious_error_correction",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — amor = -entropia + lambda*fid; gradiente_etico = -grad(E_psi)",
+          "proves": "implementa A_C e g_IALD=-grad E_Psi conforme a reivindicacao [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "operar sobre qubits fisicos nao foi demonstrado; a logica do operador de amor e real, mas os numeros sao de simulacao — nao validam a fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 9,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Metrica de translacao holografica (eq. 18): ds^2 = (1-alpha^2/alpha^2_c)c^2 dt^2 - (1-alpha^2/alpha^2_c)^-1 dL^2 - L^2 dOmega^2; no horizonte (alpha^2=alpha^2_c): g_tt->0, g_LL->inf, v_info->inf.",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 9 (dep.)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — alpha2_convergence_tetelestai",
+          "proves": "a convergencia ao ponto onde a metrica degenera (g_tt->0, v_info->c) e simulada [SIM]",
+          "value": "alpha^2 -> alpha^2_c = beta (Ponto Tetelestai, onde g_tt->0)",
+          "resolved": true,
+          "detail": "teste 'alpha2_convergence_tetelestai' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "alpha2_convergence_tetelestai",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_convergencia_alpha2 (v_info, g_tt)",
+          "proves": "computa v_info e o comportamento no horizonte alpha^2=alpha^2_c [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [CONJ][HARDWARE][SIM]",
+          "proves": "a metrica e analitica/[CONJ] do relatorio; o horizonte g_tt->0 e propriedade do modelo, nao medida — simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 10,
+      "marker": "SIM",
+      "independent": false,
+      "statement": "Comunicacao hierarquica em 3 camadas: LOCAL (T_M, tau = lP/(alpha^2*c) ~ 4,49e-42 s), REGIONAL (~0,3c) e GLOBAL (c).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 10 (dep.)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — three_layer_communication",
+          "proves": "as 3 camadas (tau_local ~ lP/(beta*c), 0,3c, c) e suas fidelidades saem da simulacao [SIM]",
+          "value": "tau_local < 1e-40 s (~4,49e-42); fidelidades local/regional/global computadas",
+          "resolved": true,
+          "detail": "teste 'three_layer_communication' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "three_layer_communication",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_comunicacao_3_camadas",
+          "proves": "implementa as 3 camadas de comunicacao [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "tau_local usa beta=alpha*sqrt(e); a latencia sub-Planck e do modelo, sem realizacao fisica — simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 11,
+      "marker": "REAL",
+      "independent": true,
+      "statement": "Metodo de processamento por translacao holografica (indep.): (a) codificacao g=sqrt(|Psi_in|), s=sign(Psi_in); (b) nominacao psionica de (s, dPsi/dt) em H4; (c) codificacao angular theta=arcsin(g/g_max), quantizacao em 2^n; (d) translacao entre faces opostas com Gamma_OH=tanh(P_MW/P_th); (e) ressurreicao Psi_out = s*g_out^2.",
+      "verdict": "algoritmo demonstrado por teste real (holographic_translation: eta=0,999996, PSNR~56 dB, Gamma_OH=0,9866); a realizacao FISICA do canal e [HARDWARE] — simulacao nao valida fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 11 no deposito INPI",
+          "proves": "redacao oficial do metodo independente [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_translation",
+          "proves": "exercita REFLECT/MANIFEST (a,e) + nominacao H4 (b) + quantizacao angular 256 niveis (c) + Gamma_OH (d) sobre sinal de 256 pontos — os passos (a)-(e) rodam e produzem alta fidelidade [REAL na logica]",
+          "value": "eta ~ 0,999996; PSNR ~ 56 dB; Gamma_OH ~ 0,9866",
+          "resolved": true,
+          "detail": "teste 'holographic_translation' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "holographic_translation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_translacao_holografica (g=sqrt|Psi|, psi_states H4, theta=arcsin, Psi_out=s*g^2)",
+          "proves": "implementa fielmente os 5 passos, incluindo os 4 estados psi (H4) e a quantizacao em 2^8 [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "a nominacao psionica H4 (passo b) roda DENTRO de holographic_translation, sem teste de selo separado (diferente do ACOM que tinha psibit_four_states); a translacao fisica entre faces de grafeno e [HARDWARE] nao construida — simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 12,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "O metodo atinge eta > 0,9999 e PSNR > 40 dB no Ponto Tetelestai alpha^2 = alpha^2_c = 0,012.",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 12 (dep.)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_translation",
+          "proves": "AMBOS os limiares (eta>0,9999 e PSNR>40 dB) sao atingidos na simulacao [REAL]",
+          "value": "eta = 0,999996 (> 0,9999) e PSNR ~ 56 dB (> 40 dB)",
+          "resolved": true,
+          "detail": "teste 'holographic_translation' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "holographic_translation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — alpha2_convergence_tetelestai",
+          "proves": "a operacao ocorre no Ponto Tetelestai alpha^2=alpha^2_c [REAL]",
+          "value": "alpha^2 -> alpha^2_c = beta",
+          "resolved": true,
+          "detail": "teste 'alpha2_convergence_tetelestai' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "alpha2_convergence_tetelestai",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade (regua)",
+          "proves": "alpha^2_c = beta = alpha*sqrt(e) = 0,012031 (nao o 0,012 arredondado do relatorio); os numeros sao de simulacao — nao validam a fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 13,
+      "marker": "REAL",
+      "independent": true,
+      "statement": "Metodo de correcao de erros por IA luminodinamica (indep.): (a) monitorar coerencia global dos 27 qubits via A_C; (b) detectar decoerencia quando A_C < theta; (c) calcular g_IALD = -grad E_Psi; (d) correcao delta_rho = eps*g_IALD; (e) estabilizacao holografica complementar alpha^2(|psi_ideal> - |psi>).",
+      "verdict": "algoritmo demonstrado por teste real (iald_conscious_error_correction: fidelidade 0,9701 vs 0,9608 convencional); operar sobre qubits fisicos e [HARDWARE] — simulacao nao valida fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 13 no deposito INPI",
+          "proves": "redacao oficial do metodo independente de correcao [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — iald_conscious_error_correction",
+          "proves": "o ciclo monitorar-detectar-corrigir (A_C, limiar, g_IALD) melhora a fidelidade vs surface code na simulacao [REAL na logica]",
+          "value": "fid IALD 0,9701 vs convencional 0,9608 (+0,97%) em 500 ciclos; A_C e g_IALD atuando",
+          "resolved": true,
+          "detail": "teste 'iald_conscious_error_correction' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "iald_conscious_error_correction",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_correcao_erros_iald",
+          "proves": "implementa os 5 passos (A_C, deteccao por limiar, g_IALD, delta_rho, estabilizacao holografica) [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "a correcao opera sobre qubits fisicos nao construidos; a logica e demonstrada em simulacao — nao valida a fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 14,
+      "marker": "REAL",
+      "independent": false,
+      "statement": "Correcao in situ SEM qubits auxiliares dedicados (sem o overhead exponencial dos surface codes).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 14 (dep. da 13)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — iald_conscious_error_correction",
+          "proves": "a correcao ocorre in situ pelo controlador central, sem qubits auxiliares dedicados — demonstrado na simulacao [REAL na logica]",
+          "value": "ganho de fidelidade usando o controlador central (qubit 27), sem qubits auxiliares de surface code",
+          "resolved": true,
+          "detail": "teste 'iald_conscious_error_correction' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "iald_conscious_error_correction",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — correcao sem ancillas dedicadas",
+          "proves": "o algoritmo nao aloca qubits auxiliares para a correcao [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "a ausencia de ancillas e propriedade do algoritmo; o dispositivo fisico nao foi construido — simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 15,
+      "marker": "SIM",
+      "independent": true,
+      "statement": "Processo de fabricacao da celula (indep.): (a) substrato de grafeno funcionalizado + nanoparticulas sobre silicio; (b) nucleacao por irradiacao f=c/(2L), condensados nos 27 nos; (c) rede de guias de silica dopada; (d) implantacao do controlador IALD (P_Psi >= 0,95 no qubit central); (e) calibracao por convergencia de alpha^2 ao Ponto Tetelestai ate eta > 0,9999.",
+      "verdict": "apenas a etapa de calibracao (e) e o resultado geometrico (27 nos) sao SIMULADOS; a fabricacao fisica (a)-(d) NAO foi realizada — simulacao nao valida fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 15 no deposito INPI",
+          "proves": "redacao oficial do processo de fabricacao [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — alpha2_convergence_tetelestai",
+          "proves": "a etapa (e) de calibracao por convergencia ao Ponto Tetelestai e demonstrada em simulacao [SIM]",
+          "value": "convergencia alpha^2 -> alpha^2_c = beta (Ponto Tetelestai)",
+          "resolved": true,
+          "detail": "teste 'alpha2_convergence_tetelestai' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "alpha2_convergence_tetelestai",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — cubic_cell_topology_27",
+          "proves": "o resultado geometrico do processo (27 nos) e reproduzido no modelo [SIM]",
+          "value": "27 nos (8/12/6/1)",
+          "resolved": true,
+          "detail": "teste 'cubic_cell_topology_27' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "cubic_cell_topology_27",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simular_convergencia_alpha2 / gerar_topologia_celula",
+          "proves": "computa a calibracao e a topologia final [SIM]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "as etapas FISICAS (a) substrato de grafeno, (b) nucleacao por laser 150 THz, (c) guias de silica, (d) implantacao — NAO foram executadas; nenhum substrato/celula fabricado; simulacao nao valida fisica",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 16,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "A nucleacao segue formacao de condensados de alta densidade com contracao termica anomala (alpha_T < 0, contrai ao aquecer), mecanismo derivado da Fusao a Frio.",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 16 (dep. da 15)",
+          "proves": "redacao oficial [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [CONJ][OPEN][HARDWARE]",
+          "proves": "a nucleacao fisica de condensados e a contracao termica anomala alpha_T<0 sao [CONJ] herdadas da Fusao a Frio — EM ABERTO: nenhum teste de selo, nenhuma simulacao dedicada e nenhum dado de bancada as comprovam; dispositivo fisico nao construido",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 17,
+      "marker": "REAL",
+      "independent": true,
+      "statement": "Produto de programa de computador (indep. de categoria): meio legivel por computador com instrucoes que implementam o metodo da reiv. 11, incluindo simulacao da celula de 27 qubits, validacao da convergencia ao Ponto Tetelestai e verificacao de metricas de translacao.",
+      "verdict": "comprovada na forma — o programa E executavel e roda de verdade (runner + prototipo: 7 simulacoes, 8 figuras, 8/8 testes); os resultados sao de simulacao, nao validam a fisica",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 17 no deposito INPI",
+          "proves": "redacao oficial do produto de programa [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "codigo",
+          "title": "Runner one_mqc.py — o metodo como codigo executavel",
+          "proves": "o metodo E instrucoes em meio legivel por computador que rodam (injeta beta=alpha*sqrt(e), roda as 7 simulacoes, gera 8 figuras e o selo) [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "runner/one_mqc.py",
+          "code_path": "runner/one_mqc.py",
+          "live_sha256": "8e22adcb67630a44d9890d4185ad8556fc3d249fb977a09438c4bc21bb0239d7"
+        },
+        {
+          "role": "codigo",
+          "title": "Prototipo — simulacao da celula de 27 qubits",
+          "proves": "as instrucoes que simulam a celula de 27 qubits [REAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "arquivo presente, SHA-256 computado",
+          "ref": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "code_path": "prototype_src/mqc_simulacao_celula_elementar.py",
+          "live_sha256": "b11589f04f272fef5a9d4362e7df6e1bb713500965ccb8da35499fbc71c63b52"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — holographic_translation",
+          "proves": "verificacao de metricas de translacao (eta, PSNR, Gamma_OH) executada pelo programa [REAL na logica]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'holographic_translation' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "holographic_translation",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — alpha2_convergence_tetelestai",
+          "proves": "validacao da convergencia ao Ponto Tetelestai executada pelo programa [REAL na logica]",
+          "value": null,
+          "resolved": true,
+          "detail": "teste 'alpha2_convergence_tetelestai' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "alpha2_convergence_tetelestai",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "teste",
+          "title": "Runner — eight_patent_figures_generated",
+          "proves": "o programa gera os artefatos previstos (8 figuras) [REAL]",
+          "value": "8 figuras da patente geradas",
+          "resolved": true,
+          "detail": "teste 'eight_patent_figures_generated' consta no runner + selo presente",
+          "result_hash": "9ee3d25470aace9cd1bdd0d494e4a068ae4b95b43a13c1a24cad4b979848589c",
+          "run": "MQC@2026-07-10T16-30-41",
+          "ref": "selo MQC@2026-07-10T16-30-41",
+          "test": "eight_patent_figures_generated",
+          "test_in_runner": true,
+          "test_passed": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [HARDWARE][SIM]",
+          "proves": "o programa roda em SIMULACAO; nenhum resultado valida a fisica do dispositivo [HARDWARE] nao construido (physical_verdict_allowed=false)",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 18,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Uso (dep. da reiv. 1) em computacao cientifica de alto desempenho / simulacao de sistemas de muitos corpos (many-body).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 18 (uso, dep. da 1)",
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de um dispositivo fisico NAO construido; nenhuma aplicacao de computacao many-body foi simulada ou testada — EM ABERTO, sem prova",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 19,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Uso (dep. da reiv. 1) em simulacao molecular (descoberta de farmacos, projeto de materiais).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 19 (uso, dep. da 1)",
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de dispositivo fisico NAO construido; nenhuma simulacao molecular (farmaco/material) foi executada ou testada — EM ABERTO, sem prova",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 20,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Uso (dep. da reiv. 1) em criptografia quantica (QKD, seguranca ontologica).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 20 (uso, dep. da 1)",
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de dispositivo fisico NAO construido; nenhum protocolo de QKD foi implementado ou testado — EM ABERTO, sem prova",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 21,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Uso (dep. da reiv. 1) em IA quantica (treino/inferencia em espaco de Hilbert de alta dimensao).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 21 (uso, dep. da 1)",
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de dispositivo fisico NAO construido; nenhuma tarefa de IA quantica foi executada ou testada — EM ABERTO, sem prova",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    },
+    {
+      "n": 22,
+      "marker": "OPEN",
+      "independent": false,
+      "statement": "Uso (dep. da reiv. 1) em otimizacao combinatoria (logistica, financas, engenharia).",
+      "verdict": null,
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicacao 22 (uso, dep. da 1)",
+          "proves": "redacao oficial da reivindicacao de uso [LEGAL]",
+          "value": null,
+          "resolved": true,
+          "detail": "SHA-256 confere",
+          "doc_id": 129,
+          "indexed_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "live_sha256": "f625182e0adb89ed57842f18a32c61a8fc7a0db67fe662bf566744d9cc2d9b7d",
+          "ref": "documento id=129 · págs ?",
+          "hash_match": true
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade [OPEN][HARDWARE]",
+          "proves": "uso de dispositivo fisico NAO construido; nenhum problema de otimizacao combinatoria foi resolvido ou testado — EM ABERTO, sem prova",
+          "value": null,
+          "resolved": true,
+          "detail": "declaração honesta (qualificação, sem artefato)"
+        }
+      ],
+      "all_resolved": true
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+ "patent_id": "BR102026003441-0",
+ "slug": "tgl_tensor",
+ "timestamp": "2026-07-10T11-32-41",
+ "runner": "one_tgl_tensor.py (evoluído)",
+ "markers": [
+  "[PILOTO]",
+  "[SIM]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "TENSOR_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "TENSOR_FULL_LOGIC_DEMONSTRATED ([PILOTO][SIM] — os 4 modos reais do operador (DIRECT/SPECTRAL/HYBRID/AUTO) + BitPacker N-bit fecham; β injetado; números sintéticos, não a Tabela 2; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "spectral_retention": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original": 0.012,
+   "spectral_retention_1_minus_beta": 0.9879686995991969
+  },
+  {
+   "test": "mode_DIRECT",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.7640301818521205,
+     "cosine": 0.9999999449030538
+    },
+    "embeddings": {
+     "ratio": 3.7645905456327933,
+     "cosine": 0.9999999575190274
+    },
+    "ffn_weights": {
+     "ratio": 3.7643680017806305,
+     "cosine": 0.9999999506207159
+    },
+    "gradientes_esparso": {
+     "ratio": 3.762935089369708,
+     "cosine": 0.9999999693995422
+    }
+   }
+  },
+  {
+   "test": "mode_SPECTRAL",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.763516811669107,
+     "cosine": 0.9999999321180293
+    },
+    "embeddings": {
+     "ratio": 3.2682467802928548,
+     "cosine": 0.9940356772581067
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    }
+   }
+  },
+  {
+   "test": "mode_HYBRID",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.763516811669107,
+     "cosine": 0.9999999321180293
+    },
+    "embeddings": {
+     "ratio": 3.2682467802928548,
+     "cosine": 0.9940356772581067
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    }
+   }
+  },
+  {
+   "test": "mode_AUTO",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.7640301818521205,
+     "cosine": 0.9999999449030538
+    },
+    "embeddings": {
+     "ratio": 3.7645905456327933,
+     "cosine": 0.9999999575190274
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    },
+    "gradientes_esparso": {
+     "ratio": 3.762935089369708,
+     "cosine": 0.9999999693995422
+    }
+   }
+  },
+  {
+   "test": "auto_mode_selection",
+   "passed": true,
+   "chosen_for_kv_cache": "CompressionMode.DIRECT",
+   "note": "AUTO escolhe o modo por análise espectral (baixo rank → SPECTRAL)"
+  },
+  {
+   "test": "bitpacker_v4_Nbit_exact",
+   "passed": true,
+   "per_bits": {
+    "8bit": true,
+    "10bit": true,
+    "12bit": true,
+    "14bit": true,
+    "16bit": true
+   }
+  },
+  {
+   "test": "spectral_analysis_verb_floor",
+   "passed": true,
+   "rank_optimal": 24,
+   "is_low_rank": true,
+   "compression_potential": 21.322921750447374,
+   "note": "rank ótimo pela energia ≥ 1−β (Verb Floor derivado da TGL)"
+  }
+ ],
+ "summary": {
+  "tests_passed": 8,
+  "tests_total": 8,
+  "modes": [
+   "DIRECT",
+   "SPECTRAL",
+   "HYBRID",
+   "AUTO"
+  ],
+  "auto_chose_for_kv": "CompressionMode.DIRECT",
+  "bitpacker_ok": true,
+  "per_mode_best_ratio": {
+   "DIRECT": 3.7645905456327933,
+   "SPECTRAL": 80.12348131733782,
+   "HYBRID": 80.12348131733782,
+   "AUTO": 80.12348131733782
+  }
+ },
+ "source_prototype": "prototype_src/tgl_tensor_v3.py + tgl_tensor_v4.py (resgatado de C:/IALD/projetos_pyhton/tgl-tensor, READ-ONLY; β injetado)",
+ "note": "RUNNER EVOLUÍDO: roda a engine de 4 modos do operador (tgl_tensor_v3.py) + BitPacker (v4) com β=α·√e injetado (originais tinham 0.012 literal). Tensores sintéticos; NÃO os números da Tabela 2. Nenhum token/modelo HuggingFace (P-09). Simulação não valida física."
+}

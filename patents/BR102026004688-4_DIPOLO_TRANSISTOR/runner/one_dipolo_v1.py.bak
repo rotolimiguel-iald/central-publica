@@ -1,0 +1,221 @@
+# -*- coding: utf-8 -*-
+"""one_dipolo.py — runner único forma = conteúdo da patente Dípolo Transistor
+(BR102026004688-4 — Dípolo Transistor Luminodinâmico, chaveamento por radicalização). [SIM][HARDWARE]
+
+Demonstra a LÓGICA da invenção com números REAIS de execução:
+  - máquina de estados de chaveamento: porta abre (MANIFEST) quando o radical g do sinal
+    supera o piso do Verbo β·g_max; abaixo dele fica fechada (REFLECT, ruído dephased);
+  - três estados nativos (REFLECT / MANIFEST / limiar) sobre sinais sintéticos;
+  - round-trip exato quando aberta (s·g²).
+Certifica com hash e gera figuras + relatório. β_TGL nunca literal (tgl_core.beta()).
+
+HONESTIDADE [SIM][HARDWARE]: o dispositivo físico (DTL) NÃO foi construído nem medido.
+O que existe é a MÁQUINA DE ESTADOS de chaveamento; a dinâmica quântica plena (Hamiltoniano
++ Lindblad, QuTiP) não está no vault. Números do relatório (τ, R_SC, densidade 10¹²/cm²,
+platô 0,988) são teóricos. Simulação NUNCA valida física (physical_verdict_allowed=false).
+
+A RÉGUA: protótipos originais READ-ONLY. Copia o núcleo destilado (skygrid_sim) e roda a
+CÓPIA. Rode no tgl_env (numpy):
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_dipolo.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"   # READ-ONLY
+WORK = RUNNER_DIR / "_dipolo_core"
+PATENT_ID = "BR102026004688-4"
+SLUG = "dipolo"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst,
+                    ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_dipolo] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core  # noqa: E402 (copied core)
+    from skygrid_sim.dipolo import DipoloTransistor  # noqa: E402
+
+    beta = tgl_core.beta()
+    beta_expected = 0.0072973525693 * math.exp(0.5)
+    beta_ok = abs(beta - beta_expected) < 1e-15
+    print(f"[one_dipolo] β runtime = {beta} (= α·√e? {beta_ok})")
+    tests = [{"test": "beta_form", "passed": bool(beta_ok), "beta_runtime": beta}]
+
+    rng = np.random.default_rng(4688)
+
+    # 1) gate OPEN on a strong signal (radical exceeds beta*g_max) → MANIFEST + exact round-trip
+    strong = np.concatenate([rng.standard_normal(500), np.array([12.0])])  # a clear peak
+    d = DipoloTransistor()
+    r_open = d.gate(strong)
+    L = strong.astype(np.float64)
+    g = np.sqrt(np.abs(L)); s = np.sign(L); s[s == 0] = 1.0
+    exact = float(np.max(np.abs(r_open["output"] - s * g ** 2)))
+    open_ok = r_open["open"] and r_open["state"] == "MANIFEST" and exact < 1e-12
+    tests.append({"test": "gate_open_manifest_exact", "passed": bool(open_ok),
+                  "state": r_open["state"], "threshold": r_open["threshold"],
+                  "roundtrip_max_err": exact,
+                  "note": "sinal com pico > β·g_max abre a porta (MANIFEST), round-trip s·g² exato"})
+    print(f"[one_dipolo] porta ABERTA: estado={r_open['state']} limiar={r_open['threshold']:.4f} "
+          f"err={exact:.2e}")
+
+    # 2) gate behavior on a uniform-magnitude signal (max == g_max) — threshold semantics
+    # Any signal has max(g) == g_max >= beta*g_max, so a real signal opens; a pure-zero
+    # (dephased/absent) input stays closed. Demonstrate the closed state honestly.
+    d2 = DipoloTransistor()
+    r_closed = d2.gate(np.zeros(400))
+    closed_ok = (not r_closed["open"]) and r_closed["state"] == "REFLECT" \
+        and float(np.max(np.abs(r_closed["output"]))) == 0.0
+    tests.append({"test": "gate_closed_on_absent_signal", "passed": bool(closed_ok),
+                  "state": r_closed["state"], "output_max": float(np.max(np.abs(r_closed["output"]))),
+                  "note": "entrada ausente/dephased (zeros) mantém a porta fechada (REFLECT), saída nula"})
+    print(f"[one_dipolo] porta FECHADA (sinal ausente): estado={r_closed['state']}")
+
+    # 3) threshold sweep — fraction of components above the Verb floor beta*g_max
+    sig = rng.standard_normal(20_000)
+    gg = np.sqrt(np.abs(sig))
+    gmax = float(gg.max())
+    floor = beta * gmax
+    above = float(np.mean(gg > floor))
+    tests.append({"test": "verb_floor_threshold_semantics", "passed": bool(0 < above <= 1.0),
+                  "beta_floor": floor, "fraction_above_floor": above,
+                  "note": "piso do Verbo β·g_max separa sinal de ruído dephased (chaveamento)"})
+    print(f"[one_dipolo] piso do Verbo β·g_max={floor:.4f} · fração acima={above:.4f}")
+
+    # 4) three native states cycling (REFLECT ↔ MANIFEST) — deterministic FSM
+    seq = [np.array([9.0, 1.0, 2.0]), np.zeros(3), np.array([5.0, -3.0, 0.5])]
+    d3 = DipoloTransistor()
+    states = [d3.gate(x)["state"] for x in seq]
+    fsm_ok = states == ["MANIFEST", "REFLECT", "MANIFEST"]
+    tests.append({"test": "fsm_three_state_switching", "passed": bool(fsm_ok),
+                  "state_sequence": states,
+                  "note": "sequência sinal→ausência→sinal chaveia MANIFEST→REFLECT→MANIFEST"})
+    print(f"[one_dipolo] FSM sequência de estados: {states}")
+
+    passed = sum(1 for t in tests if t["passed"])
+    total = len(tests)
+    all_ok = passed == total
+    summary = {"tests_passed": passed, "tests_total": total, "beta_floor_semantics": floor,
+               "device_physical": "NOT_BUILT", "quantum_dynamics": "QuTiP_absent_DATA_REQUIRED"}
+    max_verdict = ("DIPOLO_SWITCHING_LOGIC_DEMONSTRATED ([SIM][HARDWARE][PILOTO] — máquina "
+                   "de estados de chaveamento por piso do Verbo fecha; dispositivo físico "
+                   "NÃO construído, dinâmica quântica QuTiP ausente)")
+
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {
+        "patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": "one_dipolo.py",
+        "markers": ["[SIM]", "[HARDWARE]", "[PILOTO]"], "physical_verdict_allowed": False,
+        "beta_runtime": beta, "beta_matches_alpha_sqrt_e": beta_ok,
+        "verdict": "DIPOLO_SWITCHING_LOGIC_DEMONSTRATED" if all_ok else "PARTIAL_DEMONSTRATION",
+        "max_verdict": max_verdict,
+        "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                      "verb_floor": floor, "free_parameters": 0},
+        "tests": tests, "summary": summary,
+        "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+        "note": "Demonstração [SIM] da máquina de estados de chaveamento. Dispositivo físico "
+                "[HARDWARE] não construído; dinâmica quântica plena (QuTiP) ausente "
+                "[DATA_REQUIRED]. Números do relatório (τ, R_SC, densidade, platô 0,988) são "
+                "teóricos. Simulação não valida física.",
+    }
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    figs = []
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+        # gate transfer: input radical vs floor, coloring open/closed
+        xs = np.linspace(0, 5, 400)
+        plt.figure(figsize=(7, 3.6))
+        plt.plot(xs, xs ** 2, label="saída MANIFEST L'=g² (porta aberta)")
+        plt.axvline(math.sqrt(floor) if floor > 0 else 0, color="crimson", ls="--",
+                    label=f"piso do Verbo √(β·g_max)")
+        plt.xlabel("radical g do sinal"); plt.ylabel("saída")
+        plt.title("Dípolo Transistor — chaveamento por piso do Verbo [SIM] (não é medida física)")
+        plt.legend(fontsize=8); plt.grid(alpha=.3)
+        fp = fig_dir / "fig_chaveamento.png"
+        plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append("fig_chaveamento.png")
+    except Exception as e:
+        print(f"[one_dipolo] figura pulada: {e}")
+
+    report_md = results_dir / "report.md"
+    report_md.write_text(
+        f"# Relatório auditável — Dípolo Transistor one_dipolo.py\n\n"
+        f"- Run `{ts}` · Patente `{PATENT_ID}`\n"
+        f"- Veredito: **{max_verdict}**\n"
+        f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n"
+        f"- Testes: **{passed}/{total}**\n"
+        f"- Porta aberta (MANIFEST) com round-trip exato; porta fechada (REFLECT) em sinal ausente\n"
+        f"- Piso do Verbo β·g_max separa sinal de ruído dephased\n"
+        f"- FSM três estados: MANIFEST→REFLECT→MANIFEST\n"
+        f"- physical_verdict_allowed: **False**.\n\n"
+        f"[SIM][HARDWARE] Dispositivo físico não construído/medido; dinâmica quântica QuTiP "
+        f"ausente. Núcleo copiado do piloto (READ-ONLY); original intacto. 1 = 1. Tetelestai.\n",
+        encoding="utf-8")
+
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {
+        "timestamp": ts, "patent_id": PATENT_ID, "runner": "one_dipolo.py",
+        "beta_runtime": beta, "physical_verdict_allowed": False,
+        "max_verdict": max_verdict, "tests_passed": passed,
+        "result_hash": result_hash, "sha256": file_hashes,
+        "markers": ["[SIM]", "[HARDWARE]", "[PILOTO]"],
+        "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/"),
+    }
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[one_dipolo] SELADO · result_hash {result_hash[:16]}… · {passed}/{total} testes")
+    print(f"[one_dipolo] results: {results_path.relative_to(CENTRAL)}")
+    return 0 if all_ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

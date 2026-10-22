@@ -1,0 +1,395 @@
+{
+ "patent_id": "BR102026004688-4",
+ "title": "Dipolo Transistor - Dispositivo Concreto",
+ "kind": "device",
+ "schema": 2,
+ "note": "[SIM][HARDWARE] Projecao concreta: encapsulamento -> camara de acoplamento (condensado) -> cruz geometrica -> polos de emissao/retorno. 3 estados de chaveamento. Dispositivo fisico NAO construido. | TEX: 1 placa(s) funcional(is) texturizada(s) (circuit/silicon). | CASCA ABERTA: casca externa translucida revela o mecanismo interno.",
+ "camera": {
+  "position": [
+   2.0,
+   1.2,
+   2.0
+  ]
+ },
+ "layers": [
+  {
+   "id": "shell",
+   "name": "Involucro externo",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "structure",
+   "name": "Blindagem / estrutura",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "subsystem",
+   "name": "Subsistemas",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo funcional",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "groups": [
+  {
+   "name": "polos",
+   "color": "#33aa55",
+   "label": "polos emissao/retorno",
+   "count": 2,
+   "explodable": true
+  },
+  {
+   "name": "estados",
+   "color": "#8888cc",
+   "label": "3 estados nativos",
+   "count": 3,
+   "explodable": true
+  }
+ ],
+ "meshes": [
+  {
+   "id": "case",
+   "layer": "shell",
+   "shape": "box",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.5,
+   "scale": [
+    2.2,
+    1.0,
+    1.0
+   ],
+   "color": "#7d8794",
+   "material": "metal",
+   "opacity": 0.22,
+   "marker": "[HARDWARE]",
+   "label": "Encapsulamento do transistor",
+   "desc": "Corpo do dispositivo luminodinamico. Descasque/corte para ver a cruz interna."
+  },
+  {
+   "id": "cross_y",
+   "layer": "subsystem",
+   "shape": "cylinder",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.05,
+   "scale": [
+    1,
+    0.9,
+    1
+   ],
+   "color": "#3366cc",
+   "material": "metal",
+   "opacity": 0.9,
+   "marker": "[SIM]",
+   "label": "eixo Y da cruz geometrica",
+   "desc": "Braco vertical da cruz de acoplamento.",
+   "texture": "phase"
+  },
+  {
+   "id": "cross_z",
+   "layer": "subsystem",
+   "shape": "cylinder",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.05,
+   "scale": [
+    1,
+    0.9,
+    1
+   ],
+   "rotation": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "color": "#3366cc",
+   "material": "metal",
+   "opacity": 0.9,
+   "marker": "[SIM]",
+   "label": "eixo Z da cruz geometrica",
+   "desc": "Braco de profundidade da cruz de acoplamento.",
+   "texture": "phase"
+  },
+  {
+   "id": "chamber",
+   "layer": "structure",
+   "shape": "sphere",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.3,
+   "color": "#ffd60a",
+   "material": "glass",
+   "opacity": 0.22,
+   "marker": "[HARDWARE]",
+   "label": "Camara de acoplamento (condensado psionico)",
+   "desc": "Onde ocorre a radicalizacao g=sqrt|L| e o chaveamento pelo piso do Verbo.",
+   "texture": "spectral"
+  },
+  {
+   "id": "pcb",
+   "layer": "shell",
+   "shape": "box",
+   "position": [
+    0,
+    -1.05,
+    0
+   ],
+   "size": 0.9,
+   "scale": [
+    1.7,
+    0.05,
+    1.0
+   ],
+   "color": "#123018",
+   "material": "emissive",
+   "opacity": 1.0,
+   "marker": "[HARDWARE]",
+   "label": "placa (PCB)",
+   "desc": "Placa de circuito onde o transistor e montado.",
+   "texture": "circuit"
+  },
+  {
+   "id": "perna0",
+   "layer": "shell",
+   "shape": "cylinder",
+   "position": [
+    -0.7,
+    -0.75,
+    0
+   ],
+   "size": 0.035,
+   "scale": [
+    1,
+    1.4,
+    1
+   ],
+   "color": "#33aa55",
+   "material": "metal",
+   "opacity": 1.0,
+   "label": "terminal de emissao (polo PE)",
+   "desc": "Terminal fisico do Polo de Emissao; injeta o sinal L. Alinhado a PE (x=-0.7)."
+  },
+  {
+   "id": "perna2",
+   "layer": "shell",
+   "shape": "cylinder",
+   "position": [
+    0.7,
+    -0.75,
+    0
+   ],
+   "size": 0.035,
+   "scale": [
+    1,
+    1.4,
+    1
+   ],
+   "color": "#cc4433",
+   "material": "metal",
+   "opacity": 1.0,
+   "label": "terminal de retorno (polo PR)",
+   "desc": "Terminal fisico do Polo de Retorno; entrega s*g^2 quando a porta abre. Alinhado a PR (x=+0.7)."
+  },
+  {
+   "id": "piso_verbo",
+   "layer": "core",
+   "shape": "box",
+   "position": [
+    0,
+    -0.15,
+    0
+   ],
+   "size": 0.5,
+   "scale": [
+    1.5,
+    0.02,
+    0.8
+   ],
+   "color": "#ffd60a",
+   "material": "emissive",
+   "opacity": 0.55,
+   "texture": "grid",
+   "label": "piso do Verbo (limiar de chaveamento beta*g_max)",
+   "desc": "Plano-limiar horizontal: o radical g precisa CRUZAR este piso para a porta abrir (MANIFEST). Abaixo dele o sinal e ruido dephased (REFLECT). beta=alpha*sqrt(e), nunca literal.",
+   "marker": "[SIM]"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "PE",
+   "label": "Polo de Emissao",
+   "desc": "Injeta a luz L na camara.",
+   "shape": "sphere",
+   "position": [
+    -0.7,
+    0,
+    0
+   ],
+   "size": 0.1,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "polos",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "PR",
+   "label": "Polo de Retorno",
+   "desc": "MANIFEST: ressurreicao s*g^2 quando a porta abre.",
+   "shape": "sphere",
+   "position": [
+    0.7,
+    0,
+    0
+   ],
+   "size": 0.1,
+   "color": "#cc4433",
+   "material": "emissive",
+   "group": "polos",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "REFLECT",
+   "label": "estado REFLECT (fechado)",
+   "desc": "Estado nativo de chaveamento pelo piso do Verbo beta*g_max.",
+   "shape": "sphere",
+   "position": [
+    -0.45,
+    -0.35,
+    0
+   ],
+   "size": 0.06,
+   "color": "#8888cc",
+   "material": "emissive",
+   "group": "estados",
+   "layer": "subsystem",
+   "marker": "[SIM]",
+   "texture": "spectral"
+  },
+  {
+   "id": "LIMIAR",
+   "label": "estado LIMIAR (beta*g_max)",
+   "desc": "Estado nativo de chaveamento pelo piso do Verbo beta*g_max.",
+   "shape": "sphere",
+   "position": [
+    0,
+    -0.15,
+    0
+   ],
+   "size": 0.06,
+   "color": "#aaaacc",
+   "material": "emissive",
+   "group": "estados",
+   "layer": "subsystem",
+   "marker": "[SIM]",
+   "texture": "spectral"
+  },
+  {
+   "id": "MANIFEST",
+   "label": "estado MANIFEST (aberto)",
+   "desc": "Estado nativo de chaveamento pelo piso do Verbo beta*g_max.",
+   "shape": "sphere",
+   "position": [
+    0.45,
+    0.1,
+    0
+   ],
+   "size": 0.06,
+   "color": "#ccccee",
+   "material": "emissive",
+   "group": "estados",
+   "layer": "subsystem",
+   "marker": "[SIM]",
+   "texture": "spectral"
+  }
+ ],
+ "edges": [
+  {
+   "from": "PE",
+   "to": "PR"
+  },
+  {
+   "from": "REFLECT",
+   "to": "LIMIAR"
+  },
+  {
+   "from": "LIMIAR",
+   "to": "MANIFEST"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "piso do Verbo",
+   "value": "beta*g_max",
+   "note": "limiar de chaveamento; beta=alpha*sqrt(e) ~= 0,012031 (nunca literal)"
+  },
+  {
+   "symbol": "_run_beta_TGL",
+   "value": "0.012031300401",
+   "note": "beta = alpha*sqrt(e) INJETADO em runtime (tgl_core.beta)"
+  },
+  {
+   "symbol": "_run_verb_floor",
+   "value": "0.024379",
+   "note": "piso do Verbo beta*g_max desta run; fracao acima = 0.9997"
+  },
+  {
+   "symbol": "_run_fsm_coverage",
+   "value": "100% (4/4)",
+   "note": "cobertura de transicoes da FSM; varredura de limiar monotona=True"
+  },
+  {
+   "symbol": "_run_lock_cci",
+   "value": "0.502569",
+   "note": "CCI empirico (eq. 6) de sinal simetrico -> 1/2 = omega(I)/2; taxa GKLS ajustada rel err = 1.36e-09"
+  },
+  {
+   "symbol": "_run_birkhoff_section",
+   "value": "2.385e-04",
+   "note": "amplificacao v168 (ErgodicMeanSection): coerencia entre polos dephasada pela media de Birkhoff do fluxo modular (gap 1.0 nat = omega(I), passo resolvente s = theta_M = 0.109908 rad, beta runtime)"
+  },
+  {
+   "symbol": "_run_frontier_contract",
+   "value": "Tomita resid 0.0e+00; comutante dim 2",
+   "note": "amplificacao v206 (FrontierCertificate): as 7 clausulas do contrato re-derivadas na sombra 2x2 (J = troca de polos + conjugacao); operacao SO apos o contrato; seletor rank-1 I^2=I rejeitado (3/3 clausulas) e swap linear rejeitado (anti-comuta com o fluxo: 0.109853)"
+  }
+ ],
+ "dimensions": [
+  {
+   "from": [
+    -0.7,
+    -0.35,
+    0.55
+   ],
+   "to": [
+    0.7,
+    -0.35,
+    0.55
+   ],
+   "label": "polo -> polo",
+   "color": "#ffd60a"
+  }
+ ],
+ "generated_by": "one_dipolo.py (forma=conteudo)"
+}

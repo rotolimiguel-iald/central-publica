@@ -1,0 +1,611 @@
+{
+  "patent_id": "BR102026003441-0",
+  "schema": "cadeia-de-prova/v1",
+  "note": "Cada reivindicação → cadeia de elos de prova (depósito/teste/código/dispositivo/dado/nota). Os hashes são computados AO VIVO por tools/verify_evidence.py (nunca hardcoded). Qualificações honestas onde a prova é parcial/pendente.",
+  "run_ref": "TGL_TENSOR@2026-07-10T11-46-29",
+  "document_id": 304,
+  "claims": [
+    {
+      "n": 1,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "MÉTODO: receber tensor L de LLM; g=√|L|, s=sign(L); θ=arcsin(g/gmax); quantizar θ em b bits; nominar ψ no H4 de (sign L, sign ∂L); empacotar em stream binário; caracterizado por reconstruir por Dobra Dimensional L'=s×[gmax·sin(θq·(π/2)/(2^b−1))]² e computar métricas intrínsecas (variância normalizada, Fexp, Sψ).",
+      "verdict": "núcleo comprovado (g=√|L|, L=s·g², quantização N-bit, variância) por teste real; codificação angular/ψ-H4/Fexp/Sψ ficam como demonstração de código (nota honesta)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente — método) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial da reivindicação de método [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "bits_sweep_fidelity_monotone",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "bits_sweep_fidelity_monotone"
+          },
+          "value": "DIRECT ffn: cos(8bit) → cos(16bit) não-decrescente",
+          "proves": "quantização em b bits (8/10/12/14/16) + reconstrução quadrática (Dobra Dimensional L=s·g²) num round-trip real; mais bits nunca piora a fidelidade [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v3.py — _quantize_tgl / _dequantize_tgl",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v3.py"
+          },
+          "proves": "g=√|L|, s=sign(L); reconstrução L=s·g²; variância normalizada std(g)/mean(g) computada em _compress_direct [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v4.py — BitPacker (empacotamento em stream binário)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v4.py"
+          },
+          "proves": "empacotamento do gravitacional quantizado em stream binário [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — o que NÃO está no caminho exercido",
+          "proves": "o protótipo v3 quantiza g_norm de forma LINEAR e reconstrói por L=s·g² (equivalente matemático da Dobra Dimensional, pois gmax·sin(arcsin(g/gmax))=g); porém a codificação angular explícita θ=arcsin(g/gmax) com reconstrução por sin, a nominação ψ no H4 e as métricas Fexp/Sψ NÃO estão implementadas no código exercido (só variância normalizada + Tetelestai são computadas). Essas partes do 'caracterizado por' são [SIM], descritas no relatório e não isoladas por teste. β=α√e em runtime, nunca literal."
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "ESPECTRAL (dep. de 1): SVD M=UΣVᵀ com rank adaptativo k (menor k com Σσ²/Σσ² > 1−α², α²=β) e cascata TGL sobre Uk/Σk/Vkᵀ.",
+      "verdict": "comprovada — dois testes reais provam a seleção de rank pelo piso 1−β (Verb Floor); cascata exercida pela engine",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "spectral_analysis_verb_floor",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "spectral_analysis_verb_floor"
+          },
+          "value": "rank_optimal ≥ 1 pela energia acumulada ≥ 1−β sobre ffn_weights",
+          "proves": "o analisador espectral determina o rank ótimo pela energia acumulada ≥ 1−β (Verb Floor derivado da TGL) [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "rank_adaptive_monotone_in_energy",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "rank_adaptive_monotone_in_energy"
+          },
+          "value": "rank ótimo não-decrescente no limiar de energia; ponto 1−β marcado",
+          "proves": "o rank adaptativo cresce monotonicamente com o limiar de energia, ancorando o piso 1−β [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v3.py — _compress_spectral (SVD + cascata TGL)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v3.py"
+          },
+          "proves": "SVD, rank k por searchsorted na energia acumulada = energy_threshold(1−β); TGL sobre U_k e Vt_k, linear sobre S_k (cascata) [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — cascata",
+          "proves": "os testes LISTADOS provam a seleção de rank pelo Verb Floor; o round-trip da cascata (Uk·diag(Σk)·Vkᵀ) é exercido pela engine (código) mas não isolado por um teste da lista. α²=β=α√e injetado em runtime (não o 0,012 literal do protótipo)."
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Reformatação automática (dep. de 2): KV cache 4D [B,H,T,dh] → matrizes por batch×cabeça; tensores 3D → fatias; 1D → vetor-coluna.",
+      "verdict": "parcial — o código faz reshaping genérico, não exatamente a regra por batch×cabeça; nenhum teste listado a isola",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v3.py — reshape em analyze_spectral/_compress_spectral",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v3.py"
+          },
+          "proves": "reformatação para 2D: 1D→(-1,1) (vetor-coluna); 2D→como está; >2D→reshape(shape[0], -1) [REAL na forma]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — reformatação genérica ≠ regra reivindicada",
+          "proves": "o código achata dimensões extras em shape[0]×(resto), NÃO a regra específica de KV 4D→matrizes por batch×cabeça nem 3D→fatias. Nenhum teste da lista isola a reformatação. [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "HÍBRIDO (dep. de 1): executa ESPECTRAL e, se a taxa > limiar, usa espectral; senão retorna a DIRETO.",
+      "verdict": "implementado e exercido pela engine, mas nenhum teste da lista isola o modo HÍBRIDO",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v3.py — _compress_hybrid",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v3.py"
+          },
+          "proves": "faz spectral e, se spectral_ratio > 3 (limiar), usa espectral; senão retorna DIRECT — exatamente a lógica reivindicada [REAL na forma]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "o modo HÍBRIDO roda dentro das varreduras do runner, porém NENHUM dos testes da lista (auto_mode_selection, spectral_analysis_verb_floor, rank_adaptive_monotone_in_energy, bits_sweep_fidelity_monotone, beta_injected_not_literal) isola/assevera o HÍBRIDO. [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "AUTO (dep. de 1): análise SVD (rank ótimo e potencial); ESPECTRAL se baixo rank e potencial >5×, HÍBRIDO se potencial >2×, senão DIRETO.",
+      "verdict": "comprovada — teste real de seleção AUTO por análise espectral + teste que fornece a própria análise (rank/potencial/baixo-rank)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "auto_mode_selection",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "auto_mode_selection"
+          },
+          "value": "_choose_mode(kv_cache) → modo válido escolhido por análise espectral",
+          "proves": "o seletor AUTO escolhe o modo pela estrutura espectral do tensor (baixo rank → SPECTRAL) [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "spectral_analysis_verb_floor",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "spectral_analysis_verb_floor"
+          },
+          "value": "rank_optimal, is_low_rank, compression_potential computados",
+          "proves": "fornece exatamente as grandezas (rank ótimo, baixo rank, potencial) que a regra AUTO consome [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v3.py — _choose_mode",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v3.py"
+          },
+          "proves": "is_low_rank & potential>5→SPECTRAL; potential>2→HYBRID; senão DIRECT — idêntico à reivindicação [REAL]"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Codificação angular (dep. de 1) concentra resolução em g pequeno (d(sinθ)/dθ = cosθ máx em θ=0), superior à linear para gradientes/coeficientes espectrais/dados esparsos.",
+      "verdict": "propriedade analítica; o caminho angular NÃO está no código exercido e nenhum teste compara angular×linear",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — angular não implementado no protótipo exercido",
+          "proves": "os protótipos v3/v4 copiados NÃO contêm arcsin/sin (busca por 'arcsin'/'np.sin' vazia); a quantização exercida é linear em g_norm. A superioridade 'resolução concentrada em g pequeno' via d(sinθ)/dθ=cosθ é propriedade MATEMÁTICA descrita no relatório, não isolada por um teste comparativo angular-vs-linear nem exercida em código. [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "BitPacker de N bits (8/10/12/14/16), variante GPU PyTorch (tudo na GPU, só o stream final à CPU) e variante CPU NumPy.",
+      "verdict": "N-bit CPU comprovado por varredura real; variante GPU existe no código mas não verificada em GPU nesta run",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "bits_sweep_fidelity_monotone",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "bits_sweep_fidelity_monotone"
+          },
+          "value": "varredura em bits ∈ {8,10,12,14,16}, fidelidade monotone",
+          "proves": "o pipeline opera e reconstrói em cada largura de bits reivindicada (8–16) com fidelidade não-decrescente [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v4.py — BitPackerNumPy (pack/unpack) e BitPackerTorch",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v4.py"
+          },
+          "proves": "empacotador de N bits arbitrários em NumPy (CPU) e a variante 100% PyTorch/GPU (BitPackerTorch) [REAL o código; MAGIC=b'TGL4']"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — CPU real, GPU não verificada",
+          "proves": "o BitPacker CPU (NumPy) N-bit é REAL; o round-trip bit-exato arbitrário é do teste bitpacker_v4_Nbit_exact (NÃO na lista autorizada), então aqui a evidência listada é a varredura de largura de bits. A variante GPU (BitPackerTorch) existe no código mas NÃO foi exercida em GPU nesta run (sem CUDA → cai para CPU). [CPU REAL / GPU SIM]"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Ponto de Tetelestai (dep. de 1): std(g)/mean(g) < α² (=0,012) indica convergência e qualidade máxima.",
+      "verdict": "limiar comprovado (β=α√e injetado, não literal) + lógica de detecção presente no código; evento de convergência não forçado por teste",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "beta_injected_not_literal",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "β = α·√e = 0,012031300400803 (runtime), substitui o ALPHA2=0,012 literal",
+          "proves": "o limiar α² do ponto de Tetelestai é β=α√e DERIVADO e INJETADO em runtime, não o literal 0,012 do protótipo [REAL/DER]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v3.py — _compress_direct (variância + Tetelestai)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v3.py"
+          },
+          "proves": "variance = std(g)/mean(g); tetelestai = variance < alpha2 — a detecção reivindicada existe e roda [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — detecção é de código",
+          "proves": "a variância normalizada e o marcador Tetelestai são COMPUTADOS (REAL); o teste listado prova o limiar β=α√e (não literal), mas nenhum teste da lista FORÇA um evento var<β sobre dado — a detecção é demonstração de código, não um resultado empírico de convergência. [limiar REAL; evento SIM]"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Compatível (dep. de 2) com separação ontológica criptográfica (Ψ, Θ, κ) e verificação por Fexp + hashes SHA-256 cruzados.",
+      "verdict": "declaração de compatibilidade (ACOM Mirror Crypto, Figura 6); sem módulo de cripto nos CODES, sem teste, e sem Fexp/SHA-256 no caminho exercido",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — compatibilidade declarada, sem prova computacional",
+          "proves": "a compatibilidade com a separação ontológica (Ψ/Θ/κ, ACOM Mirror Crypto — Figura 6) é DECLARADA no relatório; não há módulo cripto entre os CODES autorizados, nenhum teste da lista a exercita, e a verificação por Fexp + SHA-256 cruzados NÃO está no caminho exercido (o v3 usa checksum md5[:16], não SHA-256, e não computa Fexp). [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "independent": false,
+      "marker": "DATA",
+      "statement": "Aplicável (dep. de 1) a KV cache 20–30×, embeddings 10–20×, FFN 15–25×, gradientes 3–5× (DIRETO), cos > 0,99.",
+      "verdict": "faixas de razão são benchmark declarado (Tabela 2); runner usa tensores sintéticos e NÃO reproduz esses números",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "dado",
+          "title": "Razões da Tabela 2 — pendentes de reprodução sob integração contínua",
+          "proves": "as faixas 20–30×/10–20×/15–25×/3–5× são resultados de benchmark DECLARADOS no relatório [DATA_REQUIRED]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — sintético, não a Tabela 2",
+          "proves": "o runner comprime tensores SINTÉTICOS e as razões observadas NÃO são os números da Tabela 2; physical_verdict_allowed=false. As faixas específicas reivindicadas não foram reproduzidas. [DATA]"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Serialização binária (dep. de 2) com magic TGL4: versão/modo/bits/dims, escalas float64, contagens uint64, streams separados (DIRETO) ou de componentes SVD (ESPECTRAL).",
+      "verdict": "formato TGL4 existe no código v4; caminho binário não exercido pelos testes listados; magic TGL4×TGS1 em aberto",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v4.py — MAGIC=b'TGL4' + header (serialize/deserialize)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v4.py"
+          },
+          "proves": "o formato TGL4 (magic, dims, escalas, streams) está implementado no v4.py [REAL o código]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — serialização não exercida + divergência de magic",
+          "proves": "o runner opera sobre o objeto CompressedTensorV3 em memória (v3); o caminho de serialização binária TGL4 do v4 NÃO é exercido pelos testes da lista. Há divergência OPEN entre magic TGL4 (relatório/v4) e TGS1 (protótipo skygrid) a reconciliar. [SIM/OPEN]"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "SISTEMA: analisador espectral (SVD + rank via α²); seletor de modo; módulo de transformada gravitacional; codificador angular; nominador ψ H4; BitPacker N-bit (CPU/GPU); serializador binário; caracterizado por cascata no ESPECTRAL e métricas intrínsecas (Fexp, Sψ, variância, Tetelestai) sem custo adicional.",
+      "verdict": "núcleo do sistema comprovado — os 5 testes reais exercitam analisador espectral, seletor de modo, quantizador N-bit, constante α² e rank/Verb Floor; codificador angular/ψ-H4/Fexp/serializador ficam como código (nota)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (independente — sistema) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial da reivindicação de sistema [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "spectral_analysis_verb_floor (analisador espectral)",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "spectral_analysis_verb_floor"
+          },
+          "proves": "o analisador espectral (SVD + rank via 1−α²) do sistema roda e passa [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "auto_mode_selection (seletor de modo)",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "auto_mode_selection"
+          },
+          "proves": "o seletor de modo do sistema escolhe pela estrutura espectral [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "rank_adaptive_monotone_in_energy (rank via α²)",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "rank_adaptive_monotone_in_energy"
+          },
+          "proves": "a determinação de rank pelo piso 1−β do sistema é monotone e ancorada no Verb Floor [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "bits_sweep_fidelity_monotone (quantizador N-bit + reconstrução)",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "bits_sweep_fidelity_monotone"
+          },
+          "proves": "o módulo de transformada gravitacional + quantizador N-bit + reconstrução do sistema fecham o round-trip [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "beta_injected_not_literal (constante α² do sistema)",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "beta_injected_not_literal"
+          },
+          "value": "β = α·√e injetado (não literal)",
+          "proves": "a constante fundamental α²=β do sistema é derivada e injetada em runtime [REAL/DER]"
+        },
+        {
+          "role": "codigo",
+          "title": "one_tgl_tensor.py + tgl_tensor_v3.py + tgl_tensor_v4.py (sistema integrado)",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_tgl_tensor.py"
+          },
+          "proves": "o runner integra e roda os módulos do sistema (analisador, seletor, transformada, BitPacker, cascata ESPECTRAL) [REAL na lógica]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — componentes não exercidos",
+          "proves": "o núcleo do sistema roda e passa (REAL); PORÉM o codificador angular (θ=arcsin), o nominador ψ no H4 e as métricas Fexp/Sψ NÃO estão no caminho de código exercido (só variância/Tetelestai), e o serializador TGL4 (v4) não é exercido pelos testes listados. [núcleo REAL; angular/H4/Fexp/serializador SIM]"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Execução (dep. de 12) em CPU (NumPy) e GPU (PyTorch), pipeline que mantém os dados na GPU até a serialização final.",
+      "verdict": "CPU NumPy real; caminho GPU existe no código mas não verificado em GPU nesta run",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "bits_sweep_fidelity_monotone (execução CPU NumPy)",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "bits_sweep_fidelity_monotone"
+          },
+          "proves": "o pipeline executa e reconstrói em CPU (NumPy) de verdade [REAL a via CPU]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v4.py — caminho GPU (use_gpu, torch.to(device), BitPackerTorch)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v4.py"
+          },
+          "proves": "o caminho PyTorch que mantém dados na GPU até a serialização existe no código [REAL o código]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — GPU não verificada",
+          "proves": "a execução CPU (NumPy) é REAL; o caminho GPU (dados na GPU até serialização) existe no v4.py mas NÃO foi verificado em GPU nesta run (sem CUDA → cai para CPU). O speedup real vs. NumPy não foi medido. [CPU REAL / GPU SIM]"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Módulo de descompressão (dep. de 12): desserializa, desempacota, dequantiza por seno, reconstrói grávitons, aplica Dobra Dimensional; ESPECTRAL reconstrói SVD (Uk·diag(Σk)·Vkᵀ).",
+      "verdict": "descompressão DIRECT comprovada por round-trip real (L=s·g²); reconstrução ESPECTRAL exercida pela engine; dequantização é linear (não por seno) no caminho exercido",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 14 (dep.) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 304,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "bits_sweep_fidelity_monotone (round-trip de descompressão)",
+          "locator": {
+            "kind": "seal",
+            "run": "TGL_TENSOR@2026-07-10T11-46-29",
+            "test": "bits_sweep_fidelity_monotone"
+          },
+          "value": "cos(8bit)→cos(16bit) não-decrescente no DIRECT",
+          "proves": "a descompressão DIRECT (desempacota → dequantiza → Dobra Dimensional L=s·g²) reconstrói com fidelidade verificada [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v3.py — decompress / _dequantize_tgl",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v3.py"
+          },
+          "proves": "desserializa o objeto comprimido, reconstrói grávitons e aplica L=s·g²; no ESPECTRAL reconstrói Uk·diag(Σk)·Vkᵀ [REAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "tgl_tensor_v4.py — BitPacker.unpack (desempacotamento)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/tgl_tensor_v4.py"
+          },
+          "proves": "desempacota o stream de N bits de volta aos valores quantizados [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — 'por seno' e ESPECTRAL",
+          "proves": "a descompressão DIRECT é REAL (round-trip do bits_sweep); a reconstrução ESPECTRAL Uk·diag(Σk)·Vkᵀ está no código v3 e é exercida pela engine, mas nenhum teste da lista isola seu round-trip; 'dequantiza por seno' não se aplica ao caminho exercido — a dequantização é linear em g e a reconstrução é quadrática L=s·g². [DIRECT REAL; ESPECTRAL código/SIM]"
+        }
+      ]
+    }
+  ]
+}

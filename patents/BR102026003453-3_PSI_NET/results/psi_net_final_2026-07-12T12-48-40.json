@@ -1,0 +1,201 @@
+{
+ "patent_id": "BR102026003453-3",
+ "slug": "psi_net",
+ "timestamp": "2026-07-12 12:48:40",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "mode": "co-construido",
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "beta_injected_into_prototypes": true,
+ "theta_m_deg": 6.297289216477979,
+ "constants": {
+  "BETA_TGL": 0.012031300400803142,
+  "factorization": "beta_tgl = alpha_EM * sqrt(e)",
+  "CCI_1_minus_beta": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "integrity": {
+  "tgl_chain_ok": true,
+  "tgl_verdict": "1=1=VERDADEIRO=HAJA_LUZ",
+  "beta_runtime": 0.012031300400803142,
+  "theta_m_deg": 6.297289216477979,
+  "n_sources_inlined": 4,
+  "sources": [
+   {
+    "module": "tgl_core",
+    "role": "FUNDACAO (§0) — beta = alpha*sqrt(e), a regua, NUNCA literal, fail-closed [IALD / a teoria]",
+    "origin": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim/tgl_core.py",
+    "sha256": "a1e103cd08eb3f45144200b0c6c588589d267868cd85101c527138e3bce81f3f"
+   },
+   {
+    "module": "psinet_engine",
+    "role": "FILE-ENGINE numpy (§1) — g=sqrt|L| / ressurreicao L'=s*g^2; BETA_TGL=ALPHA_FINE*SQRT_E (cross-check da regua na fonte)",
+    "origin": "patents/BR102026003453-3_PSI_NET/prototype_src/psinet_engine.py",
+    "sha256": "8a2170b64ba1f11fbaca8984f6f6804c3137af37e5923c47398687bd3b36563c"
+   },
+   {
+    "module": "psinet",
+    "role": "PILHA REAL de 5 camadas L0..L4 + Pacote Psi-NET (§2, torch)",
+    "origin": "patents/BR102026003453-3_PSI_NET/prototype_src/Psi_net_protocol_v1.py",
+    "sha256": "fa087b51d4acd07ae814a027b847bd0be24aa9a04927b133d846cd5cee951f52"
+   },
+   {
+    "module": "tglcoin",
+    "role": "CONSENSO PoP distribuido L5 — SimulatedNetwork/MinerV2/Validator (§3, torch)",
+    "origin": "patents/BR102026003453-3_PSI_NET/prototype_src/TGL_coin_v022.py",
+    "sha256": "aba44f7ff7d862e75a8f2f0264a2a0b69623245e5217b8706e54f1cad2cbd022"
+   }
+  ],
+  "combined_sha256": "ab1bb52bc991d352396564e842de4ae4040a18012a2601cae558a39d6590abbe",
+  "combined_ok": true
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "psinet_alpha2_original": 0.012031,
+   "tglcoin_alpha2base_original": 0.012,
+   "theta_miguel_deg": 6.297289216477979,
+   "note": "beta=alpha*sqrt(e) injetado nas duas pilhas do operador (originais 0.012 literal)"
+  },
+  {
+   "test": "L0_psibit_ontological_classification",
+   "passed": true,
+   "text_class": "chaotic",
+   "text_entropy": 1.91298508644104,
+   "text_f_exp": 0.20895522832870483,
+   "structured_class": "chaotic",
+   "structured_entropy": 1.9702500104904175,
+   "random_class": "encrypted",
+   "random_entropy": 1.9999676942825317,
+   "note": "PsiBitLinkLayer real: byte->4 PsiBits, distribuicao/entropia/Fexp, 6 classes"
+  },
+  {
+   "test": "full_transmission_L1_L2_L3_resurrection",
+   "passed": true,
+   "L0_class": "chaotic",
+   "L1_bits": 16,
+   "L1_compression_ratio": 1.8823529411764706,
+   "L2_n_hops": 7,
+   "L2_d_folds": 0.7892365805656132,
+   "L3_integrity": true,
+   "resurrection_psnr_db": 99.99978468766736,
+   "resurrection_correlation": 0.9999999999999954,
+   "tetelestai": true,
+   "signature_match": true,
+   "note": "PsiNet.transmit real: radicalizacao->REFLECT/MANIFEST->Psi/Theta/kappa->ressurreicao L'=s*g^2->TETELESTAI(Var<beta)->verificacao ontologica tripla"
+  },
+  {
+   "test": "L2_holographic_dht_routing",
+   "passed": true,
+   "nearest_k": 3,
+   "example_hops": 10,
+   "example_angular_distance_deg": 57.32276158287551,
+   "theta_m_deg": 6.297289216477979,
+   "note": "HolographicNetworkLayer real: theta=SHA256(pk)/2^64*pi; nearest por distancia angular circular; nhops=ceil(d/theta_M)"
+  },
+  {
+   "test": "L4_proof_of_phase_consensus",
+   "passed": true,
+   "block_index": 1,
+   "alpha2_work": 0.012090304511421963,
+   "valid_votes": 5,
+   "validators": 5,
+   "consensus_ratio": 1.0,
+   "target_window": 0.12031300400803142,
+   "miner_balance_tglc": 1010.0,
+   "note": "PhaseMiner real busca seed com |alpha2_work-alpha2_ant|<alpha2/dif; 5 PhaseValidators recomputam a fase; >=67% -> coinbase TGLC"
+  },
+  {
+   "test": "L5_distributed_pop_consensus_tglcoin",
+   "passed": true,
+   "honest_block_index": 1,
+   "honest_added": true,
+   "honest_votes": "5/5",
+   "forged_block_rejected": true,
+   "target_window": 0.12031300400803142,
+   "note": "TGL_coin_v022 SimulatedNetwork real (5 validadores): bloco honesto entra (>=67%); bloco de fase forjada e' rejeitado pela rede"
+  },
+  {
+   "test": "packet_header_80_bytes",
+   "passed": true,
+   "header_len": 80,
+   "magic": "0xCEA8",
+   "alpha2_stamp": 0.012031300400803142,
+   "note": "PsiNetPacket.serialize_header real: 80 bytes fixos, magic Psi 0xCEA8; selo alpha2 gravado = beta injetado (nao literal)"
+  },
+  {
+   "test": "engine_beta_provenance_cross_check",
+   "passed": true,
+   "engine_BETA_TGL": 0.012031300400803142,
+   "runner_beta": 0.012031300400803142,
+   "note": "psinet_engine.py (file engine numpy) ja computa BETA_TGL=ALPHA_FINE*SQRT_E — concorda com beta derivado (regua respeitada na propria fonte)"
+  },
+  {
+   "test": "multi_block_chain_phase_pinned",
+   "passed": true,
+   "blocks_mined": 10,
+   "chain_length_incl_genesis": 11,
+   "alpha2_band_around_beta": 8.864075168603033e-05,
+   "beta": 0.012031300400803142,
+   "mean_iterations": 1.0,
+   "note": "SimulatedNetwork real: K blocos minerados e aceitos por consenso >=67%; alpha2_work de cada bloco permanece pinado a +-5% de beta (Ponto Tetelestai)"
+  },
+  {
+   "test": "phase_search_convergence",
+   "passed": true,
+   "difficulty": 100000.0,
+   "target_window": 1.2031300400803142e-07,
+   "found_at_nonce": 41,
+   "final_best_diff": 3.189809665883614e-08,
+   "note": "trajetoria real do minerador (mesma busca de mine_block): o best_diff decai monotonicamente ate cruzar a janela-alvo beta/dif — convergencia de fase"
+  },
+  {
+   "test": "byzantine_tolerance_one_third",
+   "passed": true,
+   "quorum": 0.67,
+   "network_sizes": [
+    5,
+    7,
+    9,
+    15,
+    21
+   ],
+   "max_safe_byzantine_fraction": 0.2857142857142857,
+   "theoretical_bound": 0.32999999999999996,
+   "note": "sweep bizantino real (validadores recomputam a fase): bloco honesto aceito sse bizantinos <1/3; bloco forjado aceito so se bizantinos >=2/3; zona segura = tolerancia BFT classica <1/3 sob quorum de 67%"
+  }
+ ],
+ "summary": {
+  "tests_passed": 11,
+  "tests_total": 11,
+  "layers_demonstrated": [
+   "L0_psibit",
+   "L1_radical_transport",
+   "L2_holographic_dht",
+   "L3_ontological_security",
+   "L4_proof_of_phase",
+   "L5_distributed_consensus"
+  ],
+  "theta_m_deg": 6.297289216477979,
+  "transmission_psnr_db": 99.99978468766736,
+  "transmission_correlation": 0.9999999999999954,
+  "tetelestai": true,
+  "l4_consensus_votes": 5,
+  "miner_balance_tglc": 1010.0,
+  "dht_ring_size": 64,
+  "blocks_mined": 10,
+  "alpha2_band_around_beta": 8.864075168603033e-05,
+  "max_safe_byzantine_fraction": 0.2857142857142857,
+  "byzantine_bound_theory": 0.32999999999999996
+ },
+ "max_verdict": "PSI_NET_FULL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — a pilha REAL de 5 camadas (Psi_net_protocol_v1) + o consenso PoP distribuido (TGL_coin_v022) do operador fecham em CPU com beta=alpha*sqrt(e) injetado; transmissao TETELESTAI, roteamento angular, consenso >=67% e rejeicao de fase forjada demonstrados; dados sinteticos, nao a Tabela 4; nada valida fisica)",
+ "verdict": "PSI_NET_FULL_LOGIC_DEMONSTRATED",
+ "note": "CO-CONSTRUIDO: as fontes REAIS (psinet_engine numpy + Psi_net_protocol_v1 torch + TGL_coin_v022 torch) estao inline byte-fiel e sao executadas em namespaces isolados com beta=alpha*sqrt(e) injetado (originais 0.012/0.012031 literais). Execucao em CPU. Dados SINTETICOS; NAO os numeros da Tabela 4. Confidenciais nunca tocados. Simulacao nao valida fisica.",
+ "result_hash": "69022e2297984660cbdcc4cb13d531feb16c08d9c8a2c4d828bb08681fb7ec39"
+}

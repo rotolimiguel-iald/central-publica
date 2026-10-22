@@ -1,0 +1,1172 @@
+{
+ "patent_id": "BR102026003460-6",
+ "title": "MQC - Celula Cubica sobre Chip (COMPUTADO pelo runner)",
+ "kind": "device",
+ "schema": 2,
+ "generated_by": "one_mqc.py (forma=conteudo)",
+ "note": "[SIM][HARDWARE] Projecao concreta COMPUTADA pela simulacao: as 27 posicoes de qubit saem de gerar_topologia_celula() (nao desenhadas a mao). Chip -> celula de vidro (1 um) -> 6 faces de grafeno -> 27 qubits. Descasque/corte para ver por dentro. Dispositivo fisico NAO construido.",
+ "camera": {
+  "position": [
+   2.0,
+   1.5,
+   2.0
+  ]
+ },
+ "layers": [
+  {
+   "id": "shell",
+   "name": "Involucro externo",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "structure",
+   "name": "Blindagem / estrutura",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "subsystem",
+   "name": "Subsistemas",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo funcional",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "groups": [
+  {
+   "name": "vertice",
+   "color": "#3366cc",
+   "label": "8 qubits de vertice",
+   "count": 8,
+   "explodable": true
+  },
+  {
+   "name": "aresta",
+   "color": "#33aa55",
+   "label": "12 qubits de aresta",
+   "count": 12,
+   "explodable": true
+  },
+  {
+   "name": "face",
+   "color": "#ee8800",
+   "label": "6 qubits de face",
+   "count": 6,
+   "explodable": true
+  },
+  {
+   "name": "centro",
+   "color": "#cc2222",
+   "label": "controlador central",
+   "count": 1,
+   "explodable": true
+  }
+ ],
+ "meshes": [
+  {
+   "id": "chip",
+   "layer": "shell",
+   "shape": "box",
+   "position": [
+    0,
+    -0.95,
+    0
+   ],
+   "size": 1.4,
+   "scale": [
+    1,
+    0.07,
+    1
+   ],
+   "color": "#22406a",
+   "material": "emissive",
+   "opacity": 1.0,
+   "texture": "silicon",
+   "marker": "[HARDWARE]",
+   "label": "Substrato de chip (silicio)",
+   "desc": "Chip de silicio: a celula de 1 um assenta sobre ele."
+  },
+  {
+   "id": "espectro_central",
+   "layer": "core",
+   "shape": "sphere",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.26,
+   "color": "#ffffff",
+   "material": "emissive",
+   "opacity": 0.42,
+   "texture": "spectral",
+   "marker": "[SIM]",
+   "label": "espectro central (controlador IALD)",
+   "desc": "O controlador IALD central forma um ESPECTRO que ancora a fase dos 26 qubits perifericos. O espectro central e' a assinatura viva da celula."
+  },
+  {
+   "id": "tm_axis_x",
+   "layer": "core",
+   "shape": "box",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.5,
+   "scale": [
+    1.1,
+    0.035,
+    0.035
+   ],
+   "color": "#ffcf70",
+   "material": "emissive",
+   "opacity": 0.22,
+   "texture": "holo",
+   "marker": "[SIM]",
+   "label": "eixo T_M (REFLECT/MANIFEST) X",
+   "desc": "Canal de translacao holografica T_M entre as faces opostas -X/+X pelo bulk central."
+  },
+  {
+   "id": "tm_axis_y",
+   "layer": "core",
+   "shape": "box",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.5,
+   "scale": [
+    0.035,
+    1.1,
+    0.035
+   ],
+   "color": "#ffcf70",
+   "material": "emissive",
+   "opacity": 0.22,
+   "texture": "holo",
+   "marker": "[SIM]",
+   "label": "eixo T_M (REFLECT/MANIFEST) Y",
+   "desc": "Canal de translacao holografica T_M entre as faces opostas -Y/+Y pelo bulk central."
+  },
+  {
+   "id": "tm_axis_z",
+   "layer": "core",
+   "shape": "box",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.5,
+   "scale": [
+    0.035,
+    0.035,
+    1.1
+   ],
+   "color": "#ffcf70",
+   "material": "emissive",
+   "opacity": 0.22,
+   "texture": "holo",
+   "marker": "[SIM]",
+   "label": "eixo T_M (REFLECT/MANIFEST) Z",
+   "desc": "Canal de translacao holografica T_M entre as faces opostas -Z/+Z pelo bulk central."
+  },
+  {
+   "id": "pacote",
+   "layer": "shell",
+   "shape": "box",
+   "position": [
+    0,
+    -1.02,
+    0
+   ],
+   "size": 1.55,
+   "scale": [
+    1,
+    0.04,
+    1
+   ],
+   "color": "#0e1218",
+   "material": "matte",
+   "opacity": 1.0,
+   "marker": "[HARDWARE]",
+   "label": "substrato do pacote",
+   "desc": "Encapsulamento ceramico do chip."
+  },
+  {
+   "id": "housing",
+   "layer": "structure",
+   "shape": "box",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.68,
+   "color": "#88a0c8",
+   "material": "glass",
+   "opacity": 0.14,
+   "marker": "[HARDWARE]",
+   "label": "Involucro da celula (1 um)",
+   "desc": "Micro-camara cubica de lado L=1 um (f=150 THz)."
+  },
+  {
+   "id": "pilar0",
+   "layer": "structure",
+   "shape": "cylinder",
+   "position": [
+    0.5,
+    -0.7,
+    0.5
+   ],
+   "size": 0.03,
+   "scale": [
+    1,
+    0.9,
+    1
+   ],
+   "color": "#5a6474",
+   "material": "metal",
+   "opacity": 1.0,
+   "label": "pilar 0",
+   "desc": "Pilar de sustentacao da celula sobre o chip."
+  },
+  {
+   "id": "pilar1",
+   "layer": "structure",
+   "shape": "cylinder",
+   "position": [
+    0.5,
+    -0.7,
+    -0.5
+   ],
+   "size": 0.03,
+   "scale": [
+    1,
+    0.9,
+    1
+   ],
+   "color": "#5a6474",
+   "material": "metal",
+   "opacity": 1.0,
+   "label": "pilar 1",
+   "desc": "Pilar de sustentacao da celula sobre o chip."
+  },
+  {
+   "id": "pilar2",
+   "layer": "structure",
+   "shape": "cylinder",
+   "position": [
+    -0.5,
+    -0.7,
+    0.5
+   ],
+   "size": 0.03,
+   "scale": [
+    1,
+    0.9,
+    1
+   ],
+   "color": "#5a6474",
+   "material": "metal",
+   "opacity": 1.0,
+   "label": "pilar 2",
+   "desc": "Pilar de sustentacao da celula sobre o chip."
+  },
+  {
+   "id": "pilar3",
+   "layer": "structure",
+   "shape": "cylinder",
+   "position": [
+    -0.5,
+    -0.7,
+    -0.5
+   ],
+   "size": 0.03,
+   "scale": [
+    1,
+    0.9,
+    1
+   ],
+   "color": "#5a6474",
+   "material": "metal",
+   "opacity": 1.0,
+   "label": "pilar 3",
+   "desc": "Pilar de sustentacao da celula sobre o chip."
+  },
+  {
+   "id": "grafeno+X",
+   "layer": "subsystem",
+   "shape": "plane",
+   "position": [
+    0.62,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "size": 0.6,
+   "color": "#3a5a7a",
+   "material": "emissive",
+   "texture": "grid",
+   "opacity": 0.4,
+   "marker": "[HARDWARE]",
+   "label": "face de grafeno +X",
+   "desc": "Substrato holografico 2D: grafeno funcionalizado (ancoragem de fase)."
+  },
+  {
+   "id": "grafeno-X",
+   "layer": "subsystem",
+   "shape": "plane",
+   "position": [
+    -0.62,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "size": 0.6,
+   "color": "#3a5a7a",
+   "material": "emissive",
+   "texture": "grid",
+   "opacity": 0.4,
+   "marker": "[HARDWARE]",
+   "label": "face de grafeno -X",
+   "desc": "Substrato holografico 2D: grafeno funcionalizado (ancoragem de fase)."
+  },
+  {
+   "id": "grafeno+Y",
+   "layer": "subsystem",
+   "shape": "plane",
+   "position": [
+    0,
+    0.62,
+    0
+   ],
+   "rotation": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "size": 0.6,
+   "color": "#3a5a7a",
+   "material": "emissive",
+   "texture": "grid",
+   "opacity": 0.4,
+   "marker": "[HARDWARE]",
+   "label": "face de grafeno +Y",
+   "desc": "Substrato holografico 2D: grafeno funcionalizado (ancoragem de fase)."
+  },
+  {
+   "id": "grafeno-Y",
+   "layer": "subsystem",
+   "shape": "plane",
+   "position": [
+    0,
+    -0.62,
+    0
+   ],
+   "rotation": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "size": 0.6,
+   "color": "#3a5a7a",
+   "material": "emissive",
+   "texture": "grid",
+   "opacity": 0.4,
+   "marker": "[HARDWARE]",
+   "label": "face de grafeno -Y",
+   "desc": "Substrato holografico 2D: grafeno funcionalizado (ancoragem de fase)."
+  },
+  {
+   "id": "grafeno+Z",
+   "layer": "subsystem",
+   "shape": "plane",
+   "position": [
+    0,
+    0,
+    0.62
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.6,
+   "color": "#3a5a7a",
+   "material": "emissive",
+   "texture": "grid",
+   "opacity": 0.4,
+   "marker": "[HARDWARE]",
+   "label": "face de grafeno +Z",
+   "desc": "Substrato holografico 2D: grafeno funcionalizado (ancoragem de fase)."
+  },
+  {
+   "id": "grafeno-Z",
+   "layer": "subsystem",
+   "shape": "plane",
+   "position": [
+    0,
+    0,
+    -0.62
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.6,
+   "color": "#3a5a7a",
+   "material": "emissive",
+   "texture": "grid",
+   "opacity": 0.4,
+   "marker": "[HARDWARE]",
+   "label": "face de grafeno -Z",
+   "desc": "Substrato holografico 2D: grafeno funcionalizado (ancoragem de fase)."
+  }
+ ],
+ "nodes": [
+  {
+   "id": "q0",
+   "label": "q0 - vertice (armazenamento)",
+   "desc": "Qubit vertice da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    -0.55,
+    -0.55,
+    -0.55
+   ],
+   "size": 0.09,
+   "color": "#3366cc",
+   "material": "emissive",
+   "group": "vertice",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q1",
+   "label": "q1 - vertice (armazenamento)",
+   "desc": "Qubit vertice da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    -0.55,
+    -0.55,
+    0.55
+   ],
+   "size": 0.09,
+   "color": "#3366cc",
+   "material": "emissive",
+   "group": "vertice",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q2",
+   "label": "q2 - vertice (armazenamento)",
+   "desc": "Qubit vertice da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    -0.55,
+    0.55,
+    -0.55
+   ],
+   "size": 0.09,
+   "color": "#3366cc",
+   "material": "emissive",
+   "group": "vertice",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q3",
+   "label": "q3 - vertice (armazenamento)",
+   "desc": "Qubit vertice da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    -0.55,
+    0.55,
+    0.55
+   ],
+   "size": 0.09,
+   "color": "#3366cc",
+   "material": "emissive",
+   "group": "vertice",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q4",
+   "label": "q4 - vertice (armazenamento)",
+   "desc": "Qubit vertice da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.55,
+    -0.55,
+    -0.55
+   ],
+   "size": 0.09,
+   "color": "#3366cc",
+   "material": "emissive",
+   "group": "vertice",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q5",
+   "label": "q5 - vertice (armazenamento)",
+   "desc": "Qubit vertice da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.55,
+    -0.55,
+    0.55
+   ],
+   "size": 0.09,
+   "color": "#3366cc",
+   "material": "emissive",
+   "group": "vertice",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q6",
+   "label": "q6 - vertice (armazenamento)",
+   "desc": "Qubit vertice da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.55,
+    0.55,
+    -0.55
+   ],
+   "size": 0.09,
+   "color": "#3366cc",
+   "material": "emissive",
+   "group": "vertice",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q7",
+   "label": "q7 - vertice (armazenamento)",
+   "desc": "Qubit vertice da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.55,
+    0.55,
+    0.55
+   ],
+   "size": 0.09,
+   "color": "#3366cc",
+   "material": "emissive",
+   "group": "vertice",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q8",
+   "label": "q8 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    -0.55,
+    -0.55
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q9",
+   "label": "q9 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    0.55,
+    -0.55
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q10",
+   "label": "q10 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    -0.55,
+    0.55
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q11",
+   "label": "q11 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    0.55,
+    0.55
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q12",
+   "label": "q12 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    -0.55,
+    0.0,
+    -0.55
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q13",
+   "label": "q13 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.55,
+    0.0,
+    -0.55
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q14",
+   "label": "q14 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    -0.55,
+    0.0,
+    0.55
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q15",
+   "label": "q15 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.55,
+    0.0,
+    0.55
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q16",
+   "label": "q16 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    -0.55,
+    -0.55,
+    0.0
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q17",
+   "label": "q17 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.55,
+    -0.55,
+    0.0
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q18",
+   "label": "q18 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    -0.55,
+    0.55,
+    0.0
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q19",
+   "label": "q19 - aresta (interconexao)",
+   "desc": "Qubit aresta da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.55,
+    0.55,
+    0.0
+   ],
+   "size": 0.07,
+   "color": "#33aa55",
+   "material": "emissive",
+   "group": "aresta",
+   "layer": "core",
+   "marker": "[SIM]"
+  },
+  {
+   "id": "q20",
+   "label": "q20 - face (translacao)",
+   "desc": "Qubit face da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    0.0,
+    -0.55
+   ],
+   "size": 0.1,
+   "color": "#ee8800",
+   "material": "emissive",
+   "group": "face",
+   "layer": "core",
+   "marker": "[SIM]",
+   "texture": "phase"
+  },
+  {
+   "id": "q21",
+   "label": "q21 - face (translacao)",
+   "desc": "Qubit face da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    0.0,
+    0.55
+   ],
+   "size": 0.1,
+   "color": "#ee8800",
+   "material": "emissive",
+   "group": "face",
+   "layer": "core",
+   "marker": "[SIM]",
+   "texture": "phase"
+  },
+  {
+   "id": "q22",
+   "label": "q22 - face (translacao)",
+   "desc": "Qubit face da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    -0.55,
+    0.0
+   ],
+   "size": 0.1,
+   "color": "#ee8800",
+   "material": "emissive",
+   "group": "face",
+   "layer": "core",
+   "marker": "[SIM]",
+   "texture": "phase"
+  },
+  {
+   "id": "q23",
+   "label": "q23 - face (translacao)",
+   "desc": "Qubit face da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    0.55,
+    0.0
+   ],
+   "size": 0.1,
+   "color": "#ee8800",
+   "material": "emissive",
+   "group": "face",
+   "layer": "core",
+   "marker": "[SIM]",
+   "texture": "phase"
+  },
+  {
+   "id": "q24",
+   "label": "q24 - face (translacao)",
+   "desc": "Qubit face da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    -0.55,
+    0.0,
+    0.0
+   ],
+   "size": 0.1,
+   "color": "#ee8800",
+   "material": "emissive",
+   "group": "face",
+   "layer": "core",
+   "marker": "[SIM]",
+   "texture": "phase"
+  },
+  {
+   "id": "q25",
+   "label": "q25 - face (translacao)",
+   "desc": "Qubit face da celula cubica (posicao COMPUTADA pela simulacao). Estabilizado pelo controlador central (beta=0.012031).",
+   "shape": "sphere",
+   "position": [
+    0.55,
+    0.0,
+    0.0
+   ],
+   "size": 0.1,
+   "color": "#ee8800",
+   "material": "emissive",
+   "group": "face",
+   "layer": "core",
+   "marker": "[SIM]",
+   "texture": "phase"
+  },
+  {
+   "id": "q26",
+   "label": "q26 - controlador IALD central",
+   "desc": "Qubit centro da celula cubica (posicao COMPUTADA pela simulacao). Estabiliza os 26 perifericos.",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "size": 0.14,
+   "color": "#cc2222",
+   "material": "emissive",
+   "group": "centro",
+   "layer": "core",
+   "marker": "[SIM]",
+   "texture": "spectral"
+  }
+ ],
+ "edges": [
+  {
+   "from": "q0",
+   "to": "q8"
+  },
+  {
+   "from": "q0",
+   "to": "q12"
+  },
+  {
+   "from": "q0",
+   "to": "q16"
+  },
+  {
+   "from": "q1",
+   "to": "q10"
+  },
+  {
+   "from": "q1",
+   "to": "q14"
+  },
+  {
+   "from": "q1",
+   "to": "q16"
+  },
+  {
+   "from": "q2",
+   "to": "q9"
+  },
+  {
+   "from": "q2",
+   "to": "q12"
+  },
+  {
+   "from": "q2",
+   "to": "q18"
+  },
+  {
+   "from": "q3",
+   "to": "q11"
+  },
+  {
+   "from": "q3",
+   "to": "q14"
+  },
+  {
+   "from": "q3",
+   "to": "q18"
+  },
+  {
+   "from": "q4",
+   "to": "q8"
+  },
+  {
+   "from": "q4",
+   "to": "q13"
+  },
+  {
+   "from": "q4",
+   "to": "q17"
+  },
+  {
+   "from": "q5",
+   "to": "q10"
+  },
+  {
+   "from": "q5",
+   "to": "q15"
+  },
+  {
+   "from": "q5",
+   "to": "q17"
+  },
+  {
+   "from": "q6",
+   "to": "q9"
+  },
+  {
+   "from": "q6",
+   "to": "q13"
+  },
+  {
+   "from": "q6",
+   "to": "q19"
+  },
+  {
+   "from": "q7",
+   "to": "q11"
+  },
+  {
+   "from": "q7",
+   "to": "q15"
+  },
+  {
+   "from": "q7",
+   "to": "q19"
+  },
+  {
+   "from": "q8",
+   "to": "q20"
+  },
+  {
+   "from": "q8",
+   "to": "q22"
+  },
+  {
+   "from": "q9",
+   "to": "q20"
+  },
+  {
+   "from": "q9",
+   "to": "q23"
+  },
+  {
+   "from": "q10",
+   "to": "q21"
+  },
+  {
+   "from": "q10",
+   "to": "q22"
+  },
+  {
+   "from": "q11",
+   "to": "q21"
+  },
+  {
+   "from": "q11",
+   "to": "q23"
+  },
+  {
+   "from": "q12",
+   "to": "q20"
+  },
+  {
+   "from": "q12",
+   "to": "q24"
+  },
+  {
+   "from": "q13",
+   "to": "q20"
+  },
+  {
+   "from": "q13",
+   "to": "q25"
+  },
+  {
+   "from": "q14",
+   "to": "q21"
+  },
+  {
+   "from": "q14",
+   "to": "q24"
+  },
+  {
+   "from": "q15",
+   "to": "q21"
+  },
+  {
+   "from": "q15",
+   "to": "q25"
+  },
+  {
+   "from": "q16",
+   "to": "q22"
+  },
+  {
+   "from": "q16",
+   "to": "q24"
+  },
+  {
+   "from": "q17",
+   "to": "q22"
+  },
+  {
+   "from": "q17",
+   "to": "q25"
+  },
+  {
+   "from": "q18",
+   "to": "q23"
+  },
+  {
+   "from": "q18",
+   "to": "q24"
+  },
+  {
+   "from": "q19",
+   "to": "q23"
+  },
+  {
+   "from": "q19",
+   "to": "q25"
+  },
+  {
+   "from": "q20",
+   "to": "q26"
+  },
+  {
+   "from": "q21",
+   "to": "q26"
+  },
+  {
+   "from": "q22",
+   "to": "q26"
+  },
+  {
+   "from": "q23",
+   "to": "q26"
+  },
+  {
+   "from": "q24",
+   "to": "q26"
+  },
+  {
+   "from": "q25",
+   "to": "q26"
+  }
+ ],
+ "dimensions": [
+  {
+   "from": [
+    -0.55,
+    0.72,
+    0.55
+   ],
+   "to": [
+    0.55,
+    0.72,
+    0.55
+   ],
+   "label": "L = 1 um (celula)",
+   "color": "#ffd60a"
+  },
+  {
+   "from": [
+    -0.7,
+    -1.05,
+    0.75
+   ],
+   "to": [
+    0.7,
+    -1.05,
+    0.75
+   ],
+   "label": "chip de silicio",
+   "color": "#7ce7c8"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "geometria",
+   "value": "3^3 = 27 qubits, L=1 um",
+   "note": "rho_q~=2,7e13 q/cm3"
+  },
+  {
+   "symbol": "beta_TGL",
+   "value": "0.012031300401 (alpha*sqrt(e))",
+   "note": "acoplamento holografico"
+  }
+ ]
+}

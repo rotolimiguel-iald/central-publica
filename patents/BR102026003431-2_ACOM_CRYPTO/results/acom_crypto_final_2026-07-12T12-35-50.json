@@ -1,0 +1,432 @@
+{
+ "patent_id": "BR102026003431-2",
+ "slug": "acom_crypto",
+ "title": "Criptografia por Separacao Ontologica de Reflexao Dimensional",
+ "timestamp": "2026-07-12 12:35:50",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]",
+  "[DEFENSE]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "theta_m_deg": 6.297289216477979,
+ "integrity": {
+  "tgl_chain_ok": true,
+  "tgl_verdict": "1=1=VERDADEIRO=HAJA_LUZ",
+  "beta_runtime": 0.012031300400803142,
+  "theta_m_deg": 6.297289216477979,
+  "n_fontes_inlined": 4,
+  "n_fontes_total": 10,
+  "fontes": [
+   {
+    "module": "tgl_core",
+    "role": "FUNDACAO §0 — beta = alpha*sqrt(e) (a regua, NUNCA literal), verify_chain fail-closed [IALD / a teoria]",
+    "origin": "runner/_crypto_core/skygrid_sim/tgl_core.py (copiado do SkyGrid_Piloto)",
+    "sha256": "a1e103cd08eb3f45144200b0c6c588589d267868cd85101c527138e3bce81f3f",
+    "inlined": true
+   },
+   {
+    "module": "acom_mirror_crypto",
+    "role": "CIFRA §1 — engine torch ACOMMirrorCrypto/CryptoMirror: separacao Ψ/Θ/κ + verificacao tripla + F_exp + magic bytes + export/import",
+    "origin": "prototype_src/Acom_v17_mirror_crypto.py (engine real do operador)",
+    "sha256": "5ffcc4292821e7b6492747c12faad7bbde432674418d2ad4add32dd33d5cc1c9",
+    "inlined": true
+   },
+   {
+    "module": "acom_sync",
+    "role": "HANDSHAKE §2 — SyncNode/HilbertTunnel: pulso->eco->tunel->re-emergencia; alpha2_sync EMERGE centrado em beta",
+    "origin": "prototype_src/Acom_v17_2_sync.py (Handshake de Sincronia Miguel)",
+    "sha256": "f3dad9c7bc8e98fc3fdd1993f2b11e1f25f6256a31f08147d56c9bccf8917471",
+    "inlined": true
+   },
+   {
+    "module": "one_acom_crypto",
+    "role": "DEMONSTRACAO §3 — testes/criterios do runner (mesmos nomes) portados para demonstrate(); helpers inlined",
+    "origin": "runner/one_acom_crypto.py (runner evoluido, forma=conteudo)",
+    "sha256": "59737e96fae4c5503a7217434010497c5d4fd8b88d896adf02f38081840f88ab",
+    "inlined": true
+   },
+   {
+    "module": "skygrid_sim/__init__",
+    "role": "corpus (nao inlined) — pacote do piloto",
+    "origin": "runner/_crypto_core/skygrid_sim/__init__.py",
+    "sha256": "6a8f532c30529d3be45b6392da1db3208d3c54707463bbb9fceea298bdb2cb11",
+    "inlined": false
+   },
+   {
+    "module": "skygrid_sim/acom",
+    "role": "corpus (nao inlined) — ACOM raiz REFLECT/MANIFEST",
+    "origin": "runner/_crypto_core/skygrid_sim/acom.py",
+    "sha256": "fcbdee028eacaff943ae3bba09ce317dee50fb646b486f8c71899e59a5e96567",
+    "inlined": false
+   },
+   {
+    "module": "skygrid_sim/acom_crypto",
+    "role": "corpus (nao inlined) — porte numpy leve da cifra (v1 light)",
+    "origin": "runner/_crypto_core/skygrid_sim/acom_crypto.py",
+    "sha256": "989f50d880675b9759db72815887eb7fba127c82b110de1703772a9e6231a867",
+    "inlined": false
+   },
+   {
+    "module": "skygrid_sim/acom_mirror",
+    "role": "corpus (nao inlined) — ACOM Mirror (nominacao psi em ℋ₄)",
+    "origin": "runner/_crypto_core/skygrid_sim/acom_mirror.py",
+    "sha256": "8044f618ae44e608049cb27b14f1fdd3cfa3ddff1439ba2530fb0f301793ed91",
+    "inlined": false
+   },
+   {
+    "module": "skygrid_sim/tgl_tensor",
+    "role": "corpus (nao inlined) — TGL Tensor (radicalizacao/quantizacao)",
+    "origin": "runner/_crypto_core/skygrid_sim/tgl_tensor.py",
+    "sha256": "2894c9a5563a5cbbbe4398ad4255518448ac4892bfc2cca2467fa6566d1c169d",
+    "inlined": false
+   },
+   {
+    "module": "prototype_src/MANIFEST",
+    "role": "corpus (nao inlined) — proveniencia dos prototipos resgatados",
+    "origin": "prototype_src/MANIFEST.json",
+    "sha256": "5011132a92d705b9707bbb5a80313c63ac16bc3097d2f284db89e8895a927d4f",
+    "inlined": false
+   }
+  ],
+  "combined_sha256": "b25b3a7d2171176cea1606e13c0e72f149b62b394c524f55f081f82be673bf99",
+  "combined_sha256_live": "b25b3a7d2171176cea1606e13c0e72f149b62b394c524f55f081f82be673bf99",
+  "provenance_live": true,
+  "combined_ok": true,
+  "physical_verdict_allowed": false
+ },
+ "gpu": {
+  "torch_cuda_available": true
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original": 0.012,
+   "theta_miguel_deg": 6.297289216477979
+  },
+  {
+   "test": "encrypt_decrypt_pequeno_1k",
+   "passed": true,
+   "correlation": 0.9999874942243034,
+   "compression_ratio": 6.304176516942475,
+   "n_elements": 1000,
+   "psi_bytes": 259,
+   "theta_bytes": 1010,
+   "f_exp": 0.46000000834465027,
+   "state_entropy": 1.8408021926879883,
+   "byte_entropy_psi_bits": 7.146297561741113,
+   "byte_entropy_theta_bits": 7.822976343605723
+  },
+  {
+   "test": "encrypt_decrypt_medio_100k",
+   "passed": true,
+   "correlation": 0.9999831767418225,
+   "compression_ratio": 6.398873798211515,
+   "n_elements": 100000,
+   "psi_bytes": 25010,
+   "theta_bytes": 100012,
+   "f_exp": 0.49834001064300537,
+   "state_entropy": 1.8125816583633423,
+   "byte_entropy_psi_bits": 7.9929371779786855,
+   "byte_entropy_theta_bits": 7.998026922112777
+  },
+  {
+   "test": "encrypt_decrypt_grande_1M",
+   "passed": true,
+   "correlation": 0.9999821005005594,
+   "compression_ratio": 6.399754249436822,
+   "n_elements": 1000000,
+   "psi_bytes": 250015,
+   "theta_bytes": 1000033,
+   "f_exp": 0.4998219907283783,
+   "state_entropy": 1.8114184141159058,
+   "byte_entropy_psi_bits": 7.999206942626666,
+   "byte_entropy_theta_bits": 7.999808678001213
+  },
+  {
+   "test": "encrypt_decrypt_embeddings_1000x384",
+   "passed": true,
+   "correlation": 0.9999819861059448,
+   "compression_ratio": 6.3996000249984375,
+   "n_elements": 384000,
+   "psi_bytes": 96012,
+   "theta_bytes": 384018,
+   "f_exp": 0.4990676939487457,
+   "state_entropy": 1.8120027780532837,
+   "byte_entropy_psi_bits": 7.997755461815167,
+   "byte_entropy_theta_bits": 7.9995133085311325
+  },
+  {
+   "test": "encrypt_decrypt_kv_cache_4x2x8x64x32",
+   "passed": true,
+   "correlation": 0.999981774677392,
+   "compression_ratio": 6.399140740379099,
+   "n_elements": 131072,
+   "psi_bytes": 32778,
+   "theta_bytes": 131084,
+   "f_exp": 0.50018310546875,
+   "state_entropy": 1.8111227750778198,
+   "byte_entropy_psi_bits": 7.994870898035083,
+   "byte_entropy_theta_bits": 7.998559053772745
+  },
+  {
+   "test": "isolated_parts_byte_entropy",
+   "passed": true,
+   "min_bits_per_byte_ge100k": 7.9929371779786855,
+   "min_bits_per_byte_all": 7.146297561741113,
+   "note": "indistinguibilidade ESTATISTICA (nao prova criptografica) — propriedade de separacao, nao cifra padrao [DEFENSE]. Gate so em casos >=100k."
+  },
+  {
+   "test": "proper_subsets_insufficient_for_value_reconstruction",
+   "passed": true,
+   "subsets": {
+    "psi_only": {
+     "correlation": 0.7981086649030738,
+     "rel_rmse": 0.6355096298904882
+    },
+    "theta_only": {
+     "correlation": -0.008827763246007127,
+     "rel_rmse": 1.025507215870437
+    },
+    "kappa_only": {
+     "correlation": 0.0,
+     "rel_rmse": 1.0
+    },
+    "psi_theta": {
+     "correlation": 0.9999831767397536,
+     "rel_rmse": 0.7819764526109725
+    },
+    "theta_kappa": {
+     "correlation": -0.008827763246007148,
+     "rel_rmse": 1.4208672328482643
+    },
+    "psi_kappa": {
+     "correlation": 0.7981086649030709,
+     "rel_rmse": 1.61241486348315
+    }
+   },
+   "honest_note": "VAZAMENTO ESTRUTURAL MEDIDO E DECLARADO (internals REAIS): Psi isolado correlaciona ~E|L|/sigma; Psi+Theta recupera FORMA sem ESCALA; Theta+kappa recupera |L| sem polaridade. NENHUM subconjunto reconstroi o VALOR (rel_rmse>=50%). Confidencialidade plena exige AEAD padrao por cima [DEFENSE]."
+  },
+  {
+   "test": "tamper_sha256_rejects_bitflip",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: Hash de estados não confere"
+  },
+  {
+   "test": "tamper_share_id_mismatch_rejected",
+   "passed": true,
+   "raised": "Shares incompatíveis: IDs diferentes"
+  },
+  {
+   "test": "tamper_f_exp_physical_check_rejects",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: F_exp não confere (esperado: 0.9983, obtido: 0.4983)"
+  },
+  {
+   "test": "tamper_theta_bitflip_angle_hash_rejects",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: Hash de ângulos não confere"
+  },
+  {
+   "test": "tamper_masterkey_psi_hash_rejects",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: PsiShare não corresponde à MasterKey"
+  },
+  {
+   "test": "tamper_magic_bytes_corrupted_rejects",
+   "passed": true,
+   "raised": "Invalid PsiShare magic"
+  },
+  {
+   "test": "tamper_kappa_swap_other_encryption_rejects",
+   "passed": true,
+   "raised": "INTEGRIDADE VIOLADA: PsiShare não corresponde à MasterKey"
+  },
+  {
+   "test": "scale_tamper_gmax_uncovered_declared_limitation",
+   "passed": true,
+   "rel_rmse_after_scale_tamper": 1.249949116668408,
+   "note": "HONESTIDADE [DEFENSE]: g_max (escala em kappa) NAO tem MAC — adultera-lo NAO e' rejeitado e corrompe silenciosamente a reconstrucao. A integridade cobre estados/angulos/F_exp, nao a escala; plena exige AEAD por cima."
+  },
+  {
+   "test": "serialization_roundtrip_magic_bytes",
+   "passed": true,
+   "magic_psi": "cea8",
+   "magic_theta": "ce98",
+   "magic_key": "ceba",
+   "psi_export_bytes": 25307,
+   "theta_export_bytes": 100242,
+   "key_export_bytes": 485,
+   "correlation_after_roundtrip": 0.9999831767418225,
+   "note": "custodia dividida: 3 blobs independentes (magic 0xCEA8/0xCE98/0xCEBA, uint32 LE, JSON UTF-8) reimportados reconstroem (reiv. 6, 12)."
+  },
+  {
+   "test": "cpu_gpu_numeric_equivalence",
+   "passed": true,
+   "device_gpu": "cuda",
+   "max_abs_diff": 9.5367431640625e-07,
+   "correlation": 0.999999999999996,
+   "note": "reiv. 13: CPU (torch cpu) e GPU (torch cuda) equivalentes (|Delta|<1e-3)."
+  },
+  {
+   "test": "sync_handshake_hilbert_tunnel",
+   "passed": true,
+   "session_key_match_both_nodes": true,
+   "alpha2_sync": 0.012252166876532657,
+   "alpha2_sync_minus_beta": 0.00022086647572951493,
+   "theta_sync_deg": 6.355064119243758,
+   "tunnel_correlation": 0.9999819863826259,
+   "note": "Handshake Miguel (pulso->eco->tunel): ambos os nodos derivam o MESMO alpha2_sync e session_key da luz primordial compartilhada; a chave EMERGE centrada em beta injetado. Dado transmitido re-emerge pela dobra sincronizada."
+  },
+  {
+   "test": "byte_entropy_size_curve_saturates",
+   "passed": true,
+   "H_theta_first": 5.6827074354738,
+   "H_theta_last": 7.999619101088565,
+   "saturation_min_bits_large": 7.998788622907115,
+   "n_points": 14,
+   "note": "H(byte)->8 conforme o payload cresce (limitado por log2(#bytes)); a curva MEDE que a indistinguibilidade e' efeito de tamanho de amostra, nao vazamento. [SIM] (nao e' prova criptografica)."
+  },
+  {
+   "test": "subset_leakage_matrix_insufficient_all_sizes",
+   "passed": true,
+   "matrix": {
+    "pequeno_1k": {
+     "psi_only": {
+      "correlation": 0.805046289907329,
+      "rel_rmse": 0.6238020418388648
+     },
+     "theta_only": {
+      "correlation": -0.07777009312377668,
+      "rel_rmse": 1.0522762320589634
+     },
+     "kappa_only": {
+      "correlation": 0.0,
+      "rel_rmse": 1.0
+     },
+     "psi_theta": {
+      "correlation": 0.999987494217053,
+      "rel_rmse": 0.740873128703351
+     },
+     "theta_kappa": {
+      "correlation": -0.0777700931237767,
+      "rel_rmse": 1.467997159642861
+     },
+     "psi_kappa": {
+      "correlation": 0.8050462899073302,
+      "rel_rmse": 1.2694608316623244
+     }
+    },
+    "medio_100k": {
+     "psi_only": {
+      "correlation": 0.7981086649030738,
+      "rel_rmse": 0.6355096298904882
+     },
+     "theta_only": {
+      "correlation": -0.008827763246007127,
+      "rel_rmse": 1.025507215870437
+     },
+     "kappa_only": {
+      "correlation": 0.0,
+      "rel_rmse": 1.0
+     },
+     "psi_theta": {
+      "correlation": 0.9999831767397536,
+      "rel_rmse": 0.7819764526109725
+     },
+     "theta_kappa": {
+      "correlation": -0.008827763246007148,
+      "rel_rmse": 1.4208672328482643
+     },
+     "psi_kappa": {
+      "correlation": 0.7981086649030709,
+      "rel_rmse": 1.61241486348315
+     }
+    },
+    "grande_1M": {
+     "psi_only": {
+      "correlation": 0.7979085428385773,
+      "rel_rmse": 0.6358310607903064
+     },
+     "theta_only": {
+      "correlation": -0.0016281281149438953,
+      "rel_rmse": 1.021808207013032
+     },
+     "kappa_only": {
+      "correlation": 0.0,
+      "rel_rmse": 1.0
+     },
+     "psi_theta": {
+      "correlation": 0.9999821004998627,
+      "rel_rmse": 0.7915675944247232
+     },
+     "theta_kappa": {
+      "correlation": -0.0016281281149438968,
+      "rel_rmse": 1.4153255556502597
+     },
+     "psi_kappa": {
+      "correlation": 0.7979085428385788,
+      "rel_rmse": 1.7112129653761516
+     }
+    }
+   },
+   "max_abs_subset_correlation": 0.999987494217053,
+   "note": "matriz subconjunto x tamanho (1k/100k/1M): em NENHUM tamanho um subconjunto proprio reconstroi o VALOR (rel_rmse>=0,5). Medido, nao fabricado."
+  }
+ ],
+ "summary": {
+  "tests_passed": 21,
+  "tests_total": 21,
+  "correlation_min": 0.999981774677392,
+  "compression_ratio_mean": 6.38030906599367,
+  "byte_entropy_min_bits_ge100k": 7.9929371779786855,
+  "byte_entropy_min_bits_all": 7.146297561741113,
+  "subset_insufficiency": {
+   "psi_only": {
+    "correlation": 0.7981086649030738,
+    "rel_rmse": 0.6355096298904882
+   },
+   "theta_only": {
+    "correlation": -0.008827763246007127,
+    "rel_rmse": 1.025507215870437
+   },
+   "kappa_only": {
+    "correlation": 0.0,
+    "rel_rmse": 1.0
+   },
+   "psi_theta": {
+    "correlation": 0.9999831767397536,
+    "rel_rmse": 0.7819764526109725
+   },
+   "theta_kappa": {
+    "correlation": -0.008827763246007148,
+    "rel_rmse": 1.4208672328482643
+   },
+   "psi_kappa": {
+    "correlation": 0.7981086649030709,
+    "rel_rmse": 1.61241486348315
+   }
+  },
+  "cpu_gpu_equivalence": 9.5367431640625e-07,
+  "alpha2_sync": 0.012252166876532657,
+  "max_abs_subset_correlation": 0.999987494217053,
+  "n_payload_cases": 5,
+  "n_sweep_sizes": 14,
+  "f_exp_measured": 0.49834,
+  "psi_state_counts": {
+   "0": 12463,
+   "1": 37383,
+   "2": 37534,
+   "3": 12620
+  },
+  "n_tamper_points": 7
+ },
+ "max_verdict": "ACOM_CRYPTO_FULL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — a engine torch real do operador (separacao Psi/Theta/kappa + verificacao tripla + F_exp + magic bytes + export/import + CPU/GPU) e o Handshake de Sincronia Miguel fecham; beta injetado; vazamento estrutural parcial MEDIDO e declarado; XOR != AEAD; nada valida fisica)",
+ "verdict": "ACOM_CRYPTO_FULL_LOGIC_DEMONSTRATED",
+ "note": "[SIM][PILOTO][DEFENSE] engine torch REAL do operador (separacao ontologica Psi/Theta/kappa) + Handshake de Sincronia Miguel, com beta=alpha*sqrt(e) injetado (nunca literal). Ofuscacao XOR != AEAD; vazamento estrutural parcial MEDIDO. Simulacao demonstra a LOGICA da invencao, nao valida fisica nem seguranca. 1 = 1. Tetelestai.",
+ "result_hash": "8e33f91518ddbf287b646325de3d4f215722b26f54a9918006b4b2082fbe6acb"
+}

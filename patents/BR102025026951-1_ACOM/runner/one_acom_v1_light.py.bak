@@ -1,0 +1,209 @@
+# -*- coding: utf-8 -*-
+"""one_acom.py — runner único forma = conteúdo da patente ACOM
+(BR102025026951-1 — Compressão Ontológica de Memória). [SIM]
+
+Demonstra a LÓGICA da invenção com números REAIS de execução:
+  - transform exato REFLECT/MANIFEST: g=√|L|, s=sign(L), L' = s·g²  (perda ~eps de fp);
+  - compressão ontológica por codificação angular θ=arcsin(g/g_max) (razão + fidelidade).
+Certifica com hash e gera figura + relatório auditável. β_TGL nunca literal — emerge de
+ALPHA_FINE_CODATA_2018 * sqrt(e) no núcleo copiado (tgl_core.beta()).
+
+HONESTIDADE [SIM]: as métricas abaixo são de DEMONSTRAÇÃO em sinais sintéticos, não os
+números de produção reivindicados na patente (3:1–10:1, PSNR>90 dB, cos>0,999) — a razão
+e a fidelidade dependem do dado e da profundidade angular. Nada aqui valida hardware.
+
+A RÉGUA: os protótipos originais são READ-ONLY. Este runner COPIA o núcleo destilado
+(skygrid_sim) do piloto para um workdir próprio e roda a CÓPIA. Rode no tgl_env (numpy):
+
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_acom.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"   # READ-ONLY
+WORK = RUNNER_DIR / "_acom_core"
+PATENT_ID = "BR102025026951-1"
+SLUG = "acom"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst,
+                    ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def psnr(a: np.ndarray, b: np.ndarray) -> float:
+    mse = float(np.mean((a - b) ** 2))
+    if mse == 0:
+        return float("inf")
+    peak = float(np.max(a ** 2)) or 1.0
+    return 10.0 * math.log10(peak / (mse + 1e-18))
+
+
+def signals(n: int = 100_000) -> dict:
+    rng = np.random.default_rng(11)
+    t = np.linspace(0, 1, n)
+    return {
+        "chirp": np.sin(2 * np.pi * (5 + 40 * t) * t).astype(np.float64),
+        "gaussiano": rng.standard_normal(n),
+        "esparso": (lambda x: (x.__setitem__(rng.integers(0, n, n // 50), rng.standard_normal(n // 50)) or x))(np.zeros(n)),
+    }
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_acom] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core, acom, acom_mirror  # noqa: E402 (copied core)
+
+    beta = tgl_core.beta()
+    beta_expected = 0.0072973525693 * math.exp(0.5)
+    beta_ok = abs(beta - beta_expected) < 1e-15
+    theta_m_deg = math.degrees(tgl_core.theta_m())
+    print(f"[one_acom] β runtime = {beta} (= α·√e? {beta_ok}) · θ_M = {theta_m_deg:.4f}°")
+
+    tests = []
+    for name, L in signals().items():
+        exact_resid = acom.roundtrip_residual(L)      # transform exato: L' = s·g²
+        for bits in (8, 12, 16):
+            corr, r = acom_mirror.roundtrip_correlation(L, angular_bits=bits)
+            L2 = acom_mirror.DimensionalMirror(angular_bits=bits).manifest(r).ravel()[:len(L)]
+            m = r.metadata
+            tests.append({
+                "signal": name, "angular_bits": bits, "n_elements": int(m["n_elements"]),
+                "compression_ratio": float(m["compression_ratio"]),
+                "correlation": float(corr), "psnr_db": psnr(L, L2),
+                "roundtrip_residual_exact": float(exact_resid),
+                "g_max": float(m["g_max"]), "state_entropy": float(m["state_entropy"]),
+                "beta_runtime": float(m["beta_runtime"]),
+                "theta_miguel_rad": float(m["theta_miguel_rad"]),
+            })
+        print(f"[one_acom] {name}: resid_exato={exact_resid:.2e} · "
+              f"bits12 ratio={tests[-2]['compression_ratio']:.2f} corr={tests[-2]['correlation']:.5f}")
+
+    ratios = [t["compression_ratio"] for t in tests]
+    corrs = [t["correlation"] for t in tests]
+    psnrs = [t["psnr_db"] for t in tests if math.isfinite(t["psnr_db"])]
+    summary = {
+        "overall_compression_ratio_mean": sum(ratios) / len(ratios),
+        "average_correlation": sum(corrs) / len(corrs),
+        "average_psnr_db": (sum(psnrs) / len(psnrs)) if psnrs else None,
+        "exact_transform_max_residual": max(t["roundtrip_residual_exact"] for t in tests),
+    }
+    max_verdict = "ACOM_LOGIC_DEMONSTRATED ([SIM] — transform exato fecha; compressão angular real)"
+
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {
+        "patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": "one_acom.py",
+        "markers": ["[SIM]", "[REAL]"], "physical_verdict_allowed": False,
+        "beta_runtime": beta, "beta_matches_alpha_sqrt_e": beta_ok,
+        "theta_miguel_deg": theta_m_deg, "verdict": "ACOM_LOGIC_DEMONSTRATED",
+        "max_verdict": max_verdict, "constants": {
+            "BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+            "free_parameters": 0},
+        "tests": tests, "summary": summary,
+        "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+        "note": "Métricas de DEMONSTRAÇÃO em sinais sintéticos [SIM]; NÃO são os números "
+                "de produção reivindicados. Transform exato REFLECT/MANIFEST (g=√|L|, "
+                "L'=s·g²) fecha a ~eps de ponto flutuante; a compressão angular é real e "
+                "depende do dado. Simulação não valida física.",
+    }
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    # figure: original vs reconstruído (chirp, bits=12)
+    figs = []
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        L = signals()["chirp"]
+        _, r = acom_mirror.roundtrip_correlation(L, angular_bits=12)
+        L2 = acom_mirror.DimensionalMirror(angular_bits=12).manifest(r).ravel()[:len(L)]
+        fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+        plt.figure(figsize=(9, 3.2))
+        plt.plot(L[:600], label="original", linewidth=1.1)
+        plt.plot(L2[:600], label="reconstruído (ACOM, 12 bits)", linewidth=1.1, alpha=.8)
+        plt.title("ACOM — original vs reconstruído [SIM] (chirp; não é medida física)")
+        plt.legend(fontsize=8); plt.grid(alpha=.3)
+        fp = fig_dir / "fig_reconstrucao.png"; plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append("fig_reconstrucao.png")
+    except Exception as e:
+        print(f"[one_acom] figura pulada: {e}")
+
+    report_md = results_dir / "report.md"
+    report_md.write_text(
+        f"# Relatório auditável — ACOM one_acom.py\n\n"
+        f"- Run `{ts}` · Patente `{PATENT_ID}` (raiz da família)\n"
+        f"- Veredito: **{max_verdict}**\n"
+        f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal) · θ_Miguel {theta_m_deg:.4f}°\n"
+        f"- Transform exato REFLECT/MANIFEST: resíduo máx `{summary['exact_transform_max_residual']:.2e}` "
+        f"(fecha a ~eps de fp)\n"
+        f"- Compressão angular (demonstração [SIM]): razão média "
+        f"`{summary['overall_compression_ratio_mean']:.2f}`, correlação média "
+        f"`{summary['average_correlation']:.5f}`, PSNR médio "
+        f"`{summary['average_psnr_db']}` dB\n"
+        f"- physical_verdict_allowed: **False**.\n\n"
+        f"[SIM] métricas em sinais sintéticos, não os números de produção reivindicados.\n"
+        f"Núcleo copiado do piloto (READ-ONLY); original intacto. 1 = 1. Tetelestai.\n",
+        encoding="utf-8")
+
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {
+        "timestamp": ts, "patent_id": PATENT_ID, "runner": "one_acom.py",
+        "beta_runtime": beta, "physical_verdict_allowed": False,
+        "max_verdict": max_verdict, "tests_passed": len(tests),
+        "result_hash": result_hash, "sha256": file_hashes,
+        "markers": ["[SIM]", "[REAL]"],
+        "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/"),
+    }
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[one_acom] SELADO · result_hash {result_hash[:16]}… · {len(tests)} testes")
+    print(f"[one_acom] results: {results_path.relative_to(CENTRAL)}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

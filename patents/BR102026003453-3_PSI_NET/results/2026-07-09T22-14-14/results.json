@@ -1,0 +1,82 @@
+{
+ "patent_id": "BR102026003453-3",
+ "slug": "psi_net",
+ "timestamp": "2026-07-09T22-14-14",
+ "runner": "one_psinet.py",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "PSI_NET_LOGIC_DEMONSTRATED",
+ "max_verdict": "PSI_NET_LOGIC_DEMONSTRATED ([SIM][PILOTO] — 5 camadas fecham; transporte exato, segurança ontológica e consenso por fase tolerante a bizantino demonstrados em simulação)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "quorum_window": 0.12031300400803142,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142
+  },
+  {
+   "test": "L1_psibit_signature",
+   "passed": true,
+   "uniform_entropy": 2.0,
+   "uniform_class": "GRACE",
+   "random_class": "GRACE",
+   "f_exp_uniform": 0.0
+  },
+  {
+   "test": "L2_radical_transport_exact",
+   "passed": true,
+   "max_residual": 1.9526018885747752e-16,
+   "note": "radicalize→resurrect exato até ~eps"
+  },
+  {
+   "test": "L3_holographic_routing",
+   "passed": true,
+   "registered_nodes": 50,
+   "nearest_k": 3,
+   "theta_m_deg": 6.297289216477979,
+   "example_hops": 8,
+   "note": "endereço angular da chave; roteamento por distância angular; salto ~θ_M"
+  },
+  {
+   "test": "L4_ontological_security",
+   "passed": true,
+   "recombine_correlation": 0.9999999997657911,
+   "tamper_rejected": true,
+   "note": "separação Ψ/Θ recompõe; SHA-256 rejeita adulteração"
+  },
+  {
+   "test": "L5_proof_of_phase_quorum",
+   "passed": true,
+   "honest_block_appended": true,
+   "forged_block_rejected": true,
+   "quorum_window": 0.12031300400803142,
+   "honest_votes": "4/5",
+   "note": "5 validadores (1 bizantino): bloco honesto entra (≥67%), bloco de fase forjada é rejeitado"
+  }
+ ],
+ "summary": {
+  "tests_passed": 6,
+  "tests_total": 6,
+  "layers_demonstrated": [
+   "L1_psibit",
+   "L2_transport",
+   "L3_holographic",
+   "L4_security",
+   "L5_proof_of_phase"
+  ],
+  "quorum_window": 0.12031300400803142,
+  "theta_m_deg": 6.297289216477979
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "Demonstração [SIM][PILOTO] das 5 camadas do protocolo em dados sintéticos. Números de desempenho do relatório (PSNR, tempos RTX 5090) não reproduzidos. Simulação não valida física."
+}

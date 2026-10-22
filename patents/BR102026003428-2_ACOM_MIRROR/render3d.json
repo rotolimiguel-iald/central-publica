@@ -1,0 +1,591 @@
+{
+ "patent_id": "BR102026003428-2",
+ "title": "ACOM Mirror — Geometria do Algoritmo (Reflexão Dimensional ℋ₄)",
+ "kind": "algorithm",
+ "note": "[PILOTO][SIM] A geometria do ALGORITMO de reflexão dimensional: o gráviton g=√|L| na origem, o tetraedro do espaço de Hilbert ℋ₄ (4 estados psiônicos nominados de sign L, sign ∂L), e o ciclo REFLECT L→(ψ,θ) / MANIFEST (ψ,θ)→L' com a codificação angular θ=arcsin(g/gmax) e a DOBRA ×2 (Boundary→Bulk). Fexp e Sψ emergem sem custo. Gire e clique. | PLANAR: algoritmo = plano; mesh generico -> base-plano(s) do mecanismo.",
+ "camera": {
+  "position": [
+   2.0,
+   1.4,
+   2.0
+  ]
+ },
+ "groups": [
+  {
+   "name": "nucleo",
+   "color": "#ffd60a",
+   "label": "gráviton (raiz g=√|L|)",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "h4",
+   "color": "#3366cc",
+   "label": "espaço de Hilbert ℋ₄ (4 estados)",
+   "count": 4,
+   "explodable": true
+  },
+  {
+   "name": "operacoes",
+   "color": "#7ce7c8",
+   "label": "REFLECT / MANIFEST (ciclo do espelho)",
+   "count": 4,
+   "explodable": true
+  },
+  {
+   "name": "metricas",
+   "color": "#c77dff",
+   "label": "métricas intrínsecas (Fexp, Sψ)",
+   "count": 2,
+   "explodable": true
+  }
+ ],
+ "nodes": [
+  {
+   "id": "graviton",
+   "label": "graviton g=raiz|L|",
+   "shape": "sphere",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "size": 0.18,
+   "color": "#ffd60a",
+   "group": "nucleo",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive",
+   "desc": "Origem do algoritmo: raiz gravitacional g=raiz|L+eps|, fase s=sign(L); magnitude vira angulo theta=arcsin(g/gmax). Fexp global COMPUTADO=+0.4993, Spsi global=1.811 bits (agregado de 7 datasets sinteticos [SIM])."
+  },
+  {
+   "id": "psi0",
+   "label": "psi0 COLAPSO+ |0>",
+   "shape": "sphere",
+   "position": [
+    0.404145,
+    0.404145,
+    0.404145
+   ],
+   "size": 0.1026,
+   "color": "#cc2222",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive",
+   "desc": "Estado de Hilbert H4 (E4), vetor base |0>. Paridade Inversa (-1) -> Fexp ativo. Ocupacao COMPUTADA 12.6% (agregada); contribuicao Fexp -0.1262. Vertice do tetraedro; tamanho proporcional a ocupacao real."
+  },
+  {
+   "id": "psi1",
+   "label": "psi1 ASCENSAO+ |1>",
+   "shape": "sphere",
+   "position": [
+    0.404145,
+    -0.404145,
+    -0.404145
+   ],
+   "size": 0.1286,
+   "color": "#33aa55",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive",
+   "desc": "Estado de Hilbert H4 (E4), vetor base |1>. Paridade Normal (+1). Ocupacao COMPUTADA 38.6% (agregada); contribuicao Fexp +0.3863. Vertice do tetraedro; tamanho proporcional a ocupacao real."
+  },
+  {
+   "id": "psi2",
+   "label": "psi2 EMERGENCIA- |2>",
+   "shape": "sphere",
+   "position": [
+    -0.404145,
+    0.404145,
+    -0.404145
+   ],
+   "size": 0.1263,
+   "color": "#3366cc",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive",
+   "desc": "Estado de Hilbert H4 (E4), vetor base |2>. Paridade Normal (+1). Ocupacao COMPUTADA 36.3% (agregada); contribuicao Fexp +0.3633. Vertice do tetraedro; tamanho proporcional a ocupacao real."
+  },
+  {
+   "id": "psi3",
+   "label": "psi3 QUEDA- |3>",
+   "shape": "sphere",
+   "position": [
+    -0.404145,
+    -0.404145,
+    0.404145
+   ],
+   "size": 0.1024,
+   "color": "#ee8800",
+   "group": "h4",
+   "marker": "[REAL]",
+   "layer": "core",
+   "material": "emissive",
+   "desc": "Estado de Hilbert H4 (E4), vetor base |3>. Paridade Inversa (-1) -> Fexp ativo. Ocupacao COMPUTADA 12.4% (agregada); contribuicao Fexp -0.1241. Vertice do tetraedro; tamanho proporcional a ocupacao real."
+  },
+  {
+   "id": "REFLECT",
+   "label": "REFLECT: L->(psi,theta)",
+   "shape": "box",
+   "position": [
+    1.35,
+    0.55,
+    0.0
+   ],
+   "size": 0.11,
+   "color": "#7ce7c8",
+   "group": "operacoes",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive",
+   "desc": "Projeta o bulk 3D no espelho 2D: nomina psi em H4, quantiza theta. Empacota psi (2 bits) + thetaq + zstd."
+  },
+  {
+   "id": "THETA",
+   "label": "theta = arcsin(g/gmax)",
+   "shape": "box",
+   "position": [
+    1.35,
+    -0.55,
+    0.0
+   ],
+   "size": 0.1,
+   "color": "#7ce7c8",
+   "group": "operacoes",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive",
+   "desc": "Codificacao angular theta em [0,pi/2]; resolucao maxima em g pequeno. Marca theta_Miguel~=6.30deg = arcsin(raiz beta), beta=alpha*raiz(e) (nunca literal)."
+  },
+  {
+   "id": "MANIFEST",
+   "label": "MANIFEST: (psi,theta)->L'",
+   "shape": "box",
+   "position": [
+    -1.35,
+    0.55,
+    0.0
+   ],
+   "size": 0.11,
+   "color": "#7ce7c8",
+   "group": "operacoes",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive",
+   "desc": "Desdobra o reflexo: g=gmax*sin(theta), recupera sign(L) de psi. O dado re-emerge."
+  },
+  {
+   "id": "DOBRA",
+   "label": "DOBRA x2  L'=s*g^2",
+   "shape": "octahedron",
+   "position": [
+    -1.35,
+    -0.55,
+    0.0
+   ],
+   "size": 0.12,
+   "color": "#ffa94d",
+   "group": "operacoes",
+   "marker": "[CONJ]",
+   "layer": "transform",
+   "material": "emissive",
+   "desc": "A Dobra Dimensional (x2): reflexao especular Boundary->Bulk, L'=sign(L)*[gmax*sin(theta)]^2. Analogia AdS/CFT [CONJ]."
+  },
+  {
+   "id": "FEXP",
+   "label": "Fexp = +0.4993",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    1.15,
+    0.0
+   ],
+   "size": 0.13,
+   "color": "#c77dff",
+   "group": "metricas",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive",
+   "desc": "Forca de Expulsao (E7) COMPUTADA = +0.4993: media das paridades dos estados psi. <0 predomina inversa (colapso/queda); >0 normal. Subproduto sem custo."
+  },
+  {
+   "id": "SPSI",
+   "label": "Spsi = 1.811 bits",
+   "shape": "sphere",
+   "position": [
+    0.0,
+    -1.15,
+    0.0
+   ],
+   "size": 0.1162,
+   "color": "#c77dff",
+   "group": "metricas",
+   "marker": "[REAL]",
+   "layer": "transform",
+   "material": "emissive",
+   "desc": "Entropia de estados (E8) COMPUTADA = 1.811 bits (max 2,0): complexidade estrutural da forma refletida. Subproduto da nominacao em H4."
+  }
+ ],
+ "edges": [
+  {
+   "from": "graviton",
+   "to": "psi0"
+  },
+  {
+   "from": "graviton",
+   "to": "psi1"
+  },
+  {
+   "from": "graviton",
+   "to": "psi2"
+  },
+  {
+   "from": "graviton",
+   "to": "psi3"
+  },
+  {
+   "from": "psi0",
+   "to": "psi1"
+  },
+  {
+   "from": "psi1",
+   "to": "psi2"
+  },
+  {
+   "from": "psi2",
+   "to": "psi3"
+  },
+  {
+   "from": "psi3",
+   "to": "psi0"
+  },
+  {
+   "from": "psi0",
+   "to": "psi2"
+  },
+  {
+   "from": "psi1",
+   "to": "psi3"
+  },
+  {
+   "from": "graviton",
+   "to": "REFLECT"
+  },
+  {
+   "from": "REFLECT",
+   "to": "THETA"
+  },
+  {
+   "from": "THETA",
+   "to": "MANIFEST"
+  },
+  {
+   "from": "MANIFEST",
+   "to": "DOBRA"
+  },
+  {
+   "from": "DOBRA",
+   "to": "graviton"
+  },
+  {
+   "from": "psi0",
+   "to": "FEXP"
+  },
+  {
+   "from": "psi3",
+   "to": "FEXP"
+  },
+  {
+   "from": "psi1",
+   "to": "SPSI"
+  },
+  {
+   "from": "psi2",
+   "to": "SPSI"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "ℋ₄",
+   "value": "tetraedro de 4 estados psiônicos",
+   "note": "ψ=f(sign L, sign ∂L); paridades ±1"
+  },
+  {
+   "symbol": "θ_Miguel",
+   "value": "arcsin(√β) ≈ 6.30°",
+   "note": "transição ruído↔informação; β=α·√e nunca literal"
+  },
+  {
+   "symbol": "β_TGL",
+   "value": "α·√e ≈ 0.012031",
+   "note": "constante NOMINAL (imperfeição do espelho); β runtime injetado; não entra na transformada"
+  },
+  {
+   "symbol": "DOBRA",
+   "value": "×2  L'=s·g²",
+   "note": "reflexão especular Boundary→Bulk [CONJ]"
+  },
+  {
+   "symbol": "Fexp/Sψ (run)",
+   "value": "Fexp=+0.4993, Sψ=1.811 bits",
+   "note": "COMPUTADO nesta run; ocupações ψ agregadas: COLL=13%, ASCE=39%, EMER=36%, FALL=12%"
+  },
+  {
+   "symbol": "β_runtime",
+   "value": "0.012031300401",
+   "note": "α·√e injetado via tgl_core.beta() (nunca literal)"
+  },
+  {
+   "symbol": "sweep",
+   "value": "v17 bits 3→12",
+   "note": "corr 0.980→1.000; varredura de profundidade angular [SIM]"
+  }
+ ],
+ "schema": 2,
+ "layers": [
+  {
+   "id": "space",
+   "name": "Espaco de Hilbert / substrato computacional",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "io",
+   "name": "Entrada / saida",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "transform",
+   "name": "Transformacao",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo (raiz / estado)",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "meshes": [
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.55,
+   "texture": "grid",
+   "color": "#7ee0c0",
+   "marker": "[SIM]",
+   "id": "plano_espelho0",
+   "position": [
+    0.0,
+    0.0,
+    -0.654145
+   ],
+   "scale": [
+    1.7000000000000002,
+    1.5,
+    0.03
+   ],
+   "label": "face 0 (espelho)",
+   "desc": "ESPELHO ACOM: duas faces planas; a informacao e' TRANSLADADA no ponto angular de uma face a outra. A holografia = translacao angular."
+  },
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.8,
+   "texture": "grid",
+   "color": "#7ee0c0",
+   "marker": "[SIM]",
+   "id": "plano_espelho1",
+   "position": [
+    0.0,
+    0.0,
+    0.654145
+   ],
+   "scale": [
+    1.7000000000000002,
+    1.5,
+    0.03
+   ],
+   "label": "face 1 (espelho)",
+   "desc": "ESPELHO ACOM: duas faces planas; a informacao e' TRANSLADADA no ponto angular de uma face a outra. A holografia = translacao angular."
+  },
+  {
+   "id": "raio_gmax_theta0",
+   "layer": "space",
+   "shape": "box",
+   "material": "emissive",
+   "position": [
+    0.35,
+    0,
+    0
+   ],
+   "size": 0.02,
+   "scale": [
+    35,
+    1,
+    1
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#7ce7c8",
+   "texture": "grid",
+   "opacity": 0.85,
+   "marker": "[REAL]",
+   "label": "raio g/gmax (theta=0)",
+   "desc": "Eixo-base theta=0 do quadrante angular: haste fina da origem (graviton, g=0) ao arco r=0.7 ao longo de +X, no plano-espelho medio z=0 (entre as duas faces). E a normalizacao g/gmax a partir da qual theta e lido; o arco e o marcador theta_Miguel medem-se contra este raio."
+  },
+  {
+   "id": "quad_theta_225",
+   "layer": "space",
+   "shape": "box",
+   "material": "emissive",
+   "position": [
+    0.6467,
+    0.2679,
+    0
+   ],
+   "size": 0.045,
+   "scale": [
+    1,
+    1,
+    0.5
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#7ce7c8",
+   "texture": "spectral",
+   "opacity": 0.7,
+   "marker": "[REAL]",
+   "label": "theta=22.5",
+   "desc": "Azulejo do quadrante angular em theta=22.5 sobre o arco r=0.7 no plano-espelho X-Y (z=0). Com os demais desenha o arco theta em [0,pi/2] de arcsin(g/gmax) — a superficie-endereco de retorno onde a magnitude e inscrita como angulo. Textura spectral = espectro angular continuo."
+  },
+  {
+   "id": "quad_theta_45",
+   "layer": "space",
+   "shape": "box",
+   "material": "emissive",
+   "position": [
+    0.495,
+    0.495,
+    0
+   ],
+   "size": 0.045,
+   "scale": [
+    1,
+    1,
+    0.5
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#7ce7c8",
+   "texture": "spectral",
+   "opacity": 0.7,
+   "marker": "[REAL]",
+   "label": "theta=45",
+   "desc": "Azulejo em theta=45 (g/gmax=sin45~=0.707), meio do arco arcsin. A curvatura do conjunto de azulejos (arcsin) vs uma rampa reta torna visivel o diferenciador v17.0 angular x v16.1 linear-g."
+  },
+  {
+   "id": "quad_theta_675",
+   "layer": "space",
+   "shape": "box",
+   "material": "emissive",
+   "position": [
+    0.2679,
+    0.6467,
+    0
+   ],
+   "size": 0.045,
+   "scale": [
+    1,
+    1,
+    0.5
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#7ce7c8",
+   "texture": "spectral",
+   "opacity": 0.7,
+   "marker": "[REAL]",
+   "label": "theta=67.5",
+   "desc": "Azulejo em theta=67.5; o adensamento angular perto de theta=pi/2 (g->gmax) contra a folga perto de theta=0 exibe a resolucao nao-linear do arcsin — assinatura das reivindicacoes E5/E6."
+  },
+  {
+   "id": "quad_theta_90",
+   "layer": "space",
+   "shape": "box",
+   "material": "emissive",
+   "position": [
+    0,
+    0.7,
+    0
+   ],
+   "size": 0.045,
+   "scale": [
+    1,
+    1,
+    0.5
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#7ce7c8",
+   "texture": "spectral",
+   "opacity": 0.7,
+   "marker": "[REAL]",
+   "label": "theta=pi/2 (g=gmax)",
+   "desc": "Extremo do quadrante theta=90 ao longo de +Y: g=gmax, saturacao superior do arcsin. Fecha o arco 0->pi/2, dando ao codificador angular (bloco 106) forma propria em vez de box generico."
+  },
+  {
+   "id": "marca_theta_miguel",
+   "layer": "space",
+   "shape": "box",
+   "material": "emissive",
+   "position": [
+    0.6958,
+    0.0768,
+    0
+   ],
+   "size": 0.06,
+   "scale": [
+    1,
+    1,
+    0.6
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "color": "#ff5d8f",
+   "texture": "phase",
+   "opacity": 0.95,
+   "marker": "[REAL]",
+   "label": "theta_Miguel = arcsin(sqrt(beta))",
+   "desc": "Azulejo destacado em theta~=6.3 = arcsin(sqrt(beta)), beta=alpha*sqrt(e) (NUNCA literal): o limiar ruido<->informacao / imperfeicao do espelho, agora um ANGULO geometrico entre o raio-base theta=0 e este marcador. Textura phase, cor viva e maior que os azulejos do arco. beta vira forma sem nenhum 0.012 no dado."
+  }
+ ],
+ "generated_by": "one_acom_mirror.py (forma=conteudo)"
+}

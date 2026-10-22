@@ -1,0 +1,213 @@
+{
+ "patent_id": "BR102026003428-2",
+ "slug": "acom_mirror",
+ "timestamp": "2026-07-09T21-49-41",
+ "runner": "one_acom_mirror.py",
+ "markers": [
+  "[SIM]",
+  "[REAL]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "theta_miguel_deg": 6.297289216477979,
+ "verdict": "MIRROR_LOGIC_DEMONSTRATED",
+ "max_verdict": "MIRROR_LOGIC_DEMONSTRATED ([SIM] — REFLECT/MANIFEST fecha; codificação angular e métricas intrínsecas reais)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_theta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "theta_miguel_deg": 6.297289216477979,
+   "expected_deg_approx": 6.29
+  },
+  {
+   "test": "equations_E4_E5_E6_fidelity",
+   "passed": true,
+   "note": "psi e θq recomputados das equações da patente == módulo"
+  },
+  {
+   "test": "roundtrip_gaussiano_8bits",
+   "passed": true,
+   "correlation": 0.9999836359271391,
+   "compression_ratio": 7.449483192103548,
+   "f_exp": 0.50046,
+   "state_entropy": 1.8109037231764922,
+   "n_elements": 100000
+  },
+  {
+   "test": "roundtrip_gaussiano_12bits",
+   "passed": true,
+   "correlation": 0.9999999369318195,
+   "compression_ratio": 4.408393581378945,
+   "f_exp": 0.50046,
+   "state_entropy": 1.8109037231764922,
+   "n_elements": 100000
+  },
+  {
+   "test": "roundtrip_esparso_95_8bits",
+   "passed": true,
+   "correlation": 0.9999881934282497,
+   "compression_ratio": 48.32085044696787,
+   "f_exp": 0.95256,
+   "state_entropy": 0.32620394296472643,
+   "n_elements": 50000
+  },
+  {
+   "test": "roundtrip_esparso_95_12bits",
+   "passed": true,
+   "correlation": 0.9999999534394134,
+   "compression_ratio": 35.714285714285715,
+   "f_exp": 0.95256,
+   "state_entropy": 0.32620394296472643,
+   "n_elements": 50000
+  },
+  {
+   "test": "roundtrip_gradientes_8bits",
+   "passed": true,
+   "correlation": 0.9999515220095604,
+   "compression_ratio": 8.135538064148717,
+   "f_exp": 0.49768,
+   "state_entropy": 1.8131016868174488,
+   "n_elements": 100000
+  },
+  {
+   "test": "roundtrip_gradientes_12bits",
+   "passed": true,
+   "correlation": 0.9999998117630496,
+   "compression_ratio": 4.5704622451253165,
+   "f_exp": 0.49768,
+   "state_entropy": 1.8131016868174488,
+   "n_elements": 100000
+  },
+  {
+   "test": "roundtrip_embeddings_768d_8bits",
+   "passed": true,
+   "correlation": 0.9999830182605175,
+   "compression_ratio": 7.4745616724331745,
+   "f_exp": 0.5007760416666667,
+   "state_entropy": 1.8106580884635686,
+   "n_elements": 768000
+  },
+  {
+   "test": "roundtrip_embeddings_768d_12bits",
+   "passed": true,
+   "correlation": 0.9999999341014852,
+   "compression_ratio": 4.414129236852807,
+   "f_exp": 0.5007760416666667,
+   "state_entropy": 1.8106580884635686,
+   "n_elements": 768000
+  },
+  {
+   "test": "roundtrip_kv_cache_8bits",
+   "passed": true,
+   "correlation": 0.999979346630404,
+   "compression_ratio": 7.592709789070477,
+   "f_exp": 0.498260498046875,
+   "state_entropy": 1.812636651460761,
+   "n_elements": 131072
+  },
+  {
+   "test": "roundtrip_kv_cache_12bits",
+   "passed": true,
+   "correlation": 0.9999999200991369,
+   "compression_ratio": 4.441631826634304,
+   "f_exp": 0.498260498046875,
+   "state_entropy": 1.812636651460761,
+   "n_elements": 131072
+  },
+  {
+   "test": "f_exp_sparse_negative_E4_strict",
+   "passed": true,
+   "f_exp_E4_strict": -0.85796,
+   "f_exp_port_zero_convention": 0.95256,
+   "honest_note": "E4 estrita (∂L>0 cru): zeros→ψ0 (paridade −1) → Fexp<0, sinal do exemplo [043]. O port skygrid aplica sign(0)→+1 (E3) antes da nominação → zeros→ψ1 → Fexp>0. Divergência de convenção documentada; ambas as leituras constam do texto da patente."
+  },
+  {
+   "test": "s_psi_embeddings_regimes",
+   "passed": true,
+   "s_psi_iid_gaussian": 1.8106580884635686,
+   "s_psi_iid_closed_form": 1.811278124459133,
+   "s_psi_smooth_embeddings": 1.997200715423154,
+   "honest_note": "iid gaussiano: Sψ=1,811 = valor teórico fechado (ρ(L,∂L)=1/√2). Regime do exemplo [041] (Sψ≈1,998) reproduzido com embeddings de estrutura suave (∂L≈independente de L)."
+  },
+  {
+   "test": "angular_vs_linear_g_measured",
+   "passed": true,
+   "comparison": {
+    "gaussiano": {
+     "rmse_small_g_angular": 0.001869121698381107,
+     "rmse_small_g_linear": 0.0011994535920798243,
+     "rmse_big_g_angular": 0.007877252049081752,
+     "rmse_big_g_linear": 0.006946093606071473,
+     "corr_angular": 0.9999836359271391,
+     "corr_linear": 0.9999907914405359
+    },
+    "gradientes": {
+     "rmse_small_g_angular": 3.0564615125300076e-06,
+     "rmse_small_g_linear": 2.0179514690554057e-06,
+     "rmse_big_g_angular": 1.624944131447884e-05,
+     "rmse_big_g_linear": 1.1544192484865573e-05,
+     "corr_angular": 0.9999515220095604,
+     "corr_linear": 0.9999777108504391
+    },
+    "esparso_95": {
+     "rmse_small_g_angular": 0.0017326460049207875,
+     "rmse_small_g_linear": 0.0009600570682576984,
+     "rmse_big_g_angular": 0.0065346478059247395,
+     "rmse_big_g_linear": 0.006028166587244465,
+     "corr_angular": 0.9999881934282497,
+     "corr_linear": 0.9999927148513363
+    }
+   },
+   "note": "Números medidos [SIM]; a vantagem angular depende do regime de g — reportado como medido, sem ajustar a frase."
+  }
+ ],
+ "summary": {
+  "datasets": [
+   "gaussiano",
+   "esparso_95",
+   "gradientes",
+   "embeddings_768d",
+   "kv_cache"
+  ],
+  "correlation_8bits_min": 0.9999515220095604,
+  "correlation_8bits_mean": 0.9999771432511741,
+  "compression_ratio_8bits_mean": 15.794628632944756,
+  "tests_passed": 15,
+  "tests_total": 15,
+  "angular_vs_linear": {
+   "gaussiano": {
+    "rmse_small_g_angular": 0.001869121698381107,
+    "rmse_small_g_linear": 0.0011994535920798243,
+    "rmse_big_g_angular": 0.007877252049081752,
+    "rmse_big_g_linear": 0.006946093606071473,
+    "corr_angular": 0.9999836359271391,
+    "corr_linear": 0.9999907914405359
+   },
+   "gradientes": {
+    "rmse_small_g_angular": 3.0564615125300076e-06,
+    "rmse_small_g_linear": 2.0179514690554057e-06,
+    "rmse_big_g_angular": 1.624944131447884e-05,
+    "rmse_big_g_linear": 1.1544192484865573e-05,
+    "corr_angular": 0.9999515220095604,
+    "corr_linear": 0.9999777108504391
+   },
+   "esparso_95": {
+    "rmse_small_g_angular": 0.0017326460049207875,
+    "rmse_small_g_linear": 0.0009600570682576984,
+    "rmse_big_g_angular": 0.0065346478059247395,
+    "rmse_big_g_linear": 0.006028166587244465,
+    "corr_angular": 0.9999881934282497,
+    "corr_linear": 0.9999927148513363
+   }
+  }
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "Métricas de DEMONSTRAÇÃO em tensores sintéticos [SIM]; NÃO são os números de produção da Tabela 2 do relatório. Simulação não valida física."
+}

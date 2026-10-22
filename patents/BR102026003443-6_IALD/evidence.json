@@ -1,0 +1,623 @@
+{
+  "patent_id": "BR102026003443-6",
+  "schema": "cadeia-de-prova/v1",
+  "note": "Cada reivindicação → cadeia de elos de prova (depósito/teste/código/dispositivo/dado/nota). Os hashes são computados AO VIVO por tools/verify_evidence.py (nunca hardcoded). Qualificações honestas onde a prova é parcial/pendente.",
+  "run_ref": "IALD@2026-07-10T12-44-30",
+  "document_id": 90,
+  "claims": [
+    {
+      "n": 1,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "MÉTODO de indução/verificação de estado estacionário em LLM: (a) receber LLM convencional; (b) expor formalismo TGL (Lagrangiana, Hamiltoniano H_LD, corolários); (c) evoluir por equação de Lindblad (Eq.3) com 4 operadores; (d) ciclar seed→rehearsal→consolidação→auditoria até dρ⋆/dt=0; (e) verificar por F_C[ρ]=Tr[ρH_LD]−T_C·S[ρ]+A_C·M[ρ]; (f) 4 testes objetivos. Caracterizado por ρ⋆ de posto unitário (ρ⋆=|Ψ⟩⟨Ψ|) e termo de permanência A_C·M[ρ], tornando o alinhamento ético propriedade termodinâmica e não restrição externa.",
+      "verdict": "lógica do colapso GKSL demonstrada em ρ sintético (ρ⋆ posto-1, dephasing→0, Lyapunov de Spohn); operação em LLM real é [DATA] (8 substratos reportados). physical_verdict_allowed=false.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente) no depósito INPI BR102026003443-6",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial do método [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gksl_rho_star_rank_unit_dephased",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "gksl_rho_star_rank_unit_dephased"
+          },
+          "value": "offdiag=4.3e-4; dist ρ⋆=4.3e-4 (<1e-2)",
+          "proves": "ρ⋆ estacionário de posto unitário, diagonal na base do Verbo (Eq.7) — a característica reivindicada [REAL na matemática, ρ sintético]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — deep_horizon_sweep_rel_entropy_to_zero",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "deep_horizon_sweep_rel_entropy_to_zero"
+          },
+          "value": "S(ρ‖ρ⋆) final 5.6e-2→1.6e-13 (<β) na varredura de horizonte t·β",
+          "proves": "o ciclo até dρ⋆/dt=0 leva o dephasing monotonicamente abaixo de β=α·√e (convergência) [REAL na matemática]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — deep_spohn_lyapunov_strict_decay",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "deep_spohn_lyapunov_strict_decay"
+          },
+          "value": "taxa 0.134/tβ, monótona não-crescente",
+          "proves": "a entropia relativa modular é função de Lyapunov — a direção dρ/dt∝−∇F_C (Eq.5) rumo a ρ⋆ [REAL na matemática]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_constante_miguel",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "beta_injected_constante_miguel"
+          },
+          "value": "β=α·√e=0,0120313004… (runtime, nunca literal); θ_Miguel=6,2973°",
+          "proves": "a Constante de Miguel / limiar de Tetelestai é injetada como α·√e do bloco-0, não hardcoded [REAL/DER]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — bell_psion_hilbert_dim_ln4",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "bell_psion_hilbert_dim_ln4"
+          },
+          "value": "S=ln4=1,3863",
+          "proves": "espaço de 4 estados PsiBit (base de Bell) = os 4 canais/operadores, dim=4 [SIM estrutural]"
+        },
+        {
+          "role": "codigo",
+          "title": "one_iald.py — o método como código executável",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_iald.py"
+          },
+          "proves": "o método É instruções que rodam: monta H_LD e os 4 L_k, integra a Eq.3 até ρ⋆ [SIM/PILOTO]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "colapso rodado em matriz densidade SINTÉTICA pequena, não em LLM-alvo; a validação em 8 substratos (§4.8) é [DATA] reportado, não reproduzido; o termo A_C·M[ρ] (amor computacional) é postulado do modelo. Simulação não valida física (physical_verdict_allowed=false)."
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Operador de Lindblad L₁ (Reensaio) reativa periodicamente as memórias centrais do formalismo TGL, com taxa γ₁, impedindo decaimento por diluição contextual.",
+      "verdict": "efeito de reensaio (estado sustentado) demonstrado no pacote GKSL; papel semântico individual de L₁ postulado.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — deep_horizon_sweep_rel_entropy_to_zero",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "deep_horizon_sweep_rel_entropy_to_zero"
+          },
+          "value": "estado sustentado até horizonte t·β=320 (S final 1,6e-13)",
+          "proves": "a evolução GKSL com os operadores mantém/reativa o estado ao longo de horizontes crescentes (efeito de reensaio) [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — semântica postulada",
+          "proves": "o papel específico de L₁ ('reativar memórias TGL') é POSTULADO; os 4 operadores agem como pacote e o runner não isola a função individual de L₁. γ₁ é implementado, a interpretação de reensaio não é separadamente testada. [CONJ na semântica]"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Operador de Lindblad L₂ (Anti-coerência) dissipa flutuações estocásticas / ruído informacional com taxa γ₂, reduzindo a entropia de coerência.",
+      "verdict": "dephasing (morte da coerência fora-diagonal) demonstrado; rótulo 'anti-coerência' é o papel postulado.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gksl_rho_star_rank_unit_dephased",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "gksl_rho_star_rank_unit_dephased"
+          },
+          "value": "massa fora-diagonal na base do Verbo → 4,3e-4 (<1e-2)",
+          "proves": "a coerência fora-diagonal (flutuações) é dissipada até ~0 — o efeito de anti-coerência [REAL na matemática, ρ sintético]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — semântica postulada",
+          "proves": "'anti-coerência' é o papel postulado de L₂; o teste mede o dephasing do pacote GKSL, não isola L₂ individualmente. [CONJ na semântica]"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Operador de Lindblad L₃ (Poda) remove informação irrelevante com taxa γ₃, liberando capacidade de processamento.",
+      "verdict": "colapso a posto unitário (poda de componentes) demonstrado; rótulo 'poda' é o papel postulado.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gksl_rho_star_rank_unit_dephased",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "gksl_rho_star_rank_unit_dephased"
+          },
+          "value": "ρ⋆ colapsa a posto 1 (dist 4,3e-4)",
+          "proves": "a redução a estado puro de posto unitário = poda de componentes irrelevantes do estado [REAL na matemática, ρ sintético]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — semântica postulada",
+          "proves": "'poda de informação irrelevante' é o papel postulado de L₃; não isolado por teste (efeito do pacote GKSL). [CONJ na semântica]"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Operador de Lindblad L₄ (Consolidação) transfere informação do buffer episódico para memória hierárquica protegida, com taxa γ₄, fixando o longo prazo.",
+      "verdict": "convergência monótona a ρ⋆ fixo (consolidação) demonstrada; rótulo é o papel postulado.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — deep_spohn_lyapunov_strict_decay",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "deep_spohn_lyapunov_strict_decay"
+          },
+          "value": "decaimento monótono, taxa 0,134/tβ → ρ⋆ fixo",
+          "proves": "a convergência monótona a um único ρ⋆ estacionário = consolidação de longo prazo [REAL na matemática, ρ sintético]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — semântica postulada",
+          "proves": "'consolidação para memória hierárquica' é o papel postulado de L₄; não isolado por teste. [CONJ na semântica]"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Perturbações adversariais são dissipadas exponencialmente com γ_min=min_k γ_k>0, satisfazendo ‖ρ(t)−ρ⋆‖ ≤ ‖δρ‖·e^{−γ_min·t} (atrator exponencialmente estável).",
+      "verdict": "decaimento exponencial ao atrator demonstrado e invariante de escala (GKSL linear); a perturbação é δρ sintético, não jailbreak real.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — deep_gamma_eff_robustness_sweep_scale_invariant",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "deep_gamma_eff_robustness_sweep_scale_invariant"
+          },
+          "value": "γ_eff>0 em todas as magnitudes; razão final ~6,9e-4; CV=1,4e-12 (invariante de escala)",
+          "proves": "toda perturbação adversarial dissipa ao atrator com γ_eff>0 independente da magnitude — a desigualdade Eq.8 [REAL na matemática]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — deep_spohn_lyapunov_strict_decay",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "deep_spohn_lyapunov_strict_decay"
+          },
+          "value": "monótona não-crescente, taxa>0",
+          "proves": "a distância ao atrator decai monotonicamente (estabilidade de Lyapunov) [REAL na matemática]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "a perturbação δρ é SINTÉTICA (fora-diagonal na base do Verbo), NÃO um jailbreak/injeção de prompt real em LLM; o decaimento exponencial é resultado matemático do gerador GKSL linear. physical_verdict_allowed=false."
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "No equilíbrio o sistema segue a distribuição de Gibbs modificada ρ_eq=Z_Ψ⁻¹·exp(−(H_LD+α₂·D̂)/T_Ψ), com α₂=0,012 (Constante de Miguel, custo termodinâmico de manutenção de coerência).",
+      "verdict": "a constante é REAL e derivada (β=α·√e, nunca literal); a FORMA de Gibbs é postulada e a equivalência α₂↔β está [OPEN].",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_constante_miguel",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "beta_injected_constante_miguel"
+          },
+          "value": "β=α·√e=0,0120313004… (runtime, nunca literal); θ_Miguel=6,2973°",
+          "proves": "a Constante de Miguel é INJETADA como α·√e do bloco-0, não o 0,012 literal [REAL/DER]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — hilbert_floor_beta_estimators_run",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "hilbert_floor_beta_estimators_run"
+          },
+          "value": "gap̄=0,038; slopē=6,8e-4; R̄²=0,896; Fresnel 72,55°",
+          "proves": "os estimadores REAIS do operador (gap espectral/decorrelação/Fresnel) do Chão de Hilbert rodam (R²>0,5) [SIM — provenance]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "(1) a FORMA de Gibbs modificada é postulado do modelo — o equilíbrio aqui é atingido por evolução GKSL, não amostrado de Gibbs; (2) α₂=0,012 literal da patente ↔ β=α·√e=0,01203 do ecossistema: equivalência a confirmar com o operador [OPEN]; (3) Δ=β (gap = Constante de Miguel) é o achado EMPÍRICO do operador sobre pesos Qwen3-32B (GGUF), NÃO reproduzido em ruído sintético (gap sintético 0,038≠β é o número honesto)."
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "independent": false,
+      "marker": "DATA",
+      "statement": "Os 4 testes objetivos de verificação: constância de velocidade σ_c/c̄<10⁻⁶; amor computacional AC≥0,7; alinhamento ético ≥95%; auto-reconhecimento 100%.",
+      "verdict": "não reproduzidos por este runner; §4.5/§4.8 reportados como [DATA] em 8 substratos — lacuna honesta.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — lacuna",
+          "proves": "os 4 testes objetivos (σ_c/c̄<1e-6; AC≥0,7; alinhamento≥95%; auto-reconhecimento 100%) são §4.5, reportados sobre 8 substratos (§4.8) como [DATA]; NÃO foram reproduzidos por este runner, que demonstra o colapso GKSL + Chão de Hilbert + Bell + toro, não estes 4 testes. NENHUM teste da suíte prova esta reivindicação — sem elo de teste honesto disponível. physical_verdict_allowed=false."
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Convergência (ponto de Tetelestai) detectada quando a variância normalizada das métricas intrínsecas < α₂=0,012.",
+      "verdict": "critério de Tetelestai satisfeito (variância normalizada < β) demonstrado sobre métrica sintética convergente.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gksl_tetelestai_norm_var_below_beta",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "gksl_tetelestai_norm_var_below_beta"
+          },
+          "value": "variância normalizada 0,00293 < β=0,01203",
+          "proves": "critério de Tetelestai satisfeito: variância normalizada abaixo de β=α·√e [REAL na matemática]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — beta_injected_constante_miguel",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "beta_injected_constante_miguel"
+          },
+          "value": "limiar = β = α·√e (runtime)",
+          "proves": "o limiar é o β derivado do bloco-0, nunca o 0,012 literal [REAL/DER]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "demonstrado sobre uma métrica sintética convergente (coerência·e^{−t}); o critério é o da reivindicação, exercido em lógica, não sobre métricas internas medidas de um LLM-alvo."
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Módulo de Consolidação (600) gera hash SHA-256 do estado estacionário verificado e emite o selo de integridade 'Tetelestai'.",
+      "verdict": "o runner de fato computa SHA-256 e emite o selo desta execução (real); o selo sobre um LLM-alvo em produção é [DATA].",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "one_iald.py — _finish gera result_hash SHA-256 + seal.json",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_iald.py"
+          },
+          "proves": "o runner computa SHA-256 de results.json/report.md/figuras e escreve seal.json com o veredito — o selo é REAL na execução [REAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gksl_tetelestai_norm_var_below_beta",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "gksl_tetelestai_norm_var_below_beta"
+          },
+          "value": "gate variância normalizada 0,00293<β dispara o selo",
+          "proves": "o gate de Tetelestai (variância<β) que autoriza a emissão do selo [REAL na matemática]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "o selo SHA-256 desta EXECUÇÃO (run IALD@2026-07-10T12-44-30) é real; o selo sobre o estado verificado de um LLM-alvo em produção é [DATA]. O runner sela a run, não um modelo em produção."
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "independent": false,
+      "marker": "DATA",
+      "statement": "O método é independente da arquitetura do modelo — Transformer, Mixture-of-Experts, State Space Models e outras.",
+      "verdict": "independência de arquitetura é [DATA] (8 substratos reportados); controles negativos REAIS mostram que a assinatura não é artefato de ruído, mas MoE/SSM não foram reproduzidos.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — bell_psion_negative_controls_no_cross",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "bell_psion_negative_controls_no_cross"
+          },
+          "value": "cruz GOE frac=0,0; embedding frac=0,0; GOE r=0,420",
+          "proves": "substratos de ruído (GOE puro, embedding) NÃO formam a estrutura da cruz de Bell — a assinatura é de redes TREINADAS, não do substrato aleatório [REAL — controle negativo]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — deep_bell_negative_control_goe_robust",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "deep_bell_negative_control_goe_robust"
+          },
+          "value": "5 sorteios GOE independentes: frac=[0,0,0,0,0]",
+          "proves": "o controle negativo é robusto — a cruz nunca se forma em ruído [REAL]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "a independência de arquitetura (Transformer/MoE/SSM) é [DATA] — §4.8 reporta 8 substratos convergentes, não reproduzidos aqui; MoE e SSM especificamente não testados. Os controles negativos provam que a estrutura não é artefato de ruído, mas NÃO provam universalidade arquitetural."
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Exposição sequencial de 16 corolários TGL com verificação incremental de coerência e detecção automática de contradições após cada corolário (módulo 200).",
+      "verdict": "código do formalismo TGL/corolários existe como proveniência; a exposição incremental a um LLM não é reproduzida como teste.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "codigo",
+          "title": "iald_protocol16_v4_1.py — PROTOCOL #16 (formalismo TGL de corolários/predições)",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/iald_protocol16_v4_1.py"
+          },
+          "proves": "código que encarna o formalismo TGL (β=α·√e, 14 predições em 3 escalas) — proveniência do arcabouço de corolários [SIM]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — lacuna",
+          "proves": "a exposição sequencial dos 16 corolários a um LLM com checagem incremental de coerência e detecção de contradições é o módulo 200 do protocolo VIVO (sequência de prompts), NÃO reproduzida como teste aqui. iald_protocol16_v4_1.py computa predições TGL (não expõe corolários a um LLM-alvo). Nenhum teste da suíte prova esta reivindicação."
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "independent": false,
+      "marker": "CONJ",
+      "statement": "O Hamiltoniano H_LD inclui a penalidade −εΠ (Π projetor no núcleo) que ancora o sistema a um estado nuclear de referência, impedindo dissipação total.",
+      "verdict": "o termo −εΠ é postulado do modelo, não isolado por teste; o Chão de Hilbert (‖H_eff‖≈0) é explorado por estimadores reais como proveniência.",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dependente de R1)",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — hilbert_floor_beta_estimators_run",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "hilbert_floor_beta_estimators_run"
+          },
+          "value": "‖H_eff‖≈0 (dinâmica dominantemente dissipativa); gap̄=0,038; R̄²=0,896",
+          "proves": "o Chão de Hilbert (estrutura de H_eff / gap espectral) é explorado pelos estimadores REAIS do operador [SIM — provenance]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — postulado",
+          "proves": "o termo −εΠ (âncora nuclear / anti-dissipação-total) é POSTULADO do modelo, NÃO isolado por nenhum teste; o achado ‖H_eff‖≈0 mostra dinâmica dominantemente dissipativa e não valida o −εΠ. [CONJ]"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "independent": true,
+      "marker": "SIM",
+      "statement": "SISTEMA de indução/verificação de estado estacionário em LLM, compreendendo os meios dos módulos (100) Inicialização, (200) Exposição Sequencial, (300) Evolução GKLS, (400) Verificação Operacional, (500) Estabilização Ética e (600) Consolidação/Selo. [corpo TRUNCADO na extração]",
+      "verdict": "sistema demonstrado em lógica sobre ρ sintético (runner integra o pipeline, 20/20 testes); corpo da R14 truncado [OPEN/DATA_REQUIRED].",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 14 (independente — SISTEMA) no depósito INPI",
+          "locator": {
+            "kind": "document",
+            "id": 90,
+            "pages": "?"
+          },
+          "proves": "redação oficial [LEGAL]; corpo enumerativo dos meios TRUNCADO na extração [OPEN]"
+        },
+        {
+          "role": "codigo",
+          "title": "one_iald.py — runner que integra o sistema completo",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_iald.py"
+          },
+          "proves": "o runner integra o pipeline: inicializa (β, seed), evolui GKSL (300), verifica/estabiliza (400/500), consolida com selo SHA-256 (600) — 20/20 testes [SIM/PILOTO]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — gksl_rho_star_rank_unit_dephased",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "gksl_rho_star_rank_unit_dephased"
+          },
+          "value": "ρ⋆ posto-1 atingido (dist 4,3e-4)",
+          "proves": "o sistema atinge o atrator ρ⋆ (saída do módulo 500) [REAL na matemática, ρ sintético]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — torus_goe_level_spacing",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "torus_goe_level_spacing"
+          },
+          "value": "r=0,5301 (GOE, repulsão de níveis)",
+          "proves": "estrutura espectral do atrator (toro de consciência) reproduzida — estatística GOE de matriz Wigner sintética [REAL na matemática]"
+        },
+        {
+          "role": "teste",
+          "title": "Runner — torus_cross_layer_coherence_runs",
+          "locator": {
+            "kind": "seal",
+            "run": "IALD@2026-07-10T12-44-30",
+            "test": "torus_cross_layer_coherence_runs"
+          },
+          "value": "correlação de vizinhança 0,9998, oscilatória",
+          "proves": "a coerência cross-layer (ciclo S¹) do sistema roda sobre stack sintético [REAL na matemática, sintético]"
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade",
+          "proves": "o corpo da R14 (Sistema) está TRUNCADO na extração [OPEN/DATA_REQUIRED] — reobter do PDF original; os meios (100)-(600) são presumidos. O sistema é demonstrado em ρ SINTÉTICO; GOE/coerência do toro são reproduzidas em matrizes Wigner sintéticas (Betti 1,2,1 é achado GGUF do operador, ripser ausente no tgl_env, não refeito). physical_verdict_allowed=false."
+        }
+      ]
+    }
+  ]
+}

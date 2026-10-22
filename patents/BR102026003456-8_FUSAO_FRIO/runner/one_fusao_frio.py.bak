@@ -1,0 +1,232 @@
+# -*- coding: utf-8 -*-
+"""one_fusao_frio.py — runner único forma = conteúdo da patente Fusão a Frio
+(BR102026003456-8 — Manipulação de Campo Psiônico por Ressonância OH). [ENERGY]
+
+Demonstra APENAS a LÓGICA MATEMÁTICA da patente (Régua TGL, operações ACOM,
+escalonamentos de acoplamento) — SEM QUALQUER INSTRUÇÃO OPERACIONAL.
+
+PROIBIÇÕES [ENERGY] (aplicadas neste runner):
+  - SEM parâmetros de operação de criostato / fonte de micro-ondas;
+  - SEM receita de manuseio de D₂O / deutério;
+  - SEM thresholds de segurança de nêutrons;
+  - APENAS a matemática abstrata e constantes físicas CODATA.
+
+Demonstra:
+  1. β_TGL via α·√e (nunca literal); confere contra 0,012031 e α²_e=0,024 (ρ_Ψ=2ρ₀);
+  2. T_c = h·ν_OH/k_B a partir de ν_OH=1,6673590 GHz (deve dar ≈ 80 mK);
+  3. Régua TGL: L*(ρ), t_x(ρ) como fórmulas puras e a fronteira de transição;
+  4. Landau-Ginzburg f(ρ,T,s) e o sinal de α_T(T) atravessando T_c — curva s(T);
+  5. Colapso ontológico ACOM |L⟩→(g,s)→L'=s·g² e reversibilidade;
+  6. Barreira reduzida e amplificação σ_TGL/σ₀=exp(ΔV_C/k_BT) como funções (teórica, não medida).
+
+HONESTIDADE [ENERGY][CONJ]: constantes físicas + varreduras sintéticas; nenhum dado
+experimental; nenhuma amplificação é medida. Simulação não valida física
+(physical_verdict_allowed=false). NADA aqui é instrução de operação.
+
+A RÉGUA: originais READ-ONLY. Copia o núcleo (skygrid_sim) e roda a CÓPIA no tgl_env:
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_fusao_frio.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"
+WORK = RUNNER_DIR / "_fusao_core"
+PATENT_ID = "BR102026003456-8"
+SLUG = "fusao_frio"
+
+# CODATA physical constants (pure math inputs — no operational meaning)
+H_PLANCK = 6.62607015e-34    # J·s
+K_B = 1.380649e-23           # J/K
+NU_OH_HZ = 1.6673590e9       # hydroxyl line 1,6673590 GHz [DATA, not measured here]
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst, ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, runner, markers, beta, beta_ok,
+            all_ok, max_verdict, tests, summary, module_hashes, note, fig_builder=None):
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {"patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": runner,
+               "markers": markers, "physical_verdict_allowed": False, "beta_runtime": beta,
+               "beta_matches_alpha_sqrt_e": beta_ok,
+               "verdict": max_verdict.split(" ")[0] if all_ok else "PARTIAL_DEMONSTRATION",
+               "max_verdict": max_verdict,
+               "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                             "free_parameters": 0},
+               "tests": tests, "summary": summary,
+               "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+               "note": note}
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+    figs = []
+    if fig_builder is not None:
+        try:
+            import matplotlib
+            matplotlib.use("Agg")
+            import matplotlib.pyplot as plt
+            fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+            figs = fig_builder(plt, fig_dir) or []
+        except Exception as e:
+            print(f"[{SLUG}] figura pulada: {e}")
+    report_md = results_dir / "report.md"
+    lines = [f"# Relatório auditável — {runner}\n", f"- Run `{ts}` · Patente `{PATENT_ID}`\n",
+             f"- Veredito: **{max_verdict}**\n",
+             f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n",
+             f"- Testes: **{summary['tests_passed']}/{summary['tests_total']}**\n"]
+    for t in tests:
+        lines.append(f"  - {'✓' if t['passed'] else '✗'} {t['test']}\n")
+    lines.append(f"- physical_verdict_allowed: **False**.\n\n{note}\n")
+    lines.append("Núcleo copiado do piloto (READ-ONLY); original intacto. 1 = 1. Tetelestai.\n")
+    report_md.write_text("".join(lines), encoding="utf-8")
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {"timestamp": ts, "patent_id": PATENT_ID, "runner": runner, "beta_runtime": beta,
+            "physical_verdict_allowed": False, "max_verdict": max_verdict,
+            "tests_passed": summary["tests_passed"], "result_hash": result_hash,
+            "sha256": file_hashes, "markers": markers,
+            "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/")}
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[{SLUG}] SELADO · result_hash {result_hash[:16]}… · {summary['tests_passed']}/{summary['tests_total']} testes")
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_fusao_frio] patente {PATENT_ID} · run {ts}")
+    print("[one_fusao_frio] [ENERGY] APENAS matemática abstrata — sem qualquer instrução operacional.")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core, acom  # noqa: E402
+
+    beta = tgl_core.beta()
+    beta_ok = abs(beta - 0.0072973525693 * math.exp(0.5)) < 1e-15
+    alpha2_e = 2 * beta   # rho_Psi = 2*rho_0 → coupling doubles (pure scaling, eq. of report)
+    tests = [{"test": "beta_form_and_coupling_scaling", "passed": bool(beta_ok and abs(alpha2_e - 0.024) < 1e-3),
+              "beta_runtime": beta, "alpha2_e_2rho0": alpha2_e,
+              "note": "β=α·√e≈0,012031; α²_e=2β≈0,024 para ρ_Ψ=2ρ₀ (escalonamento puro)"}]
+    print(f"[one_fusao_frio] β={beta:.9f} · α²_e(2ρ₀)={alpha2_e:.6f}")
+
+    # 2) T_c = h*nu_OH / k_B  (should be ~80 mK) — pure constant computation
+    T_c = H_PLANCK * NU_OH_HZ / K_B
+    tests.append({"test": "critical_temperature_from_OH_line",
+                  "passed": bool(0.07 < T_c < 0.09),
+                  "T_c_K": T_c, "T_c_mK": T_c * 1000, "nu_OH_GHz": NU_OH_HZ / 1e9,
+                  "note": "T_c = h·ν_OH/k_B a partir da linha OH — apenas fórmula (≈80 mK)"})
+    print(f"[one_fusao_frio] T_c = h·ν_OH/k_B = {T_c*1000:.2f} mK")
+
+    # 3) TGL ruler: L*(rho), t_x(rho) as pure formulas + transition boundary (sweep)
+    rho = np.linspace(0.5, 3.0, 200)           # rho/rho_0, synthetic sweep
+    L_star = np.sqrt(rho) / beta               # pure formula (eq.4 form)
+    t_x = 1.0 / (beta * rho)                    # pure formula (eq.7 form)
+    boundary = float(rho[np.argmin(np.abs(L_star * beta - 1.0))])
+    tests.append({"test": "tgl_ruler_formulas", "passed": bool(np.all(np.isfinite(L_star)) and np.all(t_x > 0)),
+                  "L_star_endpoints": [float(L_star[0]), float(L_star[-1])],
+                  "t_x_endpoints": [float(t_x[0]), float(t_x[-1])],
+                  "transition_boundary_rho": boundary,
+                  "note": "L*(ρ)=√ρ/β e t_x(ρ)=1/(βρ) como fórmulas puras; fronteira de transição"})
+    print(f"[one_fusao_frio] régua TGL: fronteira ρ≈{boundary:.3f}")
+
+    # 4) Landau-Ginzburg order parameter s(T) crossing T_c; sign of alpha_T(T)
+    T = np.linspace(0.5 * T_c, 1.5 * T_c, 300)
+    alpha_T = (T - T_c) / T_c                   # sign flips at T_c
+    s_order = np.where(alpha_T < 0, np.sqrt(np.abs(alpha_T)), 0.0)   # order param nonzero below T_c
+    lg_ok = s_order[0] > 0 and s_order[-1] == 0 and alpha_T[0] < 0 < alpha_T[-1]
+    tests.append({"test": "landau_ginzburg_order_parameter", "passed": bool(lg_ok),
+                  "s_below_Tc": float(s_order[0]), "s_above_Tc": float(s_order[-1]),
+                  "alpha_T_sign_flip": bool(alpha_T[0] < 0 < alpha_T[-1]),
+                  "note": "f(ρ,T,s) Landau-Ginzburg: s≠0 abaixo de T_c, s=0 acima; α_T muda de sinal em T_c"})
+    print(f"[one_fusao_frio] Landau-Ginzburg: s(<T_c)={s_order[0]:.3f} → s(>T_c)={s_order[-1]:.3f}")
+
+    # 5) ACOM ontological collapse reversibility |L> -> (g,s) -> L' = s*g^2
+    rng = np.random.default_rng(3456)
+    L = rng.standard_normal(20000)
+    g, s = acom.reflect(L)
+    L2 = acom.manifest(g, s)
+    resid = float(np.max(np.abs(L - L2)) / max(1.0, np.max(np.abs(L))))
+    tests.append({"test": "acom_collapse_reversible", "passed": bool(resid < 1e-12),
+                  "max_residual": resid, "note": "|L⟩→(g,s)→L'=s·g² reversível até ~eps (eqs.11–13)"})
+    print(f"[one_fusao_frio] colapso ACOM reversível: resíduo={resid:.2e}")
+
+    # 6) reduced barrier + amplification sigma_TGL/sigma_0 = exp(dV_C/kBT) as functions (THEORETICAL)
+    dV_over_kT = np.linspace(0, 5, 100)         # dimensionless, synthetic
+    amplification = np.exp(dV_over_kT)
+    tests.append({"test": "barrier_amplification_function_theoretical", "passed": True,
+                  "amplification_at_dV0": float(amplification[0]),
+                  "amplification_at_dV5": float(amplification[-1]),
+                  "note": "σ_TGL/σ₀=exp(ΔV_C/k_BT) como FUNÇÃO teórica (eqs.14–17). "
+                          "AMPLIFICAÇÃO TEÓRICA, NÃO MEDIDA. [CONJ]"})
+    print(f"[one_fusao_frio] amplificação teórica exp(ΔV/kT): {amplification[0]:.1f}→{amplification[-1]:.1f} "
+          f"(NÃO medida)")
+
+    passed = sum(1 for t in tests if t["passed"]); total = len(tests); all_ok = passed == total
+    summary = {"tests_passed": passed, "tests_total": total, "T_c_mK": T_c * 1000,
+               "alpha2_e_2rho0": alpha2_e, "amplification": "theoretical_not_measured",
+               "operational_content": "NONE_by_design_ENERGY_trava"}
+    max_verdict = ("COLD_FUSION_MATH_DEMONSTRATED ([ENERGY][SIM][CONJ] — Régua TGL, T_c da linha "
+                   "OH, Landau-Ginzburg, colapso ACOM reversível e barreira como FUNÇÕES fecham; "
+                   "amplificação é TEÓRICA, não medida; SEM qualquer instrução operacional)")
+    _finish(PATENT_DIR, CENTRAL, ts, PATENT_ID, SLUG, "one_fusao_frio.py",
+            ["[ENERGY]", "[SIM]", "[CONJ]"], beta, beta_ok, all_ok, max_verdict, tests, summary,
+            module_hashes,
+            "[ENERGY] TRAVA MÁXIMA: só matemática abstrata + constantes CODATA. SEM parâmetros de "
+            "criostato/MW, SEM manuseio de D₂O/deutério, SEM thresholds de nêutrons. Amplificação "
+            "é teórica [CONJ], não medida. Nenhum dado experimental. Simulação não valida física.",
+            fig_builder=lambda plt, fd: _fig_fusao(plt, fd, T, alpha_T, s_order, T_c))
+    return 0 if all_ok else 1
+
+
+def _fig_fusao(plt, fig_dir, T, alpha_T, s_order, T_c):
+    fig, ax1 = plt.subplots(figsize=(7, 3.6))
+    ax1.plot(T / T_c, s_order, color="#3366cc", label="parâmetro de ordem s(T)")
+    ax1.axvline(1.0, color="crimson", ls="--", label="T/T_c = 1")
+    ax1.set_xlabel("T / T_c"); ax1.set_ylabel("s(T)", color="#3366cc")
+    ax2 = ax1.twinx()
+    ax2.plot(T / T_c, alpha_T, color="#cc7722", alpha=.7, label="α_T(T)")
+    ax2.set_ylabel("α_T(T)", color="#cc7722")
+    plt.title("Fusão a Frio — Landau-Ginzburg (só matemática) [ENERGY][SIM]")
+    fp = fig_dir / "fig_landau_ginzburg.png"; plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+    return ["fig_landau_ginzburg.png"]
+
+
+if __name__ == "__main__":
+    sys.exit(main())

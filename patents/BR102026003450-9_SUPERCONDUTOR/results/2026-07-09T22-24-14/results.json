@@ -1,0 +1,81 @@
+{
+ "patent_id": "BR102026003450-9",
+ "slug": "supercondutor",
+ "timestamp": "2026-07-09T22-24-14",
+ "runner": "one_supercondutor.py",
+ "markers": [
+  "[SIM]",
+  "[HARDWARE]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "SUPERCONDUCTOR_LOGIC_DEMONSTRATED",
+ "max_verdict": "SUPERCONDUCTOR_LOGIC_DEMONSTRATED ([SIM][HARDWARE] — ACOM preservação, transição tipo-fase e balanço fail-closed fecham no MODELO; dispositivo físico NÃO construído; não simula plasma/vácuo/óptica)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form_and_critical_point",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_c": 0.012031300400803142
+  },
+  {
+   "test": "acom_compress_resurrect_preservation",
+   "passed": true,
+   "max_residual": 1.0310988667854205e-16,
+   "polarity_preserved": true,
+   "note": "g=√|L| (eq.4), L=s·g² (eq.5), η e s preservados"
+  },
+  {
+   "test": "holographic_sc_phase_transition",
+   "passed": true,
+   "P_th": 1.0,
+   "eta_below_threshold": 0.198018073386137,
+   "eta_above_threshold": 0.9865697560984518,
+   "note": "η(P_MW)=tanh(P_MW/P_th): abaixo do limiar ~0, acima →1 (transição tipo-fase)"
+  },
+  {
+   "test": "metric_coefficients",
+   "passed": true,
+   "g_tt_at_low": 0.9168834650713862,
+   "g_LL_at_high": 1000.0000000001102,
+   "v_info_endpoints": [
+    0.9168834650713862,
+    0.0009999999999998899
+   ],
+   "note": "eq.18: g_tt→0, g_LL→∞ no horizonte α²→α²_c. AVISO [OPEN]: aqui v_info→0 (algébrico), divergente da prosa do relatório 'v_info→∞'. Reportado honestamente."
+  },
+  {
+   "test": "energy_balance_fail_closed",
+   "passed": true,
+   "delta_S_endpoints": [
+    3.1544633063648576e-11,
+    0.004479641052637227
+   ],
+   "over_unity_detected": false,
+   "e_out_over_e_in": 0.999,
+   "note": "ΔS→0 é PREDIÇÃO DE MODELO; guarda anti-over-unity ativa (e_out ≤ e_in). [DER]"
+  },
+  {
+   "test": "device_interface_mock_no_physics",
+   "passed": true,
+   "mock_status": "HARDWARE_MOCK",
+   "note": "translacao nao-EM alegada na patente; NAO validada em software"
+  }
+ ],
+ "summary": {
+  "tests_passed": 6,
+  "tests_total": 6,
+  "alpha2_c": 0.012031300400803142,
+  "acom_residual": 1.0310988667854205e-16,
+  "v_info_note": "algebraic v_info->0 vs prose ->inf [OPEN]",
+  "over_unity_guard": "active"
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "Demonstração [SIM] da lógica do dispositivo (sinal + balanço de modelo). NÃO simula plasma OH/vácuo/óptica; NÃO prova translação [HARDWARE]. Divergência v_info→0 (algébrico) vs prosa →∞ registrada [OPEN]. Simulação não valida física."
+}

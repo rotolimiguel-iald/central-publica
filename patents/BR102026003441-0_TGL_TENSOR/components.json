@@ -1,0 +1,42 @@
+{
+  "patent_id": "BR102026003441-0",
+  "title": "TGL Tensor — Compressão de Tensores de LLM",
+  "source": "Relatório descritivo, Figuras 1–4/6; fluxo DIRETO 200–216; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). Ilustração de engenharia derivada dos desenhos do depósito INPI — não é prova física. Magic byte TGL4 (relatório) vs TGS1 (protótipo) — divergência em PENDENCIAS.",
+  "groups": [
+    {
+      "name": "Fluxo do modo DIRETO (Figura 2, 200–216)",
+      "kind": "flow-node",
+      "components": [
+        { "id": "200", "label": "Receber tensor L", "desc": "Entrada m × n (pesos, KV cache, embeddings, gradientes).", "marker": "[REAL]", "x": 0.05, "y": 0.14 },
+        { "id": "202", "label": "g = √|L| (Gráviton)", "desc": "Transformada gravitacional: raiz do módulo.", "marker": "[REAL]", "x": 0.27, "y": 0.14 },
+        { "id": "204", "label": "s = sign(L) (Fase)", "desc": "Sinal preservado, empacotado 1 bit.", "marker": "[REAL]", "x": 0.49, "y": 0.14 },
+        { "id": "206", "label": "θ = arcsin(g/gmax)", "desc": "Codificação angular: resolução máxima em g pequeno (d(sinθ)/dθ=cosθ máx em 0).", "marker": "[REAL]", "x": 0.71, "y": 0.14 },
+        { "id": "208", "label": "θq (quantização b bits)", "desc": "θq = round(θ·(2^b−1)/(π/2)).", "marker": "[REAL]", "x": 0.71, "y": 0.42 },
+        { "id": "210", "label": "ψ (nominação H4)", "desc": "ψ = f(sign(L), sign(∂L)) — estados psiônicos.", "marker": "[REAL]", "x": 0.49, "y": 0.42 },
+        { "id": "212", "label": "Empacotar ψ+θq+s", "desc": "ψ 2 bit + θq b bit + s 1 bit.", "marker": "[REAL]", "x": 0.27, "y": 0.42 },
+        { "id": "214", "label": "BitPack N-bit → stream", "desc": "Empacotador de N bits arbitrários (8/10/12/14/16), CPU NumPy e GPU PyTorch nativo.", "marker": "[REAL]", "x": 0.05, "y": 0.42 },
+        { "id": "216", "label": "Saída (gmax, gmin, shape, packed)", "desc": "Serialização binária com magic TGL4.", "marker": "[REAL]", "x": 0.05, "y": 0.70 }
+      ]
+    },
+    {
+      "name": "Blocos do sistema (Figuras 1/3/4)",
+      "kind": "block",
+      "components": [
+        { "id": "AE", "label": "Analisador Espectral", "desc": "SVD + energia; rank ótimo pela retenção 1−β_TGL (Verb Floor).", "marker": "[REAL]", "x": 0.30, "y": 0.72 },
+        { "id": "SM", "label": "Seletor de Modo (AUTO)", "desc": "DIRETO / ESPECTRAL / HÍBRIDO por baixo rank e potencial (>5×→ESPECTRAL; >2×→HÍBRIDO).", "marker": "[REAL]", "x": 0.55, "y": 0.72 },
+        { "id": "DC", "label": "Módulo de Descompressão", "desc": "Desserializa, desempacota, dequantiza por seno, Dobra L'=s·g²; ESPECTRAL: Uk·diag(Σk)·Vkᵀ.", "marker": "[REAL]", "x": 0.80, "y": 0.72 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "200", "to": "202" }, { "from": "202", "to": "204" },
+    { "from": "204", "to": "206" }, { "from": "206", "to": "208" },
+    { "from": "208", "to": "210" }, { "from": "210", "to": "212" },
+    { "from": "212", "to": "214" }, { "from": "214", "to": "216" }
+  ],
+  "constants": [
+    { "symbol": "retenção espectral", "value": "1 − β_TGL = 0,987968699599… (Verb Floor)", "note": "A fração β da energia é deixada ir — o custo pago da inscrição." },
+    { "symbol": "Tetelestai", "value": "var = std(g)/mean(g) < β_TGL", "note": "Raiz já quieta → convergência / qualidade máxima." }
+  ]
+}

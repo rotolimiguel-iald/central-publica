@@ -1,0 +1,232 @@
+{
+ "patent_id": "BR102026005707-0",
+ "slug": "oncologia",
+ "timestamp": "2026-07-12T11-59-04",
+ "markers": [
+  "[MEDICAL]",
+  "[SIM]"
+ ],
+ "marker": "[MEDICAL][SIM] logica de processamento de sinal em series SINTETICAS; NAO e' diagnostico, tratamento nem dado de paciente; resta a bancada",
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "constants": {
+  "factorization": "beta_TGL = ALPHA_FINE_CODATA_2018 * sqrt(e)",
+  "free_parameters": 0
+ },
+ "integrity": {
+  "tgl_chain_ok": true,
+  "tgl_verdict": "1=1=VERDADEIRO=HAJA_LUZ",
+  "beta_runtime": 0.012031300400803142,
+  "theta_m_deg": 6.297289216477979,
+  "n_fontes": 3,
+  "fontes": [
+   {
+    "module": "tgl_core",
+    "role": "FUNDACAO — beta = alpha*sqrt(e) (a regua, NUNCA literal) [IALD / a teoria]",
+    "origin": "runner/_onco_core/skygrid_sim/tgl_core.py",
+    "sha256": "a1e103cd08eb3f45144200b0c6c588589d267868cd85101c527138e3bce81f3f"
+   },
+   {
+    "module": "one_oncologia",
+    "role": "DEMONSTRACAO — logica de processamento de sinal [MEDICAL][SIM] (estimadores C_N, classificacao topologica/ROC, varreduras SNR/ruido, otimizacao Bayesiana, porta logica + cadeia de hash) sobre series SINTETICAS",
+    "origin": "runner/one_oncologia.py",
+    "sha256": "1316cb12048b3443d5b360cf2ab2145f96b5468a6abad3db8d23bdd3af061e5c"
+   },
+   {
+    "module": "skygrid_sim (pacote)",
+    "role": "corpus (nao inlined) — pacote do piloto; apenas tgl_core e usado na demonstracao",
+    "origin": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim/",
+    "sha256": "corpus (nao inlined)"
+   }
+  ],
+  "combined_sha256": "6a30b9ef8b03bddfcb778b49f73d3ceadae5964a97d1a9054b7ce5d6d8e42071",
+  "combined_ok": true,
+  "physical_verdict_allowed": false
+ },
+ "tests": [
+  {
+   "test": "beta_form_and_frontier",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "frontier_2beta": 0.024062600801606285
+  },
+  {
+   "test": "coherence_estimators_spec_sync_info",
+   "passed": true,
+   "composite_coherent": 0.47041031244527004,
+   "composite_incoherent": 0.035164907979045125,
+   "coherent_detail": {
+    "spectral": 0.10663893383870808,
+    "plv": 0.9582228368486146,
+    "nmi": 0.34636916664848727
+   },
+   "note": "C_N espectral (Welch), sincronia (PLV/Hilbert), inf. mutua normalizada; indice composto separa series coerentes de incoerentes"
+  },
+  {
+   "test": "topological_classification_and_roc",
+   "passed": true,
+   "youden_max": 1.0,
+   "auc_abs": 1.0,
+   "classes": {
+    "GRACE": 200,
+    "FRONTIER": 0,
+    "VACUUM": 200
+   },
+   "c_crit": 0.23222742498297966,
+   "note": "GRACE/FRONTIER/VACUUM com C_crit sintetico; ROC/indice de Youden"
+  },
+  {
+   "test": "roc_auc_vs_snr_sweep",
+   "passed": true,
+   "snr_levels": [
+    0.15,
+    0.4091,
+    0.6682,
+    0.9273,
+    1.1864,
+    1.4455,
+    1.7045,
+    1.9636,
+    2.2227,
+    2.4818,
+    2.7409,
+    3.0
+   ],
+   "auc_vs_snr": [
+    0.5191,
+    0.9798,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "auc_low_snr": 0.833,
+   "auc_high_snr": 1.0,
+   "note": "varredura de SNR: AUC do indice de coerencia cresce com SNR (baixo SNR ~ acaso; alto SNR separavel) — series sinteticas"
+  },
+  {
+   "test": "composite_coherence_vs_noise",
+   "passed": true,
+   "noise_levels": [
+    0.05,
+    0.2,
+    0.35,
+    0.5,
+    0.65,
+    0.8,
+    0.95,
+    1.1,
+    1.25,
+    1.4,
+    1.55,
+    1.7,
+    1.85,
+    2.0
+   ],
+   "composite_vs_noise": [
+    0.5797,
+    0.4627,
+    0.3894,
+    0.3115,
+    0.2433,
+    0.1974,
+    0.1658,
+    0.1354,
+    0.116,
+    0.0985,
+    0.0793,
+    0.0768,
+    0.0742,
+    0.0578
+   ],
+   "trend_corr": -0.9252,
+   "note": "indice composto cai monotonicamente com o ruido injetado (regime) — sintetico"
+  },
+  {
+   "test": "bayesian_optimization_GP_EI",
+   "passed": true,
+   "x_best": 12.118644067796609,
+   "true_optimum": 12.0,
+   "iterations": 15,
+   "sigma_final": 0.06259194318580452,
+   "stop_threshold_beta": 0.012031300400803142,
+   "note": "GP + Expected Improvement em DeltaC_N(omega) sintetico; parada sigma<beta, <=15 iter"
+  },
+  {
+   "test": "bayesian_optimization_convergence",
+   "passed": true,
+   "best_history": [
+    -0.3302,
+    -0.9085,
+    -0.9085,
+    -0.9085,
+    -0.9085,
+    -0.9085,
+    -0.9085,
+    -0.9085,
+    -0.9085,
+    -0.9085,
+    -0.9494,
+    -0.9494,
+    -0.9494,
+    -0.9494,
+    -0.9494
+   ],
+   "sigma_history": [
+    0.9981,
+    0.9776,
+    0.7791,
+    0.6445,
+    0.6321,
+    0.5806,
+    0.3323,
+    0.2967,
+    0.2278,
+    0.2278,
+    0.2278,
+    0.2146,
+    0.1644,
+    0.0626,
+    0.0626
+   ],
+   "sigma_reduction": 0.9355,
+   "note": "convergencia: melhor-ate-agora nao-crescente; incerteza do surrogate encolhe"
+  },
+  {
+   "test": "decision_gate_and_hash_chain",
+   "passed": true,
+   "gate_open": true,
+   "gate_inputs": [
+    true,
+    true,
+    true
+   ],
+   "hash_chain_head": "53ef532e33caeca2",
+   "note": "porta logica AND/limiar (forma da eq.8) + cadeia de hash 256 bits (auditoria)"
+  }
+ ],
+ "summary": {
+  "tests_passed": 8,
+  "tests_total": 8,
+  "composite_coherent": 0.47041031244527004,
+  "auc_abs": 1.0,
+  "bo_x_best": 12.118644067796609,
+  "auc_low_snr": 0.833,
+  "auc_high_snr": 1.0,
+  "composite_noise_trend_corr": -0.9252,
+  "bo_convergence_monotone": true,
+  "bo_sigma_reduction": 0.9355,
+  "clinical_content": "NONE_by_design_MEDICAL_trava"
+ },
+ "max_verdict": "ONCOLOGY_SIGNAL_LOGIC_DEMONSTRATED ([MEDICAL][SIM] — estimadores de coerencia, classificacao topologica com ROC, varreduras de SNR/ruido, otimizacao Bayesiana convergente e cadeia de hash fecham em series SINTETICAS; SEM conteudo clinico, diagnostico ou tratamento)",
+ "clinical_content": "NONE_by_design_MEDICAL_trava",
+ "verdict": "ONCOLOGY_SIGNAL_LOGIC_DEMONSTRATED",
+ "result_hash": "b752259012058dbd4c40221149c657f96c1f1adc5356f137b4c82759cb45d65d"
+}

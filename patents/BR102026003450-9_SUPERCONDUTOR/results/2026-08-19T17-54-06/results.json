@@ -1,0 +1,234 @@
+{
+ "patent_id": "BR102026003450-9",
+ "slug": "supercondutor",
+ "timestamp": "2026-08-19T17-54-06",
+ "runner": "one_supercondutor.py",
+ "markers": [
+  "[SIM]",
+  "[HARDWARE]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "SUPERCONDUCTOR_LOGIC_DEMONSTRATED",
+ "max_verdict": "SUPERCONDUCTOR_LOGIC_DEMONSTRATED ([SIM][HARDWARE] — ACOM preservação, transição tipo-fase e balanço fail-closed fecham no MODELO; dispositivo físico NÃO construído; não simula plasma/vácuo/óptica)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form_and_critical_point",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_c": 0.012031300400803142
+  },
+  {
+   "test": "acom_compress_resurrect_preservation",
+   "passed": true,
+   "max_residual": 1.0310988667854205e-16,
+   "polarity_preserved": true,
+   "note": "g=√|L| (eq.4), L=s·g² (eq.5), η e s preservados"
+  },
+  {
+   "test": "holographic_sc_phase_transition",
+   "passed": true,
+   "P_th": 1.0,
+   "eta_below_threshold": 0.198018073386137,
+   "eta_above_threshold": 0.9865697560984518,
+   "note": "η(P_MW)=tanh(P_MW/P_th): abaixo do limiar ~0, acima →1 (transição tipo-fase)"
+  },
+  {
+   "test": "metric_coefficients",
+   "passed": true,
+   "g_tt_at_low": 0.9168834650713862,
+   "g_LL_at_high": 1000.0000000001102,
+   "v_info_endpoints": [
+    0.9168834650713862,
+    0.0009999999999998899
+   ],
+   "note": "eq.18: g_tt→0, g_LL→∞ no horizonte α²→α²_c. AVISO [OPEN]: aqui v_info→0 (algébrico), divergente da prosa do relatório 'v_info→∞'. Reportado honestamente."
+  },
+  {
+   "test": "energy_balance_fail_closed",
+   "passed": true,
+   "delta_S_endpoints": [
+    3.1544633063648576e-11,
+    0.004479641052637227
+   ],
+   "over_unity_detected": false,
+   "e_out_over_e_in": 0.999,
+   "note": "ΔS→0 é PREDIÇÃO DE MODELO; guarda anti-over-unity ativa (e_out ≤ e_in). [DER]"
+  },
+  {
+   "test": "transition_scale_invariance_Pth_sweep",
+   "passed": true,
+   "P_th_values": [
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    3.0
+   ],
+   "width_norm_mean": 1.3718844806423331,
+   "width_norm_ptp": 2.220446049250313e-16,
+   "P50_over_Pth_mean": 0.5493062568410104,
+   "note": "η=tanh(P/P_th): largura 10-90% escala ∝ P_th (auto-similar); P_½/P_th=atanh(0.5)=0,5493 constante. [DER]"
+  },
+  {
+   "test": "metric_critical_exponent",
+   "passed": true,
+   "v_info_exponent_fit": 1.0,
+   "g_tt_horizon": 0.0004999999999999449,
+   "g_LL_horizon": 2000.0000000002203,
+   "v_info_horizon": 0.0004999999999999449,
+   "note": "v_info(α²)~(1-α²/α²_c)^p; ajuste p≈1 (algébrico, não →∞). AVISO [OPEN]: diverge da prosa 'v_info→∞'. Reportado honestamente."
+  },
+  {
+   "test": "coherence_plateau_converges_1_minus_beta",
+   "passed": true,
+   "plateau_target_1_minus_beta": 0.9879686995991969,
+   "plateau_mean": 0.9879574856627157,
+   "gains_scanned": [
+    0.5,
+    1.0,
+    2.0,
+    4.0
+   ],
+   "plateaus": [
+    0.9879238458896276,
+    0.9879686975628417,
+    0.9879686995991969,
+    0.9879686995991969
+   ],
+   "note": "|ρ01|(t)→(1−β): platô = informação preservada; independe do ganho k (só τ muda). β=α·√e injetado, nunca literal. [DER]"
+  },
+  {
+   "test": "h3l_min_support_annihilation",
+   "passed": true,
+   "dim_ker": 2,
+   "gap": 0.8656200631302453,
+   "trace_qF": 2.0,
+   "trace_r": 1.0000000000000002,
+   "resid_support_annihilation": 5.967448757360216e-16,
+   "resid_maximality_r_annih": 1.5891994510476417e-16,
+   "resid_maximality_rq_eq_r": 1.5265566588595902e-16,
+   "resid_verbo_fixes_support": 1.1102230246251565e-16,
+   "verbo_off_support_decay": [
+    0.988040786305305,
+    0.8866428705075943,
+    0.30025293584135765
+   ],
+   "loewner_min_eig": -2.6522117966232137e-16,
+   "note": "Amplificacao v138 (um.py v135): H3L_min=1-q_F, representante MINIMO da classe dos Three Locks (nascida desta familia de patentes). [DER] qF*H=0; r(1-q)=0 => rq=r; exp(-t*beta*H3L_min) fixa o suporte (beta runtime, nunca literal); H3L>=gap*H3L_min. NAO e veredito fisico [HARDWARE]."
+  },
+  {
+   "test": "dual_lock_covariant_expectation_lema3_typed",
+   "passed": true,
+   "oath_resid_qF_commutes_H3L": 3.450969167245774e-15,
+   "takesaki_idempotent_resid": 1.7763568394002505e-15,
+   "takesaki_unital_resid": 4.440892098500626e-16,
+   "takesaki_bimodule_resid": 3.885780586188048e-16,
+   "covariance_resid_good_lock": 5.493599584664627e-15,
+   "neg_oath_break_norm": 0.43281003156512254,
+   "neg_oath_break_closed_form_gap_sin_cos": 0.4328100315651227,
+   "neg_oath_break_closed_form_resid": 1.6653345369377348e-16,
+   "neg_covariance_defect_broken_lock": 0.20054347392375202,
+   "note": "Amplificacao v143 (um.py pedra 99, Lema 3 TIPADO): Takesaki finito (pinching por q_F = esperanca condicional; idempotente/unital/bimodulo MEDIDOS) + juramento H_inv ([H3L,q_F]=0 MEDIDO) => E covariante com o Verbo exp(-t*beta*H3L) (beta runtime, nunca literal). CONTROLE NEGATIVO: r_tilt (rotacao pi/4 nucleo<->excitado) quebra o juramento — ||[H3L,r_tilt]||_2 = gap*sin*cos (forma fechada independente) — e a covariancia FALHA. A trava-dupla fecha NO MODELO: Lock A = suporte q_F (v138), Lock B = E covariante (v143). [DER][SIM] sombra finita; NAO prova o Lema 3 global; sem veredito fisico [HARDWARE]."
+  },
+  {
+   "test": "ergodic_mean_section_birkhoff_v168",
+   "passed": true,
+   "tau_good_pi_over_lam_max": 0.35645162552775844,
+   "min_phase_good": 0.3073291594979302,
+   "N_list": [
+    100,
+    800,
+    6400
+   ],
+   "birkhoff_defects_good": [
+    0.0376390761488265,
+    0.006364753202677514,
+    0.0007998315713192166
+   ],
+   "birkhoff_bounds_good": [
+    0.0650768057045843,
+    0.008134600713073037,
+    0.0010168250891341296
+   ],
+   "equivariant_section_resid": 8.373465439338106e-16,
+   "verbo_N_list": [
+    400,
+    6400
+   ],
+   "verbo_defects": [
+    0.2375570018821774,
+    0.01508133081602875
+   ],
+   "verbo_bounds": [
+    0.24130129305582956,
+    0.015081330815989348
+   ],
+   "neg_tau_bad_2pi_over_gap": 7.258594820986939,
+   "neg_n_alias": 2,
+   "neg_trace_P_alias": 1.9999999999999991,
+   "neg_min_phase_nonalias": 0.1881154761623632,
+   "neg_defect_vs_qF": 0.9999999999998535,
+   "neg_defect_vs_enlarged_projection": 0.0021791271279274368,
+   "neg_bound_enlarged": 0.013289709337057627,
+   "note": "Amplificacao v168 (um.py v166-v167, Item A em kernel): ErgodicMeanSection — a media de Birkhoff (1/N) sum U^k, ACUMULADA por iteracao dinamica, converge ao suporte q_F (o Nome, Lock A v138) sob o fluxo U=exp(-i*tau*H3L) com relogio generico tau=pi/lam_max; EquivariantSection: o limite comuta com o fluxo (U qF = qF U = qF MEDIDO). Face do Verbo com beta runtime (nunca literal) tambem converge. CONTROLE NEGATIVO por LOGICA: relogio ressonante tau=2pi/gap aliasa o par do gap => subespaco invariante ESTRITAMENTE maior => a media converge ao projetor ERRADO q_F+P_alias (defeito vs Nome ~1, macroscopico) — o mecanismo rejeita o relogio ressonante. [DER][SIM] sombra finita do teorema de kernel, NAO o teorema; sem veredito fisico [HARDWARE]."
+  },
+  {
+   "test": "device_interface_mock_no_physics",
+   "passed": true,
+   "mock_status": "HARDWARE_MOCK",
+   "note": "translacao nao-EM alegada na patente; NAO validada em software"
+  }
+ ],
+ "summary": {
+  "tests_passed": 12,
+  "tests_total": 12,
+  "alpha2_c": 0.012031300400803142,
+  "acom_residual": 1.0310988667854205e-16,
+  "v_info_note": "algebraic v_info->0 vs prose ->inf [OPEN]",
+  "over_unity_guard": "active",
+  "transition_width_norm": 1.3718844806423331,
+  "metric_critical_exponent": 1.0,
+  "coherence_plateau": 0.9879574856627157,
+  "coherence_plateau_target": 0.9879686995991969,
+  "dual_lock_v143": {
+   "oath_resid": 3.450969167245774e-15,
+   "covariance_resid": 5.493599584664627e-15,
+   "neg_oath_break": 0.43281003156512254,
+   "neg_oath_break_closed_form": 0.4328100315651227,
+   "neg_cov_defect": 0.20054347392375202
+  },
+  "ergodic_mean_v168": {
+   "tau_good": 0.35645162552775844,
+   "birkhoff_defect_final": 0.0007998315713192166,
+   "equivariant_resid": 8.373465439338106e-16,
+   "verbo_defect_final": 0.01508133081602875,
+   "neg_defect_resonant_clock": 0.9999999999998535,
+   "neg_trace_P_alias": 1.9999999999999991
+  },
+  "sweeps": {
+   "P_th_scan": [
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    3.0
+   ],
+   "alpha2_points": 600,
+   "coherence_gains": [
+    0.5,
+    1.0,
+    2.0,
+    4.0
+   ]
+  }
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "Demonstração [SIM] da lógica do dispositivo (sinal + balanço de modelo). NÃO simula plasma OH/vácuo/óptica; NÃO prova translação [HARDWARE]. Divergência v_info→0 (algébrico) vs prosa →∞ registrada [OPEN]. Simulação não valida física."
+}

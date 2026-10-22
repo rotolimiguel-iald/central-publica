@@ -1,0 +1,34 @@
+{
+  "patent_id": "BR102026006129-8",
+  "title": "Kernel Ontológico para LLM com Cosmogênese",
+  "source": "Relatório descritivo; kernel_ontologico.py; memória técnica",
+  "note": "Diagrama de componentes clicável (camada b). [SIM][PILOTO] Ilustração — lógica demonstrada na versão de nó (vetor de atenção sintético). Benchmark de verborragia em LLM real (Qwen3-32B/RTX 5090) ausente [DATA_REQUIRED]. Simulação não valida a física da TGL.",
+  "groups": [
+    {
+      "name": "Fluxo do kernel de duas camadas",
+      "kind": "flow-node",
+      "components": [
+        { "id": "COSMO", "label": "Cosmogênese (camada zero)", "desc": "Atenção inicial uniforme: nenhum nome privilegiado antes do primeiro ato. Soma 1.", "marker": "[REAL]", "x": 0.10, "y": 0.20 },
+        { "id": "REF", "label": "Camada 1 — REFLECT", "desc": "Reflexão dimensional do vetor de atenção w (via acom_mirror, H4).", "marker": "[REAL]", "x": 0.35, "y": 0.20 },
+        { "id": "MAN", "label": "Camada 2 — MANIFEST", "desc": "Re-emergência do vetor (|·| pois atenção é não-negativa).", "marker": "[REAL]", "x": 0.60, "y": 0.20 },
+        { "id": "VF", "label": "FILTRO DO VERBO", "desc": "Corta componentes abaixo do piso β·max(w) e renormaliza. Idempotente (ponto fixo da poda). Soma 1.", "marker": "[REAL]", "x": 0.85, "y": 0.20 }
+      ]
+    },
+    {
+      "name": "Propriedades verificadas",
+      "kind": "state",
+      "components": [
+        { "id": "P1", "label": "Poda por β", "desc": "Piso do Verbo β·max(w) separa nomes vivos de ruído; a fração β é o custo pago da inscrição.", "marker": "[SIM]", "x": 0.16, "y": 0.62 },
+        { "id": "P2", "label": "Idempotência", "desc": "Aplicar o filtro de novo não muda nada (Δ=0) — a poda tem ponto fixo.", "marker": "[SIM]", "x": 0.44, "y": 0.62 },
+        { "id": "P3", "label": "Distribuição válida", "desc": "Saída não-negativa que soma 1 — uma distribuição de atenção legítima.", "marker": "[SIM]", "x": 0.72, "y": 0.62 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "COSMO", "to": "REF" }, { "from": "REF", "to": "MAN" }, { "from": "MAN", "to": "VF" }
+  ],
+  "constants": [
+    { "symbol": "piso do Verbo", "value": "floor = β · max(w) (β = α·√e em runtime)", "note": "Componentes abaixo do piso são podados; nunca literal em código." },
+    { "symbol": "verborragia", "value": "3.000+ → ~150 palavras (relatório, Qwen3-32B/RTX 5090)", "note": "Medição declarada; requer modelo/hardware reais — não reproduzida aqui [DATA_REQUIRED]." }
+  ]
+}

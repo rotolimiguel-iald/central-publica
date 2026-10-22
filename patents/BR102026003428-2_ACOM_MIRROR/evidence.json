@@ -1,0 +1,616 @@
+{
+  "patent_id": "BR102026003428-2",
+  "schema": "cadeia-de-prova/v1",
+  "note": "Cada reivindicação → cadeia de elos de prova (depósito/teste/código/dispositivo/dado/nota). Os hashes são computados AO VIVO por tools/verify_evidence.py (nunca hardcoded). Qualificações honestas onde a prova é parcial/pendente.",
+  "run_ref": "ACOM_MIRROR@2026-07-10T11-45-09",
+  "document_id": 39,
+  "claims": [
+    {
+      "n": 1,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "MÉTODO de reflexão dimensional: recebe tensor L; g=√|L|; ∂L; nomina ψ em ℋ₄ a partir de (sign L, sign ∂L); θ=arcsin(g/gmax); quantiza θ; empacota ψ+θq; gera objeto de reflexão. Caracterizado pela codificação angular arcsin (maior resolução em g pequeno), 4 estados ortonormais em ℋ₄ com paridades, e reconstrução por desdobramento L'=sign(L)·[gmax·sin(θ)]².",
+      "verdict": "comprovada em simulação — depósito + engine v17 real fecha o ciclo REFLECT/MANIFEST com corr>0,999; arcsin medido [SIM]",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 1 (independente) no depósito INPI",
+          "proves": "redação oficial da reivindicação-mãe do MÉTODO [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "compression_table_v161_vs_v17 — ciclo REFLECT→MANIFEST da engine v17",
+          "value": "gate corr_v17>0,99; medido >0,999 nos 5 tipos de tensor",
+          "proves": "a engine v17 executa g=√|L|, θ=arcsin, empacota e desdobra L'=s·g², reconstruindo com alta correlação [REAL na lógica / SIM sintético]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "compression_table_v161_vs_v17"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "angular_vs_linear_g_measured — codificação arcsin vs quantização linear",
+          "value": "RMSE em |L| pequeno, arcsin vs linear-g",
+          "proves": "a codificação angular arcsin está implementada e é MEDIDA contra a linear; teste sempre passa (é medição, não prova de superioridade — vantagem regime-dependente) [SIM]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "angular_vs_linear_g_measured"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — DimensionalMirror.reflect/manifest",
+          "proves": "implementação de referência do método (REFLECT/MANIFEST, dobra ×2) [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "one_acom_mirror.py — runner que injeta β e roda o ciclo",
+          "proves": "orquestra o método completo sobre dados sintéticos [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_acom_mirror.py"
+          }
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Define os 4 estados ψ0 COLAPSO+ / ψ1 ASCENSÃO+ / ψ2 EMERGÊNCIA− / ψ3 QUEDA− com sinais (sign L, sign ∂L), vetores base ortonormais |0>..|3> e paridades (ψ0,ψ3=−1; ψ1,ψ2=+1).",
+      "verdict": "comprovada — os 4 estados são nominados e ocupados na engine; ortonormalidade é definição de código",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 2 (dep. de 1) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "fexp_spsi_per_regime — ocupação ψ agregada dos state_counts reais",
+          "value": "occupancy_psi_aggregate nos 4 estados COLLAPSE_PLUS/ASCEND_PLUS/EMERGE_MINUS/FALL_MINUS",
+          "proves": "os 4 estados de ℋ₄ são efetivamente nominados e ocupados pela engine (state_counts reais) [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "fexp_spsi_per_regime"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — definição dos 4 estados ℋ₄ e paridades",
+          "proves": "nomes, sinais, vetores base e paridades codificados [REAL na forma]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — ortonormalidade",
+          "proves": "a ortonormalidade dos vetores base |0>..|3> é definição estrutural no código (demonstração matemática), não medida física [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Nominação por índice binário: bit_high=1 se L<0, bit_low=1 se ∂L>0, ψ=bit_high×2+bit_low ∈{0,1,2,3}; 2 bits/elemento, 4 estados por byte.",
+      "verdict": "comprovada — a nominação binária produz os 4 estados; empacotamento 2-bit em código exercido no ciclo",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 3 (dep. de 1) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "fexp_spsi_per_regime — ocupações ψ dos state_counts reais",
+          "value": "distribuição dos 4 estados por regime",
+          "proves": "a nominação produz os 4 estados; ocupações agregadas medidas na engine (state_counts reais) [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "fexp_spsi_per_regime"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — _nominate_state e _pack2bits",
+          "proves": "ψ=bit_high·2+bit_low e empacotamento de 2 bits/elemento (4 estados/byte) [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — fórmula E4",
+          "proves": "a equivalência exata da fórmula E4 é demonstrada em código; o empacotamento 2-bit é exercido implicitamente no ciclo de compressão, não isolado por um teste selado próprio [honesto]"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Cálculo de Fexp = (1/N)Σ paridade(ψ_i), com paridade(ψ0)=paridade(ψ3)=−1 e paridade(ψ1)=paridade(ψ2)=+1 — métrica intrínseca de complexidade sem custo adicional.",
+      "verdict": "comprovada — Fexp computado da ocupação real com o vetor de paridades da patente",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 4 (dep. de 1) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "fexp_spsi_per_regime — Fexp por regime e global",
+          "value": "paridade=[−1,+1,+1,−1] sobre state_counts reais; Fexp global e por regime",
+          "proves": "Fexp calculado como média das paridades sobre a ocupação real; assinaturas distintas por regime [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "fexp_spsi_per_regime"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — f_exp nos metadados da reflexão",
+          "proves": "Fexp computado como subproduto sem custo adicional [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Cálculo da entropia de estados Sψ = −Σ p_k log2 p_k (k∈{0,1,2,3}), máximo teórico 2,0 bits.",
+      "verdict": "comprovada — Sψ bate a forma fechada (iid≈1,811) e o limite 2,0 (embeddings suaves≈1,998)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 5 (dep. de 1) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "s_psi_embeddings_regimes — Sψ vs forma fechada e limite 2,0",
+          "value": "iid gaussiano Sψ≈1,811 (=forma fechada); embeddings suaves Sψ≈1,998 (≈2,0)",
+          "proves": "Sψ calculado coincide com a forma fechada e aproxima o máximo 2,0 bits [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "s_psi_embeddings_regimes"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "fexp_spsi_per_regime — Sψ por regime",
+          "value": "spread de Sψ entre regimes > 0",
+          "proves": "Sψ distingue regimes estruturais (subproduto da nominação) [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "fexp_spsi_per_regime"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — state_entropy nos metadados",
+          "proves": "Sψ computado nos metadados da reflexão [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Bits angulares configuráveis de 4 a 16, preferencial 8 (256 níveis).",
+      "verdict": "comprovada — varredura de profundidade angular (v17) e faixa válida do comparador (v16.1)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 6 (dep. de 1) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "bitdepth_sweep_v17_corr_increases — varredura de bits angulares v17",
+          "value": "3→12 bits: corr↑, razão↓",
+          "proves": "profundidade angular parametrizável; correlação cresce com bits (razão cai) [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "bitdepth_sweep_v17_corr_increases"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "bitsg_sweep_v161_valid_range_monotone — faixa de bits do comparador linear",
+          "value": "monotônico até 8 bits; colapso por overflow uint8 acima",
+          "proves": "faixa válida e teto do codec linear v16.1 (v17 angular usa uint16 e não colapsa) — achado honesto medido [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "bitsg_sweep_v161_valid_range_monotone"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — ACOMv17Mirror(angular_bits=b)",
+          "proves": "nº de bits angulares é parâmetro configurável [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Compressão entrópica separada de ψ e θq, sem perda, preferencial zstd nível 22 ou zlib nível 9.",
+      "verdict": "comprovada — a compressão entrópica do reflexo roda e produz razões com reconstrução fiel",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 7 (dep. de 1) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "compression_table_v161_vs_v17 — razões de compressão dos dois codecs reais",
+          "value": "razões medidas nos 5 tensores (v17 usa zstd nível 22); reconstrução fiel",
+          "proves": "a compressão entrópica sobre o reflexo empacotado roda e produz razões, com round-trip de alta correlação [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "compression_table_v161_vs_v17"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — empacotamento ψ(2 bits)+θq e zstd nível 22",
+          "proves": "compressão entrópica sem perda do reflexo [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Uso da constante α²=0,012 (Constante de Miguel) como limiar de estabilidade e θ_Miguel=arcsin(√α²)≈6,29° como referência ruído↔informação.",
+      "verdict": "comprovada na forma — β=α·√e injetado (nunca literal) e θ_Miguel=arcsin(√β); papel NOMINAL, não operacional",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 8 (dep. de 1) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "beta_injected_not_literal — β=α·√e injetado em runtime",
+          "value": "β=α·√e≈0,0120313 (runtime, não literal 0,012)",
+          "proves": "a constante é β=α√e derivada, INJETADA no lugar do 0,012 literal do protótipo v17 [REAL/DER]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "beta_injected_not_literal"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "theta_miguel_form — θ_Miguel = arcsin(√β)",
+          "value": "θ_Miguel≈6,2973° = arcsin(√β)",
+          "proves": "θ_Miguel na forma arcsin(√β), ≈6,29° [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "theta_miguel_form"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "one_acom_mirror.py — injeção de β via tgl_core.beta()",
+          "proves": "β=α·√e obtido em runtime, nunca literal [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_acom_mirror.py"
+          }
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade de acoplamento",
+          "proves": "no algoritmo Mirror α²/β é constante NOMINAL (imperfeição do espelho / θ_Miguel) e NÃO entra na transformada (g=√|L|, θ=arcsin, dobra L'=s·g²); o papel de 'limiar de estabilidade' é nominal/metadados, não operacional — por isso as razões de compressão não mudam ao trocar 0,012 por α·√e [SIM/DER]"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Aplicável a tensores multidimensionais quaisquer (embeddings LLM, KV cache, pesos NN, dados esparsos, gradientes) com correlação > 0,999.",
+      "verdict": "comprovada em sintéticos — método roda nas 5 famílias com corr medido >0,999; gate do teste selado é >0,99",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 9 (dep. de 1) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "compression_table_v161_vs_v17 — método sobre as 5 famílias de tensor",
+          "value": "embeddings_768d, kv_cache, pesos_nn, esparso_95, gradientes; corr_v17 medido >0,999 (mín ~0,99995); gate do teste=>0,99",
+          "proves": "o método roda em todas as famílias de tensor da reivindicação com alta correlação [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "compression_table_v161_vs_v17"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "s_psi_embeddings_regimes — sobre embeddings 768-d",
+          "value": "embeddings de LLM (768-d)",
+          "proves": "aplicabilidade a embeddings de LLM demonstrada [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "s_psi_embeddings_regimes"
+          }
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — dados e gate",
+          "proves": "os tensores são SINTÉTICOS (nenhum modelo/token HuggingFace); o gate do teste selado é corr>0,99, embora os valores medidos por tensor excedam 0,999. Não são os números de produção da Tabela 2 [SIM]"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "independent": true,
+      "marker": "REAL",
+      "statement": "SISTEMA de reflexão dimensional: módulo de entrada; computador gravitacional (g=√|L|, ∂L); nominador ℋ₄; codificador angular (θ=arcsin); analisador de paridade (Fexp, Sψ); empacotador; compressor entrópico; módulo de saída. Caracterizado pelo codificador arcsin e nominador ℋ₄ de 4 estados ortonormais com paridades.",
+      "verdict": "comprovada em simulação — a engine DimensionalMirror integra e roda todos os módulos ponta a ponta",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 10 (independente) no depósito INPI",
+          "proves": "redação oficial da reivindicação-mãe do SISTEMA [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "compression_table_v161_vs_v17 — pipeline completo do sistema",
+          "value": "entrada→gravitacional→nominação→angular→empacotamento→compressão→saída→manifest; corr alta",
+          "proves": "o sistema integrado roda ponta a ponta produzindo o objeto de reflexão e reconstruindo [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "compression_table_v161_vs_v17"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "fexp_spsi_per_regime — módulo analisador de paridade",
+          "value": "Fexp e Sψ por regime dos state_counts reais",
+          "proves": "o bloco analisador de paridade (108) opera e produz as métricas intrínsecas [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "fexp_spsi_per_regime"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — classe DimensionalMirror (o sistema)",
+          "proves": "todos os blocos 100–114 integrados na engine [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "one_acom_mirror.py — orquestra o sistema completo",
+          "proves": "executa o sistema integrado sobre dados sintéticos [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "runner/one_acom_mirror.py"
+          }
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Módulo de manifestação: dequantiza θ; g=gmax·sin(θ); recupera sign(L) a partir de ψ; Dobra Dimensional L'=sign(L)·g².",
+      "verdict": "comprovada — o MANIFEST reconstrói com alta correlação a partir de (ψ,θ)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 11 (dep. de 10) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "compression_table_v161_vs_v17 — corr_v17 provém de reflect→manifest",
+          "value": "reconstrução via MANIFEST com corr medido >0,999",
+          "proves": "o módulo MANIFEST (dequant θ, g=gmax·sin θ, recupera sign(L), dobra L'=s·g²) reconstrói com alta correlação [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "compression_table_v161_vs_v17"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — mirror.manifest (a Dobra Dimensional)",
+          "proves": "implementa dequant, g=gmax·sin θ, recuperação de sinal e dobra ×2 [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "independent": false,
+      "marker": "SIM",
+      "statement": "Execução em CPU (NumPy vetorizado) ou GPU (PyTorch), numericamente equivalentes.",
+      "verdict": "não comprovada — engine portável a device, mas equivalência CPU×GPU NÃO verificada (rodou só em CPU)",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 12 (dep. de 10) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — engine parametrizada por device (torch)",
+          "proves": "a engine aceita device e é portável entre CPU e GPU [REAL na forma]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        },
+        {
+          "role": "nota",
+          "title": "Honestidade — equivalência não verificada",
+          "proves": "a equivalência numérica/binária CPU(NumPy)×GPU(PyTorch) NÃO foi verificada nesta run — executada apenas em CPU (device='cpu'); prova computacional comparativa A FAZER [SIM/pendente]"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "independent": false,
+      "marker": "REAL",
+      "statement": "Objeto de reflexão = bloco ψ comprimido + bloco θq comprimido + metadados (versão, shape, n_elements, angular_bits, gmax, gmin, Fexp, state_counts, Sψ, α²).",
+      "verdict": "comprovada — os testes leem os blocos comprimidos e os metadados efetivamente populados",
+      "chain": [
+        {
+          "role": "deposito",
+          "title": "Reivindicação 13 (dep. de 10) no depósito INPI",
+          "proves": "redação oficial [LEGAL]",
+          "locator": {
+            "kind": "document",
+            "id": 39,
+            "pages": "?"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "compression_table_v161_vs_v17 — metadados do objeto de reflexão",
+          "value": "lê compression_ratio, f_exp, state_entropy, alpha2, n_elements, state_counts",
+          "proves": "o objeto de reflexão carrega blocos comprimidos + metadados, lidos pelos testes [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "compression_table_v161_vs_v17"
+          }
+        },
+        {
+          "role": "teste",
+          "title": "fexp_spsi_per_regime — state_counts/Fexp/Sψ dos metadados reais",
+          "value": "state_counts e f_exp/state_entropy agregados",
+          "proves": "metadados Fexp, Sψ e state_counts efetivamente populados na reflexão [REAL]",
+          "locator": {
+            "kind": "seal",
+            "run": "ACOM_MIRROR@2026-07-10T11-45-09",
+            "test": "fexp_spsi_per_regime"
+          }
+        },
+        {
+          "role": "codigo",
+          "title": "Acom_v17_mirror.py — MirrorReflection (blocos + metadados)",
+          "proves": "estrutura do objeto de reflexão com blocos ψ/θq comprimidos e o dicionário de metadados (inclui α²) [REAL]",
+          "locator": {
+            "kind": "code",
+            "path": "prototype_src/Acom_v17_mirror.py"
+          }
+        }
+      ]
+    }
+  ]
+}

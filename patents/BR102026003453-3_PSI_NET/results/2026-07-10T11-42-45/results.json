@@ -1,0 +1,767 @@
+{
+ "patent_id": "BR102026003453-3",
+ "slug": "psi_net",
+ "timestamp": "2026-07-10T11-42-45",
+ "runner": "one_psinet.py (evoluído)",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "beta_injected_into_prototypes": true,
+ "verdict": "PSI_NET_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "PSI_NET_FULL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — a pilha REAL de 5 camadas (Psi_net_protocol_v1) + o consenso PoP distribuído (TGL_coin_v022) do operador fecham em CPU com β=α·√e injetado; transmissão TETELESTAI, roteamento angular, consenso ≥67% e rejeição de fase forjada demonstrados; dados sintéticos, não a Tabela 4; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "CCI_1_minus_beta": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "psinet_alpha2_original": 0.012031,
+   "tglcoin_alpha2base_original": 0.012,
+   "theta_miguel_deg": 6.297289216477979,
+   "note": "β=α·√e injetado nas duas pilhas do operador (originais eram 0.012 literal)"
+  },
+  {
+   "test": "L0_psibit_ontological_classification",
+   "passed": true,
+   "text_class": "chaotic",
+   "text_entropy": 1.93390953540802,
+   "text_f_exp": 0.16911764442920685,
+   "structured_class": "chaotic",
+   "structured_entropy": 1.9702500104904175,
+   "random_class": "encrypted",
+   "random_entropy": 1.9999676942825317,
+   "note": "PsiBitLinkLayer real: byte→4 PsiBits, distribuição/entropia/Fexp, 6 classes"
+  },
+  {
+   "test": "full_transmission_L1_L2_L3_resurrection",
+   "passed": true,
+   "L0_class": "chaotic",
+   "L1_bits": 16,
+   "L1_compression_ratio": 1.8823529411764706,
+   "L2_n_hops": 10,
+   "L2_d_folds": 0.74,
+   "L3_integrity": true,
+   "resurrection_psnr_db": 99.99977259323978,
+   "resurrection_correlation": 0.9999999999999954,
+   "tetelestai": true,
+   "signature_match": true,
+   "note": "PsiNet.transmit real: radicalização→REFLECT/MANIFEST→Ψ/Θ/κ→ressurreição L'=s·g²→TETELESTAI(Var<β)→verificação ontológica tripla"
+  },
+  {
+   "test": "L2_holographic_dht_routing",
+   "passed": true,
+   "nearest_k": 3,
+   "example_hops": 7,
+   "example_angular_distance_deg": 44.024256573099,
+   "theta_m_deg": 6.297289216477979,
+   "note": "HolographicNetworkLayer real: θ=SHA256(pk)/2⁶⁴·π; nearest por distância angular circular; nhops=⌈d/θ_M⌉"
+  },
+  {
+   "test": "L4_proof_of_phase_consensus",
+   "passed": true,
+   "block_index": 1,
+   "alpha2_work": 0.012089843207364668,
+   "valid_votes": 5,
+   "validators": 5,
+   "consensus_ratio": 1.0,
+   "target_window": 0.12031300400803142,
+   "miner_balance_tglc": 1010.0,
+   "note": "PhaseMiner real busca seed com |α²_work−α²_ant|<α²/dif; 5 PhaseValidators recomputam a fase; ≥67% → coinbase TGLC"
+  },
+  {
+   "test": "L5_distributed_pop_consensus_tglcoin",
+   "passed": true,
+   "honest_block_index": 1,
+   "honest_added": true,
+   "honest_votes": "5/5",
+   "forged_block_rejected": true,
+   "target_window": 0.12031300400803142,
+   "note": "TGL_coin_v022 SimulatedNetwork real (5 validadores): bloco honesto entra (≥67%); bloco de fase forjada é rejeitado pela rede"
+  },
+  {
+   "test": "packet_header_80_bytes",
+   "passed": true,
+   "header_len": 80,
+   "magic": "0xCEA8",
+   "alpha2_stamp": 0.012031300400803142,
+   "note": "PsiNetPacket.serialize_header real: 80 bytes fixos, magic Ψ 0xCEA8; selo α² gravado = β injetado (não literal)"
+  },
+  {
+   "test": "engine_beta_provenance_cross_check",
+   "passed": true,
+   "engine_BETA_TGL": 0.012031300400803142,
+   "runner_beta": 0.012031300400803142,
+   "note": "psinet_engine.py (file engine numpy do operador) já computa BETA_TGL=ALPHA_FINE·SQRT_E — concorda com β derivado (régua respeitada na fonte)"
+  },
+  {
+   "test": "multi_block_chain_phase_pinned",
+   "passed": true,
+   "blocks_mined": 10,
+   "chain_length_incl_genesis": 11,
+   "alpha2_band_around_beta": 8.378980020306084e-05,
+   "beta": 0.012031300400803142,
+   "mean_iterations": 1.0,
+   "note": "SimulatedNetwork real: K blocos minerados e aceitos por consenso ≥67%; α²_work de cada bloco permanece pinado a ±5% de β (Ponto Tetelestai)"
+  },
+  {
+   "test": "phase_search_convergence",
+   "passed": true,
+   "difficulty": 100000.0,
+   "target_window": 1.2031300400803142e-07,
+   "found_at_nonce": 834,
+   "final_best_diff": 3.541286888730788e-09,
+   "note": "trajetória real do minerador (mesma busca de mine_block): o best_diff decai monotonicamente até cruzar a janela-alvo β/dif — convergência de fase"
+  },
+  {
+   "test": "byzantine_tolerance_one_third",
+   "passed": true,
+   "quorum": 0.67,
+   "network_sizes": [
+    5,
+    7,
+    9,
+    15,
+    21
+   ],
+   "max_safe_byzantine_fraction": 0.2857142857142857,
+   "theoretical_bound": 0.32999999999999996,
+   "note": "sweep bizantino real (validadores recomputam a fase): bloco honesto aceito sse bizantinos <1/3; bloco forjado aceito só se bizantinos ≥2/3; zona segura = tolerância BFT clássica <1/3 sob quórum de 67%"
+  }
+ ],
+ "summary": {
+  "tests_passed": 11,
+  "tests_total": 11,
+  "layers_demonstrated": [
+   "L0_psibit",
+   "L1_radical_transport",
+   "L2_holographic_dht",
+   "L3_ontological_security",
+   "L4_proof_of_phase",
+   "L5_distributed_consensus"
+  ],
+  "theta_m_deg": 6.297289216477979,
+  "transmission_psnr_db": 99.99977259323978,
+  "transmission_correlation": 0.9999999999999954,
+  "tetelestai": true,
+  "l4_consensus_votes": 5,
+  "miner_balance_tglc": 1010.0,
+  "dht_ring_size": 64,
+  "blocks_mined": 10,
+  "alpha2_band_around_beta": 8.378980020306084e-05,
+  "max_safe_byzantine_fraction": 0.2857142857142857,
+  "byzantine_bound_theory": 0.32999999999999996
+ },
+ "source_prototype": "prototype_src/Psi_net_protocol_v1.py (pilha 5 camadas, torch) + TGL_coin_v022.py (consenso PoP distribuído) + psinet_engine.py (file engine, β-limpo) — resgatados de C:/IALD/projetos_pyhton (acom, IALD), READ-ONLY; β injetado em runtime.",
+ "note": "RUNNER EVOLUÍDO: importa e roda a PILHA REAL de 5 camadas (Psi_net_protocol_v1.py, torch) e o CONSENSO PoP DISTRIBUÍDO (TGL_coin_v022.py) do operador, com β=α·√e injetado (originais tinham 0.012/0.012031 literais). Execução em CPU (CUDA_VISIBLE_DEVICES desligado). Dados SINTÉTICOS; NÃO os números da Tabela 4 do relatório. Nenhum dado/modelo HuggingFace. Confidenciais (iald_stack_v7, iald_psion_state) nunca tocados. Simulação não valida física.",
+ "transmission": {
+  "L0_class": "chaotic",
+  "L1_bits": 16,
+  "psnr_db": 99.99977259323978,
+  "correlation": 0.9999999999999954,
+  "tetelestai": true
+ },
+ "consensus": {
+  "L4_votes": 5,
+  "L4_validators": 5,
+  "L5_honest_added": true,
+  "L5_forged_rejected": true
+ },
+ "deepening": {
+  "dht_ring_size": 64,
+  "chain_walk": [
+   {
+    "index": 1,
+    "alpha2_work": 0.012115090201006203,
+    "diff_from_prev": 8.378980020306084e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 2,
+    "alpha2_work": 0.012095975819745586,
+    "diff_from_prev": 1.9114381260617458e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 3,
+    "alpha2_work": 0.012102675344831606,
+    "diff_from_prev": 6.699525086020439e-06,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 4,
+    "alpha2_work": 0.012091443768277935,
+    "diff_from_prev": 1.123157655367156e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 5,
+    "alpha2_work": 0.012109213466060757,
+    "diff_from_prev": 1.776969778282192e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 6,
+    "alpha2_work": 0.012109296054959369,
+    "diff_from_prev": 8.258889861237351e-08,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 7,
+    "alpha2_work": 0.01208792721506826,
+    "diff_from_prev": 2.1368839891108826e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 8,
+    "alpha2_work": 0.012102854893193118,
+    "diff_from_prev": 1.4927678124857999e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 9,
+    "alpha2_work": 0.012108896736619336,
+    "diff_from_prev": 6.041843426217788e-06,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 10,
+    "alpha2_work": 0.01207891236332734,
+    "diff_from_prev": 2.9984373291996533e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   }
+  ],
+  "chain_length_incl_genesis": 11,
+  "alpha2_band_around_beta": 8.378980020306084e-05,
+  "difficulty_sweep": [
+   {
+    "difficulty": 0.1,
+    "target_window": 0.12031300400803142,
+    "iterations": 1,
+    "best_diff": 1.0953742721527687e-05,
+    "found": true
+   },
+   {
+    "difficulty": 1.0,
+    "target_window": 0.012031300400803142,
+    "iterations": 1,
+    "best_diff": 1.0953742721527687e-05,
+    "found": true
+   },
+   {
+    "difficulty": 10.0,
+    "target_window": 0.0012031300400803142,
+    "iterations": 1,
+    "best_diff": 1.0953742721527687e-05,
+    "found": true
+   },
+   {
+    "difficulty": 100.0,
+    "target_window": 0.00012031300400803143,
+    "iterations": 1,
+    "best_diff": 1.0953742721527687e-05,
+    "found": true
+   },
+   {
+    "difficulty": 1000.0,
+    "target_window": 1.2031300400803142e-05,
+    "iterations": 1,
+    "best_diff": 1.0953742721527687e-05,
+    "found": true
+   },
+   {
+    "difficulty": 10000.0,
+    "target_window": 1.2031300400803143e-06,
+    "iterations": 171,
+    "best_diff": 3.241277347493243e-07,
+    "found": true
+   },
+   {
+    "difficulty": 100000.0,
+    "target_window": 1.2031300400803142e-07,
+    "iterations": 835,
+    "best_diff": 3.541286888730788e-09,
+    "found": true
+   },
+   {
+    "difficulty": 1000000.0,
+    "target_window": 1.2031300400803143e-08,
+    "iterations": 835,
+    "best_diff": 3.541286888730788e-09,
+    "found": true
+   }
+  ],
+  "phase_convergence": {
+   "difficulty": 100000.0,
+   "target_window": 1.2031300400803142e-07,
+   "found_at_nonce": 834,
+   "iterations_recorded": 835
+  },
+  "byzantine_sweep": {
+   "sizes": [
+    5,
+    7,
+    9,
+    15,
+    21
+   ],
+   "quorum": 0.67,
+   "max_safe_byzantine_fraction": 0.2857142857142857,
+   "theoretical_bound_one_third": 0.32999999999999996,
+   "rows": [
+    {
+     "N": 5,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 1,
+     "byz_frac": 0.2,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 2,
+     "byz_frac": 0.4,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 3,
+     "byz_frac": 0.6,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 4,
+     "byz_frac": 0.8,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 5,
+     "byz": 5,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 7,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 1,
+     "byz_frac": 0.14285714285714285,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 2,
+     "byz_frac": 0.2857142857142857,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 3,
+     "byz_frac": 0.42857142857142855,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 4,
+     "byz_frac": 0.5714285714285714,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 5,
+     "byz_frac": 0.7142857142857143,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 7,
+     "byz": 6,
+     "byz_frac": 0.8571428571428571,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 7,
+     "byz": 7,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 9,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 1,
+     "byz_frac": 0.1111111111111111,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 2,
+     "byz_frac": 0.2222222222222222,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 3,
+     "byz_frac": 0.3333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 4,
+     "byz_frac": 0.4444444444444444,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 5,
+     "byz_frac": 0.5555555555555556,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 6,
+     "byz_frac": 0.6666666666666666,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 7,
+     "byz_frac": 0.7777777777777778,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 9,
+     "byz": 8,
+     "byz_frac": 0.8888888888888888,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 9,
+     "byz": 9,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 1,
+     "byz_frac": 0.06666666666666667,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 2,
+     "byz_frac": 0.13333333333333333,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 3,
+     "byz_frac": 0.2,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 4,
+     "byz_frac": 0.26666666666666666,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 5,
+     "byz_frac": 0.3333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 6,
+     "byz_frac": 0.4,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 7,
+     "byz_frac": 0.4666666666666667,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 8,
+     "byz_frac": 0.5333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 9,
+     "byz_frac": 0.6,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 10,
+     "byz_frac": 0.6666666666666666,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 11,
+     "byz_frac": 0.7333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 12,
+     "byz_frac": 0.8,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 13,
+     "byz_frac": 0.8666666666666667,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 14,
+     "byz_frac": 0.9333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 15,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 1,
+     "byz_frac": 0.047619047619047616,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 2,
+     "byz_frac": 0.09523809523809523,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 3,
+     "byz_frac": 0.14285714285714285,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 4,
+     "byz_frac": 0.19047619047619047,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 5,
+     "byz_frac": 0.23809523809523808,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 6,
+     "byz_frac": 0.2857142857142857,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 7,
+     "byz_frac": 0.3333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 8,
+     "byz_frac": 0.38095238095238093,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 9,
+     "byz_frac": 0.42857142857142855,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 10,
+     "byz_frac": 0.47619047619047616,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 11,
+     "byz_frac": 0.5238095238095238,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 12,
+     "byz_frac": 0.5714285714285714,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 13,
+     "byz_frac": 0.6190476190476191,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 14,
+     "byz_frac": 0.6666666666666666,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 15,
+     "byz_frac": 0.7142857142857143,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 16,
+     "byz_frac": 0.7619047619047619,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 17,
+     "byz_frac": 0.8095238095238095,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 18,
+     "byz_frac": 0.8571428571428571,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 19,
+     "byz_frac": 0.9047619047619048,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 20,
+     "byz_frac": 0.9523809523809523,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 21,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    }
+   ]
+  }
+ }
+}

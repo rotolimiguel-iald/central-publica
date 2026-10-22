@@ -1,0 +1,455 @@
+{
+ "patent_id": "BR102026005707-0",
+ "title": "Oncologia - Geometria do Algoritmo de Coerencia",
+ "kind": "algorithm",
+ "note": "[MEDICAL] APENAS a geometria do algoritmo de processamento de sinal: 3 estimadores de coerencia -> indice composto -> classificacao topologica GRACE/FRONTIER/VACUUM. Series SINTETICAS; NAO e diagnostico, tratamento nem dado de paciente. | PLANAR: algoritmo = plano; mesh generico -> base-plano(s) do mecanismo.",
+ "camera": {
+  "position": [
+   1.7,
+   0.6,
+   1.9
+  ]
+ },
+ "groups": [
+  {
+   "name": "estimadores",
+   "color": "#3366cc",
+   "label": "estimadores C_N",
+   "count": 3,
+   "explodable": true
+  },
+  {
+   "name": "indice",
+   "color": "#ffd60a",
+   "label": "indice composto",
+   "count": 1,
+   "explodable": true
+  },
+  {
+   "name": "classes",
+   "color": "#33aa55",
+   "label": "classificacao topologica",
+   "count": 3,
+   "explodable": true
+  }
+ ],
+ "nodes": [
+  {
+   "id": "SPEC",
+   "label": "C_N espectral",
+   "desc": "Coerencia espectral (Welch/Hann) - series sinteticas.",
+   "shape": "sphere",
+   "position": [
+    -0.9,
+    0.6,
+    0
+   ],
+   "size": 0.1,
+   "color": "#3366cc",
+   "group": "estimadores",
+   "marker": "[SIM]",
+   "layer": "io",
+   "material": "emissive",
+   "texture": "spectral"
+  },
+  {
+   "id": "SYNC",
+   "label": "C_N sincronia (PLV)",
+   "desc": "Phase-locking (Hilbert).",
+   "shape": "sphere",
+   "position": [
+    0,
+    0.9,
+    0
+   ],
+   "size": 0.1,
+   "color": "#3366cc",
+   "group": "estimadores",
+   "marker": "[SIM]",
+   "layer": "io",
+   "material": "emissive",
+   "texture": "phase"
+  },
+  {
+   "id": "INFO",
+   "label": "C_N inf. mutua",
+   "desc": "Informacao mutua normalizada.",
+   "shape": "sphere",
+   "position": [
+    0.9,
+    0.6,
+    0
+   ],
+   "size": 0.1,
+   "color": "#3366cc",
+   "group": "estimadores",
+   "marker": "[SIM]",
+   "layer": "io",
+   "material": "emissive",
+   "texture": "grid"
+  },
+  {
+   "id": "COMP",
+   "label": "indice composto",
+   "desc": "Media dos 3 estimadores; separa coerente de incoerente.",
+   "shape": "box",
+   "position": [
+    0,
+    0.2,
+    0
+   ],
+   "size": 0.14,
+   "color": "#ffd60a",
+   "group": "indice",
+   "marker": "[SIM]",
+   "layer": "core",
+   "material": "emissive",
+   "texture": "holo"
+  },
+  {
+   "id": "GRACE",
+   "label": "GRACE",
+   "desc": "Classe alta (>= C_crit + 2beta).",
+   "shape": "sphere",
+   "position": [
+    -0.9,
+    -0.7,
+    0
+   ],
+   "size": 0.11,
+   "color": "#33aa55",
+   "group": "classes",
+   "marker": "[MEDICAL]",
+   "layer": "io",
+   "material": "emissive"
+  },
+  {
+   "id": "FRONTIER",
+   "label": "FRONTIER (2beta)",
+   "desc": "Faixa de fronteira de largura 2beta.",
+   "shape": "sphere",
+   "position": [
+    0,
+    -0.9,
+    0
+   ],
+   "size": 0.11,
+   "color": "#ee8800",
+   "group": "classes",
+   "marker": "[MEDICAL]",
+   "layer": "io",
+   "material": "emissive",
+   "texture": "phase"
+  },
+  {
+   "id": "VACUUM",
+   "label": "VACUUM",
+   "desc": "Classe baixa (< C_crit - 2beta).",
+   "shape": "sphere",
+   "position": [
+    0.9,
+    -0.7,
+    0
+   ],
+   "size": 0.11,
+   "color": "#cc2222",
+   "group": "classes",
+   "marker": "[MEDICAL]",
+   "layer": "io",
+   "material": "emissive"
+  }
+ ],
+ "edges": [
+  {
+   "from": "SPEC",
+   "to": "COMP"
+  },
+  {
+   "from": "SYNC",
+   "to": "COMP"
+  },
+  {
+   "from": "INFO",
+   "to": "COMP"
+  },
+  {
+   "from": "COMP",
+   "to": "GRACE"
+  },
+  {
+   "from": "COMP",
+   "to": "FRONTIER"
+  },
+  {
+   "from": "COMP",
+   "to": "VACUUM"
+  }
+ ],
+ "constants": [
+  {
+   "symbol": "faixa FRONTIER",
+   "value": "2beta ~= 0,024",
+   "note": "beta=alpha*sqrt(e) ~= 0,012031 (nunca literal)"
+  },
+  {
+   "symbol": "escopo",
+   "value": "series sinteticas; sem clinica",
+   "note": "physical_verdict_allowed=false"
+  },
+  {
+   "symbol": "beta_TGL_runtime",
+   "value": "0.012031300401",
+   "note": "alpha*sqrt(e) injetado em runtime (nunca literal)"
+  },
+  {
+   "symbol": "AUC_alto_SNR",
+   "value": "1.0",
+   "note": "AUC do indice de coerencia no regime de alto SNR (sintetico)"
+  },
+  {
+   "symbol": "composto_corr_ruido",
+   "value": "-0.9252",
+   "note": "correlacao composto-vs-ruido (regime, sintetico)"
+  },
+  {
+   "symbol": "v140_expoente_defasagem",
+   "value": "2.0",
+   "note": "expoente de w na lei de defasagem GKLS recuperado do numerico (esperado 2)"
+  },
+  {
+   "symbol": "v140_auc_populacao_cega",
+   "value": "0.5056",
+   "note": "AUC do observavel de populacao sob defasagem pura (cego ao canal; sintetico)"
+  },
+  {
+   "symbol": "v167_expoente_birkhoff",
+   "value": "-1.0",
+   "note": "expoente de N na convergencia da media de Cesaro ao projetor invariante (esperado -1)"
+  },
+  {
+   "symbol": "v167_plv_deriva",
+   "value": "0.002274",
+   "note": "PLV do par a deriva: a media de Birkhoff anula fora do invariante (sintetico)"
+  },
+  {
+   "symbol": "v206_piso_exclusao_beta",
+   "value": "10",
+   "note": "piso do espectro de exclusao em unidades de beta (o piso beta em si NAO excluido; sintetico)"
+  },
+  {
+   "symbol": "v206_posto_seletor",
+   "value": "2",
+   "note": "posto do seletor de admissao = numero de canais independentes admitidos (criterio C1 >= 2)"
+  }
+ ],
+ "schema": 2,
+ "layers": [
+  {
+   "id": "space",
+   "name": "Espaco de Hilbert / substrato computacional",
+   "order": 0,
+   "peelable": true
+  },
+  {
+   "id": "io",
+   "name": "Entrada / saida",
+   "order": 1,
+   "peelable": true
+  },
+  {
+   "id": "transform",
+   "name": "Transformacao",
+   "order": 2,
+   "peelable": true
+  },
+  {
+   "id": "core",
+   "name": "Nucleo (raiz / estado)",
+   "order": 3,
+   "peelable": true
+  }
+ ],
+ "meshes": [
+  {
+   "layer": "space",
+   "shape": "box",
+   "size": 1.0,
+   "material": "emissive",
+   "opacity": 0.85,
+   "texture": "spectral",
+   "color": "#8fd0ff",
+   "marker": "[SIM]",
+   "id": "plano_base",
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.25,
+    1.25,
+    0.03
+   ],
+   "label": "plano do algoritmo",
+   "desc": "ALGORITMO E PLANO: a informacao escrita mora num plano. O mecanismo se desenha sobre esta superficie (nao e' um solido 3D)."
+  },
+  {
+   "id": "eixo_decisao",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    1.12,
+    -0.1,
+    0.04
+   ],
+   "scale": [
+    0.015,
+    0.45,
+    0.02
+   ],
+   "color": "#9aa0a6",
+   "material": "emissive",
+   "opacity": 0.8,
+   "texture": "spectral",
+   "layer": "io",
+   "marker": "[MEDICAL]",
+   "label": "eixo de decisao C_N",
+   "desc": "projecao do indice composto num eixo 1D de coerencia com dois limiares C_crit+/-beta"
+  },
+  {
+   "id": "zona_grace",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    1.12,
+    0.2,
+    0.045
+   ],
+   "scale": [
+    0.05,
+    0.13,
+    0.018
+   ],
+   "color": "#33aa55",
+   "material": "emissive",
+   "opacity": 0.45,
+   "texture": "holo",
+   "layer": "io",
+   "marker": "[MEDICAL]",
+   "label": "zona GRACE (>= C_crit+beta)"
+  },
+  {
+   "id": "banda_frontier_2beta",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    1.12,
+    -0.05,
+    0.06
+   ],
+   "scale": [
+    0.05,
+    0.015,
+    0.02
+   ],
+   "color": "#ee8800",
+   "material": "emissive",
+   "opacity": 0.97,
+   "texture": "phase",
+   "layer": "io",
+   "marker": "[MEDICAL]",
+   "label": "FRONTIER = 2beta (alpha*sqrt(e))",
+   "desc": "faixa de decisao de largura 2beta — a fronteira TGL como separatriz razor entre GRACE e VACUUM"
+  },
+  {
+   "id": "zona_vacuum",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    1.12,
+    -0.32,
+    0.045
+   ],
+   "scale": [
+    0.05,
+    0.13,
+    0.018
+   ],
+   "color": "#cc2222",
+   "material": "emissive",
+   "opacity": 0.45,
+   "texture": "holo",
+   "layer": "io",
+   "marker": "[MEDICAL]",
+   "label": "zona VACUUM (< C_crit-beta)"
+  },
+  {
+   "id": "roc_snr_panel",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    -1,
+    -0.15,
+    0.045
+   ],
+   "scale": [
+    0.2,
+    0.26,
+    0.018
+   ],
+   "color": "#6fa8ff",
+   "material": "emissive",
+   "opacity": 0.5,
+   "texture": "spectral",
+   "layer": "io",
+   "marker": "[SIM]",
+   "label": "ROC · Youden · AUC(SNR):0,52->1,0",
+   "desc": "curva ROC do indice de coerencia + ponto de Youden; AUC sobe 0,5->1,0 na varredura de SNR; composto decai com ruido (corr -0,93) — series sinteticas"
+  },
+  {
+   "id": "bo_landscape",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    -0.5,
+    -1.15,
+    0.045
+   ],
+   "scale": [
+    0.32,
+    0.05,
+    0.018
+   ],
+   "color": "#7fd0a0",
+   "material": "emissive",
+   "opacity": 0.6,
+   "texture": "spectral",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "label": "dC_N(w): GP+EI -> w*~12 (sigma<beta)"
+  },
+  {
+   "id": "ledger_hash",
+   "shape": "box",
+   "size": 1,
+   "position": [
+    0.5,
+    -1.15,
+    0.045
+   ],
+   "scale": [
+    0.32,
+    0.05,
+    0.018
+   ],
+   "color": "#8a8f98",
+   "material": "emissive",
+   "opacity": 0.6,
+   "texture": "circuit",
+   "layer": "transform",
+   "marker": "[SIM]",
+   "label": "porta AND + cadeia hash-256 (auditoria)"
+  }
+ ],
+ "generated_by": "one_oncologia.py (forma=conteudo)"
+}

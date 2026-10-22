@@ -1,0 +1,41 @@
+{
+  "patent_id": "BR102026003431-2",
+  "title": "ACOM Crypto — Criptografia por Separação Ontológica",
+  "source": "Relatório descritivo, Figura 1; memória técnica da patente",
+  "note": "Diagrama de componentes clicável (camada b). Ilustração de engenharia derivada dos desenhos do depósito INPI — não é prova física. [DEFENSE] a ofuscação XOR não substitui AEAD; a alegação é a separação ontológica.",
+  "groups": [
+    {
+      "name": "Sistema de criptografia (Figura 1)",
+      "kind": "block",
+      "components": [
+        { "id": "100", "label": "Módulo de Entrada", "desc": "Recebe dados em formato tensorial (L).", "marker": "[REAL]", "x": 0.06, "y": 0.10 },
+        { "id": "102", "label": "Espelho Criptográfico", "desc": "Executa a reflexão dimensional com separação ontológica (produz g, ∂L, ψ, θ).", "marker": "[REAL]", "x": 0.30, "y": 0.10 },
+        { "id": "104", "label": "Gerador de Chaves", "desc": "Produz share_id e key_id (16 bytes / 128 bits cada, secrets.token_bytes), chaves de ofuscação e nonces.", "marker": "[REAL]", "x": 0.54, "y": 0.10 },
+        { "id": "106", "label": "Ofuscador XOR derivado", "desc": "XOR dos dados empacotados com chaves derivadas via HMAC-SHA256(share_id, contexto) + PRNG PCG64 seedado.", "marker": "[DEFENSE]", "x": 0.78, "y": 0.10 },
+        { "id": "108", "label": "Compressor Entrópico", "desc": "Compressão sem perda separada por parte (zstd nível 22 ou zlib nível 9).", "marker": "[REAL]", "x": 0.78, "y": 0.40 },
+        { "id": "110", "label": "Hashing SHA-256 triplo", "desc": "Hashes cruzados (state_hash, angle_hash, psi_hash, theta_hash).", "marker": "[REAL]", "x": 0.54, "y": 0.40 },
+        { "id": "112", "label": "Serializador", "desc": "Magic bytes + metadados JSON UTF-8: Ψ 0xCEA8, Θ 0xCE98, κ 0xCEBA; comprimento uint32 LE.", "marker": "[REAL]", "x": 0.30, "y": 0.40 },
+        { "id": "114", "label": "Módulo de Saída", "desc": "Gera três objetos separados, transmissíveis por canais independentes A/B/C.", "marker": "[REAL]", "x": 0.06, "y": 0.40 }
+      ]
+    },
+    {
+      "name": "Separação ontológica tripartida (as três partes)",
+      "kind": "share",
+      "components": [
+        { "id": "Ψ", "label": "PsiShare — Canal A", "desc": "Estados psiônicos: sinais e direções de transição, SEM magnitude (índices {0,1,2,3}). Isolado ≡ RUÍDO (entropia ≈ 8 bits/byte).", "marker": "[REAL]", "x": 0.14, "y": 0.76 },
+        { "id": "Θ", "label": "ThetaShare — Canal B", "desc": "Ângulos codificados via arcsin: magnitudes relativas em [0,π/2], SEM polaridade nem escala. Isolado ≡ RUÍDO.", "marker": "[REAL]", "x": 0.44, "y": 0.76 },
+        { "id": "κ", "label": "MasterKey — Canal C", "desc": "Parâmetros estruturais (g_max, shape, hashes, Fexp/Sψ esperados), SEM nenhum dado. Isolado ≡ INÚTIL.", "marker": "[REAL]", "x": 0.74, "y": 0.76 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "100", "to": "102" }, { "from": "102", "to": "104" },
+    { "from": "104", "to": "106" }, { "from": "106", "to": "108" },
+    { "from": "108", "to": "110" }, { "from": "110", "to": "112" },
+    { "from": "112", "to": "114" }
+  ],
+  "constants": [
+    { "symbol": "reconstrução", "value": "exige Ψ + Θ + κ simultâneos → Dobra L' = sign(L)·[g_max·sin(θ)]²", "note": "Segurança por incompletude ontológica: nenhum subconjunto próprio reconstrói o valor." },
+    { "symbol": "integridade", "value": "SHA-256 triplo cruzado + verificação física Fexp (|Δ|<0,001)", "note": "Três pontos de rejeição de adulteração." }
+  ]
+}

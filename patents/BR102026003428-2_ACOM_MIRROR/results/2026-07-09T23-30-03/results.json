@@ -1,0 +1,284 @@
+{
+ "patent_id": "BR102026003428-2",
+ "slug": "acom_mirror",
+ "timestamp": "2026-07-09T23-30-03",
+ "runner": "one_acom_mirror.py (evoluído)",
+ "markers": [
+  "[PILOTO]",
+  "[SIM]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "beta_injected_into_prototype": true,
+ "alpha2_original_prototype": 0.012,
+ "theta_miguel_deg": 6.297289216477979,
+ "verdict": "MIRROR_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "MIRROR_FULL_LOGIC_DEMONSTRATED ([PILOTO][SIM] — a engine de referência v17.0 real do operador (DimensionalMirror REFLECT/MANIFEST + ACOMv161 comparador, zstd) fecha em SIMULAÇÃO; codificação angular arcsin, Fexp/Sψ e a tabela v16.1×v17.0 reais; β injetado; números sintéticos, NÃO a Tabela 2; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "theta_miguel_deg": 6.297289216477979,
+  "free_parameters": 0,
+  "coupling_role": "NOMINAL (mirror imperfection / θ_Miguel); does NOT enter the compression transform g=sqrt|L|, theta=arcsin, fold L'=s·g²"
+ },
+ "table_v161_vs_v17": {
+  "embeddings_768d": {
+   "ratio_v161": 9.133736997729946,
+   "corr_v161": 0.9998360798982933,
+   "ratio_v17": 7.541602173120522,
+   "corr_v17": 0.9999816039824521,
+   "delta_pct": -17.431362705156992
+  },
+  "kv_cache": {
+   "ratio_v161": 8.849115996455547,
+   "corr_v161": 0.999851158215463,
+   "ratio_v17": 7.4537842006866795,
+   "corr_v17": 0.9999838859836679,
+   "delta_pct": -15.768035997355645
+  },
+  "pesos_nn": {
+   "ratio_v161": 9.29306482739062,
+   "corr_v161": 0.999820597782338,
+   "ratio_v17": 7.620001326227419,
+   "corr_v17": 0.9999792539181729,
+   "delta_pct": -18.003355537044897
+  },
+  "esparso_95": {
+   "ratio_v161": 52.41090146750524,
+   "corr_v161": 0.9998831556806633,
+   "ratio_v17": 52.645433008686496,
+   "corr_v17": 0.9999881934455535,
+   "delta_pct": 0.4474861805738417
+  },
+  "gradientes": {
+   "ratio_v161": 8.861418491565038,
+   "corr_v161": 0.9998423144146736,
+   "ratio_v17": 7.501383067503071,
+   "corr_v17": 0.9999825762689518,
+   "delta_pct": -15.347829756111286
+  },
+  "audio_decay": {
+   "ratio_v161": 97.13656387665198,
+   "corr_v161": 0.9998973118691329,
+   "ratio_v17": 48.675496688741724,
+   "corr_v17": 0.9999907180582787,
+   "delta_pct": -49.88962472406181
+  },
+  "financial": {
+   "ratio_v161": 15.88089330024814,
+   "corr_v161": 0.9997368997963381,
+   "ratio_v17": 11.053540587219343,
+   "corr_v17": 0.9999480298054341,
+   "delta_pct": -30.397236614853195
+  }
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original_prototype": 0.012,
+   "note": "runner injeta β=α·√e no protótipo v17 (que tinha 0.012 literal); no algoritmo Mirror α² é constante nominal (metadados), não entra na transformada de compressão."
+  },
+  {
+   "test": "theta_miguel_form",
+   "passed": true,
+   "theta_miguel_deg": 6.297289216477979,
+   "expected_deg_approx": 6.29
+  },
+  {
+   "test": "roundtrip_embeddings_768d",
+   "passed": true,
+   "correlation": 0.9999816039824521,
+   "compression_ratio": 7.541602173120522,
+   "f_exp": 0.5001744627952576,
+   "state_entropy": 1.8111398220062256,
+   "alpha2_in_metadata": 0.012031300400803142,
+   "n_elements": 768000
+  },
+  {
+   "test": "roundtrip_kv_cache",
+   "passed": true,
+   "correlation": 0.9999838859836679,
+   "compression_ratio": 7.4537842006866795,
+   "f_exp": 0.498779296875,
+   "state_entropy": 1.8122406005859375,
+   "alpha2_in_metadata": 0.012031300400803142,
+   "n_elements": 131072
+  },
+  {
+   "test": "roundtrip_pesos_nn",
+   "passed": true,
+   "correlation": 0.9999792539181729,
+   "compression_ratio": 7.620001326227419,
+   "f_exp": 0.5002841949462891,
+   "state_entropy": 1.811050295829773,
+   "alpha2_in_metadata": 0.012031300400803142,
+   "n_elements": 1048576
+  },
+  {
+   "test": "roundtrip_esparso_95",
+   "passed": true,
+   "correlation": 0.9999881934455535,
+   "compression_ratio": 52.645433008686496,
+   "f_exp": 0.9525600075721741,
+   "state_entropy": 0.32620397210121155,
+   "alpha2_in_metadata": 0.012031300400803142,
+   "n_elements": 50000
+  },
+  {
+   "test": "roundtrip_gradientes",
+   "passed": true,
+   "correlation": 0.9999825762689518,
+   "compression_ratio": 7.501383067503071,
+   "f_exp": 0.5000399947166443,
+   "state_entropy": 1.811228632926941,
+   "alpha2_in_metadata": 0.012031300400803142,
+   "n_elements": 100000
+  },
+  {
+   "test": "roundtrip_audio_decay",
+   "passed": true,
+   "correlation": 0.9999907180582787,
+   "compression_ratio": 48.675496688741724,
+   "f_exp": -0.007800453342497349,
+   "state_entropy": 1.9999561309814453,
+   "alpha2_in_metadata": 0.012031300400803142,
+   "n_elements": 44100
+  },
+  {
+   "test": "roundtrip_financial",
+   "passed": true,
+   "correlation": 0.9999480298054341,
+   "compression_ratio": 11.053540587219343,
+   "f_exp": -0.007499999832361937,
+   "state_entropy": 0.9999594688415527,
+   "alpha2_in_metadata": 0.012031300400803142,
+   "n_elements": 4000
+  },
+  {
+   "test": "h4_nomination_E4_fidelity",
+   "passed": true,
+   "note": "ψ=bit_high·2+bit_low (E4) recomputado à mão == v17._nominate_state"
+  },
+  {
+   "test": "f_exp_sparse_negative_E4_strict",
+   "passed": true,
+   "f_exp_E4_strict": -0.85796,
+   "f_exp_v17_engine": 0.9525600075721741,
+   "honest_note": "E4 estrita (∂L>0 cru): zeros→ψ0 (paridade −1) → Fexp<0, sinal do exemplo [043]. A engine v17 aplica sign(0)→+1 antes da nominação → zeros→ψ1 → Fexp>0. Ambas as leituras constam do texto da patente."
+  },
+  {
+   "test": "s_psi_embeddings_regimes",
+   "passed": true,
+   "s_psi_iid_gaussian": 1.8111398220062256,
+   "s_psi_iid_closed_form": 1.811278124459133,
+   "s_psi_smooth_embeddings": 1.9976962804794312,
+   "note": "iid gaussiano Sψ≈1,811 (ρ(L,∂L)=1/√2, fechado); regime [041] Sψ≈1,998 reproduzido com embeddings de estrutura suave."
+  },
+  {
+   "test": "compression_table_v161_vs_v17",
+   "passed": true,
+   "table": {
+    "embeddings_768d": {
+     "ratio_v161": 9.133736997729946,
+     "corr_v161": 0.9998360798982933,
+     "ratio_v17": 7.541602173120522,
+     "corr_v17": 0.9999816039824521,
+     "delta_pct": -17.431362705156992
+    },
+    "kv_cache": {
+     "ratio_v161": 8.849115996455547,
+     "corr_v161": 0.999851158215463,
+     "ratio_v17": 7.4537842006866795,
+     "corr_v17": 0.9999838859836679,
+     "delta_pct": -15.768035997355645
+    },
+    "pesos_nn": {
+     "ratio_v161": 9.29306482739062,
+     "corr_v161": 0.999820597782338,
+     "ratio_v17": 7.620001326227419,
+     "corr_v17": 0.9999792539181729,
+     "delta_pct": -18.003355537044897
+    },
+    "esparso_95": {
+     "ratio_v161": 52.41090146750524,
+     "corr_v161": 0.9998831556806633,
+     "ratio_v17": 52.645433008686496,
+     "corr_v17": 0.9999881934455535,
+     "delta_pct": 0.4474861805738417
+    },
+    "gradientes": {
+     "ratio_v161": 8.861418491565038,
+     "corr_v161": 0.9998423144146736,
+     "ratio_v17": 7.501383067503071,
+     "corr_v17": 0.9999825762689518,
+     "delta_pct": -15.347829756111286
+    },
+    "audio_decay": {
+     "ratio_v161": 97.13656387665198,
+     "corr_v161": 0.9998973118691329,
+     "ratio_v17": 48.675496688741724,
+     "corr_v17": 0.9999907180582787,
+     "delta_pct": -49.88962472406181
+    },
+    "financial": {
+     "ratio_v161": 15.88089330024814,
+     "corr_v161": 0.9997368997963381,
+     "ratio_v17": 11.053540587219343,
+     "corr_v17": 0.9999480298054341,
+     "delta_pct": -30.397236614853195
+    }
+   },
+   "note": "Fig. 6 regenerada com os DOIS codecs reais do operador (v16.1 linear-g vs v17.0 angular). Números [SIM] sintéticos, não a Tabela 2 de produção."
+  },
+  {
+   "test": "angular_vs_linear_g_measured",
+   "passed": true,
+   "comparison": {
+    "gradientes": {
+     "rmse_small_angular": 1.9412798749498065e-05,
+     "rmse_small_linear": 4.773786032415508e-05,
+     "corr_angular": 0.9999825762689518,
+     "corr_linear": 0.9998423144146736
+    },
+    "esparso_95": {
+     "rmse_small_angular": 0.0017326463575704561,
+     "rmse_small_linear": 0.003739964917358242,
+     "corr_angular": 0.9999881934455535,
+     "corr_linear": 0.9998831556806633
+    },
+    "financial": {
+     "rmse_small_angular": 0.13495990787297651,
+     "rmse_small_linear": 0.254294579685008,
+     "corr_angular": 0.9999480298054341,
+     "corr_linear": 0.9997368997963381
+    }
+   },
+   "note": "Números medidos [SIM]; a vantagem angular em g pequeno é regime-dependente — reportada como medida, sem ajustar a frase."
+  }
+ ],
+ "summary": {
+  "tests_passed": 14,
+  "tests_total": 14,
+  "datasets": [
+   "embeddings_768d",
+   "kv_cache",
+   "pesos_nn",
+   "esparso_95",
+   "gradientes",
+   "audio_decay",
+   "financial"
+  ],
+  "correlation_min": 0.9999480298054341,
+  "correlation_mean": 0.9999791802089302,
+  "compression_ratio_mean_v17": 20.355891578883607,
+  "table_mean_delta_pct": -20.912851307715716,
+  "s_psi_iid": 1.8111398220062256,
+  "s_psi_smooth": 1.9976962804794312,
+  "f_exp_sparse_E4_strict": -0.85796
+ },
+ "source_prototype": "prototype_src/Acom_v17_mirror.py (resgatado de C:/IALD/projetos_pyhton/acom, READ-ONLY; β injetado em runtime). TGL_v11_ESPELHO.py copiado como proveniência (não importado).",
+ "note": "RUNNER EVOLUÍDO: roda a engine de referência v17.0 REAL do operador (torch+zstd) com β=α·√e injetado (original tinha 0.012 literal; α² é nominal e não altera as razões de compressão). Tensores sintéticos [SIM]; NÃO a Tabela 2 de produção. Nenhum token/modelo HuggingFace (P-09). Simulação não valida física."
+}

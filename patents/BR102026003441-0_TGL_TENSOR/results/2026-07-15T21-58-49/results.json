@@ -1,0 +1,631 @@
+{
+ "patent_id": "BR102026003441-0",
+ "slug": "tgl_tensor",
+ "timestamp": "2026-07-15T21-58-49",
+ "runner": "one_tgl_tensor.py (evoluído)",
+ "markers": [
+  "[PILOTO]",
+  "[SIM]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "TENSOR_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "TENSOR_FULL_LOGIC_DEMONSTRATED ([PILOTO][SIM] — os 4 modos reais do operador (DIRECT/SPECTRAL/HYBRID/AUTO) + BitPacker N-bit + varreduras bits/rank-energia fecham; β injetado; números sintéticos, não a Tabela 2; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "spectral_retention": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "alpha2_original": 0.012,
+   "spectral_retention_1_minus_beta": 0.9879686995991969
+  },
+  {
+   "test": "mode_DIRECT",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.7640301818521205,
+     "cosine": 0.9999999449030538
+    },
+    "embeddings": {
+     "ratio": 3.7645905456327933,
+     "cosine": 0.9999999575190274
+    },
+    "ffn_weights": {
+     "ratio": 3.7643680017806305,
+     "cosine": 0.9999999506207159
+    },
+    "gradientes_esparso": {
+     "ratio": 3.762935089369708,
+     "cosine": 0.9999999693995422
+    }
+   }
+  },
+  {
+   "test": "mode_SPECTRAL",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.763516811669107,
+     "cosine": 0.9999999321180293
+    },
+    "embeddings": {
+     "ratio": 3.2682467802928548,
+     "cosine": 0.9940356772581067
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    }
+   }
+  },
+  {
+   "test": "mode_HYBRID",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.763516811669107,
+     "cosine": 0.9999999321180293
+    },
+    "embeddings": {
+     "ratio": 3.2682467802928548,
+     "cosine": 0.9940356772581067
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    }
+   }
+  },
+  {
+   "test": "mode_AUTO",
+   "passed": true,
+   "per_tensor": {
+    "kv_cache": {
+     "ratio": 3.7640301818521205,
+     "cosine": 0.9999999449030538
+    },
+    "embeddings": {
+     "ratio": 3.7645905456327933,
+     "cosine": 0.9999999575190274
+    },
+    "ffn_weights": {
+     "ratio": 80.12348131733782,
+     "cosine": 0.9999779894978489
+    },
+    "gradientes_esparso": {
+     "ratio": 3.762935089369708,
+     "cosine": 0.9999999693995422
+    }
+   }
+  },
+  {
+   "test": "auto_mode_selection",
+   "passed": true,
+   "chosen_for_kv_cache": "CompressionMode.DIRECT",
+   "note": "AUTO escolhe o modo por análise espectral (baixo rank → SPECTRAL)"
+  },
+  {
+   "test": "bitpacker_v4_Nbit_exact",
+   "passed": true,
+   "per_bits": {
+    "8bit": true,
+    "10bit": true,
+    "12bit": true,
+    "14bit": true,
+    "16bit": true
+   }
+  },
+  {
+   "test": "spectral_analysis_verb_floor",
+   "passed": true,
+   "rank_optimal": 24,
+   "is_low_rank": true,
+   "compression_potential": 21.322921750447374,
+   "note": "rank ótimo pela energia ≥ 1−β (Verb Floor derivado da TGL)"
+  },
+  {
+   "test": "bits_sweep_fidelity_monotone",
+   "passed": true,
+   "cosine_8bit": 0.9999872745992243,
+   "cosine_16bit": 0.9999999998070218,
+   "note": "varredura bits: mais bits nunca piora a fidelidade DIRECT (round-trip exato)"
+  },
+  {
+   "test": "rank_adaptive_monotone_in_energy",
+   "passed": true,
+   "ranks_ffn": [
+    21,
+    23,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24
+   ],
+   "energy_grid": [
+    0.9,
+    0.95,
+    0.98,
+    0.9879686995991969,
+    0.99,
+    0.995,
+    0.999,
+    0.9999
+   ],
+   "note": "rank ótimo é não-decrescente no limiar de energia; Verb Floor=1−β marcado"
+  }
+ ],
+ "summary": {
+  "tests_passed": 10,
+  "tests_total": 10,
+  "modes": [
+   "DIRECT",
+   "SPECTRAL",
+   "HYBRID",
+   "AUTO"
+  ],
+  "auto_chose_for_kv": "CompressionMode.DIRECT",
+  "bitpacker_ok": true,
+  "per_mode_best_ratio": {
+   "DIRECT": 3.7645905456327933,
+   "SPECTRAL": 80.12348131733782,
+   "HYBRID": 80.12348131733782,
+   "AUTO": 80.12348131733782
+  },
+  "per_mode_computed_rank_ffn": {
+   "DIRECT": 0,
+   "SPECTRAL": 24,
+   "HYBRID": 24,
+   "AUTO": 24
+  },
+  "bits_sweep": {
+   "DIRECT": {
+    "kv_cache": {
+     "8": {
+      "ratio": 7.108700663023877,
+      "cosine": 0.9999858233923719,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999991197554492,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999449030538,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999965744877,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999997849242,
+      "rank_used": 0
+     }
+    },
+    "embeddings": {
+     "8": {
+      "ratio": 7.110699612290955,
+      "cosine": 0.9999890351729765,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999993184125693,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999575190274,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999973436453,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999998338686,
+      "rank_used": 0
+     }
+    },
+    "ffn_weights": {
+     "8": {
+      "ratio": 7.109905682765915,
+      "cosine": 0.9999872745992243,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7643680017806305,
+      "cosine": 0.9999992087083588,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7643680017806305,
+      "cosine": 0.9999999506207159,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7643680017806305,
+      "cosine": 0.9999999969145316,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7643680017806305,
+      "cosine": 0.9999999998070218,
+      "rank_used": 0
+     }
+    }
+   },
+   "SPECTRAL": {
+    "kv_cache": {
+     "8": {
+      "ratio": 7.107736941284926,
+      "cosine": 0.9999827317832825,
+      "rank_used": 8
+     },
+     "10": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999990118491087,
+      "rank_used": 8
+     },
+     "12": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999999321180293,
+      "rank_used": 8
+     },
+     "14": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999999958707899,
+      "rank_used": 8
+     },
+     "16": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.999999999738805,
+      "rank_used": 8
+     }
+    },
+    "embeddings": {
+     "8": {
+      "ratio": 6.173276765058289,
+      "cosine": 0.9940147110136452,
+      "rank_used": 742
+     },
+     "10": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940344500808371,
+      "rank_used": 742
+     },
+     "12": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940356772581067,
+      "rank_used": 742
+     },
+     "14": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940357537408028,
+      "rank_used": 742
+     },
+     "16": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940357585075819,
+      "rank_used": 742
+     }
+    },
+    "ffn_weights": {
+     "8": {
+      "ratio": 151.09164265129684,
+      "cosine": 0.9999600337307365,
+      "rank_used": 24
+     },
+     "10": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999769447187853,
+      "rank_used": 24
+     },
+     "12": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999779894978489,
+      "rank_used": 24
+     },
+     "14": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.999978054183655,
+      "rank_used": 24
+     },
+     "16": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999780582269416,
+      "rank_used": 24
+     }
+    }
+   },
+   "HYBRID": {
+    "kv_cache": {
+     "8": {
+      "ratio": 7.107736941284926,
+      "cosine": 0.9999827317832825,
+      "rank_used": 8
+     },
+     "10": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999990118491087,
+      "rank_used": 8
+     },
+     "12": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999999321180293,
+      "rank_used": 8
+     },
+     "14": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.9999999958707899,
+      "rank_used": 8
+     },
+     "16": {
+      "ratio": 3.763516811669107,
+      "cosine": 0.999999999738805,
+      "rank_used": 8
+     }
+    },
+    "embeddings": {
+     "8": {
+      "ratio": 6.173276765058289,
+      "cosine": 0.9940147110136452,
+      "rank_used": 742
+     },
+     "10": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940344500808371,
+      "rank_used": 742
+     },
+     "12": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940356772581067,
+      "rank_used": 742
+     },
+     "14": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940357537408028,
+      "rank_used": 742
+     },
+     "16": {
+      "ratio": 3.2682467802928548,
+      "cosine": 0.9940357585075819,
+      "rank_used": 742
+     }
+    },
+    "ffn_weights": {
+     "8": {
+      "ratio": 151.09164265129684,
+      "cosine": 0.9999600337307365,
+      "rank_used": 24
+     },
+     "10": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999769447187853,
+      "rank_used": 24
+     },
+     "12": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999779894978489,
+      "rank_used": 24
+     },
+     "14": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.999978054183655,
+      "rank_used": 24
+     },
+     "16": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999780582269416,
+      "rank_used": 24
+     }
+    }
+   },
+   "AUTO": {
+    "kv_cache": {
+     "8": {
+      "ratio": 7.108700663023877,
+      "cosine": 0.9999858233923719,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999991197554492,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999449030538,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999965744877,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7640301818521205,
+      "cosine": 0.9999999997849242,
+      "rank_used": 0
+     }
+    },
+    "embeddings": {
+     "8": {
+      "ratio": 7.110699612290955,
+      "cosine": 0.9999890351729765,
+      "rank_used": 0
+     },
+     "10": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999993184125693,
+      "rank_used": 0
+     },
+     "12": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999575190274,
+      "rank_used": 0
+     },
+     "14": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999973436453,
+      "rank_used": 0
+     },
+     "16": {
+      "ratio": 3.7645905456327933,
+      "cosine": 0.9999999998338686,
+      "rank_used": 0
+     }
+    },
+    "ffn_weights": {
+     "8": {
+      "ratio": 151.09164265129684,
+      "cosine": 0.9999600337307365,
+      "rank_used": 24
+     },
+     "10": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999769447187853,
+      "rank_used": 24
+     },
+     "12": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999779894978489,
+      "rank_used": 24
+     },
+     "14": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.999978054183655,
+      "rank_used": 24
+     },
+     "16": {
+      "ratio": 80.12348131733782,
+      "cosine": 0.9999780582269416,
+      "rank_used": 24
+     }
+    }
+   }
+  },
+  "rank_vs_energy": {
+   "ffn_weights": [
+    {
+     "energy_threshold": 0.9,
+     "rank_optimal": 21,
+     "compression_potential": 24.36905342908271,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.95,
+     "rank_optimal": 23,
+     "compression_potential": 22.25000530481465,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.98,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.9879686995991969,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": true
+    },
+    {
+     "energy_threshold": 0.99,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.995,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.999,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.9999,
+     "rank_optimal": 24,
+     "compression_potential": 21.322921750447374,
+     "is_verb_floor": false
+    }
+   ],
+   "embeddings": [
+    {
+     "energy_threshold": 0.9,
+     "rank_optimal": 604,
+     "compression_potential": 1.0664903995034154,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.95,
+     "rank_optimal": 675,
+     "compression_potential": 0.9543114093334265,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.98,
+     "rank_optimal": 727,
+     "compression_potential": 0.8860525464925212,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.9879686995991969,
+     "rank_optimal": 742,
+     "compression_potential": 0.8681404330189527,
+     "is_verb_floor": true
+    },
+    {
+     "energy_threshold": 0.99,
+     "rank_optimal": 746,
+     "compression_potential": 0.8634855245309154,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.995,
+     "rank_optimal": 757,
+     "compression_potential": 0.8509381787319193,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.999,
+     "rank_optimal": 766,
+     "compression_potential": 0.8409402105744946,
+     "is_verb_floor": false
+    },
+    {
+     "energy_threshold": 0.9999,
+     "rank_optimal": 768,
+     "compression_potential": 0.8387502621094569,
+     "is_verb_floor": false
+    }
+   ]
+  },
+  "verb_floor_1_minus_beta": 0.9879686995991969,
+  "rank_optimal_ffn": 24
+ },
+ "source_prototype": "prototype_src/tgl_tensor_v3.py + tgl_tensor_v4.py (resgatado de C:/IALD/projetos_pyhton/tgl-tensor, READ-ONLY; β injetado)",
+ "note": "RUNNER EVOLUÍDO: roda a engine de 4 modos do operador (tgl_tensor_v3.py) + BitPacker (v4) com β=α·√e injetado (originais tinham 0.012 literal), acrescido de varreduras 4 modos × bits × tensores e da curva rank-adaptativo × energia (Verb Floor=1−β). Tensores sintéticos; NÃO os números da Tabela 2. Nenhum token/modelo HuggingFace (P-09). Simulação não valida física."
+}

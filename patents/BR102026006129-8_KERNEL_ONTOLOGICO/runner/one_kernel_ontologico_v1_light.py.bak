@@ -1,0 +1,210 @@
+# -*- coding: utf-8 -*-
+"""one_kernel_ontologico.py — runner único forma = conteúdo da patente Kernel Ontológico
+(BR102026006129-8 — Kernel Ontológico para LLM com Cosmogênese). [SIM][PILOTO]
+
+Demonstra a LÓGICA da invenção com números REAIS de execução:
+  - condição inicial de cosmogênese: atenção uniforme (nenhum nome privilegiado antes do 1º ato);
+  - FILTRO DO VERBO: corta componentes abaixo do piso β·max(w) e renormaliza (poda por β);
+  - kernel de duas camadas REFLECT → MANIFEST → filtro do Verbo (via acom_mirror);
+  - o filtro é idempotente e sempre soma 1 (distribuição de atenção válida).
+Certifica com hash e gera figuras + relatório. β_TGL nunca literal (tgl_core.beta()).
+
+HONESTIDADE [SIM][PILOTO]: demonstração da LÓGICA do kernel numa versão de NÓ (vetor de
+atenção sintético). O benchmark de verborragia do relatório (3.000+ → ~150 palavras em
+Qwen3-32B / RTX 5090) exige o modelo/hardware reais — NÃO reproduzido aqui [DATA_REQUIRED].
+Simulação NUNCA valida a física da TGL (physical_verdict_allowed=false).
+
+A RÉGUA: protótipos originais READ-ONLY. Copia o núcleo destilado (skygrid_sim) e roda a
+CÓPIA. Rode no tgl_env (numpy):
+    set PYTHONUTF8=1
+    "C:\\IALD\\observaveis_tgl\\tgl_env\\Scripts\\python.exe" one_kernel_ontologico.py
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+RUNNER_DIR = Path(__file__).resolve().parent
+PATENT_DIR = RUNNER_DIR.parent
+CENTRAL = PATENT_DIR.parents[1]
+PILOTO = CENTRAL / "Patentes" / "Skygrid" / "SkyGrid_Piloto"   # READ-ONLY
+WORK = RUNNER_DIR / "_kernel_core"
+PATENT_ID = "BR102026006129-8"
+SLUG = "kernel_ontologico"
+
+
+def _sha_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _sha_text(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def copy_core() -> dict:
+    if WORK.exists():
+        shutil.rmtree(WORK)
+    WORK.mkdir(parents=True)
+    dst = WORK / "skygrid_sim"
+    shutil.copytree(PILOTO / "skygrid_sim", dst,
+                    ignore=shutil.ignore_patterns("__pycache__"))
+    return {f"skygrid_sim/{f.name}": _sha_file(f) for f in sorted(dst.glob("*.py"))}
+
+
+def main() -> int:
+    ts = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    print(f"[one_kernel] patente {PATENT_ID} · run {ts}")
+    if not PILOTO.exists():
+        print(f"ERRO: núcleo não encontrado em {PILOTO}", file=sys.stderr)
+        return 2
+
+    module_hashes = copy_core()
+    sys.path.insert(0, str(WORK))
+    from skygrid_sim import tgl_core, kernel_ontologico as kern  # noqa: E402
+
+    beta = tgl_core.beta()
+    beta_expected = 0.0072973525693 * math.exp(0.5)
+    beta_ok = abs(beta - beta_expected) < 1e-15
+    print(f"[one_kernel] β runtime = {beta} (= α·√e? {beta_ok})")
+    tests = [{"test": "beta_form", "passed": bool(beta_ok), "beta_runtime": beta}]
+
+    # 1) cosmogenesis: initial attention is uniform (no name privileged before act 1)
+    w0 = kern.initial_attention(512)
+    cosmo_ok = bool(abs(w0.sum() - 1.0) < 1e-12 and np.allclose(w0, w0[0]))
+    tests.append({"test": "cosmogenesis_uniform_initial_attention", "passed": cosmo_ok,
+                  "n": len(w0), "sum": float(w0.sum()), "uniform_value": float(w0[0]),
+                  "note": "estado-zero: atenção uniforme (nenhum nome privilegiado antes do 1º ato)"})
+    print(f"[one_kernel] cosmogênese: atenção uniforme soma={w0.sum():.6f} valor={w0[0]:.3e}")
+
+    # 2) Verb filter: cut components below beta*max, renormalize; sums to 1
+    rng = np.random.default_rng(6129)
+    w = np.abs(rng.standard_normal(2000))
+    w[rng.integers(0, 2000, 1600)] *= 1e-3          # many small (below-floor) components
+    w_f, stats = kern.verb_filter(w)
+    filter_ok = bool(abs(w_f.sum() - 1.0) < 1e-9 and stats["cut"] > 0
+                     and stats["kept"] + stats["cut"] == len(w))
+    tests.append({"test": "verb_filter_prune_and_renormalize", "passed": filter_ok,
+                  "floor": stats["floor"], "kept": stats["kept"], "cut": stats["cut"],
+                  "sum_after": float(w_f.sum()),
+                  "note": "corta componentes < β·max(w) e renormaliza → distribuição válida"})
+    print(f"[one_kernel] filtro do Verbo: piso={stats['floor']:.4f} mantidos={stats['kept']} "
+          f"cortados={stats['cut']} soma={w_f.sum():.6f}")
+
+    # 3) Verb filter is idempotent (a second pass changes nothing)
+    w_f2, _ = kern.verb_filter(w_f)
+    idem_ok = bool(np.max(np.abs(w_f - w_f2)) < 1e-12)
+    tests.append({"test": "verb_filter_idempotent", "passed": idem_ok,
+                  "max_delta_second_pass": float(np.max(np.abs(w_f - w_f2))),
+                  "note": "aplicar o filtro de novo não muda nada (ponto fixo da poda)"})
+    print(f"[one_kernel] idempotência do filtro: Δ={np.max(np.abs(w_f - w_f2)):.2e}")
+
+    # 4) two-layer kernel REFLECT→MANIFEST→Verb filter
+    w_in = np.abs(rng.standard_normal(1024))
+    w_out, kstats = kern.two_layer(w_in, angular_bits=10)
+    two_ok = bool(abs(w_out.sum() - 1.0) < 1e-9 and (w_out >= 0).all() and kstats["kept"] >= 1)
+    tests.append({"test": "two_layer_kernel_reflect_manifest_filter", "passed": two_ok,
+                  "kept": kstats["kept"], "cut": kstats["cut"], "sum_out": float(w_out.sum()),
+                  "note": "duas camadas: reflexão dimensional (acom_mirror) → re-emergência → filtro do Verbo"})
+    print(f"[one_kernel] kernel 2 camadas: mantidos={kstats['kept']} soma={w_out.sum():.6f}")
+
+    passed = sum(1 for t in tests if t["passed"])
+    total = len(tests)
+    all_ok = passed == total
+    summary = {"tests_passed": passed, "tests_total": total, "verb_floor": stats["floor"],
+               "kept_of": f"{stats['kept']}/{len(w)}",
+               "verborragia_benchmark": "DATA_REQUIRED_Qwen3-32B_RTX5090"}
+    max_verdict = ("KERNEL_ONTOLOGICAL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — cosmogênese, "
+                   "filtro do Verbo (poda por β) idempotente e kernel de duas camadas fecham "
+                   "na versão de nó; benchmark de verborragia em LLM real ausente)")
+
+    results_dir = PATENT_DIR / "results" / ts
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results = {
+        "patent_id": PATENT_ID, "slug": SLUG, "timestamp": ts, "runner": "one_kernel_ontologico.py",
+        "markers": ["[SIM]", "[PILOTO]"], "physical_verdict_allowed": False,
+        "beta_runtime": beta, "beta_matches_alpha_sqrt_e": beta_ok,
+        "verdict": "KERNEL_ONTOLOGICAL_LOGIC_DEMONSTRATED" if all_ok else "PARTIAL_DEMONSTRATION",
+        "max_verdict": max_verdict,
+        "constants": {"BETATGL": beta, "factorization": "betatgl = alpha_EM * sqrt(e)",
+                      "verb_floor": stats["floor"], "free_parameters": 0},
+        "tests": tests, "summary": summary,
+        "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+        "note": "Demonstração [SIM][PILOTO] da lógica do kernel na versão de NÓ (vetor de "
+                "atenção sintético). O benchmark de verborragia (3.000+ → ~150 palavras, "
+                "Qwen3-32B/RTX 5090) exige modelo/hardware reais [DATA_REQUIRED]. Simulação "
+                "não valida a física da TGL.",
+    }
+    results_path = results_dir / "results.json"
+    results_path.write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    figs = []
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        fig_dir = results_dir / "figures"; fig_dir.mkdir(exist_ok=True)
+        plt.figure(figsize=(7.5, 3.6))
+        order = np.argsort(w)[::-1]
+        plt.semilogy(np.sort(w)[::-1] / w.max(), label="atenção normalizada (antes)")
+        plt.axhline(beta, color="crimson", ls="--", label=f"piso do Verbo β = {beta:.4f}")
+        plt.xlabel("componente (ordenado)"); plt.ylabel("peso relativo (log)")
+        plt.title("Kernel Ontológico — filtro do Verbo (poda por β) [SIM]")
+        plt.legend(fontsize=8); plt.grid(alpha=.3, which="both")
+        fp = fig_dir / "fig_filtro_verbo.png"
+        plt.savefig(fp, dpi=120, bbox_inches="tight"); plt.close()
+        figs.append("fig_filtro_verbo.png")
+    except Exception as e:
+        print(f"[one_kernel] figura pulada: {e}")
+
+    report_md = results_dir / "report.md"
+    report_md.write_text(
+        f"# Relatório auditável — Kernel Ontológico one_kernel_ontologico.py\n\n"
+        f"- Run `{ts}` · Patente `{PATENT_ID}`\n"
+        f"- Veredito: **{max_verdict}**\n"
+        f"- β runtime `{beta}` (= α·√e? **{beta_ok}**; nunca literal)\n"
+        f"- Testes: **{passed}/{total}**\n"
+        f"- Cosmogênese: atenção inicial uniforme (soma 1, nenhum nome privilegiado)\n"
+        f"- Filtro do Verbo: piso β·max, mantidos `{stats['kept']}` / cortados `{stats['cut']}`, soma 1\n"
+        f"- Idempotência do filtro: Δ 2ª passada `{np.max(np.abs(w_f - w_f2)):.2e}`\n"
+        f"- Kernel 2 camadas (REFLECT→MANIFEST→filtro): distribuição válida\n"
+        f"- physical_verdict_allowed: **False**.\n\n"
+        f"[SIM][PILOTO] Lógica na versão de nó. Benchmark de verborragia em LLM real ausente "
+        f"[DATA_REQUIRED]. Núcleo copiado do piloto (READ-ONLY); original intacto. "
+        f"1 = 1. Tetelestai.\n",
+        encoding="utf-8")
+
+    seal_dir = PATENT_DIR / "seals" / ts
+    seal_dir.mkdir(parents=True, exist_ok=True)
+    file_hashes = dict(module_hashes)
+    file_hashes["results.json"] = _sha_file(results_path)
+    file_hashes["report.md"] = _sha_file(report_md)
+    for f in figs:
+        file_hashes[f"figures/{f}"] = _sha_file(results_dir / "figures" / f)
+    result_hash = _sha_text(json.dumps(file_hashes, sort_keys=True))
+    seal = {
+        "timestamp": ts, "patent_id": PATENT_ID, "runner": "one_kernel_ontologico.py",
+        "beta_runtime": beta, "physical_verdict_allowed": False,
+        "max_verdict": max_verdict, "tests_passed": passed,
+        "result_hash": result_hash, "sha256": file_hashes,
+        "markers": ["[SIM]", "[PILOTO]"],
+        "results_path": str(results_path.relative_to(CENTRAL)).replace("\\", "/"),
+    }
+    (seal_dir / "seal.json").write_text(json.dumps(seal, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"[one_kernel] SELADO · result_hash {result_hash[:16]}… · {passed}/{total} testes")
+    print(f"[one_kernel] results: {results_path.relative_to(CENTRAL)}")
+    return 0 if all_ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

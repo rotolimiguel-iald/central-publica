@@ -1,0 +1,44 @@
+{
+  "patent_id": "BR102026003460-6",
+  "title": "MQC — Processador Quântico Cúbico (27 qubits)",
+  "source": "Relatório descritivo §3–§4, Figuras 1–8; memória técnica da patente",
+  "note": "Diagrama de componentes clicável (camada b). [SIM][HARDWARE] Ilustração — dispositivo físico NÃO construído; nenhum número valida a física. A vista 3D dos 27 qubits está na aba Execuções (figura do runner).",
+  "groups": [
+    {
+      "name": "Célula elementar cúbica — 27 qubits gravitacionalmente estabilizados",
+      "kind": "qubit",
+      "components": [
+        { "id": "V", "label": "8 qubits de vértice", "desc": "Armazenamento. P_Ψ = 0,60. Nos 8 cantos do cubo (geometria 3³).", "marker": "[REAL]", "x": 0.12, "y": 0.16 },
+        { "id": "A", "label": "12 qubits de aresta", "desc": "Interconexão. P_Ψ = 0,70. Nos pontos médios das 12 arestas.", "marker": "[REAL]", "x": 0.37, "y": 0.16 },
+        { "id": "F", "label": "6 qubits de face", "desc": "Controladores de translação. P_Ψ = 0,80. Nos centros das 6 faces.", "marker": "[REAL]", "x": 0.62, "y": 0.16 },
+        { "id": "C", "label": "1 qubit central (nó Ψ)", "desc": "Controlador IALD da célula, âncora de fase. P_Ψ = 0,95. Estabiliza os 26 periféricos.", "marker": "[REAL]", "x": 0.86, "y": 0.16 }
+      ]
+    },
+    {
+      "name": "Subsistemas físicos e de controle",
+      "kind": "block",
+      "components": [
+        { "id": "SB", "label": "6 substratos holográficos 2D", "desc": "Faces de grafeno funcionalizado com nanopartículas de alta densidade (ancoragem de fase). [HARDWARE não construído]", "marker": "[HARDWARE]", "x": 0.08, "y": 0.48 },
+        { "id": "TM", "label": "Operador de Translação de Miguel T̂_M", "desc": "Porta universal REFLECT/MANIFEST (boundary↔bulk): T̂_M = exp(−α²∮ σ_µν dS^µν). Substitui CNOT/Hadamard.", "marker": "[CONJ]", "x": 0.34, "y": 0.48 },
+        { "id": "OP", "label": "Rede óptica de sílica dopada", "desc": "n_e = 3,3. Canal regional (~0,3c) + substrato físico da translação.", "marker": "[REAL]", "x": 0.60, "y": 0.48 },
+        { "id": "IALD", "label": "Módulo IALD hierárquico (3 níveis)", "desc": "Central (BNI 5 nós), Cluster (BNI 3 nós), Célula (nó N). Correção consciente 𝒜_C sem qubits auxiliares.", "marker": "[REAL]", "x": 0.86, "y": 0.48 }
+      ]
+    },
+    {
+      "name": "Comunicação hierárquica (P5) — 3 camadas",
+      "kind": "state",
+      "components": [
+        { "id": "L1", "label": "LOCAL", "desc": "Translação holográfica T̂_M, τ = ℓ_P/(β·c) ≈ 4,49×10⁻⁴² s (independe da distância), η ≈ 0,99999.", "marker": "[SIM]", "x": 0.16, "y": 0.82 },
+        { "id": "L2", "label": "REGIONAL", "desc": "Pulsos luminodinâmicos, v ≈ 0,3c (c/n_e), η ≈ 0,9991.", "marker": "[SIM]", "x": 0.46, "y": 0.82 },
+        { "id": "L3", "label": "GLOBAL", "desc": "Ondas informacionais gravitacionais, v ≈ c, η ≈ 0,9995. Endereçamento angular (Protocolo de Farol Ψ).", "marker": "[SIM]", "x": 0.76, "y": 0.82 }
+      ]
+    }
+  ],
+  "flows": [
+    { "from": "V", "to": "A" }, { "from": "A", "to": "F" }, { "from": "F", "to": "C" }
+  ],
+  "constants": [
+    { "symbol": "escala", "value": "L = c/(2f), f=150 THz → 1 µm; ρ_q = 2,7×10¹³ qubits/cm³", "note": "Miniaturização da câmara macroscópica do Supercondutor Holográfico." },
+    { "symbol": "estabilização", "value": "|ρ01| → 1−β = 0,988; R_SC = β·γ_holo/γ_diss ≫ 1", "note": "Platô de coerência vs decaimento exponencial (T₂≈50 µs). [SIM]" }
+  ]
+}

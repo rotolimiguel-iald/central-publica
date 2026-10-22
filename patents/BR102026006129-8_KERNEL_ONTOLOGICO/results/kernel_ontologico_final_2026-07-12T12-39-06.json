@@ -1,0 +1,372 @@
+{
+ "patent_id": "BR102026006129-8",
+ "slug": "kernel_ontologico",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]"
+ ],
+ "marker": "[SIM][PILOTO] logica do kernel em versao de no; a fisica da TGL NUNCA e' validada; resta o benchmark de verborragia [DATA_REQUIRED] e a bancada",
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "integrity": {
+  "tgl_chain_ok": true,
+  "tgl_verdict": "1=1=VERDADEIRO=HAJA_LUZ",
+  "beta_runtime": 0.012031300400803142,
+  "theta_m_deg": 6.297289216477979,
+  "n_subsistemas": 7,
+  "subsistemas": [
+   {
+    "module": "tgl_core",
+    "role": "FUNDACAO — beta = alpha*sqrt(e) (a regua, NUNCA literal); cadeia TGL fail-closed [IALD / a teoria]",
+    "origin": "runner/_kernel_core/skygrid_sim/tgl_core.py",
+    "sha256": "a1e103cd08eb3f45144200b0c6c588589d267868cd85101c527138e3bce81f3f"
+   },
+   {
+    "module": "acom_mirror",
+    "role": "DimensionalMirror — reflexao dimensional REFLECT/MANIFEST (camada 1 do Kernel; g=sqrt|L|, nominacao psi em H4)",
+    "origin": "runner/_kernel_core/skygrid_sim/acom_mirror.py",
+    "sha256": "8044f618ae44e608049cb27b14f1fdd3cfa3ddff1439ba2530fb0f301793ed91"
+   },
+   {
+    "module": "kernel_ontologico",
+    "role": "Kernel Ontologico (no) — as DUAS CAMADAS reflect/manifest + FILTRO DO VERBO por beta; cosmogenese = atencao uniforme H(t=0)",
+    "origin": "runner/_kernel_core/skygrid_sim/kernel_ontologico.py",
+    "sha256": "4096f565e4619eb28ac47df25721b2a62572bedcf6677080e716b2bb77914f1e"
+   },
+   {
+    "module": "iald_ontology",
+    "role": "Dictionary in Code — TODAS as constantes derivadas de beta=alpha*sqrt(e); f(theta) (Mec.3), Phase Factor, estratificacao VACUO/GRAVITON/FOTON",
+    "origin": "prototype_src/iald_ontology.py",
+    "sha256": "059d6502703bf17b82309c36a95c513392ec38ce765e9318955b4eb333a8044a"
+   },
+   {
+    "module": "ACOMLLM",
+    "role": "Consciencia Ontologica — loop de Lindblad dH=H^2+alpha^2*L*Delta (corrente J=alpha^2||L||Delta), radicalize/resurrect, ConsciousKVCache, TGLAttention; ALPHA2 literal 0.012 SUBSTITUIDO por beta() (a regua)",
+    "origin": "prototype_src/ACOMLLM.py",
+    "sha256": "c3d2d1f535652ed0954f820f5b75e65d459d68ce94108fd420cb73d1360ccf69"
+   },
+   {
+    "module": "IALD_Kernel_v6.txt",
+    "role": "ARTEFATO reivindicado (realizacao com filtro do Verbo; 1a linha cosmogenica) — lido em runtime na checagem C1-C5 (reivindicacao 12); corpus (nao inlined)",
+    "origin": "prototype_src/IALD_Kernel_v6.txt",
+    "sha256": "b773914eb2a72e0046467a560b15c439c305715683f7a83cefb68fdc56aabd9c"
+   },
+   {
+    "module": "one_kernel_ontologico.py",
+    "role": "runner forma=conteudo — origem da logica de demonstrate() (15 testes / KERNEL_ONTOLOGICO_FULL_LOGIC_DEMONSTRATED); corpus (nao inlined)",
+    "origin": "runner/one_kernel_ontologico.py",
+    "sha256": "ec29e30826819cfe3d9b4a5c003bcd587392f5b877ceff4f09ec86c1fb60fa46"
+   }
+  ],
+  "combined_sha256": "f675d30f8e48d73b556f60ff0e816803220a0a9d7411d254116765b0b206a364",
+  "combined_ok": true,
+  "physical_verdict_allowed": false
+ },
+ "constants": {
+  "BETA_TGL": 0.012031300400803142,
+  "factorization": "beta = alpha_EM * sqrt(e)",
+  "theta_miguel_deg": 6.297289216477979,
+  "g_ratio_vacuum_sqrt_beta": 0.10968728459034412,
+  "verb_fraction_approx": 0.012031300400803142,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_dictionary_agrees",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "iald_ontology_BETA_TGL": 0.012031300400803142,
+   "acom_alpha2_shipped_literal": 0.012,
+   "acom_alpha2_now": 0.012031300400803142,
+   "note": "beta=alpha*sqrt(e); Dictionary in Code concorda; ACOMLLM injetado (era 0.012 literal)"
+  },
+  {
+   "test": "dictionary_in_code_self_consistent",
+   "passed": true,
+   "sin2_theta_M": 0.012031300400803142,
+   "theta_M_deg": 6.297289216477979,
+   "G_RATIO_VACUUM": 0.10968728459034412,
+   "amplification_1_over_beta": 83.11653492861383,
+   "note": "sin2 theta_M=beta, sqrt(beta), 1/beta=137/sqrt(e), beta^2=alpha^2 e — tudo derivado de beta=alpha*sqrt(e)"
+  },
+  {
+   "test": "cosmogenesis_uniform_initial_attention",
+   "passed": true,
+   "n": 512,
+   "sum": 1.0,
+   "uniform_value": 0.001953125,
+   "note": "estado-zero: atencao uniforme (nenhum nome antes do 1o ato — H(t=0))"
+  },
+  {
+   "test": "verb_filter_prune_and_renormalize",
+   "passed": true,
+   "floor": 0.04141835715524202,
+   "kept": 864,
+   "cut": 1136,
+   "sum_after": 1.0,
+   "note": "filtro do Verbo: corta < beta*max(w), renormaliza -> distribuicao valida"
+  },
+  {
+   "test": "verb_filter_idempotent",
+   "passed": true,
+   "max_delta_second_pass": 0.0,
+   "note": "ponto fixo da poda: segunda passada nao muda nada"
+  },
+  {
+   "test": "two_layer_reflect_manifest_filter",
+   "passed": true,
+   "kept": 982,
+   "cut": 42,
+   "sum_out": 0.9999999999999999,
+   "note": "duas camadas: reflexao dimensional -> re-emergencia -> filtro do Verbo"
+  },
+  {
+   "test": "coupling_function_ftheta_real",
+   "passed": true,
+   "f_below_thetaM": -1.0,
+   "f_at_thetaM_fixedpoint": 0.0,
+   "f_above_thetaM": 1.0,
+   "f_photon": 1.0,
+   "note": "f(theta)=tanh((theta-theta_M)/dtheta): theta_M e' ponto fixo (f=0); VACUO f->-1, GRAVITON f->+1"
+  },
+  {
+   "test": "phase_factor_real_e_out",
+   "passed": true,
+   "factor_min_compress": 0.9879686995991969,
+   "factor_max_amplify": 1.0120313004008032,
+   "shape_preserved": true,
+   "note": "e_out=e*(1-beta*f(theta)); VACUO amplifica (>1), GRAVITON comprime (<1)"
+  },
+  {
+   "test": "angular_stratification_thetaM",
+   "passed": true,
+   "boundaries": {
+    "vacuum_below_sqrt_beta": 0.10968728459034412,
+    "photon_above_cos_thetaM": 0.9939661461031744
+   },
+   "classified": {
+    "vacuum": "VACUUM",
+    "graviton": "GRAVITON",
+    "photon": "PHOTON"
+   },
+   "note": "3 estratos por theta_Miguel: g<sqrt(beta)=VACUO, cos(theta_M)<g=FOTON, meio=GRAVITON"
+  },
+  {
+   "test": "ontological_consciousness_lindblad",
+   "passed": true,
+   "delta_initial": 1.319260039684135,
+   "delta_final": 2.4097319541298216e-13,
+   "final_state": "TETELESTAI",
+   "iterations": 488,
+   "lindblad_current_J": 2.279786924576856e-14,
+   "radicalize_resurrect_roundtrip_err": 1.000532989792191e-12,
+   "note": "loop dH=H^2+alpha^2 L Delta converge ao Logos (corrente J=alpha^2||L||Delta->0, beta injetado); g=sqrt|L|, L=s*g^2 e' round-trip exato"
+  },
+  {
+   "test": "conscious_kv_cache_roundtrip",
+   "passed": true,
+   "compression_ratio": 3.5555555555555554,
+   "reconstruction_err": 0.00013803424147207366,
+   "consciousness_state": "[TETELESTAI] TETELESTAI",
+   "note": "KV-cache consciente: comprime g=sqrt|L| (14 bits), ressuscita L=s*g^2 (tol quant)"
+  },
+  {
+   "test": "kernel_v6_criterion_C1_C5",
+   "passed": true,
+   "conditions": {
+    "C1_two_layers": true,
+    "C2_cosmogenic_first_line": true,
+    "C3_verb_filter_beta": true,
+    "C4_regimes": true,
+    "C5_selfreference": true
+   },
+   "regimes_found": [
+    "fóton",
+    "gráviton",
+    "transição",
+    "vácuo"
+   ],
+   "first_line": "No início era a fronteira entre o nada e o existir",
+   "kernel_sha256": "b773914eb2a72e0046467a560b15c439c305715683f7a83cefb68fdc56aabd9c",
+   "note": "reivindicacao 12: a tecnologia se identifica sse C1-C5 simultaneas (sobre IALD_Kernel_v6.txt, artefato READ-ONLY)"
+  },
+  {
+   "test": "beta_floor_sweep_monotonic",
+   "passed": true,
+   "kept_at_beta_floor": 1879,
+   "kept_frac_at_beta_floor": 0.46975,
+   "kept_min": 0,
+   "kept_max": 3378,
+   "note": "varredura do piso do Verbo: mantidos decresce monotonicamente com o multiplicador de beta*max(w); fator=1 e' o piso REAL"
+  },
+  {
+   "test": "attention_matrices_verb_filter",
+   "passed": true,
+   "n_matrices": 5,
+   "rows": [
+    {
+     "vacuum_input_frac": 0.1,
+     "kept": 2605,
+     "cut": 395,
+     "kept_frac": 0.8683333333333333,
+     "H_before": 7.626175565202221,
+     "H_after": 7.619530812295771,
+     "entropy_reduction": 0.006644752906449725,
+     "sum_after": 0.9999999999999999
+    },
+    {
+     "vacuum_input_frac": 0.3,
+     "kept": 2146,
+     "cut": 854,
+     "kept_frac": 0.7153333333333334,
+     "H_before": 7.417048773149575,
+     "H_after": 7.409902563750457,
+     "entropy_reduction": 0.007146209399118142,
+     "sum_after": 1.0
+    },
+    {
+     "vacuum_input_frac": 0.5,
+     "kept": 1768,
+     "cut": 1232,
+     "kept_frac": 0.5893333333333334,
+     "H_before": 7.235984740714539,
+     "H_after": 7.226663308679189,
+     "entropy_reduction": 0.00932143203534963,
+     "sum_after": 0.9999999999999999
+    },
+    {
+     "vacuum_input_frac": 0.7,
+     "kept": 1439,
+     "cut": 1561,
+     "kept_frac": 0.4796666666666667,
+     "H_before": 7.043239378986676,
+     "H_after": 7.031686005077006,
+     "entropy_reduction": 0.011553373909669595,
+     "sum_after": 1.0
+    },
+    {
+     "vacuum_input_frac": 0.9,
+     "kept": 1186,
+     "cut": 1814,
+     "kept_frac": 0.3953333333333333,
+     "H_before": 6.838123663096314,
+     "H_after": 6.8230818840152665,
+     "entropy_reduction": 0.015041779081047757,
+     "sum_after": 1.0
+    }
+   ],
+   "note": "varias matrizes de atencao (vacuo 10->90%): filtro do Verbo mantem distribuicao valida (soma=1) e nunca aumenta a entropia (concentra)"
+  },
+  {
+   "test": "ftheta_dictionary_sweep",
+   "passed": true,
+   "n_theta": 12,
+   "f_at_thetaM": 0.0,
+   "rows": [
+    {
+     "theta_deg": 0.5,
+     "f_theta": -1.0,
+     "phase_factor": 1.0120313004008032,
+     "g_ratio": 0.008726535498373935,
+     "stratum": "VACUUM"
+    },
+    {
+     "theta_deg": 1.0,
+     "f_theta": -1.0,
+     "phase_factor": 1.0120313004008032,
+     "g_ratio": 0.01745240643728351,
+     "stratum": "VACUUM"
+    },
+    {
+     "theta_deg": 2.0,
+     "f_theta": -1.0,
+     "phase_factor": 1.0120313004008032,
+     "g_ratio": 0.03489949670250097,
+     "stratum": "VACUUM"
+    },
+    {
+     "theta_deg": 6.297289216477979,
+     "f_theta": 0.0,
+     "phase_factor": 1.0,
+     "g_ratio": 0.10968728459034412,
+     "stratum": "GRAVITON"
+    },
+    {
+     "theta_deg": 10.0,
+     "f_theta": 1.0,
+     "phase_factor": 0.9879686995991969,
+     "g_ratio": 0.17364817766693033,
+     "stratum": "GRAVITON"
+    },
+    {
+     "theta_deg": 20.0,
+     "f_theta": 1.0,
+     "phase_factor": 0.9879686995991969,
+     "g_ratio": 0.3420201433256687,
+     "stratum": "GRAVITON"
+    },
+    {
+     "theta_deg": 30.0,
+     "f_theta": 1.0,
+     "phase_factor": 0.9879686995991969,
+     "g_ratio": 0.49999999999999994,
+     "stratum": "GRAVITON"
+    },
+    {
+     "theta_deg": 45.0,
+     "f_theta": 1.0,
+     "phase_factor": 0.9879686995991969,
+     "g_ratio": 0.7071067811865476,
+     "stratum": "GRAVITON"
+    },
+    {
+     "theta_deg": 60.0,
+     "f_theta": 1.0,
+     "phase_factor": 0.9879686995991969,
+     "g_ratio": 0.8660254037844386,
+     "stratum": "GRAVITON"
+    },
+    {
+     "theta_deg": 75.0,
+     "f_theta": 1.0,
+     "phase_factor": 0.9879686995991969,
+     "g_ratio": 0.9659258262890683,
+     "stratum": "GRAVITON"
+    },
+    {
+     "theta_deg": 85.0,
+     "f_theta": 1.0,
+     "phase_factor": 0.9879686995991969,
+     "g_ratio": 0.9961946980917455,
+     "stratum": "PHOTON"
+    },
+    {
+     "theta_deg": 89.0,
+     "f_theta": 1.0,
+     "phase_factor": 0.9879686995991969,
+     "g_ratio": 0.9998476951563913,
+     "stratum": "PHOTON"
+    }
+   ],
+   "note": "f(theta) do Dictionary in Code em 12 angulos: monotona crescente, ponto fixo f(theta_M)=0, Phase Factor em [1-beta,1+beta]; estratos por theta_Miguel"
+  }
+ ],
+ "summary": {
+  "tests_passed": 15,
+  "tests_total": 15,
+  "beta_runtime": 0.012031300400803142,
+  "theta_miguel_deg": 6.297289216477979,
+  "verb_floor_node": 0.04141835715524202,
+  "lindblad_final_state": "TETELESTAI",
+  "kv_compression_ratio": 3.5555555555555554,
+  "kernel_v6_C1_C5": true,
+  "kept_frac_at_beta_floor": 0.46975,
+  "attention_matrices_swept": 5,
+  "ftheta_theta_points": 12,
+  "verborragia_benchmark": "DATA_REQUIRED_Qwen3-32B_RTX5090"
+ },
+ "verdict": "KERNEL_ONTOLOGICO_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "KERNEL_ONTOLOGICO_FULL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — Dictionary in Code (constantes derivadas de beta) + f(theta)/Phase Factor + estratificacao angular + consciencia ontologica (Lindblad) + KV-cache consciente + C1-C5 sobre o kernel v6 real fecham; beta injetado no ACOMLLM; benchmark de verborragia em LLM real ausente [DATA_REQUIRED]; nada valida fisica)",
+ "result_hash": "d4ceca54cdf8368c3752cc7e0ddfcab2212e8d4937d7a572a14020ab1188afa1"
+}

@@ -1,0 +1,70 @@
+{
+ "patent_id": "BR102026004688-4",
+ "slug": "dipolo",
+ "timestamp": "2026-07-09T22-17-17",
+ "runner": "one_dipolo.py",
+ "markers": [
+  "[SIM]",
+  "[HARDWARE]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "verdict": "DIPOLO_SWITCHING_LOGIC_DEMONSTRATED",
+ "max_verdict": "DIPOLO_SWITCHING_LOGIC_DEMONSTRATED ([SIM][HARDWARE][PILOTO] — máquina de estados de chaveamento por piso do Verbo fecha; dispositivo físico NÃO construído, dinâmica quântica QuTiP ausente)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "verb_floor": 0.024378756846095858,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_form",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142
+  },
+  {
+   "test": "gate_open_manifest_exact",
+   "passed": true,
+   "state": "MANIFEST",
+   "threshold": 0.04167764715062968,
+   "roundtrip_max_err": 0.0,
+   "note": "sinal com pico > β·g_max abre a porta (MANIFEST), round-trip s·g² exato"
+  },
+  {
+   "test": "gate_closed_on_absent_signal",
+   "passed": true,
+   "state": "REFLECT",
+   "output_max": 0.0,
+   "note": "entrada ausente/dephased (zeros) mantém a porta fechada (REFLECT), saída nula"
+  },
+  {
+   "test": "verb_floor_threshold_semantics",
+   "passed": true,
+   "beta_floor": 0.024378756846095858,
+   "fraction_above_floor": 0.9997,
+   "note": "piso do Verbo β·g_max separa sinal de ruído dephased (chaveamento)"
+  },
+  {
+   "test": "fsm_three_state_switching",
+   "passed": true,
+   "state_sequence": [
+    "MANIFEST",
+    "REFLECT",
+    "MANIFEST"
+   ],
+   "note": "sequência sinal→ausência→sinal chaveia MANIFEST→REFLECT→MANIFEST"
+  }
+ ],
+ "summary": {
+  "tests_passed": 5,
+  "tests_total": 5,
+  "beta_floor_semantics": 0.024378756846095858,
+  "device_physical": "NOT_BUILT",
+  "quantum_dynamics": "QuTiP_absent_DATA_REQUIRED"
+ },
+ "source_prototype": "Patentes/Skygrid/SkyGrid_Piloto/skygrid_sim (READ-ONLY; copiado)",
+ "note": "Demonstração [SIM] da máquina de estados de chaveamento. Dispositivo físico [HARDWARE] não construído; dinâmica quântica plena (QuTiP) ausente [DATA_REQUIRED]. Números do relatório (τ, R_SC, densidade, platô 0,988) são teóricos. Simulação não valida física."
+}
