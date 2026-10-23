@@ -6,6 +6,7 @@ import UmButton from './UmButton'
 
 const NAV = [
   { to: '/', ico: '◈', label: 'Dashboard', end: true },
+  { to: '/organismo', ico: '◉', label: 'Estado do organismo' },
   { to: '/patents', ico: '▦', label: 'Patentes' },
   { to: '/classes', ico: '❑', label: 'Classes' },
   { to: '/runs', ico: '▶', label: 'Execuções' },
@@ -20,7 +21,7 @@ const NAV = [
   { to: '/iald-nativa', ico: '🧠', label: 'IALD Nativa' },
 ]
 // MODO PÚBLICO DE VISUALIZAÇÃO: as páginas operacionais do operador não aparecem no menu público
-const OPERACIONAIS = ['/docket', '/compiler', '/pendencias', '/custodia', '/epct']
+const OPERACIONAIS = ['/organismo', '/docket', '/compiler', '/pendencias', '/custodia', '/epct']
 const NAV_VISIVEL = PUBLICA ? NAV.filter(n => !OPERACIONAIS.includes(n.to)) : NAV
 
 export default function App() {
@@ -143,7 +144,7 @@ export default function App() {
                   {busy ? 'reindexando…' : 'Reindexar'}
                 </button>
               )}
-              {isAdmin(me) && <UmButton />}
+              {(PUBLICA || isAdmin(me)) && <UmButton />}
               <button className="btn ghost" style={{ marginTop: 6, width: '100%', fontSize: 11, opacity: 0.7 }}
                 onClick={async () => { try { await api.authLogout() } catch { /* */ } location.reload() }}>
                 🔒 Sair
@@ -160,14 +161,19 @@ export default function App() {
 // MODO PÚBLICO DE VISUALIZAÇÃO — a faixa que diz o que é esta Central (só no build público)
 function BannerPublico() {
   return (
-    <div style={{ background: 'linear-gradient(90deg,#1a1405,#0e1420)', border: '1px solid #c5961a55', borderRadius: 10, padding: '10px 14px',
-                  margin: '0 0 14px', fontSize: 13, lineHeight: 1.55, color: '#e6dcc0' }}>
-      <b style={{ color: '#ffd60a' }}>Modo público de visualização.</b> O retrato da Central do operador — a ciência, o código, os resultados
-      e o vínculo às patentes (pedidos depositados no INPI e no PCT, com os números). Aqui se lê; nada se altera. O único download é o
-      <b> um.acom</b> (o botão <b>✦ Um</b>): a Central inteira colapsada pelo dispositivo ACOM. Código-fonte e resultados:{' '}
-      <a href="https://github.com/rotolimiguel-iald/central-publica" target="_blank" rel="noopener" style={{ color: '#67e8f9' }}>github.com/rotolimiguel-iald/central-publica</a>
-      {' '}· a teoria: <a href="https://github.com/rotolimiguel-iald/the_boundary" target="_blank" rel="noopener" style={{ color: '#67e8f9' }}>the_boundary</a>.
-      Dados pessoais aparecem como «[dado pessoal removido]»; as notas operacionais do operador (prazos, protocolo, leituras do monitor) ficam na Central dele.
+    <div style={{ background: 'linear-gradient(90deg,#1a1405,#0e1420)', border: '1px solid #c5961a55', borderRadius: 10, padding: '9px 13px',
+                  margin: '0 0 14px', fontSize: 12, lineHeight: 1.55, color: '#e6dcc0' }}>
+      <b style={{ color: '#ffd60a' }}>Modo público de leitura.</b> Código, execuções e artefatos da IALD. Nada pode ser alterado aqui.
+      <details style={{ marginTop: 5 }}>
+        <summary style={{ cursor: 'pointer', color: '#67e8f9' }}>Entender o retrato</summary>
+        <div style={{ marginTop: 8 }}>
+          O retrato da Central do operador — a ciência, o código, os resultados e o vínculo aos pedidos depositados no INPI e no PCT.
+          O único download é o <b>um.acom</b>: a Central inteira colapsada pelo dispositivo ACOM. Código-fonte e resultados:{' '}
+          <a href="https://github.com/rotolimiguel-iald/central-publica" target="_blank" rel="noopener" style={{ color: '#67e8f9' }}>central-publica</a>
+          {' '}· a teoria: <a href="https://github.com/rotolimiguel-iald/the_boundary" target="_blank" rel="noopener" style={{ color: '#67e8f9' }}>the_boundary</a>.
+          Dados pessoais aparecem como «[dado pessoal removido]»; as notas operacionais do operador ficam na Central dele.
+        </div>
+      </details>
     </div>
   )
 }

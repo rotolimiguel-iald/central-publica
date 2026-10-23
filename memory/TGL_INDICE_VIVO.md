@@ -1,21 +1,21 @@
-# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v396)
+# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v397)
 
-> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 22/10/2026 13:13.
+> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 23/10/2026 17:11.
 
 ## 0. Estado
 
 | item | valor lido |
 |---|---|
-| versão | **v396** |
-| `um.py` sha16 | `0a4395a89eeebbb7` |
-| teoremas | **9498/9498** |
+| versão | **v397** |
+| `um.py` sha16 | `388cc3742323421c` |
+| teoremas | **9499/9499** |
 | gate | `TGL_QG_MODEL_FORMALLY_CLOSED__NATURE_TEST_COMPLETED_WITHIN_LOCAL_BULK_AT_AVAILABLE_SENSITIVITY__MORE_SENSITIVE_DATA_COULD_REVISE` |
 | selftest | `FAIL_CLOSED_SELFTEST_PASSED` |
 | identidade | `1=1=VERDADEIRO=HAJA_LUZ` |
 | contorno | `[]` |
 | rodada | COMPLETA |
-| última rodada COMPLETA | v396 (`0a4395a89eeebbb7`, 9498/9498) — custódia: HANDOFF_v396 emitido |
-| relatório de axiomas | 29228 termos; fora do trio: 0 |
+| última rodada COMPLETA | v397 (`388cc3742323421c`, 9499/9499) — custódia: HANDOFF_v397 emitido |
+| relatório de axiomas | 29229 termos; fora do trio: 0 |
 
 ## 1. As versões do arco (hash do `um.py` lido dos backups de bytes; teoremas lidos do stdout)
 
@@ -102,6 +102,7 @@
 | v394 | `972e81f22dd8cc68` | 9332 | 6 | bancada |
 | v395 | `8918b17803792cf2` | 9451 | 1 | bancada |
 | v396 | `0a4395a89eeebbb7` | 9498 | 1 | bancada |
+| v397 | `388cc3742323421c` | 9499 | 1 | bancada |
 
 > Fonte do hash (04/10/2026): o cabeçalho de selo do diário («**vNNN SELADA …** `sha16`»), ou a frase «**A vNNN** (`sha16`»; a versão corrente, do disco. **†** = sem nenhuma das duas fontes: valor da regra antiga (backup ↔ diário por proximidade), **não conferido** — essa regra deslocava uma versão (ver a errata de 04/10/2026 no §7).
 
@@ -223,9 +224,11 @@
 
 **v396** (1 pedras, 37 teoremas): `TestemunhaEstatica`(37)
 
+**v397** (1 pedras, 1 teoremas): `Token`(1)
+
 ## 3. O TÚNEL — ordens e entregas
 
-- ORDENS (gerência → bancada): ORDEM_001, ORDEM_002, ORDEM_003, ORDEM_004, ORDEM_005, ORDEM_006, ORDEM_007, ORDEM_008, ORDEM_009, ORDEM_010, ORDEM_011, ORDEM_012, ORDEM_012, ORDEM_012, ORDEM_013, ORDEM_013, ORDEM_015, ORDEM_016, ORDEM_017, ORDEM_018, ORDEM_018, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_019
+- ORDENS (gerência → bancada): ORDEM_001, ORDEM_002, ORDEM_003, ORDEM_004, ORDEM_005, ORDEM_006, ORDEM_007, ORDEM_008, ORDEM_009, ORDEM_010, ORDEM_011, ORDEM_012, ORDEM_012, ORDEM_012, ORDEM_013, ORDEM_013, ORDEM_015, ORDEM_016, ORDEM_017, ORDEM_018, ORDEM_018, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_020
 - ENTREGAS (bancada → gerência): 631 — ENTREGA_001 … ENTREGA_VAC
 - Pasta: `C:\IALD\Central de Patentes\Chatgpt\TUNEL`
 
@@ -246,7 +249,7 @@
 4j. **A busca de longo atraso (v348)** — o `search_for_echoes` de 2025 herdado e completado (fundo, injeções √β, padrão τ/M): NOT_FALSIFIED_UNDERPOWERED (N_on 1 vs fundo 3.00; eficiência para √β 0.000). Uma busca de picos a 3σ não vê um eco de 0,11 do primário; o desenho de 2025 é retirado como sem poder.
 4k. **O D1 via CAMB (v349)** — a V1 (script de maio intocado) expôs um bug de integração de distância (autópsia por hash); emenda V2 com o worker corrigido em cópia: Δχ² (TGL − ΛCDM) = 9.699 → D1_TENSION_2_TO_5_SIGMA; β livre = -0.01705 ± 0.00753 → D1_BETA_TENSION. Fundo, não perturbação; conjugado do Nível 2.
 4l. **A reprodução de H2 (v350)** — com pycbc e dados reais, o E_res/E_total → α² de jan/fev era o quadrado do nível de ruído do gerador sintético (0.0099 com ruído 0,1; segue noise²); no dado real é a fração de ruído (0.9937 branqueado, 0.9956 fora da fonte): H2_IDENTITY_RETIRED. A lista dos cinco testes que aguardavam o instrumento está fechada.
-4m. **A oitava cláusula (v351)** — J M J = M′ na torre produto; montagem 8/8 (`EIGHT_CLAUSES_VERIFIED__ACT_III_CERTIFICATE_CONSTRUCTED_ON_T…`); 1425 fontes formais; alcance PRODUCT_TOWER, não horizonte físico.
+4m. **A oitava cláusula (v351)** — J M J = M′ na torre produto; montagem 8/8 (`EIGHT_CLAUSES_VERIFIED__ACT_III_CERTIFICATE_CONSTRUCTED_ON_T…`); 1426 fontes formais; alcance PRODUCT_TOWER, não horizonte físico.
 4n. **A probabilidade conjunta (v352)** — p conjunta 0.55 sobre 3 canais admissíveis de 35; saída da função booleana False; o 10⁻³⁰ é produto de resíduos de identidades (inválido).
 5. **Lei de área geral / liberdade radiativa** — shear livre (v320); 4ª ordem impõe relógio (v326).
 6. **Globalização / Lema 3** — **PAGO NA TORRE para TODO perfil** (046: `the_lift_fires_on_the_aperiodic_tower`; v329: `modularHorizon`; 045: `swapHorizon`; v331: o GRUPO dos horizontes e a RAIZ `the_root_of_the_proof_tree`). Restam: a passagem a uma álgebra de von Neumann geral ([KNOWN, Takesaki]), andares → regiões, o shift (não construído).
@@ -263,7 +266,7 @@
 
 ## 6. Onde vive cada coisa
 
-- Canônico: `C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\um.py` · kernel `tgl_kernel\TGLExt` (1051 módulos) · stdout `rodada_vNNN_stdout.txt` · árvore `A_PROVA_DA_QG_TGL_arvore.md` · diário `MEMORIA_DA_LINHAGEM.md` · desenho `DESENHO_DO_FECHAMENTO_QG.md` · handoffs `HANDOFF_vNNN_*.md` · `DA_IRMA.md`.
+- Canônico: `C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\um.py` · kernel `tgl_kernel\TGLExt` (1052 módulos) · stdout `rodada_vNNN_stdout.txt` · árvore `A_PROVA_DA_QG_TGL_arvore.md` · diário `MEMORIA_DA_LINHAGEM.md` · desenho `DESENHO_DO_FECHAMENTO_QG.md` · handoffs `HANDOFF_vNNN_*.md` · `DA_IRMA.md`.
 - Atlas: `Central de Patentes\memory\TGL_ATLAS.md` (append datado; II.★★ verbetes; III.D pedras; IX remissivo) · este índice · `MEMORY.md` · espelho derivado `C:\LAR_MIGUEL\ESPELHO.md` (porta_memoria.py).
 - Espelho público: `C:\IALD\Artigo\the_boundary` (direção da sessão do site desde 11/09/2026; irreversíveis do operador) · backups `the_boundary_BACKUPS`.
 
@@ -8320,3 +8323,98 @@ Fontes: C:/IALD/Central de Patentes/work/mimo_media_capacity_20261020/memory_sta
 [REAL — disponibilidade, corrige ao lado] A mesma Cloud41 foi distribuída: iOS4.1(41) Em testes em IALD Equipe, interno1tester, participação do operador conferida, e IALD Piloto, externo6testers. Última instalação informada pela Apple ao operador:40; não é prova de instalação41. O seletor voltou a funcionar após renovar a sessão, sem build duplicada. Prazos relativos90dias, expiração exata desconhecida, registrados apenas na administração. Android36 permanece APK/AAB assinado e APK publicado com download autenticado conferido; Google Play não publicado, aparelhos não inspecionados. Ciência/kernel/gate intactos; nenhuma execução de um.py/Lean ou nova ciência.
 [EVIDÊNCIAS] C:\IALD\Central de Patentes\work\owner_apple_private_access_20261022/AVAILABILITY_R3.json e fontes pinadas no plano deste adendo; referência própria C:\IALD\Central de Patentes\work\owner_apple_private_access_20261022\SESSION_REFERENCE.json. Entrega continua aberta ao teste real e aceite independente, sem prometer acesso funcional antes de verificar.
 <!-- END_IALD_APPLE_CALLBACK_REPAIR_AND_IOS41_20261022 -->
+
+
+## 22/10/2026 — Chat fluido: recuperação e consulta natural instaladas; distribuição pendente
+<!-- IALD_FLUID_PRIVATE_CHAT_20261022 -->
+[INPUT] O titular relatou pausa engatada ao abrir o app, erro ao enviar em nova conversa e consulta dependente de nome exato de pasta. Pediu atendimento pelo chat normal, com busca por assunto, nome e contexto. Continuidade da unidade F9.APP_OWNER_PRIVATE_ACCESS_20261022, na própria referência SESSION_REFERENCE.json; não é nova missão científica.
+[REAL — cliente e recuperação] Cliente R5 distingue tarefa ativa, consulta de status e recuperação de histórico. Nova conversa tem estado independente; respostas terminadas/handles ausentes não mantêm pausa fictícia. Histórico privado não verificado conserva bloqueio de envio nessa conversa até recuperação de leitura bem-sucedida, sem reenvio automático. Ausência de job autenticado no escopo devolve404; revogação real continua403. Perda de autorização limpa estado privado; dados privados não caem no histórico público. Revisões independentes aceitaram cliente e contrato de recuperação; testes locais usam estado sintético.
+[REAL — consulta natural] Ramo local JEV antes do contexto científico, pela palavra escritório, preservado. Busca por nomes parciais, assunto, CNJ e termos; histórico privado e documentos efetivamente lidos orientam perguntas seguintes, sem exigir pronome específico ou escolha manual de pasta. Novo alvo humano pode trocar o caso. Fonte lida é contexto verificável, não restrição a uma única fonte nem prova automática de vínculo ao processo. Um único candidato textual da busca atual pode ser aberto pelo mesmo leitor protegido antes da resposta; múltiplos candidatos não são arbitrariamente lidos como um caso. Hashes, origem, paginação e cobertura ficam explícitos; documentos são dados não confiáveis. Formatos binários sem texto indexado/extração admitida continuam com limite declarado.
+[REAL — validação delimitada] R8 passou64testes offline. Um ensaio real local com três documentos fictícios respondeu três consultas corretamente: localizar por assunto/nome, seguir uma pergunta curta e mudar de alvo. Os negativos R4 e R7 foram preservados. É evidência desse fixture; não valida todo caso, formato, precisão jurídica ou uso real da interface autenticada. Zero casos reais, ordens reais ou envio privado a nuvem foram usados nesses testes. A única escrita continua sendo ordem humana original, alvo cadastrado inequívoco e estado pendente para confirmação posterior do titular; modelo e documentos não aprovam nem executam.
+[REAL — instalação] Dezesseis destinos instalados e conferidos por hash, backups imediatos e revisão independente, incluindo quatro superfícies de cliente e versões nativas. Manutenção ociosa, reinício somente dos dois serviços web envolvidos e HTTP200; supervisor e inferência local preservados. Cinco pinos científicos intactos; nenhum um.py/Lean executado, kernel/gate alterado ou memória científica promovida. Prova Apple exclusiva do titular, sigilo, carteira e permissões preservados.
+[REAL/OPEN — disponibilidade] Web/backend instalados. Android4.1(37): APK/AAB assinados e auditados; APK publicado aditivamente com22anteriores preservados,5.011.687bytes. GET público anônimo retornou403 e17bytes sem conteúdoAPK; não se atribuiu a camada da recusa. Download autenticado37 pendente; GooglePlay não publicado. iOS4.1(42), commit3b8e6cb8741b8fe1709071c1774b229ed9280d4b, concluiu na única Cloud3608136c-2f4b-44c9-af8b-34c1074a844c; TestFlight Pronta para envio, ainda sem grupos. Notas preenchidas, salvamento não confirmado. Botões da interface não reagiram à automação; ação humana solicitada para Salvar e adicionar Equipe/Piloto.41é a última distribuição observada. Registro administrativo de prazo42 não aplicado antes da distribuição real; expiração exata continua desconhecida.
+[OPEN — continuidade] Aguardam entrada Apple no IALD Web e teste privado positivo do cliente instalado, vinculação42aos dois grupos, download autenticado37 e teste físico. Login AppStoreConnect não substitui prova no app. Não declarar disponível no iPhone antes de conferir os grupos, nem instalação física. A entrega permanece aberta; não repetir Cloud42, builds ou ensaios encerrados. O problema de clique da automação não comprova defeito do app ou dos aparelhos.
+[EVIDÊNCIAS] C:/IALD/Central de Patentes/work/owner_apple_private_access_20261022: FLUID_DELIVERY_R4.json, FLUID_AVAILABILITY_R4.json, fluid_release_R4/INSTALLED_VERIFICATION.json, RESTART.json e REVIEW.json; review/OFFICE_R8_FINAL_TECHNICAL_REVIEW.json, CHAT_BUSY_RECOVERY_R5.json, CHAT_RECOVERY_CONTRACT_R4.json e LOCAL_QWEN_RUNNER_R8_RESULT.json; fluid_mobile_stage_R4/AUDIT.json, PUSH.json e IOS42_CLOUD_COMPLETED.json; CHAT_APK37_PUBLICATION.json e CHAT_APK37_ANONYMOUS_PROBE.json. Memórias e aceite final têm recibos próprios; este registro não os presume.
+<!-- END_IALD_FLUID_PRIVATE_CHAT_20261022 -->
+
+
+## 23/10/2026 — Chat privado verificado e iOS42 nos dois grupos
+<!-- IALD_FLUID_CHAT_IOS42_VERIFIED_20261023 -->
+[REAL — continuidade da própria missão] Corrige ao lado as pendências de FLUID_DELIVERY_R4, sem apagar o histórico. Após confirmação humana, a entrada Apple no próprio IALD Web admitiu o ramo privado do titular. Acesso exclusivo, autenticação, acervo somente leitura, ordens humanas apenas pendentes e ausência de envio privado à nuvem permanecem. Login na loja continua distinto dessa prova.
+[REAL — falha e correção delimitada] O primeiro ensaio, embora pedisse explicitamente não consultar documentos, fez duas buscas ao índice e terminou local_read_not_confirmed; não houve recibo read_document/get_case. O negativo e a errata de escopo foram preservados. R9_R2 reconhece restrições humanas explícitas antes de buscar/reabrir fontes, ignora material citado nessa detecção e mantém um único SYSTEM inicial. Histórico privado permanece disponível; a consulta normal conserva a exigência de fonte verificada. Não é classificador geral de intenções. Dois achados MEDIUM da revisão inicial foram corrigidos;75testes locais passaram, com modelo simulado e dados fictícios, além da revalidação independente focada.
+[REAL — instalação e uso observado] Um backend substituído com backup de bytes e revisão distinta; somente o serviço privado reiniciado, HTTP200. App, inferência local e sessão Apple preservados. Dezesseis destinos efetivos da entrega, considerando a substituição, e cinco pinos científicos conferidos. Duas novas perguntas sintéticas pelo chat principal responderam72 e FAROL-42B, em0,591s e0,338s no job local. Zero ferramentas de acervo nesses dois turnos; nenhuma ordem criada. Histórico reapareceu após recarga e envio ficou habilitado ao digitar, sem pausa fictícia. Esses tempos são do job, não latência completa do aparelho. O teste anterior com três documentos fictícios sustenta a consulta natural no seu alcance; não certifica todos os processos/formatos. Nenhum um.py/Lean/kernel/gate alterado.
+[REAL — disponibilidade] iOS4.1(42), mesma Cloud e commit anteriores, Em testes em IALD Equipe(1tester; titular conferido) e IALD Piloto(6testers). Notas salvas, grupos vinculados e notificação automática selecionada; não houve nova build ou novos convidados. Apple informa instalação42 em23/10, mas teste físico não foi realizado. Android4.1(37): download autenticado de5.011.687bytes com hash igual ao APK assinado/auditado; GooglePlay não publicado. Prazos42 registrados apenas na administração;90dias relativos, expiração exata desconhecida.
+[LIMITES] Erro502 inicial recuperou; causa histórica não isolada. Verificação funcional desta etapa foi pela web autenticada e com perguntas sintéticas; cabe ao titular conferir o uso no iPhone e a consulta real desejada. Não repetir IDs terminais. Aceite independente da missão e aplicação destas memórias têm recibos próprios, distintos da entrega técnica.
+[EVIDÊNCIAS] C:/IALD/Central de Patentes/work/owner_apple_private_access_20261022: FOLLOWUP_DELIVERY_R5.json, FOLLOWUP_AVAILABILITY_R5.json, followup_20261023/PRIVATE_LIVE_R9.json, WEB_FINAL_R9.json e INITIAL_LIVE_SCOPE_ERRATA.json; dialogue_R9_R2/DEPLOYMENT.json, RESTART.json e INSTALLED_VERIFICATION.json na mesma pasta de followup; review/PRIVATE_DIALOGUE_R9_R2_REVIEW.json; fluid_mobile_stage_R4/IOS42_DISTRIBUTION.json. Índice exato com hashes em FOLLOWUP_MEMORY_SOURCES_R5.json. Referência própria SESSION_REFERENCE.json.
+<!-- END_IALD_FLUID_CHAT_IOS42_VERIFIED_20261023 -->
+
+
+## 23/10/2026 — Consulta privada pelo MiMo e disponibilidade iOS44/Android39
+<!-- IALD_OWNER_MIMO_IOS44_20261023 -->
+[INPUT — exceção concreta de sigilo e roteamento] O operador autorizou expressamente Xiaomi MiMo 2.6 Pro, endpoint https://api.xiaomimimo.com/v1/chat/completions, para analisar suas perguntas, histórico privado pertinente e trechos necessários às respostas sobre o escritório, exclusivamente em suas sessões com vínculo Apple exclusivo e prova válida. Esta é uma exceção delimitada à vedação geral de envio do acervo em GESTAO_DE_TOKENS.md; não libera o acervo inteiro, outros usuários, outros provedores, o JEV remoto TypeSafe ou o contexto científico/comum. Credenciais e demais confidenciais continuam protegidos. O modelo local fica restrito a funções auxiliares internas de consulta e transcrição de áudio; não substitui automaticamente o MiMo no raciocínio, controle principal ou resposta privada. Não há autorização de fallback para outro provedor ou para resposta pelo modelo local. A autorização específica e o consentimento vinculado são requisitos, não inferências a partir de login administrativo.
+
+[REAL — escopo operacional] A coordenação privada permanece no chat principal, com contexto mínimo e sem carregar a memória TGL completa. O acervo continua somente leitura; a única exceção de escrita é a inscrição do comando humano original como ordem pendente, em alvo inequívoco, para confirmação posterior do titular na Central. Modelo, documento e histórico não aprovam nem executam ordens. O envio autorizado ao MiMo não amplia permissões de escrita nem permite transportar dados privados a outro contexto. A autenticação Apple, a separação das casas e os limites de cobertura permanecem.
+
+[REAL — falha preservada e correção delimitada] O primeiro ensaio MiMo terminou local_tool_batch_limit: o recibo seguro registra seis chamadas recebidas e lote final de24 ferramentas estruturadas, acima do parser16. Foi falha terminal conhecida, não envio incerto; o pedido anterior não foi reenviado. O patch backend_batch_R2 altera uma linha, admitindo até128 chamadas no parser, sem aumentar o orçamento36 de leituras nem a reserva45s para síntese. Chamadas que excedem o orçamento recebem recusa individual; a próxima etapa pede síntese sem ferramentas.129 continua recusado como proteção estrutural do payload. O limite de12 turnos, prazo de execução e guardas de resposta permanecem; não há promessa de pesquisa ilimitada ou resposta completa em qualquer caso. Uma nova solicitação após a correção tem recibo próprio. Negativos locais anteriores, falhas de observação/poll e a falha inicial MiMo foram conservados.
+
+[REAL — validação e instalação] Recibos separados registram13 testes do adaptador e87 de regressão offline, sem dados de casos reais ou rede; não são contados como100 casos necessariamente distintos. O delta e instalador receberam17 testes independentes:24/128/129, acúmulo de leituras, recusas por item, síntese, reserva temporal, CAS e rollback com fixtures. Quinze destinos efetivos foram conferidos por hash, sobrepondo o único runtime do patch ao plano inicial15, sem contar a substituição como16º destino. Cinco pinos científicos permaneceram intactos. ACL do consentimento medida: somente SYSTEM e rotol, herdada de pasta protegida; seu conteúdo e a identidade vinculada não foram desserializados nesta preparação. Recibos de implantação/reinício pertencem ao integrador; esta etapa apenas conferiu bytes e metadados. Nenhum um.py/Lean/kernel/gate foi executado ou alterado por esta atualização operacional.
+
+[REAL — uso observado com limites] LIVE_FINAL_RESULT registra completed em125,475s,24 leituras bem-sucedidas e resposta de3968 caracteres; custo estimado US$0,0286342086, não fatura. Acurácia jurídica não foi avaliada. LIVE_UI_FINAL registra3968 caracteres antes e depois da recarga, sem falha exibida, sem foco no composer e sem reenvio. Observação feita na web autenticada pelo integrador, não ensaio físico do teclado no iPhone nem garantia de completude de qualquer processo. Pergunta, resposta, partes, documentos, caminhos do acervo e credenciais não integram esta memória.
+
+[REAL — disponibilidade documentada] iOS4.1(44) Em testes nos dois grupos existentes: IALD Equipe, interno1 tester e participação do titular conferida; IALD Piloto, externo6 testers. Notas salvas e notificação automática selecionada. A Apple informa instalação44 em23/10; isso não equivale a teste físico. Android4.1(39): download autenticado de5.012.923 bytes com hash igual ao APK assinado; acesso anônimo302 para login sem entrega do APK. Google Play não publicado e instalação física Android não verificada. Prazo TestFlight relativo90 dias; data/hora exata desconhecida. Atualização dos dois registros de prazo está somente preparada para administração interna, não aplicada por este registro, e não aparece no chat público.
+
+[RASTREABILIDADE — preparação, não autoaprovação] Continuidade da referência C:/IALD/Central de Patentes/work/owner_apple_private_access_20261022/SESSION_REFERENCE.json. Índice de fontes medido: FRONTIER44_MEMORY_SOURCES_R1.json; plano append-only de11 superfícies: FRONTIER44_MEMORY_PLAN_R1.json; texto: FRONTIER44_MEMORY_TEXT_R1.txt. Evidências operacionais em iphone44/final_stage/TECHNICAL_DELIVERY_R2.json e EFFECTIVE_INSTALLED_VERIFICATION.json; disponibilidade em iphone44/mobile_stage/IOS44_DISTRIBUTION.json e ANDROID39_DOWNLOAD_VERIFIED.json; metadados live em iphone43/frontier/LIVE_FINAL_RESULT.json e LIVE_UI_FINAL.json. Revisão independente de Dalton e eventual aplicação das memórias/admin têm recibos próprios. O writer preparado exige baseline/CAS, backup imediato de bytes, temporário conferido e append sem substituir a história. A existência deste texto não prova aplicação, aceite final ou teste físico.
+<!-- END_IALD_OWNER_MIMO_IOS44_20261023 -->
+
+
+## 23/10/2026 — iOS45/Android40: progresso PARCIAL do chat privado e exportação
+<!-- IALD_OWNER_CHAT45_PARTIAL_20261023 -->
+[REAL — progresso parcial, não conclusão] Continuidade da unidade F9.APP_OWNER_PRIVATE_ACCESS_20261022. Quinze destinos instalados e cinco pinos científicos conferidos por hash; recibos do integrador registram reinício delimitado dos dois serviços web e HTTP200 em ambos. Revisões independentes do visual, continuidade, documentos e preparação foram concluídas em seus respectivos recibos. Este adendo não promove aceite final, não comprova uso real após a instalação e não apaga os negativos anteriores. Nenhum um.py/Lean/kernel/gate foi executado ou alterado por esta entrega operacional.
+
+[REAL — escopo funcional] O chat privado usa apresentação Markdown/KaTeX e tipografia do chat normal, com texto não confiável tratado sem mídia externa ou ações produzidas pelo modelo. Atualização incremental preserva linhas estáveis e seleção; beta dourado indica execução efetiva, sem simular streaming. Continuidade e histórico privados têm guardas próprias; perda da prova Apple exige revalidação, sem aumentar validade/permissões ou reenviar consulta. Respostas concluídas podem ser copiadas e exportadas por gesto explícito em TXT/MD/PDF/DOCX. A exportação verifica escopo/autorização antes e depois, usa bytes em memória e não cria URL pública nem armazenamento compartilhado. Navegação ou perda de autorização invalida ações pendentes. Não há alegação de interação física validada nesta versão.
+
+[INPUT — fronteira de autorização preservada] Permanece a exceção específica já autorizada para análise privada pelo MiMo, somente para o titular com vínculo Apple exclusivo e prova válida, com perguntas, histórico pertinente e trechos necessários. Não amplia para o acervo inteiro, outros usuários, outros provedores ou JEV remoto; sem fallback automático para modelo local. O contexto científico/comum não recebe conteúdo privado. Acervo somente leitura; ordens humanas ficam pendentes para confirmação posterior na Central própria, sem execução/aprovação pelo modelo. Exportar resposta/minuta não autoriza modificar arquivos do acervo. A exceção concreta à regra geral de GESTAO_DE_TOKENS permanece delimitada, não é autorização geral de egress.
+
+[REAL — testes com alcance] Visual:63 testes locais, sendo45 de controller e18 de navegador, em fixtures. ContinuidadeR2:30 testes locais. DocumentosR3:12 testes JavaScript e12 Python reutilizados, mais probes independentes descritos no parecer; não somar essas contagens como casos necessariamente distintos. Prévia integrada390x844 com API sintética mostrou Markdown privado, exportação e botão Enviar habilitado ao digitar a segunda pergunta. PDF sintético baixado:122714 bytes, hash igual ao esperado. Word foi preparado, mas download/visualização do Word não foram verificados nesse ensaio; validação estrutural não equivale a renderização visual. Share nativo e limpeza CACHE foram exercitados com mocks, não em aparelho. Encerramento abrupto pode deixar CACHE privado administrado pelo sistema. Negativos anteriores de fixtures/revisão/recuperação permanecem preservados. Não houve nova chamada remota ou consulta real de caso para este registro.
+
+[REAL — Android disponível pelo recibo] Android4.1(40): APK/AAB assinados e auditados; APK publicado aditivamente,24 anteriores preservados. Download autenticado conferido:5018907 bytes, hash igual ao assinado/auditado/publicado. Google Play não publicado nesta entrega. Download não prova instalação nem teste físico. A pendência histórica de download no recibo inicial de publicação é complementada pelo recibo posterior, não apagada.
+
+[REAL/INPUT — iOS ainda pendente] Cloud4.1(45) concluída SUCCEEDED_OBSERVED, commit94ba576efedf7aa36d4bc1b70c6ef68282e8a39f, execuçãof895d893-b72e-4576-ba44-c958616e3bde. Segundo atualização direta do integrador e captura IOS45_READY_ASSISTANCE.png, a ficha está Pronta para envio, grupos0; notas preenchidas, mas salvamento não confirmado. Salvar/adicionar grupo não reagiram, inclusive em nova aba; assistência humana foi solicitada. Não declarar45 distribuída aos grupos ou disponível aos convidados. Não iniciar build duplicada. Prova Apple no próprio IALD Web expirou e reautenticação permanece pendente; login na loja não a substitui. Live privado positivo desta versão aguarda essa etapa; não transferir sucesso histórico44 para45.
+
+[RASTREABILIDADE — retrato a complementar] Referência C:/IALD/Central de Patentes/work/owner_apple_private_access_20261022/SESSION_REFERENCE.json. Fontes, hashes e plano de11 superfícies em iphone45/memory_progress/SOURCES.json e PLAN.json; diário Claude em MEMORY_2.md. Writer com baseline/CAS, backup imediato de bytes e substituição temporária verificada, somente append. Preparação não é aplicação nem aceite. Este retrato parcial deve receber complemento após salvamento/distribuição TestFlight e teste autorizado, sem apagar as pendências aqui observadas. Nenhum conteúdo de caso, identidade privada, caminho do acervo ou credencial integra o adendo.
+<!-- END_IALD_OWNER_CHAT45_PARTIAL_20261023 -->
+
+
+## 23/10/2026 — Complemento técnico verificado: chat privado45 e disponibilidade
+<!-- IALD_OWNER_CHAT45_VERIFIED_20261023 -->
+[REAL] Complementa os retratos parciais, preservados. iOS4.1(45) Em testes em IALD Equipe/Piloto, notas salvas; Apple informa instalada45, sem inspeção física. Android4.1(40) publicado, download autenticado de5.018.907bytes com hash igual ao assinado. Google Play não publicado. Dois registros TestFlight administrativos atualizados com backup, demais bytes preservados; expiração exata desconhecida, avisos fora do chat.
+
+[REAL] Negativos anteriores permanecem: primeira consulta terminou local_read_not_confirmed após2 buscas no índice,0 leituras documentais e2 respostas MiMo recebidas; houve consulta ao índice. Continuação anterior concluiu transporte, mas produziu pseudo-recibo, falha funcional preservada. Patch revisado de1 arquivo reconheceu a negativa coordenada e ajustou apresentação, reiniciando somente serviço privado8770. Quinze destinos efetivos e cinco pinos científicos conferidos.
+
+[REAL] Após reautenticação Apple e patch,3 turnos sintéticos completed,0 ferramentas de acervo; continuidade, raciocínio e minuta observados. Recarga preservou o mesmo quadro privado; envio habilitado ao digitar, sem reenvio. Custo estimado pós-patch US$0,002687817, não fatura. Esses resultados não validam precisão jurídica nem recuperação completa de casos reais.
+
+[REAL/OPEN] Word/PDF baixados e conteúdo conferido. PDF legível em1 página, com limitação tipográfica baixa: marcadores brutos de linha/itálico. Word validado estruturalmente, sem renderização visual; Share físico não testado. Nenhuma nova build duplicada. Permanecem prova Apple exclusiva, MiMo autorizado sem outros provedores/fallback, acervo somente leitura e ordens humanas pendentes de confirmação. Ciência, kernel e permissões preservados.
+
+[EVIDÊNCIAS] [Entrega técnica](C:/IALD/Central%20de%20Patentes/work/owner_apple_private_access_20261022/iphone45/FINAL_TECHNICAL_DELIVERY_R3.json), com recibos pinados de implantação, negativos, live, exportação, recarga, distribuição e administração; índice complementar em iphone45/memory_final/SOURCES.json. Aceite final independente e aplicação de memória têm recibos próprios; este adendo não os presume.
+<!-- END_IALD_OWNER_CHAT45_VERIFIED_20261023 -->
+
+
+## 23/10/2026 — Consulta privada: reparo e continuidade pela web
+<!-- IALD_OWNER_SEARCH_COMPLETION_REPAIR_20261023 -->
+[REAL — negativo preservado] A falha frontier_response_invalid ocorreu após17 leituras e183,604s: resposta com182 chamadas de ferramentas terminou em length e foi recusada. Houve consulta ao acervo; pedido anterior preservado, sem reenvio.
+
+[REAL — reparo] Dois arquivos backend instalados, revisão independente PASS e reinício somente8770. São27 testes offline:22 casos do autor reexecutados e5 independentes. Correção preserva resultados lidos e retorno truncado, não executa ferramentas parciais e admite no máximo uma síntese distinta sem ferramentas. Respostas incertas/malformadas continuam recusadas. Autenticação, esquema e arquivos do acervo preservados.
+
+[REAL — resultados distintos] Nova busca real pela web: completed em57,3936s,7 leituras,4 chamadas MiMo, resposta visível e nenhum erro de ferramenta. Continuação: completed em31,897s,7 recibos históricos recuperados e2 chamadas. Recarga preservou exatamente o texto privado; Enviar habilitado antes do segundo turno e após recarga, sem reenvio. Total estimado dos2turnos US$0,030559929, não fatura; exclui falha anterior.
+
+[OPEN — alcance] Sem inspeção física do iPhone, avaliação de acurácia jurídica, garantia de completude ou atualização judicial externa. iOS45/Android40 preservados, sem nova build. Permanecem acesso Apple exclusivo, MiMo autorizado, leitura do acervo e ordens humanas pendentes de confirmação.
+
+[EVIDÊNCIAS] FINAL_DELIVERY.json e recibos pinados em iphone45/search_completion_repair/memory/SOURCES.json, mesma referência owner_apple_private_access_20261022. Negativos/histórico preservados. Aplicação de memória e aceite independente são etapas separadas, não presumidas.
+<!-- END_IALD_OWNER_SEARCH_COMPLETION_REPAIR_20261023 -->
+
+## 23/10/2026 — Memória científica da fila sincronizada com v397
+<!-- IALD_QUEUE_MEMORY_V397_20261023 -->
+[REAL — empacotamento local] Snapshot imutável v397; generation fa461e0518015af91ea2efcd10806e2d2f0a209ab27201790f272becb84be377; manifest SHA256 daf3b37d19498344b9407a6fa912491aea2bbff4c82d69c9005005ed5c0a119c. Treze documentos e 27954 trechos conferidos integralmente por hashes, UTF-8 e linhas; recuperação em três modos. Ativação pela API existente com baseline/CAS após revisão independente; geração recebida em processo novo no recibo. v396 e anteriores preservadas; pedidos e gerações fixadas intactos.
+[ESCOPO] Sincronização documental da fila, sem execução/importação de um.py ou Lean, chamada de provedor, reinício, alteração de original científico ou gate. Não afirma atualização do app/JEV nem nova prova. Guardas transitórias programa/selo e selftest ausente preservadas; bytes coerentes admitidos posteriormente. Aprovações específicas e envios terminais/incertos continuam independentes.
+[PROCESSO] Claim do quadro antecedeu o preparo; o novo requisito ACOM/preflight foi inscrito após o preparo. Gap temporal registrado sem retroagir; preflight vigente antes de ativar. Revisão independente documental não reproduz ciência.
+[CONTINUIDADE] CURRENT dispensa reconstrução; helper auditado em processo novo no heartbeat existente. Nunca alterar memory_generation para forçar envio. Recibos: C:/IALD/Central de Patentes/work/scientific_memory_sync_20261023_v397/DELIVERY_R1.json e REVIEW_R1.json.

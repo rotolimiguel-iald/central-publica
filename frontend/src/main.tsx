@@ -2,9 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import App from './App'
-import { carregarMapa, instalarFetchPublico } from './api'
+import { carregarMapa, instalarFetchPublico, PUBLICA } from './api'
 import Gate from './Gate'
 import Dashboard from './pages/Dashboard'
+import PublicHome from './pages/PublicHome'
 import PatentPage from './pages/PatentPage'
 import Patents from './pages/Patents'
 import Runs from './pages/Runs'
@@ -19,12 +20,14 @@ import Epct from './pages/Epct'
 import IaldNativa from './pages/IaldNativa'
 import Classes from './pages/Classes'
 import Users from './pages/Users'
+import Organismo from './pages/Organismo'
 import './styles.css'
 
 const router = createHashRouter([
   {
     path: '/', element: <App />, children: [
-      { index: true, element: <Dashboard /> },
+      { index: true, element: PUBLICA ? <PublicHome /> : <Dashboard /> },
+      { path: 'organismo', element: <Organismo /> },
       { path: 'classes', element: <Classes /> },
       { path: 'patents', element: <Patents /> },
       { path: 'patents/:id', element: <PatentPage /> },
