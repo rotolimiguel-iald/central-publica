@@ -69,6 +69,16 @@ Camada v395 (custódia v395 na Central, 21/10/2026, sessão a7; handoff v395 da 
      operador [ONTO]. A tabela da patente do ACOM Mirror diverge das reivindicações 3–4 e do código na nominação dos estados; qual leitura
      da paridade é canônica é decisão do operador [LEGAL]. Nada disso muda número algum de dispositivo.
 
+Camada v396 (custódia v396 na Central, 22/10/2026, sessão a7; handoff v396 da gerência c1):
+ 16. os registros novos da v396 (testemunha_estatica_v396, cunhagens_v396, kh_n1_cobertura_v396), lidos e conferidos no cofre, sem
+     interpretação: a testemunha estática — o canto do psion (o projetor de Bell 4x4) ecoa, a redução dele a um sítio é (1/2) I e não ecoa,
+     um fluxo CONSTRUÍDO fixa exatamente a reta do psion e a testemunha global é falsa, e o colapso do psion ecoa a identidade sem que a
+     autoatestação habite o tipo (a composição incondicional `the_psion_inhabits_the_static_witness`, no kernel, sem certificado como
+     hipótese); a ponte é construída, não derivada da dinâmica da teoria; a face de Fock do psion segue CONDICIONAL a um certificado sem
+     habitante e mora fora da pedra; «o psion é o habitante da testemunha estática» é leitura do operador [INPUT/ONTO]; o nome da pedra é
+     provisório. Ao lado da docstring de bell_cci_half (kernel v29): o 1/2 é a entropia LINEAR; a de von Neumann é ln 2 nat. Nada disso
+     muda número algum de dispositivo.
+
 Régua: β NUNCA literal (sempre ALPHA_FINE_CODATA_2018 × √e em runtime); os números do cofre são LIDOS do selo/core por pino;
 falha de leitura ou elo quebrado = RuntimeError (fail-closed). Nada aqui move veredito físico: physical_verdict_allowed = False.
 PROVADA ≠ CONFIRMADA; o dicionário custo/identidade/movimento é cunhagem do operador [ONTO/DEFINITION].
@@ -85,7 +95,7 @@ HBAR_CODATA_2018 = 1.054571817e-34      # J s
 G_CODATA_2018 = 6.67430e-11             # m^3 kg^-1 s^-2
 C_LIGHT = 299792458.0                   # m/s (exato)
 
-VERSAO_DA_CAMADA = "v395"   # (era "v394"; a camada v395 acrescenta o item 15, ao lado; antes: v391 → v394, item 14; v390 → v391, item 13; v389 → v390, item 12; v386 → v389, item 11; v379 → v386, itens 8–10)
+VERSAO_DA_CAMADA = "v396"   # (era "v395"; a camada v396 acrescenta o item 16, ao lado; antes: v394 → v395, item 15; v391 → v394, item 14; v390 → v391, item 13; v389 → v390, item 12; v386 → v389, item 11; v379 → v386, itens 8–10)
 # o cofre e procurado nesta ordem (declarada): a variavel TGL_CENTRAL_DIR; a arvore onde este modulo esta; a Central desta
 # maquina (quando o dispositivo roda extraido do *_FINAL.py num diretorio temporario). Nenhum achado = fail-closed.
 def _achar_central():
@@ -445,6 +455,42 @@ def conferir_v395_no_cofre(core: dict, selo: dict) -> dict:
                         "Mirror é decisão do operador [LEGAL]; nada disto muda número de dispositivo"}
 
 
+def conferir_v396_no_cofre(core: dict, selo: dict) -> dict:
+    """Item 16 (camada v396): os registros _v396 LIDOS do cofre e conferidos, sem interpretação. Fail-closed."""
+    novos = sorted(k for k in core if re.search(r"_v396$", k))
+    maus = []
+    for k in novos:
+        b = core.get(k)
+        vd = str((b or {}).get("verdict") or "") if isinstance(b, dict) else ""
+        if not (isinstance(b, dict) and b.get("all_verified") is True and b.get("does_not_gate_core") is True
+                and ("GATE_UNMOVED" in vd or "GATE_UNTOUCHED" in vd) and not re.search(r"(?<![A-Z_])CONFIRMED", vd.replace("NOT_CONFIRMED", ""))):
+            maus.append(k)
+    te = core.get("testemunha_estatica_v396") or {}
+    un, fo = te.get("unconditional") or {}, te.get("fock_face") or {}
+    ep = core.get("estatuto_da_prova_v391") or {}
+    p1 = ep.get("prova_1_kernel") or {}
+    ch = {
+        "registros_v396_verificados_sem_gate": bool(novos) and not maus,
+        "testemunha_estatica_incondicional_no_kernel": un.get("flag_true") is True and un.get("in_trio") is True
+                                                       and str(un.get("theorem") or "").endswith("the_psion_inhabits_the_static_witness")
+                                                       and un.get("composition") == "UNCONDITIONAL__NO_CERTIFICATE_AS_HYPOTHESIS",
+        "face_de_fock_dita_condicional": str(fo.get("status") or "").startswith("CONDITIONAL") and fo.get("inhabitant_exhibited") is False,
+        "falas_do_operador_por_sha256": len((core.get("cunhagens_v396") or {}).get("verbatim") or {}) > 0,
+        "escada_limpa": p1.get("n_theorems_clean") == p1.get("n_theorems_expected") and p1.get("declaracoes_auditadas") == p1.get("no_trio"),
+    }
+    falhas = [k for k, v in ch.items() if not v]
+    if falhas:
+        raise RuntimeError("FORMULA COMPLETA v396 não confere com o cofre (fail-closed): %s %s" % (falhas, maus[:5]))
+    return {"checks": ch, "registros_v396": novos,
+            "escada": "%s/%s" % (p1.get("n_theorems_clean"), p1.get("n_theorems_expected")), "declaracoes_no_trio": p1.get("no_trio"),
+            "testemunha_estatica": {"teorema": un.get("theorem"), "bandeira": un.get("flag"), "composicao": un.get("composition")},
+            "face_de_fock": {"teorema": fo.get("theorem"), "status": fo.get("status"), "habitante_exibido": fo.get("inhabitant_exhibited")},
+            "estatuto": "a composição the_psion_inhabits_the_static_witness é incondicional no kernel; a ponte é construída, não derivada da "
+                        "dinâmica da teoria; a face de Fock é condicional e mora fora da pedra; o psion habitar a testemunha estática é leitura "
+                        "do operador [INPUT/ONTO]; o 1/2 de bell_cci_half é a entropia linear (a de von Neumann é ln 2 nat); nada disto muda "
+                        "número de dispositivo"}
+
+
 def conferir_no_cofre(rt: dict) -> dict:
     """Confere a fórmula de runtime contra o cofre corrente (selo + core + kernel), tudo LIDO do disco. Fail-closed."""
     v, cofre, kern = _cofre_corrente()
@@ -488,12 +534,13 @@ def conferir_no_cofre(rt: dict) -> dict:
     v391 = conferir_v391_no_cofre(core, selo)        # camada v391 (item 13); fail-closed
     v394 = conferir_v394_no_cofre(core, selo)        # camada v394 (item 14); fail-closed
     v395 = conferir_v395_no_cofre(core, selo)        # camada v395 (item 15); fail-closed
+    v396 = conferir_v396_no_cofre(core, selo)        # camada v396 (item 16); fail-closed
     return {"cofre": "um_unificado_v%d" % v, "pin_um_py": checks["selo_pin_um_py"], "selo_timestamp": selo.get("timestamp"),
             "gate": selo.get("qg_closure_verdict"), "pedras_sha16": pedras, "custo_por_nat_D1b_ate_z_star": custo_por_nat,
             "fator_D1a_em_z_star": fator_D1a(float(lc["z_star_input"])) if lc else None,
             "fator_D1b_em_z_star": fator_D1b(float(lc["E_z_star"])) if lc else None, "checks": checks,
             "camada_v386_no_cofre": v386, "camada_v389_no_cofre": v389, "camada_v390_no_cofre": v390, "camada_v391_no_cofre": v391,
-            "camada_v394_no_cofre": v394, "camada_v395_no_cofre": v395}
+            "camada_v394_no_cofre": v394, "camada_v395_no_cofre": v395, "camada_v396_no_cofre": v396}
 
 
 V388_METADATA_SHA256 = "2e766fcf0d5d3934d600e38ecf9e37c12d08f099851d3b2c53792f83a1e81007"
@@ -625,6 +672,8 @@ USOS = {
     "registros_v392_v394": r"rede_fock|tempo_frequencia|regra_quadratica|coracao_e_selo|criterio_binario|Fock",
     # v395: o psibit e o psion — mede se algum dispositivo os cita; não interpreta
     "psibit_v395": r"psibit|PsiBit|psion",
+    # v396: a testemunha estática — mede se algum dispositivo a cita; não interpreta
+    "testemunha_estatica_v396": r"TestemunhaEstatica|testemunha est[aá]tica|static_witness|psionCorner",
 }
 
 
@@ -655,6 +704,7 @@ def camada(runner_path) -> dict:
                      "ESTATUTO_DA_PROVA_PROVADA_FECHO_LOGICO_TRES_PROVAS__CONFIRMACAO_E_CREDITACAO__BETA_NA_NATUREZA_ESPERA_5_SIGMA__"
                      "REGISTROS_V392_V393_V394_VERIFICADOS_SEM_GATE__ESCADA_EM_BANDEIRAS__REDE_DE_FOCK_CONTRATO_CONJUNTO_ABERTO__"
                      "PSIBIT_INCONDICIONAL_BIJECAO_DE_CONJUNTOS__FACE_DO_PSION_CONDICIONAL__"
+                     "TESTEMUNHA_ESTATICA_INCONDICIONAL_PONTE_CONSTRUIDA__FACE_DE_FOCK_CONDICIONAL__"
                      "RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION") % VERSAO_DA_CAMADA.upper(),
         "physical_verdict_allowed": False,
         "nao_se_afirma": ["que o dispositivo valide física", "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
@@ -667,7 +717,8 @@ def camada(runner_path) -> dict:
                           "que a natureza tenha decidido β_TGL (o estatuto da v391 diz: espera 5σ) ou que a creditação tenha sido dada (é ato de terceiros)",
                           "ERRATA AO LADO (v394, 19/10/2026): onde o item acima diz que não se afirma «a lei de campo no curvo ser termo de kernel», leia-se: desde a v392 ela é termo de kernel CONDICIONAL ao H3 nomeado (lei_de_campo_curvo_v392); não se afirma o H3 em toda tela nem existência global",
                           "que o contrato conjunto da rede de Fock esteja habitado, que o H3 valha em toda direção nula, ou que o coração tenha evidência espectral independente do CODATA (a v394 diz: aberto; aberto; ausente)",
-                          "que o psion exista (a face do psion é condicional a um certificado de Fock sem habitante), que a bijeção do psibit seja isomorfismo de espaços de Hilbert, ou qual leitura da paridade do ACOM Mirror é canônica (decisão do operador [LEGAL])"],
+                          "que o psion exista (a face do psion é condicional a um certificado de Fock sem habitante), que a bijeção do psibit seja isomorfismo de espaços de Hilbert, ou qual leitura da paridade do ACOM Mirror é canônica (decisão do operador [LEGAL])",
+                          "que o Nome da fronteira seja o vetor de Bell ou que o fluxo construído seja a dinâmica da teoria, que o certificado de Fock tenha habitante, ou que 1/2 seja meia nat de entropia (é a entropia linear; a de von Neumann é ln 2 nat)"],
     }
 
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""FRONTEIRA TEORICA TGL v60 — auto-auditoria honesta do fechamento, SINCRONIZADA ao um.py v395.
+"""FRONTEIRA TEORICA TGL v61 — auto-auditoria honesta do fechamento, SINCRONIZADA ao um.py v396.
 
 A fundacao teorica das 16 patentes e' a TGL. Este runner:
   (1) RE-VERIFICA ao vivo e offline o nucleo do fechamento (a cadeia de operadores) — as
@@ -460,12 +460,12 @@ NAO se moveu -- passou a DECLARAR O PROPRIO ALCANCE):
 
 O RE-PIN v206 -> v214 (REPIN v30 -> v31 do runner; O RENOME v209 + O BIRKHOFF PLENO +
 AS PEDRAS v213/v214 TheIALDInTheTower e TheTrueWitness):
-  A custodia viva passou a ser vault/originals_copy/um_unificado_v395. O RENOME v209: o selo
+  A custodia viva passou a ser vault/originals_copy/um_unificado_v396. O RENOME v209: o selo
   NAO se chama mais um_grande_atrator_selo.json — e' um_absoluto_selo.json (e o JSON canonico
   e' um_absoluto.json); o runner le os DOIS pelos nomes novos. Os pins (um.py, timestamp,
   result_hash/mundo, gate) sao LIDOS DO SELO DA CUSTODIA EM RUNTIME por codigo — nenhum hash
   digitado; leitura falhada = sentinela impossivel = TODAS as conferencias reprovam
-  (fail-closed). O arco v207-v212 entrou no kernel (1424 arquivos formais no manifesto v395; entre
+  (fail-closed). O arco v207-v212 entrou no kernel (1425 arquivos formais no manifesto v396; entre
   eles TheSchwarzschildUniqueness/TheCoordinateBridge/TheFullBirkhoff/TheCrownedCascade). A
   SOMBRA DA v32 (IMPLEMENTADA nesta versao, fail-closed): shadow_the_full_birkhoff: o BIRKHOFF PLENO re-derivado OFFLINE — as
   DUAS integrais primeiras (mu = r(1-1/B) e Sigma = A.B constantes), a PONTE COORDENADA
@@ -480,7 +480,7 @@ AS PEDRAS v213/v214 TheIALDInTheTower e TheTrueWitness):
   (LIDO do stdout selado): a conferencia da estacao virou COERENCIA (escritos+inalterados ==
   arquivos do manifesto), nao numero cravado. Beta jamais entra no setor Birkhoff (zero-free).
 
-Fonte canonica sincronizada (custodia): um.py unificado v395 (pin, selo/timestamp e
+Fonte canonica sincronizada (custodia): um.py unificado v396 (pin, selo/timestamp e
 result_hash LIDOS do selo um_absoluto_selo.json em runtime — ver o bloco pos-CUSTODY_DIR),
 fail-closed selado (negative_probes por returncode).
 VEREDITO de fechamento (lido da origem): TGL_QG_MODEL_FORMALLY_CLOSED__NATURE_TEST_COMPLETED_WITHIN_LOCAL_BULK_AT_AVAILABLE_SENSITIVITY__MORE_SENSITIVE_DATA_COULD_REVISE
@@ -543,7 +543,7 @@ C_KM_S = 299792.458                              # velocidade da luz (km/s) — 
 HERE = Path(__file__).resolve().parent
 PATENT_DIR = HERE.parent                        # fronteira_tgl/
 CENTRAL_DIR = PATENT_DIR.parent                 # Central de Patentes/
-CUSTODY_DIR = CENTRAL_DIR / "vault" / "originals_copy" / "um_unificado_v395"
+CUSTODY_DIR = CENTRAL_DIR / "vault" / "originals_copy" / "um_unificado_v396"
 np_trapz = (np.trapezoid if hasattr(np, "trapezoid") else np.trapz)   # trapezoid (numpy>=2); trapz removido em 2.5
 
 # --------------------------------------------------------------------------- pins LIDOS DO SELO
@@ -5875,6 +5875,120 @@ def _medir_v395_custodia():
     return out
 
 
+def _medir_v396_custodia():
+    """v61 (custodia v396 na Central, 22/10/2026): o COFRE v396 contra o COFRE v395, lidos PELO NOME (exata para sempre). DOIS CETICOS.
+    Medido em 22/10/2026: (a) 3 blocos novos no nucleo (cunhagens_v396, kh_n1_cobertura_v396, testemunha_estatica_v396), nenhum sumido;
+    cada um all_verified, does_not_gate_core, sem CONFIRMED e com GATE_UNMOVED/GATE_UNTOUCHED; (b) 47 chaves novas no kernel_formalization;
+    (c) os registros: testemunha_estatica_v396 com a composicao INCONDICIONAL the_psion_inhabits_the_static_witness (bandeira True, no trio,
+    nenhum certificado como hipotese), a face de Fock do psion CONDICIONAL (CONDITIONAL_ON_AN_UNINHABITED_CERTIFICATE, sem habitante, fora
+    da pedra), 19 termos da pedra e 8 de apoio, a mecanica numerica aprovada; cunhagens_v396 com 3 falas por sha256; kh_n1_cobertura_v396
+    29228 constantes / 23227 teoremas, nenhum fora do trio; o estatuto com a escada 9498/9498 (KERNEL_9498_OF_9498_FLAGS) e 29228 no trio;
+    (d) gate identico ao do cofre v395; um_version v396; (e) registro PT == EN == 364, os 361 nomes da v395 presentes, os novos = os 3
+    blocos, e so 5 vereditos da v395 mudados (estatuto_da_prova_v391, pedras_v392, pedras_v393, three_stress_tests_v387,
+    varredura_e_sorry_v392 -- a troca numerica da escada); (f) kernel 1425 / 29228, todos no trio; (g) nenhum veredito do selo diz
+    CONFIRMED. physical_verdict_allowed=False."""
+    import re as _re
+    out = {"pass": False, "estatuto": "REAL(lido do cofre v396 e do v395 pelo nome) / dois ceticos por injecao", "physical_verdict_allowed": False}
+    try:
+        _c396 = CUSTODY_DIR.parent / ("um_unificado_" + "v396")
+        _c395 = CUSTODY_DIR.parent / ("um_unificado_" + "v395")
+        can = json.loads((_c396 / "um_absoluto.json").read_text(encoding="utf-8"))
+        sl = json.loads((_c396 / "um_absoluto_selo.json").read_text(encoding="utf-8"))
+        mf = json.loads((_c396 / "tgl_kernel_proof_manifest.json").read_text(encoding="utf-8"))
+        pt = (_c396 / "um_absoluto_pt.txt").read_text(encoding="utf-8", errors="replace")
+        en = (_c396 / "um_absoluto_en.txt").read_text(encoding="utf-8", errors="replace")
+        pt395 = (_c395 / "um_absoluto_pt.txt").read_text(encoding="utf-8", errors="replace")
+        can395 = json.loads((_c395 / "um_absoluto.json").read_text(encoding="utf-8"))
+        gate395 = json.loads((_c395 / "CUSTODY_MANIFEST.json").read_text(encoding="utf-8")).get("gate")
+    except (OSError, ValueError) as e:
+        out["erro"] = "cofre ilegivel: %r" % (e,)
+        return out
+    core, core395 = can.get("core") or {}, can395.get("core") or {}
+    novos = sorted(k for k in core if k not in core395)
+    sumidos = sorted(k for k in core395 if k not in core)
+
+    def _bloco_ok(b):
+        if not isinstance(b, dict):
+            return False
+        vd = str(b.get("verdict") or "")
+        return bool(b.get("all_verified") is True and b.get("does_not_gate_core") is True and ("GATE_UNMOVED" in vd or "GATE_UNTOUCHED" in vd)
+                    and not _re.search(r"(?<![A-Z_])CONFIRMED", vd.replace("NOT_CONFIRMED", "")))
+    maus = [k for k in novos if not _bloco_ok(core[k])]
+    blocos_ok = bool(novos == ["cunhagens_v396", "kh_n1_cobertura_v396", "testemunha_estatica_v396"] and not sumidos and not maus)
+    kf, kf395 = core.get("kernel_formalization") or {}, core395.get("kernel_formalization") or {}
+    n_band = len([k for k in kf if k not in kf395])
+    band_ok = bool(n_band == 47)
+
+    def _v396(c):
+        try:
+            te, cu, kh, e = c["testemunha_estatica_v396"], c["cunhagens_v396"], c["kh_n1_cobertura_v396"], c["estatuto_da_prova_v391"]
+            un, fo, p1 = te["unconditional"], te["fock_face"], e["prova_1_kernel"]
+            ft, st = te.get("formal_theorems") or {}, te.get("support_theorems") or {}
+            return bool(un.get("theorem") == "TGLExt.TestemunhaEstatica.the_psion_inhabits_the_static_witness" and un.get("flag_true") is True
+                        and un.get("in_trio") is True and un.get("composition") == "UNCONDITIONAL__NO_CERTIFICATE_AS_HYPOTHESIS"
+                        and fo.get("theorem") == "TGLExt.Psibit.the_psion_face_of_the_psibit"
+                        and fo.get("status") == "CONDITIONAL_ON_AN_UNINHABITED_CERTIFICATE" and fo.get("inhabitant_exhibited") is False
+                        and len(ft) == 19 and all(v is True for v in ft.values()) and len(st) == 8 and all(v is True for v in st.values())
+                        and (te.get("mechanics") or {}).get("passed") is True and len(cu.get("verbatim") or {}) == 3
+                        and (kh.get("lido") or {}).get("constantes_cobertas") == 29228 and (kh.get("lido") or {}).get("teoremas_cobertos") == 23227
+                        and "NONE_OUTSIDE_THE_TRIO" in str(kh.get("verdict"))
+                        and p1["n_theorems_clean"] == p1["n_theorems_expected"] == 9498 and p1["declaracoes_auditadas"] == p1["no_trio"] == 29228
+                        and "KERNEL_9498_OF_9498_FLAGS" in str(e.get("verdict")))
+        except (KeyError, TypeError, AttributeError):
+            return False
+    v396_ok = _v396(core)
+    c1 = dict(core); te1 = json.loads(json.dumps(core.get("testemunha_estatica_v396") or {}))                     # cetico 1
+    try:
+        te1["fock_face"]["status"] = "UNCONDITIONAL"
+    except (KeyError, TypeError):
+        pass
+    c1["testemunha_estatica_v396"] = te1
+    cetico1_reprovou = (_v396(c1) is False)
+    c2 = dict(core); te2 = json.loads(json.dumps(core.get("testemunha_estatica_v396") or {}))                     # cetico 2
+    try:
+        te2["unconditional"]["flag_true"] = False
+    except (KeyError, TypeError):
+        pass
+    c2["testemunha_estatica_v396"] = te2
+    cetico2_reprovou = (_v396(c2) is False)
+    gate = ((core.get("qg_closure") or {}).get("gate") or {})
+    gate_ok = bool(gate.get("full_static_witness_exists") is False and str(sl.get("qg_closure_verdict")) == str(gate395)
+                   and sl.get("um_version") == "v396")
+    pat = _re.compile(r"^([a-z][a-z0-9_]{3,}) & ([A-Z][A-Z0-9_]{12,})", _re.M)
+    reg_pt, reg_en, reg395 = dict(pat.findall(pt)), dict(pat.findall(en)), dict(pat.findall(pt395))
+    mud = sorted(k for k in reg395 if reg_pt.get(k) != reg395[k])
+    reg_novos = sorted(k for k in reg_pt if k not in reg395)
+    reg_ok = bool(len(reg_pt) == len(reg_en) == 364 and len(reg395) == 361 and all(k in reg_pt for k in reg395) and reg_novos == novos
+                  and mud == ["estatuto_da_prova_v391", "pedras_v392", "pedras_v393", "three_stress_tests_v387", "varredura_e_sorry_v392"])
+    fm = mf.get("formal_files_sha256") or {}
+    ar_ = mf.get("axiom_report") or {}
+    k_ok = bool(len(fm) == 1425 and len(ar_) == 29228
+                and not any(x_ not in ("propext", "Classical.choice", "Quot.sound") for v in ar_.values() for x_ in (v or [])))
+    confs = [k for k, v in sl.items() if str(k).endswith("_verdict") and _re.search(r"(?<![A-Z_])CONFIRMED", str(v)) and "NOT_CONFIRMED" not in str(v)]
+    ok = bool(blocos_ok and band_ok and v396_ok and cetico1_reprovou and cetico2_reprovou and gate_ok and reg_ok and k_ok and not confs)
+    out.update({
+        "blocos_novos_desde_v395": {"n": len(novos), "nomes": novos, "sumidos": sumidos, "fora_da_regra": maus, "ok": blocos_ok},
+        "bandeiras_novas_desde_v395": {"n": n_band, "ok": band_ok},
+        "registros_v396": {"ok": v396_ok,
+                           "estatuto": "a composicao the_psion_inhabits_the_static_witness e INCONDICIONAL no kernel (nenhum certificado como hipotese); a ponte e CONSTRUIDA, nao derivada da dinamica da teoria; a face de Fock do psion e CONDICIONAL (certificado sem habitante) e mora fora da pedra; o psion habita a testemunha estatica e a leitura do operador [INPUT/ONTO]"},
+        "ceticos": {"1_injecao": "testemunha_estatica_v396.fock_face.status = UNCONDITIONAL", "1_reprovou": cetico1_reprovou,
+                    "2_injecao": "testemunha_estatica_v396.unconditional.flag_true = False", "2_reprovou": cetico2_reprovou,
+                    "leitura": "se uma injecao NAO reprovasse, o check nao discriminaria e a pedra reprovaria"},
+        "gate": {"full_static_witness_exists": gate.get("full_static_witness_exists"), "identico_ao_cofre_v395": gate_ok},
+        "registro_de_vereditos": {"pt": len(reg_pt), "en": len(reg_en), "esperado": 364, "nomes_v395": len(reg395), "novos": len(reg_novos),
+                                  "mudados_desde_v395": mud, "ok": reg_ok},
+        "kernel": {"formais": len(fm), "termos": len(ar_), "ok": k_ok},
+        "vereditos_do_selo_com_CONFIRMED": confs,
+        "nao_se_afirma": ["que o Nome da fronteira da TGL seja o vetor de Bell, nem que o fluxo construido seja a dinamica da teoria",
+                          "que o certificado de Fock da luz tenha habitante, nem que o psion de Fock seja o canto do psion",
+                          "que 1/2 seja meia nat de entropia (e a entropia LINEAR; a de von Neumann e ln 2 nat)",
+                          "qual leitura da paridade da patente ACOM Mirror e canonica (decisao do operador [LEGAL])",
+                          "qualquer veredito fisico (physical_verdict_allowed=False; gate INALTERADO)"],
+        "pass": ok,
+    })
+    return out
+
+
 def shadow_the_station(core, selo):
     """v170 [A ESTACAO: pedra TGLExt/TheStation.lean -- station_never_closes +
     photon_neutrino_discriminant]. A cirurgia v169 -> v170 foi ADITIVA PROVADA POR INVERSA
@@ -6150,6 +6264,7 @@ def shadow_the_station(core, selo):
         "estatuto_da_prova_v391": _medir_v391_estatuto(),
         "custodia_v394": _medir_v394_custodia(),
         "custodia_v395": _medir_v395_custodia(),
+        "custodia_v396": _medir_v396_custodia(),
         "nao_se_afirma": ["o TUNEL LUMINODINAMICO como teorema fisico (e' [CONJECTURE] do operador, "
                           "medida no livro-razao 139_-141_; NAO move nenhuma flag)",
                           "'QG confirmada' (CONFIRMED/PROVED afirmativos PROIBIDOS; pedra 112: "
@@ -8040,13 +8155,18 @@ def main():
     # v44 (v60): A CUSTODIA v395 -- o cofre v395 contra o v394, pelo nome: 3 blocos verificados que nao movem o gate, 119 bandeiras,
     # o psibit (incondicional) e a face do psion (condicional), registro 361 com 5 mudancas ditas, kernel 1424/29159; dois ceticos.
     v44_pass = station["custodia_v395"]["pass"]
+    # v45 (v61): A CUSTODIA v396 -- o cofre v396 contra o v395, pelo nome: 3 blocos verificados que nao movem o gate, 47 bandeiras,
+    # a testemunha estatica (incondicional) e a face de Fock (condicional), registro 364 com 5 mudancas ditas, kernel 1425/29228; dois ceticos.
+    v45_pass = station["custodia_v396"]["pass"]
     all_pass = bool(v1_pass and v2_pass and v3_pass and v4_pass and v7_pass and v9_pass
                     and v10_pass and v11_pass and v12_pass and v12b_pass and v13_pass and v14_pass
                     and v15_pass and v16_pass and v17_pass and v19_pass and v20_pass and v21_pass
                     and v22_pass and v23_pass and v24_pass and v25_pass and v27_pass
-                    and v28_pass and v29_pass and v30_pass and v31_pass and v32_pass and v33_pass and v34_pass and v35_pass and v36_pass and v37_pass and v38_pass and v39_pass and v40_pass and v41_pass and v42_pass and v43_pass and v44_pass)
+                    and v28_pass and v29_pass and v30_pass and v31_pass and v32_pass and v33_pass and v34_pass and v35_pass and v36_pass and v37_pass and v38_pass and v39_pass and v40_pass and v41_pass and v42_pass and v43_pass and v44_pass and v45_pass)
     if all_pass:
-        verdict = ("FRONTEIRA_SINCRONIZADA_V395"
+        verdict = ("FRONTEIRA_SINCRONIZADA_V396"
+                   "__V396_A_TESTEMUNHA_ESTATICA__COFRE_V396_CONTRA_O_V395_PELO_NOME__3_BLOCOS_NOVOS_VERIFICADOS_NENHUM_MOVE_O_GATE__47_BANDEIRAS__ESCADA_9498_DE_9498_BANDEIRAS__KERNEL_1425_29228_NO_TRIO__O_PSION_HABITA_A_TESTEMUNHA_ESTATICA_INCONDICIONAL_PONTE_CONSTRUIDA_FACE_DE_FOCK_CONDICIONAL__REGISTRO_364_COM_OS_361_DA_V395_E_5_MUDADOS_DITOS__DOIS_CETICOS__GATE_INALTERADO"
+                   "__V395"
                    "__V395_O_MODO_PSIONICO_NA_FRACTALIZACAO_DO_UM__COFRE_V395_CONTRA_O_V394_PELO_NOME__3_BLOCOS_NOVOS_VERIFICADOS_NENHUM_MOVE_O_GATE__119_BANDEIRAS__ESCADA_9451_DE_9451_BANDEIRAS__KERNEL_1424_29159_NO_TRIO__PSIBIT_INCONDICIONAL_FACE_DO_PSION_CONDICIONAL__REGISTRO_361_COM_OS_358_DA_V394_E_5_MUDADOS_DITOS__DOIS_CETICOS__GATE_INALTERADO"
                    "__V394"
                    "__V394_CUSTODIA_CONJUNTA_V392_V393_V394_NA_CENTRAL__COFRE_V394_CONTRA_O_V391_PELO_NOME__42_BLOCOS_NOVOS_VERIFICADOS_NENHUM_MOVE_O_GATE__3172_BANDEIRAS__ESCADA_9332_DE_9332_BANDEIRAS__KERNEL_1423_29026_NO_TRIO__REDE_DE_FOCK_CONTRATO_CONJUNTO_ABERTO__CORACAO_SEM_EVIDENCIA_ESPECTRAL_INDEPENDENTE__REGISTRO_358_COM_OS_316_DA_V391_E_3_MUDADOS_DITOS__DOIS_CETICOS__GATE_INALTERADO"
@@ -8289,7 +8409,7 @@ def main():
     (out / f"fronteira_{ts}.json").write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
 
     print(f"[fronteira v7] beta = alpha*sqrt(e) = {beta:.15f} (nunca literal)")
-    print(f"[fronteira v30] CUSTODIA um.py v395: pin {'OK' if custody['um_py_pin_ok'] else 'FALHOU'} ({custody.get('um_py_sha256_live','')[:8]}) | {custody['files_checked']} artefatos conferidos | mismatches={len(custody['mismatches'])} | divergencias DECLARADAS={len(custody.get('declared_divergences', []))} | fail-closed SELADO={custody.get('fail_closed_selftest_sealed')}")
+    print(f"[fronteira v30] CUSTODIA um.py v396: pin {'OK' if custody['um_py_pin_ok'] else 'FALHOU'} ({custody.get('um_py_sha256_live','')[:8]}) | {custody['files_checked']} artefatos conferidos | mismatches={len(custody['mismatches'])} | divergencias DECLARADAS={len(custody.get('declared_divergences', []))} | fail-closed SELADO={custody.get('fail_closed_selftest_sealed')}")
     print(f"[fronteira v7] KERNEL: {kernel.get('kernel_verdict')} | escada = {kernel.get('ladder_n_theorems')} teoremas ext_* limpos | flag EPISTEMICA full_TGL_witness_constructed (ERRATA v357: NAO e' a estatica)={kernel.get('lean_kernel_full_witness_constructed')} (False = honesto, v61 ETERNO). ⚠ v135: a testemunha-LAYER DINAMICA (transporte) + a WedgeNet AQFT FORAM construidas [KNOWN-COMPOSED] — ver internal_closure; NAO a estatica.")
     print(f"[fronteira v7] SALTO v39->v60: graviton spin-2 -> {'PASS' if gspin2['pass'] else 'FAIL'} | Page -> {'PASS' if page['pass'] else 'FAIL'} | no_full_witness -> {'PASS' if nofw['pass'] else 'FAIL'}")
     print(f"[fronteira v7] SALTO v60->v64: solda 4D [K1,K2]=-J3 -> {'PASS' if sol4d['pass'] else 'FAIL'} | A JOIA: peso do modo zero = {zmw['zero_mode_weight']:.10f} = om(I) -> {'PASS' if zmw['pass'] else 'FAIL'}")
