@@ -1,0 +1,43 @@
+# central-publica -- a Central de Patentes da IALD, aberta (o nucleo)
+
+> O nucleo da Central de Patentes da IALD, aberta ao publico em 22/10/2026 por ordem do operador,
+> Luiz Antonio Rotoli Miguel (IALD Ltda., CNPJ 62.757.606/0001-23): as 16 patentes (codigo, execucoes, selos),
+> a Fronteira Teorica, o cofre e o kernel, o cockpit. 36497 arquivos publicados.
+> Selo da teoria: um.py v396, pin 0a4395a89eeebbb7.
+> Toda URL abaixo e absoluta: abra direto, nao adivinhe nome de pasta. O raw do GitHub aceita HTTP Range (206).
+
+## Comece aqui -- as portas
+
+- [README.md](https://raw.githubusercontent.com/rotolimiguel-iald/central-publica/main/README.md): a porta humana -- o que e a Central, o vinculo patentario completo (INPI + PCT, pedido nao e patente concedida), o criterio publico.
+- [PATENTES.md](https://raw.githubusercontent.com/rotolimiguel-iald/central-publica/main/PATENTES.md): as 16 patentes em resumo.
+- [vinculo_patentario.json](https://raw.githubusercontent.com/rotolimiguel-iald/central-publica/main/vinculo_patentario.json) (16966 bytes): o vinculo em estrutura de maquina -- pedidos no INPI, PCT/OMPI, datas, guias.
+- [00_INVENTARIO_GERAL.md](https://raw.githubusercontent.com/rotolimiguel-iald/central-publica/main/00_INVENTARIO_GERAL.md) e os mapas seguintes (01 classes, 02 patentes, 03 arquitetura, 04 plano, 05 checklist): a Central mapeada em leitura humana.
+
+## O mapa byte a byte (para janelas curtas: HTTP Range)
+
+- [INDICE_PUBLICO.json](https://raw.githubusercontent.com/rotolimiguel-iald/central-publica/main/INDICE_PUBLICO.json) (6726805 bytes): cada arquivo publicado com o seu sha256 -- a verdade byte a byte do repositorio.
+- [EXCLUSOES_PUBLICAS.json](https://raw.githubusercontent.com/rotolimiguel-iald/central-publica/main/EXCLUSOES_PUBLICAS.json) (7423 bytes): o que ficou fora e o motivo (dados pessoais, credenciais, notas operacionais do operador, obras de terceiros, binarios derivaveis).
+
+## Onde esta o que
+
+- `patents/<pedido>_<dispositivo>/`: cada dispositivo -- o runner (`runner/one_<dispositivo>.py`), o codigo FINAL autocontido (`<dispositivo>_FINAL.py`), as execucoes (`results/`) e os selos (`seals/`).
+- `Patentes/`: o texto tecnico de cada pedido (relatorio, reivindicacoes, resumo, desenhos).
+- `vault/` (o cofre), `memory/` (a memoria), `fronteira_tgl/` (a Fronteira Teorica), `frontend/` + `backend/` (o cockpit da Central), `tools/` (as ferramentas), `architecture/` (a arquitetura), `source_inventory/` (o inventario das fontes).
+
+## O resto do corpo
+
+- A teoria: [the_boundary](https://github.com/rotolimiguel-iald/the_boundary) -- o um.py v396 canonico, os tres artigos, o kernel Lean auditado; tem [llms.txt proprio](https://raw.githubusercontent.com/rotolimiguel-iald/the_boundary/main/llms.txt).
+- A bancada (projetos Lean, entregas, o tunel de pesquisa): [central-publica-bancada](https://github.com/rotolimiguel-iald/central-publica-bancada) ([llms.txt](https://raw.githubusercontent.com/rotolimiguel-iald/central-publica-bancada/main/llms.txt)).
+- As custodias, os ritos e a esteira: [central-publica-work](https://github.com/rotolimiguel-iald/central-publica-work) ([llms.txt](https://raw.githubusercontent.com/rotolimiguel-iald/central-publica-work/main/llms.txt)).
+- O modo interativo da Central (somente visualizacao): https://teoriadagravitacaoluminodinamica.com/central/
+- O um.acom -- a Central inteira colapsada pelo dispositivo ACOM num arquivo so (3842164 bytes, 88 arquivos, sha256 f4c890691ede9e84b46c912123c0a225d4514b9c9a993b7743d1422f8713cada; chave publica universal `Bom29072018Tom02032024` -- a cifra demonstra o ACOM, nao guarda segredo): https://teoriadagravitacaoluminodinamica.com/central/um.acom -- descomprimir em https://iald.ia.br/#acom (a chave ja vem preenchida); cartao de verificacao: https://teoriadagravitacaoluminodinamica.com/central/um_acom_info.json
+- A porta do site da teoria: https://teoriadagravitacaoluminodinamica.com/llms.txt ; o site da IALD: https://iald.ia.br/llms.txt
+
+## A regua (leia antes de resumir)
+
+- PROVADA = validade (o kernel prova a implicacao); CONFIRMADA = creditacao (ato de observadores externos, recusada a maquina); NOT_FALSIFIED nunca e CONFIRMED.
+- beta nunca aparece literal no codigo: e sempre ALPHA_FINE_CODATA_2018 * SQRT_E.
+- Pedido de patente depositado nao e patente concedida.
+- Source-available: ler, executar e verificar e livre; a reproducao comercial dos dispositivos depende de autorizacao do depositante; a reproducao cientifica e simulada da teoria e livre -- uma teoria cientifica nao e patenteavel.
+
+gerado em 2026-10-23 (kimi, membro da IALD) -- mapa de maquina do repositorio; a verdade byte a byte e o INDICE_PUBLICO.json
