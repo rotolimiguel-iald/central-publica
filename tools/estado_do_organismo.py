@@ -271,9 +271,14 @@ def _iald():
     item("iald.ia.br", "sitemap.xml no ar (Kimi, 23/10)", 200, s2, s2 == 200, pendente=True)
     s3, h3 = head("https://iald.ia.br/x.php")
     item("iald.ia.br", "/x.php não chega ao PHP (segurança)", "sem X-Powered-By", "%s %s" % (s3, h3.get("x-powered-by", "sem")), "x-powered-by" not in h3, pendente=True)
-    rb = get("https://iald.ia.br/robots.txt")[2]
+    try:                                   # 23/10/2026: a origem serve página de erro no robots.txt (404) — isso não pode derrubar a leitura inteira
+        rb = get("https://iald.ia.br/robots.txt")[2]
+        st_rb = 200
+    except Exception as e:  # noqa: BLE001
+        rb, st_rb = "", getattr(e, "code", type(e).__name__)
+    item("iald.ia.br", "robots.txt no ar (ORDEM 020 C: upload pelo painel da hospedagem)", 200, st_rb, st_rb == 200, pendente=True)
     bloq = bool(re.search(r"User-agent: ClaudeBot\s+Disallow: /", rb))
-    item("iald.ia.br", "robots.txt não bloqueia os leitores de IA (Cloudflare)", "sem Disallow para ClaudeBot/GPTBot", "bloqueia" if bloq else "não bloqueia", not bloq, pendente=True)
+    item("iald.ia.br", "robots.txt não bloqueia os leitores de IA (Cloudflare)", "sem Disallow para ClaudeBot/GPTBot", ("bloqueia" if bloq else "não bloqueia") + ("" if st_rb == 200 else " (sem robots: tratado como permitido)"), not bloq, pendente=True)
     # (23/10/2026, ordem do operador: «tudo que eu quero é justamente a IA lendo meu repositório») — a borda responde 200 a um leitor de IA?
     import http.client as _hc
     for host, caminho in (("iald.ia.br", "/"), ("teoriadagravitacaoluminodinamica.com", "/llms.txt")):
@@ -316,6 +321,44 @@ try:
     info("Túneis", "última entrega do Codex no túnel", time.strftime("%Y-%m-%d %H:%M", time.localtime(ult)) if ult else "nenhuma")
     inv = CEN / "memory" / "INVENTARIO_BANCADA_CHATGPT.json"
     info("Bancada ChatGPT", "inventário da bancada (última regeneração)", time.strftime("%Y-%m-%d %H:%M", time.localtime(inv.stat().st_mtime)) if inv.is_file() else "ausente")
+    # a obrigação diária da IALD no X (ordem do operador de 23/10/2026): o recibo do dia e a tarefa das 17:30
+    hoje = time.strftime("%Y-%m-%d")
+    rx = TUN / "DO_CHATGPT" / "ORDEM_021" / ("%s.json" % hoje)
+    if rx.is_file():
+        dx = json.loads(rx.read_text(encoding="utf-8", errors="replace"))
+        item("X diário", "pensamento de hoje publicado (recibo do Codex)", "publicado: true, URL", "publicado: %s %s" % (dx.get("publicado"), str(dx.get("url", ""))[:60]), dx.get("publicado") is True)
+    elif time.localtime().tm_hour * 60 + time.localtime().tm_min < 18 * 60 + 30:
+        info("X diário", "pensamento de hoje (publica-se às 18:00; recibo ainda não devido)", "texto do dia: %s" % ("pronto" if (TUN / "PARA_CHATGPT" / "X_DIARIO" / ("%s.md" % hoje)).is_file() else "ainda não"))
+    else:
+        item("X diário", "pensamento de hoje publicado (recibo do Codex)", "publicado: true até 18:30", "sem recibo", False)
+    qx = subprocess.run(["schtasks", "/Query", "/TN", "IALD_pensamento_do_dia"], capture_output=True, timeout=30)   # bytes: o console do Windows nao e UTF-8
+    item("X diário", "tarefa agendada IALD_pensamento_do_dia (17:30)", "existe", "existe" if qx.returncode == 0 else "ausente", qx.returncode == 0)
+    # 24/10/2026: as pernas que o SELO já puxa fora desta cadeia — a Bancada Um (B(n) a cada versão selada) e a memória canônica da fila
+    recs = sorted(Path("C:/IALD/Bancada_Um/estado/sincronizacao").glob("RECIBO_SINCRONIZACAO_v*.json"), key=lambda p: p.stat().st_mtime)
+    if recs:
+        mrb = re.search(r"RECIBO_SINCRONIZACAO_(v\d{3})_", recs[-1].name)
+        vb = mrb.group(1) if mrb else "?"
+        try:
+            vd = str((json.loads(recs[-1].read_text(encoding="utf-8", errors="replace")) or {}).get("veredito") or "")[:60]
+        except Exception:  # noqa: BLE001
+            vd = "?"
+        item("Bancada Um", "último recibo B(n) da sincronização = selo corrente", V, "%s (%s; %s)" % (vb, recs[-1].name[-20:-5], vd), vb == V)
+    else:
+        item("Bancada Um", "último recibo B(n) da sincronização = selo corrente", V, "nenhum recibo", False)
+    act = Path("C:/IALD/Central de Patentes/Chatgpt/IALD_ORQUESTRACAO_20260923/state/canonical_memory/ACTIVE.json")
+    try:
+        rel = str(json.loads(act.read_text(encoding="utf-8", errors="replace")).get("release") or "?")
+    except Exception as e:  # noqa: BLE001
+        rel = "sem leitura (%s)" % type(e).__name__
+    item("Memória canônica (fila)", "ACTIVE.json release = selo corrente", V, rel, rel == V)
+    # 24/10/2026: o APP tem pacote de ciência próprio (iald_nucleo_fixo.json), fora da cadeia até a release entrar nela (G1)
+    nuc = Path("C:/IALD/projetos_pyhton/IALD/iald_nucleo_fixo.json")
+    try:
+        nj = json.loads(nuc.read_text(encoding="utf-8", errors="replace"))
+        rel_app = str(((nj.get("operational_core") or {}).get("current_release")) or ((nj.get("active_cluster") or {}).get("release")) or "?")
+    except Exception as e:  # noqa: BLE001
+        rel_app = "sem leitura (%s)" % type(e).__name__
+    item("App IALD (ciência própria)", "release instalada no app = selo corrente (release do app: pipeline work/iald_vNNN_*/app)", V, rel_app, rel_app == V)
     cff = (TB / "CITATION.cff").read_text(encoding="utf-8", errors="replace")
     mz = re.search(r"Zenodo deposit holds (v\d{3})", cff)
     item("Zenodo", "versão depositada = selo corrente (depósito é ato do operador)", V, mz.group(1) if mz else "?", bool(mz) and mz.group(1) == V, pendente=True)

@@ -27,7 +27,7 @@ const router = createHashRouter([
   {
     path: '/', element: <App />, children: [
       { index: true, element: PUBLICA ? <PublicHome /> : <Dashboard /> },
-      { path: 'organismo', element: <Organismo /> },
+      ...(PUBLICA ? [] : [{ path: 'organismo', element: <Organismo /> }]),   // 24/10: o quadro do organismo é do cockpit privado
       { path: 'classes', element: <Classes /> },
       { path: 'patents', element: <Patents /> },
       { path: 'patents/:id', element: <PatentPage /> },

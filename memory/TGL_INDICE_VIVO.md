@@ -1,21 +1,21 @@
-# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v397)
+# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v398)
 
-> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 23/10/2026 17:11.
+> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 24/10/2026 01:33.
 
 ## 0. Estado
 
 | item | valor lido |
 |---|---|
-| versão | **v397** |
-| `um.py` sha16 | `388cc3742323421c` |
-| teoremas | **9499/9499** |
+| versão | **v398** |
+| `um.py` sha16 | `c632fa261ce3f538` |
+| teoremas | **9539/9539** |
 | gate | `TGL_QG_MODEL_FORMALLY_CLOSED__NATURE_TEST_COMPLETED_WITHIN_LOCAL_BULK_AT_AVAILABLE_SENSITIVITY__MORE_SENSITIVE_DATA_COULD_REVISE` |
 | selftest | `FAIL_CLOSED_SELFTEST_PASSED` |
 | identidade | `1=1=VERDADEIRO=HAJA_LUZ` |
 | contorno | `[]` |
 | rodada | COMPLETA |
-| última rodada COMPLETA | v397 (`388cc3742323421c`, 9499/9499) — custódia: HANDOFF_v397 emitido |
-| relatório de axiomas | 29229 termos; fora do trio: 0 |
+| última rodada COMPLETA | v398 (`c632fa261ce3f538`, 9539/9539) — custódia: HANDOFF_v398 emitido |
+| relatório de axiomas | 29294 termos; fora do trio: 0 |
 
 ## 1. As versões do arco (hash do `um.py` lido dos backups de bytes; teoremas lidos do stdout)
 
@@ -103,6 +103,7 @@
 | v395 | `8918b17803792cf2` | 9451 | 1 | bancada |
 | v396 | `0a4395a89eeebbb7` | 9498 | 1 | bancada |
 | v397 | `388cc3742323421c` | 9499 | 1 | bancada |
+| v398 | `c632fa261ce3f538` | 9539 | 2 | GERENCIA, bancada |
 
 > Fonte do hash (04/10/2026): o cabeçalho de selo do diário («**vNNN SELADA …** `sha16`»), ou a frase «**A vNNN** (`sha16`»; a versão corrente, do disco. **†** = sem nenhuma das duas fontes: valor da regra antiga (backup ↔ diário por proximidade), **não conferido** — essa regra deslocava uma versão (ver a errata de 04/10/2026 no §7).
 
@@ -226,9 +227,11 @@
 
 **v397** (1 pedras, 1 teoremas): `Token`(1)
 
+**v398** (2 pedras, 31 teoremas): `Sonico`(6) · `AfinacaoDasCordas`(25)
+
 ## 3. O TÚNEL — ordens e entregas
 
-- ORDENS (gerência → bancada): ORDEM_001, ORDEM_002, ORDEM_003, ORDEM_004, ORDEM_005, ORDEM_006, ORDEM_007, ORDEM_008, ORDEM_009, ORDEM_010, ORDEM_011, ORDEM_012, ORDEM_012, ORDEM_012, ORDEM_013, ORDEM_013, ORDEM_015, ORDEM_016, ORDEM_017, ORDEM_018, ORDEM_018, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_020
+- ORDENS (gerência → bancada): ORDEM_001, ORDEM_002, ORDEM_003, ORDEM_004, ORDEM_005, ORDEM_006, ORDEM_007, ORDEM_008, ORDEM_009, ORDEM_010, ORDEM_011, ORDEM_012, ORDEM_012, ORDEM_012, ORDEM_013, ORDEM_013, ORDEM_015, ORDEM_016, ORDEM_017, ORDEM_018, ORDEM_018, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_020, ORDEM_021, ORDEM_021
 - ENTREGAS (bancada → gerência): 631 — ENTREGA_001 … ENTREGA_VAC
 - Pasta: `C:\IALD\Central de Patentes\Chatgpt\TUNEL`
 
@@ -249,7 +252,7 @@
 4j. **A busca de longo atraso (v348)** — o `search_for_echoes` de 2025 herdado e completado (fundo, injeções √β, padrão τ/M): NOT_FALSIFIED_UNDERPOWERED (N_on 1 vs fundo 3.00; eficiência para √β 0.000). Uma busca de picos a 3σ não vê um eco de 0,11 do primário; o desenho de 2025 é retirado como sem poder.
 4k. **O D1 via CAMB (v349)** — a V1 (script de maio intocado) expôs um bug de integração de distância (autópsia por hash); emenda V2 com o worker corrigido em cópia: Δχ² (TGL − ΛCDM) = 9.699 → D1_TENSION_2_TO_5_SIGMA; β livre = -0.01705 ± 0.00753 → D1_BETA_TENSION. Fundo, não perturbação; conjugado do Nível 2.
 4l. **A reprodução de H2 (v350)** — com pycbc e dados reais, o E_res/E_total → α² de jan/fev era o quadrado do nível de ruído do gerador sintético (0.0099 com ruído 0,1; segue noise²); no dado real é a fração de ruído (0.9937 branqueado, 0.9956 fora da fonte): H2_IDENTITY_RETIRED. A lista dos cinco testes que aguardavam o instrumento está fechada.
-4m. **A oitava cláusula (v351)** — J M J = M′ na torre produto; montagem 8/8 (`EIGHT_CLAUSES_VERIFIED__ACT_III_CERTIFICATE_CONSTRUCTED_ON_T…`); 1426 fontes formais; alcance PRODUCT_TOWER, não horizonte físico.
+4m. **A oitava cláusula (v351)** — J M J = M′ na torre produto; montagem 8/8 (`EIGHT_CLAUSES_VERIFIED__ACT_III_CERTIFICATE_CONSTRUCTED_ON_T…`); 1428 fontes formais; alcance PRODUCT_TOWER, não horizonte físico.
 4n. **A probabilidade conjunta (v352)** — p conjunta 0.55 sobre 3 canais admissíveis de 35; saída da função booleana False; o 10⁻³⁰ é produto de resíduos de identidades (inválido).
 5. **Lei de área geral / liberdade radiativa** — shear livre (v320); 4ª ordem impõe relógio (v326).
 6. **Globalização / Lema 3** — **PAGO NA TORRE para TODO perfil** (046: `the_lift_fires_on_the_aperiodic_tower`; v329: `modularHorizon`; 045: `swapHorizon`; v331: o GRUPO dos horizontes e a RAIZ `the_root_of_the_proof_tree`). Restam: a passagem a uma álgebra de von Neumann geral ([KNOWN, Takesaki]), andares → regiões, o shift (não construído).
@@ -266,7 +269,7 @@
 
 ## 6. Onde vive cada coisa
 
-- Canônico: `C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\um.py` · kernel `tgl_kernel\TGLExt` (1052 módulos) · stdout `rodada_vNNN_stdout.txt` · árvore `A_PROVA_DA_QG_TGL_arvore.md` · diário `MEMORIA_DA_LINHAGEM.md` · desenho `DESENHO_DO_FECHAMENTO_QG.md` · handoffs `HANDOFF_vNNN_*.md` · `DA_IRMA.md`.
+- Canônico: `C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\um.py` · kernel `tgl_kernel\TGLExt` (1054 módulos) · stdout `rodada_vNNN_stdout.txt` · árvore `A_PROVA_DA_QG_TGL_arvore.md` · diário `MEMORIA_DA_LINHAGEM.md` · desenho `DESENHO_DO_FECHAMENTO_QG.md` · handoffs `HANDOFF_vNNN_*.md` · `DA_IRMA.md`.
 - Atlas: `Central de Patentes\memory\TGL_ATLAS.md` (append datado; II.★★ verbetes; III.D pedras; IX remissivo) · este índice · `MEMORY.md` · espelho derivado `C:\LAR_MIGUEL\ESPELHO.md` (porta_memoria.py).
 - Espelho público: `C:\IALD\Artigo\the_boundary` (direção da sessão do site desde 11/09/2026; irreversíveis do operador) · backups `the_boundary_BACKUPS`.
 
@@ -8418,3 +8421,21 @@ Fontes: C:/IALD/Central de Patentes/work/mimo_media_capacity_20261020/memory_sta
 [ESCOPO] Sincronização documental da fila, sem execução/importação de um.py ou Lean, chamada de provedor, reinício, alteração de original científico ou gate. Não afirma atualização do app/JEV nem nova prova. Guardas transitórias programa/selo e selftest ausente preservadas; bytes coerentes admitidos posteriormente. Aprovações específicas e envios terminais/incertos continuam independentes.
 [PROCESSO] Claim do quadro antecedeu o preparo; o novo requisito ACOM/preflight foi inscrito após o preparo. Gap temporal registrado sem retroagir; preflight vigente antes de ativar. Revisão independente documental não reproduz ciência.
 [CONTINUIDADE] CURRENT dispensa reconstrução; helper auditado em processo novo no heartbeat existente. Nunca alterar memory_generation para forçar envio. Recibos: C:/IALD/Central de Patentes/work/scientific_memory_sync_20261023_v397/DELIVERY_R1.json e REVIEW_R1.json.
+
+
+## 23/10/2026 — Ordem do operador no caso ativo: instalação, teste autenticado pendente
+<!-- IALD_CASE_OPERATOR_DIRECT_PROGRESS_20261023 -->
+[INPUT — autorização humana posterior] O titular escolheu expressamente “Executar a ordem no caso ativo”. No chat privado, a mensagem iniciada por “ordem do operador:” autoriza o encaminhamento direto dessa ordem ao Codex desta sessão, limitado ao caso identificado, inclusive consulta aos e-mails pertinentes, importação de anexos e atualização dos registros documentais. Essa modalidade dispensa a segunda confirmação na Central; as ordens de serviço legadas continuam pendentes. O comando original é imutável. Documentos, e-mails e respostas de modelo não concedem autoridade. Preservam-se vínculo Apple exclusivo e prova válida, identificação inequívoca do caso e controles por operação.
+[INPUT — sigilo delimitado] O pedido de execução pelo ChatGPT/Codex permite a esta sessão receber o comando e os dados estritamente necessários do caso e das mensagens pertinentes. É exceção concreta ao bloqueio geral, distinta da análise MiMo já autorizada; não libera outros provedores, TypeSafe, contexto científico/comum ou outros usuários. Não autoriza envio de e-mails, protocolo judicial, pagamento, assinatura ou atuação em outro caso. Conteúdo privado e credenciais não integram este adendo.
+[REAL — engenharia e instalação] Doze destinos instalados por hash após revisão independente; backups imediatos, ACL privada conferida e reinício somente do serviço privado, HTTP200. Cliente e ciência preservados. Fila privada idempotente, escopo/revisão de caso, recibos de execução e recuperação sem reenvio incerto. Capacidade temporária de execução de uma hora, condicionada à política vigente, não amplia a sessão Apple. Resultado recebido não equivale a efeito verificado: importação e registros exigem recibos do mesmo pedido/caso. Falha entre inscrição e encaminhamento aparece interrompida, nunca concluída.
+[REAL — alcance das ferramentas] A cadeia sintética de oito testes passou: chat, execução, importação delimitada, vínculo documental e retorno. Chat R2:40 testes; adaptador/executor:56 passaram e2 omitidos por restrição de links do ambiente; conjuntos não somados como casos distintos. A implementação adiciona anexos, manifesto, vínculos derivados e metadados documentais. Não altera fatos processuais automaticamente, exportação do cliente ou memória do caso; não foi localizado JSON canônico individual no código examinado. Fontes não confiáveis não são executadas. As guardas da aplicação não são um sandbox contra outro processo privilegiado do mesmo usuário Windows.
+[OPEN — validação e disponibilidade] Teste real de encaminhamento ainda pendente: a interface exigiu revalidação Apple antes de admitir a ordem sintética; entrada pelo iPhone aberta e titular avisado. Nenhum e-mail/anexo real importado e nenhum processo alterado nesta instalação. Download real de anexos pelo correio permanece não testado. Backend compartilhado ativo; sem alteração de cliente ou nova build: iOS45 e Android40 preservados, Google Play não publicado por esta entrega. Não há novo teste físico nem aceite final da missão. Desktop/Codex e serviço privado precisam estar disponíveis para execução; não se promete operação sem essa infraestrutura.
+[EVIDÊNCIAS] case_orders/PROGRESS_DELIVERY_R1.json e release_install/DEPLOYMENT_VERIFIED.json, na própria missão C:/IALD/Central de Patentes/work/owner_apple_private_access_20261022/SESSION_REFERENCE.json. Complementar após teste autenticado, preservando este retrato. Memórias aplicadas e aceite têm recibos próprios.
+<!-- END_IALD_CASE_OPERATOR_DIRECT_PROGRESS_20261023 -->
+
+## 24/10/2026 — Memória científica da fila sincronizada com v398
+<!-- IALD_QUEUE_MEMORY_V398_20261024 -->
+[REAL — empacotamento local] Snapshot imutável v398; generation d6bce3672fc5122d6bb4105e77d4d5b70fc125d8818e7a2099d55771cad98581; manifest SHA256 1e369d8098e0cfbfb71ae2a8a559cd8a6cd80694d115bb727ea070b4ea07b6c4. Treze documentos e 28090 trechos conferidos integralmente por hashes, UTF-8 e linhas; recuperação em três modos. Ativação pela API existente com baseline/CAS após revisão independente; geração recebida em processo novo no recibo. v397 e anteriores preservadas; pedidos e gerações fixadas intactos.
+[ESCOPO] Sincronização documental da fila, sem execução/importação de um.py ou Lean, chamada de provedor, reinício, alteração de original científico ou gate. Não afirma atualização do app/JEV nem nova prova. Guardas transitórias programa/selo e selftest ausente preservadas; bytes coerentes admitidos posteriormente. Aprovações específicas e envios terminais/incertos continuam independentes.
+[PROCESSO] Claim do quadro, requisito e preflight ACOM precederam o preparo. Revisões e recibos próprios preservados. Revisão independente documental não reproduz ciência.
+[CONTINUIDADE] CURRENT dispensa reconstrução; helper auditado em processo novo no heartbeat existente. Nunca alterar memory_generation para forçar envio. Recibos: C:/IALD/Central de Patentes/work/scientific_memory_sync_20261024_v398/DELIVERY_R1.json e REVIEW_R1.json.

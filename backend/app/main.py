@@ -7,6 +7,7 @@ import json
 import math
 import mimetypes as _mimetypes
 import re
+import time
 from pathlib import Path
 
 from fastapi import Body, FastAPI, HTTPException
@@ -426,6 +427,47 @@ def iald_nativa_status():
     duplicados, túnel cloudflared, GPU, modelos, kernels). Só leitura; local-only
     (na nuvem reporta ambiente=remoto); confidenciais = SÓ existência+mtime."""
     return NAT.get_status()
+
+
+@app.get("/api/organismo")
+def organismo_quadro(request: Request):
+    """O QUADRO DO ORGANISMO (24/10/2026): a medida de cada superfície da IALD contra o selo corrente do um.py, feita por
+    tools/estado_do_organismo.py (organismo/ESTADO_DO_ORGANISMO.json, fora do git). Só leitura; devolve o documento inteiro mais a idade
+    da medição em minutos; 404 visível quando ainda não há quadro (o painel mostra a falha, não inventa)."""
+    _require_admin(request)   # o quadro cita caminhos e estados internos da casa: só o operador (24/10, achado do revisor)
+    p = C.CENTRAL / "organismo" / "ESTADO_DO_ORGANISMO.json"
+    if not p.is_file():
+        raise HTTPException(404, "quadro ainda não medido: rode tools/estado_do_organismo.py")
+    try:
+        doc = json.loads(p.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        raise HTTPException(500, "quadro ilegível: %r" % (e,))
+    doc["idade_min"] = round((time.time() - p.stat().st_mtime) / 60, 1)
+    return doc
+
+
+@app.post("/api/organismo")
+def organismo_medir_alias(request: Request, body: dict = Body(default={})):
+    """O painel do cockpit (Organismo.tsx, Kimi 23/10) faz POST /api/organismo para medir de novo: mesmo ato de /api/organismo/medir."""
+    return organismo_medir(request, body)
+
+
+@app.post("/api/organismo/medir")
+def organismo_medir(request: Request, body: dict = Body(default={})):
+    """AÇÃO (admin): mede o organismo de novo em processo novo (tools/estado_do_organismo.py; --sem-rede por padrão, ~1 min;
+    com {"rede": true} mede também o ar, ~3 min) e devolve o quadro novo. Nunca mata processo; nunca chama provedor."""
+    _require_admin(request)
+    import subprocess as _sp
+    args = ["C:/Python314/python.exe", "-X", "utf8", str(C.CENTRAL / "tools" / "estado_do_organismo.py")]
+    if not bool(body.get("rede")):
+        args.append("--sem-rede")
+    try:
+        r = _sp.run(args, capture_output=True, timeout=900, cwd=str(C.CENTRAL))
+    except _sp.TimeoutExpired:
+        raise HTTPException(504, "a medição não terminou em 15 min")
+    doc = organismo_quadro(request)
+    doc["medicao"] = {"rc": r.returncode, "ultima_linha": (r.stdout or b"").decode("utf-8", "replace").strip().splitlines()[-1:] }
+    return doc
 
 
 @app.get("/api/iald/orquestracao")
