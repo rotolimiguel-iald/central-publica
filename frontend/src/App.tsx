@@ -31,6 +31,15 @@ export default function App() {
   const me = useMe()
   const load = () => api.health().then(setHealth).catch(() => setHealth(null))
   useEffect(() => { load() }, [])
+  // MODO PÚBLICO: «linhas» = as que têm pedidos (health.classes_indexed conta também as vazias); sem a leitura a contagem some, nunca vira «0»
+  const [linhasPublicas, setLinhasPublicas] = useState<number | null>(null)
+  useEffect(() => {
+    if (!PUBLICA) return
+    let alive = true
+    api.patents().then(ps => { if (alive) setLinhasPublicas(new Set(ps.map(p => p.class_id)).size) })
+      .catch(() => { /* sem leitura: fica só a contagem de pedidos */ })
+    return () => { alive = false }
+  }, [])
 
   // ── O SINO DO MONITOR (STAGED aprovado): badge de atenção no nav, visível de qualquer página.
   // atenção = prazos vencidos-a-conferir + prazos próximos (auditoria LPI) + movimentos não confirmados.
@@ -124,7 +133,17 @@ export default function App() {
           )}
         </nav>
         <div style={{ marginTop: 24, fontSize: 11, color: 'var(--muted)', lineHeight: 1.6 }}>
-          {health ? (
+          {PUBLICA ? (
+            <>
+              <div style={{ color: 'var(--accent-2)', fontWeight: 700 }}>Modo leitura</div>
+              {health && <div>{health.patents_indexed} pedidos{linhasPublicas !== null && ` · ${linhasPublicas} linhas`}</div>}
+              <UmButton />
+              <div style={{ marginTop: 10, display: 'grid', gap: 5 }}>
+                <a href="https://github.com/rotolimiguel-iald/central-publica" target="_blank" rel="noopener">Código e resultados →</a>
+                <a href="https://github.com/rotolimiguel-iald/the_boundary" target="_blank" rel="noopener">A teoria · the_boundary →</a>
+              </div>
+            </>
+          ) : health ? (
             <>
               <div>{health.patents_indexed} patentes · {health.classes_indexed} classes</div>
               <div className={health.originals_manifest_ok ? 'integrity-ok' : 'integrity-bad'}>
@@ -144,7 +163,7 @@ export default function App() {
                   {busy ? 'reindexando…' : 'Reindexar'}
                 </button>
               )}
-              {(PUBLICA || isAdmin(me)) && <UmButton />}
+              {isAdmin(me) && <UmButton />}
               <button className="btn ghost" style={{ marginTop: 6, width: '100%', fontSize: 11, opacity: 0.7 }}
                 onClick={async () => { try { await api.authLogout() } catch { /* */ } location.reload() }}>
                 🔒 Sair

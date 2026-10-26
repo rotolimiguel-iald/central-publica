@@ -441,6 +441,35 @@ input.txt, textarea.txt, select.txt { background: var(--panel-2); border: 1px so
   input.txt, textarea.txt, select.txt { padding: 10px 12px; font-size: 15px; }
 }
 
+.patent-mobile-list { display: none; }
+.patent-mobile-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--panel);
+  color: var(--text);
+  text-decoration: none;
+}
+.patent-mobile-card:hover { border-color: var(--accent); text-decoration: none; }
+.patent-mobile-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.patent-mobile-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.patent-mobile-head strong { font-size: 16px; line-height: 1.3; }
+.patent-mobile-id { margin-top: 5px; color: var(--muted); font: 10.5px 'Cascadia Code', monospace; }
+.patent-mobile-class { margin-top: 9px; color: var(--accent-2); font-size: 11px; }
+.patent-mobile-title { margin-top: 7px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.patent-mobile-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 7px 10px; margin-top: 12px; color: var(--muted); font-size: 10.5px; }
+.patent-mobile-open { margin-top: 12px; color: var(--accent-2); font-size: 11px; font-weight: 600; }
+
+@media (max-width: 820px) {
+  .patents-table-wrap { display: none; }
+  .patent-mobile-list { display: grid; gap: 10px; }
+  .patent-filters { flex-direction: column; }
+  .patent-filters .txt { width: 100%; min-width: 0 !important; }
+}
+
 @media (max-width: 460px) {
   .stat-row { grid-template-columns: 1fr 1fr; }  /* 2 indicadores por linha no celular */
   .r3d-canvas { height: 320px; }

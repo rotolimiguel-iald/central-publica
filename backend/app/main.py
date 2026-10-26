@@ -22,6 +22,7 @@ from . import cloudwrites as CW
 from . import epct_status as EP
 from . import iald_nativa as NAT
 from . import orquestracao_status as ORQ
+from . import torre as TORRE
 from . import config as C
 from . import devices as DEV
 from . import security as SEC
@@ -462,12 +463,36 @@ def organismo_medir(request: Request, body: dict = Body(default={})):
     if not bool(body.get("rede")):
         args.append("--sem-rede")
     try:
-        r = _sp.run(args, capture_output=True, timeout=900, cwd=str(C.CENTRAL))
+        r = _sp.run(args, capture_output=True, timeout=900, cwd=str(C.CENTRAL), creationflags=getattr(_sp, "CREATE_NO_WINDOW", 0))   # sem janela sob pythonw
     except _sp.TimeoutExpired:
         raise HTTPException(504, "a medição não terminou em 15 min")
     doc = organismo_quadro(request)
     doc["medicao"] = {"rc": r.returncode, "ultima_linha": (r.stdout or b"").decode("utf-8", "replace").strip().splitlines()[-1:] }
     return doc
+
+
+# ---------------- A TORRE DE COMANDO (24/10/2026): o quadro único + duas ações a seco; a lógica mora em torre.py ----------------
+@app.get("/api/torre")
+def torre_quadro(request: Request):
+    """A TORRE DE COMANDO: selo, organismo, missões ACOM vivas, custódia, vigia, o X do dia e o túnel do Codex num JSON só. Só leitura;
+    falha de leitura vai em `erros` (nunca «ok» falso); nenhum caminho absoluto na resposta. Só admin (cita estados internos da casa)."""
+    _require_admin(request)
+    return TORRE.montar()
+
+
+@app.post("/api/torre/custodia/planejar")
+def torre_custodia_planejar(request: Request, body: dict = Body(default={})):
+    """AÇÃO (admin): `custodiar.py planejar --versao vNNN --seco` (sem versão: a que o `vigiar` reporta). A SECO: nunca `executar`, nunca
+    `--publicar`. Do browser só vem `versao`, validada (v + 3 ou 4 dígitos); devolve {rc, stdout_cauda, versao}. Nunca mata processo, nunca chama provedor."""
+    _require_admin(request)
+    return TORRE.planejar_custodia(body.get("versao"))
+
+
+@app.post("/api/torre/x/ensaio")
+def torre_x_ensaio(request: Request):
+    """AÇÃO (admin): `pensamento_do_dia.py --seco` (gera e mostra; não grava, não enfileira). Nada do browser vai para a linha de comando."""
+    _require_admin(request)
+    return TORRE.ensaio_x()
 
 
 @app.get("/api/iald/orquestracao")

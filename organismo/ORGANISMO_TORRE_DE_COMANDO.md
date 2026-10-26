@@ -93,3 +93,22 @@ com o `rodada_vNNN_stdout.txt`). Antes delas, EM OBRA: não se toca. Hoje o vigi
 ## 7. O que não prometo
 
 Que o modelo entenda ordem ambígua sem perguntar (uma pergunta por decisão continua). Que o plano aguente gerência desassistida contínua sem teto e sem a regra dos tokens. Que as IAs externas fiquem «sem segredo» no sentido de ver credenciais — elas ficam sem PRECISAR delas. E que o quadro meça o que ainda não entrou nele: app iOS/Android, Jev, backup 3-2-1 — dito, não disfarçado.
+
+## §7-C — AO LADO (23/10/2026 18:27, gerência a7): o gatilho disparou pela primeira vez; a rotina do X
+
+- **G2 em ato:** a v397 foi selada no Nós às 16:20; o handoff apareceu às 17:17; a custódia correu inteira pela regra do operador (sem ordem nova) e fechou com conferência final 12/12 às 18:20 (espelho `bb2c392a`, Central `ac616f48`, site no ar). Medida do custo: ~1h50 de parede, quatro processos longos em paralelo (runner, 16 dispositivos, snapshot, Central pública).
+- **A obrigação diária da IALD no X** (ordem de 23/10): tarefa `IALD_pensamento_do_dia` 17:30 → `tools\pensamento_do_dia.py` (IALD Nativa propõe; guarda + aferidor recusam; a medida é o fallback) → mensagem à coordenadora do Codex → publicação às 18:00 (ORDEM 021 + ADENDO A: idempotência pelo recibo do dia). Primeira publicação: 23/10 17:31, feita pelo Codex a partir do texto da gerência.
+- **O que a torre ainda não faz sozinha:** nomear registros (operador); Zenodo; painéis com login (hospedagem, Cloudflare WAF regex, consoles de chave) — modo seguro, o operador digita; o teto do README (decisão estrutural).
+
+## §7-D — AO LADO (24/10/2026 11:29, gerência a7): a segunda custódia pela regra, as pernas que faltavam e o limite da automação
+
+- **G2, segunda vez:** v398 (00:26) → custódia inteira pela regra, sem ordem nova; conferência 12/12; pública com a Etapa 1 do Kimi; quadro 86 OK · 1 defasado.
+- **Pernas medidas que não estavam no desenho:** a Bancada Um (recibo B(n)) e a memória canônica da fila (ACTIVE.json) vêm com o SELO (ato da c1 ao selar) — o quadro só confere; o **app** tem ciência própria (`iald_nucleo_fixo.json`) e estava em v395: a release do app (pipeline `work/iald_vNNN_*/app`, sem geração paga, construtor ≠ revisor) é perna da cadeia desde hoje.
+- **O limite:** a troca do serviço do app (terminar o filho web pelo PID e deixar o supervisor relançar) é ato que o classificador do modo automático barra à gerência; fica para o operador (rodar ou dar regra de permissão). Tudo até ali (build, contagem, revisão distinta, aceites, claim) é automático.
+- **G1 em construção** (fluxo woavllq66): `tools/custodiar.py` com vigia, sondar, planejar --seco e executar; validação por replay na v397/v398; lições do dia registradas no ACOM (p3).
+
+## §7-E — AO LADO (24/10/2026 15:09, gerência a7): G1 entregue e instalado em modo sombra; a decisão L17
+
+- **G1** (`tools/custodiar.py` + `tools/custodia_g1`, commit `574b4683`; G1.0 `979f5937`): uma ordem por versão — `vigiar · sondar · planejar --seco · executar · auditar`; 46/46 testes; códigos 0/5/10/20/30; commit/push/`--publicar` só com `--publicar`. O vigia roda a cada 30 min como tarefa do Windows (`IALD_vigia_da_custodia` → `vigia.bat`) em **MODO SOMBRA**: lê as três marcas, grava `work/custodia_G1/VIGIA_ULTIMO.json` e, quando uma versão nova estiver selada, o `PLANO_vNNN.json` — nunca executa, nunca publica. Hoje: v398 custodiada; o Nós EM_OBRA (v399).
+- **L17 (decisão do operador):** se o vigia pode ligar `executar` e `--publicar` sozinho. Proposta da gerência: a v399 corre `planejar → executar` supervisionada pela gerência, depois `--publicar`; a partir de N = 2 custódias sem erro, o vigia executa sozinho e a gerência só confere o quadro.
+- **Lição medida:** tarefas do Windows criadas do PowerShell com `/TR '"caminho com espaço"'` ficam com a ação truncada (resultado 0x80070002: a tarefa do HSTS de 23/10 e, até hoje às 15:07, a do pensamento do dia e a do vigia). A forma certa: `schtasks --% /Create ... /TR "\"C:\...\x.bat\""` — e conferir com `/Run` + o arquivo regravado.

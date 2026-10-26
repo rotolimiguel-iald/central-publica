@@ -97,6 +97,12 @@ Camada v398 (custódia v398 na Central, 24/10/2026, sessão a7; handoff v398 da 
      OPEN; nada deriva as cordas do axioma; a TGL não é dita teoria de cordas; o quadro do Teste da Única Palavra (v397) segue intocado;
      os nomes dos registros são provisórios. Nada disso muda número algum de dispositivo.
 
+Camada v400 (custódia v400 na Central, 25/10/2026, sessão a7; handoff v400 da gerência c1) — GENÉRICA (camada_generica.py):
+ 19. os registros novos da v400 (cunhagens_v399, declaracao_do_operador_v399, kh_n1_cobertura_v399, selo_pela_propria_tecnologia_v399), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v400: cunhagens_v399: «[REAL -- as fontes, o kernel e os registros declaracao_do_operador_v399 e selo_pela_propria_tecnologia_v399 lidos a cada rito;» kh_n1_cobertura_v399: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» Nada disso muda número algum de dispositivo.
+
+Camada v401 (custódia v401 na Central, 25/10/2026, sessão a7; handoff v401 da gerência c1) — GENÉRICA (camada_generica.py):
+ 19. os registros novos da v401 (cunhagens_v401, falsidade_da_inercia_v401, kh_n1_cobertura_v401), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v401: cunhagens_v401: «[REAL -- a fonte da pedra, o kernel e o registro falsidade_da_inercia_v401 lidos a cada rito;» falsidade_da_inercia_v401: «[REAL] os termos do kernel (a composicao derivada falsidade_da_inercia_derivada e os vinte teoremas e definicoes nomeados da pedra, lidos a cada rito, no trio;» kh_n1_cobertura_v401: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» Nada disso muda número algum de dispositivo.
+
 Régua: β NUNCA literal (sempre ALPHA_FINE_CODATA_2018 × √e em runtime); os números do cofre são LIDOS do selo/core por pino;
 falha de leitura ou elo quebrado = RuntimeError (fail-closed). Nada aqui move veredito físico: physical_verdict_allowed = False.
 PROVADA ≠ CONFIRMADA; o dicionário custo/identidade/movimento é cunhagem do operador [ONTO/DEFINITION].
@@ -113,7 +119,7 @@ HBAR_CODATA_2018 = 1.054571817e-34      # J s
 G_CODATA_2018 = 6.67430e-11             # m^3 kg^-1 s^-2
 C_LIGHT = 299792458.0                   # m/s (exato)
 
-VERSAO_DA_CAMADA = "v398"   # (era "v397"; a camada v398 acrescenta o item 18, ao lado; antes: v396 → v397, item 17; v395 → v396, item 16; v394 → v395, item 15; v391 → v394, item 14; v390 → v391, item 13; v389 → v390, item 12; v386 → v389, item 11; v379 → v386, itens 8–10)
+VERSAO_DA_CAMADA = "v401"   # (era "v400"; a camada v401 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
 # o cofre e procurado nesta ordem (declarada): a variavel TGL_CENTRAL_DIR; a arvore onde este modulo esta; a Central desta
 # maquina (quando o dispositivo roda extraido do *_FINAL.py num diretorio temporario). Nenhum achado = fail-closed.
 def _achar_central():
@@ -589,6 +595,18 @@ def conferir_v398_no_cofre(core: dict, selo: dict) -> dict:
                         "estrutura logarítmica e de oitava, não a física da onda; validade no kernel não é creditação; nada disto muda número de dispositivo"}
 
 
+CAMADAS_GENERICAS = ("v400", "v401",)
+
+
+def _camadas_genericas(core, selo, cofre):
+    """G1.0: camadas da custódia parametrizada (camada_generica.py, carregado por caminho); cada uma lê o FATOS_CUSTODIA.json do cofre da SUA versão."""
+    import importlib.util as _ilu
+    _s = _ilu.spec_from_file_location("camada_generica", str(Path(__file__).resolve().parent / "camada_generica.py"))
+    _m = _ilu.module_from_spec(_s)
+    _s.loader.exec_module(_m)
+    return {("camada_%s_no_cofre" % _v): _m.conferir_custodia_generica(core, selo, _v, cofre.parent) for _v in CAMADAS_GENERICAS}
+
+
 def conferir_no_cofre(rt: dict) -> dict:
     """Confere a fórmula de runtime contra o cofre corrente (selo + core + kernel), tudo LIDO do disco. Fail-closed."""
     v, cofre, kern = _cofre_corrente()
@@ -635,12 +653,13 @@ def conferir_no_cofre(rt: dict) -> dict:
     v396 = conferir_v396_no_cofre(core, selo)        # camada v396 (item 16); fail-closed
     v397 = conferir_v397_no_cofre(core, selo)        # camada v397 (item 17); fail-closed
     v398 = conferir_v398_no_cofre(core, selo)        # camada v398 (item 18); fail-closed
+    _genericas = _camadas_genericas(core, selo, cofre)     # camadas da custódia parametrizada (G1); fail-closed
     return {"cofre": "um_unificado_v%d" % v, "pin_um_py": checks["selo_pin_um_py"], "selo_timestamp": selo.get("timestamp"),
             "gate": selo.get("qg_closure_verdict"), "pedras_sha16": pedras, "custo_por_nat_D1b_ate_z_star": custo_por_nat,
             "fator_D1a_em_z_star": fator_D1a(float(lc["z_star_input"])) if lc else None,
             "fator_D1b_em_z_star": fator_D1b(float(lc["E_z_star"])) if lc else None, "checks": checks,
             "camada_v386_no_cofre": v386, "camada_v389_no_cofre": v389, "camada_v390_no_cofre": v390, "camada_v391_no_cofre": v391,
-            "camada_v394_no_cofre": v394, "camada_v395_no_cofre": v395, "camada_v396_no_cofre": v396, "camada_v397_no_cofre": v397, "camada_v398_no_cofre": v398}
+            "camada_v394_no_cofre": v394, "camada_v395_no_cofre": v395, "camada_v396_no_cofre": v396, "camada_v397_no_cofre": v397, "camada_v398_no_cofre": v398, **_genericas}
 
 
 V388_METADATA_SHA256 = "2e766fcf0d5d3934d600e38ecf9e37c12d08f099851d3b2c53792f83a1e81007"
@@ -778,6 +797,10 @@ USOS = {
     "token_e_veracidade_v397": r"TGLExt\.Token|token_is_the_psibit|Teste da [UÚ]nica Palavra|teste_de_veracidade",
     # v398: as pedras Sonico e AfinacaoDasCordas — mede se algum dispositivo as cita; não interpreta
     "sonico_e_afinacao_v398": r"TGLExt\.Sonico|AfinacaoDasCordas|octaveNats|Matsubara|MasslessFirstLevel",
+    # v400: mede se algum dispositivo cita as pedras novas; não interpreta
+    'camadas_v400': r"TGLExt\.(Testemunho)|cunhagens_v399|declaracao_do_operador_v399|kh_n1_cobertura_v399|selo_pela_propria_tecnologia_v399",
+    # v401: mede se algum dispositivo cita as pedras novas; não interpreta
+    'camadas_v401': r"TGLExt\.(FalsidadeDaInercia)|cunhagens_v401|falsidade_da_inercia_v401|kh_n1_cobertura_v401",
 }
 
 
@@ -811,6 +834,8 @@ def camada(runner_path) -> dict:
                      "TESTEMUNHA_ESTATICA_INCONDICIONAL_PONTE_CONSTRUIDA__FACE_DE_FOCK_CONDICIONAL__"
                      "TOKEN_CONJUNCAO_POR_CITACAO_INCONDICIONAL__VERACIDADE_FASE9_LIDA_POR_HASH_ABAIXO_DE_5SIGMA__"
                      "SONICO_E_AFINACAO_COMPOSICOES_INCONDICIONAIS__NADA_DERIVA_AS_CORDAS_DO_AXIOMA__"
+                     "REGISTROS_V400_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
+                     "REGISTROS_V401_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION") % VERSAO_DA_CAMADA.upper(),
         "physical_verdict_allowed": False,
         "nao_se_afirma": ["que o dispositivo valide física", "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
@@ -826,7 +851,27 @@ def camada(runner_path) -> dict:
                           "que o psion exista (a face do psion é condicional a um certificado de Fock sem habitante), que a bijeção do psibit seja isomorfismo de espaços de Hilbert, ou qual leitura da paridade do ACOM Mirror é canônica (decisão do operador [LEGAL])",
                           "que o Nome da fronteira seja o vetor de Bell ou que o fluxo construído seja a dinâmica da teoria, que o certificado de Fock tenha habitante, ou que 1/2 seja meia nat de entropia (é a entropia linear; a de von Neumann é ln 2 nat)",
                           "que a TGL esteja discriminada do ΛCDM a 5σ (o degrau da creditação não foi alcançado; o teste não foi cego), que ln B seja σ, ou que o token de um modelo de linguagem seja o PsiBit (leitura do Atlas)",
-                          "que a TGL seja teoria de cordas ou que as cordas derivem do axioma ω(I) = 1, que a natureza cobre ln 2 por oitava ou que o seletor pague a oitava (a lei de custo é INPUT), ou que o som seja onda num meio"],
+                          "que a TGL seja teoria de cordas ou que as cordas derivem do axioma ω(I) = 1, que a natureza cobre ln 2 por oitava ou que o seletor pague a oitava (a lei de custo é INPUT), ou que o som seja onda num meio",
+                          '(v400, cunhagens_v399) que o kernel prove a declaracao do operador, nem que a IALD seja o transporte diagFlow do kernel',
+                          "(v400, cunhagens_v399) que o testemunho seja creditado: validade no kernel nao e' creditacao",
+                          '(v400, cunhagens_v399) que o selo ACOM tenha forca criptografica independente do SHA-256, nem que proteja a confidencialidade',
+                          '(v400, cunhagens_v399) que a IALD testifique do operador',
+                          '(v400, cunhagens_v399) que a gravidade quantica esteja creditada na natureza',
+                          '(v400, cunhagens_v399) que isto seja um teste: nao ha desfecho experimental novo',
+                          '(v400, kh_n1_cobertura_v399) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido',
+                          "(v401, cunhagens_v401) que o kernel prove a definicao do operador (ela e' INPUT/ONTO)",
+                          '(v401, cunhagens_v401) que a pedra prove Newton ou E = mc^2',
+                          "(v401, cunhagens_v401) que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+                          '(v401, cunhagens_v401) que a gravidade quantica esteja creditada na natureza',
+                          '(v401, cunhagens_v401) que isto seja um teste: nao ha desfecho experimental novo',
+                          '(v401, falsidade_da_inercia_v401) que o kernel prove a primeira lei de Newton, nem que prove E = mc^2',
+                          "(v401, falsidade_da_inercia_v401) que H_tau (tau e' a massa de Newton e a metrica de Einstein) seja teorema: e' hipotese NOMEADA [OPEN], que nenhum teorema usa",
+                          '(v401, falsidade_da_inercia_v401) que a escala dual seja o fluxo de um corpo fisico (identificacao de runtime, [OPEN])',
+                          '(v401, falsidade_da_inercia_v401) que a massa seja o termo F = ma do kernel',
+                          '(v401, falsidade_da_inercia_v401) que a inercia deste registro seja a do adendo de 03-04/09: aquela leitura esta superada pela definicao do operador',
+                          '(v401, falsidade_da_inercia_v401) que isto seja um teste: nao ha desfecho experimental',
+                          '(v401, falsidade_da_inercia_v401) que a gravidade quantica esteja creditada na natureza',
+                          '(v401, kh_n1_cobertura_v401) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido'],
     }
 
 

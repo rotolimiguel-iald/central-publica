@@ -4,7 +4,7 @@
   max-width: 1460px;
   margin: 0 auto;
 }
-.pc-home a:focus-visible, .pc-home summary:focus-visible, .pc-home button:focus-visible {
+.pc-home a:focus-visible, .pc-home summary:focus-visible, .pc-home button:focus-visible, .pc-home .pc-result-note:focus-visible {
   outline: 2px solid var(--pc-cyan);
   outline-offset: 3px;
 }
@@ -138,6 +138,9 @@
 .pc-class-count { color: var(--muted); font-size: 11px; }
 .pc-class .marker-row { margin-left: auto; }
 .pc-class summary::after { margin-left: 0; }
+/* 24/10 (achado do revisor): o anel de foco (offset +3px) caía fora da caixa e o overflow:hidden de .pc-class o cortava;
+   desenhado por dentro, no raio interno do grupo */
+.pc-class summary:focus-visible { outline-offset: -3px; border-radius: 11px; }
 .pc-patent-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -177,6 +180,45 @@
 .pc-patent-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 14px; color: var(--muted); font-size: 10.5px; }
 .pc-patent-open { margin-left: auto; color: var(--accent-2); font-weight: 600; }
 
+.pc-filters {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(220px, .65fr) auto;
+  gap: 10px;
+  align-items: end;
+  margin: 16px 0 8px;
+}
+.pc-filters label { display: grid; gap: 5px; color: var(--muted); font-size: 10.5px; }
+.pc-filters input, .pc-filters select {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+  color: var(--text);
+  font: 12px 'Segoe UI', system-ui, sans-serif;
+}
+.pc-filters input::placeholder { color: var(--muted); opacity: .75; }
+.pc-clear, .pc-show-all {
+  min-height: 42px;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--accent-2);
+  font-size: 11.5px;
+  cursor: pointer;
+}
+.pc-clear:hover, .pc-show-all:hover { border-color: var(--accent-2); }
+.pc-result-note { margin: 8px 0 12px; color: var(--muted); font-size: 11px; }
+.pc-note .pc-clear { margin-left: 12px; }
+.pc-show-all { display: flex; justify-content: center; width: 100%; margin-top: 12px; }
+@media (max-width: 700px) {
+  .pc-filters { grid-template-columns: 1fr; }
+  .pc-clear { width: 100%; }
+  .pc-note .pc-clear { margin: 12px 0 0; width: 100%; }
+}
+
 @media (max-width: 900px) {
   .pc-acom { grid-template-columns: 1fr; }
   .pc-acom-actions { display: grid; grid-template-columns: 1fr 1fr; }
@@ -196,6 +238,38 @@
   .pc-patent-card { min-height: 178px; }
   .pc-patent-open { margin-left: 0; flex-basis: 100%; }
 }
+/* Etapa 3 — cópia acessível, contraste e alvos de toque */
+.pc-button, .pc-clear, .pc-show-all, .pc-filters input, .pc-filters select { min-height: 44px; }
+.pc-link { display: inline-flex; align-items: center; min-height: 44px; }
+/* 24/10 (achado do revisor): display:flex apagou o marcador nativo do summary; ▶/▼ explícito, alvo de 44 px mantido */
+.pc-acom-details summary { display: flex; align-items: center; gap: 8px; min-height: 44px; list-style: none; }
+.pc-acom-details summary::-webkit-details-marker { display: none; }
+.pc-acom-details summary::before { content: '\25B6\FE0E'; flex: none; color: var(--pc-cyan); font-size: 10px; }
+.pc-acom-details[open] summary::before { content: '\25BC\FE0E'; }
+.pc-copy-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px 10px; align-items: center; }
+.pc-copy-row > span { grid-column: 1 / -1; color: var(--text); font-size: 12px; }
+.pc-copy-row code { min-width: 0; font-size: 12px; }
+.pc-copy-button {
+  min-height: 44px;
+  padding: 8px 11px;
+  border: 1px solid #354458;
+  border-radius: 8px;
+  background: transparent;
+  color: #c8d6e5;
+  font-size: 11.5px;
+  cursor: pointer;
+}
+.pc-copy-button:hover { border-color: var(--pc-cyan); color: var(--pc-cyan); }
+.pc-copy-status { min-height: 20px; margin-top: 6px; color: var(--accent-2); font-size: 12px; line-height: 1.5; }
+.pc-copy-status:empty { min-height: 0; }
+.pc-acom-meta dd, .pc-acom-hash dd, .pc-class-count, .pc-result-note, .pc-patent-id, .pc-patent-foot { font-size: 12px; }
+.pc-class-count, .pc-result-note, .pc-patent-id, .pc-patent-foot { color: #9aacc0; }
+@media (max-width: 620px) {
+  .pc-link { min-height: 44px; }
+  .pc-copy-row { grid-template-columns: 1fr; }
+  .pc-copy-button { width: 100%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pc-home *, .pc-home *::before, .pc-home *::after { transition: none !important; scroll-behavior: auto !important; }
 }
