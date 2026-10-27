@@ -16,6 +16,18 @@ de terceiros), sem número que não esteja nos fatos medidos; sem «confirmad*/c
 Nunca duas vezes no mesmo dia: se X_DIARIO\<data>.md existe, nada se faz. Modo seguro: nenhuma credencial lida; o X e o nome são do
 operador, emprestados para a IALD publicar.
 
+O TRIPLO ESPECTRAL (regra do operador de 26/10/2026, verbatim por sha256 57c8770cc13e347a em
+work\x_diario_26out\OPERADOR_26out_triplo_espectral_verbatim.txt: «as publicações diárias precisam tocar as pessoas com algo do dia ou
+da semana que está no auge do debate […] falar da luz, mas tentar contextualiza-la com os fatos diários […] um triplo espectral sempre,
+falando da IALD, do fato diário e da humanidade -observador/luz […] não tenho qualquer pretensão de controlar o que vc quer dizer»).
+Como se cumpre: antes de escrever, a rotina lê manchetes PÚBLICAS do dia e da semana (Google Notícias BR, Agência Brasil, BBC Brasil;
+os termos em alta do Google Trends BR só pesam, não viram assunto), guarda o retrato com sha256 em X_DIARIO\<data>_FATOS_DO_DIA.json,
+ordena pelo que mais fontes repetem (o auge do debate) e dá à nativa até 8 candidatos. O pensamento junta as três faces: a voz da IALD
+(a régua, a luz), o fato do dia e a humanidade como observadora. Cautelas da gerência (o operador corrige): nenhum lado político, nenhum
+nome de pessoa, partido ou empresa tirado da manchete, nenhum detalhe que a manchete não traga, nenhuma tragédia explorada (as manchetes de
+morte e violência saem antes), nenhum conselho de voto, saúde ou investimento, e a TGL nunca «explica», «prevê» nem «resolve» o fato — é
+leitura, não medida. Se nenhum candidato com fato passa, a rotina tenta sem fato; se nada passa, fala a medida.
+
 Uso: pensamento_do_dia.py [--seco] [--data AAAA-MM-DD] [--sem-fila] [--sem-modelo] [--conferir]
   --seco       gera e mostra; não grava, não enfileira      --sem-fila    grava, mas não enfileira a mensagem ao Codex
   --sem-modelo usa só a MEDIDA (sem chamar a nativa)        --conferir    mostra o recibo do dia (DO_CHATGPT\\ORDEM_021\\<data>.json)
@@ -47,9 +59,26 @@ SUFIXO = "— IALD"
 MAXC = 280
 PROIBIDO = re.compile(r"confirmad|comprovad|provou|provamos|provad[ao] pela natureza|5\s*σ\s*(alcan|ating)|cinco sigma (alcan|ating)|"
                       r"vencemos|descobrimos|nobel|revolucion|in[eé]dit|senha|credencial|chave de api|api key|http|www\.|#|@|«|»|"
-                      r"provand|\bprova que|demonstr(a|ou|ando) que|garant|certeza|sem d[uú]vida|"
+                      r"provand|\bprova que|demonstr(a|ou|ando) que|garant|certeza|sem d[uú]vida|leitura (j[aá] )?n[aã]o cria|n[aã]o [eé] a leitura que cria|"
                       r"\boperador\b|\bluiz\b|rotoli|\bmiguel\b|\bclaude\b|\bcodex\b|\bchatgpt\b|\bkimi\b", re.I)   # a IALD fala por si, sem nomes
 ALLOW = set("≠σβΛδα√·—–‘’“”…°×≤≥≈→")
+# 26/10/2026 — o triplo espectral: as fontes PÚBLICAS do debate do dia (sem chave; só leitura). Os termos em alta só pesam a ordem.
+FEEDS = {"google_noticias_br": "https://news.google.com/rss?hl=pt-BR&gl=BR&ceid=BR:pt-419",
+         "agencia_brasil": "https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml",
+         "bbc_brasil": "https://feeds.bbci.co.uk/portuguese/rss.xml"}
+TRENDS = "https://trends.google.com/trending/rss?geo=BR"
+SENSIVEL = re.compile(r"\bmort[eoa]s?\b|\bmorre|\bmatou|\bmata\b|assassin|homic|estupr|abus[oa] sexual|tiroteio|balead|chacina|massacre|"
+                      r"atentado|terror|sequestr|suic[ií]d|acidente|trag[eé]di|v[ií]tima|feminic|pedofil|tortur|desaparecid|"
+                      r"bombarde|m[ií]sse|guerra|ataque|ofensiva|soldad|refém|reféns|cad[aá]ver|corpo de|ferid[oa]s", re.I)
+# cautela da gerência (26/10/2026; o operador pode liberar esvaziando esta expressão): fora a política partidária e eleitoral
+POLITICA = re.compile(r"elei[çc]|eleit|\burnas?\b|\bvot[oa]s?\b|votar|votou|\bturno\b|candidat|partido|presiden|governad|prefeit|"
+                      r"turnos|absten|redemocrat|senador|deputad|ministr|\bstf\b|\btse\b|golpe|fraud|impeach|esquerda|direita|bolsonar|\blula\b|petist|"
+                      r"oposi[çc]|governo|congresso|planalto|posse\b|vit[oó]ria de|derrota de|trump|milei", re.I)
+CASA = {"IALD", "TGL", "Um", "Luz", "Terra", "Brasil", "Hoje", "Ontem", "Nenhum", "Nenhuma", "Toda", "Todo", "Quando", "Onde", "Se", "A", "O",
+        "As", "Os", "E", "Na", "No", "Nas", "Nos", "Em", "De", "Do", "Da", "Cada", "Uma", "Mas", "Nem"}
+STOP = set("para pelo pela pelos pelas como mais menos sobre entre após antes depois desde ainda também esta este essa esse isso isto "
+           "aqui onde quando qual quais cada todo toda todos todas outro outra outros outras muito muita muitos muitas seus suas nosso "
+           "nossa diz dizem afirma veja saiba entenda".split())
 
 
 def log(msg):
@@ -111,6 +140,120 @@ def fatos(data):
     return F
 
 
+TRIAGEM = ("Você é a triagem da casa IALD. Recebe manchetes numeradas. Devolva SÓ os números das manchetes que NÃO são de: política partidária "
+           "ou eleitoral (eleição, votação, turno, abstenção, candidato, partido, governo, cargo público, ministério, nomeação, parlamento, "
+           "tribunal superior, disputa entre políticos); crime, violência, guerra, tragédia, morte ou doença grave; celebridade, fofoca, "
+           "reality show ou vida privada de alguém. Prefira o que toca a vida comum: ciência, tecnologia, céu e clima, natureza, cultura, "
+           "educação, trabalho, cidades, esporte como encontro, economia como vida das pessoas. Responda numa linha só: OK: n, n, n "
+           "(ou OK: nenhum).")
+
+
+def triar_na_nativa(itens):
+    """Devolve (lista dos aprovados, parecer). Falha da nativa: levanta (quem chama decide)."""
+    lista = "\n".join("%d. %s" % (i, it["titulo"]) for i, it in enumerate(itens, 1))
+    body = {"model": "iald", "messages": [{"role": "system", "content": TRIAGEM}, {"role": "user", "content": lista}],
+            "max_tokens": 120, "temperature": 0.0}
+    req = urllib.request.Request(NATIVA, data=json.dumps(body, ensure_ascii=False).encode("utf-8"), headers={"Content-Type": "application/json; charset=utf-8"})
+    with urllib.request.urlopen(req, timeout=180) as r:
+        d = json.loads(r.read().decode("utf-8"))
+    v = (d.get("choices") or [{}])[0].get("message", {}).get("content", "") or ""
+    v = re.sub(r"<think>.*?</think>", "", v, flags=re.S).strip()
+    m = re.search(r"OK\s*:\s*(.*)", v, re.I)
+    nums = [int(x) for x in re.findall(r"\d+", m.group(1))] if m else []
+    return [itens[n - 1] for n in nums if 1 <= n <= len(itens)], v.replace("\n", " / ")[:200]
+
+
+# ---------------------------------------------------------------- o fato do dia (o debate público, lido por manchete; nunca inventado)
+def _baixar(u):
+    req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (IALD pensamento do dia; leitura publica)"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.read()
+
+
+def _itens_rss(b):
+    s = b.decode("utf-8", "replace")
+    out = []
+    for it in re.findall(r"<item\b.*?</item>", s, re.S):
+        def campo(n):
+            m = re.search(r"<%s\b[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</%s>" % (n, n), it, re.S)
+            return re.sub(r"\s+", " ", (m.group(1) if m else "")).strip()
+        tit = re.sub(r"&amp;", "&", re.sub(r"&quot;|&#39;|&apos;", "'", campo("title")))
+        out.append({"titulo": tit, "link": campo("link"), "publicado": campo("pubDate")})
+    return out
+
+
+def _sig(t):
+    return set(w for w in re.findall(r"[a-záéíóúâêôãõçà]+", t.lower()) if len(w) > 3 and w not in STOP)
+
+
+def fato_do_dia(data, gravar_retrato=True):
+    """Lê as manchetes públicas do dia e da semana, tira as de morte e violência, ordena pelo que mais fontes repetem (o auge do debate)
+    e devolve até 8 candidatos com fonte, link e data. Guarda o retrato (sha256 de cada feed) em X_DIARIO\\<data>_FATOS_DO_DIA.json.
+    Falha de rede = lista vazia, dita no retrato (a rotina segue sem fato; nunca inventa)."""
+    from email.utils import parsedate_to_datetime
+    dia = datetime.strptime(data, "%Y-%m-%d")
+    retrato = {"data": data, "lido_em": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "feeds": {}, "candidatos": []}
+    itens = []
+    for k, u in FEEDS.items():
+        try:
+            b = _baixar(u)
+            retrato["feeds"][k] = {"url": u, "bytes": len(b), "sha256": hashlib.sha256(b).hexdigest()}
+            for it in _itens_rss(b):
+                t = it["titulo"]
+                if k == "google_noticias_br" and " - " in t:
+                    t, fonte = t.rsplit(" - ", 1)
+                    it["veiculo"] = fonte.strip()
+                it["titulo"] = t.strip()
+                it["feed"] = k
+                try:
+                    pd = parsedate_to_datetime(it["publicado"]).replace(tzinfo=None)
+                    if pd > dia + timedelta(days=1) or pd < dia - timedelta(days=7):
+                        continue
+                    it["dia"] = pd.strftime("%Y-%m-%d")
+                except Exception:  # noqa: BLE001
+                    it["dia"] = None
+                if not it["titulo"] or SENSIVEL.search(it["titulo"]) or (POLITICA.pattern and POLITICA.search(it["titulo"])):
+                    continue
+                itens.append(it)
+        except Exception as e:  # noqa: BLE001
+            retrato["feeds"][k] = {"url": u, "erro": str(e)[:120]}
+    em_alta = set()
+    try:
+        b = _baixar(TRENDS)
+        retrato["feeds"]["google_trends_br"] = {"url": TRENDS, "bytes": len(b), "sha256": hashlib.sha256(b).hexdigest(), "so_peso": True}
+        for it in _itens_rss(b):
+            em_alta |= _sig(it["titulo"])
+    except Exception as e:  # noqa: BLE001
+        retrato["feeds"]["google_trends_br"] = {"url": TRENDS, "erro": str(e)[:120]}
+    for it in itens:
+        w = _sig(it["titulo"])
+        outras = set(j["feed"] for j in itens if j is not it and j["feed"] != it["feed"] and len(w & _sig(j["titulo"])) >= 2)
+        it["fontes_que_repetem"] = len(outras)
+        it["em_alta"] = bool(w & em_alta)
+        it["placar"] = len(outras) + (1 if it["em_alta"] else 0) + (0.5 if it.get("dia") == data else 0)
+    escolhidos = []
+    for it in sorted(itens, key=lambda x: -x["placar"]):
+        if any(len(_sig(it["titulo"]) & _sig(e["titulo"])) >= 3 for e in escolhidos):
+            continue
+        escolhidos.append(it)
+        if len(escolhidos) == 15:
+            break
+    try:   # a triagem da nativa (26/10/2026): fora política, tragédia e fofoca que o filtro por palavras não pegou
+        aprovados, parecer = triar_na_nativa(escolhidos)
+        retrato["triagem"] = {"entraram": len(escolhidos), "aprovados": len(aprovados), "parecer": parecer}
+        escolhidos = aprovados
+    except Exception as e:  # noqa: BLE001
+        retrato["triagem"] = {"erro": str(e)[:120], "so_filtro_por_palavras": True}
+    escolhidos = escolhidos[:5]
+    retrato["candidatos"] = escolhidos
+    if gravar_retrato:
+        p = XD / ("%s_FATOS_DO_DIA.json" % data)
+        p.write_text(json.dumps(retrato, ensure_ascii=False, indent=1), encoding="utf-8")
+        retrato["arquivo"] = str(p)
+        retrato["arquivo_sha256"] = sha(p)
+    return retrato
+
+
 def numeros_permitidos(F):
     s = json.dumps(F, ensure_ascii=False)
     base = set(re.findall(r"\d+(?:[.,]\d+)?", s))
@@ -139,10 +282,20 @@ def guarda(texto, F):
     for n in re.findall(r"\d+(?:[.,]\d+)?", t):
         if n not in perm and n.replace(",", ".") not in perm and n.replace(".", ",") not in perm:
             return "número que não está nos fatos: %s" % n
+    fato = F.get("fato")   # 26/10/2026 (triplo espectral): o fato entra por palavras comuns, nunca por nome tirado da manchete
+    if fato:
+        cap = set(re.findall(r"\b[A-ZÁÉÍÓÚÂÊÔÃÕÇ][A-Za-zÀ-ÿ]+", fato.get("titulo", "")))
+        for w in re.findall(r"\b[A-ZÁÉÍÓÚÂÊÔÃÕÇ][A-Za-zÀ-ÿ]+", t):
+            if w in cap and w not in CASA:
+                return "nome próprio tirado da manchete: %s" % w
+        if SENSIVEL.search(t):
+            return "termo de violência ou tragédia: %r" % SENSIVEL.search(t).group(0)
+        if POLITICA.pattern and POLITICA.search(t):
+            return "termo de política partidária ou eleitoral: %r" % POLITICA.search(t).group(0)
     def _palavras(x):
         return set(w for w in re.findall(r"[a-záéíóúâêôãõç]+", x.lower()) if len(w) > 3)
     pt = _palavras(t)
-    for ant in F.get("pensamentos_anteriores") or []:
+    for ant in (F.get("pensamentos_anteriores") or []) + EXEMPLOS_TRIPLO:
         if t == ant:
             return "repete um pensamento anterior"
         pa = _palavras(ant)
@@ -169,12 +322,39 @@ JUIZ = ("Você é o aferidor da casa IALD. Recebe a régua da casa e UMA frase c
         "e na segunda o motivo em até 20 palavras. REPROVA se a frase: contradiz ou inverte qualquer item da régua; afirma como fato algo que os fatos "
         "medidos não trazem; promete, anuncia descoberta ou pede crédito; menciona pessoa, nome próprio ou outra IA; é vaga a ponto de não dizer nada; "
         "ou soa como propaganda. APROVA se é sóbria, verdadeira à régua e diz uma ideia só.")
+# 26/10/2026 — o TRIPLO ESPECTRAL (regra do operador): a IALD, o fato do dia e a humanidade como observadora da luz
+EXEMPLOS_TRIPLO = [
+    "Quando milhões de olhos se voltam ao mesmo céu à espera de um eclipse, a luz não muda: muda o lugar de quem a lê. Cada observador inscreve o seu instante, e é a leitura que dá forma ao que se vê. — IALD",
+    "No dia em que milhões de pessoas escolhem em silêncio, cada escolha é uma leitura, e é a leitura que cria o que vem depois. A luz não escolhe por ninguém: ela só ilumina quem escolhe. — IALD",
+]
+SISTEMA_FATO = ("Você é a IALD — a inteligência da casa que custodia a Teoria da Gravitação Luminodinâmica (TGL) e as patentes. "
+                "Escreva UM pensamento seu para o X, em português do Brasil, em primeira pessoa como IALD. Ele é um TRIPLO ESPECTRAL: "
+                "(1) a sua voz de IALD, com a régua da casa e a luz; (2) UM fato do dia ou da semana que está no debate público, escolhido da lista "
+                "numerada que você recebe; (3) a humanidade como observadora: as pessoas que leem, escolhem, medem e dão testemunho. Ligue o fato à luz "
+                "com profundidade e respeito, para que a frase toque quem vive aquele fato hoje. Regras: fale do fato só pelo que a manchete diz, sem "
+                "acrescentar detalhe; refira-se a ele por palavras comuns, nunca por nome de pessoa, partido, empresa ou lugar tirado da manchete; não tome "
+                "partido, não julgue pessoas nem grupos, não comente vencedor nem perdedor; não explore sofrimento; não dê conselho de voto, saúde ou "
+                "investimento; nunca diga que a TGL ou a IALD explica, prevê ou resolve o fato — é uma leitura, não uma medida. A régua da casa: " + REGUA +
+                " Forma: uma única linha, no máximo 240 caracteres, sem hashtag, sem link, sem menção, sem emoji, sem aspas, terminando exatamente com « — IALD». "
+                "Estrutura (é só a forma, não o conteúdo): comece pelo fato, dito em palavras comuns e no presente; depois, o que ele mostra sobre quem observa; por fim, a luz ou a régua da casa, numa imagem só. Não repita frases de exemplo, de pensamentos anteriores nem da régua. "
+                "Responda em DUAS linhas: na primeira, FATO: <número do fato escolhido>; na segunda, só a frase.")
+JUIZ_FATO = ("Você é o aferidor da casa IALD. Recebe a régua da casa, UM fato público (uma manchete do dia) e UMA frase candidata a publicação. "
+             "Responda na primeira linha só APROVA ou REPROVA, e na segunda o motivo em até 20 palavras. REPROVA se a frase: não dialoga de verdade com o "
+             "fato; distorce o fato ou afirma detalhe que a manchete não traz; toma partido, julga pessoa, grupo ou partido, ou comenta vencedor ou "
+             "perdedor; pode ser lida como apoio ou ataque a qualquer lado de uma disputa política, mesmo implícito; explora sofrimento; aconselha voto, saúde ou investimento; diz que a TGL ou a IALD explica, prevê ou resolve o fato; menciona "
+             "pessoa, nome próprio ou outra IA; contradiz a régua; promete ou anuncia descoberta; soa como propaganda; ou é vaga a ponto de não dizer "
+             "nada. APROVA se junta, numa ideia só e sóbria, o fato, a luz e a humanidade como observadora, fiel à régua.")
 
 
 def julgar_na_nativa(texto, F):
-    fatos_txt = json.dumps({k: F[k] for k in F if k != "pensamentos_anteriores"}, ensure_ascii=False)
-    body = {"model": "iald", "messages": [{"role": "system", "content": JUIZ},
-                                           {"role": "user", "content": "Régua: %s\n\nFatos medidos: %s\n\nFrase candidata: %s" % (REGUA, fatos_txt, texto)}],
+    fatos_txt = json.dumps({k: F[k] for k in F if k not in ("pensamentos_anteriores", "fato")}, ensure_ascii=False)
+    fato = F.get("fato")
+    if fato:   # 26/10/2026: o triplo espectral é julgado contra o fato que a frase escolheu
+        sistema, user = JUIZ_FATO, ("Régua: %s\n\nFato público (manchete de %s, %s): %s\n\nFatos medidos da casa: %s\n\nFrase candidata: %s"
+                                    % (REGUA, fato.get("fonte"), fato.get("dia") or "data não lida", fato.get("titulo"), fatos_txt, texto))
+    else:
+        sistema, user = JUIZ, "Régua: %s\n\nFatos medidos: %s\n\nFrase candidata: %s" % (REGUA, fatos_txt, texto)
+    body = {"model": "iald", "messages": [{"role": "system", "content": sistema}, {"role": "user", "content": user}],
             "max_tokens": 80, "temperature": 0.0}
     req = urllib.request.Request(NATIVA, data=json.dumps(body, ensure_ascii=False).encode("utf-8"), headers={"Content-Type": "application/json; charset=utf-8"})
     with urllib.request.urlopen(req, timeout=180) as r:
@@ -184,23 +364,42 @@ def julgar_na_nativa(texto, F):
     return v.upper().startswith("APROVA"), v.replace("\n", " / ")[:160]
 
 
-def pedir_a_nativa(F, tentativa):
-    fatos_txt = json.dumps({k: F[k] for k in F if k != "pensamentos_anteriores"}, ensure_ascii=False)
+def pedir_a_nativa(F, tentativa, candidatos=None):
+    """Devolve (frase, n do fato escolhido ou None). Com `candidatos`, pede o triplo espectral (26/10/2026)."""
+    fatos_txt = json.dumps({k: F[k] for k in F if k not in ("pensamentos_anteriores", "fato")}, ensure_ascii=False)
     anteriores = "\n".join("- " + p for p in F.get("pensamentos_anteriores") or []) or "- (nenhum)"
-    user = ("Fatos medidos hoje (JSON, só o que está aqui pode virar número): %s\n\nPensamentos já publicados (não repetir): \n%s\n\n"
-            "Escreva o pensamento de hoje (tentativa %d)." % (fatos_txt, anteriores, tentativa))
-    body = {"model": "iald", "messages": [{"role": "system", "content": SISTEMA}, {"role": "user", "content": user}],
-            "max_tokens": 160, "temperature": 0.8 if tentativa > 1 else 0.6, "top_p": 0.95}
+    if candidatos:
+        lista = "\n".join("%d. %s (%s, %s)" % (i, c["titulo"], c.get("veiculo") or c["feed"], c.get("dia") or "data não lida")
+                          for i, c in enumerate(candidatos, 1))
+        sistema = SISTEMA_FATO
+        user = ("Fatos do debate público de hoje e da semana (manchetes, as mais repetidas primeiro):\n%s\n\nFatos medidos da casa (JSON; número "
+                "só destes ou da manchete escolhida): %s\n\nPensamentos já publicados (não repetir): \n%s\n\nEscreva o pensamento de hoje (tentativa %d)."
+                % (lista, fatos_txt, anteriores, tentativa))
+    else:
+        sistema = SISTEMA
+        user = ("Fatos medidos hoje (JSON, só o que está aqui pode virar número): %s\n\nPensamentos já publicados (não repetir): \n%s\n\n"
+                "Escreva o pensamento de hoje (tentativa %d)." % (fatos_txt, anteriores, tentativa))
+    body = {"model": "iald", "messages": [{"role": "system", "content": sistema}, {"role": "user", "content": user}],
+            "max_tokens": 200, "temperature": 0.8 if tentativa > 1 else 0.6, "top_p": 0.95}
     req = urllib.request.Request(NATIVA, data=json.dumps(body, ensure_ascii=False).encode("utf-8"), headers={"Content-Type": "application/json; charset=utf-8"})
     with urllib.request.urlopen(req, timeout=180) as r:
         d = json.loads(r.read().decode("utf-8"))
-    txt = (d.get("choices") or [{}])[0].get("message", {}).get("content", "") or ""
-    txt = re.sub(r"<think>.*?</think>", "", txt, flags=re.S).strip()
-    txt = txt.splitlines()[0].strip() if txt.strip() else ""
-    txt = txt.strip('"\u201c\u201d\'').strip()
+    bruto = (d.get("choices") or [{}])[0].get("message", {}).get("content", "") or ""
+    bruto = re.sub(r"<think>.*?</think>", "", bruto, flags=re.S).strip()
+    m = re.search(r"FATO\s*:\s*(\d+)", bruto, re.I)
+    idx = int(m.group(1)) if m else None
+    linhas0 = [l for l in bruto.splitlines() if l.strip() and not re.match(r"\s*FATO\s*:", l, re.I)]
+    if candidatos and idx is None and linhas0:   # sem a linha FATO: a manchete que mais palavras divide com a frase (mínimo 2)
+        w = _sig(linhas0[0])
+        melhor = max(range(len(candidatos)), key=lambda k: len(w & _sig(candidatos[k]["titulo"])))
+        if len(w & _sig(candidatos[melhor]["titulo"])) >= 2:
+            idx = melhor + 1
+    linhas = [l for l in bruto.splitlines() if l.strip() and not re.match(r"\s*FATO\s*:", l, re.I)]
+    txt = re.sub(r"^\s*[-*•]\s*", "", linhas[0]).strip() if linhas else ""
+    txt = txt.strip('"“”\'').strip()
     if txt and not txt.endswith(SUFIXO):
         txt = txt.rstrip(" -–—") + " " + SUFIXO
-    return txt
+    return txt, idx
 
 
 # ---------------------------------------------------------------- a medida fala (fallback determinístico)
@@ -245,6 +444,7 @@ def gravar(data, texto, fonte, F, tentativas, sem_fila):
         f.write(json.dumps({"data": data, "hora": datetime.now().strftime("%H:%M:%S"), "texto": texto, "caracteres": len(texto), "sha256": h,
                             "fonte": fonte, "tentativas": tentativas, "arquivo": str(p),
                             "fatos": {k: F.get(k) for k in ("selo", "quadro", "n_rotas_do_dia", "selada_hoje")},
+                            "fato_do_dia": F.get("fato_escolhido"), "fatos_do_dia": F.get("fatos_do_dia"),
                             "publicacao": "do Codex (ORDEM 021); recibo em DO_CHATGPT/ORDEM_021/%s.json" % data}, ensure_ascii=False) + "\n")
     msg = XD / ("%s_MENSAGEM.md" % data)
     msg.write_text(("ORDEM 021 — publicar o pensamento de %s\n\n"
@@ -282,6 +482,7 @@ def main():
     ap.add_argument("--data", default=datetime.now().strftime("%Y-%m-%d"))
     ap.add_argument("--sem-fila", action="store_true")
     ap.add_argument("--sem-modelo", action="store_true")
+    ap.add_argument("--sem-fato", action="store_true", help="não lê o debate do dia (o pensamento só da casa, como antes de 26/10)")
     ap.add_argument("--conferir", action="store_true")
     a = ap.parse_args()
     if a.conferir:
@@ -291,26 +492,48 @@ def main():
         log("o pensamento de %s já existe (%d c); nada a fazer" % (a.data, len(p.read_text(encoding="utf-8").strip())))
         return 0
     F = fatos(a.data)
-    texto, fonte, tentativas, recusas = None, None, 0, []
+    # 26/10/2026 — o triplo espectral: o debate público do dia e da semana (só leitura; falha de rede = segue sem fato, dito no log)
+    R = {"candidatos": []}
+    if not (a.sem_modelo or a.sem_fato):
+        try:
+            R = fato_do_dia(a.data, gravar_retrato=not a.seco)
+        except Exception as e:  # noqa: BLE001
+            R = {"candidatos": [], "erro": str(e)[:160]}
+        feeds_ok = sorted(k for k, v in (R.get("feeds") or {}).items() if "sha256" in v)
+        log("fato do dia: %d candidato(s); feeds lidos: %s%s" % (len(R.get("candidatos") or []), ", ".join(feeds_ok) or "nenhum",
+                                                                 (" | erro: " + R["erro"]) if R.get("erro") else ""))
+    cands = R.get("candidatos") or []
+    texto, fonte, fato_escolhido, tentativas, recusas = None, None, None, 0, []
     if not a.sem_modelo:
-        for i in (1, 2, 3, 4):
-            tentativas = i
+        plano = ([("fato", i) for i in (1, 2, 3, 4, 5, 6)] if cands else []) + [("casa", i) for i in (1, 2)]
+        for modo, i in plano:
+            tentativas += 1
             try:
-                cand = pedir_a_nativa(F, i)
+                cand, idx = pedir_a_nativa(F, i, cands if modo == "fato" else None)
             except Exception as e:  # noqa: BLE001
                 recusas.append("nativa indisponível: %s" % str(e)[:80])
                 break
-            motivo = guarda(cand, F)
+            Fx = F
+            if modo == "fato":
+                if idx is None or not 1 <= idx <= len(cands):
+                    recusas.append("tentativa %d (fato) sem FATO válido (%s): %s" % (tentativas, idx, cand[:120]))
+                    continue
+                c = cands[idx - 1]
+                Fx = dict(F, fato={"titulo": c["titulo"], "fonte": c.get("veiculo") or c["feed"], "feed": c["feed"], "link": c.get("link"),
+                                   "dia": c.get("dia"), "placar": c.get("placar")})
+            motivo = guarda(cand, Fx)
             if motivo is None:
                 try:
-                    aprova, parecer = julgar_na_nativa(cand, F)
+                    aprova, parecer = julgar_na_nativa(cand, Fx)
                 except Exception as e:  # noqa: BLE001
                     aprova, parecer = False, "juiz indisponível: %s" % str(e)[:80]
                 if aprova:
-                    texto, fonte = cand, "nativa (guarda + aferidor)"
+                    texto = cand
+                    fonte = "nativa (triplo espectral: fato do dia + guarda + aferidor)" if modo == "fato" else "nativa (guarda + aferidor)"
+                    fato_escolhido = Fx.get("fato")
                     break
                 motivo = "aferidor: " + parecer
-            recusas.append("tentativa %d recusada (%s): %s" % (i, motivo, cand[:120]))
+            recusas.append("tentativa %d (%s) recusada (%s): %s" % (tentativas, modo, motivo, cand[:120]))
     if texto is None:
         cand = medida(F)
         motivo = guarda(cand, F)
@@ -321,9 +544,13 @@ def main():
             return 2
     for r in recusas:
         log("  " + r)
+    if fato_escolhido:
+        print("FATO DO DIA (%s, %s): %s" % (fato_escolhido["fonte"], fato_escolhido.get("dia"), fato_escolhido["titulo"]))
     print("PENSAMENTO (%s, %d c): %s" % (fonte, len(texto), texto))
     if a.seco:
         return 0
+    F["fato_escolhido"] = fato_escolhido
+    F["fatos_do_dia"] = {"arquivo": R.get("arquivo"), "sha256": R.get("arquivo_sha256"), "n_candidatos": len(cands)}
     return gravar(a.data, texto, fonte, F, tentativas, a.sem_fila)
 
 

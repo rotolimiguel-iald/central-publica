@@ -10,7 +10,11 @@ a ESPEC achou neles:
   L19 `tocar()` lia, alterava e substituía o arquivo inteiro (o Atlas tem 8,6 MB) e uma escrita alheia no meio se perdia em silêncio:
       agora há CAS por (tamanho, mtime) antes do `os.replace`, com releitura e refação;
   L7  o t1 do ACOM foi gravado depois do commit e ainda dizia «falta commit»: cada transição é gerada do estado REAL dos recibos.
-Backup de BYTES antes de tocar (regra de 22/08/2026); correção AO LADO, nunca por cima; MEMORY.md < 24 KB (alarme a 90%, parada a 98%)."""
+Backup de BYTES antes de tocar (regra de 22/08/2026); correção AO LADO, nunca por cima; MEMORY.md < 24 KB (alarme a 90%, parada a 98%).
+
+  L23 a FILA DA MEMÓRIA (26/10/2026, ordem do operador; memory\\fila\\README.md): só a gerência c1 escreve MEMORY.md, MEMORY_2.md e os
+      arquivos-tópico do diretório da memória. C13/C16 DEPOSITAM (memoria.py depositar --quem claude-site), uma vez por sentinela; o
+      «já aplicado» aceita o depósito ou a promoção (que leva a sentinela ao tópico). DIARIO_DO_SITE.md e o Atlas seguem como estavam."""
 import glob
 import hashlib
 import json
@@ -63,6 +67,45 @@ def agora():
 
 def sent(ctx, bloco):
     return "<!-- custodia:%s:%s -->" % (ctx.versao, bloco)
+
+
+# =================================================================== a FILA DA MEMÓRIA (L23)
+QUEM_FILA = "claude-site"
+
+
+def _na_memoria(ctx, p):
+    """O arquivo mora no diretório da memória (onde só a gerência c1 escreve)?"""
+    return os.path.normcase(str(Path(p).parent)) == os.path.normcase(str(ctx.c.MEM))
+
+
+def _depositos_com(ctx, sentinela):
+    d = ctx.c.MEM / "fila" / "depositos" / QUEM_FILA
+    return [x for x in sorted(d.glob("*.md")) if sentinela in util.ler_texto(x, "replace")] if d.is_dir() else []
+
+
+def depositar(ctx, alvo, texto, sentinela, bloco):
+    """Deposita UMA vez na fila (a sentinela vai no corpo): já depositado, ou já promovido (a sentinela no tópico), nada faz."""
+    if _depositos_com(ctx, sentinela):
+        return {"estado": "ja_depositado"}
+    t = ctx.c.MEM / alvo
+    if alvo.endswith(".md") and t.is_file() and sentinela in util.ler_texto(t, "replace"):
+        return {"estado": "ja_aplicado"}
+    slug = re.sub(r"[^a-z0-9_-]+", "-", ("custodia_%s_%s" % (ctx.versao, bloco)).lower()).strip("-")[:64]
+    arq = ctx.W / "fila_da_memoria" / (slug + ".md")
+    arq.parent.mkdir(parents=True, exist_ok=True)
+    util.escrever_atomico(arq, (texto.strip("\n") + "\n" + sentinela + "\n").encode("utf-8"), backup=True)
+    r = util.rodar([str(ctx.c.PYTHON), "-X", "utf8", str(ctx.c.MEM / "fila" / "memoria.py"), "depositar", "--quem", QUEM_FILA, "--tipo", "project",
+                    "--estatuto", "REAL", "--alvo", alvo, "--fonte", str(ctx.handoff.caminho), "--texto-arquivo", str(arq), "--slug", slug])
+    if r["rc"] != 0:
+        raise Parar("memoria.py depositar recusou o depósito para %s" % alvo, r["saida"].strip().splitlines()[-4:])
+    return {"estado": "depositado"}
+
+
+def registrar_memoria(ctx, nome, texto, bloco):
+    """Uma superfície do diretório da memória: deposita para a gerência (o tópico que ainda não existe vai como novo:<slug>)."""
+    p = ctx.c.memoria(nome)
+    alvo = nome if p.is_file() else "novo:" + nome[:-3]
+    return depositar(ctx, alvo, texto, sent(ctx, bloco), bloco)
 
 
 # =================================================================== os fatos verificados que entram no texto (cada um com recibo/arquivo/git)
@@ -193,6 +236,8 @@ def _ja_c13(ctx):
     if ("A CUSTÓDIA DA %s" % v) not in util.ler_texto(c.ATLAS, "replace"):
         faltam.append("Atlas «A CUSTÓDIA DA %s»" % v)
     for nome, p, bloco in _superficies_c13(ctx):
+        if _na_memoria(ctx, p) and _depositos_com(ctx, sent(ctx, bloco)):
+            continue                                           # depositada na fila: a promoção é da gerência c1 (L23)
         if not p.is_file():
             faltam.append("%s ausente" % nome)
         elif not _registrada_na_superficie(ctx, util.ler_texto(p, "replace"), bloco):
@@ -200,9 +245,9 @@ def _ja_c13(ctx):
     lin, ok = _memory_ja(ctx, ("CUSTODIADO", "PUBLICADA"))
     if lin is None:
         faltam.append("linha «- [HANDOFF %s » no MEMORY.md" % v)
-    elif not ok:
-        faltam.append("linha do MEMORY.md ainda sem CUSTODIADO/PUBLICADA")
-    return aplicado("Atlas, as 6 memórias/diários (%s) e a linha do MEMORY.md" % ", ".join(n for n, _, _ in _superficies_c13(ctx))[:150]) if not faltam else falta("faltam: " + "; ".join(faltam))
+    elif not ok and not _depositos_com(ctx, sent(ctx, "indice:custodiado")):
+        faltam.append("linha do MEMORY.md ainda sem CUSTODIADO/PUBLICADA (nem a troca depositada na fila)")
+    return aplicado(("Atlas, as 6 memórias/diários (%s) e a linha do MEMORY.md" % ", ".join(n for n, _, _ in _superficies_c13(ctx)))[:150] + "; as do diretório da memória pela fila (L23)") if not faltam else falta("faltam: " + "; ".join(faltam))
 
 
 def _pre_c13(ctx):
@@ -216,7 +261,7 @@ def _pre_c13(ctx):
         f.append("o snapshot ainda está em curso: espere o MANIFEST.json conferido (C5)")
     for rot, pth in (("handoff-%s-custodia.md" % ctx.versao, ctx.c.memoria("handoff-%s-custodia.md" % ctx.versao)),):
         if not pth.is_file():
-            ctx.aviso("%s não existe: será criado do molde, marcado DECLARADO" % rot)
+            ctx.aviso("%s não existe: vai à fila como novo:%s (a gerência c1 cria o tópico)" % (rot, rot[:-3]))
     lin, _ = _memory_ja(ctx, ())
     if lin is None:
         f.append("a linha «- [HANDOFF %s » não existe no MEMORY.md (criada pela gerência c1 ao emitir o handoff)" % ctx.versao)
@@ -244,6 +289,26 @@ def trocar_linha_memory(ctx, marcas_ja, rotulo, extra, bloco_sentinela):
         ctx.aviso("MEMORY.md a %.0f%% do teto de 24 KB" % (100.0 * tam / TETO_MEMORY))
     ap(p2, "## %s \u2014 linha movida do MEMORY.md (regra dos dois arquivos), VERBATIM\n\n%s" % (agora(), antiga), sent(ctx, "memory2:" + bloco_sentinela))
     return tocar_cas(p, lambda t, nl: t.replace(antiga, nova, 1), pode_encolher=True)
+
+
+def propor_linha_memory(ctx, marcas_ja, rotulo, extra, bloco):
+    """A troca da linha «- [HANDOFF vN » do índice, DEPOSITADA para a gerência c1 (L23): a antiga e a nova, verbatim; trocar e mover a antiga ao
+    MEMORY_2.md (regra dos dois arquivos) é ato da gerência."""
+    p = ctx.c.memoria("MEMORY.md")
+    antiga, ok = _memory_ja(ctx, marcas_ja)
+    if antiga is None:
+        raise Parar("a linha «- [HANDOFF %s » não existe no MEMORY.md" % ctx.versao)
+    if ok:
+        return {"estado": "ja_aplicado"}
+    nova = _linha_nova_memory(ctx, antiga, rotulo, extra)
+    tam = len(util.ler_bytes(p)) - len(antiga.encode("utf-8")) + len(nova.encode("utf-8"))
+    nota = ""
+    if tam > 0.90 * TETO_MEMORY:
+        nota = " Medido: com a troca, o MEMORY.md iria a %d B (%.0f%% do teto de 24 KB)." % (tam, 100.0 * tam / TETO_MEMORY)
+        ctx.aviso("a troca depositada levaria o MEMORY.md a %.0f%% do teto de 24 KB" % (100.0 * tam / TETO_MEMORY))
+    texto = ("Troca proposta da linha do índice da custódia %s (%s). Ato da gerência: substituir a linha ANTIGA pela NOVA e levar a antiga, VERBATIM, "
+             "ao MEMORY_2.md (regra dos dois arquivos).%s\n\nANTIGA:\n%s\n\nNOVA:\n%s" % (ctx.versao, rotulo, nota, antiga, nova))
+    return depositar(ctx, "MEMORY.md (linha de indice)", texto, sent(ctx, "indice:" + bloco), "indice_" + bloco)
 
 
 def montar_rota(ctx, estado):
@@ -287,29 +352,25 @@ def _ap_c13(ctx):
     when = agora()
     saidas = {}
     saidas["DIARIO_DO_SITE"] = ap(c.BANC / "DIARIO_DO_SITE.md", "## %s \u2014 a custódia da %s (sessão %s da Central)\n\n%s" % (when, v, ctx.sessao, estado), sent(ctx, "diario_do_site"))
-    saidas["site-sessao-estado"] = ap(c.memoria("site-sessao-estado.md"), "## %s \u2014 %s no ar\n\n%s" % (when, v, estado), sent(ctx, "site_sessao_estado"))
+    saidas["site-sessao-estado"] = registrar_memoria(ctx, "site-sessao-estado.md", "## %s \u2014 %s no ar\n\n%s" % (when, v, estado), "site_sessao_estado")
     fv = fatos_verificados(ctx)
-    saidas["tgl-fronteira-teorica"] = ap(c.memoria("tgl-fronteira-teorica.md"),
+    saidas["tgl-fronteira-teorica"] = registrar_memoria(ctx, "tgl-fronteira-teorica.md",
         "## %s \u2014 runner v%d (%s)\n\nVeredito `%s…`. A pedra genérica `_medir_%s_custodia` (G1) lê o cofre %s contra o %s PELO NOME, com as expectativas congeladas em FATOS_CUSTODIA.json "
         "do cofre; %d blocos novos verificados sem efeito no gate, %d bandeiras, registro %d com os %d da %s e %d vereditos mudados (só dígitos e pino), kernel %d/%d; dois céticos reprovam. "
         "NENHUMA errata nas pedras antigas." % (when, fv["runner_n"], v, fv["veredito"][:90], v, v, Fa["anterior"], len(Fa["registros_novos"]), len(Fa["bandeiras_novas"]),
                                                   Fa["registro"]["pt"], Fa["registro"]["anterior"], Fa["anterior"], len(Fa["registro"]["mudados"]), Fa["kernel"]["formais"], Fa["kernel"]["declaracoes"]),
-        sent(ctx, "fronteira_teorica"))
-    saidas["central-de-patentes-estado"] = ap(c.memoria("central-de-patentes-estado.md"), "## %s \u2014 custódia %s\n\n%s" % (when, v, estado), sent(ctx, "central_estado"))
-    saidas["dispositivos-formula-completa"] = ap(c.memoria("dispositivos-formula-completa.md"),
+        "fronteira_teorica")
+    saidas["central-de-patentes-estado"] = registrar_memoria(ctx, "central-de-patentes-estado.md", "## %s \u2014 custódia %s\n\n%s" % (when, v, estado), "central_estado")
+    saidas["dispositivos-formula-completa"] = registrar_memoria(ctx, "dispositivos-formula-completa.md",
         "## %s \u2014 camada %s\n\nOs registros novos da %s (%s) lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json; a escada %s. %d/%d com a camada; %s FINAL "
         "regerados. Nada muda número de dispositivo." % (when, v, v, ", ".join(Fa["registros_novos"]), Fa["escada"]["texto"], fv["n_disp"], fv["n_dev"], fv["final"] if fv["final"] else fv["n_dev"]),
-        sent(ctx, "dispositivos"))
+        "dispositivos")
     h = c.memoria("handoff-%s-custodia.md" % v)
-    if not h.is_file():
-        util.escrever_atomico(h, ("---\nname: HANDOFF %s \u2014 custódia (criado por G1, DECLARADO)\ndescription: memória da custódia de %s; criada do molde porque a gerência c1 não a emitiu\n---\n\n"
-                                  "Handoff: `Nós\\HANDOFF_%s_CUSTODIA.md` (sha16 `%s`). [DECLARADO] criado por G1.\n" % (v, v, v, ctx.handoff.sha16_arquivo)).encode("utf-8"), backup=False)
-    saidas["handoff-memoria"] = ap(h, "## %s \u2014 CUSTODIADO pela sessão %s da Central\n\n%s" % (when, ctx.sessao, estado), sent(ctx, "handoff_custodiado"))
+    molde = "" if h.is_file() else ("Handoff: `Nós\\HANDOFF_%s_CUSTODIA.md` (sha16 `%s`); o tópico ainda não existe: a gerência c1 o cria.\n\n" % (v, ctx.handoff.sha16_arquivo))
+    saidas["handoff-memoria"] = registrar_memoria(ctx, "handoff-%s-custodia.md" % v, "%s## %s \u2014 CUSTODIADO pela sessão %s da Central\n\n%s" % (molde, when, ctx.sessao, estado), "handoff_custodiado")
     saidas["Atlas"] = ap(c.ATLAS, "[%s \u2014 §X append, re-ancorado ao selo %s `%s`: A CUSTÓDIA DA %s] %s" % (when, v, Fa["pin16"], v, estado), sent(ctx, "atlas"))
-    saidas["MEMORY.md"] = trocar_linha_memory(ctx, ("CUSTODIADO", "PUBLICADA"), "CUSTODIADO",
+    saidas["MEMORY.md"] = propor_linha_memory(ctx, ("CUSTODIADO", "PUBLICADA"), "CUSTODIADO",
                                               "the_boundary `%s`; Central: cofre %s, runner v%d, %d/%d, FINAL, ledger %s" % (fv["esp"], v, fv["runner_n"], fv["n_disp"], fv["n_dev"], fv["ledger"].get("erros")), "custodiado")
-    if os.path.getsize(c.memoria("MEMORY.md")) >= TETO_MEMORY:
-        raise Parar("MEMORY.md passou de 24 KB")
     return {k: (x["estado"] if isinstance(x, dict) else x) for k, x in saidas.items()}
 
 
@@ -335,8 +396,8 @@ def registrar_rota(ctx, estado):
 
 
 def passo_c13(ctx):
-    return Passo("C13", 4, "registro: diário do site, memórias, Atlas, MEMORY.md (a rota é de C16)", _ja_c13, aplicar=_ap_c13, pre=_pre_c13, fase="B",
-                 escreve="DIARIO_DO_SITE.md, memórias da sessão, TGL_ATLAS.md (só acréscimo), MEMORY.md/MEMORY_2.md")
+    return Passo("C13", 4, "registro: diário do site, Atlas; memórias e linha do MEMORY.md pela fila da memória (a rota é de C16)", _ja_c13, aplicar=_ap_c13, pre=_pre_c13, fase="B",
+                 escreve="DIARIO_DO_SITE.md, TGL_ATLAS.md (só acréscimo), depósitos em memory\\fila\\depositos\\claude-site (memórias da sessão e a troca da linha do MEMORY.md)")
 
 
 # =================================================================== C16 — «PUBLICADA»
@@ -357,11 +418,12 @@ def _ja_c16(ctx):
     lin, ok = _memory_ja(ctx, ("PUBLICADA",))
     if lin is None:
         return falta("linha do handoff %s ausente no MEMORY.md" % ctx.versao)
+    ok = ok or bool(_depositos_com(ctx, sent(ctx, "indice:publicada")))
     h = ctx.c.memoria("handoff-%s-custodia.md" % ctx.versao)
-    tem = h.is_file() and "PUBLICADA (pós-push)" in util.ler_texto(h, "replace")
+    tem = (h.is_file() and "PUBLICADA (pós-push)" in util.ler_texto(h, "replace")) or bool(_depositos_com(ctx, sent(ctx, "publicada_handoff")))
     rota = _rota_registrada(ctx)
     if ok and tem and rota:
-        return aplicado("MEMORY.md e handoff-%s-custodia.md dizem PUBLICADA; rota custodia.%s registrada" % (ctx.versao, ctx.versao))
+        return aplicado("MEMORY.md e handoff-%s-custodia.md dizem PUBLICADA (ou a fila da memória o tem para a gerência); rota custodia.%s registrada" % (ctx.versao, ctx.versao))
     return falta("sem PUBLICADA/rota em: %s" % ", ".join(x for x, y in (("MEMORY.md", ok), ("handoff-%s-custodia.md" % ctx.versao, tem), ("rota custodia.%s" % ctx.versao, rota)) if not y))
 
 
@@ -395,10 +457,10 @@ def _ap_c16(ctx):
         raise Parar("o portão de texto reprovou", viol)
     when = agora()
     s = {}
-    s["handoff"] = ap(c.memoria("handoff-%s-custodia.md" % v), "## %s \u2014 PUBLICADA (pós-push)\n\n%s" % (when, txt), sent(ctx, "publicada_handoff"))
-    s["central-estado"] = ap(c.memoria("central-de-patentes-estado.md"), "## %s \u2014 custódia %s publicada\n\n%s" % (when, v, txt), sent(ctx, "publicada_central"))
+    s["handoff"] = registrar_memoria(ctx, "handoff-%s-custodia.md" % v, "## %s \u2014 PUBLICADA (pós-push)\n\n%s" % (when, txt), "publicada_handoff")
+    s["central-estado"] = registrar_memoria(ctx, "central-de-patentes-estado.md", "## %s \u2014 custódia %s publicada\n\n%s" % (when, v, txt), "publicada_central")
     s["diario"] = ap(c.BANC / "DIARIO_DO_SITE.md", "## %s \u2014 a custódia %s PUBLICADA\n\n%s" % (when, v, txt), sent(ctx, "publicada_diario"))
-    s["MEMORY.md"] = trocar_linha_memory(ctx, ("PUBLICADA",), "PUBLICADA", "the_boundary `%s`; Central `%s`; cofre %s, runner v%d, %d/%d, FINAL, ledger %s; conferência final %d/%d" % (esp, cen, v, fv["runner_n"], fv["n_disp"], fv["n_dev"], fv["ledger"].get("erros"), cf["ok"], cf["total"]), "publicada")
+    s["MEMORY.md"] = propor_linha_memory(ctx, ("PUBLICADA",), "PUBLICADA", "the_boundary `%s`; Central `%s`; cofre %s, runner v%d, %d/%d, FINAL, ledger %s; conferência final %d/%d" % (esp, cen, v, fv["runner_n"], fv["n_disp"], fv["n_dev"], fv["ledger"].get("erros"), cf["ok"], cf["total"]), "publicada")
     # a ROTA entra por último e só aqui: o livro é só-acréscimo (cadeia de hash); registrar «publicada e conferida» antes do push seria uma frase que o número ainda não sustenta
     s["rota"] = registrar_rota(ctx, txt)
     return {k: (x["estado"] if isinstance(x, dict) else x) for k, x in s.items()}
@@ -406,7 +468,7 @@ def _ap_c16(ctx):
 
 def passo_c16(ctx):
     return Passo("C16", 4, "registro «PUBLICADA» (pós-push) e a rota custodia.vN", _ja_c16, aplicar=_ap_c16, pre=_pre_c16, fase="B",
-                 escreve="memórias da sessão, DIARIO_DO_SITE.md, MEMORY.md (o Atlas não se toca depois do push), mapa de rotas (só-acréscimo)")
+                 escreve="DIARIO_DO_SITE.md, depósitos na fila da memória (memórias da sessão e a troca da linha do MEMORY.md; o Atlas não se toca depois do push), mapa de rotas (só-acréscimo)")
 
 
 # =================================================================== ACOM — C2 (init) e C17 (transições gerados do estado real)

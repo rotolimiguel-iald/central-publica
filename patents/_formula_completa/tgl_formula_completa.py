@@ -103,6 +103,9 @@ Camada v400 (custódia v400 na Central, 25/10/2026, sessão a7; handoff v400 da 
 Camada v401 (custódia v401 na Central, 25/10/2026, sessão a7; handoff v401 da gerência c1) — GENÉRICA (camada_generica.py):
  19. os registros novos da v401 (cunhagens_v401, falsidade_da_inercia_v401, kh_n1_cobertura_v401), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v401: cunhagens_v401: «[REAL -- a fonte da pedra, o kernel e o registro falsidade_da_inercia_v401 lidos a cada rito;» falsidade_da_inercia_v401: «[REAL] os termos do kernel (a composicao derivada falsidade_da_inercia_derivada e os vinte teoremas e definicoes nomeados da pedra, lidos a cada rito, no trio;» kh_n1_cobertura_v401: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» Nada disso muda número algum de dispositivo.
 
+Camada v402 (custódia v402 na Central, 27/10/2026, sessão c1; handoff v402 da gerência c1) — GENÉRICA (camada_generica.py):
+ 19. os registros novos da v402 (cunhagens_v402, esperanca_condicional_v402, kh_n1_cobertura_v402, ponte_da_escala_dual_v402, queda_sem_geometria_v402), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v402: cunhagens_v402: «[REAL -- as fontes das pedras, o kernel e os tres registros com funcao lidos a cada rito;» esperanca_condicional_v402: «[REAL] os termos do kernel (os 18 itens da pedra EsperancaCondicional, lidos a cada rito, no trio;» kh_n1_cobertura_v402: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» ponte_da_escala_dual_v402: «[REAL] os termos do kernel (os 32 itens do contrato da pedra PonteDaEscalaDual, lidos a cada rito, no trio;» queda_sem_geometria_v402: «[REAL] os termos do kernel (os 25 itens do contrato da pedra QuedaSemGeometria, lidos a cada rito, no trio;» Nada disso muda número algum de dispositivo.
+
 Régua: β NUNCA literal (sempre ALPHA_FINE_CODATA_2018 × √e em runtime); os números do cofre são LIDOS do selo/core por pino;
 falha de leitura ou elo quebrado = RuntimeError (fail-closed). Nada aqui move veredito físico: physical_verdict_allowed = False.
 PROVADA ≠ CONFIRMADA; o dicionário custo/identidade/movimento é cunhagem do operador [ONTO/DEFINITION].
@@ -119,7 +122,7 @@ HBAR_CODATA_2018 = 1.054571817e-34      # J s
 G_CODATA_2018 = 6.67430e-11             # m^3 kg^-1 s^-2
 C_LIGHT = 299792458.0                   # m/s (exato)
 
-VERSAO_DA_CAMADA = "v401"   # (era "v400"; a camada v401 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
+VERSAO_DA_CAMADA = "v402"   # (era "v401"; a camada v402 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
 # o cofre e procurado nesta ordem (declarada): a variavel TGL_CENTRAL_DIR; a arvore onde este modulo esta; a Central desta
 # maquina (quando o dispositivo roda extraido do *_FINAL.py num diretorio temporario). Nenhum achado = fail-closed.
 def _achar_central():
@@ -595,7 +598,7 @@ def conferir_v398_no_cofre(core: dict, selo: dict) -> dict:
                         "estrutura logarítmica e de oitava, não a física da onda; validade no kernel não é creditação; nada disto muda número de dispositivo"}
 
 
-CAMADAS_GENERICAS = ("v400", "v401",)
+CAMADAS_GENERICAS = ("v400", "v401", "v402",)
 
 
 def _camadas_genericas(core, selo, cofre):
@@ -801,6 +804,8 @@ USOS = {
     'camadas_v400': r"TGLExt\.(Testemunho)|cunhagens_v399|declaracao_do_operador_v399|kh_n1_cobertura_v399|selo_pela_propria_tecnologia_v399",
     # v401: mede se algum dispositivo cita as pedras novas; não interpreta
     'camadas_v401': r"TGLExt\.(FalsidadeDaInercia)|cunhagens_v401|falsidade_da_inercia_v401|kh_n1_cobertura_v401",
+    # v402: mede se algum dispositivo cita as pedras novas; não interpreta
+    'camadas_v402': r"TGLExt\.(EsperancaCondicional|PonteDaEscalaDual|QuedaSemGeometria)|cunhagens_v402|esperanca_condicional_v402|kh_n1_cobertura_v402|ponte_da_escala_dual_v402|queda_sem_geometria_v402",
 }
 
 
@@ -836,6 +841,7 @@ def camada(runner_path) -> dict:
                      "SONICO_E_AFINACAO_COMPOSICOES_INCONDICIONAIS__NADA_DERIVA_AS_CORDAS_DO_AXIOMA__"
                      "REGISTROS_V400_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V401_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
+                     "REGISTROS_V402_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION") % VERSAO_DA_CAMADA.upper(),
         "physical_verdict_allowed": False,
         "nao_se_afirma": ["que o dispositivo valide física", "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
@@ -871,7 +877,34 @@ def camada(runner_path) -> dict:
                           '(v401, falsidade_da_inercia_v401) que a inercia deste registro seja a do adendo de 03-04/09: aquela leitura esta superada pela definicao do operador',
                           '(v401, falsidade_da_inercia_v401) que isto seja um teste: nao ha desfecho experimental',
                           '(v401, falsidade_da_inercia_v401) que a gravidade quantica esteja creditada na natureza',
-                          '(v401, kh_n1_cobertura_v401) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido'],
+                          '(v401, kh_n1_cobertura_v401) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido',
+                          '(v402, cunhagens_v402) que o kernel prove as falas do operador (elas sao INPUT/ONTO)',
+                          '(v402, cunhagens_v402) que a ponte prove Newton, a assinatura (1,3) ou rank c = 4',
+                          "(v402, cunhagens_v402) que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+                          '(v402, cunhagens_v402) que isto seja um teste: nao ha desfecho experimental',
+                          '(v402, cunhagens_v402) que a gravidade quantica esteja creditada na natureza',
+                          '(v402, esperanca_condicional_v402) que toda esperanca condicional seja um Operador do Nome',
+                          "(v402, esperanca_condicional_v402) que o indice 1/beta seja instancia construida ou medida (e' CONDICIONAL a hpp e hopt)",
+                          '(v402, esperanca_condicional_v402) que a pedra seja rota para o Lema 3 ou valha no caso III1',
+                          '(v402, esperanca_condicional_v402) que o Nome seja as tres coisas por definicao: sao faces de um objeto, e o kernel prova as ligacoes',
+                          '(v402, esperanca_condicional_v402) que o ponteiro de direito (CC art. 125) esteja conferido',
+                          '(v402, esperanca_condicional_v402) que isto seja um teste: nao ha desfecho experimental',
+                          '(v402, esperanca_condicional_v402) que a gravidade quantica esteja creditada na natureza',
+                          '(v402, kh_n1_cobertura_v402) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido',
+                          "(v402, ponte_da_escala_dual_v402) que tau seja a massa de Newton (H_tau na forma literal e' REFUTADA no kernel)",
+                          '(v402, ponte_da_escala_dual_v402) que a escala dual seja o fluxo modular de Bisognano-Wichmann (H_BW, [OPEN])',
+                          '(v402, ponte_da_escala_dual_v402) que o p+ do traco canonico seja a energia de um corpo (H_cal, [OPEN])',
+                          '(v402, ponte_da_escala_dual_v402) que E = mc^2 seja composta da escala (E3)',
+                          '(v402, ponte_da_escala_dual_v402) que a pedra prove Newton, a assinatura (1,3) ou rank c = 4',
+                          '(v402, ponte_da_escala_dual_v402) que isto seja um teste: nao ha desfecho experimental',
+                          '(v402, ponte_da_escala_dual_v402) que a gravidade quantica esteja creditada na natureza',
+                          "(v402, queda_sem_geometria_v402) que a dimensao do espaco seja 3 (a leitura 1 + 3 e' [ONTO])",
+                          '(v402, queda_sem_geometria_v402) que IsotropicPost seja termo do kernel ou valha no atlas curvo (hipotese NOMEADA, [OPEN])',
+                          '(v402, queda_sem_geometria_v402) que a H3 valha em toda tela e direcao',
+                          '(v402, queda_sem_geometria_v402) que o parametro s seja a fase de um corpo fisico ([OPEN])',
+                          '(v402, queda_sem_geometria_v402) que a queda aqui seja uma forca ou uma queda no espaco: a pedra tipa a perda de peso, sem geometria',
+                          '(v402, queda_sem_geometria_v402) que isto seja um teste: nao ha desfecho experimental',
+                          '(v402, queda_sem_geometria_v402) que a gravidade quantica esteja creditada na natureza'],
     }
 
 

@@ -104,7 +104,7 @@ if _pin_nos == PIN16:
 else:   # a casa está no meio de uma versão (a gerência c1 trabalha no um.py depois do selo): estado, não erro — o vigia (G2) espera o selo novo
     R.append(("Nós", "um.py do Nós = o selo", PIN16, _pin_nos + " — EM OBRA: a casa trabalha na versão seguinte; o quadro mede contra o último selo", "EM_OBRA"))
 diario = (NOS / "MEMORIA_DA_LINHAGEM.md").read_text(encoding="utf-8")
-vs = re.findall(r"^## [^\n]*\*\*(v3\d\d) SELADA", diario, re.M)
+vs = re.findall(r"^## [^\n]*\*\*(v\d{3,}) SELADA", diario, re.M)
 item("Nós", "diário da linhagem: última versão selada", V, vs[-1] if vs else "?", bool(vs) and vs[-1] == V)
 item("Nós", "handoff de custódia HANDOFF_%s_CUSTODIA.md" % V, "existe", (NOS / ("HANDOFF_%s_CUSTODIA.md" % V)).is_file(), (NOS / ("HANDOFF_%s_CUSTODIA.md" % V)).is_file())
 item("Nós", "rodada_%s_stdout.txt (o stdout canônico)" % V, "existe", (NOS / ("rodada_%s_stdout.txt" % V)).is_file(), (NOS / ("rodada_%s_stdout.txt" % V)).is_file())
