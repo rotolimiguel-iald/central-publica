@@ -543,7 +543,9 @@ def _transicao(ctx, n, slug, records, flow):
     d = acom_chamar(ctx, req)
     if d.get("ok") is not True:
         raise Parar("ACOM transition t%d falhou: %s %s" % (n, d.get("error"), str(d.get("message"))[:200]))
-    return {"revisao": d.get("result", {}).get("receipt", {}).get("revision")}
+    res = d.get("result") or {}
+    rec = res.get("receipt") if isinstance(res.get("receipt"), dict) else {}
+    return {"revisao": rec.get("revision", res.get("revision"))}      # a transition devolve result.revision; o receipt é o da projeção (lição 29a, 27/10)
 
 
 def _ja_t(n):

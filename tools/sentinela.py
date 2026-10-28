@@ -142,7 +142,7 @@ def passo_prazos(hoje: dt.date, regras: dict) -> list[dict]:
         item = {"id": m["id"], "processo": m.get("processo"), "data_rpi": m.get("data"), "rpi": m.get("rpi"),
                 "codigo": m.get("codigo_despacho"), "titulo": r.get("titulo"), "cor": r["cor"], "ato": r.get("ato"),
                 "parecer": bool(r.get("parecer")), "origem_regra": r["origem_regra"],
-                "confirmado_pelo_operador": bool(m.get("confirmado_pelo_operador")), "trecho": (m.get("trecho") or "")[:300]}
+                "confirmado_pelo_operador": bool(m.get("confirmado_pelo_operador")), "tratado": m.get("tratado"), "trecho": (m.get("trecho") or "")[:300]}
         if r.get("prazo_dias") and pub:
             fim, seguro = prazo_legal(pub, int(r["prazo_dias"]))
             item.update(prazo_dias=r["prazo_dias"], fim_legal=fim.isoformat(), fim_seguro=seguro.isoformat(),
@@ -291,6 +291,8 @@ def montar_sinal(hoje: dt.date, rpi: dict, itens: list[dict], marcos: list[dict]
         except Exception:  # noqa: BLE001
             pass
     for it in itens:
+        if it.get("tratado"):
+            continue  # 27/10/2026: despacho tratado (o registro fica no próprio movimento do ledger, ao lado) não alarma
         if it["confirmado_pelo_operador"] and it["cor"] == "verde":
             continue
         if it.get("vencido"):

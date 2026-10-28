@@ -18,7 +18,7 @@ TRIO = ("propext", "Classical.choice", "Quot.sound")
 
 RE_SELADA = re.compile(r"^## [^\n]*\*\*(v\d{3,}) SELADA[^*\n]*\*\*[^\n]*\n", re.M)
 RE_CAB = re.compile(r"^## (?P<data>\d\d/\d\d/\d{4}) \u2014 \*\*(?P<v>v\d{3,}) SELADA[^*\n]*\*\*\s*`(?P<pin>[0-9a-f]{16})`\s*\u2014\s*(?P<titulo>[^\n]*?)\s*"
-                    r"\((?P=v)\):\s*(?P<k>\d+|nenhum) m[o\u00f3]dulos? novos?,\s*escada\s*(?P<a>\d+)\s*\u2192\s*(?P<b>\d+)", re.M)
+                    r"\((?P=v)\):\s*(?:[^\n;]*;\s*)?(?P<k>\d+|nenhum) m[o\u00f3]dulos? novos?,\s*escada\s*(?P<a>\d+)\s*\u2192\s*(?P<b>\d+)", re.M)   # 28/10/2026 (c1, v403): clausula opcional «...; » entre (vNNN): e os modulos
 RE_MARCADOR = re.compile(r"<!-- INICIO_(?P<id>[A-Za-z0-9_]+) -->\r?\n(?P<corpo>.*?)<!-- FIM_(?P=id) -->", re.S)
 RE_ABRE = re.compile(r"<!-- INICIO_([A-Za-z0-9_]+) -->")
 RE_FECHA = re.compile(r"<!-- FIM_([A-Za-z0-9_]+) -->")

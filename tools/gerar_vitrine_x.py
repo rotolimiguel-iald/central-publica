@@ -260,7 +260,8 @@ if a.seco:
 OUT.mkdir(parents=True, exist_ok=True)
 stamp = time.strftime("%Y%m%d_%H%M%S")
 for p in OUT.glob("*"):
-    if p.is_file() and not p.name.startswith("_"):
+    # 28/10/2026 (Fase 2): o post longo da versao CORRENTE (CUSTODIA_vNNN.txt, escrito pela gerencia) fica e entra no manifesto
+    if p.is_file() and not p.name.startswith("_") and p.name != "CUSTODIA_%s.txt" % versao:
         bk = OUT / "_anteriores" / stamp
         bk.mkdir(parents=True, exist_ok=True)
         p.replace(bk / p.name)
