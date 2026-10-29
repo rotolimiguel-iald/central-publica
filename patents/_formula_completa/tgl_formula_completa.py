@@ -109,6 +109,9 @@ Camada v402 (custódia v402 na Central, 27/10/2026, sessão c1; handoff v402 da 
 Camada v403 (custódia v403 na Central, 28/10/2026, sessão a7; handoff v403 da gerência c1) — GENÉRICA (camada_generica.py):
  19. os registros novos da v403 (bandeiras_do_gate_v403, caminho_v403, cunhagens_v403, kh_n1_cobertura_v403, verdade_adendo_v403, vida_v403), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v403: bandeiras_do_gate_v403: «[REAL] o gate do proprio rito (core['qg_closure']) e o CODIGO das duas funcoes do gate, lidos a cada rito (as chaves que o veredito le, por ast;» caminho_v403: «[REAL] os termos do kernel (o item do contrato da pedra Caminho e os 2 termos da ponte da escala dual que a conjuncao cita, lidos a cada rito, no trio: lift_mass_not_selected e core_positive_realization_exists, v402) e o calculo no modelo longitudinal (E, p), c = 1, p+ = E + p, p- = E - p, theta_s =» cunhagens_v403: «[REAL -- as fontes das pedras, o kernel e os quatro registros com funcao lidos a cada rito;» kh_n1_cobertura_v403: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» verdade_adendo_v403: «[REAL] os termos do kernel (os 3 itens do contrato do adendo, lidos a cada rito, no trio;» vida_v403: «[REAL] os termos do kernel (o item do contrato da pedra Vida e os 2 termos da queda sem geometria que a conjuncao cita, lidos a cada rito, no trio: the_fall_is_strictly_anti e a_queda_sem_geometria, v402) e o calculo no modelo oneScaling (tau = id, theta_s = e^{-s}), no fluxo diagonal e na matriz-S,» Nada disso muda número algum de dispositivo.
 
+Camada v404 (custódia v404 na Central, 28/10/2026, sessão a7; handoff v404 da gerência c1) — GENÉRICA (camada_generica.py):
+ 19. os registros novos da v404 (cunhagens_v404, f2b_errata_v404, jo8v32_v404, kh_n1_cobertura_v404, projecao_transversal_v404), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v404: cunhagens_v404: «[REAL -- as fontes das pedras, o kernel e os tres registros com funcao lidos a cada rito;» f2b_errata_v404: «[REAL] o V1 do ramo B do ringdown (v386) lido por hash neste rito, a calibracao A (31 eventos publicos, NOT_BLIND) e a previsao do par lidas do proprio registro ramo_b_preregistration_v386 (a funcao que ja' as transcreve do V1 congelado;» jo8v32_v404: «[REAL] os termos do kernel (o teorema da pedra Jo8v32 e os 3 termos que a conjuncao cita, lidos a cada rito, no trio: caminho_e_a_ponte_da_escala_dual, verdade_e_a_esperanca_condicional, vida_e_a_queda_sem_geometria, todos da v403) e o calculo, com beta = alfa CODATA 2018 x sqrt(e) em runtime (nunca» kh_n1_cobertura_v404: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» projecao_transversal_v404: «[REAL] os termos do kernel (os 9 teoremas do contrato da pedra, lidos a cada rito, no trio, com proveniencia no modulo da pedra, e os termos de suporte que ela cita: sin_sq_thetaMiguel, halfnat_from_J_symmetry, halfRoot, thetaMiguel, observer_inverse_projection_halfnat) e o calculo em dupla precisao» Nada disso muda número algum de dispositivo.
+
 Régua: β NUNCA literal (sempre ALPHA_FINE_CODATA_2018 × √e em runtime); os números do cofre são LIDOS do selo/core por pino;
 falha de leitura ou elo quebrado = RuntimeError (fail-closed). Nada aqui move veredito físico: physical_verdict_allowed = False.
 PROVADA ≠ CONFIRMADA; o dicionário custo/identidade/movimento é cunhagem do operador [ONTO/DEFINITION].
@@ -125,7 +128,7 @@ HBAR_CODATA_2018 = 1.054571817e-34      # J s
 G_CODATA_2018 = 6.67430e-11             # m^3 kg^-1 s^-2
 C_LIGHT = 299792458.0                   # m/s (exato)
 
-VERSAO_DA_CAMADA = "v403"   # (era "v402"; a camada v403 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
+VERSAO_DA_CAMADA = "v404"   # (era "v403"; a camada v404 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
 # o cofre e procurado nesta ordem (declarada): a variavel TGL_CENTRAL_DIR; a arvore onde este modulo esta; a Central desta
 # maquina (quando o dispositivo roda extraido do *_FINAL.py num diretorio temporario). Nenhum achado = fail-closed.
 def _achar_central():
@@ -601,7 +604,7 @@ def conferir_v398_no_cofre(core: dict, selo: dict) -> dict:
                         "estrutura logarítmica e de oitava, não a física da onda; validade no kernel não é creditação; nada disto muda número de dispositivo"}
 
 
-CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403",)
+CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404",)
 
 
 def _camadas_genericas(core, selo, cofre):
@@ -811,6 +814,8 @@ USOS = {
     'camadas_v402': r"TGLExt\.(EsperancaCondicional|PonteDaEscalaDual|QuedaSemGeometria)|cunhagens_v402|esperanca_condicional_v402|kh_n1_cobertura_v402|ponte_da_escala_dual_v402|queda_sem_geometria_v402",
     # v403: mede se algum dispositivo cita as pedras novas; não interpreta
     'camadas_v403': r"TGLExt\.(Caminho|VerdadeAdendo|Vida)|bandeiras_do_gate_v403|caminho_v403|cunhagens_v403|kh_n1_cobertura_v403|verdade_adendo_v403|vida_v403",
+    # v404: mede se algum dispositivo cita as pedras novas; não interpreta
+    'camadas_v404': r"TGLExt\.(Jo8v32|ProjecaoTransversalDaMeiaNat)|cunhagens_v404|f2b_errata_v404|jo8v32_v404|kh_n1_cobertura_v404|projecao_transversal_v404",
 }
 
 
@@ -848,6 +853,7 @@ def camada(runner_path) -> dict:
                      "REGISTROS_V401_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V402_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V403_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
+                     "REGISTROS_V404_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION") % VERSAO_DA_CAMADA.upper(),
         "physical_verdict_allowed": False,
         "nao_se_afirma": ["que o dispositivo valide física", "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
@@ -944,7 +950,34 @@ def camada(runner_path) -> dict:
                           '(v403, vida_v403) que a queda aqui seja uma forca ou uma queda no espaco: a pedra tipa a perda de peso, sem geometria',
                           '(v403, vida_v403) que o nome do TRIPLO inteiro tenha sido dado (fica com o operador)',
                           '(v403, vida_v403) que isto seja um teste: nao ha desfecho experimental',
-                          '(v403, vida_v403) que a gravidade quantica esteja creditada na natureza'],
+                          '(v403, vida_v403) que a gravidade quantica esteja creditada na natureza',
+                          '(v404, cunhagens_v404) que o kernel prove as falas do operador (elas sao INPUT/ONTO)',
+                          '(v404, cunhagens_v404) que a identificacao da massa com a projecao transversal seja termo do kernel',
+                          "(v404, cunhagens_v404) que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+                          '(v404, cunhagens_v404) que E0 ou beta tenham sido derivados',
+                          '(v404, cunhagens_v404) que a retirada do canal F2b seja um desfecho',
+                          '(v404, cunhagens_v404) que isto seja um teste: nao ha desfecho experimental',
+                          '(v404, cunhagens_v404) que a gravidade quantica esteja creditada na natureza',
+                          '(v404, f2b_errata_v404) que a TGL tenha sido falsificada ou que o ramo B tenha sido refutado',
+                          '(v404, f2b_errata_v404) que a calibracao A seja um teste ou tenha poder de decidir',
+                          '(v404, f2b_errata_v404) que o conjunto D tenha sido aberto',
+                          '(v404, f2b_errata_v404) que a retirada seja decisao do operador (ele ratificou a leitura, nao nomeou a retirada)',
+                          '(v404, f2b_errata_v404) que beta, a lei do defasamento ou R2 tenham mudado',
+                          '(v404, f2b_errata_v404) que isto seja um teste: nao ha desfecho experimental',
+                          '(v404, jo8v32_v404) que a leitura por Jo 8,31-32 seja termo de kernel',
+                          "(v404, jo8v32_v404) que o versiculo ou o nome credite a gravidade quantica: validade no kernel nao e' creditacao",
+                          '(v404, jo8v32_v404) que as hipoteses nomeadas dos componentes (IsotropicPost; hpp e hopt) tenham sido pagas',
+                          '(v404, jo8v32_v404) que o nome do triplo inteiro anule a decisao D20 da v403: ela era verdadeira na data e a errata E9 fica ao lado',
+                          '(v404, jo8v32_v404) que isto seja um teste: nao ha desfecho experimental',
+                          '(v404, jo8v32_v404) que a gravidade quantica esteja creditada na natureza',
+                          '(v404, kh_n1_cobertura_v404) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido',
+                          '(v404, projecao_transversal_v404) que E0 (1 eV) tenha sido derivado',
+                          '(v404, projecao_transversal_v404) que beta tenha sido derivado nesta pedra',
+                          "(v404, projecao_transversal_v404) que a massa do neutrino SEJA a projecao transversal do estado inscrito (e' a identificacao [ONTO], ratificada pelo operador, nao termo de kernel)",
+                          '(v404, projecao_transversal_v404) que a materia em geral seja a sombra de beta ou proporcional ao raio de beta (a forma retirada do Grande Atrator segue retirada)',
+                          "(v404, projecao_transversal_v404) que o m2 do neutrino passe a discriminar a TGL: o veredito do canal e' o de antes",
+                          '(v404, projecao_transversal_v404) que isto seja um teste: nao ha desfecho experimental',
+                          '(v404, projecao_transversal_v404) que a gravidade quantica esteja creditada na natureza'],
     }
 
 

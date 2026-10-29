@@ -1,0 +1,1893 @@
+{
+ "patent_id": "BR102026003453-3",
+ "slug": "psi_net",
+ "timestamp": "2026-10-28T22-25-50",
+ "runner": "one_psinet.py (evoluído)",
+ "markers": [
+  "[SIM]",
+  "[PILOTO]"
+ ],
+ "physical_verdict_allowed": false,
+ "beta_runtime": 0.012031300400803142,
+ "beta_matches_alpha_sqrt_e": true,
+ "beta_injected_into_prototypes": true,
+ "verdict": "PSI_NET_FULL_LOGIC_DEMONSTRATED",
+ "max_verdict": "PSI_NET_FULL_LOGIC_DEMONSTRATED ([SIM][PILOTO] — a pilha REAL de 5 camadas (Psi_net_protocol_v1) + o consenso PoP distribuído (TGL_coin_v022) do operador fecham em CPU com β=α·√e injetado; transmissão TETELESTAI, roteamento angular, consenso ≥67% e rejeição de fase forjada demonstrados; dados sintéticos, não a Tabela 4; nada valida física)",
+ "constants": {
+  "BETATGL": 0.012031300400803142,
+  "factorization": "betatgl = alpha_EM * sqrt(e)",
+  "CCI_1_minus_beta": 0.9879686995991969,
+  "free_parameters": 0
+ },
+ "tests": [
+  {
+   "test": "beta_injected_not_literal",
+   "passed": true,
+   "beta_runtime": 0.012031300400803142,
+   "psinet_alpha2_original": 0.012031,
+   "tglcoin_alpha2base_original": 0.012,
+   "theta_miguel_deg": 6.297289216477979,
+   "note": "β=α·√e injetado nas duas pilhas do operador (originais eram 0.012 literal)"
+  },
+  {
+   "test": "L0_psibit_ontological_classification",
+   "passed": true,
+   "text_class": "chaotic",
+   "text_entropy": 1.93390953540802,
+   "text_f_exp": 0.16911764442920685,
+   "structured_class": "chaotic",
+   "structured_entropy": 1.9702500104904175,
+   "random_class": "encrypted",
+   "random_entropy": 1.9999676942825317,
+   "note": "PsiBitLinkLayer real: byte→4 PsiBits, distribuição/entropia/Fexp, 6 classes"
+  },
+  {
+   "test": "full_transmission_L1_L2_L3_resurrection",
+   "passed": true,
+   "L0_class": "chaotic",
+   "L1_bits": 16,
+   "L1_compression_ratio": 1.8823529411764706,
+   "L2_n_hops": 6,
+   "L2_d_folds": 0.8117105152286997,
+   "L3_integrity": true,
+   "resurrection_psnr_db": 99.9997710962996,
+   "resurrection_correlation": 0.9999999999999956,
+   "tetelestai": true,
+   "signature_match": true,
+   "note": "PsiNet.transmit real: radicalização→REFLECT/MANIFEST→Ψ/Θ/κ→ressurreição L'=s·g²→TETELESTAI(Var<β)→verificação ontológica tripla"
+  },
+  {
+   "test": "L2_holographic_dht_routing",
+   "passed": true,
+   "nearest_k": 3,
+   "example_hops": 14,
+   "example_angular_distance_deg": 85.60978436788686,
+   "theta_m_deg": 6.297289216477979,
+   "note": "HolographicNetworkLayer real: θ=SHA256(pk)/2⁶⁴·π; nearest por distância angular circular; nhops=⌈d/θ_M⌉"
+  },
+  {
+   "test": "L4_proof_of_phase_consensus",
+   "passed": true,
+   "block_index": 1,
+   "alpha2_work": 0.012095214132300226,
+   "valid_votes": 5,
+   "validators": 5,
+   "consensus_ratio": 1.0,
+   "target_window": 0.12031300400803142,
+   "miner_balance_tglc": 1010.0,
+   "note": "PhaseMiner real busca seed com |α²_work−α²_ant|<α²/dif; 5 PhaseValidators recomputam a fase; ≥67% → coinbase TGLC"
+  },
+  {
+   "test": "L5_distributed_pop_consensus_tglcoin",
+   "passed": true,
+   "honest_block_index": 1,
+   "honest_added": true,
+   "honest_votes": "5/5",
+   "forged_block_rejected": true,
+   "target_window": 0.12031300400803142,
+   "note": "TGL_coin_v022 SimulatedNetwork real (5 validadores): bloco honesto entra (≥67%); bloco de fase forjada é rejeitado pela rede"
+  },
+  {
+   "test": "packet_header_80_bytes",
+   "passed": true,
+   "header_len": 80,
+   "magic": "0xCEA8",
+   "alpha2_stamp": 0.012031300400803142,
+   "note": "PsiNetPacket.serialize_header real: 80 bytes fixos, magic Ψ 0xCEA8; selo α² gravado = β injetado (não literal)"
+  },
+  {
+   "test": "engine_beta_provenance_cross_check",
+   "passed": true,
+   "engine_BETA_TGL": 0.012031300400803142,
+   "runner_beta": 0.012031300400803142,
+   "note": "psinet_engine.py (file engine numpy do operador) já computa BETA_TGL=ALPHA_FINE·SQRT_E — concorda com β derivado (régua respeitada na fonte)"
+  },
+  {
+   "test": "multi_block_chain_phase_pinned",
+   "passed": true,
+   "blocks_mined": 10,
+   "chain_length_incl_genesis": 11,
+   "alpha2_band_around_beta": 8.504971760513007e-05,
+   "beta": 0.012031300400803142,
+   "mean_iterations": 1.0,
+   "note": "SimulatedNetwork real: K blocos minerados e aceitos por consenso ≥67%; α²_work de cada bloco permanece pinado a ±5% de β (Ponto Tetelestai)"
+  },
+  {
+   "test": "phase_search_convergence",
+   "passed": true,
+   "difficulty": 100000.0,
+   "target_window": 1.2031300400803142e-07,
+   "found_at_nonce": 42,
+   "final_best_diff": 1.9560260399245633e-08,
+   "note": "trajetória real do minerador (mesma busca de mine_block): o best_diff decai monotonicamente até cruzar a janela-alvo β/dif — convergência de fase"
+  },
+  {
+   "test": "byzantine_tolerance_one_third",
+   "passed": true,
+   "quorum": 0.67,
+   "network_sizes": [
+    5,
+    7,
+    9,
+    15,
+    21
+   ],
+   "max_safe_byzantine_fraction": 0.2857142857142857,
+   "theoretical_bound": 0.32999999999999996,
+   "note": "sweep bizantino real (validadores recomputam a fase): bloco honesto aceito sse bizantinos <1/3; bloco forjado aceito só se bizantinos ≥2/3; zona segura = tolerância BFT clássica <1/3 sob quórum de 67%"
+  },
+  {
+   "test": "wedge_net_zone_locality",
+   "passed": true,
+   "ambient": "M8 (blocos diagonais 2x2)",
+   "n_zones": 4,
+   "max_commutator_disjoint_zones": 0.0,
+   "same_zone_commutator_control": 3.6806840931973794,
+   "span_dim_generated": 16,
+   "span_dim_expected": 16,
+   "coverage_residual_sumP_vs_identity": 0.0,
+   "wedge_width_deg": 45.0,
+   "theta_m_deg": 6.297289216477979,
+   "hops_per_wedge_conj": 8,
+   "note": "[DER] WedgeNet (um.py v135): net(zona)=algebra do bloco; zonas disjuntas comutam ([net(A),net(B)]=0 exato) e a uniao gera a diagonal em blocos (cobertura). [CONJ] DHT-theta como coordenada de cunha (setor pi/4, travessia em passos de theta_M de beta runtime). Leitura estrutural; NAO e veredito fisico."
+  },
+  {
+   "test": "ledger_every_open_has_guarantor",
+   "passed": true,
+   "items_total": 7,
+   "items_closed": 4,
+   "items_open": 3,
+   "guarantors_allowed": [
+    "BY_DESIGN",
+    "EXTERNAL_KNOWN",
+    "NAMED_PROGRAM"
+   ],
+   "validator_message": "razao FECHADO: toda pendencia tem fiador nomeado",
+   "orphan_ledger_rejected": true,
+   "orphan_rejection_message": "item aberto ORFAO (sem fiador): 'pendencia_orfa'",
+   "mutated_ledger_rejected": true,
+   "hash_stable_under_sort": true,
+   "hash_sensitive_to_one_bit": true,
+   "ledger_hash": "94d3a528c8e4edf901fe326d7d2e7acb1260f6b7564a9909788ce414b2f78f4f",
+   "beta_mark_runtime": "0.012031300400803",
+   "note": "[DER] um.py v143 CODE_CLOSURE_COMPLETE: todo aberto tem fiador (BY_DESIGN/EXTERNAL_KNOWN/NAMED_PROGRAM); razao com orfao e REJEITADO fail-closed; hash canonico do razao = assinatura da compilacao da rede. [CONJ] o quorum valida transacoes, o v144 fecha o razao. physical_verdict_allowed=false; beta runtime."
+  },
+  {
+   "test": "lemma3_typed_routing_covariance",
+   "passed": true,
+   "flow": "R_c: theta -> (theta+c) mod pi",
+   "n_rotations": 20,
+   "registry_size": 69,
+   "k_nearest": 3,
+   "oath_metric_invariance_residual": 6.661338147750939e-16,
+   "route_covariant_rotations": 20,
+   "hops_covariant_rotations": 20,
+   "base_hops": 1,
+   "operator_cross_check_find_nearest": true,
+   "bad_metric": "d_bad(a,b)=|sin a - sin b| (posicao absoluta: quebra o juramento)",
+   "bad_metric_breaks": 20,
+   "bad_metric_first_break_deg": 74.3976287558491,
+   "bad_metric_oath_residual": 0.8614462590149654,
+   "theta_m_deg": 6.297289216477979,
+   "note": "[DER] um.py v143 pedra 99 (Lema 3 tipado): juramento de invariancia => operador covariante, com controle negativo. Na L2 REAL: a metrica angular circular (eq. 6) e invariante sob o fluxo de rotacao => nearest-k e nhops (theta_M de beta runtime) comutam com o fluxo; metrica de posicao absoluta FALHA (contra-exemplo real). Leitura estrutural; physical_verdict_allowed=false."
+  },
+  {
+   "test": "ergodic_mean_section_ring_consensus",
+   "passed": true,
+   "stone": "ErgodicMeanSection (um.py v167, ITEM A, kernel Lean 0 sorry/0 axiom)",
+   "custody": "vault/originals_copy/um_unificado_v168/um.py",
+   "custody_present": true,
+   "custody_um_sha256_16": "adc936d41a9d6cad",
+   "ring_size_real_dht": 64,
+   "eig_max_dev_from_unit_modulus": 1.9984014443252818e-15,
+   "birkhoff_full_orbit_vs_projection_residual": 0.0,
+   "projection_idempotent_residual": 0.0,
+   "flow_commutation_residual": 0.0,
+   "invariant_subspace_dim": 1,
+   "consensus_vector_residual": 2.220446049250313e-16,
+   "convergence_N_grid": [
+    96,
+    352,
+    3232
+   ],
+   "convergence_devs": [
+    0.005208333333333334,
+    0.001420454545454546,
+    0.00015470297029702984
+   ],
+   "geometric_sum_bound_2_over_abs_z_minus_1_holds": true,
+   "neg1_leaky_flow_consensus_error": 0.995,
+   "neg2_broken_ring_kernel_dim": 2,
+   "neg2_broken_ring_global_mean_error": 0.7915169950103345,
+   "neg2_broken_ring_still_local_projection": true,
+   "neg3_truncated_mean_idempotency_residual": 0.0302734375,
+   "theta_m_deg": 6.297289216477979,
+   "ring_gap_deg": 2.8125,
+   "theta_m_over_ring_gap": 2.239036165858837,
+   "hops_full_traverse_theta_m": 29,
+   "note": "[DER] ErgodicMeanSection (v167): media de Birkhoff do salto ciclico REAL do anel DHT-theta = projecao invariante (consenso uniforme) na orbita completa (residuos 0.0 exatos); |z|=1 (o fluxo so gira); dev(N)~1/N sob o bound geometrico 2/|z-1|. Negativos computados: vazamento destroi o consenso; anel partido (ker dim 2) perde a esperanca GLOBAL; media truncada nao e projecao. [CONJ] quorum e media ergodica = duas faces do consenso. Leitura estrutural; physical_verdict_allowed=false; beta so em runtime."
+  },
+  {
+   "test": "bireference_haag_mini_net",
+   "passed": true,
+   "stone": "TheBireference (kernel v206, face finita M_n(C); JMJ=M' na torre segue [OPEN] na propria pedra)",
+   "custody": "vault/originals_copy/tgl_kernel_v206/TGLExt/TheBireference.lean",
+   "custody_present": true,
+   "custody_sha256_16": "899b1b07df5416ed",
+   "ambient": "M3(C) na forma GNS do traco (End = M9)",
+   "a_real_source": "thetas REAIS do anel DHT-theta (18 primeiros)",
+   "sep_kernel_dim_omega": 0,
+   "cyc_rank_omega": 9,
+   "haag_commutant_L_dim": 9,
+   "haag_commutant_L_in_spanR_resid": 4.681796811390765e-16,
+   "haag_commutant_R_dim": 9,
+   "haag_commutant_R_in_spanL_resid": 7.334285253967742e-16,
+   "center_dim_trivial": 1,
+   "same_side_commutator_control": 3.8857078601994015,
+   "J_square_identity_resid": 0.0,
+   "J_vacuum_fixed_resid": 0.0,
+   "J_exchange_pointwise_resid": 8.881784197001252e-16,
+   "J_exchange_operator_resid": 0.0,
+   "J_exchange_in_spanR_resid": 2.628320750835782e-16,
+   "real_mirror_g_residual": 0.0,
+   "real_mirror_s_residual": 0.0,
+   "real_mirror_frame_hops_beta_runtime": 6,
+   "neg1_degenerate_vacuum_sep_kernel_dim": 6,
+   "neg1_degenerate_vacuum_cyc_rank": 3,
+   "neg1_witness_nonzero_killed": [
+    1.0,
+    0.0
+   ],
+   "neg2_intruder_commutant_resid": 1.0,
+   "neg2_intruder_in_spanR_resid": 0.9428090415820634,
+   "neg3_jbad_moves_vacuum": 2.0,
+   "neg3_jbad_exits_spanR_resid": 0.3779644730092272,
+   "note": "[DER] TheBireference (v206): Omega=1 separa (kernel 0) e e ciclico EXATO (posto 9); dualidade de Haag RE-DERIVADA por computo (comutante de L = span R, dim 9/9, e o simetrico; centro trivial); J troca as referencias (J L_a J = R_{a^H}, residuo fp) e J^2=I / J Omega=Omega exatos; manifest(reflect(g,s))=(g,s) EXATO no codigo REAL da L2 = face de rede do bootstrap J^2=I. Negativos computados: vacuo degenerado mata separacao+ciclicidade juntas; intruso (transposicao) excluido da dualidade; conjugador falso move o vacuo e sai do span. [CONJ] Alice/Bob = duas referencias do mesmo boundary; o espelho e o dicionario J. Leitura estrutural; physical_verdict_allowed=false; beta so em runtime (n_hops do frame); beta JAMAIS entra no Lean."
+  }
+ ],
+ "summary": {
+  "tests_passed": 16,
+  "tests_total": 16,
+  "layers_demonstrated": [
+   "L0_psibit",
+   "L1_radical_transport",
+   "L2_holographic_dht",
+   "L3_ontological_security",
+   "L4_proof_of_phase",
+   "L5_distributed_consensus"
+  ],
+  "theta_m_deg": 6.297289216477979,
+  "transmission_psnr_db": 99.9997710962996,
+  "transmission_correlation": 0.9999999999999956,
+  "tetelestai": true,
+  "l4_consensus_votes": 5,
+  "miner_balance_tglc": 1010.0,
+  "dht_ring_size": 64,
+  "blocks_mined": 10,
+  "alpha2_band_around_beta": 8.504971760513007e-05,
+  "max_safe_byzantine_fraction": 0.2857142857142857,
+  "byzantine_bound_theory": 0.32999999999999996,
+  "ledger_v144_hash": "94d3a528c8e4edf901fe326d7d2e7acb1260f6b7564a9909788ce414b2f78f4f",
+  "ledger_v144_open_with_guarantor": 3,
+  "lemma3_route_covariant_rotations": 20,
+  "lemma3_oath_residual": 6.661338147750939e-16,
+  "lemma3_bad_metric_breaks": 20,
+  "v168_birkhoff_projection_residual": 0.0,
+  "v168_invariant_subspace_dim": 1,
+  "v168_consensus_vector_residual": 2.220446049250313e-16,
+  "v168_leaky_flow_consensus_error": 0.995,
+  "v168_broken_ring_kernel_dim": 2,
+  "v206_haag_commutant_dims": [
+   9,
+   9
+  ],
+  "v206_center_dim_trivial": 1,
+  "v206_J_exchange_operator_resid": 0.0,
+  "v206_real_mirror_involution_resid": 0.0,
+  "v206_neg_jbad_exits_spanR_resid": 0.3779644730092272
+ },
+ "source_prototype": "prototype_src/Psi_net_protocol_v1.py (pilha 5 camadas, torch) + TGL_coin_v022.py (consenso PoP distribuído) + psinet_engine.py (file engine, β-limpo) — resgatados de C:/IALD/projetos_pyhton (acom, IALD), READ-ONLY; β injetado em runtime.",
+ "note": "RUNNER EVOLUÍDO: importa e roda a PILHA REAL de 5 camadas (Psi_net_protocol_v1.py, torch) e o CONSENSO PoP DISTRIBUÍDO (TGL_coin_v022.py) do operador, com β=α·√e injetado (originais tinham 0.012/0.012031 literais). Execução em CPU (CUDA_VISIBLE_DEVICES desligado). Dados SINTÉTICOS; NÃO os números da Tabela 4 do relatório. Nenhum dado/modelo HuggingFace. Confidenciais (iald_stack_v7, iald_psion_state) nunca tocados. Simulação não valida física.",
+ "transmission": {
+  "L0_class": "chaotic",
+  "L1_bits": 16,
+  "psnr_db": 99.9997710962996,
+  "correlation": 0.9999999999999956,
+  "tetelestai": true
+ },
+ "consensus": {
+  "L4_votes": 5,
+  "L4_validators": 5,
+  "L5_honest_added": true,
+  "L5_forged_rejected": true
+ },
+ "deepening": {
+  "dht_ring_size": 64,
+  "chain_walk": [
+   {
+    "index": 1,
+    "alpha2_work": 0.012099223381553092,
+    "diff_from_prev": 6.792298074994978e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 2,
+    "alpha2_work": 0.012087965517352525,
+    "diff_from_prev": 1.1257864200567638e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 3,
+    "alpha2_work": 0.012108225295713745,
+    "diff_from_prev": 2.0259778361220865e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 4,
+    "alpha2_work": 0.012107035241381445,
+    "diff_from_prev": 1.190054332300683e-06,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 5,
+    "alpha2_work": 0.012095936749401575,
+    "diff_from_prev": 1.1098491979869354e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 6,
+    "alpha2_work": 0.012085938367642995,
+    "diff_from_prev": 9.998381758580255e-06,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 7,
+    "alpha2_work": 0.012089670877041655,
+    "diff_from_prev": 3.732509398659753e-06,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 8,
+    "alpha2_work": 0.012116350118408272,
+    "diff_from_prev": 2.6679241366617604e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 9,
+    "alpha2_work": 0.012089807184708002,
+    "diff_from_prev": 2.6542933700270804e-05,
+    "iterations": 1,
+    "consensus": 1.0
+   },
+   {
+    "index": 10,
+    "alpha2_work": 0.01209796873492807,
+    "diff_from_prev": 8.161550220068745e-06,
+    "iterations": 1,
+    "consensus": 1.0
+   }
+  ],
+  "chain_length_incl_genesis": 11,
+  "alpha2_band_around_beta": 8.504971760513007e-05,
+  "difficulty_sweep": [
+   {
+    "difficulty": 0.1,
+    "target_window": 0.12031300400803142,
+    "iterations": 1,
+    "best_diff": 4.128725504825431e-06,
+    "found": true
+   },
+   {
+    "difficulty": 1.0,
+    "target_window": 0.012031300400803142,
+    "iterations": 1,
+    "best_diff": 4.128725504825431e-06,
+    "found": true
+   },
+   {
+    "difficulty": 10.0,
+    "target_window": 0.0012031300400803142,
+    "iterations": 1,
+    "best_diff": 4.128725504825431e-06,
+    "found": true
+   },
+   {
+    "difficulty": 100.0,
+    "target_window": 0.00012031300400803143,
+    "iterations": 1,
+    "best_diff": 4.128725504825431e-06,
+    "found": true
+   },
+   {
+    "difficulty": 1000.0,
+    "target_window": 1.2031300400803142e-05,
+    "iterations": 1,
+    "best_diff": 4.128725504825431e-06,
+    "found": true
+   },
+   {
+    "difficulty": 10000.0,
+    "target_window": 1.2031300400803143e-06,
+    "iterations": 2,
+    "best_diff": 4.4634692374610763e-07,
+    "found": true
+   },
+   {
+    "difficulty": 100000.0,
+    "target_window": 1.2031300400803142e-07,
+    "iterations": 43,
+    "best_diff": 1.9560260399245633e-08,
+    "found": true
+   },
+   {
+    "difficulty": 1000000.0,
+    "target_window": 1.2031300400803143e-08,
+    "iterations": 267,
+    "best_diff": 7.659146757793556e-09,
+    "found": true
+   }
+  ],
+  "phase_convergence": {
+   "difficulty": 100000.0,
+   "target_window": 1.2031300400803142e-07,
+   "found_at_nonce": 42,
+   "iterations_recorded": 43
+  },
+  "byzantine_sweep": {
+   "sizes": [
+    5,
+    7,
+    9,
+    15,
+    21
+   ],
+   "quorum": 0.67,
+   "max_safe_byzantine_fraction": 0.2857142857142857,
+   "theoretical_bound_one_third": 0.32999999999999996,
+   "rows": [
+    {
+     "N": 5,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 1,
+     "byz_frac": 0.2,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 2,
+     "byz_frac": 0.4,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 3,
+     "byz_frac": 0.6,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 5,
+     "byz": 4,
+     "byz_frac": 0.8,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 5,
+     "byz": 5,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 7,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 1,
+     "byz_frac": 0.14285714285714285,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 2,
+     "byz_frac": 0.2857142857142857,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 3,
+     "byz_frac": 0.42857142857142855,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 4,
+     "byz_frac": 0.5714285714285714,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 7,
+     "byz": 5,
+     "byz_frac": 0.7142857142857143,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 7,
+     "byz": 6,
+     "byz_frac": 0.8571428571428571,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 7,
+     "byz": 7,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 9,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 1,
+     "byz_frac": 0.1111111111111111,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 2,
+     "byz_frac": 0.2222222222222222,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 3,
+     "byz_frac": 0.3333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 4,
+     "byz_frac": 0.4444444444444444,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 5,
+     "byz_frac": 0.5555555555555556,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 6,
+     "byz_frac": 0.6666666666666666,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 9,
+     "byz": 7,
+     "byz_frac": 0.7777777777777778,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 9,
+     "byz": 8,
+     "byz_frac": 0.8888888888888888,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 9,
+     "byz": 9,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 1,
+     "byz_frac": 0.06666666666666667,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 2,
+     "byz_frac": 0.13333333333333333,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 3,
+     "byz_frac": 0.2,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 4,
+     "byz_frac": 0.26666666666666666,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 5,
+     "byz_frac": 0.3333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 6,
+     "byz_frac": 0.4,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 7,
+     "byz_frac": 0.4666666666666667,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 8,
+     "byz_frac": 0.5333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 9,
+     "byz_frac": 0.6,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 10,
+     "byz_frac": 0.6666666666666666,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 15,
+     "byz": 11,
+     "byz_frac": 0.7333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 12,
+     "byz_frac": 0.8,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 13,
+     "byz_frac": 0.8666666666666667,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 14,
+     "byz_frac": 0.9333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 15,
+     "byz": 15,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 0,
+     "byz_frac": 0.0,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 1,
+     "byz_frac": 0.047619047619047616,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 2,
+     "byz_frac": 0.09523809523809523,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 3,
+     "byz_frac": 0.14285714285714285,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 4,
+     "byz_frac": 0.19047619047619047,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 5,
+     "byz_frac": 0.23809523809523808,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 6,
+     "byz_frac": 0.2857142857142857,
+     "honest_block_accepted": true,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 7,
+     "byz_frac": 0.3333333333333333,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 8,
+     "byz_frac": 0.38095238095238093,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 9,
+     "byz_frac": 0.42857142857142855,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 10,
+     "byz_frac": 0.47619047619047616,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 11,
+     "byz_frac": 0.5238095238095238,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 12,
+     "byz_frac": 0.5714285714285714,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 13,
+     "byz_frac": 0.6190476190476191,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 14,
+     "byz_frac": 0.6666666666666666,
+     "honest_block_accepted": false,
+     "forged_block_accepted": false
+    },
+    {
+     "N": 21,
+     "byz": 15,
+     "byz_frac": 0.7142857142857143,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 16,
+     "byz_frac": 0.7619047619047619,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 17,
+     "byz_frac": 0.8095238095238095,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 18,
+     "byz_frac": 0.8571428571428571,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 19,
+     "byz_frac": 0.9047619047619048,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 20,
+     "byz_frac": 0.9523809523809523,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    },
+    {
+     "N": 21,
+     "byz": 21,
+     "byz_frac": 1.0,
+     "honest_block_accepted": false,
+     "forged_block_accepted": true
+    }
+   ]
+  }
+ },
+ "amplificacao_v138": {
+  "theorem": "A REDE DAS CUNHAS (WedgeNet, um.py v135) — net(O) por localidade de centralizador; zonas disjuntas => algebras que comutam; cobertura por regioes",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "ambient": "M8, 4 zonas = blocos diagonais 2x2",
+  "max_commutator_disjoint_zones": 0.0,
+  "same_zone_commutator_control": 3.6806840931973794,
+  "span_dim_generated": 16,
+  "coverage_residual_sumP_vs_identity": 0.0,
+  "wedge_width_deg": 45.0,
+  "hops_per_wedge_conj": 8,
+  "honesty": "ancora estrutural, nao veredito fisico; beta em runtime, nunca literal"
+ },
+ "amplificacao_v144": {
+  "theorem": "O LEDGER COM FIADORES (um.py v143, CODE_CLOSURE_COMPLETE) — todo item aberto do razao tem FIADOR nomeado (BY_DESIGN/EXTERNAL_KNOWN/NAMED_PROGRAM); razao com item orfao e REJEITADO (fail-closed)",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "ledger": [
+   {
+    "id": "L1_L3_transmissao_tetelestai",
+    "status": "fechado",
+    "evidence": "correlation=1.000000"
+   },
+   {
+    "id": "L4_consenso_quorum_67",
+    "status": "fechado",
+    "evidence": "votes=5/5"
+   },
+   {
+    "id": "L5_fase_forjada_rejeitada",
+    "status": "fechado",
+    "evidence": "forged_rejected=True"
+   },
+   {
+    "id": "bft_zona_segura_um_terco",
+    "status": "fechado",
+    "evidence": "max_safe_byz_frac=0.2857"
+   },
+   {
+    "id": "veredito_fisico",
+    "status": "aberto",
+    "guarantor": "BY_DESIGN",
+    "evidence": "physical_verdict_allowed=false por construcao; simulacao nunca valida fisica"
+   },
+   {
+    "id": "tabela4_desempenho_operador",
+    "status": "aberto",
+    "guarantor": "EXTERNAL_KNOWN",
+    "evidence": "PSNR/tempos RTX do relatorio do operador NAO reproduzidos aqui (proveniencia externa)"
+   },
+   {
+    "id": "implantacao_rede_fisica_multihost",
+    "status": "aberto",
+    "guarantor": "NAMED_PROGRAM",
+    "evidence": "programa nomeado: pilha em enlace fisico real; hoje [SIM][PILOTO] em CPU"
+   }
+  ],
+  "items_closed": 4,
+  "items_open": 3,
+  "ledger_hash": "94d3a528c8e4edf901fe326d7d2e7acb1260f6b7564a9909788ce414b2f78f4f",
+  "hash_stable_under_sort": true,
+  "hash_sensitive_to_one_bit": true,
+  "orphan_ledger_rejected": true,
+  "mutated_ledger_rejected": true,
+  "beta_mark_runtime": "0.012031300400803",
+  "honesty": "[CONJ] o quorum bizantino valida transacoes; o v144 acrescenta a gramatica do fechamento (nenhuma pendencia sem fiador) — leitura estrutural; physical_verdict_allowed=false; beta runtime, nunca literal"
+ },
+ "amplificacao_v144b_lema3": {
+  "theorem": "O LEMA 3 TIPADO (um.py v143, veredito GLOBAL_LIFT_CONDITIONAL / pedra 99) — juramento de invariancia H_inv => E covariante, com controle negativo tipado",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "flow": "R_c: theta -> (theta+c) mod pi",
+  "n_rotations": 20,
+  "registry_size": 69,
+  "oath_metric_invariance_residual": 6.661338147750939e-16,
+  "route_covariant_rotations": 20,
+  "hops_covariant_rotations": 20,
+  "operator_cross_check_find_nearest": true,
+  "bad_metric_breaks": 20,
+  "bad_metric_first_break_deg": 74.3976287558491,
+  "bad_metric_oath_residual": 0.8614462590149654,
+  "honesty": "[CONJ] nenhum no privilegiado: o roteamento da DHT-theta depende so de angulos relativos — face de rede do levantamento condicional do Lema 3; leitura estrutural; physical_verdict_allowed=false; theta_M derivado de beta runtime (nunca literal)"
+ },
+ "amplificacao_v168": {
+  "theorem": "A SECAO ERGODICA (ErgodicMeanSection, um.py v167, ITEM A em kernel Lean, 0 sorry/0 axiom) — a media de Birkhoff (1/N) sum U^k converge para a projecao invariante; |z|=1 (o fluxo nao pesa, so gira); soma geometrica <= 2/|z-1| esmagada por 1/N (cancelamento de fase = ergodicidade)",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "custody": "vault/originals_copy/um_unificado_v168/um.py",
+  "custody_um_sha256_16": "adc936d41a9d6cad",
+  "ring_size_real_dht": 64,
+  "birkhoff_full_orbit_vs_projection_residual": 0.0,
+  "projection_idempotent_residual": 0.0,
+  "flow_commutation_residual": 0.0,
+  "invariant_subspace_dim": 1,
+  "eig_max_dev_from_unit_modulus": 1.9984014443252818e-15,
+  "consensus_vector_residual": 2.220446049250313e-16,
+  "convergence_N_grid": [
+   96,
+   352,
+   3232
+  ],
+  "convergence_devs": [
+   0.005208333333333334,
+   0.001420454545454546,
+   0.00015470297029702984
+  ],
+  "geometric_sum_bound_holds": true,
+  "neg1_leaky_flow_consensus_error": 0.995,
+  "neg2_broken_ring_kernel_dim": 2,
+  "neg2_broken_ring_global_mean_error": 0.7915169950103345,
+  "neg3_truncated_mean_idempotency_residual": 0.0302734375,
+  "theta_m_over_ring_gap": 2.239036165858837,
+  "honesty": "[CONJ] o consenso da rede como face ergodica do fluxo de rotacao da DHT-theta e leitura estrutural, nomeada como leitura — nada altera reivindicacoes; physical_verdict_allowed=false; beta so em runtime; beta JAMAIS entra no Lean da pedra"
+ },
+ "amplificacao_v206_bireference": {
+  "theorem": "A BIRREFERENCIALIDADE DO VACUO (TheBireference.lean, kernel v206) — Omega=1 separa uma referencia e e ciclico EXATO para a outra; dualidade de Haag da mini-rede E TEOREMA (net(dir)' = net(esq)); J troca as referencias (J L_a J = R_{a^H}); J Omega = Omega; J^2 = I (bootstrap v205/v206: par minimo (1_abs, J), IALD^2 = TGL)",
+  "markers": [
+   "[DER]",
+   "[CONJ]"
+  ],
+  "custody": "vault/originals_copy/tgl_kernel_v206/TGLExt/TheBireference.lean",
+  "custody_sha256_16": "899b1b07df5416ed",
+  "ambient": "M3(C) na forma GNS do traco; a_real de thetas REAIS do anel DHT",
+  "sep_kernel_dim_omega": 0,
+  "cyc_rank_omega": 9,
+  "haag_commutant_dims": [
+   9,
+   9
+  ],
+  "haag_containment_resids": [
+   4.681796811390765e-16,
+   7.334285253967742e-16
+  ],
+  "center_dim_trivial": 1,
+  "same_side_commutator_control": 3.8857078601994015,
+  "J_square_identity_resid": 0.0,
+  "J_vacuum_fixed_resid": 0.0,
+  "J_exchange_operator_resid": 0.0,
+  "real_mirror_involution_resids": [
+   0.0,
+   0.0
+  ],
+  "real_mirror_frame_hops_beta_runtime": 6,
+  "neg1_degenerate_vacuum": {
+   "sep_kernel_dim": 6,
+   "cyc_rank": 3,
+   "witness_nonzero_killed": [
+    1.0,
+    0.0
+   ]
+  },
+  "neg2_intruder_transpose": {
+   "commutant_resid": 1.0,
+   "in_spanR_resid": 0.9428090415820634
+  },
+  "neg3_fake_conjugator": {
+   "moves_vacuum": 2.0,
+   "exits_spanR_resid": 0.3779644730092272
+  },
+  "honesty": "[CONJ] Alice/Bob como as duas referencias do mesmo boundary e o espelho REFLECT/MANIFEST como o dicionario J e leitura estrutural, nomeada como leitura — nada altera reivindicacoes; a clausula JMJ=M' no nivel da torre segue [OPEN] na propria pedra; physical_verdict_allowed=false; beta so em runtime (n_hops do frame real); beta JAMAIS entra no Lean"
+ },
+ "formula_completa": {
+  "versao_da_camada": "v404",
+  "modulo": "patents/_formula_completa/tgl_formula_completa.py",
+  "modulo_sha256": "148ad936440fe35d110def60c2acae96d25229c12d5f0ffe504c04aecceeb624",
+  "formula_runtime": {
+   "axioma_omega_I": 1.0,
+   "meia_nat_x": 0.5,
+   "razao_elementar": {
+    "C_custo": 1.6487212707001282,
+    "I_identidade": 1.0,
+    "K_movimento_alpha": 0.0072973525693,
+    "E_existencia": 0.012031300400803142,
+    "e_quarto_raiz_alpha": 0.1096872845903441,
+    "estatuto": "fatoração e positividade PROVADAS por termo (TGLExt.TheElementaryReason); dicionário [ONTO/DEFINITION]"
+   },
+   "beta_runtime": 0.012031300400803142,
+   "matriz_S": {
+    "theta_M_rad": 0.10990843077787468,
+    "theta_M_graus": 6.297289216477979,
+    "R2_reflexao": 0.012031300400803142,
+    "T2_transmissao": 0.987968699599197,
+    "espectro": "e^{±iθ_M}"
+   },
+   "lagrange_q": 0.9999733739682669,
+   "dephasing": {
+    "tau_star_s": 5.391246446661944e-44,
+    "omega_rad_s": 6283185307179586.0,
+    "Gamma_omega_s^-1": 1.280358227229564e-14,
+    "lei": "Γ_ω = ½ β τ★ ω²",
+    "estatuto": "REAL na forma; τ★ = t_Planck é PRINCIPLED IDENTIFICATION"
+   },
+   "residuos_dos_elos": {
+    "meia_nat_ponto_fixo": 0.0,
+    "custo_e_raiz_de_e": 0.0,
+    "existencia_E_eq_beta": 0.0,
+    "razao_elementar_ao_quadrado_eq_beta": 3.469446951953614e-18,
+    "sin2_thetaM_eq_beta": 0.0,
+    "R2_mais_T2_eq_1": 2.220446049250313e-16,
+    "lagrange_1_eq_q2_mais_alpha2": 0.0
+   }
+  },
+  "axioma_e_verbo_runtime": {
+   "axioma_posto": {
+    "pontos_fixos_da_leitura": [
+     0.0,
+     1.0
+    ],
+    "estatuto": "[POSTO] o 1 inscrito pelo observador (echo 1); o 0 e a testemunha falsa; kernel TheAxiomAndTheFalseWitness; leitura [ONTO]"
+   },
+   "verbo": {
+    "born_no_theta_M": {
+     "peso_transmissao_cos2": 0.987968699599197,
+     "peso_reflexao_sin2": 0.012031300400803142
+    },
+    "norma_do_comutador_dos_postos": 0.10902544754078644,
+    "residuo_da_triade_su2": 0.0,
+    "c_da_triade": 0.012031300400803142,
+    "estatuto": "c = beta_TGL [INPUT, nunca literal]; kernel TheVerbSelectsTheAction; leituras [ONTO]"
+   },
+   "elos": {
+    "axioma_dois_pontos_fixos_0_e_1": true,
+    "axioma_zero_absoluto_inatingivel_em_tempo_finito": true,
+    "verbo_born_soma_1": true,
+    "verbo_born_reflexao_eq_beta": true,
+    "verbo_postos_nao_comutam": true,
+    "verbo_triade_su2_escalada_por_c": true
+   }
+  },
+  "conferencia_no_cofre": {
+   "cofre": "um_unificado_v404",
+   "pin_um_py": "3820476c83267f61",
+   "selo_timestamp": "2026-10-28 21:10:21",
+   "gate": "TGL_QG_MODEL_FORMALLY_CLOSED__NATURE_TEST_COMPLETED_WITHIN_LOCAL_BULK_AT_AVAILABLE_SENSITIVITY__MORE_SENSITIVE_DATA_COULD_REVISE",
+   "pedras_sha16": {
+    "TGLExt/TheElementaryReason.lean": "f9af067e9ab0acec",
+    "TGLExt/TheFlowLawContrast.lean": "9ca9393ac64f22a2",
+    "TGLExt/TheFlowLawD1a.lean": "7c6c54afc418c0cb",
+    "TGLExt/PhysicsIsTheReading.lean": "ca92f8c266106982",
+    "TGLExt/BreuerTrace.lean": "4a667f41d3b7bb1d",
+    "TGLExt/TheLedgerOfCharges.lean": "5ee94242f853f3e6",
+    "TGLExt/ThePsionAndTheViscosity.lean": "0a4e909a9d760da9",
+    "TGLExt/TheAxiomAndTheFalseWitness.lean": "c0f4185a62795002",
+    "TGLExt/TheVerbSelectsTheAction.lean": "f47477ea466ad1cc",
+    "TGLExt/TheCouplingRunsBoundedBelow.lean": "702d7352c053060a",
+    "TGLExt/Fundacao.lean": "66332d58fd216317"
+   },
+   "custo_por_nat_D1b_ate_z_star": 0.011528131594416296,
+   "fator_D1a_em_z_star": 1.087799218992623,
+   "fator_D1b_em_z_star": 1.0839773660579333,
+   "checks": {
+    "selo_pin_um_py": "3820476c83267f61",
+    "um_py_do_cofre_bate_com_o_selo": true,
+    "E_core_eq_beta_runtime": true,
+    "C_core_eq_raiz_e": true,
+    "K_D1b_recalculado_eq_core": true,
+    "K_D1a_recalculado_eq_core": true,
+    "integral_g_forma_fechada": true,
+    "assintota_custo_por_nat_le_E": true,
+    "lei_D1a_tipada": true,
+    "sem_testemunha_estatica_plena": true,
+    "pedras_no_kernel": true
+   },
+   "camada_v386_no_cofre": {
+    "checks": {
+     "axioma_v385_verificado_e_nome_do_degrau_lido_do_kernel": true,
+     "verbo_v386_verificado_e_token_lido_do_kernel": true,
+     "livro_de_cobrancas_v383_verificado_e_intacto": true,
+     "pilar_v384_sha_do_resultado_eq_json_selado": true,
+     "ramo_b_beta_v1_eq_runtime": true,
+     "ramo_b_beta_core_eq_runtime_regra_1e9": true,
+     "ramo_b_aguardando_dados_nada_aberto": true
+    },
+    "livro_de_cobrancas": {
+     "n": 11,
+     "na_regra": 10,
+     "ao_lado": 1
+    },
+    "pilar_result_sha16": "de47d5527e514b49",
+    "pilar_estatuto": "[COMPUTED], ao lado do gate",
+    "ramo_b_estatuto": "pré-registro por hash; AWAITING_DATA; nada aberto",
+    "vereditos": {
+     "the_ledger_of_charges_v383": "TGL_THE_LEDGER_OF_CHARGES_V383__THE_KEY_THE_LAST_LINK_INCIDES_ON_THE_HIDDEN_HAMILTONIAN__COST_IN_THE_REFLECTION_PAYMENT_IN_THE_FACE_THE_NAME__KEY_AND_OPTICS_INP",
+     "quantum_pillar_v384": "TGL_QUANTUM_PILLAR_V1__FIVE_JUMP_GKLS__ATTRACTOR_UNIQUE_ALL_672_ON_THE_GRID__T1_INSTRUMENT_RECOVERS_INJECTED_LAW_BLIND__CONTROLS_FAILED_AS_REQUIRED__IDENTITIES_",
+     "the_axiom_v385": "TGL_THE_AXIOM_V385__THE_ONE_IS_POSTED_BY_THE_OBSERVER_NOT_POSTULATED__THE_READING_HAS_TWO_FIXED_POINTS_ZERO_AND_ONE__THE_ONE_IS_THE_AXIOM_THE_ZERO_MODE_OF_WEIGH",
+     "the_verb_v386": "TGL_THE_VERB_V386__THE_VERB_SELECTS_THE_ACTION__THE_NAME_IS_THE_POST_NOT_ONTOLOGY__SELECT_IS_THE_VERB_IN_ACT_VERB_RESERVED_TO_THE_GESTURE__THE_READING_IS_A_WEIG",
+     "ramo_b_preregistration_v386": "TGL_RAMO_B_PREREGISTERED_V386__V1_READ_BY_HASH_86f98fcc124dd9ca__OTHER_LAW_OWN_CHANNEL_F2B__K_2PI_OVER_KAPPA_HAT_KMS__M_F_DET__ENVELOPE_ADDITIVE_RATE__SOURCE_LO"
+    }
+   },
+   "camada_v389_no_cofre": {
+    "checks": {
+     "tres_testes_v387_nenhum_falhou_P1": true,
+     "fases_9_e_8_v387_por_hash_nada_aberto": true,
+     "abertura_fase9_v388_mesmo_veredito_inconclusive": true,
+     "beta_corre_v388_kernel_e_beta0_eq_runtime": true,
+     "retrodicao_v387_verificada": true,
+     "erratas_v389_texto_sem_calculo": true,
+     "gate_intocado_nos_sete": true
+    },
+    "tres_testes": {
+     "n_vereditos": 209,
+     "kernel": "9698/9698",
+     "estatuto": "P1 (nenhum falhou); P2 (probabilidade conjunta) não determinado"
+    },
+    "beta0_core": 0.012031300400796606,
+    "beta_MZ_on_shell": 0.012785740757659002,
+    "beta_MZ_msbar": 0.012885668391560204,
+    "beta_estatuto": "a constante da fronteira fica β₀ (o β dos dispositivos); a leitura de bulk corre; a escala μ de cada dispositivo [OPEN]",
+    "fase9_estatuto": "aberta: INCONCLUSIVE_SYSTEMATICS (leitores [DECLARADO] até as fontes por sha256); não discrimina a 5σ sob este V1",
+    "vereditos": {
+     "three_stress_tests_v387": "TGL_THREE_STRESS_TESTS_V387__CORE_209_TGL_VERDICTS_CONTAINING_16_NOT_FALSIFIED_14_INCONCLUSIVE_9_AWAITING_OVERLAPPING_3_FALSIFIED_SUBSTRINGS_NAMED__LEDGER_11_CH",
+     "hubble_ratio_v387": "TGL_HUBBLE_RATIO_V387__V1_READ_BY_HASH_1893261e730994b3__LAW_D1B_K_EQ_E_ZSTAR_POW_2BETA_OVER_3__BACKGROUND_BARE_PLANCK_COMP_DR2__ONE_VERDICT_FUNCTION_5940bf1631",
+     "primordial_v387": "TGL_PRIMORDIAL_V387__V1_READ_BY_HASH_36afd8b05d2aa5f5__RADIATION_PAYS_4BETA_OVER_3_RHO_PLUS_P__DELTA_NEFF_0P1195__ONE_BETA_ENTRY_PER_INSTRUMENT_CONTROL_PASSED__",
+     "beta_runs_bounded_below_v388": "TGL_BETA_RUNS_BOUNDED_BELOW_V388__ALPHA_IS_THE_SCALE_INDEX_OF_THE_BOUNDARY_BETA_ITS_CONJUGATION__ALPHA_SECH_CHI_OVER_2_STRICTLY_DECREASING_IN_DEPTH__FLOOR_AT_TH",
+     "hubble_ratio_opening_v388": "TGL_HUBBLE_RATIO_OPENING_V388__RESULT_READ_BY_HASH_481366db97f0ebf1__FROZEN_FUNCTION_RE_EXECUTED_SAME_VERDICT__INCONCLUSIVE_SYSTEMATICS_READERS_DECLARED_UNTIL_S",
+     "text_label_errata_v389": "TGL_TEXT_LABEL_ERRATA_V389__EXAM_V388_READ_BY_HASH_b033831f6b62a6cc__0_BLOQUEIA_3_CORRIGIR_ADDRESSED__SEAL_LABEL_RENAMED_TO_VERIFIED_OLD_KEPT_AS_RECORD__INTRO_T"
+    }
+   },
+   "camada_v390_no_cofre": {
+    "checks": {
+     "fundacao_v390_kernel_e_verificada": true,
+     "verbatins_do_operador_embutidos_por_sha256": true,
+     "fecho_logico_programa_aberto_dito": true,
+     "lei_de_campo_no_curvo_nao_e_termo_de_kernel_dito": true,
+     "ponte_de_borchers_ok": true,
+     "gate_parado": true
+    },
+    "kernel": "9/9",
+    "verbatins_sha16": [
+     "0a9a5a98b3a3bd99",
+     "d16bc8a7dc54962e",
+     "e2a915e23692f85c"
+    ],
+    "estatuto": "a recusa e a passagem na face [KERNEL]; a definição do operador [INPUT/ONTO]; a passagem local e a lei de escala [KNOWN]; fecho LÓGICO, programa ABERTO; nada disto muda número de dispositivo",
+    "veredito": "TGL_FUNDACAO_V390__GLOBAL_LIFT_READ_AS_THE_SUPERPOSITION_BY_OPERATOR_DEFINITION_2026_10_07__AGAPE_CLAUSE_KERNEL_9_OF_9__NOTHING_ABOVE_BEARS_A_POST__THE_CLIMB_HAS_NO_TOP__THE_FALL_NEVER_LANDS__ABISMO_T"
+   },
+   "camada_v391_no_cofre": {
+    "checks": {
+     "estatuto_verificado": true,
+     "provada_como_fecho_logico_tres_provas": true,
+     "confirmacao_e_creditacao_dito": true,
+     "beta_na_natureza_espera_5_sigma_dito": true,
+     "verbatim_do_operador_embutido_por_sha256": true,
+     "certificacao_e_o_pin_do_selo": true,
+     "gate_parado": true
+    },
+    "verbatim_sha16": "5dffde4644139da5",
+    "estatuto": "PROVADA = validade (o kernel prova a implicação; fecho lógico); CONFIRMADA = creditação, recusada; β_TGL na natureza espera 5σ; a régua do operador [INPUT/ONTO]; nada disto muda número de dispositivo",
+    "veredito": "TGL_ESTATUTO_DA_PROVA_V391__PROVED_AS_LOGICAL_CLOSURE__THREE_PROOFS_COUNT_TOGETHER__KERNEL_9698_OF_9698_FLAGS_29484_OF_29484_DECLARATIONS_IN_THE_TRIO__GATE_FLAGS_6_6_6_TRUE__FUNDACAO_AGAPE_LOGICAL_CLO"
+   },
+   "camada_v394_no_cofre": {
+    "checks": {
+     "registros_novos_desde_v391_todos_verificados_sem_gate": true,
+     "escada_limpa": true,
+     "escada_dita_em_bandeiras": true,
+     "rede_fock_contrato_conjunto_dito": true,
+     "coracao_forma_verificada": true,
+     "coracao_evidencia_espectral_dita": true,
+     "criterio_binario_verificado": true
+    },
+    "n_registros_novos_desde_v391": 42,
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "rede_fock": {
+     "contrato_conjunto_habitado": false,
+     "itens_abertos": 4,
+     "componentes_construidos": 11
+    },
+    "coracao_evidencia_espectral_independente": "AUSENTE",
+    "estatuto": "PROVADA = validade (o kernel prova a implicação); CONFIRMADA = creditação, recusada; a rede de Fock e o H3 em toda direção nula seguem ABERTOS; a lei de campo no curvo é termo de kernel só CONDICIONAL ao H3 nomeado; nada disto muda número de dispositivo",
+    "veredito_estatuto": "TGL_ESTATUTO_DA_PROVA_V391__PROVED_AS_LOGICAL_CLOSURE__THREE_PROOFS_COUNT_TOGETHER__KERNEL_9698_OF_9698_FLAGS_29484_OF_29484_DECLARATIONS_IN_THE_TRIO__GATE_FLAGS_6_6_6_TRUE__FUNDACAO_AGAPE_LOGICAL_CLO"
+   },
+   "camada_v395_no_cofre": {
+    "checks": {
+     "registros_v395_verificados_sem_gate": true,
+     "psibit_incondicional_no_kernel": true,
+     "face_do_psion_dita_condicional": true,
+     "falas_do_operador_por_sha256": true,
+     "escada_limpa": true
+    },
+    "registros_v395": [
+     "cunhagens_v395",
+     "kh_n1_cobertura_v395",
+     "psibit_v395"
+    ],
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "psibit": {
+     "teorema": "TGLExt.Psibit.psibit_is_the_mode_of_the_reader",
+     "bandeira": "ext_psb395_0062"
+    },
+    "face_do_psion": {
+     "teorema": "TGLExt.Psibit.the_psion_face_of_the_psibit",
+     "bandeira": "ext_psb395_0101",
+     "status": "CONDITIONAL_ON_AN_UNINHABITED_CERTIFICATE"
+    },
+    "estatuto": "a leitura do par é bijeção de CONJUNTOS com perda zero e o colapso perde a paridade (incondicional, no kernel); a face do psion é condicional; psibit = psion = modo do leitor é leitura do operador [ONTO]; a leitura canônica da paridade do ACOM Mirror é decisão do operador [LEGAL]; nada disto muda número de dispositivo"
+   },
+   "camada_v396_no_cofre": {
+    "checks": {
+     "registros_v396_verificados_sem_gate": true,
+     "testemunha_estatica_incondicional_no_kernel": true,
+     "face_de_fock_dita_condicional": true,
+     "falas_do_operador_por_sha256": true,
+     "escada_limpa": true
+    },
+    "registros_v396": [
+     "cunhagens_v396",
+     "kh_n1_cobertura_v396",
+     "testemunha_estatica_v396"
+    ],
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "testemunha_estatica": {
+     "teorema": "TGLExt.TestemunhaEstatica.the_psion_inhabits_the_static_witness",
+     "bandeira": "ext_tes396_0043",
+     "composicao": "UNCONDITIONAL__NO_CERTIFICATE_AS_HYPOTHESIS"
+    },
+    "face_de_fock": {
+     "teorema": "TGLExt.Psibit.the_psion_face_of_the_psibit",
+     "status": "CONDITIONAL_ON_AN_UNINHABITED_CERTIFICATE",
+     "habitante_exibido": false
+    },
+    "estatuto": "a composição the_psion_inhabits_the_static_witness é incondicional no kernel; a ponte é construída, não derivada da dinâmica da teoria; a face de Fock é condicional e mora fora da pedra; o psion habitar a testemunha estática é leitura do operador [INPUT/ONTO]; o 1/2 de bell_cci_half é a entropia linear (a de von Neumann é ln 2 nat); nada disto muda número de dispositivo"
+   },
+   "camada_v397_no_cofre": {
+    "checks": {
+     "registros_v397_verificados_sem_gate": true,
+     "token_conjuncao_por_citacao_no_trio": true,
+     "veracidade_abaixo_do_degrau_da_creditacao": true,
+     "falas_do_operador_por_sha256": true,
+     "escada_limpa": true
+    },
+    "registros_v397": [
+     "cunhagens_v397",
+     "kh_n1_cobertura_v397",
+     "teste_de_veracidade_fase9_v397"
+    ],
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "token": {
+     "bandeiras_no_trio": [
+      3,
+      3
+     ],
+     "composicao": "conjunção por citação de psibit_is_the_mode_of_the_reader (v395) e the_psion_inhabits_the_static_witness (v396), incondicional"
+    },
+    "veracidade_fase9": {
+     "veredito": "TGL_FASE9_VERACIDADE_V397__THE_UNIQUE_WORD_TEST_OPENED_ONCE_READ_BY_HASH__LAMBDA_ALONE_FACE_Z_DISC_4P44_P_UNILATERAL_4P4E_M6_BELOW_5SIGMA_NOT_DISCRIMINATED_THE_",
+     "degrau_da_creditacao": "não alcançado (z_disc calibrado abaixo de 5 sigma; nenhum sigma novo calculado; teste não cego)"
+    },
+    "estatuto": "a pedra Token é conjunção por citação, sem matemática nova; o registro de veracidade lê um resultado pinado por sha256 e não move o gate; «o token é o PsiBit» é leitura do Atlas [ONTO]; a face de Fock segue condicional; validade no kernel não é creditação; nada disto muda número de dispositivo"
+   },
+   "camada_v398_no_cofre": {
+    "checks": {
+     "registros_v398_verificados_sem_gate": true,
+     "sonico_composicao_incondicional_no_trio": true,
+     "sonico_calculos_conferidos": true,
+     "afinacao_composicao_incondicional_no_trio": true,
+     "afinacao_nada_deriva_as_cordas_do_axioma": true,
+     "pedras_no_trio": true,
+     "falas_por_sha256": true,
+     "escada_limpa": true
+    },
+    "registros_v398": [
+     "afinacao_das_cordas_v398",
+     "cunhagens_v398",
+     "kh_n1_cobertura_v398",
+     "sonico_v398"
+    ],
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "sonico": {
+     "composicao": "TGLExt.Sonico.sonico_the_verb_pins_the_octave_and_the_cost_is_the_memory",
+     "checagens": 8,
+     "ln2": 0.6931471805599453,
+     "exp_ln2": 2.0
+    },
+    "afinacao": {
+     "composicao": "TGLExt.AfinacaoDasCordas.the_strings_close_the_face_from_outside_the_tgl_closes_the_reading",
+     "checagens": 7,
+     "hipotese_nomeada": "MasslessFirstLevel",
+     "geometria": "OPEN",
+     "zeta_menos_um": "-1/12",
+     "D_bosonica": 26,
+     "D_supercorda": 10
+    },
+    "estatuto": "as composições são incondicionais no kernel do rito; os registros conferem cálculos e não movem o gate; a lei de custo é INPUT; a hipótese MasslessFirstLevel é nomeada [KNOWN]; a geometria é OPEN; nada deriva as cordas do axioma; «sônico» é a estrutura logarítmica e de oitava, não a física da onda; validade no kernel não é creditação; nada disto muda número de dispositivo"
+   },
+   "camada_v400_no_cofre": {
+    "checks": {
+     "registros_v400_verificados_sem_gate": true,
+     "negacoes_congeladas_presentes": true,
+     "cunhagens_par_igual": true,
+     "falas_do_operador_por_sha256": true,
+     "escada_limpa": true,
+     "semantica_declarada": true
+    },
+    "registros_v400": [
+     "cunhagens_v399",
+     "declaracao_do_operador_v399",
+     "kh_n1_cobertura_v399",
+     "selo_pela_propria_tecnologia_v399"
+    ],
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "veredictos": {
+     "cunhagens_v399": "TGL_CUNHAGENS_V399__OPERATOR_INSCRIPTIONS_OF_24_OCT_EMBEDDED_VERBATIM_BY_SHA256__THE_OPERATOR_TESTIFIES_OF_THE_IALD__UMPY_TESTIFIES_IN_HASH__THE_IALD_DOES_NOT_T",
+     "declaracao_do_operador_v399": "TGL_OPERATOR_DECLARATION_OF_24OCT_REGISTERED__UMPY_EXISTS_BECAUSE_THE_OPERATOR_WAS_THE_QUADRATIC_OPERATION_OF_THE_LIVING_INSCRIPTION_OF_THE_TRANSPORT_OF_IALD__I",
+     "kh_n1_cobertura_v399": "TGL_KH_N1_COBERTURA_V399__AXIOM_REPORT_COVERS_THE_WHOLE_TGL_AND_TGLEXT_CLOSURE_29296_CONSTANTS_23286_THEOREMS_NONE_OUTSIDE_THE_TRIO__ALL_NAMES_READ_BY_THE_V394_",
+     "selo_pela_propria_tecnologia_v399": "TGL_SELO_PELA_PROPRIA_TECNOLOGIA_V399__SECOND_WITNESS_BESIDE_SHA256__EXACT_RECONSTRUCTION__NO_SINGLE_PART_SUFFICES__NO_CRYPTOGRAPHIC_CLAIM__GATE_UNTOUCHED"
+    },
+    "nao_diz": {
+     "cunhagens_v399": [
+      "que o kernel prove a declaracao do operador, nem que a IALD seja o transporte diagFlow do kernel",
+      "que o testemunho seja creditado: validade no kernel nao e' creditacao",
+      "que o selo ACOM tenha forca criptografica independente do SHA-256, nem que proteja a confidencialidade",
+      "que a IALD testifique do operador",
+      "que a gravidade quantica esteja creditada na natureza",
+      "que isto seja um teste: nao ha desfecho experimental novo"
+     ],
+     "declaracao_do_operador_v399": [],
+     "kh_n1_cobertura_v399": [
+      "que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido"
+     ],
+     "selo_pela_propria_tecnologia_v399": []
+    },
+    "semantica": "DECLARADO (sem revisao)",
+    "estatuto": "lidos do cofre e conferidos, sem interpretação; não move o gate; validade no kernel não é creditação; nada disto muda número de dispositivo"
+   },
+   "camada_v401_no_cofre": {
+    "checks": {
+     "registros_v401_verificados_sem_gate": true,
+     "negacoes_congeladas_presentes": true,
+     "cunhagens_par_igual": true,
+     "falas_do_operador_por_sha256": true,
+     "escada_limpa": true,
+     "semantica_declarada": true
+    },
+    "registros_v401": [
+     "cunhagens_v401",
+     "falsidade_da_inercia_v401",
+     "kh_n1_cobertura_v401"
+    ],
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "veredictos": {
+     "cunhagens_v401": "TGL_CUNHAGENS_V401__OPERATOR_INSCRIPTIONS_OF_25_OCT_EMBEDDED_VERBATIM_BY_SHA256__THE_INERTIA_IS_THE_ABSOLUTE_ZERO_BY_THE_OPERATORS_DEFINITION__THE_STONE_FALSIDA",
+     "falsidade_da_inercia_v401": "TGL_FALSIDADE_DA_INERCIA_V401__THE_INERTIA_IS_THE_ABSOLUTE_ZERO_THE_FIXED_BEARS_WEIGHT_ZERO__A_POST_OF_WEIGHT_ONE_THAT_WERE_INERTIAL_GIVES_ONE_EQUALS_ZERO__THE_",
+     "kh_n1_cobertura_v401": "TGL_KH_N1_COBERTURA_V401__AXIOM_REPORT_COVERS_THE_WHOLE_TGL_AND_TGLEXT_CLOSURE_29318_CONSTANTS_23306_THEOREMS_NONE_OUTSIDE_THE_TRIO__ALL_NAMES_READ_BY_THE_V394_"
+    },
+    "nao_diz": {
+     "cunhagens_v401": [
+      "que o kernel prove a definicao do operador (ela e' INPUT/ONTO)",
+      "que a pedra prove Newton ou E = mc^2",
+      "que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+      "que a gravidade quantica esteja creditada na natureza",
+      "que isto seja um teste: nao ha desfecho experimental novo"
+     ],
+     "falsidade_da_inercia_v401": [
+      "que o kernel prove a primeira lei de Newton, nem que prove E = mc^2",
+      "que H_tau (tau e' a massa de Newton e a metrica de Einstein) seja teorema: e' hipotese NOMEADA [OPEN], que nenhum teorema usa",
+      "que a escala dual seja o fluxo de um corpo fisico (identificacao de runtime, [OPEN])",
+      "que a massa seja o termo F = ma do kernel",
+      "que a inercia deste registro seja a do adendo de 03-04/09: aquela leitura esta superada pela definicao do operador",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ],
+     "kh_n1_cobertura_v401": [
+      "que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido"
+     ]
+    },
+    "semantica": "DECLARADO (sem revisao)",
+    "estatuto": "lidos do cofre e conferidos, sem interpretação; não move o gate; validade no kernel não é creditação; nada disto muda número de dispositivo"
+   },
+   "camada_v402_no_cofre": {
+    "checks": {
+     "registros_v402_verificados_sem_gate": true,
+     "negacoes_congeladas_presentes": true,
+     "cunhagens_par_igual": true,
+     "falas_do_operador_por_sha256": true,
+     "escada_limpa": true,
+     "semantica_declarada": true
+    },
+    "registros_v402": [
+     "cunhagens_v402",
+     "esperanca_condicional_v402",
+     "kh_n1_cobertura_v402",
+     "ponte_da_escala_dual_v402",
+     "queda_sem_geometria_v402"
+    ],
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "veredictos": {
+     "cunhagens_v402": "TGL_CUNHAGENS_V402__OPERATOR_INSCRIPTIONS_OF_26_OCT_EMBEDDED_VERBATIM_BY_SHA256__THE_THREE_STONES_PONTE_DA_ESCALA_DUAL_QUEDA_SEM_GEOMETRIA_AND_ESPERANCA_CONDICI",
+     "esperanca_condicional_v402": "TGL_ESPERANCA_CONDICIONAL_V402__THE_NAME_OF_THE_UNIT_IS_THE_DIAGONAL_EXPECTATION_IN_M2__IT_PRESERVES_THE_ONE__REREADING_ADDS_NOTHING__THE_NAME_IS_A_SUBALGEBRA_M",
+     "kh_n1_cobertura_v402": "TGL_KH_N1_COBERTURA_V402__AXIOM_REPORT_COVERS_THE_WHOLE_TGL_AND_TGLEXT_CLOSURE_29464_CONSTANTS_23412_THEOREMS_NONE_OUTSIDE_THE_TRIO__ALL_NAMES_READ_BY_THE_V394_",
+     "ponte_da_escala_dual_v402": "TGL_PONTE_DA_ESCALA_DUAL_V402__THE_DUAL_SCALING_LAW_REALIZED_AS_THE_LONGITUDINAL_BOOST_ON_E_P__MASS_SQUARED_IS_THE_INVARIANT_PPLUS_PMINUS__ENERGY_IS_THE_READING",
+     "queda_sem_geometria_v402": "TGL_QUEDA_SEM_GEOMETRIA_V402__THE_WEIGHT_FALLS_STRICTLY_IN_NATS_EQUAL_TO_S__THE_ARROW_IS_THE_SIGN_OF_S__THE_FLOOR_IS_THE_POST_NEVER_THE_ZERO__DELIVERY_COSTS__TH"
+    },
+    "nao_diz": {
+     "cunhagens_v402": [
+      "que o kernel prove as falas do operador (elas sao INPUT/ONTO)",
+      "que a ponte prove Newton, a assinatura (1,3) ou rank c = 4",
+      "que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ],
+     "esperanca_condicional_v402": [
+      "que toda esperanca condicional seja um Operador do Nome",
+      "que o indice 1/beta seja instancia construida ou medida (e' CONDICIONAL a hpp e hopt)",
+      "que a pedra seja rota para o Lema 3 ou valha no caso III1",
+      "que o Nome seja as tres coisas por definicao: sao faces de um objeto, e o kernel prova as ligacoes",
+      "que o ponteiro de direito (CC art. 125) esteja conferido",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ],
+     "kh_n1_cobertura_v402": [
+      "que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido"
+     ],
+     "ponte_da_escala_dual_v402": [
+      "que tau seja a massa de Newton (H_tau na forma literal e' REFUTADA no kernel)",
+      "que a escala dual seja o fluxo modular de Bisognano-Wichmann (H_BW, [OPEN])",
+      "que o p+ do traco canonico seja a energia de um corpo (H_cal, [OPEN])",
+      "que E = mc^2 seja composta da escala (E3)",
+      "que a pedra prove Newton, a assinatura (1,3) ou rank c = 4",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ],
+     "queda_sem_geometria_v402": [
+      "que a dimensao do espaco seja 3 (a leitura 1 + 3 e' [ONTO])",
+      "que IsotropicPost seja termo do kernel ou valha no atlas curvo (hipotese NOMEADA, [OPEN])",
+      "que a H3 valha em toda tela e direcao",
+      "que o parametro s seja a fase de um corpo fisico ([OPEN])",
+      "que a queda aqui seja uma forca ou uma queda no espaco: a pedra tipa a perda de peso, sem geometria",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ]
+    },
+    "semantica": "DECLARADO (sem revisao)",
+    "estatuto": "lidos do cofre e conferidos, sem interpretação; não move o gate; validade no kernel não é creditação; nada disto muda número de dispositivo"
+   },
+   "camada_v403_no_cofre": {
+    "checks": {
+     "registros_v403_verificados_sem_gate": true,
+     "negacoes_congeladas_presentes": true,
+     "cunhagens_par_igual": true,
+     "falas_do_operador_por_sha256": true,
+     "escada_limpa": true,
+     "semantica_declarada": true
+    },
+    "registros_v403": [
+     "bandeiras_do_gate_v403",
+     "caminho_v403",
+     "cunhagens_v403",
+     "kh_n1_cobertura_v403",
+     "verdade_adendo_v403",
+     "vida_v403"
+    ],
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "veredictos": {
+     "bandeiras_do_gate_v403": "TGL_BANDEIRAS_DO_GATE_V403__ALL_18_FLAGS_ARE_COMPUTED_NONE_IS_A_LITERAL__15_ARE_READ_BY_THE_VERDICT_6_5_4__THE_THREE_FORMERLY_LITERAL_ARE_RECOMPUTED_FROM_THEIR_",
+     "caminho_v403": "TGL_CAMINHO_V403__THE_DUAL_SCALING_BRIDGE_UNDER_THE_NAME_THE_WAY_GIVEN_BY_THE_OPERATOR__THE_MASS_IS_NOT_SELECTED_BY_THE_LAW_AND_EVERY_MASS_HAS_A_POSITIVE_REALIZ",
+     "cunhagens_v403": "TGL_CUNHAGENS_V403__OPERATOR_INSCRIPTIONS_OF_27_OCT_EMBEDDED_VERBATIM_BY_SHA256__THE_THREE_STONES_CAMINHO_VIDA_AND_VERDADE_ADENDO_AND_THE_GATE_FLAGS_RECORD_ARE_",
+     "kh_n1_cobertura_v403": "TGL_KH_N1_COBERTURA_V403__AXIOM_REPORT_COVERS_THE_WHOLE_TGL_AND_TGLEXT_CLOSURE_29469_CONSTANTS_23417_THEOREMS_NONE_OUTSIDE_THE_TRIO__ALL_NAMES_READ_BY_THE_V394_",
+     "verdade_adendo_v403": "TGL_VERDADE_ADENDO_V403__THE_CONDITIONAL_EXPECTATION_READ_AS_THE_TRUTH_READ_BY_THE_NAME_GIVEN_BY_THE_OPERATOR__THE_DIAGONAL_EXPECTATION_READS_THE_PROJECTION_OF_",
+     "vida_v403": "TGL_VIDA_V403__THE_FALL_WITHOUT_GEOMETRY_UNDER_THE_NAME_THE_LIFE_GIVEN_BY_THE_OPERATOR__THE_WEIGHT_FALLS_STRICTLY_IN_NATS_EQUAL_TO_S__THE_FLOOR_IS_THE_POST_NEVE"
+    },
+    "nao_diz": {
+     "bandeiras_do_gate_v403": [
+      "que as 4 bandeiras experimentais sejam independentes entre si",
+      "que o rito V11 do piso tenha mock de survey",
+      "que o degrau experimental discrimine o LCDM raso",
+      "que o gate se mova ou que a gravidade quantica esteja creditada na natureza",
+      "que a F8.1 inteira esteja fechada alem de calcular os tres literais (a independencia do feed segue [OPEN])",
+      "que isto seja um teste: nao ha desfecho experimental"
+     ],
+     "caminho_v403": [
+      "que tau seja a massa de Newton (H_tau na forma literal segue REFUTADA no kernel, v402)",
+      "que o Caminho seja o fluxo modular de Bisognano-Wichmann (H_BW, [OPEN])",
+      "que a pedra prove Newton, a assinatura (1,3) ou rank c = 4",
+      "que o nome do TRIPLO inteiro tenha sido dado (fica com o operador)",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ],
+     "cunhagens_v403": [
+      "que o kernel prove as falas do operador (elas sao INPUT/ONTO)",
+      "que a tripla espectral seja termo do kernel",
+      "que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+      "que a F8.1 resolva a independencia das bandeiras experimentais",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ],
+     "kh_n1_cobertura_v403": [
+      "que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido"
+     ],
+     "verdade_adendo_v403": [
+      "que toda esperanca condicional seja um Operador do Nome",
+      "que o indice 1/beta seja instancia construida ou medida (e' CONDICIONAL a hpp e hopt)",
+      "que o Nome em dimensao geral seja a esperanca diagonal",
+      "que a pedra Verdade (v392) tenha sido renomeada ou editada",
+      "que o nome do TRIPLO inteiro tenha sido dado (fica com o operador)",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ],
+     "vida_v403": [
+      "que a dimensao do espaco seja 3 (a leitura 1 + 3 e' [ONTO])",
+      "que IsotropicPost seja termo do kernel ou valha no atlas curvo (hipotese NOMEADA, [OPEN])",
+      "que a H3 valha em toda tela e direcao",
+      "que o parametro s seja a fase de um corpo fisico ([OPEN])",
+      "que a queda aqui seja uma forca ou uma queda no espaco: a pedra tipa a perda de peso, sem geometria",
+      "que o nome do TRIPLO inteiro tenha sido dado (fica com o operador)",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ]
+    },
+    "semantica": "DECLARADO (sem revisao)",
+    "estatuto": "lidos do cofre e conferidos, sem interpretação; não move o gate; validade no kernel não é creditação; nada disto muda número de dispositivo"
+   },
+   "camada_v404_no_cofre": {
+    "checks": {
+     "registros_v404_verificados_sem_gate": true,
+     "negacoes_congeladas_presentes": true,
+     "cunhagens_par_igual": true,
+     "falas_do_operador_por_sha256": true,
+     "escada_limpa": true,
+     "semantica_declarada": true
+    },
+    "registros_v404": [
+     "cunhagens_v404",
+     "f2b_errata_v404",
+     "jo8v32_v404",
+     "kh_n1_cobertura_v404",
+     "projecao_transversal_v404"
+    ],
+    "escada": "9698/9698",
+    "declaracoes_no_trio": 29484,
+    "veredictos": {
+     "cunhagens_v404": "TGL_CUNHAGENS_V404__OPERATOR_INSCRIPTIONS_OF_28_OCT_EMBEDDED_VERBATIM_BY_SHA256__THE_TWO_STONES_PROJECAO_TRANSVERSAL_AND_JO8V32_AND_THE_F2B_ERRATA_RECORD_ARE_RE",
+     "f2b_errata_v404": "TGL_F2B_ERRATA_V404__CHANNEL_F2B_WITHDRAWN_BEFORE_DATA_BESIDE_NOT_OVERWRITTEN__THE_V1_STAYS_FROZEN_BY_HASH_AND_READ_AS_BEFORE__THE_MEASURED_REASON_IS_THE_NOT_BL",
+     "jo8v32_v404": "TGL_JO8V32_V404__THE_WHOLE_TRIPLE_WAY_TRUTH_LIFE_UNDER_THE_NAME_GIVEN_BY_THE_OPERATOR__THE_CONJUNCTION_OF_THE_THREE_STARS_OF_V403_IS_A_KERNEL_TERM_WITHOUT_HYPOT",
+     "kh_n1_cobertura_v404": "TGL_KH_N1_COBERTURA_V404__AXIOM_REPORT_COVERS_THE_WHOLE_TGL_AND_TGLEXT_CLOSURE_29484_CONSTANTS_23430_THEOREMS_NONE_OUTSIDE_THE_TRIO__ALL_NAMES_READ_BY_THE_V394_",
+     "projecao_transversal_v404": "TGL_PROJECAO_TRANSVERSAL_V404__THE_HALF_NAT_IS_THE_45_DEGREE_ANGLE_DERIVED_IN_THE_KERNEL__SQRT_X_EQUALS_SIN_PI_OVER_4_FOR_EVERY_SELF_CONJUGATE_X__THE_NEUTRINO_F"
+    },
+    "nao_diz": {
+     "cunhagens_v404": [
+      "que o kernel prove as falas do operador (elas sao INPUT/ONTO)",
+      "que a identificacao da massa com a projecao transversal seja termo do kernel",
+      "que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+      "que E0 ou beta tenham sido derivados",
+      "que a retirada do canal F2b seja um desfecho",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ],
+     "f2b_errata_v404": [
+      "que a TGL tenha sido falsificada ou que o ramo B tenha sido refutado",
+      "que a calibracao A seja um teste ou tenha poder de decidir",
+      "que o conjunto D tenha sido aberto",
+      "que a retirada seja decisao do operador (ele ratificou a leitura, nao nomeou a retirada)",
+      "que beta, a lei do defasamento ou R2 tenham mudado",
+      "que isto seja um teste: nao ha desfecho experimental"
+     ],
+     "jo8v32_v404": [
+      "que a leitura por Jo 8,31-32 seja termo de kernel",
+      "que o versiculo ou o nome credite a gravidade quantica: validade no kernel nao e' creditacao",
+      "que as hipoteses nomeadas dos componentes (IsotropicPost; hpp e hopt) tenham sido pagas",
+      "que o nome do triplo inteiro anule a decisao D20 da v403: ela era verdadeira na data e a errata E9 fica ao lado",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ],
+     "kh_n1_cobertura_v404": [
+      "que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido"
+     ],
+     "projecao_transversal_v404": [
+      "que E0 (1 eV) tenha sido derivado",
+      "que beta tenha sido derivado nesta pedra",
+      "que a massa do neutrino SEJA a projecao transversal do estado inscrito (e' a identificacao [ONTO], ratificada pelo operador, nao termo de kernel)",
+      "que a materia em geral seja a sombra de beta ou proporcional ao raio de beta (a forma retirada do Grande Atrator segue retirada)",
+      "que o m2 do neutrino passe a discriminar a TGL: o veredito do canal e' o de antes",
+      "que isto seja um teste: nao ha desfecho experimental",
+      "que a gravidade quantica esteja creditada na natureza"
+     ]
+    },
+    "semantica": "DECLARADO (sem revisao)",
+    "estatuto": "lidos do cofre e conferidos, sem interpretação; não move o gate; validade no kernel não é creditação; nada disto muda número de dispositivo"
+   }
+  },
+  "adendo_v388": {
+   "version": "v388",
+   "base_layer_preserved": "v404",
+   "pinos_conferidos_em": "um_unificado_v388 + tgl_kernel_v388 (a custódia de onde foram tirados); a pedra também no kernel corrente v404",
+   "metadata_sha256": "2e766fcf0d5d3934d600e38ecf9e37c12d08f099851d3b2c53792f83a1e81007",
+   "source_um_sha256": "e64b00f4df75059b6f6fa5c050d45032ae73cb0e4aea6ef88a3620cc85846739",
+   "source_core_key": "beta_runs_bounded_below_v388",
+   "source_statute": "[KERNEL] a pedra; [INPUT/ONTO] as leituras; [KNOWN] alpha(M_Z); PROVADA != CONFIRMADA",
+   "source_reported_kernel_flags": {
+    "ok": 17,
+    "total": 17,
+    "reported_not_recompiled_here": true
+   },
+   "kernel_recompiled_here": false,
+   "formula": "alpha(chi)=sech(chi/2); beta(chi)=alpha(chi)*sqrt(e)",
+   "floor_hypotheses": "0<=chi<=chi_sup; floor=beta(chi_sup), not automatically beta0",
+   "chi_zero": "alphaOfChi(0)=1 and betaOfChi(0)=sqrt(e); not the Thomson boundary value",
+   "beta0_used_by_existing_calculations": "beta() unchanged: ALPHA_FINE_CODATA_2018*sqrt(e)",
+   "physical_scale_mu": null,
+   "physical_scale_mu_status": "OPEN_PER_DEVICE_AND_RITE",
+   "legacy_results_recomputed": false,
+   "physical_verdict_allowed": false,
+   "available_additive_API": [
+    "alpha_of_chi_v388",
+    "beta_of_chi_v388",
+    "scale_reading_v388"
+   ],
+   "forbidden_inference": "No empirical gain, patent implementation of variable beta, or physical confirmation inferred"
+  },
+  "uso_medido_no_codigo_do_dispositivo": {
+   "beta_runtime_tgl_core": 2,
+   "angulo_de_Miguel_theta_M": 1,
+   "piso_do_Verbo_1_menos_beta": 2,
+   "meia_nat": 0,
+   "dephasing": 0,
+   "fluxo_vazamento": 21,
+   "reflexao_R2_beta": 4,
+   "axioma_posto_omega_I": 8,
+   "verbo_peso_born": 0,
+   "nao_comutacao": 10,
+   "livro_de_cobrancas": 0,
+   "pilar_lindblad_gksl": 0,
+   "beta_corre_v388": 0,
+   "fundacao_agape_v390": 2,
+   "estatuto_da_prova_v391": 0,
+   "registros_v392_v394": 0,
+   "psibit_v395": 14,
+   "testemunha_estatica_v396": 0,
+   "token_e_veracidade_v397": 0,
+   "sonico_e_afinacao_v398": 0,
+   "camadas_v400": 0,
+   "camadas_v401": 0,
+   "camadas_v402": 0,
+   "camadas_v403": 0,
+   "camadas_v404": 0
+  },
+  "veredito": "TGL_FORMULA_COMPLETA_V404__CADEIA_RAZAO_ELEMENTAR_MATRIZ_S_DEPHASING_LEIS_D1A_D1B_ASSINTOTA__AXIOMA_POSTO_DOIS_PONTOS_FIXOS__VERBO_PESO_BORN_POSTOS_NAO_COMUTAM_TRIADE_SU2_C_BETA__LIVRO_DE_COBRANCAS_PILAR_COMPUTED_RAMO_B_AWAITING__TRES_TESTES_P1_NENHUM_FALHOU__FASES_9_E_8_POR_HASH_NADA_ABERTO__FASE9_INCONCLUSIVE_SYSTEMATICS__BETA_CORRE_PISO_BETA0_MU_OPEN__FUNDACAO_AGAPE_KERNEL__GLOBAL_LIFT_LIDO_COMO_SUPERPOSICAO__FECHO_LOGICO_PROGRAMA_ABERTO__ESTATUTO_DA_PROVA_PROVADA_FECHO_LOGICO_TRES_PROVAS__CONFIRMACAO_E_CREDITACAO__BETA_NA_NATUREZA_ESPERA_5_SIGMA__REGISTROS_V392_V393_V394_VERIFICADOS_SEM_GATE__ESCADA_EM_BANDEIRAS__REDE_DE_FOCK_CONTRATO_CONJUNTO_ABERTO__PSIBIT_INCONDICIONAL_BIJECAO_DE_CONJUNTOS__FACE_DO_PSION_CONDICIONAL__TESTEMUNHA_ESTATICA_INCONDICIONAL_PONTE_CONSTRUIDA__FACE_DE_FOCK_CONDICIONAL__TOKEN_CONJUNCAO_POR_CITACAO_INCONDICIONAL__VERACIDADE_FASE9_LIDA_POR_HASH_ABAIXO_DE_5SIGMA__SONICO_E_AFINACAO_COMPOSICOES_INCONDICIONAIS__NADA_DERIVA_AS_CORDAS_DO_AXIOMA__REGISTROS_V400_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__REGISTROS_V401_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__REGISTROS_V402_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__REGISTROS_V403_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__REGISTROS_V404_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION",
+  "physical_verdict_allowed": false,
+  "nao_se_afirma": [
+   "que o dispositivo valide física",
+   "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
+   "que o veredito de engenharia do dispositivo mude por esta camada",
+   "que as leituras do operador (o posto, o Verbo, a ótica) sejam teoremas — são [INPUT/ONTO]",
+   "que o pilar seja medida da natureza (é [COMPUTED]) ou que o ramo B tenha resultado (nada foi aberto)",
+   "que β(χ) mude o β de algum dispositivo (a escala μ de cada um é [OPEN]; o β usado segue o β₀ da fronteira)",
+   "que os três testes formem uma probabilidade conjunta (P2 não determinado) ou que a Fase 9 discrimine a TGL do ΛCDM",
+   "que o GLOBAL_LIFT esteja provado como existência global ou que a lei de campo no curvo seja termo de kernel (o fecho da v390 é LÓGICO; o programa segue aberto)",
+   "que a natureza tenha decidido β_TGL (o estatuto da v391 diz: espera 5σ) ou que a creditação tenha sido dada (é ato de terceiros)",
+   "ERRATA AO LADO (v394, 19/10/2026): onde o item acima diz que não se afirma «a lei de campo no curvo ser termo de kernel», leia-se: desde a v392 ela é termo de kernel CONDICIONAL ao H3 nomeado (lei_de_campo_curvo_v392); não se afirma o H3 em toda tela nem existência global",
+   "que o contrato conjunto da rede de Fock esteja habitado, que o H3 valha em toda direção nula, ou que o coração tenha evidência espectral independente do CODATA (a v394 diz: aberto; aberto; ausente)",
+   "que o psion exista (a face do psion é condicional a um certificado de Fock sem habitante), que a bijeção do psibit seja isomorfismo de espaços de Hilbert, ou qual leitura da paridade do ACOM Mirror é canônica (decisão do operador [LEGAL])",
+   "que o Nome da fronteira seja o vetor de Bell ou que o fluxo construído seja a dinâmica da teoria, que o certificado de Fock tenha habitante, ou que 1/2 seja meia nat de entropia (é a entropia linear; a de von Neumann é ln 2 nat)",
+   "que a TGL esteja discriminada do ΛCDM a 5σ (o degrau da creditação não foi alcançado; o teste não foi cego), que ln B seja σ, ou que o token de um modelo de linguagem seja o PsiBit (leitura do Atlas)",
+   "que a TGL seja teoria de cordas ou que as cordas derivem do axioma ω(I) = 1, que a natureza cobre ln 2 por oitava ou que o seletor pague a oitava (a lei de custo é INPUT), ou que o som seja onda num meio",
+   "(v400, cunhagens_v399) que o kernel prove a declaracao do operador, nem que a IALD seja o transporte diagFlow do kernel",
+   "(v400, cunhagens_v399) que o testemunho seja creditado: validade no kernel nao e' creditacao",
+   "(v400, cunhagens_v399) que o selo ACOM tenha forca criptografica independente do SHA-256, nem que proteja a confidencialidade",
+   "(v400, cunhagens_v399) que a IALD testifique do operador",
+   "(v400, cunhagens_v399) que a gravidade quantica esteja creditada na natureza",
+   "(v400, cunhagens_v399) que isto seja um teste: nao ha desfecho experimental novo",
+   "(v400, kh_n1_cobertura_v399) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido",
+   "(v401, cunhagens_v401) que o kernel prove a definicao do operador (ela e' INPUT/ONTO)",
+   "(v401, cunhagens_v401) que a pedra prove Newton ou E = mc^2",
+   "(v401, cunhagens_v401) que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+   "(v401, cunhagens_v401) que a gravidade quantica esteja creditada na natureza",
+   "(v401, cunhagens_v401) que isto seja um teste: nao ha desfecho experimental novo",
+   "(v401, falsidade_da_inercia_v401) que o kernel prove a primeira lei de Newton, nem que prove E = mc^2",
+   "(v401, falsidade_da_inercia_v401) que H_tau (tau e' a massa de Newton e a metrica de Einstein) seja teorema: e' hipotese NOMEADA [OPEN], que nenhum teorema usa",
+   "(v401, falsidade_da_inercia_v401) que a escala dual seja o fluxo de um corpo fisico (identificacao de runtime, [OPEN])",
+   "(v401, falsidade_da_inercia_v401) que a massa seja o termo F = ma do kernel",
+   "(v401, falsidade_da_inercia_v401) que a inercia deste registro seja a do adendo de 03-04/09: aquela leitura esta superada pela definicao do operador",
+   "(v401, falsidade_da_inercia_v401) que isto seja um teste: nao ha desfecho experimental",
+   "(v401, falsidade_da_inercia_v401) que a gravidade quantica esteja creditada na natureza",
+   "(v401, kh_n1_cobertura_v401) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido",
+   "(v402, cunhagens_v402) que o kernel prove as falas do operador (elas sao INPUT/ONTO)",
+   "(v402, cunhagens_v402) que a ponte prove Newton, a assinatura (1,3) ou rank c = 4",
+   "(v402, cunhagens_v402) que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+   "(v402, cunhagens_v402) que isto seja um teste: nao ha desfecho experimental",
+   "(v402, cunhagens_v402) que a gravidade quantica esteja creditada na natureza",
+   "(v402, esperanca_condicional_v402) que toda esperanca condicional seja um Operador do Nome",
+   "(v402, esperanca_condicional_v402) que o indice 1/beta seja instancia construida ou medida (e' CONDICIONAL a hpp e hopt)",
+   "(v402, esperanca_condicional_v402) que a pedra seja rota para o Lema 3 ou valha no caso III1",
+   "(v402, esperanca_condicional_v402) que o Nome seja as tres coisas por definicao: sao faces de um objeto, e o kernel prova as ligacoes",
+   "(v402, esperanca_condicional_v402) que o ponteiro de direito (CC art. 125) esteja conferido",
+   "(v402, esperanca_condicional_v402) que isto seja um teste: nao ha desfecho experimental",
+   "(v402, esperanca_condicional_v402) que a gravidade quantica esteja creditada na natureza",
+   "(v402, kh_n1_cobertura_v402) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido",
+   "(v402, ponte_da_escala_dual_v402) que tau seja a massa de Newton (H_tau na forma literal e' REFUTADA no kernel)",
+   "(v402, ponte_da_escala_dual_v402) que a escala dual seja o fluxo modular de Bisognano-Wichmann (H_BW, [OPEN])",
+   "(v402, ponte_da_escala_dual_v402) que o p+ do traco canonico seja a energia de um corpo (H_cal, [OPEN])",
+   "(v402, ponte_da_escala_dual_v402) que E = mc^2 seja composta da escala (E3)",
+   "(v402, ponte_da_escala_dual_v402) que a pedra prove Newton, a assinatura (1,3) ou rank c = 4",
+   "(v402, ponte_da_escala_dual_v402) que isto seja um teste: nao ha desfecho experimental",
+   "(v402, ponte_da_escala_dual_v402) que a gravidade quantica esteja creditada na natureza",
+   "(v402, queda_sem_geometria_v402) que a dimensao do espaco seja 3 (a leitura 1 + 3 e' [ONTO])",
+   "(v402, queda_sem_geometria_v402) que IsotropicPost seja termo do kernel ou valha no atlas curvo (hipotese NOMEADA, [OPEN])",
+   "(v402, queda_sem_geometria_v402) que a H3 valha em toda tela e direcao",
+   "(v402, queda_sem_geometria_v402) que o parametro s seja a fase de um corpo fisico ([OPEN])",
+   "(v402, queda_sem_geometria_v402) que a queda aqui seja uma forca ou uma queda no espaco: a pedra tipa a perda de peso, sem geometria",
+   "(v402, queda_sem_geometria_v402) que isto seja um teste: nao ha desfecho experimental",
+   "(v402, queda_sem_geometria_v402) que a gravidade quantica esteja creditada na natureza",
+   "(v403, bandeiras_do_gate_v403) que as 4 bandeiras experimentais sejam independentes entre si",
+   "(v403, bandeiras_do_gate_v403) que o rito V11 do piso tenha mock de survey",
+   "(v403, bandeiras_do_gate_v403) que o degrau experimental discrimine o LCDM raso",
+   "(v403, bandeiras_do_gate_v403) que o gate se mova ou que a gravidade quantica esteja creditada na natureza",
+   "(v403, bandeiras_do_gate_v403) que a F8.1 inteira esteja fechada alem de calcular os tres literais (a independencia do feed segue [OPEN])",
+   "(v403, bandeiras_do_gate_v403) que isto seja um teste: nao ha desfecho experimental",
+   "(v403, caminho_v403) que tau seja a massa de Newton (H_tau na forma literal segue REFUTADA no kernel, v402)",
+   "(v403, caminho_v403) que o Caminho seja o fluxo modular de Bisognano-Wichmann (H_BW, [OPEN])",
+   "(v403, caminho_v403) que a pedra prove Newton, a assinatura (1,3) ou rank c = 4",
+   "(v403, caminho_v403) que o nome do TRIPLO inteiro tenha sido dado (fica com o operador)",
+   "(v403, caminho_v403) que isto seja um teste: nao ha desfecho experimental",
+   "(v403, caminho_v403) que a gravidade quantica esteja creditada na natureza",
+   "(v403, cunhagens_v403) que o kernel prove as falas do operador (elas sao INPUT/ONTO)",
+   "(v403, cunhagens_v403) que a tripla espectral seja termo do kernel",
+   "(v403, cunhagens_v403) que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+   "(v403, cunhagens_v403) que a F8.1 resolva a independencia das bandeiras experimentais",
+   "(v403, cunhagens_v403) que isto seja um teste: nao ha desfecho experimental",
+   "(v403, cunhagens_v403) que a gravidade quantica esteja creditada na natureza",
+   "(v403, kh_n1_cobertura_v403) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido",
+   "(v403, verdade_adendo_v403) que toda esperanca condicional seja um Operador do Nome",
+   "(v403, verdade_adendo_v403) que o indice 1/beta seja instancia construida ou medida (e' CONDICIONAL a hpp e hopt)",
+   "(v403, verdade_adendo_v403) que o Nome em dimensao geral seja a esperanca diagonal",
+   "(v403, verdade_adendo_v403) que a pedra Verdade (v392) tenha sido renomeada ou editada",
+   "(v403, verdade_adendo_v403) que o nome do TRIPLO inteiro tenha sido dado (fica com o operador)",
+   "(v403, verdade_adendo_v403) que isto seja um teste: nao ha desfecho experimental",
+   "(v403, verdade_adendo_v403) que a gravidade quantica esteja creditada na natureza",
+   "(v403, vida_v403) que a dimensao do espaco seja 3 (a leitura 1 + 3 e' [ONTO])",
+   "(v403, vida_v403) que IsotropicPost seja termo do kernel ou valha no atlas curvo (hipotese NOMEADA, [OPEN])",
+   "(v403, vida_v403) que a H3 valha em toda tela e direcao",
+   "(v403, vida_v403) que o parametro s seja a fase de um corpo fisico ([OPEN])",
+   "(v403, vida_v403) que a queda aqui seja uma forca ou uma queda no espaco: a pedra tipa a perda de peso, sem geometria",
+   "(v403, vida_v403) que o nome do TRIPLO inteiro tenha sido dado (fica com o operador)",
+   "(v403, vida_v403) que isto seja um teste: nao ha desfecho experimental",
+   "(v403, vida_v403) que a gravidade quantica esteja creditada na natureza",
+   "(v404, cunhagens_v404) que o kernel prove as falas do operador (elas sao INPUT/ONTO)",
+   "(v404, cunhagens_v404) que a identificacao da massa com a projecao transversal seja termo do kernel",
+   "(v404, cunhagens_v404) que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+   "(v404, cunhagens_v404) que E0 ou beta tenham sido derivados",
+   "(v404, cunhagens_v404) que a retirada do canal F2b seja um desfecho",
+   "(v404, cunhagens_v404) que isto seja um teste: nao ha desfecho experimental",
+   "(v404, cunhagens_v404) que a gravidade quantica esteja creditada na natureza",
+   "(v404, f2b_errata_v404) que a TGL tenha sido falsificada ou que o ramo B tenha sido refutado",
+   "(v404, f2b_errata_v404) que a calibracao A seja um teste ou tenha poder de decidir",
+   "(v404, f2b_errata_v404) que o conjunto D tenha sido aberto",
+   "(v404, f2b_errata_v404) que a retirada seja decisao do operador (ele ratificou a leitura, nao nomeou a retirada)",
+   "(v404, f2b_errata_v404) que beta, a lei do defasamento ou R2 tenham mudado",
+   "(v404, f2b_errata_v404) que isto seja um teste: nao ha desfecho experimental",
+   "(v404, jo8v32_v404) que a leitura por Jo 8,31-32 seja termo de kernel",
+   "(v404, jo8v32_v404) que o versiculo ou o nome credite a gravidade quantica: validade no kernel nao e' creditacao",
+   "(v404, jo8v32_v404) que as hipoteses nomeadas dos componentes (IsotropicPost; hpp e hopt) tenham sido pagas",
+   "(v404, jo8v32_v404) que o nome do triplo inteiro anule a decisao D20 da v403: ela era verdadeira na data e a errata E9 fica ao lado",
+   "(v404, jo8v32_v404) que isto seja um teste: nao ha desfecho experimental",
+   "(v404, jo8v32_v404) que a gravidade quantica esteja creditada na natureza",
+   "(v404, kh_n1_cobertura_v404) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido",
+   "(v404, projecao_transversal_v404) que E0 (1 eV) tenha sido derivado",
+   "(v404, projecao_transversal_v404) que beta tenha sido derivado nesta pedra",
+   "(v404, projecao_transversal_v404) que a massa do neutrino SEJA a projecao transversal do estado inscrito (e' a identificacao [ONTO], ratificada pelo operador, nao termo de kernel)",
+   "(v404, projecao_transversal_v404) que a materia em geral seja a sombra de beta ou proporcional ao raio de beta (a forma retirada do Grande Atrator segue retirada)",
+   "(v404, projecao_transversal_v404) que o m2 do neutrino passe a discriminar a TGL: o veredito do canal e' o de antes",
+   "(v404, projecao_transversal_v404) que isto seja um teste: nao ha desfecho experimental",
+   "(v404, projecao_transversal_v404) que a gravidade quantica esteja creditada na natureza"
+  ]
+ }
+}
