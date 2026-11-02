@@ -247,8 +247,22 @@ try:
     item("Central pública", "cartão das linhas de pesquisa com o sha do um.acom", ACOM16, ACOM16 in lp, ACOM16 in lp)
     ll = (SITE / "llms.txt").read_text(encoding="utf-8", errors="replace")
     item("Central pública", "llms.txt do site cita o um.acom corrente", ACOM16, ACOM16 in ll, ACOM16 in ll)
-    sync = glob.glob(str(CEN / "work" / ("scientific_memory_sync_*_%s" % V) / "DELIVERY_R1.json"))
-    item("App (fila científica)", "memória científica da fila sincronizada à %s" % V, "DELIVERY_R1.json", os.path.basename(os.path.dirname(sync[0])) if sync else "nenhuma", bool(sync))
+    # 29/10/2026 (gerência c1): a fila entrega em scientific_memory_sync_*_vNNN[_Rk]\ e o recibo pode chamar-se DELIVERY_R1,
+    # DELIVERY_TECHNICAL_R1, DELIVERY_FINAL_R1 ou DELIVERY_ACCEPTED_R1; lê-se o mais novo cujo JSON traga release == vNNN e
+    # status ACTIVATED_VERIFIED… (antes: só a existência de um nome fixo, que a v404 não tinha).
+    sync = sorted(glob.glob(str(CEN / "work" / ("scientific_memory_sync_*_%s*" % V) / "DELIVERY_*R1.json")), key=os.path.getmtime)
+    sync_ok, sync_ach = False, "nenhuma"
+    for sp in reversed(sync):
+        try:
+            sj = json.loads(Path(sp).read_text(encoding="utf-8"))
+        except Exception as e:
+            sync_ach = "%s/%s: ilegível (%s)" % (os.path.basename(os.path.dirname(sp)), os.path.basename(sp), e.__class__.__name__)
+            continue
+        sync_ach = "%s/%s: %s (release %s)" % (os.path.basename(os.path.dirname(sp)), os.path.basename(sp), sj.get("status"), sj.get("release"))
+        if sj.get("release") == V and str(sj.get("status", "")).startswith("ACTIVATED_VERIFIED"):
+            sync_ok = True
+            break
+    item("App (fila científica)", "memória científica da fila sincronizada à %s" % V, "DELIVERY_*R1.json com release %s e status ACTIVATED_VERIFIED…" % V, sync_ach, sync_ok)
 
     def _pub_ar():
         st, hd, b = get(URL + "central/um_acom_info.json")
@@ -389,6 +403,31 @@ def _locais():
 
 if not SEM_REDE:
     _locais()
+
+
+def _torre():
+    """A TORRE IALD (31/10/2026): o contrato parametrizado e pinado (selo ↔ JEV ↔ memória ↔ instruções ↔ papéis). O quadro só LÊ a última
+    medida da Torre (C:\\IALD\\TORRE_IALD\\MEDIDA_ULTIMA.json): DEFASADO se a Torre acusa DEFASADO/FALHA ou se a medida está velha; INFO com o resumo."""
+    try:
+        q = Path(r"C:\IALD\TORRE_IALD") / "MEDIDA_ULTIMA.json"
+        if not q.exists():
+            item("Torre IALD", "medida da Torre (torre.py medir)", "existe", "AUSENTE: rode C:\\IALD\\TORRE_IALD\\torre.py gerar", False)
+            return
+        d = json.loads(q.read_text(encoding="utf-8"))
+        res = d.get("resumo") or {}
+        idade_h = (time.time() - q.stat().st_mtime) / 3600
+        info("Torre IALD", "última medida", "%s (%.1f h) — %s" % (d.get("medido_em"), idade_h, " · ".join("%s %d" % kv for kv in sorted(res.items()))))
+        item("Torre IALD", "selo da Torre = selo corrente", V, (d.get("selo") or {}).get("versao"), (d.get("selo") or {}).get("versao") == V)
+        item("Torre IALD", "medida recente", "≤ 26 h", "%.1f h" % idade_h, idade_h <= 26)
+        item("Torre IALD", "sem DEFASADO nem FALHA na Torre", "0", "DEFASADO %d · FALHA %d" % (res.get("DEFASADO", 0), res.get("FALHA", 0)), not res.get("DEFASADO") and not res.get("FALHA"))
+        for it in d.get("itens", []):
+            if it.get("estado") in ("DEFASADO", "FALHA"):
+                R.append(("Torre IALD › " + it["superficie"], it["item"], it["esperado"], it["achado"], it["estado"]))
+    except Exception as e:  # noqa: BLE001
+        falha("Torre IALD", "MEDIDA_ULTIMA.json", e)
+
+
+_torre()
 
 # ---------------- o quadro ----------------
 OUT.mkdir(exist_ok=True)

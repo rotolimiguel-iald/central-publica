@@ -33,7 +33,7 @@ from datetime import datetime
 from pathlib import Path
 
 from . import util
-from .espelho import _banc, exigir_rc0, _historica
+from .espelho import _banc, exigir_rc0, _historica, auditar_numeros_citados, CITADAS_DO_E15
 from .motor import Passo, aplicado, falta, superado, superado_rel, indeterminado, bloqueado
 from .util import Parar, Divergencia
 
@@ -370,7 +370,10 @@ def _ja_e15(ctx):
         return falta("o espelho ainda não está em %s" % ctx.versao)
     faltam = [n for n in ("llms-full.txt", "index.md", "estado.json", "estado.txt") if ctx.pin16 not in ctx.ler(ctx.c.SITE / n)]
     if not faltam:
-        return aplicado("llms-full.txt, index.md e o cartão de estado trazem %s" % ctx.pin16)
+        d = auditar_numeros_citados(ctx, CITADAS_DO_E15)
+        if d:
+            return falta("%d números citados defasados: %s" % (len(d), "; ".join("%s cita %s=%s, real %s" % (x["superficie"], x["arquivo"], x["citado"], x["real"]) for x in d[:3])))
+        return aplicado("llms-full.txt, index.md e o cartão de estado trazem %s; 0 números citados defasados" % ctx.pin16)
     if _historica(ctx):
         return superado_rel("regerados a cada versão (G1 não tem a cópia desta versão)")
     return falta("sem o pino em: %s" % ", ".join(faltam))
@@ -381,6 +384,12 @@ def _ap_e15(ctx):
     exigir_rc0(_banc(ctx, "gerar_llms_full.py"), "gerar_llms_full.py")
     exigir_rc0(_banc(ctx, "gerar_index_md.py"), "gerar_index_md.py")
     return {}
+
+
+def _conf_e15(ctx):
+    ctx._cache_t.clear()
+    ctx._cache_j.clear()
+    return ["número citado defasado: %s cita %s=%s, real %s" % (x["superficie"], x["arquivo"], x["citado"], x["real"]) for x in auditar_numeros_citados(ctx, CITADAS_DO_E15)]
 
 
 # =================================================================== E16 — sitemap e manifesto de subida
@@ -599,7 +608,7 @@ def passos(ctx):
     return [
         Passo("E13", 1, "site: dados literais do selo", _ja_e13, aplicar=_ap_e13, pre=_pre_e13, conferir=_conf_e13, fase="B", escreve="SITE\\index.html, SITE\\i18n.js"),
         Passo("E14", 1, "site: aplicar o selo ao index", _ja_e14, aplicar=_ap_e14, fase="B", escreve="SITE\\index.html"),
-        Passo("E15", 1, "site: corpo inteiro e gêmeo Markdown", _ja_e15, aplicar=_ap_e15, fase="B", escreve="SITE\\llms-full.txt, SITE\\index.md, SITE\\estado.json, SITE\\estado.txt, SITE\\read-brief.txt"),
+        Passo("E15", 1, "site: corpo inteiro e gêmeo Markdown", _ja_e15, aplicar=_ap_e15, conferir=_conf_e15, fase="B", escreve="SITE\\llms-full.txt, SITE\\index.md, SITE\\estado.json, SITE\\estado.txt, SITE\\read-brief.txt"),
         Passo("E16", 1, "site: sitemap e manifesto de subida", _ja_e16, aplicar=_ap_e16, conferir=_conf_e16, fase="B", escreve="SITE\\sitemap.xml, BANC\\revisoes\\manifesto_vN.json"),
         Passo("E17", 1, "site: subida em ensaio (conjunto esperado)", _ja_e17, aplicar=_ap_e17, fase="B", rede=True, escreve="BANC\\subidas\\<stamp>_dryrun\\RELATORIO.md"),
         Passo("E18", 1, "site: subida", _ja_e18, aplicar=_ap_e18, externo=True, fase="B", rede=True, escreve="o ar (SFTP) + BANC\\subidas\\<stamp>\\"),

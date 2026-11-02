@@ -18,6 +18,9 @@ from .util import Parar, FalhaLeitura, Divergencia
 
 SENSIVEIS = re.compile(r"\.bak|\.tmp|\.env|auth\.json|\.pem$|\.key$|iald_stack_v7|iald_psion_state", re.I)
 CANDIDATAS_CITADAS = ("TB:read-brief.md", "SITE:read-brief.md", "SITE:llms.txt", "SITE:llms-full.txt", "SITE:index.md", "TB:llms.txt")
+# 02/11/2026 (lição 24 da v402, que parou de novo a v405): llms-full e index.md só o E15 escreve; cada passo audita o que ele mesmo escreve, e `custodiar auditar` audita todas
+CITADAS_DO_E15 = ("SITE:llms-full.txt", "SITE:index.md")
+CITADAS_DO_E08 = tuple(x for x in CANDIDATAS_CITADAS if x not in CITADAS_DO_E15)
 
 
 # =================================================================== utilidades da perna
@@ -642,7 +645,7 @@ def _rodar_git(ctx, *args):
 
 
 # =================================================================== E08 — o laço portas ⇄ README ⇄ geradores do site, até o PONTO FIXO
-def auditar_numeros_citados(ctx):
+def auditar_numeros_citados(ctx, superficies=CANDIDATAS_CITADAS):
     """L04: para cada «arquivo (N bytes)» nas superfícies publicadas, N == tamanho real. Devolve a lista de divergências."""
     c = ctx.c
     base = {"TB": c.TB, "SITE": c.SITE}
@@ -650,7 +653,7 @@ def auditar_numeros_citados(ctx):
     # «arquivo.ext (N bytes)» (read-brief, llms-full) E «[título](url/arquivo.ext) (N bytes; espelho: …)» (llms.txt, index.md): o `)` que fecha o link vem entre o nome e o «(N bytes».
     # Antes o regex exigia «bytes)» logo depois do nome e não via NENHUMA das 14 citações do llms.txt nem das 8 do index.md (o L04 da v398 estava justamente aí).
     rx = re.compile(r"([A-Za-z0-9_./%-]+\.[A-Za-z0-9]{1,5})\)?\s*\(([0-9][0-9.,]*)\s*bytes\b")
-    for ref in CANDIDATAS_CITADAS:
+    for ref in superficies:
         raiz, nome = ref.split(":", 1)
         p = base[raiz] / nome
         if not p.is_file():
@@ -684,7 +687,7 @@ def _ja_e08(ctx):
         return falta("PORTA/TUNEL/README não trazem %s" % ctx.pin16)
     if ("| version \u00b7 vers\u00e3o | **%s** (sealed" % ctx.versao) not in ctx.ler(ctx.c.TB / "README.md"):   # 25/10/2026: o pin16 do bloco das portas não prova a frente
         return falta("a frente do README não foi regerada para %s (linha «version · versão» da tabela ausente)" % ctx.versao)
-    d = auditar_numeros_citados(ctx)
+    d = auditar_numeros_citados(ctx, CITADAS_DO_E08)
     l3 = rotulo_do_teste_no_readme(ctx)
     if d or l3:
         det = []
@@ -728,6 +731,7 @@ def _ap_e08(ctx):
             exigir_rc0(_banc(ctx, g), g)
         exigir_rc0(_rodar_git(ctx, "add", "-A"), "git add -A")
         exigir_rc0(_tb(ctx, "gerar_portas.py"), "gerar_portas.py (hash final)")
+        exigir_rc0(_rodar_git(ctx, "add", "-A"), "git add -A")      # 02/11/2026 (lição 27 da v402): o gerar_portas regrava o carimbo gerado_utc; sem isto a pré-condição do E10 para
         sig = _assinatura(ctx)
         passadas.append(sig)
         if sig == sig_ant:
@@ -740,7 +744,7 @@ def _conf_e08(ctx):
     ctx._cache_t.clear()
     ctx._cache_j.clear()
     f = []
-    d = auditar_numeros_citados(ctx)
+    d = auditar_numeros_citados(ctx, CITADAS_DO_E08)
     f += ["número citado defasado: %s cita %s=%s, real %s" % (x["superficie"], x["arquivo"], x["citado"], x["real"]) for x in d]
     f += rotulo_do_teste_no_readme(ctx)
     if len(ctx.ler(ctx.c.TB / "README.md").encode("utf-8")) > 40960:

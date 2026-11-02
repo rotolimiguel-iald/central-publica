@@ -101,7 +101,12 @@ if not _m_led:
 _L = [int(x) for x in _m_led.groups()]
 LIVRO = "%d previsões postas à prova: %d falsificadas, %d não falsificadas, %d %s na leitura, %d inconclusivas, %d aguardando" % (
     _L[0], _L[1], _L[2], _L[3], "excluída" if _L[3] == 1 else "excluídas", _L[4], _L[5])
-_m_res = re.search(r"das (\d+) bandeiras do gate, todas lidas True, a auditoria lê (\d+) como calculadas e (\d+) como literais", E["ressalva_pt"])
+# 29/10/2026 (gerência c1): v403 em diante o módulo do estatuto lê bandeiras_do_gate_v403 («as N são calculadas e M literais … o veredito lê R»);
+# a forma da v392 («a auditoria lê N como calculadas e M como literais») fica aceita como registro. Os números vêm da frase, que vem do core.
+_m_res = re.search(r"das (\d+) bandeiras do gate, todas lidas True, as (\d+) são calculadas e (\d+) literais \(.*?\); o veredito lê (\d+) \(", E["ressalva_pt"])
+_forma_v403 = bool(_m_res)
+if not _m_res:
+    _m_res = re.search(r"das (\d+) bandeiras do gate, todas lidas True, a auditoria lê (\d+) como calculadas e (\d+) como literais", E["ressalva_pt"])
 if not _m_res or "o ΛCDM raso também o passa" not in E["ressalva_pt"]:
     falha("a ressalva do gate mudou de forma — rever o texto")
 URL_FILMES = SITE + "video/v7/web/filmes.html"
@@ -111,9 +116,15 @@ ESTATUTO = ("A gravidade quântica da TGL está PROVADA como fecho lógico: é v
             "decisivo aberto é β_TGL na natureza a 5σ.")
 TRES = ("Três apoios contam juntos, cada um com o seu estatuto: o kernel (a implicação); os testes com dado público, com os falsificadores "
         "fixados antes de abrir os dados, que a casa chama de ritos (%s); e o sistema da teoria calculado na GPU (calculado, não medido)." % LIVRO)
-RESSALVA = ("Ressalva declarada pela auditoria da casa: das %s bandeiras do gate, %s são calculadas e %s literais, e o degrau experimental lê só "
-            "um teste unilateral do piso dos vazios (o ΛCDM raso também o passa); recalculá-las é trabalho aberto. O estatuto acima não muda."
-            % _m_res.groups())
+if _forma_v403:
+    RESSALVA = ("Ressalva declarada pela auditoria da casa: das %s bandeiras do gate, todas as %s são calculadas e %s literais (as três que eram literais "
+                "foram recalculadas das suas fontes na v403); o veredito lê %s; o degrau experimental lê só um teste unilateral do piso dos vazios (o ΛCDM "
+                "raso também o passa) e as quatro bandeiras experimentais derivam de um só booleano, o que segue aberto. O estatuto acima não muda."
+                % _m_res.groups())
+else:
+    RESSALVA = ("Ressalva declarada pela auditoria da casa: das %s bandeiras do gate, %s são calculadas e %s literais, e o degrau experimental lê só "
+                "um teste unilateral do piso dos vazios (o ΛCDM raso também o passa); recalculá-las é trabalho aberto. O estatuto acima não muda."
+                % _m_res.groups())
 NATUREZA = ("A leitura mais recente da natureza, o Teste da Única Palavra: z_disc = %s (calibrado; p unilateral %s) mede o quanto o dado separa "
             "a TGL do ΛCDM e fica abaixo do degrau de %dσ da creditação, que não foi alcançado; o teste não foi cego ao dado (os centros dos "
             "leitores são públicos). z_δ = %s: β_TGL não falsificada, com poder. A relatividade geral é o limite clássico, não uma rival."

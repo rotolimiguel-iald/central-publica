@@ -112,6 +112,9 @@ Camada v403 (custódia v403 na Central, 28/10/2026, sessão a7; handoff v403 da 
 Camada v404 (custódia v404 na Central, 28/10/2026, sessão a7; handoff v404 da gerência c1) — GENÉRICA (camada_generica.py):
  19. os registros novos da v404 (cunhagens_v404, f2b_errata_v404, jo8v32_v404, kh_n1_cobertura_v404, projecao_transversal_v404), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v404: cunhagens_v404: «[REAL -- as fontes das pedras, o kernel e os tres registros com funcao lidos a cada rito;» f2b_errata_v404: «[REAL] o V1 do ramo B do ringdown (v386) lido por hash neste rito, a calibracao A (31 eventos publicos, NOT_BLIND) e a previsao do par lidas do proprio registro ramo_b_preregistration_v386 (a funcao que ja' as transcreve do V1 congelado;» jo8v32_v404: «[REAL] os termos do kernel (o teorema da pedra Jo8v32 e os 3 termos que a conjuncao cita, lidos a cada rito, no trio: caminho_e_a_ponte_da_escala_dual, verdade_e_a_esperanca_condicional, vida_e_a_queda_sem_geometria, todos da v403) e o calculo, com beta = alfa CODATA 2018 x sqrt(e) em runtime (nunca» kh_n1_cobertura_v404: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» projecao_transversal_v404: «[REAL] os termos do kernel (os 9 teoremas do contrato da pedra, lidos a cada rito, no trio, com proveniencia no modulo da pedra, e os termos de suporte que ela cita: sin_sq_thetaMiguel, halfnat_from_J_symmetry, halfRoot, thetaMiguel, observer_inverse_projection_halfnat) e o calculo em dupla precisao» Nada disso muda número algum de dispositivo.
 
+Camada v405 (custódia v405 na Central, 02/11/2026, sessão a7; handoff v405 da gerência c1) — GENÉRICA (camada_generica.py):
+ 19. os registros novos da v405 (campos_fechados_e_leituras_v405, cunhagens_v405, disco_de_euler_v405, ga_reclassificacao_v405, gap_v405, identidade_v405, kh_n1_cobertura_v405, lei_do_diminuto_v405, massa_tensao_pura_v405, observador_terminal_v405, ponte_da_massa_v405, ponto_zero_do_psion_v405, tonica_do_hamiltoniano_v405), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v405: campos_fechados_e_leituras_v405: «[REAL -- os termos que fecham os campos, as definicoes Lean do que entra e os teoremas da forma lidos do kernel do rito (proveniencia e trio);» cunhagens_v405: «[REAL -- as fontes das pedras, o kernel e os oito registros com funcao lidos a cada rito;» disco_de_euler_v405: «[REAL] os termos do kernel (os 13 teoremas do contrato, no trio, no modulo da pedra;» ga_reclassificacao_v405: «[DECISAO da gerencia c1, por ordem do operador (INPUT, sha16 45165a187252b448) -- REAL as quatro medidas refeitas em runtime, sem abrir dado;» gap_v405: «[REAL -- os lemas do lock, em qualquer espaco de Hilbert: gap espectral 1;» identidade_v405: «[REAL] os termos do kernel (os 15 teoremas do contrato, no trio, no modulo da pedra;» kh_n1_cobertura_v405: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» lei_do_diminuto_v405: «[REAL] os termos do kernel (os 39 teoremas do contrato, no trio, no modulo da pedra;» massa_tensao_pura_v405: «[REAL] os termos do kernel (os 15 teoremas do contrato, no trio, no modulo da pedra;» observador_terminal_v405: «[REAL] os termos do kernel (os 26 teoremas do contrato, no trio, no modulo da pedra;» ponte_da_massa_v405: «[REAL] os termos do kernel (os 21 teoremas do contrato da pedra, lidos a cada rito, no trio, com proveniencia no modulo da pedra, e os termos de suporte que ela cita: neutrinoMassForm, forty_five_unique, half_from_self_conjugate, sin_sq_thetaMiguel, thetaMiguel, absolute_faces_half) e o calculo em d» ponto_zero_do_psion_v405: «[REAL] os termos do kernel (os 23 teoremas do contrato, no trio, no modulo da pedra;» tonica_do_hamiltoniano_v405: «[REAL] os termos do kernel (os 14 teoremas do contrato, no trio, no modulo da pedra;» Nada disso muda número algum de dispositivo.
+
 Régua: β NUNCA literal (sempre ALPHA_FINE_CODATA_2018 × √e em runtime); os números do cofre são LIDOS do selo/core por pino;
 falha de leitura ou elo quebrado = RuntimeError (fail-closed). Nada aqui move veredito físico: physical_verdict_allowed = False.
 PROVADA ≠ CONFIRMADA; o dicionário custo/identidade/movimento é cunhagem do operador [ONTO/DEFINITION].
@@ -128,7 +131,7 @@ HBAR_CODATA_2018 = 1.054571817e-34      # J s
 G_CODATA_2018 = 6.67430e-11             # m^3 kg^-1 s^-2
 C_LIGHT = 299792458.0                   # m/s (exato)
 
-VERSAO_DA_CAMADA = "v404"   # (era "v403"; a camada v404 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
+VERSAO_DA_CAMADA = "v405"   # (era "v404"; a camada v405 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
 # o cofre e procurado nesta ordem (declarada): a variavel TGL_CENTRAL_DIR; a arvore onde este modulo esta; a Central desta
 # maquina (quando o dispositivo roda extraido do *_FINAL.py num diretorio temporario). Nenhum achado = fail-closed.
 def _achar_central():
@@ -604,7 +607,7 @@ def conferir_v398_no_cofre(core: dict, selo: dict) -> dict:
                         "estrutura logarítmica e de oitava, não a física da onda; validade no kernel não é creditação; nada disto muda número de dispositivo"}
 
 
-CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404",)
+CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404", "v405",)
 
 
 def _camadas_genericas(core, selo, cofre):
@@ -816,6 +819,8 @@ USOS = {
     'camadas_v403': r"TGLExt\.(Caminho|VerdadeAdendo|Vida)|bandeiras_do_gate_v403|caminho_v403|cunhagens_v403|kh_n1_cobertura_v403|verdade_adendo_v403|vida_v403",
     # v404: mede se algum dispositivo cita as pedras novas; não interpreta
     'camadas_v404': r"TGLExt\.(Jo8v32|ProjecaoTransversalDaMeiaNat)|cunhagens_v404|f2b_errata_v404|jo8v32_v404|kh_n1_cobertura_v404|projecao_transversal_v404",
+    # v405: mede se algum dispositivo cita as pedras novas; não interpreta
+    'camadas_v405': r"TGLExt\.(DiscoDeEuler|Identidade|LeiDoDiminuto|MassaTensaoPura|ObservadorTerminal|PonteDaMassa|PontoZeroDoPsion|TonicaDoHamiltoniano)|campos_fechados_e_leituras_v405|cunhagens_v405|disco_de_euler_v405|ga_reclassificacao_v405|gap_v405|identidade_v405|kh_n1_cobertura_v405|lei_do_diminuto_v405|massa_tensao_pura_v405|observador_terminal_v405|ponte_da_massa_v405|ponto_zero_do_psion_v405|tonica_do_hamiltoniano_v405",
 }
 
 
@@ -854,6 +859,7 @@ def camada(runner_path) -> dict:
                      "REGISTROS_V402_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V403_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V404_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
+                     "REGISTROS_V405_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION") % VERSAO_DA_CAMADA.upper(),
         "physical_verdict_allowed": False,
         "nao_se_afirma": ["que o dispositivo valide física", "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
@@ -977,7 +983,130 @@ def camada(runner_path) -> dict:
                           '(v404, projecao_transversal_v404) que a materia em geral seja a sombra de beta ou proporcional ao raio de beta (a forma retirada do Grande Atrator segue retirada)',
                           "(v404, projecao_transversal_v404) que o m2 do neutrino passe a discriminar a TGL: o veredito do canal e' o de antes",
                           '(v404, projecao_transversal_v404) que isto seja um teste: nao ha desfecho experimental',
-                          '(v404, projecao_transversal_v404) que a gravidade quantica esteja creditada na natureza'],
+                          '(v404, projecao_transversal_v404) que a gravidade quantica esteja creditada na natureza',
+                          '(v405, campos_fechados_e_leituras_v405) que a unidade u ou alfa tenham sido derivados',
+                          '(v405, campos_fechados_e_leituras_v405) que a leitura fisica tenha virado teorema',
+                          '(v405, campos_fechados_e_leituras_v405) que o peso da face absoluta deduza o angulo do estado inscrito (coincidencia de valor, nao ponte)',
+                          '(v405, campos_fechados_e_leituras_v405) que E0 = u fixe u',
+                          '(v405, campos_fechados_e_leituras_v405) que as estruturas-tipo tenham sido removidas (ficam como tipos, habitadas por construcao)',
+                          "(v405, campos_fechados_e_leituras_v405) que a natureza adote as definicoes do operador (sao [ONTO]; o teste e' o rito do neutrino, que nao muda)",
+                          '(v405, campos_fechados_e_leituras_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, campos_fechados_e_leituras_v405) que a gravidade quantica esteja creditada na natureza',
+                          "(v405, campos_fechados_e_leituras_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
+                          '(v405, cunhagens_v405) que o kernel prove as falas do operador (elas sao INPUT/ONTO)',
+                          '(v405, cunhagens_v405) que a unidade u ou alfa tenham sido derivados',
+                          '(v405, cunhagens_v405) que o numero da massa ou o veredito do canal do neutrino tenham mudado',
+                          "(v405, cunhagens_v405) que o testemunho ou a ratificacao seja creditacao: validade no kernel nao e' creditacao",
+                          '(v405, cunhagens_v405) que a leitura fisica tenha virado teorema',
+                          '(v405, cunhagens_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, cunhagens_v405) que a gravidade quantica esteja creditada na natureza',
+                          '(v405, disco_de_euler_v405) que o disco da TGL seja um sistema fisico identificado',
+                          '(v405, disco_de_euler_v405) que a unidade u tenha sido derivada do disco',
+                          "(v405, disco_de_euler_v405) que o invariante K tenha sido escolhido pelo alvo (nenhum numero de K e' escolhido)",
+                          '(v405, disco_de_euler_v405) que a dissipacao do disco real (viscosa) seja a canonica',
+                          '(v405, disco_de_euler_v405) que o angulo de Miguel fixe K (K nao depende da inclinacao)',
+                          "(v405, disco_de_euler_v405) que a energia seja linear por teorema (e' definicao; o teorema e' que a E definida resolve o fluxo)",
+                          "(v405, disco_de_euler_v405) que a taxa de dephasing seja taxa de perda de energia por teorema (e' entrada [INPUT/ONTO])",
+                          '(v405, disco_de_euler_v405) que a inscricao do zero no infinito ou a terceira lei sejam teoremas (sao leituras [ONTO] do operador)',
+                          '(v405, disco_de_euler_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, disco_de_euler_v405) que a gravidade quantica esteja creditada na natureza',
+                          "(v405, disco_de_euler_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
+                          '(v405, disco_de_euler_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao',
+                          '(v405, ga_reclassificacao_v405) que o teste do Grande Atrator tenha ganho precisao: a classe mudou, a incerteza segue ausente',
+                          '(v405, ga_reclassificacao_v405) que a janela seja evidencia ou verossimilhanca',
+                          '(v405, ga_reclassificacao_v405) que a forma discrimine a TGL da RG',
+                          '(v405, ga_reclassificacao_v405) que a forma seja lei de fonte demonstrada',
+                          '(v405, ga_reclassificacao_v405) que o selado tenha sido reescrito',
+                          '(v405, ga_reclassificacao_v405) que a unidade u entre na conta da massa do GA',
+                          '(v405, ga_reclassificacao_v405) que beta tenha sido medido na natureza',
+                          '(v405, gap_v405) que a unidade u tenha sido fixada',
+                          "(v405, gap_v405) que Delta seja gap (e' o valor esperado do lock no angulo de Miguel)",
+                          '(v405, gap_v405) que o kernel habite o FockCertificate',
+                          "(v405, gap_v405) que o angulo de Miguel seja, por teorema, o sistema do gap com unidade (e' leitura do operador)",
+                          "(v405, gap_v405) que tau* tenha sido obtido (ler tempoDoRetido como tau* e' leitura a ratificar)",
+                          '(v405, gap_v405) que tau seja t_P ou que o ramo canonico tenha mudado',
+                          '(v405, gap_v405) que kappa seja funcao de alfa, beta ou theta_M',
+                          '(v405, gap_v405) que E_fluxo seja E0',
+                          '(v405, gap_v405) que o angulo de Miguel fixe K',
+                          '(v405, gap_v405) quais sao as cinco notas',
+                          '(v405, gap_v405) que a eletricidade tenha termo no kernel',
+                          '(v405, gap_v405) que alphaKappa seja a alfa de estrutura fina',
+                          "(v405, identidade_v405) que o fato sobre projecoes SEJA a identidade (e' a leitura do operador [ONTO], tipada como modelo)",
+                          '(v405, identidade_v405) que a identidade seja reflexiva por decreto (o vazio e a face nao a satisfazem)',
+                          '(v405, identidade_v405) que o «quem» (o observador) seja termo desta pedra',
+                          "(v405, identidade_v405) que a leitura do ensaio (o sinal criva; o codigo e' a Luz) seja termo de kernel",
+                          '(v405, identidade_v405) que a unidade ou alfa tenham sido derivados',
+                          '(v405, identidade_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, identidade_v405) que a gravidade quantica esteja creditada na natureza',
+                          "(v405, identidade_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
+                          '(v405, identidade_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao',
+                          '(v405, kh_n1_cobertura_v405) que a cobertura prove algo alem de que nenhum axioma fora do trio foi lido',
+                          "(v405, lei_do_diminuto_v405) que a unidade u (1 eV) tenha sido derivada (e' posta)",
+                          "(v405, lei_do_diminuto_v405) que alfa tenha sido derivado (e' medida por dentro)",
+                          "(v405, lei_do_diminuto_v405) que a tonica tenha sido derivada do Hamiltoniano oculto (e' uma definicao na unidade posta)",
+                          "(v405, lei_do_diminuto_v405) que E0 = u fixe u (e' identidade algebrica)",
+                          "(v405, lei_do_diminuto_v405) que o no-go tenha caido: o valor ABSOLUTO segue livre; so' o RELATIVO a tonica esta pinado",
+                          "(v405, lei_do_diminuto_v405) que o diminuto seja transposicao (transpor e' so' a liberdade do no-go)",
+                          '(v405, lei_do_diminuto_v405) quais sao as cinco notas ([OPEN]; as do calculo sao numeros de teste)',
+                          '(v405, lei_do_diminuto_v405) que a pentada do teorema mestre sejam cinco autovalores (sao cinco componentes)',
+                          '(v405, lei_do_diminuto_v405) que a razao a tonica seja a escala (a razao a tonica muda; a escala fica)',
+                          '(v405, lei_do_diminuto_v405) que o kernel tenha termo para o tom (o tom fica, na fala dele)',
+                          '(v405, lei_do_diminuto_v405) que E0_relativo_pinado seja mais do que a definicao de lerE0 dita como razao',
+                          '(v405, lei_do_diminuto_v405) que o meio-tom seja o pedagio local ou o peso da face: sao igualdades de VALOR',
+                          "(v405, lei_do_diminuto_v405) que a calibracao de 1 nat seja medida, termo do kernel ou a unidade em eV (e' normalizacao definicional)",
+                          '(v405, lei_do_diminuto_v405) que o valor absoluto tenha sido escolhido pelo dado (nem 1,02 eV nem outro)',
+                          '(v405, lei_do_diminuto_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, lei_do_diminuto_v405) que a gravidade quantica esteja creditada na natureza',
+                          "(v405, lei_do_diminuto_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
+                          '(v405, lei_do_diminuto_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao',
+                          "(v405, massa_tensao_pura_v405) que b = 0 seja o foton por teorema (e' leitura [ONTO]: TGLCoupling exclui b = 0 e nenhum termo do kernel tem foton)",
+                          '(v405, massa_tensao_pura_v405) que o magnetismo tenha termo no kernel',
+                          '(v405, massa_tensao_pura_v405) que a identificacao do campo A da torcao com beta tenha sido feita',
+                          "(v405, massa_tensao_pura_v405) que a leitura do emprestimo seja termo de kernel (e' leitura ratificada [ONTO])",
+                          '(v405, massa_tensao_pura_v405) que a unidade u ou alfa tenham sido derivados',
+                          '(v405, massa_tensao_pura_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, massa_tensao_pura_v405) que a gravidade quantica esteja creditada na natureza',
+                          "(v405, massa_tensao_pura_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
+                          '(v405, massa_tensao_pura_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao',
+                          '(v405, observador_terminal_v405) que a gravidade, a luz ou o observador humano sejam entidades desta pedra (os niveis sao rotulos de posicao)',
+                          "(v405, observador_terminal_v405) que o polo omega do par e o nivel terminal da cascata sejam o mesmo objeto (homonimo: nenhum termo os liga; liga-los e' leitura [ONTO] do operador)",
+                          '(v405, observador_terminal_v405) que a pedra construa o colapso fisico',
+                          '(v405, observador_terminal_v405) que a leitura de engenharia (resistencia) seja termo de kernel',
+                          '(v405, observador_terminal_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, observador_terminal_v405) que a gravidade quantica esteja creditada na natureza',
+                          "(v405, observador_terminal_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
+                          '(v405, observador_terminal_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao',
+                          '(v405, ponte_da_massa_v405) que a unidade u (1 eV) tenha sido derivada',
+                          '(v405, ponte_da_massa_v405) que alfa tenha sido derivado nesta pedra',
+                          "(v405, ponte_da_massa_v405) que a massa do neutrino SEJA a derivada da projecao transversal (e' a definicao do operador [ONTO], nao termo da natureza)",
+                          '(v405, ponte_da_massa_v405) que o peso da face absoluta deduza o angulo do estado inscrito (coincidencia de valor, nao ponte)',
+                          '(v405, ponte_da_massa_v405) que a materia em geral seja proporcional ao raio de beta (a forma retirada do Grande Atrator segue retirada)',
+                          "(v405, ponte_da_massa_v405) que o m2 do neutrino passe a discriminar a TGL: o veredito do canal e' o de antes",
+                          '(v405, ponte_da_massa_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, ponte_da_massa_v405) que a gravidade quantica esteja creditada na natureza',
+                          "(v405, ponte_da_massa_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
+                          '(v405, ponte_da_massa_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao',
+                          '(v405, ponto_zero_do_psion_v405) que a unidade u tenha sido derivada',
+                          "(v405, ponto_zero_do_psion_v405) que (1/2).omega SEJA a massa (o enunciado iguala numeros; o nome e' leitura [ONTO])",
+                          "(v405, ponto_zero_do_psion_v405) que o limite da cobranca seja o ponto zero (nenhum teorema liga os dois; e' leitura [ONTO])",
+                          "(v405, ponto_zero_do_psion_v405) que a dispersao omega^2 = 2.beta.R seja literatura (e' teoria propria, Tratado §3, e entra como definicao)",
+                          "(v405, ponto_zero_do_psion_v405) que a curvatura do psion seja a curvatura da natureza (e' o pagamento, lido como curvatura dentro do bulk [ONTO])",
+                          '(v405, ponto_zero_do_psion_v405) que o quantum do psion seja a tonica do disco (cadeias distintas)',
+                          '(v405, ponto_zero_do_psion_v405) que os numeros em SI sejam previsoes novas (sao a mesma forma escrita em SI)',
+                          '(v405, ponto_zero_do_psion_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, ponto_zero_do_psion_v405) que a gravidade quantica esteja creditada na natureza',
+                          "(v405, ponto_zero_do_psion_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
+                          '(v405, ponto_zero_do_psion_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao',
+                          "(v405, tonica_do_hamiltoniano_v405) que a tonica fixe o valor absoluto: quem o fixa e' o Um posto",
+                          '(v405, tonica_do_hamiltoniano_v405) que o no-go tenha caido',
+                          '(v405, tonica_do_hamiltoniano_v405) que alfa tenha sido derivado (a resposta foi NAO; a pergunta do operador fica respondida, nao aberta)',
+                          '(v405, tonica_do_hamiltoniano_v405) que a unidade u tenha sido derivada',
+                          "(v405, tonica_do_hamiltoniano_v405) que a rota do monopolo fixe o valor absoluto (e' tautologica)",
+                          '(v405, tonica_do_hamiltoniano_v405) que o valor absoluto tenha sido escolhido pelo dado',
+                          '(v405, tonica_do_hamiltoniano_v405) que isto seja um teste: nao ha desfecho experimental',
+                          '(v405, tonica_do_hamiltoniano_v405) que a gravidade quantica esteja creditada na natureza',
+                          "(v405, tonica_do_hamiltoniano_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
+                          '(v405, tonica_do_hamiltoniano_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao'],
     }
 
 

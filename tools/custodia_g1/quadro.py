@@ -246,13 +246,25 @@ def _pernas_do_selo(ctx):
                 if not list((act.parent / "releases").glob("%s_*/manifest.json" % v)):
                     ok_rel, det = False, det + "; sem releases\\%s_*\\manifest.json" % v
         out["memória canônica da fila/app (ACTIVE.json)"] = (ok_rel, det)
-    dl = sorted(glob.glob(str(c.CEN / "work" / ("scientific_memory_sync_*_%s" % v) / "DELIVERY_R1.json")))
+    # 29/10/2026 (gerência c1): a fila entrega em scientific_memory_sync_*_vNNN[_Rk]\ e o recibo pode chamar-se DELIVERY_R1,
+    # DELIVERY_TECHNICAL_R1, DELIVERY_FINAL_R1 ou DELIVERY_ACCEPTED_R1 (na v404: _R2 e DELIVERY_TECHNICAL_R1). Lê-se o mais novo
+    # cujo JSON traga release == vNNN e status ACTIVATED…; antes, o nome fixo deixava a perna «ausente» com a entrega feita.
+    dl = sorted(glob.glob(str(c.CEN / "work" / ("scientific_memory_sync_*_%s*" % v) / "DELIVERY_*R1.json")), key=os.path.getmtime)
     if not dl:
         out["memória científica da fila (DELIVERY_R1.json)"] = (False, "ausente")
     else:
-        d = util.ler_json(dl[-1])
-        ok = str(d.get("status", "")).startswith("ACTIVATED") and d.get("release") == v
-        out["memória científica da fila (DELIVERY_R1.json)"] = (ok, "%s: %s%s" % (os.path.basename(os.path.dirname(dl[-1])), d.get("status"), "" if ok else " — release %s != %s" % (d.get("release"), v)))
+        ok, det = False, "nenhum recibo legível"
+        for p_dl in reversed(dl):
+            try:
+                d = util.ler_json(p_dl)
+            except Exception as e:
+                det = "%s/%s: ilegível (%s)" % (os.path.basename(os.path.dirname(p_dl)), os.path.basename(p_dl), e.__class__.__name__)
+                continue
+            ok = str(d.get("status", "")).startswith("ACTIVATED") and d.get("release") == v
+            det = "%s/%s: %s%s" % (os.path.basename(os.path.dirname(p_dl)), os.path.basename(p_dl), d.get("status"), "" if ok else " — release %s != %s" % (d.get("release"), v))
+            if ok:
+                break
+        out["memória científica da fila (DELIVERY_R1.json)"] = (ok, det)
     return out
 
 

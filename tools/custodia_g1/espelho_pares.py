@@ -12,6 +12,7 @@ Generaliza `custodia_v398_espelho.py` (516 linhas, 9 pontos que mudam por versã
 Nada aqui escreve: `montar_pares` e `comparar` só leem. A cópia é do passo E03 (espelho.py). A varredura de material privado
 (`guarda`) só lê o arquivo de marcadores quando chamada por `executar`."""
 import json
+import os
 import re
 from pathlib import Path
 
@@ -277,6 +278,9 @@ def _fontes_pinadas(ctx, P):
                 continue
             relp = Path(*Path(rel[len(pref):].replace("\\", "/")).parts)
             dst = c.ESP / "fontes_pinadas" / relp
+            # 02/11/2026 (v405): caminho acima do limite do Windows quebra as portas, o git e quem clona o repositório; o arquivo vai para uma pasta curta, e o mapa diz onde está
+            if len(str(dst)) > 258:
+                dst = c.ESP / "fontes_pinadas" / "caminho_longo" / ("%s%s" % (str(val.get("sha256"))[:16], p.suffix))
             if not p.is_file():
                 ent.update({"publicado": False, "motivo": "AUSENTE na casa"})
             elif val.get("sha256") and util.sha256_arquivo(p) != val["sha256"]:
@@ -304,15 +308,16 @@ def comparar(pares, profundo=False, barrados=()):
     barr = {str(x) for x in barrados}
     por_tipo = None if isinstance(profundo, bool) else set(profundo)
     for src, dst, tipo in pares.lista:
-        if str(src) in barr and not dst.is_file():
+        # 02/11/2026 (v405): o destino pode passar de 260 caracteres (fontes pinadas com nome longo); sem o prefixo longo, is_file() diz falso e a copia feita parecia ausente
+        if str(src) in barr and not util.existe(dst):
             continue
         if not src.is_file():
             pend.append((src, dst, tipo, "origem ausente"))
             continue
-        if not dst.is_file():
+        if not util.existe(dst):
             pend.append((src, dst, tipo, "destino ausente"))
             continue
-        if src.stat().st_size != dst.stat().st_size:
+        if src.stat().st_size != os.stat(util.lp(dst)).st_size:
             pend.append((src, dst, tipo, "tamanho difere"))
             continue
         fundo = profundo if por_tipo is None else (tipo in por_tipo)

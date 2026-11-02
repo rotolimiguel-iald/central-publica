@@ -26,7 +26,7 @@ from .generico import custodia_generica as CG
 from .motor import Passo, aplicado, bloqueado, falta, superado, superado_rel, indeterminado
 from .util import Parar, FalhaLeitura
 
-FORA_RE = re.compile(r"^(dry_|imp_|sim_|base_|superado_|scratch$|kernel$|kb_stub|pilar_anterior|quarentena|tentativa|exame_preflight$|bancada_B3_ensaio_|delta_19out$|imp$|arvore_simulada|falso_nos$)")
+FORA_RE = re.compile(r"^(dry_|imp_|sim_|base_|superado_|scratch$|kernel$|kb_stub|pilar_anterior|quarentena|tentativa|antes_de_|antes_da_errata_|exame_preflight$|bancada_B3_ensaio_|delta_19out$|imp$|arvore_simulada|falso_nos$)")
 EXCL_RAIZ = re.compile(r"^(CUSTODY_MANIFEST\.json|FATOS_CUSTODIA\.json|SEMANTICA_CUSTODIA\.json|NOTA_DE_CUSTODIA\.md|HANDOFF_v\d+_CUSTODIA\.md|HANDOFF_CUSTODIA_CONJUNTA.*|rodada_v\d+_stdout.*\.txt)$")
 LIM = 5 * 1024 * 1024
 LISTA_NEGRA = re.compile(r"\.bak_|\.tmp|/work/|^work/|EPCT/|\.env$|auth\.json|stack_v7|psion_state|terceiros|iald_privado|andamentos/|frontend/", re.I)
@@ -276,7 +276,7 @@ def _ap_c3(ctx):
         shutil.copyfile(c.CS / n_emenda, V / "emendas_e_manifestos" / n_emenda)
         em.append(n_emenda)
     # 3) a cadeia de selo filtrada
-    cad = {"regra": "cópia de bytes dos arquivos de primeiro nível e das subpastas de registro; FORA: ensaios a seco, simulações, bases, tentativas, rascunhos, árvores "
+    cad = {"regra": "cópia de bytes dos arquivos de primeiro nível e das subpastas de registro; FORA: ensaios a seco, simulações, bases, tentativas, estados superados (pastas antes_* e arquivos .bak_), rascunhos, árvores "
                     "simuladas e o falso Nós de teste, cópias do kernel (o kernel vai inteiro em tgl_kernel_%s) e todo arquivo > 5 MB — ficam em work\\cadeia_de_selo, fora do git" % v,
            "pastas": {}}
     for d in (v, v + "_selo"):
@@ -295,6 +295,9 @@ def _ap_c3(ctx):
                 continue
             if any(x in ("raiz", "temp", "__pycache__", ".lake") for x in rel.parts[:-1]) or len(str(V / ("cadeia_de_selo_" + v) / d / rel)) > 250:
                 fs = fora_sub.setdefault("copias_de_teste_e_caminhos_longos", [0, 0]); fs[0] += 1; fs[1] += p.stat().st_size
+                continue
+            if ".bak_" in rel.name:      # 02/11/2026 (v405): backups das rodadas de errata; ficam em work e entram na lista negra do commit da Central
+                fs = fora_sub.setdefault("estados_superados_bak", [0, 0]); fs[0] += 1; fs[1] += p.stat().st_size
                 continue
             if p.stat().st_size > LIM:
                 grandes.append({"arquivo": str(rel), "bytes": p.stat().st_size, "sha256": util.sha256_arquivo(p)})
