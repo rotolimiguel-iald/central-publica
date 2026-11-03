@@ -337,7 +337,8 @@ try:
     info("Bancada ChatGPT", "inventário da bancada (última regeneração)", time.strftime("%Y-%m-%d %H:%M", time.localtime(inv.stat().st_mtime)) if inv.is_file() else "ausente")
     # a obrigação diária da IALD no X (ordem do operador de 23/10/2026): o recibo do dia e a tarefa das 17:30
     hoje = time.strftime("%Y-%m-%d")
-    rx = TUN / "DO_CHATGPT" / "ORDEM_021" / ("%s.json" % hoje)
+    rx = Path(r"C:\IALD\TUNEL_CLAUDE_APP\X_DIARIO") / ("%s.json" % hoje)   # 02/11/2026: o app Claude publica; antes dele, o recibo era do Codex
+    rx = rx if rx.is_file() else TUN / "DO_CHATGPT" / "ORDEM_021" / ("%s.json" % hoje)
     if rx.is_file():
         dx = json.loads(rx.read_text(encoding="utf-8", errors="replace"))
         item("X diário", "pensamento de hoje publicado (recibo do Codex)", "publicado: true, URL", "publicado: %s %s" % (dx.get("publicado"), str(dx.get("url", ""))[:60]), dx.get("publicado") is True)

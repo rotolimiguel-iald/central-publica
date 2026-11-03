@@ -37,6 +37,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 import traceback
 import urllib.parse
 import urllib.request
@@ -119,9 +120,28 @@ def classificar(codigo: str | None, regras: dict) -> dict:
 
 
 # ───────────────────────────────────────────── 1. RPI
+# 02/11/2026: a leitura falhou em 29, 30 e 31/10 (HTTP 503) e 01/11 (DNS), uma tentativa por rodada. Nenhuma edição se perdeu,
+# mas uma falha passageira numa terça custaria um dia de intimação. Três tentativas; as três falhando, segue fail-closed.
+ESPERAS_RPI_S = (60, 300)
+
+
+def le_rpi_com_novas_tentativas(procs: set[str]) -> dict:
+    for n, espera in enumerate((*ESPERAS_RPI_S, None), 1):
+        try:
+            sr = mon.scan_rpi(procs)
+            if n > 1:
+                log("RPI lida na tentativa %d de %d" % (n, len(ESPERAS_RPI_S) + 1))
+            return sr
+        except Exception as e:  # noqa: BLE001
+            if espera is None:
+                raise
+            log("Tentativa %d de ler a RPI falhou (%s); nova tentativa em %d s" % (n, str(e)[:160], espera))
+            time.sleep(espera)
+
+
 def passo_rpi(procs: set[str]) -> dict:
     try:
-        sr = mon.scan_rpi(procs)
+        sr = le_rpi_com_novas_tentativas(procs)
         mon.feed_compiler_notes(sr["novos"])
         log("RPI lida até %s (%s); %d edição(ões) nesta rodada; %d despacho(s) novo(s)"
             % (sr["ultima_rpi_lida"], sr["data_da_ultima"], len(sr["edicoes_lidas"]), len(sr["novos"])))

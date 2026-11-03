@@ -54,6 +54,9 @@ ROTAS = Path(r"C:\IALD\MAPA_DE_ROTAS\rotas.jsonl")
 IALD_PY = Path(r"C:\IALD\PROGRAMA_IALD\iald.py")
 PY = r"C:\Python314\python.exe"
 THREAD = "01a0ce2b-8c2f-71b0-a9a8-91b17715a569"   # a coordenadora da Central IALD no Codex (ORDEM 021)
+CANAL_APP = Path(r"C:\IALD\TUNEL_CLAUDE_APP")   # 02/11/2026, ordem do operador: o app Claude publica no lugar do Codex
+ATIVO = CANAL_APP / "ATIVO.json"
+RECIBOS_APP = CANAL_APP / "X_DIARIO"
 NATIVA = "http://127.0.0.1:8081/v1/chat/completions"
 SUFIXO = "— IALD"
 MAXC = 280
@@ -86,6 +89,13 @@ def log(msg):
     with open(LOG, "a", encoding="utf-8") as f:
         f.write("%s %s\n" % (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), msg))
     print(msg)
+
+
+def publicador_app():
+    try:
+        return json.loads(ATIVO.read_text(encoding="utf-8")).get("x_publicador") == "claude-app"
+    except (OSError, ValueError):
+        return False
 
 
 def sha(p):
@@ -440,12 +450,17 @@ def gravar(data, texto, fonte, F, tentativas, sem_fila):
     assert tmp.read_text(encoding="utf-8").rstrip("\n") == texto
     os.replace(tmp, p)
     h = sha(p)
+    app = publicador_app()
+    quem = "do app Claude (ORDEM 001); recibo em TUNEL_CLAUDE_APP/X_DIARIO/%s.json" if app else "do Codex (ORDEM 021); recibo em DO_CHATGPT/ORDEM_021/%s.json"
     with open(LIVRO, "a", encoding="utf-8") as f:
         f.write(json.dumps({"data": data, "hora": datetime.now().strftime("%H:%M:%S"), "texto": texto, "caracteres": len(texto), "sha256": h,
                             "fonte": fonte, "tentativas": tentativas, "arquivo": str(p),
                             "fatos": {k: F.get(k) for k in ("selo", "quadro", "n_rotas_do_dia", "selada_hoje")},
                             "fato_do_dia": F.get("fato_escolhido"), "fatos_do_dia": F.get("fatos_do_dia"),
-                            "publicacao": "do Codex (ORDEM 021); recibo em DO_CHATGPT/ORDEM_021/%s.json" % data}, ensure_ascii=False) + "\n")
+                            "publicacao": quem % data}, ensure_ascii=False) + "\n")
+    if app:
+        log("gravado %s (%s, %d c, sha16 %s); quem publica e' o app Claude, nada vai ao Codex" % (p.name, fonte, len(texto), h[:16]))
+        return 0
     msg = XD / ("%s_MENSAGEM.md" % data)
     msg.write_text(("ORDEM 021 — publicar o pensamento de %s\n\n"
                     "Texto do dia (verbatim, inteiro, sem acrescentar nem tirar um caractere): `%s` — sha256 `%s`, %d caracteres.\n\n"
@@ -463,7 +478,9 @@ def gravar(data, texto, fonte, F, tentativas, sem_fila):
 
 
 def conferir(data):
-    rec = RECIBOS / ("%s.json" % data)
+    rec = RECIBOS_APP / ("%s.json" % data)
+    if not rec.exists():
+        rec = RECIBOS / ("%s.json" % data)
     if not rec.exists():
         print("recibo de %s: AUSENTE (%s)" % (data, rec))
         return 1

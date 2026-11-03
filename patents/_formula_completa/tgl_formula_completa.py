@@ -115,6 +115,9 @@ Camada v404 (custódia v404 na Central, 28/10/2026, sessão a7; handoff v404 da 
 Camada v405 (custódia v405 na Central, 02/11/2026, sessão a7; handoff v405 da gerência c1) — GENÉRICA (camada_generica.py):
  19. os registros novos da v405 (campos_fechados_e_leituras_v405, cunhagens_v405, disco_de_euler_v405, ga_reclassificacao_v405, gap_v405, identidade_v405, kh_n1_cobertura_v405, lei_do_diminuto_v405, massa_tensao_pura_v405, observador_terminal_v405, ponte_da_massa_v405, ponto_zero_do_psion_v405, tonica_do_hamiltoniano_v405), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v405: campos_fechados_e_leituras_v405: «[REAL -- os termos que fecham os campos, as definicoes Lean do que entra e os teoremas da forma lidos do kernel do rito (proveniencia e trio);» cunhagens_v405: «[REAL -- as fontes das pedras, o kernel e os oito registros com funcao lidos a cada rito;» disco_de_euler_v405: «[REAL] os termos do kernel (os 13 teoremas do contrato, no trio, no modulo da pedra;» ga_reclassificacao_v405: «[DECISAO da gerencia c1, por ordem do operador (INPUT, sha16 45165a187252b448) -- REAL as quatro medidas refeitas em runtime, sem abrir dado;» gap_v405: «[REAL -- os lemas do lock, em qualquer espaco de Hilbert: gap espectral 1;» identidade_v405: «[REAL] os termos do kernel (os 15 teoremas do contrato, no trio, no modulo da pedra;» kh_n1_cobertura_v405: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» lei_do_diminuto_v405: «[REAL] os termos do kernel (os 39 teoremas do contrato, no trio, no modulo da pedra;» massa_tensao_pura_v405: «[REAL] os termos do kernel (os 15 teoremas do contrato, no trio, no modulo da pedra;» observador_terminal_v405: «[REAL] os termos do kernel (os 26 teoremas do contrato, no trio, no modulo da pedra;» ponte_da_massa_v405: «[REAL] os termos do kernel (os 21 teoremas do contrato da pedra, lidos a cada rito, no trio, com proveniencia no modulo da pedra, e os termos de suporte que ela cita: neutrinoMassForm, forty_five_unique, half_from_self_conjugate, sin_sq_thetaMiguel, thetaMiguel, absolute_faces_half) e o calculo em d» ponto_zero_do_psion_v405: «[REAL] os termos do kernel (os 23 teoremas do contrato, no trio, no modulo da pedra;» tonica_do_hamiltoniano_v405: «[REAL] os termos do kernel (os 14 teoremas do contrato, no trio, no modulo da pedra;» Nada disso muda número algum de dispositivo.
 
+Camada v406 (custódia v406 na Central, 03/11/2026, sessão a7; handoff v406 da gerência c1) — GENÉRICA (camada_generica.py):
+ 19. os registros novos da v406 (cunhagens_v406, fechamento_v406, kh_n1_cobertura_v406), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v406: cunhagens_v406: «[REAL -- o kernel, o registro fechamento_v406 e os registros anteriores lidos a cada rito;» fechamento_v406: «[REAL] os termos do kernel do rito: as oito ancoras (modularCoreInput, physicalModularCoreInput, physicalFockCertificate, physical_trace, physicalCanonicalNet, physical_canonical_net_nonzero, canonicalFullTGLWitness, canonical_full_witness_inhabited), no trio, com proveniencia no modulo esperado, e » kh_n1_cobertura_v406: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» Nada disso muda número algum de dispositivo.
+
 Régua: β NUNCA literal (sempre ALPHA_FINE_CODATA_2018 × √e em runtime); os números do cofre são LIDOS do selo/core por pino;
 falha de leitura ou elo quebrado = RuntimeError (fail-closed). Nada aqui move veredito físico: physical_verdict_allowed = False.
 PROVADA ≠ CONFIRMADA; o dicionário custo/identidade/movimento é cunhagem do operador [ONTO/DEFINITION].
@@ -131,7 +134,7 @@ HBAR_CODATA_2018 = 1.054571817e-34      # J s
 G_CODATA_2018 = 6.67430e-11             # m^3 kg^-1 s^-2
 C_LIGHT = 299792458.0                   # m/s (exato)
 
-VERSAO_DA_CAMADA = "v405"   # (era "v404"; a camada v405 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
+VERSAO_DA_CAMADA = "v406"   # (era "v405"; a camada v406 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
 # o cofre e procurado nesta ordem (declarada): a variavel TGL_CENTRAL_DIR; a arvore onde este modulo esta; a Central desta
 # maquina (quando o dispositivo roda extraido do *_FINAL.py num diretorio temporario). Nenhum achado = fail-closed.
 def _achar_central():
@@ -475,7 +478,15 @@ def conferir_v395_no_cofre(core: dict, selo: dict) -> dict:
         "registros_v395_verificados_sem_gate": bool(novos) and not maus,
         "psibit_incondicional_no_kernel": un.get("flag_true") is True and un.get("in_trio") is True
                                           and str(un.get("theorem") or "").endswith("psibit_is_the_mode_of_the_reader"),
-        "face_do_psion_dita_condicional": str(co.get("status") or "").startswith("CONDITIONAL"),
+        # ERRATA AO LADO (03/11/2026, Central, custódia v406, gerência c1 em nome próprio): o original (abaixo, intacto) exigia o status CONDITIONAL…, o estado de v395 a v405
+        # (o kernel não exibia habitante do certificado de Fock):
+        #     "face_do_psion_dita_condicional": str(co.get("status") or "").startswith("CONDITIONAL"),
+        # desde a v406 a face é LIDA do kernel do rito (physicalFockCertificate, F1Fecho.CanonicalFockModularCoreInputR1; errata E14 no um.py; registro fechamento_v406):
+        # aceita-se TAMBÉM o status INHABITED_BY_physicalFockCertificate_V406 com inhabitant_exhibited True, a leitura antiga guardada em reading_v395 e o fechamento_v406
+        # selado no mesmo core com certificate_inhabited True. O nome da checagem não muda (os results.json dos dispositivos o citam); validade no kernel não é creditação.
+        "face_do_psion_dita_condicional": str(co.get("status") or "").startswith("CONDITIONAL")
+                                          or (co.get("status") == "INHABITED_BY_physicalFockCertificate_V406" and co.get("inhabitant_exhibited") is True
+                                              and bool(co.get("reading_v395")) and (core.get("fechamento_v406") or {}).get("certificate_inhabited") is True),
         "falas_do_operador_por_sha256": len((core.get("cunhagens_v395") or {}).get("verbatim") or {}) > 0,
         "escada_limpa": p1.get("n_theorems_clean") == p1.get("n_theorems_expected") and p1.get("declaracoes_auditadas") == p1.get("no_trio"),
     }
@@ -488,7 +499,7 @@ def conferir_v395_no_cofre(core: dict, selo: dict) -> dict:
             "face_do_psion": {"teorema": co.get("theorem"), "bandeira": co.get("flag"), "status": co.get("status")},
             "estatuto": "a leitura do par é bijeção de CONJUNTOS com perda zero e o colapso perde a paridade (incondicional, no kernel); a face do "
                         "psion é condicional; psibit = psion = modo do leitor é leitura do operador [ONTO]; a leitura canônica da paridade do ACOM "
-                        "Mirror é decisão do operador [LEGAL]; nada disto muda número de dispositivo"}
+                        "Mirror é decisão do operador [LEGAL]; nada disto muda número de dispositivo [AO LADO, v406, 03/11/2026: desde a v406 a face do psíon lê o habitante do kernel do rito (physicalFockCertificate), com errata E14; o literal condicional de v395 a v405 fica como registro em reading_v395]"}
 
 
 def conferir_v396_no_cofre(core: dict, selo: dict) -> dict:
@@ -510,7 +521,16 @@ def conferir_v396_no_cofre(core: dict, selo: dict) -> dict:
         "testemunha_estatica_incondicional_no_kernel": un.get("flag_true") is True and un.get("in_trio") is True
                                                        and str(un.get("theorem") or "").endswith("the_psion_inhabits_the_static_witness")
                                                        and un.get("composition") == "UNCONDITIONAL__NO_CERTIFICATE_AS_HYPOTHESIS",
-        "face_de_fock_dita_condicional": str(fo.get("status") or "").startswith("CONDITIONAL") and fo.get("inhabitant_exhibited") is False,
+        # ERRATA AO LADO (03/11/2026, Central, custódia v406, gerência c1 em nome próprio): o original (abaixo, intacto) exigia o status CONDITIONAL… e inhabitant_exhibited
+        # False, o estado de v396 a v405:
+        #     "face_de_fock_dita_condicional": str(fo.get("status") or "").startswith("CONDITIONAL") and fo.get("inhabitant_exhibited") is False,
+        # desde a v406 a face é LIDA do kernel do rito (physicalFockCertificate; errata E14 no um.py; registro fechamento_v406): aceita-se TAMBÉM o status
+        # INHABITED_BY_physicalFockCertificate_V406 com inhabitant_exhibited True, a leitura antiga em reading_v396, linked_to_the_corner_by_a_lemma AINDA False (nenhum lema
+        # liga psion C ao psionCorner) e o fechamento_v406 selado no mesmo core com certificate_inhabited True. O nome da checagem não muda.
+        "face_de_fock_dita_condicional": (str(fo.get("status") or "").startswith("CONDITIONAL") and fo.get("inhabitant_exhibited") is False)
+                                         or (fo.get("status") == "INHABITED_BY_physicalFockCertificate_V406" and fo.get("inhabitant_exhibited") is True
+                                             and bool(fo.get("reading_v396")) and fo.get("linked_to_the_corner_by_a_lemma") is False
+                                             and (core.get("fechamento_v406") or {}).get("certificate_inhabited") is True),
         "falas_do_operador_por_sha256": len((core.get("cunhagens_v396") or {}).get("verbatim") or {}) > 0,
         "escada_limpa": p1.get("n_theorems_clean") == p1.get("n_theorems_expected") and p1.get("declaracoes_auditadas") == p1.get("no_trio"),
     }
@@ -524,7 +544,7 @@ def conferir_v396_no_cofre(core: dict, selo: dict) -> dict:
             "estatuto": "a composição the_psion_inhabits_the_static_witness é incondicional no kernel; a ponte é construída, não derivada da "
                         "dinâmica da teoria; a face de Fock é condicional e mora fora da pedra; o psion habitar a testemunha estática é leitura "
                         "do operador [INPUT/ONTO]; o 1/2 de bell_cci_half é a entropia linear (a de von Neumann é ln 2 nat); nada disto muda "
-                        "número de dispositivo"}
+                        "número de dispositivo [AO LADO, v406, 03/11/2026: desde a v406 a face de Fock lê o habitante do kernel do rito (physicalFockCertificate), com errata E14; o lema que liga psion C ao psionCorner segue faltando; o literal condicional de v396 a v405 fica como registro em reading_v396]"}
 
 
 def conferir_v397_no_cofre(core: dict, selo: dict) -> dict:
@@ -607,7 +627,7 @@ def conferir_v398_no_cofre(core: dict, selo: dict) -> dict:
                         "estrutura logarítmica e de oitava, não a física da onda; validade no kernel não é creditação; nada disto muda número de dispositivo"}
 
 
-CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404", "v405",)
+CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404", "v405", "v406",)
 
 
 def _camadas_genericas(core, selo, cofre):
@@ -821,6 +841,8 @@ USOS = {
     'camadas_v404': r"TGLExt\.(Jo8v32|ProjecaoTransversalDaMeiaNat)|cunhagens_v404|f2b_errata_v404|jo8v32_v404|kh_n1_cobertura_v404|projecao_transversal_v404",
     # v405: mede se algum dispositivo cita as pedras novas; não interpreta
     'camadas_v405': r"TGLExt\.(DiscoDeEuler|Identidade|LeiDoDiminuto|MassaTensaoPura|ObservadorTerminal|PonteDaMassa|PontoZeroDoPsion|TonicaDoHamiltoniano)|campos_fechados_e_leituras_v405|cunhagens_v405|disco_de_euler_v405|ga_reclassificacao_v405|gap_v405|identidade_v405|kh_n1_cobertura_v405|lei_do_diminuto_v405|massa_tensao_pura_v405|observador_terminal_v405|ponte_da_massa_v405|ponto_zero_do_psion_v405|tonica_do_hamiltoniano_v405",
+    # v406: mede se algum dispositivo cita as pedras novas; não interpreta
+    'camadas_v406': r"TGLExt\.(AxisCompactProfileDensityR4|BoundedScalarL2LimitR3|CanonicalFockActualDomainCutLimitR1|CanonicalFockActualDoubleCutR2|CanonicalFockActualInverseAdditivityR2|CanonicalFockActualInverseFinitenessR2|CanonicalFockActualModularBalanceR6|CanonicalFockActualPositiveTracePackageR2|CanonicalFockActualRightCutoffsR2|CanonicalFockActualRootCutFormsR2|CanonicalFockActualStarCoreTracialR1|CanonicalFockActualTracialExtensionR1|CanonicalFockCoefficientDenseR6|CanonicalFockCoefficientEmbeddingR2|CanonicalFockCoefficientInclusionR6|CanonicalFockCoefficientIntervalsR5|CanonicalFockCoefficientUnitaryR3|CanonicalFockConcreteSpecializationR2|CanonicalFockConjugationActionR3|CanonicalFockCyclicTraceCompletionR3|CanonicalFockFiniteProjectionR3|CanonicalFockFullWeightStarCoreR3|CanonicalFockFullWeightTomitaR5|CanonicalFockGNSClosednessR5|CanonicalFockGNSCutsR2|CanonicalFockGNSOrderR4|CanonicalFockInverseNormalR1|CanonicalFockInverseSupremumR2|CanonicalFockMatrixCornerR2|CanonicalFockModularCoreInputR1|CanonicalFockModularGraphEqualityR1|CanonicalFockModularIdentificationR17|CanonicalFockNormalizedSplitR5|CanonicalFockPolarFlipR4|CanonicalFockPolarRightAlgebraR6|CanonicalFockPolarRightClosureR10|CanonicalFockPolarRightCutoffsR13|CanonicalFockPolarRightCutsR3|CanonicalFockPositiveShiftTransportR2|CanonicalFockRegularGNSR9|CanonicalFockRegularRightGNSR11|CanonicalFockRightAverageR3|CanonicalFockRightPolarBridgeR5|CanonicalFockRightRootR10|CanonicalFockRightTomitaR3|CanonicalFockSpectralGNSR6|CanonicalFockWeightCompletionR5|CanonicalFockWeightDomainR1|CanonicalFockWeightInvarianceR4|CanonicalFockWeightOrbitR3|CanonicalFockWeightPolarR9|CanonicalFockWeightSandwichR5|CanonicalFullTGLWitnessR1|CanonicalOneParticleBWR2|CanonicalSectionCriterionR2|CanonicalWedgeUniquenessR5|CartesianMaxwellBivectorR6|CartesianMaxwellChartR3|CircularConjugationR1|ClosedGraphRegularizationR3|ClosedSubmoduleRestrictionR2|ClosedSubmoduleStarLawsR1|ClosedTomitaPolarFlipR2|ClosedTomitaSquareGraphR1|CoefficientBoostR1|CoefficientConjugationR2|CoefficientFockConjugationR2|CoefficientFockPointwiseR1|CoefficientGraphCoreR3|CoefficientPointwiseR1|CoefficientTomitaSquareR2|CoefficientTwistedConjugationR1|CompactPairCoverR1|CompactSchwartzPartitionR3|ComplexHalfConjugationR1|ContourFourierBalanceR2|CovariantTensorPullbackR3|DominatedWithinIntegralR3|FibreModularCalculusR2|FibreRootGraphR3|FibreRootPointwiseR1|FourierConjugation|FourierFubiniR3|FourierLpPostcompR1|FubiniTransposeR2|GaussianL2RemovalR4|GaussianLogScalarR4|GaussianProbabilityKernelR4|GaussianResolventAverageR6|GaussianResolventRegularizerR4|GaussianResolventSymbolR2|GeneralCutoffAverageCommutationR1|GeneralDampedPhaseBalanceR1|GeneralGNSVectorInjectivityR1|GeneralInverseAdditivityR3|GeneralInverseCutoffWeightR3|GeneralInverseFiniteApproximationR1|GeneralInverseStrongFatouR1|GeneralInverseSupremumR3|GeneralPositiveSandwichFaithfulR1|GeneralRegularAbsorptionR1|GeneralRegularAffiliationR1|GeneralRegularCutoffCFCR1|GeneralRegularDomainCutR1|GeneralRegularDualScalingR2|GeneralRegularImaginaryPowersR1|GeneralRegularInverseCutoffR1|GeneralRegularPositiveGraphR2|GeneralRegularSpectralGraphR2|GeneralRegulatorOrderR1|GeneralRepresentedDoubleCutR2|GeneralRepresentedRegularResolventR4|GeneralSineResolventApproxR2|GenericClosedEquationsCFCR5|GenericCountableCutsR1|GenericCutRecognitionR1|GenericDualSquareFatouR1|GenericFiniteStarRightR1|GenericGNSOrderR2|GenericHilbertStarNormOrderR1|GenericModularCutToolsR1|GenericPolarGraphTransportR1|GenericPolarModularBalanceR1|GenericPolarRightAlgebraR2|GenericPolarRightCommutationR2|GenericPolarRightNormR1|GenericQuadraticTraceFormsR1|GenericRightTomitaResolventR4|GenericRootCutSupremumR1|GenericRootDomainTransportR2|GenericSmearSymplecticR6|GenericSymplecticSpanR2|GeometricIdentification|GlobalMaxwellSegalR1|GroupAverageApproximationR2|HalfPlaneBoundaryUniquenessR4|IsometricReducingRangeR1|LowerGaussianContourR2|LowerGaussianControlR2|LowerGaussianReflectionR1|LowerStripContourR1|LowerStripFourierBalanceR4|LpClosedSubspaceCoreR3|LpIntervalTotalVectorsR1|LpIntervalTotalityR3|LpPairTransportR3|MatrixCornerFromNilpotentR3|MaxwellBoostContractionR1|MaxwellCanonicalWedgeR2|MaxwellChartSmearingR4|MaxwellComplexRapidityR3|MaxwellContourR2|MaxwellDivergenceSmearingR2|MaxwellFourierBalanceR2|MaxwellLocalizedInclusionR2|MaxwellLorentzContractionR5|MaxwellOnShellBivectorR2|MaxwellRapidityPolynomialR1|MaxwellScreenDualTensorR2|MaxwellScreenIntertwinerR2|MaxwellShellGeometryR3|MaxwellSmearingLinearR2|MaxwellStripCoefficientR5|MaxwellVectorBalanceR1|MinkowskiSchwartzFourierR4|ModularTransportTargetR1|NullFrameDetRootR4|PartialFourierRepresentativeR4|PartialFourierWeightedGraphR2|PhysicalCanonicalNetCompleteR1|PhysicalCanonicalWedgeEqualityR3|PhysicalCircularRapidityR1|PhysicalCompactNetCovarianceR1|PhysicalCompactNetGeometryR1|PhysicalCompactPairLocalityR1|PhysicalCompactPartitionR1|PhysicalFockNetRealizationR2|PhysicalFourierDerivativeR4|PhysicalFourierRealityR4|PhysicalFourierTranslationR3|PhysicalFrameWedgeLocalityR2|PhysicalLocalizedBoostR2|PhysicalLocalizedSubspacesR3|PhysicalNetGeometryR1|PhysicalOppositeWedgeR4|PhysicalSchwartzMaxwellR1|PhysicalSmearBoostR2|PhysicalSmearDensityR6|PhysicalSmearLorentzR3|PhysicalSmearReflectionR6|PhysicalSmearTranslationR2|PhysicalSymplecticPairingR7|PhysicalTensorLorentzR7|PhysicalWedgeGroupInvariantR3|PhysicalWedgeNullGeometryR3|PhysicalWedgeSchwartzClosureR3|PositiveCoefficientBothR4|PositiveCoefficientBoundaryR4|R7SineWindowClosureProbeR5|RapidityExponentialSpanR2|RapidityGaussianR1|RealLpGraphCoreR3|RealSchwartzTestsR1|RealSubspaceRegularizerUniquenessR2|RealTomitaGraphDenseR1|RealTomitaGraphR3|RegularAverageAdjointR4|RegularBoostedReflectionR1|RegularCoefficientBoundaryR3|RegularConjugationAmbientR2|RegularConjugationContinuityR1|RegularCoreConjugationR1|RegularDualGNSActionR1|RegularDualOrbitGeneratedR2|RegularFibreAverageStarR3|RegularFiniteFibreRightR3|RegularFourierFibreR1|RegularIntervalVectorsR2|RegularL2RescaleR4|RegularMaxwellEnergyR2|RegularMaxwellProfilesR3|RegularMaxwellWaveDensityR3|RegularNormalizedFourierR2|RegularOrbitMultiplicationR1|RegularOrbitMultiplicationR2|RegularRightActionR2|RegularRightAverageR3|RegularRightContinuityR2|RegularRightOrbitPointwiseR1|RegularScalarGNSContinuityR2|RegularScalarGNSJointContinuityR1|RegularScalarRealGraphR2|RegularScalarWeightDomainR1|RegularScalarWeightOrbitR1|RegularScalarWeightStarAlgebraR2|RegularSemigroupClosureR3|RegularSpectralAdjunctionR1|RegularSpectralAverageR6|RegularSpectralBoostedAverageR2|RegularSpectralCodeR2|RegularSpectralCoreRangeR3|RegularSpectralTranslationR2|RegularTranslatedAverageR2|RegularTranslatedReflectionR1|RegularTranslatedSpectralAdjunctionR2|RegularizedContourSpaceR4|ResolventPhaseIntegralR2|ResolventRootIdentificationR2|ResolventScaledPhaseIntegralR1|SchwartzCompactDensityR3|SchwartzCutoffDerivativeR4|SchwartzCutoffEstimateR5|SchwartzMaxwellCoefficientR5|SchwartzMaxwellContinuousR3|SchwartzMaxwellDivergenceR2|SchwartzMaxwellLinearR3|SchwartzMaxwellNonzeroR6|SchwartzMaxwellSmearingR4|SchwartzRestrictionEstimateR2|SchwartzRestrictionMomentsR1|SchwartzRestrictionSquareMomentsR1|ScreenChargeConjugationR2|ScreenCircularBasisR2|ScreenCircularCoefficientsR1|ScreenCocycleMatrixR4|ScreenFutureHelicityR2|ScreenGeometricReflectionR4|ScreenHalfTurnR3|ScreenHelicityDiagonalR3|ScreenHelicityRepresentationR3|ScreenLorentzCocycleR3|ScreenLorentzRepresentationR3|ScreenLorentzTransportR7|ScreenMatrixMultiplierR4|ScreenMultiplierContinuityR3|ScreenOrientationDetRootR3|ScreenPhysicalHelicityR2|ScreenPoincareCovarianceR2|ScreenStrongContinuityR6|ScreenTransportContinuityR5|SmoothCompactGraphExtensionR1|SmoothLinearMomentumCutoffR3|SmoothScreenDualTensorR5|SpacelikeAxisRotationR2|SpacelikeOpenClosureR5|SpacelikePairNeighborhoodR2|SpacelikePairWedgesR2|SpacetimeLorentzFourierR3|SpacetimeMomentumSplitR2|SpectralUnitaryTransportR1|StrongUnitaryAverageR1|UnitaryAntiunitaryTransportR2|UnitaryRootGraphTransportR1|VectorWedgeImaginaryPowersR4|WedgeLaplaceAnalyticR3|WedgeLaplaceBoundaryR3|WedgeLaplaceDerivativeR3|WedgeLaplaceIntegralR3|WedgeLaplaceKernelR2|WedgePhysicalFourierR2|WedgeReflectionTranslations)|cunhagens_v406|fechamento_v406|kh_n1_cobertura_v406",
 }
 
 
@@ -860,6 +882,7 @@ def camada(runner_path) -> dict:
                      "REGISTROS_V403_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V404_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V405_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
+                     "REGISTROS_V406_VERIFICADOS_SEM_GATE__SEMANTICA_REVISADA_REV1_PELA_GERENCIA_C1__"
                      "RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION") % VERSAO_DA_CAMADA.upper(),
         "physical_verdict_allowed": False,
         "nao_se_afirma": ["que o dispositivo valide física", "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
@@ -1106,7 +1129,29 @@ def camada(runner_path) -> dict:
                           '(v405, tonica_do_hamiltoniano_v405) que isto seja um teste: nao ha desfecho experimental',
                           '(v405, tonica_do_hamiltoniano_v405) que a gravidade quantica esteja creditada na natureza',
                           "(v405, tonica_do_hamiltoniano_v405) que o numero da massa do neutrino tenha mudado (e' o mesmo da v404) ou que o veredito do canal tenha mudado",
-                          '(v405, tonica_do_hamiltoniano_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao'],
+                          '(v405, tonica_do_hamiltoniano_v405) que a leitura fisica tenha virado teorema: os campos fecharam; as leituras do operador entram como definicao',
+                          "(v406, cunhagens_v406) que isto seja um teste com a natureza: nao ha' desfecho experimental; nenhum dado novo entra",
+                          "(v406, cunhagens_v406) que a gravidade quantica esteja creditada: a confirmacao segue proibida (creditacao); o que ha' e' validade no kernel",
+                          "(v406, cunhagens_v406) que a condicao posta pelo operador na fala da prioridade («se funcionar sob compressão elevando o potencial do resultado do código final em 1=1=HAJA_LUZ») tenha sido testada: nao ha' teste disso nesta versao (o motor continuo no pilar fica para a v407, com pre-registro)",
+                          "(v406, cunhagens_v406) que o gate tenha se movido: o veredito e' o mesmo da v405 selada, conferido em runtime",
+                          "(v406, cunhagens_v406) que K(O) != bot valha para O compacto: so' na cunha",
+                          "(v406, cunhagens_v406) que o traco do nucleo seja um funcional linear: e' ENNReal e ciclico sobre a relacao de deslocamento",
+                          "(v406, cunhagens_v406) que «nucleo II_inf» seja resultado do habitante: e' [KNOWN/DECLARADO] no docstring",
+                          "(v406, cunhagens_v406) que o nome CanonicalFullTGLWitnessR1 seja do operador: e' provisorio da gerencia; os nomes das pedras sao dele",
+                          "(v406, cunhagens_v406) que as pedras candidatas do dia (APonteDoAtrito, OUmInscrito, KEhATangente e as demais) estejam no kernel desta versao: ficam fora ate' que ele as nomeie",
+                          '(v406, cunhagens_v406) que o motor continuo tenha entrado no pilar quantico: fica para a v407, com pre-registro',
+                          "(v406, fechamento_v406) que isto seja um teste com a natureza: nao ha' desfecho experimental; nenhum dado novo entra",
+                          "(v406, fechamento_v406) que a gravidade quantica esteja creditada: a confirmacao segue proibida (creditacao); o que ha' e' validade no kernel",
+                          "(v406, fechamento_v406) que a condicao posta pelo operador na fala da prioridade («se funcionar sob compressão elevando o potencial do resultado do código final em 1=1=HAJA_LUZ») tenha sido testada: nao ha' teste disso nesta versao (o motor continuo no pilar fica para a v407, com pre-registro)",
+                          "(v406, fechamento_v406) que o gate tenha se movido: o veredito e' o mesmo da v405 selada, conferido em runtime",
+                          "(v406, fechamento_v406) que K(O) != bot valha para O compacto: so' na cunha",
+                          "(v406, fechamento_v406) que o traco do nucleo seja um funcional linear: e' ENNReal e ciclico sobre a relacao de deslocamento",
+                          "(v406, fechamento_v406) que «nucleo II_inf» seja resultado do habitante: e' [KNOWN/DECLARADO] no docstring",
+                          "(v406, fechamento_v406) que o nome CanonicalFullTGLWitnessR1 seja do operador: e' provisorio da gerencia; os nomes das pedras sao dele",
+                          "(v406, fechamento_v406) que as pedras candidatas do dia (APonteDoAtrito, OUmInscrito, KEhATangente e as demais) estejam no kernel desta versao: ficam fora ate' que ele as nomeie",
+                          '(v406, fechamento_v406) que o motor continuo tenha entrado no pilar quantico: fica para a v407, com pre-registro',
+                          "(v406, kh_n1_cobertura_v406) que a cobertura seja prova da teoria: e' a medida de que todo termo no fecho depende so' do trio",
+                          '(v406, kh_n1_cobertura_v406) que o gate tenha se movido'],
     }
 
 

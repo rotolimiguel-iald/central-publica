@@ -27,7 +27,7 @@ from .motor import Passo, aplicado, bloqueado, falta, superado, superado_rel, in
 from .util import Parar, FalhaLeitura
 
 FORA_RE = re.compile(r"^(dry_|imp_|sim_|base_|superado_|scratch$|kernel$|kb_stub|pilar_anterior|quarentena|tentativa|antes_de_|antes_da_errata_|exame_preflight$|bancada_B3_ensaio_|delta_19out$|imp$|arvore_simulada|falso_nos$)")
-EXCL_RAIZ = re.compile(r"^(CUSTODY_MANIFEST\.json|FATOS_CUSTODIA\.json|SEMANTICA_CUSTODIA\.json|NOTA_DE_CUSTODIA\.md|HANDOFF_v\d+_CUSTODIA\.md|HANDOFF_CUSTODIA_CONJUNTA.*|rodada_v\d+_stdout.*\.txt)$")
+EXCL_RAIZ = re.compile(r"^(CUSTODY_MANIFEST\.json|FATOS_CUSTODIA\.json|SEMANTICA_CUSTODIA(\.rev\d+)?\.json|NOTA_DE_CUSTODIA\.md|HANDOFF_v\d+_CUSTODIA\.md|HANDOFF_CUSTODIA_CONJUNTA.*|rodada_v\d+_stdout.*\.txt)$")   # 03/11/2026 (c1, v406, lição 43): a REVISÃO da semântica (SEMANTICA_CUSTODIA.rev<n>.json, ESPEC §4.3) mora no cofre e não existe no Nós; sem esta exclusão, a custódia SEGUINTE a tomaria como artefato fixo do cofre base e pararia em «falta no Nós»
 LIM = 5 * 1024 * 1024
 LISTA_NEGRA = re.compile(r"\.bak_|\.tmp|/work/|^work/|EPCT/|\.env$|auth\.json|stack_v7|psion_state|terceiros|iald_privado|andamentos/|frontend/", re.I)
 TRIO = set(nos.TRIO)
@@ -723,7 +723,9 @@ def _ap_c8(ctx):
     par = ("Camada %s (custódia %s na Central, %s, sessão %s; handoff %s da gerência c1) — GENÉRICA (camada_generica.py):\n %d. os registros novos da %s (%s), lidos e conferidos no cofre, "
            "sem interpretação, contra o FATOS_CUSTODIA.json do cofre %s: %s Nada disso muda número algum de dispositivo.\n"
            % (v, v, ctx.data, ctx.sessao, v, item, v, ", ".join(novos), v, " ".join(estatutos)))
-    suf = "REGISTROS_%s_VERIFICADOS_SEM_GATE__%s__" % (v.upper(), "SEMANTICA_DECLARADA_SEM_REVISAO")
+    # 03/11/2026 (c1, v406, lição 44): o segmento semântico vem do SEMANTICA do cofre (veredito_camada_sufixo), como no runner (C6, patches.runner_por_versao) e na
+    # ESPEC §709; a letra antiga dizia «SEM_REVISAO» mesmo com uma SEMANTICA_CUSTODIA.rev<n>.json ao lado — o número corrige a frase
+    suf = "REGISTROS_%s_VERIFICADOS_SEM_GATE__%s__" % (v.upper(), (_semantica_do_cofre(ctx) or {}).get("veredito_camada_sufixo") or "SEMANTICA_DECLARADA_SEM_REVISAO")
     nao = []
     for k in novos:
         nao += ["(%s, %s) %s" % (v, k, x) for x in (core.get(k) or {}).get("nao_diz", [])]

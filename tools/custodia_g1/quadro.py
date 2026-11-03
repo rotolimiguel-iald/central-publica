@@ -204,6 +204,12 @@ def _ap_c19(ctx):
     r1 = util.rodar([str(c.PYTHON), "-X", "utf8", str(c.NOS_VIVO / "construir.py")], cwd=c.NOS_VIVO, timeout=300)
     if r1["rc"] != 0:
         raise Parar("NOS_VIVO\\construir.py falhou", r1["saida"].strip().splitlines()[-4:])
+    # 02/11/2026 (v405): o contrato da Torre nasce a cada versão selada (README da Torre); sem ele o quadro dá FALHA. rc 1 de `gerar` = há DEFASADO, e a medida segue no quadro
+    torre = os.path.join("C:/IALD/TORRE_IALD", "TORRE_%s.json" % ctx.versao)
+    if not os.path.isfile(torre):
+        util.rodar([str(c.PYTHON), "-X", "utf8", "C:/IALD/TORRE_IALD/torre.py", "gerar"], cwd="C:/IALD/TORRE_IALD", timeout=300)
+        if not os.path.isfile(torre):
+            raise Parar("torre.py gerar não criou %s" % os.path.basename(torre))
     q = remedir(ctx)
     defas, falhas, ops = classificar(q)
     if falhas:
