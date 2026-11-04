@@ -439,8 +439,40 @@ def _diferencas_do_ensaio(texto):
     return [(m.group(1), m.group(2)) for m in RE_LINHA_ENSAIO.finditer(texto) if m.group(2) != "IGUAL"]
 
 
-def fora_do_esperado(difs):
-    return [(p, e) for p, e in difs if not any(rx.match(p) for rx in ESPERADOS)]
+def _perna3_pronta_ate_o_ensaio(ctx):
+    """[AO LADO, 03/11/2026, gerência c1, custódia v406] (carimbo, manifesto) da rodada da perna 3 (Central pública, C18) completa até o ensaio, posterior ao commit
+    da custódia e com o manifesto do carimbo — ou None. Memo em ctx. Só se consulta quando o ensaio da perna 1 difere fora do seu conjunto."""
+    if "perna3_pronta" not in ctx._memo:
+        from . import publica
+        try:
+            passos = [n for n in publica._passos_do_encadeador(ctx) if n not in publica.FORA_DA_CHAMADA]
+            ate = passos[: passos.index("subir_ensaio") + 1] if "subir_ensaio" in passos else None
+            ctx._memo["perna3_pronta"] = publica._rodada_completa_ate_o_ensaio(ctx, ate) if ate else None
+        except Exception:  # noqa: BLE001 — sem a rodada da perna 3, a regra original vale inteira
+            ctx._memo["perna3_pronta"] = None
+    return ctx._memo["perna3_pronta"]
+
+
+def fora_do_esperado(difs, ctx=None):
+    # ERRATA AO LADO (03/11/2026, gerência c1, custódia v406): o original (abaixo, intacto) só conhecia o conjunto da perna 1:
+    #     def fora_do_esperado(difs):
+    #         return [(p, e) for p, e in difs if not any(rx.match(p) for rx in ESPERADOS)]
+    # Na retomada da v406 (C18 falhou DEPOIS de E18: o hospedeiro não honrou o Range, lição 49), a perna 3 da MESMA custódia já tinha regenerado 82 arquivos de
+    # central/ dentro de v3.0 (rodada 20261103_031336, posterior ao commit da Central), e E17 bloqueou o site por «meio-trabalho de outra sessão». Não era de outra
+    # sessão: era a perna 3 desta custódia. Leitura vigente: com ctx, versão corrente e a rodada da perna 3 completa até o ensaio para esta versão, desconta-se TAMBÉM
+    # o ESPERADOS_PERNA3 de publica.py (o mesmo conjunto que C18 aplica ao ensaio da perna 3). Sem essa rodada, nada muda: L10 segue inteira.
+    fora = [(p, e) for p, e in difs if not any(rx.match(p) for rx in ESPERADOS)]
+    if fora and ctx is not None and ctx.corrente and _perna3_pronta_ate_o_ensaio(ctx) is not None:
+        from .publica import ESPERADOS_PERNA3
+        p3 = [re.compile(x) for x in ESPERADOS_PERNA3]
+        fora = [(p, e) for p, e in fora if not any(rx.match(p) for rx in p3)]
+    return fora
+
+
+def _sufixo_perna3(ctx):
+    """[AO LADO, 03/11/2026] a frase da marca quando o conjunto da perna 3 entrou na conta — ou vazio."""
+    r = ctx._memo.get("perna3_pronta") if hasattr(ctx, "_memo") else None
+    return (" [+ o conjunto da perna 3, pela rodada %s do encadeador até o ensaio; ao lado, 03/11/2026]" % r[0]) if r else ""
 
 
 def linhas_do_relatorio(texto):
@@ -486,13 +518,13 @@ def _ja_e17(ctx):
     p, texto, quase = ensaio_que_cobre(ctx, alvo, desde)
     if p is not None:
         difs = _diferencas_do_ensaio(texto)
-        fora = fora_do_esperado(difs)
+        fora = fora_do_esperado(difs, ctx)  # [AO LADO, 03/11/2026] com ctx: o conjunto da perna 3 entra se a rodada dela até o ensaio existir
         if fora and ctx.corrente:
             return bloqueado("o ensaio %s cobre o alvo mas difere FORA do conjunto esperado (L10): %s" % (p.name, "; ".join("%s: %s" % x for x in fora[:5])))
         if fora:          # versão histórica: o gate L10 é de G1 e não existia na custódia manual da época — a ressalva fica dita, o passado não é reprovado
             return aplicado("ensaio %s cobre o alvo (%s): %d arquivos, sha16 de cada um igual; ressalva: a custódia da época subiu com %d diferença(s) FORA do conjunto "
                             "esperado de G1 (ex.: %s)" % (p.name, desc, len(alvo), len(fora), "; ".join("%s: %s" % x for x in fora[:2])))
-        return aplicado("ensaio %s cobre o alvo (%s): %d arquivos, sha16 de cada um igual; %d diferenças com o ar, todas no conjunto esperado" % (p.name, desc, len(alvo), len(difs)))
+        return aplicado("ensaio %s cobre o alvo (%s): %d arquivos, sha16 de cada um igual; %d diferenças com o ar, todas no conjunto esperado%s" % (p.name, desc, len(alvo), len(difs), _sufixo_perna3(ctx)))
     ar = _ar_do_alvo(ctx)
     if ar["ok"]:
         return superado("o ar já tem o conteúdo do alvo (%s) (E18, subida %s): o ensaio é dispensado" % (desc, ar["ultima"]))
@@ -505,10 +537,10 @@ def _ap_e17(ctx):
     if not ens:
         raise Parar("o ensaio não deixou RELATORIO.md em subidas\\")
     difs = _diferencas_do_ensaio(util.ler_texto(ens[-1] / "RELATORIO.md", "replace"))
-    fora = fora_do_esperado(difs)
+    fora = fora_do_esperado(difs, ctx)  # [AO LADO, 03/11/2026] idem _ja_e17
     if fora:
         raise Parar("o ensaio da subida difere FORA do conjunto esperado desta custódia (publicaria meio-trabalho de outra sessão — L10)", ["%s: %s" % x for x in fora[:20]])
-    return {"relatorio": ens[-1].name, "diferencas_esperadas": len(difs)}
+    return {"relatorio": ens[-1].name, "diferencas_esperadas": len(difs), "conjunto": ("perna 1 + perna 3" if _sufixo_perna3(ctx) else "perna 1")}
 
 
 # =================================================================== E18 — subida (ato para fora)

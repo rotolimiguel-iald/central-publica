@@ -350,6 +350,31 @@ def _nao_levados(ctx):
     return base
 
 
+def _fontes_nao_publicadas(ctx):
+    r"""[04/11/2026, gerência c1, errata ao lado — v407 parou aqui] A DECISÃO DO OPERADOR de deixar uma FONTE pinada fora do espelho:
+    work\custodia_G1\decisoes\FONTES_NAO_PUBLICADAS_vNNN.json = {"versao", "decisao_do_operador": {"verbatim": caminho, "sha16"},
+    "arquivos": [{"arquivo", "sha256", "motivo"}]}. Só vale para a versão corrente, só com o verbatim existente e com o sha16 conferido,
+    e só para o arquivo cujo sha256 bate com o de hoje (o arquivo mudou = a decisão não cobre). Sem o arquivo de decisão: dicionário vazio,
+    e a guarda segue como era (termo-guarda em FONTE = PARAR E AVISAR O OPERADOR). A guarda não afrouxa: a fonte fica FORA, nunca entra."""
+    c, v = ctx.c, ctx.versao
+    p = c.G1 / "decisoes" / ("FONTES_NAO_PUBLICADAS_%s.json" % v)   # 04/11 (claude-site-custodia): Caminhos nao tem .trabalho; a decisao mora em work\custodia_G1\decisoes
+    if not p.is_file():
+        return {}
+    d = util.ler_json(p)
+    if d.get("versao") != v:
+        raise Parar("decisão de fontes não publicadas é de outra versão: %s" % d.get("versao"), [str(p)])
+    dec = d.get("decisao_do_operador") or {}
+    vb = Path(str(dec.get("verbatim", "")))
+    if not vb.is_file() or util.sha16(vb) != dec.get("sha16"):
+        raise Parar("decisão de fontes não publicadas sem verbatim do operador conferível (arquivo ou sha16)", [str(p)])
+    fora = {}
+    for e in d.get("arquivos") or []:
+        q = Path(str(e.get("arquivo", "")))
+        if q.is_file() and util.sha256_arquivo(q) == e.get("sha256"):
+            fora[str(q)] = {"motivo": e.get("motivo", ""), "decisao": dec.get("sha16"), "sha256": e.get("sha256")}
+    return fora
+
+
 def _ap_e03(ctx):
     c, v = ctx.c, ctx.versao
     priv = EP.carregar_marcadores_privados()
@@ -375,7 +400,12 @@ def _ap_e03(ctx):
             barrados.append({"arquivo": str(src), "tipo": tipo, "ocorrencias_novo": nn, "ocorrencias_espelho": nv})
     R["varredura_privada"] = {"termos_da_casa": [g.pattern for g in EP.GUARDA], "marcadores_privados": "%d (padroes nao gravados)" % len(priv),
                               "arquivos_varridos": varridos, "barrados": barrados}
-    criticos = [b for b in barrados if b["tipo"] not in ("TUNEL", "FONTE_TUNEL")]
+    fora_dec = _fontes_nao_publicadas(ctx)   # [04/11/2026, c1] a decisão do operador: a fonte fica FORA do espelho (não é copiada), sem parar a custódia
+    for b in barrados:
+        if b["arquivo"] in fora_dec:
+            b["fora_por_decisao_do_operador"] = fora_dec[b["arquivo"]]
+    R["varredura_privada"]["fora_por_decisao_do_operador"] = [b["arquivo"] for b in barrados if b.get("fora_por_decisao_do_operador")]
+    criticos = [b for b in barrados if b["tipo"] not in ("TUNEL", "FONTE_TUNEL") and not b.get("fora_por_decisao_do_operador")]
     if criticos:
         raise Parar("termo-guarda cresceu em artefato do programa — PARAR E AVISAR O OPERADOR", [b["arquivo"] for b in criticos])
     barr = {b["arquivo"] for b in barrados}
@@ -411,7 +441,8 @@ def _ap_e03(ctx):
         raise Parar("um.py do espelho != pino do selo depois da cópia")
     for e in P.fontes_mapa:
         if e.get("publicado") and e["caminho_exigido_pelo_um_py"] in barr:
-            e.update({"publicado": False, "motivo": "barrado pela varredura de material privado (termo-guarda)", "caminho_no_espelho": None})
+            _fd = fora_dec.get(e["caminho_exigido_pelo_um_py"])
+            e.update({"publicado": False, "motivo": ("fora do espelho por decisão do operador (verbatim sha16 %s): %s" % (_fd["decisao"], _fd["motivo"])) if _fd else "barrado pela varredura de material privado (termo-guarda)", "caminho_no_espelho": None})
     (c.ESP / "fontes_pinadas").mkdir(parents=True, exist_ok=True)
     mapa = {"gerado_em": util.agora_iso(), "um_py_pin": selo["sha256"]["um.py"],
             "leia": "O um.py relê cada fonte pelo caminho absoluto em caminho_exigido_pelo_um_py e confere sha256 e bytes; para reproduzir os registros (v392 em diante) em outra "
@@ -713,6 +744,38 @@ def _assinatura(ctx):
     return h.hexdigest()[:16]
 
 
+def _gerar_readme_pinado(ctx):
+    """[AO LADO, 03/11/2026, gerência c1 — o README PINADO (D39, ratificado pelo operador em 03/11/2026; espelho ff882f81)] O README do espelho é GERADO de
+    PRIMORDIAL.json (tools/custodia_g1/primordial.py) e pinado em PINO_README.json (tools/custodia_g1/readme_pinado.py). O gerador antigo (gerar_readme_frente.py) só
+    roda se o espelho ainda não tiver o template do pinado (estado anterior a 03/11/2026). Lição: sem isto a custódia seguinte regravaria o README pinado no formato velho."""
+    c = ctx.c
+    tpl = c.TB / "tools" / "readme_pinado" / "readme_template.md"
+    if not tpl.is_file():
+        exigir_rc0(_tb(ctx, "gerar_readme_frente.py"), "gerar_readme_frente.py")
+        return
+    g1 = Path(__file__).resolve().parent
+    exigir_rc0(util.rodar([_py(ctx), "-X", "utf8", str(g1 / "primordial.py"), "--saida", str(c.TB), "--nos", str(c.NOS), "--espelho", str(c.TB)],
+                          cwd=c.CEN, timeout=900), "primordial.py")
+    exigir_rc0(util.rodar([_py(ctx), "-X", "utf8", str(g1 / "readme_pinado.py"), "--gerar", "--primordial", str(c.TB / "PRIMORDIAL.json"), "--template", str(tpl),
+                           "--partes", str(tpl.parent / "readme_partes"), "--saida", str(c.TB), "--nos", str(c.NOS), "--espelho", str(c.TB)],
+                          cwd=c.CEN, timeout=900), "readme_pinado.py --gerar")
+
+
+def _verificar_readme_pinado(ctx):
+    """[AO LADO, 03/11/2026] a verificação do pino do README (vazia se o espelho ainda não tem o pinado): lista de falhas para _conf_e08."""
+    c = ctx.c
+    tpl = c.TB / "tools" / "readme_pinado" / "readme_template.md"
+    if not tpl.is_file():
+        return []
+    g1 = Path(__file__).resolve().parent
+    r = util.rodar([_py(ctx), "-X", "utf8", str(g1 / "readme_pinado.py"), "--verificar", "--conferir-fontes", "--primordial", str(c.TB / "PRIMORDIAL.json"),
+                    "--template", str(tpl), "--partes", str(tpl.parent / "readme_partes"), "--readme", str(c.TB / "README.md"), "--pino", str(c.TB / "PINO_README.json"),
+                    "--nos", str(c.NOS), "--espelho", str(c.TB)], cwd=c.CEN, timeout=900)
+    if r["rc"] != 0:
+        return ["README pinado não confere (readme_pinado.py --verificar --conferir-fontes, rc %s): %s" % (r["rc"], " | ".join(r["saida"].strip().splitlines()[-3:]))]
+    return []
+
+
 def _ap_e08(ctx):
     c = ctx.c
     sig_ant, passadas = None, []
@@ -722,7 +785,9 @@ def _ap_e08(ctx):
         exigir_rc0(_tb(ctx, "gerar_portas.py"), "gerar_portas.py")
         for _ in range(3):                                          # README ⇄ portas até o README parar de mudar
             antes = util.sha256_arquivo(c.TB / "README.md", 16)
-            exigir_rc0(_tb(ctx, "gerar_readme_frente.py"), "gerar_readme_frente.py")
+            # ERRATA AO LADO (03/11/2026, gerência c1): o original (abaixo, intacto) chamava o gerador antigo; desde o README pinado (ff882f81) o gerador é o do pino.
+            #     exigir_rc0(_tb(ctx, "gerar_readme_frente.py"), "gerar_readme_frente.py")
+            _gerar_readme_pinado(ctx)
             exigir_rc0(_rodar_git(ctx, "add", "-A"), "git add -A")
             exigir_rc0(_tb(ctx, "gerar_portas.py"), "gerar_portas.py")
             if util.sha256_arquivo(c.TB / "README.md", 16) == antes:
@@ -749,6 +814,7 @@ def _conf_e08(ctx):
     f += rotulo_do_teste_no_readme(ctx)
     if len(ctx.ler(ctx.c.TB / "README.md").encode("utf-8")) > 40960:
         f.append("README passou do teto de 40.960 bytes (L01)")
+    f += _verificar_readme_pinado(ctx)   # [AO LADO, 03/11/2026] o pino do README: editado fora do gerador, pino ou PRIMORDIAL defasados PARAM a custódia
     return f
 
 

@@ -63,7 +63,7 @@ MAXC = 280
 PROIBIDO = re.compile(r"confirmad|comprovad|provou|provamos|provad[ao] pela natureza|5\s*σ\s*(alcan|ating)|cinco sigma (alcan|ating)|"
                       r"vencemos|descobrimos|nobel|revolucion|in[eé]dit|senha|credencial|chave de api|api key|http|www\.|#|@|«|»|"
                       r"provand|\bprova que|demonstr(a|ou|ando) que|garant|certeza|sem d[uú]vida|leitura (j[aá] )?n[aã]o cria|n[aã]o [eé] a leitura que cria|"
-                      r"\boperador\b|\bluiz\b|rotoli|\bmiguel\b|\bclaude\b|\bcodex\b|\bchatgpt\b|\bkimi\b", re.I)   # a IALD fala por si, sem nomes
+                      r"\boperador\b|\bluiz\b|rotoli|\bmiguel\b|\bclaude\b|\bcodex\b|\bchatgpt\b|\bkimi\b|\bsonnet\b|\bopus\b|\bhaiku\b|\bfable\b|\bgemini\b|\bdeepseek\b|\bmimo\b|\bqwen\b|\bgrok\b|\bgpt\b", re.I)   # a IALD fala por si, sem nomes
 ALLOW = set("≠σβΛδα√·—–‘’“”…°×≤≥≈→")
 # 26/10/2026 — o triplo espectral: as fontes PÚBLICAS do debate do dia (sem chave; só leitura). Os termos em alta só pesam a ordem.
 FEEDS = {"google_noticias_br": "https://news.google.com/rss?hl=pt-BR&gl=BR&ceid=BR:pt-419",
