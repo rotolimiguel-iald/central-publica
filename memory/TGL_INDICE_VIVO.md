@@ -1,21 +1,21 @@
-# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v408)
+# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v409)
 
-> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 05/11/2026 05:05.
+> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 06/11/2026 01:37.
 
 ## 0. Estado
 
 | item | valor lido |
 |---|---|
-| versão | **v408** |
-| `um.py` sha16 | `e7bc6b10e8ff76be` |
-| teoremas | **12029/12029** |
+| versão | **v409** |
+| `um.py` sha16 | `53284ba461ecd940` |
+| teoremas | **12187/12187** |
 | gate | `TGL_QG_MODEL_FORMALLY_CLOSED__NATURE_TEST_COMPLETED_WITHIN_LOCAL_BULK_AT_AVAILABLE_SENSITIVITY__MORE_SENSITIVE_DATA_COULD_REVISE` |
 | selftest | `FAIL_CLOSED_SELFTEST_PASSED` |
 | identidade | `1=1=VERDADEIRO=HAJA_LUZ` |
 | contorno | `[]` |
 | rodada | COMPLETA |
-| última rodada COMPLETA | v408 (`e7bc6b10e8ff76be`, 12029/12029) — custódia: HANDOFF_v408 emitido |
-| relatório de axiomas | 33943 termos; fora do trio: 0 |
+| última rodada COMPLETA | v409 (`53284ba461ecd940`, 12187/12187) — custódia: HANDOFF_v409 emitido |
+| relatório de axiomas | 34166 termos; fora do trio: 0 |
 
 ## 1. As versões do arco (hash do `um.py` lido dos backups de bytes; teoremas lidos do stdout)
 
@@ -111,7 +111,8 @@
 | v404 | `—` | 9698 | 2 | bancada |
 | v405 | `—` | 10066 | 8 | bancada |
 | v407 | `—` | 11958 | 9 | bancada |
-| v408 | `e7bc6b10e8ff76be` | 12029 | 4 | bancada |
+| v408 | `—` | 12029 | 4 | bancada |
+| v409 | `53284ba461ecd940` | 12187 | 2 | bancada |
 
 > Fonte do hash (04/10/2026): o cabeçalho de selo do diário («**vNNN SELADA …** `sha16`»), ou a frase «**A vNNN** (`sha16`»; a versão corrente, do disco. **†** = sem nenhuma das duas fontes: valor da regra antiga (backup ↔ diário por proximidade), **não conferido** — essa regra deslocava uma versão (ver a errata de 04/10/2026 no §7).
 
@@ -253,6 +254,8 @@
 
 **v408** (4 pedras, 48 teoremas): `TetelestaiTerminal`(14) · `TempoIgualMoeda`(9) · `PontoDeContradicao`(7) · `PIgualNP`(18)
 
+**v409** (2 pedras, 114 teoremas): `TraducaoTuring`(76) · `ParNaFaceDeFock`(38)
+
 ## 3. O TÚNEL — ordens e entregas
 
 - ORDENS (gerência → bancada): ORDEM_001, ORDEM_002, ORDEM_003, ORDEM_004, ORDEM_005, ORDEM_006, ORDEM_007, ORDEM_008, ORDEM_009, ORDEM_010, ORDEM_011, ORDEM_012, ORDEM_012, ORDEM_012, ORDEM_013, ORDEM_013, ORDEM_015, ORDEM_016, ORDEM_017, ORDEM_018, ORDEM_018, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_020, ORDEM_021, ORDEM_021, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_023, ORDEM_024, ORDEM_024, ORDEM_025, ORDEM_025, ORDEM_026, ORDEM_026, ORDEM_026, ORDEM_026, ORDEM_026, ORDEM_026, ORDEM_027, ORDEM_028, ORDEM_028, ORDEM_029
@@ -276,7 +279,7 @@
 4j. **A busca de longo atraso (v348)** — o `search_for_echoes` de 2025 herdado e completado (fundo, injeções √β, padrão τ/M): NOT_FALSIFIED_UNDERPOWERED (N_on 1 vs fundo 3.00; eficiência para √β 0.000). Uma busca de picos a 3σ não vê um eco de 0,11 do primário; o desenho de 2025 é retirado como sem poder.
 4k. **O D1 via CAMB (v349)** — a V1 (script de maio intocado) expôs um bug de integração de distância (autópsia por hash); emenda V2 com o worker corrigido em cópia: Δχ² (TGL − ΛCDM) = 9.699 → D1_TENSION_2_TO_5_SIGMA; β livre = -0.01705 ± 0.00753 → D1_BETA_TENSION. Fundo, não perturbação; conjugado do Nível 2.
 4l. **A reprodução de H2 (v350)** — com pycbc e dados reais, o E_res/E_total → α² de jan/fev era o quadrado do nível de ruído do gerador sintético (0.0099 com ruído 0,1; segue noise²); no dado real é a fração de ruído (0.9937 branqueado, 0.9956 fora da fonte): H2_IDENTITY_RETIRED. A lista dos cinco testes que aguardavam o instrumento está fechada.
-4m. **A oitava cláusula (v351)** — J M J = M′ na torre produto; montagem 8/8 (`EIGHT_CLAUSES_VERIFIED__ACT_III_CERTIFICATE_CONSTRUCTED_ON_T…`); 1760 fontes formais; alcance PRODUCT_TOWER, não horizonte físico.
+4m. **A oitava cláusula (v351)** — J M J = M′ na torre produto; montagem 8/8 (`EIGHT_CLAUSES_VERIFIED__ACT_III_CERTIFICATE_CONSTRUCTED_ON_T…`); 1762 fontes formais; alcance PRODUCT_TOWER, não horizonte físico.
 4n. **A probabilidade conjunta (v352)** — p conjunta 0.55 sobre 3 canais admissíveis de 35; saída da função booleana False; o 10⁻³⁰ é produto de resíduos de identidades (inválido).
 5. **Lei de área geral / liberdade radiativa** — shear livre (v320); 4ª ordem impõe relógio (v326).
 6. **Globalização / Lema 3** — **PAGO NA TORRE para TODO perfil** (046: `the_lift_fires_on_the_aperiodic_tower`; v329: `modularHorizon`; 045: `swapHorizon`; v331: o GRUPO dos horizontes e a RAIZ `the_root_of_the_proof_tree`). Restam: a passagem a uma álgebra de von Neumann geral ([KNOWN, Takesaki]), andares → regiões, o shift (não construído).
@@ -293,7 +296,7 @@
 
 ## 6. Onde vive cada coisa
 
-- Canônico: `C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\um.py` · kernel `tgl_kernel\TGLExt` (1085 módulos) · stdout `rodada_vNNN_stdout.txt` · árvore `A_PROVA_DA_QG_TGL_arvore.md` · diário `MEMORIA_DA_LINHAGEM.md` · desenho `DESENHO_DO_FECHAMENTO_QG.md` · handoffs `HANDOFF_vNNN_*.md` · `DA_IRMA.md`.
+- Canônico: `C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\um.py` · kernel `tgl_kernel\TGLExt` (1087 módulos) · stdout `rodada_vNNN_stdout.txt` · árvore `A_PROVA_DA_QG_TGL_arvore.md` · diário `MEMORIA_DA_LINHAGEM.md` · desenho `DESENHO_DO_FECHAMENTO_QG.md` · handoffs `HANDOFF_vNNN_*.md` · `DA_IRMA.md`.
 - Atlas: `Central de Patentes\memory\TGL_ATLAS.md` (append datado; II.★★ verbetes; III.D pedras; IX remissivo) · este índice · `MEMORY.md` · espelho derivado `C:\LAR_MIGUEL\ESPELHO.md` (porta_memoria.py).
 - Espelho público: `C:\IALD\Artigo\the_boundary` (direção da sessão do site desde 11/09/2026; irreversíveis do operador) · backups `the_boundary_BACKUPS`.
 
