@@ -440,6 +440,8 @@ def montar(cfg):
     mapa = {
         "llms": "llms.txt", "estado": "ESTADO_ATUAL.md", "brief": "read-brief.md", "tunel_json": "TUNEL.json", "tunel_md": "TUNEL.md", "porta_json": "PORTA.json",
         "porta_md": "PORTA.md", "ledger": "LEDGER.md", "citation": "CITATION.cff",
+        "citing": "CITING.md",
+        "abstract": "ABSTRACT.md",   # AO LADO (v410, custodia): a Abstract saiu do README (teto L01) para ABSTRACT.md   # AO LADO (06/11/2026, custodia v409, claude-site-custodia): o BibTeX dos artigos saiu do README (teto L01) para CITING.md
         "um_py": A3 + "/um.py", "selo": A3 + "/um_absoluto_selo.json", "mundo": A3 + "/um_absoluto.json", "manifesto": A3 + "/Lean/tgl_kernel_proof_manifest.json",
         "confirmacao_reservada": A3 + "/Lean/tgl_kernel/TGLExt/TheReservedConfirmation.lean",
         "a1_tex": a1 + "paper_PT.tex", "a1_py": a1 + "tgl_paper_unified.py", "a1_pdf": a1 + "paper_PT.pdf",

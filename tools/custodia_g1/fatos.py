@@ -73,6 +73,25 @@ def literal_de(um_text, nome):
         return None
 
 
+_CHAVES_DE_KERNEL = ("theorems", "declarations", "declaration_sources", "stone")
+
+
+def contratos_de_registro(um_text, contratos):
+    r"""[AO LADO, 11/11/2026, claude-site-custodia — a E04 da v410 parou aqui] Os contratos de REGISTRO (pré-registro de teste, recibo
+    documental: `_V410_H0DN_CONTRACT`, `_V410_HMS13_CONTRACT`) não consomem a escada do kernel e por isso não trazem `expected_ladder`.
+    Só é de registro o contrato que, ao mesmo tempo: (a) não traz `expected_ladder` (valor None em `contratos_expected_ladder`); (b) é
+    literal Python; (c) não tem nenhuma chave de conteúdo de kernel (theorems, declarations, declaration_sources, stone). Contrato de
+    kernel sem a escada, ou não literal, NÃO sai: a conferência segue parando nele. A guarda não afrouxa."""
+    out = []
+    for nome, x in sorted(contratos.items()):
+        if x is not None:
+            continue
+        d = literal_de(um_text, nome)
+        if isinstance(d, dict) and "expected_ladder" not in d and not any(k in d for k in _CHAVES_DE_KERNEL):
+            out.append(nome)
+    return out
+
+
 def contratos_expected_ladder(um_text):
     """{_VNNN_X_CONTRACT: expected_ladder|None|'não literal'} por regex: o bloco vai da atribuição ao próximo comando de coluna 0."""
     out = {}
@@ -368,6 +387,8 @@ def sondar(c, v, anterior=None, fonte=None, handoff="auto"):
     um = A.um_text()
     dics = nomes_toplevel(um, r"_V%s_[A-Z0-9_]+" % v[1:])
     contratos = contratos_expected_ladder(um)
+    contratos_registro = contratos_de_registro(um, contratos)   # AO LADO (11/11, v410): fora da conferência da escada, registrados à parte
+    contratos = {k: x for k, x in contratos.items() if k not in contratos_registro}
 
     h = ler_handoff_se(c, v, handoff)
     rec, rec_prob = recibos_bn_resolvidos(c, v, _sha16s_do_elo(h))
@@ -386,7 +407,7 @@ def sondar(c, v, anterior=None, fonte=None, handoff="auto"):
         "escada": esc, "escada_anterior": escB,
         "kh": {"constantes": khc, "teoremas": kht, "constantes_anterior": khcB, "teoremas_anterior": khtB},
         "registro": {"pt": len(rpt), "en": len(ren), "anterior": len(rptB), "novos": sorted(k for k in rpt if k not in rptB), "mudados": mudados},
-        "contratos_expected_ladder": contratos, "dicionarios": dics,
+        "contratos_expected_ladder": contratos, "contratos_de_registro": contratos_registro, "dicionarios": dics,
         "blocos": {k: descrever_bloco(k, core.get(k)) for k in novos_reg if isinstance(core.get(k), dict)},
         "cadeia": {"pastas": sorted(p.name for p in cs.glob("%s*" % v)),
                    "diffs": sorted(p.name for p in (cs / v).glob("DIFF_*") if ".bak_" not in p.name) if (cs / v).is_dir() else [],

@@ -426,7 +426,10 @@ def citation_pares(ctx, cff_texto, F, dep):
     v = ctx.versao
     data = F["timestamp"].split(" ")[0]
     d_old = re.search(r'    description: "the current seal of the repository, one page, regenerated at every custody \((v\d+) on [0-9-]{10}; the Zenodo deposit holds (v\d+)\)"\n', cff_texto)
-    p_old = re.search(r'  - type: other\n    value: "sha256:[0-9a-f]{64}"\n    description: "the pin of um\.py at (v\d+), the repository head \([\d,]+ bytes; sealed [0-9: -]+\); the Zenodo deposit ([0-9.a-z/]+) holds (v\d+) \(([0-9a-f]{16})…\)"\n', cff_texto)
+    p_old = re.search(r'  - type: other\n    value: "sha256:[0-9a-f]{64}"\n    description: "the pin of um\.py at (v\d+), the repository head \([\d,]+ bytes; sealed [0-9: -]+\); the Zenodo deposit ([0-9.a-z/]+) holds (v\d+) \(([0-9a-f]{16})…(?:, the same pin)?\)"\n', cff_texto)
+    # AO LADO (11/11/2026, claude-site-custodia; a E04 da v410 parou aqui): no registro do Zenodo da v409 (08/11) a sessão de custódia
+    # acrescentou «, the same pin» à descrição do pino (cabeça = depósito naquele dia). O sufixo é aceito como opcional e NÃO é regravado:
+    # a troca abaixo escreve a forma padrão, porque com uma cabeça nova o pino da cabeça e o do depósito já não são o mesmo.
     if not (d_old and p_old):
         raise Parar("CITATION.cff: as duas descrições do selo corrente não casaram", ["descrição do ESTADO_ATUAL: %s" % bool(d_old), "descrição do pino: %s" % bool(p_old)])
     return [(d_old.group(0), '    description: "the current seal of the repository, one page, regenerated at every custody (%s on %s; the Zenodo deposit holds %s)"\n' % (v, data, dep["versao"])),

@@ -1,0 +1,34 @@
+# (5b''') [v410 parte 2, D86/D87] A ORDEM DE CHAMADA DO a_escala_v410, medida por AST: as chaves que ele le (external_ladder, kernel_formalization, qg_closure e o beta) prontas ANTES da instrucao que o chama; a MESMA instrucao do main chama iald2_v410 ANTES dele e h0dn_bg1_v410 DEPOIS.
+# Controles negativos: o bloco movido para antes do run_um (le chaves ainda nao atribuidas); a chamada do a_escala retirada (chamada ausente: nunca ok por omissao).
+_FN_AESCALA = ("a_escala_v410", "_v410_aescala_mechanics", "_v398_beta")   # (D86/D87) o registro da pedra AEscala, chamado na MESMA instrucao do main, entre iald2_v410 e h0dn_bg1_v410
+_opA = _ordem_psion(src, fns_=_FN_AESCALA, exig_=_EXIG_PSION, chamada_="a_escala_v410(core)")
+_icA = [i_ for i_, st_ in enumerate(_main0.body) if "a_escala_v410(core)" in ast.unparse(st_)]
+_mesmaA_ = len(_icA) == 1 and _icA[0] == _ic0 and 0 <= _u0.find("iald2_v410(core)") < _u0.find("a_escala_v410(core)") < _u0.find("h0dn_bg1_v410(core)")
+_neg_Aa = _ordem_psion("\n".join(_lin[:_dest] + _bloco + _lin[_dest:_st0.lineno - 1] + _lin[_st0.end_lineno:]), fns_=_FN_AESCALA, exig_=_EXIG_PSION, chamada_="a_escala_v410(core)")   # (a) o bloco (iald2 + a_escala + h0dn) movido para ANTES do run_um
+_lin_Ab = list(_lin); _ln_Ab = [i_ for i_, l_ in enumerate(_lin_Ab) if re.match(r"\s+_a410 = a_escala_v410\(core\)", l_)]
+assert len(_ln_Ab) == 1, ("a linha da chamada do a_escala_v410 nao foi achada uma vez", _ln_Ab)
+_lin_Ab[_ln_Ab[0]] = _lin_Ab[_ln_Ab[0]].replace("a_escala_v410(core)", "{}", 1)
+_neg_Ab = _ordem_psion("\n".join(_lin_Ab), fns_=_FN_AESCALA, exig_=_EXIG_PSION, chamada_="a_escala_v410(core)")   # (b) a chamada do a_escala retirada
+rep["ordem_de_chamada_a_escala_v410"] = {"real": _opA, "na_mesma_instrucao_do_main_entre_o_iald2_e_o_h0dn": _mesmaA_, "controle_negativo_bloco_antes_do_run_um": {k_: _neg_Aa.get(k_) for k_ in ("ok", "lidos_antes_da_atribuicao", "insumos_exigidos_ausentes", "erro")}, "controle_negativo_sem_a_chamada": {k_: _neg_Ab.get(k_) for k_ in ("ok", "erro", "indices")}}
+U["v410_ordem_de_chamada_do_a_escala_v410_medida_por_ast_na_mesma_instrucao_entre_o_iald2_e_o_h0dn_com_dois_controles_negativos"] = bool(_opA["ok"] and _opA["n_chaves_lidas"] >= 3 and {"external_ladder", "kernel_formalization", "qg_closure"} <= set(_opA["chaves_lidas"]) and _mesmaA_ and _neg_Aa["ok"] is False and bool(_neg_Aa.get("lidos_antes_da_atribuicao")) and _neg_Ab["ok"] is False and _neg_Ab.get("erro") == "chamada no main ausente ou nao unica")
+print("ordem de chamada do a_escala_v410 (AST propria):", _opA["ok"], "| lidas:", sorted(_opA.get("chaves_lidas") or []), "| mesma instrucao, entre o iald2 e o h0dn:", _mesmaA_, "| controles negativos:", _neg_Aa["ok"] is False, _neg_Ab["ok"] is False)
+# (5b'''') [v410 parte 2, D80] A ORDEM DE CHAMADA DO h0dn_fontes_hms13_v410, medida por AST: ele le core["h0dn_bg1_v410"] (gravado na instrucao ANTERIOR), o gate e o beta; a instrucao do main que o chama e' a SEGUINTE a do iald2/a_escala/h0dn e nela ele vem ANTES dos specs da v410.
+# Controles negativos: (a) as duas instrucoes TROCADAS (o recibo le o h0dn antes de ele ser gravado); (b) a chamada do recibo retirada (chamada ausente); (c) a chamada do h0dn retirada da instrucao anterior (o insumo exigido some).
+_FN_HMS13 = ("h0dn_fontes_hms13_v410", "_v410_hms13_mechanics", "_v398_beta")   # (D80) o recibo documental HMS/13, ADITIVO e POSTERIOR ao FREEZE_R2
+_EXIG_HMS13 = tuple(_EXIG_PSION) + ("iald2_v410", "a_escala_v410", "h0dn_bg1_v410")
+_opF = _ordem_psion(src, fns_=_FN_HMS13, exig_=_EXIG_HMS13, chamada_="h0dn_fontes_hms13_v410(core)")
+_icF = [i_ for i_, st_ in enumerate(_main0.body) if "h0dn_fontes_hms13_v410(core)" in ast.unparse(st_)]
+_seguinteF_ = len(_icF) == 1 and _icF[0] == _ic0 + 1 and 0 <= _u1.find("h0dn_fontes_hms13_v410(core)") < _u1.find("_v410_rodar_specs(core)") and "h0dn_bg1_v410(core)" in _u0 and "h0dn_fontes_hms13_v410(core)" not in _u0
+_bloco1 = _lin[_st1.lineno - 1:_st1.end_lineno]
+_neg_Fa = _ordem_psion("\n".join(_lin[:_st0.lineno - 1] + _bloco1 + _lin[_st0.lineno - 1:_st1.lineno - 1] + _lin[_st1.end_lineno:]), fns_=_FN_HMS13, exig_=_EXIG_HMS13, chamada_="h0dn_fontes_hms13_v410(core)")   # (a) as duas instrucoes TROCADAS: o recibo antes do iald2/a_escala/h0dn
+_lin_Fb = list(_lin); _ln_Fb = [i_ for i_, l_ in enumerate(_lin_Fb) if re.match(r"\s+_f410 = h0dn_fontes_hms13_v410\(core\)", l_)]
+assert len(_ln_Fb) == 1, ("a linha da chamada do h0dn_fontes_hms13_v410 nao foi achada uma vez", _ln_Fb)
+_lin_Fb[_ln_Fb[0]] = _lin_Fb[_ln_Fb[0]].replace("h0dn_fontes_hms13_v410(core)", "{}", 1)
+_neg_Fb = _ordem_psion("\n".join(_lin_Fb), fns_=_FN_HMS13, exig_=_EXIG_HMS13, chamada_="h0dn_fontes_hms13_v410(core)")   # (b) a chamada do recibo retirada
+_neg_Fc = _ordem_psion("\n".join(_lin_Hb), fns_=_FN_HMS13, exig_=_EXIG_HMS13, chamada_="h0dn_fontes_hms13_v410(core)")   # (c) a chamada do h0dn retirada da instrucao anterior (o _lin_Hb do bloco (5b'')): o insumo exigido some
+rep["ordem_de_chamada_h0dn_fontes_hms13_v410"] = {"real": _opF, "na_instrucao_seguinte_do_main_depois_do_h0dn_e_antes_dos_specs": _seguinteF_, "controle_negativo_instrucoes_trocadas": {k_: _neg_Fa.get(k_) for k_ in ("ok", "lidos_antes_da_atribuicao", "insumos_exigidos_ausentes", "erro")},
+                                                  "controle_negativo_sem_a_chamada": {k_: _neg_Fb.get(k_) for k_ in ("ok", "erro", "indices")}, "controle_negativo_sem_a_chamada_do_h0dn": {k_: _neg_Fc.get(k_) for k_ in ("ok", "lidos_antes_da_atribuicao", "lidas_sem_origem", "insumos_exigidos_ausentes", "erro")}}
+U["v410_ordem_de_chamada_do_h0dn_fontes_hms13_v410_medida_por_ast_na_instrucao_seguinte_depois_do_h0dn_com_tres_controles_negativos"] = bool(_opF["ok"] and _opF["n_chaves_lidas"] >= 2 and {"h0dn_bg1_v410", "qg_closure"} <= set(_opF["chaves_lidas"]) and _seguinteF_
+                                                                                                                                              and _neg_Fa["ok"] is False and "h0dn_bg1_v410" in (_neg_Fa.get("lidos_antes_da_atribuicao") or []) and _neg_Fb["ok"] is False and _neg_Fb.get("erro") == "chamada no main ausente ou nao unica"
+                                                                                                                                              and _neg_Fc["ok"] is False and "h0dn_bg1_v410" in (_neg_Fc.get("insumos_exigidos_ausentes") or []))
+print("ordem de chamada do h0dn_fontes_hms13_v410 (AST propria):", _opF["ok"], "| lidas:", sorted(_opF.get("chaves_lidas") or []), "| instrucao seguinte, antes dos specs:", _seguinteF_, "| controles negativos:", _neg_Fa["ok"] is False, _neg_Fb["ok"] is False, _neg_Fc["ok"] is False)

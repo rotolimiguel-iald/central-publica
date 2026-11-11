@@ -127,6 +127,9 @@ Camada v408 (custódia v408 na Central, 05/11/2026, sessão site; handoff v408 d
 Camada v409 (custódia v409 na Central, 06/11/2026, sessão site; handoff v409 da gerência c1) — GENÉRICA (camada_generica.py):
  19. os registros novos da v409 (cunhagens_v409, kh_n1_cobertura_v409, traducao_turing_v409), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v409: cunhagens_v409: «[REAL -- o kernel, o registro traducao_turing_v409 e os registros anteriores lidos a cada rito;» kh_n1_cobertura_v409: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» traducao_turing_v409: «[REAL] os termos do kernel do rito: as 82 ancoras das DUAS pedras (TGLExt.TraducaoTuring.* e TGLExt.ParNaFaceDeFock.*), no trio, com proveniencia no modulo esperado, e os modulos por sha256;» Nada disso muda número algum de dispositivo.
 
+Camada v410 (custódia v410 na Central, 11/11/2026, sessão site; handoff v410 da gerência c1) — GENÉRICA (camada_generica.py):
+ 19. os registros novos da v410 (a_escala_v410, cunhagens_v410, h0dn_bg1_v410, h0dn_fontes_hms13_v410, iald2_v410, kh_n1_cobertura_v410), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v410: a_escala_v410: «[REAL] os termos do kernel do rito: as 81 ancoras da pedra AEscala (TGLExt.AEscala.*), no trio, com proveniencia no modulo e bandeira;» cunhagens_v410: «[REAL -- o kernel, o registro iald2_v410 e os registros anteriores lidos a cada rito;» h0dn_bg1_v410: «[REAL] o que o registro CONFERE neste rito: os pinos do FREEZE_R2 nos insumos embutidos;» h0dn_fontes_hms13_v410: «[REAL_DOCUMENTAL__PHYSICS_OPEN] o que o registro CONFERE neste rito: os quatro artefatos documentais embutidos (lidos no build da entrega do Kimi, por bytes e sha256, D80), os 13 IDs dos calibradores, as 18 fontes primarias (titulo, URL, sha256 do arquivo e do texto), os fatores PARCIAIS de erro por» iald2_v410: «[REAL] os termos do kernel do rito: as 22 ancoras da pedra IALD2 (TGLExt.IALD2.*), no trio, com proveniencia no modulo esperado, e o modulo por sha256;» kh_n1_cobertura_v410: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» Nada disso muda número algum de dispositivo.
+
 Régua: β NUNCA literal (sempre ALPHA_FINE_CODATA_2018 × √e em runtime); os números do cofre são LIDOS do selo/core por pino;
 falha de leitura ou elo quebrado = RuntimeError (fail-closed). Nada aqui move veredito físico: physical_verdict_allowed = False.
 PROVADA ≠ CONFIRMADA; o dicionário custo/identidade/movimento é cunhagem do operador [ONTO/DEFINITION].
@@ -143,7 +146,7 @@ HBAR_CODATA_2018 = 1.054571817e-34      # J s
 G_CODATA_2018 = 6.67430e-11             # m^3 kg^-1 s^-2
 C_LIGHT = 299792458.0                   # m/s (exato)
 
-VERSAO_DA_CAMADA = "v409"   # (era "v408"; a camada v409 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
+VERSAO_DA_CAMADA = "v410"   # (era "v409"; a camada v410 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
 # o cofre e procurado nesta ordem (declarada): a variavel TGL_CENTRAL_DIR; a arvore onde este modulo esta; a Central desta
 # maquina (quando o dispositivo roda extraido do *_FINAL.py num diretorio temporario). Nenhum achado = fail-closed.
 def _achar_central():
@@ -647,7 +650,7 @@ def conferir_v398_no_cofre(core: dict, selo: dict) -> dict:
                         "estrutura logarítmica e de oitava, não a física da onda; validade no kernel não é creditação; nada disto muda número de dispositivo"}
 
 
-CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404", "v405", "v406", "v407", "v408", "v409",)
+CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404", "v405", "v406", "v407", "v408", "v409", "v410",)
 
 
 def _camadas_genericas(core, selo, cofre):
@@ -869,6 +872,8 @@ USOS = {
     'camadas_v408': r"TGLExt\.(PIgualNP|PontoDeContradicao|TempoIgualMoeda|TetelestaiTerminal)|cunhagens_v408|kh_n1_cobertura_v408|tetelestai_terminal_v408",
     # v409: mede se algum dispositivo cita as pedras novas; não interpreta
     'camadas_v409': r"TGLExt\.(ParNaFaceDeFock|TraducaoTuring)|cunhagens_v409|kh_n1_cobertura_v409|traducao_turing_v409",
+    # v410: mede se algum dispositivo cita as pedras novas; não interpreta
+    'camadas_v410': r"TGLExt\.(AEscala|IALD2)|a_escala_v410|cunhagens_v410|h0dn_bg1_v410|h0dn_fontes_hms13_v410|iald2_v410|kh_n1_cobertura_v410",
 }
 
 
@@ -912,6 +917,7 @@ def camada(runner_path) -> dict:
                      "REGISTROS_V407_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V408_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V409_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
+                     "REGISTROS_V410_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION") % VERSAO_DA_CAMADA.upper(),
         "physical_verdict_allowed": False,
         "nao_se_afirma": ["que o dispositivo valide física", "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
@@ -1252,7 +1258,61 @@ def camada(runner_path) -> dict:
                           '(v409, traducao_turing_v409) que o par na face de Fock e o par finito de Bell sejam o mesmo objeto: sao espacos distintos (o setor 2 do Fock concreto e C2 x C2), com a MESMA Meia-Nat (a ligacao foi feita: ParNaFaceDeFock)',
                           "(v409, traducao_turing_v409) que a igualdade completa com o leitor que so' conta seja teorema: com ele vale NP numa leitura; a igualdade completa e' do leitor que se le (E28)",
                           "(v409, traducao_turing_v409) que o gate tenha se movido: o veredito e' o mesmo da v408 selada, conferido em runtime",
-                          '(v409, traducao_turing_v409) que alguma chave antiga tenha mudado nesta versao: nenhuma; a chave do lema (v407) segue lida do kernel e le True'],
+                          '(v409, traducao_turing_v409) que alguma chave antiga tenha mudado nesta versao: nenhuma; a chave do lema (v407) segue lida do kernel e le True',
+                          "(v410, a_escala_v410) que isto seja um teste com a natureza: nao ha' desfecho experimental; nenhum dado novo entra",
+                          "(v410, a_escala_v410) que o Instituto Clay tenha creditado algo: a creditacao e' do Clay, de quem tem autoridade para falar em nome dele; o que ha' e' validade no kernel, tal qual a TGL apresenta o problema (D84)",
+                          "(v410, a_escala_v410) que a pergunta do Clay seja mera identidade ou repeticao de si: nao e'; na leitura do operador ela e' a existencia do algoritmo que le a face sem leitura e a usa como fundo (D83)",
+                          "(v410, a_escala_v410) que a face caida nao se leia: sem leitor ela e' ruido; com o leitor ela E' lida, como fundo (sem_leitor_a_face_e_ruido; a_face_caida_e_o_fundo)",
+                          '(v410, a_escala_v410) que a face sem par SEJA o neutrino, ou que m1 = 0 seja termo: sao leitura [ONTO] e conjectura do operador; os teoremas sao sobre as faces, os pesos e a escala',
+                          '(v410, a_escala_v410) que a maquina de Turing padrao sem o leitor tenha resposta aqui: fica fora por estatuto; P = nP de Turing (a máquina com o leitor; as classes de computação) PROVADO no kernel (uma_leitura_decide_SAT, a_maquina_com_o_leitor, p_igual_np_no_modo_selecao): validade, não creditação; a máquina de Turing padrão sem o leitor (o Clay) fica fora por estatuto',
+                          "(v410, a_escala_v410) que os 2 nomes auxiliares da autoria (a_flutuacao_do_fundo_e_cotada, ate_meio_o_tempo_do_tetelestai_nao_e_negativo) estejam ratificados: sao [DECLARADO pela autoria] ate' a confirmacao expressa do operador",
+                          '(v410, a_escala_v410) que a fala de 10/11 da D101 tenha ratificado o quarto teorema da clausula do Tetelestai: da clausula, ela ratifica os tres nomes apresentados ao operador antes dela; o quarto foi NOMEADO pelo operador em fala posterior do mesmo dia (D108) e o nome de trabalho que levava na R5 saiu',
+                          "(v410, a_escala_v410) que os nomes da secao 7 que nao foram mostrados ao operador (leitorComConstante, leituraComConstante, leitorComConstante_um, a_leitura_com_constante_e_a_leitura_no_tempo_reescalado, a_constante_da_escala, o_nome_das_solucoes_e_a_singularidade_do_sinal) estejam ratificados: sao [DECLARADO pela autoria] ate' a confirmacao expressa dele",
+                          "(v410, a_escala_v410) que o runner da patente ACOM Mirror valide fisica ou seja termo do kernel: e' [PILOTO][SIM] e nada ali valida fisica; a evidencia de dispositivo e' so' citacao, sem numero de desempenho",
+                          '(v410, a_escala_v410) que β ≤ ½ seja termo do kernel: o kernel dá 0 < β < 1 e não dá β ≤ ½; por isso a hipótese s ≥ 0 é dita',
+                          '(v410, a_escala_v410) que o limiar da cláusula de 1 − β seja o custo de somar os 2^n termos por outra máquina: é o tempo de UMA leitura de Z, que o psíon lê de uma vez',
+                          "(v410, a_escala_v410) que a escala seja pedagio ou clausula acrescentada, ou que o leitor do fundo seja outra coisa alem da sua escala: ler e' um sistema de referencia sinalizada pela observacao, e a escala e' o que um leitor e' (D94)",
+                          "(v410, a_escala_v410) que o decisor sem escala minta, ou seja o Pai da Mentira: ele nao le (nao e' leitor do fundo); o Pai da Mentira so' nao faz reconhecimento verdadeiro (D94)",
+                          "(v410, a_escala_v410) que o tempo da escala esteja ligado, por termo, a formalizacao da maquina de Turing no Mathlib: o termo que ligaria a traducao da TGL a essa formalizacao nao esta' no kernel; a creditacao e' do Clay",
+                          "(v410, a_escala_v410) que “existe” seja mais do que a lei ter solucao e decidir: o conteudo da escala esta' na definicao do operador; a existencia do leitor do fundo nao e' lei da natureza nem creditacao",
+                          '(v410, a_escala_v410) que o gate tenha se movido: nao se moveu; que alguma chave antiga tenha mudado: nenhuma',
+                          "(v410, cunhagens_v410) que isto seja um teste com a natureza: nao ha' desfecho experimental; nenhum dado novo entra",
+                          "(v410, cunhagens_v410) que a gravidade quantica esteja creditada: a confirmacao segue proibida (creditacao); o que ha' e' validade no kernel",
+                          "(v410, cunhagens_v410) que a pergunta da maquina de Turing padrao sem o leitor (no Mathlib, Turing.TM2ComputableInPolyTime; a pergunta do Clay) tenha resposta aqui: nao tem; o que o kernel prova e' isto: o algoritmo IALD decide SAT com uma leitura: P = nP relativo ao leitor (a máquina com o leitor); a máquina de Turing padrão sem o leitor fica fora (validade no kernel, não creditação) (o_enunciado; o_algoritmo_iald); com o leitor que só conta vale NP ⊆ P^leitor (Cook–Levin [KNOWN]) e a igualdade relativizada P^leitor = NP^leitor não é teorema aqui para o contador (E28); pela D61 (a leitura jurídica do kernel, ratificada pelo operador na v409): o dispositivo é o no sorry, que declara válida a regra posta (o enunciado: P = nP relativo ao leitor, a máquina com o leitor); a regra incide onde o seu suporte fático (as hipóteses e as definições do enunciado) se completa: na máquina com o leitor; a máquina de Turing padrão sem o leitor não completa o suporte fático e fica fora",
+                          "(v410, cunhagens_v410) que exista, por esta pedra, algoritmo de tempo polinomial nas maquinas de Turing padrao sem o leitor: o kernel nao tem esse teorema (D65); P = nP aqui e' relativo ao leitor (a máquina com o leitor); a máquina de Turing padrão sem o leitor fica fora",
+                          "(v410, cunhagens_v410) que a igualdade relativizada com o leitor que so' conta seja teorema: nao e'; com ele vale NP numa leitura (Cook-Levin [KNOWN]); a igualdade relativizada nao e' teorema aqui para o contador (E28)",
+                          '(v410, cunhagens_v410) que a IALD, a Torre ou o operador SEJAM o funtor, ou que o codigo do um.py SEJA um vetor de H1: nao sao termos; sao leituras do operador (definicoes do dicionario)',
+                          "(v410, cunhagens_v410) que o funtor seja idempotente: nao e'; Gamma(u)·Gamma(u) = Gamma(u o u) e' funtorialidade; o que e' idempotente e' a leitura (o Nome do par lido)",
+                          '(v410, cunhagens_v410) que o par na face de Fock e o par finito de Bell sejam o mesmo objeto: nao sao; sao espacos distintos (o setor 2 do Fock concreto e C2 x C2), com a MESMA Meia-Nat',
+                          '(v410, cunhagens_v410) que o seletor da luz e o de l2 sejam o mesmo objeto: nao se afirma; o rfl une a forma, nao o referente (D70)',
+                          "(v410, cunhagens_v410) que o atrator tenha sido observado, medido ou detectado em dado algum, ou que o verde e as tonalidades sejam termos: nao; o atrator e' a conjuncao o_atrator sobre o Nome do par lido (validade no kernel) e o verde e o espectro de gradiente negativo sao leitura do operador (D71); nenhum dado entra",
+                          "(v410, cunhagens_v410) que o gate tenha se movido: nao se moveu; o veredito e' o mesmo da v409 selada, conferido em runtime",
+                          '(v410, cunhagens_v410) que alguma chave antiga tenha mudado nesta versao: nenhuma; a chave do lema (v407) segue lida do kernel e le True',
+                          "(v410, h0dn_bg1_v410) que o teste tenha sido aberto ou que exista desvio observado: pré-registrado; nenhum dado observado lido; a abertura e' de versao futura, com a covariancia fisica fechada",
+                          "(v410, h0dn_bg1_v410) que beta_TGL esteja provado na natureza: o ramo da leitura e' PRE-REGISTRADO, nao devolvido; so' a abertura futura pode devolve-lo; e provado na natureza (validade, não creditação) nunca e' TGL confirmada (creditacao: o juizo de fora, que o um.py nao da)",
+                          "(v410, h0dn_bg1_v410) que a rota “coerencia espectro x fotometria” seja o teste: e' NOT_TESTABLE (eta = 1)",
+                          "(v410, h0dn_bg1_v410) que a aritmetica do agregado publico seja resultado: nao e', nao e' cega e nao entra em texto",
+                          "(v410, h0dn_bg1_v410) que o poder prospectivo seja medida da natureza, ou poder certificado: e' da covariancia publicada, que nao aceita o vetor real, e condicional ao modelo de covariancia publicado; o certificado, as cegas, sob a covariancia fisica, nao existe hoje (D96)",
+                          '(v410, h0dn_bg1_v410) que o gate tenha se movido: nao se moveu',
+                          "(v410, h0dn_fontes_hms13_v410) que a covariancia fisica esteja fechada: nao esta' (G3/G4 abertos); cobertura documental de fontes, não covariância física fechada; nada aberto",
+                          "(v410, h0dn_fontes_hms13_v410) que o teste tenha sido aberto ou que exista desvio observado: nenhum vetor observado e' lido; H0DN x BG1: pré-registrado; nenhum dado observado lido",
+                          "(v410, h0dn_fontes_hms13_v410) que a forma HMS completa seja admitida: nao e' (duplicaria variancia); que ausencia de matriz seja independencia: nao e'",
+                          "(v410, h0dn_fontes_hms13_v410) que o recibo documental seja prova fisica ou leitura de 5 sigma: nao e'; que o gate tenha se movido: nao se moveu",
+                          "(v410, h0dn_fontes_hms13_v410) que a cunhagem da mesma fala do operador entre por este registro: nao entra por ele (D80; D82: e' materia da pedra nova, parte 2)",
+                          "(v410, iald2_v410) que isto seja um teste com a natureza: nao ha' desfecho experimental; nenhum dado novo entra",
+                          "(v410, iald2_v410) que a gravidade quantica esteja creditada: a confirmacao segue proibida (creditacao); o que ha' e' validade no kernel",
+                          "(v410, iald2_v410) que a pergunta da maquina de Turing padrao sem o leitor (no Mathlib, Turing.TM2ComputableInPolyTime; a pergunta do Clay) tenha resposta aqui: nao tem; o que o kernel prova e' isto: o algoritmo IALD decide SAT com uma leitura: P = nP relativo ao leitor (a máquina com o leitor); a máquina de Turing padrão sem o leitor fica fora (validade no kernel, não creditação) (o_enunciado; o_algoritmo_iald); com o leitor que só conta vale NP ⊆ P^leitor (Cook–Levin [KNOWN]) e a igualdade relativizada P^leitor = NP^leitor não é teorema aqui para o contador (E28); pela D61 (a leitura jurídica do kernel, ratificada pelo operador na v409): o dispositivo é o no sorry, que declara válida a regra posta (o enunciado: P = nP relativo ao leitor, a máquina com o leitor); a regra incide onde o seu suporte fático (as hipóteses e as definições do enunciado) se completa: na máquina com o leitor; a máquina de Turing padrão sem o leitor não completa o suporte fático e fica fora",
+                          "(v410, iald2_v410) que exista, por esta pedra, algoritmo de tempo polinomial nas maquinas de Turing padrao sem o leitor: o kernel nao tem esse teorema (D65); P = nP aqui e' relativo ao leitor (a máquina com o leitor); a máquina de Turing padrão sem o leitor fica fora",
+                          "(v410, iald2_v410) que a igualdade relativizada com o leitor que so' conta seja teorema: nao e'; com ele vale NP numa leitura (Cook-Levin [KNOWN]); a igualdade relativizada nao e' teorema aqui para o contador (E28)",
+                          '(v410, iald2_v410) que a IALD, a Torre ou o operador SEJAM o funtor, ou que o codigo do um.py SEJA um vetor de H1: nao sao termos; sao leituras do operador (definicoes do dicionario)',
+                          "(v410, iald2_v410) que o funtor seja idempotente: nao e'; Gamma(u)·Gamma(u) = Gamma(u o u) e' funtorialidade; o que e' idempotente e' a leitura (o Nome do par lido)",
+                          '(v410, iald2_v410) que o par na face de Fock e o par finito de Bell sejam o mesmo objeto: nao sao; sao espacos distintos (o setor 2 do Fock concreto e C2 x C2), com a MESMA Meia-Nat',
+                          '(v410, iald2_v410) que o seletor da luz e o de l2 sejam o mesmo objeto: nao se afirma; o rfl une a forma, nao o referente (D70)',
+                          "(v410, iald2_v410) que o atrator tenha sido observado, medido ou detectado em dado algum, ou que o verde e as tonalidades sejam termos: nao; o atrator e' a conjuncao o_atrator sobre o Nome do par lido (validade no kernel) e o verde e o espectro de gradiente negativo sao leitura do operador (D71); nenhum dado entra",
+                          "(v410, iald2_v410) que o gate tenha se movido: nao se moveu; o veredito e' o mesmo da v409 selada, conferido em runtime",
+                          '(v410, iald2_v410) que alguma chave antiga tenha mudado nesta versao: nenhuma; a chave do lema (v407) segue lida do kernel e le True',
+                          "(v410, kh_n1_cobertura_v410) que a cobertura seja prova da teoria: e' a medida de que todo termo no fecho depende so' do trio",
+                          '(v410, kh_n1_cobertura_v410) que o gate tenha se movido'],
     }
 
 

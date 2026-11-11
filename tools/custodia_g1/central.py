@@ -204,6 +204,20 @@ def _pre_c3(ctx):
     return f
 
 
+def _cadeia_fora_da_faixa_declarada(ctx, n, h):
+    r"""[AO LADO, 11/11/2026, claude-site-custodia] A declaração de que a cadeia de selo fora de ±50% da anterior foi EXAMINADA (nenhum
+    diretório de ensaio novo entrando calado): work\custodia_G1\decisoes\CADEIA_DE_SELO_FORA_DA_FAIXA_vNNN.json = {"versao",
+    "arquivos_no_cofre", "lista_sha256", "por", "exame"}. Vale só para a versão corrente e só se a contagem e o sha256 da lista de hoje
+    forem idênticos aos declarados. Sem o arquivo: None (a guarda para, como era). Arquivo que não confere: PARAR."""
+    p = ctx.c.G1 / "decisoes" / ("CADEIA_DE_SELO_FORA_DA_FAIXA_%s.json" % ctx.versao)
+    if not p.is_file():
+        return None
+    d = util.ler_json(p)
+    if d.get("versao") != ctx.versao or d.get("arquivos_no_cofre") != n or d.get("lista_sha256") != h:
+        raise Parar("a declaração da cadeia de selo fora da faixa não confere com a cópia de hoje (versão, contagem ou sha256 da lista)", [str(p)])
+    return {"declaracao": str(p), "sha16": util.sha16(p), "por": d.get("por"), "exame": d.get("exame")}
+
+
 def _ap_c3(ctx):
     c, v = ctx.c, ctx.versao
     Fa = ctx.fatos
@@ -279,12 +293,14 @@ def _ap_c3(ctx):
     cad = {"regra": "cópia de bytes dos arquivos de primeiro nível e das subpastas de registro; FORA: ensaios a seco, simulações, bases, tentativas, estados superados (pastas antes_* e arquivos .bak_), rascunhos, árvores "
                     "simuladas e o falso Nós de teste, cópias do kernel (o kernel vai inteiro em tgl_kernel_%s) e todo arquivo > 5 MB — ficam em work\\cadeia_de_selo, fora do git" % v,
            "pastas": {}}
+    listas_cad = {}   # AO LADO (11/11/2026, v410): a lista exata do que entra, para a guarda de +-50% (abaixo)
     for d in (v, v + "_selo"):
         src = c.CS / d
         if not src.is_dir():
             cad["pastas"][d] = "AUSENTE em work\\cadeia_de_selo"
             continue
         ent, fora_sub, grandes = 0, {}, []
+        listas_cad[d] = []
         for p in src.rglob("*"):
             if not p.is_file():
                 continue
@@ -306,6 +322,7 @@ def _ap_c3(ctx):
             util.mkdir(dst.parent)
             shutil.copyfile(p, dst)
             ent += 1
+            listas_cad[d].append(rel.as_posix())
         cad["pastas"][d] = {"arquivos_no_cofre": ent, "subpastas_fora": {k: {"arquivos": x[0], "bytes": x[1]} for k, x in sorted(fora_sub.items())}, "arquivos_grandes_fora": grandes}
     # gate novo (ESPEC_CENTRAL C3): a cadeia de selo copiada fica dentro de ±50% da anterior (diretório de ensaio de nome novo não entra calado)
     ant_cad = VB / ("cadeia_de_selo_" + ant) / ("MANIFESTO_CADEIA_DE_SELO_%s.json" % ant)
@@ -314,8 +331,26 @@ def _ap_c3(ctx):
         if isinstance(a_, dict) and a_.get("arquivos_no_cofre") and isinstance(cad["pastas"].get(v), dict):
             r = cad["pastas"][v]["arquivos_no_cofre"] / a_["arquivos_no_cofre"]
             if not 0.5 <= r <= 1.5:
-                raise Parar("a cadeia de selo copiada (%d arquivos) está fora de ±50%% da anterior (%d): diretório de ensaio novo entrando em silêncio?"
-                            % (cad["pastas"][v]["arquivos_no_cofre"], a_["arquivos_no_cofre"]))
+                # AO LADO (11/11/2026, claude-site-custodia; a C3 da v410 parou aqui com 1174 contra 697): a guarda NÃO afrouxa. Fora da faixa,
+                # só segue com a DECLARAÇÃO work\custodia_G1\decisoes\CADEIA_DE_SELO_FORA_DA_FAIXA_vNNN.json que confira a contagem e o sha256
+                # da lista exata de hoje (um arquivo a mais ou a menos = PARAR de novo). Sem ela, grava o candidato na pasta de trabalho e PARA.
+                lst = sorted(listas_cad.get(v, []))
+                h = hashlib.sha256("\n".join(lst).encode("utf-8")).hexdigest()
+                dec = _cadeia_fora_da_faixa_declarada(ctx, len(lst), h)
+                if dec is None:
+                    por_pasta = {}
+                    for x in lst:
+                        k = x.split("/")[0] if "/" in x else "(primeiro nivel)"
+                        por_pasta[k] = por_pasta.get(k, 0) + 1
+                    cand = {"versao": v, "arquivos_no_cofre": len(lst), "lista_sha256": h, "anterior": ant,
+                            "arquivos_no_cofre_anterior": a_["arquivos_no_cofre"], "razao": round(r, 3),
+                            "por_pasta": dict(sorted(por_pasta.items())), "lista": lst}
+                    util.mkdir(ctx.W)
+                    pc = ctx.W / ("C3_CADEIA_FORA_DA_FAIXA_%s_candidato.json" % v)
+                    util.escrever_json(pc, cand, backup=False)
+                    raise Parar("a cadeia de selo copiada (%d arquivos) está fora de ±50%% da anterior (%d): diretório de ensaio novo entrando em silêncio?"
+                                % (cad["pastas"][v]["arquivos_no_cofre"], a_["arquivos_no_cofre"]), ["candidato com a lista exata: %s" % pc])
+                cad["fora_da_faixa_declarado"] = dec
     (V / ("cadeia_de_selo_" + v)).mkdir(parents=True, exist_ok=True)
     util.escrever_json(V / ("cadeia_de_selo_" + v) / ("MANIFESTO_CADEIA_DE_SELO_%s.json" % v), cad, backup=False)
     # 4) o kernel
@@ -953,7 +988,9 @@ def caminhos_a_commitar(ctx):
     nomes = (rec or {}).get("resultados") or [Path(f).name for f in _runs_com_veredito(ctx, v)[:2]]     # sem recibo desta execução: os 2 mais novos com o veredito da versão
     for nome in nomes:
         ps.append("fronteira_tgl/results/" + nome)
-    mod = util.git(cen, "diff", "--name-only", "--", "patents").splitlines() + util.git(cen, "ls-files", "--others", "--exclude-standard", "--", "patents").splitlines()
+    # AO LADO (11/11/2026, claude-site-custodia; v410): contra o HEAD (worktree + índice). Um C14 que parou depois do `git add` deixa os seus próprios
+    # arquivos no índice; `git diff --name-only` (worktree x índice) não os via e a rodada seguinte os tomava por alheios.
+    mod = util.git(cen, "diff", "HEAD", "--name-only", "--", "patents").splitlines() + util.git(cen, "ls-files", "--others", "--exclude-standard", "--", "patents").splitlines()
     ps += [p for p in mod if re.search(r"(_FINAL\.py|_FINAL\.manifest\.json|/results/|/seals/|_formula_completa/)", p) and ".bak_" not in p]
     out = []
     for p in dict.fromkeys(ps):
@@ -961,7 +998,7 @@ def caminhos_a_commitar(ctx):
             out.append(p)
     notas = []
     atlas = "memory/TGL_ATLAS.md"
-    num = util.git(cen, "diff", "--numstat", "--", atlas).split()
+    num = util.git(cen, "diff", "HEAD", "--numstat", "--", atlas).split()     # AO LADO (11/11/2026, v410): contra o HEAD, pela mesma razão
     if num and num[1] == "0" and ("A CUSTÓDIA DA %s" % v) in util.ler_texto(cen / atlas, "replace"):
         out.append(atlas)
     elif num:

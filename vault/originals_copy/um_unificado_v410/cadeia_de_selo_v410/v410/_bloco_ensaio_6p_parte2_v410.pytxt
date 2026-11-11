@@ -1,0 +1,224 @@
+# ---- (6p-c) [v410 parte 2, D82 a D87] O REGISTRO COM FUNCAO DA PEDRA AEscala: a_escala_v410 -- validade no kernel; a creditacao e' do Clay; o nome do modulo e os 44 nomes RATIFICADOS pelo operador (D87). Tudo certo (as 12 checagens; o veredito do delta; as 38 ancoras no trio e no modulo; as bandeiras ext_aescala_410_*;
+#      as 8 falas de 09/11 por sha256; a frase canonica do Clay e a forma da D83 no texto e na pedra; o gate congelado; nenhuma chave antiga muda); os numeros RECALCULADOS aqui por outro caminho (as fracoes a mao: 1/2 + 1/2 = 1, (1/2)^2 = 1/2 . 1/2, 3 x 1/2 = 3/2, 1/3 caiu, o Nome normalizado 2/3; o projetor de Bell montado aqui e a marginal por traco parcial;
+#      a pedra por sha256 pelo BUNDLE_v410.json; as ancoras pelo DL.ANCORAS_AESCALA; as bandeiras pelo FLAGS_v410.json); e cada elo recusa (controles negativos): a pedra adulterada, a bandeira da ancora principal falsa, um axioma fora do trio na ancora principal, o gate trocado, a fala da ratificacao adulterada, um numero do contrato trocado,
+#      a frase canonica retirada do texto, tres frases vedadas plantadas (D81, D83), a escada com um a menos.
+_CPA, _TPA = um._V410_AESCALA_CONTRACT, um._V410_AESCALA_TEXT
+_relA = DL.MODULO_AESCALA
+_rapidoA = lambda: dict(core_s)   # o a_escala_v410 so' LE o core e grava a propria chave: uma copia rasa basta (os campos mexidos abaixo sao copiados um a um)
+rA = um.a_escala_v410(cs()); RAE = rA
+_vA = rA.get("values") or {}
+_NCKA = DL.N_CHECKS_AESCALA
+_gate0A = ((core0.get("qg_closure") or {}).get("gate") or {}).get("verdict")
+_mA = rA.get("mechanics") or {}
+_pA = {"selou_com_o_veredito_do_delta": rA.get("all_verified") is True and rA.get("verdict") == DL.VEREDITO_AESCALA_OK == _CPA["veredito_ok"] and rA.get("runtime_executed") is True and rA.get("does_not_gate_core") is True and rA.get("beta_ok") is True,
+       "as_12_checagens": _mA.get("n_checks") == _NCKA == len(_mA.get("checks") or []) == _CPA["n_checks"] == 12 and all(ck_["ok"] for ck_ in _mA.get("checks") or []) and [ck_["id"] for ck_ in _mA.get("checks") or []] == ["c%d" % i_ for i_ in range(1, _NCKA + 1)],
+       "modulo_ancoras_e_nomes_do_delta": rA.get("modulo") == _relA == _CPA["modulo"] and rA.get("ancora_principal") == DL.ANCORA_PRINCIPAL_AESCALA == _CPA["ancora_principal"] and list(rA.get("ancoras_de_secao") or []) == list(DL.ANCORAS_DE_SECAO_AESCALA) and list(rA.get("nomes") or []) == list(DL.NOMES_AESCALA)
+                                          and rA.get("n_nomes") == len(DL.NOMES_AESCALA) == 44 and rA.get("nomes_ratificados") is True and rA.get("chaves_antigas_que_mudam") == [],
+       "frases_canonicas_do_delta": rA.get("frase_canonica_pt") == DL.FRASE_CLAY_CANONICA_PT and rA.get("frase_canonica_en") == DL.FRASE_CLAY_CANONICA_EN and rA.get("frase_d83_pt") == DL.FRASE_D83_OBRIGATORIA_PT and rA.get("frase_d83_en") == DL.FRASE_D83_OBRIGATORIA_EN,
+       "escada": rA.get("exact_ladder_expected") == ESP == _CPA["expected_ladder"] and _vA.get("escada") == [ESP, ESP, ESP],
+       "ancoras": _vA.get("n_ancoras_ok") == _vA.get("n_ancoras") == len(DL.ANCORAS_AESCALA) == DL.N_ANCORAS_AESCALA == 38 == len(_CPA["ancoras"]) and set(_vA.get("ancoras") or {}) == set(DL.ANCORAS_AESCALA) and all((_vA.get("ancoras") or {}).values()),
+       "bandeiras": _vA.get("n_flags_true") == _vA.get("n_flags") == _FJ10["n_por_modulo"][_relA] == _CPA["n_flags"] == CM["aescala"]["n_flags"] and bool(_vA.get("flags")) and all(f_.startswith(DL.FLAG_PREFIX_AESCALA) and x_ is True for f_, x_ in (_vA.get("flags") or {}).items()),
+       "falas": _vA.get("n_falas_ok") == _vA.get("n_falas") == len(_CPA["falas"]) == 8 and all((_vA.get("falas") or {}).values()) and set(_vA.get("falas") or {}) == set(_CPA["falas"]) <= set(um._V410_VERBATINS2),
+       "nomes_ratificados_d87": _vA.get("nomes_declarados") == _vA.get("n_nomes") == 44 and _vA.get("nomes_ratificados") is True and _vA.get("ratificacao_trecho") == DL.FRASE_RATIFICO_TUDO and _vA.get("ratificacao_sha256") == DL.RATIFICACAO_D87_SHA256 == CM["aescala"]["ratificacao_D87"]["sha256"],
+       "gate_congelado": _vA.get("gate_verdict") == _gate0A == _CPA["baseline"]["gate_verdict"] and isinstance(_gate0A, str),
+       "frase_canonica_e_d83_no_texto_e_na_pedra": _vA.get("canonica_pt_no_texto") is True and _vA.get("canonica_en_no_texto") is True and _vA.get("canonica_pt_na_pedra") is True and _vA.get("d83_na_pedra") is True,
+       "guarda_do_registro_limpa": not _vA.get("p18_violacoes") and not _vA.get("frases_violacoes") and bool(_vA.get("c9_partes")) and all((_vA.get("c9_partes") or {}).values())}
+rep["a_escala_v410_partes"] = _pA
+U["a_escala_v410_tudo_certo_validade_no_kernel_a_creditacao_e_do_clay"] = bool(all(_pA.values()))
+_txtA = lambda r_: json.dumps({k_: r_.get(k_) for k_ in ("limites", "diz", "nao_diz", "scope", "estatuto")}, ensure_ascii=False)
+_tpjA = json.dumps(_TPA, ensure_ascii=False)
+_pAt = {"p18_e_guardas_do_texto": not guarda_txt(rA) and not um._v410_guarda_frases(_txtA(rA)) and not _GF5.violacoes(_txtA(rA)) and not um._v392_guarda_texto(_txtA(rA)),
+        "veredito_limpo": not _GUARDA98.search(str(rA.get("verdict"))) and not um._v410_guarda_frases(str(rA.get("verdict"))) and not _GF5.violacoes(str(rA.get("verdict"))) and "NOT_FALSIFIED" not in str(rA.get("verdict")) and str(rA.get("verdict")).endswith("__GATE_UNMOVED") and not any(t_ in str(rA.get("verdict")) for t_ in DL.TOKENS_PROIBIDOS_V410),
+        "canonica_e_d83_no_texto_do_contrato": DL.FRASE_CLAY_CANONICA_PT in _tpjA and DL.FRASE_CLAY_CANONICA_EN in _tpjA and DL.FRASE_D83_OBRIGATORIA_PT in _tpjA,
+        "sem_o_teste_da_razao_de_hubble_no_nucleo": "H0DN" not in _txtA(rA) and "y_obs" not in json.dumps([_CPA, _TPA], ensure_ascii=False)}
+rep["a_escala_v410_partes_do_texto"] = _pAt
+U["a_escala_v410_veredito_e_textos_sem_palavra_proibida_e_com_a_frase_canonica"] = bool(all(_pAt.values()))
+# os numeros RECALCULADOS aqui por OUTRO caminho: as fracoes a mao; o projetor de Bell e a marginal por traco parcial; a pedra pelo BUNDLE; as ancoras pelo DL; as bandeiras pelo FLAGS; as falas pelo sha256 do texto embutido
+_hA = _Fr(1, 2)
+_numA = {"meio": _hA, "nome_pesa_um": _hA + _hA, "face_sem_par_ao_quadrado": _hA * _hA, "meio_de_meio": _hA * _hA, "tres_faces": 3 * _hA, "um_terco_caiu": _hA / (3 * _hA), "nome_normalizado": (_hA + _hA) / (3 * _hA)}
+_phiA = _np10.array([1.0, 0.0, 0.0, 1.0]) / _math.sqrt(2.0); _PbA = _np10.outer(_phiA, _phiA); _rhoA = _np10.einsum("ajbj->ab", _PbA.reshape(2, 2, 2, 2))   # |Phi+> = (|00> + |11>)/sqrt(2); a marginal = o traco parcial sobre a segunda face
+_bellA = {"idempotente": bool(_np10.allclose(_PbA @ _PbA, _PbA, atol=1e-12)), "traco": float(_np10.trace(_PbA)), "posto": int(_np10.linalg.matrix_rank(_PbA)), "marginal_e_meio_1": bool(_np10.allclose(_rhoA, 0.5 * _np10.eye(2), atol=1e-12)), "pureza_da_marginal": float(_np10.trace(_rhoA @ _rhoA)), "traco_da_marginal": float(_np10.trace(_rhoA)),
+          "marginal_ao_quadrado_e_meio_da_marginal": bool(_np10.allclose(_rhoA @ _rhoA, 0.5 * _rhoA, atol=1e-12)), "marginal_ao_quadrado_nao_e_a_marginal": bool(not _np10.allclose(_rhoA @ _rhoA, _rhoA, atol=1e-6)),
+          "potencias_sao_2_menos_n": bool(all(_np10.allclose(_np10.linalg.matrix_power(_rhoA, n_), (0.5 ** n_) * _np10.eye(2), atol=1e-12) for n_ in (2, 3, 4, 5)))}
+_bA = _vA.get("bell") or {}
+_shaA = hashlib.sha256(EMBK[_relA].encode("utf-8")).hexdigest()
+_ancA_ok = sum(1 for n_ in DL.ANCORAS_AESCALA if isinstance(_kf0["axiom_report"].get(n_), list) and set(_kf0["axiom_report"][n_]) <= _trio6 and _kf0["declaration_sources_v394"].get(n_) == DL.ANCORAS_AESCALA[n_]["rel"] == _relA)
+_flagsA_ok = sum(1 for f_ in _FJ10["flags"] if f_[0].startswith(DL.FLAG_PREFIX_AESCALA) and _kf0.get(f_[0]) is True)
+_falasA_ok = sum(1 for ch_ in _CPA["falas"] if hashlib.sha256(um._V410_VERBATINS2[ch_]["text"].encode("utf-8")).hexdigest() == um._V410_VERBATINS2[ch_]["sha256"] and um._V410_VERBATINS2[ch_].get("autor") == "operador")
+_pAn = {"fracoes": set(_numA) == set(DL.NUMEROS_AESCALA) == set(_vA.get("numeros") or {}) == set(_CPA["numeros"]) and all(_Fr(str(DL.NUMEROS_AESCALA[k_])) == v_ == _Fr(str(_vA["numeros"][k_])) == _Fr(str(_CPA["numeros"][k_])) for k_, v_ in _numA.items()),
+        "bell_aqui": all(_bellA[k_] is True for k_ in ("idempotente", "marginal_e_meio_1", "marginal_ao_quadrado_e_meio_da_marginal", "marginal_ao_quadrado_nao_e_a_marginal", "potencias_sao_2_menos_n")) and abs(_bellA["traco"] - 1.0) < 1e-12 and _bellA["posto"] == 1 and abs(_bellA["pureza_da_marginal"] - 0.5) < 1e-12 and abs(_bellA["traco_da_marginal"] - 1.0) < 1e-12,
+        "bell_do_registro": all(_bA.get(k_) is True for k_ in ("idempotente", "marginal_e_meio_1", "marginal_ao_quadrado_e_meio_da_marginal", "marginal_ao_quadrado_nao_e_a_marginal", "potencias_sao_2_menos_n", "nenhuma_potencia_e_1")) and isinstance(_bA.get("traco"), float) and abs(_bA["traco"] - _bellA["traco"]) < 1e-12 and _bA.get("posto") == _bellA["posto"]
+                            and abs(float(_bA.get("pureza_da_marginal", -1.0)) - _bellA["pureza_da_marginal"]) < 1e-12 and abs(float(_bA.get("traco_da_marginal", -1.0)) - _bellA["traco_da_marginal"]) < 1e-12,
+        "pedra_por_sha256": _shaA == DL.BUNDLE_POR_REL[_relA]["sha256"] == _kf0["formal_files_sha256"].get(_relA) == _CPA["source_sha256"][_relA] == _vA.get("pedra_sha256_embutida") == _vA.get("pedra_sha256_formal") == CM["aescala"]["source_sha256"][_relA],
+        "ancoras": _ancA_ok == len(DL.ANCORAS_AESCALA) == _vA.get("n_ancoras_ok") == 38, "bandeiras": _flagsA_ok == _FJ10["n_por_modulo"][_relA] == _vA.get("n_flags_true") and _flagsA_ok + _flags_ok10_i == len(_FJ10["flags"]) == CM["n_bandeiras"],
+        "falas": _falasA_ok == len(_CPA["falas"]) == _vA.get("n_falas_ok") == 8, "beta_so_por_nome": abs(c["beta"] / _bf6 - 1.0) <= 1e-9,
+        "escada": ESP == CM["escada"][1] == c["external_ladder"]["n_theorems_clean"] == c["external_ladder"]["n_theorems_expected"] == _CPA["expected_ladder"] == E409 + CM["n_bandeiras"] and _CPA["baseline"]["ladder"] == E409}
+rep["a_escala_v410_partes_dos_numeros"] = _pAn
+U["a_escala_v410_os_numeros_foram_recalculados_aqui"] = bool(all(_pAn.values()))
+# --- controles negativos da AEscala: cada elo recusa (a recusa e' resultado)
+_detA = {}
+_antA = um._EMBEDDED_KERNEL_FILES[_relA]; um._EMBEDDED_KERNEL_FILES[_relA] = _antA + "\n-- adulterada\n"
+try:
+    rr_ = um.a_escala_v410(_rapidoA())
+finally:
+    um._EMBEDDED_KERNEL_FILES[_relA] = _antA
+_detA["pedra_adulterada"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and "c3" in _falhos6(rr_)}
+_flagPA = _CPA["ancoras"][_CPA["ancora_principal"]].get("flag")
+c_ = _rapidoA(); c_["kernel_formalization"] = dict(c_["kernel_formalization"]); c_["kernel_formalization"][_flagPA] = False; rr_ = um.a_escala_v410(c_)
+_detA["bandeira_da_ancora_principal_falsa"] = {"flag": _flagPA, "falhos": _falhos6(rr_), "ok": bool(_flagPA) and _recusa6(rr_, "MECHANICS_CHECK_FAILED") and {"c4"} <= set(_falhos6(rr_)) <= {"c2", "c4"}}
+c_ = _rapidoA(); c_["kernel_formalization"] = dict(c_["kernel_formalization"]); c_["kernel_formalization"]["axiom_report"] = dict(c_["kernel_formalization"]["axiom_report"]); c_["kernel_formalization"]["axiom_report"][_CPA["ancora_principal"]] = ["propext", "sorryAx"]; rr_ = um.a_escala_v410(c_)
+_detA["axioma_fora_do_trio_na_ancora_principal"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and _falhos6(rr_) == ["c2"]}
+c_ = _rapidoA(); c_["qg_closure"] = copy.deepcopy(c_["qg_closure"]); c_["qg_closure"]["gate"]["verdict"] = "OUTRO"; rr_ = um.a_escala_v410(c_)
+_detA["gate_trocado"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and _falhos6(rr_) == ["c10"]}
+_chRA = _CPA["chave_ratificacao"]; _v0A = um._V410_VERBATINS2[_chRA]["text"]; um._V410_VERBATINS2[_chRA]["text"] = "ratifico quase tudo\n"
+try:
+    rr_ = um.a_escala_v410(_rapidoA())
+finally:
+    um._V410_VERBATINS2[_chRA]["text"] = _v0A
+_detA["fala_da_ratificacao_adulterada"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and {"c5"} <= set(_falhos6(rr_)) <= {"c5", "c11"}}
+_n0A = _CPA["numeros"]["nome_normalizado"]; _CPA["numeros"]["nome_normalizado"] = "3/4"
+try:
+    rr_ = um.a_escala_v410(_rapidoA())
+finally:
+    _CPA["numeros"]["nome_normalizado"] = _n0A
+_detA["numero_do_contrato_trocado"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and _falhos6(rr_) == ["c6"]}
+um._V410_AESCALA_TEXT = json.loads(_tpjA.replace(DL.FRASE_CLAY_CANONICA_PT, "(retirada)"))
+try:
+    rr_ = um.a_escala_v410(_rapidoA())
+finally:
+    um._V410_AESCALA_TEXT = _TPA
+_detA["frase_canonica_retirada_do_texto"] = {"falhos": _falhos6(rr_), "ok": _tpjA.count(DL.FRASE_CLAY_CANONICA_PT) >= 1 and _recusa6(rr_, "MECHANICS_CHECK_FAILED") and "c7" in _falhos6(rr_)}
+_dzA = _TPA["diz"]; _d0A = list(_dzA)
+for nm_, fr_ in (("clay_resolvido_a_seco", "Dito. O Clay está resolvido. Fim."), ("negacao_da_prova_de_p_igual_np_de_turing", "Dito. A TGL não prova P = nP de Turing. Fim."), ("tautologia", "Dito. A resposta à pergunta do Clay é uma tautologia. Fim.")):
+    _dzA[:] = _d0A + [fr_]
+    try:
+        rr_ = um.a_escala_v410(_rapidoA())
+    finally:
+        _dzA[:] = _d0A
+    _detA["texto_" + nm_] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and "c9" in _falhos6(rr_)}
+c_ = _rapidoA(); c_["external_ladder"] = dict(c_["external_ladder"]); c_["external_ladder"]["n_theorems_clean"] = int(c_["external_ladder"]["n_theorems_clean"]) - 1; rr_ = um.a_escala_v410(c_)
+_detA["escada_um_a_menos"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and _falhos6(rr_) == ["c1"]}
+_dA_ok = um.a_escala_v410(cs())
+U["a_escala_v410_cada_elo_recusa"] = bool(_detA and all(v_["ok"] for v_ in _detA.values()) and len(_detA) == 11 and _dA_ok["all_verified"] is True and _dA_ok["verdict"] == DL.VEREDITO_AESCALA_OK and um._V410_AESCALA_TEXT is _TPA and _TPA["diz"] == _d0A)
+rep["a_escala_v410_checagens_negadas"] = _detA
+print("a_escala_v410:", rA.get("all_verified"), "|", str(rA.get("verdict"))[:96], "| ancoras:", _vA.get("n_ancoras_ok"), "/", _vA.get("n_ancoras"), "| bandeiras:", _vA.get("n_flags_true"), "/", _vA.get("n_flags"), "| falas:", _vA.get("n_falas_ok"), "/", _vA.get("n_falas"), "| numeros:", _vA.get("numeros"),
+      "| partes falsas:", [k_ for k_, v_ in list(_pA.items()) + list(_pAt.items()) + list(_pAn.items()) if not v_], "| controles negativos ok:", sum(1 for v_ in _detA.values() if v_["ok"]), "/", len(_detA), [k_ for k_, v_ in _detA.items() if not v_["ok"]])
+rep["a_escala_v410"] = {"verdict": rA.get("verdict"), "all_verified": rA.get("all_verified"), "runtime_executed": rA.get("runtime_executed"), "does_not_gate_core": rA.get("does_not_gate_core"), "nomes_ratificados": rA.get("nomes_ratificados"), "chaves_antigas_que_mudam": rA.get("chaves_antigas_que_mudam"), "nomes": rA.get("nomes"),
+                        "n_checks": _mA.get("n_checks"), "mechanics": {"passed": _mA.get("passed"), "n_checks": _mA.get("n_checks"), "checks": [{"id": ck_["id"], "ok": ck_["ok"]} for ck_ in _mA.get("checks") or []]}, "values": rA.get("values"),
+                        "numeros_recalculados": {"fracoes": {k_: str(v_) for k_, v_ in _numA.items()}, "bell": _bellA, "pedra_sha256": _shaA, "ancoras_ok": _ancA_ok, "flags_true": _flagsA_ok, "falas_ok": _falasA_ok}, "checagens_negadas": _detA,
+                        "validade_no_kernel_a_creditacao_e_do_clay": True}
+# ---- (6p-d) [v410 parte 2, D80] O RECIBO DOCUMENTAL HMS/13: h0dn_fontes_hms13_v410 -- ADITIVO e POSTERIOR ao FREEZE_R2; cobertura documental de fontes, não covariância física fechada; nada aberto -- pré-registrado; nenhum dado observado lido. Tudo certo (as 12 checagens; o veredito do delta;
+#      os quatro artefatos embutidos por sha256; os 13 IDs; as 18 fontes; os dez campos; o gate; o h0dn deste rito selado; a funcao de veredito do H0DN intocada; nenhum caminho tocado sob a pasta vedada nem com nome vedado); os numeros RECALCULADOS aqui por outro caminho (os artefatos EMBUTIDOS decodificados AQUI:
+#      os IDs do mapa, as fontes do manifesto, as bandeiras de fechamento falsas, a assimetria da cobertura); e cada elo recusa (controles negativos): o insumo embutido adulterado, um ID a mais no contrato, um campo obrigatorio trocado, o gate trocado, o h0dn ausente do core, um caminho sob a pasta VEDADA, um nome vedado fora dela,
+#      um numero proibido plantado no mapa, a frase obrigatoria retirada do texto e tres frases vedadas plantadas (F56).
+_CPF, _TPF, _INSF = um._V410_HMS13_CONTRACT, um._V410_HMS13_TEXT, um._V410_HMS13_INSUMOS
+_rapidoF = lambda: dict(core_s)   # o registro so' LE o core (o h0dn_bg1_v410 deste rito e o gate) e grava a propria chave
+rHM = um.h0dn_fontes_hms13_v410(cs()); RHF = rHM
+_vF = rHM.get("values") or {}
+_NCKF = DL.N_CHECKS_HMS13
+_mF = rHM.get("mechanics") or {}
+_pF = {"selou_com_o_veredito_do_delta": rHM.get("all_verified") is True and rHM.get("verdict") == DL.VEREDITO_HMS13_OK == _CPF["veredito_ok"] and rHM.get("runtime_executed") is True and rHM.get("does_not_gate_core") is True and rHM.get("beta_ok") is True,
+       "nenhum_dado_observado_e_nada_lido_em_rito": rHM.get("observed_vector_read") is False and rHM.get("le_em_rito") is False and rHM.get("aditivo_posterior_ao_freeze_r2") is True and _vF.get("observed_vector_read") is False and _vF.get("le_em_rito") is False,
+       "as_12_checagens": _mF.get("n_checks") == _NCKF == len(_mF.get("checks") or []) == _CPF["n_checks"] == 12 and all(ck_["ok"] for ck_ in _mF.get("checks") or []) and [ck_["id"] for ck_ in _mF.get("checks") or []] == ["c%d" % i_ for i_ in range(1, _NCKF + 1)],
+       "os_dez_campos": dict(rHM.get("campos") or {}) == dict(DL.HMS13_CAMPOS) == dict(_vF.get("campos") or {}) == dict(_CPF["campos"]) and len(DL.HMS13_CAMPOS) == 10,
+       "calibradores_e_fontes": _vF.get("n_calibradores") == len(_vF.get("ids_calibradores") or []) == DL.HMS13_CAMPOS["calibradores"] == 13 and _vF.get("n_fontes_primarias") == len(_vF.get("fontes_primarias") or []) == DL.HMS13_CAMPOS["fontes_primarias"] == 18,
+       "embutidos_por_sha256": _vF.get("n_embutidos") == len(DL.HMS13_EMBUTIDOS) == len(_CPF["insumos"]) == len(_INSF) == 4 and sorted(_vF.get("pinos") or {}) == sorted(_CPF["insumos"]) and all(p_.get("sha256_ok") is True and p_.get("bytes_ok") is True and p_.get("embutido") is True for p_ in (_vF.get("pinos") or {}).values()) and _vF.get("pinos_build_n") == len(_CPF["pinos_build"]) == 6,
+       "gate_congelado": _vF.get("gate_verdict") == _gate0A == _CPF["baseline"]["gate_verdict"],
+       "aditivo_e_posterior_ao_freeze_r2": _vF.get("h0dn_selado") is True and _vF.get("veredito_h0dn_source_sha256") == rH["veredito_h0dn_source_sha256"] == hashlib.sha256(_insp10.getsource(um.veredito_h0dn).encode("utf-8")).hexdigest() and _vF.get("freeze_r2_sha256") == _CPH["insumos"]["FREEZE_R2.json"]["sha256"],
+       "ratificacao_do_operador": _vF.get("ratificacao_trecho") == DL.HMS13_TRECHO_RATIFICACAO and _vF.get("ratificacao_sha256") == CM["hms13"]["ratificacao"]["sha256"] and isinstance(_vF.get("ratificacao_sha256"), str) and len(_vF["ratificacao_sha256"]) == 64,
+       "guarda_do_registro_limpa": not _vF.get("p18_violacoes") and not _vF.get("frases_violacoes") and bool(_vF.get("c8_partes")) and all((_vF.get("c8_partes") or {}).values()),
+       "guarda_numerica": (_vF.get("numeros") or {}).get("proibidos") == [] and (_vF.get("numeros") or {}).get("listas_numericas") == [] and (_vF.get("numeros") or {}).get("linhas_do_levantamento_com_vetor") == [] and (_vF.get("numeros") or {}).get("permitidos") == CM["hms13"]["guarda_numerica_no_build"]["permitidos"],
+       "veto_a_pasta_do_kimi": _vF.get("sob_pasta_vedada") == [] and _vF.get("com_nome_vedado") == [] and _vF.get("n_caminhos_tocados") == len(_vF.get("caminhos_tocados") or []) and not [p_ for p_ in (_vF.get("caminhos_tocados") or []) if _sobH(p_) or _nomeH(p_)] and _vF.get("pasta_vedada") == DL.H0DN_PASTA_VEDADA}
+rep["h0dn_fontes_hms13_v410_partes"] = _pF
+U["h0dn_fontes_hms13_v410_tudo_certo_recibo_documental_nenhum_dado_observado_lido"] = bool(all(_pF.values()))
+_txtF = lambda r_: json.dumps({k_: r_.get(k_) for k_ in ("limites", "diz", "nao_diz", "ressalvas", "scope", "estatuto", "o_que_falta")}, ensure_ascii=False)
+_tpjF = json.dumps(_TPF, ensure_ascii=False)
+_toksF = ["".join(p_) for p_ in _CPF["tokens_proibidos_partes"]]; _vedF = ["".join(p_) for p_ in _CPF["nomes_vedados_partes"]]
+_pFt = {"p18_e_guardas_do_texto": not guarda_txt(rHM) and not um._v410_guarda_frases(_txtF(rHM)) and not _GF5.violacoes(_txtF(rHM)) and not um._v392_guarda_texto(_txtF(rHM)),
+        "veredito_limpo": not _GUARDA98.search(str(rHM.get("verdict"))) and not um._v410_guarda_frases(str(rHM.get("verdict"))) and not _GF5.violacoes(str(rHM.get("verdict"))) and "NOT_FALSIFIED" not in str(rHM.get("verdict")) and str(rHM.get("verdict")).endswith("__GATE_UNMOVED"),
+        "tokens_e_nomes_vedados_ausentes": not any(t_ in _txtF(rHM) or t_ in str(rHM.get("verdict")) for t_ in _toksF) and not any(n_ in _txtF(rHM) or n_ in _tpjF for n_ in _vedF) and bool(_toksF) and bool(_vedF),
+        "as_duas_obrigacoes_no_texto": DL.FRASE_HMS13_OBRIGATORIA_PT in _tpjF and DL.FRASE_HMS13_OBRIGATORIA_EN in _tpjF and DL.FRASE_H0DN_OBRIGATORIA_PT in _tpjF and ("PRO" + "VED_IN_NATURE") not in _tpjF and ("TGL_PRO" + "VED") not in json.dumps([_TPF, {k_: v_ for k_, v_ in _CPF.items() if k_ not in ("tokens_proibidos_partes",)}], ensure_ascii=False)}
+rep["h0dn_fontes_hms13_v410_partes_do_texto"] = _pFt
+U["h0dn_fontes_hms13_v410_veredito_e_textos_sem_palavra_proibida_e_com_as_obrigacoes"] = bool(all(_pFt.values()))
+# os numeros RECALCULADOS aqui por OUTRO caminho: os quatro artefatos EMBUTIDOS decodificados AQUI (base64) e conferidos contra os pinos do contrato e do candidato; os IDs do mapa; as fontes do manifesto; as bandeiras de fechamento falsas; a assimetria da cobertura (mapa contido no manifesto)
+_rawF = {k_: _b6410.b64decode(v_["b64"].encode("ascii"), validate=True) for k_, v_ in _INSF.items()}
+_mapaF = json.loads(_rawF["MAPA_FONTES_E_COVARIANCIA_13.json"].decode("utf-8")); _manF = json.loads(_rawF["MANIFEST_FONTES_PRIMARIAS.json"].decode("utf-8")); _valF = json.loads(_rawF["VALIDACAO_FONTES_13.json"].decode("utf-8"))
+_idsF = sorted(str(o_.get("CID")) for o_ in _mapaF.get("objects") or []); _fontesF = sorted(str(s_.get("key")) for s_ in _manF.get("sources") or [])
+_extraF = {o_.get("CID"): sorted(set(_manF["coverage"].get(o_.get("CID")) or []) - set(o_.get("primary_sources") or [])) for o_ in _mapaF.get("objects") or [] if set(_manF["coverage"].get(o_.get("CID")) or []) - set(o_.get("primary_sources") or [])}
+_admF = _mapaF.get("admission") or {}
+_pFn = {"pinos": len(_rawF) == 4 and all(hashlib.sha256(_rawF[k_]).hexdigest() == v_["sha256"] == _CPF["pinos_build"][k_]["sha256"] == (CM["hms13"]["insumos"].get(k_) or {}).get("sha256") and len(_rawF[k_]) == v_["bytes"] == _CPF["pinos_build"][k_]["bytes"] for k_, v_ in _CPF["insumos"].items()),
+        "ids": _idsF == sorted(_vF.get("ids_calibradores") or []) == sorted(_CPF["ids_calibradores"]) == sorted(CM["hms13"]["ids_calibradores"]) and len(_idsF) == len(set(_idsF)) == 13,
+        "fontes": _fontesF == sorted(_vF.get("fontes_primarias") or []) == sorted(_CPF["fontes_primarias"]) and len(_fontesF) == len(set(_fontesF)) == 18 == _manF.get("source_count") == CM["hms13"]["n_fontes_primarias"],
+        "bandeiras_de_fechamento_falsas": _admF.get("opening_allowed") is False and _admF.get("physical_covariance_closed") is False and _admF.get("full_13x13_covariance_available") is False and _valF.get("opening_allowed") is False and _valF.get("full_HMS_admitted") is False and _valF.get("physical_covariance_closed") is False and _manF.get("opening_allowed") is False and _manF.get("physical_covariance_closed") is False,
+        "nenhum_trabalho_observado": _mapaF.get("observed_vector_read") is False and _mapaF.get("observed_statistics_computed") is False and _valF.get("observed_vector_read_by_validator") is False,
+        "assimetria_da_cobertura_dita": _extraF == {k_: list(v_) for k_, v_ in _CPF["cobertura_extra_no_manifesto"].items()} == {k_: list(v_) for k_, v_ in (_vF.get("cobertura_extra_no_manifesto") or {}).items()} == {k_: list(v_) for k_, v_ in CM["hms13"]["cobertura_extra_no_manifesto"].items()}
+                                        and all(set(o_.get("primary_sources") or []) <= set(_manF["coverage"].get(o_.get("CID")) or []) <= set(_fontesF) for o_ in _mapaF.get("objects") or []),
+        "nenhum_artefato_repete_o_congelamento": not (set(_CPF["insumos"]) & set(_CPH["insumos"])) and not ({v_["sha256"] for v_ in _CPF["insumos"].values()} & {v_["sha256"] for v_ in _CPH["insumos"].values()})}
+rep["h0dn_fontes_hms13_v410_partes_dos_numeros"] = _pFn
+U["h0dn_fontes_hms13_v410_os_numeros_foram_recalculados_aqui"] = bool(all(_pFn.values()))
+# --- controles negativos do recibo HMS/13: cada elo recusa (a recusa e' resultado)
+_detF = {}
+_INSF_bad = copy.deepcopy(_INSF); _INSF_bad["VALIDACAO_FONTES_13.json"]["b64"] = _INSF_bad["VALIDACAO_FONTES_13.json"]["b64"][:-4] + "AAA="
+um._V410_HMS13_INSUMOS = _INSF_bad
+try:
+    rr_ = um.h0dn_fontes_hms13_v410(_rapidoF())
+finally:
+    um._V410_HMS13_INSUMOS = _INSF
+_detF["insumo_embutido_adulterado"] = {"verdict": rr_["verdict"], "erro": str(rr_.get("error"))[:120], "ok": _recusa6(rr_, "RUNTIME_ERROR")}
+_ids0F = _CPF["ids_calibradores"]; _CPF["ids_calibradores"] = list(_ids0F) + ["SN_FALSA"]
+try:
+    rr_ = um.h0dn_fontes_hms13_v410(_rapidoF())
+finally:
+    _CPF["ids_calibradores"] = _ids0F
+_detF["id_a_mais_no_contrato"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and _falhos6(rr_) == ["c2"]}
+_CPF["campos"]["physical_covariance_closed"] = True
+try:
+    rr_ = um.h0dn_fontes_hms13_v410(_rapidoF())
+finally:
+    _CPF["campos"]["physical_covariance_closed"] = False
+_detF["campo_obrigatorio_trocado"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and _falhos6(rr_) == ["c4"]}
+c_ = _rapidoF(); c_["qg_closure"] = copy.deepcopy(c_["qg_closure"]); c_["qg_closure"]["gate"]["verdict"] = "OUTRO"; rr_ = um.h0dn_fontes_hms13_v410(c_)
+_detF["gate_trocado"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and _falhos6(rr_) == ["c9"]}
+c_ = _rapidoF(); c_.pop("h0dn_bg1_v410", None); rr_ = um.h0dn_fontes_hms13_v410(c_)
+_detF["h0dn_ausente_do_core"] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and {"c10"} <= set(_falhos6(rr_)) <= {"c10", "c12"}}
+for nm_, fv_ in (("caminho_sob_a_pasta_vedada_kimi", _vig_sob_vedada), ("nome_vedado_fora_da_pasta", _vig_nome_vedado)):
+    um._v410_h0dn_vigia_arquivos = fv_
+    try:
+        rr_ = um.h0dn_fontes_hms13_v410(_rapidoF())
+    finally:
+        um._v410_h0dn_vigia_arquivos = _vig0H
+    _detF[nm_] = {"falhos": _falhos6(rr_), "sob_pasta_vedada_n": len((rr_.get("values") or {}).get("sob_pasta_vedada") or []), "com_nome_vedado_n": len((rr_.get("values") or {}).get("com_nome_vedado") or []), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and _falhos6(rr_) == ["c7"]}
+assert um._v410_h0dn_vigia_arquivos is _vig0H
+_kMF = "MAPA_FONTES_E_COVARIANCIA_13.json"; _mapaNF = json.loads(_rawF[_kMF].decode("utf-8")); _mapaNF["objects"][0].setdefault("local", {}); _mapaNF["objects"][0]["local"] = dict(_mapaNF["objects"][0]["local"] or {}, mu_mag=31.5)   # (um numero SINTETICO num campo proibido, so' na copia da memoria: nenhum arquivo e' tocado)
+_bNF = json.dumps(_mapaNF, ensure_ascii=False).encode("utf-8"); _INSF_num = copy.deepcopy(_INSF); _INSF_num[_kMF] = dict(_INSF_num[_kMF], b64=_b6410.b64encode(_bNF).decode("ascii"), sha256=hashlib.sha256(_bNF).hexdigest(), bytes=len(_bNF))
+_pi0F = dict(_CPF["insumos"][_kMF]); _pb0F = dict(_CPF["pinos_build"][_kMF])
+_CPF["insumos"][_kMF] = dict(_pi0F, sha256=hashlib.sha256(_bNF).hexdigest(), bytes=len(_bNF)); _CPF["pinos_build"][_kMF] = dict(_pb0F, sha256=hashlib.sha256(_bNF).hexdigest(), bytes=len(_bNF)); um._V410_HMS13_INSUMOS = _INSF_num
+try:
+    rr_ = um.h0dn_fontes_hms13_v410(_rapidoF())
+finally:
+    _CPF["insumos"][_kMF] = _pi0F; _CPF["pinos_build"][_kMF] = _pb0F; um._V410_HMS13_INSUMOS = _INSF
+_detF["numero_proibido_plantado_no_mapa"] = {"falhos": _falhos6(rr_), "numeros_proibidos_n": len(((rr_.get("values") or {}).get("numeros") or {}).get("proibidos") or []), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and {"c6"} <= set(_falhos6(rr_)) <= {"c1", "c6"}}
+um._V410_HMS13_TEXT = json.loads(_tpjF.replace(DL.FRASE_HMS13_OBRIGATORIA_PT, "(retirada)"))
+try:
+    rr_ = um.h0dn_fontes_hms13_v410(_rapidoF())
+finally:
+    um._V410_HMS13_TEXT = _TPF
+_detF["frase_obrigatoria_retirada_do_texto"] = {"falhos": _falhos6(rr_), "ok": _tpjF.count(DL.FRASE_HMS13_OBRIGATORIA_PT) >= 1 and _recusa6(rr_, "MECHANICS_CHECK_FAILED") and "c8" in _falhos6(rr_)}
+_dzF = _TPF["diz"]; _d0F = list(_dzF)
+for nm_, fr_ in (("covariancia_fisica_dita_fechada", "Dito. A covariância física foi fechada. Fim."), ("abertura_dita_autorizada", "Dito. A abertura foi autorizada. Fim."), ("hms_completa_dita_admitida", "Dito. A forma HMS completa foi admitida. Fim.")):
+    _dzF[:] = _d0F + [fr_]
+    try:
+        rr_ = um.h0dn_fontes_hms13_v410(_rapidoF())
+    finally:
+        _dzF[:] = _d0F
+    _detF["texto_" + nm_] = {"falhos": _falhos6(rr_), "ok": _recusa6(rr_, "MECHANICS_CHECK_FAILED") and "c8" in _falhos6(rr_)}
+_dF_ok = um.h0dn_fontes_hms13_v410(cs())
+U["h0dn_fontes_hms13_v410_cada_elo_recusa_inclusive_o_veto_a_pasta_do_kimi"] = bool(_detF and all(v_["ok"] for v_ in _detF.values()) and len(_detF) == 12 and _dF_ok["all_verified"] is True and _dF_ok["verdict"] == DL.VEREDITO_HMS13_OK and um._V410_HMS13_TEXT is _TPF and um._V410_HMS13_INSUMOS is _INSF and _TPF["diz"] == _d0F
+                                                                                   and _CPF["insumos"][_kMF] == _pi0F and _CPF["campos"]["physical_covariance_closed"] is False and _detF["caminho_sob_a_pasta_vedada_kimi"]["sob_pasta_vedada_n"] == 1 and _detF["nome_vedado_fora_da_pasta"]["com_nome_vedado_n"] == 1)
+rep["h0dn_fontes_hms13_v410_checagens_negadas"] = _detF
+print("h0dn_fontes_hms13_v410:", rHM.get("all_verified"), "|", str(rHM.get("verdict"))[:96], "| calibradores:", _vF.get("n_calibradores"), "| fontes:", _vF.get("n_fontes_primarias"), "| embutidos:", _vF.get("n_embutidos"), "| vetor observado lido:", _vF.get("observed_vector_read"), "| tocados:", _vF.get("n_caminhos_tocados"), "sob a pasta vedada:", len(_vF.get("sob_pasta_vedada") or []),
+      "| partes falsas:", [k_ for k_, v_ in list(_pF.items()) + list(_pFt.items()) + list(_pFn.items()) if not v_], "| controles negativos ok:", sum(1 for v_ in _detF.values() if v_["ok"]), "/", len(_detF), [k_ for k_, v_ in _detF.items() if not v_["ok"]])
+rep["h0dn_fontes_hms13_v410"] = {"verdict": rHM.get("verdict"), "all_verified": rHM.get("all_verified"), "runtime_executed": rHM.get("runtime_executed"), "does_not_gate_core": rHM.get("does_not_gate_core"), "observed_vector_read": rHM.get("observed_vector_read"), "le_em_rito": rHM.get("le_em_rito"), "aditivo_posterior_ao_freeze_r2": rHM.get("aditivo_posterior_ao_freeze_r2"),
+                                 "campos": rHM.get("campos"), "n_checks": _mF.get("n_checks"), "mechanics": {"passed": _mF.get("passed"), "n_checks": _mF.get("n_checks"), "checks": [{"id": ck_["id"], "ok": ck_["ok"]} for ck_ in _mF.get("checks") or []]}, "values": rHM.get("values"),
+                                 "numeros_recalculados": {"ids_calibradores": _idsF, "n_fontes_primarias": len(_fontesF), "cobertura_extra_no_manifesto": _extraF, "pinos": {k_: hashlib.sha256(v_).hexdigest() for k_, v_ in _rawF.items()}}, "checagens_negadas": _detF,
+                                 "recibo_documental_nenhum_dado_observado_lido": True, "pasta_vedada": DL.H0DN_PASTA_VEDADA}

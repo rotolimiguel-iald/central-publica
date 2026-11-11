@@ -11,6 +11,7 @@ cobertura kh · escada · kernel · registro PT/EN e vereditos mudados («só d�
 monotonia · negações congeladas · cunhagens. O que NÃO lê (autoria humana, revisada ao lado em SEMANTICA_CUSTODIA.rev<n>.json): o SENTIDO das
 negações, mudanças de veredito fora do padrão, nomes definitivos. Sem revisão a pedra roda `DECLARADO (sem revisao)` e diz.
 physical_verdict_allowed é sempre False; nada aqui move o gate."""
+import ast
 import copy
 import hashlib
 import json
@@ -97,6 +98,28 @@ def _contratos(um_text):
         regiao = um_text[m.start(): prox.start() if prox else len(um_text)]
         ach = re.findall(r"""['"]expected_ladder['"]\s*:\s*(\d+)""", regiao)
         out[m.group(1)] = int(ach[0]) if len(ach) == 1 else (None if not ach else "não literal")
+    return out
+
+
+_CHAVES_KERNEL_PEDRA = ("theorems", "declarations", "declaration_sources", "stone")
+
+
+def _contratos_registro(um_text, contratos):
+    r"""[AO LADO, 11/11/2026, claude-site-custodia; o C4 da v410 parou no S11] Contrato de REGISTRO (pré-registro de teste, recibo
+    documental): sem expected_ladder, literal Python e sem nenhuma chave de conteúdo de kernel. Implementação própria da pedra (não importa
+    fatos.py). Contrato de kernel sem a escada, ou não literal, NÃO é de registro: o S11 segue reprovando nele."""
+    out = []
+    for nome, x in sorted(contratos.items()):
+        if x is not None:
+            continue
+        m = re.search(r"^%s\s*=\s*" % re.escape(nome), um_text, re.M)
+        prox = re.compile(r"\n(?=[A-Za-z_@#])").search(um_text, m.end())
+        try:
+            d = ast.literal_eval(um_text[m.end(): prox.start() if prox else len(um_text)].strip())
+        except (ValueError, SyntaxError):
+            continue
+        if isinstance(d, dict) and "expected_ladder" not in d and not any(k in d for k in _CHAVES_KERNEL_PEDRA):
+            out.append(nome)
     return out
 
 
@@ -245,8 +268,11 @@ def medir_custodia_generica(oc, v, a, fatos=None, semantica_dada=None):
     confs = [k for k, x in selo.items() if str(k).endswith("_verdict") and RX_CONF.search(str(x))]
     chk("S10_sem_CONFIRMED", not confs, [], confs)
     contratos = _contratos(um_text)
-    chk("S11_contratos", contratos == F["contratos_expected_ladder"] and all(x == F["escada"]["esperadas"] for x in contratos.values()),
-        F["escada"]["esperadas"], contratos)
+    reg_pedra = _contratos_registro(um_text, contratos)    # AO LADO (11/11/2026, v410): os de registro saem da escada e conferem com os fatos
+    contratos = {k: x for k, x in contratos.items() if k not in reg_pedra}
+    chk("S11_contratos", contratos == F["contratos_expected_ladder"] and all(x == F["escada"]["esperadas"] for x in contratos.values())
+        and reg_pedra == list(F.get("contratos_de_registro") or []),
+        {"escada": F["escada"]["esperadas"], "registro": list(F.get("contratos_de_registro") or [])}, {"escada": contratos, "registro": reg_pedra})
     mono = (F["kernel"]["formais"] >= F["kernel"]["formais_anterior"] and F["kernel"]["declaracoes"] >= F["kernel"]["declaracoes_anterior"]
             and F["escada"]["esperadas"] >= F["escada_anterior"]["esperadas"] and F["registro"]["pt"] >= F["registro"]["anterior"]
             and F["kh"]["constantes"] >= F["kh"]["constantes_anterior"] and F["kh"]["teoremas"] >= F["kh"]["teoremas_anterior"] and not F["kernel"]["modulos_removidos"])
