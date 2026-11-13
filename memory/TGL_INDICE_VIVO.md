@@ -1,20 +1,20 @@
-# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v410)
+# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v411)
 
-> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 11/11/2026 02:17.
+> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 13/11/2026 03:50.
 
 ## 0. Estado
 
 | item | valor lido |
 |---|---|
-| versão | **v410** |
-| `um.py` sha16 | `5d9497a721c3589e` |
+| versão | **v411** |
+| `um.py` sha16 | `1203b1f9202020d6` |
 | teoremas | **12308/12308** |
 | gate | `TGL_QG_MODEL_FORMALLY_CLOSED__NATURE_TEST_COMPLETED_WITHIN_LOCAL_BULK_AT_AVAILABLE_SENSITIVITY__MORE_SENSITIVE_DATA_COULD_REVISE` |
 | selftest | `FAIL_CLOSED_SELFTEST_PASSED` |
 | identidade | `1=1=VERDADEIRO=HAJA_LUZ` |
 | contorno | `[]` |
 | rodada | COMPLETA |
-| última rodada COMPLETA | v410 (`5d9497a721c3589e`, 12308/12308) — custódia: HANDOFF_v410 emitido |
+| última rodada COMPLETA | v411 (`1203b1f9202020d6`, 12308/12308) — custódia: HANDOFF_v411 emitido |
 | relatório de axiomas | 34300 termos; fora do trio: 0 |
 
 ## 1. As versões do arco (hash do `um.py` lido dos backups de bytes; teoremas lidos do stdout)
@@ -113,7 +113,8 @@
 | v407 | `—` | 11958 | 9 | bancada |
 | v408 | `—` | 12029 | 4 | bancada |
 | v409 | `—` | 12187 | 2 | bancada |
-| v410 | `5d9497a721c3589e` | 12308 | 2 | bancada |
+| v410 | `—` | 12308 | 2 | bancada |
+| v411 | `1203b1f9202020d6` | 12308 | 0 | fiação |
 
 > Fonte do hash (04/10/2026): o cabeçalho de selo do diário («**vNNN SELADA …** `sha16`»), ou a frase «**A vNNN** (`sha16`»; a versão corrente, do disco. **†** = sem nenhuma das duas fontes: valor da regra antiga (backup ↔ diário por proximidade), **não conferido** — essa regra deslocava uma versão (ver a errata de 04/10/2026 no §7).
 

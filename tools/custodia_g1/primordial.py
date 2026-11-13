@@ -27,8 +27,10 @@ from pathlib import Path
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
     from custodia_g1.caminhos import Caminhos  # type: ignore
+    from custodia_g1 import h0dn as H0DN  # type: ignore
 else:
     from .caminhos import Caminhos
+    from . import h0dn as H0DN
 
 for _s in (sys.stdout, sys.stderr):
     try:
@@ -375,6 +377,51 @@ def montar(cfg):
         c.derivar("mudou.paragrafo_pronto_titulo", mt.group(1).strip(), "handoff", "título do marcador INICIO_" + pars[-1][0], "regex")
     else:
         c.derivar("mudou.paragrafo_pronto_titulo", None, "handoff", "nenhum marcador PARAGRAFO_*_" + versao, "regex")
+    # --- AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): o teste H0DN x BG1 ABERTO. Com um h0dn_bg1_vNNN de
+    # opened_once = true no core selado, os blocos do README que diziam que beta_TGL na natureza a 5 sigma e o passo aberto saem do handoff
+    # (marcadores README_*), conferidos contra o registro (forma, F67, numeros, cabeca); sem o marcador, PARA. Sem registro aberto, nada muda.
+    ab = H0DN.registro_aberto(c.dados["core"])
+    if ab:   # (o item só existe com o teste aberto: sem ele o PRIMORDIAL sai byte a byte como antes e o --conferir-fontes da versão anterior segue limpo)
+        c.derivar("h0dn.aberto", True, "core", "um h0dn_bg1_vNNN com opened_once = true", "busca")
+        nome_h, reg_h = ab
+        try:
+            Vh = H0DN.valores(reg_h)
+            Ah = H0DN.acervo(c.dados["core"])      # AO LADO (12/11/2026): os números do acervo que os textos citam (o teste lê-se com o acervo)
+        except ValueError as e:
+            raise Falha(str(e))
+        c.derivar("h0dn.registro", nome_h, "core", "o h0dn_bg1_vNNN aberto mais novo", "busca")
+        for k in ("z_null", "z_tgl", "D", "p_unilateral", "ramo", "outcome", "t", "modelo"):
+            c.pegar("h0dn.primario." + k, "core", nome_h + "/values/primario/" + k)
+        for k in ("z_null", "z_tgl", "D", "ramo", "outcome", "t", "modelo"):
+            c.pegar("h0dn.cefeidas_livres." + k, "core", nome_h + "/values/cefeidas_livres/" + k)
+        c.pegar("h0dn.cabeca", "core", nome_h + "/cabeca_do_teste")
+        c.pegar("h0dn.outcome", "core", nome_h + "/outcome")
+        faltam_h = ["INICIO_%s_%s" % (mk, versao) for mk in H0DN.MARCADORES_README if "%s_%s" % (mk, versao) not in marc]
+        if faltam_h:
+            raise Falha("o H0DN foi aberto (%s): o handoff nao traz %s (os blocos do README nao se inventam; o molde do 5 sigma ficou velho)" % (nome_h, ", ".join(faltam_h)))
+        ids_h = {"README_PAINEL_H0DN": "painel", "README_FASE9_V2": "fase9_v2", "README_PRIMORDIAL_5SIGMA": "primordial_5sigma",
+                 "README_STATUS_5SIGMA": "status_5sigma", "README_H0DN": "paragrafo", "README_H0DN_EN": "paragrafo_en", "README_RITOS": "ritos"}
+        for mk in H0DN.MARCADORES_README:
+            txt = marc["%s_%s" % (mk, versao)].strip("\n")
+            forma = []
+            if "{{" in txt or "PORTAS:" in txt:
+                forma.append("traz «{{» ou o marcador das portas")
+            if mk == "README_H0DN_EN" and not txt.startswith("**The H0DN × BG1 test:** "):
+                forma.append("tem de começar por «**The H0DN × BG1 test:** » (substitui a linha EN da parte P = nP)")
+            if mk in ("README_PRIMORDIAL_5SIGMA", "README_H0DN", "README_H0DN_EN") and "\n" in txt:
+                forma.append("tem de ser uma linha so (entra dentro de uma linha do README)")
+            if mk == "README_H0DN" and "*" in txt:
+                forma.append("nao pode trazer «*» (entra dentro do italico da parte P = nP)")
+            if mk == "README_STATUS_5SIGMA" and re.search(r"\n\s*\n", txt):
+                forma.append("nao pode ter linha em branco (entra dentro do paragrafo do estado)")
+            if mk == "README_RITOS" and not all(ln.startswith("|") and ln.rstrip().endswith("|") for ln in txt.split("\n")):
+                forma.append("cada linha tem de ser uma linha de tabela markdown («| … |»)")
+            if mk == "README_FASE9_V2" and "REGISTRO_FASE9_V2.md" not in txt:
+                forma.append("nao aponta para REGISTRO_FASE9_V2.md (onde o painel inteiro da Fase 9 V2 fica)")
+            viol = forma + H0DN.conferir_bloco(txt, Vh, mk, painel=(mk == "README_PAINEL_H0DN"), acervo=Ah)
+            if viol:
+                raise Falha("o marcador %s_%s nao passa: %s" % (mk, versao, " | ".join(viol[:6])))
+            c.derivar("h0dn.readme." + ids_h[mk], txt, "handoff", "marcador INICIO_%s_%s" % (mk, versao), "marcador")
     # --- o depósito citável (Zenodo), do CITATION.cff
     cff = (tb / "CITATION.cff").read_text(encoding="utf-8")
     md = re.search(r"Zenodo deposit of (v\d{3}), deposited ([\d-]{10}) \(byte-identical to the seal: um\.py sha256 ([0-9a-f]{16})", cff)
@@ -440,8 +487,8 @@ def montar(cfg):
     mapa = {
         "llms": "llms.txt", "estado": "ESTADO_ATUAL.md", "brief": "read-brief.md", "tunel_json": "TUNEL.json", "tunel_md": "TUNEL.md", "porta_json": "PORTA.json",
         "porta_md": "PORTA.md", "ledger": "LEDGER.md", "citation": "CITATION.cff",
-        "citing": "CITING.md",
-        "abstract": "ABSTRACT.md",   # AO LADO (v410, custodia): a Abstract saiu do README (teto L01) para ABSTRACT.md   # AO LADO (06/11/2026, custodia v409, claude-site-custodia): o BibTeX dos artigos saiu do README (teto L01) para CITING.md
+        "citing": "CITING.md",   # AO LADO (06/11/2026, custodia v409, claude-site-custodia): o BibTeX dos artigos saiu do README (teto L01) para CITING.md
+        "abstract": "ABSTRACT.md",   # AO LADO (11/11/2026, custodia v410, claude-site-custodia): a Abstract saiu do README (teto L01; saida ratificada pelo operador em 10/11) para ABSTRACT.md
         "um_py": A3 + "/um.py", "selo": A3 + "/um_absoluto_selo.json", "mundo": A3 + "/um_absoluto.json", "manifesto": A3 + "/Lean/tgl_kernel_proof_manifest.json",
         "confirmacao_reservada": A3 + "/Lean/tgl_kernel/TGLExt/TheReservedConfirmation.lean",
         "a1_tex": a1 + "paper_PT.tex", "a1_py": a1 + "tgl_paper_unified.py", "a1_pdf": a1 + "paper_PT.pdf",

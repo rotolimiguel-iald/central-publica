@@ -13,6 +13,7 @@ from pathlib import Path
 
 from . import espelho_pares as EP
 from . import nos, recibos, textos, util
+from . import h0dn   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): o teste H0DN x BG1 aberto
 from .motor import Passo, aplicado, bloqueado, falta, superado, superado_rel, indeterminado, na, operador
 from .util import Parar, FalhaLeitura, Divergencia
 
@@ -514,6 +515,8 @@ def _marcas_e04(ctx):
     m["i18n.js"] = ("'art.c.cl.arc%d'" % n) in ctx.ler(c.SITE / "i18n.js")
     if not _historica(ctx):
         m["CITATION"] = ("(%s on" % v) in ctx.ler(c.TB / "CITATION.cff")
+    if h0dn.registro_aberto(textos._core_da_versao(ctx)):   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1)
+        m["estatuto_h0dn"] = h0dn.estatuto_marca_ok(c.TB, v)
     return m
 
 
@@ -539,7 +542,7 @@ def _pre_e04(ctx):
         f.append("rode antes o E03 (cópia)")
     a = textos.avaliar_fontes(ctx)
     f += a["bloqueios"]
-    if a["faltam"] and not ctx.aceitar_molde:
+    if a["faltam"] and (not ctx.aceitar_molde or any(k.rsplit("_", 1)[0] in h0dn.TODOS for k in a["faltam"])):   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): o do H0DN nao tem molde
         f.append("o handoff não traz estes marcadores (a prosa sairia do molde factual; passe --aceitar-molde ou peça ao autor do handoff): %s" % ", ".join(a["faltam"]))
     return f
 
@@ -553,6 +556,15 @@ def _ap_e04(ctx):
     dep = textos.deposito_zenodo(c)
     ts = util.carimbo()
     saidas = {}
+    ab_h = h0dn.registro_aberto(textos._core_da_versao(ctx))   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): os onze textos do estatuto
+    if ab_h:
+        try:
+            Vh = h0dn.valores(ab_h[1])
+            Ah = h0dn.acervo(textos._core_da_versao(ctx))   # AO LADO (12/11/2026, claude-site-custodia): os numeros do acervo que os textos citam
+        except ValueError as e:
+            raise Parar(str(e))
+        for k_, e_ in h0dn.estatuto_e04(c.TB, ctx.handoff.corpos, v, ab_h[0], Vh, T.conhecidos, ts, acervo=Ah, reg=ab_h[1]).items():
+            saidas["h0dn:" + k_] = e_
     gea = c.TB / "tools" / "gerar_estado_atual.py"
     fonte = util.ler_texto(gea)
     if not _ESTADO_ANCORA.search(fonte.replace("\r\n", "\n")) or len(_ESTADO_ANCORA.findall(fonte.replace("\r\n", "\n"))) != 1:
@@ -751,6 +763,12 @@ def _gerar_readme_pinado(ctx):
     c = ctx.c
     tpl = c.TB / "tools" / "readme_pinado" / "readme_template.md"
     if not tpl.is_file():
+        # AO LADO (12/11/2026, claude-site-custodia; decisão da gerência c1, achado 4): com o H0DN aberto, o gerador antigo emitiria a
+        # chave linha_pt («o fator decisivo aberto é β_TGL na natureza a 5σ»), que nenhum trecho do estatuto cobre: PARA em vez de emiti-la
+        ab_f = h0dn.registro_aberto(textos._core_da_versao(ctx))
+        if ab_f:
+            raise Parar("o H0DN foi aberto (%s) e o espelho não tem o template do README pinado: o gerar_readme_frente.py emitiria a frase velha "
+                        "do fator aberto (chave linha_pt do estatuto), que nenhum marcador cobre" % ab_f[0])
         exigir_rc0(_tb(ctx, "gerar_readme_frente.py"), "gerar_readme_frente.py")
         return
     g1 = Path(__file__).resolve().parent

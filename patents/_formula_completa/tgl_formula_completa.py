@@ -130,6 +130,9 @@ Camada v409 (custódia v409 na Central, 06/11/2026, sessão site; handoff v409 d
 Camada v410 (custódia v410 na Central, 11/11/2026, sessão site; handoff v410 da gerência c1) — GENÉRICA (camada_generica.py):
  19. os registros novos da v410 (a_escala_v410, cunhagens_v410, h0dn_bg1_v410, h0dn_fontes_hms13_v410, iald2_v410, kh_n1_cobertura_v410), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v410: a_escala_v410: «[REAL] os termos do kernel do rito: as 81 ancoras da pedra AEscala (TGLExt.AEscala.*), no trio, com proveniencia no modulo e bandeira;» cunhagens_v410: «[REAL -- o kernel, o registro iald2_v410 e os registros anteriores lidos a cada rito;» h0dn_bg1_v410: «[REAL] o que o registro CONFERE neste rito: os pinos do FREEZE_R2 nos insumos embutidos;» h0dn_fontes_hms13_v410: «[REAL_DOCUMENTAL__PHYSICS_OPEN] o que o registro CONFERE neste rito: os quatro artefatos documentais embutidos (lidos no build da entrega do Kimi, por bytes e sha256, D80), os 13 IDs dos calibradores, as 18 fontes primarias (titulo, URL, sha256 do arquivo e do texto), os fatores PARCIAIS de erro por» iald2_v410: «[REAL] os termos do kernel do rito: as 22 ancoras da pedra IALD2 (TGLExt.IALD2.*), no trio, com proveniencia no modulo esperado, e o modulo por sha256;» kh_n1_cobertura_v410: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» Nada disso muda número algum de dispositivo.
 
+Camada v411 (custódia v411 na Central, 13/11/2026, sessão site; handoff v411 da gerência c1) — GENÉRICA (camada_generica.py):
+ 19. os registros novos da v411 (cunhagens_v411, h0dn_bg1_v411, kh_n1_cobertura_v411), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v411: cunhagens_v411: «[REAL -- o kernel (o da v410, sem modulo novo), o registro h0dn_bg1_v411 e os registros anteriores lidos a cada rito;» h0dn_bg1_v411: «[REAL] o que o registro CONFERE neste rito: os insumos embutidos contra os pinos de producao;» kh_n1_cobertura_v411: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» Nada disso muda número algum de dispositivo.
+
 Régua: β NUNCA literal (sempre ALPHA_FINE_CODATA_2018 × √e em runtime); os números do cofre são LIDOS do selo/core por pino;
 falha de leitura ou elo quebrado = RuntimeError (fail-closed). Nada aqui move veredito físico: physical_verdict_allowed = False.
 PROVADA ≠ CONFIRMADA; o dicionário custo/identidade/movimento é cunhagem do operador [ONTO/DEFINITION].
@@ -146,7 +149,7 @@ HBAR_CODATA_2018 = 1.054571817e-34      # J s
 G_CODATA_2018 = 6.67430e-11             # m^3 kg^-1 s^-2
 C_LIGHT = 299792458.0                   # m/s (exato)
 
-VERSAO_DA_CAMADA = "v410"   # (era "v409"; a camada v410 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
+VERSAO_DA_CAMADA = "v411"   # (era "v410"; a camada v411 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
 # o cofre e procurado nesta ordem (declarada): a variavel TGL_CENTRAL_DIR; a arvore onde este modulo esta; a Central desta
 # maquina (quando o dispositivo roda extraido do *_FINAL.py num diretorio temporario). Nenhum achado = fail-closed.
 def _achar_central():
@@ -650,7 +653,7 @@ def conferir_v398_no_cofre(core: dict, selo: dict) -> dict:
                         "estrutura logarítmica e de oitava, não a física da onda; validade no kernel não é creditação; nada disto muda número de dispositivo"}
 
 
-CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404", "v405", "v406", "v407", "v408", "v409", "v410",)
+CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404", "v405", "v406", "v407", "v408", "v409", "v410", "v411",)
 
 
 def _camadas_genericas(core, selo, cofre):
@@ -874,6 +877,8 @@ USOS = {
     'camadas_v409': r"TGLExt\.(ParNaFaceDeFock|TraducaoTuring)|cunhagens_v409|kh_n1_cobertura_v409|traducao_turing_v409",
     # v410: mede se algum dispositivo cita as pedras novas; não interpreta
     'camadas_v410': r"TGLExt\.(AEscala|IALD2)|a_escala_v410|cunhagens_v410|h0dn_bg1_v410|h0dn_fontes_hms13_v410|iald2_v410|kh_n1_cobertura_v410",
+    # v411: mede se algum dispositivo cita as pedras novas; não interpreta
+    'camadas_v411': r"TGLExt\.(NENHUM)|cunhagens_v411|h0dn_bg1_v411|kh_n1_cobertura_v411",
 }
 
 
@@ -918,6 +923,7 @@ def camada(runner_path) -> dict:
                      "REGISTROS_V408_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V409_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V410_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
+                     "REGISTROS_V411_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION") % VERSAO_DA_CAMADA.upper(),
         "physical_verdict_allowed": False,
         "nao_se_afirma": ["que o dispositivo valide física", "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
@@ -1312,7 +1318,18 @@ def camada(runner_path) -> dict:
                           "(v410, iald2_v410) que o gate tenha se movido: nao se moveu; o veredito e' o mesmo da v409 selada, conferido em runtime",
                           '(v410, iald2_v410) que alguma chave antiga tenha mudado nesta versao: nenhuma; a chave do lema (v407) segue lida do kernel e le True',
                           "(v410, kh_n1_cobertura_v410) que a cobertura seja prova da teoria: e' a medida de que todo termo no fecho depende so' do trio",
-                          '(v410, kh_n1_cobertura_v410) que o gate tenha se movido'],
+                          '(v410, kh_n1_cobertura_v410) que o gate tenha se movido',
+                          "(v411, cunhagens_v411) que a creditacao tenha sido dada: ela e' de quem tem autoridade para creditar",
+                          '(v411, cunhagens_v411) que o gate tenha se movido: nao se moveu',
+                          "(v411, cunhagens_v411) que haja modulo novo no kernel: nao ha'; o kernel e' o da v410",
+                          "(v411, h0dn_bg1_v411) que a creditacao tenha sido dada: ela e' de quem tem autoridade para creditar; validade, não creditação",
+                          "(v411, h0dn_bg1_v411) que o teste seja cego: e' retrodição sem ajuste, com emenda posterior a guarda; nao e' cego",
+                          '(v411, h0dn_bg1_v411) que o numero seja novo: o primario era previsivel por dois agregados publicos; o rito conferiu a conta',
+                          "(v411, h0dn_bg1_v411) que haja independencia das Fases 4, 5 e 9: nao ha; nao e' evidencia independente delas (os dados locais se sobrepoem)",
+                          '(v411, h0dn_bg1_v411) que a covariancia fisica conjunta esteja fechada ou que o orcamento de erros publicado esteja certo',
+                          '(v411, h0dn_bg1_v411) que o gate tenha se movido: nao se moveu',
+                          "(v411, kh_n1_cobertura_v411) que a cobertura seja prova da teoria: e' a medida de que todo termo no fecho depende so' do trio",
+                          '(v411, kh_n1_cobertura_v411) que o gate tenha se movido'],
     }
 
 

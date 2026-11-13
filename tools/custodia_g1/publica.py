@@ -123,7 +123,9 @@ def _ap_c18(ctx):
     ate_ensaio = passos[: passos.index("subir_ensaio") + 1]
     pronta = _rodada_completa_ate_o_ensaio(ctx, ate_ensaio)
     if pronta is None:
-        r1 = util.rodar(enc + ["--so", ",".join(ate_ensaio), "--publicar"], cwd=ctx.c.CEN, timeout=4 * 3600)
+        # AO LADO (11/11/2026, claude-site-custodia): 4 h -> 8 h. Na v410 esta chamada levou 14.322 s (rodadas/20261111_052005.json), 78 s abaixo
+        # do antigo limite de 14.400 s; no timeout, util.rodar mata so o encadeador e o git push aberto segue orfao (a tentativa seguinte o acharia no meio).
+        r1 = util.rodar(enc + ["--so", ",".join(ate_ensaio), "--publicar"], cwd=ctx.c.CEN, timeout=8 * 3600)
         if r1["rc"] != 0:
             raise Parar("a Central pública parou antes da subida (rc %s)" % r1["rc"], r1["saida"].strip().splitlines()[-8:])
         pronta = _rodada_completa_ate_o_ensaio(ctx, ate_ensaio)

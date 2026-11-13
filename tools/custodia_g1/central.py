@@ -124,6 +124,13 @@ def semantica_rascunho(ctx, Fa, core):
         regra = {"verdict_deve_conter": segs, "verdict_nao_deve_conter": [], "campos": []}
         if k.startswith("cunhagens_"):
             regra["campos"] = [{"caminho": "kernel.bandeiras", "par_igual": True}, {"caminho": "kernel.declaracoes_no_trio", "par_igual": True}]
+            # AO LADO (13/11/2026, claude-site-custodia; D197 da gerencia c1): sob o contrato SEM_PEDRA_NOVA (a MESMA funcao da pedra, medida no cofre; divergencia PARA)
+            try:
+                _spn = CG.sem_pedra_nova(Fa, ctx.c.OC, ctx.versao, Fa["anterior"])
+            except (OSError, ValueError, KeyError) as e:
+                raise Parar("contrato SEM_PEDRA_NOVA divergente ou ilegivel: %r" % (e,))
+            if _spn:
+                regra["campos"] = [{"caminho": "kernel.bandeiras", "par_igual_zero": True}, {"caminho": "kernel.declaracoes_no_trio", "par_igual_zero": True}]
         blocos[k] = regra
     return {"schema": "custodia_semantica/1", "versao": ctx.versao, "estatuto": "DECLARADO", "rascunho_por": "script custodia_g1 (sem modelo)", "revisor": None,
             "revisao": 0, "blocos": blocos, "mudados_permitidos": [], "titulo_slug": titulo_slug(ctx), "veredito_camada_sufixo": None,

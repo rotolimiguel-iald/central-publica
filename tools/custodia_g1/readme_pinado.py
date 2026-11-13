@@ -249,8 +249,123 @@ def b_mudou(C):
     return t + "\n"
 
 
-BLOCOS = {"primordial": b_primordial, "hubble_pt": b_hubble_pt, "status": b_status, "apoios": b_apoios, "ritos": b_ritos, "selo": b_selo,
-          "proveniencia": b_proveniencia, "mudou": b_mudou}
+# ================================================================================================= o H0DN x BG1 ABERTO
+# AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1). Com h0dn.aberto = true no PRIMORDIAL (um h0dn_bg1_vNNN de opened_once = true no
+# core selado), os blocos que diziam que beta_TGL na natureza a 5 sigma e o passo aberto saem dos marcadores do handoff (lidos e conferidos
+# pelo primordial.py): o painel do H0DN sobe ao topo; o da Fase 9 V2 vira uma linha EN e uma PT (README_FASE9_V2) e desce VERBATIM, com a
+# frase do autor de 02/11, para REGISTRO_FASE9_V2.md (gerado e pinado aqui: nada se perde, so muda de lugar); a linha da Fase 9 V2 na tabela
+# dos ritos da lugar a README_RITOS; o paragrafo do H0DN da parte P = nP, a README_H0DN. Sem o registro aberto, todo byte sai como antes:
+# as funcoes originais ficam intactas acima e o BLOCOS original fica abaixo, como registro.
+#   BLOCOS = {"primordial": b_primordial, "hubble_pt": b_hubble_pt, "status": b_status, "apoios": b_apoios, "ritos": b_ritos, "selo": b_selo,
+#             "proveniencia": b_proveniencia, "mudou": b_mudou}
+H0DN_FRASE_VELHA_P_IGUAL_NP = ("O teste H0DN × BG1: pré-registrado; nenhum dado observado lido; não foi aberto: o certificado de poder foi recusado "
+                               "(declarado pelo executor, lido pela gerência), teste sem poder preditivo discriminante não se abre, e a abertura é de versão futura.")
+# AO LADO (12/11/2026, claude-site-custodia; pedido da gerencia c1): a linha EN do H0DN da mesma parte, que ficaria falsa, da lugar a README_H0DN_EN
+H0DN_LINHA_VELHA_P_IGUAL_NP_EN = ("**The H0DN × BG1 test:** pre-registered; no observed data read; it was not opened: the power certificate was refused "
+                                  "(declared by the executor, read by the management), a test without discriminating predictive power is not opened, and the "
+                                  "opening belongs to a future version.")
+REGISTRO_FASE9_V2 = "REGISTRO_FASE9_V2.md"
+_ANCORA_HUBBLE = "`\n>\n> **Hubble-ratio test**"
+
+
+def h0dn_aberto(C):
+    return (C.itens.get("h0dn.aberto") or {}).get("valor") is True
+
+
+def _trocar(s, velho, novo, rotulo):
+    n = s.count(velho)
+    if n != 1:
+        raise Falha("H0DN aberto: o trecho a trocar em %s aparece %d vez(es), nao 1: %r" % (rotulo, n, velho[:70]))
+    return s.replace(velho, novo)
+
+
+def b_primordial_h0dn(C):
+    s = b_primordial(C)
+    if not h0dn_aberto(C):
+        return s
+    if s.count(_ANCORA_HUBBLE) != 1:
+        raise Falha("H0DN aberto: a ancora do painel da Fase 9 V2 nao esta uma vez no b_primordial")
+    i = s.index(_ANCORA_HUBBLE)
+    return s[:i + 2] + "\n" + C.v("h0dn.readme.painel") + "\n\n" + C.v("h0dn.readme.fase9_v2") + "\n\n> " + C.v("h0dn.readme.primordial_5sigma") + "\n"
+
+
+def b_hubble_pt_h0dn(C):
+    return "" if h0dn_aberto(C) else b_hubble_pt(C)
+
+
+def b_status_h0dn(C):
+    s = b_status(C)
+    if not h0dn_aberto(C):
+        return s
+    d = C.v("hubble.degrau_creditacao_sigma")
+    velho = ("What nature decides is not proved: the decisive open factor is **\u03b2_TGL in nature at \u2265 %d\u03c3**. *Provada, como validade, em tr\u00eas apoios; "
+             "ainda n\u00e3o creditada; o fator decisivo aberto \u00e9 \u03b2_TGL na natureza a %d\u03c3.*" % (d, d))
+    return _trocar(s, velho, C.v("h0dn.readme.status_5sigma"), "b_status")
+
+
+def b_ritos_h0dn(C):
+    s = b_ritos(C)
+    if not h0dn_aberto(C):
+        return s
+    velho = "| Hubble ratio, Phase 9 V2 | `NOT_FALSIFIED_POWERED` (the panel at the top) | \u03b2 in nature at %d\u03c3: the step was not reached |\n" % C.v("hubble.degrau_creditacao_sigma")
+    return _trocar(s, velho, C.v("h0dn.readme.ritos").strip("\n") + "\n", "b_ritos")
+
+
+def b_h0dn_paragrafo(C):
+    return C.v("h0dn.readme.paragrafo")
+
+
+def b_h0dn_paragrafo_en(C):
+    return C.v("h0dn.readme.paragrafo_en")
+
+
+# AO LADO (13/11/2026, claude-site-custodia; decisao da gerencia c1 de 12/11, opcao (b)): a regra do operador de 12/11/2026 (conversa entre os
+# autores nao se transcreve no programa nem no artigo; cita-se por data e sha256) vale para o que se escreve de novo, e este registro nasce na
+# custodia da v411. A frase do autor de 02/11 entra CITADA por data e sha16, nao transcrita; b_hubble_pt fica INTACTA (o caminho sem o H0DN
+# aberto e o registro do que foi publicado); a linha PT dos numeros da Fase 9 V2 fica igual, com todos os companheiros do z_disc; o cabecalho
+# deixa de dizer verbatim. Sem o arquivo da regra em disco, ou sem a frase uma vez no fim do b_hubble_pt, PARA (nunca a transcricao como saida).
+# A funcao anterior (que descia o painel verbatim COM a frase, de acordo da gerencia de 12/11 anterior a regra) fica no backup .bak_*_registro_fala.
+REGRA_FALA_12NOV = ("OPERADOR_12nov_nao_precisa_transcrever_esse_tipo_de_fala_pra_dentro_do_programa_nunca_verbatim.txt", "12/11/2026")
+
+
+def _regra_fala():
+    """(data, sha16) da regra do operador de 12/11/2026, o sha16 lido do arquivo verbatim em disco (nunca de memoria)."""
+    p = Path(Caminhos().CEN) / "work" / "cunhagens_13out" / REGRA_FALA_12NOV[0]
+    if not p.is_file():
+        raise Falha("a regra do operador de %s (nao transcrever fala dos autores) nao esta em disco: %s" % (REGRA_FALA_12NOV[1], p))
+    return REGRA_FALA_12NOV[1], hashlib.sha256(p.read_bytes()).hexdigest()[:16]
+
+
+def _hubble_pt_registro(C):
+    """O b_hubble_pt com a linha da frase do autor de 02/11 trocada pela citacao por data e sha16; o resto, byte a byte."""
+    s = b_hubble_pt(C)
+    fala = ("> *\u00ab%s\u00bb* \u2014 the author, %s (verbatim, sha16 `%s`) `[INPUT: the author\u2019s judgement, not a claim of the program]`\n"
+            % (C.v("operador.frase_4_44_sic"), C.v("operador.data"), C.f("operador_verbatim", "sha16")))
+    if s.count(fala) != 1 or not s.endswith(fala):
+        raise Falha("H0DN aberto: a frase do autor de 02/11 nao esta uma vez, no fim, do b_hubble_pt (o registro nao se monta)")
+    cit = ("> *The author\u2019s judgement of %s on this result is cited by date and sha256, not transcribed (verbatim file sha16 `%s`).* "
+           "`[INPUT: the author\u2019s judgement, not a claim of the program]`\n" % (C.v("operador.data"), C.f("operador_verbatim", "sha16")))
+    return s[:-len(fala)] + cit
+
+
+def registro_fase9_v2(C):
+    """O painel inteiro da Fase 9 V2, como esteve no topo do README (as MESMAS funcoes, os MESMOS itens do PRIMORDIAL), exceto a frase do autor de 02/11, citada por data e sha16."""
+    s = b_primordial(C)
+    if s.count(_ANCORA_HUBBLE) != 1:
+        raise Falha("H0DN aberto: a ancora do painel da Fase 9 V2 nao esta uma vez no b_primordial")
+    hub = "> **Hubble-ratio test**" + s[s.index(_ANCORA_HUBBLE) + len(_ANCORA_HUBBLE):]
+    d_regra, sha_regra = _regra_fala()
+    return ("# Record \u00b7 registro: the Phase 9 V2 panel (Hubble ratio, opened once on %s)\n\n"
+            "<!-- PINADO por tools/custodia_g1/readme_pinado.py \u00b7 fonte PRIMORDIAL.json sha16 %s \u00b7 pino PINO_README.json \u00b7 n\u00e3o editar \u00e0 m\u00e3o -->\n\n"
+            "*This panel stood at the top of the README until the custody of %s, when the H0DN \u00d7 BG1 test, opened once (registry `%s`), took the top; "
+            "it moved here from the same generator and the same PRIMORDIAL items, unchanged except for the author\u2019s sentence of %s, which is now cited "
+            "by date and sha256 instead of transcribed, under the author\u2019s rule of %s (verbatim file sha16 `%s`). It stays true about that test.*\n\n"
+            % (C.v("hubble.data_abertura"), C.prim_sha16, C.v("selo.versao"), C.v("h0dn.registro"), C.v("operador.data"), d_regra, sha_regra)
+            + hub + "\n" + _hubble_pt_registro(C))
+
+
+BLOCOS = {"primordial": b_primordial_h0dn, "hubble_pt": b_hubble_pt_h0dn, "status": b_status_h0dn, "apoios": b_apoios, "ritos": b_ritos_h0dn, "selo": b_selo,
+          "proveniencia": b_proveniencia, "mudou": b_mudou, "h0dn_paragrafo": b_h0dn_paragrafo, "h0dn_paragrafo_en": b_h0dn_paragrafo_en}
 
 
 # ================================================================================================= o motor do template
@@ -310,7 +425,11 @@ def render_texto(C, texto, partes_dir, portas, segs, rotulo, nivel=0):
             if nivel > 0:
                 raise Falha("parte dentro de parte não é permitida: " + nome)
             flush(tipo_base)
-            render_texto(C, arq.read_text(encoding="utf-8"), partes_dir, portas, segs, "parte:" + nome[6:], nivel + 1)
+            txt_parte = arq.read_text(encoding="utf-8")
+            if h0dn_aberto(C) and nome[6:] == "p_igual_np":   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): o paragrafo do H0DN vem do handoff, como bloco gerado
+                txt_parte = _trocar(txt_parte, H0DN_FRASE_VELHA_P_IGUAL_NP, "{{bloco:h0dn_paragrafo}}", "parte p_igual_np")
+                txt_parte = _trocar(txt_parte, H0DN_LINHA_VELHA_P_IGUAL_NP_EN, "{{bloco:h0dn_paragrafo_en}}", "parte p_igual_np (linha EN)")
+            render_texto(C, txt_parte, partes_dir, portas, segs, "parte:" + nome[6:], nivel + 1)
         elif nome.startswith("url:"):
             buf.append(C.u(nome[4:]))
         elif nome.startswith("bytes:"):
@@ -493,6 +612,19 @@ def cmd_gerar(a, C, prim_bytes):
     saida.mkdir(parents=True, exist_ok=True)
     est = escrever_bytes(saida / a.nome, b, "README")
     pino = montar_pino(C, b, prim_bytes, a.template, a.partes, a.nome, portas, a.nos, Path(__file__).resolve().parent)
+    if h0dn_aberto(C):   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): o painel inteiro da Fase 9 V2, ao lado, pinado
+        reg_txt = registro_fase9_v2(C)
+        # AO LADO (13/11/2026, claude-site-custodia; decisao da gerencia c1): o sha16 da regra de 12/11, citado no cabecalho do registro, lido do disco
+        viol_h = textos.portao(_neutraliza(reg_txt), conhecidos_de(prim_bytes.decode("utf-8")) | {C.prim_sha16, _regra_fala()[1]}, rotulo=REGISTRO_FASE9_V2) + regra_444(reg_txt, C.P)
+        for id_ in ("painel", "fase9_v2", "primordial_5sigma", "status_5sigma", "paragrafo", "paragrafo_en", "ritos"):
+            t_ = C.v("h0dn.readme." + id_)
+            viol_h += textos.portao(_neutraliza(t_), conhecidos_de(prim_bytes.decode("utf-8")), rotulo="h0dn.readme." + id_) + regra_444(t_, C.P)
+        if viol_h:
+            raise Falha("H0DN aberto: o portao de textos ou a regra do 4,44 recusam: %s" % " | ".join(viol_h[:6]))
+        rb_ = reg_txt.encode("utf-8")
+        est_r = escrever_bytes(saida / REGISTRO_FASE9_V2, rb_, "REGISTRO")
+        pino["registro_fase9_v2"] = {"arquivo": REGISTRO_FASE9_V2, "bytes": len(rb_), "sha256": sha256b(rb_)}
+        print("%s: %d bytes, sha16 %s [%s]" % (REGISTRO_FASE9_V2, len(rb_), sha256b(rb_)[:16], est_r))
     pp = saida / "PINO_README.json"
     if pp.exists() and _sem_carimbo(json.loads(pp.read_text(encoding="utf-8"))) == pino:
         est_p = "inalterado"
@@ -545,6 +677,16 @@ def cmd_verificar(a, C, prim_bytes):
             erros.append("o README regenerado (%d B) difere do do disco (%d B) a partir do byte %d: %r != %r" % (len(texto.encode("utf-8")), len(rb), i, texto.encode("utf-8")[i:i + 50], rb[i:i + 50]))
     except SystemExit as e:
         erros.append(str(e))
+    if h0dn_aberto(C):   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): o registro da Fase 9 V2 confere com o gerador e com o pino
+        rp_ = readme_p.parent / REGISTRO_FASE9_V2
+        try:
+            esperado_ = registro_fase9_v2(C).encode("utf-8")
+            if not rp_.is_file() or rp_.read_bytes() != esperado_:
+                erros.append("%s ausente ou diferente do regenerado" % REGISTRO_FASE9_V2)
+            elif (pino.get("registro_fase9_v2") or {}).get("sha256") != sha256b(esperado_):
+                erros.append("%s nao e o do pino" % REGISTRO_FASE9_V2)
+        except SystemExit as e:
+            erros.append(str(e))
     g = Path(__file__).resolve().parent
     for nome in ("readme_pinado.py", "primordial.py"):
         if pino.get("gerador", {}).get(nome) != sha256f(g / nome):

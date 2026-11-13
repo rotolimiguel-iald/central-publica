@@ -14,6 +14,7 @@ from dataclasses import dataclass, field
 
 from . import util
 from .util import Parar
+from . import h0dn   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): o teste H0DN x BG1 aberto
 
 # --------------------------------------------------------------------------- marcadores que o handoff PODE trazer
 MARCADORES_OPCIONAIS = ("TITULO_EN", "ENTROU_EN", "KERNEL_LEITURA_EN", "ABERTOS_EN", "ARCO_EN", "ARCO_PT", "COMMIT")
@@ -164,7 +165,23 @@ def avaliar_fontes(ctx, pend_ids=None):
     if ctx.bloco_diario is None or not ctx.bloco_diario.titulo_pt:
         out["bloqueios"].append("título PT não lido do diário (bloco «%s SELADA» sem o cabeçalho esperado)" % ctx.versao)
     precisa = {i for p, ids in NECESSIDADE.items() if (pend_ids is None or p in pend_ids) for i in ids}
-    for ident in MARCADORES_OPCIONAIS:
+    # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): com um h0dn_bg1_vNNN aberto no core selado, a NOTA (E04) e os blocos do
+    # README (E08) so vem do handoff (o molde diria que beta_TGL na natureza a 5 sigma e o passo aberto); sem o marcador, bloqueia mesmo com --aceitar-molde.
+    ab, extras = None, ()
+    if pend_ids is None or {"E04", "E08"} & set(pend_ids):
+        try:
+            ab = h0dn.registro_aberto(_core_da_versao(ctx))
+        except Exception as e:  # noqa: BLE001
+            out["bloqueios"].append("o core selado nao se leu para saber se o H0DN foi aberto: %s" % e)
+    if ab:
+        out["h0dn_aberto"] = ab[0]
+        extras = h0dn.TODOS
+        if pend_ids is None or "E04" in pend_ids:
+            precisa.add(h0dn.MARCADOR_NOTA)
+            precisa |= set(h0dn.MARCADORES_ESTATUTO)   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): os onze textos do estatuto (E04)
+        if pend_ids is None or "E08" in pend_ids:
+            precisa |= set(h0dn.MARCADORES_README)
+    for ident in MARCADORES_OPCIONAIS + extras:
         k = "%s_%s" % (ident, ctx.versao)
         (out["do_handoff"] if k in h.corpos else out["molde_factual"]).append(k)
         if ident in precisa:
@@ -174,7 +191,8 @@ def avaliar_fontes(ctx, pend_ids=None):
     for i in h.problemas:
         out["bloqueios"].append("handoff: " + i)
     out["paragrafos_prontos"] = [i for i, _ in h.paragrafos_prontos()]
-    out["bloqueia"] = bool((out["faltam"] and not ctx.aceitar_molde) or (out["bloqueios"] and precisa))
+    faltam_h0dn = [k for k in out["faltam"] if k.rsplit("_", 1)[0] in h0dn.TODOS]
+    out["bloqueia"] = bool((out["faltam"] and not ctx.aceitar_molde) or faltam_h0dn or (out["bloqueios"] and precisa))
     return out
 
 
@@ -201,6 +219,14 @@ def construir(ctx):
     F = ctx.fatos
     c, v = ctx.c, ctx.versao
     core = _core_da_versao(ctx)
+    ab = h0dn.registro_aberto(core)          # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): o H0DN aberto (None: nada muda)
+    Vh = Ah = None
+    if ab:
+        try:
+            Vh = h0dn.valores(ab[1])
+            Ah = h0dn.acervo(core)   # AO LADO (12/11/2026, claude-site-custodia): os numeros do acervo que os textos citam
+        except ValueError as e:
+            raise Parar(str(e))
     bd = ctx.bloco_diario
     h = ctx.handoff
     if h is None:
@@ -290,7 +316,11 @@ def construir(ctx):
                      % (len(itens) + 1, v, re.sub(r"^\*\*[^*]+\*\*\s*", "", pend or "see the handoff").replace("\n", " ")))
     cab = ("> **Errata beside (%s, the custody of %s; read from the registries of the sealed core, from the lineage diary and from the handoff, none typed):**\n"
            % (ctx.data, v))
-    T.err_en = Item(cab + "\n".join(itens), "molde-factual" if (not m) else "handoff+molde")
+    # AO LADO (13/11/2026, claude-site-custodia; decisao da gerencia c1, opcao (A)): um item por bloco (linha em branco entre os itens). A E04 da v411
+    # parou na F67 porque a uniao por um \n so colava num paragrafo o gatilho de um item (ABERTOS_EN, uma ressalva) e a ligacao de outro
+    # (KERNEL_LEITURA_EN, o nome do registro). A regra do operador e por ITEM; o item que sozinho apresentar o resultado sem as obrigacoes segue
+    # reprovado. Os textos dos itens nao mudam. Antes: cab + "\n".join(itens) (backup .bak_*_err_um_item_por_bloco).
+    T.err_en = Item(cab + "\n\n".join(itens), "molde-factual" if (not m) else "handoff+molde")
     # --- NOTA ---
     ap = F["bandeiras_do_gate"]["apagadas"]
     fontes_desc = "the new stones (%s), the KH-N1 coverage of %s%s" % (", ".join(mods) or "none", v, (" and the %d inscriptions of %s" % (cun["n"], cun["data"][:5])) if cun else "")
@@ -306,6 +336,12 @@ def construir(ctx):
             "`fontes_pinadas/` with their map (now with the %s sources: %s); the B(n) receipts of the Bancada are in `recibos_bancada_%s/`. The Zenodo deposit holds %s (%s). "
             "Not falsified is not a confirmation.*" % (v, ver_nota, " / ".join(ap) if ap else "(none)", ant, v, v, v, v, fontes_desc, v, dep["versao"], dep["doi"]))
     T.nota_en = Item(nota, "molde-factual")
+    if ab:   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): a NOTA vem do handoff (o molde diria «waits for 5 sigma»); sem marcador, PARA
+        mk_nota = _marcador(ctx, h0dn.MARCADOR_NOTA)
+        if not mk_nota:
+            raise Parar("o H0DN foi aberto (%s no core selado): a NOTA do molde diria que beta_TGL espera 5 sigma; o handoff precisa trazer "
+                        "<!-- INICIO_%s_%s --> (nem --aceitar-molde)" % (ab[0], h0dn.MARCADOR_NOTA, v))
+        T.nota_en = Item(mk_nota, "handoff:%s_%s" % (h0dn.MARCADOR_NOTA, v))
     # --- parágrafos prontos do handoff (verbatim) ---
     T.paragrafos = h.paragrafos_prontos()
     # --- ARCO (site) ---
@@ -317,16 +353,24 @@ def construir(ctx):
             T.molde_usado.append("%s_%s" % (ident, v))
             setattr(T, attr, Item(sem_aspas_simples(_arco_molde(lang, v, tit_en, bd.titulo_pt, mods, nb, teor, termos, F, cun, clausula_ver_en if lang == "en" else clausula_ver_pt, ant)),
                                   "molde-factual", ["%s_%s" % (ident, v)]))
+    if ab:   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): o molde do «what entered» e do arco diz que o painel do Teste da Unica Palavra «stays at the top»
+        velhos = [k for k in T.molde_usado if k.rsplit("_", 1)[0] in ("ENTROU_EN", "ARCO_EN", "ARCO_PT")]
+        if velhos:
+            raise Parar("o H0DN foi aberto (%s): o molde factual ficou velho; o handoff precisa trazer %s (nem --aceitar-molde)" % (ab[0], ", ".join(velhos)))
     # --- LEDGER ---
     T.bloco_ledger = Item(_bloco_ledger(ctx, F, T, dep, core, novos_mec, bd), "molde-factual")
     # --- commit do espelho ---
     mk = _marcador(ctx, "COMMIT")
-    T.commit_espelho = Item(_commit_espelho(ctx, F, mods, nb, grupos, mk, bd), "handoff:COMMIT_" + v if mk else "molde-factual", [] if mk else ["COMMIT_" + v])
+    T.commit_espelho = Item(_commit_espelho(ctx, F, mods, nb, grupos, mk, bd, caminho_h0dn=bool(ab)), "handoff:COMMIT_" + v if mk else "molde-factual", [] if mk else ["COMMIT_" + v])
     # --- portão ---
     for rot, it in (("TXT", T.txt_en), ("ERR", T.err_en), ("NOTA", T.nota_en), ("ARCO_EN", T.arco_en), ("ARCO_PT", T.arco_pt), ("LEDGER", T.bloco_ledger)):
         T.violacoes += portao(it.texto, T.conhecidos, rotulo=rot)
     for ident, bloco in T.paragrafos:                 # o parágrafo do handoff é citado verbatim: só confere hash/CONFIRMED
         T.violacoes += portao(bloco, T.conhecidos, rotulo="handoff:" + ident)
+    if ab:   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): F67, numeros, cabeca e sigma contra o registro do H0DN em todo texto desta perna
+        for rot, txt in ([("TXT", T.txt_en.texto), ("ERR", T.err_en.texto), ("NOTA", T.nota_en.texto), ("ARCO_EN", T.arco_en.texto),
+                          ("ARCO_PT", T.arco_pt.texto), ("COMMIT", T.commit_espelho.texto)] + [("handoff:" + i, b) for i, b in T.paragrafos]):
+            T.violacoes += h0dn.conferir_bloco(txt, Vh, rot, acervo=Ah)
     for rot, it in (("ARCO_EN", T.arco_en), ("ARCO_PT", T.arco_pt)):
         t = it.texto
         if "'" in t or "<" in t or "\\" in t or "\n" in t:
@@ -403,7 +447,7 @@ def _bloco_ledger(ctx, F, T, dep, core, novos_mec, bd):
                ant, len(g["ligadas"]), len(g["apagadas"]), ant, dep["versao"], dep["doi"], T.err_en.texto, pars))
 
 
-def _commit_espelho(ctx, F, mods, nb, grupos, marcador, bd):
+def _commit_espelho(ctx, F, mods, nb, grupos, marcador, bd, caminho_h0dn=False):
     v, ant = ctx.versao, F["anterior"]
     tit = util.ascii_sem_acento(bd.titulo_pt).lower()
     assunto = "custodia(%s): %s - selo, modulo%s %s, escada %s, fontes pinadas da %s, PORTAS, README" % (v, tit, "" if len(mods) == 1 else "s", " e ".join(mods) if mods else "nenhum", F["escada"]["texto"], v)
@@ -415,6 +459,8 @@ def _commit_espelho(ctx, F, mods, nb, grupos, marcador, bd):
         corpo.append("")
         corpo.append(util.ascii_sem_acento(marcador))
     corpo += ["", "PROVADA = validade; a creditacao segue recusada; o gate nao se moveu."]
+    if caminho_h0dn:   # AO LADO (13/11/2026, claude-site-custodia; D195 da gerencia c1): o caminho para as sete ressalvas, ultima linha do corpo (UTF-8, exata)
+        corpo += ["", h0dn.caminho_ressalvas("en")]
     if ctx.coautor:
         corpo += ["", "Co-Authored-By: %s" % ctx.coautor]
     return assunto + "\n\n" + "\n".join(corpo) + "\n"

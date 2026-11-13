@@ -123,8 +123,40 @@ def _contratos_registro(um_text, contratos):
     return out
 
 
+def sem_pedra_nova(F, oc, v, a, core_v=None, core_a=None):
+    """AO LADO (13/11/2026, claude-site-custodia; D197 da gerencia c1): o contrato SEM_PEDRA_NOVA. True SO quando o FATOS_CUSTODIA congelado diz
+    «nenhum modulo novo e a escada igual a da anterior» E o core selado DENTRO do cofre da versao, o core do cofre anterior e o manifesto do
+    bundle tgl_kernel_vNNN confirmam; divergencia levanta ValueError (PARA). Fora da condicao, False: o caminho antigo, intocado."""
+    kn = F.get("kernel") or {}
+    esc = (F.get("escada") or {}).get("esperadas")
+    esca = (F.get("escada_anterior") or {}).get("esperadas")
+    if not (kn.get("modulos_novos") == [] and isinstance(esc, int) and esc == esca):
+        return False
+    oc = Path(oc)
+    if core_v is None:
+        core_v = _ler_json(oc / ("um_unificado_" + v) / "um_absoluto.json")["core"]
+    if core_a is None:
+        core_a = _ler_json(oc / ("um_unificado_" + a) / "um_absoluto.json")["core"]
+    km = _ler_json(oc / ("tgl_kernel_" + v) / "CUSTODY_MANIFEST.json")
+    ev = ((core_v.get("estatuto_da_prova_v391") or {}).get("prova_1_kernel") or {}).get("n_theorems_expected")
+    ea = ((core_a.get("estatuto_da_prova_v391") or {}).get("prova_1_kernel") or {}).get("n_theorems_expected")
+    dl = km.get("delta_%s_%s" % (a, v)) or {}
+    div = []
+    if ev != esc:
+        div.append("escada do core selado do cofre %s = %r; FATOS = %r" % (v, ev, esc))
+    if ea != esca:
+        div.append("escada do core selado do cofre %s = %r; FATOS (anterior) = %r" % (a, ea, esca))
+    if km.get("modulos_novos_" + v) != []:
+        div.append("bundle tgl_kernel_%s: modulos_novos_%s = %r" % (v, v, km.get("modulos_novos_" + v)))
+    if dl.get("lean_novos") != 0:
+        div.append("bundle tgl_kernel_%s: lean_novos = %r" % (v, dl.get("lean_novos")))
+    if div:
+        raise ValueError("SEM_PEDRA_NOVA: o FATOS_CUSTODIA diz sem pedra nova e o core/bundle divergem: " + "; ".join(div))
+    return True
+
+
 # =================================================================== a semântica pura (roda também sobre as cópias injetadas)
-def semantica(core, F, S):
+def semantica(core, F, S, sem_pedra=False):
     """S3 · S5 · S6 · S13 · S14 · S15 sobre um `core`. Pura: devolve (ok, {id: bool})."""
     r = {}
     v = F["versao"]
@@ -150,6 +182,9 @@ def semantica(core, F, S):
         kn = cu.get("kernel") or {}
         a, b = list(kn.get("bandeiras") or []), list(kn.get("declaracoes_no_trio") or [])
         r["S14_cunhagens"] = bool(len(a) == 2 and a[0] == a[1] and a[0] > 0 and len(b) == 2 and b[0] == b[1] and b[0] > 0 and len(cu.get("verbatim") or {}) >= 1)
+        if sem_pedra:
+            # AO LADO (13/11/2026, claude-site-custodia; D197 da gerencia c1): contrato SEM_PEDRA_NOVA, os dois pares exatamente [0, 0] (a linha antiga, acima, intocada)
+            r["S14_cunhagens"] = bool(a == [0, 0] and b == [0, 0] and len(cu.get("verbatim") or {}) >= 1)
     s15 = True
     if S:
         for k, regra in (S.get("blocos") or {}).items():
@@ -165,6 +200,9 @@ def semantica(core, F, S):
                 for parte in campo["caminho"].split("."):
                     cur = cur.get(parte) if isinstance(cur, dict) else None
                 if campo.get("par_igual") and not (isinstance(cur, list) and len(cur) == 2 and cur[0] == cur[1] and cur[0] > 0):
+                    s15 = False
+                # AO LADO (13/11/2026, claude-site-custodia; D197 da gerencia c1): a regra par_igual_zero so passa sob o contrato SEM_PEDRA_NOVA e com o par exatamente [0, 0]
+                if campo.get("par_igual_zero") and not (sem_pedra and cur == [0, 0]):
                     s15 = False
     r["S15_semantica_declarada"] = s15
     return all(r.values()), r
@@ -227,6 +265,12 @@ def medir_custodia_generica(oc, v, a, fatos=None, semantica_dada=None):
     except (OSError, ValueError, KeyError) as e:
         out["erro"] = "cofre ilegivel: %r" % (e,)
         return out
+    # AO LADO (13/11/2026, claude-site-custodia; D197 da gerencia c1): o contrato SEM_PEDRA_NOVA, medido; divergencia PARA
+    try:
+        spn = sem_pedra_nova(F, oc, v, a, core_v=core, core_a=core_a)
+    except (OSError, ValueError, KeyError) as e:
+        out["erro"] = "SEM_PEDRA_NOVA: %r" % (e,)
+        return out
     C = {}                                                   # S1..S14: cada um {ok, esperado, achado}
 
     def chk(id_, ok, esperado, achado):
@@ -242,7 +286,7 @@ def medir_custodia_generica(oc, v, a, fatos=None, semantica_dada=None):
     kf, kf_a = core.get("kernel_formalization") or {}, core_a.get("kernel_formalization") or {}
     band = [k for k in kf if k not in kf_a]
     chk("S4_bandeiras", band == F["bandeiras_novas"] and all(kf[k] is True for k in band), len(F["bandeiras_novas"]), len(band))
-    sem_ok, sem = semantica(core, F, S)
+    sem_ok, sem = semantica(core, F, S, sem_pedra=spn)
     chk("S5_kh", sem["S5_kh"], F["kh"], (core.get("kh_n1_cobertura_" + v) or {}).get("lido"))
     chk("S6_escada", sem["S6_escada"], F["escada"]["texto"], "ver estatuto_da_prova_v391")
     fm, ar = pm["formal_files_sha256"], pm["axiom_report"]
@@ -279,14 +323,14 @@ def medir_custodia_generica(oc, v, a, fatos=None, semantica_dada=None):
     chk("S12_monotonia", mono, "formais, declaracoes, escada, registro e kh nao diminuem", "ver fatos")
     chk("S13_negacoes", sem["S13_negacoes_congeladas"], {k: b.get("negacoes") for k, b in (F.get("blocos") or {}).items()}, "ver veredito dos blocos")
     if "S14_cunhagens" in sem:
-        chk("S14_cunhagens", sem["S14_cunhagens"], "kernel.bandeiras e declaracoes_no_trio com par igual e > 0", (core.get("cunhagens_" + v) or {}).get("kernel"))
+        chk("S14_cunhagens", sem["S14_cunhagens"], "kernel.bandeiras e declaracoes_no_trio exatamente [0, 0] (contrato SEM_PEDRA_NOVA, D197)" if spn else "kernel.bandeiras e declaracoes_no_trio com par igual e > 0", (core.get("cunhagens_" + v) or {}).get("kernel"))
     chk("S15_semantica", sem["S15_semantica_declarada"], "SEMANTICA_CUSTODIA", "REVISADA rev%s" % (S or {}).get("revisao", "?") if (S or {}).get("revisor") else "DECLARADO (sem revisao)")
     c1 = copy.deepcopy(core)
     inj1 = _injetar_negacao_removida(c1, F)
-    cet1 = (semantica(c1, F, S)[0] is False)
+    cet1 = (semantica(c1, F, S, sem_pedra=spn)[0] is False)
     c2 = copy.deepcopy(core)
     inj2 = _injetar_contagem(c2, F)
-    cet2 = (semantica(c2, F, S)[0] is False)
+    cet2 = (semantica(c2, F, S, sem_pedra=spn)[0] is False)
     ok = bool(all(x["ok"] for x in C.values()) and cet1 and cet2)
     out.update({
         "blocos_novos_desde_" + a: {"n": len(novos), "nomes": novos, "sumidos": sumidos, "fora_da_regra": maus, "ok": C["S2_blocos_novos"]["ok"] and C["S3_blocos_bem_formados"]["ok"]},
