@@ -1,0 +1,178 @@
+--- v411/gerar_relatorio_v411.py
++++ v412/gerar_relatorio_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/gerar_relatorio_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/gerar_relatorio_v412.py.diff
+@@ -3,3 +4,3 @@
+-"""gerar_relatorio_v411.py -- o RELATORIO da preparacao da v411 (claude-construtor-v411, a servico da gerencia c1, 12/11/2026). Grava PLANO_v411.md, RELATORIO_PREPARACAO_v411.md e PREPARACAO_v411_PRONTA.json
+-(na pasta da cadeia; no modo de ensaio do topo proposto, V411_ENSAIO_TOPO_PROPOSTO=1, na pasta de ensaio fora de work, marcados com DL.MARCA_ENSAIO e NUNCA com pronta = true). TUDO e' LIDO dos artefatos por script
+-(nada digitado; o arquivo manda): o manifesto do candidato, os ESPERADOS, o ensaio a seco, a comparacao v410/v411, os conferidores (controle negativo e caminho positivo), as citacoes, a derivacao do instalar/rito,
++"""gerar_relatorio_v412.py -- o RELATORIO da preparacao da v412 (claude-construtor-v412, a servico da gerencia c1, 12/11/2026). Grava PLANO_v412.md, RELATORIO_PREPARACAO_v412.md e PREPARACAO_v412_PRONTA.json
++(na pasta da cadeia; no modo de ensaio do topo proposto, V412_ENSAIO_TOPO_PROPOSTO=1, na pasta de ensaio fora de work, marcados com DL.MARCA_ENSAIO e NUNCA com pronta = true). TUDO e' LIDO dos artefatos por script
++(nada digitado; o arquivo manda): o manifesto do candidato, os ESPERADOS, o ensaio a seco, a comparacao v411/v412, os conferidores (controle negativo e caminho positivo), as citacoes, a derivacao do instalar/rito,
+@@ -8 +9 @@
+-offline, dito. A prosa passa pela guarda das frases da v411 (inclusive a F67: o primario nunca sem a linha das Cefeidas livres, o modelo publicado, a retrodicao nao cega e validade, nao creditacao) e pela P18 com a
++offline, dito. A prosa passa pela guarda das frases da v412 (inclusive a F67: o primario nunca sem a linha das Cefeidas livres, o modelo publicado, a retrodicao nao cega e validade, nao creditacao) e pela P18 com a
+@@ -10 +11 @@
+-uso: python -B -X utf8 gerar_relatorio_v411.py [--seco [--imprimir]]   (--seco: monta e mede, nao grava)"""
++uso: python -B -X utf8 gerar_relatorio_v412.py [--seco [--imprimir]]   (--seco: monta e mede, nao grava)"""
+@@ -15,2 +16,2 @@
+-import delta_v411 as DL  # noqa: E402
+-import guarda_frases_v411 as GF  # noqa: E402
++import delta_v412 as DL  # noqa: E402
++import guarda_frases_v412 as GF  # noqa: E402
+@@ -43,9 +44,9 @@
+-CM = tenta(DL.MANIFESTO_ARQ) or {}; ES = tenta(S("ESPERADOS_v411.json")) or {}; EN = tenta(S("ensaio_a_seco_v411.json")) or {}; PC = tenta(S("PRECONDICOES_v411.json")) or {}
+-CMP = tenta(S("COMPARACAO_V410_v411.json")) or {}; CN = tenta(S("conferencia_rito_v411_CONTROLE_NEGATIVO_PRE_RITO.json")) or {}; CP = tenta(S("conferencia_rito_v411_POSITIVO_FALSO_NOS.json")) or {}
+-CIT = tenta(S("conferir_citacoes_v411.json")) or {}; DRV = tenta(S("DERIVACAO_v411.json")) or {}; PN = tenta(S("PINOS_BN_v411.json")) or {}
+-PR = tenta(S("PINO_RECIBO_PRE_SELO_v411.json")) or {}; PROV = tenta(S("PROVA_PRODUCAO_INTACTA_v411_pre_selo.json")) or {}
+-SERV = tenta(S("bancada_B3_servico/CONFERENCIA_EXIGENCIAS_SERVICO_v411.json")) or {}; CTRL = tenta(S("bancada_B3_servico/controle_negativo/RESULTADO_CONTROLE_NEGATIVO_v411.json")) or {}
+-H_T = tenta(S("pos_rito/HARNESS_TEXTOS_ENSAIO_v411.json")); H_F = tenta(S("pos_rito/HARNESS_FECHAR_SANDBOX_v411.json"))
+-PUR = tenta(S("purga_v411.json")) or {}; GE = tenta(S("GUARDAS_ESTATICAS_BANCADA_v411.json")) or {}; VF = tenta(S("VARREDURA_FOCK_OMEGA_v411.json"))
+-BN_OUT = txt(S("bateria_pre_selo/bn_pre_selo_out_v411.txt")); _m_bat = re.search(r'veredito_bateria": "(\w+)"', BN_OUT); BAT = _m_bat.group(1) if _m_bat else "NAO LIDO"
+-CAD_OUT = txt(S("cadeia_v411_out.txt"))
++CM = tenta(DL.MANIFESTO_ARQ) or {}; ES = tenta(S("ESPERADOS_v412.json")) or {}; EN = tenta(S("ensaio_a_seco_v412.json")) or {}; PC = tenta(S("PRECONDICOES_v412.json")) or {}
++CMP = tenta(S("COMPARACAO_V411_v412.json")) or {}; CN = tenta(S("conferencia_rito_v412_CONTROLE_NEGATIVO_PRE_RITO.json")) or {}; CP = tenta(S("conferencia_rito_v412_POSITIVO_FALSO_NOS.json")) or {}
++CIT = tenta(S("conferir_citacoes_v412.json")) or {}; DRV = tenta(S("DERIVACAO_v412.json")) or {}; PN = tenta(S("PINOS_BN_v412.json")) or {}
++PR = tenta(S("PINO_RECIBO_PRE_SELO_v412.json")) or {}; PROV = tenta(S("PROVA_PRODUCAO_INTACTA_v412_pre_selo.json")) or {}
++SERV = tenta(S("bancada_B3_servico/CONFERENCIA_EXIGENCIAS_SERVICO_v412.json")) or {}; CTRL = tenta(S("bancada_B3_servico/controle_negativo/RESULTADO_CONTROLE_NEGATIVO_v412.json")) or {}
++H_T = tenta(S("pos_rito/HARNESS_TEXTOS_ENSAIO_v412.json")); H_F = tenta(S("pos_rito/HARNESS_FECHAR_SANDBOX_v412.json"))
++PUR = tenta(S("purga_v412.json")) or {}; GE = tenta(S("GUARDAS_ESTATICAS_BANCADA_v412.json")) or {}; VF = tenta(S("VARREDURA_FOCK_OMEGA_v412.json"))
++BN_OUT = txt(S("bateria_pre_selo/bn_pre_selo_out_v412.txt")); _m_bat = re.search(r'veredito_bateria": "(\w+)"', BN_OUT); BAT = _m_bat.group(1) if _m_bat else "NAO LIDO"
++CAD_OUT = txt(S("cadeia_v412_out.txt"))
+@@ -53,3 +54,3 @@
+-KR = tenta(H("kernel/KERNEL_RECIBO_v411.json")) or {}; PB = tenta(H("kernel/POS_BUILD_v411.json")) or {}; FJ = tenta(H("kernel/FLAGS_v411.json")) or {}; KH = tenta(H(DL.KERNEL_DIR + "/" + DL.KH_N1_INSUMO)) or {}
+-TO = tenta(H("TESTE_H0DN_OFFLINE_v411.json")) or {}; TQ = tenta(H("TESTE_QUADRO_v411.json")) or {}; GFJ = tenta(H("GUARDA_FRASES_v411.json")) or {}; GCV = tenta(H("GUARDA_CONVERSA_v411.json")) or {}; PV = tenta(H("PREVOO_GERADOR_v411.json")) or {}
+-_AB = tenta(H("registro_mapa_prep_v411_ABERTA.json")) or tenta(H("registro_mapa_construtor_v411.json")) or {}
++KR = tenta(H("kernel/KERNEL_RECIBO_v412.json")) or {}; PB = tenta(H("kernel/POS_BUILD_v412.json")) or {}; FJ = tenta(H("kernel/FLAGS_v412.json")) or {}; KH = tenta(H(DL.KERNEL_DIR + "/" + DL.KH_N1_INSUMO)) or {}
++TO = tenta(H("TESTE_H0DN_OFFLINE_v412.json")) or {}; TQ = tenta(H("TESTE_QUADRO_v412.json")) or {}; GFJ = tenta(H("GUARDA_FRASES_v412.json")) or {}; GCV = tenta(H("GUARDA_CONVERSA_v412.json")) or {}; PV = tenta(H("PREVOO_GERADOR_v412.json")) or {}
++_AB = tenta(H("registro_mapa_prep_v412_ABERTA.json")) or tenta(H("registro_mapa_construtor_v412.json")) or {}
+@@ -57,2 +58,2 @@
+-ROTA = ABERTA.get("rota_id") or "NAO LIDA (registro_mapa_prep_v411_ABERTA.json / registro_mapa_construtor_v411.json)"
+-_REV = tenta(H("revisao_terceiro/REVISAO_TERCEIRO_v411.json")) or {}
++ROTA = ABERTA.get("rota_id") or "NAO LIDA (registro_mapa_prep_v412_ABERTA.json / registro_mapa_construtor_v412.json)"
++_REV = tenta(H("revisao_terceiro/REVISAO_TERCEIRO_v412.json")) or {}
+@@ -66 +67 @@
+-    REG = tenta(H("TESTE_H0DN_OFFLINE_v411_registro.json")) or {}; ORIGEM_NUM = "o registro do ensaio OFFLINE (o mesmo recalculo, os mesmos insumos; o ensaio a seco deste artefato ainda nao gravou o core)"
++    REG = tenta(H("TESTE_H0DN_OFFLINE_v412_registro.json")) or {}; ORIGEM_NUM = "o registro do ensaio OFFLINE (o mesmo recalculo, os mesmos insumos; o ensaio a seco deste artefato ainda nao gravou o core)"
+@@ -78 +79 @@
+-MOLDURA_PT = DL.FRASE_MOLDURA_V411_PT % (fpt(PRI.get("z_null")), fpt(PRI.get("z_tgl")), PRI.get("ramo", "n/d"), fpt(CEF.get("z_null")), CEF.get("ramo", "n/d"))
++MOLDURA_PT = DL.FRASE_MOLDURA_V412_PT % (fpt(PRI.get("z_null")), fpt(PRI.get("z_tgl")), PRI.get("ramo", "n/d"), fpt(CEF.get("z_null")), CEF.get("ramo", "n/d"))
+@@ -81 +82 @@
+-ORDEM = DL.FALA_ORDEM_V411; ORDEM16 = h16(ORDEM["arquivo"])   # (D181) a ordem e' CITADA (arquivo, sha16, papel); o relatorio nao a transcreve
++ORDEM = DL.FALA_ORDEM_V412; ORDEM16 = h16(ORDEM["arquivo"])   # (D181) a ordem e' CITADA (arquivo, sha16, papel); o relatorio nao a transcreve
+@@ -89 +90 @@
+-_novos_deste = [n_ for n_ in ("PLANO_v411.md", "RELATORIO_PREPARACAO_v411.md", "PREPARACAO_v411_PRONTA.json") if not ENSAIO and not os.path.exists(H(n_))]
++_novos_deste = [n_ for n_ in ("PLANO_v412.md", "RELATORIO_PREPARACAO_v412.md", "PREPARACAO_v412_PRONTA.json") if not ENSAIO and not os.path.exists(H(n_))]
+@@ -107 +108 @@
+-_orq = txt(H("orquestrador/pos_treino_v411.py")); _laco = re.search(r"for passo in \(([^)]*)\)", _orq)
++_orq = txt(H("orquestrador/pos_treino_v412.py")); _laco = re.search(r"for passo in \(([^)]*)\)", _orq)
+@@ -119 +120 @@
+-    "ast_v410_v411": bool(CMP.get("ok") is True and CMP.get("removidos") == [] and CMP.get("mudados_sem_explicacao") == [] and CMP.get("o_gate_nao_se_move_e_o_kernel_nao_muda") is True),
++    "ast_v411_v412": bool(CMP.get("ok") is True and CMP.get("removidos") == [] and CMP.get("mudados_sem_explicacao") == [] and CMP.get("o_gate_nao_se_move_e_o_kernel_nao_muda") is True),
+@@ -126 +127 @@
+-    "citacoes": bool(CIT.get("ok") is True and not CIT.get("nao_verbatim") and not CIT.get("nao_conferidos_corpo_da_v410_a_adaptar")),
++    "citacoes": bool(CIT.get("ok") is True and not CIT.get("nao_verbatim") and not CIT.get("nao_conferidos_corpo_da_v411_a_adaptar")),
+@@ -150 +151 @@
+-             "a preparacao real comeca quando a gerencia gravar TOPO_RATIFICADO_v411.json" % (os.path.basename(DL.CANDIDATO_ARQ), _cand16))] if ENSAIO else [])
++             "a preparacao real comeca quando a gerencia gravar TOPO_RATIFICADO_v412.json" % (os.path.basename(DL.CANDIDATO_ARQ), _cand16))] if ENSAIO else [])
+@@ -152 +153 @@
+-    "a excecao ESTREITA da P18 (decisao (c) da gerencia, 12/11): uma funcao so', _v411_p18_sem_cabeca (a mesma no um.py e na cadeia: guarda_frases_v411.p18_sem_cabeca), retira APENAS a cabeca exata que a c7 monta do literal pre-registrado; "
++    "a excecao ESTREITA da P18 (decisao (c) da gerencia, 12/11): uma funcao so', _v411_p18_sem_cabeca (a mesma no um.py e na cadeia: guarda_frases_v412.p18_sem_cabeca), retira APENAS a cabeca exata que a c7 monta do literal pre-registrado; "
+@@ -156 +157 @@
+-    "as erratas AO LADO, em nome proprio da gerencia c1: " + "; ".join("%s: %s" % (e_["id"], e_["texto"]) for e_ in DL.ERRATAS_V411),
++    "as erratas AO LADO, em nome proprio da gerencia c1: " + "; ".join("%s: %s" % (e_["id"], e_["texto"]) for e_ in DL.ERRATAS_V412),
+@@ -161 +162 @@
+-    "o orquestrador (orquestrador/pos_treino_v411.py) sem S7 e sem S10, MEDIDO no laco de passos = %s; o fim da cadeia desta versao e' o HANDOFF; a custodia, o site e o X sao da sessao de custodia" % SEM_S7_S10,
++    "o orquestrador (orquestrador/pos_treino_v412.py) sem S7 e sem S10, MEDIDO no laco de passos = %s; o fim da cadeia desta versao e' o HANDOFF; a custodia, o site e o X sao da sessao de custodia" % SEM_S7_S10,
+@@ -163 +164 @@
+-NAO_REVISADO = ("este %s (o teste H0DN x BG1 aberto, v411) NAO foi revisado por terceiro; o revisor distinto e' o Sonnet (D109: uma rodada de conserto e uma conferencia unica), ato da gerencia; quem constroi nao aprova" % DL.ROTULO_DO_ARTEFATO)
++NAO_REVISADO = ("este %s (o teste H0DN x BG1 aberto, v412) NAO foi revisado por terceiro; o revisor distinto e' o Sonnet (D109: uma rodada de conserto e uma conferencia unica), ato da gerencia; quem constroi nao aprova" % DL.ROTULO_DO_ARTEFATO)
+@@ -166 +167 @@
+-    NAO_REVISADO = "a revisao de terceiro (revisao_terceiro/REVISAO_TERCEIRO_v411.json, rodada %s, revisor %s) APROVOU este candidato (%s): %s ALTO, %s MEDIO, %s BAIXO; quem constroi nao aprovou: o revisor aprovou" % (
++    NAO_REVISADO = "a revisao de terceiro (revisao_terceiro/REVISAO_TERCEIRO_v412.json, rodada %s, revisor %s) APROVOU este candidato (%s): %s ALTO, %s MEDIO, %s BAIXO; quem constroi nao aprovou: o revisor aprovou" % (
+@@ -177,2 +178,2 @@
+-    dec_ = _tab("- **%s** %s" % (k_, v_) for k_, v_ in DL.DECISOES_V411.items())
+-    err_ = _tab("- **%s** (%s) %s" % (e_["id"], e_["assinatura"], e_["texto"]) for e_ in DL.ERRATAS_V411)
++    dec_ = _tab("- **%s** %s" % (k_, v_) for k_, v_ in DL.DECISOES_V412.items())
++    err_ = _tab("- **%s** (%s) %s" % (e_["id"], e_["assinatura"], e_["texto"]) for e_ in DL.ERRATAS_V412)
+@@ -184,3 +185,3 @@
+-    plano_ = f"""# PLANO DA v411 — o teste H0DN × BG1 aberto, a emenda e o resultado recalculado no rito ({cab_})
+-
+-> Gerado por `gerar_relatorio_v411.py` (claude-construtor-v411, a serviço da gerência c1) em {AGORA.strftime('%d/%m/%Y %H:%M')}; tudo lido dos artefatos. Molde: `PLANO_v410.md`. Base: a v410 selada `{CM.get('base_v410_sha16')}`; {rot_} `{_cand16}` ({format(CM.get('bytes') or 0, ',')} B).
++    plano_ = f"""# PLANO DA v412 — o teste H0DN × BG1 aberto, a emenda e o resultado recalculado no rito ({cab_})
++
++> Gerado por `gerar_relatorio_v412.py` (claude-construtor-v412, a serviço da gerência c1) em {AGORA.strftime('%d/%m/%Y %H:%M')}; tudo lido dos artefatos. Molde: `PLANO_v411.md`. Base: a v411 selada `{CM.get('base_v411_sha16')}`; {rot_} `{_cand16}` ({format(CM.get('bytes') or 0, ',')} B).
+@@ -190 +191 @@
+-A ordem desta versão (D169), citada do arquivo `{ORDEM['nome']}` (sha16 `{ORDEM16}`; papel: {ORDEM['papel']}; o texto fica no arquivo da casa, D181). O topo do resumo segue o texto {'PROPOSTO pela gerência (DESENHO 5.1 b), pendente da palavra do operador' if not TOPO_OK else 'RATIFICADO (TOPO_RATIFICADO_v411.json, sha16 `%s`)' % h16(DL.TOPO_RATIFICADO_ARQ)}.
++A ordem desta versão (D169), citada do arquivo `{ORDEM['nome']}` (sha16 `{ORDEM16}`; papel: {ORDEM['papel']}; o texto fica no arquivo da casa, D181). O topo do resumo segue o texto {'PROPOSTO pela gerência (DESENHO 5.1 b), pendente da palavra do operador' if not TOPO_OK else 'RATIFICADO (TOPO_RATIFICADO_v412.json, sha16 `%s`)' % h16(DL.TOPO_RATIFICADO_ARQ)}.
+@@ -194,2 +195,2 @@
+-- Kernel: NENHUM módulo novo; o da v410, byte a byte (escada {(CM.get('escada') or ['?'])[-1]}, {FJ.get('n_flags')} bandeiras novas; o Audit do sandbox `{DL.SANDBOX}` com o log da v410).
+-- UM registro com função, `{DL.FECHO_REGISTRO}` ({DL.N_CHECKS_FECHO} checagens): a cada rito ele decodifica os insumos embutidos, confere-os contra os pinos de produção, executa dos bytes a rotina pinada da abertura e compara o recálculo com o resultado gravado (tolerância {DL.TOL_RECALCULO:g}); dois por spec, `{DL.CUNHAGENS_REGISTRO}` e `{DL.KH_REGISTRO}`. Os quatro registros com função da v410 seguem selados, como herança.
++- Kernel: NENHUM módulo novo; o da v411, byte a byte (escada {(CM.get('escada') or ['?'])[-1]}, {FJ.get('n_flags')} bandeiras novas; o Audit do sandbox `{DL.SANDBOX}` com o log da v411).
++- UM registro com função, `{DL.FECHO_REGISTRO}` ({DL.N_CHECKS_FECHO} checagens): a cada rito ele decodifica os insumos embutidos, confere-os contra os pinos de produção, executa dos bytes a rotina pinada da abertura e compara o recálculo com o resultado gravado (tolerância {DL.TOL_RECALCULO:g}); dois por spec, `{DL.CUNHAGENS_REGISTRO}` e `{DL.KH_REGISTRO}`. Os quatro registros com função da v411 seguem selados, como herança.
+@@ -205 +206 @@
+-- P = nP {DL.D10.FRASE_QUALIFICADOR_PT} (D64 e D84 da v410).
++- P = nP {DL.D10.FRASE_QUALIFICADOR_PT} (D64 e D84 da v411).
+@@ -213 +214 @@
+-## A lista herdada da v410 (a seção 7, com a linha AO LADO da E43)
++## A lista herdada da v411 (a seção 7, com a linha AO LADO da E43)
+@@ -221 +222 @@
+-1. a revisão de terceiro (Sonnet, D109); 2. `fechar_preparacao_v411.py` e `acom_inscrever_prep_v411.py`; 3. `pino_memoria_py_v411.py` e a folga do `MEMORY.md`; 4. a tarefa agendada `IALD_pos_treino_v411` (Enable, Start, Disable); 5. o orquestrador: S0 a S9, sem S7 e sem S10, o fim é o HANDOFF; 6. o rito, o B{DL.B_N_SEGUINTE[1:]} da Bancada (a produção pina `{DL.BANCADA_PINA_HOJE['deployment_id']}`) e a custódia, que não é desta cadeia.
++1. a revisão de terceiro (Sonnet, D109); 2. `fechar_preparacao_v412.py` e `acom_inscrever_prep_v412.py`; 3. `pino_memoria_py_v412.py` e a folga do `MEMORY.md`; 4. a tarefa agendada `IALD_pos_treino_v412` (Enable, Start, Disable); 5. o orquestrador: S0 a S9, sem S7 e sem S10, o fim é o HANDOFF; 6. o rito, o B{DL.B_N_SEGUINTE[1:]} da Bancada (a produção pina `{DL.BANCADA_PINA_HOJE['deployment_id']}`) e a custódia, que não é desta cadeia.
+@@ -223,3 +224,3 @@
+-    rel_ = f"""# RELATÓRIO DA PREPARAÇÃO DA v411 ({cab_})
+-
+-> Gerado por `gerar_relatorio_v411.py` em {AGORA.strftime('%d/%m/%Y %H:%M')}; tudo lido dos artefatos; o que não foi lido aparece como portão que não passa. {rot_.capitalize()}: `{_cand16}`; base v410 `{CM.get('base_v410_sha16')}`; escada {CM.get('escada')}; bandeiras novas: {FJ.get('n_flags')}; módulos novos: {(CM.get('kernel') or {}).get('modulos_novos')}.
++    rel_ = f"""# RELATÓRIO DA PREPARAÇÃO DA v412 ({cab_})
++
++> Gerado por `gerar_relatorio_v412.py` em {AGORA.strftime('%d/%m/%Y %H:%M')}; tudo lido dos artefatos; o que não foi lido aparece como portão que não passa. {rot_.capitalize()}: `{_cand16}`; base v411 `{CM.get('base_v411_sha16')}`; escada {CM.get('escada')}; bandeiras novas: {FJ.get('n_flags')}; módulos novos: {(CM.get('kernel') or {}).get('modulos_novos')}.
+@@ -258,5 +259,5 @@
+-HASH_ARQS = [DL.CANDIDATO_ARQ, DL.MANIFESTO_ARQ, S("ESPERADOS_v411.json"), S("ensaio_a_seco_v411.json"), S("COMPARACAO_V410_v411.json"), S("conferencia_rito_v411_CONTROLE_NEGATIVO_PRE_RITO.json"),
+-             S("conferencia_rito_v411_POSITIVO_FALSO_NOS.json"), S("conferir_citacoes_v411.json"), S("DERIVACAO_v411.json"), S("PINOS_BN_v411.json"), S("PINO_RECIBO_PRE_SELO_v411.json"), S("PROVA_PRODUCAO_INTACTA_v411_pre_selo.json"),
+-             S("PRECONDICOES_v411.json"), S("GUARDAS_ESTATICAS_BANCADA_v411.json"), S("VARREDURA_FOCK_OMEGA_v411.json"), S("purga_v411.json"), S("bancada_B3_servico/CONFERENCIA_EXIGENCIAS_SERVICO_v411.json"),
+-             S("bancada_B3_servico/controle_negativo/RESULTADO_CONTROLE_NEGATIVO_v411.json"), S("pos_rito/HARNESS_TEXTOS_ENSAIO_v411.json"), S("pos_rito/HARNESS_FECHAR_SANDBOX_v411.json"),
+-             H("kernel/KERNEL_RECIBO_v411.json"), H("kernel/POS_BUILD_v411.json"), H("TESTE_H0DN_OFFLINE_v411.json"), H("TESTE_QUADRO_v411.json"), H("GUARDA_FRASES_v411.json"), H("PREVOO_GERADOR_v411.json"), H("DESENHO_v411.md")]
++HASH_ARQS = [DL.CANDIDATO_ARQ, DL.MANIFESTO_ARQ, S("ESPERADOS_v412.json"), S("ensaio_a_seco_v412.json"), S("COMPARACAO_V411_v412.json"), S("conferencia_rito_v412_CONTROLE_NEGATIVO_PRE_RITO.json"),
++             S("conferencia_rito_v412_POSITIVO_FALSO_NOS.json"), S("conferir_citacoes_v412.json"), S("DERIVACAO_v412.json"), S("PINOS_BN_v412.json"), S("PINO_RECIBO_PRE_SELO_v412.json"), S("PROVA_PRODUCAO_INTACTA_v412_pre_selo.json"),
++             S("PRECONDICOES_v412.json"), S("GUARDAS_ESTATICAS_BANCADA_v412.json"), S("VARREDURA_FOCK_OMEGA_v412.json"), S("purga_v412.json"), S("bancada_B3_servico/CONFERENCIA_EXIGENCIAS_SERVICO_v412.json"),
++             S("bancada_B3_servico/controle_negativo/RESULTADO_CONTROLE_NEGATIVO_v412.json"), S("pos_rito/HARNESS_TEXTOS_ENSAIO_v412.json"), S("pos_rito/HARNESS_FECHAR_SANDBOX_v412.json"),
++             H("kernel/KERNEL_RECIBO_v412.json"), H("kernel/POS_BUILD_v412.json"), H("TESTE_H0DN_OFFLINE_v412.json"), H("TESTE_QUADRO_v412.json"), H("GUARDA_FRASES_v412.json"), H("PREVOO_GERADOR_v412.json"), H("DESENHO_v412.md")]
+@@ -266 +267 @@
+-    """a guarda das frases da v411 (F60 a F67 e as herdadas) e a P18 com a UNICA excecao da cabeca; lista de (regra, trecho)"""
++    """a guarda das frases da v412 (F60 a F67 e as herdadas) e a P18 com a UNICA excecao da cabeca; lista de (regra, trecho)"""
+@@ -282,2 +283,2 @@
+-PRONTA = {"contrato": "PREPARACAO_v411_PRONTA", "agente": "claude-construtor-v411", "quando": AGORA.strftime("%Y-%m-%d %H:%M:%S"), **DL.MARCA_ENSAIO, "pronta": pronta, "falta": falta, "portoes": PORTOES,
+-          "candidato_sha16": _cand16, "candidato_sha256": CM.get("sha256"), "candidato_bytes": CM.get("bytes"), "rotulo_do_artefato": DL.ROTULO_DO_ARTEFATO, "origem_sha16": CM.get("base_v410_sha16"), "escada": CM.get("escada"),
++PRONTA = {"contrato": "PREPARACAO_v412_PRONTA", "agente": "claude-construtor-v412", "quando": AGORA.strftime("%Y-%m-%d %H:%M:%S"), **DL.MARCA_ENSAIO, "pronta": pronta, "falta": falta, "portoes": PORTOES,
++          "candidato_sha16": _cand16, "candidato_sha256": CM.get("sha256"), "candidato_bytes": CM.get("bytes"), "rotulo_do_artefato": DL.ROTULO_DO_ARTEFATO, "origem_sha16": CM.get("base_v411_sha16"), "escada": CM.get("escada"),
+@@ -287,5 +288,5 @@
+-          "kernel_recibo": {"path": "kernel/KERNEL_RECIBO_v411.json", "sha16": h16(H("kernel/KERNEL_RECIBO_v411.json")), "rc": KR.get("rc")},
+-          "esperados_sha16": h16(S("ESPERADOS_v411.json")), "p00": {"veredito": PC.get("veredito"), "passaram": PC.get("n_ok"), "n": PC.get("n_checagens"), "pendentes": [p_.get("checagem") for p_ in (PC.get("pendentes") or [])], "sha16": h16(S("PRECONDICOES_v411.json"))},
+-          "ensaio_a_seco": {"veredito": EN.get("veredito"), "sha16_do_candidato": EN.get("sha16"), "json_sha16": h16(S("ensaio_a_seco_v411.json"))},
+-          "previoo_do_gerador": {"ok": PV.get("ok"), "sha16": h16(H("PREVOO_GERADOR_v411.json"))}, "h0dn": H0DN_RES,
+-          "erratas": [dict(e_) for e_ in DL.ERRATAS_V411], "tabela_secao7": [dict(r_) for r_ in DL.TABELA_SECAO7], "decisoes": dict(DL.DECISOES_V411),
++          "kernel_recibo": {"path": "kernel/KERNEL_RECIBO_v412.json", "sha16": h16(H("kernel/KERNEL_RECIBO_v412.json")), "rc": KR.get("rc")},
++          "esperados_sha16": h16(S("ESPERADOS_v412.json")), "p00": {"veredito": PC.get("veredito"), "passaram": PC.get("n_ok"), "n": PC.get("n_checagens"), "pendentes": [p_.get("checagem") for p_ in (PC.get("pendentes") or [])], "sha16": h16(S("PRECONDICOES_v412.json"))},
++          "ensaio_a_seco": {"veredito": EN.get("veredito"), "sha16_do_candidato": EN.get("sha16"), "json_sha16": h16(S("ensaio_a_seco_v412.json"))},
++          "previoo_do_gerador": {"ok": PV.get("ok"), "sha16": h16(H("PREVOO_GERADOR_v412.json"))}, "h0dn": H0DN_RES,
++          "erratas": [dict(e_) for e_ in DL.ERRATAS_V412], "tabela_secao7": [dict(r_) for r_ in DL.TABELA_SECAO7], "decisoes": dict(DL.DECISOES_V412),
+@@ -294 +295 @@
+-          "veto_kimi": {"pasta_vedada": DL.H0DN_PASTA_VEDADA_V410, "p00": PORTOES["veto_kimi"]},
++          "veto_kimi": {"pasta_vedada": DL.H0DN_PASTA_VEDADA_V411, "p00": PORTOES["veto_kimi"]},
+@@ -296,2 +297,2 @@
+-          "comandos": ({} if ENSAIO else {"instalar": "python -B -X utf8 instalar_v411.py", "rito": "sh rito_v411.sh", "cadeia": "CHAIN_DE=<rotulo> CHAIN_ATE=<rotulo> sh pos_rito/chain_pos_rito_v411.sh (o orquestrador pos_treino_v411 os chama)",
+-                                    "reverter": "python -B -X utf8 reverter_v411.py (so' por decisao da gerencia)", "cwd": HERE}),
++          "comandos": ({} if ENSAIO else {"instalar": "python -B -X utf8 instalar_v412.py", "rito": "sh rito_v412.sh", "cadeia": "CHAIN_DE=<rotulo> CHAIN_ATE=<rotulo> sh pos_rito/chain_pos_rito_v412.sh (o orquestrador pos_treino_v412 os chama)",
++                                    "reverter": "python -B -X utf8 reverter_v412.py (so' por decisao da gerencia)", "cwd": HERE}),
+@@ -318,4 +319,4 @@
+-grava(DL.saida("PLANO_v411.md"), PLANO.encode("utf-8")); grava(DL.saida("RELATORIO_PREPARACAO_v411.md"), RELATORIO.encode("utf-8"))
+-PRONTA["hashes"]["PLANO_v411.md"] = {"sha16": h16(DL.saida("PLANO_v411.md")), "bytes": sz(DL.saida("PLANO_v411.md"))}
+-PRONTA["hashes"]["RELATORIO_PREPARACAO_v411.md"] = {"sha16": h16(DL.saida("RELATORIO_PREPARACAO_v411.md")), "bytes": sz(DL.saida("RELATORIO_PREPARACAO_v411.md"))}
+-grava(DL.saida("PREPARACAO_v411_PRONTA.json"), json.dumps(PRONTA, ensure_ascii=False, indent=1).encode("utf-8"))
++grava(DL.saida("PLANO_v412.md"), PLANO.encode("utf-8")); grava(DL.saida("RELATORIO_PREPARACAO_v412.md"), RELATORIO.encode("utf-8"))
++PRONTA["hashes"]["PLANO_v412.md"] = {"sha16": h16(DL.saida("PLANO_v412.md")), "bytes": sz(DL.saida("PLANO_v412.md"))}
++PRONTA["hashes"]["RELATORIO_PREPARACAO_v412.md"] = {"sha16": h16(DL.saida("RELATORIO_PREPARACAO_v412.md")), "bytes": sz(DL.saida("RELATORIO_PREPARACAO_v412.md"))}
++grava(DL.saida("PREPARACAO_v412_PRONTA.json"), json.dumps(PRONTA, ensure_ascii=False, indent=1).encode("utf-8"))
+@@ -324 +325 @@
+-print(DL.saida("PREPARACAO_v411_PRONTA.json"))
++print(DL.saida("PREPARACAO_v412_PRONTA.json"))

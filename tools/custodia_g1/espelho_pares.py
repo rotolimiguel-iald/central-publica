@@ -61,11 +61,15 @@ def carregar_marcadores_privados():
     return out
 
 
-def guarda_conta(p, priv=()):
+def guarda_conta(p, priv=(), isentos=()):
+    """`isentos` [19/11/2026, claude-site-custodia, por decisão do operador]: nomes EXATOS liberados por decisão da versão
+    (decisoes\\TERMO_PRIVADO_ISENTO_vNNN.json); só esses textos literais saem da contagem, todo o resto conta como antes."""
     try:
         t = Path(p).read_bytes().decode("utf-8", "replace")
     except OSError:
         return None
+    for s in isentos:
+        t = t.replace(s, " ")
     return sum(len(g.findall(t)) for g in GUARDA) + sum(len(g.findall(t)) for g in priv)
 
 
@@ -216,6 +220,12 @@ def montar_pares(ctx, ler_fontes=True):
             continue
         for papel, r in res.items():
             P.add(r["caminho"], c.ESP / ("recibos_bancada_" + vv) / Path(r["caminho"]).name, "RECIBO")
+        if vv == v and prob and _bn_dispensado(c, v):
+            # AO LADO (19/11/2026, claude-site-custodia; decisão do operador, verbatim em work\vitrine_postura_13nov\
+            # OPERADOR_19nov_publicar_sem_o_Bn_da_v412_verbatim.txt): publicar sem o B(n), dito. Vale só para a versão da decisão
+            # work\custodia_G1\decisoes\BN_DISPENSADO_vNNN.json, com a ordem conferida por sha256; sem ela, a guarda segue.
+            P.avisos.append("B(n) de %s NÃO RODOU; publicado sem ele por decisão do operador (BN_DISPENSADO_%s.json): %s" % (v, v, "; ".join(prob)))
+            prob = []
         if vv == v:
             P.faltas += prob
             if elo is not None and not {r["sha16"] for r in res.values()} <= elo:
@@ -227,6 +237,20 @@ def montar_pares(ctx, ler_fontes=True):
     pm = util.ler_json(c.NOS / "tgl_kernel_proof_manifest.json")
     P.kernel = {"fmap": pm["formal_files_sha256"], "ar": pm["axiom_report"]}
     return P
+
+
+def _bn_dispensado(c, v):
+    """A decisão do operador de publicar a versão `v` sem o B(n): o arquivo da decisão e a ordem verbatim conferida por sha256."""
+    import hashlib
+    p = c.CEN / "work" / "custodia_G1" / "decisoes" / ("BN_DISPENSADO_%s.json" % v)
+    if not p.is_file():
+        return False
+    try:
+        d = util.ler_json(p)
+        o = c.CEN / d["ordem"]
+        return d.get("versao") == v and o.is_file() and hashlib.sha256(o.read_bytes()).hexdigest() == d.get("ordem_sha256")
+    except Exception:  # noqa: BLE001
+        return False
 
 
 def _fontes_pinadas(ctx, P):
@@ -255,6 +279,27 @@ def _fontes_pinadas(ctx, P):
             if _dito:
                 getattr(P, "notas", []).append("sem fontes próprias (versão sem registro no core): %s" % ", ".join(_dito)) if hasattr(P, "notas") else None
             faltam = [k for k in faltam if k not in _dito]
+    if faltam:
+        # AO LADO (19/11/2026, gerência c1, em nome próprio; a v412): versão COM registro novo cujos registros não releem nada por caminho nem
+        # trazem verbatim (todo `fontes` e todo `verbatim` vazios nos registros `_vK` com veredito) não tem par `_VK_FONTES`/`_VK_VERBATINS2` a
+        # exigir: o par mapeia o que os registros releem. Fica dito em P.avisos; registro com fonte ou verbatim não vazio segue exigindo o par.
+        # Só a partir da v412 (antes, nada muda; backup .bak_20261119_022117_c1_v412).
+        try:
+            _core412 = (util.ler_json(c.NOS / "um_absoluto.json").get("core") or {})
+        except Exception:  # noqa: BLE001
+            _core412 = None
+        if _core412 is not None:
+            _vazios = []
+            for k in faltam:
+                K = k[len("_V"):].split("_")[0]
+                if not K.isdigit() or int(K) < 412:
+                    continue
+                regs = [x for x in _core412 if x.endswith("_v" + K) and isinstance(_core412.get(x), dict) and "verdict" in _core412[x]]
+                if regs and all(not (_core412[x].get("fontes") or []) and not (_core412[x].get("verbatim") or {}) for x in regs):
+                    _vazios.append(k)
+            if _vazios:
+                P.avisos.append("sem par de fontes (os registros da versão têm fontes e verbatins vazios): %s" % ", ".join(_vazios))
+                faltam = [k for k in faltam if k not in _vazios]
     if faltam:
         P.faltas.append("dicionários do um.py ausentes ou não literais (a ESPEC exige o par para todo K de 392 a N): %s" % ", ".join(faltam))
     ls = _git_ls(c)

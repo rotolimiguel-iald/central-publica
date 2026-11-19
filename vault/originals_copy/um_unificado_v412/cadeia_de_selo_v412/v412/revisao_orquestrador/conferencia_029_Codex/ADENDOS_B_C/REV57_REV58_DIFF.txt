@@ -1,0 +1,55 @@
+--- REV57_namespace_normalized
+
++++ REV58
+
+@@ -1,10 +1,11 @@
+
+ import AMedidaEOIf
+ import OTempoEACauda
++import TGLExt.Token
+ 
+ set_option autoImplicit false
+ 
+ /-!
+-# O SIGNO E A IMAGEM — a unidade de leitura é o signo, e a leitura é pela imagem
++# TOKEN2 — a unidade de leitura é o token: o signo, lido pela imagem
+ 
+ ## A lei que o arquivo tipa
+ 
+@@ -22,8 +23,9 @@
+
+ menos `2ⁿ` para toda fórmula de `n` variáveis (item 9, em cujo enunciado a fórmula não aparece). A creditação é do
+ Instituto.
+ 
+-A pedra `Token` (v397) nomeia o token como o psibit na testemunha estática. Esta pedra nomeia o token como a unidade de
+-leitura. Nenhum termo daqui liga as duas.
++Esta pedra lê-se em conjunto com a pedra `Token` (v397): lá o token é o psibit na testemunha estática; aqui é a unidade de
++leitura. O termo `os_dois_tokens_leem_se_em_conjunto` é a conjunção das duas, por citação. Nenhum termo identifica o psibit
++com o conjunto singularizado.
+ 
+ ## Como o arquivo lê a lei (escolhas deste arquivo; não são termo)
+ 
+@@ -163,6 +165,13 @@
+
+           ↔ custoCNF φ x = 0) :=
+   ⟨o_signo_decide φ, o_signo_de_uma_parcela_confere φ x⟩
+ 
++/-- **OS DOIS TOKENS LEEM-SE EM CONJUNTO.** A conjunção, por citação, do termo da pedra `Token` (o token como o psibit na
++testemunha estática) com o termo desta pedra (no token, decidir e conferir levam os mesmos atos). Nenhuma matemática nova. -/
++theorem os_dois_tokens_leem_se_em_conjunto (φ : CNF n) (x : Fin n → Bool) :
++    (type_of% TGLExt.Token.token_is_the_psibit_in_the_static_witness)
++    ∧ (type_of% (no_token_decidir_e_conferir_levam_os_mesmos_atos φ x)) :=
++  ⟨TGLExt.Token.token_is_the_psibit_in_the_static_witness, no_token_decidir_e_conferir_levam_os_mesmos_atos φ x⟩
++
+ /-- [DEF] **O CONTEÚDO DA FORMA**: o conjunto das atribuições que satisfazem a fórmula escrita. -/
+ def conteudo (φ : CNF n) : Set (Fin n → Bool) := {x | custoCNF φ x = 0}
+ 
+@@ -259,6 +268,7 @@
+
+ end TGLExt.Token2
+ 
+ #print axioms TGLExt.Token2.para_caber_num_token_so_o_vocabulario_cresce
++#print axioms TGLExt.Token2.os_dois_tokens_leem_se_em_conjunto
+ #print axioms TGLExt.Token2.o_signo_de_uma_parcela_confere
+ #print axioms TGLExt.Token2.no_token_decidir_e_conferir_levam_os_mesmos_atos
+ #print axioms TGLExt.Token2.le_se_pela_imagem

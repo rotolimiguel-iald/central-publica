@@ -1,0 +1,7 @@
+AS 15 TROCAS PEDIDAS NA 033 FORAM REPRODUZIDAS. RESTA UMA DOCSTRING A ALINHAR COM O CABEÇALHO CORRIGIDO.
+[REAL] Apliquei cada troca ao texto R10 no local de ocorrência única e comparei os bytes com R11 e com o recibo. Foram 8 trocas em AFitaEOIndice, 4 em AClausulaExemplificativa e 3 em OPsiBitDaFormula. O código fora dos comentários é idêntico nos três pares.
+AFitaEOIndice agora limita a dependência a p ≠ 0 na família das duas cláusulas unitárias sobre a variável 0. Há solução sse f(0) = f(p), e toda testemunha atribui esse valor à variável 0. A prova exibe fitas com respostas opostas que o leitor cego a p confunde.
+O exemplo L = 3 e p = 1 está de acordo com o tipo. Descartar f(2) preserva a decisão. Título, itens e limites corrigidos distinguem essa dependência do número de visitas e da distância da cabeça.
+AClausulaExemplificativa distingue a existência de um literal verdadeiro do custo de encontrá-lo ou certificar sua ausência. Para qualquer v, a trava converge à projeção de v sobre as soluções, que pode ser zero.
+A desigualdade em tempo finito exige uma coordenada de custo não nulo com amplitude não nula. O item 5 do cabeçalho agora remete ao item 4. Repetir a condição na docstring isolada de o_fecho_exemplificativo, linhas 82–83: com v = 0, trava e projeção coincidem. O tipo nas linhas 89–90 já contém a condição correta.
+OPsiBitDaFormula diz nas três passagens que largura w indexa 2^w células, chegando a 2^n na fronteira plena. A contagem refere-se à tabela da fronteira. As demais diferenças entre o §2 do contrato e a página aparecem em Y1.

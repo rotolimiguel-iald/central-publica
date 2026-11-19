@@ -1,0 +1,25 @@
+--- v411/refazer_arvore_v411_pos_selo.py
++++ v412/refazer_arvore_v412_pos_selo.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/refazer_arvore_v411_pos_selo.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/refazer_arvore_v412_pos_selo.py.diff
+@@ -4,3 +5,3 @@
+-"""refaz C:/t/k411c/arvore (so-fontes) a partir do kernel v411 que o Nos tem (LEITURA do Nos), como pos_build_kernel_v411.py a fez; confere os sha contra kernel/KERNEL_RECIBO_v411.json: a raiz TGLExt.lean, o TGL/Audit.lean, os modulos novos em TGLExt/ (R["pedras"]: path e sha256, um por um, na arvore refeita E no Nos; na v411 a lista e' VAZIA: nenhum modulo novo) e as contagens de arquivos .lean (R["varredura_tokens"]). Nao muda o recibo.
+-POS-SELO: so' roda DEPOIS de a v411 estar no Nos (o instalador copia o candidato e o rito materializa os modulos); ANTES disso o Nos ainda e' a v410 e a conferencia reprova (e e' o que tem de acontecer: fail-closed). ATENCAO: apaga e refaz C:/t/k411c/arvore (shutil.rmtree); por isso NAO foi executado na preparacao -- a conferencia equivalente (as mesmas contagens e os mesmos sha contra a arvore ja' existente) foi feita so' por leitura em 06/11/2026 (pos_build_kernel_v411.py e p00).
+-Molde escrito em 24/10/2026 (refazer_arvore_v39x_pos_selo.py), adaptado a v411 em 06/11/2026 (claude-construtor-v411, fork B). Molde direto: refazer_arvore_v410_pos_selo.py."""
++"""refaz C:/t/k412c/arvore (so-fontes) a partir do kernel v412 que o Nos tem (LEITURA do Nos), como pos_build_kernel_v412.py a fez; confere os sha contra kernel/KERNEL_RECIBO_v412.json: a raiz TGLExt.lean, o TGL/Audit.lean, os modulos novos em TGLExt/ (R["pedras"]: path e sha256, um por um, na arvore refeita E no Nos; na v412 a lista e' VAZIA: nenhum modulo novo) e as contagens de arquivos .lean (R["varredura_tokens"]). Nao muda o recibo.
++POS-SELO: so' roda DEPOIS de a v412 estar no Nos (o instalador copia o candidato e o rito materializa os modulos); ANTES disso o Nos ainda e' a v411 e a conferencia reprova (e e' o que tem de acontecer: fail-closed). ATENCAO: apaga e refaz C:/t/k412c/arvore (shutil.rmtree); por isso NAO foi executado na preparacao -- a conferencia equivalente (as mesmas contagens e os mesmos sha contra a arvore ja' existente) foi feita so' por leitura em 06/11/2026 (pos_build_kernel_v412.py e p00).
++Molde escrito em 24/10/2026 (refazer_arvore_v39x_pos_selo.py), adaptado a v412 em 06/11/2026 (claude-construtor-v412, fork B). Molde direto: refazer_arvore_v411_pos_selo.py."""
+@@ -9 +10 @@
+-NK = r"C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\tgl_kernel"; ARV = r"C:\t\k411c\arvore"
++NK = r"C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\tgl_kernel"; ARV = r"C:\t\k412c\arvore"
+@@ -11,2 +12,2 @@
+-R = json.load(open(os.path.join(H, "kernel", "KERNEL_RECIBO_v411.json"), encoding="utf-8"))
+-SANDBOX = r"C:\t\k411c\final"   # (v411) o recibo do kernel da v411 aponta a arvore para o SANDBOX (o pos_build_kernel_v411.py nao refaz a copia so-fontes): ela e' so' conferida, NUNCA apagada
++R = json.load(open(os.path.join(H, "kernel", "KERNEL_RECIBO_v412.json"), encoding="utf-8"))
++SANDBOX = r"C:\t\k412c\final"   # (v412) o recibo do kernel da v412 aponta a arvore para o SANDBOX (o pos_build_kernel_v412.py nao refaz a copia so-fontes): ela e' so' conferida, NUNCA apagada
+@@ -14 +15 @@
+-assert _n_(R["arvore"]) in (_n_(ARV), _n_(SANDBOX)) and _n_(ARV) != _n_(SANDBOX) and R["pedras"] == [], ("o recibo da v411 (nenhum modulo novo) nao aponta a arvore esperada", R["arvore"])
++assert _n_(R["arvore"]) in (_n_(ARV), _n_(SANDBOX)) and _n_(ARV) != _n_(SANDBOX) and R["pedras"] == [], ("o recibo da v412 (nenhum modulo novo) nao aponta a arvore esperada", R["arvore"])
+@@ -38 +39 @@
+-else:   # (v411) o recibo da v411 nao traz varredura_tokens: as contagens sao conferidas contra as FONTES do sandbox medido (sem .lake), so' lidas
++else:   # (v412) o recibo da v412 nao traz varredura_tokens: as contagens sao conferidas contra as FONTES do sandbox medido (sem .lake), so' lidas

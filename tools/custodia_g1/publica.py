@@ -94,6 +94,35 @@ def _ja_c18(ctx):
     return aplicado("quadro de %s: %d itens da Central pública, nenhum defasado" % (q.get("medido_em"), len(its)))
 
 
+def _front_interno_isento(cen, fe, dist):
+    """AO LADO (18/11/2026, claude-site-custodia; ordem do operador, verbatim em work\\vitrine_postura_13nov\\
+    OPERADOR_18nov_a_central_e_bipartida_o_acompanhamento_so_no_privado_o_publico_sobe_normalmente_verbatim.txt): a Central é bipartida; o
+    acompanhamento interno por patente de 13/11 fica só na partição privada e a pública sobe normalmente, sem vínculo com ele. Logo, o
+    `frontend\\src` mais novo que o build público NÃO bloqueia o C18 quando TODO arquivo mais novo que `dist_publica\\index.html` está na
+    decisão `work\\custodia_G1\\decisoes\\FRONT_INTERNO_*.json`, com o sha256 que ela fixou (e o build público é o da decisão). Qualquer outra
+    mudança no front, ou mudança posterior num desses arquivos, volta a bloquear. Devolve (ok, motivo)."""
+    import hashlib
+    import json as _json
+    sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()  # noqa: E731
+    decs = sorted((cen / "work" / "custodia_G1" / "decisoes").glob("FRONT_INTERNO_*.json"))
+    if not decs:
+        return False, "sem decisão FRONT_INTERNO_*.json"
+    d = _json.loads(decs[-1].read_text(encoding="utf-8"))
+    ordem = cen / d.get("ordem", "")
+    if not ordem.is_file() or sha(ordem) != d.get("ordem_sha256"):
+        return False, "a ordem da decisão %s não confere por sha256" % decs[-1].name
+    if sha(dist) != d.get("dist_publica_index_sha256"):
+        return False, "o build público não é o da decisão %s" % decs[-1].name
+    t0 = dist.stat().st_mtime
+    novos = {p.relative_to(cen).as_posix(): p for p in (fe / "src").rglob("*") if p.is_file() and ".bak_" not in p.name and p.stat().st_mtime > t0}
+    lista = d.get("arquivos", {})
+    fora = sorted(n for n in novos if n not in lista)
+    mudou = sorted(n for n, p in novos.items() if n in lista and sha(p) != lista[n])
+    if fora or mudou:
+        return False, "front mudou fora da decisão %s: novos %s, alterados %s" % (decs[-1].name, fora[:5], mudou[:5])
+    return True, "isento pela decisão %s (%d arquivos do acompanhamento interno, só na partição privada)" % (decs[-1].name, len(novos))
+
+
 def _pre_c18(ctx):
     from . import site
     f = []
@@ -103,7 +132,7 @@ def _pre_c18(ctx):
     fe = ctx.c.CEN / "frontend"
     src_t = max((p.stat().st_mtime for p in (fe / "src").rglob("*") if p.is_file()), default=0)
     dist = fe / "dist_publica" / "index.html"
-    if not dist.is_file() or dist.stat().st_mtime < src_t:
+    if not dist.is_file() or (dist.stat().st_mtime < src_t and not _front_interno_isento(ctx.c.CEN, fe, dist)[0]):
         f.append("frontend\\dist_publica está mais velho que frontend\\src (o `vite build` não está na cadeia: é da frente da web)")
     try:
         with urllib.request.urlopen("http://127.0.0.1:8765/api/health", timeout=5) as r:

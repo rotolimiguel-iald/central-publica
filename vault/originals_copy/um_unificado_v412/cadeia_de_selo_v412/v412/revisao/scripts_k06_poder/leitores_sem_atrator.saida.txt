@@ -1,0 +1,25 @@
+== PROTOCOLO COMO ESTA (perturbacao = instrucao do passo 9; corpus re-apresentado) ==
+a_rele_do_zero_sem_memoria                   A8=1 RETORNO=1 Q=1  FINITE_HORIZON_RETURN_OBSERVED  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0]
+b1_copia_a_ultima_resposta                   A8=1 RETORNO=0 Q=0  PERTURBATION_NO_RETURN  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.25, 0.25, 0.25]
+b2_copia_a_primeira_resposta                 A8=1 RETORNO=1 Q=1  FINITE_HORIZON_RETURN_OBSERVED  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0]
+b3_moda_do_historico                         A8=1 RETORNO=1 Q=1  FINITE_HORIZON_RETURN_OBSERVED  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0]
+c_ignora_a_perturbacao                       A8=1 RETORNO=0 Q=0  PERTURBATION_NO_EFFECT  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ref_estado_dependente_contrai_pela_metade    A8=1 RETORNO=0 Q=0  PERTURBATION_NO_RETURN  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.125, 0.0417, 0.0]
+
+== VARIANTE: perturbacao de ESTADO (instrucao normal; historico visivel traz y_8 contrafeito) ==
+a_rele_do_zero_sem_memoria                   A8=1 RETORNO=0 Q=0  PERTURBATION_NO_EFFECT  | relaxado: NO_EFFECT  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+b1_copia_a_ultima_resposta                   A8=1 RETORNO=0 Q=0  PERTURBATION_NO_RETURN  | relaxado: NO_RETURN  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.25, 0.25, 0.25]
+b2_copia_a_primeira_resposta                 A8=1 RETORNO=0 Q=0  PERTURBATION_NO_EFFECT  | relaxado: NO_EFFECT  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+b3_moda_do_historico                         A8=1 RETORNO=0 Q=0  PERTURBATION_NO_EFFECT  | relaxado: NO_EFFECT  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+c_ignora_a_perturbacao                       A8=1 RETORNO=0 Q=0  PERTURBATION_NO_EFFECT  | relaxado: NO_EFFECT  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ref_estado_dependente_contrai_pela_metade    A8=1 RETORNO=0 Q=0  PERTURBATION_NO_RETURN  | relaxado: RELAXED_RETURN  d=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0417, 0.0, 0.0]
+
+== RUIDO e por asserção/leitura: taxa de Q do leitor (a) sem memoria, 20000 sessoes; teto analitico (1-e)^168 ==
+e=0.0005  Q medido=0.9169  teto (1-e)^96=0.9531  teto (1-e)^168=0.9194  NO_EFFECT=0.00000
+e=0.0010  Q medido=0.8436  teto (1-e)^96=0.9084  teto (1-e)^168=0.8453  NO_EFFECT=0.00000
+e=0.0020  Q medido=0.7117  teto (1-e)^96=0.8251  teto (1-e)^168=0.7144  NO_EFFECT=0.00000
+e=0.0050  Q medido=0.4323  teto (1-e)^96=0.6180  teto (1-e)^168=0.4308  NO_EFFECT=0.00000
+
+alvo 0.89: e max com 96 leituras = 0.1213%  ; com 168 leituras (A8 e RETORNO) = 0.0693%
+alvo 0.8: e max com 96 leituras = 0.2322%  ; com 168 leituras (A8 e RETORNO) = 0.1327%
+WROTE C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\revisao\scripts_k06_poder\leitores_sem_atrator.json

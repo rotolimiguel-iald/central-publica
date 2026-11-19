@@ -1,0 +1,387 @@
+--- v411/orquestrador/pos_treino_v411.py
++++ v412/orquestrador/pos_treino_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/orquestrador/pos_treino_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/orquestrador__pos_treino_v412.py.diff
+@@ -5,2 +6,2 @@
+-"""pos_treino_v411.py — O ORQUESTRADOR DA v411 (claude-construtor-v411-posrito, a serviço da gerência c1, 12/11/2026; molde: o orquestrador pós-treino da v410). Ordem do operador DESTA versão (a ordem de abrir e a ordem da v411, D169): o arquivo
+-e o sha256 são os de delta_v411.FALA_ORDEM_V411 (que os lê do DESENHO_v411 e os confere contra o arquivo); a fala inteira é LIDA do arquivo (AUT_FRASE), nunca digitada aqui. O fim da cadeia é o HANDOFF (D68a, herda a D57a): a custódia
++"""pos_treino_v412.py — O ORQUESTRADOR DA v412 (claude-construtor-v412-posrito, a serviço da gerência c1, 12/11/2026; molde: o orquestrador pós-treino da v411). Ordem do operador DESTA versão (a ordem de abrir e a ordem da v412, D169): o arquivo
++e o sha256 são os de delta_v412.FALA_ORDEM_V412 (que os lê do DESENHO_v411 e os confere contra o arquivo); a fala inteira é LIDA do arquivo (AUT_FRASE), nunca digitada aqui. O fim da cadeia é o HANDOFF (D68a, herda a D57a): a custódia
+@@ -11,5 +12,5 @@
+-  S1  espera a preparação da v411 (PREPARACAO_v411_PRONTA.json com pronta == true: kernel, candidato, ensaio a seco, esperados, conferidor, p00, B(n) pré-selo pinado).
+-  S1b exige a revisão de terceiro APROVADA sobre ESTE candidato (revisao_terceiro/REVISAO_TERCEIRO_v411.json; revisor: Sonnet, D69, até três rodadas): quem constrói não aprova.
+-  S2  pré-voo: o Nós é a v410 selada e é a origem do candidato; nenhum um.py/pilar vivo; disco; C:/t/vb22 ausente.
+-  S3  instalar_v411.py (ato da gerência, autorizado pela ordem acima).
+-  S4  rito_v411.sh pelo sh do Git (o lançador para e religa o servidor da nativa sozinho); exige RITO_RC=0 e selo v411 com o pin do candidato. NENHUM módulo novo: o kernel é o da v410, byte a byte (o tempo do sandbox é lido de kernel/construir_marcas.txt; o do rito da v410 de v410/rito_horarios_v410.txt; teto aqui: 5 h).
++  S1  espera a preparação da v412 (PREPARACAO_v412_PRONTA.json com pronta == true: kernel, candidato, ensaio a seco, esperados, conferidor, p00, B(n) pré-selo pinado).
++  S1b exige a revisão de terceiro APROVADA sobre ESTE candidato (revisao_terceiro/REVISAO_TERCEIRO_v412.json; revisor: Sonnet, D69, até três rodadas): quem constrói não aprova.
++  S2  pré-voo: o Nós é a v411 selada e é a origem do candidato; nenhum um.py/pilar vivo; disco; C:/t/vb23 ausente.
++  S3  instalar_v412.py (ato da gerência, autorizado pela ordem acima).
++  S4  rito_v412.sh pelo sh do Git (o lançador para e religa o servidor da nativa sozinho); exige RITO_RC=0 e selo v412 com o pin do candidato. NENHUM módulo novo: o kernel é o da v411, byte a byte (o tempo do sandbox é lido de kernel/construir_marcas.txt; o do rito da v411 de v411/rito_horarios_v411.txt; teto aqui: 5 h).
+@@ -18 +19 @@
+-      10b: evento c1 + B(n) APLICAR (B20; a produção pina B19-v410-20261111-R1); 10c: religamento pelo comando do recibo + recibo; depois 11 → 14; e ENTÃO S6d (D52, D57): textos_custodia_handoff_v411.py ENCADEADO (os sete textos da prosa da custódia, a seção «README: o que fica evidente (v411)», os textos que a abertura do H0DN × BG1 torna obrigatórios — NOTA_EN, os seis README_*, os onze ESTATUTO_* e os extras README_H0DN_EN e X_TEXTO — e as notas da cadeia; rc 0 e o recibo) e o portão do G1 (custodia_g1.textos.portao), a D59 e a D65 sobre o HANDOFF INTEIRO (o do Nós e o da memória). O handoff é o FIM da cadeia.
++      10b: evento c1 + B(n) APLICAR (B21; a produção pina B20-v411-20261113-R1); 10c: religamento pelo comando do recibo + recibo; depois 11 → 14; e ENTÃO S6d (D52, D57): textos_custodia_handoff_v412.py ENCADEADO (os sete textos da prosa da custódia, a seção «README: o que fica evidente (v412)», os textos que a abertura do H0DN × BG1 torna obrigatórios — NOTA_EN, os seis README_*, os onze ESTATUTO_* e os extras README_H0DN_EN e X_TEXTO — e as notas da cadeia; rc 0 e o recibo) e o portão do G1 (custodia_g1.textos.portao), a D59 e a D65 sobre o HANDOFF INTEIRO (o do Nós e o da memória). O handoff é o FIM da cadeia.
+@@ -21,2 +22,2 @@
+-  S9  relatório RELATORIO_POS_TREINO_v411.{json,md} + anotação no PROGRAMA.
+-  S9_gatilho_custodia (ADITIVO 1 à ordem do conserto único, 10/11/2026: a custódia da v411 é automática): o passo FINAL, depois de tudo: escreve work/cadeia_de_selo/v411/ORDEM_HANDOFF_CUSTODIA_v411.md, o gatilho que a sessão de custódia espera, pelo molde da v410, com todos os valores LIDOS por script;
++  S9  relatório RELATORIO_POS_TREINO_v412.{json,md} + anotação no PROGRAMA.
++  S9_gatilho_custodia (ADITIVO 1 à ordem do conserto único, 10/11/2026: a custódia da v412 é automática): o passo FINAL, depois de tudo: escreve work/cadeia_de_selo/v412/ORDEM_HANDOFF_CUSTODIA_v412.md, o gatilho que a sessão de custódia espera, pelo molde da v411, com todos os valores LIDOS por script;
+@@ -25,3 +26,3 @@
+-Uso: python pos_treino_v411.py            (corre; a GERÊNCIA o lança, pela tarefa agendada IALD_pos_treino_v411, nunca à mão em janela)
+-     python pos_treino_v411.py --plano    (só leitura: os passos, o estado de cada um e os arquivos que o orquestrador usa; confere o sha16 da ordem contra o arquivo)
+-     python pos_treino_v411.py --ensaio   (só leitura: o mesmo que --plano; o ensaio do S10 não roda, porque o S10 não é desta versão, D57)
++Uso: python pos_treino_v412.py            (corre; a GERÊNCIA o lança, pela tarefa agendada IALD_pos_treino_v412, nunca à mão em janela)
++     python pos_treino_v412.py --plano    (só leitura: os passos, o estado de cada um e os arquivos que o orquestrador usa; confere o sha16 da ordem contra o arquivo)
++     python pos_treino_v412.py --ensaio   (só leitura: o mesmo que --plano; o ensaio do S10 não roda, porque o S10 não é desta versão, D57)
+@@ -31 +32 @@
+-Coautor da atribuição vigente: o da linha COAUTOR abaixo (herdado da v410)."""
++Coautor da atribuição vigente: o da linha COAUTOR abaixo (herdado da v411)."""
+@@ -45 +46 @@
+-PK = Path(r"C:\IALD\Central de Patentes\work\cadeia_de_selo\v411")
++PK = Path(r"C:\IALD\Central de Patentes\work\cadeia_de_selo\v412")
+@@ -53,2 +54,2 @@
+-import delta_v411 as _DL  # noqa: E402   (o nome do arquivo da ordem, o sha16 pinado dela e a frase verbatim saem do delta: nada digitado aqui)
+-ORDEM = CEN / "work" / "cunhagens_13out" / _DL.FALA_ORDEM_V411["nome"]   # a ordem do operador DESTA versao (12/11/2026, D169; o sha16 do arquivo e' conferido por _conferir_ordem contra o pino do delta antes de qualquer ato)
++import delta_v412 as _DL  # noqa: E402   (o nome do arquivo da ordem, o sha16 pinado dela e a frase verbatim saem do delta: nada digitado aqui)
++ORDEM = CEN / "work" / "cunhagens_13out" / _DL.FALA_ORDEM_V412["nome"]   # a ordem do operador DESTA versao (12/11/2026, D169; o sha16 do arquivo e' conferido por _conferir_ordem contra o pino do delta antes de qualquer ato)
+@@ -56,2 +57,2 @@
+-ATOR = "claude-c1-orquestrador-v411"
+-REV = PK / "revisao_terceiro" / "REVISAO_TERCEIRO_v411.json"
++ATOR = "claude-c1-orquestrador-v412"
++REV = PK / "revisao_terceiro" / "REVISAO_TERCEIRO_v412.json"
+@@ -60,4 +61,4 @@
+-AUT = ("Ordem do operador de 12/11/2026 (verbatim sha16 %s): «%s» (a ordem de abrir e a ordem da v411, D169). "
+-       "D68a (gerência c1, em nome próprio; herda a D57a): o fim da cadeia do orquestrador é o HANDOFF; a sincronização da Bancada Um (parada e religamento do serviço da porta 18777, o B(n) da versão) segue o rito da casa como na v410; "
+-       "a custódia completa e o release do app são da sessão de custódia." % (_DL.FALA_ORDEM_V411["sha256"][:16], AUT_FRASE))   # (avaliavel SO' com _DL e AUT_FRASE: o conferidor estatico do servico, bancada_B3_servico/conferir_exigencias_servico_v411.py, a avalia assim)
+-X_TEXTO = None   # v411: o orquestrador nao grava texto do X (a tarefa do dia e o app Claude o gravam)
++AUT = ("Ordem do operador de 12/11/2026 (verbatim sha16 %s): «%s» (a ordem de abrir e a ordem da v412, D169). "
++       "D68a (gerência c1, em nome próprio; herda a D57a): o fim da cadeia do orquestrador é o HANDOFF; a sincronização da Bancada Um (parada e religamento do serviço da porta 18777, o B(n) da versão) segue o rito da casa como na v411; "
++       "a custódia completa e o release do app são da sessão de custódia." % (_DL.FALA_ORDEM_V412["sha256"][:16], AUT_FRASE))   # (avaliavel SO' com _DL e AUT_FRASE: o conferidor estatico do servico, bancada_B3_servico/conferir_exigencias_servico_v412.py, a avalia assim)
++X_TEXTO = None   # v412: o orquestrador nao grava texto do X (a tarefa do dia e o app Claude o gravam)
+@@ -103 +104 @@
+-    """fail-closed: o arquivo da ordem existe, o sha16 LIDO dele e' o pinado em delta_v411 e esta no AUT (o texto do AUT nao vale por si) e a frase do AUT esta no arquivo; senao o orquestrador nao age."""
++    """fail-closed: o arquivo da ordem existe, o sha16 LIDO dele e' o pinado em delta_v412 e esta no AUT (o texto do AUT nao vale por si) e a frase do AUT esta no arquivo; senao o orquestrador nao age."""
+@@ -106 +107 @@
+-    assert s == _DL.FALA_ORDEM_V411["sha256"][:16], ("o sha16 do arquivo da ordem != o pinado em delta_v411", s)
++    assert s == _DL.FALA_ORDEM_V412["sha256"][:16], ("o sha16 do arquivo da ordem != o pinado em delta_v412", s)
+@@ -126 +127 @@
+-    """roda um comando, stdout+stderr no arquivo `saida`; devolve rc. Nunca -I (lição 4 da v410); nunca -O."""
++    """roda um comando, stdout+stderr no arquivo `saida`; devolve rc. Nunca -I (lição 4 da v411); nunca -O."""
+@@ -207 +208 @@
+-        p = PK / "PREPARACAO_v411_PRONTA.json"
++        p = PK / "PREPARACAO_v412_PRONTA.json"
+@@ -217 +218 @@
+-            log("S1: sem PREPARACAO_v411_PRONTA.json ainda")
++            log("S1: sem PREPARACAO_v412_PRONTA.json ainda")
+@@ -231 +232 @@
+-        cand = sha16(PK / "um_v411_candidato.py")
++        cand = sha16(PK / "um_v412_candidato.py")
+@@ -254 +255 @@
+-        esp = jload(PK / "ESPERADOS_v411.json"); cand = jload(PK / "CANDIDATO_v411.json")
++        esp = jload(PK / "ESPERADOS_v412.json"); cand = jload(PK / "CANDIDATO_v412.json")
+@@ -259,2 +260,2 @@
+-        vb22 = Path(r"C:\t\vb22")
+-        if vb22.exists():
++        vb23 = Path(r"C:\t\vb23")
++        if vb23.exists():
+@@ -262 +263 @@
+-                vb22.rmdir(); log("S2: C:/t/vb22 vazio removido")
++                vb23.rmdir(); log("S2: C:/t/vb23 vazio removido")
+@@ -267,2 +268,2 @@
+-        ok = ok_origem and not vivos and livre_gib >= 20 and not vb22.exists()
+-        marcar(e, "S2_prevoo", ok, um_py=um, origem=esp.get("origem_sha16"), selo_versao=selo.get("um_version"), candidato=cand.get("sha16"), vivos=vivos, livre_gib=livre_gib, vb22=vb22.exists())
++        ok = ok_origem and not vivos and livre_gib >= 20 and not vb23.exists()
++        marcar(e, "S2_prevoo", ok, um_py=um, origem=esp.get("origem_sha16"), selo_versao=selo.get("um_version"), candidato=cand.get("sha16"), vivos=vivos, livre_gib=livre_gib, vb23=vb23.exists())
+@@ -277,2 +278,2 @@
+-    rc = run([PY, "-B", "-X", "utf8", "instalar_v411.py"], PK, ORQ / "instalar_out.txt", 1800)
+-    esp = jload(PK / "ESPERADOS_v411.json"); um = sha16(NOS / "um.py")
++    rc = run([PY, "-B", "-X", "utf8", "instalar_v412.py"], PK, ORQ / "instalar_out.txt", 1800)
++    esp = jload(PK / "ESPERADOS_v412.json"); um = sha16(NOS / "um.py")
+@@ -286 +287 @@
+-    """(build_s, audit_s, rito_v410) LIDOS dos arquivos: as marcas do sandbox desta versao e os horarios do rito da v410; 'n/d' onde o arquivo nao existe (nenhum numero digitado)."""
++    """(build_s, audit_s, rito_v411) LIDOS dos arquivos: as marcas do sandbox desta versao e os horarios do rito da v411; 'n/d' onde o arquivo nao existe (nenhum numero digitado)."""
+@@ -293 +294 @@
+-        h0, h1 = (PK.parent / "v410" / "rito_horarios_v410.txt").read_text(encoding="utf-8").split()[:2]
++        h0, h1 = (PK.parent / "v411" / "rito_horarios_v411.txt").read_text(encoding="utf-8").split()[:2]
+@@ -302 +303 @@
+-    """S4: o rito da v411. NOTA D73 (decisao da gerencia c1, 09/11/2026; a fala do operador: «o treino concordo com sua proposta»): o treino do Qwen3.8 (CPU, 48 threads, sem GPU) corre JUNTO com a cadeia: o lancador do rito so' para o servidor da nativa e o trabalhador do pilar quantico;
++    """S4: o rito da v412. NOTA D73 (decisao da gerencia c1, 09/11/2026; a fala do operador: «o treino concordo com sua proposta»): o treino do Qwen3.8 (CPU, 48 threads, sem GPU) corre JUNTO com a cadeia: o lancador do rito so' para o servidor da nativa e o trabalhador do pilar quantico;
+@@ -307,3 +308,3 @@
+-    log("S4: lançando o rito v411 (sh do Git; o lançador para e religa o servidor da nativa; NENHUM módulo novo, o kernel da v410 byte a byte: no sandbox k411c o build levou %s s e o Audit %s s [kernel/construir_marcas.txt]; o rito da v410 levou %s [v410/rito_horarios_v410.txt]; teto 5 h)" % _tempos_lidos())
+-    rc = run([SH, "rito_v411.sh"], PK, ORQ / "rito_v411_lancador.out", 5 * 3600)
+-    std = NOS / "rodada_v411_stdout.txt"
++    log("S4: lançando o rito v412 (sh do Git; o lançador para e religa o servidor da nativa; NENHUM módulo novo, o kernel da v411 byte a byte: no sandbox k412c o build levou %s s e o Audit %s s [kernel/construir_marcas.txt]; o rito da v411 levou %s [v411/rito_horarios_v411.txt]; teto 5 h)" % _tempos_lidos())
++    rc = run([SH, "rito_v412.sh"], PK, ORQ / "rito_v412_lancador.out", 5 * 3600)
++    std = NOS / "rodada_v412_stdout.txt"
+@@ -315,2 +316,2 @@
+-    esp = jload(PK / "ESPERADOS_v411.json")
+-    ok = rc == 0 and trailer == "RITO_RC=0" and selo.get("um_version") == "v411" and selo.get("sha256", {}).get("um.py", "")[:16] == esp["candidato_sha16"]
++    esp = jload(PK / "ESPERADOS_v412.json")
++    ok = rc == 0 and trailer == "RITO_RC=0" and selo.get("um_version") == "v412" and selo.get("sha256", {}).get("um.py", "")[:16] == esp["candidato_sha16"]
+@@ -325 +326 @@
+-    rc = run([SH, "pos_rito/chain_pos_rito_v411.sh"], PK, ORQ / ("chain_%s_out.txt" % passo), 3 * 3600, env=envv)
++    rc = run([SH, "pos_rito/chain_pos_rito_v412.sh"], PK, ORQ / ("chain_%s_out.txt" % passo), 3 * 3600, env=envv)
+@@ -339 +340 @@
+-    pinos = PK / "PINOS_BN_v411.json"; dp = PK / "diff_e_pinos_v411.py"
++    pinos = PK / "PINOS_BN_v412.json"; dp = PK / "diff_e_pinos_v412.py"
+@@ -341,2 +342,2 @@
+-        rc = run([PY, "-B", "-X", "utf8", "diff_e_pinos_v411.py"], PK, ORQ / "diff_e_pinos_out.txt", 1800)
+-        log("S5: diff_e_pinos_v411.py rc=%d (PINOS_BN existe: %s)" % (rc, pinos.exists()))
++        rc = run([PY, "-B", "-X", "utf8", "diff_e_pinos_v412.py"], PK, ORQ / "diff_e_pinos_out.txt", 1800)
++        log("S5: diff_e_pinos_v412.py rc=%d (PINOS_BN existe: %s)" % (rc, pinos.exists()))
+@@ -355 +356 @@
+-            # D52 (gerência c1, 04/11/2026; lição da v410): a Bancada Um é de partida manual e não sobrevive a reinício. Se a porta não escuta E não há processo um_bancada.py, o S6a SOBE o serviço pelo MESMO comando do S6c e só então para pelo PID (a cadeia desenhada: 10a parada → 10b B(n) → 10c religamento). Com processo vivo e porta fechada, PARA: não sobe por cima nem para por nome.
++            # D52 (gerência c1, 04/11/2026; lição da v411): a Bancada Um é de partida manual e não sobrevive a reinício. Se a porta não escuta E não há processo um_bancada.py, o S6a SOBE o serviço pelo MESMO comando do S6c e só então para pelo PID (a cadeia desenhada: 10a parada → 10b B(n) → 10c religamento). Com processo vivo e porta fechada, PARA: não sobe por cima nem para por nome.
+@@ -380,3 +381,3 @@
+-        envv = {"V411_AUTORIZACAO_OPERADOR": AUT, "V411_PID_PARADO": pid, "V411_PID_PARADO_CRIADO": criado}
+-        rc = run([PY, "-B", "-X", "utf8", str(B3 / "recibo_parada_v411.py")], B3, ORQ / "recibo_parada_out.txt", 600, env=envv)
+-        ok = rc == 0 and (B3 / "RECIBO_PARADA_v411.json").exists() and not porta_aberta(18777)
++        envv = {"V412_AUTORIZACAO_OPERADOR": AUT, "V412_PID_PARADO": pid, "V412_PID_PARADO_CRIADO": criado}
++        rc = run([PY, "-B", "-X", "utf8", str(B3 / "recibo_parada_v412.py")], B3, ORQ / "recibo_parada_out.txt", 600, env=envv)
++        ok = rc == 0 and (B3 / "RECIBO_PARADA_v412.json").exists() and not porta_aberta(18777)
+@@ -389 +390 @@
+-        rc = run([PY, "-B", "-X", "utf8", str(B3 / "evento_c1_b3_v411.py")], B3, ORQ / "evento_c1_out.txt", 600)
++        rc = run([PY, "-B", "-X", "utf8", str(B3 / "evento_c1_b3_v412.py")], B3, ORQ / "evento_c1_out.txt", 600)
+@@ -394 +395 @@
+-        envv = {"B3_AUTORIZADO": "sim", "EVENTO": m.group(1), "EVENTO_HASH": m.group(2), "V411_AUTORIZACAO_OPERADOR": AUT}
++        envv = {"B3_AUTORIZADO": "sim", "EVENTO": m.group(1), "EVENTO_HASH": m.group(2), "V412_AUTORIZACAO_OPERADOR": AUT}
+@@ -399 +400 @@
+-        rp = jload(B3 / "RECIBO_PARADA_v411.json") if (B3 / "RECIBO_PARADA_v411.json").exists() else {}
++        rp = jload(B3 / "RECIBO_PARADA_v412.json") if (B3 / "RECIBO_PARADA_v412.json").exists() else {}
+@@ -407,2 +408,2 @@
+-        rc = run([PY, "-B", "-X", "utf8", str(B3 / "recibo_religamento_v411.py")], B3, ORQ / "recibo_religamento_out.txt", 600, env={"V411_AUTORIZACAO_OPERADOR": AUT})
+-        ok = rc == 0 and (B3 / "RECIBO_RELIGAMENTO_v411.json").exists() and porta_aberta(18777)
++        rc = run([PY, "-B", "-X", "utf8", str(B3 / "recibo_religamento_v412.py")], B3, ORQ / "recibo_religamento_out.txt", 600, env={"V412_AUTORIZACAO_OPERADOR": AUT})
++        ok = rc == 0 and (B3 / "RECIBO_RELIGAMENTO_v412.json").exists() and porta_aberta(18777)
+@@ -418,2 +419,2 @@
+-    """S6d (D52, D57): os textos da custódia entram ENCADEADOS, depois da chain 14: pos_rito/textos_custodia_handoff_v411.py (os sete da prosa, a seção do README, os da abertura do H0DN e as notas da cadeia; rc 0 e o recibo RECIBO_TEXTOS_CUSTODIA_HANDOFF_v411.json ao lado); DEPOIS, o portão do G1 (custodia_g1.textos.portao)
+-    e a D59 sobre o HANDOFF INTEIRO (Nós\\HANDOFF_v411_CUSTODIA.md e memory\\handoff-v411-custodia.md; os hashes conhecidos são os do próprio texto). O handoff é o FIM da cadeia desta versão (sem S7 e sem S10)."""
++    """S6d (D52, D57): os textos da custódia entram ENCADEADOS, depois da chain 14: pos_rito/textos_custodia_handoff_v412.py (os sete da prosa, a seção do README, os da abertura do H0DN e as notas da cadeia; rc 0 e o recibo RECIBO_TEXTOS_CUSTODIA_HANDOFF_v412.json ao lado); DEPOIS, o portão do G1 (custodia_g1.textos.portao)
++    e a D59 sobre o HANDOFF INTEIRO (Nós\\HANDOFF_v412_CUSTODIA.md e memory\\handoff-v412-custodia.md; os hashes conhecidos são os do próprio texto). O handoff é o FIM da cadeia desta versão (sem S7 e sem S10)."""
+@@ -422 +423 @@
+-    cands = sorted(p for p in (PK / "pos_rito").glob("textos_custodia_handoff_v411*.py") if p.suffix == ".py")   # (MEDIO 2 da revisao R1, 05/11: o arquivo real e' textos_custodia_handoff_v411.py, sem sufixo; os .bak_... nao terminam em .py)
++    cands = sorted(p for p in (PK / "pos_rito").glob("textos_custodia_handoff_v412*.py") if p.suffix == ".py")   # (MEDIO 2 da revisao R1, 05/11: o arquivo real e' textos_custodia_handoff_v412.py, sem sufixo; os .bak_... nao terminam em .py)
+@@ -424 +425 @@
+-        marcar(e, "S6d_textos_custodia", False, motivo="esperava UM pos_rito/textos_custodia_handoff_v411*.py (sufixo .py)", achados=[c.name for c in cands]); return False
++        marcar(e, "S6d_textos_custodia", False, motivo="esperava UM pos_rito/textos_custodia_handoff_v412*.py (sufixo .py)", achados=[c.name for c in cands]); return False
+@@ -426 +427 @@
+-    rec = PK / "pos_rito" / "RECIBO_TEXTOS_CUSTODIA_HANDOFF_v411.json"
++    rec = PK / "pos_rito" / "RECIBO_TEXTOS_CUSTODIA_HANDOFF_v412.json"
+@@ -434 +435 @@
+-        for hp in (NOS / "HANDOFF_v411_CUSTODIA.md", UMEM / "handoff-v411-custodia.md"):
++        for hp in (NOS / "HANDOFF_v412_CUSTODIA.md", UMEM / "handoff-v412-custodia.md"):
+@@ -440 +441 @@
+-            if re.search(r"(?i)mil[eê]nio|millennium|navier|lindão", ht) or (re.search(r"(?i)kimi", ht) and not re.search(r"(?i)h0dn", ht)):   # (09/11, D72 e D77(g): a mesma regra de pos_rito\\registrar_mapa_v411.d59_viola -- o nome do executor so' no contexto do H0DN; o resto do que a D59 deixa fora segue vetado em qualquer texto)
++            if re.search(r"(?i)mil[eê]nio|millennium|navier|lindão", ht) or (re.search(r"(?i)kimi", ht) and not re.search(r"(?i)h0dn", ht)):   # (09/11, D72 e D77(g): a mesma regra de pos_rito\\registrar_mapa_v412.d59_viola -- o nome do executor so' no contexto do H0DN; o resto do que a D59 deixa fora segue vetado em qualquer texto)
+@@ -442 +443 @@
+-            if any(x_.lower() in ht.lower() for x_ in _DL.FORA_D65):   # (v411) D65: o que a fala do nome do algoritmo deixa fora nao entra no handoff
++            if any(x_.lower() in ht.lower() for x_ in _DL.FORA_D65):   # (v412) D65: o que a fala do nome do algoritmo deixa fora nao entra no handoff
+@@ -459 +460 @@
+-    comum = ["--versao", "v411", "--ator", ATOR, "--coautor", COAUTOR]   # (D174: a custodia da v411 roda SEM --ordem; vale a regra permanente de 23/10)
++    comum = ["--versao", "v412", "--ator", ATOR, "--coautor", COAUTOR]   # (D174: a custodia da v412 roda SEM --ordem; vale a regra permanente de 23/10)
+@@ -568 +569 @@
+-    """S10 (herdado da v410; o template desta pasta traz a janela P2 do shared por D53): escreve a ORDEM de release do app e do contrato JEV em TUNEL_CLAUDE_APP (versão e pino LIDOS do selo) e ESPERA o recibo conferido na fonte (até 24 h; depois, PARADA visível), e só então confere na G1 que o C21 fechou.
++    """S10 (herdado da v411; o template desta pasta traz a janela P2 do shared por D53): escreve a ORDEM de release do app e do contrato JEV em TUNEL_CLAUDE_APP (versão e pino LIDOS do selo) e ESPERA o recibo conferido na fonte (até 24 h; depois, PARADA visível), e só então confere na G1 que o C21 fechou.
+@@ -575 +576 @@
+-        assert vn == "v411", ("o selo do Nós não é a v411", vn)
++        assert vn == "v412", ("o selo do Nós não é a v412", vn)
+@@ -618,3 +619,3 @@
+-    (out / "tunel").mkdir(parents=True); (out / "app").mkdir(); (out / "work" / "iald_v411_ens").mkdir(parents=True)
+-    cand = jload(PK / "CANDIDATO_v411.json"); pin = cand["sha256"]; assert len(pin) == 64
+-    selo = {"um_version": "v411", "sha256": {"um.py": pin}}
++    (out / "tunel").mkdir(parents=True); (out / "app").mkdir(); (out / "work" / "iald_v412_ens").mkdir(parents=True)
++    cand = jload(PK / "CANDIDATO_v412.json"); pin = cand["sha256"]; assert len(pin) == 64
++    selo = {"um_version": "v412", "sha256": {"um.py": pin}}
+@@ -624,2 +625,2 @@
+-    ordem = out / "tunel" / ("ORDEM_%03d_release_v411_do_app.md" % num); ordem.write_text(texto, encoding="utf-8", newline="\n")
+-    assert pin in texto and "v411" in texto and "{{" not in texto
++    ordem = out / "tunel" / ("ORDEM_%03d_release_v412_do_app.md" % num); ordem.write_text(texto, encoding="utf-8", newline="\n")
++    assert pin in texto and "v412" in texto and "{{" not in texto
+@@ -627,2 +628,2 @@
+-    jv = out / "app" / "jev_control_v411.json"; jv.write_text("{}", encoding="utf-8")
+-    def montar(release="v411", srcsha=pin, status="PASS", jev_sha=None, relatorio=True, jev_nome=True, resultado=None, resultado_json=None):
++    jv = out / "app" / "jev_control_v412.json"; jv.write_text("{}", encoding="utf-8")
++    def montar(release="v412", srcsha=pin, status="PASS", jev_sha=None, relatorio=True, jev_nome=True, resultado=None, resultado_json=None):
+@@ -640 +641 @@
+-        (out / "work" / "iald_v411_ens" / "INSTALLED_VERIFICATION.json").write_text(json.dumps({"status": status, "identity": {"release": release, "source_sha256": srcsha}}), encoding="utf-8")
++        (out / "work" / "iald_v412_ens" / "INSTALLED_VERIFICATION.json").write_text(json.dumps({"status": status, "identity": {"release": release, "source_sha256": srcsha}}), encoding="utf-8")
+@@ -645,5 +646,5 @@
+-    montar(); ok, d = recibo_do_app(ordem, num, "v411", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["positivo"] = ok
+-    montar(relatorio=False, resultado="cumprida"); okr, _ = recibo_do_app(ordem, num, "v411", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["positivo_resultado_json"] = okr   # [R4] so' o JSON do canal, sem RELATORIO
+-    montar(relatorio=False, resultado="parcial"); okn, _ = recibo_do_app(ordem, num, "v411", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_resultado_parcial"] = (okn is False)
+-    montar(relatorio=False, resultado_json=json.dumps(["cumprida"])); okn, _ = recibo_do_app(ordem, num, "v411", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_resultado_nao_objeto"] = (okn is False)   # [R5] JSON valido que nao e' objeto: ignorado, sem excecao
+-    montar(relatorio=False, resultado_json=json.dumps({"ordem": "ORDEM_%03d" % (num + 18), "estado": "cumprida"})); okn, _ = recibo_do_app(ordem, num, "v411", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_resultado_ordem_divergente"] = (okn is False)   # [R5] o nome e' desta ordem, o campo diz outra: o campo manda
++    montar(); ok, d = recibo_do_app(ordem, num, "v412", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["positivo"] = ok
++    montar(relatorio=False, resultado="cumprida"); okr, _ = recibo_do_app(ordem, num, "v412", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["positivo_resultado_json"] = okr   # [R4] so' o JSON do canal, sem RELATORIO
++    montar(relatorio=False, resultado="parcial"); okn, _ = recibo_do_app(ordem, num, "v412", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_resultado_parcial"] = (okn is False)
++    montar(relatorio=False, resultado_json=json.dumps(["cumprida"])); okn, _ = recibo_do_app(ordem, num, "v412", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_resultado_nao_objeto"] = (okn is False)   # [R5] JSON valido que nao e' objeto: ignorado, sem excecao
++    montar(relatorio=False, resultado_json=json.dumps({"ordem": "ORDEM_%03d" % (num + 18), "estado": "cumprida"})); okn, _ = recibo_do_app(ordem, num, "v412", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_resultado_ordem_divergente"] = (okn is False)   # [R5] o nome e' desta ordem, o campo diz outra: o campo manda
+@@ -651 +652 @@
+-        montar(**kw); okn, _ = recibo_do_app(ordem, num, "v411", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_" + nome] = (okn is False)
++        montar(**kw); okn, _ = recibo_do_app(ordem, num, "v412", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_" + nome] = (okn is False)
+@@ -653 +654 @@
+-    okn, _ = recibo_do_app(ordem, num, "v411", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_relatorio_anterior_a_ordem"] = (okn is False)
++    okn, _ = recibo_do_app(ordem, num, "v412", pin, app=out / "app", work=out / "work", tunel=out / "tunel"); res["negativo_relatorio_anterior_a_ordem"] = (okn is False)
+@@ -656 +657 @@
+-    (ORQ / "ENSAIO_S10_v411.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
++    (ORQ / "ENSAIO_S10_v412.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+@@ -665 +666 @@
+-    print("PLANO do orquestrador pos_treino_v411 (nada é executado); ordem do operador: %s (sha16 %s, conferido contra o arquivo); tempos lidos (build, Audit, rito v410): %s" % (ORDEM.name, _conferir_ordem(), _tempos_lidos()))
++    print("PLANO do orquestrador pos_treino_v412 (nada é executado); ordem do operador: %s (sha16 %s, conferido contra o arquivo); tempos lidos (build, Audit, rito v411): %s" % (ORDEM.name, _conferir_ordem(), _tempos_lidos()))
+@@ -668,6 +669,6 @@
+-    pr = PK / "PREPARACAO_v411_PRONTA.json"; rv = REV
+-    print("PREPARACAO_v411_PRONTA.json:", ("pronta=%s" % jload(pr).get("pronta")) if pr.exists() else "ausente")
+-    print("REVISAO_TERCEIRO_v411.json:", ("aprovada=%s candidato=%s" % (jload(rv).get("aprovada"), jload(rv).get("candidato_sha16"))) if rv.exists() else "ausente")
+-    faltam = [str(x) for x in (ORDEM, PK / "instalar_v411.py", PK / "rito_v411.sh", PK / "pos_rito" / "chain_pos_rito_v411.sh", PK / "bancada_B3_servico" / "recibo_parada_v411.py", PK / "bancada_B3_servico" / "recibo_religamento_v411.py", PK / "bancada_B3_servico" / "evento_c1_b3_v411.py", PK / "um_v411_candidato.py", PK / "ESPERADOS_v411.json") if not Path(x).exists()]
+-    if len([p for p in (PK / "pos_rito").glob("textos_custodia_handoff_v411*.py") if p.suffix == ".py"]) != 1:   # (MEDIO 2 da revisao R1, 05/11: o mesmo glob do S6d)
+-        faltam.append(str(PK / "pos_rito" / "textos_custodia_handoff_v411*.py") + " (S6d, D52: exatamente um, sufixo .py)")
++    pr = PK / "PREPARACAO_v412_PRONTA.json"; rv = REV
++    print("PREPARACAO_v412_PRONTA.json:", ("pronta=%s" % jload(pr).get("pronta")) if pr.exists() else "ausente")
++    print("REVISAO_TERCEIRO_v412.json:", ("aprovada=%s candidato=%s" % (jload(rv).get("aprovada"), jload(rv).get("candidato_sha16"))) if rv.exists() else "ausente")
++    faltam = [str(x) for x in (ORDEM, PK / "instalar_v412.py", PK / "rito_v412.sh", PK / "pos_rito" / "chain_pos_rito_v412.sh", PK / "bancada_B3_servico" / "recibo_parada_v412.py", PK / "bancada_B3_servico" / "recibo_religamento_v412.py", PK / "bancada_B3_servico" / "evento_c1_b3_v412.py", PK / "um_v412_candidato.py", PK / "ESPERADOS_v412.json") if not Path(x).exists()]
++    if len([p for p in (PK / "pos_rito").glob("textos_custodia_handoff_v412*.py") if p.suffix == ".py"]) != 1:   # (MEDIO 2 da revisao R1, 05/11: o mesmo glob do S6d)
++        faltam.append(str(PK / "pos_rito" / "textos_custodia_handoff_v412*.py") + " (S6d, D52: exatamente um, sufixo .py)")
+@@ -699 +700 @@
+-# ---------------------------------------------------------------- S9_gatilho_custodia (ADITIVO 1 a ordem do conserto unico, gerencia c1, 10/11/2026: a custodia da v411 e' AUTOMATICA, por ordem do operador a sessao de custodia)
++# ---------------------------------------------------------------- S9_gatilho_custodia (ADITIVO 1 a ordem do conserto unico, gerencia c1, 10/11/2026: a custodia da v412 e' AUTOMATICA, por ordem do operador a sessao de custodia)
+@@ -701,2 +702,2 @@
+-GATILHO = PK / "ORDEM_HANDOFF_CUSTODIA_v411.md"   # o arquivo-gatilho que a sessao de custodia espera
+-REGRA_PERMANENTE = CEN / "work" / "php_e_v396_22out" / "OPERADOR_23out_custodiar_quando_o_handoff_aparecer_verbatim.txt"   # (D174) a regra permanente do operador de 23/10 que a custodia da v411 segue (SEM --ordem)
++GATILHO = PK / "ORDEM_HANDOFF_CUSTODIA_v412.md"   # o arquivo-gatilho que a sessao de custodia espera
++REGRA_PERMANENTE = CEN / "work" / "php_e_v396_22out" / "OPERADOR_23out_custodiar_quando_o_handoff_aparecer_verbatim.txt"   # (D174) a regra permanente do operador de 23/10 que a custodia da v412 segue (SEM --ordem)
+@@ -704 +705 @@
+-ORDEM_DO_CONTEUDO = CEN / "work" / "cunhagens_13out" / _DL.FALA_TESTEMUNHO_V411["nome"]   # (D174) a ordem do CONTEUDO desta versao (D170): o resultado no README e no topo do resumo; citada por arquivo e sha16, NAO passada em --ordem
++ORDEM_DO_CONTEUDO = CEN / "work" / "cunhagens_13out" / _DL.FALA_TESTEMUNHO_V412["nome"]   # (D174) a ordem do CONTEUDO desta versao (D170): o resultado no README e no topo do resumo; citada por arquivo e sha16, NAO passada em --ordem
+@@ -706,6 +707,6 @@
+-DIVISAO_0411 = CEN / "work" / "cunhagens_13out" / "OPERADOR_04nov_custodia_e_da_sessao_de_custodia_c1_so_um_py_verbatim.txt"   # a divisao de 04/11 (como na v410)
+-SECAO_README_V411 = "**README: o que fica evidente (v411)**"   # a secao que o S6d poe antes dos textos da abertura (textos_custodia_handoff_v411.SECAO_README)
+-
+-
+-def _marcadores_v411():
+-    """os marcadores que o HANDOFF da v411 tem de trazer: os sete da prosa da G1 e os da abertura do H0DN (a lista da custodia, custodia_g1.h0dn.TODOS, e os dois extras), lidos dos modulos, nunca digitados."""
++DIVISAO_0411 = CEN / "work" / "cunhagens_13out" / "OPERADOR_04nov_custodia_e_da_sessao_de_custodia_c1_so_um_py_verbatim.txt"   # a divisao de 04/11 (como na v411)
++SECAO_README_V412 = "**README: o que fica evidente (v412)**"   # a secao que o S6d poe antes dos textos da abertura (textos_custodia_handoff_v412.SECAO_README)
++
++
++def _marcadores_v412():
++    """os marcadores que o HANDOFF da v412 tem de trazer: os sete da prosa da G1 e os da abertura do H0DN (a lista da custodia, custodia_g1.h0dn.TODOS, e os dois extras), lidos dos modulos, nunca digitados."""
+@@ -714 +715 @@
+-    import blocos_custodia_v411 as _BC
++    import blocos_custodia_v412 as _BC
+@@ -738 +739 @@
+-        esp = jload(pk / "ESPERADOS_v411.json"); core = jload(nos / "um_absoluto.json")["core"]
++        esp = jload(pk / "ESPERADOS_v412.json"); core = jload(nos / "um_absoluto.json")["core"]
+@@ -741,2 +742,2 @@
+-        if selo.get("um_version") != "v411":
+-            motivos.append("o selo do Nos nao e' o da v411: %r" % (selo.get("um_version"),))
++        if selo.get("um_version") != "v412":
++            motivos.append("o selo do Nos nao e' o da v412: %r" % (selo.get("um_version"),))
+@@ -749 +750 @@
+-        if not (isinstance(gate, str) and gate and gate == selo.get("qg_closure_verdict") == esp.get("qg_closure_gate_verdict_v410")):
++        if not (isinstance(gate, str) and gate and gate == selo.get("qg_closure_verdict") == esp.get("qg_closure_gate_verdict_v411")):
+@@ -755 +756 @@
+-        linhas = (nos / "rodada_v411_stdout.txt").read_text(encoding="utf-8", errors="replace").rstrip().splitlines()
++        linhas = (nos / "rodada_v412_stdout.txt").read_text(encoding="utf-8", errors="replace").rstrip().splitlines()
+@@ -762 +763 @@
+-        d["rito_h0"], d["rito_h1"] = (pk / "rito_horarios_v411.txt").read_text(encoding="utf-8").split()[:2]
++        d["rito_h0"], d["rito_h1"] = (pk / "rito_horarios_v412.txt").read_text(encoding="utf-8").split()[:2]
+@@ -765 +766 @@
+-        motivos.append("os horarios do rito (rito_horarios_v411.txt) nao foram lidos")
++        motivos.append("os horarios do rito (rito_horarios_v412.txt) nao foram lidos")
+@@ -771 +772 @@
+-        hp = nos / "HANDOFF_v411_CUSTODIA.md"
++        hp = nos / "HANDOFF_v412_CUSTODIA.md"
+@@ -776 +777 @@
+-            h = _NOSG1.ler_handoff(types.SimpleNamespace(NOS=nos, CEN=cen_g1), "v411"); corpos = dict(h.corpos)
++            h = _NOSG1.ler_handoff(types.SimpleNamespace(NOS=nos, CEN=cen_g1), "v412"); corpos = dict(h.corpos)
+@@ -779,2 +780,2 @@
+-            prosa, abert = _marcadores_v411(); d["marcadores"] = list(prosa) + list(abert)
+-            sem = ["%s_v411" % i for i in prosa + abert if not corpos.get("%s_v411" % i, "").strip()]
++            prosa, abert = _marcadores_v412(); d["marcadores"] = list(prosa) + list(abert)
++            sem = ["%s_v412" % i for i in prosa + abert if not corpos.get("%s_v412" % i, "").strip()]
+@@ -783 +784 @@
+-            i0 = h.texto.find(SECAO_README_V411); i1 = h.texto.find("<!-- INICIO_%s_v411 -->" % abert[0])
++            i0 = h.texto.find(SECAO_README_V412); i1 = h.texto.find("<!-- INICIO_%s_v412 -->" % abert[0])
+@@ -785 +786 @@
+-                motivos.append("a secao «README: o que fica evidente (v411)» nao esta' no HANDOFF, ou os textos da abertura nao vem depois dela")
++                motivos.append("a secao «README: o que fica evidente (v412)» nao esta' no HANDOFF, ou os textos da abertura nao vem depois dela")
+@@ -787 +788 @@
+-            if not (o and o.versao == "v411" and o.pin16 == pin and o.rc0 and o.selftest_passou and o.gate_intocado and o.completa and o.escada == "%s/%s" % tuple(d.get("escada") or ("?", "?"))):
++            if not (o and o.versao == "v412" and o.pin16 == pin and o.rc0 and o.selftest_passou and o.gate_intocado and o.completa and o.escada == "%s/%s" % tuple(d.get("escada") or ("?", "?"))):
+@@ -793 +794 @@
+-        rp = pk / "pos_rito" / "RECIBO_TEXTOS_CUSTODIA_HANDOFF_v411.json"; rec = jload(rp); d["recibo_sha16"] = sha16(rp)
++        rp = pk / "pos_rito" / "RECIBO_TEXTOS_CUSTODIA_HANDOFF_v412.json"; rec = jload(rp); d["recibo_sha16"] = sha16(rp)
+@@ -798 +799 @@
+-        dif = [i for i in d.get("marcadores") or [] if corpos.get("%s_v411" % i, "").strip("\n") != tx.get(i)]
++        dif = [i for i in d.get("marcadores") or [] if corpos.get("%s_v412" % i, "").strip("\n") != tx.get(i)]
+@@ -802 +803 @@
+-        sujos = [i for i in d.get("marcadores") or [] if not (isinstance(g.get(i), dict) and g[i].get("guarda_frases_v411") == [] and g[i].get("portao_g1") == [] and g[i].get("forma") == [] and g[i].get("custodia_h0dn", []) == [])]
++        sujos = [i for i in d.get("marcadores") or [] if not (isinstance(g.get(i), dict) and g[i].get("guarda_frases_v412") == [] and g[i].get("portao_g1") == [] and g[i].get("forma") == [] and g[i].get("custodia_h0dn", []) == [])]
+@@ -805 +806 @@
+-        if not (d["arco_pt"] and d["arco_pt"] == corpos.get("ARCO_PT_v411", "").strip("\n")):
++        if not (d["arco_pt"] and d["arco_pt"] == corpos.get("ARCO_PT_v412", "").strip("\n")):
+@@ -811 +812 @@
+-        rvp = pk / "revisao_terceiro" / "REVISAO_TERCEIRO_v411.json"; rv = jload(rvp)
++        rvp = pk / "revisao_terceiro" / "REVISAO_TERCEIRO_v412.json"; rv = jload(rvp)
+@@ -835 +836 @@
+-    """O texto do gatilho, pelo molde da v410 (work/cadeia_de_selo/v410/ORDEM_HANDOFF_CUSTODIA_v410.md: as mesmas secoes); todo valor vem de `d` (lido por _gatilho_ler)."""
++    """O texto do gatilho, pelo molde da v411 (work/cadeia_de_selo/v411/ORDEM_HANDOFF_CUSTODIA_v411.md: as mesmas secoes); todo valor vem de `d` (lido por _gatilho_ler)."""
+@@ -838,2 +839,2 @@
+-    L = ["# ORDEM DE HANDOFF DA GERÊNCIA c1 À SESSÃO DE CUSTÓDIA — v411 SELADA (%s)" % hoje.strftime("%d/%m/%Y"), "",
+-         "> Para a sessão de custódia (o papel que fez a custódia da v410 pelo G1). Escrita pelo orquestrador da v411 (passo S9_gatilho_custodia), por ordem da gerência c1: a custódia desta versão é automática (a regra do operador de custodiar sempre que o handoff aparecer, e a ordem de 12/11/2026 de pôr o resultado no README), "
++    L = ["# ORDEM DE HANDOFF DA GERÊNCIA c1 À SESSÃO DE CUSTÓDIA — v412 SELADA (%s)" % hoje.strftime("%d/%m/%Y"), "",
++         "> Para a sessão de custódia (o papel que fez a custódia da v411 pelo G1). Escrita pelo orquestrador da v412 (passo S9_gatilho_custodia), por ordem da gerência c1: a custódia desta versão é automática (a regra do operador de custodiar sempre que o handoff aparecer, e a ordem de 12/11/2026 de pôr o resultado no README), "
+@@ -848 +849 @@
+-         "- Selo do Nós **v411** (timestamp %s; `%s`; `%s`); `um.py` sha16 **`%s`** (%d B); escada **%s/%s**; gate intocado (`%s…`)." % (d["selo_ts"], d["selftest"], d["trailer"], d["pin"], d["um_bytes"], d["escada"][0], d["escada"][1], d["gate"][:60]),
++         "- Selo do Nós **v412** (timestamp %s; `%s`; `%s`); `um.py` sha16 **`%s`** (%d B); escada **%s/%s**; gate intocado (`%s…`)." % (d["selo_ts"], d["selftest"], d["trailer"], d["pin"], d["um_bytes"], d["escada"][0], d["escada"][1], d["gate"][:60]),
+@@ -850,2 +851,2 @@
+-         "- `Nós\\HANDOFF_v411_CUSTODIA.md` (%d B, sha16 `%s`) com os sete textos da prosa, a seção “README: o que fica evidente (v411)” e os %d textos sob marcador (o painel do topo, `README_PAINEL_H0DN_v411`, tem %d bytes em UTF-8; a fórmula: %s); "
+-         "recibo `work\\cadeia_de_selo\\v411\\pos_rito\\RECIBO_TEXTOS_CUSTODIA_HANDOFF_v411.json` (sha16 `%s`); o portão do G1 rodou sobre o HANDOFF INTEIRO no S6d: limpo." % (d["handoff_bytes"], d["handoff_sha16"], len(d.get("marcadores") or []), d["rf_bytes"],
++         "- `Nós\\HANDOFF_v412_CUSTODIA.md` (%d B, sha16 `%s`) com os sete textos da prosa, a seção “README: o que fica evidente (v412)” e os %d textos sob marcador (o painel do topo, `README_PAINEL_H0DN_v412`, tem %d bytes em UTF-8; a fórmula: %s); "
++         "recibo `work\\cadeia_de_selo\\v412\\pos_rito\\RECIBO_TEXTOS_CUSTODIA_HANDOFF_v412.json` (sha16 `%s`); o portão do G1 rodou sobre o HANDOFF INTEIRO no S6d: limpo." % (d["handoff_bytes"], d["handoff_sha16"], len(d.get("marcadores") or []), d["rf_bytes"],
+@@ -853,2 +854,2 @@
+-         "- O orquestrador da v411 NÃO tem S7 (G1 --publicar) nem S10 (release do app): a cadeia termina no handoff; a custódia é sua.",
+-         "- Revisão de terceiro: `work\\cadeia_de_selo\\v411\\revisao_terceiro\\REVISAO_TERCEIRO_v411.json` (sha16 `%s`), aprovada sobre o candidato `%s`; revisor: %s%s." % (d["rev_sha16"], d["pin"], d["rev_revisor"], rev_n), "",
++         "- O orquestrador da v412 NÃO tem S7 (G1 --publicar) nem S10 (release do app): a cadeia termina no handoff; a custódia é sua.",
++         "- Revisão de terceiro: `work\\cadeia_de_selo\\v412\\revisao_terceiro\\REVISAO_TERCEIRO_v412.json` (sha16 `%s`), aprovada sobre o candidato `%s`; revisor: %s%s." % (d["rev_sha16"], d["pin"], d["rev_revisor"], rev_n), "",
+@@ -858,3 +859,3 @@
+-         "1. `custodiar.py planejar --versao v411 --seco` → `custodiar.py executar --versao v411 --publicar` → `custodiar.py auditar --versao v411`. Vale a regra permanente de 23/10; não se passa ordem por argumento. Nunca `--aceitar-molde`; não editar insumos.",
+-         "2. O README do espelho e os geradores do estatuto, pelos marcadores da abertura do H0DN × BG1 no handoff (NOTA_EN, os seis README_*, os onze ESTATUTO_*); a linha EN do H0DN na parte do Clay (`README_H0DN_EN_v411`) e o texto do X (`X_TEXTO_v411`) vão ao lado, fora da lista da G1.",
+-         "3. A release v411 do app, os dispositivos, a Central, o site e os links pelo G1.",
++         "1. `custodiar.py planejar --versao v412 --seco` → `custodiar.py executar --versao v412 --publicar` → `custodiar.py auditar --versao v412`. Vale a regra permanente de 23/10; não se passa ordem por argumento. Nunca `--aceitar-molde`; não editar insumos.",
++         "2. O README do espelho e os geradores do estatuto, pelos marcadores da abertura do H0DN × BG1 no handoff (NOTA_EN, os seis README_*, os onze ESTATUTO_*); a linha EN do H0DN na parte do Clay (`README_H0DN_EN_v412`) e o texto do X (`X_TEXTO_v412`) vão ao lado, fora da lista da G1.",
++         "3. A release v412 do app, os dispositivos, a Central, o site e os links pelo G1.",
+@@ -866 +867 @@
+-         "— gerência c1, pelo orquestrador da v411 (passo S9_gatilho_custodia), %s." % hoje.strftime("%d/%m/%Y"), ""]
++         "— gerência c1, pelo orquestrador da v412 (passo S9_gatilho_custodia), %s." % hoje.strftime("%d/%m/%Y"), ""]
+@@ -871 +872 @@
+-    """S9_gatilho_custodia (ADITIVO 1, 10/11/2026): o passo FINAL, depois de tudo. Escreve o gatilho da custodia (ORDEM_HANDOFF_CUSTODIA_v411.md) SO' SE todos os passos anteriores estiverem feitos e verdadeiros, o HANDOFF existir no Nos
++    """S9_gatilho_custodia (ADITIVO 1, 10/11/2026): o passo FINAL, depois de tudo. Escreve o gatilho da custodia (ORDEM_HANDOFF_CUSTODIA_v412.md) SO' SE todos os passos anteriores estiverem feitos e verdadeiros, o HANDOFF existir no Nos
+@@ -885 +886 @@
+-            import guarda_frases_v411 as _GF   # as mesmas guardas dos textos da custodia: a guarda das frases da v411 e o portao do G1 (os hashes conhecidos sao os do proprio texto, lidos por script)
++            import guarda_frases_v412 as _GF   # as mesmas guardas dos textos da custodia: a guarda das frases da v412 e o portao do G1 (os hashes conhecidos sao os do proprio texto, lidos por script)
+@@ -891,2 +892,2 @@
+-            if re.search(r"--ordem\b", txt):   # (D174: a custodia da v411 roda sem --ordem; o gatilho que o traga e' recusado)
+-                viol.append("D174: o gatilho traz --ordem (a custodia da v411 roda sem ele, pela regra permanente de 23/10)")
++            if re.search(r"--ordem\b", txt):   # (D174: a custodia da v412 roda sem --ordem; o gatilho que o traga e' recusado)
++                viol.append("D174: o gatilho traz --ordem (a custodia da v412 roda sem ele, pela regra permanente de 23/10)")
+@@ -903 +904 @@
+-        log("S9_gatilho_custodia: o gatilho da custodia foi escrito (%s; %d B): a custodia da v411 e' da sessao de custodia" % (destino, len(b)))
++        log("S9_gatilho_custodia: o gatilho da custodia foi escrito (%s; %d B): a custodia da v412 e' da sessao de custodia" % (destino, len(b)))
+@@ -911 +912 @@
+-    md = ["# RELATÓRIO PÓS-TREINO v411 — orquestrador da gerência c1", "", "Ordem do operador: `%s`" % ORDEM.name, "", "| passo | ok | quando | dados |", "|---|---|---|---|"]
++    md = ["# RELATÓRIO PÓS-TREINO v412 — orquestrador da gerência c1", "", "Ordem do operador: `%s`" % ORDEM.name, "", "| passo | ok | quando | dados |", "|---|---|---|---|"]
+@@ -915,2 +916,2 @@
+-    (ORQ / "RELATORIO_POS_TREINO_v411.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+-    (ORQ / "RELATORIO_POS_TREINO_v411.json").write_text(json.dumps(e, ensure_ascii=False, indent=1), encoding="utf-8")
++    (ORQ / "RELATORIO_POS_TREINO_v412.md").write_text("\n".join(md) + "\n", encoding="utf-8")
++    (ORQ / "RELATORIO_POS_TREINO_v412.json").write_text(json.dumps(e, ensure_ascii=False, indent=1), encoding="utf-8")
+@@ -919 +920 @@
+-                        "--dados", json.dumps({"orquestrador": str(ORQ / "RELATORIO_POS_TREINO_v411.json"), "passos_ok": [k for k, v in p.items() if v.get("ok")], "passos_falhos": [k for k, v in p.items() if v.get("ok") is False]}, ensure_ascii=False)],
++                        "--dados", json.dumps({"orquestrador": str(ORQ / "RELATORIO_POS_TREINO_v412.json"), "passos_ok": [k for k, v in p.items() if v.get("ok")], "passos_falhos": [k for k, v in p.items() if v.get("ok") is False]}, ensure_ascii=False)],
+@@ -923 +924 @@
+-    log("relatório gravado: %s" % (ORQ / "RELATORIO_POS_TREINO_v411.md"))
++    log("relatório gravado: %s" % (ORQ / "RELATORIO_POS_TREINO_v412.md"))
+@@ -941 +942 @@
+-            try:   # a nativa não depende da v411: a cadeia pode ter parado no meio
++            try:   # a nativa não depende da v412: a cadeia pode ter parado no meio

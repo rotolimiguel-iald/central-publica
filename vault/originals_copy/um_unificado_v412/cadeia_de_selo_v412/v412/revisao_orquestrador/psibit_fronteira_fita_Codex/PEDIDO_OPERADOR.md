@@ -1,0 +1,1 @@
+agora vamos ao ponto que falta: use o PsiBit para preservar a relação entre os dois ramos sem multiplicar as cláusulas e tente provar em Lean que a leitura da Palavra tem custo polinomial na fita para toda fórmula. veja o que o kimi derivou e como isso pode te ajudar C:/IALD/Central de Patentes/work/cadeia_de_selo/v412/candidatas_kimi/NOTA_A_COMPRESSAO_E_O_PSIBIT_17nov.md

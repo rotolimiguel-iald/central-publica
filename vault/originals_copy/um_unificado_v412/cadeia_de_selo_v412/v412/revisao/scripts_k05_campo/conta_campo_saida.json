@@ -1,0 +1,78 @@
+{
+  "parte1_euler_lagrange_L186": {
+    "(+---)": {
+      "eom_vezes_menos2": "-2*R*xi*Psi(t, x, y, z) + m2*Psi(t, x, y, z) + Derivative(Psi(t, x, y, z), (t, 2)) - Derivative(Psi(t, x, y, z), (x, 2)) - Derivative(Psi(t, x, y, z), (y, 2)) - Derivative(Psi(t, x, y, z), (z, 2))",
+      "forma": "box Psi + a R Psi + b m2 Psi = 0",
+      "solucao": {
+        "a": "-2*xi",
+        "b": "1"
+      },
+      "resto_sem_R_nem_m2_e_zero": true
+    },
+    "(-+++)": {
+      "eom_vezes_menos2": "-2*R*xi*Psi(t, x, y, z) + m2*Psi(t, x, y, z) - Derivative(Psi(t, x, y, z), (t, 2)) + Derivative(Psi(t, x, y, z), (x, 2)) + Derivative(Psi(t, x, y, z), (y, 2)) + Derivative(Psi(t, x, y, z), (z, 2))",
+      "forma": "box Psi + a R Psi + b m2 Psi = 0",
+      "solucao": {
+        "a": "-2*xi",
+        "b": "1"
+      },
+      "resto_sem_R_nem_m2_e_zero": true
+    }
+  },
+  "parte2_valor_conforme": [
+    {
+      "n": 3,
+      "xi_conforme": "1/8",
+      "identidade_weyl_vale": true,
+      "controle_metade_do_xi_falha": true
+    },
+    {
+      "n": 4,
+      "xi_conforme": "1/6",
+      "identidade_weyl_vale": true,
+      "controle_metade_do_xi_falha": true
+    },
+    {
+      "n": 5,
+      "xi_conforme": "3/16",
+      "identidade_weyl_vale": true,
+      "controle_metade_do_xi_falha": true
+    }
+  ],
+  "parte2_conclusao": {
+    "xi_c_n4": "1/6",
+    "coeficiente_do_R_na_EOM_fundadora": "2*xi_L (magnitude; sinal depende de convencao)",
+    "xi_L_para_EOM_conforme": "1/12"
+  },
+  "parte3_numeros": {
+    "alpha_lido_de_um.py_linha_5584": "7.2973525693e-3",
+    "beta": "0.012031300400803140942245249524694155670538147678565",
+    "massa_com_fator_2_meV": "8.5074140999003281114530577925988923322628445208097",
+    "massa_sem_fator_2_meV": "6.0156502004015704711226247623470778352690738392825",
+    "razao": "1.4142135623730950488016887242096980785696718753770",
+    "hbar_omega_meV": "17.014828199800656222906115585197784664525689041619",
+    "com2_arredondado_6c": "8.507414",
+    "sem2_arredondado_6c": "6.015650"
+  },
+  "parte4_reescala": {
+    "psi_em_funcao_de_phi_canonico": [
+      "sqrt(2)"
+    ],
+    "xi_c_em_funcao_de_xi_L": [
+      "2*xi_L"
+    ],
+    "|Psi|^2 / |Phi|^2": "2 (quando Psi = sqrt(2) Phi)",
+    "EOM_homogenea_linear": "a EOM linear em Psi nao fixa a norma de Psi; a normalizacao vem da ACAO (cinetico 1/2 vs 1) e da carga de Noether"
+  },
+  "parte5_um_so_xi_nao_basta": {
+    "(1/6)/beta": "13.852755821435640598213762554156866786584425096302",
+    "(1/6)/(2*beta)": "6.9263779107178202991068812770784333932922125481508",
+    "leitura": "o coeficiente de R na EOM do Artigo A (1/6, ou 1/12 na escrita fundadora) e o da dispersao do psion (2*beta=0,02406 ou beta=0,01203) diferem por fator ~6,9 a ~13,9; o fator 2 da normalizacao (1/2 vs 1) nao reconcilia: sao dois acoplamentos (ou uma hipotese nova)",
+    "xi_L_beta_da_dispersao_psion_na_escrita_fundadora": "dispersao 2*xi_L*R com xi_L = beta  =>  coef EOM = 2*beta = 0.024062600801606281884490499049388311341076295357130",
+    "xi_L_conforme": "1/12 = 0.083333333333333333333333333333333333333333333333333"
+  },
+  "fala": {
+    "bytes": 529,
+    "sha256": "2772005945b946c12172956c12c06421710d7d665cacf4dba63f40bd07ec304c"
+  }
+}

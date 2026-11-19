@@ -1,0 +1,751 @@
+arXiv:math-ph/0411058v2 4 Dec 2004                The Role of Type III Factors
+                                                    in Quantum Field Theory
+
+                                                                       Jakob Yngvason
+
+                                                          Institut fu�r Theoretische Physik, Universita�t Wien,
+                                                                 Boltzmanngasse 5, 1090 Vienna, Austria
+                                                                                         and
+
+                                                        Erwin Schro�dinger Institute for Mathematical Physics,
+                                                                 Boltzmanngasse 9, 1090 Vienna, Austria
+
+                                                                       Email: yngvason@thor.thp.univie.ac.at
+
+                                                                      November 9, 2004
+
+                                                                                          Abstract
+
+                                                One of von Neumann's motivations for developing the theory of operator al-
+                                            gebras and his and Murray's 1936 classification of factors was the question of
+                                            possible decompositions of quantum systems into independent parts. For quan-
+                                            tum systems with a finite number of degrees of freedom the simplest possibility,
+                                            i.e., factors of type I in the terminology of Murray and von Neumann, are per-
+                                            fectly adequate. In relativistic quantum field theory (RQFT), on the other hand,
+                                            factors of type III occur naturally. The same holds true in quantum statistical
+                                            mechanics of infinite systems. In this brief review some physical consequences
+                                            of the type III property of the von Neumann algebras corresponding to localized
+                                            observables in RQFT and their difference from the type I case will be discussed.
+                                            The cumulative effort of many people over more than 30 years has established
+                                            a remarkable uniqueness result: The local algebras in RQFT are generically iso-
+                                            morphic to the unique, hyperfinite type III1 factor in Connes' classification of
+                                            1973. Specific theories are characterized by the net structure of the collection of
+                                            these isomorphic algebras for different space-time regions, i.e., the way they are
+                                            embedded into each other.
+
+                                        John von Neumann was the father of the Hilbert space formulation of quantum me-
+                                    chanics [1] that has been the basis of almost all mathematically rigorous investigations
+                                    of the theory to this day. We start by recalling the main concepts and explaining some
+                                    notations.
+
+                                        Lecture given at the von Neumann Centennial Conference, Budapest, October 15�20, 2003
+
+                                                                                          1
+    The observables of a quantum system are self adjoint operators A = A on a com-
+plex, separable Hilbert space H. For mathematical convenience we consider only ob-
+servables in the the algebra B(H) of bounded operators on H. If  is a normalized
+vector in H, i.e., ,  = 1, where �, � denotes the scalar product on H, then the
+expectation value of an observable A is given by
+
+                                 (A) = , A .                                   (1)
+
+This is a positive, linear functional of A with (1) = 1 and  is referred to as the
+state defined by . More general states are given by density matrices :
+
+           (A) = tr(A) = i i, Ai                                               (2)
+
+                                    i
+
+where i  0 with i i = 1 are the eigenvalues and i the normalized eigenvectors of
+the positive trace class operator .
+
+    If S  B(H) then its commutant is defined as
+
+           S = {B  B(H) : [A, B] = 0 for all A  S}.                            (3)
+
+This is always a subalgebra of B(H) and if S is -invariant then so is S. Moreover,
+it is closed in the topology defined by the states. A von Neumann algebra M is a
+-subalgebra of B(H) that is equal to its double commutant, i.e.,
+
+                                 M = M.                                        (4)
+
+A basic lemma of von Neumann says that this is equivalent to the algebra being closed
+in the topology defined by the states.
+
+    In a series of four papers [2, 3, 4, 5] Murray and von Neumann studied special von
+Neumann algebras, called factors. These are the algebras M such that
+
+           M  M  {AB : A  M, B  M} = B(H),                                     (5)
+
+i.e., B(H) is "factorized" into M and its commutant, M. This is equivalent to
+
+                                 M  M = C1,                                    (6)
+
+i.e., the center of M contains only multiples of the identity operator. The mathematical
+
+problem addressed by Murray and von Neumann was to classify all possibilities for such
+
+algebras.
+
+This problem is motivated by questions of mathematical nature but also "several
+
+aspects of the quantum mechanical formalism strongly suggest the elucidation of this
+
+subject" [2]. One of these aspects is the division of a quantum system into two inde-
+
+pendent subsystems. In the simplest case this is achieved as follows. The Hilbert space
+
+is written as a tensor product,
+
+                                 H = H1  H2.                                   (7)
+
+                                 2
+The observables of one system correspond to the (self adjoint) elements of M =
+B(H1)  1 and the other to the commutant M = 1  B(H2). The observables of the
+
+total system are thus factorized:
+
+B(H) = B(H1)  B(H2).  (8)
+
+Such a factorization of the observable algebra of the total system based on a tensor
+product factorization of the underlying Hilbert space is, in the terminology of Murray
+and von Neumann, the Type I case. It is characterized by the existence of minimal
+projections in M: If   H1 and E = | | is the corresponding projection on the
+one-dimensional subspace of H1 generated by , then
+
+E = E  1  M           (9)
+
+is a minimal projection, i.e., it has no proper subprojections in M.
+    The other extreme is the Type III case. Here for every non-zero projection E  M
+
+there exists a W  M which maps EH isometrically onto H, i.e.
+
+W W = 1 , W W  = E.   (10)
+
+Von Neumann himself knew only sporadic examples of type III factors and he may, in
+fact, not have been fully aware of their significance. He was apparently more attracted
+by the Type II case that lies between the two extremes just described: A type II
+factor has no minimal projections, but every non-zero projection E has a subprojection
+F < E that is finite in the sense that F  < F , W W = F , W W  = F  implies F  = F .
+This case, although very interesting from a mathematical point if view, is less important
+in quantum field theory than the other two and will not be discussed further here.
+
+    A finer classification of type III factors, based on Tomita-Takesaki modular theory
+[6], was pioneered by A. Connes [7]. There is a continuum of nonequivalent types,
+denoted III with 0    1, and the case III1 turns out to be of particular importance
+for relativistic quantum physics.1 The characteristic feature of type III1 is that the
+spectrum of the Tomita-Takesaki modular groups is the whole of R. Among the factors
+that are generated by an increasing family of finite dimensional subalgebras (such
+factors are called hyperfinite) there is, up to equivalence, only one factor of type III1.
+This uniqueness result is due to U. Haagerup [10].
+
+    The only case a student of quantum mechanics is likely to encounter in standard
+texts is the type I case and this is, in fact, perfectly adequate as long as one deals only
+with systems with a finite number of degrees of freedom.2 Hence it is a natural to ask
+whether the other cases are not just mathematical curiosities that a physicist need not
+bother about.
+
+    It will be argued below that it is important to keep the other possibilities in mind,
+otherwise one can be led to false physical conclusions. Investigations on the foundations
+
+    1Examples of factors of type III with 0 <  < 1 were given already in 1967 by Powers [8] and of
+type III1 by Araki and Woods in 1968 [9].
+
+    2This can be attributed to von Neumann's theorem on the uniqueness of representations of the
+canonical commutation relations for systems with a finitely many degrees of freedom.
+
+3
+of relativistic quantum field theory (RQFT) revealed already more than 40 years ago
+that the algebras generated by observables that are localized in bounded regions of
+space-time cannot be type I and that they are, in fact, generically of type III. This is far
+from being obvious but turns out to be a consequence of general physical requirements
+of RQFT. Another case where type I is excluded is the statistical physics of infinite
+systems with nonzero density [11]. In the present review we shall not discuss the latter
+but focus on the situation in RQFT.
+
+    The physical difference between the type I situation and the actual state of affairs
+in RQFT can be illustrated by an instructive gedankenexperiment due to E. Fermi [12].
+The analysis of this experiment drew considerable attention about 10 years ago (see
+[13] and [14] which contain also references to earlier literature) and papers on this
+subject have continued to appear since then (e.g., [15, 16, 17]). The standpoint taken
+in [14] and which will be explained below is that the "causality problems" associated
+with the gedankenexperiment are due to the implicit assumption that the experiment
+can be described within a type I framework which is not legitimate in RQFT.
+
+    The experiment envisaged in [12] is as follows. One considers two atoms, a and b,
+that are separated by a distance R. At time t = 0 atom a is in its ground state while
+atom b is in an excited state. Due to the decay of atom b and the emitted radiation
+absorbed by atom a, the latter will at some time t > 0 be in an excited state with
+nonzero probability. If the effect of the decay of atom b does not propagate faster than
+light, the time t time must be at least R/c, i.e., for t < R/c the state of atom a should
+be unchanged.
+
+    Let us consider first an analysis of this experiment within a "type I framework"
+which at first sight might look reasonable. In this framework the observable algebra
+for the atoms plus the radiation field is the tensor product of three type I factors:
+For the atom a the algebra is Ma = B(Ha) on a Hilbert space Ha, for atom b it is
+Mb = B(Hb) on a Hilbert space Hb and for the radiation field it is Mc = B(Hc) on a
+Hilbert space Hc. The observables for the whole system are then
+
+              B(H) = Ma  Mb  Mc                   (11)
+
+on H = Ha  Hb  Hc.
+    The initial state of system is
+
+                                    0 = a  b  c.  (12)
+
+Here a is the ground state of atom a, b an excited state of atom b and c the
+
+vacuum state of the radiation field, i.e. a state without photons. The state at time
+
+t > 0 is now
+
+              t(�) = 0(eitH � e-itH )             (13)
+
+where H is the Hamiltonian of the total system. In Fermi's original model the in-
+formation about the spatial situation, i.e., the separation R of the atom is encoded
+in the interaction part of the Hamiltonian, but this is not important for the present
+discussion.
+
+                                    4
+Within this setting the probability to find atom a excited at time t is
+
+P (t) = t(E)                                                             (14)
+
+with E = (1a - |a a|)  1b  1c where a is the ground state of a. If the signal from
+the decay of atom b propagates at most with the speed of light one might thus expect
+that P (t) = 0 for t < R/c. This, however, is at variance with an analyticity property
+that follows from a stability assumption about the Hamiltonian H. Namely, if there is
+a lower bound for the energy (i.e., if the Hamiltonian has semibounded spectrum) then
+the vector valued function t  EeitH  can, for all   H, be continued to an analytic
+function of t in the upper half plane, Im t > 0. From this follows [13]:
+
+    If t(E) = 0 for all t in some time interval, then it is identically zero.
+    Hence, if atom a becomes excited at all, then this happens immediately after t = 0.
+Does this mean that quantum mechanics predicts faster than light propagation? The
+answer to this question is definitely 'no'. The lesson is rather: The naive type I ideas
+behind the mathematical setup for the gedankenexperiment just described are flawed
+[14]. Before discussing this further we have to introduce some formalism.
+    A proper framework for analyzing causal links in space and time is relativistic
+quantum field theory. Its general principles were formulated in the setting of von
+Neumann algebras in the 60's by R. Haag, D. Kastler, H. Araki, H.J. Borchers and
+others, see [18] and [19]. The basic object of any concrete model in RQFT is a net of
+von Neumann algebras, O  M(O), on a Hilbert space H, labeled by subsets O of
+(Minkowski) space-time R4. It satisfies
+
+� Isotony: O1  O2 implies M(O1)  M(O2).
+
+    � Local commutativity: If O1 is space-like separated from O2 then
+       M(O1)  M(O2).
+
+    � Additivity: xR4 M(O0 + x)  = B(H) for all open O0.
+
+Furthermore, there is a unitary representation U(x, ) of the Poincar�e group on H
+(here x  R4 is a translation of space-time and  a Lorentz transformation) such that
+
+U (x, )M(O)U (x, )-1 = M(O + x).                                         (15)
+
+The joint spectrum of the generators of U(x, 1) (i.e., the energy-momentum spectrum)
+is a subset of the forward light cone, and there is a normalized vector   H (vacuum),
+unique up to a phase factor, that satisfies
+
+U(x, ) =                                                                 (16)
+
+for all Poincar�e transformations (x, ).
+    These general properties define a structure that is at the same time surprisingly rich
+
+and tight. Further natural properties, that can be verified in special models, restrict
+it further and lead in particular to a remarkable result, obtained through the work of
+several people in the course of more than 30 years :
+
+5
+    The local algebras M(O) (with O open and bounded) are, under physically plausi-
+
+ble assumptions, the same for all RQFTs, namely they are isomorphic to the unique
+
+hyperfinite type III1 factor.
+    Let us note some consequences of the type III property. First, since every projection
+
+E  M(O) can be written as W W  with an isometry W  M(O) the mathematical
+
+structure is consistent with the idea that we can change any state  into an eigenstate
+
+of E by a specific local operation without disturbing it in the causal complement:
+    Define W (A) = (W AW ). Then
+
+     W (E) = (W W W W ) = (1) = 1     (17)
+
+but
+
+     W (B) = (W BW ) = (W W B) = (B)  (18)
+
+for B  M(O).
+    The more refined type III1 property implies even more: Every state  can be
+
+approximated by W for a fixed  and suitable W , arbitrarily well in the norm topology.
+In other words: Every state can be prepared locally, with arbitrary precision, from any
+other state. Closely related is the fact that a local observable algebra M(O) has no
+pure states, i.e., for every  there are 1 and 2, different from , such that
+
+     (A)  =  1  1(A)  +  1  2(A)      (19)
+             2           2
+
+for all A  M(O). On the other hand every state on M(O) is a vector state, i.e., for
+every  there is a (non-unique!)   H such that
+
+     (A) = , A                        (20)
+
+for all A  M(O).
+    After this interlude let us now return to Fermi's gedankenexperiment in light of the
+
+differences between the type I and type III situations. The analysis of [13], that seemed
+to indicate superluminal propagation, was independent of any details of the model and
+rested entirely on two assumptions: Stability, i.e., a lower bound for the energy, and the
+formula (14) for the excitation probability of atom a. While the stability assumption
+is not put to question the interpretation of (14) as an effect of atom b turns out to be
+at variance with basic principles of RQFT. A correct measure of the effect that takes
+these principles into account is perfectly causal.
+
+    In order to discuss the experiment within the general framework of RQFT (but
+independently of any specific model) one replaces the observable algebra Ma for atom
+a by a local algebra M(Oa). Here Oa  R4 is a of the form Ra � {0} where Ra  R3
+is a small ball where atom a (more precisely, its center of mass) is localized.3 We also
+include in the algebra M(Oa) the observables of the electromagnetic field in Oa (i.e., a
+
+    3Strictly speaking one should replace {0} by a small time interval that takes into account the
+possibility that the observables might need a smearing in time to be well defined. This would lead to
+the appearance of a few 's in the formulas below but otherwise this point is not significant and for
+simplicity of notation we shall ignore it.
+
+                6
+part of what was previously denoted Mc). In the same way we replace Mb (and part
+
+of Mc) by a local algebra M(Ob) with Ob = Rb � {0} where the ball Rb is a distance
+
+R apart from Ra.
+
+The first thing to realize is that in order to measure a possible effect in Ra of the
+
+decay of atom b in Rb one must compare two states of the total system. In the first
+
+state, denoted 0, atom b is at t = 0 present in Rb and in an excited state. The second
+state, denoted 0(0), describes the situation where atom b is in its ground state (or
+
+absent). In both cases the situation outside Rb is at t = 0 is given by the ground state
+
+of atom a (with center of mass in Ra). In other words: The states 0 and 0(0) can, at
+
+t = 0, not be distinguished from the ground state of a by measurements outside of Rb
+
+but they differ with respect to measurements inside Rb.4 With time the states evolve,
+respectively, into t and t(0). (For the sake of comparison with [13] we use here the
+
+Schr�odinger picture.)
+
+What does it mean to say that the state t looks like t(0) in Ra, i.e., the situation
+
+in Ra is still unexcited after a time span t > 0? The answer is straightforward: The
+state t should be indistinguishable from t(0) for all measurements carried out in Ra
+
+which means that        t(A) = t(0)(A) for all A  M(Oa).
+
+                                                          (21)
+
+The proper measure for the effect of the decay of atom b on the state in Ra is thus
+obtained by considering the deviation of t from t(0) with respect to all measurements
+that can be made in Ra, i.e.,
+
+                        D(t) = sup     t(A) - t(0)(A) .   (22)
+
+                        AM(Oa); A 1
+
+    At t = 0 we not only have D(0) = 0 but, by the definition of 0 and 0(0), also
+0(A) - 0(0)(A) = 0 for all A localized at a distance < R from Ra. In relativistic
+quantum field theories satisfying the axiom of primitive causality [21]5 this implies
+that D(t) vanishes for t < R/c where R is the spatial distance between Ra and Rb.
+(See Figure 1.) Hence there is no causality violation.
+
+    In the type I scenario, on the other hand, the excitation probability was written
+as P (t) = t(E) with a projection E and this expression cannot vanish on an interval
+unless it vanishes identically. But since the observable algebra M(Oa) is type III
+there simply is no projection whose non-vanishing expectation value in t implies a
+non-vanishing D(t).
+
+    It is instructive to elaborate a little more on this point, in particular in view of the
+fact that 0 restricted to M(Oa) is given by a (non-unique) vector   H, cf. Eq.(20).
+
+    4It may be necessary to leave the state unspecified in a small neigborhood of the boundary of Rb,
+cf. the subsequent discussion of the "split property". But since this neigbourhood can be arbitrarily
+small this point is not relevant for the causality issue.
+
+    5In the present context this means the following. Let O = R � {0} with R  R3. Then the von
+Neumann algebra M(O) is the same as the algebra M(O^) where O^ is the causal closure of O. These
+are the space-time points that are space-like with respect to all points that are space-like with respect
+to O.
+
+                                    7
+                 time                      2 (B)= (20)(B)
+
+2 (A)= (20)(A)
+
+                   R/c
+
+1 (A)= (10)(A)                             1 (B)= (10)(B)
+
+                                     R     0 (B)= (00)(B)  space
+0 (A)= (00)(A)
+
+Figure 1: Space-time diagram illustrating that the situation in Rb at t = 0 does not
+influence Ra for t < R/c.
+
+The projection on the orthogonal complement of , E = 1 - | |, might appear to
+be a candidate for an operator to test the "excitation" in region Ra. This, however, is
+in error because E is not in M(Oa) and hence D(t) can well be zero even if t(E) > 0.
+The type I situation is different because there one can take E  Ma and t(0)(E) = 0
+for all t. But if nothing is known about the localization of E, even a nonvanishing
+difference t(E) - t(0)(E) does not imply any causality violation.
+
+    As will be discussed further below, it can in fact be expected that E belongs to some
+M(O) with O slightly larger than Oa. Then causality requires that t(E)-t(0)(E) = 0
+for t < R/c for some R slightly smaller than R. This is perfectly compatible with the
+principles of RQFT. It is important to note that the purported "cause" for t(E) > 0,
+i.e., the initial excitation of atom b, is not present in the state 0(0), by definition of
+that state. But if t(E) > 0 and t(E) - t(0)(E) = 0 then also t(0)(E) > 0. Hence
+a nonvanishing expectation value t(E) can certainly not be attributed to a decay of
+atom b.
+
+    The last point becomes even more obvious if we simplify the experiment by dropping
+a altogether and take 0(0) to be the vacuum state which is time invariant. Since
+t(E) - 0(0)(E) = 0 for t < R/c we see that t(E) is equal to the constant 0(0)(E) > 0
+for t < R/c. 6 The fact that the vacuum expectation value of any local, nonzero
+
+    6Note that, in contrast to the vector valued function Ee-itH , the expectation value t(E) can
+not be analytically continued to complex t (it involves both e-itH and eitH ) and can therefore well be
+constant on a whole interval without being constant everywhere.
+
+                                        8
+projection is > 0 is a consequence of the Reeh-Schlieder theorem [20] which states
+that the vacuum vector (or more generally, any analytic vector for the energy) is cyclic
+and separating for all M(O). It is clearly not reasonable to attribute such vacuum
+fluctuations to some acausal propagation of signals.
+
+    We now leave the discussion of Fermi's gedankenexperiment and turn to the general
+structure of the local algebras of RQFT, starting with a brief account of some historic
+milestones.
+
+    After early discussions on the structure of local algebras by Haag and Schroer
+(1962) [21], Kadison (1963) [22] and Guenin and Misra (1963) [23], Araki proved in
+(1963�1964) [24, 25, 26] that the local algebras for relativistic free fields are type
+III factors. This establishes the same property also for interacting fields with local
+algebras equivalent to those of the free field (i.e., theories satisfying local normality).
+The relativistic structure is crucial here because in non-relativistic quantum field theory
+the local algebras are type I.
+
+    An important general result that almost establishes the type III property using
+only the basic premises of RQFT was obtained by Borchers (1967) [27]: For O  R4
+open and bounded and  > 0 define
+
+O = (O + x) .  (23)
+
+|x|<
+
+Then every projection E  M(O) can be written as W W  with W  M(O) and
+W W = 1.
+
+    In 1967 Powers gave explicit examples of a continuum of nonequivalent type III
+factors, derived from quantum statistical mechanics. These were the first new examples
+of type III factor since von Neumann's paper [4]. Araki and Woods took in 1968 the
+first steps towards the finer classification of type III factors and gave an example of
+type III1. This development culminated in Connes's classification in 1973 [7] based on
+Tomita-Takesaki modular theory.
+
+    For the algebras corresponding to space-like wedges (these are unbounded domains,
+generated by two light rays) Driessler [28, 29] used modular theory to prove that they
+are of type type III1. See also [30] and [31] for more general results along these lines. For
+the wedge algebras the fundamental papers of Bisognano and Wichmann (1975�1976)
+[32, 33] are very relevant because they allow to identify the modular group defined
+by the vacuum state with the Lorentz boosts. Building on these results but assuming
+in addition asymptotic scale invariance, Fredenhagen proved in 1985 [34] that also
+algebras corresponding to bounded domains (double cones) are type III1.
+
+    In 1987 Haagerup established the uniqueness of the hyperfinite type III1 factor.
+Buchholz, D'Antoni, Fredenhagen showed in 1987 [36] that natural assumptions on
+the size of sets of states that are approximately localized in phase space (nuclearity
+properties) lead to hyperfiniteness of the local algebras. Finally, Buchholz and Verch
+[35] in 1996 carried out a comprehensive analysis of the concept of scaling limits in
+RQFT and showed that if a model has a non-trivial scaling limit at all, then the local
+algebras are type III1 .
+
+9
+    The results of [36] on the hyperfiniteness are related to a more general analysis
+of the concept of causal independence (also called statistical independence) that sheds
+further light on the type III property of local algebras. The review article [38] contains
+a very thorough discussion of this issue and we shall here only touch upon a few points.
+Let us first define the relevant concepts.
+
+    Definitions. 1) A pair of commuting von Neumann algebras, M1 and M2, in a
+common B(H) is causally (statistically) independent if for every pair of states, 1 on
+M1 and 2 on M2, there is a state  on M1  M2 such that
+
+             (AB) = 1(A)2(B)                                    (24)
+
+for A  M1, B  M2. In other words: States can be independently prescribed on M1
+
+and M2 and extended to a common, uncorrelated state on the joint algebra. (This is
+
+really von Neumann's original concept of independent systems.)
+
+2) We say that the pair M1 and M2 has the split property if there is a type I factor
+
+M such that
+
+             M1  M  M2.                                         (25)
+
+Another way to state (25) is: There is a tensor product decomposition H = H1 H2
+
+such that
+
+             M1  B(H1)  1 , M2  1  B(H2).                       (26)
+
+In the field theoretic context causal independence and split property for local algebras
+belonging to space-like separated domains are essentially equivalent. More precisely,
+the split property clearly implies statistical independence (one can take  = 1  2),
+and conversely, statistical independence implies split property for algebras belonging
+possibly to slightly smaller domains than the original algebras [37].
+
+    Clearly it is desirable to have causal independence (and hence split property) if
+M1 = M(O) with O some bounded domain and M2 is generated by the local algebras
+M(O~) with O~ causally separated from O by some positive distance. For instance,
+in Fermi's gedankenexperiment it is implicitly taken for granted that the state in Rb
+at t = 0 can be specified independently of that in the complement of Rb (with the
+exclusion of a small neigborhood of the boundary, cf. footnote 4). Hence type I
+factors play a very important role in RQFT. It is important to note, however, that the
+idealization of strict localization still requires the local algebras to be type III, even
+if they can be nested into commuting type I factors, cf. (25), with a slightly "fuzzy"
+localization. (Note that B(H1)  1 and 1  B(H2) are not themselves local algebras
+although they can be included in local algebras belonging to slightly larger domains.)
+
+    We shall now give an example of a physical application of the split property. It
+was mentioned previously in connection with (17) �(18) that the type III property has
+consequences for the local preparation of states with prescribed properties. Combined
+with the split property a strong version of (17)�(18) emerges, and since it is easy to
+prove we include the proof here. It is a simplified version of results from [39], [40] and
+[38].
+
+             10
+Proposition (Strong local preparability). For every state  and every bounded O
+
+there is an isometry W  M(O) (with O defined by (23)) such that for an arbitrary
+
+state 
+                                           (W AW ) = (A)
+
+for all A  M(O), but
+
+                      (W BW ) = (B)
+
+for all B  M(O). In words: Every state can be prepared locally from any other
+state, with an isometry that depends only on the state to be prepared.
+
+    Proof: The split property implies that we can write M(O)  B(H1)  1,
+M(O)  1  B(H2). By the type III property of M(O) we have (A) = , A for
+A  M(O), with  = 1  2. Then E = E1  1  M(O). By the type III property
+of M(O) there is a W  M(O) with W W = 1, W W  = E. QED
+
+    In the context of C algebras a general result on statistical independence was ob-
+tained by Roos in 1974 [41]. Shortly afterward the split property was proved to hold
+for free fields by Buchholz in 1974 [37]. The concept was developed systematically in
+[42] and in [43] it was brought in connection with nuclearity properties that express
+the idea that the local density of states (measured in a suitable sense) does not increase
+too fast with the energy. This line of thought was developed further in [44, 45] and
+other papers, e.g. [46] and [47].
+
+    The upshot is that the split property is both physically motivated and has been
+proved in models. It is the basis for the hyperfiniteness of the local algebras and
+hence, in connection with [35], of the universal structure of the local algebras.
+
+Conclusions. The general postulates of quantum mechanics and (special) relativ-
+
+ity, together with assumptions about the existence of a scaling limit and bounds on the
+
+local density of states, imply a unique structure of the local algebras: They are isomor-
+
+phic to the unique, hyperfinite type III1 factor. Moreover, every one of these factors
+is contained in a type I factor that in turn is contained a local algebra of a slightly
+
+larger domain. This general structure has important physical implications. The specific
+
+properties of individual models of RQFT (particle structure, scattering cross sections,
+
+bound states, superselection charges. . . ) on the other hand, are encoded in the net
+
+structure
+
+                      O  M(O)        (27)
+
+i.e. in the way these isomorphic type III factors for different O are embedded into each
+other.
+
+    A challenge for the future, transcending von Neumann's original program, is to
+classify all such nets. The recent work of Kawahigashi and Longo [48], where this task
+is carried out for local conformal nets in two space-time dimensions and with central
+charge c < 1, is an indication that this may not be an entirely utopian vision.
+
+                      11
+    Acknowledgments I am indebted to H.J. Borchers and D. Buchholz for very
+informative discussions and to the Werner Heisenberg Institute Munich for hospitality
+during the preparation of this lecture.
+
+References
+
+ [1] J. von Neumann: Mathematische Grundlagen der Quantenmechanik , Springer,
+      Berlin 1932.
+
+ [2] F.J. Murray, J. von Neumann: "On Rings of Operators", Ann. Math. 37, 116�229
+      (1936).
+
+ [3] F.J. Murray, J. von Neumann: "On Rings of Operators II", Trans. Am. Math.
+      Soc. 41, 208�248 (1937).
+
+ [4] J. von Neumann: "On Rings of Operators III", Ann. Math. 41, 94�161 (1940).
+
+ [5] F.J. Murray, J. von Neumann: "On Rings of Operators IV", Ann. Math. 44,
+      716�808 (1943).
+
+ [6] M. Takesaki: "Tomita's Theory of Modular Hilbert Algebras and Its Applica-
+      tions", Lecture Notes in Mathematics 128, Springer, Berlin etc 1970.
+
+ [7] A. Connes: "Une classification des facteurs de type III", Ann. Sci. Ecole Norm.
+      Sup. 6, 133�252 (1973).
+
+ [8] R.T. Powers: "Representations of uniformly hyperfinite algebras and their associ-
+      ated von Neumann rings", Ann. Math.,86, 138�171 (1968).
+
+ [9] H. Araki, E.J. Woods: "A classification of factors", Publ. R.I.M.S., Kyoto Univ.
+      4, 51�130 (1968).
+
+[10] U. Haagerup: "Connes' bicentralizer problem and uniqueness of injective factors
+      of type III1", Acta Math., 158, 95�148 (1987).
+
+[11] H. Araki, E.J. Woods: "Representations of the canonical commutation relations
+      describing a non-relativistic infinite free Bose gas", J. Math. Phys. 4, 637�662
+      (1963).
+
+[12] E. Fermi: "Quantum Theory of Radiation", Rev. Mod. Phys. 4, 87�132 (1932).
+
+[13] G.C. Hegerfeldt: "Causality Problems in Fermi's Two Atom System", Phys. Rev.
+      Lett., 72, 596-599 (1994) .
+
+[14] D. Buchholz, J. Yngvason: "There Are No Causality Problems in Fermi's Two
+      Atom System", Phys. Rev. Lett. 73, 613�613 (1994).
+
+                                                      12
+[15] G.C. Hegerfeldt: "Particle Localization and the Notion of Einstein Causality",
+      in A. Horzela and E. Kapuscik (eds.): Extensions of Quantum Theory, p. 9�16,
+      Aperion, Montreal 2001.
+
+[16] E. Karpov, G. Ordonez, T. Petrovsky, I. Prigogine, G. Pronko: "Causality, delo-
+      calization and positivity of energy", Phys. Rev. A 62, 012103-1�8 (2000).
+
+[17] S. Wickramasekara, A. Bohm: "On Einstein causality and time asymmetry in
+      quantum physics", J. Phys. A 35, L715�L720 (2002)
+
+[18] R. Haag: Local Quantum Physics, Springer, Berlin etc 1992.
+
+[19] D. Buchholz, R. Haag: "The quest for understanding in relativistic quantum
+      physics", J. Math. Phys. 41, 3674�3697 (2000).
+
+[20] H. Reeh, S. Schlieder: "Eine Bemerkung zur Unit�arequivalenz von Lorentzinvari-
+      anten Feldern", Nuovo Cimento 22. 1051�1068 (1061).
+
+[21] R. Haag, B. Schroer: "Postulates of quantum field theory", J. Math. Phys. 3,
+      248�256 (1962).
+
+[22] R. Kadison: "Remarks on the type of von Neumann algebras of local observables
+      in quantum field theory", J. Math. Phys. 4, 1511�1516 (1963).
+
+[23] M. Guenin, B. Misra: "On the von Neumann algebras generated by field opera-
+      tors", Nuovo Cimento 30, 1272�1290 (1963).
+
+[24] H. Araki: "A lattice of von Neumann algebras associated with the quantum theory
+      of a free Bose field", J. Math. Phys., 4, 1343�1362 (1963).
+
+[25] H. Araki: "Von Neumann algebras of observables for free scalar fields", J. Math.
+      Phys., 5, 1�13 (1964).
+
+[26] H. Araki: "Type of von Neumann algebra associated with free field", Progr. Theor.
+      Phys. 32, 956�965 (1964).
+
+[27] H.J. Borchers: "A Remark on a Theorem of B. Misra", Comm. Math. Phys. 4,
+      315�323 (1967).
+
+[28] W. Driessler: "Comments on Lightlike Translations and Applications in Relativis-
+      tic Quantum Field Theory", Comm. Math. Phys. 44, 133-141 (1975).
+
+[29] W. Driessler: "On the Type of Local Algebras in Quantum Field Theory", Comm.
+      Math. Phys. 53, 295-297 (1977).
+
+[30] R. Longo: "Notes on Algebraic Invariants for Non-commutative Dynamical Sys-
+      tems", Comm. Math. Phys. 69, 195-207 (1979).
+
+[31] H.J. Borchers: "Half-sided Translations and the Type of von Neumann Algebras",
+      Lett. Math. Phys. 44, 283-290(1998).
+
+                                                      13
+[32] J.J. Bisognano, E.H. Wichmann: "On the duality condition for a Hermitian scalar
+      field", J. Math. Phys. 16, 985�1007 (1975).
+
+[33] J.J. Bisognano, E.H. Wichmann: "On the duality condition for quantum fields",
+      J. Math. Phys. 17, 303�321 (1976).
+
+[34] K. Fredenhagen: "On the Modular Structure of Local Algebras of Observables",
+      Commun. Math. Phys. 84, 79�89 (1985).
+
+[35] D. Buchholz, R. Verch: "Scaling algebras and renormalization group in algebraic
+      quantum field theory", Rev. Math. Phys. 7, 1195�1239 (1996).
+
+[36] D. Buchholz, C. D'Antoni, K. Fredenhagen: "The Universal Structure of Local
+      Algebras", Comm. Math. Phys. 111, 123�135 (1987).
+
+[37] D. Buchholz: "Product States for Local Algebras", Comm. Math. Phys. 36, 287�
+      304 (1974).
+
+[38] S. Summers: "On the independence of local algebras in quantum field theory",
+      Rev. Math. Phys. 2, 201�247 (1990).
+
+[39] D. Buchholz, S. Doplicher, R. Longo: "On Noether's Theorem in Quantum Field
+      Theory", Ann. Phys. 170, 1�17 (1986).
+
+[40] R. Werner: "Local preparability of States and the Split Property in Quantum
+      Field Theory", Lett. Math. Phys. 13, 325�329 (1987).
+
+[41] H. Roos: "Independence of Local Algebras in Quantum Field Theory", Comm.
+      Math. Phys. 16, 238�246 (1970).
+
+[42] S. Doplicher, R. Longo: "Standard and split inclusions of von Neumann algebras",
+      Invent. Math. 73, 493�536 (1984).
+
+[43] D. Buchholz, E. Wichmann: "Causal Independence and the Energy level Density
+      of States in Local Quantum Field theory", Comm. Math. Phys. 106, 321�344
+      (1986).
+
+[44] D. Buchholz, C. D'Antoni, R. Longo: "Nuclear Maps and Modular Structures I",
+      J. Funct. Anal. 88, 233�250 (1990).
+
+[45] D. Buchholz, C. D'Antoni, R. Longo: "Nuclear Maps and Modular Structures
+      II: Applications to Quantum Field Theory", Comm. Math. Phys. 129, 115�138
+      (1990).
+
+[46] D. Buchholz, J. Yngvason: "Generalized Nuclearity Conditions and the Split Prop-
+      erty in Quantum Field Theory", Lett. Math. Phys. 23, 159�167 (1991).
+
+[47] H.J. Borchers, R. Schumann: "A Nuclearity Condition for Charged States", Lett.
+      Math. Phys. 23, 65�77 (1991).
+
+                                                      14
+[48] Y. Kawahigashi, R. Longo: "Classification of two-dimensional local conformal nets
+      with c < 1 and 2-cohomology vanishing for tensor categories", Comm. Math. Phys.
+      244, 63�97 (2004).
+
+                                                      15
+

@@ -1,0 +1,289 @@
+--- v411/pos_rito/registrar_mapa_v411.py
++++ v412/pos_rito/registrar_mapa_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/registrar_mapa_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__registrar_mapa_v412.py.diff
+@@ -3,2 +4,2 @@
+-"""registrar_mapa_v411.py -- MONTA (nao registra) o registro da v411 no mapa de rotas e imprime o comando (molde: registrar_mapa_v410.py, que rodou na v410). Rodar DEPOIS do fechar (handoff gravado).
+-A v411 NAO traz modulo de kernel novo (o kernel e' o da v410 byte a byte; escada e gate iguais) e traz UM registro com FUNCAO, h0dn_bg1_v411 (16 checagens): a cada rito ele decodifica os insumos EMBUTIDOS do teste da razao de Hubble local/fundo
++"""registrar_mapa_v412.py -- MONTA (nao registra) o registro da v412 no mapa de rotas e imprime o comando (molde: registrar_mapa_v411.py, que rodou na v411). Rodar DEPOIS do fechar (handoff gravado).
++A v412 NAO traz modulo de kernel novo (o kernel e' o da v411 byte a byte; escada e gate iguais) e traz UM registro com FUNCAO, h0dn_bg1_v411 (16 checagens): a cada rito ele decodifica os insumos EMBUTIDOS do teste da razao de Hubble local/fundo
+@@ -6,3 +7,3 @@
+-mais os dois por spec (cunhagens_v411 e kh_n1_cobertura_v411). Os quatro registros com funcao da v410 (iald2_v410, a_escala_v410, h0dn_bg1_v410, h0dn_fontes_hms13_v410) sao recriados e seguem selados (nao sao novos); o h0dn_bg1_v410 (o pre-registro) NAO e' reescrito: a emenda e a abertura vao AO LADO.
+-UMA rota nova, umpy.v411.selada_h0dn_aberto_12nov, mais ANOTACOES nas rotas que esperavam por ela (o H0DN x BG1 com as DUAS linhas e as sete ressalvas; a publicacao da custodia, cuja ordem dos atos o rito confere; a v410, base; o gate; o B(n) da Bancada, B20; o quadro de 23/10).
+-REGRAS QUE ESTE SCRIPT CUMPRE (nada digitado; tudo lido do core, do selo, do livro e de delta_v411):
++mais os dois por spec (cunhagens_v411 e kh_n1_cobertura_v411). Os quatro registros com funcao da v411 (iald2_v410, a_escala_v410, h0dn_bg1_v410, h0dn_fontes_hms13_v410) sao recriados e seguem selados (nao sao novos); o h0dn_bg1_v410 (o pre-registro) NAO e' reescrito: a emenda e a abertura vao AO LADO.
++UMA rota nova, umpy.v412.selada_h0dn_aberto_12nov, mais ANOTACOES nas rotas que esperavam por ela (o H0DN x BG1 com as DUAS linhas e as sete ressalvas; a publicacao da custodia, cuja ordem dos atos o rito confere; a v411, base; o gate; o B(n) da Bancada, B21; o quadro de 23/10).
++REGRAS QUE ESTE SCRIPT CUMPRE (nada digitado; tudo lido do core, do selo, do livro e de delta_v412):
+@@ -10 +11 @@
+-     validade (nao creditacao), retrodicao e nao cego (a moldura de delta_v411 preenchida com os numeros do core); a guarda de frases da v411 e a P18 rodam sobre o registro inteiro, e o Mapa recusa a palavra da creditacao em titulo/resultado/veredito (aqui: «conferiu»);
++     validade (nao creditacao), retrodicao e nao cego (a moldura de delta_v412 preenchida com os numeros do core); a guarda de frases da v412 e a P18 rodam sobre o registro inteiro, e o Mapa recusa a palavra da creditacao em titulo/resultado/veredito (aqui: «conferiu»);
+@@ -13,4 +14,4 @@
+-Fail-closed: o selo tem de ser a v411; as rotas anotadas e as citadas em refs tem de existir no livro (so' leitura); a nova nao pode existir; todo registro da v410 selada que tinha all_verified True segue True; o gate e a escada sao os da v410.
+-SAIDA: pos_rito\\registro_mapa_v411.json e o comando `rotas.py registrar` (quem o executa e' o passo 12 da cadeia, uma vez so, com marcador idempotente; este script NAO escreve no mapa).
+-A montagem vive na funcao montar(V, core, selo, ids, arts) (sem efeito colateral): o harness a roda contra o Nos emulado, e a cadeia a roda contra o Nos real. montar() le o core, o selo e ESPERADOS_v411.json (chaves usadas: candidato_sha16, origem_sha16,
+-escada_v410_e_v411, vereditos_novos_v411, e, se existirem, n_bandeiras_novas, chaves_v411 e qg_closure_gate_verdict_v410); de V so' usa o que a leitura da rodada ja' validou (s16, sidecar, conf_dm, conf_np, n_ver_mudaram), sempre com valor de reserva dito."""
++Fail-closed: o selo tem de ser a v412; as rotas anotadas e as citadas em refs tem de existir no livro (so' leitura); a nova nao pode existir; todo registro da v411 selada que tinha all_verified True segue True; o gate e a escada sao os da v411.
++SAIDA: pos_rito\\registro_mapa_v412.json e o comando `rotas.py registrar` (quem o executa e' o passo 12 da cadeia, uma vez so, com marcador idempotente; este script NAO escreve no mapa).
++A montagem vive na funcao montar(V, core, selo, ids, arts) (sem efeito colateral): o harness a roda contra o Nos emulado, e a cadeia a roda contra o Nos real. montar() le o core, o selo e ESPERADOS_v412.json (chaves usadas: candidato_sha16, origem_sha16,
++escada_v411_e_v412, vereditos_novos_v412, e, se existirem, n_bandeiras_novas, chaves_v412 e qg_closure_gate_verdict_v411); de V so' usa o que a leitura da rodada ja' validou (s16, sidecar, conf_dm, conf_np, n_ver_mudaram), sempre com valor de reserva dito."""
+@@ -20,4 +21,4 @@
+-import delta_v411 as DL
+-import consts_mapa_x_v411 as C
+-from guarda_p18_v411 import violacoes
+-_MARCA_PENDENTE = "TEXTO_A_REESCREVER" + "_V411"
++import delta_v412 as DL
++import consts_mapa_x_v412 as C
++from guarda_p18_v412 import violacoes
++_MARCA_PENDENTE = "TEXTO_A_REESCREVER" + "_V412"
+@@ -25 +26 @@
+-    raise SystemExit("RECUSO: " + os.path.basename(__file__) + " ainda tem trecho(s) marcado(s) para reescrever na v411 (linha de comentario com a marca " + _MARCA_PENDENTE + "): a gerencia os reescreve e tira as marcas antes de a cadeia usar este arquivo")
++    raise SystemExit("RECUSO: " + os.path.basename(__file__) + " ainda tem trecho(s) marcado(s) para reescrever na v412 (linha de comentario com a marca " + _MARCA_PENDENTE + "): a gerencia os reescreve e tira as marcas antes de a cadeia usar este arquivo")
+@@ -27 +28 @@
+-NOVA = "umpy.v411.selada_h0dn_aberto_12nov"
++NOVA = "umpy.v412.selada_h0dn_aberto_12nov"
+@@ -30 +31 @@
+-R_V410 = "umpy.v410.selada_iald2_06nov"                                    # a v410 selada: a base da v411
++R_V411 = "umpy.v411.selada_iald2_06nov"                                    # a v411 selada: a base da v412
+@@ -35,2 +36,2 @@
+-R_PREP411 = "cadeia.preparacao_v411"                                       # a preparacao da v411 (12/11)
+-R_CUST410 = "custodia.v410"                                                # a custodia da v410
++R_PREP412 = "cadeia.preparacao_v412"                                       # a preparacao da v412 (12/11)
++R_CUST411 = "custodia.v411"                                                # a custodia da v411
+@@ -38,3 +39,3 @@
+-R_AESCALA = "kernel.a_escala_tres_faces_v410_09nov"                         # a pedra AEscala (E43: as seis aberturas da secao da Escala, ao lado)
+-ANOTADAS = (R_H0DN, R_PUBL, R_V410, R_GATE, R_BANC, R_QUADRO)
+-REFS = (R_H0DN_COV, R_PREP411, R_CUST410, R_G1P18, R_AESCALA)
++R_AESCALA = "kernel.a_escala_tres_faces_v411_09nov"                         # a pedra AEscala (E43: as seis aberturas da secao da Escala, ao lado)
++ANOTADAS = (R_H0DN, R_PUBL, R_V411, R_GATE, R_BANC, R_QUADRO)
++REFS = (R_H0DN_COV, R_PREP412, R_CUST411, R_G1P18, R_AESCALA)
+@@ -45 +46 @@
+-    """ESPERADOS_v411.json (lido uma vez por processo)."""
++    """ESPERADOS_v412.json (lido uma vez por processo)."""
+@@ -47 +48 @@
+-        _CACHE["esp"] = json.load(open(os.path.join(PK, "ESPERADOS_v411.json"), encoding="utf-8"))
++        _CACHE["esp"] = json.load(open(os.path.join(PK, "ESPERADOS_v412.json"), encoding="utf-8"))
+@@ -52 +53 @@
+-    """O core da v410 selada (a copia de bytes em base_v410): de onde sai a medida de que o gate, a escada e os registros anteriores nao se moveram."""
++    """O core da v411 selada (a copia de bytes em base_v411): de onde sai a medida de que o gate, a escada e os registros anteriores nao se moveram."""
+@@ -54 +55 @@
+-        _CACHE["base_core"] = json.load(open(os.path.join(PK, "base_v410", "um_absoluto.json"), encoding="utf-8"))["core"]
++        _CACHE["base_core"] = json.load(open(os.path.join(PK, "base_v411", "um_absoluto.json"), encoding="utf-8"))["core"]
+@@ -137 +138 @@
+-    p = json.load(open(os.path.join(PK, "PINOS_BN_v411.json"), encoding="utf-8"))
++    p = json.load(open(os.path.join(PK, "PINOS_BN_v412.json"), encoding="utf-8"))
+@@ -140 +141 @@
+-    assert m and bp["version"] == "v410" and rp.get("sem_salto") is True and "cadeia_de_selos" not in p, "o PINOS_BN nao descreve um passo simples v410 -> v411 (sem salto)"
++    assert m and bp["version"] == "v411" and rp.get("sem_salto") is True and "cadeia_de_selos" not in p, "o PINOS_BN nao descreve um passo simples v411 -> v412 (sem salto)"
+@@ -148 +149 @@
+-    """D59 (v410) com a UNICA excecao que a D72 abre: o Milenio, o Navier e o resto do que a D59 deixa fora seguem proibidos em qualquer texto; o nome do Kimi so' pode aparecer no contexto do H0DN (a ORDEM ao Kimi e a rota dela). Devolve True se violar."""
++    """D59 (v411) com a UNICA excecao que a D72 abre: o Milenio, o Navier e o resto do que a D59 deixa fora seguem proibidos em qualquer texto; o nome do Kimi so' pode aparecer no contexto do H0DN (a ORDEM ao Kimi e a rota dela). Devolve True se violar."""
+@@ -159 +160 @@
+-    gate ou escada diferentes da v410, o h0dn_bg1_v410 (pre-registro) tocado => AssertionError visivel) e devolve os FATOS que o mapa cita, todos LIDOS (nada digitado)."""
++    gate ou escada diferentes da v411, o h0dn_bg1_v410 (pre-registro) tocado => AssertionError visivel) e devolve os FATOS que o mapa cita, todos LIDOS (nada digitado)."""
+@@ -162,2 +163,2 @@
+-    ev = (ESP.get("vereditos_novos_v411") or {}).get(DL_.FECHO_REGISTRO)
+-    assert ev and ev == hd.get("verdict"), "ESPERADOS_v411.json nao traz vereditos_novos_v411[%s] igual ao veredito do registro do core (o gerar_esperados_v411 deve emiti-lo)" % DL_.FECHO_REGISTRO
++    ev = (ESP.get("vereditos_novos_v412") or {}).get(DL_.FECHO_REGISTRO)
++    assert ev and ev == hd.get("verdict"), "ESPERADOS_v412.json nao traz vereditos_novos_v412[%s] igual ao veredito do registro do core (o gerar_esperados_v412 deve emiti-lo)" % DL_.FECHO_REGISTRO
+@@ -167 +168 @@
+-    assert gb and hv.get("gate_verdict") == gb, "h0dn_bg1_v411: o gate lido != o da v410 selada (deveria estar congelado)"
++    assert gb and hv.get("gate_verdict") == gb, "h0dn_bg1_v411: o gate lido != o da v411 selada (deveria estar congelado)"
+@@ -169 +170 @@
+-    assert eb and hv.get("escada") == eb, "h0dn_bg1_v411: a escada lida != a da v410 selada (a v411 nao tem modulo novo)"
++    assert eb and hv.get("escada") == eb, "h0dn_bg1_v411: a escada lida != a da v411 selada (a v412 nao tem modulo novo)"
+@@ -207,2 +208,2 @@
+-    titulo = "v411 SELADA %s: o teste H0DN × BG1 aberto em 12/11/2026 foi recalculado no rito dos bytes embutidos e conferiu contra o resultado da abertura (registro h0dn_bg1_v411, %d checagens); %s" % (S, F["n_checks"], M)
+-    resultado = ("[REAL, lido do core do rito] o registro com FUNÇÃO h0dn_bg1_v411 (o único novo com função na v411) selou: %d checagens ok. O resultado da abertura (RESULTADO do seq %d deste livro; sha16 %s) foi RECALCULADO a cada rito dos bytes embutidos (o código publicado antes da abertura, compile + exec em módulos isolados; nada transcrito) e conferiu%s. "
++    titulo = "v412 SELADA %s: o teste H0DN × BG1 aberto em 12/11/2026 foi recalculado no rito dos bytes embutidos e conferiu contra o resultado da abertura (registro h0dn_bg1_v411, %d checagens); %s" % (S, F["n_checks"], M)
++    resultado = ("[REAL, lido do core do rito] o registro com FUNÇÃO h0dn_bg1_v411 (o único novo com função na v412) selou: %d checagens ok. O resultado da abertura (RESULTADO do seq %d deste livro; sha16 %s) foi RECALCULADO a cada rito dos bytes embutidos (o código publicado antes da abertura, compile + exec em módulos isolados; nada transcrito) e conferiu%s. "
+@@ -213 +214 @@
+-               "[OPEN] se o orçamento de erros publicado está certo; a independência entre a medida local e o fundo é hipótese nomeada; a covariância física conjunta segue aberta (o recibo HMS/13 da v410 é cobertura de fontes). "
++               "[OPEN] se o orçamento de erros publicado está certo; a independência entre a medida local e o fundo é hipótese nomeada; a covariância física conjunta segue aberta (o recibo HMS/13 da v411 é cobertura de fontes). "
+@@ -215 +216 @@
+-    proximo = ("a creditação é de quem observa de fora (o um.py não a dá); a custódia da v411 (README, site e X) é da sessão de custódia: o HANDOFF traz os blocos prontos (DESENHO_v411 5.3); dado mais sensível pode rever o que foi lido (a letra do veredito do gate diz MORE_SENSITIVE_DATA_COULD_REVISE); "
++    proximo = ("a creditação é de quem observa de fora (o um.py não a dá); a custódia da v412 (README, site e X) é da sessão de custódia: o HANDOFF traz os blocos prontos (DESENHO_v411 5.3); dado mais sensível pode rever o que foi lido (a letra do veredito do gate diz MORE_SENSITIVE_DATA_COULD_REVISE); "
+@@ -226 +227 @@
+-    assert selo.get("um_version") == "v411", "o selo nao e a v411"
++    assert selo.get("um_version") == "v412", "o selo nao e a v412"
+@@ -235,2 +236,2 @@
+-    assert BASE == DL_.BASE_SHA16_DA_ORDEM, "a base de ESPERADOS (%s) != a v410 selada da ordem (%s)" % (BASE, DL_.BASE_SHA16_DA_ORDEM)
+-    esc0, esc1 = ESP["escada_v410_e_v411"]
++    assert BASE == DL_.BASE_SHA16_DA_ORDEM, "a base de ESPERADOS (%s) != a v411 selada da ordem (%s)" % (BASE, DL_.BASE_SHA16_DA_ORDEM)
++    esc0, esc1 = ESP["escada_v411_e_v412"]
+@@ -238,3 +239,3 @@
+-    assert esc0 == esc1 == eb == el.get("n_theorems_expected") == el.get("n_theorems_clean"), "a escada nao e' a da v410 (a v411 nao tem modulo novo): %r %r %r" % (ESP["escada_v410_e_v411"], eb, el)
+-    assert int(ESP.get("n_bandeiras_novas", 0) or 0) == 0 and list(ESP.get("chaves_v411") or []) == [], "a v411 nao tem bandeira nova nem chave antiga que mude: ESPERADOS diz outra coisa"
+-    # --- o gate NAO se moveu: o registro segue selado e a letra do veredito e' a da v410
++    assert esc0 == esc1 == eb == el.get("n_theorems_expected") == el.get("n_theorems_clean"), "a escada nao e' a da v411 (a v412 nao tem modulo novo): %r %r %r" % (ESP["escada_v411_e_v412"], eb, el)
++    assert int(ESP.get("n_bandeiras_novas", 0) or 0) == 0 and list(ESP.get("chaves_v412") or []) == [], "a v412 nao tem bandeira nova nem chave antiga que mude: ESPERADOS diz outra coisa"
++    # --- o gate NAO se moveu: o registro segue selado e a letra do veredito e' a da v411
+@@ -242 +243 @@
+-    assert gk.get("all_verified") is True and (V.get("gate") or {}).get("sealed", True) is True and gvv == gb.get("values") and (gk.get("mechanics") or {}).get("passed") is True, "bandeiras_do_gate_v403 (recriado) nao selou ou != a v410 selada"
++    assert gk.get("all_verified") is True and (V.get("gate") or {}).get("sealed", True) is True and gvv == gb.get("values") and (gk.get("mechanics") or {}).get("passed") is True, "bandeiras_do_gate_v403 (recriado) nao selou ou != a v411 selada"
+@@ -246,3 +247,3 @@
+-    if ESP.get("qg_closure_gate_verdict_v410") is not None:
+-        assert ESP["qg_closure_gate_verdict_v410"] == gate_base, "ESPERADOS traz um gate da v410 diferente do da v410 selada"
+-    # --- o registro com FUNCAO h0dn_bg1_v411: tudo lido do core e conferido contra ESPERADOS, o delta e a v410 selada
++    if ESP.get("qg_closure_gate_verdict_v411") is not None:
++        assert ESP["qg_closure_gate_verdict_v411"] == gate_base, "ESPERADOS traz um gate da v411 diferente do da v411 selada"
++    # --- o registro com FUNCAO h0dn_bg1_v411: tudo lido do core e conferido contra ESPERADOS, o delta e a v411 selada
+@@ -250 +251 @@
+-    # --- os registros da v410 selada: cada um que tinha all_verified True segue True (recriados pelo rito); os quatro com funcao da v410 dizem-se um a um
++    # --- os registros da v411 selada: cada um que tinha all_verified True segue True (recriados pelo rito); os quatro com funcao da v411 dizem-se um a um
+@@ -252,2 +253,2 @@
+-    assert not sem_selo, "registros selados na v410 que nao selam na v411 (ou sumiram do core): %s (%d)" % (sem_selo[:5], len(sem_selo))
+-    n_selados_v410 = sum(1 for v_ in bc.values() if isinstance(v_, dict) and v_.get("all_verified") is True)
++    assert not sem_selo, "registros selados na v411 que nao selam na v412 (ou sumiram do core): %s (%d)" % (sem_selo[:5], len(sem_selo))
++    n_selados_v411 = sum(1 for v_ in bc.values() if isinstance(v_, dict) and v_.get("all_verified") is True)
+@@ -255,4 +256,4 @@
+-    for k_ in DL_.REGISTROS_FUNCAO_V410:
+-        assert (core.get(k_) or {}).get("all_verified") is True and (bc.get(k_) or {}).get("all_verified") is True, "o registro com funcao da v410 %s nao segue selado na v411" % k_
+-    n_iguais = sum(1 for k_ in DL_.REGISTROS_FUNCAO_V410 if (core.get(k_) or {}).get("verdict") == (bc.get(k_) or {}).get("verdict"))
+-    assert (core.get(DL_.D10.H0DN_REGISTRO) or {}).get("verdict") == F["antigo_verdict_base"], "o pre-registro h0dn_bg1_v410 foi reescrito: o veredito dele difere do da v410 selada (a emenda vai AO LADO, no registro novo)"
++    for k_ in DL_.REGISTROS_FUNCAO_V411:
++        assert (core.get(k_) or {}).get("all_verified") is True and (bc.get(k_) or {}).get("all_verified") is True, "o registro com funcao da v411 %s nao segue selado na v412" % k_
++    n_iguais = sum(1 for k_ in DL_.REGISTROS_FUNCAO_V411 if (core.get(k_) or {}).get("verdict") == (bc.get(k_) or {}).get("verdict"))
++    assert (core.get(DL_.D10.H0DN_REGISTRO) or {}).get("verdict") == F["antigo_verdict_base"], "o pre-registro h0dn_bg1_v410 foi reescrito: o veredito dele difere do da v411 selada (a emenda vai AO LADO, no registro novo)"
+@@ -262 +263 @@
+-        assert r_.get("all_verified") is True and r_.get("verdict") and r_.get("verdict") == (ESP.get("vereditos_novos_v411") or {}).get(nome_), "%s nao selou ou != ESPERADOS" % nome_
++        assert r_.get("all_verified") is True and r_.get("verdict") and r_.get("verdict") == (ESP.get("vereditos_novos_v412") or {}).get(nome_), "%s nao selou ou != ESPERADOS" % nome_
+@@ -264 +265 @@
+-    assert len(verb) == DL_.N_FALAS_V411 and all(v_.get("citado_por_sha256") is True and v_.get("texto_transcrito") is False and re.fullmatch(r"[0-9a-f]{64}", str(v_.get("sha256"))) for v_ in verb.values()), "as %d falas de 11 e 12/11 nao estao CITADAS por data e sha256 (D181) no cunhagens_v411" % DL_.N_FALAS_V411
++    assert len(verb) == DL_.N_FALAS_V412 and all(v_.get("citado_por_sha256") is True and v_.get("texto_transcrito") is False and re.fullmatch(r"[0-9a-f]{64}", str(v_.get("sha256"))) for v_ in verb.values()), "as %d falas de 11 e 12/11 nao estao CITADAS por data e sha256 (D181) no cunhagens_v411" % DL_.N_FALAS_V412
+@@ -266,2 +267,2 @@
+-    assert [str(e_.get("agora")) for e_ in erratas[:len(DL_.ERRATAS_V411)]] == [e_["texto"] for e_ in DL_.ERRATAS_V411] and len(erratas) == len(DL_.ERRATAS_V411) + 1 and all(e_.get("assinatura") == DL_.ASSINA for e_ in erratas), "as erratas E41 a E44 (e a dos pisos de kh_n1_cobertura_v410) nao estao no cunhagens_v411, ou nao sao da gerencia c1 em nome proprio"
+-    assert sorted(ex.get("decisoes") or {}) == sorted(DL_.DECISOES_V411), "as decisoes do delta nao estao no cunhagens_v411"
++    assert [str(e_.get("agora")) for e_ in erratas[:len(DL_.ERRATAS_V412)]] == [e_["texto"] for e_ in DL_.ERRATAS_V412] and len(erratas) == len(DL_.ERRATAS_V412) + 1 and all(e_.get("assinatura") == DL_.ASSINA for e_ in erratas), "as erratas E41 a E44 (e a dos pisos de kh_n1_cobertura_v410) nao estao no cunhagens_v411, ou nao sao da gerencia c1 em nome proprio"
++    assert sorted(ex.get("decisoes") or {}) == sorted(DL_.DECISOES_V412), "as decisoes do delta nao estao no cunhagens_v411"
+@@ -275,2 +276,2 @@
+-    sq_prep = seq_do_alvo(regs, R_PREP411, "ROTA")
+-    res16 = DL_.INSUMO_POR_NOME["RESULTADO_DA_ABERTURA_V411.json"]["sha256"][:16]; pre16 = DL_.INSUMO_POR_NOME["EMENDA_E_PRE_REGISTRO_V411.md"]["sha256"][:16]; ram16 = DL_.INSUMO_POR_NOME["RAMOS_V411.json"]["sha256"][:16]
++    sq_prep = seq_do_alvo(regs, R_PREP412, "ROTA")
++    res16 = DL_.INSUMO_POR_NOME["RESULTADO_DA_ABERTURA_V412.json"]["sha256"][:16]; pre16 = DL_.INSUMO_POR_NOME["EMENDA_E_PRE_REGISTRO_V412.md"]["sha256"][:16]; ram16 = DL_.INSUMO_POR_NOME["RAMOS_V412.json"]["sha256"][:16]
+@@ -280,3 +281,3 @@
+-    KR = os.path.join(PK, "kernel", "KERNEL_RECIBO_v411.json")
+-    ins_arq = [i_["arquivo"] for i_ in DL_.INSUMOS_V411]
+-    ERR = ", ".join(e_["id"] for e_ in DL_.ERRATAS_V411); DEC = "%s a %s" % (min(DL_.DECISOES_V411), max(DL_.DECISOES_V411))
++    KR = os.path.join(PK, "kernel", "KERNEL_RECIBO_v412.json")
++    ins_arq = [i_["arquivo"] for i_ in DL_.INSUMOS_V412]
++    ERR = ", ".join(e_["id"] for e_ in DL_.ERRATAS_V412); DEC = "%s a %s" % (min(DL_.DECISOES_V412), max(DL_.DECISOES_V412))
+@@ -295 +296 @@
+-    T11.append(anot(R_H0DN, TH["titulo"], TH["resultado"], TH["proximo"], refs=[R_H0DN_COV, R_PUBL, R_PREP411, R_G1P18], estatuto=TH["estatuto"], defeito=TH["defeito"], olhou=True,
++    T11.append(anot(R_H0DN, TH["titulo"], TH["resultado"], TH["proximo"], refs=[R_H0DN_COV, R_PUBL, R_PREP412, R_G1P18], estatuto=TH["estatuto"], defeito=TH["defeito"], olhou=True,
+@@ -297 +298 @@
+-                    artefatos=[DL_.INSUMO_POR_NOME[n_]["arquivo"] for n_ in ("RESULTADO_DA_ABERTURA_V411.json", "EMENDA_E_PRE_REGISTRO_V411.md", "RAMOS_V411.json", "PINOS_DE_PRODUCAO.json", "PRE_VOO_DA_ABERTURA_V411.json", "RECIBO_DA_ABERTURA_V411.json", "ESPERADO_PELOS_AGREGADOS.json")] + [KR]))
++                    artefatos=[DL_.INSUMO_POR_NOME[n_]["arquivo"] for n_ in ("RESULTADO_DA_ABERTURA_V412.json", "EMENDA_E_PRE_REGISTRO_V412.md", "RAMOS_V412.json", "PINOS_DE_PRODUCAO.json", "PRE_VOO_DA_ABERTURA_V412.json", "RECIBO_DA_ABERTURA_V412.json", "ESPERADO_PELOS_AGREGADOS.json")] + [KR]))
+@@ -299 +300 @@
+-    T11.append(anot(R_PUBL, "v411 SELADA %s: o rito conferiu a ordem dos atos da publicação, lida dos recibos embutidos: push do pré-registro, depois início da abertura, depois push do resultado" % S,
++    T11.append(anot(R_PUBL, "v412 SELADA %s: o rito conferiu a ordem dos atos da publicação, lida dos recibos embutidos: push do pré-registro, depois início da abertura, depois push do resultado" % S,
+@@ -304,5 +305,5 @@
+-                    "a custódia da v411 publica o que a gerência mandar; o que o teste não decide e as sete ressalvas seguem ditos no registro h0dn_bg1_v411 e no H0DN × BG1 da rota própria.", refs=[R_H0DN, R_CUST410],
+-                    estatuto="REAL (a ordem dos atos lida dos recibos embutidos, conferida a cada rito); DECLARADO (o conteúdo dos recibos, pela custódia)", artefatos=[DL_.INSUMO_POR_NOME[n_]["arquivo"] for n_ in ("RECIBO_PUBLICACAO_20261112_074508.json", "RECIBO_PUBLICACAO_RESULTADO_20261112_075315.json", "RECIBO_DA_ABERTURA_V411.json", "PRE_VOO_DA_ABERTURA_V411.json")]))
+-    T11.append(anot(R_V410, "v411 SELADA %s: a v410 é a base da v411; a v411 não traz módulo de kernel novo; os QUATRO registros com função da v410 (%s) são recriados e seguem selados, e o pré-registro h0dn_bg1_v410 não é reescrito: a emenda e a abertura vão AO LADO, no registro novo h0dn_bg1_v411" % (S, ", ".join(DL_.REGISTROS_FUNCAO_V410)),
+-                    ("a v411 parte da v410 selada (um.py %s) e acrescenta UM registro com função (h0dn_bg1_v411; selou=%s) e dois por spec (cunhagens_v411; kh_n1_cobertura_v411; selaram=%s e %s), sem módulo de kernel novo: o kernel é o da v410 (KERNEL_RECIBO_v411: nenhuma pedra, rc 0, escada %s = a da v410, nenhuma bandeira nova). "
+-                     "Dos %d registros da v410 selada com all_verified True, os %d seguem True no core da v411 (recriados pelo rito); dos quatro com função da v410, %d têm o veredito idêntico ao da v410. O registro h0dn_bg1_v410 (pré-registro, função congelada de seis ramos) segue como foi selado, com o texto da data dele (a v411 o supera ao lado, não o reescreve). "
++                    "a custódia da v412 publica o que a gerência mandar; o que o teste não decide e as sete ressalvas seguem ditos no registro h0dn_bg1_v411 e no H0DN × BG1 da rota própria.", refs=[R_H0DN, R_CUST411],
++                    estatuto="REAL (a ordem dos atos lida dos recibos embutidos, conferida a cada rito); DECLARADO (o conteúdo dos recibos, pela custódia)", artefatos=[DL_.INSUMO_POR_NOME[n_]["arquivo"] for n_ in ("RECIBO_PUBLICACAO_20261112_074508.json", "RECIBO_PUBLICACAO_RESULTADO_20261112_075315.json", "RECIBO_DA_ABERTURA_V412.json", "PRE_VOO_DA_ABERTURA_V412.json")]))
++    T11.append(anot(R_V411, "v412 SELADA %s: a v411 é a base da v412; a v412 não traz módulo de kernel novo; os QUATRO registros com função da v411 (%s) são recriados e seguem selados, e o pré-registro h0dn_bg1_v410 não é reescrito: a emenda e a abertura vão AO LADO, no registro novo h0dn_bg1_v411" % (S, ", ".join(DL_.REGISTROS_FUNCAO_V411)),
++                    ("a v412 parte da v411 selada (um.py %s) e acrescenta UM registro com função (h0dn_bg1_v411; selou=%s) e dois por spec (cunhagens_v411; kh_n1_cobertura_v411; selaram=%s e %s), sem módulo de kernel novo: o kernel é o da v411 (KERNEL_RECIBO_v412: nenhuma pedra, rc 0, escada %s = a da v411, nenhuma bandeira nova). "
++                     "Dos %d registros da v411 selada com all_verified True, os %d seguem True no core da v412 (recriados pelo rito); dos quatro com função da v411, %d têm o veredito idêntico ao da v411. O registro h0dn_bg1_v410 (pré-registro, função congelada de seis ramos) segue como foi selado, com o texto da data dele (a v412 o supera ao lado, não o reescreve). "
+@@ -310,6 +311,6 @@
+-                        BASE, selou(core, DL_.FECHO_REGISTRO), selou(core, DL_.CUNHAGENS_REGISTRO), selou(core, DL_.KH_REGISTRO), esc1, n_selados_v410, n_seguem, n_iguais, ERR, DEC, sc["veredito"], sc["n_objetos"], sc["recusas"], sc["sha16"]),
+-                    "custódia completa pela sessão de custódia (o fim da cadeia do orquestrador é o HANDOFF; o handoff lista o sidecar e diz quais contratos novos são de registro, fora da escada).", refs=[R_CUST410, R_AESCALA, R_PREP411],
+-                    estatuto="REAL (a leitura do core do rito contra o core da v410 selada); INPUT (a ordem do operador de 12/11)"))
+-    T11.append(anot(R_GATE, "v411 SELADA %s: o gate NÃO se moveu — o qg_closure do core é idêntico ao da v410 (as 18 bandeiras calculadas, a letra do veredito) e o resultado do teste H0DN × BG1 não move bandeira alguma" % S,
+-                    (f"o registro bandeiras_do_gate_v403 (recriado) selou={selou(core, 'bandeiras_do_gate_v403')} com os mesmos valores da v410 selada: das {gvv['n_flags']} bandeiras ({fam[0]} formais, {fam[1]} físicas, {fam[2]} experimentais) {gvv['n_true']} são True e {gvv['n_calculated']} são CALCULADAS ({gvv['n_literal']} literais); o veredito lê {gvv['n_read_by_the_verdict']}; "
+-                     "a letra do veredito do gate é a da v410 e a do selo; o registro h0dn_bg1_v411 lê gate_verdict idêntico ao da v410 e does_not_gate_core = True: cosmologia não move o gate, e este teste também não. "
++                        BASE, selou(core, DL_.FECHO_REGISTRO), selou(core, DL_.CUNHAGENS_REGISTRO), selou(core, DL_.KH_REGISTRO), esc1, n_selados_v411, n_seguem, n_iguais, ERR, DEC, sc["veredito"], sc["n_objetos"], sc["recusas"], sc["sha16"]),
++                    "custódia completa pela sessão de custódia (o fim da cadeia do orquestrador é o HANDOFF; o handoff lista o sidecar e diz quais contratos novos são de registro, fora da escada).", refs=[R_CUST411, R_AESCALA, R_PREP412],
++                    estatuto="REAL (a leitura do core do rito contra o core da v411 selada); INPUT (a ordem do operador de 12/11)"))
++    T11.append(anot(R_GATE, "v412 SELADA %s: o gate NÃO se moveu — o qg_closure do core é idêntico ao da v411 (as 18 bandeiras calculadas, a letra do veredito) e o resultado do teste H0DN × BG1 não move bandeira alguma" % S,
++                    (f"o registro bandeiras_do_gate_v403 (recriado) selou={selou(core, 'bandeiras_do_gate_v403')} com os mesmos valores da v411 selada: das {gvv['n_flags']} bandeiras ({fam[0]} formais, {fam[1]} físicas, {fam[2]} experimentais) {gvv['n_true']} são True e {gvv['n_calculated']} são CALCULADAS ({gvv['n_literal']} literais); o veredito lê {gvv['n_read_by_the_verdict']}; "
++                     "a letra do veredito do gate é a da v411 e a do selo; o registro h0dn_bg1_v411 lê gate_verdict idêntico ao da v411 e does_not_gate_core = True: cosmologia não move o gate, e este teste também não. "
+@@ -318 +319 @@
+-                    artefatos=[os.path.join(PK, "CANDIDATO_v411.json")], estatuto="REAL (o core do rito); DECLARADO (GV-01, GV-03, EV-12 da auditoria de 28/09/2026); OPEN (a independência das 4 experimentais)",
++                    artefatos=[os.path.join(PK, "CANDIDATO_v412.json")], estatuto="REAL (o core do rito); DECLARADO (GV-01, GV-03, EV-12 da auditoria de 28/09/2026); OPEN (a independência das 4 experimentais)",
+@@ -320,6 +321,6 @@
+-    T11.append(anot(R_BANC, "v411 SELADA %s: o B(n) da v411 é um passo SIMPLES v410 -> v411 (a Bancada de produção já pinava a v410), rótulo B%d" % (S, bank["proxima"]),
+-                    (f"o kernel da v411 é o da v410, sem módulo novo (KERNEL_RECIBO_v411: nenhuma pedra, rc 0); o recibo pre_selo foi gerado e pinado ANTES da instalação, em ensaio contra a produção (nada gravado; a Bancada pinava {bank['deployment_id']}), "
+-                     f"e a cadeia confere os pinos de PINOS_BN_v411.json na hora; o veredito esperado do aplicar é REPINADA_B{bank['proxima']}__APLICADA__SERVICO_DEVE_SER_REINICIADO_COM_RECIBO, sem __SALTO_ e sem cadeia de selos, lido do código do esboço R3.5. Parada e religamento do serviço exigem V411_AUTORIZACAO_OPERADOR (texto sem o nome do script do serviço)."),
+-                    "depois do aplicar, a Bancada pina a v411.", refs=None, artefatos=[os.path.join(PK, "PINOS_BN_v411.json"), os.path.join(PK, "PINO_RECIBO_PRE_SELO_v411.json"), KR]))
+-    T11.append(anot(R_QUADRO, "v411 SELADA %s: o quadro «O Teste da Única Palavra» (23/10) segue como registro e o registro teste_de_veracidade_fase9_v397 segue selado; um quadro novo, o do H0DN × BG1, vai ACIMA dele" % S,
+-                    f"teste_de_veracidade_fase9_v397 selou={selou(core, 'teste_de_veracidade_fase9_v397')} e cunhagens_v397 selou={selou(core, 'cunhagens_v397')} neste rito (os dois seguem selados, como todo registro da v410 selada com all_verified True). O DESENHO_v411 (5.1) manda pôr o quadro novo ACIMA do de 23/10 e acrescentar a este uma linha que remete ao novo (ordem do operador de 12/11). "
++    T11.append(anot(R_BANC, "v412 SELADA %s: o B(n) da v412 é um passo SIMPLES v411 -> v412 (a Bancada de produção já pinava a v411), rótulo B%d" % (S, bank["proxima"]),
++                    (f"o kernel da v412 é o da v411, sem módulo novo (KERNEL_RECIBO_v412: nenhuma pedra, rc 0); o recibo pre_selo foi gerado e pinado ANTES da instalação, em ensaio contra a produção (nada gravado; a Bancada pinava {bank['deployment_id']}), "
++                     f"e a cadeia confere os pinos de PINOS_BN_v412.json na hora; o veredito esperado do aplicar é REPINADA_B{bank['proxima']}__APLICADA__SERVICO_DEVE_SER_REINICIADO_COM_RECIBO, sem __SALTO_ e sem cadeia de selos, lido do código do esboço R3.5. Parada e religamento do serviço exigem V412_AUTORIZACAO_OPERADOR (texto sem o nome do script do serviço)."),
++                    "depois do aplicar, a Bancada pina a v412.", refs=None, artefatos=[os.path.join(PK, "PINOS_BN_v412.json"), os.path.join(PK, "PINO_RECIBO_PRE_SELO_v412.json"), KR]))
++    T11.append(anot(R_QUADRO, "v412 SELADA %s: o quadro «O Teste da Única Palavra» (23/10) segue como registro e o registro teste_de_veracidade_fase9_v397 segue selado; um quadro novo, o do H0DN × BG1, vai ACIMA dele" % S,
++                    f"teste_de_veracidade_fase9_v397 selou={selou(core, 'teste_de_veracidade_fase9_v397')} e cunhagens_v397 selou={selou(core, 'cunhagens_v397')} neste rito (os dois seguem selados, como todo registro da v411 selada com all_verified True). O DESENHO_v411 (5.1) manda pôr o quadro novo ACIMA do de 23/10 e acrescentar a este uma linha que remete ao novo (ordem do operador de 12/11). "
+@@ -327 +328 @@
+-                    "o quadro novo e a linha que remete a ele são do artigo, do .md e do handoff da v411; a creditação segue sendo de quem observa de fora.", refs=None))
++                    "o quadro novo e a linha que remete a ele são do artigo, do .md e do handoff da v412; a creditação segue sendo de quem observa de fora.", refs=None))
+@@ -332,10 +333,10 @@
+-            "titulo": "v411 SELADA %s: o teste H0DN × BG1 aberto em 12/11/2026, recalculado no rito dos bytes embutidos e conferido contra o resultado da abertura (registro h0dn_bg1_v411, %d checagens); %s; escada %s = a da v410, sem módulo de kernel novo" % (S, F["n_checks"], M, esc1),
+-            "pergunta": ("a v411 (sem módulo de kernel novo) sela a emenda e o resultado da abertura do teste pré-registrado da razão de Hubble local/fundo (H0DN × BG1), recalculando-o a cada rito dos bytes embutidos e conferindo-o contra o resultado da abertura, "
+-                         "com os quatro registros com função da v410 recriados e selados, os dois por spec (as %d falas de 11 e 12/11 citadas por data e sha256, não transcritas; as decisões %s; as erratas %s; a cobertura KH-N1), o gate e a escada iguais aos da v410 e nenhum veredito fora da troca dita mudado?") % (DL_.N_FALAS_V411, DEC, ERR),
+-            "dados": ["o um.py da v411 (candidato %s; selo, core e sidecar da rodada; ESPERADOS_v411.json), só leitura; a base é a v410 selada (um.py %s, cópia de bytes em base_v410)" % (S, BASE),
+-                      "os insumos do teste H0DN × BG1, embutidos no um.py em base64 e pinados por sha256 (%d arquivos; o estimador congelado e o fundo BG1 são de reuso da v410, sem duplicar): a rede, o estimador S0, o literal dos vereditos (sha16 %s), o pré-registro final (sha16 %s), o vetor (sha16 %s), os três módulos de código (estimador, veredito, abertura), os pinos de produção, o resultado da abertura (sha16 %s), o pré-voo, o recibo da abertura, o esperado pelos agregados e os dois recibos da publicação da custódia" % (len(DL_.INSUMOS_V411), ram16, pre16, vet16, res16),
+-                      "citados por sha256, não embutidos: %d arquivos (o executor da abertura, o diff do veredito da v410 para a v411, os pinos, os manifestos da publicação, o desenho ratificado e o achado da gerência sobre o suporte)" % len(DL_.CITADOS_V411),
+-                      "as %d ordens e ratificações do operador de 11 e 12/11, citadas por data e sha256 e não transcritas (todas dele; os textos da gerência a que ele respondeu entram só citados por sha256)" % DL_.N_FALAS_V411,
+-                      "o kernel do rito (o da v410, sem módulo novo), o core e o selo da rodada; nenhum dado novo foi aberto nesta rota: a abertura foi uma só, em 12/11/2026 (RESULTADO do seq %d), e o rito recalcula o mesmo vetor" % sq_ab],
+-            "metodo": ("lake build incremental (nenhum módulo compilado) + Audit no sandbox k411c (a escada e as declarações são as da v410); ensaio a seco do candidato; rito completo (o registro h0dn_bg1_v411: os três módulos pinados executados dos bytes embutidos, compile + exec em módulos isolados, o recálculo comparado ao resultado da abertura, "
+-                       "as %d checagens; os quatro registros com função da v410 recriados); conferidor (deve mudar / não pode mudar); leitura da rodada (inclui o sidecar e a linha final do rito); superfícies com a regra da linhagem completa; elo B(n) da Bancada (passo simples v410 -> v411, sem salto); "
++            "titulo": "v412 SELADA %s: o teste H0DN × BG1 aberto em 12/11/2026, recalculado no rito dos bytes embutidos e conferido contra o resultado da abertura (registro h0dn_bg1_v411, %d checagens); %s; escada %s = a da v411, sem módulo de kernel novo" % (S, F["n_checks"], M, esc1),
++            "pergunta": ("a v412 (sem módulo de kernel novo) sela a emenda e o resultado da abertura do teste pré-registrado da razão de Hubble local/fundo (H0DN × BG1), recalculando-o a cada rito dos bytes embutidos e conferindo-o contra o resultado da abertura, "
++                         "com os quatro registros com função da v411 recriados e selados, os dois por spec (as %d falas de 11 e 12/11 citadas por data e sha256, não transcritas; as decisões %s; as erratas %s; a cobertura KH-N1), o gate e a escada iguais aos da v411 e nenhum veredito fora da troca dita mudado?") % (DL_.N_FALAS_V412, DEC, ERR),
++            "dados": ["o um.py da v412 (candidato %s; selo, core e sidecar da rodada; ESPERADOS_v412.json), só leitura; a base é a v411 selada (um.py %s, cópia de bytes em base_v411)" % (S, BASE),
++                      "os insumos do teste H0DN × BG1, embutidos no um.py em base64 e pinados por sha256 (%d arquivos; o estimador congelado e o fundo BG1 são de reuso da v411, sem duplicar): a rede, o estimador S0, o literal dos vereditos (sha16 %s), o pré-registro final (sha16 %s), o vetor (sha16 %s), os três módulos de código (estimador, veredito, abertura), os pinos de produção, o resultado da abertura (sha16 %s), o pré-voo, o recibo da abertura, o esperado pelos agregados e os dois recibos da publicação da custódia" % (len(DL_.INSUMOS_V412), ram16, pre16, vet16, res16),
++                      "citados por sha256, não embutidos: %d arquivos (o executor da abertura, o diff do veredito da v411 para a v412, os pinos, os manifestos da publicação, o desenho ratificado e o achado da gerência sobre o suporte)" % len(DL_.CITADOS_V412),
++                      "as %d ordens e ratificações do operador de 11 e 12/11, citadas por data e sha256 e não transcritas (todas dele; os textos da gerência a que ele respondeu entram só citados por sha256)" % DL_.N_FALAS_V412,
++                      "o kernel do rito (o da v411, sem módulo novo), o core e o selo da rodada; nenhum dado novo foi aberto nesta rota: a abertura foi uma só, em 12/11/2026 (RESULTADO do seq %d), e o rito recalcula o mesmo vetor" % sq_ab],
++            "metodo": ("lake build incremental (nenhum módulo compilado) + Audit no sandbox k412c (a escada e as declarações são as da v411); ensaio a seco do candidato; rito completo (o registro h0dn_bg1_v411: os três módulos pinados executados dos bytes embutidos, compile + exec em módulos isolados, o recálculo comparado ao resultado da abertura, "
++                       "as %d checagens; os quatro registros com função da v411 recriados); conferidor (deve mudar / não pode mudar); leitura da rodada (inclui o sidecar e a linha final do rito); superfícies com a regra da linhagem completa; elo B(n) da Bancada (passo simples v411 -> v412, sem salto); "
+@@ -343,2 +344,2 @@
+-            "resultado": ("%s | sidecar %s (%s objetos, %s recusas) | %s | %s | escada %s = a da v410; nenhuma bandeira nova; nenhum módulo novo; %d de %d registros da v410 selada seguem selados | o teste H0DN × BG1: %s. Primário: Z contra o nulo %s, Z contra K %s, ramo %d, desfecho %s; linha ao lado (%s): Z contra o nulo %s, Z contra K %s, ramo %d.") % (
+-                F["verdict"], sc["veredito"], sc["n_objetos"], sc["recusas"], resumo_conf, ("%s vereditos fora da troca dita mudaram (exigido 0)" % nvm) if nvm != "nao lido" else "vereditos fora da troca dita: nao lidos nesta leitura", esc1, n_seguem, n_selados_v410, M, F["zn4_pt"], F["zk4_pt"], F["ramo_p"], F["outcome"], DL_.OBRIG_CEFEIDAS_PT, F["cn4_pt"], F["ck4_pt"], F["ramo_c"]),
++            "resultado": ("%s | sidecar %s (%s objetos, %s recusas) | %s | %s | escada %s = a da v411; nenhuma bandeira nova; nenhum módulo novo; %d de %d registros da v411 selada seguem selados | o teste H0DN × BG1: %s. Primário: Z contra o nulo %s, Z contra K %s, ramo %d, desfecho %s; linha ao lado (%s): Z contra o nulo %s, Z contra K %s, ramo %d.") % (
++                F["verdict"], sc["veredito"], sc["n_objetos"], sc["recusas"], resumo_conf, ("%s vereditos fora da troca dita mudaram (exigido 0)" % nvm) if nvm != "nao lido" else "vereditos fora da troca dita: nao lidos nesta leitura", esc1, n_seguem, n_selados_v411, M, F["zn4_pt"], F["zk4_pt"], F["ramo_p"], F["outcome"], DL_.OBRIG_CEFEIDAS_PT, F["cn4_pt"], F["ck4_pt"], F["ramo_c"]),
+@@ -347,3 +348,3 @@
+-            "nao_refazer": "o kernel da v411 é o da v410 (build incremental e Audit medidos: não refazer sem mudança de fonte); %s; o alcance de P = nP não muda: %s" % (TH["naorefazer"], DL_.D10.FRASE_QUALIFICADOR_PT),
+-            "proximo_passo": "%s; o README pinado (D39) e o release do app, na custódia e na engenharia da casa; a decisão [LEGAL] D2 com a agente de PI; o HANDOFF da v411 traz os blocos do README já prontos (o painel do topo, a linha do topo, o bloco do H0DN × BG1, a linha da tabela do estado; o bloco P = nP com a faixa de versões atualizada)" % TH["proximo"].rstrip("."),
+-            "onde": PK, "artefatos": arts + [DL_.INSUMO_POR_NOME[n_]["arquivo"] for n_ in ("RESULTADO_DA_ABERTURA_V411.json", "EMENDA_E_PRE_REGISTRO_V411.md", "RAMOS_V411.json", "PINOS_DE_PRODUCAO.json")], "refs": sorted((set(x["rota_id"] for x in T11) | set(REFS)) - {NOVA}),
++            "nao_refazer": "o kernel da v412 é o da v411 (build incremental e Audit medidos: não refazer sem mudança de fonte); %s; o alcance de P = nP não muda: %s" % (TH["naorefazer"], DL_.D10.FRASE_QUALIFICADOR_PT),
++            "proximo_passo": "%s; o README pinado (D39) e o release do app, na custódia e na engenharia da casa; a decisão [LEGAL] D2 com a agente de PI; o HANDOFF da v412 traz os blocos do README já prontos (o painel do topo, a linha do topo, o bloco do H0DN × BG1, a linha da tabela do estado; o bloco P = nP com a faixa de versões atualizada)" % TH["proximo"].rstrip("."),
++            "onde": PK, "artefatos": arts + [DL_.INSUMO_POR_NOME[n_]["arquivo"] for n_ in ("RESULTADO_DA_ABERTURA_V412.json", "EMENDA_E_PRE_REGISTRO_V412.md", "RAMOS_V412.json", "PINOS_DE_PRODUCAO.json")], "refs": sorted((set(x["rota_id"] for x in T11) | set(REFS)) - {NOVA}),
+@@ -361 +362 @@
+-    import guarda_frases_v411 as GF
++    import guarda_frases_v412 as GF
+@@ -366 +367 @@
+-    import textos_v411 as T   # (so' aqui: a direcao do testemunho e a atribuicao seguem conferidas em todo texto novo)
++    import textos_v412 as T   # (so' aqui: a direcao do testemunho e a atribuicao seguem conferidas em todo texto novo)
+@@ -376,2 +377,2 @@
+-    tok = [k_ for k_, t_ in j_.items() if any(tk_ in t_ for tk_ in DL_.TOKENS_PROIBIDOS_V411)]
+-    assert not tok, "o registro traz um token de veredito proibido (%s): %r" % (", ".join(DL_.TOKENS_PROIBIDOS_V411), tok)
++    tok = [k_ for k_, t_ in j_.items() if any(tk_ in t_ for tk_ in DL_.TOKENS_PROIBIDOS_V412)]
++    assert not tok, "o registro traz um token de veredito proibido (%s): %r" % (", ".join(DL_.TOKENS_PROIBIDOS_V412), tok)
+@@ -380 +381 @@
+-    assert all(selou(core, k_) for k_ in (DL_.FECHO_REGISTRO, DL_.CUNHAGENS_REGISTRO, DL_.KH_REGISTRO) + tuple(DL_.REGISTROS_FUNCAO_V410)), "algum registro (novo ou da v410) nao selou no core: o mapa nao registra a v411 assim"
++    assert all(selou(core, k_) for k_ in (DL_.FECHO_REGISTRO, DL_.CUNHAGENS_REGISTRO, DL_.KH_REGISTRO) + tuple(DL_.REGISTROS_FUNCAO_V411)), "algum registro (novo ou da v411) nao selou no core: o mapa nao registra a v412 assim"
+@@ -391 +392 @@
+-    tmp = p + ".tmp_m411"; open(tmp, "wb").write(b); assert os.path.getsize(tmp) == len(b); os.replace(tmp, p); assert open(p, "rb").read() == b
++    tmp = p + ".tmp_m412"; open(tmp, "wb").write(b); assert os.path.getsize(tmp) == len(b); os.replace(tmp, p); assert open(p, "rb").read() == b
+@@ -395 +396 @@
+-    import leitura_v411 as L   # (so' aqui: o import do teste sem candidato nao depende da leitura)
++    import leitura_v412 as L   # (so' aqui: o import do teste sem candidato nao depende da leitura)
+@@ -401,4 +402,4 @@
+-    b3 = sorted(glob.glob(os.path.join(PK, "bancada_B3", "RECIBO_SINCRONIZACAO_v411_*.json")) + glob.glob(os.path.join(PK, "bancada_B3_[0-9]*", "RECIBO_SINCRONIZACAO_v411_*.json")), key=os.path.getmtime)
+-    arts = [os.path.join(NOS, "um.py"), os.path.join(NOS, "um_absoluto_selo.json"), os.path.join(NOS, "um_absoluto_selo_acom.json"), os.path.join(PK, "ESPERADOS_v411.json"), os.path.join(HERE, "conferidor", "conferencia_rito_v411.json"),
+-            os.path.join(PK, "DIFF_KERNEL_v411.txt"), os.path.join(PK, "DIFF_v410_v411.diff"), os.path.join(NOS, "HANDOFF_v411_CUSTODIA.md"), os.path.join(PK, "MANIFESTO_ARQUIVO_v411.json"),
+-            os.path.join(PK, "kernel", "KERNEL_RECIBO_v411.json")] + b3[-1:]
++    b3 = sorted(glob.glob(os.path.join(PK, "bancada_B3", "RECIBO_SINCRONIZACAO_v412_*.json")) + glob.glob(os.path.join(PK, "bancada_B3_[0-9]*", "RECIBO_SINCRONIZACAO_v412_*.json")), key=os.path.getmtime)
++    arts = [os.path.join(NOS, "um.py"), os.path.join(NOS, "um_absoluto_selo.json"), os.path.join(NOS, "um_absoluto_selo_acom.json"), os.path.join(PK, "ESPERADOS_v412.json"), os.path.join(HERE, "conferidor", "conferencia_rito_v412.json"),
++            os.path.join(PK, "DIFF_KERNEL_v412.txt"), os.path.join(PK, "DIFF_v411_v412.diff"), os.path.join(NOS, "HANDOFF_v412_CUSTODIA.md"), os.path.join(PK, "MANIFESTO_ARQUIVO_v412.json"),
++            os.path.join(PK, "kernel", "KERNEL_RECIBO_v412.json")] + b3[-1:]
+@@ -407 +408 @@
+-    J = os.path.join(HERE, "registro_mapa_v411.json")
++    J = os.path.join(HERE, "registro_mapa_v412.json")
+@@ -409 +410 @@
+-    quem = "claude-c1 (gerência), cadeia v411"
++    quem = "claude-c1 (gerência), cadeia v412"

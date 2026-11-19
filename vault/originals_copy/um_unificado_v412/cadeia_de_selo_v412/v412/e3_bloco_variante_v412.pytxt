@@ -1,0 +1,17 @@
+# (v412) a VARIANTE sem os quatro registros por especificacao da v412: a secao nova do artigo e' texto da teoria (nao le o core) e o artigo ja' imprime, ao vivo, uma linha de veredito por chave do core (v392): o artigo da variante sai IGUAL ao completo,
+# menos as QUATRO linhas do quadro de vereditos e a contagem de chaves (N menos quatro); a secao nova esta nos dois; nenhuma frase de guarda de «nao selou» aparece
+cv12 = dict(copy.deepcopy(c)); [cv12.pop(k, None) for k in V412N]
+rep["variante_v412"] = {}
+for lang in ("pt", "en"):
+    _t12v, _x12v, _r212v, _l12v = compilar(cv12, "dry_v412_var12_%s" % lang, lang, duas=False)
+    _tf12 = open(os.path.join(DRY, "dry_v412_%s.tex" % lang), encoding="utf-8").read()
+    _linhas12 = [l_ for l_ in _tf12.split("\n") if any(l_.startswith("\\texttt{" + n_.replace("_", "\\_") + "} & ") for n_ in V412N)]
+    _A12 = [l_ for l_ in _tf12.split("\n") if l_ not in _linhas12]; _B12 = _t12v.split("\n")
+    _dif12 = [i_ for i_ in range(min(len(_A12), len(_B12))) if _A12[i_] != _B12[i_]] if len(_A12) == len(_B12) else None
+    _cont12 = [re.findall(r"\d+", _A12[_dif12[0]]), re.findall(r"\d+", _B12[_dif12[0]])] if _dif12 else [[], []]
+    _so_num12 = bool(_dif12 is not None and len(_dif12) == 1 and re.sub(r"\d+", "#", _A12[_dif12[0]]) == re.sub(r"\d+", "#", _B12[_dif12[0]]) and any(int(a_) - int(b_) == 4 for a_, b_ in zip(_cont12[0], _cont12[1]) if a_ != b_))
+    rep["variante_v412"][lang] = {"rc": _r212v, "n_registros_retirados": sum(1 for k_ in V412R if k_ in c and k_ not in cv12), "secao_nova_na_variante": bool(um._v412_secao_tex(lang)[0] in _t12v and um._v412_secao_tex(lang)[0] in _tf12), "n_linhas_do_quadro_de_vereditos_retiradas": len(_linhas12),
+                                  "igual_ao_completo_menos_as_quatro_linhas_e_a_contagem": _so_num12, "n_linhas_diferentes_alem_das_quatro": (len(_dif12) if _dif12 is not None else None), "contagem_de_chaves_completo_variante": [_cont12[0][:1], _cont12[1][:1]] if _dif12 else None,
+                                  "sem_frase_de_guarda_de_nao_selou_na_variante": ("NÃO selou" not in re.sub(r"\s+", " ", _x12v)) if lang == "pt" else ("did NOT seal" not in re.sub(r"\s+", " ", _x12v))}
+mau_var12 = [l for l, v in rep["variante_v412"].items() if v["rc"] != [0] or v["n_registros_retirados"] != 4 or v["n_linhas_do_quadro_de_vereditos_retiradas"] != 4 or not v["secao_nova_na_variante"] or not v["igual_ao_completo_menos_as_quatro_linhas_e_a_contagem"] or not v["sem_frase_de_guarda_de_nao_selou_na_variante"]]
+print("variante v412:", rep["variante_v412"])

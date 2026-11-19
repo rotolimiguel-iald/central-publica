@@ -1,0 +1,63 @@
+--- v411/guarda_conversa_v411.py
++++ v412/guarda_conversa_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/guarda_conversa_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/guarda_conversa_v412.py.diff
+@@ -3,2 +4,2 @@
+-"""guarda_conversa_v411.py -- A GUARDA DA CONVERSA (D181; PEDIDO_CORRECAO_R1_v411, item I): ordem, ratificacao, pergunta e desabafo do operador (e os textos da gerencia a que ele respondeu) sao conversa interna; no programa e no
+-artigo entram so' CITADOS (data, sha256, papel e autor). Para cada uma das 11 falas da lista da casa (DL.FALAS_V411):
++"""guarda_conversa_v412.py -- A GUARDA DA CONVERSA (D181; PEDIDO_CORRECAO_R1_v412, item I): ordem, ratificacao, pergunta e desabafo do operador (e os textos da gerencia a que ele respondeu) sao conversa interna; no programa e no
++artigo entram so' CITADOS (data, sha256, papel e autor). Para cada uma das 11 falas da lista da casa (DL.FALAS_V412):
+@@ -6 +7 @@
+-  (b) as linhas de 12 a 23 caracteres nao ocorrem mais vezes do que no um.py da base v410 e nos rendidos selados da v410 (o alvo e' comparado com o seu correspondente: coincidencia com texto antigo nao e' transcricao nova);
++  (b) as linhas de 12 a 23 caracteres nao ocorrem mais vezes do que no um.py da base v411 e nos rendidos selados da v411 (o alvo e' comparado com o seu correspondente: coincidencia com texto antigo nao e' transcricao nova);
+@@ -9 +10 @@
+-o tamanho, o tipo de alvo e a contagem. Os pinos da (b) ficam em GUARDA_CONVERSA_BASE_v410.json (contagens por sha16 da linha normalizada; nenhum texto).
++o tamanho, o tipo de alvo e a contagem. Os pinos da (b) ficam em GUARDA_CONVERSA_BASE_v411.json (contagens por sha16 da linha normalizada; nenhum texto).
+@@ -12,3 +13,3 @@
+-uso: python -B -X utf8 guarda_conversa_v411.py --candidato            (p00: o fonte do candidato + os controles; rc 1 se achado)
+-     python -B -X utf8 guarda_conversa_v411.py --rendidos <pasta>     (ensaio a seco / conferencia: core, artigo PT e EN, forma canonica, manifesto, stdout e um.py da pasta)
+-     python -B -X utf8 guarda_conversa_v411.py --gerar-base           (so' na preparacao, com o Nos ainda na v410 selada)"""
++uso: python -B -X utf8 guarda_conversa_v412.py --candidato            (p00: o fonte do candidato + os controles; rc 1 se achado)
++     python -B -X utf8 guarda_conversa_v412.py --rendidos <pasta>     (ensaio a seco / conferencia: core, artigo PT e EN, forma canonica, manifesto, stdout e um.py da pasta)
++     python -B -X utf8 guarda_conversa_v412.py --gerar-base           (so' na preparacao, com o Nos ainda na v411 selada)"""
+@@ -17,5 +18,5 @@
+-import delta_v411 as DL  # noqa: E402
+-
+-BASE_JSON = os.path.join(HERE, "GUARDA_CONVERSA_BASE_v410.json")
+-ARQS_RENDIDOS = {"um_py": "um.py", "core": "um_absoluto.json", "pt": "um_absoluto_pt.txt", "en": "um_absoluto_en.txt", "md": "um_absoluto_forma_canonica.md", "manifest": "um_absoluto_manifest.md", "stdout": "rodada_v411_stdout.txt"}
+-ARQS_V410 = dict(ARQS_RENDIDOS, stdout="rodada_v410_stdout.txt")
++import delta_v412 as DL  # noqa: E402
++
++BASE_JSON = os.path.join(HERE, "GUARDA_CONVERSA_BASE_v411.json")
++ARQS_RENDIDOS = {"um_py": "um.py", "core": "um_absoluto.json", "pt": "um_absoluto_pt.txt", "en": "um_absoluto_en.txt", "md": "um_absoluto_forma_canonica.md", "manifest": "um_absoluto_manifest.md", "stdout": "rodada_v412_stdout.txt"}
++ARQS_V411 = dict(ARQS_RENDIDOS, stdout="rodada_v411_stdout.txt")
+@@ -36 +37 @@
+-    for i_, f_ in enumerate(DL.FALAS_V411):
++    for i_, f_ in enumerate(DL.FALAS_V412):
+@@ -60 +61 @@
+-    rg_ = DL.FALA_REGRA_CONVERSA_V411["nome"]
++    rg_ = DL.FALA_REGRA_CONVERSA_V412["nome"]
+@@ -119 +120 @@
+-    """(preparacao, com o Nos AINDA na v410 selada) as contagens das linhas curtas no um.py da base v410 e nos rendidos selados da v410 (pino da regra (b)); so' sha16 e contagens."""
++    """(preparacao, com o Nos AINDA na v411 selada) as contagens das linhas curtas no um.py da base v411 e nos rendidos selados da v411 (pino da regra (b)); so' sha16 e contagens."""
+@@ -122 +123 @@
+-    assert hashlib.sha256(um_).hexdigest()[:16] == DL.BASE_SHA16_DA_ORDEM, "o Nos nao esta' na v410 selada: a base da regra (b) so' se gera antes do rito"
++    assert hashlib.sha256(um_).hexdigest()[:16] == DL.BASE_SHA16_DA_ORDEM, "o Nos nao esta' na v411 selada: a base da regra (b) so' se gera antes do rito"
+@@ -124,3 +125,3 @@
+-    alvos_ = {t_: _le(os.path.join(nos_, n_), t_) for t_, n_ in ARQS_V410.items()}
+-    out_ = {"contrato": "GUARDA_CONVERSA_BASE_v410", "nota": "contagens, por sha16 da linha normalizada, das linhas de 12 a 23 caracteres das 11 falas no um.py da base v410 e nos rendidos selados da v410 (regra (b)); nenhum texto de fala", "base_sha16": DL.BASE_SHA16_DA_ORDEM,
+-            "arquivos": {t_: {"nome": ARQS_V410[t_], "sha16": hashlib.sha256(c_).hexdigest()[:16], "bytes": len(c_)} for t_, c_ in alvos_.items()}, "linhas": contagens_curtas(alvos_)}
++    alvos_ = {t_: _le(os.path.join(nos_, n_), t_) for t_, n_ in ARQS_V411.items()}
++    out_ = {"contrato": "GUARDA_CONVERSA_BASE_v411", "nota": "contagens, por sha16 da linha normalizada, das linhas de 12 a 23 caracteres das 11 falas no um.py da base v411 e nos rendidos selados da v411 (regra (b)); nenhum texto de fala", "base_sha16": DL.BASE_SHA16_DA_ORDEM,
++            "arquivos": {t_: {"nome": ARQS_V411[t_], "sha16": hashlib.sha256(c_).hexdigest()[:16], "bytes": len(c_)} for t_, c_ in alvos_.items()}, "linhas": contagens_curtas(alvos_)}
+@@ -155 +156 @@
+-                achados_.append({"regra": "b", "alvo": tipo_, "fala": i_, "linha_sha16": _sha16(l_), "tamanho": len(l_), "ocorrencias": n_, "permitido": None, "motivo": "a base v410 nao traz a contagem deste alvo: recusa"})
++                achados_.append({"regra": "b", "alvo": tipo_, "fala": i_, "linha_sha16": _sha16(l_), "tamanho": len(l_), "ocorrencias": n_, "permitido": None, "motivo": "a base v411 nao traz a contagem deste alvo: recusa"})
+@@ -186 +187 @@
+-                r3_ = verificar({tipo_: raw_ + "\n" + "\n".join([l_] * (perm_ + 1)) + "\n"}, base_)   # (a linha curta plantada alem do que a base v410 permite)
++                r3_ = verificar({tipo_: raw_ + "\n" + "\n".join([l_] * (perm_ + 1)) + "\n"}, base_)   # (a linha curta plantada alem do que a base v411 permite)
+@@ -216,2 +217,2 @@
+-    out_ = {"contrato": "GUARDA_CONVERSA_v411", "modo": modo_, "alvos": v_["alvos"], "ok": bool(v_["ok"] and cn_["ok"]), "limpo": v_["ok"], "achados": v_["achados"][:40], "n_achados": len(v_["achados"]), "informativo": v_["informativo"][:20], "controle_negativo": cn_, "n_agulhas": v_["n_agulhas"]}
+-    destino_ = os.path.join(HERE, "GUARDA_CONVERSA_v411.json") if modo_ == "--candidato" else None
++    out_ = {"contrato": "GUARDA_CONVERSA_v412", "modo": modo_, "alvos": v_["alvos"], "ok": bool(v_["ok"] and cn_["ok"]), "limpo": v_["ok"], "achados": v_["achados"][:40], "n_achados": len(v_["achados"]), "informativo": v_["informativo"][:20], "controle_negativo": cn_, "n_agulhas": v_["n_agulhas"]}
++    destino_ = os.path.join(HERE, "GUARDA_CONVERSA_v412.json") if modo_ == "--candidato" else None

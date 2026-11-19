@@ -1,0 +1,111 @@
+--- v411/pos_rito/teste_mapa_sem_candidato_v411.py
++++ v412/pos_rito/teste_mapa_sem_candidato_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/teste_mapa_sem_candidato_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__teste_mapa_sem_candidato_v412.py.diff
+@@ -3,5 +4,5 @@
+-"""teste_mapa_sem_candidato_v411.py -- (claude-sonnet-posrito-M-v411, 12/11/2026) o teste POSSIVEL SEM CANDIDATO do registrar_mapa_v411.py (so' leitura do livro do mapa; NADA e' registrado, NADA e' gravado em pos_rito):
+-(1) as rotas anotadas e as citadas em refs existem no livro e a nova (umpy.v411.selada_h0dn_aberto_12nov) nao existe; os seq que o texto cita (abertura, marca ratificada, publicacao, preparacao) sao LIDOS do livro;
+-(2) os FATOS do registro h0dn_bg1_v411 (consts_mapa_x_v411.fatos_h0dn) lidos de TESTE_H0DN_OFFLINE_v411_registro.json (o substituto do core: as chaves congeladas) e os controles negativos (cada divergencia TEM de levantar AssertionError);
+-(3) montar() INTEIRA, com o core da v410 selada (base_v410/um_absoluto.json, so' leitura) mais h0dn_bg1_v411 (o registro offline), cunhagens_v411 e kh_n1_cobertura_v411 SINTETICOS (numeros de brinquedo so' nas contagens; nada disto vai a texto publicado), selo, ESPERADOS e V sinteticos;
+-(4) cada registro montado passa na MESMA funcao que o mapa usa (rotas._valida, importada so' para isso; o livro so' e' lido), na guarda de frases da v411 (que inclui a P18, a F60 a F67), na P18, na D59, na D65 e na regra da obrigacao (os dois numeros no mesmo campo);
++"""teste_mapa_sem_candidato_v412.py -- (claude-sonnet-posrito-M-v412, 12/11/2026) o teste POSSIVEL SEM CANDIDATO do registrar_mapa_v412.py (so' leitura do livro do mapa; NADA e' registrado, NADA e' gravado em pos_rito):
++(1) as rotas anotadas e as citadas em refs existem no livro e a nova (umpy.v412.selada_h0dn_aberto_12nov) nao existe; os seq que o texto cita (abertura, marca ratificada, publicacao, preparacao) sao LIDOS do livro;
++(2) os FATOS do registro h0dn_bg1_v411 (consts_mapa_x_v412.fatos_h0dn) lidos de TESTE_H0DN_OFFLINE_v412_registro.json (o substituto do core: as chaves congeladas) e os controles negativos (cada divergencia TEM de levantar AssertionError);
++(3) montar() INTEIRA, com o core da v411 selada (base_v411/um_absoluto.json, so' leitura) mais h0dn_bg1_v411 (o registro offline), cunhagens_v411 e kh_n1_cobertura_v411 SINTETICOS (numeros de brinquedo so' nas contagens; nada disto vai a texto publicado), selo, ESPERADOS e V sinteticos;
++(4) cada registro montado passa na MESMA funcao que o mapa usa (rotas._valida, importada so' para isso; o livro so' e' lido), na guarda de frases da v412 (que inclui a P18, a F60 a F67), na P18, na D59, na D65 e na regra da obrigacao (os dois numeros no mesmo campo);
+@@ -9 +10 @@
+-Saidas: o json montado vai para a pasta temporaria passada por argumento (padrao: o scratchpad do agente), nunca para pos_rito. uso: python -B -X utf8 teste_mapa_sem_candidato_v411.py [pasta_temporaria]   rc 0 = passou."""
++Saidas: o json montado vai para a pasta temporaria passada por argumento (padrao: o scratchpad do agente), nunca para pos_rito. uso: python -B -X utf8 teste_mapa_sem_candidato_v412.py [pasta_temporaria]   rc 0 = passou."""
+@@ -13 +14 @@
+-TMP = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else tempfile.mkdtemp(prefix="teste_mapa_v411_")
++TMP = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else tempfile.mkdtemp(prefix="teste_mapa_v412_")
+@@ -16,5 +17,5 @@
+-import delta_v411 as DL  # noqa: E402
+-import consts_mapa_x_v411 as C  # noqa: E402
+-import registrar_mapa_v411 as M  # noqa: E402
+-import guarda_frases_v411 as GF  # noqa: E402
+-from guarda_p18_v411 import violacoes  # noqa: E402
++import delta_v412 as DL  # noqa: E402
++import consts_mapa_x_v412 as C  # noqa: E402
++import registrar_mapa_v412 as M  # noqa: E402
++import guarda_frases_v412 as GF  # noqa: E402
++from guarda_p18_v412 import violacoes  # noqa: E402
+@@ -50 +51 @@
+-sq_pub = M.seq_do_alvo(regs, M.R_PUBL, "RESULTADO", contem=("f24d954a3b90",)); sq_pubr = M.seq_do_alvo(regs, M.R_PUBL, "ROTA"); sq_prep = M.seq_do_alvo(regs, M.R_PREP411, "ROTA")
++sq_pub = M.seq_do_alvo(regs, M.R_PUBL, "RESULTADO", contem=("f24d954a3b90",)); sq_pubr = M.seq_do_alvo(regs, M.R_PUBL, "ROTA"); sq_prep = M.seq_do_alvo(regs, M.R_PREP412, "ROTA")
+@@ -55,2 +56,2 @@
+-print("== (2) os fatos do registro h0dn_bg1_v411 (o substituto do core: TESTE_H0DN_OFFLINE_v411_registro.json)")
+-HD = json.load(open(os.path.join(PK, "TESTE_H0DN_OFFLINE_v411_registro.json"), encoding="utf-8"))
++print("== (2) os fatos do registro h0dn_bg1_v411 (o substituto do core: TESTE_H0DN_OFFLINE_v412_registro.json)")
++HD = json.load(open(os.path.join(PK, "TESTE_H0DN_OFFLINE_v412_registro.json"), encoding="utf-8"))
+@@ -86 +87 @@
+-print("== (3) h0dn_do_core (o registro contra ESPERADOS, o delta e a v410 selada) e h0dn_textos")
++print("== (3) h0dn_do_core (o registro contra ESPERADOS, o delta e a v411 selada) e h0dn_textos")
+@@ -90,2 +91,2 @@
+-ESP = {"candidato_sha16": PIN64[:16], "origem_sha16": DL.BASE_SHA16_DA_ORDEM, "escada_v410_e_v411": [ESC, ESC], "n_bandeiras_novas": 0, "chaves_v411": [], "qg_closure_gate_verdict_v410": GATE, "qg_closure_verdict": GATE,
+-       "vereditos_novos_v411": {DL.FECHO_REGISTRO: HD["verdict"], DL.CUNHAGENS_REGISTRO: "TGL_CUNHAGENS_V411__SINTETICO__GATE_UNMOVED", DL.KH_REGISTRO: "TGL_KH_N1_COBERTURA_V411__SINTETICO__GATE_UNMOVED"}}
++ESP = {"candidato_sha16": PIN64[:16], "origem_sha16": DL.BASE_SHA16_DA_ORDEM, "escada_v411_e_v412": [ESC, ESC], "n_bandeiras_novas": 0, "chaves_v412": [], "qg_closure_gate_verdict_v411": GATE, "qg_closure_verdict": GATE,
++       "vereditos_novos_v412": {DL.FECHO_REGISTRO: HD["verdict"], DL.CUNHAGENS_REGISTRO: "TGL_CUNHAGENS_V412__SINTETICO__GATE_UNMOVED", DL.KH_REGISTRO: "TGL_KH_N1_COBERTURA_V412__SINTETICO__GATE_UNMOVED"}}
+@@ -94 +95 @@
+-NEG_C = {"ESPERADOS sem o veredito do h0dn": lambda h, e: e["vereditos_novos_v411"].pop(DL.FECHO_REGISTRO), "ESPERADOS com outro veredito": lambda h, e: e["vereditos_novos_v411"].update({DL.FECHO_REGISTRO: "OUTRO"}),
++NEG_C = {"ESPERADOS sem o veredito do h0dn": lambda h, e: e["vereditos_novos_v412"].pop(DL.FECHO_REGISTRO), "ESPERADOS com outro veredito": lambda h, e: e["vereditos_novos_v412"].update({DL.FECHO_REGISTRO: "OUTRO"}),
+@@ -96 +97 @@
+-         "beta_ok False": lambda h, e: h.update(beta_ok=False), "gate diferente da v410": lambda h, e: h["values"].update(gate_verdict="OUTRO"), "escada diferente da v410": lambda h, e: h["values"].update(escada=ESC + 1),
++         "beta_ok False": lambda h, e: h.update(beta_ok=False), "gate diferente da v411": lambda h, e: h["values"].update(gate_verdict="OUTRO"), "escada diferente da v411": lambda h, e: h["values"].update(escada=ESC + 1),
+@@ -103 +104 @@
+-CTX = {"S": PIN64[:16], "sq_abertura": sq_ab, "res16": DL.INSUMO_POR_NOME["RESULTADO_DA_ABERTURA_V411.json"]["sha256"][:16], "prereg16": DL.INSUMO_POR_NOME["EMENDA_E_PRE_REGISTRO_V411.md"]["sha256"][:16]}
++CTX = {"S": PIN64[:16], "sq_abertura": sq_ab, "res16": DL.INSUMO_POR_NOME["RESULTADO_DA_ABERTURA_V412.json"]["sha256"][:16], "prereg16": DL.INSUMO_POR_NOME["EMENDA_E_PRE_REGISTRO_V412.md"]["sha256"][:16]}
+@@ -111,4 +112,4 @@
+-print("== (4) montar() INTEIRA contra o core da v410 selada + os registros novos (o h0dn offline; cunhagens e kh sinteticos)")
+-CG = {"all_verified": True, "verdict": ESP["vereditos_novos_v411"][DL.CUNHAGENS_REGISTRO], "verbatim": {"f%d" % i_: {"citado_por_sha256": True, "texto_transcrito": False, "sha256": "%064x" % i_} for i_ in range(DL.N_FALAS_V411)}, "extras": {"decisoes": dict(DL.DECISOES_V411)},
+-      "erratas": [{"agora": e_["texto"], "assinatura": DL.ASSINA} for e_ in DL.ERRATAS_V411] + [{"agora": "pisos de kh_n1_cobertura_v410 (sintetico)", "assinatura": DL.ASSINA, "ao_lado_de": "kh_n1_cobertura_v410"}]}
+-KH = {"all_verified": True, "verdict": ESP["vereditos_novos_v411"][DL.KH_REGISTRO], "lido": {"constantes_cobertas": 1, "teoremas_cobertos": 1}}
++print("== (4) montar() INTEIRA contra o core da v411 selada + os registros novos (o h0dn offline; cunhagens e kh sinteticos)")
++CG = {"all_verified": True, "verdict": ESP["vereditos_novos_v412"][DL.CUNHAGENS_REGISTRO], "verbatim": {"f%d" % i_: {"citado_por_sha256": True, "texto_transcrito": False, "sha256": "%064x" % i_} for i_ in range(DL.N_FALAS_V412)}, "extras": {"decisoes": dict(DL.DECISOES_V412)},
++      "erratas": [{"agora": e_["texto"], "assinatura": DL.ASSINA} for e_ in DL.ERRATAS_V412] + [{"agora": "pisos de kh_n1_cobertura_v410 (sintetico)", "assinatura": DL.ASSINA, "ao_lado_de": "kh_n1_cobertura_v410"}]}
++KH = {"all_verified": True, "verdict": ESP["vereditos_novos_v412"][DL.KH_REGISTRO], "lido": {"constantes_cobertas": 1, "teoremas_cobertos": 1}}
+@@ -125 +126 @@
+-SELO = {"um_version": "v411", "sha256": {"um.py": PIN64}, "qg_closure_verdict": GATE}
++SELO = {"um_version": "v412", "sha256": {"um.py": PIN64}, "qg_closure_verdict": GATE}
+@@ -128,2 +129,2 @@
+-M._bancada = lambda: {"de": "v410", "geracao": DL.BANCADA_PINA_HOJE["n"], "proxima": DL.BANCADA_PINA_HOJE["n"] + 1, "deployment_id": DL.BANCADA_PINA_HOJE["deployment_id"]}   # (o PINOS_BN_v411.json so' existe depois do diff_e_pinos; o resto de montar() e' o real)
+-ARTS = [os.path.join(PK, "TESTE_H0DN_OFFLINE_v411_registro.json"), os.path.join(PK, "kernel", "KERNEL_RECIBO_v411.json")]
++M._bancada = lambda: {"de": "v411", "geracao": DL.BANCADA_PINA_HOJE["n"], "proxima": DL.BANCADA_PINA_HOJE["n"] + 1, "deployment_id": DL.BANCADA_PINA_HOJE["deployment_id"]}   # (o PINOS_BN_v412.json so' existe depois do diff_e_pinos; o resto de montar() e' o real)
++ARTS = [os.path.join(PK, "TESTE_H0DN_OFFLINE_v412_registro.json"), os.path.join(PK, "kernel", "KERNEL_RECIBO_v412.json")]
+@@ -132 +133 @@
+-pj = os.path.join(TMP, "registro_mapa_v411_TESTE.json"); open(pj, "w", encoding="utf-8").write(json.dumps(REG, ensure_ascii=False, indent=1))
++pj = os.path.join(TMP, "registro_mapa_v412_TESTE.json"); open(pj, "w", encoding="utf-8").write(json.dumps(REG, ensure_ascii=False, indent=1))
+@@ -169 +170 @@
+-check("controle negativo: a guarda de frases da v411 recusa a mesma frase (F60)", any(v_[0].startswith("F60") for v_ in GF.violacoes(json.dumps(x_, ensure_ascii=False))))
++check("controle negativo: a guarda de frases da v412 recusa a mesma frase (F60)", any(v_[0].startswith("F60") for v_ in GF.violacoes(json.dumps(x_, ensure_ascii=False))))
+@@ -192 +193 @@
+-check("o titulo da ROTA SEM a linha das Cefeidas livres e' recusado pela guarda_frases_v411.violacoes", rr_["titulo"] != REG[0]["titulo"] and any(x_[0].startswith("F67") for x_ in GF.violacoes(json.dumps(rr_, ensure_ascii=False))))
++check("o titulo da ROTA SEM a linha das Cefeidas livres e' recusado pela guarda_frases_v412.violacoes", rr_["titulo"] != REG[0]["titulo"] and any(x_[0].startswith("F67") for x_ in GF.violacoes(json.dumps(rr_, ensure_ascii=False))))
+@@ -198 +199 @@
+-for tk_ in (DL.TOKENS_PROIBIDOS_V411[0], DL.TOKENS_PROIBIDOS_V411[-1]):
++for tk_ in (DL.TOKENS_PROIBIDOS_V412[0], DL.TOKENS_PROIBIDOS_V412[-1]):
+@@ -200 +201 @@
+-    check("controle negativo: o token proibido %s no registro e' achado pela leitura de tokens do montar()" % tk_, any(t_ in j_ for t_ in DL.TOKENS_PROIBIDOS_V411))
++    check("controle negativo: o token proibido %s no registro e' achado pela leitura de tokens do montar()" % tk_, any(t_ in j_ for t_ in DL.TOKENS_PROIBIDOS_V412))
+@@ -216 +217 @@
+-NEG_M = {"o selo e' de outra versao": lambda: M.montar(V, core_novo(), dict(SELO, um_version="v410"), ids, ARTS), "a rota nova ja' existe no livro": lambda: M.montar(V, core_novo(), SELO, set(ids) | {M.NOVA}, ARTS),
++NEG_M = {"o selo e' de outra versao": lambda: M.montar(V, core_novo(), dict(SELO, um_version="v411"), ids, ARTS), "a rota nova ja' existe no livro": lambda: M.montar(V, core_novo(), SELO, set(ids) | {M.NOVA}, ARTS),
+@@ -226,4 +227,4 @@
+-         "ESPERADOS diz que uma chave antiga muda": lambda: _com_esp(dict(ESP, chaves_v411=["x"])), "a base de ESPERADOS nao e' a v410 selada": lambda: _com_esp(dict(ESP, origem_sha16="0" * 16)),
+-         "ESPERADOS sem o veredito novo do cunhagens_v411": lambda: _com_esp(dict(ESP, vereditos_novos_v411={DL.FECHO_REGISTRO: HD["verdict"]})),
+-         "um registro da v410 selada nao sela na v411": lambda: M.montar(V, core_novo(lambda c: c.update(iald2_v410=dict(c["iald2_v410"], all_verified=False))), SELO, ids, ARTS),
+-         "um registro da v410 selada sumiu do core": lambda: M.montar(V, core_novo(lambda c: c.pop("a_escala_v410")), SELO, ids, ARTS),
++         "ESPERADOS diz que uma chave antiga muda": lambda: _com_esp(dict(ESP, chaves_v412=["x"])), "a base de ESPERADOS nao e' a v411 selada": lambda: _com_esp(dict(ESP, origem_sha16="0" * 16)),
++         "ESPERADOS sem o veredito novo do cunhagens_v411": lambda: _com_esp(dict(ESP, vereditos_novos_v412={DL.FECHO_REGISTRO: HD["verdict"]})),
++         "um registro da v411 selada nao sela na v412": lambda: M.montar(V, core_novo(lambda c: c.update(iald2_v410=dict(c["iald2_v410"], all_verified=False))), SELO, ids, ARTS),
++         "um registro da v411 selada sumiu do core": lambda: M.montar(V, core_novo(lambda c: c.pop("a_escala_v410")), SELO, ids, ARTS),
+@@ -235 +236 @@
+-         "o bandeiras_do_gate_v403 diferente da v410": lambda: M.montar(V, core_novo(lambda c: c.update(bandeiras_do_gate_v403=dict(c["bandeiras_do_gate_v403"], values=dict(c["bandeiras_do_gate_v403"]["values"], n_true=0)))), SELO, ids, ARTS)}
++         "o bandeiras_do_gate_v403 diferente da v411": lambda: M.montar(V, core_novo(lambda c: c.update(bandeiras_do_gate_v403=dict(c["bandeiras_do_gate_v403"], values=dict(c["bandeiras_do_gate_v403"]["values"], n_true=0)))), SELO, ids, ARTS)}
+@@ -239,3 +240,3 @@
+-src_ = open(os.path.join(HERE, "registrar_mapa_v411.py"), encoding="utf-8").read()
+-MARCA_ = "[A ADAPTAR v" + "411]"   # (por concatenacao: o p00 procura a marca em TODO arquivo da cadeia, inclusive neste)
+-check("o script nao tem a marca de copia mecanica nem a marca de trecho a reescrever", MARCA_ not in src_ and ("# TEXTO_A_REESCREVER" + "_V411") not in src_)
++src_ = open(os.path.join(HERE, "registrar_mapa_v412.py"), encoding="utf-8").read()
++MARCA_ = "[A ADAPTAR v" + "412]"   # (por concatenacao: o p00 procura a marca em TODO arquivo da cadeia, inclusive neste)
++check("o script nao tem a marca de copia mecanica nem a marca de trecho a reescrever", MARCA_ not in src_ and ("# TEXTO_A_REESCREVER" + "_V412") not in src_)

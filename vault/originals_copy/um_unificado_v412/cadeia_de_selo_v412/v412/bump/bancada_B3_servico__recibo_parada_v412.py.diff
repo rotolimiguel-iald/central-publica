@@ -1,0 +1,59 @@
+--- v411/bancada_B3_servico/recibo_parada_v411.py
++++ v412/bancada_B3_servico/recibo_parada_v412.py
+@@ -0,0 +1 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/bancada_B3_servico/recibo_parada_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/bancada_B3_servico__recibo_parada_v412.py.diff
+@@ -2,4 +3,4 @@
+-# (historico: o molde e' v410/bancada_B3_servico/recibo_parada_v410.py, adaptado na v410 a ordem da v410; a copia subiu por rotulo em _bump_copia_v411.py, diff em bump/; o corpo vem da adaptacao da v408 [fork C], conferido de versao a versao; na v411 so' a ORDEM muda, e as datas das ordens anteriores nao ficam no script porque o conferidor estatico as recusa)
+-# o ultimo religamento conhecido segue sendo o do B(n) da v410 (RECIBO_RELIGAMENTO_v410.json: PID, no_ar_desde), e o recibo diz se o PID lido da porta e' o mesmo; as chaves do recibo sao as do recibo REAL da v410; nada de bundle nem de hash digitado.
+-"""10-bis-a da v411: recibo da parada do servico da Bancada Um (porta 18777), no molde do recibo_parada_v410.py. Passo da Bancada: B20 (a producao pina B19-v410-20261111-R1). A autorizacao e' a ORDEM da v411, do operador, de 12/11/2026 (a ordem de abrir e a ordem da v411, D169; a fala inteira e' lida do arquivo e conferida contra o texto passado pelo orquestrador).
+-O ultimo religamento conhecido e' o do B(n) da v410 (RECIBO_RELIGAMENTO_v410.json, em v410/bancada_B3_servico): o PID registrado aqui e' o LIDO DA PORTA antes da parada; o recibo diz se e' o mesmo do religamento da v410 ou se o servico foi religado de novo depois."""
++# (historico: o molde e' v411/bancada_B3_servico/recibo_parada_v411.py, adaptado na v411 a ordem da v411; a copia subiu por rotulo em _bump_copia_v412.py, diff em bump/; o corpo vem da adaptacao da v408 [fork C], conferido de versao a versao; na v412 so' a ORDEM muda, e as datas das ordens anteriores nao ficam no script porque o conferidor estatico as recusa)
++# o ultimo religamento conhecido segue sendo o do B(n) da v411 (RECIBO_RELIGAMENTO_v411.json: PID, no_ar_desde), e o recibo diz se o PID lido da porta e' o mesmo; as chaves do recibo sao as do recibo REAL da v411; nada de bundle nem de hash digitado.
++"""10-bis-a da v412: recibo da parada do servico da Bancada Um (porta 18777), no molde do recibo_parada_v411.py. Passo da Bancada: B21 (a producao pina B20-v411-20261113-R1). A autorizacao e' a ORDEM da v412, do operador, de 12/11/2026 (a ordem de abrir e a ordem da v412, D169; a fala inteira e' lida do arquivo e conferida contra o texto passado pelo orquestrador).
++O ultimo religamento conhecido e' o do B(n) da v411 (RECIBO_RELIGAMENTO_v411.json, em v411/bancada_B3_servico): o PID registrado aqui e' o LIDO DA PORTA antes da parada; o recibo diz se e' o mesmo do religamento da v411 ou se o servico foi religado de novo depois."""
+@@ -14,3 +15,3 @@
+-AUT = os.environ.get("V411_AUTORIZACAO_OPERADOR", "").strip()
+-assert AUT, "defina V411_AUTORIZACAO_OPERADOR com a ordem do operador que cobre este ato (data e texto): o script nao presume autorizacao"
+-# a autorizacao tem de ser a ORDEM da v411, de 12/11/2026 (a ordem de abrir e a ordem da v411, D169; nao a da v410 nem as anteriores): o sha16 da fala vem do ARQUIVO lido agora (nunca digitado), a fala INTEIRA e' lida do arquivo
++AUT = os.environ.get("V412_AUTORIZACAO_OPERADOR", "").strip()
++assert AUT, "defina V412_AUTORIZACAO_OPERADOR com a ordem do operador que cobre este ato (data e texto): o script nao presume autorizacao"
++# a autorizacao tem de ser a ORDEM da v412, de 12/11/2026 (a ordem de abrir e a ordem da v412, D169; nao a da v411 nem as anteriores): o sha16 da fala vem do ARQUIVO lido agora (nunca digitado), a fala INTEIRA e' lida do arquivo
+@@ -18 +19 @@
+-ORDEM = os.path.join(D, "..", "..", "..", "cunhagens_13out", "OPERADOR_12nov_otimo_vamos_rodar_tudo_pode_abrir_chegou_a_hora_da_v411_verbatim.txt")
++ORDEM = os.path.join(D, "..", "..", "..", "cunhagens_13out", "OPERADOR_12nov_otimo_vamos_rodar_tudo_pode_abrir_chegou_a_hora_da_v412_verbatim.txt")
+@@ -22 +23 @@
+-assert FRASE_DA_ORDEM in ORDEM_BYTES.decode("utf-8") and len(FRASE_DA_ORDEM) >= 20 and FRASE_DA_ORDEM in AUT and ORDEM_SHA16 in AUT and "12/11/2026" in AUT, "a autorizacao passada nao e' a ordem do operador de 12/11/2026 (a ordem da v411: o sha16 da fala lido do arquivo e a fala inteira no texto, com a data)"
++assert FRASE_DA_ORDEM in ORDEM_BYTES.decode("utf-8") and len(FRASE_DA_ORDEM) >= 20 and FRASE_DA_ORDEM in AUT and ORDEM_SHA16 in AUT and "12/11/2026" in AUT, "a autorizacao passada nao e' a ordem do operador de 12/11/2026 (a ordem da v412: o sha16 da fala lido do arquivo e a fala inteira no texto, com a data)"
+@@ -33,9 +34,9 @@
+-rel410 = json.load(open(os.path.join(D, "..", "..", "v410", "bancada_B3_servico", "RECIBO_RELIGAMENTO_v410.json"), encoding="utf-8"))   # o ultimo religamento conhecido: o do B(n) da v410 (o servico que a v410 deixou no ar)
+-pid_v410 = rel410["pid"]
+-assert str(pid_v410).isdigit() and rel410.get("no_ar_desde") and rel410.get("hora_recibo"), rel410
+-# emenda da gerencia c1 (28/10/2026, antes do uso): o numero corrige a frase -- o PID registrado e o LIDO DA PORTA antes da parada (V411_PID_PARADO), nao o de nenhum recibo anterior,
+-# porque o servico pode ter sido religado de novo depois do ultimo recibo (o processo da porta foi criado em outra hora); o PID do recibo anterior (o da v410) fica ao lado, como referencia.
+-PIDP = os.environ.get("V411_PID_PARADO", "").strip()
+-assert PIDP.isdigit(), "defina V411_PID_PARADO com o PID lido da porta 18777 antes da parada (linha de comando conferida): o script nao presume o PID"
+-CRIADO = os.environ.get("V411_PID_PARADO_CRIADO", "").strip()
+-assert CRIADO, "defina V411_PID_PARADO_CRIADO com a data/hora de criacao do processo parado (lida de Win32_Process antes da parada)"
++rel411 = json.load(open(os.path.join(D, "..", "..", "v411", "bancada_B3_servico", "RECIBO_RELIGAMENTO_v411.json"), encoding="utf-8"))   # o ultimo religamento conhecido: o do B(n) da v411 (o servico que a v411 deixou no ar)
++pid_v411 = rel411["pid"]
++assert str(pid_v411).isdigit() and rel411.get("no_ar_desde") and rel411.get("hora_recibo"), rel411
++# emenda da gerencia c1 (28/10/2026, antes do uso): o numero corrige a frase -- o PID registrado e o LIDO DA PORTA antes da parada (V412_PID_PARADO), nao o de nenhum recibo anterior,
++# porque o servico pode ter sido religado de novo depois do ultimo recibo (o processo da porta foi criado em outra hora); o PID do recibo anterior (o da v411) fica ao lado, como referencia.
++PIDP = os.environ.get("V412_PID_PARADO", "").strip()
++assert PIDP.isdigit(), "defina V412_PID_PARADO com o PID lido da porta 18777 antes da parada (linha de comando conferida): o script nao presume o PID"
++CRIADO = os.environ.get("V412_PID_PARADO_CRIADO", "").strip()
++assert CRIADO, "defina V412_PID_PARADO_CRIADO com a data/hora de criacao do processo parado (lida de Win32_Process antes da parada)"
+@@ -46 +47 @@
+-       "pid_estado": "PID lido da porta 18777 antes da parada (processo criado em %s; linha de comando conferida), parado pelo PID; conferido aqui que ja nao existe; o recibo do religamento da v410 (RECIBO_RELIGAMENTO_v410.json, de %s/%s) registrou o PID %s, no ar desde %s: %s" % (CRIADO, rel410["hora_recibo"][8:10], rel410["hora_recibo"][5:7], pid_v410, rel410["no_ar_desde"], "igual ao parado" if str(pid_v410) == PIDP else "diferente do parado (o servico foi religado de novo depois do religamento da v410)"),
++       "pid_estado": "PID lido da porta 18777 antes da parada (processo criado em %s; linha de comando conferida), parado pelo PID; conferido aqui que ja nao existe; o recibo do religamento da v411 (RECIBO_RELIGAMENTO_v411.json, de %s/%s) registrou o PID %s, no ar desde %s: %s" % (CRIADO, rel411["hora_recibo"][8:10], rel411["hora_recibo"][5:7], pid_v411, rel411["no_ar_desde"], "igual ao parado" if str(pid_v411) == PIDP else "diferente do parado (o servico foi religado de novo depois do religamento da v411)"),
+@@ -51,2 +52,2 @@
+-       "nota": ("nenhum processo um_bancada.py vivo e a porta 18777 fechada, conferidos por este script no momento do recibo; o script nao para nada: o servico foi religado no passo %s da v410 (PID %s, no ar desde %s); o PID parado, %s, e o lido da porta, "
+-                "e a parada que precede este recibo e feita pelo PID (nunca por nome), nao por este script; quem a executou e sob que ordem do operador consta em autorizacao_do_operador" % (rel410.get("passo"), pid_v410, rel410["no_ar_desde"], PIDP)),
++       "nota": ("nenhum processo um_bancada.py vivo e a porta 18777 fechada, conferidos por este script no momento do recibo; o script nao para nada: o servico foi religado no passo %s da v411 (PID %s, no ar desde %s); o PID parado, %s, e o lido da porta, "
++                "e a parada que precede este recibo e feita pelo PID (nunca por nome), nao por este script; quem a executou e sob que ordem do operador consta em autorizacao_do_operador" % (rel411.get("passo"), pid_v411, rel411["no_ar_desde"], PIDP)),
+@@ -55 +56 @@
+-p = os.path.join(D, "RECIBO_PARADA_v411.json")
++p = os.path.join(D, "RECIBO_PARADA_v412.json")
+@@ -59 +60 @@
+-print("ok", p, "pid_parado", PIDP, "pid_recibo_v410", pid_v410, "processos", n_proc)
++print("ok", p, "pid_parado", PIDP, "pid_recibo_v411", pid_v411, "processos", n_proc)

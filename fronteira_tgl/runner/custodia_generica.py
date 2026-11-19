@@ -182,6 +182,11 @@ def semantica(core, F, S, sem_pedra=False):
         kn = cu.get("kernel") or {}
         a, b = list(kn.get("bandeiras") or []), list(kn.get("declaracoes_no_trio") or [])
         r["S14_cunhagens"] = bool(len(a) == 2 and a[0] == a[1] and a[0] > 0 and len(b) == 2 and b[0] == b[1] and b[0] > 0 and len(cu.get("verbatim") or {}) >= 1)
+        # AO LADO (19/11/2026, claude-site-custodia; a v412): pela ordem do operador de 17/11 (o um.py compila o que é verdade; a conversa se registra
+        # em paralelo) o bloco de cunhagens pode vir SEM falas. Só passa se o FATOS congelado disser exatamente 0 falas (cunhagens.n == 0) e o bloco
+        # tiver 0; os pares do kernel seguem exigidos como antes (linha de cima intocada).
+        if not r["S14_cunhagens"] and (F.get("cunhagens") or {}).get("n") == 0 and len(cu.get("verbatim") or {}) == 0:
+            r["S14_cunhagens"] = bool(len(a) == 2 and a[0] == a[1] and a[0] > 0 and len(b) == 2 and b[0] == b[1] and b[0] > 0)
         if sem_pedra:
             # AO LADO (13/11/2026, claude-site-custodia; D197 da gerencia c1): contrato SEM_PEDRA_NOVA, os dois pares exatamente [0, 0] (a linha antiga, acima, intocada)
             r["S14_cunhagens"] = bool(a == [0, 0] and b == [0, 0] and len(cu.get("verbatim") or {}) >= 1)
@@ -280,7 +285,13 @@ def medir_custodia_generica(oc, v, a, fatos=None, semantica_dada=None):
         {"versao": v, "pin16": F["pin"][:16]}, {"selo": selo.get("um_version"), "sha_um_py_16": um_sha[:16]})
     novos = sorted(k for k in core if k not in core_a)
     sumidos = sorted(k for k in core_a if k not in core)
-    chk("S2_blocos_novos", novos == sorted(F["registros_novos"]) and not sumidos and sumidos == F["registros_sumidos"], F["registros_novos"], {"novos": novos, "sumidos": sumidos})
+    # AO LADO (19/11/2026, claude-site-custodia; a v412): o FATOS separa em `blocos_auxiliares_novos` a chave nova do core SEM `verdict` (a v412 traz
+    # `guarda_frases_v412`, emenda da gerência c1 em fatos.py). Só sai da conta de registros a chave que o FATOS congelado lista E que segue sem
+    # `verdict` no core do cofre; S2 confere novos == registros + auxiliares; S3 e S8 contam só os registros.
+    aux = sorted(k for k in (F.get("blocos_auxiliares_novos") or []) if isinstance(core.get(k), dict) and "verdict" not in core[k])
+    chk("S2_blocos_novos", novos == sorted(list(F["registros_novos"]) + aux) and aux == sorted(F.get("blocos_auxiliares_novos") or [])
+        and not sumidos and sumidos == F["registros_sumidos"], {"registros": F["registros_novos"], "auxiliares": aux}, {"novos": novos, "sumidos": sumidos})
+    novos = [k for k in novos if k not in aux]
     maus = [k for k in novos if not bloco_ok(core[k])]
     chk("S3_blocos_bem_formados", not maus, [], maus)
     kf, kf_a = core.get("kernel_formalization") or {}, core_a.get("kernel_formalization") or {}

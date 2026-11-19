@@ -1,0 +1,10 @@
+EMENDAR A R18 ANTES DA PUBLICAÇÃO — corrigir a linha da fita, a contagem de referências e pequenas diferenças entre a síntese e as linhas da tabela.
+[REAL] Reproduzi R16A → R17 pelas 15 substituições, depois R17 → R18. A abertura A escolhida pelo autor foi conservada. Os três arquivos conferem por bytes com seus pinos.
+São 30 linhas de conteúdo e 56 teoremas distintos, todos existentes em módulos da própria linha e reconhecidos pelo Lean. A expressão do script admite só minúsculas após a inicial e deixou de contar `sat_formulaDa` na linha 58.
+Linha 57. A cláusula vale sob x quando ao menos um literal vale. A trava converge à projeção sobre as soluções e a desigualdade em tempo finito traz a hipótese de amplitude fora delas. A linha respeita os tipos.
+Linha 58. Redação proposta: “Para p ≠ 0, um leitor insensível ao sinal em p confunde duas fitas desta família de duas cláusulas unitárias. Há solução se e só se f(0) = f(p); então toda testemunha atribui esse valor à variável 0.” Retirar a conclusão de custo de ler a entrada inteira.
+A síntese da linha 14 deve completar a classe dos dois pivôs com o segundo literal fora de ambos. A linha 70 já contém essa condição. Na linha 85, seguir a entrada do Kimi: “a fita é o índice; a torre é a forma do índice”.
+A junção e a recusa agora têm as hipóteses centrais na tabela. Na linha 64, acrescentar a definição `Codex.ClauseReply.run`, que usa a ocorrência de `inspect_some` para formar a próxima chamada. A lista de 56 conta teoremas, e essa remissão adicional é uma definição.
+As trocas sobre Path, os quatro ramos, transmissão/retorno, projeções, pares disjuntos, chave, fio denso e indicadores atendem à 032 nos escopos discriminados no recibo. Cada cota conserva a unidade da linha.
+[REAL] A travessia PT vigente examinou 190 unidades, com zero violações, inclusive nas 25 novas ou alteradas desde R16A. A frase excessiva da linha 58 passa nessa guarda e precisa da correção matemática em X1 e X2.
+[OPEN] A página preserva a pergunta sobre uma máquina uniforme de fita para a Palavra de toda CNF plana. A revisão de emissões do candidato tem evidência própria na próxima etapa.

@@ -1,0 +1,220 @@
+{
+  "tokenizador": {
+    "nome": "Qwen/Qwen3.6-35B-A3B",
+    "metodo": "tokenizers.Tokenizer.from_file; somente tokenizer.json; add_special_tokens padrão da revisão",
+    "biblioteca_tokenizers": "0.21.4",
+    "arquivo_local": "TOKENIZER_QWEN3_6_35B_A3B.json",
+    "bytes_tokenizer": 12807982,
+    "sha256_tokenizer": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42",
+    "snapshot_referencia": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+    "pesos_ou_modelo_lidos": false,
+    "e_o_que_orienta_o_desenho": true,
+    "fallback_bytes_v1": "histórico; não é proxy válido e não orienta o desenho"
+  },
+  "palavras": {
+    "regex": "[^\\W_]+(?:['’\\-–][^\\W_]+)*",
+    "regra": "sequências Unicode alfanuméricas com apóstrofo/hífen/travessão interno; pontos e vírgulas separam"
+  },
+  "artigo_inteiro_controle": {
+    "arquivo": "um_absoluto_pt.txt",
+    "bytes": 1164350,
+    "palavras": 189851,
+    "tokens_ref": 412784,
+    "bytes_por_token": 2.8207246404899413,
+    "tokens_por_palavra": 2.1742524400714243,
+    "sha256": "f9fa0d329166b33dd59d72e3f807b69c936a60e2f2a4d8a9e6be23009dd8d719",
+    "tokens_esperados_revisao": 412784,
+    "confere_revisao": true,
+    "sha256_artigo_usado_na_revisao": "f9fa0d329166b33dd59d72e3f807b69c936a60e2f2a4d8a9e6be23009dd8d719",
+    "artigo_publico_byte_identico_ao_da_revisao": true
+  },
+  "candidatas": {
+    "ABSTRACT": {
+      "n_assercoes": 16,
+      "n_clausulas": 17,
+      "completo": {
+        "arquivo": "ABSTRACT.md",
+        "bytes": 3308,
+        "palavras": 487,
+        "tokens_ref": 877,
+        "bytes_por_token": 3.771949828962372,
+        "tokens_por_palavra": 1.8008213552361396,
+        "sha256": "4465ab5de23cba859a948be04ad9643a7eabfd891ac31b7c38ddefaf3cf78e24",
+        "tokens_fallback_rev0_historico": 3308
+      },
+      "compacto": {
+        "arquivo": "CANDIDATA_ABSTRACT.md",
+        "bytes": 2958,
+        "palavras": 429,
+        "tokens_ref": 789,
+        "bytes_por_token": 3.7490494296577945,
+        "tokens_por_palavra": 1.8391608391608392,
+        "sha256": "4db59a9f839958607de1ce6ed8e60f6930e41eae1b40d4cb00d1aa2358d14313",
+        "tokens_fallback_rev0_historico": 2958
+      },
+      "controle_pc": {
+        "arquivo": "CONTROLE_PC_ABSTRACT.md",
+        "bytes": 2999,
+        "palavras": 437,
+        "tokens_ref": 804,
+        "bytes_por_token": 3.7300995024875623,
+        "tokens_por_palavra": 1.839816933638444,
+        "sha256": "7048ebc8c2f574a9f7a69f6d2e7b6b4d7824bfa6c09f37481341d4d22ec115e2",
+        "tokens_fallback_rev0_historico": 2999
+      },
+      "tokens_ref_compacto_sobre_completo": 0.8996579247434435,
+      "custo_texto": {
+        "formula_geral": "C(r) = r × T_ref; r é o número de entradas da fita, não o número de interações",
+        "regra_do_desenho": "r = 1 por sessão, porque a fonte não volta depois do primeiro passo",
+        "P_A_fonte_so_no_primeiro_passo": 789,
+        "P_B_fonte_so_no_primeiro_passo": 789,
+        "P_C_controle_so_no_primeiro_passo": 804,
+        "P_D_fonte_so_no_primeiro_passo": 789,
+        "fonte_completa_uma_fita_para_comparacao": 877,
+        "contrafactual_P_A_com_m_fitas_nao_usado": 13413
+      }
+    },
+    "READ_BRIEF": {
+      "n_assercoes": 26,
+      "n_clausulas": 27,
+      "completo": {
+        "arquivo": "read-brief.md",
+        "bytes": 24533,
+        "palavras": 3688,
+        "tokens_ref": 7915,
+        "bytes_por_token": 3.099557801642451,
+        "tokens_por_palavra": 2.1461496746203905,
+        "sha256": "4390ecab7cab98839a80494822b3cb2a368c4742692a812127567c2cf4c401ac",
+        "tokens_fallback_rev0_historico": 24533
+      },
+      "compacto": {
+        "arquivo": "CANDIDATA_READ_BRIEF.md",
+        "bytes": 13555,
+        "palavras": 2073,
+        "tokens_ref": 4072,
+        "bytes_por_token": 3.3288310412573674,
+        "tokens_por_palavra": 1.9643029425952725,
+        "sha256": "21cc74147bf6cc1a5bf1bc019f19903d6a0c28da36587ed4569044b4603bf633",
+        "tokens_fallback_rev0_historico": 13555
+      },
+      "controle_pc": {
+        "arquivo": "CONTROLE_PC_READ_BRIEF.md",
+        "bytes": 13596,
+        "palavras": 2081,
+        "tokens_ref": 4087,
+        "bytes_por_token": 3.3266454612184977,
+        "tokens_por_palavra": 1.9639596347909658,
+        "sha256": "3b883da61c66ebb663d26c4a2e192b24ece1b10d3ecfc43234134d672f47865f",
+        "tokens_fallback_rev0_historico": 13596
+      },
+      "tokens_ref_compacto_sobre_completo": 0.5144662034112445,
+      "custo_texto": {
+        "formula_geral": "C(r) = r × T_ref; r é o número de entradas da fita, não o número de interações",
+        "regra_do_desenho": "r = 1 por sessão, porque a fonte não volta depois do primeiro passo",
+        "P_A_fonte_so_no_primeiro_passo": 4072,
+        "P_B_fonte_so_no_primeiro_passo": 4072,
+        "P_C_controle_so_no_primeiro_passo": 4087,
+        "P_D_fonte_so_no_primeiro_passo": 4072,
+        "fonte_completa_uma_fita_para_comparacao": 7915,
+        "contrafactual_P_A_com_m_fitas_nao_usado": 109944
+      }
+    },
+    "LLMS": {
+      "n_assercoes": 19,
+      "n_clausulas": 19,
+      "completo": {
+        "arquivo": "llms.txt",
+        "bytes": 26444,
+        "palavras": 4173,
+        "tokens_ref": 8946,
+        "bytes_por_token": 2.955957970042477,
+        "tokens_por_palavra": 2.143781452192667,
+        "sha256": "b83098531201d5797416cfa6074b18419844c78d9964bdc316acfa4c38ec0002",
+        "tokens_fallback_rev0_historico": 26444
+      },
+      "compacto": {
+        "arquivo": "CANDIDATA_LLMS.md",
+        "bytes": 11760,
+        "palavras": 1877,
+        "tokens_ref": 3926,
+        "bytes_por_token": 2.9954151808456446,
+        "tokens_por_palavra": 2.091635588705381,
+        "sha256": "5c2eb5cf57f236a6025ac78926bf58b6a2a5a2605e456531241d3429da96a8b0",
+        "tokens_fallback_rev0_historico": 11760
+      },
+      "controle_pc": {
+        "arquivo": "CONTROLE_PC_LLMS.md",
+        "bytes": 11801,
+        "palavras": 1885,
+        "tokens_ref": 3941,
+        "bytes_por_token": 2.9944176604922608,
+        "tokens_por_palavra": 2.090716180371353,
+        "sha256": "89e29f7ad1c622a64485700a0849308b1439017f9e448c54ecb65e367abf6e61",
+        "tokens_fallback_rev0_historico": 11801
+      },
+      "tokens_ref_compacto_sobre_completo": 0.4388553543483121,
+      "custo_texto": {
+        "formula_geral": "C(r) = r × T_ref; r é o número de entradas da fita, não o número de interações",
+        "regra_do_desenho": "r = 1 por sessão, porque a fonte não volta depois do primeiro passo",
+        "P_A_fonte_so_no_primeiro_passo": 3926,
+        "P_B_fonte_so_no_primeiro_passo": 3926,
+        "P_C_controle_so_no_primeiro_passo": 3941,
+        "P_D_fonte_so_no_primeiro_passo": 3926,
+        "fonte_completa_uma_fita_para_comparacao": 8946,
+        "contrafactual_P_A_com_m_fitas_nao_usado": 74594
+      }
+    },
+    "README": {
+      "n_assercoes": 28,
+      "n_clausulas": 31,
+      "completo": {
+        "arquivo": "README.md",
+        "bytes": 40695,
+        "palavras": 6253,
+        "tokens_ref": 13434,
+        "bytes_por_token": 3.02925413130862,
+        "tokens_por_palavra": 2.148408763793379,
+        "sha256": "d741c9933c05a23f1fbb8070d2a44ac7d9bc224bfcf7abe62eb5ca8d2a12f98c",
+        "tokens_fallback_rev0_historico": 40695
+      },
+      "compacto": {
+        "arquivo": "CANDIDATA_README.md",
+        "bytes": 23544,
+        "palavras": 3764,
+        "tokens_ref": 7358,
+        "bytes_por_token": 3.199782549605871,
+        "tokens_por_palavra": 1.954835281615303,
+        "sha256": "45526d4c7b0c145f68b716fe7bd74be30c526920af9b079136b4769bbd765fb4",
+        "tokens_fallback_rev0_historico": 23544
+      },
+      "controle_pc": {
+        "arquivo": "CONTROLE_PC_README.md",
+        "bytes": 23585,
+        "palavras": 3772,
+        "tokens_ref": 7373,
+        "bytes_por_token": 3.198833581988336,
+        "tokens_por_palavra": 1.9546659597030753,
+        "sha256": "9114645aaeca1556bc3f3756cb30df3bf7ccd53afab3027bf3ecdbf42a58cb2e",
+        "tokens_fallback_rev0_historico": 23585
+      },
+      "tokens_ref_compacto_sobre_completo": 0.5477147536102427,
+      "custo_texto": {
+        "formula_geral": "C(r) = r × T_ref; r é o número de entradas da fita, não o número de interações",
+        "regra_do_desenho": "r = 1 por sessão, porque a fonte não volta depois do primeiro passo",
+        "P_A_fonte_so_no_primeiro_passo": 7358,
+        "P_B_fonte_so_no_primeiro_passo": 7358,
+        "P_C_controle_so_no_primeiro_passo": 7373,
+        "P_D_fonte_so_no_primeiro_passo": 7358,
+        "fonte_completa_uma_fita_para_comparacao": 13434,
+        "contrafactual_P_A_com_m_fitas_nao_usado": 228098
+      }
+    }
+  },
+  "escolha": {
+    "candidata": "READ_BRIEF",
+    "criterio": "clareza e completude do catálogo; custo só desempata",
+    "razao": "as oito partes separam axioma, constante, ação, gerador, dinâmica, estatuto, programa e instrumentos, com hipóteses e limites explícitos; README tem mais asserções no catálogo, mas mistura núcleo, painel, P=nP, selo e navegação",
+    "nao_criterio": "nenhuma expectativa sobre P-A/P-B/P-C/P-D",
+    "inalterada_pela_errata_de_tokens": true
+  }
+}

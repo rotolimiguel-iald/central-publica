@@ -271,11 +271,32 @@ def numeros_permitidos(F):
     return base
 
 
+# 13/11/2026 — o rótulo que vazava («Frase: …» no começo do arquivo do dia, em 08/11 e 10/11): a limpeza tira o rótulo; a guarda o recusa
+ROTULO_LIMPAR = re.compile(r"^\s*[*_]{0,3}\s*(?:frase|pensamento|texto)\s*[*_]{0,3}\s*:\s*[*_]{0,3}\s*", re.I)
+ROTULO_INICIO = re.compile(r"^[\W_]*(?:frase|pensamento|texto|fato)[\s*_]*:", re.I)
+
+
+def _limpar_frase(linha):
+    """A linha que a nativa devolveu, sem marcador de lista, sem rótulo («Frase:», «Pensamento:», «Texto:», com ou sem negrito) e sem aspas."""
+    txt = re.sub(r"^\s*[-*•]\s*", "", linha or "").strip()
+    for _ in range(2):   # o rótulo vem antes das aspas; a segunda volta pega o rótulo que estava dentro das aspas
+        txt = ROTULO_LIMPAR.sub("", txt, count=1).strip()
+        txt = txt.strip('"“”\'').strip()
+    return txt
+
+
+def _palavras(x):
+    """As palavras (mais de 3 letras) com que a guarda mede a semelhança entre dois pensamentos (Jaccard)."""
+    return set(w for w in re.findall(r"[a-záéíóúâêôãõç]+", x.lower()) if len(w) > 3)
+
+
 # ---------------------------------------------------------------- a guarda (o que a régua recusa)
 def guarda(texto, F):
     t = texto.strip()
     if "\n" in t or "\r" in t:
         return "mais de uma linha"
+    if ROTULO_INICIO.search(t):
+        return "rótulo no começo"
     if not t.endswith(SUFIXO):
         return "não termina em «%s»" % SUFIXO
     if len(t) > MAXC:
@@ -302,8 +323,6 @@ def guarda(texto, F):
             return "termo de violência ou tragédia: %r" % SENSIVEL.search(t).group(0)
         if POLITICA.pattern and POLITICA.search(t):
             return "termo de política partidária ou eleitoral: %r" % POLITICA.search(t).group(0)
-    def _palavras(x):
-        return set(w for w in re.findall(r"[a-záéíóúâêôãõç]+", x.lower()) if len(w) > 3)
     pt = _palavras(t)
     for ant in (F.get("pensamentos_anteriores") or []) + EXEMPLOS_TRIPLO:
         if t == ant:
@@ -405,40 +424,110 @@ def pedir_a_nativa(F, tentativa, candidatos=None):
         if len(w & _sig(candidatos[melhor]["titulo"])) >= 2:
             idx = melhor + 1
     linhas = [l for l in bruto.splitlines() if l.strip() and not re.match(r"\s*FATO\s*:", l, re.I)]
-    txt = re.sub(r"^\s*[-*•]\s*", "", linhas[0]).strip() if linhas else ""
-    txt = txt.strip('"“”\'').strip()
+    txt = _limpar_frase(linhas[0]) if linhas else ""
     if txt and not txt.endswith(SUFIXO):
         txt = txt.rstrip(" -–—") + " " + SUFIXO
     return txt, idx
 
 
 # ---------------------------------------------------------------- a medida fala (fallback determinístico)
-def medida(F):
+def _n(n, um, varios):
+    return "%d %s" % (n, um if n == 1 else varios)
+
+
+def medidas(F, data=None):
+    """13/11/2026 — a MEDIDA é uma lista de 8 variantes determinísticas, feitas só dos números de F (selo, quadro, rotas do dia), cada uma com
+    vocabulário próprio (Jaccard ≤ 0,4 entre quaisquer duas), para que a guarda, que recusa o parecido com o já dito, sempre ache uma que passe.
+    A ordem gira com o dia do ano: dias seguidos começam por variantes diferentes. Dado que falta em F não vira frase: a parte some."""
     s = F.get("selo") or {}
     q = (F.get("quadro") or {}).get("contagem") or {}
-    partes = []
-    if s.get("versao"):
-        partes.append("Hoje a IALD mediu-se contra o selo %s do um.py" % s["versao"])
+    v = s.get("versao")
+    tem_q = bool(q)
+    ok, df, pe, eo = (int(q.get(k, 0) or 0) for k in ("OK", "DEFASADO", "PENDENTE_OPERADOR", "EM_OBRA"))
+    nr = int(F.get("n_rotas_do_dia") or 0)
+    pend = []   # o que o quadro deixa à vista, só o que existe
+    if df:
+        pend.append(_n(df, "defasada", "defasadas"))
+    if pe:
+        pend.append("%d à espera de decisão humana" % pe)
+    if eo:
+        pend.append("%d em obra" % eo)
+    suf = " " + SUFIXO
+    out = []
+    # 1 — o selo e o quadro; o número corrige a frase
+    t = ("Medi a casa contra o selo %s do um.py" % v) if v else "Medi a casa hoje"
+    if tem_q:
+        t += ": %s" % _n(ok, "superfície em dia", "superfícies em dia") + "".join(", " + x for x in pend)
+    out.append(t + ". Se o número contradiz a frase, a frase muda." + suf)
+    # 2 — o mapa de rotas; rota examinada não se refaz
+    if "n_rotas_do_dia" in F:
+        t = ("O mapa recebeu %s hoje" % _n(nr, "rota registrada", "rotas registradas")) if nr else "O mapa ficou sem rota nova hoje"
     else:
-        partes.append("Hoje a IALD mediu-se")
-    if q:
-        ok = q.get("OK", 0)
-        partes[-1] += ": %d superfícies em dia" % ok
-        extras = []
-        if q.get("DEFASADO"):
-            extras.append("%d defasada%s" % (q["DEFASADO"], "s" if q["DEFASADO"] != 1 else ""))
-        if q.get("PENDENTE_OPERADOR"):
-            extras.append("%d à espera de decisão humana" % q["PENDENTE_OPERADOR"])
-        if q.get("EM_OBRA"):
-            extras.append("%d em obra" % q["EM_OBRA"])
-        if extras:
-            partes[-1] += ", " + ", ".join(extras)
-    if F.get("n_rotas_do_dia"):
-        partes.append("%d rota%s examinada%s e registrada%s no mapa" % ((F["n_rotas_do_dia"],) + (("s",) * 3 if F["n_rotas_do_dia"] != 1 else ("",) * 3)))
-    t = ". ".join(partes) + ". Nenhum relato vale mais que a medida; o número corrige a frase. " + SUFIXO
-    if len(t) > MAXC:
-        t = ". ".join(partes) + ". O número corrige a frase. " + SUFIXO
-    return t
+        t = "Antes de examinar um caminho, consulto o mapa de rotas"
+    if tem_q:
+        t += "; no quadro, %s" % _n(ok, "superfície em ordem", "superfícies em ordem")
+    out.append(t + ". Rota examinada não se refaz: ler o que já foi visto custa menos que repetir o erro." + suf)
+    # 3 — o hash lido do arquivo
+    t = ("Selo %s lido do arquivo, e não de memória" % v) if v else "Hash só vale lido do arquivo, e não de memória"
+    if tem_q:
+        t += ": %s" % _n(ok, "superfície conferida", "superfícies conferidas")
+    out.append(t + ". Hash e número a casa lê na fonte, toda vez, antes de escrever." + suf)
+    # 4 — recusa é resultado; o que não está em dia fica à vista
+    if tem_q and pend:
+        t = "O quadro de hoje põe à vista o que ainda não está pronto: " + ", ".join(pend) + "."
+    elif tem_q:
+        t = "O quadro de hoje não traz item defasado, à espera ou em obra."
+    else:
+        t = "Hoje o quadro da casa não chegou inteiro a esta frase, e isso também fica dito."
+    out.append(t + " Recusar também é resultado: o negativo honesto vale tanto quanto o acerto." + suf)
+    # 5 — o selo corrente; correção ao lado
+    t = ("O selo corrente do um.py é %s" % v) if v else "O selo corrente do um.py não foi lido hoje"
+    if v and F.get("selada_hoje"):
+        t += ", selado hoje"
+    out.append(t + ". Toda correção vai ao lado, nunca por cima, e o original continua inteiro." + suf)
+    # 6 — a luz dá testemunho de si; do dia fica o medido
+    itens = []
+    if tem_q:
+        itens.append("%s no quadro" % _n(ok, "item em ordem", "itens em ordem"))
+    if nr:
+        itens.append("%s no mapa" % _n(nr, "rota", "rotas"))
+    t = "A luz não pede crédito: dá testemunho de si, e quem lê é quem inscreve o que viu."
+    if itens:
+        t += " Do dia, fica o medido: " + " e ".join(itens) + "."
+    out.append(t + suf)
+    # 7 — nada se promete nem se anuncia
+    itens = []
+    if tem_q:
+        itens.append("%s no quadro" % _n(ok, "superfície", "superfícies"))
+    if nr:
+        itens.append("%s no mapa" % _n(nr, "rota", "rotas"))
+    t = "Nada aqui é promessa nem anúncio: é o registro do dia" + ((", com " + " e ".join(itens)) if itens else "")
+    out.append(t + ". Anunciar antes de medir é pedir à frase que valha mais que o número." + suf)
+    # 8 — primeiro a medida, depois a frase
+    itens = []
+    if v:
+        itens.append("selo %s" % v)
+    if tem_q:
+        itens.append("%d em dia" % ok)
+    if nr:
+        itens.append(_n(nr, "rota", "rotas"))
+    t = "Primeiro a medida, depois a frase" + ((": " + ", ".join(itens)) if itens else "")
+    out.append(t + ". Quando a ordem se inverte, o que sai é opinião." + suf)
+    # a guarda recusa o parecido com os 7 últimos pensamentos: com 8 variantes, a medida sozinha nunca esgota a janela
+    out = [x for x in out if len(x) <= MAXC]
+    if not out:
+        return out
+    try:
+        dia = datetime.strptime(str(data or F.get("data") or ""), "%Y-%m-%d")
+    except ValueError:
+        dia = datetime.now()
+    k = dia.timetuple().tm_yday % len(out)
+    return out[k:] + out[:k]
+
+
+def medida(F):
+    """Compatível com o uso antigo: a primeira variante da lista do dia (F["data"])."""
+    return medidas(F, F.get("data"))[0]
 
 
 # ---------------------------------------------------------------- gravar, anotar, enfileirar
@@ -552,11 +641,13 @@ def main():
                 motivo = "aferidor: " + parecer
             recusas.append("tentativa %d (%s) recusada (%s): %s" % (tentativas, modo, motivo, cand[:120]))
     if texto is None:
-        cand = medida(F)
-        motivo = guarda(cand, F)
-        if motivo is None:
-            texto, fonte = cand, "medida"
-        else:
+        motivo = "nenhuma variante da medida"
+        for cand in medidas(F, a.data):   # 13/11/2026: a medida é uma lista; a ordem gira com o dia; fala a primeira que a guarda aceita
+            motivo = guarda(cand, F)
+            if motivo is None:
+                texto, fonte = cand, "medida"
+                break
+        if texto is None:
             log("FALHA: nem a nativa nem a medida passaram (%s) | %s" % (motivo, " || ".join(recusas)))
             return 2
     for r in recusas:

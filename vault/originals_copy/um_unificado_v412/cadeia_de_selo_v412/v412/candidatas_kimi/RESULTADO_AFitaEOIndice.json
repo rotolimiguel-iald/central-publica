@@ -1,0 +1,23 @@
+{
+  "fonte": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\AFitaEOIndice.lean",
+  "sha256_fonte": "1728ca8c4e56c4d2b3f639ab4974a64b45a971c30a2096ab586ac42683758eca",
+  "rc": 0,
+  "segundos_compilacao": 28,
+  "lean": "Lean (version 4.31.0, x86_64-w64-windows-gnu, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)",
+  "avisos": [],
+  "sorry": false,
+  "axiomas_novos": false,
+  "open": [],
+  "axiomas_por_teorema": {
+    "a_fita_e_o_indice": [],
+    "sat_formulaDa_cell": ["propext"],
+    "sat_formulaDa": ["propext"],
+    "quem_nao_visita_nao_le": ["propext"],
+    "a_coreferencia_obriga_o_transporte": ["propext"]
+  },
+  "log": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\build\\AFitaEOIndice.log",
+  "sha256_log": "0f1ce5d75fbfb7082472a7c4880e256de5508fd7882f4f6399e0b6f88cac869d",
+  "olean": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\build\\AFitaEOIndice.olean",
+  "plano": "A",
+  "nota": "Nenhum enunciado era falso; o rascunho NÃO ELABORAVA: `(0 : Fin L)` exige a instância `instOfNat` do núcleo, que pede `[NeZero L]`. Conserto documentado em NOTA DO LAÇO no cabeçalho: a instância `[NeZero L]` entrou nas assinaturas que nomeiam a posição 0 (formulaDa, sat_formulaDa_cell, sat_formulaDa, quem_nao_visita_nao_le, a_coreferencia_obriga_o_transporte) — semanticamente gratuita, porque hp : p ≠ 0 só é habitada com L ≥ 2. Consertos de prova (enunciados intactos): (1) backward de sat_formulaDa — o membro de fórmula-def precisa de show por defeq antes do simp only; a disjunção fecha com List.mem_cons + List.not_mem_nil + or_false, e o ramo da segunda cláusula usa `exact h` (o rascunho tinha h.symm, direção errada); (2) passo final de quem_nao_visita_nao_le — o plano do briefing: f = fun _ => true, g = fun i => if i = p then false else true; após rw [sat_formulaDa] ×2, a desigualdade de Props sai por intro hcontra + hT : (true = true) por rfl + hF : ¬(g 0 = g p) com e1/e2 por if_neg (Ne.symm hp)/if_pos rfl e Bool.noConfusion (os rw diretos no if falhavam porque as aplicações chegam com beta-redex pendurado — e1/e2 ascritos fecham por defeq); as duas cegueiras por simp [hi] como no rascunho. Avisos: nenhum."
+}

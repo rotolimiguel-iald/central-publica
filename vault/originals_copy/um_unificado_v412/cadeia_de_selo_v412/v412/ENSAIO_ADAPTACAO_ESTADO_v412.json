@@ -1,0 +1,27 @@
+{
+ "agente": "claude-construtor-v412-ensaio (preparacao v412; a servico do claude-construtor-v412 e da gerencia c1)",
+ "quando": "2026-11-17T19:12 (continuacao: candidato do contrato R4)",
+ "candidato": "um_v412_candidato.py sha16 8b9a02e51650b11c (48.105.875 B; 42 modulos, 952 bandeiras, escada 12308 -> 13260); o R1 (d594623f2be2d39d) ficou em um_v412_candidato_R1_d594623f2be2d39d.py",
+ "resultado": {
+  "veredito": "TUDO PASSOU (rc 0, ~39 min na rodada final; 3 rodadas: a 1a e a 2a acharam so' defeitos do ENSAIO, corrigidos)",
+  "checagens_de_unidade": "500 de 500 ok; mais os componentes (guardas estaticas da Bancada, vizinhos, fluxo, selo, indice, artigo PT/EN com pdflatex x2, variantes, md, manifesto, citacoes do um.py, simulacao da arvore, exame de pontos, quadro): todos verdes",
+  "arquivos": "ENSAIO_RESULTADO_v412.json (o do R1 em .bak_r1), ENSAIO_SAIDA_v412.txt (as do R1 em .bak_r1), ensaio_a_seco_v412.json (do proprio ensaio)",
+  "achado_do_R1_resolvido": "h0dn_bg1_v411 sela (o patch C12b do literal baseline.escada esta no gerador); cunhagens_v411 e os 4 registros da v412 selam"
+ },
+ "o_que_mudou_no_ensaio_para_o_R4": [
+  "chave nova do core guarda_frases_v412: V412R (os 4 registros) e V412N (+ a chave) separados; a chave entra nas chaves novas (5) e e' excluida das raizes que as checagens dos specs leem de fora (guarda_ordem_de_chamada_v412)",
+  "(6r): modulos 15 + 27 = 42 lidos do contrato; bandeiras e entradas lidas do manifesto e dos specs (nenhum numero digitado); item (g) reescrito: as quatro funcoes embutidas (guarda, unidades de texto, unidades do TeX, travessia) iguais as da cadeia por funcao; os 45 controles do contrato (os 21 numerados) rodados contra as funcoes EMBUTIDAS; o resultado do rito no core igual a travessia refeita aqui e ao recibo GUARDA_v412_UNIDADES.json (14 superficies, 1274 unidades); frase plantada recusada; superficie vazia e' falha",
+  "artigo: a secao nova passa pela travessia (unidade = titulo, paragrafo, item, celula; o titulo `2. P = nP` se basta); o topo e' o _V412_TOPO / _v412_topo_texto (o ensaio troca todas as referencias da v411); molde igual ao ratificado derivado da v411 com SO' a troca de P = nP; a pagina agora e' a R13",
+  "exame_pontos: ponto dos specs confere o resultado da travessia por registro; a chave guarda_frases_v412 e' julgada pelo veredito do exame (nunca omitida)",
+  "removido: o modo de diagnostico nao e' mais usado (C:\\t\\k412c\\diag apagada); as variaveis V412_ENSAIO_MANIFESTO_DIAGNOSTICO ficam nos scripts, sem uso"
+ ],
+ "pontos_de_decisao_para_a_gerencia": [
+  "a v412 nao tem pino exato da arvore do kernel (o spec kh_n1_cobertura_v411 herdado e' piso); o ensaio cobra as 1806 entradas do hash formal (1805 embutidos + 1 residual pinado na v411)",
+  "ids r1, r2, r3 do cunhagens_v412 casam o padrao de 'revisao' do verificador de historia: ficam fora da prosa examinada (1140 ids contados, ditos no JSON); a gerencia pode renomea-los no gerador",
+  "o artigo ja' imprime uma linha de veredito por chave do core: as 4 linhas dos registros novos e a contagem aparecem; a variante sem os registros difere so' disso (conferido)",
+  "ainda a adaptar (marca mantida): conferir_rito_v412 (alem da funcao do topo), guarda_p18, conferir_conversa, pos_rito, gerar_esperados, p00; o pos_rito\\superficies_v412.py ainda traz o rotulo da v411 na citacao (reprova so' o escopo do pos-rito no conferir_citacoes)"
+ ],
+ "arquivos_do_ensaio": {"ensaio_a_seco_v412.py": "befaf5e465bca267 (550422 B)", "exame_pontos_v412.py": "11b8767f28e46694", "guarda_ordem_de_chamada_v412.py": "9f187c150942079a", "TOPO_RATIFICADO_v412_DERIVADO.json": "b479f9618939bc99 (rederivado do manifesto novo)", "e3_*.py e e3_bloco_*.pytxt": "montador, edicoes, blocos e patches (backups .bak_r1/.bak_r1b/.bak_r1c)"},
+ "nada_tocado": "candidato, gerador, registros, delta_v412.py, CONTRATO, Nos; sem rito, GPU, lake",
+ "proximo_comando": "PYTHONUNBUFFERED=1 C:\\Python314\\python.exe -B -X utf8 ensaio_a_seco_v412.py <candidato> v412 ; C:\\Python314\\python.exe -B -X utf8 e3_resultado_ensaio_v412.py <saida.txt>"
+}

@@ -1,0 +1,9 @@
+APROVADO_COM_RESSALVAS
+
+## V2 · OParFixaORelogio, R0
+
+[REAL] Os oito termos descrevem a mesma álgebra matricial finita, pesos estritamente positivos e diagonais na mesma base. As unidades matriciais leem as diferenças log dᵢ−log dⱼ. Igualdade para todo t real e toda matriz determina as razões entre os pesos. Normalizar a soma em 1 fixa sua escala. O traço normalizado tem fluxo identidade, e a recíproca vale nesse recorte. O exemplo normalizado 2×2 distingue fluxos na mesma álgebra.
+[MÉDIO] O título chama o estado tracial de estado que “não tem nenhum” fluxo. Ele tem o grupo modular identidade. Redação sugerida para o trecho explicativo: “Na mesma álgebra matricial, o traço tem fluxo identidade e dois estados fiéis normalizados podem induzir fluxos diferentes.” O termo não universaliza a identificação da álgebra com o psíon. O nome provisório pode permanecer com esse alcance.
+[REAL] As três frases da lei e o assentimento geral têm correspondentes literais nas falas de 16/11. O arquivo do assentimento traz a pergunta sobre Minkowski e Lindblad. Ele, sozinho, não individualiza o esquema álgebra/estado/fluxo. Atribuir esse esquema à gerência e citar a concordância geral separadamente.
+[DERIVED] Controle de amostragem: pesos (1,1) e (1,exp(2π)), cada par normalizado, induzem a identidade em todo tempo inteiro. Em t=½ a fase fora da diagonal do segundo é −1. É essencial comparar os grupos em todos os tempos, além de observar matrizes fora da diagonal.
+[KNOWN] Para densidades fiéis, inclusive não comutantes em Mₙ, igualdade das conjugações para todo t implica que os implementadores diferem por escalar; derivar em zero dá log ρ−log σ escalar. Em álgebras de von Neumann, o cociclo relaciona fluxos e preserva sua classe exterior. Tipo III exclui traço normal semifinito fiel; a ressalva deve dizer “tipo III”, pois a dimensão infinita, por si, admite traços. [Connes e Rovelli](https://arxiv.org/abs/gr-qc/9406019)

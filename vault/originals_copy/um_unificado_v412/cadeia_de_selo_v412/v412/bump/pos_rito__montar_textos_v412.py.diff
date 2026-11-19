@@ -1,0 +1,26 @@
+--- v411/pos_rito/montar_textos_v411.py
++++ v412/pos_rito/montar_textos_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/montar_textos_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__montar_textos_v412.py.diff
+@@ -4 +5 @@
+-"""montar_textos_v411.py -- MONTA pos_rito\\textos_v411.py enxertando as definicoes de textos_v411_novo.pysnip (escritas para a v411, sem prosa nova de conteudo: IALD2, o leitor do codigo, a releitura que nao acrescenta, o algoritmo IALD relativo ao leitor, o signo e o seletor) no esqueleto textos_v411.semente (copia de bytes de textos_v410.py FINAL com os rotulos subidos pelo motor).
++"""montar_textos_v412.py -- MONTA pos_rito\\textos_v412.py enxertando as definicoes de textos_v412_novo.pysnip (escritas para a v412, sem prosa nova de conteudo: IALD2, o leitor do codigo, a releitura que nao acrescenta, o algoritmo IALD relativo ao leitor, o signo e o seletor) no esqueleto textos_v412.semente (copia de bytes de textos_v411.py FINAL com os rotulos subidos pelo motor).
+@@ -6 +7 @@
+-Backup de bytes do textos_v411.py anterior (.bak_<data>) antes de gravar. uso: python -I -B -X utf8 montar_textos_v411.py"""
++Backup de bytes do textos_v412.py anterior (.bak_<data>) antes de gravar. uso: python -I -B -X utf8 montar_textos_v412.py"""
+@@ -10 +11 @@
+-SEMENTE = os.path.join(HERE, "textos_v411.semente"); NOVO = os.path.join(HERE, "textos_v411_novo.pysnip"); DEST = os.path.join(HERE, "textos_v411.py")
++SEMENTE = os.path.join(HERE, "textos_v412.semente"); NOVO = os.path.join(HERE, "textos_v412_novo.pysnip"); DEST = os.path.join(HERE, "textos_v412.py")
+@@ -12,3 +13,3 @@
+-           "_caminho", "_vida", "_verdade_adendo", "_bandeiras", "_leitura_tripla", "_cod025", "_projecao", "_jo8", "_f2b", "_TEMAS", "N_FALAS", "_CHAVES", "_REG_DE", "_NOME_DE", "_ponte", "_tensao", "_lei_v405", "_gap", "_zero", "_disco", "_obs", "_ident", "_ga", "_blocos_pedras", "_massa", "g_flag", "_fam_gate", "_d51", "_d56", "errata_v410_bloco", "MARC_ERR_INI", "MARC_ERR_FIM"}
+-# v411: as definicoes da v410 SEM equivalente na v411 (a IALD2, a AEscala, o HMS/13, as ancoras e as respostas do operador, os registros herdados lidos por funcao, o bundle e as bandeiras por modulo: a v411 nao tem modulo novo) e as velhas das pedras da v405; os nomes que a v411 REDEFINE (secao_h0dn, _num, _d, _ordem, handoff ...) sao substituidos pelo fragmento, nao deletados; `secao_aescala` fica (substituida por uma que falha a vista: e' da v410)
+-RETOCAR = {   # nomes MANTIDOS da semente, com troca de texto exata (nome -> [(velho, novo, vezes)]; vezes 0 = qualquer numero de ocorrencias); v411: nenhum (o retoque de atribuicao_da_gerencia foi feito direto na semente)
++           "_caminho", "_vida", "_verdade_adendo", "_bandeiras", "_leitura_tripla", "_cod025", "_projecao", "_jo8", "_f2b", "_TEMAS", "N_FALAS", "_CHAVES", "_REG_DE", "_NOME_DE", "_ponte", "_tensao", "_lei_v405", "_gap", "_zero", "_disco", "_obs", "_ident", "_ga", "_blocos_pedras", "_massa", "g_flag", "_fam_gate", "_d51", "_d56", "errata_v411_bloco", "MARC_ERR_INI", "MARC_ERR_FIM"}
++# v412: as definicoes da v411 SEM equivalente na v412 (a IALD2, a AEscala, o HMS/13, as ancoras e as respostas do operador, os registros herdados lidos por funcao, o bundle e as bandeiras por modulo: a v412 nao tem modulo novo) e as velhas das pedras da v405; os nomes que a v412 REDEFINE (secao_h0dn, _num, _d, _ordem, handoff ...) sao substituidos pelo fragmento, nao deletados; `secao_aescala` fica (substituida por uma que falha a vista: e' da v411)
++RETOCAR = {   # nomes MANTIDOS da semente, com troca de texto exata (nome -> [(velho, novo, vezes)]; vezes 0 = qualquer numero de ocorrencias); v412: nenhum (o retoque de atribuicao_da_gerencia foi feito direto na semente)
+@@ -40 +41 @@
+-    seed = open(SEMENTE, "rb").read().decode("utf-8").replace("\r\n", "\n"); novo = open(NOVO, "rb").read().decode("utf-8").replace("\r\n", "\n")   # v411: o fragmento e a semente sao CRLF (como o molde da pasta); o montador corta em "\n"
++    seed = open(SEMENTE, "rb").read().decode("utf-8").replace("\r\n", "\n"); novo = open(NOVO, "rb").read().decode("utf-8").replace("\r\n", "\n")   # v412: o fragmento e a semente sao CRLF (como o molde da pasta); o montador corta em "\n"
+@@ -98 +99 @@
+-    print("textos_v411.py montado: %d B, sha16 %s; substituidos %d nomes, deletados %d blocos, acrescentados %d blocos" % (os.path.getsize(DEST), sha(res.encode("utf-8"))[:16], len(usados), sum(1 for r in reps if r[2] is None), len(fim_txt)))
++    print("textos_v412.py montado: %d B, sha16 %s; substituidos %d nomes, deletados %d blocos, acrescentados %d blocos" % (os.path.getsize(DEST), sha(res.encode("utf-8"))[:16], len(usados), sum(1 for r in reps if r[2] is None), len(fim_txt)))

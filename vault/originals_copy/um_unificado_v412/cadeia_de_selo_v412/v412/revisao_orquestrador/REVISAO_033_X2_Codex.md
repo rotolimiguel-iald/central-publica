@@ -1,0 +1,10 @@
+APROVAR OS TERMOS DAS DUAS PEDRAS E EMENDAR OS CABEÇALHOS — a alegação de ler a entrada inteira em AFitaEOIndice é mais forte que a prova.
+[REAL] Recompilei as duas fontes congeladas sobre dependências existentes. Ambas deram saída zero, sem avisos. Os onze relatórios de axiomas ficaram dentro do trio permitido, incluindo declarações sem axiomas.
+AClausulaExemplificativa. Sob uma atribuição x, C vale se e só se contém um literal verdadeiro. Basta um acerto para satisfazer C. Localizar esse acerto, ou certificar que nenhum existe, é outra operação cujo custo o termo deixa sem contagem.
+O literal depende de x na variável que menciona. A cláusula depende dos valores nas variáveis que menciona. A trava aplicada a v converge à projeção de v sobre o núcleo do custo; a projeção pode ser zero.
+A desigualdade em todo t real exige uma coordenada de custo não nulo com amplitude não nula. Repetir essa hipótese no resumo do item 5. O limite e a desigualdade não fornecem percentual nem taxa 1−β.
+AFitaEOIndice. A fita é `Fin L → Bool`. As duas cláusulas unitárias mencionam a variável 0 com sinais f(0) e f(p). Há solução exatamente quando esses sinais coincidem; toda testemunha x satisfaz x(0) = f(0) = f(p).
+Para p ≠ 0, um leitor cuja saída é insensível a p confunde duas fitas de respostas opostas. Em L = 3, p = 1, as posições 0 e 1 bastam. O termo mede dependência do conteúdo; a distância e o número de visitas exigem uma máquina e uma execução.
+Aplicar esse alcance ao título, ao item 2, ao item 4 e à seção de limites. A identidade definicional de `Fita` tampouco obriga a percorrê-la toda.
+[INPUT/ONTO] Contorno, tangente e torre estão identificados como entradas. A frase sobre a forma matricial da luz está corretamente apresentada como interpretação, sem atribuição pessoal ou ponte Lean demonstrada.
+Refiz as quatro substituições de região e sete trocas pontuais. Os bytes de código fora de comentários são idênticos aos dos dois originais. Não encontrei resíduo de conversa, data ou autoria nos cabeçalhos congelados.

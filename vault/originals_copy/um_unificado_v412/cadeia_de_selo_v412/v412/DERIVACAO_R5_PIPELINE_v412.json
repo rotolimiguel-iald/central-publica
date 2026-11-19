@@ -1,0 +1,1106 @@
+{
+ "derivacoes": {
+  "texto_publico_v412_r5.py": {
+   "origem": "texto_publico_v412.py",
+   "origem_sha16": "4dad0bc4fb26ff8c",
+   "destino": "texto_publico_v412_r5.py",
+   "derivador": "e5_22_derivar_texto_r5_v412.py",
+   "quando": "2026-11-18T18:17:36",
+   "trocas": [
+    {
+     "velho": "SUB_SUP = {\"₁\": \"_1\", \"ⁿ\": \"^n\", \"ˢ\": \"^s\"}",
+     "novo": "SUB_SUP = {\"₁\": \"_1\", \"ⁿ\": \"^n\", \"ˢ\": \"^s\", \"²\": \"^2\"}",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "t = t.replace(\"−\", \"$-$\").replace(\"★\", r\"$\\star$\").replace(\"≠\", r\"$\\neq$\")",
+     "novo": "t = t.replace(\"−\", \"$-$\").replace(\"★\", r\"$\\star$\").replace(\"≠\", r\"$\\neq$\").replace(\"≤\", r\"$\\leq$\").replace(\"≥\", r\"$\\geq$\")",
+     "ocorrencias": 2
+    },
+    {
+     "velho": "                assert len(r) == 3, (\"a tabela da pagina tem 3 colunas\", r)",
+     "novo": "                assert len(r) == 3, (\"a tabela da pagina tem 3 colunas\", r)\n                assert not any(\" --- \" in c for c in r), (\"celula com o separador da",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "71948e0a0fb1c912",
+   "destino_bytes": 6634
+  },
+  "blocos_texto_publico_v412_r5.py": {
+   "origem": "blocos_texto_publico_v412.py",
+   "origem_sha16": "d1bc70365065c1ef",
+   "destino": "blocos_texto_publico_v412_r5.py",
+   "derivador": "e5_22_derivar_texto_r5_v412.py",
+   "quando": "2026-11-18T18:17:36",
+   "trocas": [
+    {
+     "velho": "\"o_que_fica_claro_REV13\" / \"O_QUE_FICA_CLARO_v412_R13.md\"",
+     "novo": "\"o_que_fica_claro_REV18\" / \"O_QUE_FICA_CLARO_v412_R18.md\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"O_QUE_FICA_CLARO_v412_R13_EN.md\"",
+     "novo": "\"O_QUE_FICA_CLARO_v412_R18_EN.md\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "contrato R4 secao 6) monta, da pagina publica R13 (PT)",
+     "novo": "contrato R5 secao 6) monta, da pagina publica R18 (PT)",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "2670208cab697d04",
+   "destino_bytes": 2554
+  },
+  "guarda_frases_v412_r5.py": {
+   "origem": "guarda_frases_v412.py",
+   "origem_sha16": "5c117eeffe6f9089",
+   "destino": "guarda_frases_v412_r5.py",
+   "derivador": "e5_22_derivar_texto_r5_v412.py",
+   "quando": "2026-11-18T18:17:36",
+   "trocas": [
+    {
+     "velho": "from e2_lib_v412 import D, salvar_json, sha16_arq",
+     "novo": "from e5_lib_v412 import D, salvar_json, sha16_arq",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(D / \"o_que_fica_claro_REV13\" / \"O_QUE_FICA_CLARO_v412_R13.md\").read_bytes()",
+     "novo": "(D / \"o_que_fica_claro_REV18\" / \"O_QUE_FICA_CLARO_v412_R18.md\").read_bytes()",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(D / \"O_QUE_FICA_CLARO_v412_R13_EN.md\").read_bytes()",
+     "novo": "(D / \"O_QUE_FICA_CLARO_v412_R18_EN.md\").read_bytes()",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"o titulo da secao 2 da pagina R13 passa\"",
+     "novo": "\"o titulo da secao 2 da pagina R18 passa\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"regra\": \"contrato R4, secao 5.3: 21 controles obrigatorios",
+     "novo": "\"regra\": \"contrato R5, secao 5.3 (a do R4, sem mudanca): 21 controles obrigatorios",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"pagina\": {\"arquivo\": \"o_que_fica_claro_REV13/O_QUE_FICA_CLARO_v412_R13.md\", \"sha16\": sha16_arq(D / \"o_que_fica_claro_REV13\" / \"O_QUE_FICA_CLARO_v412_R13.md\")}",
+     "novo": "\"pagina\": {\"arquivo\": \"o_que_fica_claro_REV18/O_QUE_FICA_CLARO_v412_R18.md\", \"sha16\": sha16_arq(D / \"o_que_fica_claro_REV18\" / \"O_QUE_FICA_CLARO_v412_R18.md\"), ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(contrato R4, secao 5) a GUARDA DE FRASES da cadeia da v412",
+     "novo": "(contrato R5, secao 5, que e' a do R4) a GUARDA DE FRASES da cadeia da v412",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "11cb42ba62fbd0a7",
+   "destino_bytes": 13804
+  },
+  "e5_23_texto_publico_gerar_v412.py": {
+   "origem": "e4_21_texto_publico_gerar_v412.py",
+   "origem_sha16": "a4978b32a75d6a7f",
+   "destino": "e5_23_texto_publico_gerar_v412.py",
+   "derivador": "e5_22_derivar_texto_r5_v412.py",
+   "quando": "2026-11-18T18:17:36",
+   "trocas": [
+    {
+     "velho": "\"o_que_fica_claro_REV13\" / \"O_QUE_FICA_CLARO_v412_R13.md\"",
+     "novo": "\"o_que_fica_claro_REV18\" / \"O_QUE_FICA_CLARO_v412_R18.md\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"O_QUE_FICA_CLARO_v412_R13_EN.md\"",
+     "novo": "\"O_QUE_FICA_CLARO_v412_R18_EN.md\"",
+     "ocorrencias": 2
+    },
+    {
+     "velho": "from e2_lib_v412 import D, salvar_json, sha16_arq, estado_bloco",
+     "novo": "from e5_lib_v412 import D, salvar_json, sha16_arq, estado_bloco",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import texto_publico_v412 as TP",
+     "novo": "import texto_publico_v412_r5 as TP",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "assert sha16_arq(PT_ARQ) == \"256a71e1bdf03239\", \"a pagina R13 nao e' a do contrato\"",
+     "novo": "import re as _re5\n_m5 = _re5.search(r\"o_que_fica_claro_REV18\\\\O_QUE_FICA_CLARO_v412_R18\\.md` \\(sha16 `([0-9a-f]{16})`; (\\d+) bytes\\)\", (D / \"CONTRATO_v412_R5.md",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"arquivo\": \"o_que_fica_claro_REV13/O_QUE_FICA_CLARO_v412_R13.md\"",
+     "novo": "\"arquivo\": \"o_que_fica_claro_REV18/O_QUE_FICA_CLARO_v412_R18.md\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "estado_bloco(\"5a_texto_publico_c4\", rec[\"ok\"], {\"texto_publico\": saida, \"traducao_en\": EN_ARQ, \"conversor\": D / \"texto_publico_v412.py\", \"pdflatex\": D / \"TEXTO_",
+     "novo": "estado_bloco(\"4a_texto_publico_r18\", rec[\"ok\"], {\"texto_publico\": saida, \"traducao_en\": EN_ARQ, \"conversor\": D / \"texto_publico_v412_r5.py\", \"pdflatex\": D / \"TE",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "nota=\"secao do artigo PT/EN em TeX montada da pagina R13; EN traducao fiel (mesma estrutura, mesmos termos); pdflatex isolado\", proximo=\"guarda de frases (bloco",
+     "novo": "nota=\"secao do artigo PT/EN em TeX montada da pagina R18 (o bloco novo do leitor da formula com a tabela de 30 linhas); EN traducao fiel (mesma estrutura, mesmo",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "93a6b79a38cd70a6",
+   "destino_bytes": 5131
+  },
+  "textos_registros_v412_r5.py": {
+   "origem": "textos_registros_v412.py",
+   "origem_sha16": "b1ab0569223c6e75",
+   "destino": "textos_registros_v412_r5.py",
+   "derivador": "e5_24_derivar_textos_registros_r5_v412.py",
+   "quando": "2026-11-18T18:20:43",
+   "trocas": [
+    {
+     "velho": "\"\"\"textos_registros_v412.py -- o texto dos quatro registros da v412 (dados). Sai da pagina publica (O_QUE_FICA_CLARO_v412_R9.md) e dos cabecalhos das pedras con",
+     "novo": "\"\"\"textos_registros_v412_r5.py -- o texto dos cinco registros da v412 (dados). Sai da pagina publica (O_QUE_FICA_CLARO_v412_R18.md) e dos cabecalhos das pedras ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "    \"[REAL] P = nP é teorema da TGL nas classes do seu dicionário:",
+     "novo": "    \"[REAL] o passo é o fator 1 − β, com β parâmetro real entre 0 e 1 (a identificação com o β da teoria é entrada): o ciclo fecha num número de passos linear n",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "    \"[OPEN] a pergunta do Instituto, se há procedimento de letras com número polinomial de passos para toda fórmula, segue em aberto e não é tautológica\",",
+     "novo": "    \"[OPEN] um procedimento de letras com um polinômio fixo para toda fórmula não está demonstrado, e a pergunta não é tautológica; o que se sabe da contagem po",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "    \"[INPUT] definições da teoria de Luz e de máquina (mecanismo de processamento por circuito), enunciadas no cabeçalho de AMaquina, na seção que o arquivo tip",
+     "novo": "    \"[INPUT] definições da teoria de Luz e de máquina (mecanismo de processamento por circuito), enunciadas no cabeçalho de AMaquina, na seção que o arquivo tip",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "ESTATUTO_A = (\"[REAL — o kernel (42 módulos novos de TGLExt; as âncoras desta camada: %d)",
+     "novo": "ESTATUTO_A = (\"[REAL — o kernel (%d módulos novos de TGLExt, dos quais %d desta camada; as âncoras desta camada: %d)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "ESTATUTO_B = (\"[REAL — o kernel (42 módulos novos de TGLExt; as âncoras desta frente: %d)",
+     "novo": "ESTATUTO_B = (\"[REAL — o kernel (%d módulos novos de TGLExt, dos quais %d desta frente; as âncoras desta frente: %d)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "    \"TipoIIIControles\": (\"a luz testemunhada na cunha, a torre, a fronteira e o vínculo\", \"[INPUT]\"),\n}",
+     "novo": "    \"TipoIIIControles\": (\"a luz testemunhada na cunha, a torre, a fronteira e o vínculo\", \"[INPUT]\"),\n    \"OPassoEOFim\": (\"o passo é 1 − β\", \"[INPUT]\"),\n    \"OP",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "6e844ba2002fa510",
+   "destino_bytes": 19328
+  },
+  "verificar_historia_texto_v412_r5.py": {
+   "origem": "verificar_historia_texto_v412.py",
+   "origem_sha16": "42eea4bb222b70a9",
+   "destino": "verificar_historia_texto_v412_r5.py",
+   "derivador": "e5_25_derivar_verificador_historia_r5_v412.py",
+   "quando": "2026-11-18T18:24:23",
+   "trocas": [
+    {
+     "velho": "def examinar(unidades):\n    achados, info = [], []\n    for onde, texto in unidades:\n        sem_codigo = re.sub(r\"`[^`]+`\", \" \", texto)   # nomes de termo entre",
+     "novo": "_IDS_KERNEL = None\nRX_IDENT = re.compile(r\"[A-Za-z_\\u00C0-\\u024F][\\w'\\u00C0-\\u024F]*(?:\\.[A-Za-z_\\u00C0-\\u024F][\\w'\\u00C0-\\u024F]*)+\")\n\n\ndef identificadores_do_",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "re.compile(r\"\\b[Oo]rdem\\s+\\d+|\\bORDEM\\b|",
+     "novo": "re.compile(r\"\\b[Oo]rdem\\s+\\d+|(?-i:\\bORDEM\\b)|",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "    return {\"n_unidades_examinadas\": len(unidades), \"achados\": achados,",
+     "novo": "    return {\"n_unidades_examinadas\": len(unidades), \"n_identificadores_do_kernel_fora_da_prosa\": n_ids[0], \"achados\": achados,",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(\"ordem_revisao_parecer_decisao_errata\", \"conforme a ordem 027\"),",
+     "novo": "(\"ordem_revisao_parecer_decisao_errata\", \"conforme a ordem 027\"), (\"ordem_revisao_parecer_decisao_errata\", \"pela ORDEM vigente\"), (\"atribuicao_de_fala\", \"por or",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "LIMPAS = [\"O operador do custo de uma fórmula é a penalidade dos vínculos das cláusulas.\",",
+     "novo": "LIMPAS = [\"cadeia binária na ordem prometida\", \"âncora Codex.Modulo.termo (Modulo): a bandeira é verdadeira\", \"O operador do custo de uma fórmula é a penalidade",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "        r = examinar([(\"plantada\", tx)])",
+     "novo": "        r = examinar([(\"plantada\", tx)], identificadores={\"Codex.Modulo.termo\"})",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "        r = examinar([(\"limpa\", tx)])",
+     "novo": "        r = examinar([(\"limpa\", tx)], identificadores={\"Codex.Modulo.termo\"})",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "9e37f97139248600",
+   "destino_bytes": 8698
+  },
+  "delta_v412_r5.py": {
+   "origem": "delta_v412.py",
+   "origem_sha16": "c1f712ba16d439cc",
+   "destino": "delta_v412_r5.py",
+   "derivador": "e5_31_derivar_gerador_r5_v412.py",
+   "quando": "2026-11-18T18:25:35",
+   "trocas": [
+    {
+     "velho": "\"\"\"delta_v412.py -- a UNICA definicao do DELTA da v412 (os 42 modulos novos de TGLExt/, a escada, os quatro registros por especificacao,",
+     "novo": "\"\"\"delta_v412_r5.py -- a UNICA definicao do DELTA da v412 pelo contrato R5 (os 153 modulos novos de TGLExt/, a escada, os cinco registros por especificacao,",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "CONTRATO_ARQ = os.path.join(HERE, \"CONTRATO_v412_R4.md\")",
+     "novo": "CONTRATO_ARQ = os.path.join(HERE, \"CONTRATO_v412_R5.md\")",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "== len(BUNDLE_POR_REL) == 42 and set(BUNDLE_POR_REL)",
+     "novo": "== len(BUNDLE_POR_REL) == N_MODULOS_DO_MANIFESTO == 153 and set(BUNDLE_POR_REL)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"o bundle da v412 e' de quarenta modulos, na ordem topologica\"",
+     "novo": "\"o bundle da v412 e' o dos modulos do manifesto vigente (153), na ordem topologica\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "BUNDLE_POR_REL = {b[\"rel\"]: b for b in _BD[\"modulos\"]}\n",
+     "novo": "BUNDLE_POR_REL = {b[\"rel\"]: b for b in _BD[\"modulos\"]}\nMANIFESTO_ARQ_PEDRAS = os.path.join(HERE, \"insumos\", \"MANIFESTO_PEDRAS_v412_R10.json\")\n_m_man = re.search",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "REGISTROS_SPEC_V412 = [\"iald_camada_cientifica_v412\", \"matematica_que_restava_v412\", \"parede_do_teste_cego_v412\", \"cunhagens_v412\"]",
+     "novo": "REGISTROS_SPEC_V412 = [\"iald_camada_cientifica_v412\", \"leitor_da_formula_v412\", \"matematica_que_restava_v412\", \"parede_do_teste_cego_v412\", \"cunhagens_v412\"]",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "    _m = re.search(r\"^- `%s`\\n  `([A-Z0-9_]+)`\" % _n, _CONTRATO_TXT, re.M)\n    assert _m, (\"palavra de veredito nao achada no contrato\", _n)\n    PALAVRAS_DE_VER",
+     "novo": "    _ms = re.findall(r\"^- `%s`\\n  `([A-Z0-9_]+)`\" % _n, _CONTRATO_TXT, re.M)\n    assert len(_ms) == 1, (\"palavra de veredito nao achada (ou repetida) no contrat",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "_m = re.search(r\"o_que_fica_claro_REV13\\\\O_QUE_FICA_CLARO_v412_R13\\.md` \\(sha16 `([0-9a-f]{16})`; (\\d+) bytes\\)\", _CONTRATO_TXT)",
+     "novo": "_m = re.search(r\"o_que_fica_claro_REV18\\\\O_QUE_FICA_CLARO_v412_R18\\.md` \\(sha16 `([0-9a-f]{16})`; (\\d+) bytes\\)\", _CONTRATO_TXT)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "assert _m, \"o contrato nao pina a pagina R13\"",
+     "novo": "assert _m, \"o contrato nao pina a pagina R18\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "PAGINA_ARQ = os.path.join(HERE, \"o_que_fica_claro_REV13\", \"O_QUE_FICA_CLARO_v412_R13.md\")",
+     "novo": "PAGINA_ARQ = os.path.join(HERE, \"o_que_fica_claro_REV18\", \"O_QUE_FICA_CLARO_v412_R18.md\")",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"a pagina R13 nao e' a do contrato\"",
+     "novo": "\"a pagina R18 nao e' a do contrato\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "PAGINA_EN_ARQ = os.path.join(HERE, \"O_QUE_FICA_CLARO_v412_R13_EN.md\")",
+     "novo": "PAGINA_EN_ARQ = os.path.join(HERE, \"O_QUE_FICA_CLARO_v412_R18_EN.md\")",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "3d4ca99f2028d8f6",
+   "destino_bytes": 8579
+  },
+  "runtime_v412_codigo_r5.py": {
+   "origem": "runtime_v412_codigo.py",
+   "origem_sha16": "2d4d07714a7ceadd",
+   "destino": "runtime_v412_codigo_r5.py",
+   "derivador": "e5_31_derivar_gerador_r5_v412.py",
+   "quando": "2026-11-18T18:25:35",
+   "trocas": [
+    {
+     "velho": "\"\"\"v412 -- roda os quatro registros por especificacao da v412",
+     "novo": "\"\"\"v412 -- roda os cinco registros por especificacao da v412",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(cunhagens_v412 por ultimo: cobra o selo dos outros tres)",
+     "novo": "(cunhagens_v412 por ultimo: cobra o selo dos outros quatro)",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "3544ecf00926f4e0",
+   "destino_bytes": 2952
+  },
+  "gerar_candidato_v412_r5.py": {
+   "origem": "gerar_candidato_v412.py",
+   "origem_sha16": "90cd636ef50eac2c",
+   "destino": "gerar_candidato_v412_r5.py",
+   "derivador": "e5_31_derivar_gerador_r5_v412.py",
+   "quando": "2026-11-18T18:25:35",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import registros_v412 as ",
+     "novo": "import registros_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import guarda_frases_v412 as ",
+     "novo": "import guarda_frases_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"runtime_v412_codigo.py\"",
+     "novo": "\"runtime_v412_codigo_r5.py\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import verificar_historia_texto_v412 as ",
+     "novo": "import verificar_historia_texto_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"\"\"gerar_candidato_v412.py -- gera o um.py CANDIDATO da v412",
+     "novo": "\"\"\"gerar_candidato_v412_r5.py -- (contrato R5) gera o um.py CANDIDATO da v412",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "Conteudo (CONTRATO_v412_R4; nenhum texto daqui entra no programa com historia de conversa):",
+     "novo": "Conteudo (CONTRATO_v412_R5; nenhum texto daqui entra no programa com historia de conversa):",
+     "ocorrencias": 1
+    },
+    {
+     "velho": " (A) kernel: 42 modulos novos em TGLExt/ embutidos",
+     "novo": " (A) kernel: 153 modulos novos em TGLExt/ embutidos",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "assert nov == DL.BUNDLE_RELS and len(nov) == 42",
+     "novo": "assert nov == DL.BUNDLE_RELS and len(nov) == DL.N_MODULOS_DO_MANIFESTO == 153",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "assert not any(re.search(r\"\\d{8}|20\\d\\d|v4\\d\\d_|ordem|parecer|gerencia|operador|autor\", k.replace(\"_412_\", \"_\")) for k, _, _ in FL if not re.fullmatch(r\"ext_[a-",
+     "novo": "_RX_HIST_FLAG = re.compile(r\"\\d{8}|20\\d\\d|v4\\d\\d_|ordem|parecer|revisao|gerencia|operador|autor|codex|kimi|claude|chatgpt\")\n_flags_hist = sorted({k.rsplit(\"_412",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "assert all(re.fullmatch(r\"ext_[a-z0-9]+_412_\\d{4}\", k) for k, _, _ in FL), \"nome de bandeira fora do prefixo do contrato\"",
+     "novo": "assert all(re.fullmatch(r\"ext_[a-z0-9_]+_412_\\d{4}\", k) and k.rsplit(\"_412_\", 1)[0] == \"ext_\" + m.split(\".\")[-1].lower() for k, _, m in FL) and len(FL) > 0, \"no",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"    # v412: os 40 modulos de TGLExt/ do bundle (series ext_<modulo>_412_*): %d bandeiras, so' de declaracao NOMEADA (as auxiliares geradas pelo compilador fica",
+     "novo": "\"    # v412: os %d modulos de TGLExt/ do bundle (series ext_<modulo>_412_*): %d bandeiras, so' de declaracao NOMEADA (as auxiliares geradas pelo compilador fica",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"        # v412: os 40 modulos do bundle (%d, so' declaracao nomeada)\" % len(FL) + CRLF",
+     "novo": "\"        # v412: os %d modulos do bundle (%d, so' declaracao nomeada)\" % (N_NOVOS, len(FL)) + CRLF",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "-- %d modulos novos de TGLExt/ (a camada cientifica e a matematica que restava; %d bandeiras so\\' de declaracao nomeada; a escada %d -> %d), '",
+     "novo": "-- %d modulos novos de TGLExt/ (a camada cientifica, o leitor da formula e a matematica que restava; %d bandeiras so\\' de declaracao nomeada; a escada %d -> %d)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "'quatro registros por especificacao (%s), a guarda de frases da v412,",
+     "novo": "'cinco registros por especificacao (%s), a guarda de frases da v412,",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "HDR = (\"# ====================== v412 -- a camada cientifica e a matematica que restava: %d modulos novos de TGLExt/ (%d bandeiras, a escada %d -> %d), a guarda",
+     "novo": "HDR = (\"# ====================== v412 -- a camada cientifica, o leitor da formula e a matematica que restava: %d modulos novos de TGLExt/ (%d bandeiras, a escad",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"bloco v412: a guarda de frases, a secao do artigo, os quatro registros por especificacao.\"",
+     "novo": "\"bloco v412: a guarda de frases, a secao do artigo, os cinco registros por especificacao.\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "    try:   # v412: os quatro registros por especificacao (a camada cientifica, a matematica que restava, a parede do teste cego e as definicoes da teoria); exce",
+     "novo": "    try:   # v412: os cinco registros por especificacao (a camada cientifica, o leitor da formula, a matematica que restava, a parede do teste cego e as definic",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "assert TP[\"fonte_pt\"][\"sha16\"] == DL.sha16_arquivo(DL.PAGINA_ARQ) and TP[\"fonte_en\"][\"sha16\"] == DL.sha16_arquivo(DL.PAGINA_EN_ARQ), \"TEXTO_PUBLICO_v412.json na",
+     "novo": "assert TP[\"fonte_pt\"][\"sha16\"] == DL.sha16_arquivo(DL.PAGINA_ARQ) and TP[\"fonte_en\"][\"sha16\"] == DL.sha16_arquivo(DL.PAGINA_EN_ARQ), \"TEXTO_PUBLICO_v412.json na",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "if os.path.exists(out) and open(out, \"rb\").read() != b:\n    shutil.copyfile(out, out + \".bak_\" + datetime.datetime.now().strftime(\"%Y%m%d_%H%M%S\"))\n",
+     "novo": "if os.path.exists(out) and open(out, \"rb\").read() != b:   # (r5) o candidato anterior e os tres artefatos dele vao para FORA de work\\\\, conferidos por bytes; ne",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "man = {(\"artefato_de_ensaio\" if False else \"candidato\"): DL.CANDIDATO_ARQ,",
+     "novo": "man = {(\"artefato_de_ensaio\" if False else \"candidato\"): DL.CANDIDATO_ARQ, \"contrato\": {\"arquivo\": os.path.basename(DL.CONTRATO_ARQ), \"sha16\": DL.CONTRATO_SHA16",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "4af5c35ea52aeff1",
+   "destino_bytes": 32595
+  },
+  "e5_40_recibos_v412.py": {
+   "origem": "e4_40_recibos_v412.py",
+   "origem_sha16": "728ef6263dba2219",
+   "destino": "e5_40_recibos_v412.py",
+   "derivador": "e5_32_derivar_recibos_r5_v412.py",
+   "quando": "2026-11-18T18:26:04",
+   "trocas": [
+    {
+     "velho": "import registros_v412 as ",
+     "novo": "import registros_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import guarda_frases_v412 as ",
+     "novo": "import guarda_frases_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import blocos_texto_publico_v412 as ",
+     "novo": "import blocos_texto_publico_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import verificar_historia_texto_v412 as ",
+     "novo": "import verificar_historia_texto_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"\"\"R4: os recibos do texto novo da v412: a travessia sobre TODAS as superficies (os quatro registros,",
+     "novo": "\"\"\"R5: os recibos do texto novo da v412: a travessia sobre TODAS as superficies (os cinco registros,",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "uso: C:\\\\Python314\\\\python.exe -B -X utf8 e4_40_recibos_v412.py [--contagem N]",
+     "novo": "uso: C:\\\\Python314\\\\python.exe -B -X utf8 e5_40_recibos_v412.py [--contagem N]",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "from e2_lib_v412 import D, salvar_json, sha16_arq, Exame, ler_json",
+     "novo": "from e5_lib_v412 import D, salvar_json, sha16_arq, Exame, ler_json",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"regra\": \"contrato R4, secao 5.1: um ponto de chamada",
+     "novo": "\"regra\": \"contrato R5, secao 5.1 (a do R4, sem mudanca): um ponto de chamada",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"pagina\": {\"arquivo\": \"o_que_fica_claro_REV13/O_QUE_FICA_CLARO_v412_R13.md\", \"sha16\": sha16_arq(D / \"o_que_fica_claro_REV13\" / \"O_QUE_FICA_CLARO_v412_R13.md\"), ",
+     "novo": "\"pagina\": {\"arquivo\": \"o_que_fica_claro_REV18/O_QUE_FICA_CLARO_v412_R18.md\", \"sha16\": sha16_arq(D / \"o_que_fica_claro_REV18\" / \"O_QUE_FICA_CLARO_v412_R18.md\"), ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "montados da pagina R13; os 34 marcadores herdados nao estao aqui",
+     "novo": "montados da pagina R18; os 34 marcadores herdados nao estao aqui",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "       \"f43\": {\"formas\": f43.pattern, \"achados\": achou43}, \"historia\": {\"autoteste\": {\"n\": auto[\"n\"], \"n_ok\": auto[\"n_ok\"]}, \"n_unidades\": hist[\"n_unidades_exam",
+     "novo": "       \"f43\": {\"formas\": f43.pattern, \"achados\": achou43}, \"historia\": {\"verificador\": \"verificar_historia_texto_v412_r5.py\", \"identificadores_do_kernel_fora_da",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "salvar_json(D / \"GUARDA_v412_UNIDADES.json\", out, backup=False)",
+     "novo": "salvar_json(D / \"GUARDA_v412_UNIDADES.json\", out, backup=True)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "salvar_json(D / \"BLOCOS_TEXTO_PUBLICO_v412.json\", backup=False,",
+     "novo": "salvar_json(D / \"BLOCOS_TEXTO_PUBLICO_v412.json\", backup=True,",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "5038f656645dad9b",
+   "destino_bytes": 7734
+  },
+  "e5_60_registros_v412.py": {
+   "origem": "e4_60_registros_v412.py",
+   "origem_sha16": "169350e45e0882e3",
+   "destino": "e5_60_registros_v412.py",
+   "derivador": "e5_32_derivar_recibos_r5_v412.py",
+   "quando": "2026-11-18T18:26:04",
+   "trocas": [
+    {
+     "velho": "import registros_v412 as ",
+     "novo": "import registros_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import guarda_frases_v412 as ",
+     "novo": "import guarda_frases_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import verificar_historia_texto_v412 as ",
+     "novo": "import verificar_historia_texto_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"\"\"R4: confere os quatro registros: veredito igual ao do contrato R4 (copiado por script);",
+     "novo": "\"\"\"R5: confere os cinco registros: veredito igual ao do contrato R5 (copiado por script);",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "from e2_lib_v412 import D, salvar_json, sha16_arq, estado_bloco, Exame",
+     "novo": "from e5_lib_v412 import D, salvar_json, sha16_arq, estado_bloco, Exame",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "a palavra de veredito e' exatamente a do contrato R4 (copiada por script)",
+     "novo": "a palavra de veredito e' exatamente a do contrato R5 (copiada por script)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"contrato_seguido\": {\"arquivo\": \"CONTRATO_v412_R4.md\", \"sha16\": sha16_arq(D / \"CONTRATO_v412_R4.md\")}",
+     "novo": "\"contrato_seguido\": {\"arquivo\": \"CONTRATO_v412_R5.md\", \"sha16\": sha16_arq(D / \"CONTRATO_v412_R5.md\")}",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"p18\": len(v_p18), \"historia_achados\": hist[\"n_achados\"], \"historia_unidades\": hist[\"n_unidades_examinadas\"]}",
+     "novo": "\"p18\": len(v_p18), \"historia_achados\": hist[\"n_achados\"], \"historia_unidades\": hist[\"n_unidades_examinadas\"], \"historia_identificadores_do_kernel_fora_da_prosa\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "out = {\"contrato\": \"REGISTROS_v412_RECIBO\", \"ok\": ex.ok,",
+     "novo": "ex.chk(\"o registro leitor_da_formula_v412 nao usa a expressao P = nP (contrato R5, secao 2)\", \"leitor_da_formula_v412\" in rec and rec[\"leitor_da_formula_v412\"][",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "9496ef69f3f583c3",
+   "destino_bytes": 4839
+  },
+  "guarda_ordem_de_chamada_v412_r5.py": {
+   "origem": "guarda_ordem_de_chamada_v412.py",
+   "origem_sha16": "9f187c150942079a",
+   "destino": "guarda_ordem_de_chamada_v412_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(os QUATRO registros por especificacao): toda chave",
+     "novo": "(os cinco registros por especificacao no R5): toda chave",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(v412) os QUATRO registros por especificacao: a ordem de chamada",
+     "novo": "(v412, R5) os CINCO registros por especificacao: a ordem de chamada",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "821b18831c629a1b",
+   "destino_bytes": 38049
+  },
+  "exame_pontos_v412_r5.py": {
+   "origem": "exame_pontos_v412.py",
+   "origem_sha16": "11b8767f28e46694",
+   "destino": "exame_pontos_v412_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "ponto novo (4j) dos quatro registros por especificacao",
+     "novo": "ponto novo (4j) dos cinco registros por especificacao (R5)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(v412: + os quatro registros por especificacao)",
+     "novo": "(v412, R5: + os cinco registros por especificacao)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(v412) os quatro registros por especificacao: a instrucao seguinte",
+     "novo": "(v412, R5) os cinco registros por especificacao: a instrucao seguinte",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(4j) o ponto NOVO da v412: os quatro registros por especificacao",
+     "novo": "(4j) o ponto NOVO da v412: os cinco registros por especificacao",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "or pv12_[\"n_registros\"] != 4",
+     "novo": "or pv12_[\"n_registros\"] != len(DL.REGISTROS_SPEC_V412)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "# (4j) [v412] o PONTO DE CHAMADA REAL dos quatro registros por especificacao",
+     "novo": "# (4j) [v412, contrato R5] o PONTO DE CHAMADA REAL dos cinco registros por especificacao",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "de57a9a15828b21d",
+   "destino_bytes": 129367
+  },
+  "simular_arvore_do_nos_v412_r5.py": {
+   "origem": "simular_arvore_do_nos_v412.py",
+   "origem_sha16": "47e98e2a3440c688",
+   "destino": "simular_arvore_do_nos_v412_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "quatro registros da v412 e os herdados selam",
+     "novo": "cinco registros da v412 (contrato R5) e os herdados selam",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(v412: os quatro registros por especificacao DEPOIS",
+     "novo": "(v412, R5: os cinco registros por especificacao DEPOIS",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "os quatro registros da v412 entram depois dos da v411",
+     "novo": "os cinco registros da v412 (contrato R5) entram depois dos da v411",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "cbe3a1f93cfc8ade",
+   "destino_bytes": 20188
+  },
+  "guardas_estaticas_bancada_v412_r5.py": {
+   "origem": "guardas_estaticas_bancada_v412.py",
+   "origem_sha16": "989296c533d339b3",
+   "destino": "guardas_estaticas_bancada_v412_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "2fe03e2bd53bffe6",
+   "destino_bytes": 13065
+  },
+  "conferir_citacoes_v412_r5.py": {
+   "origem": "conferir_citacoes_v412.py",
+   "origem_sha16": "759c78fe011a66ad",
+   "destino": "conferir_citacoes_v412_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"delta_v412.py\"",
+     "novo": "\"delta_v412_r5.py\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"registros_v412.py\"",
+     "novo": "\"registros_v412_r5.py\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"textos_registros_v412.py\"",
+     "novo": "\"textos_registros_v412_r5.py\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"gerar_candidato_v412.py\"",
+     "novo": "\"gerar_candidato_v412_r5.py\"",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "cbfe77eedd339df7",
+   "destino_bytes": 11788
+  },
+  "topo_com_resultado_v412_r5.py": {
+   "origem": "topo_com_resultado_v412.py",
+   "origem_sha16": "495e1ae4badfbba7",
+   "destino": "topo_com_resultado_v412_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "ea1f418a5af8cea9",
+   "destino_bytes": 4133
+  },
+  "guarda_conversa_v412_r5.py": {
+   "origem": "guarda_conversa_v412.py",
+   "origem_sha16": "b2423c979e50c4f6",
+   "destino": "guarda_conversa_v412_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "64392d2c37956111",
+   "destino_bytes": 15208
+  },
+  "quadro_v397_r5.py": {
+   "origem": "quadro_v397.py",
+   "origem_sha16": "afeb1e02b32f5e29",
+   "destino": "quadro_v397_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "08ee81851f7e1fb9",
+   "destino_bytes": 7987
+  },
+  "e3_topo_derivado_v412_r5.py": {
+   "origem": "e3_topo_derivado_v412.py",
+   "origem_sha16": "5e8aece22afb642e",
+   "destino": "e3_topo_derivado_v412_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [],
+   "destino_sha16": "9525f157c653b2de",
+   "destino_bytes": 3536
+  },
+  "e5_71_resultado_ensaio_v412.py": {
+   "origem": "e3_resultado_ensaio_v412.py",
+   "origem_sha16": "30607e47b284089c",
+   "destino": "e5_71_resultado_ensaio_v412.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "(contrato R4; o resultado do R1 fica em ENSAIO_RESULTADO_v412.json.bak_r1)",
+     "novo": "(contrato R5, ensaio_a_seco_v412_r5.py; o resultado do R4 fica na copia .bak_<data> que este script faz antes de regravar)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "r\"C:\\t\\k412c\\ensaio_adapt\\r4_run1.txt\"",
+     "novo": "r\"C:\\t\\k412c\\ensaio_adapt\\r5_run1.txt\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(ensaio_a_seco_v412.py, montado do original da v411 por e3_ensaio_adaptar_v412.py) sobre o candidato do contrato R4\"",
+     "novo": "(ensaio_a_seco_v412_r5.py, derivado do ensaio do R4 por e5_70_derivar_ensaio_r5_v412.py) sobre o candidato do contrato R5\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "open(OUT + \".tmp\", \"wb\").write(b); assert os.path.getsize(OUT + \".tmp\") == len(b)",
+     "novo": "if os.path.exists(OUT) and open(OUT, \"rb\").read() != b:   # (backup de bytes do resultado anterior antes de regravar)\n    _bk = OUT + \".bak_\" + time.strftime(\"%",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "shutil.copyfile(SAIDA, os.path.join(HERE, \"ENSAIO_SAIDA_v412.txt\"))",
+     "novo": "_SD = os.path.join(HERE, \"ENSAIO_SAIDA_v412.txt\")\nif os.path.exists(_SD) and open(_SD, \"rb\").read() != open(SAIDA, \"rb\").read():\n    _bk = _SD + \".bak_\" + time.",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "949a93f156637f85",
+   "destino_bytes": 5428
+  },
+  "ensaio_a_seco_v412_r5.py": {
+   "origem": "ensaio_a_seco_v412.py",
+   "origem_sha16": "befaf5e465bca267",
+   "destino": "ensaio_a_seco_v412_r5.py",
+   "derivador": "e5_70_derivar_ensaio_r5_v412.py",
+   "quando": "2026-11-18T18:40:14",
+   "trocas": [
+    {
+     "velho": "import delta_v412 as ",
+     "novo": "import delta_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import guarda_frases_v412 as ",
+     "novo": "import guarda_frases_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import verificar_historia_texto_v412 as ",
+     "novo": "import verificar_historia_texto_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import guarda_ordem_de_chamada_v412 as ",
+     "novo": "import guarda_ordem_de_chamada_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"exame_pontos_v412.py\"",
+     "novo": "\"exame_pontos_v412_r5.py\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"simular_arvore_do_nos_v412.py\"",
+     "novo": "\"simular_arvore_do_nos_v412_r5.py\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"guardas_estaticas_bancada_v412.py\"",
+     "novo": "\"guardas_estaticas_bancada_v412_r5.py\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"conferir_citacoes_v412.py\"",
+     "novo": "\"conferir_citacoes_v412_r5.py\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import topo_com_resultado_v412 as ",
+     "novo": "import topo_com_resultado_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import guarda_conversa_v412 as ",
+     "novo": "import guarda_conversa_v412_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "import quadro_v397 as ",
+     "novo": "import quadro_v397_r5 as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "and len(_N12) == 4 and _N12[-1] == \"cunhagens_v412\"",
+     "novo": "and _N12 == [\"iald_camada_cientifica_v412\", \"leitor_da_formula_v412\", \"matematica_que_restava_v412\", \"parede_do_teste_cego_v412\", \"cunhagens_v412\"] and len(set(",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "bool(all(_tudo12.values()) and len(_tudo12) == 4)",
+     "novo": "bool(all(_tudo12.values()) and len(_tudo12) == len(_N12))",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "_modA12, _modB12 = re.findall(r\"`(\\w+)`\", _mA.group(2)), re.findall(r\"`(\\w+)`\", _mB.group(2))",
+     "novo": "_modA12, _modB12 = re.findall(r\"`(\\w+)`\", _mA.group(2)), re.findall(r\"`(\\w+)`\", _mB.group(2))\n_mC = re.search(r\"Frente C \\(o leitor da fórmula\\), (\\d+) m[óo]dul",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "for n_, mods_ in ((\"iald_camada_cientifica_v412\", _modA12), (\"matematica_que_restava_v412\", _modB12)):",
+     "novo": "for n_, mods_ in ((\"iald_camada_cientifica_v412\", _modA12), (\"leitor_da_formula_v412\", _modC12), (\"matematica_que_restava_v412\", _modB12)):",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "and _num12[\"iald_camada_cientifica_v412\"][\"n_ancoras\"] + _num12[\"matematica_que_restava_v412\"][\"n_ancoras\"] == _ANC12[\"n_ancoras_total\"]",
+     "novo": "and sum(v_[\"n_ancoras\"] for v_ in _num12.values() if isinstance(v_, dict)) == _ANC12[\"n_ancoras_total\"] and len([1 for v_ in _num12.values() if isinstance(v_, d",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "and len(_modA12) == int(_mA.group(1)) and len(_modB12) == int(_mB.group(1)) and int(_mA.group(1)) + int(_mB.group(1)) == DL.N_BUNDLE == len(DL.BUNDLE_RELS) and ",
+     "novo": "and len(_modA12) == int(_mA.group(1)) and len(_modB12) == int(_mB.group(1)) and len(_modC12) == int(_mC.group(1)) and sorted(_modA12) == _frentes12[\"A\"] and sor",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "_r_sem3 = um._v392_registro(dict(_sp_cn12, sem_guarda=True), dict(c, **{\"parede_do_teste_cego_v412\": dict(c[\"parede_do_teste_cego_v412\"], all_verified=False)}))",
+     "novo": "_selos12 = {ck_[\"id\"]: ck_[\"caminho\"][0] for ck_ in _sp_cn12[\"checks\"] if ck_[\"id\"].startswith(\"selo_\")}   # (R5: o cunhagens_v412 cobra o selo de CADA um dos o",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"cunhagens_cobra_o_selo_dos_outros_tres\": bool(_r_sem3[\"all_verified\"] is False and \"CHECK_r3\" in _r_sem3[\"verdict\"]),",
+     "novo": "\"cunhagens_cobra_o_selo_dos_outros_quatro\": bool(sorted(_selos12.values()) == sorted(n_ for n_ in _N12 if n_ != \"cunhagens_v412\") and len(_r_sem12) == len(_selo",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "for k_, v_ in _lig12.items() if k_ != \"n_entradas\")",
+     "novo": "for k_, v_ in _lig12.items() if k_ not in (\"n_entradas\", \"n_selos_cobrados\"))",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "U[\"v412_a_ligacao_entre_os_registros_cunhagens_cobra_o_selo_dos_outros_tres_a_parede_e_as_entradas\"]",
+     "novo": "U[\"v412_a_ligacao_entre_os_registros_cunhagens_cobra_o_selo_dos_outros_quatro_a_parede_e_as_entradas\"]",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "and len(_tr12) == 8 and all(_igual_recibo12.values()) and all(_no_core12.values()) and len(_no_core12) == 4",
+     "novo": "and set(_tr12) == {\"registro:\" + n_ for n_ in _N12} | {p_ + \":\" + l_ for p_ in (\"artigo\", \"resumo\") for l_ in (\"pt\", \"en\")} and all(_igual_recibo12.values()) an",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "_ru12[\"n_superficies\"] == len(_ru12[\"superficies\"]) >= 14",
+     "novo": "_ru12[\"n_superficies\"] == len(_ru12[\"superficies\"]) > 0 and set(_ru12[\"superficies\"]) == set(_tr12) | {p_ + \":\" + l_ for p_ in (\"readme\", \"estado_atual\", \"hando",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "        if \"/checks[\" in p_ and p_.endswith(\"/id\"):\n            _ids_fora12.append(p_); return\n        _un12.append((p_, o_))",
+     "novo": "        _un12.append((p_, o_))",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "_ids_fora12 = []   # (os identificadores de checagem -- r1, r2, r3 -- sao nome de campo do spec, nao prosa: o padrao R<digito> do verificador os tomaria por num",
+     "novo": "_ids_fora12 = []   # (R5: fica VAZIA de proposito -- os ids de checagem sao examinados como prosa --; o que o verificador tira da prosa agora sao os identificad",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "_vh12[\"n_unidades_examinadas\"] > 1000 and _vh12a[\"ok\"]",
+     "novo": "_vh12[\"n_unidades_examinadas\"] > 1000 and _vh12[\"n_identificadores_do_kernel_fora_da_prosa\"] > 0 and not _ids_fora12 and _vh12a[\"ok\"]",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "\"historia_de_conversa\": {\"ids_de_checagem_fora_da_prosa\": len(_ids_fora12), ",
+     "novo": "\"historia_de_conversa\": {\"ids_de_checagem_fora_da_prosa\": len(_ids_fora12), \"identificadores_do_kernel_fora_da_prosa\": _vh12[\"n_identificadores_do_kernel_fora_d",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "U[\"v412_ordem_de_chamada_dos_quatro_specs_medida_por_ast_depois_do_bloco_da_v411_e_antes_de_emit_figures_com_cinco_controles_negativos\"]",
+     "novo": "U[\"v412_ordem_de_chamada_dos_cinco_specs_medida_por_ast_depois_do_bloco_da_v411_e_antes_de_emit_figures_com_cinco_controles_negativos\"]",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "_op12[\"n_specs\"] == len(um._V412_NOMES_REGISTROS) == 4 and _logo12",
+     "novo": "_op12[\"n_specs\"] == len(um._V412_NOMES_REGISTROS) == len(DL.REGISTROS_SPEC_V412) and _logo12",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "v[\"n_registros_retirados\"] != 4 or v[\"n_linhas_do_quadro_de_vereditos_retiradas\"] != 4 or",
+     "novo": "v[\"n_registros_retirados\"] != len(V412R) or v[\"n_linhas_do_quadro_de_vereditos_retiradas\"] != len(V412R) or",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "any(int(a_) - int(b_) == 4 for a_, b_ in zip(_cont12[0], _cont12[1]) if a_ != b_)",
+     "novo": "any(int(a_) - int(b_) == len(V412R) for a_, b_ in zip(_cont12[0], _cont12[1]) if a_ != b_)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "igual_ao_completo_menos_as_quatro_linhas_e_a_contagem",
+     "novo": "igual_ao_completo_menos_as_linhas_dos_registros_e_a_contagem",
+     "ocorrencias": 2
+    },
+    {
+     "velho": "n_linhas_diferentes_alem_das_quatro",
+     "novo": "n_linhas_diferentes_alem_das_dos_registros",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "# (6r) [v412] OS QUATRO REGISTROS POR ESPECIFICACAO (iald_camada_cientifica_v412, matematica_que_restava_v412, parede_do_teste_cego_v412, cunhagens_v412)",
+     "novo": "# (6r) [v412, contrato R5] OS CINCO REGISTROS POR ESPECIFICACAO (iald_camada_cientifica_v412, leitor_da_formula_v412, matematica_que_restava_v412, parede_do_tes",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "o texto dos 40 modulos embutidos",
+     "novo": "o texto dos modulos embutidos",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "as quatro funcoes EMBUTIDAS (a guarda sobre UMA unidade, a divisao em unidades, a divisao do TeX, a travessia) sao as da cadeia, funcao por funcao",
+     "novo": "as quatro funcoes EMBUTIDAS (a guarda sobre UMA unidade, a divisao em unidades, a divisao do TeX, a travessia; sao quatro funcoes, nao quatro registros) sao as ",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "# --- (g) a guarda de frases da v412 (contrato R4, secao 5)",
+     "novo": "# --- (g) a guarda de frases da v412 (contrato R5, secao 5)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "# --- (h) nenhum texto novo traz historia de conversa (o verificador da cadeia, com o autoteste): os quatro registros inteiros,",
+     "novo": "# --- (h) nenhum texto novo traz historia de conversa (o verificador da cadeia, com o autoteste): os cinco registros inteiros,",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "# (v412) a VARIANTE sem os quatro registros por especificacao da v412:",
+     "novo": "# (v412) a VARIANTE sem os registros por especificacao da v412 (cinco no R5):",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "menos as QUATRO linhas do quadro de vereditos e a contagem de chaves (N menos quatro)",
+     "novo": "menos as linhas do quadro de vereditos dos registros (uma por registro) e a contagem de chaves (N menos o numero de registros)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "(V412R) e a chave nova do core, o resultado da travessia da guarda de frases (V412N): os quatro por especificacao",
+     "novo": "(V412R) e a chave nova do core, o resultado da travessia da guarda de frases (V412N): os cinco por especificacao (contrato R5)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "# --- (f) a ligacao entre os registros: o cunhagens_v412 cobra o selo dos outros tres;",
+     "novo": "# --- (f) a ligacao entre os registros: o cunhagens_v412 cobra o selo dos outros quatro;",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "all(((seal.get(\"registros_v412\") or {}).get(n_) or {}).get(\"all_verified\") is True for n_ in um._V412_NOMES_REGISTROS) and len(seal.get(\"registros_v412\") or {})",
+     "novo": "all(((seal.get(\"registros_v412\") or {}).get(n_) or {}).get(\"all_verified\") is True for n_ in um._V412_NOMES_REGISTROS) and len(seal.get(\"registros_v412\") or {})",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "# (5b-v412) A ORDEM DE CHAMADA DOS QUATRO REGISTROS POR ESPECIFICACAO (_v412_rodar_specs)",
+     "novo": "# (5b-v412) A ORDEM DE CHAMADA DOS CINCO REGISTROS POR ESPECIFICACAO (_v412_rodar_specs)",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "o cunhagens_v412 vem por ultimo (cobra o selo dos outros tres); examina TODAS",
+     "novo": "o cunhagens_v412 vem por ultimo (cobra o selo dos outros quatro); examina TODAS",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "os QUATRO registros por especificacao da v412 no ponto de chamada real",
+     "novo": "os registros por especificacao da v412 (cinco no contrato R5) no ponto de chamada real",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "699b34e9ff287766",
+   "destino_bytes": 553034
+  },
+  "guarda_material_privado_v412_r5.py": {
+   "origem": "guarda_material_privado_v412.py",
+   "origem_sha16": "1ee032815582059f",
+   "destino": "guarda_material_privado_v412_r5.py",
+   "derivador": "e5_33_derivar_privado_r5_v412.py",
+   "quando": "2026-11-18T18:41:05",
+   "trocas": [
+    {
+     "velho": "\"textos_registros_v412.py\"",
+     "novo": "\"textos_registros_v412_r5.py\"",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "os.path.join(HERE, \"o_que_fica_claro_REV13\", \"O_QUE_FICA_CLARO_v412_R13.md\")",
+     "novo": "os.path.join(HERE, \"o_que_fica_claro_REV18\", \"O_QUE_FICA_CLARO_v412_R18.md\")",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "os.path.join(HERE, \"O_QUE_FICA_CLARO_v412_R13_EN.md\")",
+     "novo": "os.path.join(HERE, \"O_QUE_FICA_CLARO_v412_R18_EN.md\")",
+     "ocorrencias": 1
+    },
+    {
+     "velho": "os.path.join(HERE, \"CONTRATO_v412_R4.md\")]",
+     "novo": "os.path.join(HERE, \"CONTRATO_v412_R5.md\")]",
+     "ocorrencias": 1
+    }
+   ],
+   "destino_sha16": "354117a1fb0c72ff",
+   "destino_bytes": 4364
+  }
+ }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "K06_LUMPABILITY_CASES_V1",
+  "synthetic_only": true,
+  "criterion": "Para toda classe de origem A e toda classe de destino B, a soma K(x,B) deve ser a mesma para todo x em A.",
+  "classes": {"A": ["a", "b"], "TAU": ["tau"]},
+  "states": ["a", "b", "tau"],
+  "cases": [
+    {
+      "id": "lumpable_exact",
+      "matrix": [["1/4", "1/4", "1/2"], ["1/4", "1/4", "1/2"], ["0", "0", "1"]],
+      "expected_lumpable": true,
+      "note": "a e b têm as mesmas probabilidades agregadas para A e TAU."
+    },
+    {
+      "id": "not_lumpable_fiber_conflict",
+      "matrix": [["1/2", "0", "1/2"], ["0", "1/4", "3/4"], ["0", "0", "1"]],
+      "expected_lumpable": false,
+      "note": "Embora a e b pertençam à mesma fibra A, P(a,TAU)=1/2 e P(b,TAU)=3/4; o quociente determinístico não existe."
+    }
+  ]
+}

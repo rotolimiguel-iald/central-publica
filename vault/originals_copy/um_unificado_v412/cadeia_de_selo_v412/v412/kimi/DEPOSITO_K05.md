@@ -1,0 +1,8 @@
+[DECLARADO] K05 da v412 concluída e revisada internamente. T1 fecha somente sob H_K̂, H_erg e H_TGL-horizon [OPEN]: Fix=L(R)=W*(K̂) e Φ_t→E_τ σ-fracamente; a face diagonal Lean prova fórmula/Fix/pinching, não o contínuo. A montagem (4,0) foi identificada a T4 com J, orientação, finitude e Poincaré; (1,3) permanece H. GH-III1 continua CONJECTURE: o degrau II∞ inclui compressão e GH-S/GH-R sob o pacote C¹/Lip-normas/topologias, sem descida Takesaki; qGH≤GH. No clock selado P1, ħ/(1eV) e ħ/(β·1eV) excedem Kim por 15,4058 e 17,3255 ordens; os fatores Planck passam e c★ não é escolhido. max/soma/quadratura dão escala, mas não derivam K Hubble; a premissa sem β fica separada. O cânone tem duas equações, ξ_A=1/6 e ξ_P=β, sem ação única; o 2 do psíon sustenta a segunda massa, e na escrita fundadora 2ξ_L R o conforme é ξ_L=1/12. Nenhuma das cinco candidatas de campo fecha; nada decide o ½ do box. Duas candidatas Lean compilaram no sandbox com RC=0, zero sorry e axiomas no trio. Erratas e versões anteriores preservadas. PERGUNTA_K05 atualiza relógio, âncora, retido, volta, seletor do horizonte e premissa de β. Nenhuma abertura nova, alteração canônica ou registro no Mapa. REGISTRO_MAPA_K05.json é proposta não registrada; a gerência registra após conferir. Gate imóvel.
+
+Entrega: C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\kimi\ENTREGA_K05.md
+SHA-256: 03af8e77542cf903f0203d03d62643cd24ec0ccafb2ba22b0caf163a8d1e04cc
+Registro proposto: C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\kimi\REGISTRO_MAPA_K05.json
+SHA-256: 95f669ab5fe69af457bce992c59a643fe74cfc5cc51617e1cf8f89b520b99975
+Validação: C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\kimi\VALIDACAO_K05.json
+SHA-256: e5fe509e493523f711df0ab534b31b8bea0b6f25fe6a296b2f767c76b6588ade

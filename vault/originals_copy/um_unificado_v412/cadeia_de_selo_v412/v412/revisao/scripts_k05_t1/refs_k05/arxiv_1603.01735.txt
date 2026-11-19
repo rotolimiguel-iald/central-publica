@@ -1,0 +1,1792 @@
+arXiv:1603.01735v1 [math.OA] 5 Mar 2016             A Beurling-Blecher-Labuschagne theorem
+                                                  for noncommutative Hardy spaces associated
+
+                                                       with semifinite von Neumann algebras
+
+                                                                                                   Lauren Sager
+
+                                                   Abstract. In 2008, Blecher and Labuschagne extended Beurling's classical theorem to H-
+                                                   invariant subspaces of Lp(M,  ) for a finite von Neumann algebra M with a finite, faithful,
+                                                   normal tracial state  when 1  p  . In this paper, using Arveson's non-commutative
+                                                   Hardy space H in relation to a von Neumann algebra M with a semifinite, faithful, normal
+                                                   tracial weight  , we prove a Beurling-Blecher-Labuschagne theorem for H-invariant spaces of
+                                                   Lp(M,  ) when 0 < p  . The proof of the main result relies on proofs of density theorems for
+                                                   Lp(M,  ) and semifinite versions of several other known theorems from the finite case. Using the
+                                                   main result, we are able to completely characterize all H-invariant subspaces of Lp(M Z,  ),
+                                                   where M  Z is a crossed product of a semifinite von Neumann algebra M by the integer group
+                                                   Z and H is a non-selfadjoint crossed product of M by Z+ . As an example, we characterize
+                                                   all H-invariant subspaces of the Schatten p-class Sp(H), where H is the lower triangular
+                                                   subalgebra of B(H), for each 0 < p  .
+
+                                                                                           1. Introduction
+
+                                             Let H be an infinite dimensional separable Hilbert space with an orthonormal base {em}mZ,
+                                         and B(H) be the set of all bounded linear operators on H. Let  = T r be the usual trace on
+                                         B(H), i.e.
+
+                                                                     (x) = xem, em , for all positive x in B(H).
+
+                                                                                                 iZ
+
+                                         For each 0 < p < , the Schatten p-class Sp(H) consists all these elements x in B(H) such that
+                                          (|x|p) < . It is well-known that Sp(H) is a complete metric space (a Banach space when
+                                         p  1 and a Hilbert space when p = 2). Moreover, Sp(H) is a two sided ideal of B(H).
+
+                                             Let
+                                                                           A = {x  B(H) : xem, en = 0, n < m}
+
+                                              2000 Mathematics Subject Classification. Primary 32A35, 46L52; Secondary 47A15, 47L65.
+                                              Key words and phrases. Beurling's theorem, Schatten p-classes, semifinite von Neuman algebra, non-
+                                         commutative Hardy space, crossed products of von Neumann algebras, Lp spaces, invariant subspaces.
+
+                                                                                                                          1
+2                                                       LAUREN SAGER
+
+be the lower triangular subalgebra of B(H). In the paper, we are interested in answering the
+following question, which is implicitly asked by McAsey, Muhly and Saito in Example 2.6 of
+[25].
+
+    Problem 1.1. Given a closed subspace K of the Schatten p-class Sp(H) where 0 < p < ,
+such that K satisfies AK  K, how can we characterize the subspace K?
+
+   The answer to Problem 1.1 is closely related to our generalization of the classical Beurling
+
+theorem for a Hardy space. Recall the classical Beurling theorem for invariant subspaces as
+
+follows.  Let  T  be  the  unit  circle,           and  let  �  be  the  measure  on  T  such  that  d�  =   1  d.  Let
+                                                                                                            2
+L(T, �) be the commutative von Neumann algebra on T, and define L2(T, �) to be the closure
+of L(T, �) under the � 2. Then L2(T,  ) is a Hilbert space with orthonormal basis {zn : n  Z}.
+Let H2 = span{zn : n  0} � 2  L2((T, �) and H = H2  L(T, �). If we define M(f ) = f
+for every f  L2(T, �), it is easy to show that L(T, �) has a representation onto B(L2(T, �))
+by the map   M. Therefore, L(T, �) and H can be assumed to act naturally on L2(T, �)
+by multiplication on the left (or right). The classical Beurling's theorem, proven in 1949 by
+
+A. Beurling in [6], states the following: If W is a nonzero closed, H-invariant subspace (or,
+
+equivalently, zW  W for every z  H) of H2, then W = H2 for some   H with || = 1
+
+a.e.(�).
+
+   Then we define Lp(T,  ) to be the closure of L(T,  ) under � p, and Hp = {f  Lp(T, �) :
+
+HTf-(ieniv)aeriinandt�s(ub) s=pa0cefsoirnnHardNy}  for 1  p     < . Beurling's theorem has been extended for
+                                                   spaces Hp    for 1  p  . (See, for example, [8], [15], [16],
+
+[17], [18], [35], and others). The classical Beurling's theorem has been extended in many other
+
+ways as well.
+
+   One such extension comes from the work of D. Blecher and L. Labuschagne in [7]. We
+
+recall the construction of Lp(M,  ). Let M be a semifinite von Neumann algebra, and let 
+
+be a faithful, normal tracial weight on M (when  (I) < , M is finite). Let I be the set of
+
+elementary operators in M (when M                       is finite, I  = M). Then define a mapping from I to
+[0, ) by x p = ( (|x|p))1/p for every                   x  I, and     where |x| = xx. It is nontrivial to prove
+
+that when 1  p < , � p defines a norm on I, which we call the p-norm. We may then
+define Lp(M,  ) = I � p. We let L(M,  ) = M, and this space acts naturally on Lp(M,  ) by
+
+left (or right) multiplication.
+
+   We then recall the definition of Arveson's non-commutative Hardy space from [1]. If M
+
+is a von Neumann algebra, with faithful, normal tracial weight  , let A  M be a weak*
+
+closed subalgebra. Then let D = A  A be a von Neumann subalgebra of M. Then there
+
+exists  : M  D, a faithful, normal, trace-preserving conditional expectation, which can be
+
+extended to  : L1(M,  )  L1(D,  ). Then A is called a non-commutative Hardy space if (1)
+
+(xy) = (x)(y) for every x, y  A; (2) A + A is weak* dense in M; (3)  ((x)) =  (x) for
+
+every x  M.
+
+   Blecher and Labuschagne proved the following theorem for finite von Neumann algebras in
+
+[7]. Let M be a finite von Neumann algebra with a faithful, tracial, normal state  , and H
+
+be a maximal subdiagonal subalgebra of M with D = H  (H). Suppose that K is a closed
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES  3
+
+H-right-invariant subspace of Lp(M,  ), for some 1  p  . (For p =  it is assumed that
+K is weak* closed.) Then K may be written as a column Lp-sum K = Z col (cioluiHp), where
+Z is a closed (indeed weak* closed if p = ) subspace of Lp(M,  ) such that Z = [ZH0]p, and
+where ui are partial isometries in M  K satisfying certain conditions (For more details, see
+[7].)Here icoluiHp and Z = [ZH0]p are of type 1, and type 2 respectively (also see [26] for
+definitions of invariant subspaces of different types).
+
+    Examples of finite von Neumann algebras include the spaces Mn(C) of all n�n matrices with
+complex entries when 1  n < . However, if H is an infinite dimensional separable Hilbert
+space and we view B(H) as M(C), the set of all (bounded)  �  matrices with complex
+entries, then B(H) is a semifinite von Neumann algebra, and no longer satisfies the hypothesis
+of the Beurling-Blecher-Labuschagne theorem.
+
+    In this paper, we therefore consider a version of Blecher and Labuschagne's Beurling's the-
+orem for semifinite von Neumann algebras. We seek to characterize H-invariant spaces of
+Lp(M,  ) spaces. Adapting Blecher and Labuschagne's theorem to the semifinite case, we prove
+the following result:
+
+    Theorem 4.6. Let 1  p < . Let M be a von Neumann algebra with a faithful, normal,
+semifinite tracial weight  , and H be a semifinite subdigonal subalgebra of M (see Definition
+2.7). Let D = H  (H). Assume that K is a closed subspace of Lp(M,  ) such that
+HK  K.
+
+    Then there exist a closed subspace Y of Lp(M,  ) and a family {u} of partial isometries
+in M such that:
+
+      (i) uY  = 0 for all   .
+     (ii) uu  D and uu� = 0 for all , �   with  = �.
+     (iii) Y = [H0Y ]p.
+     (iv) K = Y row (rowHpu)
+Here row is the row sum of subspaces defined in Definition 2.15.
+
+    However, many of the methods used by Blecher and Labuschagne do not apply directly when
+M is a semifinite von Neumann algebra. Thus, we prove a density theorem for semifinite von
+Neumann algebras through a series of lemmas and propositions.
+
+    Proposition 4.1. Let M be a von Neumann algebra with a faithful, normal, semifinite
+tracial weight  , and H be a semifinite subdigonal subalgebra of M. Let 1  p < . Assume
+that K is a closed subspace in Lp(M,  ) such that HK  K. Then the following statements
+are true.
+
+      (i) K  M = K  Mw  Lp(M,  ).
+     (ii) K = [K  M]p.
+
+    Proposition 4.2. Let M be a von Neumann algebra with a faithful, normal, semifinite
+tracial weight  , and H be a semifinite subdigonal subalgebra of M.
+
+    Assume that K  M is weak-closed subspace such that HK  K. Then
+
+                                K = [K  Lp(M,  )]p  Mw,  1  p < .
+4  LAUREN SAGER
+
+    Proposition 4.4. Let M be a von Neumann algebra with a faithful, normal, semifinite
+tracial weight  , and H be a semifinite subdigonal subalgebra of M. Assume that S  M is a
+subspace such that HS  S. Then
+
+                          [S  Lp(M,  )]p = [Sw  Lp(M,  )]p,  1  p < .
+
+    Subsequently, we are able to prove a noncommutative Beurling-Blecher-Labuschagne theo-
+rem for the semifinite case when 0 < p < 1.
+
+    Theorem 5.4. Let 0 < p < 1. Let M be a von Neumann algebra with a faithful, normal,
+semifinite tracial weight  , and H be a semifinite subdigonal subalgebra of M (see Definition
+2.7). Let D = H  (H). Assume that K is a closed subspace of Lp(M,  ) such that
+HK  K.
+
+    Then there exist a closed subspace Y of Lp(M,  ) and a family {u} of partial isometries
+in M such that:
+
+      (i) uY  = 0 for all   .
+     (ii) uu  D and uu� = 0 for all , �   with  = �.
+     (iii) Y = [H0Y ]p.
+     (iv) K = Y row (rowHpu)
+Here row is the row sum of subspaces defined in Definition 2.15.
+
+    Here, we use similar methods to our proof for 1  p < , including proving a similar density
+theorem (see Proposition 5.1, Proposition 5.2).
+
+    Using theorems 4.6 and 5.4 and corollary 5.5, we are then able to prove a Beurling-Blecher-
+Labuschagne-like theorem for the crossed product of a semifinite von Neumann algebra M by
+a trace-preserving action  when 0 < p < . We are actually able to fully characterize the
+H-invariant subspace of the crossed product.
+
+    Theorem 6.3. Let M be a von Neumann algebra with a semifinite, faithful, normal, tracial
+weight  , and  be a trace-preserving -automorphism of M. Denote by M  Z the crossed
+product of M by an action , and still denote by  a semifinite, faithful, normal, extended tracial
+weight on M  Z.
+
+    Let H, a weak -closed nonself-adjoint subalgebra generated by {(n)(x) : x  M, n  0}
+in M  Z, be a semifinite subdiagonal subalgebra of M  Z. Then the following statements
+are true.
+
+      (i) Let 0 < p < . Assume that K is a closed subspace of Lp(M  Z,  ) such that
+           HK  K. Then there exist a projection q in M and a family {u} of partial
+           isometries in M  Z satisfying
+            (a) uq = 0 for all   ;
+           (b) uu  M and uu� = 0 for all , �   with  = �;
+            (c) K = (Lp(M  Z,  )q) row (rowHpu).
+
+     (ii) Assume that K is a weak -closed subspace of M  Z such that HK  K. Then
+           there exist a projection q in M and a family {u} of partial isometries in M  Z
+           satisfying
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES                                5
+
+(a) uq = 0 for all   ;
+(b) uu  M and uu� = 0 for all , �   with  = �;
+(c) K = ((M  Z)q) row (rowHu).
+
+In [25], McAsey, Muhly and Saito prove a Beurling's theorem for a crossed product. Suppose
+
+M is a finite von Neumann algebra with finite trace  and , a trace preserving automorphism
+
+of M, such that  fixes each element of the center Z(M) of M. Then let A = M  Z+. Then
+every A and A-invariant subspace K of L2(M,  ) has the form K = vH2 for a partial isometry
+
+v in the commutant of right multiplication by M on L2(M,  ). This follows from theorem 6.3
+
+when  is finite, and p = 2.
+
+McAsey, Muhly and Saito's result is a corollary of a result by Nazaki and Watatani in [26].
+
+Suppose M is a finite von Neumann algebra with trace  , D  M and a faithful, normal,
+
+trace-preserving conditional expectation  : M  D. We let H be a maximal subdiagonal
+
+algebra with respect to , and suppose that Z(D)  Z(M). Then, if we let K be a H-invariant
+
+subspace of L2(M,  ) such that K is of H-type I (in the sense defined in [26]), there exists a
+
+partial isometry v in the commutant of right multiplcation by M such that K = vH2. Again,
+
+this follows from our result in the finite case when p = 2.
+
+Similarly, Saito in [32] proves another Beurling-like theorem for a finite von Neumann algebra
+
+M. Let a closed K of L2(M,  ) invariant under M  Z+ such that there are no subspaces of
+                                                                    2
+K with M  ZK  K such that K has the form        n=0          Vn  H     with  {Vn}  a  family  of  partial
+
+isometries with {Vnvn} is mutually orthonogal.
+We are also able to prove a Beurling-Blecher-Labuschagne-like theorem for the Schatten p-
+
+classes for 0 < p < , as described at the beginning of this section, using theorems 4.6, 5.4 and
+
+corollary 5.5.
+
+    Corollary 6.4. Let H be a separable Hilbert space with an orthonormal base {em}mZ. Let
+H be the lower triangular subalgebra of B(H), i.e.
+
+                                H = {x  B(H) : xem, en = 0, n < m}.
+
+Let D = H  (H) be the diagonal subalgebra of B(H).
+
+      (i) For each 0 < p < , let Sp(H) be the Schatten p-class. Assume that K is a closed
+           subspace of Sp(H) such that HK  K. Then there exist a projection q in D and a
+           family {u} of partial isometries in B(H) satisfying
+            (a) uq = 0 for all   ;
+           (b) uu  D and uu� = 0 for all , �   with  = �;
+            (c) K = (Sp(H)q) row (rowHpu).
+
+     (ii) Assume that K is a weak -closed subspace of B(H) such that HK  K. Then there
+           exist a projection q in D and a family {u} of partial isometries in B(H) satisfying
+            (a) uq = 0 for all   ;
+           (b) uu  D and uu� = 0 for all , �   with  = �;
+            (c) K = (B(H)q) row (rowHu).
+6  LAUREN SAGER
+
+    However, if we have that this projection q in D has the characteristic that Sp(H)q  Hp, then
+we can prove corollary 6.6, and therefore fully characterize a H-invariant subspace K  Hp
+
+when 0 < p   and H is a separable Hilbert space with an orthonormal base.
+
+    Corollary 6.6. Let H be a separable Hilbert space with an orthonormal base {em}mZ. Let
+H be the lower triangular subalgebra of B(H), i.e.
+
+                                H = {x  B(H) : xem, en = 0, n < m}.
+
+Let D = H  (H) be the diagonal subalgebra of B(H).
+
+      (i) For each 0 < p < , if K is a closed subspace of Hp such that HK  K, then there
+           exists a family {u} of partial isometries in H satisfying
+            (a) uu  D and uu� = 0 for all , �   with  = �;
+           (b) K = rowHpu.
+
+     (ii) Assume that K is a weak -closed subspace of H such that HK  K. Then there
+           exists a family {u} of partial isometries in H satisfying
+            (a) uu  D and uu� = 0 for all , �   with  = �;
+           (b) K = rowHu.
+
+    Therefore, we are able to answer the question given in problem 1.1 and fully characterize
+an A-invariant subspace of a Schatten p-class: given a subpace K  Sp(H) such that AK  K,
+we have that K = (Sp(H)q) row Hpu when 0 < p < , and K = (B(H)q) row (rowHu)
+when p = .
+
+    The outline of the paper is as follows. In section 2, we discuss preliminary definitions and
+notations. In section 3, we prove the Beurling-Blecher-Labuschagne theorem for Lp(M,  ) when
+p = 2, and extend this theorem in section 4 to the case when 1  p  . We provide several
+more preliminaries and further extend the Beurling-Blecher-Labuschagne theorem to Lp(M,  )
+for 0 < p < 1 in section 5. Finally, in section 6, we discuss some applications of our results
+on invariant subspaces for analytic crossed products and discuss the results for the Schatten
+p-class.
+
+                                       2. Preliminaries and Notation
+
+    In this section we give some preliminary definitions and results for non-commutative Lp
+spaces for a von Neumann algebra with a tracial weight. We then discuss Arveson's non-
+commutative Hardy space.
+
+    2.1. Weak -topology. Let M be a von Neumann algebra with a predual M. Recall
+that the weak -topology (M, M) on M is a topology on M induced from the predual space
+M. The following known result (for example, see Theorem 1.7.8 in [30]) is useful.
+
+    Lemma 2.1. Let M be a von Neumann algebra. If {e} is a net of projections in M
+such that e  I in weak -topology, then ex  x, xe  x and exe  x in weak -topology
+for all x in M.
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES  7
+
+    2.2. Semifinite von Neumann Algebras. We begin with a description of a semifinite
+
+von Neumann algebra.
+    Let M be a von Neumann algebra, and let M+ be the positive part of M. Recall that a
+
+mapping  : M+  [0, ] is a tracial weight on M if
+
+      (1)  (x + y) =  (x) +  (y) for x, y  M+
+      (2)  (ax) = a (x) for x  M+ and a  [0, ]
+      (3)  (xx) =  (xx) for every x  M.
+
+A tracial weight  is called normal if  : M+  C is continuous with respect to the weak
+-topology.  is faithful if for every a  M+,  (aa) = 0 implies a = 0.  is said to be finite
+if  (I) < , and semifinite if for any x  M+, x = 0, there is a y  M+, y = 0 such that
+
+ (y) <  and y  x. A von Neumann algebra M is called semifinite if a faithful, normal
+
+semifinite  exists.
+
+The following lemma is well known.
+
+    Lemma 2.2. Let M be a von Neumann algebra with a semifinite, faithful, normal, tracial
+weight  . Then the following are true.
+
+      (1) There exists a family {ej}jJ of orthogonal projections in M such that (i) j ej con-
+           verges to I in weak -topology and (ii)  (ej) <  for each j  J.
+
+      (2) There exists a net {e} of projections in M such that (i) e  I in weak -topology
+           and (ii)  (e) <  for each   .
+
+    Proof. It is not hard to see that (2) follows from (1). For the purpose of completeness, we
+sketch the proof of (1) here. Actually, we need only to show that every nonzero projection e in
+M contains a nonzero subprojection e~ such that  (e~) < . Then the rest follows directly from
+Zorn's lemma.
+
+    Let e be a nonzero projection in M. Since  is semifinite, then is a y  M+, y = 0 such that
+ (y) <  and y  f . Therefore, there exist a positive number  > 0 and a nonzero spectral
+projection e~ of y in M such that e~  y. Hence e~ is a non-zero subprojection of e such that
+ (e~) < .
+
+    2.3. Lp-spaces of semifinite von Neumann algebras. Let M be a von Neumann alge-
+bra with a semifinite, faithful, normal, tracial weight  . We let
+
+                            I = span{MeM : e = e = e2  M with  (e) < }
+
+be the set of elementary operators in M (see Definition 3.1 in [33]). Then I is a two-sided ideal
+of M.
+
+    For each 0 < p < , we define a mapping � p : I  [0, ) as follows
+
+x  p  =  (  (|x|)p)                 1  for every x  I.
+                                    p
+
+It is a highly trivial fact that � p is a norm on I for 1  p < , and a p-norm on I for
+0 < p < 1. (see Theorem 4.9 in [13])
+8                                 LAUREN SAGER
+
+    Definition 2.3. Let M be a von Neumann algebra with a semifinite, faithful, normal, tracial
+weight  , and I = span{MeM : e = e = e2  M with  (e) < } be the set of elementary
+operators in M. We define Lp(M,  ), for 0 < p < , to be the completion of I under � p,
+i.e.
+
+                                                  Lp(M,  ) = I � p.
+
+    As usual, we let L(M,  ) be M.
+
+    Notation 2.4. If S is a subset of Lp(M,  ) with 0 < p < , we will denote by [S]p the
+closure of S in Lp(M,  ). If S is a subset of M, we will denote by Sw the closure of S in M
+under the weak -topology.
+
+   The following two lemmas are well known.
+
+    Lemma 2.5. Let M be a von Neumann algebra with a semifinite, faithful, normal, tracial
+weight  . The following are true.
+
+      (1) (H�older's Inequality) For 0 < p, q, r   with 1/p + 1/q = 1/r, we have
+
+        xy r  x p y q             for all x  Lp(M,  ) and y  Lq(M,  ).
+
+   (2) For each 0 < r  , we have axb r  a x r b for x  Lr(M,  ) and a, b  M.
+        Therefore, Lr(M,  ) is an M bi-module for each 0 < r  .
+
+   (3) (Duality) For any 1  p <  and 1 < q   with 1/p + 1/q = 1, we have
+
+                     (Lp(M,  )) = Lq(M,  ) (isometrically),
+
+   where the duality between Lp(M,  ) and Lq(M,  ) is given by x, y =  (xy). Thus,
+   L1(M,  ) is the predual of M.
+
+   Proof. See [13].
+
+    Lemma 2.6. Let M be a von Neumann algebra with a semifinite, faithful, normal, tracial
+weight  and 0 < p < . If {e} is a net of projections in M such that such that e  I in
+the weak -topology, then for every x  Lp(M,  )
+
+   lim  ex - x       p = 0;  lim  xe - x     p = 0;  and  lim  exe - x  p = 0.
+                                                            
+
+    Proof. For the purpose of completeness, we include a proof here. Notice that the set I of
+elementary operators of M is dense in Lp(M,  ) (see Definition 2.3) and
+
+        exe - x p = e(xe - x) + ex - x p,  x  Lp(M,  ).
+
+Because of Lemma 2.5, it suffices to show that, for all a, b  M and a projection f in M with
+ (f ) < , we have lim e(af b) - af b p = 0 and lim (af b)e - af b p = 0.
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES                    9
+
+Assume that 0 < p < 2. Let q be a positive number such that 1/p = 1/2 + 1/q. We have
+
+e(af b) - af b p = (e - I)af b p                                                         (by Lemma 2.5)
+                      b (e - I)af p                                           ( by H�older's Inequality)
+                      b (e - I)af 2 f q
+                     = b f q ( (f a(I - e)af ))1/2
+                     = b f q ( ((I - e)af a))1/2 .
+
+Observe that e  I in weak -topology and af a  L1(M,  ) as  (f ) < . We have that
+
+                                    lim  ((I - e)af a) = 0.                       (2.1)
+                                      
+
+It follows that lim e(af b) - af b p = 0. Furthermore, we have that lim (af b)e - af b p =
+lim ebf a - bf a p = 0, for 0 < p < 2.
+
+    Assume that 2  p < . We have
+
+e(af b) - af b p  b      (e - I)af p                                              (by Lemma 2.5)
+                     =b
+                     b    ((f a(I - e)af )p/2) 1/p
+
+                         (f a(I  -  e)af  )  p  -1  1/p ( (f a(I - e)af ))1/p     (by the property of  )
+                                             2
+
+Note from Equation (2.1) that
+
+lim                       (f a(I    -  e)af )   =   lim   ((I  -  e)af a)  =  0.
+                                                      
+
+We have that lim e(af b) - af b p = 0. Furthermore, we have that lim (af b)e - af b p =
+lim ebf a - bf a p = 0, for 2  p < .
+
+    This ends the proof of the lemma.
+
+    2.4. Arveson's Non-Commutative Hardy Space. In this subsection, we will recall
+Arveson's definition of non-commutative Hardy spaces. Assume that M is a von Neumann
+algebra with a semifinite, faithful, normal tracial weight  . Assume A  M is a weak*-closed
+subalgebra of M, and let D = A  A. Assume that  : M  D is faithful, normal conditional
+expectation from M onto D.
+
+    Definition 2.7. A is a called a semifinite subdigonal subalgebra, or a semifinite non-
+commutative Hardy space, with respect to (M, ) if
+
+      (1) The restriction of  on D = A  A is semifinite.
+      (2) (xy) = (x)(y) for every x, y  A.
+      (3) A + A is weak* dense in M.
+      (4)  ((x)) =  (x) for every positive operator x in M.
+
+In this case, A will also be denoted by H. Furthermore, we denote [A  Lp(M,  )]p by Hp for
+each 0 < p < .
+10                                                   LAUREN SAGER
+
+    Remark 2.8. It was shown in [38] and [21] that such a subalgebra H with respect to (M, )
+is maximal among semifinite subdigonal subalgebras satisfying (1), (2), (3) and (4). From this
+fact, it follows that
+
+                    H = {a  M : (xay) = 0,  x  H, y  H  Ker()}.
+
+    Remark 2.9. Following notation from Definition 2.7, we know that the conditional expec-
+tation  : M  D can be extended to a projection from Lp(M,  ) onto Lp(D,  ) for each
+1  p <  (see Proposition 2.3 in [38] or [5]). Such extended projection will still be denoted by
+. Moreover,
+
+                     (axb) = a(x)b,  a, b  D, x  Lp(M,  ), 1  p < .
+
+    Notation 2.10. We will let H0 = ker()  H and H0p = ker()  Hp.
+
+    The next result follows directly from Definition 2.7 and can be found in Lemma 3.1 of [5].
+
+    Lemma 2.11. If e is a projection in D = H  (H) with 0 <  (e) < , then eHe is a
+finite subdiagonal subalgebra of eMe, and [eHe]p = eHpe.
+
+    We will need the following technical lemma in the later sections.
+
+    Lemma 2.12. Suppose M is a von Neumann algebra with a semifinite, faithful, normal,
+tracial weight  . Let H be a semifinite subdiagonal subalgebra in M in the sense of Definition
+2.7 (namely, the restriction of  on D = H  (H) is semifinite).
+
+    Then for every x  Lp(M,  ) with 0 < p <  and for every e  D with 0 <  (e) < , there
+exist an h1, h3  eHe and an h2, h4  eHpe such that:
+
+      (i) h1h2 = e = h2h1 and h3h4 = h4h3 = e
+     (ii) h1ex and xeh3 are in M.
+
+    Proof. Let                                       
+                                                       exxeu1
+                                            ex    =             =   |xe|u1
+
+be the polar decomposition of ex in Lp(M,  ), where u1 is a partial isometry in M and |xe| is
+a positive operator in Lp(M,  ). It is not hard to see that |xe|  eLp(M,  )e = Lp(eMe,  ).
+
+Since 0 <  (e) < , we know that eMe is a finite von Neumann algebra with a faithful
+
+normal   tracial  state    1      .   And,  from  Lemma  2.11,  it  follows  that  eH e  is  a  finite  subdigonal
+                           (e)
+subalgebra of eMe with [eHe]p = eHpe. Note that |xe|  Lp(eMe,  ) and 0 <  (e) < .
+                     |xe|)-1                                                   w-1                1
+Then  w  =  (e    +               is  an  invertible  operator  in  eMe  with         Lp(eMe,    (e)      ).  From
+
+Theorem 3.1 in [3], there exist a unitary v in eMe, an h1  eHe and an h2  eHpe such that
+(i) h1h2 = e = h2h1, and (iia) w = vh1. Now from (iia) we have (iib) h1|xe| = vw|xe| =
+v(e + |xe|)-1|xe|  eMe  M. Hence, from (iib) and the fact that u1 is a partial isometry
+in M, we obtain that (ii) h1ex = h1|xe|u1  M. The proof for the existence of h3 and h4 is
+
+similar. This ends the proof of the lemma.
+
+    The following lemma is also useful.
+      A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES                            11
+
+    Lemma 2.13. Suppose M is a von Neumann algebra with a semifinite, faithful, normal,
+tracial weight  . Let H be a semifinite subdiagonal subalgebra with respect to (M, ), where
+ is a faithful, normal conditional expectation from M onto D = H  (H).
+
+    Then there exists a net {e} of projections in D such that such that
+
+      (i) e  I in the weak -topology of M and  (e) <  for each   .
+     (ii) We have, for every x  Lp(M,  ) with 0 < p < ,
+
+      lim       ex - x  p = 0;     lim  xe - x     p = 0;   and  lim  exe - x       p = 0.
+                                                                   
+
+    Proof. Since H is a semifinite subdiagonal subalgebra of M, the restriction of  on D is
+
+semifinite. By Lemma 2.2, there exists a net {e} of projections in D such that e  I in
+the weak -topology of D and  (e) <  for each   . Thus
+
+                           lim  |  (ez  -  z)|  =  0,       z  L1(D,  ).
+                             
+
+For each y  L1(M,  ), we have
+
+      lim       |  (ey  -  y)|  =  lim  | ((ey  -  y))|  =  lim  | (e(y)  -  (y))|  =  0.
+                                                              
+
+i.e.
+
+      (i) e  I in the weak -topology of M and  (e) <  for each   .
+From (i) and Lemma 2.6, we induce that
+
+      (ii) For every x  Lp(M,  ),
+
+      lim       ex - x p = 0;      lim  xe - x p = 0;       and  lim  exe - x       p = 0.
+                                                                   
+
+This ends the proof of the lemma.
+
+    Now we recall the following definition for the row sum of subspaces in Lp(M,  ) for 0 < p  
+as follows.
+
+      Definition 2.14. Let M be a von Neumann algebra with a semifinite, normal faithful,
+
+tracial weight  and 0 < p < . Let X be a closed subspace of Lp(M,  ). Then X is called an
+                                                                                    row
+internal row sum of closed subspaces {Xi}iI of Lp(M,  ), denoted by X =             iI     Xi,  if
+
+      (1) XjXi = {0} for all distinct i, j  I; and
+      (2) the linear span of {Xi : i  I} is dense in X, i.e. X = [span{Xi : i  I}]p.
+
+      Definition 2.15. Let M be a von Neumann algebra. Let X be a weak -closed subspace of
+
+M. Then X is called an internal row sum of a family of weak*-closed subspaces {Xi}iI of M,
+                row
+denoted by X =  iI   Xi,   if
+
+      (1) XjXi = {0} for all distinct i, j  I; and                                         :  i  I}w.
+      (2) the linear span of {Xi : i  I} is weak*-dense in X, i.e. X = span{Xi
+12                      LAUREN SAGER
+
+    3. Beurling-Blecher-Labuschagne Theorem for Semifinite Hardy Spaces, p=2
+
+    3.1. Main Result. In this section, we will prove a Beurling-Blecher-Labuschagne type
+theorem for semifinite non-commutative Hardy spaces.
+
+    Theorem 3.1. Let M be a von Neumann algebra with a faithful, normal, semifinite tracial
+weight  , and H be a weak-closed subalgebra of M. Let D = H  (H) be a von Neumann
+subalgebra of M, and  : M  D be a faithful normal condition expectation.
+
+    Assume that H is a semifinite subdigonal subalgebra with respect to (M, ) (see Definition
+2.7). Let K be a closed subspace of L2(M,  ) satisfying HK  K. Then there exist a closed
+subspace Y of L2(M,  ) and a family {u} of partial isometries in M, satisfying
+
+      (i) uY  = 0 for all   .
+     (ii) uu  D and uu� = 0 for all , �   with  = �.
+     (iii) Y = [H0Y ]2, where H0 = H  ker().
+     (iv) K = Y  (H2u)
+
+    The proof of this result uses a similar idea as the one in [7] for finite von Neumann algebras.
+We will modify the argument in [7] to prove preceding result for the case of semifinite von
+Neumann algebras. First, we present a series of technical lemmas.
+
+    3.2. Some lemmas. Following the notation above, we let M be a von Neumann algebra
+with a faithful, normal, semifinite tracial weight  and H be a semifinite subdigonal subalgebra
+of M. Let D = H  (H) be a von Neumann subalgebra of M and  : M  D a faithful
+normal conditional expectation. From Remark 2.9, we know that  can be extended to a positive
+contraction from Lp(M,  ) onto Lp(D,  ) for each 1  p <  such that
+
+                      (axb) = a(x)b,  a, b  D, x  Lp(M,  ), 1  p < .
+
+    We find the following lemma is useful.
+
+    Lemma 3.2. Let M be a von Neumann algebra with a faithful, normal, semifinite tracial
+weight  , and H be a semifinite subdigonal subalgebra of M. If x in L1(M,  ) satisfies
+
+              (xz) = 0                      for all z  H + (H),
+
+then x = 0.
+
+    Proof. Assume that x in L1(M,  ) satisfies
+
+                                    (xz) = 0 for all z  H + (H).
+
+Since H is a semifinite subdigonal subalgebra of M, H + (H) is weak-dense in M. From
+the fact that x  L1(M,  ), we get that
+
+                                           (xz) = 0 for all z  M.
+As L1(M,  ) is the predual space of M, we must have x = 0.
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES                      13
+
+Lemma 3.3. Let K be a closed subspace of L2(M,  ) satisfying HK  K. Let
+
+                          X = K  [H0K]2  K  L2(M,  ).
+
+Then the following are true.
+
+      (i) XX  L1(D,  ).
+
+     (ii) X is a left D-module, i.e. for every d  D and x  X, we have dx  X.
+     (iii) Let x be an element in X and x = hu be the polar decomposition of x in L2(M,  ),
+
+           where u is a partial isometry in M and h = |x|  L2(M,  ). Then
+            (a) h  L2(D,  ) and uu  D;
+           (b) [Dx]2 = L2(D,  )u;
+            (c) [Hx]2 = H2u. In particular, H2u  X.
+     (iv) There exists a family {u} of partial isometries in M such that
+            (a) X = H2u;
+           (b) uu is a projection in D; and
+            (c) uu� = 0 for all , �   with  = �.
+
+    Proof. (i): It is equivalent to show that for every x, y  X, yx  L1(D,  ).
+    Assume that x, y  X  L2(M,  ). Thus yx  L1(M,  ). Recall  : L1(M,  )  L1(D,  )
+
+is a positive contraction such that
+
+          (d1ad2) = d1(a)d2,  d1, d2  D and a  L1(M,  ),
+
+and thus
+
+          (da) = d(a),  d  L1(D,  ) and a  M.                            (3.1)
+
+Thus, to prove that yx  L1(D,  ), it is enough to show that yx - (yx) = 0. By Lemma 3.2
+and the fact that yx - (yx)  L1(M,  ), we need only to prove that
+
+           ([yx - (yx)]z) = 0 for every z  H + (H).
+
+We will proceed the proof according to the cases (1) z  H0, (2) z  D, and (3) z  (H0).
+Case (1): Let z  H0. Then
+
+           ([yx - (yx)]z) =  (yxz) -  ((yx)z)
+
+                          =  (yxz) -  (((yx)z))        (  is trace preserving)
+
+                          =  (zyx) -  ((yx)(z))        ( by equation 3.1)
+
+                          =0                           (as x, y are in X and z is in H0)
+
+Case (2): Let z  D. Then
+
+           ([yx - (yx)]z) =  (([yx - (yx)]z))                       (  is trace preserving)
+                                  =  ([(yx) - (yx)]z)  (as x, y are in X and z is in H0)
+                                  = 0.
+14      LAUREN SAGER
+
+Case (3): Let z  (H0). Then
+              ([(yx) - (yx)]z) =  (yxz) -  ((yx)z)
+
+    =  (y(zx)) -  (((yx)z))                         (  is trace preserving)
+    =  (y(zx)) -  ((yx)(z))                               ( by equation 3.1)
+
+    =0                                              (as x, y are in X and z is in H0)
+
+This ends the proof of part (i).
+    (ii): Let d  D and x  X  K. Since HK  K, we have dx  K. Now, for h0  H0 and
+
+k  K,
+
+                                 (h0k(dx)) =  (h0kxd) =  (dh0kx) = 0,
+
+as dh0  H0, and x  X = K  [H0K]2. Hence dx  [H0K]2. Thus dx  X and X is a left
+D-module.
+
+    (iii): Assume x is an element in X. Let x = hu be the polar decomposition of x in L2(M,  ),
+where u is a partial isometry in M and h = |x|  L2(M,  ). From the result in (i), we know
+that h is in L2(D,  ). Therefore uu, as the range projection of h, is in D. This shows that (a)
+
+is true.
+    From (a), it follows that [L2(D,  )uu]2 = L2(D,  )(uu). Observe that uu is the range
+
+projection of h. Therefore, we have [Dh]2 = L2(D,  )(uu), whence
+
+    [Dh]2u = L2(D,  )(uuu) = L2(D,  )u.                                   (3.2)
+
+We claim that
+                                                   [Dx]2 = [Dh]2u.
+
+In fact, let   [Dh]2. There exists a sequence {n}nN in Dh such that n   in || � ||2-norm.
+Then we have that nu  u in || � ||2-norm. From the fact that nu  [Dhu]2, we conclude that
+u  [Dhu]2. Therefore, we have that
+
+    [Dh]2u  [Dhu]2 = [Dx]2.                                               (3.3)
+
+Now let   [Dhu]2 = [Dx]2. There exists a sequence {dn}nN in D such that dnhu  
+in || � ||2-norm. Let n = dnhuu = dnh  Dh. Then n  u  [Dh]2 in || � ||2-norm.
+Thus nu = dnhu  uu in || � ||2-norm. Combining with the fact that dnhu  , we get
+ = ((u)u)  [Dh]2u. Or
+
+    [Dhu]2 = [Dx]2  [Dh]2u.                                               (3.4)
+
+From equation (3.3), equation (3.4) and equation (3.2), we conclude that
+
+    [Dx]2 = [Dh]2u = L2(D,  )u.
+
+This ends the proof of part (b). The proof of (c) is similar to (b).
+    (iv) We may assume that X = 0. From the result in (iii) and Zorn's lemma, we may assume
+
+that there exists a maximal family {u} of nonzero partial isometries in M with respect to
+    (a1) H2u  X for each   ;
+     (b) uu is a projection in D; and
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES                      15
+
+      (c) uu� = 0 for all , �   with  = �.
+We will show that
+
+      (a) X = H2u.
+    In fact, from (a1), we know that each H2u  X. Combining with (c), we conclude that
+{H2u} is a family of orthogonal subspaces of X, whence H2u is a subspace of X.
+    Now assume that X  (H2u) is not equal to 0. Pick a nonzero x in X  (H2u)
+and assume that x = hu is the polar decomposition of x in L2(M,  ), where u is a nonzero
+partial isometry in M and h = |x|  L2(M,  ). It follows from the result proved in (iii) that
+H2u  X and uu is in D.
+    By Lemma 2.13, there exists a net {ej}jJ of projections in D such that such that ej  I
+in the weak -topology and  (ej) <  for each j  J.
+    Let j  J. Then by the choice of x, we get that H2u and x are orthogonal. So,
+
+                                           (dejux) = 0,  d  D.
+
+From (i), ejux is in L1(D,  ). By Lemma 3.2 we conclude that ejux = 0 for each j  J.
+    As ux  L2(M,  ), limj ejux - ux 2 = 0 by Lemma 2.6. Thus we have that ux =
+
+uuh = 0. The fact that the initial projection of u is the range projection of h induces that
+uu = 0. Therefore, u is a nonzero partial isometry in M such that H2u  X, uu  D, and
+uu = 0 for each   . This contradicts the assumption that the family {u} is maximal
+with respect to (a1), (b) and (c). Therefore, X = H2u. This concludes the proof of part
+(iv).
+
+Lemma 3.4. Let K be a closed subspace of L2(M,  ) satisfying HK  K. Let
+
+                                 X = K  [H0K]2 and Y = K  [HX]2.
+
+Then the following are true.
+      (i) Y X = 0, or equivalently XY  = 0.
+     (ii) Y = [H0Y ]2
+
+    Proof. (i) We will show that yx = 0 for every y  Y and x  X.
+    Note that Y  K  L2(M,  ) and X  K  L2(M,  ). We have that Y X  L1(M,  ).
+Assume y  Y and x  X. Then by Lemma 3.2, it suffices to show that
+
+ (yxz) = 0 for every z  H + (H).
+
+We will proceed the proof according to the cases (1) z  H0, (2) z  D, and (3) z  (H0).
+Case (1): Let z  H0. Then
+                            (yxz) =  (zyx) = 0,
+
+since x  X, zy  H0K, and X  [H0K]2.
+
+Case (2): Let z  D. Then    (yxz) =  (y(zx)) = 0,
+
+as y  Y , zx  HX, and Y  HX.
+16                                   LAUREN SAGER
+
+Case (3): Let z  (H0). Then
+
+                                             (yxz) =  (y(zx)) = 0,
+as y  Y , and zx  H0X.
+
+    Therefore, Y X = 0, which ends the proof of (i).
+
+    (ii) From part (i), we know that Y X = 0, whence H0Y X = 0. Recall Y = K  [HX]2.
+It follows that [H0Y ]2  Y . Let Z = Y  [H0Y ]2 = 0. To prove (ii), it suffices to show that
+ZZ = 0. Because Z  Y, we have that Z  [HX]2, whence Z  [H0(Y  [HX]2)]2. This
+implies that Z  [H0K]2. Note that X = K  [H0K]2. We conclude that Z  X. Note that
+Y X = 0. Since Z  X and Z  Y , we have that ZZ  Y X = 0. This ends the proof of
+(ii).
+
+      3.3. Proof of Theroem 3.1. We are ready to prove the main result in this section.
+
+      Proof. Recall that K is a closed subspace of L2(M,  ) satisfying HK  K. Let
+
+                                 X = K  [H0K]2 and Y = K  [HX]2.
+By Lemma 3.3, there exists a family {u} of partial isometries in M such that
+
+                                                   X = H2u;
+
+and
+
+( ii)  uu is a projection in D, and uu� = 0 for all , �   with  = �.
+
+By the choice of Y , we have
+
+( iv)                                K = Y  X = Y  (H2u).
+
+Moreover, from Lemma 3.4, we know that
+
+( i)                                 uY  = 0  for all   ;
+
+and
+
+( iii)                                  Y = [H0Y ]2.
+This ends the proof of Theorem 3.1.
+
+4. Beurling-Blecher-Labuschagne Theorem for Semifinite Hardy Spaces, 1  p  
+
+    4.1. Dense subspaces.
+
+    Proposition 4.1. Let M be a von Neumann algebra with a faithful, normal, semifinite
+tracial weight  , and H be a semifinite subdigonal subalgebra of M. Let 1  p < . Assume
+that K is a closed subspace in Lp(M,  ) such that HK  K. Then the following statements
+are true.
+
+      (i) K  M = K  Mw  Lp(M,  ).
+     (ii) K = [K  M]p.
+           A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES                                       17
+
+  Proof. (i) It is easily observed that
+
+                                     K  M  K  Mw  Lp(M,  ).
+
+We will show that                    K  M = K  Mw  Lp(M,  ).
+
+  Assume, to the contrary, that K  M K  Mw  Lp(M,  ). Then there exists an x 
+
+K1  Mw  Lp(M,  ) such that x / K  M. Then by the Hahn-Banach theorem, there exists
+    Lp(M,  )#            Lq(M,  )              1     1
+                    =                (where    p  +  q  =   1)  such    that  (x)    =  0  and  (y)  =  0  for  every
+
+y  K  M. Equivalently, there exists a   Lq(M,  ) such that  (x) = 0 and  (y) = 0 for
+
+every y  K  M.
+
+    By Lemma 2.13, there exists a net {e} of projections in D such that  (e) <  for each
+
+  , and lim  (ex) =  (x). So, we can always assume that there exists a projection e in D
+with 0 <  (e) <  such that  (ex) = 0 and  (ey) = 0 for every y  K (as K is H-invariant
+and e  D  H).
+
+    Now we claim that e  L1(M,  ), as ||e||1  ||||q||e||p < .
+    Since x  K1  Mw  Lp(M,  ), we can find a net {yi}iI in K  M, such that yi  x in
+the weak-topology. Combining this with the fact that e  L1(M,  ), we have
+
+                          (ex)       =   (xe)     =    lim   (yie)  =   lim    (eyi)  =  0,
+                                                         i                i
+
+which contradicts the fact that  (ex) = 0. This ends the proof of part (i).
+
+  (ii) Suppose, to the contrary, that [K  M]p K. Then there exists an x  K such that
+
+x / [K  M]p. Then, by the Hahn-Banach theorem, there exists   Lp(M,  )# = Lq(M,  )
+        1     1
+(where  p  +  q  =  1),  such  that  (x)  =  0    and   (y)  =  0  for  every  y     [K  M]p.   This  occurs    if  and
+
+only if there exists a   Lq(M,  ) such that  (x) = 0 and  (y) = 0 for every y  [K  M]p.
+
+  By Lemma 2.13, there exists a net {e} of projections in D such that  (e) <  for each
+
+  , and lim  (ex) =  (x). So, we may always assume that there exists a projection e in
+
+D with 0 <  (e) <  such that
+
+    (a)  (ex) = 0; and
+    (b)  (ey) = 0 for every y  K  M (as K is H-invariant, and e  D  H).
+
+  Since x  Lp(M,  ) and e is a projection in D such that  (e) < , by Lemma 2.12, there
+
+exists a h1  eHe, and h2  eHpe such that h1ex  M and h1h2 = h2h1 = e. From the fact
+that h2  eHpe, there exists a sequence {an}nN in eHe such that limn an - h2 p = 0.
+
+Therefore           lim  | (anh1ex)       -    (ex)|    =   lim  |  (anh1ex)      -   (h2h1ex)|
+
+                    n                                       n
+
+                                                         lim       an - h2     p  h1ex     q
+                                                            n
+
+                                                        = 0.
+
+On the other hand, since an, h1 and e are in H and h1ex  M, we know that anh1ex  K  M.
+From assumption (b), it follows that  (anh1ex) = 0 for all n  1. Therefore  (ex) = 0, which
+contradicts the assumption (a) that  (xe) = 0. This ends the proof of part (ii).
+18                                   LAUREN SAGER
+
+    Proposition 4.2. Let M be a von Neumann algebra with a faithful, normal, semifinite
+tracial weight  and H be a semifinite subdiagonal subalgebra of M.
+
+    Assume that K  M is a weak-closed subspace such that HK  K. Then
+
+                     K = [K  Lp(M,  )]p  Mw,  1  p < .
+
+    Proof. First, we show that
+                                          K  [K  Lp(M,  )]p  Mw.
+
+Let x be an element in K  M. By Lemma 2.13, there exists a net {e} of projections in D
+
+such that such that e  I     in the weak*  topology and  (e) <  for each    . By Lemma
+2.1, ex  x in the weak*      topology. To  show that x  [K  Lp(M,  )]p    Mw, it suffices to
+show that ex  [K  Lp(M,  )]p  Mw for each   .
+    Since K  M is left H-invariant and x  K, we have ex  K. Moreover, ex||p 
+e||p||x|| < , so ex  Lp(M,  ). It follows that ex  K  Lp(M,  ) for each  
+. As ex  x in the weak* topology, x  [K  Lp(M,  )]p  Mw. And we obtain K 
+[K  Lp(M,  )]p  Mw.
+
+    Next, we will show that     [K  Lp(M,  )]p  Mw  K.
+
+Since K is weak-closed, it suffices to show that
+
+                                [K  Lp(M,  )]p  M  K.
+
+Assume, to the contrary, that x is an element in [K  Lp(M,  )]p  M, but x / K. Thus, by
+
+the Hahn-Banach theorem, there exists a weak* continuous linear functional  on M such that
+(x) = 0 and (y) = 0 for every y  K. Or, there exists a   L1(M,  ) such that
+
+    (a)  (x) = 0; and
+    (b)  (y) = 0 for every y  K.
+
+By Lemma 2.13, there exists a net {e} of projections in D such that  (e) <  for each
+   and lim  (ex) =  (x). So we may always assume that there exists a projection e in
+D with 0 <  (e) <  such that
+
+    (a1)  (ex) = 0; and
+    (b1)  (ey) = 0 for every y  K (as K is H-invariant and e  D  H).
+
+We claim there exists a z = ze  Me such that
+
+    (a2)  (xz) = 0; and
+    (b2)  (yz) = 0 for every y  K.
+
+Observe that  is in L1(M,  ), and e is a projection in D such that  (e) < . From Lemma
+2.12, there exist h3  eHe and h4  eH1e such that eh3  eMe and h3h4 = e. Thus there
+exists a sequence {kn}nN of elements in eHe such that limn kn - h4 1 = 0. It follows that
+
+lim  | (ex)  -   (xeh3kn)|   =  lim  | (xeh3h4)  -   (xeh3kn)|    lim  x  eh3  h4 - kn 1 = 0.
+
+n                               n                                 n
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES  19
+
+Combining this with (a1), we know that there exists an N  N such that  (xeh3kN ) = 0. Let
+z = (eh3)kN be in M. Then z = ze  Me satisfies
+
+    (a2)  (xz) =  (xeh3kN ) = 0; and
+    (b2)  (yz) =  (yeh3kN ) =  ((eh3kN )y) = 0 for every y  K.
+
+    Note that x  [K  Lp(M,  )]p  M. There exists a sequence {xn}nN in K  Lp(M,  ) such
+that limn xn - x p = 0. Thus we have
+
+       | (xz - xnz)| = | ((x - xn)ze)|  xn - x p z e q  0,          (4.1)
+
+where q satisfies 1/p + 1/q = 1. On the other hand, since {xn}nN is in K  Lp(M,  ), by (b2)
+we have
+
+                                              (xnz) = 0,  n  N.
+
+Combining with inequality (4.1), we have
+
+        (xz) = 0.
+
+This contradicts the assumption in (a2) that  (xz) = 0. Therefore,
+                                          [K  Lp(M,  )]p  Mw  K.
+
+Hence  K = [K  Lp(M,  )]p  Mw.
+
+    Lemma 4.3. If u is a partial isometry in M such that uu  D, then
+      (i) [(Hu)  Lp(M,  )]p = Hpu for all 1  p < , and
+     (ii) Hu = Hpu  Mw for all 1  p < .
+
+    Proof. (i) can be verified directly. (ii) follows from Proposition 4.2 and (i).
+
+    Proposition 4.4. Let M be a von Neumann algebra with a faithful, normal, semifinite
+tracial weight  and let H be a semifinite subdigonal subalgebra of M. Assume that S  M
+is a subspace such that HS  S. Then
+
+                          [S  Lp(M,  )]p = [Sw  Lp(M,  )]p,  1  p < .
+
+    Proof. It suffices to show that
+                                      Sw  Lp(M,  )  [S  Lp(M,  )]p.
+
+Let x  Sw Lp(M,  ). By Lemma 2.13, there exists a net {e} of projections in D such that
+e  I in the weak* topology and  (e) <  for each   . By Lemma 2.6, lim ex-x p = 0.
+To show that x  [S  Lp(M,  )]p, it is enough to show that ex  [S  Lp(M,  )]p for each
+  .
+
+    By Proposition 4.1, we have
+
+                      [S  Lp(M,  )]p  M = [S  Lp(M,  )]p  Mw  Lp(M,  ).
+20     LAUREN SAGER
+
+Since x  Sw  Lp(M,  ), there exists a net {xj}jJ in S such that xj  x in weak topology.
+By Lemma 2.1, exj  ex in weak topology for each . Note that exj p  e p xj and
+HS  S. We know that exj  S  Lp(M,  ). So ex is in [S  Lp(M,  )]p  Mw. It is
+trivial to see that ex  Lp(M,  ). Hence,
+
+       ex  [S  Lp(M,  )]p  Mw  Lp(M,  ) = [S  Lp(M,  )]p.
+
+So              x  [S  Lp(M,  )]p.
+Thus   Sw  Lp(M,  )  [S  Lp(M,  )]p.
+
+Hence  [S  Lp(M,  )]p = [Sw  Lp(M,  )]p,  1  p < .
+
+    Theorem 4.5. Let M be a von Neumann algebra with a faithful, normal, semifinite tracial
+weight  , and H be a semifinite subdigonal subalgebra of M. Let D = H  (H). Assume
+that K  M is weak-closed subspace such that HK  K.
+
+    Then there exist a weak* closed subspace Y of M and a family {u} of partial isometries
+in M such that:
+
+      (i) uY  = 0 for all   .
+     (ii) uu  D and uu� = 0 for all , �   with  = �.
+     (iii) Y = H0Y w.
+     (iv) K = Y row (rowHu)
+Here row is the row sum of subspaces defined in Definition 2.15.
+
+    Proof. Let K1 = [K  L2(M,  )]2. Then K1 is a closed subspace of L2(M,  ) such that
+HK1  K1. By Theorem 3.1, there exist a closed subspace Y1 of L2(M,  ) and a family
+{u} of partial isometries in M, satisfying
+
+      (a) uY1 = 0 for all   .
+     (b) uu  D and uu� = 0 for all , �   with  = �.
+      (c) Y1 = [H0Y1]2, where H0 = H  ker().
+     (d) K1 = Y1  (H2u)
+
+Let
+                                                   Y = Y1  Mw.
+
+    (i) We show that (i) is satisfied. In fact, from (a) and Lemma 2.1, we have
+
+                                              uY  = 0 for all   .       (4.2)
+    (ii) follows directly from (b), i.e.                                (4.3)
+
+                            uu  D and uu� = 0 for all , �   with  = �.
+      A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES     21
+
+    (iii) We claim that
+                                                    Y = H0Y w.
+
+In fact, we need only to show that Y  H0Y w. By Proposition 4.1 and the definition of Y ,
+we have
+
+                     Y1 = [Y1  M]2 = [Y1  Mw  L2(M,  )]2 = [Y  L2(M,  )]2.
+
+So
+          H0Y1 = H0[Y  L2(M,  )]2  [(H0Y )  L2(M,  )]2  [H0Y w  L2(M,  )]2.
+
+Thus, from (c), we have
+
+                         Y1 = [H0Y1]2  [H0Y w  L2(M,  )]2.                   (4.4)
+
+Now, we are able to conclude that
+
+                         Y = Y1  Mw                                    (by definition of Y )
+                                                                                    (by (4.4))
+                                   [H0Y  w      L2(M,   )]2         w
+                                                                       (by Proposition 4.2)
+                                                               M
+
+                         = H0Y w .
+
+Thus
+
+                                   Y = H0Y w.                                (4.5)
+
+(iv) We show that
+
+                         span{Y2, Hu :   }w = K.
+
+By Proposition 4.2, it suffices to show that
+
+                        span{Y, Hu :   }w = [K  L2(M,  )]2  Mw = K.
+First, we have that span{Y, Hu :   }  [K  L2(M,  )]2  Mw. In fact, Y = Y1  Mw
+and Y1  [K  L2(M,  )]2, so Y  [K  L2(M,  )]2  Mw. Moreover, for each   , by
+Lemma 4.3, we have Hu = H2u  Mw  [K  L2(M,  )]2  Mw. So
+
+                            span{Y, Hu :   }  [K  L2(M,  )]2  Mw.
+
+Thus
+
+      span{Y, Hu :   }w  [K  L2(M,  )]2  Mw = K.                             (4.6)
+
+Next, define X = span{Y, Hu :   }w. We want to show that
+                                          [K  L2(M,  )]2  Mw  X.
+22             LAUREN SAGER
+
+Notice X is weak*-closed and HX  X. By Proposition 4.2, X = [X  L2(M,  )]2  Mw.
+Therefore we need only to show that [K  L2(M,  )]2  [X  L2(M,  )]2. Or, equivalently, we
+may show Y1 and {H2u} are in [X  L2(M,  )]2. By Proposition 4.1, we have
+
+                     Y1 = [Y1  M]2 = [Y1  Mw  L2(M,  )]2 = [Y  L2(M,  )]2.
+
+Thus
+
+               Y1  [X  L2(M,  )]2.                                      (4.7)
+
+By Lemma 4.3,
+
+      H2u = [Hu  L2(M,  )]2  [X  L2(M,  )]2 for each   .                (4.8)
+
+Hence, from (4.7) and (4.8), we get [K  L2(M,  )]2  [X  L2(M,  )]2 and
+
+               K = [K  L2(M,  )]2  Mw  span{Y, Hu  }w.                  (4.9)
+
+Now, combining (4.6) and (4.9), we have
+
+               K = span{Y, Hu  }w = Y row (rowHu),                      (4.10)
+
+by the definition of row sum of subspaces.
+    By (4.10), (4.2), (4.3) and (4.5), we know that Y and {u} have the desired properties.
+
+This ends the proof of the theorem.
+
+    Next, we use our result for p =  and the density theorem to prove the case when 1  p < .
+
+    Theorem 4.6. Let 1  p < . Let M be a von Neumann algebra with a faithful, normal,
+semifinite tracial weight  , and H be a semifinite subdigonal subalgebra of M. Let D =
+H  (H). Assume that K is a closed subspace of Lp(M,  ) such that HK  K.
+
+    Then there exist a closed subspace Y of Lp(M,  ) and a family {u} of partial isometries
+in M such that:
+
+      (i) uY  = 0 for all   .
+     (ii) uu  D and uu� = 0 for all , �   with  = �.
+     (iii) Y = [H0Y ]p.
+     (iv) K = Y row (rowHpu)
+Here row is the row sum of subspaces defined in Definition 2.15.
+
+    Proof. Let K1 = K  Mw. Then K1 is a weak-closed subspace of M such that HK1 
+K1. By Theorem 4.5, there exist a weak-closed subspace Y1 of M and a family {u} of
+partial isometries in M, satisfying
+
+      (a) uY1 = 0 for all   .
+     (b) uu  D and uu� = 0 for all , �   with  = �.
+      (c) Y1 = H0Y1w.
+     (d) K1 = Y1 row (rowHu)
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES         23
+
+Let
+                                               Y = [Y1  Lp(M,  )]p.
+
+    (i) From (a), the definition of Y and Lemma 2.5, we can conclude that
+
+                                  uY  = 0 for all   .                      (4.11)
+
+(ii) follows directly from (b), i.e.
+
+              uu  D and uu� = 0 for all , �   with  = �.                   (4.12)
+
+(iii) We want to show that Y = [H0Y ]p. In fact, we have
+
+Y = [Y1  Lp(M,  )]p                                                        (by definition of Y )
+
+              = [H0Y1w  Lp(M,  )]p        Lp(M,  )]p                                       (by (c))
+              = [(H0Y1)  Lp(M,  )]p                                        (by Proposition 4.4)
+
+              = [ H0[Y1  Lp(M,  )]p  Mw                                    (by Proposition 4.2)
+
+               [H0 ([Y1  Lp(M,  )]p  M)w  Lp(M,  )]p                            (by Lemma 2.1)
+              = [(H0 ([Y1  Lp(M,  )]p  M))  Lp(M,  )]p                     (by Proposition 4.4)
+              = [(H0 (Y  M))  Lp(M,  )]p                                   (by definition of Y )
+               [H0Y ]p  Y,
+                                                                                             (4.13)
+
+(iv) There is only left to show that
+
+                                  K = Y row (rowHpu).
+
+By the definition of Y , we have
+
+                                      Y = [Y1  Lp(M,  )]p.                 (4.14)
+
+And from Lemma 4.3, we have
+
+                     Hpu = [Hu  Lp(M,  )]p,    .                           (4.15)
+
+Now, we have
+
+K = [K1  Lp(M,  )]p                                                        (by Proposition 4.1)
+
+= [span{Y1, Hu :   }w  Lp(M,  )]p (by the definition of row sum of subspaces)
+
+= [span{Y1, Hu :   }  Lp(M,  )]p                                           (by Proposition 4.4)
+
+= [span{Y1  Lp(M,  ), Hu  Lp(M,  ) :   }]p                                 (by (a) and (b))
+
+= [span{Y, Hpu :   }]p                                      (by (4.14) and (4.15))
+
+= Y row (rowH pu),                                                         (4.16)
+
+where the last equation follows from the definition of the row sum of subspaces.
+
+    As a summary, from (4.11), (4.12), (4.13), and (4.16), Y and {u} have the desired
+properties. This ends the proof of the theorem.
+24                                        LAUREN SAGER
+
+5. Beurling-Blecher-Labuschagne Theorem for Semifinite Hardy Spaces, 0 < p < 1
+
+    5.1. Dense subspaces.
+
+    Proposition 5.1. Suppose 0 < p < 1. Let M be a von Neumann algebra with a faithful,
+normal, semifinite tracial weight  , and H be a semifinite subdigonal subalgebra of M. Assume
+that K is a closed subspace in Lp(M,  ) such that HK  K. Then the following statements
+
+are true.
+
+      (i) K  L2(M,  ) = [K  L2(M,  )]2  Lp(M,  ).
+     (ii) K = [K  L2(M,  )]p.
+
+    Proof. (i) We need only to show that
+
+                      [K  L2(M,  )]2  Lp(M,  )  K  L2(M,  ).
+
+Let x  [K1  L2(M,  )]2  Lp(M,  ). We will show that x  K. By Lemma 2.13, there
+
+exists a net {e} of projections in D such that such that  (e) <  for each    and
+
+lim ex - x p = 0. To show that x  K, it is enough to prove that ex  K for each   .
+    As x  [K  L2(M,  )]2, there exists a sequence {xn}nN in K1  L2(M,  ) such that
+                                                                                      1     1     1
+limn     xn  x  2  = 0. Thus,  for  each    and  some      positive  number  q  with  2  +  q  =  p  ,
+
+         lim       exn - ex    p  =  lim  e(xn - x)     p    lim  xn - x  2  e  q = 0.
+
+         n                           n                       n
+
+Here, we used the fact that  (e) <  and e q < . Since HK  K and e  D, we know
+that exn  K. This implies that ex  K for each   . Thus x  K, whence
+
+                      [K  L2(M,  )]2  Lp(M,  )  K  L2(M,  ).
+
+    (ii) We need only to show that
+
+                                     K  [K  L2(M,  )]p.
+
+Suppose that x  K  Lp(M,  ). We will show x  [K  L2(M,  )]p. By Lemma 2.13, we can
+
+find a net {e} of projections in D such that lim ex - x 2 = 0 and  (e) <  for each
+  . To show that x  [K  L2(M,  )]p, it suffices to prove that ex  [K  L2(M,  )]p for
+
+each   .
+    Note that x  Lp(M,  ) and  (e) < . By Lemma 2.12, there exist h1  eHe and
+
+h2  eHpe such that (a) h1h2 = h2h1 = e and (b) h1ex  M. Since h2  eHpe, there
+exists a sequence {kn}nN in eHe such that limn kn - h2 p = 0. Thus
+
+    lim  knh1ex - ex  p  = lim       (kn - h2)h1ex   p   lim      (kn - h2) p h1ex       = 0.           (5.1)
+                             n                              n
+    n
+
+It is not hard to check that knh1ex  K. Moreover, since each kn  eHe, we have
+
+                           knh1ex p = eknh1ex 2  e 2 kn h1ex < .
+
+Therefore, knh1ex is also in L2(M,  ). It follows that knh1ex  K  Lp(M,  ). Combining
+with (5.1), we know that ex  [K  L2(M,  )]p for each   , whence x  [K  L2(M,  )]p.
+Thus
+
+                                               K  [K  L2(M,  )]p.
+          A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES                          25
+
+This ends the proof of the proposition.
+
+    Proposition 5.2. Suppose 0 < p < 1. Let M be a von Neumann algebra with a faithful,
+normal, semifinite tracial weight  , and H be a semifinite subdigonal subalgebra of M. Assume
+that S is a subspace in Lp(M,  ) such that HS  S. Then
+
+                                     [S  Lp(M,  )]p = [[S]2  Lp(M,  )]p.
+
+Proof. We need only to show that
+
+                                   [[S]2  Lp(M,  )]p  [S  Lp(M,  )]p.
+
+Or, equivalently,
+                                      [S]2  Lp(M,  )  [S  Lp(M,  )]p.
+
+Let x  [S]2  Lp(M,  ). By Lemma 2.13, we can find a net {e} of projections in D such
+that lim ex - x p = 0 and  (e) <  for each   . To show that x  [S  Lp(M,  )]p, it
+suffices to prove that ex  [S  Lp(M,  )]p for each   .
+
+    Note that x  [S]2  Lp(M,  ). Then there exists a sequence {xn}nN in S such that
+limn xn - x 2 = 0. Therefore,
+
+                 exn - ex p = e(xn - x) p  e q xn - x 2  0,                         as n  ,           (5.2)
+
+where  q  is  a  positive  number  such  that  1  +  1  =  1  .  Since  HS  S  and  e   D,  we  know  that
+                                               2     q     p
+exn  S. Moreover, exn p  e q xn 2 < , which implies exn  Lp(M,  ). This induces
+that exn  S  Lp(M,  ). Combining with (5.2), we have that ex  [S  Lp(M,  )]p for each
+  . Thus x  [S  Lp(M,  )]p for each   . Or,
+
+                                   [S]2  Lp(M,  )  [S  Lp(M,  )]p.
+
+This ends the proof of the proposition.
+
+    Lemma 5.3. If u is a partial isometry in M such that uu  D, then
+      (i) [(H2u)  Lp(M,  )]p = Hpu for 0 < p < 1;
+     (ii) H2u = [Hpu  L2(M,  )]2 for 0 < p < 1.
+
+    Proof. (i) Assume that x  H2 such that xu  (H2u)  Lp(M,  ). Then xuu  Lp(M,  ),
+and x(uu) is also in H2, as uu  D. So xuu  H2  Lp(M,  )  Hp by Proposition 3.2 in [5].
+Note that Hpu is a closed subspace in Lp(M,  ). We have
+
+                                           [(H2u)  Lp(M,  )]p  Hpu.
+
+Similarly, we have
+                                           [(Hpu)  L2(M,  )]2  H2u.
+
+Combining with Proposition 5.1, we have
+
+                             Hpu = [Hpu  L2(M,  )]p  [(H2u)  Lp(M,  )]p.
+
+Hence [(H2u)  Lp(M,  )]p = Hpu, for 0 < p < 1.
+26                                        LAUREN SAGER
+
+    (ii) Let x  H2. By Lemma 2.13, we can find a net {e} of projections in D such that
+lim ex - x 2 = 0 and  (e) <  for each   . From  (e) < , it is easy to verify that
+ex  Lp(M,  )  H2  Hp by Proposition 3.2 in [5]. Thus exu  (Hpu)  L2(M,  ) for each
+  , whence xu  [(Hpu)  L2(M,  )]2. Or,
+
+                                           H2u  [(Hpu)  L2(M,  )]2.
+
+Combining with what we proved in (i), we have
+                                           H2u = [(Hpu)  L2(M,  )]2.
+
+    Now, we can prove a Beurling-Blecher-Labuschagne Theorem for the semifinite case when
+0 < p < 1.
+
+    Theorem 5.4. Let 0 < p < 1. Let M be a von Neumann algebra with a faithful, normal,
+semifinite tracial weight  , and H be a semifinite subdigonal subalgebra of M. Let D =
+H  (H). Assume that K is a closed subspace of Lp(M,  ) such that HK  K.
+
+    Then there exist a closed subspace Y of Lp(M,  ) and a family {u} of partial isometries
+in M such that:
+
+      (i) uY  = 0 for all   .
+     (ii) uu  D and uu� = 0 for all , �   with  = �.
+     (iii) Y = [H0Y ]p.
+     (iv) K = Y row (rowHpu)
+Here row is the row sum of subspaces defined in Definition 2.14.
+
+    Proof. Let K1 = [K  L2(M,  )]2. Then K1 is a closed subspace of L2(M,  ) such that
+HK1  K1. By Theorem 4.6, there exist a closed subspace Y1 of L2(M,  ) and a family
+{u} of partial isometries in M, satisfying
+
+      (a) uY1 = 0 for all   .
+     (b) uu  D and uu� = 0 for all , �   with  = �.
+      (c) Y1 = [H02Y1]2.
+     (d) K1 = Y1 row (rowH2u)
+Let
+
+                                               Y = [Y1  Lp(M,  )]p.
+
+    (i) From (a), definition of Y and Lemma 2.5, we can conclude that
+
+    uY  = 0 for all   .                                                 (5.3)
+
+    (ii) follows directly from (b), i.e.
+
+    uu  D and uu� = 0 for all , �   with  = �.                          (5.4)
+
+    (iii) We want to show that Y = [H02Y ]p. First we will show that
+                              [(H0Y1)  Lp(M,  )]p  [H0(Y1  Lp(M,  ))]p
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES               27
+
+In fact, let x  Y1 and h  H0 such that hx  (H0Y1)  Lp(M,  ). We want to show that
+hx  [H0(Y1  Lp(M,  ))]p. By Lemma 2.13, we can find a net {e} of projections in D
+such that e  I in weak-topology and  (e) <  for each   . By Lemma 2.6, we have
+
+                                  lim  ehx - hx  p = 0.                          (5.5)
+                                    
+
+Thus, to show that hx  [H0(Y1  Lp(M,  ))]p, it suffices to prove that ehx  [H0(Y1 
+Lp(M,  ))]p for each   . Fix a 0  . Then, for some positive number q with 1/p =
+1/2 + 1/q, we have
+
+              lim  e0hex - e0 hx       p    lim  e0 h q           ex - x 2 = 0,  (5.6)
+                                              
+
+as x  Y1. Moreover, we have e0h  H0 and ex  Y1 Lp(M,  ), as ex p  e q x 2 < .
+Thus, e0hex is in H0(Y1  Lp(M,  )) for each   . Whence, from (5.6), e0hx is in
+[H0(Y1  Lp(M,  ))]p for each 0  . Therefore, from (5.6), hx  [H0(Y1  Lp(M,  ))]p. Or
+
+              [(H0Y1)  Lp(M,  )]p  [H0(Y1  Lp(M,  ))]p                           (5.7)
+
+Now, we have
+
+                                  Y = [Y1  Lp(M,  )]p                  (by definition of Y )
+                                     = [[H02Y1]2  Lp(M,  )]p                          (by (c))
+                                     = [(H0Y1)  Lp(M,  )]p
+                                      [H0(Y1  Lp(M,  ))]p             (by Proposition 5.2)
+                                      [H0Y ]p  Y.                                  (by (5.7))
+
+Thus,                                                             (by the definition of Y )
+
+                                                    Y = [H0Y ]p.                          (5.8)
+
+(iv) We have only to show that
+
+                                  K = Y row (rowHpu).
+
+By the definition of Y , we have
+
+                                  Y = [Y1  Lp(M,  )]p.                           (5.9)
+
+And from Lemma 5.3, we have
+
+                   Hpu = [H2u  Lp(M,  )]p,    .                                  (5.10)
+28                       LAUREN SAGER
+
+Now, we have
+
+    K = [K1  Lp(M,  )]p                                          (by Proposition 5.1)
+
+    = [[span{Y1, H2u :   }]2  Lp(M,  )]p (by the definition of row sum of subspaces)
+
+    = [span{Y1, H2u :   }  Lp(M,  )]p                            (by Proposition 5.2)
+
+    = [span{Y1  Lp(M,  ), H2u  Lp(M,  ) :   }]p                       (by (a) and (b))
+    = [span{Y, Hpu :   }]p                                       (by (5.9) and (5.10))
+    = Y row (rowH pu),
+                                                                                    (5.11)
+
+where the last equation follows from the definition of the row sum of subspaces.
+
+    As a summary, from (5.3), (5.4), (5.8), and (5.11), Y and {u} have desired properties.
+This ends the proof of the theorem.
+
+    Corollary 5.5. Let M be a von Neumann algebra with a faithful, normal, semifinite tracial
+
+weight  .
+
+      (i) Let 0 < p < . If K is a closed subspace of Lp(M,  ) such that MK  K, then there
+           exists a projection q  M such that K = Lp(M,  )q.
+
+     (ii) If K is a weak-closed subspace of M such that MK  K, then there exists a projection
+           q  M such that K = Mq.
+
+    Proof. (i) Note that M itself is a semifinite subdiagonal subalgebra of M. Let H = M.
+Then D = M and  is the identity map from M to M. Hence H0 = {0} and Hp = Lp(M,  ).
+
+    Assume that K is a closed subspace of Lp(M,  ) such that KM  K. From Theorem 4.6
+and Theorem 5.4,
+
+                                             K = Y row (rowHpu),
+
+where Y and the {u} satisfy the conditions in Theorem 4.6 and Theorem 5.4.
+    From the fact that H0 = {0}, we know that Y = {0}. Since D = M, we know that
+
+         Hpu = Lp(M,  )u = Lp(M,  )uuu  Lp(M,  )u u  Lp(M,  )u = Hpu.
+
+So Hpu = Lp(M,  )u u and
+
+    K = Y row (rowHpu) = (rowLp(M,  )u u) = Lp(M,  )             u u  = Lp(M,  )q,
+
+                                                      
+
+where q =  uu is a projection in M. This ends the proof of (i).
+    (ii) The proof is similar to (i).
+
+                     6. Invariant Subspaces for Analytic Crossed Products
+
+    6.1. Crossed product of a von Neumann algebra M by an action . Let M be a von
+Neumann algebra with a semifinite, faithful, normal tracial state  . Let  be a trace-preserving
+-automorphism of M (so  ((x)) =  (x), x  M+).
+
+    We let l2(Z) be the Hilbert space consisting of complex-valued functions f on Z such that
+   mZ |f (m)|2 < . We denote by {en}nZ the orthonormal basis of l2(Z) determined by
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES          29
+
+en(m) = (n, m). We also denote by  : Z  B(l2(Z)) the left regular representation of Z on
+l2(Z), i.e. each (n) is determined by (n)(em) = em+n.
+
+    Let H = L2(M,  )  l2(Z). Then H can also be written as mZL2(M,  )  em. Consider
+representations  and  of M and Z, respectively, on H, defined by
+
+(x)(  em) = (-m(x))  em,  x  M,    L2(M,  ),  m  Z
+
+(n)(  em) =   ((n)em),                  n, m  Z
+
+It can be verified that
+
+     (n)(x)(-n) = (n(x)),  x  M,  n  Z.
+
+Then the crossed product of M by an action , denoted by M  Z, is the von Neumann
+algebra generated by (M) and (Z) in B(H). If no confusion arises, we will identify M with
+its image (M) in M  Z.
+
+    It is well known (for example, see Chapter 13 in [19]) that there exists a faithful, normal
+
+conditional expectation  from M  Z onto M such that
+
+  N
+
+        (n)(xn) = x0,                  where xn  M for all - N  n  N.
+
+  n=-N
+
+Moreover, there exists a semifinite, faithful, normal, extended tracial weight, still denoted by  ,
+on M  Z satisfying
+
+   (y) =  ((y)), for every positive element y in M  Z.
+
+    Example 6.1. Let M = l(Z) be an abelian von Neumann algebra with a semifinite, faithful,
+normal tracial weight  , determined by
+
+   (f ) = f (m),                       for every positive element f  l(Z).
+
+                         mZ
+
+Let  be an action on l(Z), defined by
+
+  (f )(m) = f (m - 1),                 for every element f  l(Z).
+
+It is not hard to verify (for example see Proposition 8.6.4 in [19]) that l(Z)  Z is a type I
+factor. Thus l(Z)  Z  B(H) for some separable Hilbert space H.
+
+    6.2. Invariant subspace for crossed products. From the construction of crossed prod-
+uct, we have the following result immediately (also see Section 3 in [1]).
+
+    Lemma 6.2. Let M  Z+ be a weak -closed non-self-adjoint subalgebra generated by
+                                           {(n)(x) : x  M, n  0}
+
+in M  Z. Then the following statements are true:
+      (i) M  Z+ is a semifinite subdiagonal subalgebra with respect to (M  Z, ). (Such
+           M  Z+ is called an analytic crossed product and will be denoted by H.)
+30                            LAUREN SAGER
+
+    (ii) H0 = ker()  H is a weak -closed nonself-adjoint subalgebra generated by
+                                         {(n)(x) : x  M, n > 0}
+
+          in M  Z satisfying  H0 = (1)H.
+    (iii) H  (H) = M.
+
+    Following the notation in Section 6.1, our next result characterizes invariant subspaces in a
+crossed product of a semifinite von Neumann algebra M by a tracing-preserving action .
+
+    Theorem 6.3. Let M be a von Neumann algebra with a semifinite, faithful, normal tracial
+weight  , and  be a trace-preserving -automorphism of M. Denote by M  Z the crossed
+product of M by an action , and still denote by  a semifinite, faithful, normal, extended tracial
+weight on M  Z.
+
+    Let H be a weak -closed non-self-adjoint subalgebra generated by {(n)(x) : x  M, n 
+0} in M  Z, be a semifinite subdiagonal subalgebra of M  Z. Then the following statements
+are true.
+
+      (i) Let 0 < p < . Assume that K is a closed subspace of Lp(M  Z,  ) such that
+           HK  K. Then there exist a projection q in M and a family {u} of partial
+           isometries in M  Z satisfying
+            (a) uq = 0 for all   ;
+           (b) uu  M and uu� = 0 for all , �   with  = �;
+            (c) K = (Lp(M  Z,  )q) row (rowHpu).
+
+     (ii) Assume that K is a weak -closed subspace of M  Z such that HK  K. Then
+           there exist a projection q in M and a family {u} of partial isometries in M  Z
+           satisfying
+            (a) uq = 0 for all   ;
+           (b) uu  M and uu� = 0 for all , �   with  = �;
+            (c) K = ((M  Z)q) row (rowHu).
+
+    Proof. (i) From Theorem 4.6 and Theorem 5.4,
+
+                                             K = Y row (rowHpu),
+
+where Y is a closed subspace of M  Z and {u} is a family of partial isometries in M  Z
+satisfying
+
+    (a1) uY  = 0 for all   ;
+    (b1) uu  M and uu� = 0 for all , �   with  = �;
+    (c1) Y = [H0Y ]p.
+From (c1) and Lemma 6.2, we have
+
+                                    Y = [H0Y ]p = [(1)HY ]p  (1)Y.
+
+So, Y is a left M  Z-invariant subspace of Lp(M  Z,  ). From Corollary 5.5, there exists a
+projection q in M such that Y = Lp(M  Z,  )q. Therefore, we have
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES  31
+
+      (a) uq = 0 for all   ;
+     (b) uu  M and uu� = 0 for all , �   with  = �;
+      (c) K = (Lp(M  Z,  )q) row (rowHpu).
+This ends the proof of (i).
+    (ii) The proof is similar to (i).
+
+    6.3. Invariant subspaces for Schatten p-classes. Let H be an infinite dimensional sep-
+arable Hilbert space with an orthonormal base {em}mZ. Let  = T r be the usual trace on
+B(H), i.e.
+
+                            (x) = xem, em , for all positive x in B(H).
+
+                                                        iZ
+
+Then B(H) is a von Neumann algebra with a semifinite, faithful, normal tracial weight  .
+For each 0 < p < , the Schatten p-class Sp(H) is the associated non-commuative Lp-space
+Lp(B(H),  ).
+
+    Let
+                                  A = {x  B(H) : xem, en = 0, n < m}
+
+be the lower triangular subalgebra of B(H). From Example 6.1, B(H) can also be realized as a
+crossed product l(Z)  Z of l(Z) by an action , where the action  is determined by
+
+                                    (f )(m) = f (m - 1),  f  l(Z).
+
+Moreover, it can be verified quickly that A, as a subalgebra of B(H), is l(Z) Z+ (see Lemma
+6.2) is a semifinite subdiagonal subalgebra of l(Z)  Z (see Example 2.6 in [25]). Thus from
+Theorem 6.3, we have the following statements.
+
+    Corollary 6.4. Let H be a separable Hilbert space with an orthonormal base {em}mZ. Let
+H be the lower triangular subalgebra of B(H), i.e.
+
+                                H = {x  B(H) : xem, en = 0, n < m}.
+
+Let D = H  (H) be the diagonal subalgebra of B(H).
+      (i) For each 0 < p < , let Sp(H) be the Schatten p-class. Assume that K is a closed
+           subspace of Sp(H) such that HK  K. Then there exist a projection q in D and a
+           family {u} of partial isometries in B(H) satisfying
+            (a) uq = 0 for all   ;
+           (b) uu  D and uu� = 0 for all , �   with  = �;
+            (c) K = (Sp(H)q) row (rowHpu).
+     (ii) Assume that K is a weak -closed subspace of B(H) such that HK  K. Then there
+           exist a projection q in D and a family {u} of partial isometries in B(H) satisfying
+            (a) uq = 0 for all   ;
+           (b) uu  D and uu� = 0 for all , �   with  = �;
+            (c) K = (B(H)q) row (rowHu).
+
+    Remark 6.5. Let 0 < p < . If q is a projection in D such that Sp(H)q  Hp, then q = 0.
+32  LAUREN SAGER
+
+    The the next result follows directly from Corollary 6.4.
+
+    Corollary 6.6. Let H be a separable Hilbert space with an orthonormal base {em}mZ. Let
+H be the lower triangular subalgebra of B(H), i.e.
+
+                                H = {x  B(H) : xem, en = 0, n < m}.
+
+Let D = H  (H) be the diagonal subalgebra of B(H).
+      (i) For each 0 < p < , if K is a closed subspace of Hp such that HK  K, then there
+           exists a family {u} of partial isometries in H satisfying
+            (a) uu  D and uu� = 0 for all , �   with  = �;
+           (b) K = rowHpu.
+     (ii) Assume that K is a weak -closed subspace of H such that HK  K. Then there
+           exists a family {u} of partial isometries in H satisfying
+            (a) uu  D and uu� = 0 for all , �   with  = �;
+           (b) K = rowHu.
+
+    Remark 6.7. Similar results hold when H is the upper triangular subalgebra of B(H).
+
+                                                     References
+
+ [1] W. B. Arveson, Analyticity in operator algebras, Amer. J. Math. 89 (1967) 578�642.
+ [2] T. Bekjan, Noncommutative Hardy space associated with semi-finite subdiagonal algebras, J. Math. Anal.
+
+      Appl. 429 (2015), no. 2, 13471369.
+ [3] T. N. Bekjan and Q. Xu, Riesz and Szeg�o type factorizations for noncommutative Hardy spaces, J. Operator
+
+      Theory, 62 (2009) 215-231.
+ [4] T. N. Bekjan, Noncommutative symmetric Hardy spaces, Integr. Equ. Oper. Theory 81 (2015) 191-212.
+ [5] T. N. Bekjan, Noncommutative Hardy space associated with semi-finite subdiagonal algebras, J. Math. Anal.
+
+      Appl. 429 (2015), no. 2, 1347-1369.
+ [6] A. Beurling, On two problems concerning linear transformations in Hilbert space, Acta Math. 81 (1949)
+
+      239-255.
+ [7] D. Blecher and L. E. Labuschagne, A Beurling theorem for noncommutative Lp, J. Operator Theory, 59
+
+      (2008) 29-51.
+ [8] S. Bochner, Generalized conjugate and analytic functions without expansions, Proc. Nat. Acad. Sci. U.S.A.
+
+      45 (1959) 855-857.
+ [9] P. Dodds and T. Dodds, Some properties of symmetric operator spaces, Proc. Centre Math. Appl. Austral.
+
+      Nat. Univ., 29, Austral. Nat. Univ., Canberra, 1992.
+[10] P. Dodds, T. Dodds and B. Pagter, Noncommutative Banach function spaces, Mathematische Zeitschrift,
+
+      201 (1989) 583-597.
+[11] P. Dodds, T. Dodds and B. Pagter, Noncommutative K�othe duality, Trans. Amer. Math. Soc. 339 (1993)
+
+      717-750.
+[12] R. Exel, Maximal subdiagonal algebras, Amer. J. Math. 110 (1988) 775-782.
+[13] T. Fack and H. Kosaki, Generalized s-numbers of  -measurable operators, Pacific J. Math. 2 (1986) 269-300.
+[14] J. Fang, D. Hadwin, E. Nordgren and J. Shen, Tracial gauge norms on finite von Neumann algebras satisfying
+
+      the weak Dixmier property, J. Funct. Anal. 255 (2008) 142-183.
+[15] P. Halmos, Shifts on Hilbert spaces, J. Reine Angew. Math. 208 (1961) 102-112.
+[16] H. Helson, Lectures on Invariant Subspaces, Academic Press, New York-London, 1964.
+[17] H. Helson and D. Lowdenslager, Prediction theory and Fourier series in several variables, Acta Math. 99
+
+      (1958) 165-202.
+A BEURLING-BLECHER-LABUSCHAGNE THEOREM FOR SEMIFINITE HARDY SPACES  33
+
+[18] K. Hoffman, Analytic functions and logmodular Banach algebras, Acta Math. 108 (1962) 271-317.
+[19] R. Kadison and J. Ringrose, Fundamentals of the thoery of operator algebras, volume II, advanced theory,
+
+      Academic Press, Inc, (1986).
+[20] R. A. Kunze, Lp-Fourier transforms on locally compact unimodular groups, Trans. Amer. Math. Soc. 89
+
+      (1958) 519-540.
+[21] G. Ji, Maximality of semi-finite subdiagonal algebras, J. Shaanxi Normal Univ. Sci. Ed. 28 (2000) 15-17.
+[22] M. Junge and D. Sherman, Noncommutative Lp-modules, J. Operator Theory 53 (2005) 3-34.
+[23] M. Marsalli and G. West, Noncommutative Hp spaces , J. Operator Theory 40 (1998) 339-355.
+[24] C. A. McCarthy, Cp, Israel J. Math. 5 (1967) 249-271.
+[25] M. McAsey, P. Muhly and K. Saito, Nonselfadjoint Crossed Products (Invariant Subspaces and Maximality),
+
+      Transactions of the American Mathematical Society, Vol. 248, No. 2 (Mar., 1979), pp. 381 -409.
+[26] T. Nakazi and Y. Watatani, Invariant subspace theorems for subdiagonal algebras, J. Operator Theory
+
+      37(1997), 379-395.
+[27] E. Nelson, Notes on noncommutative integration, J. Funct. Anal. 15 (1974) 103-116.
+[28] J. von Neumann, Some matrix-inequalities and metrization of matric-space, Tomsk Univ. Rev. 1 (1937)
+
+      286-300.
+[29] G. Pisier and Q. Xu, Noncommutative Lp-spaces, Handbook of the geometry of Banach spaces, North-
+
+      Holland, Amsterdam, 2 (2003) 1459-1517.
+[30] Sakai, C-algebras and W-algebras, Springer, 1971.
+[31] K. S. Saito, A note on invariant subspaces for finite maximal subdiagonal algebras, Proc. Amer. Math. Soc.
+
+      77 (1979) 348-352.
+[32] K. S. Saito, A simple approach to the invariant subspace structure of analytic crossed products, J. Operator
+
+      Theory 27 (1992), no. 1, 169-177.
+[33] I. Segal, A noncommutative extension of abstract integration, Ann. Math. 57 (1952) 401-457.
+[34] B. Simon, Trace ideals and their applications, London Mathematical Society Lecture Note Series, vol. 35,
+
+      Cambridge University Press, Cambridge-New York, 1979.
+[35] T. P. Srinivasan, Simply invariant subspaces, Bull. Amer. Math. Soc. 69 (1963) 706-709.
+[36] T. Srinivasan and J. K. Wang, Weak*-Dirichlet algebras, Proceedings of the International Symposium on
+
+      Function Algebras, Tulane University, 1965 (Chicago), Scott-Foresman, 1966, 216�249.
+[37] M. Takesaki, Theory of Operator Algebras I, Springer, 1979.
+[38] Q. Xu, On the maximality of subdiagonal algebras, J. Operator Theory 54 (2005), no. 1, 137-146.
+[39] Q. Xu Operator spaces and noncommutative Lp, The part on noncommutative Lp-spaces Lectures in the
+
+      Summer School on Banach spaces and Operator spaces, Nankai University China July 16 - July 20, 2007.
+[40] F. Yeadon, Noncommutative Lp-spaces, Math. Proc. Cambridge Philos. Soc. 77 (1975) 91-102.
+
+     Lauren Sager, Demartment of Mathematics and Statistics, University of New Hampshire,
+Durham, NH 03824; Email: lbq32@wildcats.unh.edu
+

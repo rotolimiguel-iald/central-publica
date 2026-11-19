@@ -1,0 +1,249 @@
+top keys sample: ['title_pt', 'title_en', 'core', 'verdict', 'ga_mass_literature'] 10
+### neutrino_m2 ['/core/neutrino_m2', '/core/final_verdict_reading_v376/absent_channels_read_beside/neutrino_m2']
+{
+ "theorem": "O NEUTRINO REESPECIFICADO: o discriminante e m_2, nao Sigma. m_2(TGL) = 8.5074 meV contra 8.6776 +- 0.0576 meV (NuFIT pos-JUNO) = 2.95 sigma -- e a tensao cresce com a precisao. A linha de morte de 5 sigma esta dentro da meta de projeto do JUNO (~2031).",
+ "frozen": {
+  "version": "NEUTRINO_M2_V2",
+  "portado_de": "teste_acustico_beta_tgl_v1/02_frozen_neutrino_m2_v2.py (hash 4bdae22a277aa393..., 08/08/2026)",
+  "supersedes": "NEUTRINO_SUM_V1 (v147) como teste de beta_TGL [D2, 10/08/2026]",
+  "observavel": "m_2 = sqrt(Dm2_21), o 2o autoestado no ordenamento normal",
+  "predicao": "m_2 = beta_TGL*sin(45)*1eV; beta_TGL = alpha*sqrt(e) em runtime [derivacao publicada 2025, Zenodo 10.5281/zenodo.17526619]",
+  "escala_dimensional": "1 eV [NORM] DECLARADA, NAO DERIVADA; a escala que zeraria a tensao seria 1,0200 eV (+2,00%) -- fixada por declaracao, nao por ajuste",
+  "kill_rule": "FALSIFIED sse |m2_obs - m2_TGL|/sigma_obs >= 5 em DUAS determinacoes independentes de Dm2_21",
+  "tension_rule": "TENSION sse a razao ficar em [3, 5) na determinacao global mais recente",
+  "matched_rule": "MATCHED_PROSPECTIVELY sse duas determinacoes independentes pousarem a 1 sigma de m2_TGL -- e mesmo entao NAO e CONFIRMED",
+  "allowed_verdicts": [
+   "TGL_NU_M2_ARMED_CONSISTENT",
+   "TGL_NU_M2_TENSION",
+   "TGL_NU_M2_FALSIFIED",
+   "TGL_NU_M2_MATCHED_PROSPECTIVELY"
+  ],
+  "forbidden_verdicts": [
+   "CONFIRMED"
+  ],
+  "nao_e_cego_nesta_emissao": "DECLARACAO OBRIGATORIA: os limiares foram fixados na mesma sessao em que a tensao corrente (2,95 sigma) ja havia sido calculada; esta emissao e REESPECIFICACAO, nao veredito cego; a cegueira vale a partir de agora"
+ },
+ "frozen_hash": "e24877751ad810225412cc294c06b83eefeaedc67e4c5cabc7779ac01e4b19c3",
+ "values": {
+  "beta": 0.012031300400803142,
+  "m2_pred_meV": 8.507414099900329,
+  "tensao_atual_sigma": 2.9528540277344604,
+  "grupos_autonomos_5sigma": [],
+  "kill_rule_satisfeita": false,
+  "tensao_global_5sigma_sem_2a_determinacao": false,
+  "precisao_que_mata_pct": 0.7842905784155273,
+  "escada_datada": [
+   {
+    "fonte": "PDG 2023 (base do v141)",
+    "data": "2023",
+    "independente": false,
+    "grupo": "KamLAND+solar (pre-JUNO)",
+    "autonoma": true,
+    "m2_obs_meV": 8.677557259966656,
+    "sigma_meV": 0.10371582382430267,
+    "tensao_sigma": 1.6404744598524779
+   },
+   {
+    "fonte": "JUNO primeiros resultados (59 dias)",
+    "data": "2025-11",
+    "independente": true,
+    "grupo": "JUNO (reator, baseline media)",
+    "autonoma": true,
+    "m2_obs_meV": 8.660254037844387,
+    "sigma_meV": 0.0692820323027551,
+    "tensao_sigma": 2.206054482873198
+   },
+   {
+    "fonte": "NuFIT global pos-JUNO (ate fim 2025)",
+    "data": "2025-12",
+    "independente": true,
+    "grupo": "combinacao global (CONTEM JUNO e KamLAND+solar)",
+    "autonoma": false,
+    "m2_obs_meV": 8.677557259966656,
+    "sigma_meV": 0.05761990212461259,
+    "tensao_sigma": 2.9528540277344604
+   }
+  ],
+  "projecao_2031_sigma": 7.842905784155273
+ },
+ "checks": [
+  [
+   "m2 predito = 8.5074 meV (beta runtime; escala 1 eV [NORM] declarada)",
+   true
+  ],
+  [
+   "A ESCADA DATADA: 1.64 sigma (2023) -> 2.21 (JUNO 11/2025, indep) -> 2.95 (NuFIT 12/2025) -- a tensao CRESCE com a precisao",
+   true
+  ],
+  [
+   "linha de morte: 5 sigma quando Dm2_21 for medido a 0.78% (JUNO projeta 0,5%, ~2031)",
+   true
+  ],
+  [
+   "Sigma m_nu APOSENTADO como discriminante (separacao 0,199 meV = 0.71 sigma do NH minimo) [D2]",
+   true
+  ],
+  [
+   "nao-cegueira DECLARADA nesta emissao; a regra hasheada julga as proximas medidas",
+   true
+  ],
+  [
+   "veredito pertence ao conjunto congelado; CONFIRMED proibido; o gate NAO se move",
+   true
+  ],
+  [
+   "v315 kill_rule IMPLEMENTADA como congelada: 0 grupo(s) autonomo(s) >= 5 sigma (precisa 2); NuFIT global = combinacao, nao conta como 2a determinacao",
+   true
+  ],
+  [
+   "ERRATA AO LADO (v315, achado ENTREGA_005 da bancada): ate a v314 o FALSIFIED disparava pelo ultimo degrau sozinho, contra a kill_rule; corrigido SEM tocar o frozen nem o seu hash",
+   true
+  ],
+  [
+   "veredito v315 pertence ao conjunto congelado (kill_rule hoje NAO satisfeita: veredito inalterado)",
+   true
+  ]
+ ],
+ "all_verified": true,
+ "does_not_gate_core": true,
+ "verdict": "TGL_NU_M2_ARMED_CONSISTENT"
+}
+### neutrino_m2_perito_v392 ['/core/neutrino_m2_perito_v392']
+{
+ "verdict": "TGL_NEUTRINO_M2_PERITO_V392__OFFICIAL_EXPERT_IS_THE_AUTONOMOUS_JUNO_READING__GLOBAL_FITS_ARE_REFLECTIONS_BESIDE__CHANNEL_VERDICT_UNCHANGED__GATE_UNMOVED",
+ "all_verified": true,
+ "does_not_gate_core": true,
+ "registro": "neutrino_m2_perito_v392",
+ "estatuto": "[REAL -- lido do core v391 a cada rito; INPUT/DERIVED a R3 ratificada em 02/10; DECLARADO o 2,44 sigma de Capozzi (numero lido na fonte em 28/09, nao por hash)]",
+ "fontes": [],
+ "verbatim": {},
+ "kernel": {
+  "bandeiras": [
+   0,
+   0
+  ],
+  "declaracoes_no_trio": [
+   0,
+   0
+  ]
+ },
+ "checks": [
+  {
+   "descricao": "core: R3 ratificada em 02/10 elege o perito oficial = JUNO",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: a R3 diz 2,21σ para o JUNO autonomo",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: a R3 poe NuFIT 6.1 e Capozzi ao lado",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: o veredito do canal NAO muda (ARMED_CONSISTENT)",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: o canal nao move o gate",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: nenhuma determinacao autonoma a 5 sigma",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: a linha de morte nao esta satisfeita",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core (errata de 28/09): o ajuste de Capozzi da 2,44 sigma",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: a escada tem 3 linhas (PDG 2023; JUNO 59 dias; NuFIT pos-JUNO)",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: tensao_atual_sigma do canal = reflexo do NuFIT 6.1 (global, CONTEM o JUNO) (limite inferior)",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: tensao_atual_sigma do canal = reflexo do NuFIT 6.1 (global, CONTEM o JUNO) (limite superior)",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: JUNO autonomo (59 dias): tensao do perito oficial (limite inferior)",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: JUNO autonomo (59 dias): tensao do perito oficial (limite superior)",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: a linha do JUNO e' a autonoma",
+   "ok": true,
+   "estatuto": "[REAL]"
+  },
+  {
+   "descricao": "core: a linha do NuFIT NAO e' autonoma (contem JUNO e KamLAND+solar)",
+   "ok": true,
+   "estatuto": "[REAL]"
+  }
+ ],
+ "lido": {
+  "m2_veredito": "TGL_NU_M2_ARMED_CONSISTENT",
+  "m2_tensao_atual": 2.9528540277344604,
+  "m2_juno_sigma": 2.206054482873198
+ },
+ "guarda_p18_violacoes": [],
+ "erratas": [
+  {
+   "ao_lado_de": "core v391, neutrino_m2.values.tensao_atual_sigma (2,95 sigma) e as superficies que o citam como a tensao (artigo txt PT l.139 e l.202 e o EN; Atlas l.34960; README do espelho l.23)",
+   "dizia": "a tensao atual do m2 e' 2,95 sigma",
+   "agora": "2,21 sigma (JUNO autonomo, perito oficial) e' o numero; 2,95 sigma (NuFIT 6.1) e 2,44 sigma (Capozzi) sao reflexos, ao lado: a derivacao R3 de 02/10 diz 'a face e' a determinacao direta (JUNO autonomo, ja' no rito: 2,21 sigma)' e 'os ajustes globais sao reflexos', e a divergencia de cerca de 0,5 sigma entre eles e' custo de reflexo, nao pagamento. O ajuste global CONTEM o JUNO e o KamLAND+solar: nao e' independente nem autonomo. Lidos agora do core: JUNO 2,21 sigma; tensao_atual_sigma (NuFIT) 2,95 sigma. O VEREDITO do canal NAO muda (TGL_NU_M2_ARMED_CONSISTENT).",
+   "lacuna_de_fidelidade": "a estrutura do kernel da cobranca ja' separava face (pagamento) e reflexo (custo); o campo tensao_atual_sigma foi preenchido com a linha global do NuFIT (a mais recente) e o texto das superficies o repetiu como 'a tensao'; a traducao falhou ao nao eleger o perito.",
+   "estatuto": "[REAL: numeros lidos do core; DERIVED -- R3 ratificada (a derivacao mais fraca das seis, segundo o proprio core); DECLARADO o 2,44 de Capozzi]",
+   "assinatura": "gerencia c1, em nome proprio, 13/10/2026"
+  }
+ ],
+ "limites": [
+  "a R3 e' 'a derivacao mais fraca das seis' (palavra do core): vale como leitura ratificada, nao como teorema [REAL: citada do core]",
+  "o JUNO autonomo (59 dias; 7,50 +- 0,12 e-5 eV^2, arXiv:2511.14593) e' numero lido na fonte em 01/10, nao por hash [DECLARADO]"
+ ],
+ "diz": [
+  "perito oficial = JUNO autonomo (2,21 sigma); NuFIT 6.1 (2,95 sigma) e Capozzi (2,44 sigma) ao lado [REAL/DECLARADO]",
+  "o veredito do canal e o valor tensao_atual_sigma do core NAO mudam [REAL]"
+ ],
+ "nao_diz": [
+  "nao muda o valor nem o veredito do canal do core",
+  "nao altera a regra de morte (duas determinacoes independentes a 5 sigma)",
+  "nao move o gate; NOT_FALSIFIED nunca e' a palavra da creditacao"
+ ],
+ "leituras_do_operador": [],
+ "extras": {
+  "memoria_do_usuario": [
+   "o-verbo-e-fixo-o-nome-e-posto-08out"
+  ],
+  "superficies_a_corrigir_fora_do_um_py": [
+   "artigo txt PT l.139 e l.202 e o EN",
+   "Atlas l.34960",
+   "README do espelho l.23",
+   "Haja_Luz CLAUDE.md l.15931 (escada 1,64 -> 2,21 -> 2,95)"
+  ],
+  "aviso": "linhas das superficies vem do levantamento de 12/10 [DECLARADO]; nao relidas aqui"
+ }
+}

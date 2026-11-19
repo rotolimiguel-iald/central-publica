@@ -1,0 +1,9 @@
+APROVADO_COM_RESSALVAS
+
+## V9 · OPassoEORetorno, R0
+
+[REAL] Para a cláusula C na atribuição x, b=oIf C x vale 0 quando satisfeita e 1 quando violada. O primeiro dos oito teoremas é rfl, indicado “por definição” e sem estrela. O segundo identifica b com 1 menos o valor de verdade. Os demais ligam a soma dos indicadores, o custo, o produto na exponencial e a coordenada efetivamente lida.
+[MÉDIO] O teste lógico é o mesmo nas duas operações. O passo soma b; a trava multiplica exp(−tb). Para uma cláusula satisfeita, a parcela é 0 e o fator é 1. Redação sugerida: “O passo soma a indicação de violação, e a trava multiplica os seus pesos exponenciais.” A identidade vale em todo tempo real. O verbo “amortece” vale para t>0; t=0 preserva também as violações, e t<0 as amplifica.
+[REAL] O cabeçalho delimita a interpretação ao teste desta máquina e ao peso deste leitor. Sua expressão “máquina de fita” em “Como ler” excede a construção: é a máquina de passo sobre listas de V8. A fala literal sobre o if e a fase é do operador; a realização pelo fator exponencial é escolha da gerência. A palavra “retorno” nesse título precisa do escopo local.
+[REAL] O limite normalizado é outro teorema: CamadaCientifica.o_retorno pressupõe projeção inicial não nula no núcleo e perturbação ortogonal, e conclui convergência quando t→+∞. A identidade local de V9 também vale para uma CNF insatisfazível; nela a hipótese de projeção não nula falha.
+[REAL] TraducaoTuring.a_trava_fatora já dá a fatoração coordenada para uma soma finita de custos naturais, com produto sobre Fin m. REV29 refaz por indução em lista a exponencial da soma. Recomendo citar e, quando a gerência emendar, especializar o lema aos índices Fin φ.length e ao custo de violação de cada ocorrência, converter o produto indexado no produto da lista e usar o_retorno_e_o_if. O vínculo com o registro final de passo e com leiNaClausula é a parte adicional.

@@ -1,0 +1,45 @@
+--- v411/gerar_pronto_para_o_pos_rito_v411.py
++++ v412/gerar_pronto_para_o_pos_rito_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/gerar_pronto_para_o_pos_rito_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/gerar_pronto_para_o_pos_rito_v412.py.diff
+@@ -3,3 +4,3 @@
+-"""gerar_pronto_para_o_pos_rito_v411.py -- grava C:\\t\\k411c\\ensaio_topo_proposto\\PRONTO_PARA_O_POS_RITO.json (o caminho que a gerencia pediu, nos dois modos) com as chaves que os harnesses da frente pos-rito LEEM
+-(PEDIDOS_ENTRE_FRENTES_v411.md, frente H, item 1): falso_nos, dry, core, selo, stdout, artigo_pt, artigo_en, esperados, manifesto, ensaio_a_seco, pinos_bn, formal_map, artefato, artefato_sha16 (cada caminho conferido no disco) e,
+-ao lado, o sha16 LIDO de cada arquivo. Modo: sem V411_ENSAIO_TOPO_PROPOSTO, "cadeia real" (o CANDIDATO real e as saidas da pasta da cadeia; o dry e o falso Nos fora de work, D135); com a variavel, "ensaio do topo proposto" (o
++"""gerar_pronto_para_o_pos_rito_v412.py -- grava C:\\t\\k412c\\ensaio_topo_proposto\\PRONTO_PARA_O_POS_RITO.json (o caminho que a gerencia pediu, nos dois modos) com as chaves que os harnesses da frente pos-rito LEEM
++(PEDIDOS_ENTRE_FRENTES_v412.md, frente H, item 1): falso_nos, dry, core, selo, stdout, artigo_pt, artigo_en, esperados, manifesto, ensaio_a_seco, pinos_bn, formal_map, artefato, artefato_sha16 (cada caminho conferido no disco) e,
++ao lado, o sha16 LIDO de cada arquivo. Modo: sem V412_ENSAIO_TOPO_PROPOSTO, "cadeia real" (o CANDIDATO real e as saidas da pasta da cadeia; o dry e o falso Nos fora de work, D135); com a variavel, "ensaio do topo proposto" (o
+@@ -7 +8 @@
+-Backup de BYTES se o arquivo ja' existir. uso: python -B -X utf8 gerar_pronto_para_o_pos_rito_v411.py"""
++Backup de BYTES se o arquivo ja' existir. uso: python -B -X utf8 gerar_pronto_para_o_pos_rito_v412.py"""
+@@ -11 +12 @@
+-import delta_v411 as DL  # noqa: E402
++import delta_v412 as DL  # noqa: E402
+@@ -13 +14 @@
+-ens = json.load(open(DL.saida("ensaio_a_seco_v411.json"), encoding="utf-8")); man = json.load(open(DL.MANIFESTO_ARQ, encoding="utf-8")); esp = json.load(open(DL.saida("ESPERADOS_v411.json"), encoding="utf-8"))
++ens = json.load(open(DL.saida("ensaio_a_seco_v412.json"), encoding="utf-8")); man = json.load(open(DL.MANIFESTO_ARQ, encoding="utf-8")); esp = json.load(open(DL.saida("ESPERADOS_v412.json"), encoding="utf-8"))
+@@ -18,5 +19,5 @@
+-assert sha16(os.path.join(FN, "um.py")) == art16 and sha16(os.path.join(DRY, "um.py")) == art16, "o falso Nos ou o dry nao trazem o um.py deste arquivo (rode teste_conferidor_positivo_v411.py)"
+-pos_p = DL.saida("conferencia_rito_v411_POSITIVO_FALSO_NOS.json"); pos = json.load(open(pos_p, encoding="utf-8")) if os.path.exists(pos_p) else None
+-CAM = {"falso_nos": FN, "dry": DRY, "core": os.path.join(FN, "um_absoluto.json"), "selo": os.path.join(FN, "um_absoluto_selo.json"), "stdout": os.path.join(FN, "rodada_v411_stdout.txt"),
+-       "artigo_pt": os.path.join(FN, "um_absoluto_pt.txt"), "artigo_en": os.path.join(FN, "um_absoluto_en.txt"), "esperados": DL.saida("ESPERADOS_v411.json"), "manifesto": DL.MANIFESTO_ARQ,
+-       "ensaio_a_seco": DL.saida("ensaio_a_seco_v411.json"), "pinos_bn": DL.saida("PINOS_BN_v411.json"), "formal_map": DL.FORMAL_MAP_ARQ, "artefato": DL.CANDIDATO_ARQ}
++assert sha16(os.path.join(FN, "um.py")) == art16 and sha16(os.path.join(DRY, "um.py")) == art16, "o falso Nos ou o dry nao trazem o um.py deste arquivo (rode teste_conferidor_positivo_v412.py)"
++pos_p = DL.saida("conferencia_rito_v412_POSITIVO_FALSO_NOS.json"); pos = json.load(open(pos_p, encoding="utf-8")) if os.path.exists(pos_p) else None
++CAM = {"falso_nos": FN, "dry": DRY, "core": os.path.join(FN, "um_absoluto.json"), "selo": os.path.join(FN, "um_absoluto_selo.json"), "stdout": os.path.join(FN, "rodada_v412_stdout.txt"),
++       "artigo_pt": os.path.join(FN, "um_absoluto_pt.txt"), "artigo_en": os.path.join(FN, "um_absoluto_en.txt"), "esperados": DL.saida("ESPERADOS_v412.json"), "manifesto": DL.MANIFESTO_ARQ,
++       "ensaio_a_seco": DL.saida("ensaio_a_seco_v412.json"), "pinos_bn": DL.saida("PINOS_BN_v412.json"), "formal_map": DL.FORMAL_MAP_ARQ, "artefato": DL.CANDIDATO_ARQ}
+@@ -29 +30 @@
+-        EXTRA["artigo_%s_%s_do_dry" % (l_, ext_)] = os.path.join(DRY, "dry_v411_%s.%s" % (l_, ext_))
++        EXTRA["artigo_%s_%s_do_dry" % (l_, ext_)] = os.path.join(DRY, "dry_v412_%s.%s" % (l_, ext_))
+@@ -33,2 +34,2 @@
+-# as citacoes como estao AGORA (o JSON do conferir_citacoes_v411.py --candidato, lido do disco; o que o ensaio a seco mediu na hora dele vai ao lado, em citacoes_no_ensaio_a_seco)
+-_cit_p = DL.saida("conferir_citacoes_v411.json"); _cit = json.load(open(_cit_p, encoding="utf-8")) if os.path.exists(_cit_p) else {}
++# as citacoes como estao AGORA (o JSON do conferir_citacoes_v412.py --candidato, lido do disco; o que o ensaio a seco mediu na hora dele vai ao lado, em citacoes_no_ensaio_a_seco)
++_cit_p = DL.saida("conferir_citacoes_v412.json"); _cit = json.load(open(_cit_p, encoding="utf-8")) if os.path.exists(_cit_p) else {}
+@@ -37 +38 @@
+-R = dict(CAM, **{"contrato": "PRONTO_PARA_O_POS_RITO_v411", "modo": modo, "quando": datetime.datetime.now().isoformat(timespec="seconds"), "agente": "claude-construtor-v411 (retomada, fork C)", "artefato_sha16": art16,
++R = dict(CAM, **{"contrato": "PRONTO_PARA_O_POS_RITO_v412", "modo": modo, "quando": datetime.datetime.now().isoformat(timespec="seconds"), "agente": "claude-construtor-v412 (retomada, fork C)", "artefato_sha16": art16,
+@@ -39 +40 @@
+-                 "nota": ("CADEIA REAL: o candidato um_v411_candidato.py (com o texto RATIFICADO do topo); o core, o selo e o stdout do falso Nos sao EMULADOS a partir do ensaio a seco (nao do rito); nada instalado; nada no Nos"
++                 "nota": ("CADEIA REAL: o candidato um_v412_candidato.py (com o texto RATIFICADO do topo); o core, o selo e o stdout do falso Nos sao EMULADOS a partir do ensaio a seco (nao do rito); nada instalado; nada no Nos"

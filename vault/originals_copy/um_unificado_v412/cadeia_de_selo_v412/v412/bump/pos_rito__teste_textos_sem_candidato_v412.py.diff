@@ -1,0 +1,289 @@
+--- v411/pos_rito/teste_textos_sem_candidato_v411.py
++++ v412/pos_rito/teste_textos_sem_candidato_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/teste_textos_sem_candidato_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__teste_textos_sem_candidato_v412.py.diff
+@@ -3,6 +4,6 @@
+-"""teste_textos_sem_candidato_v411.py -- exercita as funcoes de texto de textos_v411.py (handoff, linhagem, desenho, Atlas, core, Haja_Luz, topicos, aviso, verbete, remissivo, a secao do H0DN e o paragrafo do README) contra um CORE SINTETICO:
+-o core da v410 SELADA (base_v410/um_absoluto.json, so' leitura) com o registro `h0dn_bg1_v411` trocado pelo registro OFFLINE do ensaio (TESTE_H0DN_OFFLINE_v411_registro.json, o substituto do core enquanto o ensaio a seco nao existe) e os dois registros por spec da v411
+-como marcadores selados. O V e' montado a mao (chaves de leitura_v411.ler) com valores SINTETICOS que NAO sao da rodada (o hash do um.py, o conferidor e o sidecar sao de brinquedo; o que se testa e' a prosa e os numeros do registro). O que ele PROVA: (1) toda funcao de texto roda; (2) cada texto passa em
+-guarda_frases_v411.violacoes e na P18 (lista vazia); (3) os numeros que aparecem sao os do registro (o primario e as Cefeidas livres, formatados em PT); (4) a regra F67: um bloco com o Z do primario e SEM a linha das Cefeidas livres com o numero TEM de ser recusado pela guarda (controle negativo), e o bloco da moldura passa; (5) o paragrafo do README
+-passa em verificar_paragrafo_v411 e o numero adulterado e' recusado; (6) o cabecalho da linhagem casa com a RE_CAB da custodia (G1). O que ele NAO prova (sem o core real): a leitura da rodada (leitura_v411.ler), o ESPERADOS de verdade (so' as chaves do quadro, da v410), o sidecar e o selo reais, o quadro do paragrafo do README (o do Teste da Unica Palavra,
+-usa o core da v410, que e' o mesmo registro) e o stdout do rito. Nada e' escrito em lugar nenhum (sem --saida). uso: python -I -B -X utf8 teste_textos_sem_candidato_v411.py [--saida ARQ.json]   rc 0 = tudo passou."""
++"""teste_textos_sem_candidato_v412.py -- exercita as funcoes de texto de textos_v412.py (handoff, linhagem, desenho, Atlas, core, Haja_Luz, topicos, aviso, verbete, remissivo, a secao do H0DN e o paragrafo do README) contra um CORE SINTETICO:
++o core da v411 SELADA (base_v411/um_absoluto.json, so' leitura) com o registro `h0dn_bg1_v411` trocado pelo registro OFFLINE do ensaio (TESTE_H0DN_OFFLINE_v412_registro.json, o substituto do core enquanto o ensaio a seco nao existe) e os dois registros por spec da v412
++como marcadores selados. O V e' montado a mao (chaves de leitura_v412.ler) com valores SINTETICOS que NAO sao da rodada (o hash do um.py, o conferidor e o sidecar sao de brinquedo; o que se testa e' a prosa e os numeros do registro). O que ele PROVA: (1) toda funcao de texto roda; (2) cada texto passa em
++guarda_frases_v412.violacoes e na P18 (lista vazia); (3) os numeros que aparecem sao os do registro (o primario e as Cefeidas livres, formatados em PT); (4) a regra F67: um bloco com o Z do primario e SEM a linha das Cefeidas livres com o numero TEM de ser recusado pela guarda (controle negativo), e o bloco da moldura passa; (5) o paragrafo do README
++passa em verificar_paragrafo_v412 e o numero adulterado e' recusado; (6) o cabecalho da linhagem casa com a RE_CAB da custodia (G1). O que ele NAO prova (sem o core real): a leitura da rodada (leitura_v412.ler), o ESPERADOS de verdade (so' as chaves do quadro, da v411), o sidecar e o selo reais, o quadro do paragrafo do README (o do Teste da Unica Palavra,
++usa o core da v411, que e' o mesmo registro) e o stdout do rito. Nada e' escrito em lugar nenhum (sem --saida). uso: python -I -B -X utf8 teste_textos_sem_candidato_v412.py [--saida ARQ.json]   rc 0 = tudo passou."""
+@@ -14,4 +15,4 @@
+-import delta_v411 as DL  # noqa: E402
+-import guarda_frases_v411 as GF  # noqa: E402
+-from guarda_p18_v411 import violacoes as P18  # noqa: E402
+-import textos_v411 as T  # noqa: E402
++import delta_v412 as DL  # noqa: E402
++import guarda_frases_v412 as GF  # noqa: E402
++from guarda_p18_v412 import violacoes as P18  # noqa: E402
++import textos_v412 as T  # noqa: E402
+@@ -30,3 +31,3 @@
+-# ---- 1. o core sintetico, o ESPERADOS minimo (so' as chaves do quadro, da v410) e o V sintetico
+-OFF = json.load(open(os.path.join(PK, "TESTE_H0DN_OFFLINE_v411_registro.json"), encoding="utf-8"))
+-BASE_P = os.path.join(PK, "base_v410")
++# ---- 1. o core sintetico, o ESPERADOS minimo (so' as chaves do quadro, da v411) e o V sintetico
++OFF = json.load(open(os.path.join(PK, "TESTE_H0DN_OFFLINE_v412_registro.json"), encoding="utf-8"))
++BASE_P = os.path.join(PK, "base_v411")
+@@ -38 +39 @@
+-esp = json.load(open(os.path.join(os.path.dirname(PK), "v410", "ESPERADOS_v410.json"), encoding="utf-8"))
++esp = json.load(open(os.path.join(os.path.dirname(PK), "v411", "ESPERADOS_v411.json"), encoding="utf-8"))
+@@ -42,2 +43,2 @@
+-esp["escada"] = [12308, 12308]; esp["escada_v410_e_v411"] = [12308, 12308]
+-esp["registros_funcao_v411"] = {"h0dn": {"nome": DL.FECHO_REGISTRO, "verdict": OFF["verdict"], "values": dict(OFF["values"]), "n_checks": 16}}   # (R1: a verificacao do paragrafo compara os values do core com os do ensaio a seco; o teste sem candidato os emula com os do registro offline)
++esp["escada"] = [12308, 12308]; esp["escada_v411_e_v412"] = [12308, 12308]
++esp["registros_funcao_v412"] = {"h0dn": {"nome": DL.FECHO_REGISTRO, "verdict": OFF["verdict"], "values": dict(OFF["values"]), "n_checks": 16}}   # (R1: a verificacao do paragrafo compara os values do core com os do ensaio a seco; o teste sem candidato os emula com os do registro offline)
+@@ -45,2 +46,2 @@
+-T._bancada = lambda: {"de": "v410", "geracao": 19, "proxima": 20}   # (stub: le PINOS_BN_v411.json, que so' existe depois do pre-selo)
+-# a conferencia dos NOMES no um.py (T._conferir_nomes) roda contra o um.py do Nos, que ainda e' o da v410: os nomes da v411 (h0dn_bg1_v411 etc.) so' existem no um.py v411. Aqui se confere o que da' para conferir (os nomes que NAO sao da v411 existem no um.py v410 do Nos) e se pula o resto.
++T._bancada = lambda: {"de": "v411", "geracao": 19, "proxima": 20}   # (stub: le PINOS_BN_v412.json, que so' existe depois do pre-selo)
++# a conferencia dos NOMES no um.py (T._conferir_nomes) roda contra o um.py do Nos, que ainda e' o da v411: os nomes da v412 (h0dn_bg1_v411 etc.) so' existem no um.py v412. Aqui se confere o que da' para conferir (os nomes que NAO sao da v412 existem no um.py v411 do Nos) e se pula o resto.
+@@ -48 +49 @@
+-    T._um_tem([n for n in T._NOMES_UM if "411" not in n]); _nomes_antigos_ok = True
++    T._um_tem([n for n in T._NOMES_UM if "412" not in n]); _nomes_antigos_ok = True
+@@ -52 +53 @@
+-# o quadro_v397.py do pacote (copia literal da v410) ainda importa delta_v410 (nao existe nesta pasta): o teste o carrega com o import trocado EM MEMORIA (o achado vai em PEDIDOS_ENTRE_FRENTES_v411.md: a copia do quadro tem de importar delta_v411)
++# o quadro_v397.py do pacote (copia literal da v411) ainda importa delta_v411 (nao existe nesta pasta): o teste o carrega com o import trocado EM MEMORIA (o achado vai em PEDIDOS_ENTRE_FRENTES_v412.md: a copia do quadro tem de importar delta_v412)
+@@ -55 +56 @@
+-_import_velho = "import delta_v410 as DL" in _srcq
++_import_velho = "import delta_v411 as DL" in _srcq
+@@ -57 +58 @@
+-exec(compile(_srcq.replace("import delta_v410 as DL", "import delta_v411 as DL"), _mq.__file__, "exec"), _mq.__dict__)
++exec(compile(_srcq.replace("import delta_v411 as DL", "import delta_v412 as DL"), _mq.__file__, "exec"), _mq.__dict__)
+@@ -62 +63 @@
+-     "compl": "COMPLETA", "horarios": ["2026-11-12T12:00:00", "2026-11-12T14:00:00"], "selo_ts": "2026-11-12T14:00:00", "n18": 18, "n_patches": 5, "patches": "N00_main, N02_selo, W02_runtime_v411, C13_specs, K01_sem_modulos", "instalado_em": "2026-11-12 14:05:00",
++     "compl": "COMPLETA", "horarios": ["2026-11-12T12:00:00", "2026-11-12T14:00:00"], "selo_ts": "2026-11-12T14:00:00", "n18": 18, "n_patches": 5, "patches": "N00_main, N02_selo, W02_runtime_v412, C13_specs, K01_sem_modulos", "instalado_em": "2026-11-12 14:05:00",
+@@ -69,2 +70,2 @@
+-     "reg411": {n: reg(n, core[n]["verdict"]) for n in (DL.FECHO_REGISTRO, DL.CUNHAGENS_REGISTRO, DL.KH_REGISTRO)},
+-     "reg410_recriados": {n: dict(reg(n, (BASE.get(n) or {}).get("verdict")), sealed=True) for n in list(DL.REGISTROS_FUNCAO_V410) + ["cunhagens_v410", "kh_n1_cobertura_v410"]},
++     "reg412": {n: reg(n, core[n]["verdict"]) for n in (DL.FECHO_REGISTRO, DL.CUNHAGENS_REGISTRO, DL.KH_REGISTRO)},
++     "reg411_recriados": {n: dict(reg(n, (BASE.get(n) or {}).get("verdict")), sealed=True) for n in list(DL.REGISTROS_FUNCAO_V411) + ["cunhagens_v410", "kh_n1_cobertura_v410"]},
+@@ -72,2 +73,2 @@
+-etapa("nomes_nao_v411_de__NOMES_UM_existem_no_um_py_do_Nos_v410", _nomes_antigos_ok is True, erro=None if _nomes_antigos_ok is True else _nomes_antigos_ok)
+-etapa("v410_recriados_existem_no_core_base", all(n in BASE and BASE[n].get("all_verified") is True for n in V["reg410_recriados"]), n=len(V["reg410_recriados"]))
++etapa("nomes_nao_v412_de__NOMES_UM_existem_no_um_py_do_Nos_v411", _nomes_antigos_ok is True, erro=None if _nomes_antigos_ok is True else _nomes_antigos_ok)
++etapa("v411_recriados_existem_no_core_base", all(n in BASE and BASE[n].get("all_verified") is True for n in V["reg411_recriados"]), n=len(V["reg411_recriados"]))
+@@ -101,2 +102,2 @@
+-K = {"readme_paragrafo": QUADRO_STUB, "ap_nome": "RECIBO_SINCRONIZACAO_v411_SINTETICO.json", "ap_sha": "a" * 16, "ap_ver": "REPINADA_B20__APLICADA__SERVICO_DEVE_SER_REINICIADO_COM_RECIBO", "ap_evento": "evento-sintetico", "ap_bat": "BATERIA_PASSA", "par_sha": "b" * 16, "rel_sha": "c" * 16, "rel_man": "d" * 16}
+-par_ok = roda("paragrafo_v411", lambda: T.paragrafo_v411())
++K = {"readme_paragrafo": QUADRO_STUB, "ap_nome": "RECIBO_SINCRONIZACAO_v412_SINTETICO.json", "ap_sha": "a" * 16, "ap_ver": "REPINADA_B20__APLICADA__SERVICO_DEVE_SER_REINICIADO_COM_RECIBO", "ap_evento": "evento-sintetico", "ap_bat": "BATERIA_PASSA", "par_sha": "b" * 16, "rel_sha": "c" * 16, "rel_man": "d" * 16}
++par_ok = roda("paragrafo_v412", lambda: T.paragrafo_v412())
+@@ -104,2 +105,2 @@
+-    par, info = textos["paragrafo_v411"]; textos["paragrafo_v411"] = par; K["readme_paragrafo_v411"] = par
+-    etapa("paragrafo_v411_passa_na_verificacao_propria", T.verificar_paragrafo_v411(par, core, esp) == [], falhas=T.verificar_paragrafo_v411(par, core, esp)[:3])
++    par, info = textos["paragrafo_v412"]; textos["paragrafo_v412"] = par; K["readme_paragrafo_v412"] = par
++    etapa("paragrafo_v412_passa_na_verificacao_propria", T.verificar_paragrafo_v412(par, core, esp) == [], falhas=T.verificar_paragrafo_v412(par, core, esp)[:3])
+@@ -120 +121 @@
+-etapa("nenhum_token_proibido_nos_textos", not [(n, t_) for n, t in textos.items() for t_ in DL.TOKENS_PROIBIDOS_V411 if t_ in t], achados=[(n, t_) for n, t in textos.items() for t_ in DL.TOKENS_PROIBIDOS_V411 if t_ in t][:3])
++etapa("nenhum_token_proibido_nos_textos", not [(n, t_) for n, t in textos.items() for t_ in DL.TOKENS_PROIBIDOS_V412 if t_ in t], achados=[(n, t_) for n, t in textos.items() for t_ in DL.TOKENS_PROIBIDOS_V412 if t_ in t][:3])
+@@ -122,2 +123,2 @@
+-etapa("nenhuma_frase_velha_do_h0dn_da_v410", not [n for n, t in textos.items() if DL.FRASE_H0DN_OBRIGATORIA_PT in t or DL.FRASE_H0DN_OBRIGATORIA_EN in t])
+-_E42 = DL.ERRATAS_V411[1]["texto"]   # (a errata E42 CITA o colchete que corrige, entre aspas: e' mencao, nao uso; sai antes de procurar)
++etapa("nenhuma_frase_velha_do_h0dn_da_v411", not [n for n, t in textos.items() if DL.FRASE_H0DN_OBRIGATORIA_PT in t or DL.FRASE_H0DN_OBRIGATORIA_EN in t])
++_E42 = DL.ERRATAS_V412[1]["texto"]   # (a errata E42 CITA o colchete que corrige, entre aspas: e' mencao, nao uso; sai antes de procurar)
+@@ -126 +127 @@
+-etapa("INFORMATIVO_o_quadro_v397_do_pacote_ainda_importa_delta_v410_ACHADO_PARA_O_CONSTRUTOR", True, import_velho=_import_velho, nota="achado, nao falha deste teste: a copia do quadro tem de importar delta_v411 (PEDIDOS_ENTRE_FRENTES_v411.md)")
++etapa("INFORMATIVO_o_quadro_v397_do_pacote_ainda_importa_delta_v411_ACHADO_PARA_O_CONSTRUTOR", True, import_velho=_import_velho, nota="achado, nao falha deste teste: a copia do quadro tem de importar delta_v412 (PEDIDOS_ENTRE_FRENTES_v412.md)")
+@@ -131 +132 @@
+-for nome in ("secao_h0dn", "resultado", "paragrafo_v411", "linhagem", "atlas", "handoff", "topico_novo", "core_memory"):
++for nome in ("secao_h0dn", "resultado", "paragrafo_v412", "linhagem", "atlas", "handoff", "topico_novo", "core_memory"):
+@@ -155 +156 @@
+-    par = textos["paragrafo_v411"]
++    par = textos["paragrafo_v412"]
+@@ -157 +158 @@
+-    etapa("controle_negativo_paragrafo_com_o_z_adulterado_e_recusado", T.verificar_paragrafo_v411(adult, core, esp) != [])
++    etapa("controle_negativo_paragrafo_com_o_z_adulterado_e_recusado", T.verificar_paragrafo_v412(adult, core, esp) != [])
+@@ -159 +160 @@
+-    etapa("controle_negativo_paragrafo_sem_as_sete_ressalvas_e_recusado", T.verificar_paragrafo_v411(sem_ress, core, esp) != [])
++    etapa("controle_negativo_paragrafo_sem_as_sete_ressalvas_e_recusado", T.verificar_paragrafo_v412(sem_ress, core, esp) != [])
+@@ -162 +163 @@
+-# ---- 7. o conteudo da v411 esta nos textos e o da v410 nao e' dito como novo
++# ---- 7. o conteudo da v412 esta nos textos e o da v411 nao e' dito como novo
+@@ -164 +165 @@
+-etapa("decisoes_e_erratas_do_delta_no_diario", all(k in textos.get("linhagem", "") for k in list(DL.DECISOES_V411) + list(DL.ERRATAS_IDS_V411)), decisoes=list(DL.DECISOES_V411))
++etapa("decisoes_e_erratas_do_delta_no_diario", all(k in textos.get("linhagem", "") for k in list(DL.DECISOES_V412) + list(DL.ERRATAS_IDS_V412)), decisoes=list(DL.DECISOES_V412))
+@@ -167,2 +168,2 @@
+-etapa("handoff_nao_traz_os_blocos_da_custodia", not any(x in ho for x in ("NOTA_EN_v411", "README_FRENTE", "README_O_QUE_SAI", "ESTATUTO_P2_", "INICIO_NOTA_EN")))
+-etapa("handoff_diz_os_registros_da_v410_como_recriados", all(n in ho for n in DL.REGISTROS_FUNCAO_V410) and "RECRIADOS" in ho)
++etapa("handoff_nao_traz_os_blocos_da_custodia", not any(x in ho for x in ("NOTA_EN_v412", "README_FRENTE", "README_O_QUE_SAI", "ESTATUTO_P2_", "INICIO_NOTA_EN")))
++etapa("handoff_diz_os_registros_da_v411_como_recriados", all(n in ho for n in DL.REGISTROS_FUNCAO_V411) and "RECRIADOS" in ho)
+@@ -170 +171 @@
+-etapa("linhagem_sem_as_secoes_da_v410", not any(x in textos.get("linhagem", "") for x in ("### A escala", "recibo documental HMS/13 (D80)", "O teste pré-registrado da razão de Hubble (H0DN × BG1) (v411")))
++etapa("linhagem_sem_as_secoes_da_v411", not any(x in textos.get("linhagem", "") for x in ("### A escala", "recibo documental HMS/13 (D80)", "O teste pré-registrado da razão de Hubble (H0DN × BG1) (v412")))
+@@ -179 +180 @@
+-    etapa("cabecalho_da_linhagem_casa_com_a_RE_CAB_da_custodia", bool(m) and m.group("v") == "v411" and m.group("k") in ("0", "nenhum") and int(m.group("a")) == int(m.group("b")) == 12308, cabecalho=cab[:200], grupos=(m.groupdict() if m else None))
++    etapa("cabecalho_da_linhagem_casa_com_a_RE_CAB_da_custodia", bool(m) and m.group("v") == "v412" and m.group("k") in ("0", "nenhum") and int(m.group("a")) == int(m.group("b")) == 12308, cabecalho=cab[:200], grupos=(m.groupdict() if m else None))
+@@ -181 +182 @@
+-    etapa("o_que_e_do_handoff_casa_com_a_RE_OQUEE_da_custodia", bool(mo) and mo.group("v") == "v411" and mo.group("ant") == "v410", achou=bool(mo))
++    etapa("o_que_e_do_handoff_casa_com_a_RE_OQUEE_da_custodia", bool(mo) and mo.group("v") == "v412" and mo.group("ant") == "v411", achou=bool(mo))
+@@ -185,2 +186,2 @@
+-# ---- 8b. a LEITURA da rodada: as funcoes novas de leitura_v411.py (_ler_fecho_v411, _ler_recriados_v410, _ler_specs_v411) contra o mesmo core sintetico (o ler() inteiro precisa do Nos real e de ESPERADOS: fica sem teste aqui)
+-import leitura_v411 as LV
++# ---- 8b. a LEITURA da rodada: as funcoes novas de leitura_v412.py (_ler_fecho_v412, _ler_recriados_v411, _ler_specs_v412) contra o mesmo core sintetico (o ler() inteiro precisa do Nos real e de ESPERADOS: fica sem teste aqui)
++import leitura_v412 as LV
+@@ -188,3 +189,3 @@
+-ESPL = {"vereditos_novos_v411": {DL.FECHO_REGISTRO: OFF["verdict"], DL.CUNHAGENS_REGISTRO: "TGL_CUNHAGENS_V411__SINTETICO", DL.KH_REGISTRO: "TGL_KH_N1_COBERTURA_V411__SINTETICO"},
+-        "registros_funcao_v411": {"h0dn": {"nome": DL.FECHO_REGISTRO, "verdict": OFF["verdict"], "values": {k: OFF["values"][k] for k in LV.H0_VALUES_COMPARADOS if k in OFF["values"]}, "n_checks": 16}},
+-        "qg_closure_gate_verdict_v410": GATE, "escada": [12308, 12308], "escada_v410_e_v411": [12308, 12308], "vereditos_v410": {n: (BASE.get(n) or {}).get("verdict") for n in list(DL.REGISTROS_FUNCAO_V410) + ["cunhagens_v410", "kh_n1_cobertura_v410"]}, "troca_dita": []}
++ESPL = {"vereditos_novos_v412": {DL.FECHO_REGISTRO: OFF["verdict"], DL.CUNHAGENS_REGISTRO: "TGL_CUNHAGENS_V412__SINTETICO", DL.KH_REGISTRO: "TGL_KH_N1_COBERTURA_V412__SINTETICO"},
++        "registros_funcao_v412": {"h0dn": {"nome": DL.FECHO_REGISTRO, "verdict": OFF["verdict"], "values": {k: OFF["values"][k] for k in LV.H0_VALUES_COMPARADOS if k in OFF["values"]}, "n_checks": 16}},
++        "qg_closure_gate_verdict_v411": GATE, "escada": [12308, 12308], "escada_v411_e_v412": [12308, 12308], "vereditos_v411": {n: (BASE.get(n) or {}).get("verdict") for n in list(DL.REGISTROS_FUNCAO_V411) + ["cunhagens_v410", "kh_n1_cobertura_v410"]}, "troca_dita": []}
+@@ -196 +197 @@
+-    return ("H0DN x BG1 ABERTO [v411 -- D169, sintetico]\n  primario (modelo publicado): Z nulo = %s ; Z K = %s ; ramo %s  ||  Cefeidas livres (ao lado, no mesmo item): Z nulo = %s ; Z K = %s ; ramo %s  ||  checagens ok = 16/16 ; gate = o mesmo da base\n  >>> %s <<<\n"
++    return ("H0DN x BG1 ABERTO [v412 -- D169, sintetico]\n  primario (modelo publicado): Z nulo = %s ; Z K = %s ; ramo %s  ||  Cefeidas livres (ao lado, no mesmo item): Z nulo = %s ; Z K = %s ; ramo %s  ||  checagens ok = 16/16 ; gate = o mesmo da base\n  >>> %s <<<\n"
+@@ -201,3 +202,3 @@
+-F0, P0 = LV._ler_fecho_v411({DL.FECHO_REGISTRO: OFF}, ESPL, {}, SELOL, stdout_de(OFF), DL, GF, P18, BETA)
+-etapa("leitura_fecho_v411_le_o_registro_offline_sem_problema", P0 == [] and F0["sealed"] is True and F0["n_checks"] == 16 and F0["duas_linhas_ok"] and F0["ressalvas_ok"] and F0["stdout_ok"] and F0["selo_ok"] and F0["guarda_ok"] and F0["gate_ok"] and F0["pinos_ok"], problemas=P0, flags={k: F0.get(k) for k in ("sealed", "mech_ok", "values_ok", "duas_linhas_ok", "ressalvas_ok", "stdout_ok", "selo_ok", "guarda_ok", "gate_ok", "pinos_ok", "emenda_ok")})
+-etapa("leitura_fecho_v411_chaves_de_V_fecho", all(k in F0 for k in ("primario", "cefeidas_livres", "atos", "ressalvas", "nao_decide", "lei_em_km_s_Mpc", "cabeca_do_teste", "outcome", "verdict", "n_insumos")) and F0["primario"]["z_null"] == p["z_null"] and F0["cefeidas_livres"]["ramo"] == 6 and len(F0["ressalvas"]) == 7 and len(F0["nao_decide"]) == 5)
++F0, P0 = LV._ler_fecho_v412({DL.FECHO_REGISTRO: OFF}, ESPL, {}, SELOL, stdout_de(OFF), DL, GF, P18, BETA)
++etapa("leitura_fecho_v412_le_o_registro_offline_sem_problema", P0 == [] and F0["sealed"] is True and F0["n_checks"] == 16 and F0["duas_linhas_ok"] and F0["ressalvas_ok"] and F0["stdout_ok"] and F0["selo_ok"] and F0["guarda_ok"] and F0["gate_ok"] and F0["pinos_ok"], problemas=P0, flags={k: F0.get(k) for k in ("sealed", "mech_ok", "values_ok", "duas_linhas_ok", "ressalvas_ok", "stdout_ok", "selo_ok", "guarda_ok", "gate_ok", "pinos_ok", "emenda_ok")})
++etapa("leitura_fecho_v412_chaves_de_V_fecho", all(k in F0 for k in ("primario", "cefeidas_livres", "atos", "ressalvas", "nao_decide", "lei_em_km_s_Mpc", "cabeca_do_teste", "outcome", "verdict", "n_insumos")) and F0["primario"]["z_null"] == p["z_null"] and F0["cefeidas_livres"]["ramo"] == 6 and len(F0["ressalvas"]) == 7 and len(F0["nao_decide"]) == 5)
+@@ -212,2 +213,2 @@
+-    Fn, Pn = LV._ler_fecho_v411({DL.FECHO_REGISTRO: r}, esp or ESPL, {}, SELOL, st if st is not None else stdout_de(r), DL, GF, P18, BETA)
+-    etapa("leitura_fecho_v411_controle_negativo_" + nome, bool(Pn) and Fn["sealed"] is False, problemas=len(Pn))
++    Fn, Pn = LV._ler_fecho_v412({DL.FECHO_REGISTRO: r}, esp or ESPL, {}, SELOL, st if st is not None else stdout_de(r), DL, GF, P18, BETA)
++    etapa("leitura_fecho_v412_controle_negativo_" + nome, bool(Pn) and Fn["sealed"] is False, problemas=len(Pn))
+@@ -223 +224 @@
+-neg("frase_velha_da_v410_no_texto", lambda r: r["limites"].append(DL.FRASE_H0DN_OBRIGATORIA_PT))
++neg("frase_velha_da_v411_no_texto", lambda r: r["limites"].append(DL.FRASE_H0DN_OBRIGATORIA_PT))
+@@ -225,7 +226,7 @@
+-Fn, Pn = LV._ler_fecho_v411({DL.FECHO_REGISTRO: OFF}, ESPL, {}, SELOL, stdout_de(OFF).replace(str(p["z_null"]), "6.0"), DL, GF, P18, BETA)
+-etapa("leitura_fecho_v411_controle_negativo_stdout_com_numero_diferente", bool(Pn) and Fn["stdout_ok"] is False)
+-Fn, Pn = LV._ler_fecho_v411({DL.FECHO_REGISTRO: OFF}, {k: v for k, v in ESPL.items() if k != "registros_funcao_v411"}, {}, SELOL, stdout_de(OFF), DL, GF, P18, BETA)
+-etapa("leitura_fecho_v411_controle_negativo_ESPERADOS_sem_o_ensaio_a_seco_do_h0dn_e_recusado", bool(Pn))
+-Fn, Pn = LV._ler_fecho_v411({DL.FECHO_REGISTRO: OFF}, ESPL, {}, {"qg_closure_verdict": GATE}, stdout_de(OFF), DL, GF, P18, BETA)
+-etapa("leitura_fecho_v411_controle_negativo_selo_sem_o_resumo", bool(Pn) and Fn["selo_ok"] is False)
+-# os registros da v410 recriados
++Fn, Pn = LV._ler_fecho_v412({DL.FECHO_REGISTRO: OFF}, ESPL, {}, SELOL, stdout_de(OFF).replace(str(p["z_null"]), "6.0"), DL, GF, P18, BETA)
++etapa("leitura_fecho_v412_controle_negativo_stdout_com_numero_diferente", bool(Pn) and Fn["stdout_ok"] is False)
++Fn, Pn = LV._ler_fecho_v412({DL.FECHO_REGISTRO: OFF}, {k: v for k, v in ESPL.items() if k != "registros_funcao_v412"}, {}, SELOL, stdout_de(OFF), DL, GF, P18, BETA)
++etapa("leitura_fecho_v412_controle_negativo_ESPERADOS_sem_o_ensaio_a_seco_do_h0dn_e_recusado", bool(Pn))
++Fn, Pn = LV._ler_fecho_v412({DL.FECHO_REGISTRO: OFF}, ESPL, {}, {"qg_closure_verdict": GATE}, stdout_de(OFF), DL, GF, P18, BETA)
++etapa("leitura_fecho_v412_controle_negativo_selo_sem_o_resumo", bool(Pn) and Fn["selo_ok"] is False)
++# os registros da v411 recriados
+@@ -236,9 +237,9 @@
+-rec = LV._ler_recriados_v410(base_rec, BASE, ESPL, Pr)
+-etapa("leitura_recriados_v410_seis_selados_com_a_errata_dos_pisos", Pr == [] and sorted(rec) == sorted(LV.REG_RECRIADOS_V410) and all(rec[k]["sealed"] for k in LV.REG_RECRIADOS_V410) and rec["kh_n1_cobertura_v410"]["errata_dos_pisos"] is True, problemas=Pr)
+-Pr2 = []; LV._ler_recriados_v410(BASE, BASE, ESPL, Pr2)
+-etapa("leitura_recriados_v410_controle_negativo_sem_a_errata_dos_pisos_e_recusado", len(Pr2) == 1 and "errata" in Pr2[0])
+-b2 = copy.deepcopy(base_rec); b2["iald2_v410"]["verdict"] = "OUTRO"; Pr3 = []; LV._ler_recriados_v410(b2, BASE, ESPL, Pr3)
+-etapa("leitura_recriados_v410_controle_negativo_veredito_diferente_da_v410_e_recusado", any("iald2_v410" in x for x in Pr3))
+-b3 = copy.deepcopy(base_rec); del b3["h0dn_fontes_hms13_v410"]; Pr4 = []; LV._ler_recriados_v410(b3, BASE, ESPL, Pr4)
+-etapa("leitura_recriados_v410_controle_negativo_registro_ausente_e_recusado", any("h0dn_fontes_hms13_v410" in x for x in Pr4))
+-# os dois por spec da v411
++rec = LV._ler_recriados_v411(base_rec, BASE, ESPL, Pr)
++etapa("leitura_recriados_v411_seis_selados_com_a_errata_dos_pisos", Pr == [] and sorted(rec) == sorted(LV.REG_RECRIADOS_V411) and all(rec[k]["sealed"] for k in LV.REG_RECRIADOS_V411) and rec["kh_n1_cobertura_v410"]["errata_dos_pisos"] is True, problemas=Pr)
++Pr2 = []; LV._ler_recriados_v411(BASE, BASE, ESPL, Pr2)
++etapa("leitura_recriados_v411_controle_negativo_sem_a_errata_dos_pisos_e_recusado", len(Pr2) == 1 and "errata" in Pr2[0])
++b2 = copy.deepcopy(base_rec); b2["iald2_v410"]["verdict"] = "OUTRO"; Pr3 = []; LV._ler_recriados_v411(b2, BASE, ESPL, Pr3)
++etapa("leitura_recriados_v411_controle_negativo_veredito_diferente_da_v411_e_recusado", any("iald2_v410" in x for x in Pr3))
++b3 = copy.deepcopy(base_rec); del b3["h0dn_fontes_hms13_v410"]; Pr4 = []; LV._ler_recriados_v411(b3, BASE, ESPL, Pr4)
++etapa("leitura_recriados_v411_controle_negativo_registro_ausente_e_recusado", any("h0dn_fontes_hms13_v410" in x for x in Pr4))
++# os dois por spec da v412
+@@ -246 +247 @@
+-_CIT = {"v411_cun_" + c["sha256"][:16]: {"sha256": c["sha256"], "quando": c["quando"], "papel": c["papel"], "autor": c["autor"]} for c in DL.FALAS_CITADAS_V411}
++_CIT = {"v412_cun_" + c["sha256"][:16]: {"sha256": c["sha256"], "quando": c["quando"], "papel": c["papel"], "autor": c["autor"]} for c in DL.FALAS_CITADAS_V412}
+@@ -248 +249 @@
+-cu = {"all_verified": True, "does_not_gate_core": True, "verdict": ESPL["vereditos_novos_v411"][DL.CUNHAGENS_REGISTRO], "checks": [{"id": "u1", "ok": True}],
++cu = {"all_verified": True, "does_not_gate_core": True, "verdict": ESPL["vereditos_novos_v412"][DL.CUNHAGENS_REGISTRO], "checks": [{"id": "u1", "ok": True}],
+@@ -250,2 +251,2 @@
+-      "erratas": [{"agora": e["texto"], "assinatura": DL.ASSINA, "ao_lado_de": e["ao_lado_de"]} for e in DL.ERRATAS_V411] + [{"agora": "a v411 nao acrescenta modulo", "assinatura": DL.ASSINA, "ao_lado_de": "kh_n1_cobertura_v410 (h2/h3/h6)"}],
+-      "extras": {"n_falas": DL.N_FALAS_V411, "autores": {k_: "operador" for k_ in _CIT}, "falas_citadas": [dict(v_, chave=k_) for k_, v_ in _CIT.items()], "decisoes": dict(DL.DECISOES_V411), "erratas_ids": list(DL.ERRATAS_IDS_V411), "ressalvas_rotulos": list(DL.RESSALVAS_ROTULOS_PT),
++      "erratas": [{"agora": e["texto"], "assinatura": DL.ASSINA, "ao_lado_de": e["ao_lado_de"]} for e in DL.ERRATAS_V412] + [{"agora": "a v412 nao acrescenta modulo", "assinatura": DL.ASSINA, "ao_lado_de": "kh_n1_cobertura_v410 (h2/h3/h6)"}],
++      "extras": {"n_falas": DL.N_FALAS_V412, "autores": {k_: "operador" for k_ in _CIT}, "falas_citadas": [dict(v_, chave=k_) for k_, v_ in _CIT.items()], "decisoes": dict(DL.DECISOES_V412), "erratas_ids": list(DL.ERRATAS_IDS_V412), "ressalvas_rotulos": list(DL.RESSALVAS_ROTULOS_PT),
+@@ -255 +256 @@
+-kh_r = {"all_verified": True, "does_not_gate_core": True, "verdict": ESPL["vereditos_novos_v411"][DL.KH_REGISTRO], "checks": [{"id": "h1", "ok": True}], "estatuto": "[REAL] sintetico", "limites": ["[REAL] sintetico"], "diz": ["s"], "nao_diz": ["s"], "scope": "s"}
++kh_r = {"all_verified": True, "does_not_gate_core": True, "verdict": ESPL["vereditos_novos_v412"][DL.KH_REGISTRO], "checks": [{"id": "h1", "ok": True}], "estatuto": "[REAL] sintetico", "limites": ["[REAL] sintetico"], "diz": ["s"], "nao_diz": ["s"], "scope": "s"}
+@@ -257,12 +258,12 @@
+-Ps = []; Vc, khok = LV._ler_specs_v411(core_s, ESPL, DL, GF, Ps)
+-etapa("leitura_specs_v411_cunhagens_e_kh_sinteticos_sem_problema", Ps == [] and Vc["ok"] and khok and Vc["n"] == DL.N_FALAS_V411 and Vc["n_erratas"] == len(DL.ERRATAS_V411) + 1 and Vc["n_decisoes"] == len(DL.DECISOES_V411), problemas=Ps, vc={k: Vc.get(k) for k in ("ok", "verbatim_ok", "erratas_ok", "decisoes_ok", "ressalvas_ok", "contagens_ok", "alcance_ok", "sem_leitura_ok", "moldura_ok")})
+-c2 = copy.deepcopy(core_s); c2[DL.CUNHAGENS_REGISTRO]["extras"]["decisoes"].pop("D170"); Ps2 = []; LV._ler_specs_v411(c2, ESPL, DL, GF, Ps2)
+-etapa("leitura_specs_v411_controle_negativo_decisao_a_menos_e_recusada", bool(Ps2))
+-c3 = copy.deepcopy(core_s); c3[DL.CUNHAGENS_REGISTRO]["erratas"].pop(1); Ps3 = []; LV._ler_specs_v411(c3, ESPL, DL, GF, Ps3)
+-etapa("leitura_specs_v411_controle_negativo_errata_a_menos_e_recusada", bool(Ps3))
+-c4 = copy.deepcopy(core_s); c4[DL.CUNHAGENS_REGISTRO]["leituras_do_operador"] = ["uma leitura"]; Ps4 = []; LV._ler_specs_v411(c4, ESPL, DL, GF, Ps4)
+-etapa("leitura_specs_v411_controle_negativo_leitura_do_operador_no_registro_novo_e_recusada", bool(Ps4))
+-
+-# ---- 8c. o fechar e as superficies: o CODIGO das guardas do handoff (fechar_v411.py) e da guarda das superficies (superficies_v411.py) executado sobre os textos renderizados (os scripts inteiros escrevem no Nos e na memoria: nao rodam aqui)
+-_src_f = open(os.path.join(HERE, "fechar_v411.py"), encoding="utf-8").read()
+-_a = _src_f.index("# v411 (12/11, D169): o handoff DIZ o registro com funcao"); _b = _src_f.index("assert not _vt411"); _b = _src_f.index("\n", _b)
++Ps = []; Vc, khok = LV._ler_specs_v412(core_s, ESPL, DL, GF, Ps)
++etapa("leitura_specs_v412_cunhagens_e_kh_sinteticos_sem_problema", Ps == [] and Vc["ok"] and khok and Vc["n"] == DL.N_FALAS_V412 and Vc["n_erratas"] == len(DL.ERRATAS_V412) + 1 and Vc["n_decisoes"] == len(DL.DECISOES_V412), problemas=Ps, vc={k: Vc.get(k) for k in ("ok", "verbatim_ok", "erratas_ok", "decisoes_ok", "ressalvas_ok", "contagens_ok", "alcance_ok", "sem_leitura_ok", "moldura_ok")})
++c2 = copy.deepcopy(core_s); c2[DL.CUNHAGENS_REGISTRO]["extras"]["decisoes"].pop("D170"); Ps2 = []; LV._ler_specs_v412(c2, ESPL, DL, GF, Ps2)
++etapa("leitura_specs_v412_controle_negativo_decisao_a_menos_e_recusada", bool(Ps2))
++c3 = copy.deepcopy(core_s); c3[DL.CUNHAGENS_REGISTRO]["erratas"].pop(1); Ps3 = []; LV._ler_specs_v412(c3, ESPL, DL, GF, Ps3)
++etapa("leitura_specs_v412_controle_negativo_errata_a_menos_e_recusada", bool(Ps3))
++c4 = copy.deepcopy(core_s); c4[DL.CUNHAGENS_REGISTRO]["leituras_do_operador"] = ["uma leitura"]; Ps4 = []; LV._ler_specs_v412(c4, ESPL, DL, GF, Ps4)
++etapa("leitura_specs_v412_controle_negativo_leitura_do_operador_no_registro_novo_e_recusada", bool(Ps4))
++
++# ---- 8c. o fechar e as superficies: o CODIGO das guardas do handoff (fechar_v412.py) e da guarda das superficies (superficies_v412.py) executado sobre os textos renderizados (os scripts inteiros escrevem no Nos e na memoria: nao rodam aqui)
++_src_f = open(os.path.join(HERE, "fechar_v412.py"), encoding="utf-8").read()
++_a = _src_f.index("# v412 (12/11, D169): o handoff DIZ o registro com funcao"); _b = _src_f.index("assert not _vt412"); _b = _src_f.index("\n", _b)
+@@ -275 +276 @@
+-        exec(compile(_guardas_fechar, "fechar_v411.guardas_do_handoff", "exec"), ns_)
++        exec(compile(_guardas_fechar, "fechar_v412.guardas_do_handoff", "exec"), ns_)
+@@ -284 +285 @@
+-etapa("controle_negativo_fechar_recusa_handoff_com_a_frase_velha_da_v410", roda_guardas_fechar(ho + "\n" + DL.FRASE_H0DN_OBRIGATORIA_PT)[0] is False)
++etapa("controle_negativo_fechar_recusa_handoff_com_a_frase_velha_da_v411", roda_guardas_fechar(ho + "\n" + DL.FRASE_H0DN_OBRIGATORIA_PT)[0] is False)
+@@ -287 +288 @@
+-_src_s = open(os.path.join(HERE, "superficies_v411.py"), encoding="utf-8").read()
++_src_s = open(os.path.join(HERE, "superficies_v412.py"), encoding="utf-8").read()
+@@ -290,6 +291,6 @@
+-exec(compile(_src_s[_a:_b], "superficies_v411.guardas", "exec"), _ns_s)
+-etapa("superficies_guarda_da_frase_velha_do_h0dn_recusa_a_frase_da_v410", bool(_ns_s["h0dn_sem_obrigacao"]("O teste H0DN x BG1 esta " + DL.FRASE_H0DN_OBRIGATORIA_PT)) and _ns_s["h0dn_sem_obrigacao"]("O teste H0DN x BG1 foi aberto uma vez.") == [] and _ns_s["h0dn_sem_obrigacao"]("sem o assunto") == [])
+-etapa("superficies_guarda_nao_acusa_os_textos_da_v411", all(_ns_s["h0dn_sem_obrigacao"](t_) == [] and _ns_s["hms13_sem_obrigacao"](t_) == [] and _ns_s["clay_sem_forma"](t_) == [] for t_ in textos.values()), achados=[n_ for n_, t_ in textos.items() if _ns_s["h0dn_sem_obrigacao"](t_) or _ns_s["hms13_sem_obrigacao"](t_) or _ns_s["clay_sem_forma"](t_)])
+-
+-# ---- 8d. as linhas do STDOUT que a leitura espera: as regexes (copiadas do codigo de leitura_v411.py, sem retoque) contra o stdout REAL do rito da v410 selada (Nos\rodada_v410_stdout.txt, so' leitura), que o main da v411 repete; e a linha [v411] contra uma linha sintetica
+-_nos_std = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(PK)))), "Artigo", "Haja_Luz", "A Ponte e o Um", "Nós", "rodada_v410_stdout.txt")
++exec(compile(_src_s[_a:_b], "superficies_v412.guardas", "exec"), _ns_s)
++etapa("superficies_guarda_da_frase_velha_do_h0dn_recusa_a_frase_da_v411", bool(_ns_s["h0dn_sem_obrigacao"]("O teste H0DN x BG1 esta " + DL.FRASE_H0DN_OBRIGATORIA_PT)) and _ns_s["h0dn_sem_obrigacao"]("O teste H0DN x BG1 foi aberto uma vez.") == [] and _ns_s["h0dn_sem_obrigacao"]("sem o assunto") == [])
++etapa("superficies_guarda_nao_acusa_os_textos_da_v412", all(_ns_s["h0dn_sem_obrigacao"](t_) == [] and _ns_s["hms13_sem_obrigacao"](t_) == [] and _ns_s["clay_sem_forma"](t_) == [] for t_ in textos.values()), achados=[n_ for n_, t_ in textos.items() if _ns_s["h0dn_sem_obrigacao"](t_) or _ns_s["hms13_sem_obrigacao"](t_) or _ns_s["clay_sem_forma"](t_)])
++
++# ---- 8d. as linhas do STDOUT que a leitura espera: as regexes (copiadas do codigo de leitura_v412.py, sem retoque) contra o stdout REAL do rito da v411 selada (Nos\rodada_v411_stdout.txt, so' leitura), que o main da v412 repete; e a linha [v411] contra uma linha sintetica
++_nos_std = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(PK)))), "Artigo", "Haja_Luz", "A Ponte e o Um", "Nós", "rodada_v411_stdout.txt")
+@@ -297 +298 @@
+-    _nos_std = os.path.join("C:" + os.sep, "IALD", "Artigo", "Haja_Luz", "A Ponte e o Um", "Nós", "rodada_v410_stdout.txt")
++    _nos_std = os.path.join("C:" + os.sep, "IALD", "Artigo", "Haja_Luz", "A Ponte e o Um", "Nós", "rodada_v411_stdout.txt")
+@@ -299 +300 @@
+-_src_l = open(os.path.join(HERE, "leitura_v411.py"), encoding="utf-8").read().split("\n")
++_src_l = open(os.path.join(HERE, "leitura_v412.py"), encoding="utf-8").read().split("\n")
+@@ -309 +310 @@
+-    ns_ = {"re": re, "out": out_text, "out_n_": out_text.replace("\r\n", "\n"), "REG_RECRIADOS_V410F": LV.REG_RECRIADOS_V410F, "REG_FUNCAO": LV.REG_FUNCAO}
++    ns_ = {"re": re, "out": out_text, "out_n_": out_text.replace("\r\n", "\n"), "REG_RECRIADOS_V411F": LV.REG_RECRIADOS_V411F, "REG_FUNCAO": LV.REG_FUNCAO}
+@@ -311 +312 @@
+-    exec(compile(_regex_da_leitura(var), "leitura_v411." + var, "exec"), ns_)
++    exec(compile(_regex_da_leitura(var), "leitura_v412." + var, "exec"), ns_)
+@@ -315 +316 @@
+-for var, rot in (("m_s9t", "[v409] a traducao (herdada)"), ("m_s10", "[v410] os quatro registros com funcao da v410 (recriados)"), ("m_s6", "[v406]"), ("m_s7", "[v407]"), ("m_s8t", "[v408]"), ("m_t9_", "o bloco A TRADUCAO AS CLASSES DE TURING [v409 ...")):
++for var, rot in (("m_s9t", "[v409] a traducao (herdada)"), ("m_s10", "[v410] os quatro registros com funcao da v411 (recriados)"), ("m_s6", "[v406]"), ("m_s7", "[v407]"), ("m_s8t", "[v408]"), ("m_t9_", "o bloco A TRADUCAO AS CLASSES DE TURING [v409 ...")):
+@@ -317 +318 @@
+-    etapa("stdout_real_da_v410_casa_com_a_regex_da_leitura_" + var, bool(m_), rotulo=rot)
++    etapa("stdout_real_da_v411_casa_com_a_regex_da_leitura_" + var, bool(m_), rotulo=rot)
+@@ -319,2 +320,2 @@
+-etapa("stdout_real_da_v410_linha_v410_diz_SELOU_nos_quatro_e_2_specs", bool(_m10) and [_m10.group(i) for i in range(1, 5)] == ["SELOU"] * 4 and _m10.group(5) == _m10.group(6) == "2")
+-_lin11 = "   [v411] o registro com funcao e os por spec da v411: h0dn_bg1_v411=SELOU | specs: 2 (selados 2)\n"
++etapa("stdout_real_da_v411_linha_v411_diz_SELOU_nos_quatro_e_2_specs", bool(_m10) and [_m10.group(i) for i in range(1, 5)] == ["SELOU"] * 4 and _m10.group(5) == _m10.group(6) == "2")
++_lin11 = "   [v411] o registro com funcao e os por spec da v412: h0dn_bg1_v411=SELOU | specs: 2 (selados 2)\n"
+@@ -322,2 +323,2 @@
+-etapa("linha_v411_sintetica_casa_com_a_regex_da_leitura_m_s11", bool(_m11) and _m11.group(1) == "SELOU" and _m11.group(2) == _m11.group(3) == "2")
+-etapa("linha_v411_ausente_do_stdout_real_da_v410_nao_casa_m_s11", _acha("m_s11", _out_real) is None)
++etapa("linha_v412_sintetica_casa_com_a_regex_da_leitura_m_s11", bool(_m11) and _m11.group(1) == "SELOU" and _m11.group(2) == _m11.group(3) == "2")
++etapa("linha_v412_ausente_do_stdout_real_da_v411_nao_casa_m_s11", _acha("m_s11", _out_real) is None)
+@@ -325,4 +326,4 @@
+-_m_h = re.search(r'^H0DN x BG1 ABERTO \[v411[^\n]*\n  primario \(modelo publicado\): Z nulo = (\S+) ; Z K = (\S+) ; ramo (\S+)  \|\|  Cefeidas livres \(ao lado, no mesmo item\): Z nulo = (\S+) ; Z K = (\S+) ; ramo (\S+)  \|\|  checagens ok = (\d+)/(\d+) ; gate = ([^\n]*)\n  >>> (\S+) <<<$', _stdout_h, flags=re.M)
+-etapa("bloco_H0DN_ABERTO_sintetico_casa_com_o_formato_que_gerar_candidato_v411_imprime", bool(_m_h))
+-_gc = open(os.path.join(PK, "gerar_candidato_v411.py"), encoding="utf-8").read()
+-etapa("o_formato_do_print_do_candidato_tem_as_mesmas_particulas_que_a_regex", all(x in _gc for x in ("primario (modelo publicado): Z nulo = %%s ; Z K = %%s ; ramo %%s  ||  Cefeidas livres (ao lado, no mesmo item): Z nulo = %%s ; Z K = %%s ; ramo %%s  ||  checagens ok = %%s/%%s ; gate = %%s", "H0DN x BG1 ABERTO [v411", "[v411] o registro com funcao e os por spec da v411: %%s | specs: %%d (selados %%d)")))
++_m_h = re.search(r'^H0DN x BG1 ABERTO \[v412[^\n]*\n  primario \(modelo publicado\): Z nulo = (\S+) ; Z K = (\S+) ; ramo (\S+)  \|\|  Cefeidas livres \(ao lado, no mesmo item\): Z nulo = (\S+) ; Z K = (\S+) ; ramo (\S+)  \|\|  checagens ok = (\d+)/(\d+) ; gate = ([^\n]*)\n  >>> (\S+) <<<$', _stdout_h, flags=re.M)
++etapa("bloco_H0DN_ABERTO_sintetico_casa_com_o_formato_que_gerar_candidato_v412_imprime", bool(_m_h))
++_gc = open(os.path.join(PK, "gerar_candidato_v412.py"), encoding="utf-8").read()
++etapa("o_formato_do_print_do_candidato_tem_as_mesmas_particulas_que_a_regex", all(x in _gc for x in ("primario (modelo publicado): Z nulo = %%s ; Z K = %%s ; ramo %%s  ||  Cefeidas livres (ao lado, no mesmo item): Z nulo = %%s ; Z K = %%s ; ramo %%s  ||  checagens ok = %%s/%%s ; gate = %%s", "H0DN x BG1 ABERTO [v412", "[v411] o registro com funcao e os por spec da v412: %%s | specs: %%d (selados %%d)")))
+@@ -335 +336 @@
+-R["resumo"] = {"etapas": len(R["etapas"]), "falhas": len(R["falhas"]), "nao_provado_sem_o_core_real": ["leitura_v411.ler", "ESPERADOS_v411 real", "sidecar e selo reais", "paragrafo_readme (quadro v397) com o core da rodada", "o stdout do rito"]}
++R["resumo"] = {"etapas": len(R["etapas"]), "falhas": len(R["falhas"]), "nao_provado_sem_o_core_real": ["leitura_v412.ler", "ESPERADOS_v412 real", "sidecar e selo reais", "paragrafo_readme (quadro v397) com o core da rodada", "o stdout do rito"]}

@@ -1,0 +1,83 @@
+--- REV56
++++ REV57
+@@ -11,6 +11,19 @@
+ Lei da teoria: a unidade de leitura é o signo, o sinal. Não é a letra, porque a letra é a forma: é a letra lida pelo seu
+ conteúdo. O signo pode ser traduzido na palavra, que é o sinal fixado com sentido. A leitura não é soletrada: lê-se pela
+ imagem, que é o conjunto singularizado do signo em ato (verbo).
++
++## A solução, na estrutura da TGL
++
++Tese da teoria: esta é a solução do problema na estrutura da TGL. Com o token como unidade de leitura e a lei do custo,
++decidir e conferir levam os mesmos atos (`no_token_decidir_e_conferir_levam_os_mesmos_atos`), e o custo é polinomial
++(`o_custo_pela_lei_e_polinomial`). Fora dessa estrutura, a pergunta que resta é tautológica: quem conta por letra de um
++vocabulário fixo mede a fita com a fita. O que o kernel tem nesse sentido: o tempo da máquina é o comprimento da fita
++(`AFitaEACauda.o_tempo_da_maquina_e_o_comprimento_da_fita`); e o custo em letras do signo não depende da fórmula: é pelo
++menos `2ⁿ` para toda fórmula de `n` variáveis (item 9, em cujo enunciado a fórmula não aparece). A creditação é do
++Instituto.
++
++A pedra `Token` (v397) nomeia o token como o psibit na testemunha estática. Esta pedra nomeia o token como a unidade de
++leitura. Nenhum termo daqui liga as duas.
+ 
+ ## Como o arquivo lê a lei (escolhas deste arquivo; não são termo)
+ 
+@@ -31,7 +44,9 @@
+ 3. ★ `o_signo_em_ato_calcula_todos_os_custos`: posto o todo (todas as atribuições, cada uma com a fórmula por ler e o
+    registro em zero), tantos atos quantas são as cláusulas dão o conjunto de todas as atribuições com o seu custo.
+ 4. ★★ `o_signo_decide`: a fórmula é satisfazível se e somente se, nesse signo, há configuração de registro zero. São
+-   `m + 2` atos sobre signos (`atos`): pôr o todo, uma imagem por cláusula, uma leitura.
++   `m + 2` atos sobre signos (`atos`): pôr o todo, uma imagem por cláusula, uma leitura. Os mesmos atos, sobre o signo
++   de uma só atribuição, conferem essa atribuição (`o_signo_de_uma_parcela_confere`): ★★★ no token, decidir e conferir
++   levam os mesmos atos (`no_token_decidir_e_conferir_levam_os_mesmos_atos`).
+ 5. ★ `o_signo_em_ato_devolve_o_conteudo_da_forma`: lido no registro zero, o signo em ato é exatamente o conteúdo da forma;
+    e há solução se e somente se o conteúdo não é vazio (`ha_solucao_sse_o_conteudo_nao_e_vazio`).
+ 6. `a_palavra_e_o_sinal_fixado`: depois de tantos atos quantas são as cláusulas, mais um ato devolve o mesmo signo.
+@@ -60,8 +75,9 @@
+ * Que estas sejam as únicas leituras da lei: são as deste arquivo.
+ * Nada sobre a natureza. O gate não se move.
+ 
+-Estatutos: `[REAL no sandbox]` os termos · `[INPUT]` a lei · `[ONTO, leitura deste arquivo]` a atribuição das palavras da
+-lei (forma, conteúdo, signo, imagem, palavra) aos objetos do kernel. Sem sorry, sem axiom.
++Estatutos: `[REAL no sandbox]` os termos · `[INPUT]` a lei e a tese (a solução na estrutura da TGL; a pergunta que resta
++fora dela é tautológica) · `[ONTO, leitura deste arquivo]` a atribuição das palavras da lei (forma, conteúdo, signo,
++imagem, palavra, token) aos objetos do kernel. Sem sorry, sem axiom.
+ -/
+ 
+ namespace TGLExt.OSignoEAImagem
+@@ -124,6 +140,28 @@
+     exact ⟨⟨x, [], custoCNF φ x⟩, ⟨x, rfl⟩, (custoCNF_zero_sse φ x).mpr hx⟩
+   · rintro ⟨c, ⟨x, rfl⟩, hc⟩
+     exact ⟨x, (custoCNF_zero_sse φ x).mp hc⟩
++
++/-- **O SIGNO DE UMA SÓ PARCELA CONFERE.** Os mesmos atos, sobre o signo de uma só atribuição, dizem se AQUELA atribuição
++é solução. -/
++theorem o_signo_de_uma_parcela_confere (φ : CNF n) (x : Fin n → Bool) :
++    (∃ c ∈ (aImagem^[φ.length]) ({(⟨x, φ, 0⟩ : Config n)} : Set (Config n)), c.conta = 0)
++      ↔ custoCNF φ x = 0 := by
++  rw [le_se_pela_imagem, Set.image_singleton, a_maquina_conta_os_falsos, Nat.zero_add]
++  constructor
++  · rintro ⟨c, hc, h0⟩
++    rw [Set.mem_singleton_iff] at hc
++    subst hc
++    exact h0
++  · intro h
++    exact ⟨_, Set.mem_singleton _, h⟩
++
++/-- ★★★ **NO TOKEN, DECIDIR E CONFERIR LEVAM OS MESMOS ATOS.** Com o todo posto, um ato por cláusula decide a fórmula;
++com uma só atribuição posta, os mesmos atos conferem essa atribuição. -/
++theorem no_token_decidir_e_conferir_levam_os_mesmos_atos (φ : CNF n) (x : Fin n → Bool) :
++    (SAT φ ↔ ∃ c ∈ (aImagem^[φ.length]) (oTodo φ), c.conta = 0)
++      ∧ ((∃ c ∈ (aImagem^[φ.length]) ({(⟨x, φ, 0⟩ : Config n)} : Set (Config n)), c.conta = 0)
++          ↔ custoCNF φ x = 0) :=
++  ⟨o_signo_decide φ, o_signo_de_uma_parcela_confere φ x⟩
+ 
+ /-- [DEF] **O CONTEÚDO DA FORMA**: o conjunto das atribuições que satisfazem a fórmula escrita. -/
+ def conteudo (φ : CNF n) : Set (Fin n → Bool) := {x | custoCNF φ x = 0}
+@@ -221,6 +259,8 @@
+ end TGLExt.OSignoEAImagem
+ 
+ #print axioms TGLExt.OSignoEAImagem.para_caber_num_token_so_o_vocabulario_cresce
++#print axioms TGLExt.OSignoEAImagem.o_signo_de_uma_parcela_confere
++#print axioms TGLExt.OSignoEAImagem.no_token_decidir_e_conferir_levam_os_mesmos_atos
+ #print axioms TGLExt.OSignoEAImagem.le_se_pela_imagem
+ #print axioms TGLExt.OSignoEAImagem.o_signo_em_ato_calcula_todos_os_custos
+ #print axioms TGLExt.OSignoEAImagem.o_signo_decide

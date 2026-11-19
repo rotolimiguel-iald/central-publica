@@ -1,0 +1,182 @@
+--- v411/p00_precondicoes_v411.py
++++ v412/p00_precondicoes_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/p00_precondicoes_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/p00_precondicoes_v412.py.diff
+@@ -3 +4 @@
+-"""p00_precondicoes_v411.py -- confere, SO LENDO, as pre-condicoes de bytes da v411 ANTES do candidato e antes de instalar. Nada e' escrito fora de PRECONDICOES_v411.json (nesta pasta). Os pinos sao LIDOS dos arquivos, nunca digitados.
++"""p00_precondicoes_v412.py -- confere, SO LENDO, as pre-condicoes de bytes da v412 ANTES do candidato e antes de instalar. Nada e' escrito fora de PRECONDICOES_v412.json (nesta pasta). Os pinos sao LIDOS dos arquivos, nunca digitados.
+@@ -5 +6 @@
+-O que confere (DESENHO_v411 e as licoes D133/D135 da v410): (1) a base v410 selada; (2) o kernel do sandbox k411c (o da v410: fontes, raiz, Audit, log do Audit e linha TOTAL iguais; nenhuma bandeira nova); (3) os 18 insumos embutidos, os 7 citados,
++O que confere (DESENHO_v411 e as licoes D133/D135 da v411): (1) a base v411 selada; (2) o kernel do sandbox k412c (o da v411: fontes, raiz, Audit, log do Audit e linha TOTAL iguais; nenhuma bandeira nova); (3) os 18 insumos embutidos, os 7 citados,
+@@ -9,2 +10,2 @@
+-mecanica de rotulo nunca adaptada); (9) PENDENTES ditos: TOPO_RATIFICADO_v411.json (gerencia), o candidato e o que vem depois dele (ensaio, esperados, conferidores, citacoes, B20 pre-selo, harnesses), o pino do memoria.py e a folga do MEMORY.md
+-(gerencia). uso: python -B -X utf8 p00_precondicoes_v411.py"""
++mecanica de rotulo nunca adaptada); (9) PENDENTES ditos: TOPO_RATIFICADO_v412.json (gerencia), o candidato e o que vem depois dele (ensaio, esperados, conferidores, citacoes, B21 pre-selo, harnesses), o pino do memoria.py e a folga do MEMORY.md
++(gerencia). uso: python -B -X utf8 p00_precondicoes_v412.py"""
+@@ -14 +15 @@
+-import delta_v411 as DL  # noqa: E402
++import delta_v412 as DL  # noqa: E402
+@@ -43,2 +44,2 @@
+-BC = J("BASE_V410_COPIA.json")
+-tenta("base_v410 = a v410 selada do DESENHO (copia de bytes conferida)", lambda: (BC is not None and BC["base_sha16"] == DL.BASE_SHA16_DA_ORDEM and sha(os.path.join(HERE, DL.BASE_DIR, "um.py"))[:16] == DL.BASE_SHA16_DA_ORDEM, BC and BC.get("base_sha16")))
++BC = J("BASE_V411_COPIA.json")
++tenta("base_v411 = a v411 selada do DESENHO (copia de bytes conferida)", lambda: (BC is not None and BC["base_sha16"] == DL.BASE_SHA16_DA_ORDEM and sha(os.path.join(HERE, DL.BASE_DIR, "um.py"))[:16] == DL.BASE_SHA16_DA_ORDEM, BC and BC.get("base_sha16")))
+@@ -46,4 +47,4 @@
+-POS = J(os.path.join("kernel", "POS_BUILD_v411.json")); REC = J(os.path.join("kernel", "KERNEL_RECIBO_v411.json")); FL = J(os.path.join("kernel", "FLAGS_v411.json")); CF = J("CONFERENCIA_FONTES_K411C_v411.json")
+-tenta("kernel k411c: build incremental e Audit rc 0, nenhum modulo compilado, log do Audit com os bytes da v410, linha TOTAL da v410", lambda: (POS is not None and POS["ok"] is True and all(POS["criterios"].values()), POS and POS.get("criterios")))
+-tenta("kernel k411c: fontes identicas as do Nos v410 selado (nada so' num lado)", lambda: (CF is not None and CF["identico"] is True and CF["selo_um_version"] == "v410", CF and {k_: CF[k_] for k_ in ("n_comuns", "n_diferentes")}))
+-tenta("kernel: recibo rc 0, sem sorry e sem erro; nenhuma bandeira nova; escada = a da base", lambda: (REC is not None and REC["rc"] == 0 and REC["sorry"] == 0 and REC["erros"] == 0 and FL["n_flags"] == 0 and POS["escada"][0] == POS["escada"][1] == POS["E410"], (POS or {}).get("escada")))
++POS = J(os.path.join("kernel", "POS_BUILD_v412.json")); REC = J(os.path.join("kernel", "KERNEL_RECIBO_v412.json")); FL = J(os.path.join("kernel", "FLAGS_v412.json")); CF = J("CONFERENCIA_FONTES_K412C_v412.json")
++tenta("kernel k412c: build incremental e Audit rc 0, nenhum modulo compilado, log do Audit com os bytes da v411, linha TOTAL da v411", lambda: (POS is not None and POS["ok"] is True and all(POS["criterios"].values()), POS and POS.get("criterios")))
++tenta("kernel k412c: fontes identicas as do Nos v411 selado (nada so' num lado)", lambda: (CF is not None and CF["identico"] is True and CF["selo_um_version"] == "v411", CF and {k_: CF[k_] for k_ in ("n_comuns", "n_diferentes")}))
++tenta("kernel: recibo rc 0, sem sorry e sem erro; nenhuma bandeira nova; escada = a da base", lambda: (REC is not None and REC["rc"] == 0 and REC["sorry"] == 0 and REC["erros"] == 0 and FL["n_flags"] == 0 and POS["escada"][0] == POS["escada"][1] == POS["E411"], (POS or {}).get("escada")))
+@@ -51,2 +52,2 @@
+-MI = J("MANIFESTO_INSUMOS_v411.json")
+-_NCOP = len(DL.INSUMOS_V411) + len(DL.CITADOS_V411) + len(DL.TEXTOS_DA_GERENCIA_CITADOS) + len(DL.FALAS_V411)   # (12/11: 18 + 7 + 6 + 11, lidas do delta)
++MI = J("MANIFESTO_INSUMOS_v412.json")
++_NCOP = len(DL.INSUMOS_V412) + len(DL.CITADOS_V412) + len(DL.TEXTOS_DA_GERENCIA_CITADOS) + len(DL.FALAS_V412)   # (12/11: 18 + 7 + 6 + 11, lidas do delta)
+@@ -54,3 +55,3 @@
+-tenta("os 18 insumos do DESENHO existem e tem o sha16 dele (delta_v411, lido da tabela)", lambda: (len(DL.INSUMOS_V411) == 18 and all(sha(i_["arquivo"]) == i_["sha256"] for i_ in DL.INSUMOS_V411), len(DL.INSUMOS_V411)))
+-CG = J("VERBATIM_CONGELADO_v411.json")
+-tenta("a lista congelada das falas: %d (9 do DESENHO + 2 do AO LADO de 12/11), cada uma com o sha256 do arquivo" % DL.N_FALAS_V411, lambda: (CG is not None and CG["n"] == DL.N_FALAS_V411 == len(CG["registro"]) and all(sha(r_["arquivo"]) == r_["sha256"] for r_ in CG["registro"]), CG and CG["n"]))
++tenta("os 18 insumos do DESENHO existem e tem o sha16 dele (delta_v412, lido da tabela)", lambda: (len(DL.INSUMOS_V412) == 18 and all(sha(i_["arquivo"]) == i_["sha256"] for i_ in DL.INSUMOS_V412), len(DL.INSUMOS_V412)))
++CG = J("VERBATIM_CONGELADO_v412.json")
++tenta("a lista congelada das falas: %d (9 do DESENHO + 2 do AO LADO de 12/11), cada uma com o sha256 do arquivo" % DL.N_FALAS_V412, lambda: (CG is not None and CG["n"] == DL.N_FALAS_V412 == len(CG["registro"]) and all(sha(r_["arquivo"]) == r_["sha256"] for r_ in CG["registro"]), CG and CG["n"]))
+@@ -59 +60 @@
+-    import guarda_material_privado_v411 as GMP
++    import guarda_material_privado_v412 as GMP
+@@ -65 +66 @@
+-    if os.path.exists(DL.CANDIDATO_ARQ):   # (o candidato herda as ocorrencias do um.py selado da v410: a checagem e' que NENHUMA e' nova; so' contagens, nada impresso)
++    if os.path.exists(DL.CANDIDATO_ARQ):   # (o candidato herda as ocorrencias do um.py selado da v411: a checagem e' que NENHUMA e' nova; so' contagens, nada impresso)
+@@ -68 +69 @@
+-        chk("a guarda de material privado sobre o CANDIDATO: nenhuma ocorrencia a mais que no um.py da v410 selada (o texto novo da v411 e' varrido limpo abaixo, em v411_pins.py e nos scripts)", _occ == _ob, {"base": _ob, "candidato": _occ})
++        chk("a guarda de material privado sobre o CANDIDATO: nenhuma ocorrencia a mais que no um.py da v411 selada (o texto novo da v412 e' varrido limpo abaixo, em v412_pins.py e nos scripts)", _occ == _ob, {"base": _ob, "candidato": _occ})
+@@ -74 +75 @@
+-tenta("VETO: nenhum insumo embutido nem citado vem de work\\h0dn_bg1_v410_09nov\\kimi\\", lambda: (not any(os.path.normcase(x_["arquivo"]).startswith(os.path.normcase(DL.H0DN_PASTA_VEDADA_V410)) for x_ in DL.INSUMOS_V411 + DL.CITADOS_V411), DL.H0DN_PASTA_VEDADA_V410))
++tenta("VETO: nenhum insumo embutido nem citado vem de work\\h0dn_bg1_v410_09nov\\kimi\\", lambda: (not any(os.path.normcase(x_["arquivo"]).startswith(os.path.normcase(DL.H0DN_PASTA_VEDADA_V411)) for x_ in DL.INSUMOS_V412 + DL.CITADOS_V412), DL.H0DN_PASTA_VEDADA_V411))
+@@ -76 +77 @@
+-TO = J("TESTE_H0DN_OFFLINE_v411.json"); GFJ = J("GUARDA_FRASES_v411.json"); TQ = J("TESTE_QUADRO_v411.json"); PV = J("PREVOO_GERADOR_v411.json")
++TO = J("TESTE_H0DN_OFFLINE_v412.json"); GFJ = J("GUARDA_FRASES_v412.json"); TQ = J("TESTE_QUADRO_v412.json"); PV = J("PREVOO_GERADOR_v412.json")
+@@ -79 +80 @@
+-tenta("a guarda de frases da v411: controle negativo (as proibidas reprovam, as certas passam, a fala do operador so' pela excecao)", lambda: (GFJ is not None and GFJ["controle_negativo"]["ok"] is True, GFJ and GFJ["n_proibidas"]))
++tenta("a guarda de frases da v412: controle negativo (as proibidas reprovam, as certas passam, a fala do operador so' pela excecao)", lambda: (GFJ is not None and GFJ["controle_negativo"]["ok"] is True, GFJ and GFJ["n_proibidas"]))
+@@ -81 +82 @@
+-tenta("o pre-voo do gerador (todas as assercoes, as ancoras unicas, as guardas sobre o texto novo e o renderizado; nenhum candidato gravado)", lambda: (PV is not None and PV.get("ok") is True and not PV["guarda_frases"]["violacoes_no_texto_renderizado"] and PV["escada"] == [POS["E410"], POS["E410"]], PV and PV.get("sha16")))
++tenta("o pre-voo do gerador (todas as assercoes, as ancoras unicas, as guardas sobre o texto novo e o renderizado; nenhum candidato gravado)", lambda: (PV is not None and PV.get("ok") is True and not PV["guarda_frases"]["violacoes_no_texto_renderizado"] and PV["escada"] == [POS["E411"], POS["E411"]], PV and PV.get("sha16")))
+@@ -86 +87 @@
+-chk("D135 (2): nenhuma copia do kernel por rodada (imp_*, dry_*, falso_nos, arvore_simulada_*, sim_*) dentro de work\\ (elas ficam em C:\\t\\k411c)", not _copias, _copias)
++chk("D135 (2): nenhuma copia do kernel por rodada (imp_*, dry_*, falso_nos, arvore_simulada_*, sim_*) dentro de work\\ (elas ficam em C:\\t\\k412c)", not _copias, _copias)
+@@ -88 +89 @@
+-_marca = "[A ADAPTAR v" + "411]"
++_marca = "[A ADAPTAR v" + "412]"
+@@ -90 +91 @@
+-                    and os.path.basename(p_) not in ("_bump_copia_v411.py", "p00_precondicoes_v411.py") and _marca in open(p_, "rb").read().decode("utf-8", "replace"))
++                    and os.path.basename(p_) not in ("_bump_copia_v412.py", "p00_precondicoes_v412.py") and _marca in open(p_, "rb").read().decode("utf-8", "replace"))
+@@ -92,2 +93,2 @@
+-# (8b) (R1, C-01) a checagem ESTATICA da cadeia do pos-rito: nenhum teste exercia o chain_pos_rito_v411.sh, e uma lista com um nome que nao existe so' apareceria DEPOIS do selo (o passo 0 PARARIA com a cadeia inteira por fazer). Confere, sem rodar nada:
+-# (a) `sh -n` passa no chain_pos_rito_v411.sh e no rito_v411.sh; (b) todo $PK/<arquivo> e $SEL/<arquivo> literal da lista do passo 0 e do laco do passo 1 existe em disco; (c) todo script Python ou shell que o chain invoca (com $PK/ ou $SEL/, fora do que ele proprio
++# (8b) (R1, C-01) a checagem ESTATICA da cadeia do pos-rito: nenhum teste exercia o chain_pos_rito_v412.sh, e uma lista com um nome que nao existe so' apareceria DEPOIS do selo (o passo 0 PARARIA com a cadeia inteira por fazer). Confere, sem rodar nada:
++# (a) `sh -n` passa no chain_pos_rito_v412.sh e no rito_v412.sh; (b) todo $PK/<arquivo> e $SEL/<arquivo> literal da lista do passo 0 e do laco do passo 1 existe em disco; (c) todo script Python ou shell que o chain invoca (com $PK/ ou $SEL/, fora do que ele proprio
+@@ -132 +133 @@
+-    _ch_p = os.path.join(HERE, "pos_rito", "chain_pos_rito_v411.sh"); _ch_t = open(_ch_p, "rb").read().decode("utf-8")
++    _ch_p = os.path.join(HERE, "pos_rito", "chain_pos_rito_v412.sh"); _ch_t = open(_ch_p, "rb").read().decode("utf-8")
+@@ -134 +135 @@
+-    chk("(C-01) o chain_pos_rito_v411.sh: sh -n passa; todo $PK/ e $SEL/ da lista do passo 0 e do laco do passo 1 existe; todo script que ele invoca existe e compila", _ok_c1, _f_c1[:6])
++    chk("(C-01) o chain_pos_rito_v412.sh: sh -n passa; todo $PK/ e $SEL/ da lista do passo 0 e do laco do passo 1 existe; todo script que ele invoca existe e compila", _ok_c1, _f_c1[:6])
+@@ -137 +138 @@
+-    _v0 = _ch_t.replace(_m0.group(1), _m0.group(1) + ' "$PK/runtime_v411_inexistente.py"', 1); _v1 = _ch_t.replace(_m1.group(1), _m1.group(1) + " runtime_v411_inexistente.py", 1); _v2 = _ch_t + "\nfi\n"
++    _v0 = _ch_t.replace(_m0.group(1), _m0.group(1) + ' "$PK/runtime_v412_inexistente.py"', 1); _v1 = _ch_t.replace(_m1.group(1), _m1.group(1) + " runtime_v412_inexistente.py", 1); _v2 = _ch_t + "\nfi\n"
+@@ -141,3 +142,3 @@
+-    chk("(C-01) sh -n passa no rito_v411.sh", _sp.run([_sh, "-n", os.path.join(HERE, "rito_v411.sh")], capture_output=True).returncode == 0)
+-except Exception as e_:   # noqa: BLE001
+-    chk("(C-01) a checagem estatica do chain_pos_rito_v411.sh", False, "excecao: %r" % (e_,))
++    chk("(C-01) sh -n passa no rito_v412.sh", _sp.run([_sh, "-n", os.path.join(HERE, "rito_v412.sh")], capture_output=True).returncode == 0)
++except Exception as e_:   # noqa: BLE001
++    chk("(C-01) a checagem estatica do chain_pos_rito_v412.sh", False, "excecao: %r" % (e_,))
+@@ -147 +148 @@
+-    tenta("TOPO_RATIFICADO_v411.json (a palavra do operador, D172/D173): o sha256 do arquivo == o lido pelo delta (a fonte unica do topo, 12 marcadores)", lambda: (sha(DL.TOPO_RATIFICADO_ARQ) == DL.TOPO_SHA256 and len(DL.MARCADORES_V411 or {}) == 12, DL.TOPO_SHA256))
++    tenta("TOPO_RATIFICADO_v412.json (a palavra do operador, D172/D173): o sha256 do arquivo == o lido pelo delta (a fonte unica do topo, 12 marcadores)", lambda: (sha(DL.TOPO_RATIFICADO_ARQ) == DL.TOPO_SHA256 and len(DL.MARCADORES_V412 or {}) == 12, DL.TOPO_SHA256))
+@@ -149 +150 @@
+-    pend("TOPO_RATIFICADO_v411.json (o texto do topo do resumo, com a palavra do operador; DESENHO 5.1 b e secao 8)", "ato da GERENCIA: sem ele o candidato nao e' gerado")
++    pend("TOPO_RATIFICADO_v412.json (o texto do topo do resumo, com a palavra do operador; DESENHO 5.1 b e secao 8)", "ato da GERENCIA: sem ele o candidato nao e' gerado")
+@@ -151 +152 @@
+-    pend("o candidato um_v411_candidato.py e o que vem depois dele (comparacao com a v410, ensaio a seco, ESPERADOS, conferidores, citacoes, diff e pinos, conferir_instalar_rito, fim_de_cadeia com o B20 pre-selo, harnesses)", "gerar_candidato_v411.py (so' depois do TOPO_RATIFICADO_v411.json)")
++    pend("o candidato um_v412_candidato.py e o que vem depois dele (comparacao com a v411, ensaio a seco, ESPERADOS, conferidores, citacoes, diff e pinos, conferir_instalar_rito, fim_de_cadeia com o B21 pre-selo, harnesses)", "gerar_candidato_v412.py (so' depois do TOPO_RATIFICADO_v412.json)")
+@@ -154 +155 @@
+-    tenta("o candidato e o manifesto dele: o sha16 do arquivo == o do manifesto; escada 12308 sem bandeira nova; o topo do manifesto e' o ratificado (sha256)", lambda: (CMJ.get("sha16") == _c16 and CMJ.get("escada") == [POS["E410"], POS["E410"]] and CMJ.get("n_bandeiras") == 0
++    tenta("o candidato e o manifesto dele: o sha16 do arquivo == o do manifesto; escada 12308 sem bandeira nova; o topo do manifesto e' o ratificado (sha256)", lambda: (CMJ.get("sha16") == _c16 and CMJ.get("escada") == [POS["E411"], POS["E411"]] and CMJ.get("n_bandeiras") == 0
+@@ -156 +157 @@
+-    # (R1, 12/11 noite, D181) a GUARDA DA CONVERSA sobre o candidato: as 11 falas da casa (o texto inteiro, cada linha de 24 caracteres ou mais, as linhas curtas alem da base v410, os nomes dos arquivos) tem 0 ocorrencias no fonte;
++    # (R1, 12/11 noite, D181) a GUARDA DA CONVERSA sobre o candidato: as 11 falas da casa (o texto inteiro, cada linha de 24 caracteres ou mais, as linhas curtas alem da base v411, os nomes dos arquivos) tem 0 ocorrencias no fonte;
+@@ -159 +160 @@
+-        import guarda_conversa_v411 as GC
++        import guarda_conversa_v412 as GC
+@@ -162 +163 @@
+-        _gj = {"contrato": "GUARDA_CONVERSA_v411", "modo": "p00 (o fonte do candidato)", "candidato_sha16": _c16, "ok": bool(_gv["ok"] and _gn["ok"]), "limpo": bool(_gv["ok"]), "n_achados": len(_gv["achados"]), "achados": _gv["achados"][:20], "informativo": _gv["informativo"][:20],
++        _gj = {"contrato": "GUARDA_CONVERSA_v412", "modo": "p00 (o fonte do candidato)", "candidato_sha16": _c16, "ok": bool(_gv["ok"] and _gn["ok"]), "limpo": bool(_gv["ok"]), "n_achados": len(_gv["achados"]), "achados": _gv["achados"][:20], "informativo": _gv["informativo"][:20],
+@@ -164,2 +165,2 @@
+-        open(DL.saida("GUARDA_CONVERSA_v411.json") + ".tmp", "w", encoding="utf-8").write(json.dumps(_gj, ensure_ascii=False, indent=1)); os.replace(DL.saida("GUARDA_CONVERSA_v411.json") + ".tmp", DL.saida("GUARDA_CONVERSA_v411.json"))
+-        chk("(D181) a GUARDA DA CONVERSA sobre o CANDIDATO: as 11 falas da casa tem 0 ocorrencias no fonte (texto inteiro e linhas de 24+), as linhas curtas nao passam da base v410, os nomes dos arquivos tem 0; controle negativo dos dois lados", _gj["ok"], {"n_achados": _gj["n_achados"], "controle_negativo_ok": _gn.get("ok")})
++        open(DL.saida("GUARDA_CONVERSA_v412.json") + ".tmp", "w", encoding="utf-8").write(json.dumps(_gj, ensure_ascii=False, indent=1)); os.replace(DL.saida("GUARDA_CONVERSA_v412.json") + ".tmp", DL.saida("GUARDA_CONVERSA_v412.json"))
++        chk("(D181) a GUARDA DA CONVERSA sobre o CANDIDATO: as 11 falas da casa tem 0 ocorrencias no fonte (texto inteiro e linhas de 24+), as linhas curtas nao passam da base v411, os nomes dos arquivos tem 0; controle negativo dos dois lados", _gj["ok"], {"n_achados": _gj["n_achados"], "controle_negativo_ok": _gn.get("ok")})
+@@ -168,7 +169,7 @@
+-    _DEPOIS = [("ensaio_a_seco_v411.json", "ensaio_a_seco_v411.py", lambda j_: j_.get("veredito") == "TUDO PASSOU" and j_.get("sha16") == _c16),
+-               ("ESPERADOS_v411.json", "gerar_esperados_v411.py", lambda j_: j_.get("candidato_sha16") == _c16),
+-               ("conferencia_rito_v411_CONTROLE_NEGATIVO_PRE_RITO.json", "conferir_rito_v411.py --controle-negativo", lambda j_: j_.get("tudo_bate") is False),
+-               ("conferencia_rito_v411_POSITIVO_FALSO_NOS.json", "teste_conferidor_positivo_v411.py", lambda j_: j_.get("tudo_bate") is True and j_.get("um_py_sha16") == _c16),
+-               ("conferir_citacoes_v411.json", "conferir_citacoes_v411.py --candidato", lambda j_: j_.get("ok_do_um_py") is True),
+-               ("DERIVACAO_v411.json", "conferir_instalar_rito_v411.py", lambda j_: not j_.get("falhas")),
+-               ("PINOS_BN_v411.json", "diff_e_pinos_v411.py", lambda j_: ((j_.get("candidato") or {}).get("sha256") or "")[:16] == _c16)]
++    _DEPOIS = [("ensaio_a_seco_v412.json", "ensaio_a_seco_v412.py", lambda j_: j_.get("veredito") == "TUDO PASSOU" and j_.get("sha16") == _c16),
++               ("ESPERADOS_v412.json", "gerar_esperados_v412.py", lambda j_: j_.get("candidato_sha16") == _c16),
++               ("conferencia_rito_v412_CONTROLE_NEGATIVO_PRE_RITO.json", "conferir_rito_v412.py --controle-negativo", lambda j_: j_.get("tudo_bate") is False),
++               ("conferencia_rito_v412_POSITIVO_FALSO_NOS.json", "teste_conferidor_positivo_v412.py", lambda j_: j_.get("tudo_bate") is True and j_.get("um_py_sha16") == _c16),
++               ("conferir_citacoes_v412.json", "conferir_citacoes_v412.py --candidato", lambda j_: j_.get("ok_do_um_py") is True),
++               ("DERIVACAO_v412.json", "conferir_instalar_rito_v412.py", lambda j_: not j_.get("falhas")),
++               ("PINOS_BN_v412.json", "diff_e_pinos_v412.py", lambda j_: ((j_.get("candidato") or {}).get("sha256") or "")[:16] == _c16)]
+@@ -180,2 +181,2 @@
+-            pend("%s (o passo %s ainda nao rodou para este candidato)" % (_arq, _passo), "passo da cadeia (cadeia_v411.sh)")
+-    _cj = DL.saida("conferir_citacoes_v411.json")
++            pend("%s (o passo %s ainda nao rodou para este candidato)" % (_arq, _passo), "passo da cadeia (cadeia_v412.sh)")
++    _cj = DL.saida("conferir_citacoes_v412.json")
+@@ -183,3 +184,3 @@
+-        pend("as citacoes em «» do escopo do pos-rito (pos_rito\\*_v411*: a outra frente) nao sao todas fala verbatim do operador", "pedido a frente pos-rito em PEDIDOS_ENTRE_FRENTES_v411.md (o escopo do um.py esta' limpo; o relatorio final exige os dois)")
+-if not os.path.exists(os.path.join(HERE, "PINO_MEMORIA_PY_v411.json")):
+-    pend("PINO_MEMORIA_PY_v411.json (o pino do memoria.py)", "ato da GERENCIA (pino_memoria_py_v411.py)")
++        pend("as citacoes em «» do escopo do pos-rito (pos_rito\\*_v411*: a outra frente) nao sao todas fala verbatim do operador", "pedido a frente pos-rito em PEDIDOS_ENTRE_FRENTES_v412.md (o escopo do um.py esta' limpo; o relatorio final exige os dois)")
++if not os.path.exists(os.path.join(HERE, "PINO_MEMORIA_PY_v412.json")):
++    pend("PINO_MEMORIA_PY_v412.json (o pino do memoria.py)", "ato da GERENCIA (pino_memoria_py_v412.py)")
+@@ -187 +188 @@
+-# como pos_rito\superficies_v411.py as monta (as MESMAS funcoes do textos_v411: marca_missao e linha_handoff), fica em ate 24.000 B e 195 quebras de linha; senao PENDENTE com os numeros medidos (a gerencia decide o que sai do indice).
++# como pos_rito\superficies_v412.py as monta (as MESMAS funcoes do textos_v412: marca_missao e linha_handoff), fica em ate 24.000 B e 195 quebras de linha; senao PENDENTE com os numeros medidos (a gerencia decide o que sai do indice).
+@@ -202 +203 @@
+-    sp = _ilu.spec_from_file_location("textos_v411_p00", os.path.join(HERE, "pos_rito", "textos_v411.py")); T = _ilu.module_from_spec(sp); sp.loader.exec_module(T)
++    sp = _ilu.spec_from_file_location("textos_v412_p00", os.path.join(HERE, "pos_rito", "textos_v412.py")); T = _ilu.module_from_spec(sp); sp.loader.exec_module(T)
+@@ -204 +205 @@
+-    Vx = {"data": datetime.date.today().strftime("%d/%m/%Y"), "s16": s16_, "teor": "%d/%d" % (POS["E410"], POS["E410"])}
++    Vx = {"data": datetime.date.today().strftime("%d/%m/%Y"), "s16": s16_, "teor": "%d/%d" % (POS["E411"], POS["E411"])}
+@@ -206,2 +207,2 @@
+-    if any(("v411 SELADA" in l_ and Vx["s16"] in l_) for l_ in lines):
+-        novo = raw; ja = True   # o indice ja traz a linha da v411 (idempotente, como a superficie)
++    if any(("v412 SELADA" in l_ and Vx["s16"] in l_) for l_ in lines):
++        novo = raw; ja = True   # o indice ja traz a linha da v412 (idempotente, como a superficie)
+@@ -211,2 +212,2 @@
+-        h_ = [i_ for i_, l_ in enumerate(lines) if "(handoff-v410-custodia.md)" in l_ and l_.startswith("- [")]
+-        assert len(k_) == 1 and len(h_) == 1, ("ancoras do indice (missao, handoff da v410)", len(k_), len(h_))
++        h_ = [i_ for i_, l_ in enumerate(lines) if "(handoff-v411-custodia.md)" in l_ and l_.startswith("- [")]
++        assert len(k_) == 1 and len(h_) == 1, ("ancoras do indice (missao, handoff da v411)", len(k_), len(h_))
+@@ -216 +217 @@
+-    med = {"verificar_rc": r.returncode, "verificar_ok": vj.get("ok"), "verificar_violacoes": vj.get("violacoes"), "indice_hoje_linhas_bytes": [raw.count(b"\n"), len(raw)], "indice_projetado_linhas_bytes": [novo.count(b"\n"), len(novo)], "limites_linhas_bytes": [195, 24000], "ja_tem_a_linha_da_v411": ja}
++    med = {"verificar_rc": r.returncode, "verificar_ok": vj.get("ok"), "verificar_violacoes": vj.get("violacoes"), "indice_hoje_linhas_bytes": [raw.count(b"\n"), len(raw)], "indice_projetado_linhas_bytes": [novo.count(b"\n"), len(novo)], "limites_linhas_bytes": [195, 24000], "ja_tem_a_linha_da_v412": ja}
+@@ -225 +226 @@
+-    chk("a folga do MEMORY.md para a linha do handoff da v411 e o pino do MEMORY.md (CONFERIDOS: memoria.py verificar ok; o indice projetado cabe em 24000 B e 195 linhas)", True, _mm)
++    chk("a folga do MEMORY.md para a linha do handoff da v412 e o pino do MEMORY.md (CONFERIDOS: memoria.py verificar ok; o indice projetado cabe em 24000 B e 195 linhas)", True, _mm)
+@@ -227 +228 @@
+-    pend("a folga do MEMORY.md para a linha do handoff da v411 e o pino do MEMORY.md (a conferencia nao deu OK: medido %s)" % json.dumps(_mm, ensure_ascii=False), "ato da GERENCIA (a fila da memoria; so' a c1 escreve o indice): abrir a folga ou refazer o pino e rodar de novo")
++    pend("a folga do MEMORY.md para a linha do handoff da v412 e o pino do MEMORY.md (a conferencia nao deu OK: medido %s)" % json.dumps(_mm, ensure_ascii=False), "ato da GERENCIA (a fila da memoria; so' a c1 escreve o indice): abrir a folga ou refazer o pino e rodar de novo")
+@@ -239 +240 @@
+-out = {"contrato": "PRECONDICOES_v411", "quando": datetime.datetime.now().isoformat(timespec="seconds"), "veredito": _v, "n_checagens": len(res), "n_ok": sum(1 for r_ in res if r_.get("ok") is True),
++out = {"contrato": "PRECONDICOES_v412", "quando": datetime.datetime.now().isoformat(timespec="seconds"), "veredito": _v, "n_checagens": len(res), "n_ok": sum(1 for r_ in res if r_.get("ok") is True),
+@@ -242 +243 @@
+-p = DL.saida("PRECONDICOES_v411.json")   # (pedido do fork B: no ensaio do topo proposto, na pasta de ensaio)
++p = DL.saida("PRECONDICOES_v412.json")   # (pedido do fork B: no ensaio do topo proposto, na pasta de ensaio)

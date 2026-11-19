@@ -1,0 +1,35 @@
+import TGLExt.AperiodicCentralizerExpectation
+import TGLExt.TheImportedExpectation
+import TGLExt.ExpectationPositive
+import TGLExt.ModularRemainderDensity
+import TGLExt.ErgodicMeanSection
+
+namespace Verificacao025
+open TGLExt
+
+theorem contratoDaTorre (P : SiteProfile) : TakesakiInput P :=
+  (the_testimony_is_exactly_the_conclusion P).2
+    (ChatgptAudit.Aperiodic046.aperiodic_contract_inhabited P)
+end Verificacao025
+#check TGLExt.sigma_fixed_iff_specExpect
+#print axioms TGLExt.sigma_fixed_iff_specExpect
+#check TGLExt.birkhoff_tendsto_specExpect
+#print axioms TGLExt.birkhoff_tendsto_specExpect
+#check ModularRemainderDensity.gibbs_reference_log
+#print axioms ModularRemainderDensity.gibbs_reference_log
+#check ChatgptAudit.Aperiodic046.flow_average_limit
+#print axioms ChatgptAudit.Aperiodic046.flow_average_limit
+#check ChatgptAudit.Aperiodic046.aperiodicExpectationInput
+#print axioms ChatgptAudit.Aperiodic046.aperiodicExpectationInput
+#check ChatgptAudit.Aperiodic046.aperiodic_expectation_spec
+#print axioms ChatgptAudit.Aperiodic046.aperiodic_expectation_spec
+#check ChatgptAudit.Aperiodic046.aperiodic_expectation_prefix
+#print axioms ChatgptAudit.Aperiodic046.aperiodic_expectation_prefix
+#check ChatgptAudit.Aperiodic046.aperiodic_contract_inhabited
+#print axioms ChatgptAudit.Aperiodic046.aperiodic_contract_inhabited
+#check ChatgptAudit.density_commuting_local_is_global_centralizer
+#print axioms ChatgptAudit.density_commuting_local_is_global_centralizer
+#check ChatgptAudit.towerPi_injective
+#print axioms ChatgptAudit.towerPi_injective
+#check Verificacao025.contratoDaTorre
+#print axioms Verificacao025.contratoDaTorre

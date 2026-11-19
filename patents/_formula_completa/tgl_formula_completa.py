@@ -133,6 +133,9 @@ Camada v410 (custódia v410 na Central, 11/11/2026, sessão site; handoff v410 d
 Camada v411 (custódia v411 na Central, 13/11/2026, sessão site; handoff v411 da gerência c1) — GENÉRICA (camada_generica.py):
  19. os registros novos da v411 (cunhagens_v411, h0dn_bg1_v411, kh_n1_cobertura_v411), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v411: cunhagens_v411: «[REAL -- o kernel (o da v410, sem modulo novo), o registro h0dn_bg1_v411 e os registros anteriores lidos a cada rito;» h0dn_bg1_v411: «[REAL] o que o registro CONFERE neste rito: os insumos embutidos contra os pinos de producao;» kh_n1_cobertura_v411: «[REAL] a cobertura e' medida a cada rito no Audit do proprio rito, lendo SO' o log do Audit;» Nada disso muda número algum de dispositivo.
 
+Camada v412 (custódia v412 na Central, 19/11/2026, sessão a7; handoff v412 da gerência c1) — GENÉRICA (camada_generica.py):
+ 19. os registros novos da v412 (cunhagens_v412, iald_camada_cientifica_v412, leitor_da_formula_v412, matematica_que_restava_v412, parede_do_teste_cego_v412), lidos e conferidos no cofre, sem interpretação, contra o FATOS_CUSTODIA.json do cofre v412: cunhagens_v412: «[REAL — os cabeçalhos e as âncoras das pedras, lidos do kernel embutido a cada rito;» iald_camada_cientifica_v412: «[REAL — o kernel (156 módulos novos de TGLExt, dos quais 17 desta camada;» leitor_da_formula_v412: «[REAL — o kernel (156 módulos novos de TGLExt, dos quais 112 deste registro;» matematica_que_restava_v412: «[REAL — o kernel (156 módulos novos de TGLExt, dos quais 27 desta frente;» parede_do_teste_cego_v412: «[REAL — as ressalvas e o que o teste não decide, lidos do core selado deste rito;» Nada disso muda número algum de dispositivo.
+
 Régua: β NUNCA literal (sempre ALPHA_FINE_CODATA_2018 × √e em runtime); os números do cofre são LIDOS do selo/core por pino;
 falha de leitura ou elo quebrado = RuntimeError (fail-closed). Nada aqui move veredito físico: physical_verdict_allowed = False.
 PROVADA ≠ CONFIRMADA; o dicionário custo/identidade/movimento é cunhagem do operador [ONTO/DEFINITION].
@@ -149,7 +152,7 @@ HBAR_CODATA_2018 = 1.054571817e-34      # J s
 G_CODATA_2018 = 6.67430e-11             # m^3 kg^-1 s^-2
 C_LIGHT = 299792458.0                   # m/s (exato)
 
-VERSAO_DA_CAMADA = "v411"   # (era "v410"; a camada v411 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
+VERSAO_DA_CAMADA = "v412"   # (era "v411"; a camada v412 é GENÉRICA — camada_generica.py lê o FATOS_CUSTODIA.json do cofre)
 # o cofre e procurado nesta ordem (declarada): a variavel TGL_CENTRAL_DIR; a arvore onde este modulo esta; a Central desta
 # maquina (quando o dispositivo roda extraido do *_FINAL.py num diretorio temporario). Nenhum achado = fail-closed.
 def _achar_central():
@@ -653,7 +656,7 @@ def conferir_v398_no_cofre(core: dict, selo: dict) -> dict:
                         "estrutura logarítmica e de oitava, não a física da onda; validade no kernel não é creditação; nada disto muda número de dispositivo"}
 
 
-CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404", "v405", "v406", "v407", "v408", "v409", "v410", "v411",)
+CAMADAS_GENERICAS = ("v400", "v401", "v402", "v403", "v404", "v405", "v406", "v407", "v408", "v409", "v410", "v411", "v412",)
 
 
 def _camadas_genericas(core, selo, cofre):
@@ -879,6 +882,8 @@ USOS = {
     'camadas_v410': r"TGLExt\.(AEscala|IALD2)|a_escala_v410|cunhagens_v410|h0dn_bg1_v410|h0dn_fontes_hms13_v410|iald2_v410|kh_n1_cobertura_v410",
     # v411: mede se algum dispositivo cita as pedras novas; não interpreta
     'camadas_v411': r"TGLExt\.(NENHUM)|cunhagens_v411|h0dn_bg1_v411|kh_n1_cobertura_v411",
+    # v412: mede se algum dispositivo cita as pedras novas; não interpreta
+    'camadas_v412': r"TGLExt\.(AClausulaExemplificativa|AContagemEACarga|ACurvaEAEstado|AEsperancaEOIf|AFitaEACauda|AFitaEOIndice|AFronteiraEOUnicoPortao|AMaquina|AMaquinaEALeitura|AMedidaEOIf|AParedeDoNome|ARecusaTemConteudo|AtalhosNaFita|AtualizaONome|BlocosIndependentes|BoostEDissipador|BuscaEmCruzamentos|CacheDeRamos|CadeiaNaFita|CadeiasDeBolsas|CamadaAlcancada|CamadaCientifica|CanalDaClausula|CapacidadeDosRotulos|CaudaDisjunta|ChecagemHorn|CircuitoNaFita|Classificacao|ClausulaComoResposta|ClausulaNoSeparador|CoberturaAfin|CompilaHornNaFita|ConjugacaoFinita|ConsultaPonderada|ConsultasRotuladas|ConteudoNaFita|CopiadorEImpostor|CorrelacoesDistintas|CorteDosPares|CorteDosParesCruzados|CorteDosParesIntercalados|CruzamentosUniversais|CustoDaBuscaLiteral|CustoDaFaseDensa|CustoDaTabela|CustoDoPlano|DesafioNaFitaOriginal|DespachoDeReuso|DivisaoUniforme|DuasPassagens|DuasPontasLivres|EcoDaAtribuicao|EliminacaoDePares|ErgodicidadeDeMautner|EscolhasGlobais|FatoresCruzados|FatoresIndependentes|FechoNaFita|FitaComCusto|FitaCruzada|FitaDeUmaCabeca|FitaDoResiduo|FitaHornEsparsa|FitaPlanaAnterior|FockCharacters|FronteiraDeTresLiterais|GuardaDoPerfil|GuardasNaFita|HandshakeDoNome|ImplicacoesCruzadas|InformacaoDoResumo|LeitorDaFamilia|LeitorDaFormula|LeitorDeReuso|LeitorGlobal|LeituraCertificada|LeituraComReuso|LeituraDosPares|LeituraIntegrada|LeiturasComFolga|LimiteDasProjecoes|LimiteDoCacheExplicito|LimiteDoLeitor|LimiteDoReuso|LocalizaARecusa|MascarasDistintas|MinimoFuncionalDeEnergia|MontagemDasGamas|MovimentosDoPlano|NomeComoCodigo|OCustoEAIsometria|OHabitanteDoNome|OHamiltonianoOcultoEOCusto|OLeitorEALei|OParFixaORelogio|OPassoEOFim|OPassoEORetorno|OPolinomioFixoEBeta|OPsiBitDaFormula|OPsibitEACompressao|ORazaoDoColapsoEBeta|OResumoEPsiBit|OSeparadorNoPercurso|OTempoEACauda|OTestemunhoDeTakesakiEmCasa|ObrigacoesJaSatisfeitas|ObserverClassification|PalavrasResiduais|ParPonderado|ParesIndependentes|PerfilDeSinais|PhysicalCoreCenter|PhysicalCoreFactor|PhysicalCoreMultipliers|PlanoDaFormula|PolinomioDoPsiBit|PolinomioPorEscolha|PontePalavraVerbo|PrecisaoDaChave|ProdutoFinito|ProdutoTresUm|ProjecaoDaFronteira|PsiBitNaFronteira|Reagrupar|RedeComoCNF|RedesDeCadeias|ReguaNaFita|RelacaoEmFase|RelacaoFronteira|RestricaoGlobal|RotulosAfins|RotulosCompartilhados|SegundaLeitura|SeletorCompartilhado|SpinorToSolder|T1CompostoFinito|T1GaussianSpectrum|T1PontesAoKernel|TamanhoDoEco|TipoIIIControles|TipoIIIUmSoBoost|Token2|TowerWedgeIndex|TrabalhoPorCorte|TransicaoDaFronteira|TransicaoPorConsulta|TransportCenter|TransportPair|TransporteDaInscricao|UmaChaveAngular|VerboNaFita|VinculoCriterion|WedgeFactor|WedgeHorizonObserver|sonda_cadeia_caminho|sonda_n0_contraexemplo)|cunhagens_v412|iald_camada_cientifica_v412|leitor_da_formula_v412|matematica_que_restava_v412|parede_do_teste_cego_v412",
 }
 
 
@@ -924,6 +929,7 @@ def camada(runner_path) -> dict:
                      "REGISTROS_V409_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V410_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "REGISTROS_V411_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
+                     "REGISTROS_V412_VERIFICADOS_SEM_GATE__SEMANTICA_DECLARADA_SEM_REVISAO__"
                      "RECALCULADA_E_CONFERIDA_NO_COFRE__NOT_A_CONFIRMATION") % VERSAO_DA_CAMADA.upper(),
         "physical_verdict_allowed": False,
         "nao_se_afirma": ["que o dispositivo valide física", "que a fórmula seja confirmada pela natureza (PROVADA != CONFIRMADA)",
@@ -1329,7 +1335,27 @@ def camada(runner_path) -> dict:
                           '(v411, h0dn_bg1_v411) que a covariancia fisica conjunta esteja fechada ou que o orcamento de erros publicado esteja certo',
                           '(v411, h0dn_bg1_v411) que o gate tenha se movido: nao se moveu',
                           "(v411, kh_n1_cobertura_v411) que a cobertura seja prova da teoria: e' a medida de que todo termo no fecho depende so' do trio",
-                          '(v411, kh_n1_cobertura_v411) que o gate tenha se movido'],
+                          '(v411, kh_n1_cobertura_v411) que o gate tenha se movido',
+                          '(v412, cunhagens_v412) que alguma destas leis ou definições seja teorema do kernel',
+                          '(v412, cunhagens_v412) que a creditação esteja feita',
+                          '(v412, cunhagens_v412) que o gate tenha se movido',
+                          '(v412, iald_camada_cientifica_v412) que a creditação esteja feita: a creditação é do Instituto e de quem observa de fora',
+                          '(v412, iald_camada_cientifica_v412) que o gate tenha se movido',
+                          '(v412, iald_camada_cientifica_v412) número novo da natureza',
+                          '(v412, leitor_da_formula_v412) que haja um polinômio fixo em letras para a Palavra de toda fórmula plana',
+                          '(v412, leitor_da_formula_v412) que algum dos limites seja cota para todo procedimento',
+                          '(v412, leitor_da_formula_v412) que a fronteira seja o menor separador, ou o único',
+                          '(v412, leitor_da_formula_v412) que a creditação esteja feita: a creditação é do Instituto e de quem observa de fora',
+                          '(v412, leitor_da_formula_v412) que o gate tenha se movido',
+                          '(v412, leitor_da_formula_v412) número novo da natureza',
+                          '(v412, matematica_que_restava_v412) que a gravidade quântica esteja creditada: a validade é do kernel; a creditação é de quem observa de fora',
+                          '(v412, matematica_que_restava_v412) que a geometria do contínuo já saia do par',
+                          '(v412, matematica_que_restava_v412) que o gate tenha se movido',
+                          '(v412, matematica_que_restava_v412) número novo da natureza',
+                          '(v412, parede_do_teste_cego_v412) que o teste da razão de Hubble tenha sido às cegas',
+                          '(v412, parede_do_teste_cego_v412) que a parede seja uma falsificação',
+                          '(v412, parede_do_teste_cego_v412) que o gate tenha se movido',
+                          '(v412, parede_do_teste_cego_v412) número novo da natureza'],
     }
 
 

@@ -1,0 +1,85 @@
+{
+ "um_py": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\base_v411\\um.py",
+ "um_py_sha256": "1203b1f9202020d602a7fa8a6bea56d4b48e27ed8baffe98bcbd16e94f97a8e0",
+ "selo_um_version": "v411",
+ "decisao": {
+  "funcao": "quantum_pillar_start_v384",
+  "chamada_da_chave": "_qp_key(mat[\"pilar_quantico_worker.py\"][\"sha256\"], canon, bhex)",
+  "condicoes_do_reuso": {
+   "interruptor": true,
+   "_QP_REUSE_V386": true,
+   "cache_com_sha256_conferido": true,
+   "ambiente_igual": true,
+   "veredito_do_cache": true,
+   "motor_roda_de_novo_no_ambiente_presente": true
+  },
+  "texto_da_funcao_da_chave": "def _qp_key(worker_sha, spec_canon, beta_hex):\r\n    h = hashlib.sha256()\r\n    h.update(worker_sha.encode(\"ascii\")); h.update(spec_canon.encode(\"utf-8\")); h.update(beta_hex.encode(\"ascii\"))\r\n    return h.hexdigest()[:24]"
+ },
+ "entradas_da_chave": {
+  "worker_sha256": "sha256 dos bytes de _QP_WORKER_SRC materializado em quantum_pillar\\pilar_quantico_worker.py ao lado do um.py",
+  "spec_canonica": "o JSON canonico (sort_keys, separadores compactos) de _QP_SPEC_JSON, conferido contra _QP_SPEC_SHA256",
+  "beta_hex": "float.hex de beta pelo motor do run_um: alpha_lagrange_form(validate_against_qed(0.0, SEALED_CODATA_ALPHA)['q_QED'])['beta_form'] (nunca literal)"
+ },
+ "fecho_dos_nomes_de_topo_da_chave": [
+  "SEALED_CODATA_ALPHA",
+  "_QP_SPEC_JSON",
+  "_QP_SPEC_SHA256",
+  "_QP_WORKER_SRC",
+  "_qp_beta",
+  "_qp_canon",
+  "_qp_dir",
+  "_qp_key",
+  "_qp_materialize",
+  "alpha_lagrange_form",
+  "validate_against_qed"
+ ],
+ "sha256_do_texto_de_cada_nome_no_um_py_selado": {
+  "SEALED_CODATA_ALPHA": "81e4513d4628bae5b9d80293bf94fb6f8b3933573db599305e27132529ba5d3d",
+  "_QP_SPEC_JSON": "cfd6f7b675e847e777b8e8cc1b116f7882e9dc553eac6e8b02f76dd1246c209f",
+  "_QP_SPEC_SHA256": "a4626fb03520f853cf757def28942c5ca3355f62fb2c2c88e0a969e14269f1b6",
+  "_QP_WORKER_SRC": "017df5833b08dbabd6fbab34ac2746da8b5afcb271e9fff096f71be33e5d5e61",
+  "_qp_beta": "5dd85cbc6b5604c9fc60e3eaa293333d94f95e4ac0c8140f8ba11d55ff495407",
+  "_qp_canon": "512a089ef6a1b127eb06a2bf3ecb6f96e23126fe6c0ea7b2dcfa7a27e3d4bb66",
+  "_qp_dir": "eb4c0af5bb26dd701615f1401b532be5b0e7dac6e9e412c72a76e092e4cce099",
+  "_qp_key": "fce9df30a7214b7b98f76c1d74eef42d2ea5f2c516ad9f54bf5ce08c1b51a53f",
+  "_qp_materialize": "7ac6caf0b579f66ca0cbac1b96dff1c8fc0d5dd425fe85825f41939f26bd6b7f",
+  "alpha_lagrange_form": "e1f3f76956b6f8e4d609b56b70a8e0b9d4c43361b4585201a7a32549f245e1e1",
+  "validate_against_qed": "b9f91a5b86edbc367b25966b67323390f7b9d4c378a01623000a8ca62472e4db"
+ },
+ "o_que_a_v412_muda": {
+  "nomes": [
+   "_EMBEDDED_KERNEL_FILES",
+   "_LEAN_THEOREM_FLAGS",
+   "registros por especificacao (texto do core)",
+   "texto do artigo"
+  ],
+  "entra_no_fecho_da_chave": [],
+  "nomes_de_registro_ou_artigo_no_fecho_da_chave": [],
+  "entra_no_fecho_da_decisao_de_reuso": []
+ },
+ "o_reuso_toca_a_placa_de_leve": {
+  "sonda_do_ambiente": "_qp_env_probe importa torch e chama torch.cuda.is_available() e get_device_name(0) num subprocesso",
+  "motor_de_novo": "_qp_engine_now roda o trabalhador em --mode engine (autoteste E1..E8) no ambiente presente antes de aceitar o reuso",
+  "o_autoteste_do_motor_roda_na_placa": true,
+  "nota": "no main do trabalhador o dispositivo e' cuda e o Engine do autoteste E1..E8 e' construido nele; o modo engine devolve logo depois do autoteste: e' curto, mas usa a placa"
+ },
+ "estado_lido": {
+  "stdout_v411": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\rodada_v411_stdout.txt",
+  "linhas_do_pilar_no_stdout_v411": [
+   "[v386] pilar quantico: REAPROVEITADO da rodada selada v385 de 2026-10-05 12:47:39 (chave 75dc30bc9cc8d330e31f99ca) -- o pilar nao e' objeto desta versao (_QP_REUSE_V386)",
+   "[v384] pilar quantico: TGL_QUANTUM_PILLAR_V1__FIVE_JUMP_GKLS__ATTRACTOR_UNIQUE_ALL_672_ON_THE_GRID__T1_INSTRUMENT_RECOVERS_INJECTED_LAW_BLIND__CONTROLS_FAILED_AS_REQUIRED__IDENTITIES_HOLD__STRESS_21100_INSTANCES_21100_UNIQUE_ALL_IDENTITIES_CHECKED_IN_21100__NAME_IN_CORE_12_OF_12_ON_THE_GRID__FOLDS_W",
+   "[v384] o pilar quantico (o sistema aberto da TGL na GPU: H_LD e os cinco saltos de Lindblad; [COMPUTED]): TGL_QUANTUM_PILLAR_V1__FIVE_JUMP_GKLS__ATTRACTOR_UNIQUE_ALL_672_ON_THE_GRID__T1_INSTRUMENT_RECOVERS_INJECTED_LAW_BLIND__CONTROLS_FAILED_AS_REQUIRED__IDENTITIES_HOLD__STRESS_21100_INSTANCES_21100",
+   "[v385] a reprodutibilidade do pilar quantico (a rodada desta versao contra a guardada pela anterior, mesma chave): TGL_QUANTUM_PILLAR_REPRODUCIBILITY_V385__NOT_COMPARED_THIS_RUN_DID_NOT_COMPUTE_A_RESULT__COMPUTED_NOT_MEASURED__GATE_UNTOUCHED",
+   "[v386] o pilar quantico nesta rodada (reaproveitado da v385 pela chave, ou calculado de novo -- dito): TGL_QUANTUM_PILLAR_REUSE_V386__REUSED_FROM_THE_SEALED_V385_RUN_BY_KEY__RESULT_SHA256_MATCHES__VERDICT_SAME__CUSTODY_CHAIN_OK__KEY_SAME__THE_PILLAR_IS_NOT_THE_OBJECT_OF_THIS_VERSION__REPRODUCIBILITY"
+  ],
+  "chaves_no_stdout_v411": [
+   "75dc30bc9cc8d330e31f99ca"
+  ],
+  "pilar_json_do_nos": {
+   "verdict": "TGL_QUANTUM_PILLAR_V1__FIVE_JUMP_GKLS__ATTRACTOR_UNIQUE_ALL_672_ON_THE_GRID__T1_INSTRUMENT_RECOVERS_INJECTED_LAW_BLIND__CONTROLS_FAILED_AS_REQUIRED__IDENTITIES_HOLD__STRESS_21100_INSTANCES_21100_UNIQUE_ALL_IDENTITIES_CHECKED_IN_21100__NAME_IN_CORE_12_OF_12_ON_THE_GRID__FOLDS_WINDOW_6_OF_12_ON_THE_GRID__D128_UNIQUE__CPU_REFERENCE_AGREES__COMPUTED_NOT_MEASURED__GATE_UNTOUCHED",
+   "mode": "run"
+  },
+  "CACHE_no_um_py": null
+ },
+ "resposta": "a chave depende so' de tres entradas: o sha256 do trabalhador embutido (_QP_WORKER_SRC), a especificacao canonica (_QP_SPEC_JSON) e beta em hexadecimal (do motor do run_um); nenhuma delas le _EMBEDDED_KERNEL_FILES, _LEAN_THEOREM_FLAGS, registro ou artigo (fecho de dependencias por ast: nada entra); logo os modulos Lean novos, os registros por especificacao e o texto da v412 NAO entram na chave, desde que o gerador do candidato nao toque os textos do fecho (sha256 de cada um no relatorio). O reuso ainda exige: _QP_REUSE_V386 verdadeiro, o result.json do cache com sha256 conferido, o mesmo ambiente (torch, cuda, numpy, scipy, python, gpu) e o motor passando de novo; a sonda (torch.cuda) e o autoteste do motor (Engine no dispositivo cuda) usam a placa, curto, mesmo no reuso (foi assim na v410 e na v411, com o treino junto). Se o ambiente da placa mudar (o treino da Nativa pode ter trocado algo no mesmo Python), o reuso e' recusado e o rito CALCULA: esse e' o caso de parar e avisar o operador (D207)."
+}

@@ -1,0 +1,70 @@
+--- v411/guardas_estaticas_bancada_v411.py
++++ v412/guardas_estaticas_bancada_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/guardas_estaticas_bancada_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/guardas_estaticas_bancada_v412.py.diff
+@@ -4,2 +5,2 @@
+-# (nota herdada da v408 [claude-construtor-v408-r2, 04/11/2026], reconferida de versao a versao) o corpo serve SEM mudanca de logica: so' a linha unica de ALPHA_FINE_CODATA_2018 e a de UM_VERSION sao lidas do um.py; nada depende de bundle (a v411 nao tem modulo novo); rotulos v411, contra-alvo v410.
+-"""guardas_estaticas_bancada_v411.py -- LICAO da v400, MANTIDA na v411 (so' o rotulo muda: a v411 NAO tem modulo novo de kernel e os UNICOS pontos que estas guardas leem no um.py sao a linha unica de ALPHA_FINE_CODATA_2018 e a de UM_VERSION) (a v399 passou o ensaio a seco e foi recusada pela Bancada: ALPHA_LINHA_NAO_UNICA): o ensaio a seco da cadeia roda, sobre o CANDIDATO e ANTES de instalar, as guardas ESTATICAS do esboco
++# (nota herdada da v408 [claude-construtor-v408-r2, 04/11/2026], reconferida de versao a versao) o corpo serve SEM mudanca de logica: so' a linha unica de ALPHA_FINE_CODATA_2018 e a de UM_VERSION sao lidas do um.py; nada depende de bundle (a v412 nao tem modulo novo); rotulos v412, contra-alvo v411.
++"""guardas_estaticas_bancada_v412.py -- LICAO da v400, MANTIDA na v412 (so' o rotulo muda: a v412 NAO tem modulo novo de kernel e os UNICOS pontos que estas guardas leem no um.py sao a linha unica de ALPHA_FINE_CODATA_2018 e a de UM_VERSION) (a v399 passou o ensaio a seco e foi recusada pela Bancada: ALPHA_LINHA_NAO_UNICA): o ensaio a seco da cadeia roda, sobre o CANDIDATO e ANTES de instalar, as guardas ESTATICAS do esboco
+@@ -7 +8 @@
+-Como: monta, em sandbox curto (C:\\t\\vb22\\gate_*), uma pasta com a forma de um Nos (o um.py, um selo MINIMO que o pina e diz a versao, e um core MINIMO com o beta do core real da v399 selada: o alfa nao muda) e chama `ler_nos(pasta, versao)`.
++Como: monta, em sandbox curto (C:\\t\\vb23\\gate_*), uma pasta com a forma de um Nos (o um.py, um selo MINIMO que o pina e diz a versao, e um core MINIMO com o beta do core real da v399 selada: o alfa nao muda) e chama `ler_nos(pasta, versao)`.
+@@ -12 +13 @@
+-uso: python -I -B -X utf8 guardas_estaticas_bancada_v411.py [um.py_candidato] [saida.json]   (rc 0 so' se o candidato passa E todos os controles recusam)"""
++uso: python -I -B -X utf8 guardas_estaticas_bancada_v412.py [um.py_candidato] [saida.json]   (rc 0 so' se o candidato passa E todos os controles recusam)"""
+@@ -16,2 +17,2 @@
+-import delta_v411 as DL  # noqa: E402
+-import acom_conferencias_v411 as AC  # noqa: E402
++import delta_v412 as DL  # noqa: E402
++import acom_conferencias_v412 as AC  # noqa: E402
+@@ -21 +22 @@
+-# (v411) o pino do esboco e' LIDO do mesmo lugar que o gerar_candidato_v411.py le (o ESBOCO_SHA256 pinado em v403\gerar_candidato_v403.py), nunca digitado; se o manifesto do artefato o trouxer, tem de ser o mesmo;
++# (v412) o pino do esboco e' LIDO do mesmo lugar que o gerar_candidato_v412.py le (o ESBOCO_SHA256 pinado em v403\gerar_candidato_v403.py), nunca digitado; se o manifesto do artefato o trouxer, tem de ser o mesmo;
+@@ -28,2 +29,2 @@
+-cand_p = sys.argv[1] if len(sys.argv) > 1 else DL.CANDIDATO_ARQ                       # (v411) o candidato, ou, no ensaio do topo proposto, o artefato de ensaio (fora de work)
+-saida_p = sys.argv[2] if len(sys.argv) > 2 else DL.saida("GUARDAS_ESTATICAS_BANCADA_v411.json")
++cand_p = sys.argv[1] if len(sys.argv) > 1 else DL.CANDIDATO_ARQ                       # (v412) o candidato, ou, no ensaio do topo proposto, o artefato de ensaio (fora de work)
++saida_p = sys.argv[2] if len(sys.argv) > 2 else DL.saida("GUARDAS_ESTATICAS_BANCADA_v412.json")
+@@ -36 +37 @@
+-CRIOU_CURTO = not os.path.exists(DL.SANDBOX_CURTO)   # (v411, a licao do mutar_conferidor: o B(n) pre-selo recusa rodar com C:\t\vb22 existente; o que ESTA corrida criou e ficou vazio sai no fim)
++CRIOU_CURTO = not os.path.exists(DL.SANDBOX_CURTO)   # (v412, a licao do mutar_conferidor: o B(n) pre-selo recusa rodar com C:\t\vb23 existente; o que ESTA corrida criou e ficou vazio sai no fim)
+@@ -66,3 +67,3 @@
+-res = {"contrato": "GUARDAS_ESTATICAS_BANCADA_v411", "esboco": {"path": ESBOCO, "sha256": ESBOCO_SHA256, "revisao": MOD.REVISAO, "funcao": "ler_nos"}, "candidato": {"path": cand_p, "sha16": sha(cand)[:16], "bytes": len(cand), "rotulo": DL.ROTULO_DO_ARTEFATO}, **DL.MARCA_ENSAIO}
+-# 1. o candidato passa a mesma leitura que o B(n) fara (versao v411)
+-res["candidato_v411"] = rodar("candidato", cand, "v411")
++res = {"contrato": "GUARDAS_ESTATICAS_BANCADA_v412", "esboco": {"path": ESBOCO, "sha256": ESBOCO_SHA256, "revisao": MOD.REVISAO, "funcao": "ler_nos"}, "candidato": {"path": cand_p, "sha16": sha(cand)[:16], "bytes": len(cand), "rotulo": DL.ROTULO_DO_ARTEFATO}, **DL.MARCA_ENSAIO}
++# 1. o candidato passa a mesma leitura que o B(n) fara (versao v412)
++res["candidato_v412"] = rodar("candidato", cand, "v412")
+@@ -76,8 +77,8 @@
+-nulos["alfa_segunda_linha_na_coluna_0"] = (rodar("m1", cand + b"ALPHA_FINE_CODATA_2018 = 0.0072973525693\r\n", "v411"), "ALPHA_LINHA_NAO_UNICA")
+-nulos["alfa_reatribuido_indentado"] = (rodar("m2", cand + b"if True:\r\n    ALPHA_FINE_CODATA_2018 = 0.0072973525693\r\n", "v411"), "ALPHA_REATRIBUIDA_INDENTADA")
+-nulos["alfa_sem_a_linha"] = (rodar("m3", cand.replace(ancora_alfa.encode(), b"ALPHA_X = 7.2973525693e-3\r\n", 1), "v411"), "CANONICAL_DECLARATION_MISSING")
+-nulos["um_version_duplicado"] = (rodar("m4", cand + b'UM_VERSION = "v411"\r\n', "v411"), "UM_VERSION_LINHA_NAO_UNICA")
+-nulos["um_version_reatribuido_indentado"] = (rodar("m5", cand + b'if True:\r\n    UM_VERSION = "v411"\r\n', "v411"), "UM_VERSION_REATRIBUIDA_INDENTADA")
+-nulos["versao_do_um_py_diferente_do_alvo"] = (rodar("m6", cand, "v410", versao_no_selo="v410"), "UM_VERSION_DIFERENTE_DO_ALVO")
+-nulos["alfa_fora_do_contrato"] = (rodar("m7", cand.replace(ancora_alfa.encode(), b"ALPHA_FINE_CODATA_2018 = 1.5\r\n", 1), "v411"), "ALPHA_OUTSIDE_CONTRACT")
+-nulos["beta_do_core_diverge_do_runtime"] = (rodar("m8", cand, "v411", beta=beta_core * (1 + 1e-6)), "BETA_CORE_DIVERGE_DO_RUNTIME")
++nulos["alfa_segunda_linha_na_coluna_0"] = (rodar("m1", cand + b"ALPHA_FINE_CODATA_2018 = 0.0072973525693\r\n", "v412"), "ALPHA_LINHA_NAO_UNICA")
++nulos["alfa_reatribuido_indentado"] = (rodar("m2", cand + b"if True:\r\n    ALPHA_FINE_CODATA_2018 = 0.0072973525693\r\n", "v412"), "ALPHA_REATRIBUIDA_INDENTADA")
++nulos["alfa_sem_a_linha"] = (rodar("m3", cand.replace(ancora_alfa.encode(), b"ALPHA_X = 7.2973525693e-3\r\n", 1), "v412"), "CANONICAL_DECLARATION_MISSING")
++nulos["um_version_duplicado"] = (rodar("m4", cand + b'UM_VERSION = "v412"\r\n', "v412"), "UM_VERSION_LINHA_NAO_UNICA")
++nulos["um_version_reatribuido_indentado"] = (rodar("m5", cand + b'if True:\r\n    UM_VERSION = "v412"\r\n', "v412"), "UM_VERSION_REATRIBUIDA_INDENTADA")
++nulos["versao_do_um_py_diferente_do_alvo"] = (rodar("m6", cand, "v411", versao_no_selo="v411"), "UM_VERSION_DIFERENTE_DO_ALVO")
++nulos["alfa_fora_do_contrato"] = (rodar("m7", cand.replace(ancora_alfa.encode(), b"ALPHA_FINE_CODATA_2018 = 1.5\r\n", 1), "v412"), "ALPHA_OUTSIDE_CONTRACT")
++nulos["beta_do_core_diverge_do_runtime"] = (rodar("m8", cand, "v412", beta=beta_core * (1 + 1e-6)), "BETA_CORE_DIVERGE_DO_RUNTIME")
+@@ -85 +86 @@
+-d9 = montar("m9", cand, "v411"); json.dump({"um_version": "v411", "sha256": {"um.py": "0" * 64}}, open(os.path.join(d9, "um_absoluto_selo.json"), "w", encoding="utf-8"))
++d9 = montar("m9", cand, "v412"); json.dump({"um_version": "v412", "sha256": {"um.py": "0" * 64}}, open(os.path.join(d9, "um_absoluto_selo.json"), "w", encoding="utf-8"))
+@@ -87 +88 @@
+-    MOD.ler_nos(Path(d9), "v411"); nulos["selo_nao_pina_o_um_py"] = ({"passou": True, "recusa": None}, "SELO_NAO_PINA_O_UM_PY_DO_DISCO")
++    MOD.ler_nos(Path(d9), "v412"); nulos["selo_nao_pina_o_um_py"] = ({"passou": True, "recusa": None}, "SELO_NAO_PINA_O_UM_PY_DO_DISCO")
+@@ -98 +99 @@
+-res["canonical_py_instalado"]["ok"] = res["canonical_py_instalado"]["le_versao"] == "v411" and res["canonical_py_instalado"]["le_alfa"] == "7.2973525693e-3" and res["canonical_py_instalado"]["igual_ao_do_esboco"]
++res["canonical_py_instalado"]["ok"] = res["canonical_py_instalado"]["le_versao"] == "v412" and res["canonical_py_instalado"]["le_alfa"] == "7.2973525693e-3" and res["canonical_py_instalado"]["igual_ao_do_esboco"]
+@@ -102 +103 @@
+-                   if (res["candidato_v411"]["passou"] and res["candidato_v411"]["alpha"]["n_linhas_nao_indentadas"] == 1 and res["candidato_v411"]["alpha"]["n_reatribuicoes_indentadas"] == 0
++                   if (res["candidato_v412"]["passou"] and res["candidato_v412"]["alpha"]["n_linhas_nao_indentadas"] == 1 and res["candidato_v412"]["alpha"]["n_reatribuicoes_indentadas"] == 0
+@@ -113 +114 @@
+-print("candidato:", {k: res["candidato_v411"][k] for k in ("passou", "alpha", "um_version_linhas", "UM_VERSION", "beta_rel_diff")})
++print("candidato:", {k: res["candidato_v412"][k] for k in ("passou", "alpha", "um_version_linhas", "UM_VERSION", "beta_rel_diff")})

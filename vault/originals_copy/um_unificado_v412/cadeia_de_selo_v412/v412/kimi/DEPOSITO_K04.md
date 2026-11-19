@@ -1,0 +1,8 @@
+[DECLARADO] K04 concluída e revisada internamente. Não existe hoje teste cego de natureza com o poder requerido executável, nem primeira data publicada defensável. H0DN tem D=7,068/8,068 já lido; SNII D=3,256 e TDCOSMO 2,462–2,689 sem cegueira qualificada. No m₂, a Tabela 6 dá P(r≥5)=64,74% para incremento independente e 66,13% no brinquedo cumulativo; a 0,7% dá 12,88%/3,48% e a 0,5% 35,04%/31,47%. O desfecho provável é tensão do primário, não falsificação: com S ABSENT e a regra atual, um teste que não pode devolver negativo não é teste. Nenhum par publicado fecha FALSIFIED ou MATCHED; SK-Gd tem 3,605σ e 380,08 dias apenas como cenário, sem agenda/independência. A métrica congelada é m₂; mudança é emenda do operador. Brinquedo full-reactor: 5σ em 31/03/2028 e D90 em 19/09/2031, não cronograma. Stouffer JUNO+SO: horizonte 2034 condicional; ringdown D10≈27 meses retrospectivos, IR1 insuficiente, O5 condicional. As sete ressalvas ficaram apenas como partituras, sem execução. REV0/REV1 e erratas preservados; nenhum vetor observado, abertura ou teste empírico foi executado. Q1/Q2 estão em PERGUNTA_K04.md; REGISTRO_MAPA_K04.json é proposta não registrada. Gate imóvel.
+
+Entrega: C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\kimi\ENTREGA_K04.md
+SHA-256: a744eca8bb6ff589a6be3187690742e06c8cb374c8d820a3204d96d2b7ba0ba2
+Registro proposto: C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\kimi\REGISTRO_MAPA_K04.json
+SHA-256: faeda571b777e0191509258ca5db0aabe6847f2d1fe58c395e8a14be1d4f8971
+Validação: C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\kimi\VALIDACAO_K04.json
+SHA-256: 5e728a295f99602a466f91ac94a31913c047f62845e42bfdedaf0ab37333bce4

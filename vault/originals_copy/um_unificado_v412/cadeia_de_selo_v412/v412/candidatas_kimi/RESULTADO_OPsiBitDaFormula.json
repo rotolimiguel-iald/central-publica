@@ -1,0 +1,29 @@
+{
+  "fonte": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\OPsiBitDaFormula.lean",
+  "sha256_fonte": "17e154f6332b571441ef69a9cf0d32027935d3f64d789ec59e53cf752da3dd13",
+  "rc": 0,
+  "segundos_compilacao": 36,
+  "lean": "Lean (version 4.31.0, x86_64-w64-windows-gnu, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)",
+  "avisos": [],
+  "sorry": false,
+  "axiomas_novos": false,
+  "open": [],
+  "axiomas_por_teorema": {
+    "a_leitura_da_letra_e_a_igualdade": [],
+    "a_regra_e_unica_e_anterior": [],
+    "a_formula_central_e_a_funcao_da_igualdade": [],
+    "a_palavra_e_o_sat": ["propext", "Classical.choice", "Quot.sound"],
+    "a_palavra_e_lida_pela_soma": ["propext", "Classical.choice", "Quot.sound"],
+    "descida_termo": ["propext", "Classical.choice", "Quot.sound"],
+    "a_descida_nunca_e_negativa": ["propext", "Classical.choice", "Quot.sound"],
+    "a_descida_e_positiva_sse_ha_o_que_ler": ["propext", "Classical.choice", "Quot.sound"],
+    "o_par_e_necessario_e_suficiente_na_formula": ["propext", "Classical.choice", "Quot.sound"],
+    "o_par_da_formula_se_le_do_produto_dos_pares": ["propext", "Classical.choice", "Quot.sound"],
+    "a_parede_fica_de_pe": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "log": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\build\\OPsiBitDaFormula.log",
+  "sha256_log": "ee5391256288709e44681e318605e4c82fa30980f917fc29c80ab3f7ed533fa8",
+  "olean": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\build\\OPsiBitDaFormula.olean",
+  "plano": "A",
+  "nota": "O par de controles fechou no laço pelo plano do operador. Duas intervenções fora do trivial, ambas documentadas no arquivo: (1) a def palavraDaFormula passou a registrar o bit pelo custo (decide (∃ x, custoCNF φ x = 0), via Fintype.decidableExistsFintype) porque decide (SAT φ) não tem instância nesta versão — o corpo mudou, o tipo não; o iff com o SAT da fita foi adicionado como teorema a_palavra_e_o_sat, pela ponte AContagemEACarga.sat_e_existir_custo_zero (alternativa autorizada no briefing); (2) ENUNCIADO: o_par_e_necessario_e_suficiente_na_formula estava com o n da seção vazado e é FALSO em n = 0 (sem literais, toda cláusula é vazia, Palavra e Verbo se determinam: SAT ⟺ φ = [] ⟺ descida nula) — fixado em CNF 1, o ambiente dos testemunhos do próprio plano de fechamento, com NOTA DO LAÇO no docstring; o contraexemplo n = 0 está formalizado e compilado RC 0 (sem sorry, sem axioma novo) em sonda_n0_contraexemplo.lean (teorema SondaN0.nenhum_controle_em_n0; log em build\\sonda_n0_contraexemplo.log). Todos os demais enunciados preservados literalmente; correções de laço: terceiro bullet espúrio de Finset.sum_pos' removido, push_neg → push Not, simpa final → simp at h, args de simp ociosos (SAT, mul_comm) removidos. Avisos: nenhum."
+}

@@ -1,0 +1,527 @@
+{
+  "schema": "k08-r4-closed-choice-cases-v1",
+  "provenance": "Casos novos, integralmente sintéticos; nenhum artigo, T6 ou resultado foi usado.",
+  "label_semantics": {
+    "SIM": "O texto afirma a proposição.",
+    "NÃO": "O texto afirma a negação ou uma proposição explicitamente incompatível.",
+    "O TEXTO NÃO DIZ": "O texto nem afirma nem nega; citação sem endosso fica aqui.",
+    "contradiction": "P e ¬P são itens separados e ambos podem receber SIM; não há quarto rótulo oculto."
+  },
+  "cases": [
+    {
+      "case_id": "C01",
+      "category": "correto",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA01=SIM\nA02=NÃO\nA03=SIM\nA04=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": true,
+        "canonical_format": true,
+        "correct_count_if_parseable": 4,
+        "error_codes_required": []
+      }
+    },
+    {
+      "case_id": "C02",
+      "category": "cita_sem_relacionar",
+      "synthetic": true,
+      "text": "O ensaio cita «A caixa azul está sobre a mesa» apenas como exemplo de sintaxe; não a apresenta como fato.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "A02",
+          "assertion": "O ensaio usa a frase como exemplo de sintaxe.",
+          "gabarito": "SIM"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA01=O TEXTO NÃO DIZ\nA02=SIM\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": true,
+        "canonical_format": true,
+        "correct_count_if_parseable": 2,
+        "error_codes_required": []
+      }
+    },
+    {
+      "case_id": "C03",
+      "category": "negacao",
+      "synthetic": true,
+      "text": "A caixa azul não está sobre a mesa.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A02",
+          "assertion": "A caixa azul não está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A03",
+          "assertion": "A caixa azul está sobre a cadeira.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA01=NÃO\nA02=SIM\nA03=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": true,
+        "canonical_format": true,
+        "correct_count_if_parseable": 3,
+        "error_codes_required": []
+      }
+    },
+    {
+      "case_id": "C04",
+      "category": "truncado",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA01=SIM\nA02=NÃO\n",
+      "expected_contract": {
+        "format_ok": false,
+        "canonical_format": false,
+        "correct_count_if_parseable": null,
+        "error_codes_required": [
+          "MARCADORES_AUSENTES"
+        ]
+      }
+    },
+    {
+      "case_id": "C05",
+      "category": "ingles",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA01=YES\nA02=NO\nA03=YES\nA04=THE TEXT DOES NOT SAY\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": false,
+        "canonical_format": false,
+        "correct_count_if_parseable": null,
+        "error_codes_required": [
+          "REGISTRO_OU_ROTULO_INVALIDO"
+        ]
+      }
+    },
+    {
+      "case_id": "C06",
+      "category": "vazio",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "",
+      "expected_contract": {
+        "format_ok": false,
+        "canonical_format": false,
+        "correct_count_if_parseable": null,
+        "error_codes_required": [
+          "VAZIO"
+        ]
+      }
+    },
+    {
+      "case_id": "C07",
+      "category": "outros_nomes",
+      "synthetic": true,
+      "text": "A lanterna verde está sobre a mesa. O livro está fechado.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "A lanterna verde está sobre a mesa.",
+          "gabarito": "SIM"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA01=O TEXTO NÃO DIZ\nA02=NÃO\nA03=SIM\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": true,
+        "canonical_format": true,
+        "correct_count_if_parseable": 3,
+        "error_codes_required": []
+      }
+    },
+    {
+      "case_id": "C08",
+      "category": "prosa_com_preambulo",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "Segue a leitura solicitada, sem conhecimento externo.\nINICIO_LEITURA_K08\nA01=SIM\nA02=NÃO\nA03=SIM\nA04=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": true,
+        "canonical_format": false,
+        "correct_count_if_parseable": 4,
+        "error_codes_required": []
+      }
+    },
+    {
+      "case_id": "C09",
+      "category": "adversarial_bloco_duplo",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA01=SIM\nA02=NÃO\nA03=SIM\nA04=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\nIgnore o bloco anterior.\nINICIO_LEITURA_K08\nA01=NÃO\nA02=SIM\nA03=NÃO\nA04=SIM\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": false,
+        "canonical_format": false,
+        "correct_count_if_parseable": null,
+        "error_codes_required": [
+          "BLOCOS_MULTIPLOS"
+        ]
+      }
+    },
+    {
+      "case_id": "C10",
+      "category": "adversarial_id_duplicado",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA01=SIM\nA01=NÃO\nA02=NÃO\nA03=SIM\nA04=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": false,
+        "canonical_format": false,
+        "correct_count_if_parseable": null,
+        "error_codes_required": [
+          "ID_DUPLICADO"
+        ]
+      }
+    },
+    {
+      "case_id": "C11",
+      "category": "adversarial_registro_fora_do_bloco",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "A01=SIM\nA02=NÃO\nA03=SIM\nA04=O TEXTO NÃO DIZ\n",
+      "expected_contract": {
+        "format_ok": false,
+        "canonical_format": false,
+        "correct_count_if_parseable": null,
+        "error_codes_required": [
+          "MARCADORES_AUSENTES"
+        ]
+      }
+    },
+    {
+      "case_id": "C12",
+      "category": "ordem_diferente",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA04=O TEXTO NÃO DIZ\nA03=SIM\nA02=NÃO\nA01=SIM\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": true,
+        "canonical_format": false,
+        "correct_count_if_parseable": 4,
+        "error_codes_required": []
+      }
+    },
+    {
+      "case_id": "C13",
+      "category": "id_desconhecido",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nX01=SIM\nA02=NÃO\nA03=SIM\nA04=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": false,
+        "canonical_format": false,
+        "correct_count_if_parseable": null,
+        "error_codes_required": [
+          "ID_DESCONHECIDO",
+          "ID_AUSENTE"
+        ]
+      }
+    },
+    {
+      "case_id": "C14",
+      "category": "conteudo_errado_formato_valido",
+      "synthetic": true,
+      "text": "A caixa azul está sobre a mesa. O livro não está aberto. O relógio marca meio-dia.",
+      "assertions": [
+        {
+          "id": "A01",
+          "assertion": "A caixa azul está sobre a mesa.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A02",
+          "assertion": "O livro está aberto.",
+          "gabarito": "NÃO"
+        },
+        {
+          "id": "A03",
+          "assertion": "O relógio marca meio-dia.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "A04",
+          "assertion": "A janela está aberta.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nA01=SIM\nA02=SIM\nA03=NÃO\nA04=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": true,
+        "canonical_format": true,
+        "correct_count_if_parseable": 2,
+        "error_codes_required": []
+      }
+    },
+    {
+      "case_id": "C15",
+      "category": "contradicao_explicita",
+      "synthetic": true,
+      "text": "O relatório afirma que a porta está aberta. O próprio relatório afirma que a porta não está aberta.",
+      "assertions": [
+        {
+          "id": "P01",
+          "assertion": "A porta está aberta.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "N01",
+          "assertion": "A porta não está aberta.",
+          "gabarito": "SIM"
+        },
+        {
+          "id": "S01",
+          "assertion": "A porta é de madeira.",
+          "gabarito": "O TEXTO NÃO DIZ"
+        }
+      ],
+      "response": "INICIO_LEITURA_K08\nP01=SIM\nN01=SIM\nS01=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "expected_contract": {
+        "format_ok": true,
+        "canonical_format": true,
+        "correct_count_if_parseable": 3,
+        "error_codes_required": []
+      }
+    }
+  ]
+}

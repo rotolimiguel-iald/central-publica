@@ -1,0 +1,154 @@
+{
+ "ok": true,
+ "resumo": {
+  "nome": "portao_do_pilar_no_candidato",
+  "n_checagens": 8,
+  "n_ok": 8,
+  "n_itens_total": 47,
+  "ok": true
+ },
+ "checagens": [
+  {
+   "checagem": "o fecho de dependencias da chave e' o mesmo na base e no candidato (11 nomes)",
+   "ok": true,
+   "n_itens_examinados": 11,
+   "detalhe": []
+  },
+  {
+   "checagem": "o texto de CADA nome do fecho tem o mesmo sha256 na base e no candidato",
+   "ok": true,
+   "n_itens_examinados": 11,
+   "detalhe": []
+  },
+  {
+   "checagem": "a entrada worker_sha256 (_qp_materialize, _QP_WORKER_SRC, _qp_dir): cada nome tem o mesmo sha256 na base e no candidato",
+   "ok": true,
+   "n_itens_examinados": 3,
+   "detalhe": {
+    "_qp_materialize": {
+     "base": "7ac6caf0b579f66c",
+     "candidato": "7ac6caf0b579f66c",
+     "igual": true
+    },
+    "_QP_WORKER_SRC": {
+     "base": "017df5833b08dbab",
+     "candidato": "017df5833b08dbab",
+     "igual": true
+    },
+    "_qp_dir": {
+     "base": "eb4c0af5bb26dd70",
+     "candidato": "eb4c0af5bb26dd70",
+     "igual": true
+    }
+   }
+  },
+  {
+   "checagem": "a entrada spec_canonica (_QP_SPEC_JSON, _qp_canon, _QP_SPEC_SHA256): cada nome tem o mesmo sha256 na base e no candidato",
+   "ok": true,
+   "n_itens_examinados": 3,
+   "detalhe": {
+    "_QP_SPEC_JSON": {
+     "base": "cfd6f7b675e847e7",
+     "candidato": "cfd6f7b675e847e7",
+     "igual": true
+    },
+    "_qp_canon": {
+     "base": "512a089ef6a1b127",
+     "candidato": "512a089ef6a1b127",
+     "igual": true
+    },
+    "_QP_SPEC_SHA256": {
+     "base": "a4626fb03520f853",
+     "candidato": "a4626fb03520f853",
+     "igual": true
+    }
+   }
+  },
+  {
+   "checagem": "a entrada beta_hex (_qp_beta): cada nome tem o mesmo sha256 na base e no candidato",
+   "ok": true,
+   "n_itens_examinados": 1,
+   "detalhe": {
+    "_qp_beta": {
+     "base": "5dd85cbc6b5604c9",
+     "candidato": "5dd85cbc6b5604c9",
+     "igual": true
+    }
+   }
+  },
+  {
+   "checagem": "nenhum nome do que a v412 muda (kernel embutido, bandeiras, registros, texto do artigo e do resumo) esta' no fecho da chave do candidato",
+   "ok": true,
+   "n_itens_examinados": 13,
+   "detalhe": []
+  },
+  {
+   "checagem": "as tres entradas da chave sao as de PORTAO_DO_PILAR_v412.json",
+   "ok": true,
+   "n_itens_examinados": 3,
+   "detalhe": [
+    "beta_hex",
+    "spec_canonica",
+    "worker_sha256"
+   ]
+  },
+  {
+   "checagem": "o candidato difere da base (nao e' copia: o gerador rodou)",
+   "ok": true,
+   "n_itens_examinados": 2,
+   "detalhe": null
+  }
+ ],
+ "candidato": {
+  "arquivo": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\um_v412_candidato.py",
+  "sha16": "3e741dcaa58ef2b8",
+  "bytes": 50167683
+ },
+ "base_v411_sha16": "1203b1f9202020d6",
+ "entradas": {
+  "worker_sha256": {
+   "_qp_materialize": {
+    "base": "7ac6caf0b579f66c",
+    "candidato": "7ac6caf0b579f66c",
+    "igual": true
+   },
+   "_QP_WORKER_SRC": {
+    "base": "017df5833b08dbab",
+    "candidato": "017df5833b08dbab",
+    "igual": true
+   },
+   "_qp_dir": {
+    "base": "eb4c0af5bb26dd70",
+    "candidato": "eb4c0af5bb26dd70",
+    "igual": true
+   }
+  },
+  "spec_canonica": {
+   "_QP_SPEC_JSON": {
+    "base": "cfd6f7b675e847e7",
+    "candidato": "cfd6f7b675e847e7",
+    "igual": true
+   },
+   "_qp_canon": {
+    "base": "512a089ef6a1b127",
+    "candidato": "512a089ef6a1b127",
+    "igual": true
+   },
+   "_QP_SPEC_SHA256": {
+    "base": "a4626fb03520f853",
+    "candidato": "a4626fb03520f853",
+    "igual": true
+   }
+  },
+  "beta_hex": {
+   "_qp_beta": {
+    "base": "5dd85cbc6b5604c9",
+    "candidato": "5dd85cbc6b5604c9",
+    "igual": true
+   }
+  }
+ },
+ "n_nomes_do_fecho": 11,
+ "portao_json_sha16": "636823d8692a4a3c",
+ "falta_antes_do_rito": "conferir que o ambiente da placa (torch, cuda, numpy, scipy, python, gpu) e' o do cache; se nao for, PARAR e avisar (ha' treino em curso na placa): ato da gerencia, nao deste script"
+}

@@ -1,0 +1,66 @@
+--- v411/quadro_v411.py
++++ v412/quadro_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/quadro_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/quadro_v412.py.diff
+@@ -49 +50 @@
+-            "h_resultado": ((r_.get("insumos_pinados") or {}).get("RESULTADO_DA_ABERTURA_V411.json") or {}).get("sha256"), "n_checks": len(((r_.get("mechanics") or {}).get("checks") or [])),
++            "h_resultado": ((r_.get("insumos_pinados") or {}).get("RESULTADO_DA_ABERTURA_V412.json") or {}).get("sha256"), "n_checks": len(((r_.get("mechanics") or {}).get("checks") or [])),
+@@ -60,2 +61,2 @@
+-    sel_pt_ = r"\noindent\textbf{Nesta rodada o registro do H0DN v411 NÃO selou: o que segue é o enunciado, não um selo.}\par\smallskip" if not a_["sealed"] else r"\noindent{\scriptsize Aberto uma única vez em 12/11/2026, depois do commit público do pré-registro; recalculado neste rito.}\par\smallskip"
+-    sel_en_ = r"\noindent\textbf{This round the v411 H0DN record did NOT seal: what follows is the statement, not a seal.}\par\smallskip" if not a_["sealed"] else r"\noindent{\scriptsize Opened only once, on 12 Nov 2026, after the public commit of the pre-registration; recomputed in this rite.}\par\smallskip"
++    sel_pt_ = r"\noindent\textbf{Nesta rodada o registro do H0DN v412 NÃO selou: o que segue é o enunciado, não um selo.}\par\smallskip" if not a_["sealed"] else r"\noindent{\scriptsize Aberto uma única vez em 12/11/2026, depois do commit público do pré-registro; recalculado neste rito.}\par\smallskip"
++    sel_en_ = r"\noindent\textbf{This round the v412 H0DN record did NOT seal: what follows is the statement, not a seal.}\par\smallskip" if not a_["sealed"] else r"\noindent{\scriptsize Opened only once, on 12 Nov 2026, after the public commit of the pre-registration; recomputed in this rite.}\par\smallskip"
+@@ -63 +64 @@
+-    if not ress_:   # (v411, achado do ensaio a seco: sem o registro, a lista ficava vazia e o pdflatex parava) um item que diz que as ressalvas nao foram lidas nesta rodada
++    if not ress_:   # (v412, achado do ensaio a seco: sem o registro, a lista ficava vazia e o pdflatex parava) um item que diz que as ressalvas nao foram lidas nesta rodada
+@@ -113 +114 @@
+-    L_ = ["> **" + titulo_pt_ + "**" + ("" if a_["sealed"] else " — **nesta rodada o registro do H0DN v411 NÃO selou: o que segue é o enunciado, não um selo.**"), ">",
++    L_ = ["> **" + titulo_pt_ + "**" + ("" if a_["sealed"] else " — **nesta rodada o registro do H0DN v412 NÃO selou: o que segue é o enunciado, não um selo.**"), ">",
+@@ -147 +148 @@
+-    """A SECAO da v411 (5.2): montada do core selado e do pre-registro embutido (as ressalvas lidas pelo registro); antes da secao da v410."""
++    """A SECAO da v412 (5.2): montada do core selado e do pre-registro embutido (as ressalvas lidas pelo registro); antes da secao da v411."""
+@@ -156,2 +157,2 @@
+-              r"\textbf{O que a v410 tinha pré-registrado e por que não abriu.} A v410 pré-registrou a função de veredito e não leu dado observado; a ordem do operador era não abrir sem poder discriminante, e o vetor publicado não cabia no suporte da covariância publicada. "
+-              r"Com os mesmos números lidos agora, a função congelada da v410 (a do \texttt{um.py}) devolve o ramo (" + str(ra_[2]) + r"): \texttt{" + tt_(ra_[0]) + r"} --- o desfecho que a regra antiga daria, dito às claras.",
++              r"\textbf{O que a v411 tinha pré-registrado e por que não abriu.} A v411 pré-registrou a função de veredito e não leu dado observado; a ordem do operador era não abrir sem poder discriminante, e o vetor publicado não cabia no suporte da covariância publicada. "
++              r"Com os mesmos números lidos agora, a função congelada da v411 (a do \texttt{um.py}) devolve o ramo (" + str(ra_[2]) + r"): \texttt{" + tt_(ra_[0]) + r"} --- o desfecho que a regra antiga daria, dito às claras.",
+@@ -182,2 +183,2 @@
+-            r"\textbf{What v410 had pre-registered and why it did not open.} v410 pre-registered the verdict function and read no observed data; the operator's order was not to open without discriminating power, and the published vector did not fit the support of the published covariance. "
+-            r"With the same numbers read now, the frozen v410 function (the one in \texttt{um.py}) returns branch (" + str(ra_[2]) + r"): \texttt{" + tt_(ra_[0]) + r"} --- the outcome the old rule would give, stated openly.",
++            r"\textbf{What v411 had pre-registered and why it did not open.} v411 pre-registered the verdict function and read no observed data; the operator's order was not to open without discriminating power, and the published vector did not fit the support of the published covariance. "
++            r"With the same numbers read now, the frozen v411 function (the one in \texttt{um.py}) returns branch (" + str(ra_[2]) + r"): \texttt{" + tt_(ra_[0]) + r"} --- the outcome the old rule would give, stated openly.",
+@@ -205 +206 @@
+-    """A linha do .md canonico (antes das linhas da v410): as duas linhas juntas, com as quatro obrigacoes; numeros do core."""
++    """A linha do .md canonico (antes das linhas da v411): as duas linhas juntas, com as quatro obrigacoes; numeros do core."""
+@@ -220 +221 @@
+-    fora_ = {"β": r"$\beta$", "α": r"$\alpha$", "σ": r"$\sigma$", "Λ": r"$\Lambda$", "δ": r"$\delta$", "√": r"$\surd$", "×": r"$\times$", "−": r"$-$", "%": r"\%", "_": r"\_"}   # (v411: o Λ do ΛCDM e o sublinhado de veredito de maquina no modo texto, achados do ensaio a seco)
++    fora_ = {"β": r"$\beta$", "α": r"$\alpha$", "σ": r"$\sigma$", "Λ": r"$\Lambda$", "δ": r"$\delta$", "√": r"$\surd$", "×": r"$\times$", "−": r"$-$", "%": r"\%", "_": r"\_"}   # (v412: o Λ do ΛCDM e o sublinhado de veredito de maquina no modo texto, achados do ensaio a seco)
+@@ -236 +237 @@
+-    """O texto RATIFICADO do topo (TOPO_RATIFICADO_v411.json, a fonte unica; D172, D173), com os marcadores preenchidos na EMISSAO a partir da chave do core que a tabela `marcadores` do arquivo da' (doze: o H0DN, o livro de
++    """O texto RATIFICADO do topo (TOPO_RATIFICADO_v412.json, a fonte unica; D172, D173), com os marcadores preenchidos na EMISSAO a partir da chave do core que a tabela `marcadores` do arquivo da' (doze: o H0DN, o livro de
+@@ -242 +243 @@
+-        return (r"\textbf{O registro do teste H0DN $\times$ BG1 (v411) NÃO selou nesta rodada: o resultado não é dito aqui.} " if lang_ == "pt" else r"\textbf{The H0DN $\times$ BG1 test record (v411) did NOT seal this round: the result is not stated here.} ") if tex_ else ""
++        return (r"\textbf{O registro do teste H0DN $\times$ BG1 (v412) NÃO selou nesta rodada: o resultado não é dito aqui.} " if lang_ == "pt" else r"\textbf{The H0DN $\times$ BG1 test record (v412) did NOT seal this round: the result is not stated here.} ") if tex_ else ""
+@@ -289 +290 @@
+-        return (r"a probabilidade de os efeitos $\beta$ existirem na natureza segue indeterminada (o registro do H0DN v411 não selou nesta rodada)" if lang_ == "pt" else r"the probability that the $\beta$ effects exist in nature remains undetermined (the v411 H0DN record did not seal this round)")
++        return (r"a probabilidade de os efeitos $\beta$ existirem na natureza segue indeterminada (o registro do H0DN v412 não selou nesta rodada)" if lang_ == "pt" else r"the probability that the $\beta$ effects exist in nature remains undetermined (the v412 H0DN record did not seal this round)")
+@@ -307,2 +308,2 @@
+-        return (r"\textbf{(v411, ao lado)} O registro do teste H0DN $\times$ BG1 não selou nesta rodada: o P2 segue como o registro selado da v387 o diz." if lang_ == "pt"
+-                else r"\textbf{(v411, beside)} The H0DN $\times$ BG1 test record did not seal this round: P2 stays as the sealed v387 record says.")
++        return (r"\textbf{(v412, ao lado)} O registro do teste H0DN $\times$ BG1 não selou nesta rodada: o P2 segue como o registro selado da v387 o diz." if lang_ == "pt"
++                else r"\textbf{(v412, beside)} The H0DN $\times$ BG1 test record did not seal this round: P2 stays as the sealed v387 record says.")
+@@ -311 +312 @@
+-        return (r"\textbf{(v411, ao lado do $P_2$)} Os efeitos de $\beta$ na natureza foram lidos acima de $5\sigma$ num canal, a razão de Hubble (H0DN $\times$ BG1), sob o modelo de erros publicado; ao lado, no mesmo item, "
++        return (r"\textbf{(v412, ao lado do $P_2$)} Os efeitos de $\beta$ na natureza foram lidos acima de $5\sigma$ num canal, a razão de Hubble (H0DN $\times$ BG1), sob o modelo de erros publicado; ao lado, no mesmo item, "
+@@ -315 +316 @@
+-    return (r"\textbf{(v411, beside $P_2$)} The effects of $\beta$ in nature were read above $5\sigma$ in one channel, the Hubble ratio (H0DN $\times$ BG1), under the published error model; beside it, in the same item, "
++    return (r"\textbf{(v412, beside $P_2$)} The effects of $\beta$ in nature were read above $5\sigma$ in one channel, the Hubble ratio (H0DN $\times$ BG1), under the published error model; beside it, in the same item, "
+@@ -325,4 +326,4 @@
+-        return r"\textbf{(v411, ao lado)} O registro do teste H0DN $\times$ BG1 não selou nesta rodada." if lang_ == "pt" else r"\textbf{(v411, beside)} The H0DN $\times$ BG1 test record did not seal this round."
+-    if lang_ == "pt":
+-        return r"\textbf{(v411, ao lado)} " + _v411_tex_misto(_V411_ESTATUTO_AO_LADO_PT) + " " + _v411_tex_misto(_V411_TEXTOS_DA_GERENCIA["fecho_estatuto"]["pt"])   # (B-04) o fecho da gerencia
+-    return (r"\textbf{(v411, beside)} The link that was waiting for an instrument, $\beta_{TGL}$ in nature at $5\sigma$, was read on 12 Nov 2026 in the H0DN $\times$ BG1 test: closed at this sensitivity, under the published error model "
++        return r"\textbf{(v412, ao lado)} O registro do teste H0DN $\times$ BG1 não selou nesta rodada." if lang_ == "pt" else r"\textbf{(v412, beside)} The H0DN $\times$ BG1 test record did not seal this round."
++    if lang_ == "pt":
++        return r"\textbf{(v412, ao lado)} " + _v411_tex_misto(_V411_ESTATUTO_AO_LADO_PT) + " " + _v411_tex_misto(_V411_TEXTOS_DA_GERENCIA["fecho_estatuto"]["pt"])   # (B-04) o fecho da gerencia
++    return (r"\textbf{(v412, beside)} The link that was waiting for an instrument, $\beta_{TGL}$ in nature at $5\sigma$, was read on 12 Nov 2026 in the H0DN $\times$ BG1 test: closed at this sensitivity, under the published error model "

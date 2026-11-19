@@ -179,6 +179,22 @@ def ler_handoff(c, v):
             h.marcadores[i] = m.group(0)
             h.corpos[i] = m.group("corpo")
             h.fontes_textos[i] = str(sp)
+    # AO LADO (13/11/2026, claude-site-custodia; a vitrine, parte 2; condições da gerência c1): os textos da vitrine RATIFICADOS pelo operador
+    # (work\custodia_G1\decisoes\VITRINE_RATIFICADA_vNNN.json) têm precedência sobre os marcadores do handoff, numa fonte só para o E04, o E08 e
+    # as conferências. Arquivo de versão anterior à pedida, ou fonte pinada que mudou, é problema (PARA; nunca se aplica nem se ignora calado).
+    from . import h0dn as _h0dn
+    try:
+        _rat = _h0dn.vitrine_ratificada(c.CEN, v)
+    except ValueError as e:
+        h.problemas.append("vitrine ratificada: %s" % e)
+        _rat = None
+    if _rat:
+        _arq = str(c.CEN / "work" / "custodia_G1" / "decisoes" / ("VITRINE_RATIFICADA_%s.json" % v))
+        for k_, x_ in _rat["textos"].items():
+            i = "%s_%s" % (k_, v)
+            h.corpos[i] = x_["texto"]
+            h.marcadores[i] = "<!-- INICIO_%s -->\n%s\n<!-- FIM_%s -->" % (i, x_["texto"], i)
+            h.fontes_textos[i] = _arq
     return h
 
 

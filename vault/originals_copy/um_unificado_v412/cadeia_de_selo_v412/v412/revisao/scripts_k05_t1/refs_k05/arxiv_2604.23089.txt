@@ -1,0 +1,2911 @@
+                                               AN ALGEBRAIC CHARACTERIZATION OF
+                                                 NON-SINGULAR MATRIX SEMICIRCLES
+
+                                                                        VLADISLAV KARGIN
+
+arXiv:2604.23089v1 [math.OA] 25 Apr 2026       Abstract. Let A1, . . . , Ar be Hermitian n�n matrices and S = Ai
+
+                                               si the associated matrix semicircle, where s1, . . . , sr are free semicircu-
+
+                                               lar variables. We prove that the following are equivalent: (i) the ma-
+
+                                               trix pencil A = Aixi is LR-semisimple (decomposes, up to left�right
+
+                                               equivalence, as a direct sum of unsplittable pencils); (ii) S is non-singular
+
+                                               at t = 0 (the matrix-valued Cauchy transform has a continuous bound-
+
+                                               ary limit near the origin); (iii) the covariance map  : X  AiXAi
+
+                                               is symmetrically DS-scalable (there exists C  0 with (C) = C-1).
+
+                                               When  these  hold,  the  spectral  density  satisfies  f (0)  =  1  tr(C ),  where  C
+                                                                                                                
+
+                                               is the unique trace minimizer of the solution set {W  0 : (W ) W = I}.
+
+                                               The proof combines algebraic and analytic ingredients. On the alge-
+
+                                               braic side, we establish the equivalence (i)  (iii) using Gurvits' capacity
+
+                                               theory for indecomposable maps and a geodesic reflection theorem in the
+
+                                               Riemannian manifold of positive definite matrices, which upgrades DS-
+
+                                               scalability to symmetric DS-scalability for self-adjoint completely posi-
+
+                                               tive maps. On the analytic side, we prove (iii)  (ii) via a Lyapunov�
+
+                                               Schmidt reduction of Speicher's equation at a trace-minimizing solution,
+
+                                               showing that the Jacobian of the bifurcation equations is positive def-
+
+                                               inite. This removes a stability hypothesis that was required in earlier
+
+                                               approaches.
+
+                                                                         Contents
+
+                                          1Introduction                                                                               2
+
+                                          2Definitions and structural results                                                         5
+
+                                          2.1            Matrix semicircles and covariance maps                                       5
+
+                                          2.2            Matrix pencils: Splittability and LR-semisimplicity                          10
+
+                                          2.3            Completely positive maps: indecomposability, capacity,
+
+                                                         DS-scalability                                                               13
+
+                                          2.4            Equivalences between pencil structure and map
+
+                                                         properties                                                                   18
+
+                                              email: vkargin@binghamton.edu; current address: 4400 Vestal Pkwy East, Department
+                                          of Mathematics, Binghamton University, Binghamton, 13902-6000, USA.
+
+                                                                                                             1
+2                             VLADISLAV KARGIN
+
+   A3 lgebraic equivalences                                               22
+
+   3.1  Capacity theory: Indecomposable  DS-scalable                      22
+
+   3.2  Uniqueness trick: self-adjoint indecomposable  Sym
+
+        DS-scalable                                                       24
+
+   3.3  LR-semisimple  DS-scalable                                        25
+
+   3.4  DS-scalable  sym DS-scalable (geodesic reflection) 27
+
+   T4 he analytic engine                                                  31
+
+   4.1  The solution manifold                                             32
+
+   4.2  Lyapunov�Schmidt reduction                                        33
+
+   4.3  Trace minimizer and transversality                                34
+
+   4.4  Non-singularity theorem                                           39
+
+   P5 roof of the main theorem                                            41
+
+   5.1  Non-singular = sym DS-scalable                                    41
+
+   5.2  Proof of the main theorem                                         42
+
+   5.3  Corollaries                                                       43
+
+   D6 iscussion and open questions                                        44
+
+   ATools from operator theory                                            48
+
+   BLog-determinant and capacity tools                                    49
+
+   CFull  rank non-decreasing (proof)                                     50
+
+�1 Introduction
+
+   Let A1, . . . , Ar  Mn(C) be Hermitian matrices and let s1, . . . , sr be
+
+free standard semicircular variables in a non-commutative probability space
+
+(A, ). The random variable S =      r    Ai    si  is  called  a  matrix  semi-
+                                    i=1
+
+circle. Its spectral distribution encodes the interplay between the algebraic
+
+structure of the matrix pencil A = Aixi and the free probabilistic behav-
+
+ior of the semicircular variables. A natural question is: when is the spectral
+
+distribution of S non-singular?
+
+   In Mai et al. (2023), it was shown that the distribution of S has no atom
+
+at 0 if and only if the matrix pencil A has full inner rank (equal to n).
+
+In this paper, we address the finer question of when the distribution has
+
+a bounded continuous density at 0. The answer turns out to be governed
+
+by an algebraic property of the pencil that we call LR-semisimplicity: A
+
+is LR-semisimple if it decomposes, up to left�right equivalence, as a direct
+
+sum of unsplittable pencils.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES3
+
+    To the Hermitian matrix pencil A one associates the completely positive
+
+(CP) map A : Mn(C)  Mn(C) defined by A(X) =                     r        Ai X Ai ,  which  is
+                                                                i=1
+
+the covariance map of the semicircle S. We say that A is symmetrically
+
+DS-scalable if there exists a positive definite matrix C  0 such that
+
+the rescaled map X  C1/2 A(C1/2XC1/2) C1/2 is doubly stochastic (i.e.,
+unital and trace-preserving), or equivalently, A(C) = C-1.
+
+    The spectral distribution of S is encoded by its matrix-valued Cauchy
+
+transform GS(z) = E[(zI  1A - S)-1], and the spectral density is recov-
+
+ered from its boundary behavior via Stieltjes inversion. We say that S is
+
+non-singular if the matrix-valued Cauchy transform has a continuous non-
+
+tangential boundary limit on the real axis; in particular this implies that the
+
+spectral  density  f (x)  =  1  Im [- tr  GS(x + i0+)]      is  bounded  and  continuous.
+                             
+
+The formal definition is given in Definition 2.5.
+
+Main Result.
+
+Theorem (A). Let A =            r    Aixi,  Ai  =  Ai,  be  a   Hermitian  matrix      pencil,
+                                i=1
+
+S = Ai  si the associated matrix semicircle, and  : X  AiXAi its
+
+covariance map. The following are equivalent:
+
+     (i) A is LR-semisimple.
+    (ii) S is non-singular at t = 0.
+    (iii)  is symmetrically DS-scalable.
+
+Moreover, when these hold, the spectral density satisfies
+
+                       1             1 Cap()-1/(2n)         =       1      ,
+             f (0) = tr(C)                                      
+                                                                 e (S)
+
+where C is the unique trace minimizer of S = {W  0 : (W ) W = I}.
+
+    Here (S) = exp log |x| d�S(x) is the Fuglede�Kadison determinant
+                                                 
+of  S,  and  the  identity  Cap()-1/(2n)    =   (e  (S))-1      follows    from     Mai  and
+
+Speicher (2024).
+
+Corollary for unsplittable pencils.
+
+Theorem (B).      If A is unsplittable, then S is non-singular and f (0)      =     1    tr(C ),
+                                                                                    
+
+where C is the unique positive definite solution of (C) = C-1.
+
+Hierarchy. For nonzero Hermitian pencils, the relevant properties form a
+strict hierarchy:
+
+        unsplittable = LR-semisimple =                          full
+
+          Thm B                 Thm A                   Mai et al. (2023): no atom at 0
+4                         VLADISLAV KARGIN
+
+   Together, these results give a complete picture. LR-semisimplicity is the
+precise algebraic condition governing non-singularity of the matrix semicircle
+at t = 0 and ensuring that its covariance map is scalable to the doubly-
+stochastic map. If the pencil is in addition unsplittable then the scaling is
+unique up to unitary transformations. If the pencil is not LR-semisimple
+but still full, then we lose the bounded density but the spectral distribution
+does not have an atom at x = 0 (see the cusp singularity in Example 6.2).
+
+   The formal versions of these theorems are proved as follows: Theorem A
+as Theorem 5.3 in � 5.2 and Theorem B as Corollary 5.4 in � 5.3.
+
+Strategy of proof. The proof consists of three components.
+
+   Algebraic (�3): (i)  (iii).
+LR-semisimple  symmetrically DS-scalable.
+
+: The pencil�map dictionary (�2.4) reduces an LR-semisimple pencil to
+indecomposable blocks. Gurvits' capacity theory gives DS-scalability of each
+block. Since A is self-adjoint, DS-scalability produces a 2-cycle (C, D) of
+the map F (X) = (X)-1. We show that F acts as a geodesic reflection in
+the Riemannian manifold of positive definite matrices, so that the geometric
+mean C # D is a fixed point of F . This yields symmetric DS-scalability.
+
+: A splitting lemma for doubly stochastic maps shows that every splitting
+pair automatically completes to a full block-diagonal decomposition. The
+result then follows by induction on the matrix size.
+
+   Forward analytic (�4): (iii)  (ii).
+sym DS-scalable = non-singular.
+
+We study the HFS form of Speicher's equation, (W )W + uW = I, for
+
+the modified Cauchy transform W (u) = iGS(iu) with Re W (u)  0 for
+
+Re u > 0. We apply the Lyapunov�Schmidt reduction at a trace-minimizing
+
+solution of (W )W = I. The key step is establishing that the Jacobian of
+
+the reduced bifurcation equations is positive definite, which follows from a
+
+multiplicative domain identity. The implicit function theorem then produces
+
+a real-analytic extension of W (u) through u = 0, yielding non-singularity
+
+and  the  exact  density  formula  f (0)  =  1  tr(C ).
+                                             
+
+   Converse analytic (�5): (ii)  (iii).
+non-singular = sym DS-scalable.
+ AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES5
+
+A symmetry of Speicher's equation gives W (u�) = W (u), so W is Hermitian
+on the real axis. Non-singularity provides a boundary limit W0 = W (0+),
+which is therefore Hermitian, positive semidefinite (as a limit of accretive
+matrices), and satisfies (W0) W0 = I. This forces W0  0, giving symmetric
+DS-scalability.
+
+Organization. Section 2 collects the definitions and structural results used
+throughout: matrix semicircles and their Cauchy transforms, the hierarchy
+of matrix pencil properties (unsplittable, LR-semisimple, full), completely
+positive maps and their scalings, and the pencil�map dictionary relating the
+two sides. Section 3 establishes the algebraic equivalence LR-semisimple
+ symmetrically DS-scalable. Section 4 develops the Lyapunov�Schmidt
+analysis that gives the forward analytic implication sym DS-scalable  non-
+singular. Section 5 proves the main theorem by combining these with the
+converse analytic implication. Section 6 discusses open questions, includ-
+ing the nature of singularities for non-LR-semisimple pencils, biased matrix
+semicircles, and the non-self-adjoint case.
+
+�2 Definitions and structural results
+
+�2.1 Matrix semicircles and covariance maps
+
+Let (A, ) be a non-commutative probability space, where  is a faithful
+
+tracial state. Self-adjoint elements s1, . . . , sr  A are called free standard
+
+semicircular variables if they are freely independent and each si has the
+semicircular  distribution  d�(x)  =  1    4 - x2 dx on [-2, 2].
+                                      2
+
+Definition 2.1. A matrix semicircular variable is an element S 
+Mn(C)  A of the form
+
+                                      r
+
+(1)                         S = Ai  si,
+
+                                      i=1
+
+where A1, . . . , Ar  Mn(C) are Hermitian matrices and s1, . . . , sr  A are
+free standard semicircular variables.
+
+   We write E = idMn(C)   : Mn(C)  A  Mn(C) for the conditional
+expectation onto the matrix subalgebra.
+6                               VLADISLAV KARGIN
+
+Definition 2.2. The covariance map of a matrix semicircular variable
+
+S=   r    Ai    si  is  the  linear  map  S  :  Mn(C)    Mn(C)  defined  by
+     i=1
+
+                                                r
+
+(2)                     S(X) := E[SXS] = AiXAi,
+
+                                                i=1
+
+where the second equality follows from (sisj) = ij (by freeness and the
+
+normalization of the semicircular law). Since each Ai is Hermitian, S is a
+completely positive map satisfying S = S (self-adjoint with respect to the
+Hilbert�Schmidt inner product).
+
+   The spectral distribution of S is encoded by its Cauchy transform. For
+b  Mn(C) such that b  idA - S is invertible, define
+
+(3)                     GS(b) = E (b  idA - S)-1 .
+
+In particular, for z  C+ := {z : Im z > 0}, the scalar evaluation GS(zI) is
+well-defined. The spectral density of S (when it exists) is recovered from
+the Stieltjes inversion formula:
+
+                             1            - tr GS (x + i)I
+(4)                 f (x) = lim Im                          ,
+                               0
+
+where tr denotes the normalized trace on Mn(C).
+   The Cauchy transform can be computed from the covariance map via the
+
+following result.
+
+Theorem 2.3 (Speicher's equation). Let S be a matrix semicircular variable
+with covariance map S. Then for all b  Mn(C) with Im b  0, the Cauchy
+transform G = GS(b) satisfies
+
+(5)                          b G(b) = I + S G(b) G(b).
+
+   For a proof see Theorem 2 in Chapter 9 of Mingo and Speicher (2017)
+or Sections 6.3�6.4 in Speicher (2019). This equation was derived by com-
+bining the operator-valued R-transform theory of Voiculescu (1995) and the
+combinatorial cumulant machinery of Speicher (1998). A brief outline was
+given in Far et al. (2006). See also Helton et al. (2007) for existence and
+uniqueness of the solution.
+
+   Following Helton et al. (2007), it is convenient to reformulate equation (5)
+
+on the right half-plane. Recall that a matrix W  Mn(C) is accretive if
+Re W := (W + W )/2  0, and strictly accretive if Re W  0. The
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES7
+
+substitution u = -iz and W (u) := iGS(iu�I) transforms Speicher's equation
+at b = iu � I into
+
+(6)                         S W (u) W (u) + u W (u) = I.
+
+By Theorem 2.1 of Helton et al. (2007), equation (6) has a unique strictly
+accretive solution W (u) in the domain {Re u > 0}. The density at x = 0
+can be expressed in terms of the boundary behavior of W :
+
+(7)                            f (0) = 1 tr Re W (0+) ,
+                                           
+
+provided the non-tangential limit W (0+) := limu0, Re u>0 W (u) exists.
+
+                i Im u
+
+                                           Im u - t =  Re u
+                                                                u  it
+
+                       it        arctan              (it)
+
+                         0                 Im u - t = - Re u     (R)
+
+                                                              C+
+                                                                       Re u
+
+Definition      2.4    (Stolz  cone  in    the  right  half-plane).    Let    (R)   :=  {u    C  :
+
+                                                                            C+
+
+Re u > 0}. For t  R and  > 0, the (non-tangential) Stolz cone with vertex
+
+at it and aperture  is
+
+                (it) :=              u       (R)  :  |Im u - t|   Re u          .
+
+                                           C+
+
+We   say  f  :    (R)      Cm�m  has    a  nontangential      limit    L    at  it  if
+
+                C+
+
+               lim f (u) = L for some (equivalently, for all)  > 0.
+
+               uit
+             u(it)
+8                                VLADISLAV KARGIN
+
+Definition 2.5 (Non-singularity). Let S  Mn(C)  A be a self-adjoint
+matrix semicircular variable with Cauchy transform GS(z) for Im z > 0,
+and let W (u) := iGS(iu) for Re u > 0.
+
+   We say S is non-singular at t0  R if there exist  > 0 and  > 0 such
+that for every t with |t - t0| < :
+
+     (i) W is bounded on (it)  {|u - it| < }, and
+    (ii) the non-tangential limit W (it + 0+) := lim W (u) exists,
+
+                                                                                        uit
+                                                                                     u(it)
+
+and the boundary function t  W (it + 0+) is continuous on (t0 - , t0 + ).
+   We say S is non-singular if it is non-singular at every t0  R. Otherwise,
+
+S is singular.
+
+Remark 2.6. Under the substitution z = iu, the spectral point z = x0 on the
+real axis corresponds to u = it0 with t0 = -x0. Non-singularity at t0 = 0
+therefore governs the behavior of the spectral density near x0 = 0, which is
+the case relevant to the main results of this paper.
+
+Proposition 2.7 (Algebraicity of the Cauchy transform). Let S =               r    Ai
+                                                                              i=1
+
+si be a matrix semicircular variable of size n with covariance map S. Then
+
+the scalar Cauchy transform H(z) := tr GS(zI) is an algebraic function of z.
+
+   In particular, the spectral measure �S decomposes as �S = f (x) dx +
+
+   N    mj  xj  with    N  <  ,  where  the  density  f  of  the  absolutely  continuous
+   j=1
+
+part is real-analytic on R \ {x1, . . . , xN } except at finitely many additional
+
+points where it has algebraic singularities. The atoms xj correspond to poles
+
+of H on the real axis.
+
+Proof. At b = zI, Speicher's equation (5) reads
+
+                              z G(z) = I + S G(z) G(z).
+
+Writing G(z) = (gpq)np,q=1 and expanding S in coordinates, this becomes
+a system of n2 polynomial equations of degree 2 in the n2 unknowns gpq,
+
+with coefficients polynomial in z. By the elimination theorem for polynomial
+
+ideals, each entry gpq satisfies a nontrivial polynomial relation Qpq(z, gpq) =
+
+0 and is therefore algebraic over C(z). Since algebraic functions form a field,
+
+H (z )  =  tr  G(z)  =  1     p gpp(z) is algebraic.
+                        n
+
+   As an algebraic function, H has at most finitely many singularities on R,
+
+each of which is either a pole or a branch point. Poles of H on the real
+
+axis correspond to atoms of �S (with mass given by the residue), and there
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES9
+
+are at most finitely many. Away from these poles and branch points, the
+
+Stieltjes inversion formula (4) gives a real-analytic density.     
+
+Remark 2.8. If the pencil A = Aixi is full (equivalently, A is rank non-
+decreasing; see Theorem 2.35(i)), then �S has no atom at zero; more pre-
+cisely, the mass of the atom at zero equals (n-rank(A))/n, where rank(A) is
+the noncommutative inner rank (Hoffman et al., 2026). The algebraic frame-
+work connecting inner rank computations to operator-valued free probability
+via the free skew field is developed in Mai et al. (2023). In the full case, the
+spectral measure is therefore purely absolutely continuous, �S = f (x) dx,
+with f real-analytic away from finitely many algebraic singularities.
+
+   Under the stronger assumption that S is strictly positive (Def. 2.21(3)),
+Alt et al. (2020) prove that the only singularities of f are square-root edges
+and cubic-root cusps. For polynomials in freely independent semicircular
+variables -- which reduce to matrix semicircles via the linearization trick
+-- algebraicity of the Cauchy transform was established by Shlyakhtenko
+and Skoufranis (2015) using L2-invariants and formal power series in non-
+commuting variables, and extended to arbitrary algebraic distributions by
+Anderson (2014) (unpublished).
+
+   The main results of this paper address a different question: for which
+matrix semicircles is the density real-analytic in a neighborhood of 0, when
+does it satisfy f (0) > 0, and what controls its value quantitatively?
+
+   The reason we focus on x = 0 is the following localization result. It relies
+on an L2 bound on the Cauchy transform due to Alt, Erdos, and Kru�ger.
+
+Proposition 2.9 (L2 bound on the Cauchy transform; (Alt et al., 2020,
+
+Prop. 2.1)). Let S be a matrix semicircle with Cauchy transform GS(z) for
+
+z  C+. Then                     2
+             GS(z)2  |z|
+                                              for all z  C+,
+
+where X2 :=  tr(X  X )  1/2     =  1    X  F  is  the  normalized  Hilbert�Schmidt
+                                     n
+
+norm.
+
+Proposition 2.10 (Singularity localization). Let S be a matrix semicircle
+
+with spectral density f . Then
+
+                         2         for all x  R \ (F  {0}),
+             f (x) 
+
+                       |x|
+
+where F is the finite exceptional set from Proposition 2.7. In particular, f
+
+can have an unbounded singularity only at x = 0.
+10                          VLADISLAV KARGIN
+
+Proof. Let g(z) := tr GS(z). For z = x + i with x = 0 and  > 0,
+
+                  |g(z)|    I 2  GS (z )2  =  GS (z )2         2
+                                                                  .
+                                                               |z|
+
+If x / F , then f is real-analytic near x, hence
+
+                                    1
+                          f (x) = lim Im [-g(x + i)].
+
+                                     0
+
+Therefore
+
+                            1                            2
+                  f (x)  lim sup |g(x + i)|  .
+                             0                          |x|
+
+   Now let x0  F \ {0}. Since F is finite, there exists a neighborhood U
+of x0 such that U  F = {x0} and 0 / U . For every x  U \ {x0} we have
+already proved
+
+                                                     2
+                                         f (x)  ,
+
+                                                   |x|
+
+and the right-hand side is bounded on U . Hence f is bounded on U \ {x0},
+
+so x0 is not an unbounded singularity. Thus an unbounded singularity can
+
+occur only at 0.                                                                      
+
+�2.2 Matrix pencils: Splittability and LR-semisimplicity
+
+    A (linear) matrix pencil of size n in r variables is a formal expression
+
+                                    r      Ai  Mn(C),
+
+                       A = Ai xi,
+
+                                  i=1
+
+where x1, . . . , xr are formal indeterminates. A pencil is nonzero if at least
+
+one Ai = 0. We call A Hermitian if every coefficient matrix Ai is Hermit-
+
+ian. Two pencils A and B of the same size are left�right (LR) equivalent,
+
+written A LR B, if there exist invertible matrices P, Q  GLn(C) such that
+
+Bi = P AiQ for all i.
+
+    The matrix pencil A determines a matrix semicircular variable S =                 r    Ai
+                                                                                      i=1
+
+si and a completely positive map A(X) =            r    Ai  X  Ai .  When   A is Her-
+                                                   i=1
+
+mitian, A is self-adjoint (A = A), a property that will be essential in
+
+the main results. Both S and A depend only on the coefficient matrices
+
+A1, . . . , Ar; in particular, commutativity or non-commutativity of the formal
+
+variables xi plays no role, and we will not distinguish between the two.
+
+Definition 2.11. A matrix pencil A =          r    Aixi  of    size  n  is  full  if  there
+                                              i=1
+
+are no subspaces R, L  Cn with Ai(R)  L for all i and dim R > dim L.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES11
+
+Remark 2.12. This coincides with the notion of full inner rank (equal to n)
+for the matrix A viewed as an element of Mn(Cx1, . . . , xr) in the sense
+of Cohn (1985, 1995). For linear pencils, the inner rank over the free al-
+gebra equals the inner rank over the commutative polynomial ring, so the
+distinction is immaterial.
+
+Definition 2.13. A matrix pencil A =                  r    Aixi  of  size  n  is  splittable   if
+                                                      i=1
+
+there exist subspaces R, L  Cn with dim R = dim L = s, 1  s  n - 1,
+
+such that Ai(R)  L for all i. A pencil is unsplittable if it is nonzero and
+
+not splittable.
+
+   Note that a 1 � 1 nonzero pencil is automatically unsplittable, since there
+are no intermediate dimensions 1  s  0.
+
+Definition 2.14. An n�n matrix pencil A =                  r     Aixi  is  LR-semisimple
+                                                           i=1
+
+if there exist invertible L, R  GLn(C) such that
+
+                       Bi(1)                   
+
+           LAiR     =              ...                for all i = 1, . . . , r,
+                                               
+
+                                               
+
+                                        Bi(k)
+
+where Bi(j)  Mnj (C), n1 + � � � + nk = n, and each sub-pencil B(j) =
+
+r    Bi(j  )xi  is  unsplittable.  If  this  can  be  achieved   with      R  =   L,  we  say  A
+i=1
+
+is C-semisimple.
+
+   Note that for Hermitian pencils, congruence equivalence (X C Y 
+Y = CXC for C  GLn(C)) preserves Hermiticity while general LR-
+
+equivalence does not.
+
+Remark 2.15. These notions form a strict hierarchy: for nonzero pencils,
+
+     unsplittable = C-semisimple = LR-semisimple = full.
+
+(C-semisimplicity does not appear in the main results but is included for
+completeness of the hierarchy.)
+
+   The first and second implications are immediate from the definitions. For
+the third, we first observe that every nonzero unsplittable pencil is full.
+Indeed, suppose Ai(R)  L for all i with r = dim R >  = dim L. If
+  1, choose any -dimensional subspace R  R; then Ai(R)  L with
+dim R = dim L = , and 1    n - 1 (since  < r  n), so A is
+splittable. If  = 0, then all Ai vanish on R; in particular n  2 (for
+n = 1 this would force all Ai = 0), so choosing any 1-dimensional R  R
+12                      VLADISLAV KARGIN
+
+and any 1-dimensional L  Cn gives a splitting pair. Since fullness is
+invariant under LR-equivalence and inner rank is additive for block-diagonal
+pencils Cohn (1985), LR-semisimplicity implies fullness. Both implications
+are strict, even for 2 � 2 Hermitian pencils; see Examples 2.16 and 2.17
+below. The pencil hierarchy will later be shown to correspond to a parallel
+hierarchy of properties of the covariance map A; see Section 2.4.
+
+Example 2.16. The Hermitian pencil
+
+             A=                   0           x2 + (1 + i) x1 ,
+
+                     x2 + (1 - i) x1                     0
+
+                        0 1+i                               01
+                A1 = 1 - i 0 , A2 = 1 0 ,
+
+is LR-semisimple but not C-semisimple.
+
+LR-semisimple.  Take L = I and R =             01  . Then
+                                               10
+
+             LA1R =  1+i 0                                   10
+                                           ,   LA2R = 0 1 ,
+                     0            1-i
+
+so A is LR-equivalent to a direct sum of two 1 � 1 (unsplittable) pencils.
+
+Not C-semisimple.    Suppose U =           ab   GL2(C) simultaneously diago-
+                                           cd
+
+nalizes U AiU  for i = 1, 2. The off-diagonal entries are:
+
+                 (U A2U )12 = bc� + ad�,
+
+                 (U A1U )12 = b(1-i)c� + a(1+i)d�.
+
+Setting both to zero and substituting ad� = -bc� from the first equation into
+
+the second:
+
+                   b(1-i)c� - (1+i) bc� = -2i bc� = 0.
+
+Hence bc� = 0, which forces ad� = 0. But then det U = ad - bc = 0, contra-
+
+dicting the invertibility of U .
+
+Example 2.17. The Hermitian pencil
+
+    A = 0 x1 ,                       A1 =     01            A2 =  00
+            x1 x2                                     ,                   ,
+
+                                              10                  01
+
+is full but not LR-semisimple.
+
+Full. If Ai(R)  L for all i, then in particular A1(R)  L, so dim L 
+dim A1(R) = dim R since A1 is invertible. Hence A is full.
+
+Splittable. Ai(span(e1))  span(e2) for both i.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES13
+
+Not LR-semisimple. Since A is 2 � 2 and splittable, LR-semisimplicity
+
+would mean that A is LR-equivalent to a diagonal pencil: there exist invert-
+
+ible L, R  GL2(C) such that LAiR is diagonal for every i.
+
+Since rank(A2) = 1, the diagonal matrix LA2R also has rank 1, so exactly
+
+one diagonal entry is nonzero. Swapping columns of R and rows of L if
+
+necessary, we may assume LA2R = diag(0, ) with  = 0.
+
+Write R = (R1 | R2) in columns. The first column of LA2R is LA2R1 = 0,
+
+so A2R1 = 0, i.e., R1  ker A2 = span(e1). Hence R1 = a e1 for some a = 0,
+
+and we can write R =  ab  with a, d = 0.
+                      0d
+
+Now LA1R must also be diagonal. In particular, its (2, 1)-entry vanishes:
+
+                      (LA1R)21 = (LA1R1)2 = 0.
+
+But A1R1 = a A1e1 = a e2, so L must send e2 to a vector with zero second
+component. On the other hand, the (1, 2)-entry of LA2R vanishes, giving
+(LA2R2)1 = 0. Since A2R2 = d e2, this says L sends e2 to a vector with zero
+first component. Together, Le2 = 0, contradicting the invertibility of L.
+
+�2.3 Completely positive maps: indecomposability, capacity,
+         DS-scalability
+
+   Recall that a matrix B  Mn(C) is positive semidefinite, B  0, if
+(x, Bx)  0 for all x  Cn, and positive definite, B  0, if (x, Bx) > 0 for
+all non-zero x  Cn.
+
+Definition 2.18. A linear map  : Mn(C)  Mn(C) is said to be
+
+    (1) positive if (B)  0 for all B  0;
+    (2) completely positive (CP) if all amplifications (k) : Mk(C) 
+
+          Mn(C)  Mk(C)  Mn(C), defined by (k) := idMk(C)   for k  N,
+          are positive.
+
+   By the Choi�Kraus theorem (see, e.g., (Watrous, 2018, Theorem 2.22)),
+for every CP map  there exist matrices A1, . . . , Ar  Mn(C) such that
+
+                                                                   r
+
+                                    (X) = AiXAi.
+
+                                                                 i=1
+
+The matrices A1, . . . , Ar are called Kraus operators for . The represen-
+tation is not unique.
+
+Definition 2.19 (Adjoint). The adjoint of a linear map  : Mn(C) 
+Mn(C) with respect to the inner product X, Y  = Tr(XY ) is the unique
+14                               VLADISLAV KARGIN
+
+linear map  : Mn(C)  Mn(C) satisfying
+                  (X), Y  = X, (Y ) for all X, Y  Mn(C).
+
+A linear map  is called self-adjoint (or Hermitian) if  = .
+
+    If  is a CP map with Kraus representation (X) =                    r    Ai X Ai ,  then
+                                                                       i=1
+
+(X) =        r     AiX  Ai.  Indeed,  for  all  X, Y ,
+             i=1
+
+                r                          r                      r
+
+X, (Y ) = Tr(X(AiY Ai )) = Tr(XAiY Ai ) = Tr(Ai XAi � Y )
+
+                i=1                        i=1                    i=1
+
+         =  i AiXAi, Y .
+
+In particular,  is again completely positive.
+
+Lemma 2.20. A CP map  is self-adjoint if and only if it admits a Kraus
+representation with Hermitian operators: (X) = j HjXHj with Hj = Hj
+for every j.
+
+Proof. If (X) = j HjXHj with Hj = Hj, then (X) = j HjXHj =
+
+    j HjXHj = (X).
+
+    Conversely, suppose  =  and write (X) = k AkXAk. Decompose
+
+each  Kraus  operator   as   Ak  =  Hk  +  iSk  where   Hk  =  1  (Ak  + Ak)  and      Sk  =
+                                                               2
+
+1   (Ak  - Ak)  are  Hermitian.  Then
+2i
+
+             AkXAk = HkXHk + SkXSk + i(SkXHk - HkXSk).
+
+Summing over k and using the Kraus formula for the adjoint,
+
+so (X) =        (X) - (X) = 2i (SkXHk - HkXSk) = 0,
+tion.
+                                                      k
+
+                k(HkXHk + SkXSk), which is a Hermitian Kraus representa-
+                                                                                               
+
+    In particular, every CP map arising from a Hermitian matrix pencil A =
+    Aixi with Ai = Ai is self-adjoint.
+
+Definition 2.21. A CP linear map  : Mn(C)  Mn(C) is said to be
+    (1) rank non-decreasing (RND) if rank((B))  rank(B) for all
+          B  0;
+    (2) indecomposable if rank((B)) > rank(B) for all B  0 with 1 
+          rank(B) < n;
+    (3) strictly positive if there exists  > 0 such that (B)   Tr(B)In
+          for all B  0.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES15
+
+We have the strict inclusions:
+
+strictly positive  indecomposable  rank non-decreasing.
+
+Example 2.22 (RND  indecomposable). For n = 2, the identity map
+(B) = B is rank non-decreasing but not indecomposable, since rank((B)) =
+rank(B) for every rank-1 positive semidefinite matrix B.
+
+Example 2.23 (Indecomposable  strictly positive). Let n = 3 and let Eij
+denote the matrix units. Define
+
+                                     3
+
+(B) =                Eij BEji =             Eij BEji - E33BE33.
+
+        (i,j)=(3,3)                  i,j=1
+
+This is completely positive, and can also be written as
+
+                                   Tr(B)       0          0
+                                            Tr(B)         0 .
+(B)  =  Tr(B)I3  -  B33E33      =    0
+                                               0                   
+                                                   Tr(B) - B33
+                                     0
+
+We show that  is indecomposable. If rank(B) = 1, write B = vv with
+v = 1. Then
+
+                              (vv) = diag(1, 1, 1 - |v3|2),
+
+so rank((B))  2 > rank(B).
+   If rank(B) = 2, then B11 + B22 > 0 (otherwise B  0 would force the
+
+first two rows and columns to vanish, giving rank(B)  1). Thus
+
+                     (B) = diag(Tr(B), Tr(B), B11 + B22) > 0,
+
+so rank (B) = 3 > rank(B). Therefore  is indecomposable. However, for
+B = e3e3,
+
+                     (B) = diag(1, 1, 0)  I3 for any  > 0,
+so  is not strictly positive.
+
+Definition 2.24. A CP linear map  : Mn(C)  Mn(C) is said to be
+doubly stochastic (DS) if (In) = In and (In) = In. The first condition
+means  is unital; the second means  is trace-preserving.
+
+Definition 2.25 (Operator scaling). Let  be a CP map on Mn(C) and let
+c1, c2  Mn(C). The operator scaling Sc1,c2() is defined by
+
+                              Sc1,c2 ()(X) := c1(c2Xc2)c1.
+
+We sometimes write c1,c2 for Sc1,c2 ().
+16                                 VLADISLAV KARGIN
+
+Definition 2.26 (Operator Sinkhorn Iteration (OSI)). Define the row nor-
+malization and column normalization of a CP map  (assuming the
+relevant inverses exist) by
+
+                                  R() := S(I)-1/2, I (),
+                                  C() := SI, (I)-1/2 ().
+The Operator Sinkhorn Iteration (OSI) is the iterative process . . . CRCR().
+
+   The distance of a CP map from the doubly stochastic class can be mea-
+sured by
+
+(8)           DS() := Tr ((I) - I)2 + Tr ((I) - I)2 .
+
+    An important scaling invariant of CP maps is the capacity.
+
+Definition 2.27 (Capacity). For a CP linear map  : Mn(C)  Mn(C), its
+capacity is
+
+(9)          Cap() := inf{det((B)) | B  0, det(B) = 1}.
+
+Proposition 2.28 (Scaling formula for capacity; Prop. 2.7 in Garg et al.
+(2020)). Let  be a completely positive map and let c1, c2 be invertible ma-
+trices. Then
+
+                        Cap(c1,c2) = det(c1)2 det(c2)2 Cap().
+
+Lemma 2.29. If  : Mn(C)  Mn(C) is a doubly stochastic CP map, then
+Cap() = 1.
+
+Proof. The upper bound Cap()  det((I)) = 1 is immediate from the
+
+definition.
+
+    For the lower bound, let B  0 with det(B) = 1 and set h(t) = log det((Bt)).
+
+Write  L  =  log B,  so  that  d   (Bt)  =  (BtL)  and  d2   (B  t  )  =  (BtL2).  Define
+                               dt                       dt2
+
+the unital CP map
+
+              t(X) = (Bt)-1/2 (Bt/2 X Bt/2) (Bt)-1/2.
+
+By Lemma B.2
+
+                     h(t) = Tr[t(L2)] - Tr[t(L)2]  0.
+
+   At t = 0: unitality gives h(0) = log det((I)) = 0, and trace-preservation
+gives
+
+       h(0) = Tr (I)-1 (L) = Tr((L)) = Tr(L) = log det(B) = 0.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES17
+
+A convex function with h(0) = 0 and h(0) = 0 satisfies h(t)  0 for all
+
+t  0. In particular, log det((B)) = h(1)  0, i.e., det((B))  1.  
+
+Lemma 2.30 (Critical points are capacity minimizers). Let  : Mn(C) 
+Mn(C) be a completely positive map and let C  0 satisfy
+
+(10)   (C)-1 = C-1.
+
+Then Cap() = det((C))/ det(C).
+
+Proof. The scaling Z := S(C)-1/2, C1/2 () satisfies
+                         Z(I) = (C)-1/2 (C) (C)-1/2 = I.
+
+For the adjoint, Z = SC1/2, (C)-1/2 (), so
+               Z(I) = C1/2  (C)-1 C1/2 = C1/2 C-1 C1/2 = I,
+
+where we used (10). Hence Z is doubly stochastic, so by Lemma 2.29
+Cap(Z) = 1. By the scaling formula (Proposition 2.28),
+
+      Cap(Z )                      det( (C ))
+      Cap() = det((C)-1) det(C) =             .
+                                   det(C )
+
+                                                                 
+
+Remark 2.31. A quantitative generalization to -approximate fixed points
+appears as Lemma 3.9 in Garg et al. (2020).
+
+Definition 2.32 (DS-scalability). A CP map  : Mn(C)  Mn(C) is DS-
+scalable if there exist invertible matrices c1, c2  GLn(C) such that the
+scaled map Sc1, c2() is doubly stochastic.
+
+Definition 2.33 (Symmetric DS-scalability). A Hermitian CP map  :
+Mn(C)  Mn(C) is symmetrically DS-scalable if there exists a positive
+definite matrix C  0 such that the symmetrically scaled map SC1/2, C1/2()
+is doubly stochastic.
+
+   Symmetric DS-scalability is DS-scalability with the additional constraint
+c1 = c2 = C1/2  0. Since  is Hermitian, the scaled map ~ := SC1/2,C1/2()
+is also Hermitian, so the two DS conditions ~(I) = I and ~(I) = I reduce to
+a single equation. Explicitly, ~(I) = C1/2(C)C1/2, so ~(I) = I is equivalent
+
+to
+
+(11)  (C) = C-1.
+18                        VLADISLAV KARGIN
+
+   We will also need the following result, which shows that unit-eigenvalue
+eigenstates of a DS map lie in its multiplicative domain. It will play a key
+role in the Lyapunov�Schmidt analysis of �4.
+
+Lemma 2.34. Let  : Mn(C)  Mn(C) be doubly stochastic CP map. As-
+sume that A is Hermitian and (A) = A with || = 1. Then the Kadison�
+Schwarz inequality is satisfied with equality, i.e. (A2) = (A)2 and 
+restricts to a -homomorphism on the C-algebra C(A) generated by A and
+
+I.
+
+Proof. Since  preserves adjoints, (A) = A with A = A forces   R;
+combined with || = 1 this gives  = �1. The Kadison�Schwarz inequality
+(Lemma A.1) yields
+
+                              (A2)  (A)2 = 2A2 = A2.
+
+Since  is doubly stochastic, it is trace-preserving, so tr((A2) - A2) = 0. A
+positive semidefinite matrix with trace zero vanishes, hence (A2) = A2 =
+(A)2. By Theorem A.2,  restricts to a -homomorphism on C(A). 
+
+�2.4 Equivalences between pencil structure and map prop-
+         erties
+
+    The properties of a matrix pencil A =         d    Aixi  are  faithfully  reflected
+                                                  i=1
+
+in the properties of the associated CP map A(B) =                 d    Ai  B  Ai .  The
+                                                                  i=1
+
+following three equivalences form the "pencil�map dictionary" that underlies
+
+the rest of the paper.
+
+Theorem 2.35 (Pencil�Map Dictionary). Let A =                d    Aixi  be    an    n�n
+                                                             i=1
+
+matrix pencil and A(B) =  d    Ai     B  Ai  the  associated  CP  map.      Then:
+                          i=1
+
+     (i) A is full  A is rank non-decreasing  Cap(A) > 0.
+    (ii) A is unsplittable  A is indecomposable.
+    (iii) A is LR-semisimple  there exist c1, c2  GLn(C) and a diagonal
+
+          subalgebra D such that Sc1,c2(A) is D-CI.
+
+Remark 2.36. If c1 = c2, D-CI-scalability characterizes C-semisimplicity.
+
+On the pencil side, the hierarchy is
+
+    unsplittable = C-semisimple = LR-semisimple = full,
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES19
+
+and correspondingly, on the map side:
+
+indecomposable = D-CI�symmetrically scalable = D-CI� scalable
+                     = rank non-decreasing  Cap > 0.
+
+All implications above are strict.
+
+   Before proving the theorem, we introduce the D-CI property that appears
+in part (iii).
+
+Definition 2.37 (D-bimodular map). Let P1, . . . , Pr be pairwise orthogonal
+
+projections in Mn(C) with  r        Pj  =  I,  and  set  D  :=  span{P1, . . . , Pr}.  A
+                           j=1
+
+CP map  : Mn(C)  Mn(C) is D-bimodular if
+
+(D1XD2) = D1 (X) D2 for all D1, D2  D, X  Mn(C).
+
+Definition 2.38 (D-CI map). Let D = span{P1, . . . , Pr} as above. A com-
+pletely positive map  : Mn(C)  Mn(C) is D-corner-indecomposable
+(abbrev. D-CI) if:
+
+    (a) (D-bimodule)  is D-bimodular,
+    (b) (Corner-indecomposable) For each j, the CP map j := Pj ( � ) Pj
+
+          on PjMn(C)Pj is indecomposable.
+
+Remark 2.39. The identity map is D-bimodular for every diagonal subal-
+
+gebra D, but it is D-CI only when each Pj has rank one: the corner map
+j(X) = PjXPj on PjMn(C)Pj = Mnj (C) is the identity on Mnj (C), which
+is indecomposable if and only if nj = 1.
+
+   We also record a Kraus characterization of D-CI maps that will be used
+in the proof of part (iii).
+
+Lemma 2.40 (Kraus characterization of D-CI maps). A completely positive
+
+map  : Mn(C)  Mn(C) is D-CI if and only if it admits a Kraus repre-
+
+sentation (X) =     m    Ai X Ai  with  each   Ai    D   =      r    Pj Mn (C)Pj ,  and
+                    i=1                                         j=1
+
+for each j the corner map
+
+                 m
+
+j(X) = (PjAiPj) X (PjAiPj) on PjMn(C)Pj
+
+                i=1
+
+is indecomposable.
+
+Proof. The corner-indecomposability condition is a direct restatement of
+part (b) of Definition 2.38, so it suffices to show that  is D-bimodular if
+and only if it admits Kraus operators in D.
+20                   VLADISLAV KARGIN
+
+   () If each Ai commutes with every element of D, then (D1XD2) =
+   i AiD1XD2Ai = D1 (X) D2.
+   () Start from an arbitrary Kraus representation (X) = i BiXBi.
+
+D-bimodularity gives, for every , j, k, m,
+
+(12)       P (PjXPk) Pm = j mk (PjXPk).
+
+The left-hand side equals i(PBiPj) X (PkBiPm). Taking  = j: for all X
+and all k, m we have i(PBiPj)X(PkBiPm) = 0, which forces PBiPj = 0
+for every i. Therefore Bi = j PjBiPj for each i, i.e., each Bi already lies
+in D.
+
+   Summing (12) over j, k with  = j, m = k:
+
+    (X) = (PjXPk) =         (PjBiPj) X (PkBiPk) = Bi X Bi. 
+
+      j,k            j,k i                         i
+
+   In other words,  is D-CI precisely when its Kraus operators respect the
+block structure imposed by D, and each diagonal block acts indecomposably.
+
+    We now prove the three parts of Theorem 2.35.
+
+Proof of part (i). The equivalence full  rank non-decreasing is Proposi-
+tion 2.10 in Mai et al. (2023), which refers to Theorem 1.4 of Garg et al.
+(2020) (equivalence (5)  (7), stated there without proof). We provide the
+elementary argument in Appendix C; here we sketch the key ideas.
+
+   Fullness means no subspace pair (R, L) has positive excess dim R-dim L >
+0 subject to Ai(R)  L, while rank non-decreasing means dim Range (A(B)) 
+dim Range (B) for all B  0.
+
+   For (): if A is not full, there exists a pair (R, L) with Ai(R)  L and
+dim R > dim L. Taking B = PR gives rank(A(B))  dim L < dim R =
+rank(B).
+
+   For (): if A is not rank non-decreasing, some B  0 witnesses rank(A(B)) <
+rank(B). Setting R = Range (B) and L = Range (A(B)), the same argu-
+ment as in Step 1 of the proof of part (ii) below shows Ai(R)  L with
+dim L < dim R, contradicting fullness.
+
+   The equivalence rank non-decreasing  Cap(A) > 0 is due to Gurvits:
+
+Proposition 2.41 (Lemma 4.5 in Gurvits (2004)). A completely positive
+map  is rank non-decreasing if and only if Cap() > 0.
+
+   The proof is based on the study of mixed discriminants and their relation
+to rank non-decreasing maps and capacity.
+
+                                                                                                 
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES21
+
+Proof of part (ii). (Splittable  decomposable). By splittability, there exist
+subspaces R, L  Cn with 1  dim R = dim L = s  n - 1 and Ai(R)  L
+for all i. Choose B = PR (the orthogonal projection onto R), so rank(B) =
+s. For each i, Range (AiBAi )  Ai(R)  L, hence
+
+                        rank A(B)  dim L = s = rank(B).
+
+Since 1  s  n - 1, this shows A is not indecomposable.
+
+   (Decomposable  splittable). Since A is not indecomposable, there ex-
+ists B  0 with rank(B) = s, 1  s  n - 1, and rank(A(B))  s. Set
+
+        R := Range (B), L := Range (A(B)), t := dim L  s.
+
+   Step 1: Ai(R)  L for all i. Since A(B)  0, we have L = ker(A(B)).
+For any   L,
+
+                         0 = , A(B)  = Ai , B Ai .
+
+                                                                        i
+
+Each summand is nonnegative, so Ai, BAi  = 0 for all i. Since B  0,
+this gives Ai  ker(B) = R. Hence Ai (L)  R, equivalently Ai(R) 
+L.
+
+Step 2: Constructing the splitting pair. If t  1, choose any subspace
+
+R  R with dim R = t and set L = L. Then Ai(R)  Ai(R)  L for
+all i, and dim R = dim L = t with 1  t  n - 1.
+
+If t = 0, then Ai(R) = {0} for all i (every vector in R lies in ker Ai). Since
+
+s  1, pick any one-dimensional R  R and any one-dimensional L  Cn;
+
+then Ai(R) = {0}  L for all i.
+
+In both cases (R, L) is a nontrivial splitting pair.           
+
+   Part (ii) provides a convenient computational criterion for unsplittabil-
+ity: it suffices to check that rank(A(B)) > rank(B) for every B  0 of
+intermediate rank.
+
+Example 2.42. Consider the 3 � 3 pencil with d = 3 generators
+
+                                    0  x1 x2  
+
+                            1
+A  =                             -x1   0  x3 .
+                              2
+                                 -x2 -x3 0
+
+A direct computation gives
+
+A(B) =                           1  (Tr B) I3 - B  .
+                                 2
+
+Diagonalizing B = diag(1, 2, 3) with 1  2  3  0:
+22                           VLADISLAV KARGIN
+
+    If rank(B) = 1, then B = diag(1, 0, 0) with 1 > 0, and
+
+      A(B) =    1    diag(0, 1, 1),        rank(A(B)) = 2 > 1 = rank(B).
+                2
+
+If rank(B) = 2, then B = diag(1, 2, 0) with 1  2 > 0, and
+
+    A(B)  =  1  diag(2,  1,  1   + 2),         rank(A(B)) = 3 > 2 = rank(B).
+             2
+
+Hence A is indecomposable and therefore A is unsplittable.
+
+Proof of part (iii). () If A is LR-semisimple, there exist L, R  GLn(C)
+
+such that LAiR =     k    Bi(j)  for  all  i,  with  each  sub-pencil  B(j)  unsplittable.
+                     j=1
+
+Set c1 = L, c2 = R; the scaled map Sc1,c2(A)(X) = i(LAiR) X (LAiR)
+
+has Kraus operators LAiR  j Mnj (C) = D, where D = span{P1, . . . , Pk}
+
+and Pj projects onto the j-th block. The j-th corner map is B(j), which
+
+is indecomposable by part (ii) since B(j) is unsplittable. By Lemma 2.40,
+
+Sc1,c2 (A) is D-CI.
+
+   () If Sc1,c2(A) is D-CI, Lemma 2.40 gives Kraus operators c1Aic2 
+D = j PjMn(C)Pj. Hence c1Aic2 = j Bi(j) for all i, and the j-th corner
+
+map B(j) is indecomposable. By part (ii), each B(j) is unsplittable, so A is
+
+LR-semisimple (with L = c1, R = c2).
+
+    The C-semisimple case is identical with c1 = c2.                          
+
+�3 Algebraic equivalences
+
+   This section establishes that a Hermitian pencil is LR-semisimple if and
+only if its covariance map is symmetrically DS-scalable.
+
+�3.1 Capacity theory: Indecomposable  DS-scalable
+
+Lemma 3.1 (Critical points are global minimizers). Let C  0, det C = 1,
+be a critical point of the capacity problem min{det((X)) : X  0, det X =
+1}. Then it satisfies FOC conditions
+
+(13)                         ((C)-1) = C-1,
+
+and Cap() = det((C)), that is, C is the (global) minimizer of the capacity
+problem.
+
+Proof. By the method of Lagrange multipliers, at X = C,
+
+                     X log det((X)) =  X log det(X).
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES23
+
+We have X log det(X) = X-1, and by Lemma B.3, X log det((X)) =
+((X)-1). Hence ((C)-1) =  C-1. Multiplying both sides by C and
+taking traces gives
+
+                                 Tr C ((C)-1) =  n.
+
+The left side equals (C)-1, (C) = Tr(I) = n, so  = 1. The final claim
+
+follows from Lemma 2.30 and det C = 1.                      
+
+Theorem 3.2 (Theorem 4.7 in Gurvits (2004)). Let  : Mn(C)  Mn(C) be
+a completely positive map. If  is indecomposable, then the capacity Cap()
+is strictly positive, the infimum in (9) is attained, and the minimizer is
+unique.
+
+Proof sketch. Positivity of capacity follows from Proposition 2.41, since in-
+
+decomposable maps are rank non-decreasing. Attainment follows from a
+
+compactness argument: indecomposability provides a uniform bound on
+
+the condition number 1/n of the eigenvalues of any competitor X  0
+
+with det((X))  det((I)), which confines the minimizing sequence to a
+
+compact subset of {X  0 : det X = 1}. For uniqueness, Lemma 3.1 re-
+
+duces to showing that the doubly stochastic case (C = I) has no second
+
+minimizer; this is established by a strict convexity argument for the func-
+
+tion (1, . . . , n)  log det i eiAi on the hyperplane i = 0, where
+
+Ai = (uiui) are the images of rank-one projections in the eigenbasis of the
+
+putative second minimizer. See Gurvits (2004) for details.  
+
+Corollary 3.3. If  : Mn(C)  Mn(C) is indecomposable, then  is DS-
+scalable.
+
+Proof. By Theorem 3.2, the capacity infimum is attained at some C  0.
+By Lemma 3.1, C is a critical point of X  log det((X)) - log det(X) on
+{X  0 : det X = 1}, so the first-order conditions give
+
+                                      (C)-1 = C-1.
+
+Setting c1 := (C)-1/2 and c2 := C1/2, the scaled map ~ := Sc1, c2() satisfies
+                 ~(I) = (C)-1/2 (C) (C)-1/2 = I,
+                ~(I) = C1/2  (C)-1 C1/2 = C1/2C-1C1/2 = I.
+
+Hence ~ is doubly stochastic, so  is DS-scalable by Definition 2.32. 
+24                  VLADISLAV KARGIN
+
+�3.2 Uniqueness trick: self-adjoint indecomposable  Sym
+         DS-scalable
+
+Lemma 3.4. If a completely positive map  is self-adjoint and indecompos-
+able then there exists a unique C  0 with (C) = C-1.
+
+Proof. By Theorem 3.2, the solution of the capacity problem is attained at
+
+some matrix C  0 with det C = 1. The FOC for this matrix is given by
+
+(13).
+   Since  = , the FOC becomes
+
+(14)                (C) :=  (C)-1 -1 = C.
+
+   Conversely, any C  0 with det C = 1 satisfying (14) also satisfies the
+FOC (13) (since  = ), and is therefore a critical point of the capacity
+problem. By Lemma 3.1, it is a global minimizer. Since  is indecomposable,
+the minimizer is unique by Theorem 3.2, so (14) has a unique solution with
+det C = 1.
+
+   Let C be the unique solution of (14) that satisfies det(C) = 1. Define
+C~ := (C)-1 and  := det(C~). Then by (14),  (C~)-1) -1 = C~, so both C~
+and (by homogeneity of ) -1/nC~ are solutions of (14) and det(-1/nC~) =
+1. Set  = -1/n. By the uniqueness of the solution of (14) we have C = C~
+which we can write as
+
+                        -1/2C = 1/2(C)-1 = (-1/2C)-1.
+
+Hence -1/2C is a solution of equation
+
+                    (X)X = I,
+
+and this solution is unique in the cone of positive definite matrices.
+                                                                                                 
+
+Corollary 3.5. If a completely positive map  is self-adjoint and indecom-
+posable then it is symmetrically DS-scalable.
+
+Proof. Let C  0 be the solution of (C) = C-1. Then SC1/2,C1/2() is
+
+doubly stochastic.                         
+
+   Remark. The existence of a symmetric DS-scaling will also be estab-
+lished later by a different method (Proposition 3.14). What is important
+in Lemma 3.4 is that for indecomposable maps, the scaling matrix C is
+unique � a stronger conclusion than the main theorem provides, where
+only the uniqueness of the trace minimizer within S is obtained.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES25
+
+�3.3 LR-semisimple  DS-scalable
+
+Lemma 3.6 (Blockwise DS  global DS for D-bimodular maps). Let
+
+ : Mn(C)  Mn(C) be CP and D-bimodular, with corner maps j :=
+Pj ( � ) Pj on PjMn(C)Pj. Suppose that for each j there exist invertible
+aj, bj  PjMn(C)Pj such that Saj,bj (j) is doubly stochastic on PjMn(C)Pj.
+Setting d1 := j aj and d2 := j bj  D, the map  := Sd1,d2() is doubly
+stochastic on Mn(C).
+
+Proof. Since d1, d2  D and  is D-bimodular, so is . As d1 (resp. d2)
+restricts to aj (resp. bj) on the j-th block, the corners of  decouple:
+
+                  ()j = Saj,bj (j ) ,  j = 1, . . . , r.
+
+By assumption, each ()j is doubly stochastic on PjMn(C)Pj, so
+
+      ()j(Pj) = Pj and                 ()j (Pj) = Pj.
+
+Since Pj  PjMn(C)Pj, the first identity gives (Pj) = Pj, and by linearity,
+
+                  r                    r
+
+                  (I) = (Pj) = Pj = I.
+
+                  j=1                  j=1
+
+For the adjoint: since D is a -algebra,  is also D-bimodular, so ()j =
+ ()j . The second identity above therefore gives (Pj) = Pj, and the
+
+same linearity argument yields (I) = I. Hence  is doubly stochastic. 
+
+Proposition 3.7 (LR-semisimple  DS-scalable). If a matrix pencil A is
+LR-semisimple, then the corresponding CP map A is DS-scalable.
+
+Proof. By Theorem 2.35, part (iii), A is scalable to a D-CI map A, with
+
+indecomposable corner blocks. These blocks are DS-scalable by Corollary
+
+3.3. Finally, by blockwise Lemma 3.6, we obtain that A and therefore A
+
+are DS-scalable.                                                        
+
+Lemma 3.8 (Splitting lemma for DS maps). Let (X) =        r    BiX  Bi  be
+                                                          i=1
+
+a doubly stochastic CP map on Mn(C), and suppose (R, L) is a splitting pair
+
+for the pencil Bixi, i.e., Bi(R)  L for all i, with dim R = dim L = k
+
+and 1  k  n-1. Then Bi(R)  L for all i.
+
+Proof. Let P and Q denote the orthogonal projections onto R and L. The
+splitting condition reads (I - Q) Bi P = 0; taking adjoints gives the dual
+splitting
+
+(15)              P Bi (I - Q) = 0 for all i.
+26                   VLADISLAV KARGIN
+
+    Define the block operators
+
+            Ci := Q Bi P : R  L, Ei := Q Bi (I-P ) : R  L,
+            Di := (I-Q) Bi (I-P ) : R  L.
+
+    By the splitting and dual splitting conditions, Bi decomposes as
+
+(16)        Bi = Ci + Ei + Di
+
+            = QBiP + QBi(I-P ) + (I-Q)Bi(I-P ),
+
+(the fourth block (I-Q)BiP vanishes by the splitting condition).
+
+Identity 1. Project i BiBi = I by P on both sides. Using (15):
+
+      P     BiBi P = P Bi (Q + (I-Q)) BiP = CiCi + 0 = IR,
+
+         i     i                      I                 i
+
+since P Bi(I-Q) = 0. Hence
+
+(17)                             r
+
+                                    CiCi = IR.
+
+                                i=1
+
+Identity 2. Project i BiBi = I by Q on both sides:
+
+Q        BiBi Q = QBi (P + (I-P )) BiQ = CiCi + EiEi = IL,
+
+      i     i                   I                  i                i
+
+using P BiQ = Ci and (I-P )BiQ = Ei. Hence
+
+                  r                   r
+
+(18)                 CiCi + EiEi = IL.
+
+               i=1                    i=1
+
+Trace argument. Taking traces of (17) and (18), and using Tr(CiCi) =
+Tr(CiCi) = CiF2 :
+
+               CiF2 = k,              CiF2 + Ei2F = k.
+
+            i                      i            i
+
+Hence i EiF2 = 0, so Ei = Q Bi (I-P ) = 0 for all i. Together with
+(I-Q) Bi P = 0, this gives
+
+            Bi(R)  L and Bi(R)  L for all i.                                       
+
+Proposition 3.9 (DS pencil is LR-semisimple). If (X) =                 r    Bi  X  Bi
+                                                                       i=1
+
+is doubly stochastic on Mn(C), then the pencil     r    Bi  xi  is  LR-semisimple.
+                                                   i=1
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES27
+
+Proof. By induction on n. The base case n = 1 is clear (every non-zero 1 � 1
+
+pencil is unsplittable, hence LR-semisimple).
+
+   For the inductive step, if the pencil is unsplittable, it is LR-semisimple
+
+by definition. If the pencil is splittable, let (R, L) be a splitting pair with
+dim R = dim L = k, 1  k  n-1. By Lemma 3.8, Bi(R)  L for all i.
+
+   Choose unitary matrices R and M such that R maps Ck Cn-k to RR
+and M maps Ck  Cn-k to L  L. Setting L = M , the matrices LBiR
+are block diagonal:
+
+     LBiR = Ci  Di, Ci  Mk(C), Di  Mn-k(C).
+
+Since L and R are unitary, the sub-pencils inherit the DS property: from
+
+the identities established in the proof of Lemma 3.8 (with Ei = 0),
+
+                     Ci Ci = Ik,                Ci Ci = Ik,
+
+                  i                          i
+
+                     Di Di = In-k,              Di Di = In-k.
+
+                  i                          i
+
+By the induction hypothesis (applied to the pencils of sizes k and n-k, both
+
+strictly less than n), both sub-pencils are LR-semisimple. Hence the original
+
+pencil is LR-semisimple (with L and R providing the LR-equivalence to the
+
+block-diagonal form).                                                     
+
+Proposition 3.10 (DS-scalable  LR-semisimple). If CP map A : X 
+
+r    Ai X Ai  is  DS-scalable  then  matrix  pencil  A  =  r    Aixi  is  LR-semisimple.
+i=1                                                        i=1
+
+Proof. By hypothesis there exist c1, c2  GLn(C) such that  := Sc1,c2(A)
+is doubly stochastic. The Kraus operators of  are Bi = c1Aic2. By Propo-
+sition 3.9, the pencil Bi xi is LR-semisimple. Since Bi = c1Aic2 is an
+LR-equivalence of the original pencil, Ai xi is LR-semisimple.
+
+                                                                                                 
+
+�3.4 DS-scalable  sym DS-scalable (geodesic reflection)
+
+   The main goal of this section is to show that for self-adjoint CP maps ,
+DS-scalability can be upgraded to symmetric DS-scalability.
+
+   Let us first introduce some background material about the geometry of
+the cone of positively-definite matrices.
+
+   Let Pn = {C  Mn(C) : C > 0}. We can identify the tangent space at
+C  Pn with Hermitian matrices and define the inner product
+
+                             gC (H, K) := Tr(C-1HC-1K).
+28    VLADISLAV KARGIN
+
+Then Pn becomes a Riemannian manifold and the induced geodesic distance
+has the closed form
+
+                                       n                             2  1/2
+
+      d(A, B) = log A-1/2BA-1/2     =                   log j(A-1B)        ,
+
+                                 F     j=1
+
+where j(A-1B) are eigenvalues.
+   Properties:
+
+    (1) Congruence invariance: for invertible S,
+
+      d(SAS, SBS) = d(A, B).
+
+    (2) Inversion invariance:
+                                 d A-1, B-1 = d(A, B).
+
+    (3) Geodesics are explicit:
+                       AB(t) = A1/2 A-1/2BA-1/2 tA1/2.
+
+    In particular, for the midpoint we have an explicit formula:
+
+                           1  = A1/2 A-1/2BA-1/2 1/2A1/2
+      A#B := AB 2
+
+      = B1/2 B-1/2AB-1/2 1/2B1/2
+
+Setup. Suppose  is a self-adjoint CP map that is DS-scalable: there exist
+
+C1, C2  0 such that the scaled map SC11/2, C21/2() is doubly stochastic.
+Unwinding the definition, the unitality and trace-preservation conditions
+
+read
+
+      (C2) = C1-1,                  (C1) = C2-1.
+
+Since  = , the second equation becomes (C1) = C2-1. Defining F (X) :=
+(X)-1, these two equations say
+
+                             F (C2) = C1, F (C1) = C2,
+
+so (C1, C2) is a 2-cycle of F (or a fixed point if C1 = C2, in which case  is
+already symmetrically DS-scalable). Our goal is to show that the geodesic
+midpoint C1 #C2 is a fixed point of F , which gives symmetric DS-scalability.
+
+Lemma 3.11. Let (X) = BiXBi with Bi = Bi. If (I) = P -1 and
+(P ) = I, then (P t) = P t-1 for all t  [0, 1].
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES29
+
+Proof. Define
+
+               (t) = P (1-t)/2 (P t) P (1-t)/2.
+
+The hypotheses (I) = P -1 and (P ) = I give (0) = (1) = I. We show
+that (t) = I for all t  [0, 1], which is equivalent to the claim.
+
+Step 1: Trace upper bound. Work in the eigenbasis of P , so that
+
+P = diag(1, . . . , n) with every k > 0. For each k, define Mk  Mn(C) by
+
+                                    r
+
+               (Mk)jl = (Bi)jk (Bi)lk.
+
+                                   i=1
+
+Each Mk is positive semidefinite (it equals i bi,k bi,k, where bi,k is the k-th
+column of Bi).
+
+   Since P t = diag(t1, . . . , tn) and Bi = Bi, a direct computation gives
+
+                        n
+
+               (P t) =       tk Mk.
+
+                        k=1
+
+As P (1-t)/2 is diagonal with entries (j1-t)/2, the trace of (t) evaluates to
+
+               Tr[(t)] = (Mk)jj j1-t kt .
+
+                                      j,k
+
+Each summand has the form cjk e(1-t) log j+t log k with cjk = (Mk)jj  0.
+A non-negative linear combination of real exponentials is convex, so t 
+Tr[(t)] is convex on [0, 1]. Since Tr[(0)] = Tr[(1)] = n, we conclude
+
+               Tr[(t)]  n for all t  [0, 1].
+
+Step 2: Determinant lower bound. The hypotheses imply that I and
+P are exact fixed points of the map X  (((X)-1))-1. By Lemma 2.30,
+
+                 Cap() = det((I)) = det(P -1) = (det P )-1.
+                                  det(I )
+
+The definition of capacity gives det((X))  Cap() � det(X) for all X  0.
+Applying this to X = P t:
+
+                 det((P t))  (det P )-1 � (det P )t = (det P )t-1,
+
+and therefore
+
+               det[(t)] = (det P )1-t � det((P t))  1.
+30                                 VLADISLAV KARGIN
+
+Step 3: AM�GM. Let �1, . . . , �n > 0 be the eigenvalues of (t). By
+Steps 1 and 2,
+
+    1n                 Tr[(t)]                                   n         1/n
+
+    n �j = n  1                                  det[(t)] 1/n =         �j .
+
+            j=1                                                  j=1
+
+Since the arithmetic mean always dominates the geometric mean, both
+
+inequalities are equalities. Equality in AM�GM forces �1 = � � � = �n,
+
+and since their product is 1 while their sum is n, every �j = 1. Hence
+
+(t) = I.                                                                             
+
+Proposition 3.12 (Geodesic reflection for 2-cycles). Let  be a self-adjoint
+
+CP map, (X) =          r    Ai  X  Ai  with  Ai  =  Ai.  Define  F (X)  =  ((X ))-1  for
+                       i=1
+
+X  Pn. If (C, D) is a 2-cycle of F , i.e., F (C) = D and F (D) = C with
+
+C = D, then F reverses the geodesic CD, acting as reflection about its
+
+midpoint C#D:
+
+                    F (CD(t)) = CD(1 - t) for all t  R.
+
+Proof. Define P = C-1/2DC-1/2 and the conjugated CP map
+
+                                 r           where Bi = C1/2AiC1/2.
+
+                 (X) = BiXBi,
+
+                                i=1
+
+Note that Bi = Bi since Ai and C1/2 are both Hermitian. Let F (X) =
+((X ))-1 .
+
+    Step 1: Verify that (I, P ) is a 2-cycle of F . We have
+
+    (I) = Bi2 = (C1/2AiC1/2)2 =                             C 1/2 Ai C Ai C 1/2
+
+                    i           i                        i
+
+                 = C1/2(C)C1/2 = C1/2D-1C1/2,
+
+using F (C) = D, i.e., (C) = D-1. Therefore
+                  F (I) = (C1/2D-1C1/2)-1 = C-1/2DC-1/2 = P.
+
+Similarly,
+
+    (P ) = BiP Bi = C1/2AiC1/2 � C-1/2DC-1/2 � C1/2AiC1/2
+
+                 i              i
+
+            = C1/2(D)C1/2 = C1/2C-1C1/2 = I,
+
+using F (D) = C, i.e., (D) = C-1. Therefore F (P ) = I.
+   Step 2: Apply Lemma 3.11. Since  is self-adjoint and satisfies F (I) =
+
+P , F (P ) = I, Lemma 3.11 gives
+
+                              F (P t) = P 1-t for all t  R.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES31
+
+   Step 3: Transfer back to original coordinates. The relation between
+ and  is
+
+                            (X) = C1/2(C1/2XC1/2)C1/2,
+
+which gives F (C1/2XC1/2) = C1/2F (X)C1/2. Setting X = P t and using
+CD(t) = C1/2P tC1/2:
+
+       F (CD(t)) = C1/2F (P t)C1/2 = C1/2P 1-tC1/2 = CD(1 - t). 
+
+Remark 3.13. The midpoint of the geodesic is CD(1/2) = C#D, the
+geometric mean of C and D. Setting t = 1/2 shows that C#D is a fixed
+point of F :
+
+                                     F (C#D) = C#D.
+
+Thus F fixes the midpoint and swaps C = CD(0) and D = CD(1),
+consistent with the 2-cycle condition. When C = D, i.e., C is itself a fixed
+point, the identity holds trivially with P = I.
+
+Proposition 3.14. Let A =   r    Aixi,  Ai  =  Ai,  be  an  LR-semisimple
+                            i=1
+
+Hermitian matrix pencil. Then its covariance map A is symmetrically DS-
+
+scalable.
+
+Proof. By Proposition 3.7, LR-semisimplicity of A implies that A is DS-
+scalable: there exist C1, C2  Pn such that
+
+           A(C2) = C1-1,         A (C1) = C2-1.
+
+Since the Ai are Hermitian, A is self-adjoint, so the second condition be-
+comes A(C1) = C2-1. Writing F (X) = (A(X))-1, this gives
+
+           F (C1) = C2, F (C2) = C1,
+
+so (C1, C2) is a 2-cycle of F (or a fixed point if C1 = C2). By Proposi-
+
+tion 3.12, the geometric mean C1#C2 is a fixed point of F , i.e., A(C1#C2) =
+
+(C1#C2)-1. Setting C = C1#C2, this is precisely the condition that A is
+
+symmetrically DS-scalable.                                  
+
+�4 The analytic engine
+
+   This section establishes the forward analytic implication: symmetric DS-
+scalability implies non-singularity at t = 0.
+32                                VLADISLAV KARGIN
+
+�4.1 The solution manifold
+
+Proposition 4.1 (The (-1)-eigenspace generates a solution family). Let
+ : Mn(C)  Mn(C) be a self-adjoint CP map with (C) = C-1 for some
+C  0, and let  = SC1/2,C1/2() be the associated doubly stochastic map.
+Let V := ker( + Id)|Hermn and d := dim V.
+
+     (i) The map  restricts to a -homomorphism on the C-algebra C(V),
+          and the map
+
+                            V  Y - VY := C1/2 eY C1/2
+
+          parametrizes a d-dimensional manifold M of positive definite solu-
+          tions of (V ) V = I, with V0 = C.
+    (ii) The tangent space of M at C is exactly the kernel of the linearization
+          L : K  K + C (K) C:
+
+                       TC M = C1/2Y C1/2 : Y  V = ker L.
+
+Proof. (i) Let Y1, . . . , Yd be a basis of V. By Lemma 2.34, each Yj satisfies
+(Yj2) = (Yj)2. By Theorem A.2, this gives (XYj) = (X) (Yj) and
+(YjX) = (Yj) (X) for all X  Mn(C) and every j. In particular,  is
+multiplicative on all products of elements from {Y1, . . . , Yd}, so  restricts
+to a -homomorphism on C(V).
+
+   Since for any Y  V, the exponential eY lies in C(V), so
+
+                            (eY ) = e(Y ) = e-Y = (eY )-1.
+
+Set X = eY and V = C1/2XC1/2. Then
+                (X) = C1/2(C1/2XC1/2)C1/2 = C1/2(V )C1/2,
+
+so
+              (V ) = C-1/2(X)C-1/2 = C-1/2X-1C-1/2 = V -1.
+
+Hence (V ) V = I.
+   Since V  Hermn is a real vector space of dimension d, the map
+                                  V  Y - C1/2eY C1/2
+
+is a real-analytic embedding (the exponential map is injective on Hermitian
+
+matrices and maps Hermn into Mn(C)>0); therefore its image M is a d-
+
+dimensional real-analytic embedded submanifold of Mn(C)>0.
+
+    (ii)  Differentiating VtY  =  C 1/2 etY  C 1/2  at  t  =  0  gives  d   t=0VtY  = C1/2Y C1/2.
+                                                                        dt
+
+This spans ker L as Y ranges over V, since L(C1/2Y C1/2) = C1/2(Y +
+
+(Y ))C1/2 = 0 if and only if Y  V.                                                  
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES33
+
+�4.2 Lyapunov�Schmidt reduction
+
+Lemma 4.2 (Cokernel of the linearization operator). Let  : Mn(C) 
+Mn(C) be a self-adjoint CP map with (C) = C-1 for some C  0, and let
+
+ = SC1/2,C1/2(). Then the adjoint of the linearization operator L(K) =
+K + C (K) C with respect to the real inner product A, B = Tr(AB) on
+
+Hermn is
+
+          L(L) = L + (CLC),
+
+and
+               ker L = C-1/2Y C-1/2 : Y  ker( + Id)|Hermn .
+
+Proof. For Hermitian K and L:
+
+L, L(K) = Tr(LK) + Tr(LC (K) C) = Tr(LK) + Tr(CLC � (K)),
+
+where the second equality uses cyclicity of the trace. Since  is self-adjoint
+( = , which holds because the Kraus operators are Hermitian), Tr(CLC �
+(K)) = Tr((CLC) � K). Therefore
+
+                 L, L(K) = Tr (L + (CLC)) K = L(L), K,
+
+giving L(L) = L + (CLC).
+   To find ker L, substitute L = C-1/2ZC-1/2 with Z Hermitian:
+
+                 L(L) = C-1/2ZC-1/2 +  C � C-1/2ZC-1/2 � C
+                          = C-1/2ZC-1/2 +  C1/2ZC1/2 .
+
+Using (C1/2ZC1/2) = C-1/2(Z) C-1/2 (from the definition of ):
+                           L(L) = C-1/2 Z + (Z) C-1/2.
+
+Since C-1/2 is invertible, L(L) = 0 if and only if (Z) = -Z.    
+
+Lyapunov�Schmidt decomposition. Consider the equation
+
+                         (W, u) := W - ((W ) + uI)-1 = 0
+
+on Hermn �R, with (C, 0) = 0. The Fr�echet derivative at (C, 0) is DW |(C,0) =
+L, the linearization operator L(K) = K + C (K) C.
+
+   Assume that dim ker L = d  1. Let {Y1, . . . , Yd} be a basis of V :=
+ker( + I)|Hermn. By Proposition 4.1, ker L = span{K0,1, . . . , K0,d} with
+K0,k = C1/2YkC1/2. By Lemma 4.2, ker L = span{L0,1, . . . , L0,d} with
+L0,j = C-1/2Yj C-1/2.
+
+   Write W = C + k skK0,k + K~ with K~  span{K0,k} in Hermn. Since L
+is invertible on (ker L), the implicit function theorem solves the auxiliary
+34      VLADISLAV KARGIN
+
+equation (the projection of  = 0 onto (ker L)) for K~ = K~ (s, u), smooth
+near the origin.
+
+   The bifurcation equations are the remaining d scalar equations
+
+j(s, u) := L0,j,  C + kskK0,k + K~ (s, u), u = 0, j = 1, . . . , d.
+
+Hadamard factorization. Each bifurcation equation j(s, u) = 0 van-
+ishes identically at u = 0 (since the family Vt = C1/2 exp( k tkYk) C1/2 pro-
+vides solutions of  = 0 at u = 0 that sweep out a neighborhood in the ker L-
+
+directions). This gives the factorization j(s, u) = u j(s, u) with smooth
+
+j, for each j = 1, . . . , d. (This is the Hadamard lemma applied to each j:
+
+if f (x, 0) = 0 for all x near 0 and f is smooth, then f (x, y) = y � g(x, y) for
+
+a smooth g, given explicitly by g(x, y) =  1  y  f  (x,  ty)  dt.)
+                                           0
+
+�4.3 Trace minimizer and transversality
+
+Proposition 4.3 (Trace minimizer in S). Let  : Mn(C)  Mn(C) be a
+self-adjoint CP map with S := {W  0 : (W ) W = I} = . Then:
+
+     (i) (Existence) S has an element of minimal trace: there exists C  S
+          with tr(C)  tr(W ) for all W  S.
+
+    (ii) (First-order conditions) Let  = SC1/2,C1/2() and V = ker( +
+          I)|Hermn with basis {Y1, . . . , Yd}. Then
+
+                         Tr(Yj C) = 0 for all j = 1, . . . , d.
+
+Proof. (i). Let {Wk}  S be a minimizing sequence with tr(Wk) 
+infW S tr(W ). Since max(Wk)  Tr(Wk)  M and
+
+                             min(Wk)  1/(M (I)) > 0
+
+(using Wk-1 = (Wk)  M (I)), a subsequence converges to some C
+with C  0 and (C) C = I.
+
+(ii). By Proposition 4.1, Vs := C1/2 esYj C1/2  S for all s  R. Since C
+minimizes trace over S:
+
+    d       Tr(C esYj )  =                 Tr(C Yj)  =   0.         
+    ds
+        s=0
+
+Lemma 4.4 ( Solvability of bifurcation equations).
+Let  : Mn(C)  Mn(C) be a self-adjoint CP map with (C) = C-1 for
+some C  0, and let  = SC1/2,C1/2 (). Let V = ker( + I)|Hermn with
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES35
+
+d = dim V  1, and let {Y1, . . . , Yd} be an orthogonal basis of V. Suppose
+that
+
+(19)  Tr(YjC) = 0 for all j = 1, . . . , d.
+
+Let j(s, u) = u j(s, u) be the Hadamard factorization of the Lyapunov�
+Schmidt bifurcation equations at (C, 0). Then:
+
+     (i) j(0, 0) = 0 for all j.
+    (ii) The Jacobian
+
+      j            1        Tr(YjCYk) + Tr(YkCYj) ,
+      sk       =
+          (0,0) 2
+
+      and this matrix is positive definite.
+
+In particular, the implicit function theorem applies to the system j(s, u) = 0
+at (s, u) = (0, 0), giving a smooth curve s(u) with s(0) = 0.
+
+Proof. We use the notation
+
+      K0,k := C1/2YkC1/2  ker L,  L0,j := C-1/2Yj C-1/2  ker L
+
+(Lemma 4.2). The Lyapunov�Schmidt decomposition writes W = C +
+   k skK0,k + K~ with K~  span{K0,k}, and the bifurcation equations are
+
+               j(s, u) = Tr L0,j � (C + kskK0,k + K~ (s, u), u) .
+
+We record three identities used throughout. Define Q^jk := C-1/2YjYkC-1/2.
+
+Identity 1: C (K0,k) C = -K0,k.
+Proof. (K0,k) = C-1/2(Yk)C-1/2 = -L0,k, so C (K0,k) C = -C L0,k C =
+
+-K0,k .
+
+Identity 2: (YjYk) = YjYk for all j, k.
+Proof. Since (Y) = -Y with | - 1| = 1 for each , the multiplicative do-
+main theorem gives that  restricts to a -homomorphism on C(Y1, . . . , Yd).
+Therefore (YjYk) = (Yj)(Yk) = (-Yj)(-Yk) = YjYk.
+
+Identity 3: (CQ^jkC) = Q^jk.
+Proof. CQ^jkC = C1/2YjYkC1/2, so (CQ^jkC) = C-1/2(YjYk)C-1/2 =
+C-1/2YjYkC-1/2 = Q^jk by Identity 2.
+
+Part (i): j(0, 0) = 0. By definition, j(0, 0) = (j)u(0, 0). We have
+               j(s, u) = Tr L0,j � (C + kskK0,k + K~ (s, u), u) .
+36                               VLADISLAV KARGIN
+
+Differentiating in u at (s, u) = (s, 0) by the chain rule:
+
+   (j)u(s, 0) = Tr L0,j � DW (Ws, 0)[K~u(s, 0)] + Tr L0,j � Du(Ws, 0) ,
+
+where Ws := C + k skK0,k + K~ (s, 0). At s = 0: W0 = C and DW (C, 0) =
+L, so the first term becomes Tr(L0,j �L[K~u(0, 0)]) = Tr(L(L0,j)�K~u(0, 0)) =
+0 since L0,j  ker L. The second term is Tr(L0,j �C2) = Tr(YjC) = 0 by (19).
+Therefore j(0, 0) = (j)u(0, 0) = 0.
+
+Part (ii): the Jacobian. We compute j/sk|(0,0) = (j)sku(0, 0). This
+involves several steps.
+
+Step 1: K~sk (0, 0) = 0. The family Vt = C1/2 exp(  tY) C1/2 solves
+(Vt, 0) = 0 for all t. Consider the one-parameter subfamily Vk(t) := Vtek
+for fixed k. Expanding at t = 0:
+
+          Vk(t) = C + t K0,k + O(t2).
+
+The Lyapunov�Schmidt coordinate of Vk(t) along K0,k is
+
+    k(t)  =  K0,k, Vk(t) -       C  =              t  +  O(t2),
+                   K0,k 2
+
+so k(0) = 0 and k (0) = 1. The (ker L)-component of Vk(t) - C is
+
+    K~0,k(t) := (Vk(t) - C) - k(t) K0,k,
+
+which satisfies K~0,k(0) = 0 and K~0 ,k(0) = K0,k - k (0) K0,k = 0. Since Vk(t)
+solves  = 0 at u = 0, the auxiliary equation is satisfied along the subfamily,
+giving K~ (k(t) ek, 0) = K~0,k(t). Differentiating at t = 0:
+
+    K~sk (0, 0) � k (0) = K~0 ,k(0) = 0.
+
+Since k (0) = 1, we conclude K~sk (0, 0) = 0.
+   (The family Vt provides exact solutions at u = 0 whose tangent vectors at
+
+the base point C are spanned by the kernel directions K0,k. Moving along
+
+the family in the k-th direction moves purely along K0,k to first order, with
+no component orthogonal to the kernel. So the LS "remainder" K~ doesn't
+
+activate at first order in sk.)
+
+Step 2: decomposition of (j)sku(0, 0). By definition,
+
+                          j(s, u) = Tr L0,j � (W (s, u), u) ,
+where W (s, u) = C +  sK0, + K~ (s, u). Differentiating in sk:
+
+    (j)sk = Tr L0,j � DW (W, u)[Wsk ] ,
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES37
+
+where Wsk = K0,k + K~sk . Differentiating again in u at (0, 0), the product
+rule gives three terms:
+
+      (j)sku(0, 0) = Tr L0,j � DW2 W (C, 0)[K~u(0, 0), K0,k]
+                         + Tr L0,j � DW2 u(C, 0)[K0,k]
+                         + Tr L0,j � L[K~sku(0, 0)] ,
+
+where we used Wsk (0, 0) = K0,k (Step 1), Wu(0, 0) = K~u(0, 0), and DW (C, 0) =
+L. The third term vanishes since L0,j  ker L, leaving
+
+(20)
+
+j          = Tr  L0,j � DW2 W (C, 0)[K0,k, K~u]  + Tr    L0,j � DW2 u(C, 0)[K0,k]  ,
+sk
+      (0,0)
+
+                        (I)jk                            (II)jk
+
+where K~u = K~u(0, 0).
+
+Step 3: the auxiliary equation for K~u. The auxiliary equation is
+P [(W (s, u), u)] = 0, where P projects onto (ker L). Differentiating in u
+
+at (0, 0):
+
+                                    P L(K~u) + C2 = 0,
+
+i.e., L(K~u) + C2  ker P = span{L0,1, . . . , L0,d}. But L0,j, L(K~u) = 0
+(since L0,j  ker L) and L0,j, C2 = Tr(YjC) = 0 (assumption). So the
+component of L(K~u) + C2 in each L0,j-direction vanishes, giving
+
+(21)                           L(K~u) = -C2,
+
+equivalently K~u + C (K~u) C = -C2.
+
+Step 4: a key trace identity. Taking the inner product of (21) with
+Q^ j k :
+
+                Tr(Q^jk K~u) + Tr(Q^jk C (K~u) C) = - Tr(Q^jk C2).
+
+For the second term, cyclicity and self-adjointness of  give
+
+      Tr(Q^jk C (K~u) C) = Tr((CQ^jkC) K~u) = Tr(Q^jk K~u),
+
+where the last step uses Identity 3. Therefore
+
+(22)  Tr(Q^jk K~u)      =  -   1  Tr(Q^jk  C2)  =  -  1  Tr(Yj Yk C ).
+                               2                      2
+
+Step 5: computing term (II)jk. We need DW2 u(C, 0)[K], the derivative
+of Du(W, u) = ((W ) + uI)-2 with respect to W in direction K, evaluated
+38                          VLADISLAV KARGIN
+
+at (C, 0). Set A(t) := (C + tK) + 0 � I = C-1 + t (K). Using the product
+rule on A-2 = A-1 � A-1:
+
+       d A(t)-2 = d                 A-1 � A(0)-1 + A(0)-1 � d     A-1 .
+       dt t=0               dt t=0                        dt t=0
+
+Since  d   |t=0  A(t)-1  =  -A(0)-1 A (0) A(0)-1  =  -C (K) C    (using  A(0)  =
+       dt
+
+C-1, A(0)-1 = C, A (0) = (K)), we obtain
+
+           DW2 u(C, 0)[K] = -C (K) C � C + C � -C (K) C
+                                = -C (K) C2 - C2 (K) C.
+
+    For K = K0,k, using (K0,k) = -L0,k (Identity 1):
+                     DW2 u(C, 0)[K0,k] = C L0,k C2 + C2 L0,k C.
+
+Therefore
+
+                  (II)jk = Tr(L0,j C L0,k C2) + Tr(L0,j C2 L0,k C).
+For the first summand: L0,j C L0,k = C-1/2YjYkC-1/2 = Q^jk, so
+
+                   Tr(L0,j C L0,k C2) = Tr(Q^jk C2) = Tr(YjYkC).
+
+For the second: L0,j C2 L0,k C = C-1/2Yj C Yk C1/2 (using L0,j C = C-1/2YjC1/2
+and C L0,k C = K0,k), so Tr(L0,j C2 L0,k C) = Tr(Yj C Yk). Thus
+
+(23)                     (II)jk = Tr(YkCYj) + Tr(YjCYk).
+
+Step 6: computing term (I)jk. Since (W, 0) = W - ((W ))-1, differ-
+entiating DW (W, 0)[K2] = K2 + ((W ))-1(K2)((W ))-1 in W at C by
+the product rule on A-1(K2)A-1 with A = (W ):
+
+     DW2 W (C, 0)[K1, K2] = -C (K1) C (K2) C - C (K2) C (K1) C.
+
+For K1 = K0,k, using C (K0,k) C = -K0,k (Identity 1):
+
+            DW2 W (C, 0)[K0,k, K~u] = K0,k (K~u) C + C (K~u) K0,k.
+
+From (21): C (K~u) C = -C2 - K~u, so (K~u) C = -C - C-1K~u and
+C (K~u) = -C - K~uC-1. Substituting:
+
+     (I)jk = Tr L0,j K0,k(-C - C-1K~u) + Tr L0,j(-C - K~uC-1) K0,k
+            = - Tr(L0,jK0,kC) - Tr(L0,jK0,kC-1K~u)
+               - Tr(L0,jCK0,k) - Tr(L0,jK~uC-1K0,k).
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES39
+
+   For the terms without K~u: L0,j K0,k = C-1/2YjYkC1/2, so Tr(L0,jK0,kC) =
+Tr(YjYkC), and Tr(L0,jCK0,k) = Tr(YjCYk) (since L0,j C = C-1/2YjC1/2
+and C K0,k = C3/2YkC1/2).
+
+   For the terms with K~u: L0,j K0,k C-1 = C-1/2YjYkC-1/2 = Q^jk, and by
+cyclicity Tr(L0,j K~u C-1 K0,k) = Tr(C-1K0,k L0,j K~u) = Tr(Q^kj K~u) (since
+C-1K0,k L0,j = C-1/2YkYj C-1/2 = Q^kj ). Therefore
+
+        (I)jk = - Tr(YjYkC) - Tr(YjCYk) - Tr(Q^jk K~u) - Tr(Q^kj K~u).
+
+Substituting (22):
+
+(24)  (I)jk   =  -  Tr(Yj Yk C )  -  Tr(Yj C Yk )  +  1  Tr(Yj Yk C )  +  1  Tr(Yk Yj C )
+                                                      2                   2
+
+                    1  Tr(YjCYk) + Tr(YkCYj)
+              =-
+                   2
+
+Step 7: combining. From (20), (23), and (24):
+
+      j                                        1  Tr(YjCYk) + Tr(YkCYj) .
+      sk         (0,0) = (I)jk + (II)jk = 2
+
+Positive definiteness. For any nonzero v = (v1, . . . , vd)  Rd, set Z =
+   j vjYj (nonzero, since the Yj are linearly independent). Then
+
+      1                                           1
+      vjvk 2  Tr(YjCYk) + Tr(YkCYj)  =               Tr(ZCZ) + Tr(ZCZ)
+                                        2
+j,k
+
+                                     = Tr(Z2C) = Tr(C1/2 Z2 C1/2) > 0,
+
+since Z = 0 implies Z2 = 0 (so Z2  0 is nonzero) and C  0.                                 
+
+�4.4 Non-singularity theorem
+
+Lemma 4.5 (Non-singularity at the trace minimizer). Let S be a matrix
+
+semicircle with self-adjoint covariance map  : Mn(C)  Mn(C) satisfying
+(C) = C-1 for some C  0. Let  = SC1/2,C1/2 (), V := ker( + I)|Hermn ,
+d := dim V, and {Y1, . . . , Yd} be a basis of V. Assume that
+
+(25)                   Tr(YjC) = 0 for all j = 1, . . . , d.
+
+Then:
+
+     (i) S is non-singular with real-analytic density near x = 0: the HFS
+          solution W (u) extends real-analytically through u = 0 with W (0+) =
+          C.
+40                                   VLADISLAV KARGIN
+
+    (ii) The spectral density at x = 0 satisfies
+
+               f (0) = 1 tr(C)  1 Cap()-1/(2n) =               1   .
+                                                           
+                                                            e (S)
+
+Proof. Consider the equation
+
+                         (W, u) := W - ((W ) + uI)-1 = 0
+
+on Hermn � R. Note that (C, 0) = 0 (since (C) = C-1), and the Fr�echet
+
+derivative in W at (C, 0) is the linearization L = DW |(C,0) : K  K +
+C (K) C. Let d = dim ker( + I)|Hermn; by Proposition 4.1 ((ii)), this
+equals dim ker L.
+
+    If d = 0, then L = DW (C, 0) is invertible, and the implicit function
+
+theorem applies directly to (W, u) = 0 at (C, 0).
+
+   If d  1, by Proposition 4.1, the family Vs = C1/2 exp( j sjYj) C1/2
+solves (Vs, 0) = 0 for all s near 0. The Lyapunov�Schmidt reduction at
+
+(C, 0) produces bifurcation equations j(s, u) = u j(s, u). By Lemma 4.4,
+
+the hypothesis (25) gives j(0, 0) = 0 for all j and the Jacobian j/sk|(0,0)
+is positive definite. The implicit function theorem applied to the system
+
+j(s, u) = 0 at (s, u) = (0, 0) yields a smooth curve s(u) with s(0) = 0.
+
+Together with the auxiliary equation, this gives a real-analytic family of
+
+solutions u  W (u) of (W, u) = 0 with W (0) = C  0.
+
+    In both cases, for sufficiently small u > 0, W (u) is strictly accretive (by
+
+continuity, since W (0) = C  0). By the uniqueness theorem for the HFS
+
+equation (Helton et al., 2007, Theorem 2.1), this coincides with the HFS
+
+solution. Therefore W (u)  C as u  0+, and S is non-singular with
+
+f (0)  =  1  tr(C ).
+          
+
+    For the lower bound: by Proposition 4.1, det(Vs) = det(C) eTr( sjYj) =
+
+det(C) (since each Yj is traceless). By AM�GM, tr(C)  det(C)1/n =
+
+Cap()-1/(2n).                                                                 
+
+Theorem 4.6 (Non-singularity for DS-scalable maps). Let S be a matrix
+
+semicircle with self-adjoint covariance map  : Mn(C)  Mn(C). Assume
+that the set
+
+                              S = {W  0 : (W ) W = I}
+
+is nonempty. Then:
+
+    (i) S is non-singular at t0 = 0 with real-analytic density near x = 0,
+
+          and  f (0)  =  1  tr(C ),  where  C  S  is  the  trace  minimizer.
+                         
+
+    (ii) The trace minimizer is unique: there is a unique C  S with tr(C) 
+
+          tr(W ) for all W  S.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES41
+
+(iii) The spectral density at x = 0 satisfies
+
+              f (0) = 1 tr(C)  1 Cap()-1/(2n) =      1   .
+                                                 
+                                                  e (S)
+
+Proof. (i). By Proposition 4.3, a trace minimizer C  S exists and satisfies
+
+Tr(YjC) = 0 for all Yj  ker( + I)|Hermn. Lemma 4.5 then gives that
+W (u) extends real-analytically through u = 0 with W (0+) = C, so S is
+
+non-singular  with  f (0)  =  1  tr(C ).
+                              
+
+(ii). Let C1, C2  S be any two trace minimizers. By part (i) applied to
+each, the HFS solution satisfies both W (0+) = C1 and W (0+) = C2. Since
+W (u) is unique for each u > 0, the limit is unique, so C1 = C2.
+
+(iii). By Proposition 4.1, the family Vs = C1/2 exp( j sjYj) C1/2 lies in S
+with det(Vs) = det(C) (since each Yj is traceless). By AM�GM,
+
+                    tr(C)  det(C)1/n = Cap()-1/(2n),
+
+which gives the lower bound.                                
+
+�5 Proof of the main theorem
+
+�5.1 Non-singular = sym DS-scalable
+
+Lemma 5.1. Let W (u) be the strictly accretive solution of (6) for u  D =
+{Re u > 0}. Then
+
+                                       W (u�) = W (u).
+
+In particular, W (t)  0 for t > 0.
+
+Proof. Since Re W  0, W is invertible and (6) gives (W (u)) = W (u)-1 -
+uI. (Note that this expresses (W ) as a function of W alone, so in particular
+[W (u), (W (u))] = 0.)
+
+   Taking adjoints and using (W ) = (W ):
+                               W (u) -1 = u� I +  W (u) ,
+
+which is exactly equation (6) at the point u�. By the uniqueness of the strictly
+accretive solution (Helton et al., 2007, Theorem 2.1), W (u�) = W (u). 
+
+Proposition 5.2. Let S be a matrix semicircular variable that is non-
+singular at t0 = 0. Then the covariance map S is symmetrically DS-
+scalable.
+42                             VLADISLAV KARGIN
+
+Proof. Let W (u) denote the unique strictly accretive solution of
+
+(26)   W (u) W (u) + u W (u) = I, Re u > 0.
+
+Step 1: Passing to the limit in the equation. By non-singularity at
+t0 = 0, there exists a Stolz cone on which W is bounded and has a non-
+tangential limit
+
+                                      W0 := lim W (u).
+
+                                                                 u0
+                                                                 n.t.
+
+Since W is bounded on this cone, uW (u)  0 as u  0 non-tangentially.
+The linearity of  gives (W (u))  (W0). Taking the non-tangential limit
+in (26):
+
+(27)                             (W0) W0 = I.
+
+Step 2: W0  0. The positive real axis {u =  :  > 0} lies in every
+Stolz cone (0), so the non-tangential limit agrees with the real-axis limit:
+W0 = lim0 W ( ). By Lemma 5.1, W ( )  0 for  > 0, and passing to the
+limit gives W0  0.
+
+   Moreover, W0 is invertible: if it were not, then rank((W0) W0)  rank(W0) <
+n, contradicting (27). Therefore W0  0.
+
+Step 3: Symmetric DS-scalability. Set C := W0  0. Then (27)
+
+gives (C) = C-1, which is exactly symmetric DS-scalability of  = S
+
+(Definition 2.33).                                                            
+
+�5.2 Proof of the main theorem
+
+Theorem 5.3 (= Theorem A). Let A =             r    Aixi,  Ai  =  Ai,  be  a  Her-
+                                               i=1
+
+mitian matrix pencil, S = Ai  si the associated matrix semicircle, and
+
+ : X  AiXAi its covariance map. The following are equivalent:
+
+      (i) A is LR-semisimple.
+
+    (ii) S is non-singular at t = 0.
+
+    (iii)  is symmetrically DS-scalable.
+
+Moreover, when these hold, the spectral density satisfies
+
+                1                1 Cap()-1/(2n)     =      1      ,
+      f (0) = tr(C)                                    
+                                                        e (S)
+
+where C is the unique trace minimizer of S = {W  0 : (W ) W = I}.
+
+Proof. Note that since the Kraus operators Ai are Hermitian,  is self-
+adjoint:  = .
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES43
+
+(i)  (iii). If A is LR-semisimple, then  is symmetrically DS-scalable by
+Proposition 3.14.
+
+(iii)  (i). Symmetric DS-scalability implies DS-scalability, and Proposi-
+tion 3.10 gives that A is LR-semisimple.
+
+(iii)  (ii). If  is symmetrically DS-scalable, then S = , and Theorem 4.6
+gives that S is non-singular at t = 0.
+
+(ii)  (iii). If S is non-singular at t = 0, then  is symmetrically DS-
+scalable by Proposition 5.2.
+
+The density formula and the lower bound are from Theorem 4.6.  
+
+�5.3 Corollaries
+
+Corollary 5.4 (= Theorem B). If A is unsplittable with Ai = Ai, then S
+is non-singular and C is the unique solution of (C) = C-1.
+
+Proof. Since an unsplittable pencil is LR-semisimple, Theorem 5.3 gives that
+
+S is non-singular. An unsplittable pencil corresponds to an indecomposable
+
+CP map by Theorem 2.35(ii), and uniqueness of scaling matrix C follows
+
+from Lemma 3.4.                                                
+
+Corollary 5.5 (Direct sums of unsplittables). If A is a direct sum of un-
+splittable Hermitian pencils, then S is non-singular.
+
+Proof. Direct sum of unsplittables is LR-semisimple by definition. Main
+
+Theorem applies.                                               
+
+Corollary 5.6 (Global regularity). If A is LR-semisimple, then the spectral
+density f of S is bounded and continuous on R, real-analytic in a neighbor-
+hood of x = 0, and satisfies f (0) > 0.
+
+Proof. The main theorem gives matrix-level non-singularity at t0 = 0, hence
+
+real-analyticity and f (0) > 0. By Proposition 2.10, f is bounded at every
+
+x = 0. By Proposition 2.7, f is real-analytic away from finitely many points.
+
+A bounded algebraic function at an isolated singularity extends continuously,
+
+so f is continuous on all of R.                                
+
+Remark 5.7 (Doubly stochastic case). When  is already doubly stochastic,
+
+the Main Theorem applies with C = I (the solution of (C) = C-1), giving
+
+f (0) =  1  .  In fact, the spectral distribution of S is the standard Wigner
+         
+
+semicircle law: the ansatz W (u) = w(u) I reduces Speicher's equation (6)
+44  VLADISLAV KARGIN
+
+to the scalar equation w(u)2 + u w(u) = 1 (using unitality (I) = I), whose
+                                         -u+   u2+4
+unique solution with Re w > 0 is w(u) =       2      .  By HFS uniqueness,
+
+W (u) = w(u) I, and Stieltjes inversion recovers the semicircle density.
+
+�6 Discussion and open questions
+
+Remark 6.1. Geometric invariant theory perspective The algebraic
+results of �3 admit a natural interpretation in the framework of geometric
+invariant theory (GIT), as developed by Garg et al. (2020); see also Bu�rgisser
+et al. (2018, 2019) for a comprehensive treatment.
+
+   The group G = GLn(C)�GLn(C) acts on r-tuples of matrices (A1, . . . , Ar) 
+Mn(C)r by
+
+                  (g, h) � (A1, . . . , Ar) = (g A1 h-1, . . . , g Ar h-1).
+
+Under this action, LR-equivalence classes of pencils correspond to G-orbits.
+The key entries of the GIT dictionary are:
+
+   � Capacity as a Kempf�Ness functional. The log-capacity log Cap(A)
+      plays the role of the Kempf�Ness function, which in GIT measures the
+      distance of an orbit from being closed. Its critical points are the DS-
+      scalings of A.
+
+   � DS-scalability as polystability. A pencil A is DS-scalable (equiva-
+      lently, Cap(A) > 0 and the capacity infimum is attained) if and only
+      if the G-orbit of (A1, . . . , Ar) is closed in the semistable locus -- the
+      GIT notion of polystability. In this language, Proposition 3.10 says that
+      LR-semisimplicity is equivalent to polystability.
+
+   � Operator Sinkhorn iteration as gradient descent. The alter-
+      nating row/column normalization of Definition 2.26 can be interpreted
+      as Riemannian gradient descent on the Kempf�Ness function over the
+      symmetric space GLn/Un. The GGOW algorithm Garg et al. (2020)
+      provides polynomial-time convergence guarantees for this iteration.
+
+   We have not used this perspective in the proofs, but it provides useful
+geometric intuition for the algebraic results of �3.
+
+   The main theorem characterizes non-singularity at x = 0 for unbiased
+self-adjoint matrix semicircles. Several natural extensions remain open.
+
+Singularities when A is not LR-semisimple. When the pencil is full
+but not LR-semisimple, the main theorem implies that S is singular at t = 0.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES45
+
+                                            f (x)
+
+                           0.8              f (x)  C |x|-1/3
+
+                           0.6
+
+                           0.4
+
+                           0.2
+
+                                                              x
+     - 3 2 3 -2  -1                            1     2 33
+                                                              2
+
+     Figure 1. Spectral density of the matrix semicircle S = A1  s1 +
+     A2  s2 for the non-LR-semisimple pencil of Example 2.17. The
+     density has an integrable |x|-1/3 cusp at the origin.
+
+The following example shows that the singularity can take the form of an
+integrable algebraic cusp.
+
+Example 6.2 (Singularity for a non-LR-semisimple pencil). Consider the
+pencil from Example 2.17:
+
+                           01                 00
+                 A1 = 1 0 ,         A2 = 0 1 .
+
+This pencil is full but not LR-semisimple.
+
+Let
+
+                 G(z) =  a(z) w(z)          ,     z  C+,
+
+                         w(z) c(z)
+
+be the matrix Cauchy transform, so that
+
+                zG(z) = I + (G(z))G(z), Im G(z)  0.
+
+That is, G is the Herglotz solution of Speicher's equation. A direct compu-
+
+tation gives
+
+                       aw       =        cw       .
+                 
+                                         w a+c
+                       wc
+
+Let U = diag(1, -1). Since U A1U = -A1 and U A2U = A2, we have
+
+                (U XU ) = U (X)U (X  M2(C)).
+46                         VLADISLAV KARGIN
+
+Hence U G(z)U satisfies the same equation as G(z), and by uniqueness of
+the Herglotz solution, U G(z)U = G(z). Therefore w(z) = 0.
+
+   Thus G(z) = diag(a(z), c(z)), and Speicher's equation reduces to
+
+                     a(z - c) = 1, c(z - a - c) = 1.
+
+Set v := z - c. Then a = 1/v and c = z - v, so
+                                      v3 - zv2 + z = 0.
+
+Its discriminant is
+
+                           (z) = z2(4z2 - 27),
+
+hence the spectral density is supported on
+
+                                     
+                               3333
+                           -,                 .
+                                      22
+
+                       
+
+   For |x| < 3 2 3 , let v(x) = (x)+i(x) be the boundary-value root selected
+by Im G(x + i0)  0; then (x) > 0. Since
+
+                     tr G(x + i0) =   11      + x - v(x) ,
+
+                                      2 v(x)
+
+Stieltjes inversion gives
+
+    1                      1                     1             (x)  1
+f (x) = - Im tr G(x + i0) = Im v(x) -                       =       1 + |v(x)|2 .
+                           2                  v(x)             2
+
+In particular, f is real-analytic on
+
+                                              
+                           33                 33
+                           - , 0  0,                     .
+                           2                  2
+
+   Near x = 0, the cubic gives v(x)3  -x, hence |v(x)|  |x|1/3 and (x) 
+|x|1/3. Therefore
+
+                               f (x)  |x|-1/3 (x  0).
+
+Thus f has an integrable cusp singularity at 0, in contrast with the bounded
+density from Theorem 5.3 for LR-semisimple pencils.
+
+   Is this representative of the general case? By the algebraicity of the
+Cauchy transform (Proposition 2.7), the singularity at 0 is always algebraic,
+so f (u)  C |u|- for some rational   (0, 1) (integrability forces  < 1
+since there is no atom at 0 for full pencils). It would be interesting to
+determine which exponents  can occur and whether they are controlled by
+the pencil structure.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES47
+
+Biased matrix semicircles. For S = A0 +  r    Ai   si  with  A0  =  0,  the
+                                         i=1
+
+special role of x = 0 is lost. The natural question is whether singularities
+
+of the density on the entire real line can be characterized algebraically in
+
+terms of the pencil A0 + Aixi.
+
+Non-self-adjoint case. When the matrices Ai are not required to be
+Hermitian, the spectral distribution is replaced by the Brown measure of S,
+which is a probability measure on C. The self-adjointness  =  was used
+in several places (the geodesic reflection theorem, the symmetry W (u�) =
+W (u), and the Lyapunov�Schmidt analysis), so new ideas would be needed.
+48    VLADISLAV KARGIN
+
+�A Tools from operator theory
+
+Lemma A.1 (Kadison�Schwarz inequality). Let  : Mn(C)  Mn(C) be a
+unital completely positive map. Then for any A  Mn(C),
+
+                                  (A)(A)  (AA).
+
+In particular, if L is Hermitian, then (L)2  (L2).
+
+Proof. By the Choi�Kraus theorem, write (X) =       r    KiX    Ki.  Define
+                                                    i=1
+
+the isometry V : Cn  (Cn)r by V x = (K1x, . . . , Krx). Unitality gives
+
+V V = In, and (X) = V (X  Ir)V . Let P = V V  denote the orthogonal
+
+projection onto the range of V . Then
+
+    (AA) - (A)(A) = V (AA  I)V - V (A  I)P (A  I)V
+                                 = V  (A  I)(I - P )(A  I) V
+                                 = V  (I - P )(A  I)  (I - P )(A  I) V  0,
+
+where we used (I - P ) = (I - P )2 = (I - P ).                              
+
+Theorem A.2 (Choi's multiplicative domain theorem). Let  : Mn(C) 
+Mn(C) be a unital completely positive map and let H  Mn(C) be Hermitian.
+If equality holds in the Kadison�Schwarz inequality,
+
+      (H2) = (H)2,
+
+then (XH) = (X)(H) and (HX) = (H)(X) for all X  Mn(C).
+In particular,  restricts to a -homomorphism on the C-algebra C(H)
+
+generated by H and I.
+
+Remark A.3. For general (not necessarily Hermitian) elements, Choi (1974)
+establishes the one-sided conclusion (XA) = (X)(A) from the hypoth-
+esis (AA) = (A)(A), requiring only 2-positivity of .
+
+Proof. Let V and P = V V  be as in the proof of Lemma A.1. The equality
+(H2) = (H)2 means
+
+                   V  (I - P )(H  I)  (I - P )(H  I) V = 0.
+
+Since V is an isometry, this forces (I - P )(H  I)V = 0, i.e.,
+
+(28)  (H  I) V = P (H  I) V = V (H).
+ AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES49
+
+Since H = H, taking adjoints gives V (H  I) = (H) V . Therefore, for
+any X  Mn(C):
+
+    (XH) = V (X  I)(H  I) V = V (X  I) V (H) = (X) (H),
+    (HX) = V (H  I)(X  I) V = (H) V (X  I) V = (H) (X).
+
+                                                                                                 
+
+�B Log-determinant and capacity tools
+
+Lemma B.1 (Derivatives of log-determinant along a curve). Let  : R  Pn
+be a smooth curve of positive definite matrices. Then
+
+(29)      d log det((t)) = Tr[(t)-1 (t)],
+          dt
+
+(30)      d2   log det((t))    =  Tr[(t)-1 (t)] - Tr        ((t)-1 (t))2      .
+          dt2
+
+Proof. For the first derivative, the expansion det(I + A) = 1 +  Tr(A) +
+O(2) gives
+
+                  d                1  d det() = Tr[-1 ].
+                    log det() =
+                  dt              det() dt
+
+For  the  second  derivative,  differentiating    -1  =  I  yields  d   (-1)  =  --1               -1.
+                                                                    dt
+
+Applying the product rule to (29):
+
+               d2                  d (-1) �           + Tr[-1 ]
+               dt2 log det() = Tr  dt
+
+                               = - Tr[-1  -1 ] + Tr[-1 ]
+
+                               = Tr[-1 ] - Tr (-1 )2 .                                
+
+Lemma B.2 (Convexity of log-determinant along CP image of a geodesic).
+
+Let  : Mn(C)  Mn(C) be a completely positive map, let B  0, and
+suppose (Bt) > 0 for all t in an interval. Set L = log B and define h(t) =
+log det((Bt)). Then
+
+(31)                  h(t) = Tr[t(L2)] - Tr[t(L)2]  0,
+
+where t : Mn(C)  Mn(C) is the unital CP map
+
+                  t(X) = (Bt)-1/2 (Bt/2 X Bt/2) (Bt)-1/2.
+
+Proof. Set (t) = (Bt). Since L commutes with all powers of B,
+
+                      (t) = (BtL), (t) = (BtL2).
+50                    VLADISLAV KARGIN
+
+By Lemma B.1,  h(t) = Tr[-1 ] - Tr[(-1 )2].
+(32)
+
+We now rewrite each term using t. Since L commutes with Bt/2, we have
+Bt/2LkBt/2 = BtLk for k = 1, 2, and therefore
+
+                             t(Lk) = -1/2 (BtLk) -1/2.
+
+For the first term in (32):
+               Tr[t(L2)] = Tr[-1/2 (BtL2) -1/2] = Tr[-1 ].
+
+For the second term:
+
+                      t(L)2 = -1/2  -1  -1/2,
+
+so Tr[t(L)2] = Tr[(-1 )2]. This establishes (31).
+
+    The map t is CP (as a composition of  with conjugation maps) and
+
+unital: t(I) = -1/2 (Bt) -1/2 = I. The Kadison�Schwarz inequality
+
+(Lemma A.1) gives t(L)2  t(L2), hence h(t)  0.              
+
+Lemma B.3 (Gradient of log-determinant composed with a linear map).
+Let  : Mn(C)  Mn(C) be a linear map with adjoint  (with respect to the
+inner product X, Y  = Tr(XY )). For any X  0 with (X)  0,
+
+                            X log det((X)) =  (X)-1 .
+
+Proof. Recall that for nonsingular Y > 0,
+
+                          d log det(Y + tH) = Tr(Y -1H),
+                         dt t=0
+so Y log det(Y ) = Y -1 under the trace inner product.
+   By the chain rule, since  is linear,
+
+       d log det((X + tH)) = Tr (X)-1 (H) = (X)-1, (H)
+      dt t=0
+
+                                         = ((X)-1), H ,
+
+where the last step is the definition of .                  
+
+�C Full  rank non-decreasing (proof )
+
+   Here we give a simple proof of Theorem 2.35(i). This equivalence corre-
+sponds to the implication (5)  (7) in Theorem 1.4 of Garg et al. (2020),
+which is stated there without proof. We include a short argument for com-
+pleteness.
+AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES51
+
+Proof. Let A =          r    Aixi  be  a  matrix  pencil  of  size  n  and  let  A (X )  =
+                        i=1
+
+    r    Ai  X  Ai  be  its  CP  companion  map.     The key observation is that for
+    i=1
+
+any positive semidefinite B  0 with U := Range B, one has
+
+(33)                    Range (Ai B Ai) = Ai(U ) for each i.
+
+Indeed, writing B = B1/2B1/2 gives AiBAi = (AiB1/2)(AiB1/2), and since
+Range (CC) = Range C for any matrix C, we obtain Range (AiBAi ) =
+Range (AiB1/2) = Ai(Range B1/2) = Ai(U ). We also recall that for psd
+
+matrices 0  P  Q, one has Range P  Range Q.
+
+(=) Full implies rank non-decreasing. We prove the contraposi-
+tive. Suppose A is rank-decreasing: there exists B  0 with rank A(B) <
+rank B. Set U = Range B and W = Range A(B). Since each summand
+AiBAi is positive semidefinite and 0  AiBAi  A(B), we have
+
+                         Range (AiBAi )  Range A(B) = W.
+
+By (33), this gives Ai(U)  W for every i. Moreover,
+
+                       dim U = rank B > rank A(B) = dim W.
+Hence (U , W) is a shrunk subspace, so A is not full.
+
+(=) Not full implies rank-decreasing. Suppose A is not full: there
+
+exist subspaces U , W  Cn with Ai(U )  W for all i and dim U > dim W.
+
+Let B = PU be the orthogonal projection onto U. Then B  0, rank B =
+
+dim U , and Range B = U . By (33), Range (AiBAi ) = Ai(U )  W for each i,
+
+so
+
+                                                  r
+
+                    Range A(B) = Range                 AiBAi  W,
+
+                                                  i=1
+
+where the inclusion holds because W is a subspace and Range (AiBAi)  W
+
+for each i. Therefore,
+
+                        rank A(B)  dim W < dim U = rank B,
+
+and A is rank-decreasing.                                                                
+
+Remark C.1. The equivalence above uses only the definition of fullness via
+shrunk subspaces and elementary properties of positive semidefinite matri-
+ces. The deeper equivalence between fullness and full inner rank (invert-
+ibility over the free skew field), which is due to Cohn (1985, 1995), is not
+needed here.
+52  VLADISLAV KARGIN
+
+References
+
+Johannes Alt, L�aszl�o Erdos, and Torben Kru�ger. The Dyson equation with
+   linear self-energy: spectral bands, edges and cusps. Doc. Math., 25:
+   1421�1539, 2020. doi: 10.4171/dm/780.
+
+Greg W. Anderson. Preservation of algebraicity in free probability. Preprint,
+   arXiv:1406.6664, 2014.
+
+Peter Bu�rgisser, Ankit Garg, Rafael Oliveira, Michael Walter, and Avi
+   Wigderson. Alternating minimization, scaling algorithms, and the null-
+   cone problem from invariant theory. In 9th Innovations in Theoret-
+   ical Computer Science (ITCS 2018), volume 94 of LIPIcs. Schloss
+   Dagstuhl � Leibniz-Zentrum fu�r Informatik, 2018. arXiv:1711.08039.
+
+Peter Bu�rgisser, Cole Franks, Ankit Garg, Rafael Oliveira, Michael Wal-
+   ter, and Avi Wigderson. Towards a theory of non-commutative opti-
+   mization: geodesic first and second order methods for moment maps and
+   polytopes. In 60th Annual IEEE Symposium on Foundations of
+   Computer Science (FOCS 2019), pages 845�861. IEEE Computer
+   Soc., 2019. arXiv:1910.12375.
+
+Man-Duen Choi. A Schwarz inequality for positive linear maps on c-
+   algebras. Illinois Journal of Mathematics, 18:565�574, 1974. doi:
+   10.1215/ijm/1256051007.
+
+Paul Moritz Cohn. Free rings and their relations. Academic Press,
+   second edition, 1985.
+
+Paul Moritz Cohn. Skew fields: Theory of general division rings.
+   Encyclopedia of Mathematics and Its Applications. Cambridge University
+   Press, 1995.
+
+R. Rashidi Far, T. Oraby, W. Bryc, and R. Speicher. Spectra of large block
+   matrices. https://arxiv.org/abs/cs/0610045, 2006.
+
+Ankit Garg, Leonid Gurvits, Rafael Oliveira, and Avi Wigderson. Operaror
+   scaling: Theory and applications. Foundations of Computational
+   Mathematics, 20:223�290, 2020.
+
+Leonid Gurvits. Classical complexity and quantum entanglement. Journal
+   of Computer and System Sciences, 69:448 � 484, 2004.
+
+J. William Helton, Reza Rashidi Far, and Roland Speicher. Operator-valued
+   semicircular elements: Solving a quadratic matrix equation with positivity
+   constraints. International Mathematics Research Notices, 2007,
+   2007.
+ AN ALGEBRAIC CHARACTERIZATION OF NON-SINGULAR MATRIX SEMICIRCLES53
+
+Johannes Hoffman, Tobias Mai, and Roland Speicher. Computing the
+   noncommutative inner rank by means of operator-valued free probabil-
+   ity theory. Found. Comput. Math., 26:313�348, 2026. doi: 10.1007/
+   s10208-024-09684-5.
+
+Tobias Mai and Roland Speicher. Fuglede�Kadison determinants
+   of matrix-valued semicircular elements and capacity estimates.
+   https://arxiv.org/abs/2406.15922, 2024.
+
+Tobias Mai, Roland Speicher, and Sheng Yin. The free field: Realization
+   via unbounded operators and Atiyah property. J. Funct. Anal., 285(5):
+   110016, 2023. doi: 10.1016/j.jfa.2023.110016.
+
+J. A. Mingo and R. Speicher. Free Probability and Random Matrices.
+   Schwinger-Verlag, 2017.
+
+Dimitri Shlyakhtenko and Paul Skoufranis. Freely independent random vari-
+   ables with non-atomic distributions. Trans. Amer. Math. Soc., 367:
+   6267�6291, 2015. doi: 10.1090/S0002-9947-2015-06434-4.
+
+R. Speicher. Combinatorial Theory of the Free Product with Amal-
+   gamation and Operator-Valued Free Probability Theory, volume
+   627 of Memoirs of American Mathematical Society. A.M.S. Prov-
+   idence, RI, 1998.
+
+Roland Speicher. Non-commutative distributions. lecture notes.
+   https://arxiv.org/abs/2009.03589, 2019.
+
+Dan Voiculescu. Operations on certain non-commutative operator-valued
+   random variables. Ast�erisque, 232:243�275, 1995.
+
+John Watrous. The Theory of Quantum Information. Cambridge
+   University Press, 2018.
+

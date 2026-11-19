@@ -1,0 +1,563 @@
+{
+  "contrato": "CANAIS_K01_V1",
+  "data": "2026-11-13",
+  "estatuto_geral": "[DECLARADO] Levantamento e desenho K01, sujeitos a conferência distinta; nenhum teste empírico foi executado.",
+  "escopo": "[REAL] Nenhum vetor observado foi lido; nenhum Z, H0, razão ou veredito observado foi calculado; somente documentos, previsões e álgebra fiducial de desenho.",
+  "veredito_topo": "[DERIVED] Com os dados de hoje, nenhum canal cumpre simultaneamente cegueira, poder e independência. A determinação JUNO de 29/09/2026 já é pública e muda o planning exato: 0,5 % dá D = 4,0712 e falha; somente 0,3 % dá D = 6,7854 e supera D90 no primário, sem garantir segunda testemunha ou poder conjunto. Ringdown D é cego, mas subpotente.",
+  "D90": 6.2815515655446,
+  "D90_nota": "[DERIVED] D90 = 5 + z(0,90) unilateral = 6,28155; a ordem arredonda para D ≥ 6,3. Poder é sempre de desenho, nunca resultado; o poder conjunto das duas testemunhas m₂ permanece [OPEN].",
+  "consultas_obrigatorias": [
+    "[REAL] python C:\\IALD\\MAPA_DE_ROTAS\\rotas.py consultar <temas>: investigacao.bancada_um_28set; hubble.fase9_razao_discriminante; cmb.nivel2_mcmc; cmb.fisher_gates_e_prereg_so_s4_14ago; cmb.neff_e_rho_mais_p; coma.dephasing_previsao_trancada; vazios.piso.v11; gate.contorno_da_verdade; auditoria.testes_passados_28set; primordial.fase8_era_da_radiacao; neutrino_m2; NEUTRINO_M2_V2; JUNO; sigma_m_nu; sum_mnu; ringdown; ecos; relogios; 229Th; Euclid; LSST; DESI; Simons_Observatory; h0dn_bg1_v411; PREREG_RAMO_B_RINGDOWN_20261005_V1; ringdown.ramo_b; relogios.v1; neutrinos.m2.normalizacao; v412_K01_JUNO_2609.37895; v412_K01_JUNO_2511.14593; v412_K01_errata_rev0; v412_K01_errata_rev1.",
+    "[REAL] python C:\\IALD\\MAPA_DE_ROTAS\\rotas.py ver <rotas>: as dez rotas prioritárias da ordem, mais umpy.v411.selada_h0dn_aberto_12nov, ringdown.ramo_b_preregistro_v386, relogios.v1 e neutrinos.massa_v1_e_soma; python C:\\IALD\\MAPA_DE_ROTAS\\rotas.py modelo.",
+    "[REAL] Inventários consultados: C:\\IALD\\Central de Patentes\\memory\\INVENTARIO_BANCADA_CHATGPT.md e .json, inclusive ringdown_gw e vigência no kernel; kernel v411 consultado por DIFF_KERNEL_v411.txt e KERNEL_RECIBO_v411.json.",
+    "[REAL] python C:\\IALD\\INDICE_DO_ACERVO\\buscar.py <regex> --lista, com regex: NEUTRINO_M2_V2|neutrino_m2; void_floor|piso.*vazios|Euclid|LSST; ringdown|eco|229Th|Th-229|relogio; h0dn_bg1_v411|ressalvas_secao8; Simons|N_eff|Sigma.*nu|sum.*nu; QGSolutionComplete\\.lean; Neutrino[^\\/]*\\.lean|NEUTRINO_M2_V2; NMC.*Shapiro|Shapiro.*NMC; 229Th|Th-229|thorium-229.",
+    "[REAL] Fontes JUNO efetivamente consultadas por FetchURL/WebSearch: arXiv:2511.14593v1, First measurement of reactor neutrino oscillations at JUNO, 18/11/2025, 59,1 dias; arXiv:2609.37895v1, Measurement of Neutrino Oscillation Parameters at JUNO and Indication of the Neutrino Mass Ordering, 29/09/2026, 207,2 dias; página JUNO publications usada apenas como índice institucional, não como rol atualizado de 2026; a fonte primária da liberação de 207,2 dias é arXiv:2609.37895v1.",
+    "[REAL] Ausência de ponte TGL nos sistemas analógicos somente foi classificada depois dessas consultas e das rotas natureza.horizontes_proprios_sem_ponte_tgl_27out, natureza.5sigma_fora_da_cosmologia_poder_27out e gate.contorno_da_verdade; ‘ausente’ refere-se à ponte zero-parâmetro, não à existência dos experimentos."
+  ],
+  "ressalvas_glossario": {
+    "R1": "[REAL, lido no core h0dn_bg1_v411.ressalvas_secao8] O ramo foi emendado depois da guarda e o teste H0DN × BG1 não é cego.",
+    "R2": "[REAL, idem] O primário era previsível por dois agregados públicos; retrodição sem ajuste continua evidência legítima, mas não nova descoberta cega.",
+    "R3": "[REAL, idem] A linha das Cefeidas livres tinha esperança de desenho abaixo de 5σ e precisa permanecer visível como linha de estresse.",
+    "R4": "[REAL, idem] O poder é de desenho no modelo publicado; linhas de estresse e sistemáticas precisam acompanhar o D nominal.",
+    "R5": "[REAL, idem] A tabela de erros publicada tem 72 direções de variância zero; o orçamento de erros e a covariância ficam abertos.",
+    "R6": "[REAL, idem] Primário, portão de 90 % e hipóteses foram escolhidos com a tabela de poder à vista.",
+    "R7": "[REAL, idem] Tentativas anteriores e sobreposição dos dados locais com as Fases 4, 5 e 9 limitam independência e exigem contabilidade look-elsewhere."
+  },
+  "fontes_publicas": {
+    "JUNO_2022": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "JUNO Collaboration, Abusleme et al. (2022), Sub-percent Precision Measurement of Neutrino Oscillation Parameters with JUNO, arXiv:2204.13249, DOI 10.1088/1674-1137/ac8bc9.",
+      "url": "https://arxiv.org/abs/2204.13249",
+      "consulta": "WebSearch e FetchURL em 2026-11-13; resumo consultado: melhor que 0,5 % em seis anos; tabela pública associada dá 0,3 % para Δm²₂₁."
+    },
+    "JUNO_2024_TABLE": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "JUNO Collaboration, Calvez (2024), Neutrino oscillation physics in JUNO, ICHEP 2024, tabela de sensibilidade: 0,3 % para Δm²₂₁ em seis anos.",
+      "url": "https://indico.cern.ch/event/1291157/contributions/5888133/attachments/2899170/5083623/juno_ichep2024_calvez.pdf",
+      "consulta": "WebSearch em 2026-11-13."
+    },
+    "JUNO_2025_59D": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "JUNO Collaboration, Abusleme et al. (2025), First measurement of reactor neutrino oscillations at JUNO, arXiv:2511.14593v1, 18/11/2025, 59,1 dias; Δm²₂₁ = (7,50 ± 0,12)×10⁻⁵ eV².",
+      "url": "https://arxiv.org/abs/2511.14593",
+      "consulta": "FetchURL e WebSearch em 2026-11-13; liberação histórica já pública, não usada como dado futuro."
+    },
+    "JUNO_2026_207D": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "JUNO Collaboration (2026), Measurement of Neutrino Oscillation Parameters at JUNO and Indication of the Neutrino Mass Ordering, arXiv:2609.37895v1, 29/09/2026, 207,2 dias; Δm²₂₁ = (7,388 ± 0,078)×10⁻⁵ eV², precisão publicada de 1,1 %.",
+      "url": "https://arxiv.org/abs/2609.37895",
+      "consulta": "FetchURL e WebSearch em 2026-11-13; determinação pública elegível mais recente usada no planning, não como abertura cega."
+    },
+    "JUNO_PUBLICATIONS": {
+      "estatuto": "[REAL]",
+      "citacao": "JUNO Collaboration, JUNO publications, índice institucional consultado apenas para distinguir artigos de colaboração de análises de terceiros; não é rol atualizado de 2026. A fonte primária da liberação de 207,2 dias é arXiv:2609.37895v1.",
+      "url": "https://juno.ihep.ac.cn/mediawiki/index.php/Publication:JUNO_publications",
+      "consulta": "FetchURL em 2026-11-13; índice institucional, não fonte primária da determinação mais recente."
+    },
+    "JUNO_START": {
+      "estatuto": "[REAL]",
+      "citacao": "JINR (2025), JUNO Experiment begins taking data, início da coleta física em 26/08/2025.",
+      "url": "https://www.jinr.ru/posts/juno-experiment-begins-taking-data/",
+      "consulta": "WebSearch e FetchURL em 2026-11-13."
+    },
+    "H0DN_2026": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "H0DN Collaboration, Casertano et al. (2026), The Local Distance Network, arXiv:2510.23823, DOI 10.1051/0004-6361/202557993; incerteza publicada de 1,1 % baseline e 0,9 % com todos os estimadores.",
+      "url": "https://arxiv.org/abs/2510.23823",
+      "consulta": "WebSearch e FetchURL em 2026-11-13; nenhum calendário de próxima liberação localizado nas buscas H0DN/SH0ES."
+    },
+    "SO_2025": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "Simons Observatory Collaboration, Abitbol et al. (2025), The Simons Observatory: Science Goals and Forecasts for the Enhanced Large Aperture Telescope, arXiv:2503.00636v3; forecasts 2025–2034: σ(N_eff)=0,045; σ(Σmν)=0,03 eV com DESI e 0,015 eV com τ futuro; erros estatísticos e Planck incluído.",
+      "url": "https://arxiv.org/html/2503.00636v3",
+      "consulta": "WebSearch e FetchURL em 2026-11-13."
+    },
+    "DESI_2026": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "DESI Collaboration/NOIRLab (2026), conclusão do mapa de cinco anos; primeiros resultados de energia escura do levantamento completo esperados em 2027.",
+      "url": "https://noirlab.edu/public/news/noirlab2610/",
+      "consulta": "WebSearch e FetchURL em 2026-11-13."
+    },
+    "DESI_DR3_2025": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "B. Field, DOE (2025), Dark Energy and Cosmology Science Updates; apresentação pública informa DESI DR3 para o fim de 2026 ou início de 2027.",
+      "url": "https://indico.global/event/15767/contributions/138193/attachments/65687/127027/2025.12%20DPF%20Dark%20Energy%20and%20Cosmology%20v1%20(B%20Field).pdf",
+      "consulta": "WebSearch em 2026-11-13; janela provisória, não data garantida."
+    },
+    "ESA_EUCLID": {
+      "estatuto": "[REAL]",
+      "citacao": "ESA (2026), Euclid timeline: DR1-Foundation em 12/11/2026; DR1 completo previsto para 16/06/2027, datas tentativas.",
+      "url": "https://www.cosmos.esa.int/web/euclid/timeline",
+      "consulta": "WebSearch e FetchURL em 2026-11-13."
+    },
+    "RUBIN_2026": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "Vera C. Rubin Observatory (2026), Early Science Program: DR1 baseado no primeiro ano de LSST, janela corrente julho–novembro de 2028; RTN-011 DOI 10.71929/rubin/2584021.",
+      "url": "https://rubinobservatory.org/for-scientists/resources/early-science",
+      "consulta": "WebSearch e FetchURL em 2026-11-13."
+    },
+    "ACT_2026": {
+      "estatuto": "[REAL]",
+      "citacao": "ACT Collaboration (2026), página oficial: últimos dados em 2022, telescópio descomissionado e produtos DR6 públicos.",
+      "url": "https://act.princeton.edu/front",
+      "consulta": "WebSearch e FetchURL em 2026-11-13."
+    },
+    "SPT_2026": {
+      "estatuto": "[REAL]",
+      "citacao": "SPT Collaboration (2026), Data Releases: bandpowers e likelihoods SPT-3G D1 públicos; Camphuis et al. (2026), PRD 113, 083504, arXiv:2506.20707, DOI 10.1103/PhysRevD.113.083504.",
+      "url": "https://pole.uchicago.edu/public/Data%20Releases.html",
+      "consulta": "WebSearch e FetchURL em 2026-11-13; nenhuma data oficial de próxima liberação cosmológica localizada."
+    },
+    "CMB_S4_END": {
+      "estatuto": "[REAL]",
+      "citacao": "CMB-S4 Project (2025), comunicado oficial de 09/07/2025: DOE e NSF deixaram de apoiar o projeto e iniciaram encerramento ordenado.",
+      "url": "https://cmb-s4.org/",
+      "consulta": "WebSearch e FetchURL em 2026-11-13."
+    },
+    "IGWN_2026": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "IGWN (2026), Observing Capabilities: IR1 de seis meses previsto para meados de janeiro de 2027; O5 concebido para 2029–2031, ainda em planejamento inicial.",
+      "url": "https://rtd.igwn.org/projects/userguide/en/latest/capabilities.html",
+      "consulta": "WebSearch e FetchURL em 2026-11-13."
+    },
+    "TH229_OOI": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "Ooi et al. (2026), Frequency reproducibility of solid-state Th-229 nuclear clocks, Nature 650, 72–78, arXiv:2507.01180, DOI 10.1038/s41586-025-09999-5; linhas cristalinas de dezenas de kHz e reprodutibilidade sub-kHz, não σ de excesso TGL.",
+      "url": "https://arxiv.org/html/2507.01180v1",
+      "consulta": "WebSearch em 2026-11-13."
+    },
+    "TH229_FEEDBACK": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "Toscani De Col, Riebner, Morawetz et al. (2026), A thorium-229 optical nuclear clock with feedback loop, arXiv:2606.04997v2; ‘aiming for millihertz’ é meta de operação, não linha atingida nem σ_excess TGL.",
+      "url": "https://arxiv.org/abs/2606.04997",
+      "consulta": "FetchURL em 2026-11-13."
+    },
+    "BECCARIA_TERNES_2026": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "Beccaria e Ternes (2026), Damping signatures at JUNO, arXiv:2606.13362v2; análise fenomenológica de decoerência, não previsão de detecção TGL.",
+      "url": "https://arxiv.org/abs/2606.13362",
+      "consulta": "FetchURL em 2026-11-13; somente o resumo, sem vetor observado."
+    },
+    "SR87_KIM": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "Kim, Aeppli, Warfield, Chu, Rey, Ye (2025), Atomic Coherence of 2 Minutes..., arXiv:2505.06444, DOI 10.1103/3wtv-sty2; coerência de 118(9) s.",
+      "url": "https://arxiv.org/abs/2505.06444",
+      "consulta": "FetchURL em 2026-11-13; resumo com 118(9) s efetivamente consultado."
+    },
+    "ICECUBE_GEN2": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "IceCube-Gen2, Karle (2024), From the IceCube Upgrade to IceCube-Gen2: cronograma então assumido de construção a partir de 2027 e projeto de dez anos.",
+      "url": "https://indico.uchicago.edu/event/427/contributions/1441/attachments/539/815/TeVPA2024_Karle_IceCube-Gen2.pdf",
+      "consulta": "WebSearch em 2026-11-13; não é calendário de uma amostra de transientes lenteados."
+    },
+    "LSST_LENS_2024": {
+      "estatuto": "[KNOWN, a conferir]",
+      "citacao": "Arendse et al. (2024), Detecting strongly lensed type Ia supernovae with LSST, MNRAS 531, 3509, DOI 10.1093/mnras/stae1356; taxa óptica não equivale a eventos com neutrinos e timing <10 ms.",
+      "url": "https://ui.adsabs.harvard.edu/abs/2024MNRAS.531.3509A/abstract",
+      "consulta": "WebSearch em 2026-11-13."
+    }
+  },
+  "canais": [
+    {
+      "id": "h0dn_proxima_liberacao",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": false, "poder": null, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] A liberação corrente já é pública e conhecida; não há próxima liberação datada nem covariância futura para provar independência."},
+      "previsao": {"estatuto": "[DERIVED] lei; [CONJECTURE] mecanismo", "formula": "K = E(z*)^(2β/3), β = ALPHA_FINE_CODATA_2018 × √e; nulo K = 1; K−1 = 0,0838071748529643", "valor": "K = 1,0838071748529643; z* = 1089,95", "local_core": "um_absoluto.json → hubble_ratio_v387.transcribed; lei D1B também registrada em coma_distance_dephasing.prediction.flow_layer_kernel_v378"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] H0DN corrente é público e conhecido da casa; nenhum vetor foi reaberto.", "calendario": "[OPEN] Nenhuma próxima liberação datada foi localizada; a publicação corrente informa 1,1 % baseline e 0,9 % com todos os estimadores, números que não são forecast da próxima.", "fontes": ["H0DN_2026"]},
+      "cegueira": {"possivel": "FUTURA, condicionada", "como": "[DECLARADO] Nova liberação mantida por terceiro, com estimador, pesos, variantes e hashes congelados antes de qualquer acesso; idealmente novos calibradores ou partição held-out.", "impedimento": "[REAL] A rede atual e seus agregados já foram lidos; reanalisá-los é retrodição, não teste cego."},
+      "poder_desenho": {"D": null, "conta": "[DERIVED] D = 0,0838071748529643/σ_rel,total; D90 exige σ_rel,total ≤ 0,0133417953 = 1,334 %. Não se recicla o 1,1 % corrente como se fosse dado futuro.", "sigma_fonte": "H0DN_2026 para o valor corrente; forecast da próxima rede [OPEN]", "avaliacao": "PODER POTENCIAL, NÃO DATADO NÃO CEGO HOJE"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] A mesma rede compartilha indicadores, âncoras, SNe e covariância com H0DN/SH0ES/Pantheon+ e com as fases anteriores.", "nota": "[DECLARADO] Só uma partição nova com calibradores disjuntos e mapa de covariância pode restaurar independência."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] PARCIAL: tranca anterior ajuda; não apaga a emenda pós-guarda da V411.",
+        "R2": "[DECLARADO] SÓ NO FUTURO: exige liberação realmente nova; a corrente continua previsível por agregados.",
+        "R3": "[DECLARADO] NÃO RESOLVIDA: Cefeidas livres, PV, 13 objetos e variantes devem continuar como ramos pré-fixados.",
+        "R4": "[DECLARADO] PARCIAL: o limiar de 1,334 % é explícito, mas falta orçamento futuro de erros.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: exige covariância futura completa e tratamento das direções degeneradas, sem repetir as 72 direções zero.",
+        "R6": "[DECLARADO] PARCIAL: todos os canais foram tabelados; não se pode escolher a próxima rede pelo centro ou precisão favorável.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: há sobreposição explícita e tentativas anteriores a contabilizar."
+      },
+      "consequencia_negativo": {"tipo": "lei_ou_parede", "se_falsifica": "[DECLARADO] Se o desenho completo e independente excluir K = E(z*)^(2β/3), cai a lei D1B no setor testado, não o gate nem toda a TGL.", "se_sem_poder": "[DECLARADO] Se σ_rel,total > 1,334 % ou a covariância falhar, é parede medida, não falsificação."}
+    },
+    {
+      "id": "hubble_escadas_independentes_futuras",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": null, "poder": null, "independencia": null, "cumpre_hoje": false, "motivo": "[DERIVED] Não há pacote futuro nomeado com data, forecast do estimador e disjointness demonstrada."},
+      "previsao": {"estatuto": "[DERIVED] lei; [CONJECTURE] mecanismo", "formula": "K = H0_local/H0_fundo = E(z*)^(2β/3), com zero parâmetro livre depois de fixado o fundo", "valor": "K−1 = 0,0838071748529643", "local_core": "um_absoluto.json → hubble_ratio_v387 e h0dn_bg1_v411 (somente a lei; o registro observado não foi reaberto)"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Escadas TRGB, JAGB, Miras, SBF, masers, SN II, FP e Tully–Fisher já participam de agregados públicos; a H0DN mostra que suas calibrações são correlacionadas.", "calendario": "[OPEN] Nenhuma liberação futura independente, com data e σ_total do mesmo estimador, foi localizada nas buscas de 2026-11-13.", "fontes": ["H0DN_2026"]},
+      "cegueira": {"possivel": "CONDICIONADA", "como": "[DECLARADO] Um time independente deposita resultado cego e covariância antes da leitura pela casa; o conjunto de indicadores e âncoras precisa ser disjunto dos já usados.", "impedimento": "[REAL] As escadas atuais são conhecidas e compartilham dados; ‘outro indicador’ não basta se usa os mesmos calibradores."},
+      "poder_desenho": {"D": null, "conta": "[DERIVED] Mesma conta: D = 0,0838071748529643/σ_rel,total; D90 requer 1,334 % no composto local–fundo.", "sigma_fonte": "[OPEN] Nenhum forecast público do estimador futuro completo foi localizado.", "avaliacao": "INDETERMINADO"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": null, "sobreposicao": "[REAL] Há sobreposição potencial de âncoras, SNe e amostras; precisa ser provada por inventário, não presumida pelo nome da escada.", "nota": "[DECLARADO] Uma escada realmente disjunta é candidata de desenho, não canal disponível hoje."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] PARCIAL: custódia independente pode criar cegueira futura; a V411 permanece não cega.",
+        "R2": "[DECLARADO] CONDICIONAL: só dados/calibrações novos superam a previsibilidade por agregados.",
+        "R3": "[DECLARADO] PARCIAL: escadas sem Cefeidas respondem à dependência, mas variantes TRGB/JAGB e seleção continuam obrigatórias.",
+        "R4": "[DECLARADO] NÃO AVALIADO: falta forecast do mesmo estimador.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância cruzada de calibradores é o ponto central.",
+        "R6": "[DECLARADO] PARCIAL: nenhuma escada pode ser escolhida por centro ou erro conveniente.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: a independência está por demonstrar."
+      },
+      "consequencia_negativo": {"tipo": "lei_ou_parede", "se_falsifica": "[DECLARADO] Negativo com independência e poder atinge a lei D1B no setor local/fundo.", "se_sem_poder": "[DECLARADO] Covariância compartilhada ou σ_total acima do limiar é parede de desenho, não evidência contra a lei."}
+    },
+    {
+      "id": "hubble_desi_dr3_fundo",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": null, "poder": null, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] O calendário existe, mas DR3 contém dados usados em DR1/DR2 e não há forecast público do composto K com covariância local–fundo."},
+      "previsao": {"estatuto": "[DERIVED] lei; [OPEN] escolha do fundo e do mapa R", "formula": "K = E(z*)^(2β/3); o fundo entra em H0_fundo e em E(z*); nulo K = 1", "valor": "K−1 = 0,0838071748529643 sob a convenção congelada anterior", "local_core": "um_absoluto.json → hubble_ratio_v387; rotas investigacao.bancada_um_28set e hubble.fase9_razao_discriminante"},
+      "dado": {"existe_hoje": false, "publico": false, "conhecimento": "[REAL] DR1/DR2 são públicos e já entraram em fases anteriores; K01 não abriu DR3 nem dados observados.", "calendario": "[KNOWN, a conferir] Apresentação DOE indica DR3 no fim de 2026 ou início de 2027; NOIRLab espera os primeiros resultados de energia escura dos cinco anos em 2027.", "fontes": ["DESI_DR3_2025", "DESI_2026"]},
+      "cegueira": {"possivel": "PARCIAL/FUTURA", "como": "[DECLARADO] Pré-registrar antes da liberação o estimador, mapa R, corte incremental e covariância; custódia por terceiro até a abertura única.", "impedimento": "[REAL] DR3 não é inteiramente novo: inclui observações e reduções relacionadas a DR1/DR2; a escolha do mapa R continua aberta."},
+      "poder_desenho": {"D": null, "conta": "[DERIVED] D90 no composto continua exigindo σ_rel,total ≤ 1,334 %. Não há base para atribuir σ(DR3) a BG1/mapeamento TGL sem forecast do mesmo modelo.", "sigma_fonte": "[OPEN] Forecast DR3 do estimador TGL não localizado; calendário não é precisão.", "avaliacao": "INDETERMINADO"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] DR1/DR2 e Planck comprimido já foram usados nas Fases 4, 5 e 9 e na Bancada; o incremento precisa de covariância condicional.", "nota": "[DECLARADO] Tratar DR3 como réplica cega integral inflaria independência."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] PARCIAL: pré-registro antes de DR3 é possível; não corrige a emenda anterior.",
+        "R2": "[DECLARADO] PARCIAL: há dados novos, mas agregados e parte do catálogo já são conhecidos.",
+        "R3": "[DECLARADO] NÃO RESOLVIDA: variantes locais e de fundo continuam necessárias.",
+        "R4": "[DECLARADO] NÃO AVALIADO: não há σ DR3 do modelo completo.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância DR1/DR2/DR3 e local–fundo é obrigatória.",
+        "R6": "[DECLARADO] PARCIAL: mapa R e cortes devem ser fixados antes da tabela de resultados.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: há continuidade explícita com os dados anteriores."
+      },
+      "consequencia_negativo": {"tipo": "lei_mapa_R_ou_parede", "se_falsifica": "[DECLARADO] O negativo só atinge D1B depois de fixar mapa R e fundo; uma mudança dessas escolhas muda a hipótese testada.", "se_sem_poder": "[DECLARADO] Sem forecast/covariância ou sem independência incremental, é parede de desenho."}
+    },
+    {
+      "id": "hubble_planck_act_spt",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": false, "poder": null, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] Planck, ACT DR6 e SPT-3G D1 já são públicos; ACT não terá nova coleta e nenhuma próxima data SPT foi localizada."},
+      "previsao": {"estatuto": "[DERIVED] lei; [OPEN] fundo perturbativo e independência do comprimido", "formula": "K = E(z*)^(2β/3), com H0_fundo determinado por CMB/BAO sob modelo declarado", "valor": "K−1 = 0,0838071748529643 na convenção anterior", "local_core": "um_absoluto.json → hubble_ratio_v387; rotas cmb.nivel2_mcmc e investigacao.bancada_um_28set"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Planck e medidas comprimidas foram usados pela casa; ACT DR6 e SPT-3G D1 são públicos.", "calendario": "[REAL] ACT encerrou coleta em 2022 e está descomissionado; SPT D1 já está público; próxima data SPT [OPEN]; Planck não oferece canal futuro identificado nesta K01.", "fontes": ["ACT_2026", "SPT_2026"]},
+      "cegueira": {"possivel": false, "como": "[DECLARADO] Apenas uma futura likelihood/produto realmente novo, com regras congeladas antes da leitura, poderia criar cegueira de análise.", "impedimento": "[REAL] Os dados atuais e suas consequências agregadas já são conhecidos; reabrir não produz teste cego."},
+      "poder_desenho": {"D": null, "conta": "[DERIVED] O requisito de 1,334 % é compartilhado, mas não existe forecast novo do estimador completo para estes instrumentos.", "sigma_fonte": "[OPEN] Não transferido de N_eff ou de forecasts SO para H0.", "avaliacao": "SEM CANAL FUTURO DATADO E INDEPENDENTE"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] Planck comprimido, ACT e SPT participam do mesmo fundo e de combinações públicas; não são testemunhas integralmente independentes das fases anteriores.", "nota": "[DECLARADO] Análises cruzadas podem reduzir dependência de modelo, mas não criar dados novos."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] NÃO HOJE: dados já abertos não restauram cegueira.",
+        "R2": "[DECLARADO] NÃO HOJE: agregados públicos permanecem previsíveis.",
+        "R3": "[DECLARADO] NÃO RESOLVIDA: variantes de fundo e Cefeidas continuam fora de um novo desenho.",
+        "R4": "[DECLARADO] NÃO AVALIADO: não há forecast novo específico.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância completa e degenerescências persistem.",
+        "R6": "[DECLARADO] PARCIAL: novas escolhas teriam de ser feitas sem olhar centros; hoje não há pacote cego.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: sobreposição direta com fases anteriores."
+      },
+      "consequencia_negativo": {"tipo": "parede_atual_ou_lei_condicional", "se_falsifica": "[DECLARADO] Um futuro produto independente poderia testar D1B condicionada ao fundo; os dados atuais reabertos não constituem novo teste.", "se_sem_poder": "[DECLARADO] Ausência de dado futuro e fechamento perturbativo aberto são parede de desenho."}
+    },
+    {
+      "id": "neutrino_m2_juno",
+      "classificacao": "EXISTE E ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": null, "poder": null, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] A determinação pública mais recente, de 29/09/2026, já é conhecida e não é cega para a casa. Com o novo planning exato, 0,5 % dá D = 4,0712 e falha; 0,3 % dá D = 6,7854 e supera D90, mas a segunda testemunha e o poder conjunto continuam [OPEN]."},
+      "previsao": {"estatuto": "[DERIVED] forma e conversão condicionais; [INPUT] E0 = 1 eV e identificação m₁≈0; sen45 derivado no kernel condicionalmente à identificação ONTO", "formula": "Δm²₂₁,pred = m₂_pred² = (β·sen45°·1 eV)², β = ALPHA_FINE_CODATA_2018 × √e; r_X = |Δm²₂₁,X−Δm²₂₁,pred|/σ_X, sem linearização em m₂", "valor": "m₂ = 8,507414099900329 meV; Δm²₂₁,pred = 7,237609466718292×10⁻⁵ eV²; FALSIFIED somente com duas determinações independentes ≥5", "local_core": "um_absoluto.json → neutrino_m2.frozen (NEUTRINO_M2_V2), values.m2_pred_meV, kill_rule; kernel v411 contém ProjecaoTransversalDaMeiaNat.lean e PonteDaMassa.lean, mas E0 permanece declarado"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Já são públicas e conhecidas duas determinações JUNO relevantes: arXiv:2511.14593v1 de 18/11/2025, 59,1 dias, Δm²₂₁ = (7,50 ± 0,12)×10⁻⁵ eV²; e arXiv:2609.37895v1 de 29/09/2026, 207,2 dias, Δm²₂₁ = (7,388 ± 0,078)×10⁻⁵ eV². A segunda contém/estende a primeira e não é testemunha independente dela. A blinding da colaboração não é herdada pela casa.", "calendario": "[REAL] O planning elegível mais recente é 29/09/2026 e não é futuro. P deve ser uma liberação posterior e ainda não comunicada à casa. Seis anos após o início físico terminam em 26/08/2031, sem promessa de publicação; forecasts de melhor que 0,5 % e tabela de 0,3 % para Δm²₂₁.", "liberacoes": ["JUNO_2025_59D", "JUNO_2026_207D"], "fontes": ["JUNO_2025_59D", "JUNO_2026_207D", "JUNO_PUBLICATIONS", "JUNO_2022", "JUNO_2024_TABLE", "JUNO_START"]},
+      "cegueira": {"possivel": "SOMENTE EM LIBERAÇÃO POSTERIOR A 29/09/2026", "como": "[DECLARADO] O timestamp externo deve preceder a liberação/abertura/comunicação, não apenas a aquisição. Primeiro verifica-se a integridade intrínseca de P e S; depois a independência. Para X∈{P,S}≥5 com a outra <5 ou ausente, vai TENSION_SINGLE(X) ou OPEN_RULE_GAP. Falha intrínseca é INCONCLUSIVE; covariância condicional cruzada ausente é NONINDEPENDENT, não INVALID por si só.", "impedimento": "[REAL] As liberações de 59,1 e 207,2 dias já são públicas e cumulativas; conteúdo incremental não é independência e exige covariância condicional cruzada. A regra inicial foi escrita com tensão conhecida; uma combinação global contendo JUNO não é testemunha independente, mas seu r_S continua avaliado."},
+      "poder_desenho": {"D": 1.9280837600219034, "D_0p5pct": 4.071210971351058, "D_0p3pct": 6.78535161891843, "precisao_relativa_para_5sigma": 0.004071210971351058, "precisao_relativa_para_D90": 0.003240609369253893, "conta": "[DERIVED] Com Δm²₂₁,pred = 7,237609466718292×10⁻⁵ eV² e planning = 7,388×10⁻⁵ eV²: D_exato = |1−pred/planning|/r = |planning−pred|/σ_total. Com σ = 0,078×10⁻⁵ eV², D = 1,9281; 5σ exige r ≤ 0,00407121097 = 0,407121 %; D90 exige r ≤ 0,00324060937 = 0,324061 %. Com 0,5 %, D = 4,0712; com 0,3 %, D = 6,7854. A precisão publicada é 1,1 %, e 0,078/7,388 = 1,0558 %. Não é Z nem veredito observado.", "historico_nao_vigente": "[DERIVED] A liberação de 59,1 dias, apenas histórica, daria D = 6,9971 para 0,5 % e r_D90 = 0,55695 %; não é o planning atual.", "sigma_fonte": "JUNO_2026_207D para planning e σ publicado; JUNO_2022 e JUNO_2024_TABLE somente para forecasts", "poder_conjoint": "[OPEN] Não calculado: D_P e D_S ficam separados até fonte, precisão, independência e covariância condicional serem conhecidas.", "avaliacao": "0,5 % É UNDERPOWERED; 0,3 % SUPERA D90 NO PRIMÁRIO; PODER CONJUNTO E SEGUNDA TESTEMUNHA [OPEN]"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": true, "sobreposicao": "[REAL] Não compartilha calibradores cosmológicos locais; JUNO e ajustes globais compartilham dados de oscilação, KamLAND/solar compartilha parte do modelo de fluxo, e 207,2 dias contém/estende 59,1 dias.", "nota": "[DECLARADO] A kill_rule só admite segunda determinação com JUNO explicitamente excluído, sistema/covariância declarados e sem dupla contagem. Liberações cumulativas exigem covariância condicional; conteúdo incremental não basta para independência."},
+      "funcao_veredito": {"regra_principal": "[DECLARADO] Primeiro integridade intrínseca de P, depois de S, por fim independência. FALSIFIED exclusivamente com r_P≥5, r_S≥5, S INDEPENDENT e integridade P/S.", "single": "[DECLARADO] Para X∈{P,S}≥5 com a outra <5 ou ausente: T_SINGLE(X) ou OPEN_RULE_GAP. Em particular, r_P<5 com S INDEPENDENT ou NONINDEPENDENT e r_S≥5 vai a T_SINGLE(S)_SECOND_ALONE_GE_5 ou T_SINGLE(S)_NONINDEPENDENT; r_S nunca é ignorado. TENSION_BOTH somente com ambos em [3,5); ambos ≥5 com S NONINDEPENDENT vai TENSION_BOTH_NONINDEPENDENT, nunca FALSIFIED.", "integridade": "[DECLARADO] INVALID reservado a falhas intrínsecas: hash/versão/unidade/centro/σ/r não finitos, σ≤0, fonte/metadados/timestamp, código alterado ou covariância/nuisances intrínseca indispensável à validade de σ_X. Ausência/não aceitação de covariância condicional cruzada P–S ou entre liberações cumulativas produz NONINDEPENDENT, não INVALID, salvo falha intrínseca separada, que prevalece primeiro.", "estresses": "[DECLARADO] Estresse é sempre publicado, mas não veta a regra principal sem uma falha objetiva congelada."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] PARCIAL: existe tranca prospectiva desde 08/08/2026, mas a emissão inicial reconhece tensão conhecida; a guarda deve ser anterior à liberação/abertura/comunicação, não apenas à aquisição.",
+        "R2": "[DECLARADO] RESPOSTA FUTURA LIMITADA: P deve ser posterior a 29/09/2026 e ainda não comunicado; as liberações de 59,1 e 207,2 dias já são públicas e só entram como planning.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO NECESSÁRIA: Cefeidas não se aplica; a linha análoga é JUNO-only versus global-sem-JUNO, sempre visível; estresse não veta sem falha objetiva congelada.",
+        "R4": "[DECLARADO] PARCIAL: o planning atual dá D = 1,9281 com σ publicado, 4,0712 para 0,5 % e 6,7854 para 0,3 %; o poder conjunto de P/S permanece [OPEN].",
+        "R5": "[DECLARADO] NÃO SE APLICA às 72 direções H0DN; covariância/nuisances intrínseca indispensável a σ_X é INCONCLUSIVE quando falha; covariância condicional cruzada ausente/não aceita é NONINDEPENDENT, não INVALID; precisão sem modelo devolve AWAITING_SOURCE.",
+        "R6": "[DECLARADO] PARCIAL: o canal só permanece porque 0,3 % cruza D90, enquanto 0,5 % falha; a definição de S e de TENSION_SINGLE/OPEN_RULE_GAP é decisão anterior ao novo centro.",
+        "R7": "[DECLARADO] PARCIAL: independe de H0DN/SH0ES/Pantheon, mas JUNO/globals se sobrepõem e 207,2 dias contém/estende 59,1 dias; conteúdo incremental exige covariância condicional."
+      },
+      "consequencia_negativo": {"tipo": "escala_ou_parede", "se_falsifica": "[DECLARADO] Duas determinações independentes ≥5σ em Δm²₂₁ falsificam o pacote Δm²₂₁,pred = (β·sen45°·E0)² com E0 = 1 eV e m₁≈0; atingem a escala/identificação do setor, não β isoladamente, nem toda a TGL, nem o gate.", "se_sem_poder": "[DECLARADO] Para X∈{P,S}≥5 com a outra <5 ou ausente vai diretamente a TENSION_SINGLE(X) ou OPEN_RULE_GAP, inclusive S NONINDEPENDENT com r_S≥5 e r_P<5; ambos ≥5 com S NONINDEPENDENT não falsificam. Falha intrínseca é INCONCLUSIVE; covariância cruzada ausente é NONINDEPENDENT; sem poder conjunto não há FALSIFIED nem confirmação."}
+    },
+    {
+      "id": "neutrino_soma_massa",
+      "classificacao": "EXISTE E ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": null, "poder": false, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] A separação para o NH mínimo é apenas 0,199 meV e os dados cosmológicos se sobrepõem às fases anteriores."},
+      "previsao": {"estatuto": "[DERIVED] aritmética condicional; [INPUT] m₁≈0, ordenamento normal e Δm²₃₂ externo", "formula": "Σmν = m₁ + m₂ + m₃; m₂ = β·sen45°·1 eV; m₃ = √(m₂²+Δm²₃₂)", "valor": "Σ_pred = 0,0586010873 eV; linha frozen de limite superior 0,0572037052 eV; separação de 0,199 meV do NH mínimo; protocolo aposentado como discriminante de β", "local_core": "um_absoluto.json → neutrino_sum.frozen (NEUTRINO_SUM_V1), values e superseded_v154"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Limites cosmológicos públicos e análises recentes são conhecidos; o frozen foi escrito quando só havia limites, não detecção da escala absoluta. K01 não reabriu esses dados.", "calendario": "[KNOWN, a conferir] SO 2025–2034 prevê σ(Σmν)=0,03 eV com DESI e 0,015 eV com futuro τ/LiteBIRD, sempre com Planck e pressupostos de modelo; DESI cinco anos em 2027.", "fontes": ["SO_2025", "DESI_2026"]},
+      "cegueira": {"possivel": "FUTURA LIMITADA", "como": "[DECLARADO] Novas análises com pacote congelado e modelos declarados podem ser cegas ao novo composto; a regra de duas análises independentes precisa ser mantida.", "impedimento": "[REAL] Limites atuais são conhecidos; Planck/DESI e oscilações alimentam o mesmo número, e a previsão quase coincide com o NH mínimo."},
+      "poder_desenho": {"D": 0.013266666666666668, "conta": "[DERIVED] D = 0,000199 eV/σ(Σmν). Com 0,03 eV, D = 0,00663; com 0,015 eV, D = 0,01327; D90 exigiria σ ≤ 3,168×10⁻⁵ eV. O limite de morte não se converte em poder sem probabilidade de ultrapassá-lo sob cada modelo.", "sigma_fonte": "SO_2025", "avaliacao": "UNDERPOWERED POR VÁRIAS ORDENS PARA DISCRIMINAR TGL DE NH"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] Planck, DESI e CMB/LSS compartilham dados com as fases anteriores; Δm²₃₂ também vem de oscilação.", "nota": "[DECLARADO] Uma detecção futura seria conteúdo novo, mas a separação NH/TGL continua pequena e modelo-dependente."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] PARCIAL: o frozen é anterior às próximas análises, mas os limites correntes já eram conhecidos.",
+        "R2": "[DECLARADO] FUTURA: só detecção/limite novo melhora a novidade; os limites atuais não são cegos.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: linhas de estresse de modelo, ordenamento e m₁ devem ficar ao lado, como as Cefeidas livres.",
+        "R4": "[DECLARADO] RESPONDIDA NEGATIVAMENTE: D máximo publicado ≈0,0133, não 5.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância CMB+BAO+LSS e dependência de modelo são essenciais.",
+        "R6": "[DECLARADO] PARCIAL: o canal permanece na tabela apesar de desfavorável; não foi escolhido pelo resultado.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: há sobreposição de dados e de inputs de oscilação."
+      },
+      "consequencia_negativo": {"tipo": "escala_NH_ou_parede", "se_falsifica": "[DECLARADO] Um limite que cruzasse a regra em duas análises robustas atingiria o pacote Σ com m₁≈0/E0 e também o NH mínimo; não isola β.", "se_sem_poder": "[DECLARADO] Com os forecasts SO, é parede de poder e degenerescência com NH, não falsificação."}
+    },
+    {
+      "id": "cmb_simons_observatory_completo",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": null, "poder": null, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] Existe pré-registro documental, mas o fechamento perturbativo está OPEN, o Nível 2 foi incapaz e os forecasts SO incluem Planck."},
+      "previsao": {"estatuto": "[OPEN] fechamento perturbativo S × L × fluido total V3; [DERIVED] ρ+r e ΔN_eff no fundo", "formula": "β no CAMB/TGL Nível 2; fechamento ρ+r = β[(4/3)ρ_r+ρ_m] no fundo; não há uma previsão única de espectro validada para pré-registrar nesta K01", "valor": "[OPEN] Não atribuído sem escolher fechamento; Nível 2 S/L não compra poder", "local_core": "rotas cmb.nivel2_mcmc e cmb.fisher_gates_e_prereg_so_s4_14ago; Bancada PREREGISTRO_FASE8...; nenhum consumidor runtime SO instalado"},
+      "dado": {"existe_hoje": true, "publico": "parcial/instrumental", "conhecimento": "[REAL] SO já tem instrumento em operação, mas o forecast cosmológico completo é cumulativo; nenhum mapa ou likelihood foi aberto.", "calendario": "[KNOWN, a conferir] Componentes enhanced previstos para 2028 e survey completo 2025–2034, com cerca de nove anos acumulados; forecast inclui Planck e apenas erros estatísticos.", "fontes": ["SO_2025"]},
+      "cegueira": {"possivel": "FUTURA, após decisões teóricas", "como": "[DECLARADO] Fechar fechamento, mapa R, fonte/versão, Yp quando couber, estimador, pesos, covariância e função antes de abrir o produto SO; manter S e L sem escolha pelo resultado.", "impedimento": "[REAL] F5.3 está bloqueada, N2_INCAPAZ/N2_NOT_CONVERGED já ocorreu, e Planck é incluído nos forecasts; não se pode reexecutar para garimpar poder."},
+      "poder_desenho": {"D": null, "conta": "[OPEN] Não existe forecast válido de σ(β) para o fechamento escolhido; não se reutiliza o σ/β do Nível 2 incapaz nem se transforma σ(N_eff) em σ(β) de espectro completo.", "sigma_fonte": "[OPEN] Ausente para o estimador completo; SO_2025 só oferece alvos comprimidos.", "avaliacao": "NÃO PRÉ-REGISTRÁVEL COMO TESTE COMPLETO HOJE"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] Planck entra em todos os forecasts SO citados e o CMB comprimido já foi usado na Bancada/Fases.", "nota": "[DECLARADO] Uma análise SO-only precisaria de forecast próprio e de um grupo de dependência comum com N_eff/D1, não de contagem como nova testemunha independente."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] PARCIAL: o frozen documental existe, mas está bloqueado e não pode ser emendado após o centro.",
+        "R2": "[DECLARADO] FUTURA PARCIAL: SO terá dados novos, mas o forecast atual inclui Planck.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: S/L, mapas R e análises alternativas devem ficar todos à vista, como a linha Cefeida livre.",
+        "R4": "[DECLARADO] NÃO RESOLVIDA: não há σ(β) válido para o modelo completo.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: likelihood/covariância completa e degenerescência β↔H0 são o problema central.",
+        "R6": "[DECLARADO] NÃO RESOLVIDA: decisões D1–D11/D8/X16 e fechamento não podem ser escolhidas por poder favorável.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: Planck e tentativas anteriores compartilham informação."
+      },
+      "consequencia_negativo": {"tipo": "fechamento_ou_parede", "se_falsifica": "[DECLARADO] O negativo atingiria o fechamento/mapa físico efetivamente pré-registrado; sem derivação perturbativa não se pode atribuir o resultado à lei fundamental.", "se_sem_poder": "[DECLARADO] N2 incapaz, não convergência ou falta de modelo é parede medida; alongar cadeias não compra veredito."}
+    },
+    {
+      "id": "neff_simons_observatory",
+      "classificacao": "EXISTE E ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": null, "poder": false, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] O forecast SO produz D = 2,65, abaixo de 5 e de D90, e inclui Planck; CMB-S4 histórico não tem calendário ativo."},
+      "previsao": {"estatuto": "[DERIVED] fechamento de fundo; [OPEN] TGL-S × TGL-L e não-troca de energia", "formula": "dN_eff/dβ = 9,9296062166; N_eff,TGL = 3,044 + (dN_eff/dβ)·β = 3,1634660753; nulo padrão = 3,044", "valor": "ΔN_eff = +0,1194660753; nulo padrão N_eff = 3,044", "local_core": "um_absoluto.json → rho_plus_p_closure.values e neff_channel.values; Bancada neff_canal.py existe, mas a face perturbativa segue OPEN"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Medidas N_eff já foram lidas pela casa; a linha CMB-SPA do frozen tem errata e D8/X16 seguem abertos; nada foi reextraído.", "calendario": "[KNOWN, a conferir] SO 2025–2034: σ(N_eff)=0,045, erros estatísticos com Planck. CMB-S4, antes usado para σ=0,03, teve apoio encerrado em 09/07/2025 e não é calendário ativo.", "fontes": ["SO_2025", "CMB_S4_END"]},
+      "cegueira": {"possivel": "FUTURA, mas insuficiente em poder", "como": "[DECLARADO] Fixar S/L, Yp quando pertinente, fonte, grupo de dependência e covariância antes do novo composto; nunca escolher a convenção pelo centro.", "impedimento": "[REAL] Dados atuais conhecidos, forecast com Planck, escolha TGL-S/L aberta e errata da linha CMB-SPA."},
+      "poder_desenho": {"D": 2.654801672305172, "conta": "[DERIVED] D = 0,1194660753/0,045 = 2,6548; 5σ pede σ ≤ 0,0238932; D90 pede σ ≤ 0,0190186. O σ=0,03 histórico daria apenas D = 3,9822 e não pode ser apresentado como futuro CMB-S4.", "sigma_fonte": "SO_2025; CMB_S4_END para o estado do projeto", "avaliacao": "UNDERPOWERED"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] Planck entra no forecast; N_eff, BBN e D1 medem o mesmo setor de radiação e precisam de grupo de dependência.", "nota": "[DECLARADO] Não somar N_eff com BBN/D1 como se fossem testemunhas independentes sem covariância."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] PARCIAL: o canal já está congelado, mas a escolha S/L e a errata precisam ser resolvidas antes de qualquer abertura.",
+        "R2": "[DECLARADO] FUTURA PARCIAL: SO traz dado novo, porém combinado com Planck.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: Yp BBN/livre e S/L são linhas de estresse obrigatórias; a seleção X16 continua aberta.",
+        "R4": "[DECLARADO] RESPONDIDA NEGATIVAMENTE: D = 2,65 no forecast oficial atual; S4 histórico não resgata poder.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: σ estatística não inclui todas as sistemáticas e a covariância do modelo.",
+        "R6": "[DECLARADO] NÃO RESOLVIDA: não se pode escolher centro-atual versus centro-padrão pelo ramo que passa de 5σ.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: há sobreposição com Planck e dupla contagem potencial com BBN/D1."
+      },
+      "consequencia_negativo": {"tipo": "fechamento_ou_parede", "se_falsifica": "[DECLARADO] Um negativo poderoso atingiria o fechamento ρ+r e a conversão N_eff no ramo escolhido, não automaticamente β nem toda a teoria.", "se_sem_poder": "[DECLARADO] Com σ(N_eff)>0,0190 é parede de poder; o ramo histórico de 6,45 baseado em centro era ilustração não cega, não poder TGL–SM."}
+    },
+    {
+      "id": "vazios_euclid",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": null, "poder": null, "independencia": true, "cumpre_hoje": false, "motivo": "[DERIVED] DR1 completo é futuro e o survey é independente, mas não há forecast do estimador calibrado nem discriminação bilateral do ΛCDM raso."},
+      "previsao": {"estatuto": "[DERIVED] piso condicional; [CONJECTURE] ligação ao traçador de matéria", "formula": "ρ_vazio/ρ̄ ≥ β; no traçador V11, r_c = [ΣN/Σμ]_vazios/[ΣN/Σμ]_aleatorios e L5 = r_c−5σ; teste unilateral", "valor": "β = 0,012031300400803142 em runtime; L5 ≥ β só após calibração e exclusão de supressão de traçador", "local_core": "um_absoluto.json → void_floor_v11.frozen e beta_floor; rotas vazios.piso.v11 e gate.contorno_da_verdade"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] DR1-Foundation consta como liberado em 12/11/2026; K01 não abriu nenhum produto. Os produtos LE3/cosmológicos completos não devem ser confundidos com Foundation.", "calendario": "[KNOWN, a conferir] DR1 completo previsto para 16/06/2027; DR2 junho de 2029; DR3 outubro de 2031, datas ESA tentativas.", "fontes": ["ESA_EUCLID"]},
+      "cegueira": {"possivel": "FUTURA", "como": "[DECLARADO] Pré-registrar antes do DR1 completo o catálogo, máscara, algoritmo, mocks de matéria, viés b, cortes, pesos e veredito; custódia por terceiro e abertura única.", "impedimento": "[REAL] Foundation já é público e não se conhece um forecast do V11 para Euclid; densidade de galáxias não é densidade de matéria e ΛCDM raso também satisfaz o piso."},
+      "poder_desenho": {"D": null, "conta": "[OPEN] β·Σμ ≥ 25 mede capacidade de ver supressão, não D contra uma alternativa em que TGL é falsa. Não se adota D = β/σ como discriminação, porque o nulo zero não é obrigatório no ΛCDM. Um desenho futuro precisa publicar σ(r_c), mocks e modelo de b antes da conta.", "sigma_fonte": "[OPEN] Não localizado para o V11/Euclid; calendário ESA não fornece σ.", "avaliacao": "PODER DISCRIMINANTE INDETERMINADO"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": true, "sobreposicao": "[REAL] Survey/instrumento independentes dos calibradores locais; a linhagem algorítmica VAST e a física de vazios continuam compartilhadas com V11.", "nota": "[DECLARADO] Boa independência de dados não resolve a falta de alternativa discriminante nem o modelo de traçador."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] FUTURA: pré-registro antes do DR1 completo pode ser cego; a emenda V11.1 continua como advertência.",
+        "R2": "[DECLARADO] FUTURA: produtos LE3 novos podem superar a previsibilidade dos agregados atuais.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: réplicas REVOLVER/VIDE/VoidFinder e supressão de traçador são as linhas de estresse análogas.",
+        "R4": "[DECLARADO] NÃO RESOLVIDA: não há forecast do estimador; βΣμ não é poder de falsificação bilateral.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: mocks, máscara, jackknife e covariância de survey precisam ser publicados antes da abertura.",
+        "R6": "[DECLARADO] PARCIAL: algoritmo, x_c e cortes devem ser congelados sem tabela de resultado; a história V11 proíbe ajuste posterior.",
+        "R7": "[DECLARADO] PARCIAL: dados independentes de H0DN, mas tentativas V11 e linhagem de pipeline precisam entrar no look-elsewhere."
+      },
+      "consequencia_negativo": {"tipo": "lei_condicional_ou_parede_tracador", "se_falsifica": "[DECLARADO] Só uma violação do piso de MATÉRIA, com supressão de traçador excluída e controles verdes, falsificaria o piso no setor; L5<β em galáxias não basta.", "se_sem_poder": "[DECLARADO] Falta de mocks, viés desconhecido ou L5 acima do piso é parede/não discriminação, nunca CONFIRMED."}
+    },
+    {
+      "id": "vazios_lsst",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": true, "poder": null, "independencia": true, "cumpre_hoje": false, "motivo": "[DERIVED] DR1 é futuro e independente, porém não existe forecast público do V11 nem teste bilateral do piso."},
+      "previsao": {"estatuto": "[DERIVED] piso condicional; [CONJECTURE] matéria versus traçador", "formula": "ρ_vazio/ρ̄ ≥ β; V11 populacional auto-calibrante e unilateral", "valor": "β = 0,012031300400803142; nenhum perfil radial ou populacional derivado além do piso", "local_core": "um_absoluto.json → void_floor_v11.frozen; rota vazios.piso.v11 e anotação R-I de 05/10/2026"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] DP1/DP2 e alertas existem, mas DR1 anual não está disponível; K01 não abriu esses produtos.", "calendario": "[KNOWN, a conferir] DR1 baseado no primeiro ano de LSST está previsto para julho–novembro de 2028; processamento estimado de um ano.", "fontes": ["RUBIN_2026"]},
+      "cegueira": {"possivel": true, "como": "[DECLARADO] Usar o tempo até DR1 para congelar mocks, viés, máscara, algoritmos e função; terceiro guarda os dados e a abertura ocorre uma vez.", "impedimento": "[REAL] Não há D validado, e os dados de commissioning/DP2 não devem ser usados para escolher cortes que depois se apresentem como cegos."},
+      "poder_desenho": {"D": null, "conta": "[OPEN] Mesma objeção de Euclid: βΣμ não é D contra ΛCDM; é preciso um modelo de matéria e uma alternativa. Nenhum σ(V11/LSST) publicado foi localizado.", "sigma_fonte": "[OPEN] Rubin fornece calendário, não o erro do estimador TGL.", "avaliacao": "PODER DISCRIMINANTE INDETERMINADO"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": true, "sobreposicao": "[REAL] Instrumento e survey independentes; lenteamento e vazios podem compartilhar modelo cosmológico com Euclid/DESI se combinados.", "nota": "[DECLARADO] Combinar surveys exige covariância de modelo e não pode contar três pisos como três confirmações independentes."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] RESPOSTA FUTURA: a janela até 2028 permite tranca realmente anterior ao DR1.",
+        "R2": "[DECLARADO] RESPOSTA FUTURA: DR1 será conteúdo novo, desde que DP2 não oriente escolhas escondidas.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: algoritmos e supressão de traçador ficam como ramos visíveis.",
+        "R4": "[DECLARADO] NÃO RESOLVIDA: não há forecast de poder do V11.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância/mocks e máscara precisam ser congelados.",
+        "R6": "[DECLARADO] PARCIAL: não escolher cadência/cortes pelo resultado de DP2.",
+        "R7": "[DECLARADO] PARCIAL: independência instrumental boa; tentativas V11 e combinação entre surveys continuam contabilizadas."
+      },
+      "consequencia_negativo": {"tipo": "lei_condicional_ou_parede_tracador", "se_falsifica": "[DECLARADO] Apenas violação de matéria devidamente calibrada atinge o piso; supressão de galáxias isolada não falsifica.", "se_sem_poder": "[DECLARADO] DR1 sem D ou sem modelo de matéria é parede de desenho e não dá veredito sobre a lei."}
+    },
+    {
+      "id": "vazios_desi",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": null, "poder": null, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] DESI/VAST já participou do protocolo de vazios e DR3/five-year compartilha dados; não há D discriminante."},
+      "previsao": {"estatuto": "[DERIVED] piso condicional; [CONJECTURE] traçador", "formula": "ρ_vazio/ρ̄ ≥ β; V1/V11 exigem matéria por lente ou regra de supressão calibrada", "valor": "β = 0,012031300400803142", "local_core": "um_absoluto.json → void_floor_v11.frozen.independence distingue SDSS de DESI; rotas vazios.piso.v11 e Atlas IV.1"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] DESI DR1/DR2 e catálogos VAST foram usados em fases anteriores; nenhum dado foi reaberto.", "calendario": "[KNOWN, a conferir] DR3 no fim de 2026/início de 2027 segundo apresentação DOE; primeiros resultados five-year em 2027; observações estendidas até 2028.", "fontes": ["DESI_DR3_2025", "DESI_2026"]},
+      "cegueira": {"possivel": "PARCIAL/FUTURA", "como": "[DECLARADO] Apenas o incremento novo pode ser cego condicionalmente, com a mesma máscara e uma conta conditional-on-previous; o composto completo não é virgem.", "impedimento": "[REAL] DESI/VAST já foi usado; escolher novos cortes depois do resultado herdaria a seleção anterior."},
+      "poder_desenho": {"D": null, "conta": "[OPEN] Não há forecast V11/DR3 de matéria; βΣμ e limites unilaterais não fornecem D contra ΛCDM raso.", "sigma_fonte": "[OPEN] Não localizado para o estimador TGL.", "avaliacao": "PODER DISCRIMINANTE INDETERMINADO"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] DESI participa de BAO e das fases anteriores; DR3 é cumulativo e compartilha survey/algoritmos.", "nota": "[DECLARADO] DESI pode ser réplica de survey em parte, não testemunha independente integral."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] PARCIAL: só o incremento permite cegueira condicional; o histórico já foi aberto.",
+        "R2": "[DECLARADO] PARCIAL: há novos anos de dados, mas o agregado não é inteiramente novo.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: algoritmos e bias ficam como estresse obrigatório.",
+        "R4": "[DECLARADO] NÃO RESOLVIDA: não há D/forecast do estimador.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância com DR1/DR2 e mocks é indispensável.",
+        "R6": "[DECLARADO] NÃO RESOLVIDA: cortes herdados do V11 precisam ser auditados antes, não escolhidos por poder.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: sobreposição direta com DESI/VAST e fases anteriores."
+      },
+      "consequencia_negativo": {"tipo": "lei_condicional_ou_parede", "se_falsifica": "[DECLARADO] Violação de matéria com sistema fechado atinge o piso; um resultado de galáxias ou uma réplica não independente não fecha esse juízo.", "se_sem_poder": "[DECLARADO] Sem incremento independente e sem D, é parede de desenho."}
+    },
+    {
+      "id": "ringdown_ramo_b_conjunto_D",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": true, "poder": false, "independencia": true, "cumpre_hoje": false, "motivo": "[DERIVED] O conjunto D é proceduralmente cego e independente, mas D10 = 3,93 no melhor planejamento e D14 = 4,64 sem sistemática; a PE completa não convergiu."},
+      "previsao": {"estatuto": "[DERIVED] identidade condicional; [INPUT] τ★, M_X, fonte e envoltória; [CONJECTURE] Kerr χ≠0", "formula": "Γω = ½βτ★ω²; τ★ = k·GM_f/c³; k = 2π/κ̂(χ_f); x = β·k·N(χ_f); δτ̂₂₂₀ = −x/(1+x); nulo GR δ = 0", "valor": "δ_pred varia por evento, aproximadamente −0,35 a −0,43 em D10; média de planejamento −0,3985; χ = 0/0,68/0,9 → −0,19091/−0,37627/−0,63192", "local_core": "PREREGISTRO_RAMO_B_RINGDOWN_V1 §§3,5–10; psion_canto_v407 registra citação do V1.1; parametrizacao_03nov/PODER_RAMO_B_ANTES_DE_ABRIR.json; kernel não contém o termo físico τ★ do ringdown"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Strain O4 está público e na Bancada; o registro declara que nenhum δτ̂ de D foi aberto; A/B/C são calibração NOT_BLIND. A PE completa nunca convergiu na casa; nada foi executado nesta K01.", "calendario": "[REAL] D já existe, mas o poder real depende da PE; [KNOWN, a conferir] IR1 está previsto para meados de janeiro de 2027 e O5 para 2029–2031, sem taxa publicada de eventos elegíveis ao mesmo corte.", "fontes": ["IGWN_2026"]},
+      "cegueira": {"possivel": true, "como": "[REAL] O V1 fixa SÓ D TESTA; o congelamento de 03/11 fixa código, semente-compromisso, priors, repetição por convergência, estágio cego e autorização ligada a hash; [DECLARADO] nenhuma abertura sem poder e controles.", "impedimento": "[REAL] A/B/C já influenciaram o desenho e são NOT_BLIND; o poder de D só nasce da PE; D2/amostrador e tamanho C2 têm decisões/custos pendentes, e n<10 devolve INSUFFICIENT_SAMPLE."},
+      "poder_desenho": {"D": 3.9346337577944936, "conta": "[DERIVED] D10 sem viés, σ_sys=0: |−0,398506998|/0,101281853 = 3,9346; com σ_sys=0,038, D = 3,9060; D14 sem sistemática é teto 4,6374. D90 exigiria 2,5487× a informação de D10 ou 1,8348× a de D14; com incerteza de viés, D10 cai para 2,1–3,2. Estes números são planejamento NOT_BLIND ajustado em A, não σ real de D.", "sigma_fonte": "PODER_RAMO_B_ANTES_DE_ABRIR.json de 03/11/2026; IGWN_2026 só para calendário", "avaliacao": "UNDERPOWERED NO DESENHO ATUAL; FUTURO SEM TAXA ELEGÍVEL"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": true, "sobreposicao": "[REAL] Não compartilha calibradores cosmológicos; A/B/C são não cegos e serviram à calibração, enquanto D é separado pelo censo congelado.", "nota": "[DECLARADO] D não deve ser combinado com A/B/C para inflar poder; futura combinação IR1/O5 exige extensão pré-registrada antes dos eventos."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] RESPOSTA PARCIAL: V1 e congelamento 03/11 são anteriores a D, mas o desenho conhecia A/B/C; nenhuma emenda após abrir é permitida.",
+        "R2": "[DECLARADO] RESPOSTA: D não teve δτ̂ lido e oferece conteúdo novo; A/B/C não contam como teste cego.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: família de forma de onda, t0, δf, KDE e spin são linhas de estresse análogas e obrigatórias.",
+        "R4": "[DECLARADO] RESPONDIDA NEGATIVAMENTE: o planejamento mais recente dá D<5 e mostra a parede; não se usa o 11,38 de A como poder de D.",
+        "R5": "[DECLARADO] PARCIAL: pesos, jackknife, covariância do viés e sistemáticas entram, mas σ real e convergência ainda faltam.",
+        "R6": "[DECLARADO] PARCIAL: k/M foram escolhidos por princípio com A à vista; o presente desenho não escolhe pelo resultado, porém a contaminação histórica permanece declarada.",
+        "R7": "[DECLARADO] PARCIAL: D é independente de cosmologia e separado de A/B/C; tentativas 013/015/Fase 6 e futuras extensões precisam de look-elsewhere global."
+      },
+      "consequencia_negativo": {"tipo": "par_ou_parede", "se_falsifica": "[DECLARADO] FALSIFIED_AT_5SIGMA falsifica somente o PAR k = 2π/κ̂ × M_f × envoltória sob a lei, não β, não a forma GKSL, não a TGL e não o gate.", "se_sem_poder": "[DECLARADO] NOT_FALSIFIED_UNDERPOWERED, INCONCLUSIVE_SYSTEMATICS ou INSUFFICIENT_SAMPLE é parede medida/instrumental; o planejamento atual torna esse ramo provável, sem abrir D."}
+    },
+    {
+      "id": "ecos_gw",
+      "classificacao": "SABIDO POR REFERÊNCIA",
+      "estado_triplo": {"cegueira": false, "poder": null, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] Nove rotas já foram examinadas; amplitude candidata não está tipada e ecos não são o observável do ramo B de ringdown."},
+      "previsao": {"estatuto": "[OPEN] amplitude e ponte matriz-S → remanescente Kerr", "formula": "Candidatas históricas |R| = √β, √(β(1−β)) ou sin(2θ_M); nenhuma foi fixada por termo Lean para um novo teste cego", "valor": "[OPEN] Não se escolhe amplitude para obter poder; ramo B usa dephasing do 220, não cópia atrasada", "local_core": "rotas auditoria.testes_passados_28set e natureza.5sigma_fora_da_cosmologia_poder_27out; PREREGISTRO_RAMO_B §11 separa os homônimos KMS"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Cinco rotas foram excluídas pelo dado e quatro ficaram inconclusivas, conforme conferência documental; nenhuma foi reaberta.", "calendario": "[KNOWN, a conferir] IR1/O5 oferecem dados futuros, mas não revivem um observável cuja amplitude e nulos não foram fechados.", "fontes": ["IGWN_2026"]},
+      "cegueira": {"possivel": false, "como": "[DECLARADO] Somente uma amplitude derivada, protocolo novo e dados futuros poderiam criar outro canal; não reabrir as nove rotas.", "impedimento": "[REAL] Dados e tentativas anteriores conhecidos, amplitude concorrente e controles nulos pendentes."},
+      "poder_desenho": {"D": null, "conta": "[OPEN] D depende da amplitude e do estimador; a auditoria ordena tipar a amplitude antes de recalcular poder. Não há conta legítima a apresentar agora.", "sigma_fonte": "[OPEN] Não se reutiliza σ de ringdown para eco.", "avaliacao": "NÃO PRÉ-REGISTRÁVEL"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] Os mesmos eventos e as nove rotas anteriores contaminam novidade; compartilha GW com ringdown, embora seja observável distinto.", "nota": "[DECLARADO] Um novo run só seria réplica depois de uma hipótese nova derivada e de um registro novo."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] NÃO RESOLVIDA: emendar agora seria pós-guarda; as nove rotas ficam encerradas.",
+        "R2": "[DECLARADO] NÃO HOJE: os dados anteriores são conhecidos.",
+        "R3": "[DECLARADO] NÃO RESOLVIDA: nulos de atraso, amplitude e injeções permanecem como estresse aberto.",
+        "R4": "[DECLARADO] NÃO AVALIADO: proibido recalcular antes de tipar amplitude.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância/rede e nulos coerentes continuam pendentes.",
+        "R6": "[DECLARADO] NÃO RESOLVIDA: escolher √β ou outra amplitude pelo poder repetiria seleção.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: mesmas tentativas e eventos anteriores."
+      },
+      "consequencia_negativo": {"tipo": "par_amplitude_ou_parede", "se_falsifica": "[DECLARADO] Um novo protocolo só falsificaria o par amplitude×atraso específico, não o dephasing do ramo B nem toda a teoria.", "se_sem_poder": "[DECLARADO] Sem amplitude derivada é parede teórica, não teste de natureza."}
+    },
+    {
+      "id": "coma_dephasing",
+      "classificacao": "EXISTE E ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": false, "poder": null, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] A referência já era conhecida, a aplicação é pós-dição não ajustada e compartilha a escada local; um teste futuro exigiria σ_total ≤1,424 Mpc sem forecast localizado."},
+      "previsao": {"estatuto": "[DERIVED] aplicação condicional; [CONJECTURE] motor D1a e camada de fluxo", "formula": "H0_local = H0_CMB·(1+z*)^β; D_L calculado com z_Coma e ΛCDM de fundo; equivalente f = 1−1/(1+K_D1a)", "valor": "D_L,TGL(mediana) = 101,9027863 Mpc; controle sem dephasing = 110,8497713 Mpc; diferença fiducial 8,9469850 Mpc", "local_core": "um_absoluto.json → coma_distance_dephasing.inputs e prediction; rota coma.dephasing_previsao_trancada com RNC-03/04/05"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] A distância de referência estava no dossiê antes da aplicação e a revelação ocorreu em 19/08/2026; a leitura correta é pós-dição não cega e sem ajuste, evidência legítima mas não teste cego.", "calendario": "[OPEN] Nenhuma nova medida independente de Coma com data e σ_total do mesmo observable foi localizada nas consultas desta K01.", "fontes": []},
+      "cegueira": {"possivel": "SOMENTE COM NOVO ÁRBITRO", "como": "[DECLARADO] Nova medida de distância de Coma ou de outro aglomerado, guardada por terceiro, com tipo de distância, incerteza do controle e hash de conteúdo sem timestamp variável congelados antes.", "impedimento": "[REAL] Referência conhecida, escolha mediana/média feita com ela à vista, degenerescência com H0 local e sobreposição com a escada."},
+      "poder_desenho": {"D": null, "conta": "[DERIVED] Para um futuro árbitro, D = 8,9469850/σ_total; D90 exige σ_total ≤ 1,4243272 Mpc. Não se recalcula o antigo Z nem se reabre a revelação; não há forecast futuro para esse σ_total.", "sigma_fonte": "[OPEN] Não localizado para nova medida independente", "avaliacao": "SEM FORECAST DE PODER FUTURO"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] Coma usa redshift, distâncias e H0 local ligados à mesma escada e à lei D1a/D1b; o próprio registro declara degenerescência.", "nota": "[DECLARADO] Outro aglomerado com calibração disjunta seria necessário para uma testemunha realmente independente."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] NÃO RETROATIVAMENTE: RNC-03 classifica como não cego; um novo árbitro precisa de tranca externa de conteúdo.",
+        "R2": "[DECLARADO] NÃO HOJE: a referência era conhecida; a pós-dição sem ajuste permanece legítima, sem demérito, mas não é cega.",
+        "R3": "[DECLARADO] NÃO RESOLVIDA: controle precisa da própria incerteza e mediana/média/distance_kind ficam como ramos de estresse.",
+        "R4": "[DECLARADO] NÃO AVALIADO: só há o limiar futuro de 1,424 Mpc, sem forecast.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: RNC-05 exige σ do controle e verificação do tipo de distância.",
+        "R6": "[DECLARADO] NÃO RESOLVIDA: a escolha D1a/mediana ocorreu com referência à vista.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: compartilha escada local e tentativa anterior."
+      },
+      "consequencia_negativo": {"tipo": "par_D1a_ou_parede", "se_falsifica": "[DECLARADO] Um novo teste atinge o par Planck+D1a/dephasing e a identificação de distância, não separa sozinho vazamento modular de reescala de H0.", "se_sem_poder": "[DECLARADO] σ_total maior, tipo de distância errado ou calibração compartilhada é parede de desenho."}
+    },
+    {
+      "id": "relogio_th229",
+      "classificacao": "EXISTE E ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": false, "poder": false, "independencia": true, "cumpre_hoje": false, "motivo": "[DERIVED] O protocolo é independente, mas está cerca de 18 ordens abaixo no limite atual e não há σ_excess operacional para D."},
+      "previsao": {"estatuto": "[DERIVED] taxa condicional; [OPEN] ponte modular-laboratório e τ★", "formula": "Γω = ½β·t_Planck·ω², com ω = 1,269459399×10¹⁶ rad/s para ²²⁹Th", "valor": "Γ_pred = 5,22636×10⁻¹⁴ s⁻¹; D90 exigiria σ_excess ≤ 8,32018×10⁻¹⁵ s⁻¹; clock_test_result_v369.th229_today_bound_orders = 18,2793", "local_core": "um_absoluto.json → clock_test_protocol_v369.record.readings.P1_LOCAL_MATTER e clock_test_result_v369.P1.platforms[th229...]; rota relogios.v1"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Espectros e larguras públicas foram usados no protocolo anterior; Ooi et al. reportam linhas cristalinas de dezenas de kHz e reprodutibilidade sub-kHz, não uma medida de excesso TGL.", "calendario": "[OPEN] Não há calendário de σ_excess TGL; a literatura de 2026 fala em aiming for millihertz, que é aspiração de operação, não desempenho realizado nem data de 5σ.", "fontes": ["TH229_OOI", "TH229_FEEDBACK"]},
+      "cegueira": {"possivel": "SOMENTE COM NOVO EXPERIMENTO", "como": "[DECLARADO] Nova plataforma com modelo de piso, σ_excess e custódia cega; sem isso, abrir outra linha não produz teste de excesso.", "impedimento": "[REAL] Dados anteriores conhecidos, cota 95 %/FWHM não é σ, ponte P1/P2/P3 condicional e déficit enorme."},
+      "poder_desenho": {"D": null, "conta": "[DERIVED] Requisito: σ_excess ≤ Γ_pred/6,28155 = 8,32×10⁻¹⁵ s⁻¹. Não se calcula D a partir de FWHM ou de uma cota de 90/95 %; o core marca sigma_excess = null para as plataformas Th.", "sigma_fonte": "TH229_OOI para desempenho experimental; não há forecast TGL de σ_excess", "avaliacao": "UNDERPOWERED; CERCA DE 18 ORDENS NO LIMITE DOCUMENTAL"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": true, "sobreposicao": "[REAL] Não compartilha dados cosmológicos; compartilha a lei e τ★ com outros relógios, portanto não são réplicas físicas independentes da escala.", "nota": "[DECLARADO] Várias linhas do mesmo cristal não contam como determinações independentes."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] NÃO HOJE: protocolo e dados já existem; só experimento novo pode ser cego.",
+        "R2": "[DECLARADO] NÃO HOJE: as larguras são públicas e conhecidas.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: P1/P2/P3, cristais e modelo de piso são as linhas de estresse; nenhuma pode ser escondida.",
+        "R4": "[DECLARADO] RESPONDIDA NEGATIVAMENTE: déficit documental de 18,28 ordens e σ_excess ausente.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: não há orçamento de erro do excesso nem piso modelado completo.",
+        "R6": "[DECLARADO] PARCIAL: não se escolhe 1 mHz aspiracional como se fosse desempenho favorável.",
+        "R7": "[DECLARADO] PARCIAL: independe de cosmologia, mas tentativas de relógios e mesma escala t_P continuam no grupo de dependência."
+      },
+      "consequencia_negativo": {"tipo": "parede_ou_lei_condicional", "se_falsifica": "[DECLARADO] Só um excesso incompatível, com piso e σ verificados, atingiria a leitura P1 da lei com τ★ = t_P; uma largura grande não falsifica uma taxa minúscula.", "se_sem_poder": "[DECLARADO] É parede de sensibilidade por muitas ordens; não há veredito físico novo."}
+    },
+    {
+      "id": "relogio_sr87",
+      "classificacao": "EXISTE E ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": false, "poder": false, "independencia": true, "cumpre_hoje": false, "motivo": "[DERIVED] Mesmo com σ_excess publicado, D ≈1,74×10⁻¹²; o melhor déficit de detecção é 12,46 ordens."},
+      "previsao": {"estatuto": "[DERIVED] taxa condicional; [OPEN] ponte modular-laboratório", "formula": "Γω = ½β·t_Planck·ω², com ω = 2,6969190896×10¹⁵ rad/s para ⁸⁷Sr", "valor": "Γ_pred = 2,35884×10⁻¹⁵ s⁻¹; clock_5sigma_deficit_orders = 12,4576348", "local_core": "um_absoluto.json → clock_test_result_v369.P1.platforms[sr87_kim2025] e campos clock_5sigma_deficit_orders; rota relogios.v1"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Coerência de 118(9) s e o orçamento usado no core são públicos e conhecidos; K01 não reabriu o artigo.", "calendario": "[OPEN] Nenhum experimento futuro com data e forecast de σ_excess para esta lei foi localizado.", "fontes": ["SR87_KIM"]},
+      "cegueira": {"possivel": "SOMENTE COM NOVO EXPERIMENTO", "como": "[DECLARADO] Nova coerência com orçamento cego de Raman/colisões e regra congelada antes da leitura.", "impedimento": "[REAL] A medida atual é conhecida e D está muito abaixo de 5; melhorar alguns fatores não muda o veredito de poder."},
+      "poder_desenho": {"D": 1.7431516328570484e-12, "conta": "[REAL, lido no core sem recomputar observação] Z_expected = Γ_pred/σ_excess = 1,74315×10⁻¹²; [DERIVED] D90 exigiria σ_excess ≤ 3,7552×10⁻¹⁶ s⁻¹. O déficit de 5σ é 12,4576 ordens.", "sigma_fonte": "SR87_KIM e clock_test_result_v369", "avaliacao": "UNDERPOWERED"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": true, "sobreposicao": "[REAL] Independente de cosmologia; compartilha τ★ e a mesma lei com Th e outras plataformas.", "nota": "[DECLARADO] Combinar relógios só ajudaria por um mapa físico derivado, não por soma de cotas incompatíveis."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] NÃO HOJE: dado e protocolo já abertos.",
+        "R2": "[DECLARADO] NÃO HOJE: coerência pública conhecida.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: orçamento Raman/colisões e plataformas alternativas devem permanecer visíveis.",
+        "R4": "[DECLARADO] RESPONDIDA NEGATIVAMENTE: D ≈10⁻¹² e déficit 12,46 ordens.",
+        "R5": "[DECLARADO] PARCIAL: esta plataforma tem σ_excess, mas o orçamento de piso continua incompleto para detecção de excesso.",
+        "R6": "[DECLARADO] PARCIAL: não escolher plataforma pelo menor erro sem mapa de escala comum.",
+        "R7": "[DECLARADO] PARCIAL: independência instrumental boa; mesma lei/tentativas anteriores permanecem agrupadas."
+      },
+      "consequencia_negativo": {"tipo": "parede_ou_lei_condicional", "se_falsifica": "[DECLARADO] Apenas excesso bem modelado atingiria a leitura P1 com t_P; coerência finita esperada não é falsificação.", "se_sem_poder": "[DECLARADO] Parede de sensibilidade, sem caminho de 5σ por simples acúmulo de tempo no modelo atual."}
+    },
+    {
+      "id": "nmc_shapiro_multimensageiro",
+      "classificacao": "EXISTE E ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": true, "poder": null, "independencia": true, "cumpre_hoje": false, "motivo": "[DERIVED] O canal é prospectivo e independente, mas não há eventos qualificados nem taxa/calendário para N=25; o D simplificado não é forecast publicado."},
+      "previsao": {"estatuto": "[CONJECTURE] termo NMC e aplicação a transientes; [INPUT] janela e regra frozen", "formula": "Δt = t_γ−t_ν > 0 por excesso do fóton em sistema fortemente lenteado; janela 10–100 ms; média predita 50 ms; nulo sem excesso = 0", "valor": "⟨Δt⟩ = 50 ms; regra de poder N ≥25 com timing <10 ms; core registra separação projetada ≈21σ", "local_core": "um_absoluto.json → nmc_shapiro.frozen (NEUTRINO_SHAPIRO_NMC_V1), observable, power_rule e kill_rule"},
+      "dado": {"existe_hoje": false, "publico": false, "conhecimento": "[REAL] O core registra n_events = 0 para transientes que satisfazem o corte específico; SN1987A não resolve o canal. Taxas ópticas de lentes não fornecem neutrinos temporizados.", "calendario": "[OPEN] Não há calendário para 25 eventos com timing <10 ms. IceCube-Gen2 tinha plano de projeto de dez anos a partir de 2027; Rubin DR1 está em 2028, mas nenhum desses é promessa da amostra multimensageiro.", "fontes": ["ICECUBE_GEN2", "RUBIN_2026", "LSST_LENS_2024"]},
+      "cegueira": {"possivel": true, "como": "[DECLARADO] Congelar antes dos eventos o catálogo de lentes, janela temporal, modelo de emissão, timing, pesos e kill_rule; eventos futuros são naturalmente cegos.", "impedimento": "[REAL] N=0 hoje, taxa desconhecida e tempo de emissão astrofísica pode degenerar com o sinal NMC; o 21σ não é forecast de colaboração."},
+      "poder_desenho": {"D": null, "conta": "[DECLARADO] Num modelo meramente ilustrativo com média 0,05 s e σ_evento = 0,01 s, D_simples = 0,05·√25/0,01 = 25; o core registra ≈21, mas os fatores que levam de 25 a 21 não estão expostos no bloco lido. Logo D validado = [OPEN]; N ≥25 é uma regra de gate, não evidência de taxa ou calendário.", "sigma_fonte": "[OPEN] Não há forecast público consultado para o estimador NMC completo", "avaliacao": "POTENCIAL CONDICIONAL, NÃO ACIONÁVEL"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": true, "sobreposicao": "[REAL] Não reutiliza H0DN/Pantheon; lentes ópticas podem compartilhar H0 cosmológico, mas o observable diferencial neutrino–fóton é distinto.", "nota": "[DECLARADO] A independência física é boa; a dependência de modelos de emissão/lente precisa ser pré-registrada."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] RESPOSTA FUTURA: eventos ainda inexistentes permitem tranca anterior verdadeira.",
+        "R2": "[DECLARADO] RESPOSTA FUTURA: nenhum agregado público qualificado prediz o resultado hoje.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: modelos de emissão, lente e timing são as linhas de estresse, não Cefeidas.",
+        "R4": "[DECLARADO] NÃO RESOLVIDA: 21σ é do core e a conta completa não está publicada no bloco; taxa N desconhecida.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância temporal e sistemática astrofísica precisam de modelo.",
+        "R6": "[DECLARADO] PARCIAL: a janela 10–100 ms está congelada; não escolher eventos por atraso favorável.",
+        "R7": "[DECLARADO] PARCIAL: canal independente de H0DN, mas futuras buscas de lentes e variantes NMC entram no look-elsewhere."
+      },
+      "consequencia_negativo": {"tipo": "lei_NMC_ou_parede_eventos", "se_falsifica": "[DECLARADO] Ausência de excesso com N e timing suficientes, ou neutrino depois além do vínculo, falsifica a aplicação NMC pré-registrada, não todo o programa.", "se_sem_poder": "[DECLARADO] Sem 25 eventos e timing, é parede de amostra/modelo, não NOT_FALSIFIED físico forte."}
+    },
+    {
+      "id": "bbn_era_da_radiacao",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": false, "poder": false, "independencia": false, "cumpre_hoje": false, "motivo": "[DERIVED] As melhores separações documentais ficam em torno de 1σ e compartilham N_eff/CMB; D8/X16 e o código BBN continuam pendentes."},
+      "previsao": {"estatuto": "[DERIVED] proxy radiativo; [INPUT] mapa S(T) e escolhas D1–D11", "formula": "ΔN_eff equivalente BBN na faixa 0,0985–0,1195; proxy S uniforme com ΔYp e Δln(D/H) derivados no rascunho Fase 8", "valor": "ΔYp ≈0,001407084; Δln(D/H) ≈0,015150533; melhores D documentais ≈1,08 e 1,27", "local_core": "rota primordial.fase8_era_da_radiacao, seq 371/375/392/402/607; PREREGISTRO_FASE8_UNIVERSO_PRIMORDIAL_V1; neff_channel"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Abundâncias e CMB comprimido foram consultados em trabalhos anteriores; a seleção Yp e admissão de fonte continuam atos reservados. Nada foi reaberto.", "calendario": "[KNOWN, a conferir] SO 2025–2034 oferece o futuro CMB relacionado, com Planck; CMB-S4 não é mais calendário ativo. Não há data separada para um novo código BBN ratificado.", "fontes": ["SO_2025", "CMB_S4_END"]},
+      "cegueira": {"possivel": "SOMENTE APÓS DECISÕES", "como": "[DECLARADO] Operador fixa D8/X16 e instrumento S(T), gerência fixa código/runner antes de qualquer novo composto; Yp BBN e livre ficam ambos visíveis.", "impedimento": "[REAL] Fontes atuais conhecidas, proxy constante não é solução BBN nova, expoentes/priors/covariância e dupla contagem N_eff pendentes."},
+      "poder_desenho": {"D": 1.26534, "conta": "[REAL, lido da rota sem refazer observação] Melhores separações documentais: D ≈1,08237 para Yp e 1,26534 para D/H; N_eff/SO futuro dá D = 2,6548, ainda abaixo de 5. Não há poder conjunto calculado e não se pode somar betas.", "sigma_fonte": "Rotas primordial.fase8_era_da_radiacao e SO_2025; forecasts publicados somente onde existentes", "avaliacao": "UNDERPOWERED E NÃO INDEPENDENTE"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": false, "sobreposicao": "[REAL] CMB/BBN/N_eff partilham era da radiação, fontes e às vezes os mesmos dados de abundância.", "nota": "[DECLARADO] Um único instrumento entra uma vez; BBN não pode ser segunda confirmação automática de N_eff."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] NÃO HOJE: frozen anterior existe, mas escolhas e dados já conhecidos; emendas só em versão nova anterior ao composto.",
+        "R2": "[DECLARADO] NÃO HOJE: as abundâncias públicas são conhecidas.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: Yp BBN/livre e dois brackets ficam visíveis, sem escolha por resultado.",
+        "R4": "[DECLARADO] RESPONDIDA NEGATIVAMENTE: D ≈1–1,27 nos insumos atuais; SO não chega a 5.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância, priors independentes e modelo S(T) estão abertos.",
+        "R6": "[DECLARADO] NÃO RESOLVIDA: D8/X16 e instrumento BBN são decisões pendentes, não escolha do Kimi.",
+        "R7": "[DECLARADO] NÃO RESOLVIDA: dupla contagem com N_eff e fontes anteriores."
+      },
+      "consequencia_negativo": {"tipo": "mapa_S_T_ou_parede", "se_falsifica": "[DECLARADO] Um negativo futuro atinge o mapa S(T)/fechamento radiativo efetivamente escolhido, não automaticamente β.", "se_sem_poder": "[DECLARADO] Proxy sem solução BBN, D<5 ou fonte não admitida é parede de desenho."}
+    },
+    {
+      "id": "decoerencia_neutrinos_n_menos2",
+      "classificacao": "EXISTE NA BANCADA MAS NÃO ESTÁ LIGADO",
+      "estado_triplo": {"cegueira": null, "poder": false, "independencia": true, "cumpre_hoje": false, "motivo": "[DERIVED] JUNO está suprimido por cerca de 40 ordens no ramo canônico; DUNE não tem cota transferível para n=−2 e τ★ segue OPEN."},
+      "previsao": {"estatuto": "[DERIVED] forma condicional; [OPEN] escala e propagação τ★", "formula": "Γ = ½β·t_P·ω² com ω = Δm²/(2E) em unidades naturais; n = −2 e relação γ₂₁ = γ₃₁, γ₃₂ = 0 quando aplicável", "valor": "JUNO E = 3 MeV: Γ ≈1,17×10⁻³⁷ s⁻¹; D90 pediria σ_excess ≤1,86×10⁻³⁸ s⁻¹; gap documental ≈39,77 ordens", "local_core": "rotas dephasing.f7_2_revisao_fontes_neutrinos_materia e natureza.5sigma_fora_da_cosmologia_poder_27out; Bancada neutrino_canal_v2, com tau_star nulo/OPEN"},
+      "dado": {"existe_hoje": true, "publico": true, "conhecimento": "[REAL] Limites JUNO já foram usados em revisão documental; são cotas de 90 %, não σ de descoberta. DUNE não tem número localizado para o mesmo expoente.", "calendario": "[OPEN] Não há previsão de 5σ; a exposição JUNO de oscilação não resolve a supressão de Planck desse observable.", "fontes": ["JUNO_START", "BECCARIA_TERNES_2026"]},
+      "cegueira": {"possivel": "SEM CONSEQUÊNCIA DE PODER", "como": "[DECLARADO] Novos dados podem ser cegos, mas primeiro é preciso derivar escala/estimador e uma sensibilidade comparável.", "impedimento": "[REAL] Dados já conhecidos, tau_star OPEN e dezenas de ordens de déficit; compartilha exposição JUNO com m₂ mas não é réplica de m₂."},
+      "poder_desenho": {"D": null, "conta": "[DERIVED] Requisito JUNO σ_excess ≤1,17×10⁻³⁷/6,28155 ≈1,86×10⁻³⁸ s⁻¹; não se converte a cota 90 % em σ. A conferência anterior calculou gap log₁₀ ≈39,77; DUNE = [OPEN] por falta de cota no mesmo modelo.", "sigma_fonte": "Revisão interna conferida em 27/10/2026; nenhuma nova fonte observada aberta", "avaliacao": "UNDERPOWERED/OPEN"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": true, "sobreposicao": "[REAL] Independe de cosmologia local, mas usa a mesma infraestrutura JUNO do m₂ e a mesma lei t_P de relógios.", "nota": "[DECLARADO] Não serve como segunda determinação independente de m₂ nem de outros dephasings sem modelo de covariância."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] NÃO RESOLVE: dados já conhecidos e escala aberta.",
+        "R2": "[DECLARADO] NÃO HOJE: limites públicos conhecidos.",
+        "R3": "[DECLARADO] SUBSTITUIÇÃO: expoentes/modelos de decoerência são linhas de estresse incompatíveis entre si.",
+        "R4": "[DECLARADO] RESPONDIDA NEGATIVAMENTE: déficit ≈40 ordens em JUNO; DUNE indeterminado.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: cota 90 % não é σ_excess e unidades precisam de mapa comum.",
+        "R6": "[DECLARADO] PARCIAL: não transplantar cota de outro expoente para obter poder.",
+        "R7": "[DECLARADO] PARCIAL: independência de H0DN, mas não de m₂/JUNO nem da escala t_P."
+      },
+      "consequencia_negativo": {"tipo": "parede_ou_escala", "se_falsifica": "[DECLARADO] Só excesso mensurável no mesmo modelo n=−2 atingiria a escala/leitura canônica; os limites atuais não alcançam esse juízo.", "se_sem_poder": "[DECLARADO] Parede de sensibilidade e de modelo, sem teste de 5σ."}
+    },
+    {
+      "id": "horizontes_analogos_e_contornos",
+      "classificacao": "AUSENTE",
+      "estado_triplo": {"cegueira": null, "poder": null, "independencia": true, "cumpre_hoje": false, "motivo": "[DERIVED] Ausente uma ponte TGL derivada de zero parâmetro entre o tempo do contorno e τ★; plataformas existem, mas não constituem canais TGL."},
+      "previsao": {"estatuto": "[OPEN] ponte/observável", "formula": "[OPEN] τ★ = tempo do contorno analógico e mapa para espectro, contraste, g² ou taxa não foram derivados", "valor": "[OPEN] Não calculável; não é zero nem pequeno por conveniência", "local_core": "Rota natureza.horizontes_proprios_sem_ponte_tgl_27out; inventário MD/JSON, kernel v411 e índice consultados; nenhuma ponte ligada localizada"},
+      "dado": {"existe_hoje": true, "publico": "varia por plataforma", "conhecimento": "[REAL] BEC, fibra, água, Unruh/NA63, KMS, Casimir dinâmico, interferometria e PTA têm literatura/dados próprios; isso não lhes confere previsão TGL.", "calendario": "[OPEN] Nenhum calendário TGL é admissível antes de derivar a ponte; IR1/O5 não resolve os sistemas analógicos.", "fontes": []},
+      "cegueira": {"possivel": "NÃO APLICÁVEL HOJE", "como": "[DECLARADO] Primeiro derivar contorno → τ★ → observável → calibração → nulo/covariância; só depois pré-registrar cegueira.", "impedimento": "[REAL] Falta a ponte física de zero parâmetro; sensibilidade instrumental não é sensibilidade TGL."},
+      "poder_desenho": {"D": null, "conta": "[OPEN] Não existe |previsão−nulo| definido; N e tempo são indeterminados, não zero.", "sigma_fonte": "[OPEN] Não transferível de sensibilidade instrumental", "avaliacao": "AUSENTE COMO CANAL TGL"},
+      "independencia": {"independente_de_H0DN_SH0ES_Pantheon_Fases": true, "sobreposicao": "[REAL] Os sistemas são fisicamente independentes de cosmologia, mas a ausência de hipótese impede contá-los como testemunhas.", "nota": "[DECLARADO] Só reabrir com derivação desde o axioma, não com nova analogia."},
+      "sete_ressalvas": {
+        "R1": "[DECLARADO] NÃO APLICÁVEL: ainda não existe teste a cegar.",
+        "R2": "[DECLARADO] NÃO RESOLVIDA: dados públicos sem previsão não geram descoberta TGL.",
+        "R3": "[DECLARADO] NÃO RESOLVIDA: todos os controles físicos dependeriam da ponte.",
+        "R4": "[DECLARADO] NÃO AVALIADO: D indeterminado por ausência de observável.",
+        "R5": "[DECLARADO] NÃO RESOLVIDA: covariância instrumental não substitui modelo TGL.",
+        "R6": "[DECLARADO] PARCIAL: a tabela conserva o negativo e proíbe escolher plataforma pela aparência de precisão.",
+        "R7": "[DECLARADO] PARCIAL: independência instrumental existe, mas não há canal nem tentativa válida a contar."
+      },
+      "consequencia_negativo": {"tipo": "ausencia_de_lei_testavel_ou_parede_teorica", "se_falsifica": "[DECLARADO] Nenhum negativo pode ser atribuído à TGL antes de uma ponte derivada; seria erro de categoria.", "se_sem_poder": "[DECLARADO] É parede teórica [OPEN], não falsificação nem evidência favorável."}
+    }
+  ]
+}

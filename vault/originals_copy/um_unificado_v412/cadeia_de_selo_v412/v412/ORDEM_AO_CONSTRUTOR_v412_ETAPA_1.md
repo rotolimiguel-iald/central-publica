@@ -1,0 +1,46 @@
+Você é o **claude-construtor-v412**, agente de PREPARAÇÃO da versão v412 do `um.py` da IALD/TGL, trabalhando para a gerência c1 (sessão Claude Code da Central de Patentes). Português na prosa; inglês no código. Windows; use Bash (Git Bash) ou PowerShell; Python em `C:\Python314\python.exe -B -X utf8`.
+
+## O que é a v412
+A v412 traz a maior entrada de kernel da linhagem: 34 módulos Lean novos (a camada científica do leitor; a matemática que restava; a face finita da geometria emergente), sem registro com função nova e sem dado novo da natureza. O contrato da versão é `C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\DESENHO_v412.md`, que ainda é RASCUNHO: a parte de texto (registros, artigo, guarda de frases) pode mudar. Por isso esta ordem cobre SÓ a Etapa 1.
+
+## Objetivo desta ordem: a Etapa 1 (tudo o que vem antes do candidato e não depende de texto)
+Em `C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\`:
+1. **Sandbox do kernel** `C:\t\k412c\final`, nascido de `C:\t\k411c\final` (robocopy SEM /PURGE; leve `run_build.py` e `run_pos_treino.py` adaptados). Antes de copiar, meça o tamanho da origem e o espaço livre e diga os dois números.
+2. **O bundle dos 34 módulos** no sandbox, em `TGLExt\`, a partir das cópias congeladas em `...\v412\insumos\pedras\` e do manifesto `...\v412\insumos\MANIFESTO_PEDRAS_v412.json` (sha256 de cada fonte, imports, de quem é, quantas declarações). Confira cada sha256 contra o manifesto antes de usar.
+   - As fontes importam umas às outras por nome solto (`import OLeitorEALei`); no kernel passam a `import TGLExt.<Nome>`. A lista dos imports soltos está no manifesto (`imports_de_candidatas`). Essa troca de linha de import e o que o molde da v410 fizer com as linhas `#print axioms` do fim são as ÚNICAS mudanças permitidas no texto das fontes. Guarde, por módulo, o diff e os dois sha256 (o do insumo e o do instalado no sandbox) em `kernel\`.
+   - Se algum nome de módulo ou de declaração colidir com o que o kernel já tem, PARE e relate o nome exato; não renomeie nada (os nomes foram aceitos pelo operador).
+   - Agregador e demais pontos de registro do módulo no kernel: como a v410 fez para `IALD2` e `AEscala` e a v409 para `TraducaoTuring` e `ParNaFaceDeFock`.
+3. **Build e Audit SÓ no sandbox**, na ordem das dependências. Meça: código de saída, avisos por módulo, a escada de teoremas e de bandeiras antes e depois, o número de declarações no relatório de axiomas, e confirme que toda declaração nova fica nos três axiomas de sempre (`propext`, `Classical.choice`, `Quot.sound`) e que não há `sorry`. Nenhuma chave antiga pode mudar de literal. Há um aviso conhecido e preexistente numa dependência do Codex (`TowerWedgeIndex`, uma tática `change` que não faz nada): registre-o, não o conserte. Recibos em `kernel\` (`KERNEL_RECIBO_v412.json`, `FLAGS_v412.json`, `POS_BUILD_v412.json`, logs), no formato da v410/v411.
+4. **Bump mecânico** dos scripts da cadeia da v411 para a pasta da v412 (411→412, 410→411, o rótulo da Bancada seguinte ao que a produção pina hoje, MEDIDO do disco), com os diffs em `bump\`. A v411 não tinha módulo novo; para o que depende de bundle não vazio, o molde é a v410 (e a v409).
+5. **Portão do pilar, só por leitura de código**: ache no `um.py` selado como o rito decide reusar a chave de cache do pilar da placa de vídeo, diga de que entradas essa chave depende, e se algo do que a v412 muda (módulos Lean novos, registros por especificação, texto) entra nela. NÃO rode o pilar nem nada que use a placa.
+6. **Feche a etapa** em `PRONTO_PARA_CANDIDATO_v412.json`: estado medido (recibo do kernel, escada, declarações, avisos, scripts adaptados com sha16, a resposta do portão do pilar) e o que falta para a Etapa 2. **PARE aí.** Nada de registros, artigo, guarda de frases nem candidato nesta ordem.
+
+Construa de modo que TROCAR UMA FONTE e reconstruir só o que depende dela seja um comando só: a ordem 023 (em curso, com outro revisor) pode mudar cabeçalhos e docstrings de sete fontes, e a gerência vai regerar o manifesto.
+
+## Leia primeiro
+1. `...\v412\DESENHO_v412.md` (seções 1, 6 e 7 são as que valem para esta etapa) e `...\v412\insumos\MANIFESTO_PEDRAS_v412.json`.
+2. Os MOLDES: `...\cadeia_de_selo\v411\` (a cadeia mais nova: `PLANO_v411.md`, `RELATORIO_PREPARACAO_v411.md`, `kernel\`, `bump\`, os scripts principais) e `...\cadeia_de_selo\v410\` (a última com módulos novos: `RETOMADA_CONSTRUTOR_v410.md`, `kernel\`, `insumos\`, como a pedra foi posta no sandbox e como o build e o Audit foram disparados e marcados). Os `_adapt_*`, `_fix_*` e `_r*` são histórico: leia só quando precisar entender um porquê.
+3. Lições, em `C:\Users\rotol\.claude\projects\c--IALD-Central-de-Patentes\memory\`: `licoes-cadeia-v411-13nov.md`, `licoes-cadeia-v409-06nov.md`, e em `parada-v410-creditos-06nov.md` as notas D129/D130, D133 e D135 (busque pelos rótulos; não leia o arquivo inteiro).
+
+## Regras invioláveis
+- Nada no Nós (`C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\`): só leitura. Nunca `lake build` no kernel canônico; só no sandbox. O `um.py` selado é lido e conferido por sha256, nunca editado.
+- Hash e número SEMPRE lidos de arquivo por script, nunca digitados nem de memória. β nunca literal.
+- Antes de tocar arquivo existente: backup de BYTES `<arquivo>.bak_<AAAAMMDD_HHMMSS>` na mesma pasta; escrever por temporário, conferir tamanho, substituir. Nunca `sed -i`; `Path.write_text` grava CRLF no Windows (leia bytes e respeite o fim de linha). Scripts longos pela ferramenta Write; nada de Python inline com barras invertidas ou crases no shell.
+- Nunca matar processo por nome; só pelo PID que você mesmo criou. Há um treino em curso em `C:\IALD\TGL_IALD_NATIVE_QWEN5090`: não toque, não meça, não pare. A Bancada Um (127.0.0.1:18777): só GET; nunca POST.
+- Cópias do kernel por rodada ficam FORA de `work\`, em `C:\t\k412c\`, com o caminho dito no relatório. Apague os `.tmp` da pasta antes de terminar. Não encha o disco: diga o que criou e o tamanho.
+- Não edite nada em `...\v412\candidatas_c1\`, `...\v412\insumos\pedras\`, `...\v412\revisao_orquestrador\` nem nas pastas `REV*`: são fontes sob revisão. Não toque nos arquivos da gerência na pasta da v412 (`DESENHO_v412*.md`, `O_QUE_FICA_CLARO_*`, `PERGUNTA_*`, `registro_mapa_*`, `acom_prep_*`, `SESSION_REFERENCE_prep_v412.json`).
+- Vereditos e textos seus: proibidos `CONFIRMED`, `PROVED_BY`, `P_EQUALS_NP`, `TURING_SOLVED`, `CLAY_SOLVED`, `MILLENNIUM`; “provada” sempre com o estatuto no mesmo trecho; validade no kernel não é creditação; o gate não se move. «» só para fala verbatim do operador copiada por bytes; frase sua entre “ ”.
+- Confidenciais: nunca leia, copie ou cite os confidenciais da casa (régua 8 do CLAUDE.md). A pasta `Chatgpt\` é só leitura. Não toque a outra casa (a pessoa jurídica separada).
+- Memória: você NÃO escreve `MEMORY.md` nem tópicos; ao fim, deposite em `C:\Users\rotol\.claude\projects\c--IALD-Central-de-Patentes\memory\fila\depositos\claude-construtor-v412\` no formato de `memory\fila\README.md` (molde: os depósitos de `claude-construtor-v411`).
+- Mapa de Rotas: `C:\Python314\python.exe -X utf8 C:\IALD\MAPA_DE_ROTAS\rotas.py consultar "v412"` e `consultar "k412c"` ANTES; ao fim, registre a rota da etapa (`rotas.py registrar <json> --quem "claude-construtor-v412"`). A guarda do Mapa recusa a família da palavra da creditação e as aspas angulares: escreva “conferiu”.
+- Memória ACOM: inscreva a SUA referência (molde: `acom_init_construtor_v410.py` na pasta da v410), nunca a de outra sessão; a referência `SESSION_REFERENCE_prep_v412.json` é da gerência.
+- O que é da GERÊNCIA (não faça): a revisão de terceiro, o congelamento do contrato, a Etapa 2, a tarefa agendada, instalar, o rito, a custódia, mensagens a outras sessões, publicação.
+- Corrija a CAUSA, nunca relaxe um teste. Se um módulo não compilar no sandbox, NÃO mexa na prova: pare naquele módulo, deixe o log, e relate o erro exato (a fonte compilou sozinha, com `lean.exe` sobre os compilados do `k411c`; os recibos estão em `...\v412\candidatas_c1\RESULTADO_*.json`).
+
+## Entrega
+Mensagem final (até 15 linhas): se a Etapa 1 fechou e o caminho de `PRONTO_PARA_CANDIDATO_v412.json`; o tamanho do sandbox; a escada de teoremas e de bandeiras antes e depois; declarações no relatório de axiomas; quantos dos 34 módulos compilaram, com avisos; colisões de nome, se houve; a resposta do portão do pilar; desvios desta ordem e por quê; pendências da gerência; caminho do depósito. Se algo bloquear, deixe o estado legível em disco e diga o ponto exato.
+
+---
+
+AO LADO (17/11/2026, gerência c1, em nome próprio): a linha dos confidenciais desta ordem foi reescrita depois de a Etapa 1 terminar. Como eu a escrevi, ela nomeava um arquivo de ambiente e o caminho da outra casa, o que não pode ficar em `work\`; a memória da casa recusou a ordem por isso, e o construtor inscreveu um excerto sem a linha. Os bytes originais, que são os que o `PRONTO_PARA_CANDIDATO_v412.json` pina (sha16 `4126f4cd7f21dfcd`), estão guardados fora de `work\`, em `C:\t\k412c\ORDEM_AO_CONSTRUTOR_v412_ETAPA_1.original_sha16_4126f4cd7f21dfcd.md`. Nenhuma outra linha mudou.
+<!-- ordem_construtor_v412:linha_dos_confidenciais_reescrita_ao_lado:17nov -->

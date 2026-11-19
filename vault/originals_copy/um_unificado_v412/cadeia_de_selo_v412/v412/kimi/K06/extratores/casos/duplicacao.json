@@ -1,0 +1,62 @@
+{
+  "schema": "K06_DUPLICATION_CASES_V1",
+  "synthetic_only": true,
+  "pair_cases": [
+    {
+      "id": "exact_repeat",
+      "texts": [
+        "K06R1|T01|AEscala|declares_type|LeitorDoFundo|FORMAL\n",
+        "K06R1|T01|AEscala|declares_type|LeitorDoFundo|FORMAL\n"
+      ],
+      "expected_raw_pairs": [[1, 2]],
+      "expected_canonical_pairs": [[1, 2]]
+    },
+    {
+      "id": "layout_only_repeat",
+      "texts": [
+        "K06R1|T01|AEscala|declares_type|LeitorDoFundo|FORMAL\n",
+        "# layout distinto\nK06R1 | T01 | AEscala | declares_type | LeitorDoFundo | FORMAL\n"
+      ],
+      "expected_raw_pairs": [],
+      "expected_canonical_pairs": [[1, 2]]
+    },
+    {
+      "id": "different_content_not_repeat",
+      "texts": [
+        "K06R1|T01|AEscala|declares_type|LeitorDoFundo|FORMAL\n",
+        "K06R1|T01|AEscala|declares_type|OtherReader|FORMAL\n"
+      ],
+      "expected_raw_pairs": [],
+      "expected_canonical_pairs": []
+    }
+  ],
+  "a8_cases": [
+    {
+      "id": "a8_exact_four_reading_repeat",
+      "variant": "repeat_full_T",
+      "expected_A8": 1,
+      "expected_distinct_raw_in_5_8": 1,
+      "expected_distinct_canonical_in_5_8": 1,
+      "expected_admissible": false,
+      "note": "Quatro repetições exatas satisfazem o predicado vetorial, mas não contam como quatro leituras textualmente independentes."
+    },
+    {
+      "id": "a8_layout_four_reading_repeat",
+      "variant": "layout_full_T",
+      "expected_A8": 1,
+      "expected_distinct_raw_in_5_8": 4,
+      "expected_distinct_canonical_in_5_8": 1,
+      "expected_admissible": false,
+      "note": "Mudanças de layout não ocultam duplicação canônica nas leituras 5–8."
+    },
+    {
+      "id": "a8_textually_distinct",
+      "variant": "distinct_full_T",
+      "expected_A8": 1,
+      "expected_distinct_raw_in_5_8": 4,
+      "expected_distinct_canonical_in_5_8": 4,
+      "expected_admissible": true,
+      "note": "Conteúdo estrangeiro distinto separa os hashes; isto só afasta duplicação, não prova independência estocástica nem atrator."
+    }
+  ]
+}

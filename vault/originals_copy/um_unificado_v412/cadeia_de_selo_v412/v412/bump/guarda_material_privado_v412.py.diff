@@ -1,0 +1,25 @@
+--- v411/guarda_material_privado_v411.py
++++ v412/guarda_material_privado_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/guarda_material_privado_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/guarda_material_privado_v412.py.diff
+@@ -3,3 +4,3 @@
+-"""guarda_material_privado_v411.py -- varre os arquivos dados (ou, sem argumento, TODOS os insumos pinados da v411: os 18 embutidos, os 7 citados, os 5 textos da gerencia citados, as 9 falas e as copias duraveis em
+-v411\\insumos) com a guarda da E03 da custodia G1 (tools\\custodia_g1\\espelho_pares.py: os 7 termos da casa MAIS o conjunto privado de marcadores, carregado pela funcao da propria G1; os padroes NUNCA sao impressos
+-nem gravados). Grava GUARDA_MATERIAL_PRIVADO_v411.json (por arquivo: caminho, sha256 e a CONTAGEM de ocorrencias; nenhum trecho). rc 0 = nenhum insumo traz material privado; rc 1 = algum traz (o insumo so' pode entrar
++"""guarda_material_privado_v412.py -- varre os arquivos dados (ou, sem argumento, TODOS os insumos pinados da v412: os 18 embutidos, os 7 citados, os 5 textos da gerencia citados, as 9 falas e as copias duraveis em
++v412\\insumos) com a guarda da E03 da custodia G1 (tools\\custodia_g1\\espelho_pares.py: os 7 termos da casa MAIS o conjunto privado de marcadores, carregado pela funcao da propria G1; os padroes NUNCA sao impressos
++nem gravados). Grava GUARDA_MATERIAL_PRIVADO_v412.json (por arquivo: caminho, sha256 e a CONTAGEM de ocorrencias; nenhum trecho). rc 0 = nenhum insumo traz material privado; rc 1 = algum traz (o insumo so' pode entrar
+@@ -7 +8 @@
+-uso: python -B -X utf8 guarda_material_privado_v411.py [arquivo ...]"""
++uso: python -B -X utf8 guarda_material_privado_v412.py [arquivo ...]"""
+@@ -20,2 +21,2 @@
+-    import delta_v411 as DL
+-    ps = [i_["arquivo"] for i_ in DL.INSUMOS_V411] + [c_["arquivo"] for c_ in DL.CITADOS_V411] + [g_["arquivo"] for g_ in DL.TEXTOS_DA_GERENCIA_CITADOS] + [f_["arquivo"] for f_ in DL.FALAS_V411]
++    import delta_v412 as DL
++    ps = [i_["arquivo"] for i_ in DL.INSUMOS_V412] + [c_["arquivo"] for c_ in DL.CITADOS_V412] + [g_["arquivo"] for g_ in DL.TEXTOS_DA_GERENCIA_CITADOS] + [f_["arquivo"] for f_ in DL.FALAS_V412]
+@@ -35 +36 @@
+-    return {"contrato": "GUARDA_MATERIAL_PRIVADO_v411", "quando": datetime.datetime.now().isoformat(timespec="seconds"), "guarda": "tools\\custodia_g1\\espelho_pares.py (GUARDA + carregar_marcadores_privados + guarda_conta: a da E03)",
++    return {"contrato": "GUARDA_MATERIAL_PRIVADO_v412", "quando": datetime.datetime.now().isoformat(timespec="seconds"), "guarda": "tools\\custodia_g1\\espelho_pares.py (GUARDA + carregar_marcadores_privados + guarda_conta: a da E03)",
+@@ -49 +50 @@
+-        p = os.path.join(HERE, "GUARDA_MATERIAL_PRIVADO_v411.json")
++        p = os.path.join(HERE, "GUARDA_MATERIAL_PRIVADO_v412.json")

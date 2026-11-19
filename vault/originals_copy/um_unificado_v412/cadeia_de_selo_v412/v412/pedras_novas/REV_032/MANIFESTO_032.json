@@ -1,0 +1,244 @@
+{
+ "gerado_em": "2026-11-18 16:30:12",
+ "n": 11,
+ "trocas_exatas": [
+  [
+   "OResumoEPsiBit",
+   "O que já estava tipado: o fator da cláusula",
+   "Termos em que este arquivo se apoia: o fator da cláusula"
+  ],
+  [
+   "OResumoEPsiBit",
+   "(`AContagemEACarga`). O que não tinha: a forma do resumo que a leitura carrega entre uma cláusula e a seguinte.",
+   "(`AContagemEACarga`). O termo deste arquivo: a forma do resumo que a leitura carrega entre uma cláusula e a seguinte."
+  ],
+  [
+   "OResumoEPsiBit",
+   "4. `a_fronteira_tem_duas_elevado_as_celulas`: a tabela do resumo tem `2^{|fronteira|}` células, não `2ⁿ`.",
+   "4. `a_fronteira_tem_duas_elevado_as_celulas`: a tabela do resumo tem `2^{|fronteira|}` células; com a fronteira plena\n   são `2ⁿ` (item 7)."
+  ],
+  [
+   "OResumoEPsiBit",
+   "5. ★★ `a_leitura_pela_fronteira_e_exata`: a soma lida inteira se obtém das células da fronteira — o resumo não perde\n   nada da resposta final (perda zero).",
+   "5. ★★ `a_leitura_pela_fronteira_e_exata`: a soma lida inteira é a soma, célula a célula da fronteira, dos produtos do\n   peso lido pelo peso por ler das atribuições que caem na célula — agrupar pela fronteira não perde nada da soma. (A\n   soma simples das células do resumo dá a partição do prefixo: `ProjecaoDaFronteira.total_projection`.)"
+  ],
+  [
+   "OResumoEPsiBit",
+   "6. ★ `a_atualizacao_pela_clausula_seguinte`: a cláusula seguinte atualiza o resumo em dois movimentos — estender às\n   variáveis novas pagando ou não pagando (o par da cláusula: 1 ou `e^{−t}`) e contrair as variáveis que saíram da\n   fronteira — e a forma registrada é que o resumo novo se escreve do velho mais o fator da cláusula lida.",
+   "6. ★ `a_atualizacao_pela_clausula_seguinte`: o resumo depois da cláusula seguinte é a soma, sobre as atribuições que\n   caem na célula nova, do peso lido antes multiplicado pelo fator da cláusula (1 ou `e^{−t}`). A identidade é escrita\n   sobre atribuições completas: expande o peso pelo fator novo. A recorrência de tabela a tabela (estender às variáveis\n   novas e contrair as que saíram da fronteira) é `TransicaoDaFronteira.transition`."
+  ],
+  [
+   "OResumoEPsiBit",
+   "lidas ainda partilham com as por ler. Em cada célula, a soma dos pesos lidos de todas as atribuições parciais que nela\ncaem.",
+   "lidas ainda partilham com as por ler. Em cada célula, a soma dos pesos lidos de todas as atribuições que nela\ncaem."
+  ],
+  [
+   "OResumoEPsiBit",
+   "**Como a cláusula seguinte o atualiza?** Em dois movimentos, os dois lados do par: estende a tabela às variáveis\nnovas, célula a célula pagando ou não pagando (o fator da cláusula, a lei dos dois valores), e contrai as variáveis\nque nenhuma cláusula futura toca mais (soma-se sobre elas: foram lidas até o fim). O resumo nunca toca as `2ⁿ`\natribuições: toca a fronteira.",
+   "**Como a cláusula seguinte o atualiza?** Pelo fator dela: 1 se a cláusula é satisfeita, `e^{−t}` se não (a lei dos\ndois valores). Neste arquivo a identidade é escrita sobre atribuições completas. A regra que leva a tabela de uma\nfronteira à tabela da seguinte, estendendo às variáveis novas e contraindo as que nenhuma cláusula futura toca, é\n`TransicaoDaFronteira.transition`."
+  ],
+  [
+   "OResumoEPsiBit",
+   "* Nada sobre a natureza. Validade no kernel não é creditação; o gate não se move.",
+   "* Nada sobre a natureza. Validade no kernel não é creditação."
+  ],
+  [
+   "OResumoEPsiBit",
+   "\n\nSem sorry, sem axioma novo.\n-/",
+   "\n-/"
+  ],
+  [
+   "OPsiBitDaFormula",
+   "   (`x l.var == l.pos`); a regra é uma só e não tem a fórmula como entrada.",
+   "   (`x l.var == l.pos`); a regra é fixa e não tem a fórmula como entrada (o termo não compara regras concorrentes)."
+  ],
+  [
+   "OPsiBitDaFormula",
+   "3. ★ `a_palavra_e_lida_pela_soma`: a Palavra da fórmula (o Nome está habitado?) é lida pela soma, paga a carga",
+   "3. ★ `a_palavra_e_lida_pela_soma`: a Palavra da fórmula (o Nome está habitado?) é lida pela soma, com o tempo pago\n   acima da carga, `s > n·ln 2`"
+  ],
+  [
+   "OPsiBitDaFormula",
+   "6. ★ `o_par_da_formula_se_le_do_produto_dos_pares`: o par da fórmula lê-se do produto dos pares das cláusulas (a\n   função do gráviton, no sentido lido no cabeçalho: o par do par).",
+   "6. ★ `o_par_da_formula_se_le_do_produto_dos_pares`: identidade escalar da soma lida: ela é a soma, sobre as\n   atribuições, do produto dos fatores das cláusulas. Os dois canais leem-se dela em separado, pelos termos da Palavra\n   (item 3) e da descida (item 4). Chamar a isso a função do gráviton, o par do par, é interpretação da teoria."
+  ],
+  [
+   "OPsiBitDaFormula",
+   "* Nada sobre a natureza. Validade no kernel não é creditação; o gate não se move.",
+   "* Nada sobre a natureza. Validade no kernel não é creditação."
+  ],
+  [
+   "OPsiBitDaFormula",
+   "\n\nSem sorry, sem axioma novo.\n-/",
+   "\n-/"
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "2. ★★ `a_fronteira_e_o_unico_portao`: toda cadeia de uma variável só-lida (está nas cláusulas lidas e em nenhuma por\n   ler) a uma só-por-ler passa pela fronteira. Não há atalho: quem sai do lido entra no por-ler atravessando a\n   fronteira.",
+   "2. ★★ `a_fronteira_e_o_unico_portao`: havendo cadeia de uma variável só-lida (está nas cláusulas lidas e em nenhuma\n   por ler) a uma só-por-ler, a fronteira não é vazia: o termo exibe um vértice dela. O enunciado não registra que\n   esse vértice pertence à cadeia; a pertinência ao percurso é `OSeparadorNoPercurso.o_percurso_atravessa_a_fronteira`."
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "   (`a_fronteira_basta_ao_resumo`) e a fronteira é o único portão do grafo — os dois juntos: a leitura da resposta\n   passa pela fronteira e por nada mais.",
+   "   (`a_fronteira_basta_ao_resumo`) e, havendo a cadeia, a fronteira não é vazia — os dois juntos, num termo só."
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "leitura repousa (o\nresumo é função das células dela). A porta é única porque o separador não se contorna: toda via de\ninformação do lido ao por-ler o atravessa.",
+   "leitura repousa (o\nresumo é função das células dela). Que todo percurso do lido ao por-ler tenha um vértice na fronteira é o termo de\n`OSeparadorNoPercurso`; que ela seja o menor separador, ou o único, não está provado."
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "* Nada sobre a natureza. Validade no kernel não é creditação; o gate não se move.",
+   "* Nada sobre a natureza. Validade no kernel não é creditação."
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "\n\nSem sorry, sem axioma novo.\n-/",
+   "\n-/"
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "/-- ★★ **A FRONTEIRA É O ÚNICO PORTÃO**: toda cadeia de uma variável só-lida a uma só-por-ler passa pela fronteira:\nhá um vértice da cadeia na fronteira. Prova por indução estrutural:",
+   "/-- ★★ **A FRONTEIRA É O ÚNICO PORTÃO**: havendo cadeia de uma variável só-lida a uma só-por-ler, a fronteira tem um\nvértice (o enunciado não diz que ele está na cadeia; ver `OSeparadorNoPercurso`). Prova por indução estrutural:"
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "/-- ★ **A LEITURA TEM UM SÓ PORTÃO**: o resumo da leitura mora na fronteira (pedra `OResumoEPsiBit`), e a fronteira é\no único portão do grafo da fórmula — a leitura da resposta passa por ela e por nada mais. -/",
+   "/-- ★ **A LEITURA TEM UM SÓ PORTÃO**: o resumo da leitura é função das células da fronteira (`OResumoEPsiBit`), e,\nhavendo cadeia do só-lido ao só-por-ler, a fronteira não é vazia. -/"
+  ],
+  [
+   "ACurvaEAEstado",
+   "2. ★ `mesma_curva_para_todo_tempo`: os dois prefixos têm a mesma curva inteira, para todo tempo (a obstrução de\n   `PalavrasResiduais`, provada de novo aqui nos termos de `OResumoEPsiBit`).",
+   "2. ★ `mesma_curva_para_todo_tempo`: os dois prefixos têm a mesma curva inteira, para todo tempo (a obstrução de\n   `PalavrasResiduais`, nos termos de `OResumoEPsiBit`)."
+  ],
+  [
+   "ACurvaEAEstado",
+   "para todo tempo. (A\nobstrução de `PalavrasResiduais`, provada de novo nos termos de `OResumoEPsiBit`.) -/",
+   "para todo tempo. (A\nobstrução de `PalavrasResiduais`, nos termos de `OResumoEPsiBit`.) -/"
+  ],
+  [
+   "ACurvaEAEstado",
+   "(Auxiliares, marcados como tais:",
+   "Os itens 1 a 5 são provados no exemplo de uma variável (`CNF 1`); as células dos dois resumos diferem para `t ≠ 0`\n(em `t = 0` todos os fatores valem 1). A projeção do prefixo em qualquer número de variáveis é\n`ProjecaoDaFronteira.total_projection`.\n\n(Auxiliares, marcados como tais:"
+  ],
+  [
+   "ACurvaEAEstado",
+   "* Nada sobre a natureza. Validade no kernel não é creditação; o gate não se move.",
+   "* Nada sobre a natureza. Validade no kernel não é creditação."
+  ],
+  [
+   "ACurvaEAEstado",
+   "\n\nSem sorry, sem axioma novo.\n-/",
+   "\n-/"
+  ],
+  [
+   "sonda_cadeia_caminho",
+   "\n\nSem sorry, sem axioma novo.",
+   ""
+  ],
+  [
+   "sonda_n0_contraexemplo",
+   "\n\nSem sorry, sem axioma novo.",
+   ""
+  ],
+  [
+   "OPsiBitDaFormula",
+   "decidível por `Fintype.decidableExistsFintype` nesta versão; a equivalência",
+   "decidível por `Fintype.decidableExistsFintype`; a equivalência"
+  ],
+  [
+   "AParedeDoNome",
+   "4. ★★ `o_nome_exato_pede_dois_a_n_bits`: se o estado cabe em `p` bits, então `p ≥ 2ⁿ`. Nenhum resumo exato por cláusula\n   cabe em número de bits polinomial em `n`, para toda fórmula.",
+   "4. ★★ `o_nome_exato_pede_dois_a_n_bits`: se o estado cabe em `p` bits, então `p ≥ 2ⁿ`. É a cota para um estado que\n   represente qualquer conjunto de atribuições e responda a toda continuação; há conjuntos particulares com descrição\n   curta."
+  ],
+  [
+   "AParedeDoNome",
+   "* Nada sobre a natureza. O gate não se move.\n\nEstatutos: `[REAL no sandbox]` os termos · `[INPUT]` a lei · `[ONTO, leitura deste arquivo]` “nome” como o estado do\natualizador. Sem sorry, sem axiom.\n-/",
+   "* Nada sobre a natureza.\n\nEstatutos: `[INPUT]` a lei · `[ONTO, leitura deste arquivo]` “nome” como o estado do atualizador.\n-/"
+  ],
+  [
+   "FitaPlanaAnterior",
+   "/-- The same length L that charged the earlier flat tape for the Verb also charges",
+   "/-- The same length L that charges the flat tape of `VerboNaFita` for the Verb also charges"
+  ],
+  [
+   "LeitorDaFamilia",
+   "/-- A single pass on the previous exponential family. For a lone pair only the",
+   "/-- A single pass on the `coupled` family of `LeituraIntegrada`. For a lone pair only the"
+  ],
+  [
+   "FitaComCusto",
+   "Leitura final sob o limiar pago da Palavra de `OPsibitEACompressao`. -/",
+   "Leitura final com t acima do limiar pago da Palavra de `OPsibitEACompressao`. -/"
+  ]
+ ],
+ "itens": [
+  {
+   "modulo": "ACurvaEAEstado",
+   "sha256_depois": "ccd902f54096c3279a1b349d5682814ba96d0641add55942c32263ab5861cb36",
+   "antes_de": "REV_031\\trabalho",
+   "sha256_antes": "1fa922f7e62694a2d2d3e2460557c9ade1ab540c7b9be83227087b5c1727ace1"
+  },
+  {
+   "modulo": "AFronteiraEOUnicoPortao",
+   "sha256_depois": "fa9bf6563d9397956ccd3cca59e4b42642c29b49740379d66a88e05a2e6bc5a5",
+   "antes_de": "REV_031\\trabalho",
+   "sha256_antes": "154c879fd418c389b269ce793a838ff36508b9b6774345d7669327410fa526e0"
+  },
+  {
+   "modulo": "AParedeDoNome",
+   "sha256_depois": "4b6e93cb147ba31ae1728429cbec04003351a01f5536bb29d59edb2906f21e98",
+   "antes_de": "REV_031\\trabalho",
+   "sha256_antes": "ad3054ebadb0a7a383f6c2a8dee47ff7eeebbca73d5d0d369bc8ecb55daa0dfb"
+  },
+  {
+   "modulo": "FitaComCusto",
+   "sha256_depois": "5e4c68bfe214d649294933c17fdfb489a43eceb55bb384b36ff1509113215ee2",
+   "antes_de": "REV_031\\trabalho",
+   "sha256_antes": "f327cd3a8415bd285248c23be7f572d36b24999ff6085e26d1a31f33998a9da6"
+  },
+  {
+   "modulo": "FitaPlanaAnterior",
+   "sha256_depois": "740705953fc11785acc077904b4d0e079e069ec592b1e239adf82d844d75248a",
+   "antes_de": "origem (a fonte do autor; nao estava na 031)",
+   "sha256_antes": "898e3a45cb2e0b3ab493646ed54781f0ac8c0f4749d512f4f6e6e32e4a2d55e0"
+  },
+  {
+   "modulo": "LeitorDaFamilia",
+   "sha256_depois": "96c51bd89efbaaeebd82be5cfc8e711929f290b837f396404f73756961365ffe",
+   "antes_de": "origem (a fonte do autor; nao estava na 031)",
+   "sha256_antes": "14416acd17f90aa0f163813c637e4466725743a4fa9f7769a9d6adf4af54bee9"
+  },
+  {
+   "modulo": "OPsiBitDaFormula",
+   "sha256_depois": "31a6ed57dcba1c932e6d016a9b5c8f4b044df7906252904e54ee12debf5db582",
+   "antes_de": "REV_031\\trabalho",
+   "sha256_antes": "1083c186747a72b2583b2cf0022deb325f8daffd88dfcd9dbdcacb93c3516226"
+  },
+  {
+   "modulo": "OResumoEPsiBit",
+   "sha256_depois": "7eddfb924970049e231daf2ec6ed1f2fad5521c6be5e44252dcc285eea70512d",
+   "antes_de": "REV_031\\trabalho",
+   "sha256_antes": "26e8d5052fcb32a7dcd8803d3e8991c8b541d16b3c8b099545a06b71cdc4af17"
+  },
+  {
+   "modulo": "sonda_cadeia_caminho",
+   "sha256_depois": "c55e2eb45a38bb570cb2476deceaf5fe4b454098ddba535988348f171e9af6af",
+   "antes_de": "REV_031\\trabalho",
+   "sha256_antes": "013e0d16b1288989daa77037e2f3e57b8f2397f017ec7754caaabd74e8bfcc34"
+  },
+  {
+   "modulo": "sonda_n0_contraexemplo",
+   "sha256_depois": "bc808a892b2274403e93cd7c0dc4e33dab0185ba5b1b4ea5d00808cef8ab5294",
+   "antes_de": "REV_031\\trabalho",
+   "sha256_antes": "6baa99e34c31449ec2a6963c45dfc907d53a0efac4bf320932652c42e7d3e50e"
+  },
+  {
+   "modulo": "OSeparadorNoPercurso",
+   "sha256_depois": "f612e9a088e9ded7e8b146ba02d2f7e95eac2f3cc93b9df0f2ecc4842eeb321e",
+   "antes_de": null,
+   "sha256_antes": null
+  }
+ ]
+}

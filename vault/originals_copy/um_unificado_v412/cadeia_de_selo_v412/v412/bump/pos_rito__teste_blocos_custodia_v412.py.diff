@@ -1,0 +1,113 @@
+--- v411/pos_rito/teste_blocos_custodia_v411.py
++++ v412/pos_rito/teste_blocos_custodia_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/teste_blocos_custodia_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__teste_blocos_custodia_v412.py.diff
+@@ -3,4 +4,4 @@
+-# [AO LADO, 12/11/2026 tarde, mesmo autor] D174: o painel inteiro (controle: sem a frase do acervo e' recusado); os apontadores do H0DN; a medida com o handoff de ENSAIO da v411 (sufixo _v411) e o teto de 40.960 B
+-# [AO LADO, 12/11/2026 11h, mesmo autor] aditivo 4: os textos saem de TOPO_RATIFICADO_v411.json; o acervo (estatuto_da_prova_v391) entra no core de teste; controles novos (falsificada, soma, marcador que sobra)
+-"""teste_blocos_custodia_v411.py -- monta os textos da custodia com o core da v410 selada (so' leitura, do Nos: a Fase 9 V2, o acervo e as bandeiras) e o registro `h0dn_bg1_v411` do ensaio offline
+-(TESTE_H0DN_OFFLINE_v411_registro.json, no lugar do core da v411, que ainda nao existe); confere cada texto com as MESMAS funcoes da custodia, com a F67 estrita e com a guarda de frases da v411; roda os controles
++# [AO LADO, 12/11/2026 tarde, mesmo autor] D174: o painel inteiro (controle: sem a frase do acervo e' recusado); os apontadores do H0DN; a medida com o handoff de ENSAIO da v412 (sufixo _v411) e o teto de 40.960 B
++# [AO LADO, 12/11/2026 11h, mesmo autor] aditivo 4: os textos saem de TOPO_RATIFICADO_v412.json; o acervo (estatuto_da_prova_v391) entra no core de teste; controles novos (falsificada, soma, marcador que sobra)
++"""teste_blocos_custodia_v412.py -- monta os textos da custodia com o core da v411 selada (so' leitura, do Nos: a Fase 9 V2, o acervo e as bandeiras) e o registro `h0dn_bg1_v411` do ensaio offline
++(TESTE_H0DN_OFFLINE_v412_registro.json, no lugar do core da v412, que ainda nao existe); confere cada texto com as MESMAS funcoes da custodia, com a F67 estrita e com a guarda de frases da v412; roda os controles
+@@ -8,2 +9,2 @@
+-do acervo do painel curto (aditivo 4, item 3). Nada e' escrito no Nos, no espelho, na Central nem na pasta da cadeia: a saida vai para C:\\t\\k411c\\ensaio_topo_proposto\\pos_rito_blocos\\. rc 0 so' se tudo passar.
+-uso: python -B -X utf8 teste_blocos_custodia_v411.py [--sem-readme]"""
++do acervo do painel curto (aditivo 4, item 3). Nada e' escrito no Nos, no espelho, na Central nem na pasta da cadeia: a saida vai para C:\\t\\k412c\\ensaio_topo_proposto\\pos_rito_blocos\\. rc 0 so' se tudo passar.
++uso: python -B -X utf8 teste_blocos_custodia_v412.py [--sem-readme]"""
+@@ -19 +20 @@
+-import blocos_custodia_v411 as B  # noqa: E402
++import blocos_custodia_v412 as B  # noqa: E402
+@@ -24 +25 @@
+-OUT = r"C:\t\k411c\ensaio_topo_proposto\pos_rito_blocos"
++OUT = r"C:\t\k412c\ensaio_topo_proposto\pos_rito_blocos"
+@@ -39 +40 @@
+-REG = json.loads(open(os.path.join(PK, "TESTE_H0DN_OFFLINE_v411_registro.json"), "rb").read().decode("utf-8"))
++REG = json.loads(open(os.path.join(PK, "TESTE_H0DN_OFFLINE_v412_registro.json"), "rb").read().decode("utf-8"))
+@@ -50 +51 @@
+-    caso("o texto %s passa (forma, F67 e F67 estrita, numeros, cabeca, sigma, portao, 4,44, guarda v411)" % mk, v == [], v)
++    caso("o texto %s passa (forma, F67 e F67 estrita, numeros, cabeca, sigma, portao, 4,44, guarda v412)" % mk, v == [], v)
+@@ -142 +143 @@
+-caso("o trecho do handoff traz cada texto entre os seus marcadores, igual ao montado", all(lidos.get("%s_v411" % k) == v for k, v in T.items()) and len(lidos) == len(T), sorted(set(lidos) ^ {"%s_v411" % k for k in T}))
++caso("o trecho do handoff traz cada texto entre os seus marcadores, igual ao montado", all(lidos.get("%s_v412" % k) == v for k, v in T.items()) and len(lidos) == len(T), sorted(set(lidos) ^ {"%s_v412" % k for k in T}))
+@@ -144,4 +145,4 @@
+-caso("o trecho inteiro passa no portao da G1 e na guarda de frases da v411", vsec == [], vsec[:4])
+-
+-# ---- 4. o README projetado (D174): o handoff de ENSAIO o mais perto possivel do real da v411 -- os sete textos da prosa (os do S6d: TITULO_EN, ARCO_EN, ARCO_PT...), o PARAGRAFO da v411 com o titulo de textos_v411,
+-#      os textos da abertura, todos com o sufixo _v411, no arquivo HANDOFF_v411_CUSTODIA.md de uma pasta de ensaio -- e o renderizador da custodia, com o selo carregado dizendo v411 (so' em memoria). Criterio: o README
++caso("o trecho inteiro passa no portao da G1 e na guarda de frases da v412", vsec == [], vsec[:4])
++
++# ---- 4. o README projetado (D174): o handoff de ENSAIO o mais perto possivel do real da v412 -- os sete textos da prosa (os do S6d: TITULO_EN, ARCO_EN, ARCO_PT...), o PARAGRAFO da v412 com o titulo de textos_v412,
++#      os textos da abertura, todos com o sufixo _v411, no arquivo HANDOFF_v412_CUSTODIA.md de uma pasta de ensaio -- e o renderizador da custodia, com o selo carregado dizendo v412 (so' em memoria). Criterio: o README
+@@ -153 +154 @@
+-def _titulo_paragrafo_v411():
++def _titulo_paragrafo_v412():
+@@ -155 +156 @@
+-    arv = _ast.parse(open(os.path.join(HERE, "textos_v411.py"), encoding="utf-8").read())
++    arv = _ast.parse(open(os.path.join(HERE, "textos_v412.py"), encoding="utf-8").read())
+@@ -157 +158 @@
+-        if isinstance(no, _ast.Assign) and any(isinstance(t_, _ast.Name) and t_.id == "_TITULO_PARAGRAFO_V411" for t_ in no.targets):
++        if isinstance(no, _ast.Assign) and any(isinstance(t_, _ast.Name) and t_.id == "_TITULO_PARAGRAFO_V412" for t_ in no.targets):
+@@ -159,6 +160,6 @@
+-    raise ValueError("textos_v411.py sem _TITULO_PARAGRAFO_V411")
+-
+-
+-def handoff_de_ensaio_v411():
+-    """o handoff de ENSAIO da v411 (o corpo do fechar so' existe com o core real; o README so' le dele os marcadores, o titulo do ultimo PARAGRAFO_*_v411 e o nome/sha16 do arquivo)."""
+-    import textos_custodia_handoff_v411 as TC
++    raise ValueError("textos_v412.py sem _TITULO_PARAGRAFO_V412")
++
++
++def handoff_de_ensaio_v412():
++    """o handoff de ENSAIO da v412 (o corpo do fechar so' existe com o core real; o README so' le dele os marcadores, o titulo do ultimo PARAGRAFO_*_v411 e o nome/sha16 do arquivo)."""
++    import textos_custodia_handoff_v412 as TC
+@@ -167 +168 @@
+-    core["cunhagens_v411"] = {"verbatim": {"fala_%d" % i_: {"quando": "12/11/2026 (ensaio)"} for i_ in range(TC.DL.N_FALAS_V411)}}
++    core["cunhagens_v411"] = {"verbatim": {"fala_%d" % i_: {"quando": "12/11/2026 (ensaio)"} for i_ in range(TC.DL.N_FALAS_V412)}}
+@@ -169,2 +170,2 @@
+-    selo = {"um_version": "v411", "sha256": {"um.py": pin}}; esp = {"candidato_sha16": pin[:16], "vereditos_novos_v411": {"h0dn_bg1_v411": REG["verdict"]}}
+-    diario = "## 12/11/2026 — **v411 SELADA** `%s` — O teste decisivo (v411): nenhum módulo novo, escada %d → %d\n" % (pin[:16], esc, esc)
++    selo = {"um_version": "v412", "sha256": {"um.py": pin}}; esp = {"candidato_sha16": pin[:16], "vereditos_novos_v412": {"h0dn_bg1_v411": REG["verdict"]}}
++    diario = "## 12/11/2026 — **v412 SELADA** `%s` — O teste decisivo (v412): nenhum módulo novo, escada %d → %d\n" % (pin[:16], esc, esc)
+@@ -172,6 +173,6 @@
+-    tit = _titulo_paragrafo_v411()
+-    corpo = ("# HANDOFF v411 — CUSTÓDIA (ENSAIO da medida do README; não é o handoff real)\n\n**O que é:** `um.py` **v411** `%s` (1 B) sobre a v410 `5d9497a721c3589e`; %d/%d; COMPLETA; rc 0; selftest PASSED; gate intocado; ensaio.\n\n"
+-             "<!-- INICIO_PARAGRAFO_H0DN_v411 -->\n%s\n\n> (o corpo do parágrafo pronto da v411 só sai do core real; o README só lê dele o título)\n<!-- FIM_PARAGRAFO_H0DN_v411 -->\n\n" % (pin[:16], esc, esc, tit)
+-             + "".join("<!-- INICIO_%s_v411 -->\n%s\n<!-- FIM_%s_v411 -->\n\n" % (k_, t_, k_) for k_, t_ in TEXTOS)
+-             + readme + "\n\n" + B.secao_handoff(Bx, relx, "v411") + "\n")
+-    hp = os.path.join(OUT, "HANDOFF_v411_CUSTODIA.md")
++    tit = _titulo_paragrafo_v412()
++    corpo = ("# HANDOFF v412 — CUSTÓDIA (ENSAIO da medida do README; não é o handoff real)\n\n**O que é:** `um.py` **v412** `%s` (1 B) sobre a v411 `5d9497a721c3589e`; %d/%d; COMPLETA; rc 0; selftest PASSED; gate intocado; ensaio.\n\n"
++             "<!-- INICIO_PARAGRAFO_H0DN_v412 -->\n%s\n\n> (o corpo do parágrafo pronto da v412 só sai do core real; o README só lê dele o título)\n<!-- FIM_PARAGRAFO_H0DN_v412 -->\n\n" % (pin[:16], esc, esc, tit)
++             + "".join("<!-- INICIO_%s_v412 -->\n%s\n<!-- FIM_%s_v412 -->\n\n" % (k_, t_, k_) for k_, t_ in TEXTOS)
++             + readme + "\n\n" + B.secao_handoff(Bx, relx, "v412") + "\n")
++    hp = os.path.join(OUT, "HANDOFF_v412_CUSTODIA.md")
+@@ -191 +192 @@
+-            r["um_version"] = "v411"   # (so' em memoria: o Nos e' a v410; o renderizador procura os marcadores com o sufixo da versao do selo)
++            r["um_version"] = "v412"   # (so' em memoria: o Nos e' a v411; o renderizador procura os marcadores com o sufixo da versao do selo)
+@@ -206 +207 @@
+-    hp, TX7, TIT, BX = handoff_de_ensaio_v411()
++    hp, TX7, TIT, BX = handoff_de_ensaio_v412()
+@@ -212 +213 @@
+-    for nome_, conteudo_ in (("README_PROJETADO_v411.md", texto), ("REGISTRO_FASE9_V2_PROJETADO.md", reg_txt)):
++    for nome_, conteudo_ in (("README_PROJETADO_v412.md", texto), ("REGISTRO_FASE9_V2_PROJETADO.md", reg_txt)):
+@@ -216 +217 @@
+-             "titulo_do_PARAGRAFO_v411": mt.group(1).strip() if mt else None, "bytes_titulo": len(mt.group(1).strip().encode("utf-8")) if mt else None,
++             "titulo_do_PARAGRAFO_v412": mt.group(1).strip() if mt else None, "bytes_titulo": len(mt.group(1).strip().encode("utf-8")) if mt else None,
+@@ -224,2 +225,2 @@
+-           "handoff_de_ensaio": hp, "handoff_de_ensaio_sha256": __import__("hashlib").sha256(open(hp, "rb").read()).hexdigest(), "readme_projetado": os.path.join(OUT, "README_PROJETADO_v411.md"),
+-           "renderizador": "custodia_g1.primordial.montar + readme_pinado.renderizar (os da custodia, so' leitura; em memoria: o registro do ensaio offline no core e o selo dizendo v411)"}
++           "handoff_de_ensaio": hp, "handoff_de_ensaio_sha256": __import__("hashlib").sha256(open(hp, "rb").read()).hexdigest(), "readme_projetado": os.path.join(OUT, "README_PROJETADO_v412.md"),
++           "renderizador": "custodia_g1.primordial.montar + readme_pinado.renderizar (os da custodia, so' leitura; em memoria: o registro do ensaio offline no core e o selo dizendo v412)"}
+@@ -230 +231 @@
+-    caso("README projetado: «What changed» traz a primeira frase do ARCO_EN da v411 e o titulo do PARAGRAFO da v411", bool(um and mt) and um.group(1) in texto and mt.group(1).strip() in texto)
++    caso("README projetado: «What changed» traz a primeira frase do ARCO_EN da v412 e o titulo do PARAGRAFO da v412", bool(um and mt) and um.group(1) in texto and mt.group(1).strip() in texto)
+@@ -237,2 +238,2 @@
+-out = {"contrato": "TESTE_BLOCOS_CUSTODIA_v411", "quando": time.strftime("%Y-%m-%dT%H:%M:%S"), "duracao_s": round(time.time() - t0, 1), "ok": RES["ok"], "falhas": RES["falhas"], "TUDO_PASSOU": not RES["falhas"],
+-       "substituto_do_core": "core da v410 selada (Nos, so' leitura: teste_de_veracidade_fase9_v397, kernel_formalization, estatuto_da_prova_v391) + TESTE_H0DN_OFFLINE_v411_registro.json no lugar de h0dn_bg1_v411; sem cunhagens_v411 (a NOTA sai sem a clausula das inscricoes)",
++out = {"contrato": "TESTE_BLOCOS_CUSTODIA_v412", "quando": time.strftime("%Y-%m-%dT%H:%M:%S"), "duracao_s": round(time.time() - t0, 1), "ok": RES["ok"], "falhas": RES["falhas"], "TUDO_PASSOU": not RES["falhas"],
++       "substituto_do_core": "core da v411 selada (Nos, so' leitura: teste_de_veracidade_fase9_v397, kernel_formalization, estatuto_da_prova_v391) + TESTE_H0DN_OFFLINE_v412_registro.json no lugar de h0dn_bg1_v411; sem cunhagens_v411 (a NOTA sai sem a clausula das inscricoes)",
+@@ -240 +241 @@
+-p_ = os.path.join(OUT, "TESTE_BLOCOS_CUSTODIA_v411.json")
++p_ = os.path.join(OUT, "TESTE_BLOCOS_CUSTODIA_v412.json")

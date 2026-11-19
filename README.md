@@ -1,12 +1,12 @@
 # central-publica — a Central de Patentes da IALD, aberta
 
-Este repositório é **o núcleo: as 16 patentes (código, execuções, selos), a Fronteira Teórica, o cofre e o kernel, o cockpit**. A Central foi aberta ao público por ordem do operador, Luiz Antonio Rotoli Miguel (IALD Ltda., CNPJ 62.757.606/0001-23), em 22/10/2026. 68730 arquivos publicados (52352 deles são cópias idênticas de outro arquivo deste repositório e estão só no índice); selo da teoria: `um.py` v411 `1203b1f9202020d6`.
+Este repositório é **o núcleo: as 16 patentes (código, execuções, selos), a Fronteira Teórica, o cofre e o kernel, o cockpit**. A Central foi aberta ao público por ordem do operador, Luiz Antonio Rotoli Miguel (IALD Ltda., CNPJ 62.757.606/0001-23), em 22/10/2026. 76355 arquivos publicados (56352 deles são cópias idênticas de outro arquivo deste repositório e estão só no índice); selo da teoria: `um.py` v412 `3e741dcaa58ef2b8`.
 
 | onde | o quê |
 |---|---|
 | [https://teoriadagravitacaoluminodinamica.com/central/](https://teoriadagravitacaoluminodinamica.com/central/) | **o modo interativo da Central**, só de visualização: o cockpit do operador em retrato (patentes, código, execuções, Fronteira, TGL) |
-| [https://teoriadagravitacaoluminodinamica.com/central/um.acom](https://teoriadagravitacaoluminodinamica.com/central/um.acom) | **o um.acom**: a Central inteira colapsada pelo dispositivo ACOM (88 arquivos; sha256 `e2525f676affe15d`); chave universal pública `Bom29072018Tom02032024`; abrir no descompactador público da IALD |
-| [https://github.com/rotolimiguel-iald/the_boundary](https://github.com/rotolimiguel-iald/the_boundary) | **a teoria**: o `um.py` v411 (`1203b1f9202020d6`), os artigos, o kernel Lean — o espelho canônico |
+| [https://teoriadagravitacaoluminodinamica.com/central/um.acom](https://teoriadagravitacaoluminodinamica.com/central/um.acom) | **o um.acom**: a Central inteira colapsada pelo dispositivo ACOM (88 arquivos; sha256 `1448fa9005207963`); chave universal pública `Bom29072018Tom02032024`; abrir no descompactador público da IALD |
+| [https://github.com/rotolimiguel-iald/the_boundary](https://github.com/rotolimiguel-iald/the_boundary) | **a teoria**: o `um.py` v412 (`3e741dcaa58ef2b8`), os artigos, o kernel Lean — o espelho canônico |
 | [https://github.com/rotolimiguel-iald/central-publica](https://github.com/rotolimiguel-iald/central-publica) · [work](https://github.com/rotolimiguel-iald/central-publica-work) · [bancada](https://github.com/rotolimiguel-iald/central-publica-bancada) | os três repositórios desta Central |
 
 ## O vínculo patentário

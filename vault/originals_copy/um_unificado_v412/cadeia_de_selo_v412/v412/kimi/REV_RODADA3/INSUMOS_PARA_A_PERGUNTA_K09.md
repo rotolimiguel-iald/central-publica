@@ -1,0 +1,30 @@
+# INSUMOS PARA A PERGUNTA — K09 (rodada 3)
+
+15/11/2026. Fatos, alternativas e custos em linhas paralelas, **sem proposta embutida e sem recomendação**. A pergunta é uma só, com quatro bocas (TGL; teológica, em Nome, Palavra e Verbo; linguística; jurídica, em Fato, Valor e Norma), e quem a escreve é a gerência. Nenhum teste foi executado e nenhum vetor de dados foi lido.
+
+## Fatos
+
+- F1. **Não existe hoje teste cego de natureza executável com poder de desenho ≥ 5σ.** Nenhuma linha Hubble independente de um passo está qualificada (SN II EPM 3,256 é teto estatístico e cai a ~2,32 com sistemática igual à estatística); a leitura intermediária está desfavorecida e não excluída (−1,66σ/−1,54σ com covariância), com a lei da face dos cronômetros pendente (poder prévio 2,33σ).
+- F2. **O único dado posterior aos dois marcos** — a previsão publicada (valor no acervo em 22/01/2026; Zenodo em 17/02/2026) e o pino da função de veredito (08/08/2026) — é o dado JUNO tomado depois de 18/05/2026, ainda não mostrado.
+- F3. **A métrica congelada do veredito é m₂** (trocar é emenda): `m₂,TGL = 8,507414099900329 meV`, `Δpred = 7,237609466718292×10⁻⁵ eV²`, no pacote `E0 = 1 eV`, `m₁ ≈ 0`. A razão em Δm² pode ser mostrada ao lado só como comparação.
+- F4. **O código selado descreve hoje a regra A** (duas testemunhas independentes): `r≥5` sem segunda determinação autônoma vai a `TENSION` e acende `tensao_global_5sigma_sem_2a_determinacao`; `MATCHED_PROSPECTIVELY` está nos vereditos permitidos e não tem ramo no código. O que falta no código está na lista "para a gerência decidir".
+- F5. **Poder do incremento (brinquedo sem piso, `s(T)=0,078√(207,2/T)`):** 1 ano D ≈ 2,57; 2 anos D ≈ 3,64; 3 anos D ≈ 4,46. Com o piso ajustado `s0 = 0,052587652`, 5σ e D90 são inalcançáveis.
+- F6. **Datas de brinquedo** (centro parado, 100 % de dias vivos; não cronograma): incremento — r = 3 em 01/10/2027 (Δm²) e 26/09/2027 (m₂); 5σ em 11/03/2030 (Δm²) e 25/02/2030 (m₂); D90 em 25/05/2032 (Δm²) e 02/05/2032 (m₂). Cumulativo — r = 3 em 08/03/2027 (Δm²) e 03/03/2027 (m₂); 5σ em 16/08/2029 (Δm²) e 01/08/2029 (m₂); D90 em 31/10/2031 (Δm²) e 08/10/2031 (m₂). SK-Gd chegaria a 5σ em 17/10/2027 **somente se a sua anomalia persistir** (está a 3,101149σ do próprio JUNO).
+- F7. **O que os desfechos significam:** o negativo válido atinge o pacote da escala (o Um posto em 1 eV, com m₁ ≈ 0, e a identificação), não β isolado nem o gate; `r<5` não é confirmação; `ARMED_CONSISTENT`, `TENSION`, `NOT_FALSIFIED` e um futuro `MATCHED_PROSPECTIVELY` não são `CONFIRMED`.
+- F8. **Custódia proposta no rascunho:** a gerência guarda; o operador decide e sela (regra, limiar, métrica, fonte, escada, classe de publicação); um revisor independente abre uma única vez; fonte incompleta ⇒ sem abertura; nova liberação depois de abertura válida ⇒ novo pré-registro.
+- F9. **Bloqueios declarados:** covariância inter-liberações e P–S não publicada; independência física e persistência da anomalia SK-Gd não demonstradas; decomposição estatística/sistemática futura e piso real desconhecidos; classe "preliminar" a ratificar; escada global e ramo MATCHED a decidir/implementar; data e existência da próxima liberação desconhecidas.
+- F10. **Formas de obter o incremento:** (i) publicado pela colaboração como período disjunto, com incerteza total e a covariância/ligação com os cumulativos; (ii) diferença de variância inversa entre liberações cumulativas — sem a covariância, `λ`, o centro incremental e a variância não são identificáveis, e fixar `C=0` ou `C=Vc` sem fonte é só brinquedo.
+- F11. **Cronologia lida na fonte:** os dois artigos do autor sobre o neutrino são de 2025 e não trazem o valor; o primeiro número do JUNO (18/11/2025, 59,1 dias) é anterior ao valor público — retrodição sem ajuste (novidade de uso); o número de 207,2 dias é posterior à previsão publicada e anterior ao pino da regra. Nenhuma superfície sugere que o autor viu o dado antes.
+- F12. **Combinação e ringdown:** a combinação JUNO+SO não antecipa nada (2034 é o fim do levantamento do SO; o JUNO sozinho chega antes no cenário ideal); o ringdown tem 25,5/25,7 eventos equivalentes como piso sem viés (com o viés 0,0686, D10 satura ≈ 5,8); só com O4b, D14 ≈ 8,7 meses e D10 ≈ 16,6 meses.
+
+## Alternativas e custos (linhas paralelas; nenhuma escolhida)
+
+- A1. **Manter a regra A (duas testemunhas independentes).** Custo: sem uma segunda testemunha elegível e com poder, o teste não devolve o negativo; exige independência física e a covariância P–S; as datas do par ficam limitadas pelo mais tardio (SK-Gd 17/10/2027, condicional à persistência da anomalia).
+- A2. **Emendar para a regra B (uma testemunha com limiar explícito).** Custo: perde a réplica independente; aumenta o peso de sistemáticas e da covariância do único P; o limiar não pode ser ajustado ao centro visto; exige texto, implementação e hash antes de qualquer abertura. Variante registrada: exigir também `D_P ≥ 6,281552`, que constaria no selo.
+- A3. **Não selar nada agora e aguardar a próxima liberação.** Custo: nenhuma leitura fica habilitada como posterior aos dois marcos; o dado novo chegaria sem regra congelada antes dele.
+- A4. **Sobre a fonte elegível:** aceitar transparências oficiais da colaboração como "preliminar" (com evento, contribuição, anexo, data, janela, centro, erro total, seleção e covariância) ou restringir a artigo/preprint. Custo: a classe "preliminar" precisa ser ratificada pelo operador, com proposta técnica da gerência, antes do selo; sem elemento necessário, a transparência é só estresse preliminar e não abre veredito.
+- A5. **Sobre a métrica:** manter m₂ (a da regra congelada) ou emendar. Custo da emenda: nova versão e hash anteriores ao centro novo; a razão em Δm² fica ao lado só como comparação.
+
+## O que não está nesta mesa
+
+A escolha entre A1–A5, a decisão de selar, a ratificação da classe "preliminar" e a nomeação do revisor de abertura são do operador; a pergunta e o registro no Mapa são da gerência. Esta frente não executou teste, não abriu resultado e não escreveu no Mapa.

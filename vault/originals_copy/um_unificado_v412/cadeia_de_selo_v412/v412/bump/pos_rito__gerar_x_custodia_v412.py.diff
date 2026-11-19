@@ -1,0 +1,61 @@
+--- v411/pos_rito/gerar_x_custodia_v411.py
++++ v412/pos_rito/gerar_x_custodia_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/gerar_x_custodia_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__gerar_x_custodia_v412.py.diff
+@@ -3,3 +4,3 @@
+-"""gerar_x_custodia_v411.py -- RASCUNHO do texto CURTO da versao v411 no X (molde: o post da v410, escrito pela gerencia; este e' bem menor: o resultado do teste da razao de Hubble, o que ele nao decide, o kernel e o gate).
+-LE o Nos (selo e core) e escreve SO' pos_rito\\CUSTODIA_v411_RASCUNHO.txt; NAO escreve no tunel nem publica: copiar para X_VITRINE\\CUSTODIA_v411.txt e publicar e' ato da gerencia/do orquestrador (ORDEM de vitrine).
+-Todo numero e todo hash vem do selo e do core lidos agora (nada digitado); o texto passa na guarda P18, na guarda das frases da v411 (inclui a F67: os DOIS numeros no mesmo bloco, com sob o modelo de erros publicado, as Cefeidas livres com o numero,
++"""gerar_x_custodia_v412.py -- RASCUNHO do texto CURTO da versao v412 no X (molde: o post da v411, escrito pela gerencia; este e' bem menor: o resultado do teste da razao de Hubble, o que ele nao decide, o kernel e o gate).
++LE o Nos (selo e core) e escreve SO' pos_rito\\CUSTODIA_v412_RASCUNHO.txt; NAO escreve no tunel nem publica: copiar para X_VITRINE\\CUSTODIA_v412.txt e publicar e' ato da gerencia/do orquestrador (ORDEM de vitrine).
++Todo numero e todo hash vem do selo e do core lidos agora (nada digitado); o texto passa na guarda P18, na guarda das frases da v412 (inclui a F67: os DOIS numeros no mesmo bloco, com sob o modelo de erros publicado, as Cefeidas livres com o numero,
+@@ -8 +9 @@
+-uso: python -I -B -X utf8 gerar_x_custodia_v411.py [--nos <pasta>] [--esp <ESPERADOS.json>] [--saida <arquivo>]   (padrao: o Nos real; antes do rito o selo e' o da v410 e o script RECUSA: o post so' nasce da v411 selada)"""
++uso: python -I -B -X utf8 gerar_x_custodia_v412.py [--nos <pasta>] [--esp <ESPERADOS.json>] [--saida <arquivo>]   (padrao: o Nos real; antes do rito o selo e' o da v411 e o script RECUSA: o post so' nasce da v412 selada)"""
+@@ -12,3 +13,3 @@
+-from guarda_p18_v411 import violacoes  # noqa: E402
+-import delta_v411 as DL  # noqa: E402
+-import consts_mapa_x_v411 as C  # noqa: E402
++from guarda_p18_v412 import violacoes  # noqa: E402
++import delta_v412 as DL  # noqa: E402
++import consts_mapa_x_v412 as C  # noqa: E402
+@@ -21 +22 @@
+-    assert selo.get("um_version") == "v411" and str((selo.get("sha256") or {}).get("um.py", ""))[:16] == ESP["candidato_sha16"], "o selo do Nos nao e' o da v411 candidata: o post so' nasce da v411 selada"
++    assert selo.get("um_version") == "v412" and str((selo.get("sha256") or {}).get("um.py", ""))[:16] == ESP["candidato_sha16"], "o selo do Nos nao e' o da v412 candidata: o post so' nasce da v412 selada"
+@@ -24,3 +25,3 @@
+-    assert hd.get("verdict") == (ESP.get("vereditos_novos_v411") or {}).get(DL.FECHO_REGISTRO), "o veredito do registro h0dn_bg1_v411 != o de ESPERADOS"
+-    for k_ in (DL.FECHO_REGISTRO, DL.CUNHAGENS_REGISTRO, DL.KH_REGISTRO) + tuple(DL.REGISTROS_FUNCAO_V410):
+-        assert (core.get(k_) or {}).get("all_verified") is True, "um registro da v411 (ou da v410, recriado) nao selou: o post nao diz isto (%s)" % k_
++    assert hd.get("verdict") == (ESP.get("vereditos_novos_v412") or {}).get(DL.FECHO_REGISTRO), "o veredito do registro h0dn_bg1_v411 != o de ESPERADOS"
++    for k_ in (DL.FECHO_REGISTRO, DL.CUNHAGENS_REGISTRO, DL.KH_REGISTRO) + tuple(DL.REGISTROS_FUNCAO_V411):
++        assert (core.get(k_) or {}).get("all_verified") is True, "um registro da v412 (ou da v411, recriado) nao selou: o post nao diz isto (%s)" % k_
+@@ -28 +29 @@
+-    assert el.get("n_theorems_clean") == el.get("n_theorems_expected") == ESP["escada_v410_e_v411"][0] == ESP["escada_v410_e_v411"][1], "a escada nao e' a da v410 (a v411 nao tem modulo novo)"
++    assert el.get("n_theorems_clean") == el.get("n_theorems_expected") == ESP["escada_v411_e_v412"][0] == ESP["escada_v411_e_v412"][1], "a escada nao e' a da v411 (a v412 nao tem modulo novo)"
+@@ -35 +36 @@
+-    txt = f"""TGL · a v411 do programa terminal, custodiada em {hoje}
++    txt = f"""TGL · a v412 do programa terminal, custodiada em {hoje}
+@@ -41 +42 @@
+-Kernel: nenhum módulo novo (o da v410); escada {el['n_theorems_clean']}/{el['n_theorems_expected']}, {format(n_decl, ',').replace(',', '.')} declarações auditadas, todas no trio de axiomas padrão do Lean, zero sorry; nenhuma chave antiga muda. P = nP segue como na v410: {DL.D10.FRASE_QUALIFICADOR_PT} (validade no kernel, não creditação). O sha256 do programa:
++Kernel: nenhum módulo novo (o da v411); escada {el['n_theorems_clean']}/{el['n_theorems_expected']}, {format(n_decl, ',').replace(',', '.')} declarações auditadas, todas no trio de axiomas padrão do Lean, zero sorry; nenhuma chave antiga muda. P = nP segue como na v411: {DL.D10.FRASE_QUALIFICADOR_PT} (validade no kernel, não creditação). O sha256 do programa:
+@@ -59,2 +60,2 @@
+-    import guarda_frases_v411 as GF  # noqa: E402
+-    p_ += [("guarda_frases_v411", x_) for x_ in GF.violacoes(txt_)]
++    import guarda_frases_v412 as GF  # noqa: E402
++    p_ += [("guarda_frases_v412", x_) for x_ in GF.violacoes(txt_)]
+@@ -66 +67 @@
+-    if any(t_ in txt_ for t_ in DL.TOKENS_PROIBIDOS_V411):
++    if any(t_ in txt_ for t_ in DL.TOKENS_PROIBIDOS_V412):
+@@ -73,2 +74,2 @@
+-    esp_p = argv[argv.index("--esp") + 1] if "--esp" in argv else os.path.join(PK, "ESPERADOS_v411.json")
+-    out = argv[argv.index("--saida") + 1] if "--saida" in argv else os.path.join(HERE, "CUSTODIA_v411_RASCUNHO.txt")
++    esp_p = argv[argv.index("--esp") + 1] if "--esp" in argv else os.path.join(PK, "ESPERADOS_v412.json")
++    out = argv[argv.index("--saida") + 1] if "--saida" in argv else os.path.join(HERE, "CUSTODIA_v412_RASCUNHO.txt")
+@@ -77,2 +78,2 @@
+-    if selo.get("um_version") != "v411" or str((selo.get("sha256") or {}).get("um.py", ""))[:16] != ESP["candidato_sha16"]:
+-        print("RECUSO: o selo do Nos nao e' o da v411 candidata (um_version %r): o post so' nasce da v411 selada" % selo.get("um_version")); return 2
++    if selo.get("um_version") != "v412" or str((selo.get("sha256") or {}).get("um.py", ""))[:16] != ESP["candidato_sha16"]:
++        print("RECUSO: o selo do Nos nao e' o da v412 candidata (um_version %r): o post so' nasce da v412 selada" % selo.get("um_version")); return 2
+@@ -83 +84 @@
+-    print("rascunho do post:", out, len(txt.encode("utf-8")), "B (NAO publicado; copiar para X_VITRINE\\CUSTODIA_v411.txt e' ato da gerencia)")
++    print("rascunho do post:", out, len(txt.encode("utf-8")), "B (NAO publicado; copiar para X_VITRINE\\CUSTODIA_v412.txt e' ato da gerencia)")

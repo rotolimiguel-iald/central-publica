@@ -1,0 +1,36 @@
+def _checagens_v412_do_artigo(tex_, txt_, lang_):
+    """(v412) a secao nova do artigo, “O que fica claro na v412”: as linhas de um._v412_secao_tex (que passam pela travessia da guarda de frases antes de sair: violacao e' ValueError), em ORDEM e contiguas, ANTES da secao da v411; iguais ao texto publico montado pela cadeia
+    (TEXTO_PUBLICO_v412.json, da pagina publica); o titulo e as subsecoes numeradas na ordem; a travessia refeita aqui (unidade por unidade: titulo, paragrafo, item, celula) sem violacao e com unidades examinadas; o verificador de historia de conversa linha a linha;
+    nenhum simbolo matematico em Unicode cru; o resumo traz o molde _V412_TOPO (igual ao texto ratificado derivado da v411 com SO' a troca de P = nP) e o paragrafo novo de P = nP, com a frase antiga fora. Cada contagem diz quantas unidades examinou; zero e' falha."""
+    sl_ = list(um._v412_secao_tex(lang_)); sec_ = "\n".join(sl_); tp_ = json.load(open(DL.TEXTO_PUBLICO_ARQ, encoding="utf-8"))
+    r11_ = um._v411_secao_tex(c, lang_, um._V411_TITULO_SECAO[lang_])
+
+    def _seq(ls_, ini_=0):   # (cada linha, em ORDEM, contigua: o artigo junta as linhas com uma linha em branco entre elas; devolve (inicio, fim) ou (-1, -1))
+        p0_, p_ = -1, ini_
+        for k_, l_ in enumerate(ls_):
+            j_ = tex_.find(l_, p_)
+            if j_ < 0 or (k_ and tex_[p_:j_].strip()):
+                return -1, -1
+            p0_ = j_ if k_ == 0 else p0_; p_ = j_ + len(l_)
+        return p0_, p_
+    i0_, f0_ = _seq(sl_)
+    nums_ = [(int(m_.group(1)), l_) for l_ in sl_ for m_ in [re.match(r"\\subsection\*\{(\d+)\. ", l_)] if m_]
+    pos_ = [tex_.find(l_) for _, l_ in nums_]
+    vh_ = _VH12.examinar([("%s%d" % (lang_, i_), l_) for i_, l_ in enumerate(sl_)])
+    trs_ = um._v412_travessia("artigo:" + lang_, sl_, "tex"); trp_ = um._v412_travessia("resumo:" + lang_, {lang_: [um._V412_TOPO["pnp"][lang_]]})
+    der_ = json.load(open(os.path.join(HERE, "TOPO_RATIFICADO_v412_DERIVADO.json"), encoding="utf-8"))
+    antiga_, nova_ = CM["resumo_troca_de_pnp"][lang_]["antiga"], CM["resumo_troca_de_pnp"][lang_]["nova"]
+    flat_ = re.sub(r"\s+", " ", txt_); marca_ = "classes do seu dicionário" if lang_ == "pt" else "classes of its dictionary"
+    # (o ponto mediano U+00B7 de n·ln 2 e' caractere de texto do pdflatex em utf8: compila; o criterio herdado so' veda o grego; aqui se veda o grego e os simbolos que o LaTeX so' aceita em modo matematico)
+    out_ = {"secao_contigua_e_em_ordem": i0_ >= 0, "secao_uma_vez_so": tex_.count(sl_[0]) == 1, "secao_antes_da_secao_da_v411": 0 <= i0_ < f0_ <= tex_.find(r11_[0]), "titulo_e_sumario": bool(sl_[0] == "\\section*{" + DL.TITULO_SECAO_V412[lang_] + "}" and ("\\addcontentsline{toc}{section}{" + DL.TITULO_SECAO_V412[lang_] + "}") in sl_),
+            "iguais_ao_texto_publico_da_cadeia": tp_["tex"][lang_] == sl_ and tp_["titulo"] == DL.TITULO_SECAO_V412, "secoes_numeradas_em_ordem": bool(len(nums_) >= 4 and [n_ for n_, _ in nums_] == list(range(1, len(nums_) + 1)) and pos_ == sorted(pos_) and min(pos_) >= 0),
+            "travessia_da_guarda_de_frases_v412_sem_violacao": bool(trs_["ok"] and not trs_["violacoes"] and trs_["n_unidades"] >= 20 and len(sl_) >= 20), "travessia_do_paragrafo_de_pnp_do_resumo_sem_violacao": bool(trp_["ok"] and not trp_["violacoes"] and trp_["n_unidades"] >= 1),
+            "sem_historia_de_conversa": bool(vh_["ok"] and vh_["n_unidades_examinadas"] == len(sl_) >= 20),
+            "sem_unicode_cru_de_simbolo_matematico": not [ch_ for ch_ in sec_ if 0x370 <= ord(ch_) <= 0x3FF or ch_ in "\u2265\u2264\u221a\u2212\u00bd\u00b2"], "sem_n_d": "n/d" not in sec_,
+            "molde_do_topo_igual_ao_ratificado_derivado_e_o_paragrafo_de_pnp_e_o_do_manifesto": bool(um._V412_TOPO[lang_] == der_[lang_] and um._V412_TOPO["pnp"][lang_] == nova_ and um._V412_TOPO["pnp"][lang_] in um._V412_TOPO[lang_]),
+            "resumo_com_o_paragrafo_vigente_de_pnp_e_sem_a_frase_antiga": bool(marca_ in flat_ and re.sub(r"\s+", " ", antiga_)[:70] not in flat_ and re.sub(r"\s+", " ", antiga_)[:70] not in re.sub(r"\s+", " ", tex_)),
+            "n_unidades_da_travessia_da_secao": trs_["n_unidades"], "n_linhas_da_secao": len(sl_), "violacoes": [list(v_[:3]) for v_ in trs_["violacoes"][:4]], "achados_de_historia": vh_["achados"][:4]}
+    out_["ok"] = bool(all(v_ is True for k_, v_ in out_.items() if k_ not in ("violacoes", "achados_de_historia", "n_unidades_da_travessia_da_secao", "n_linhas_da_secao")) and not trs_["violacoes"] and not vh_["achados"] and out_["n_unidades_da_travessia_da_secao"] > 0)
+    return out_
+
+

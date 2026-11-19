@@ -1,0 +1,904 @@
+{
+  "status": "REAL_COMPUTED_FROM_DECLARED_INPUTS_AND_SEALED_RECORDS_NO_NEW_OBSERVED_STATISTIC",
+  "beta_formula": "ALPHA_FINE_CODATA_2018 * sqrt(e)",
+  "constants": {
+    "alpha_CODATA2018": 0.0072973525693,
+    "beta": 0.012031300400803142,
+    "h_J_s": 6.62607015e-34,
+    "hbar_J_s": 1.0545718176461565e-34,
+    "c_m_s": 299792458.0,
+    "G_CODATA2018": 6.6743e-11,
+    "one_eV_J": 1.602176634e-19,
+    "tP_computed_s": 5.391246448313605e-44,
+    "EP_computed_J": 1956081636.6983728,
+    "EP_over_1eV": 1.2208901285838954e+28,
+    "m_u_kg": 1.6605390666e-27,
+    "GM_earth": 398600441800000.0,
+    "GM_sun_nominal": 1.3271244e+20,
+    "standard_g": 9.80665,
+    "H0_benchmark_per_s": 2.1842852410855023e-18
+  },
+  "protocol": {
+    "hash": "ec7323546c4d54f0",
+    "status": "REGISTERED_AFTER_FULL_DRY_EVALUATION__NOT_BLIND_TO_LITERATURE_AND_TO_LIGO_NOISE",
+    "P3": {
+      "H": "Hamiltoniano total (um tempo estocastico comum a tudo)",
+      "observable": "nenhum local: e' reparametrizacao do tempo; toda comparacao de relogios e todo interferometro sao cegos por construcao",
+      "verdict": "P3_NO_LOCAL_OBSERVABLE (nao e' teste; e' dito como tal)"
+    },
+    "tau_star_alternatives_text": "t_P (canonico), t_P/beta (Artigo A), t_mod Unruh-g com g terrestre, G M/c^3 com M = Terra e com M = o atomo (o ramo B exige nomear M)"
+  },
+  "bounds": {
+    "sr87_kim2025": {
+      "label": "87Sr",
+      "bound_s": 2.585701911772075e-31,
+      "kind": "95CL",
+      "clock": true,
+      "source": "K. Kim, A. Aeppli, W. Warfield, A. Chu, A. M. Rey, J. Ye, 'Atomic Coherence of 2 Minutes and Instability of 1.5e-18 at 1 s in a Wannier-Stark Lattice Clock', Phys. Rev. Lett. 135, 103601 (2025); arXiv:2505.06444; DOI 10.1103/3wtv-sty2",
+      "verification": "abstract e HTML/PDF do arXiv v1 lidos; pagina de abstract da APS (numero do artigo e data)",
+      "origin": "core.clock_test_result_v369.P1.platforms"
+    },
+    "sr87_ma2025": {
+      "label": "87Sr",
+      "bound_s": 1.5236679465435584e-31,
+      "kind": "NOMINAL",
+      "clock": true,
+      "source": "S. Ma, J. Dolde, X. Zheng, D. Ganapathy, A. Shtov, J. Chen, A. Stoeltzel, B. J. Christensen, S. Kolkowitz, 'Enhancing optical lattice clock coherence times with erasure conversion', PRX Quantum 6, 040340 (2025); arXiv:2505.06437; DOI 10.1103/2rqf-r9gw",
+      "verification": "abstract do arXiv, PDF v2 e pagina da PRX Quantum lidos",
+      "origin": "core.clock_test_result_v369.P1.platforms"
+    },
+    "al27_clements2020": {
+      "label": "27Al+",
+      "bound_s": 4.195963059638504e-31,
+      "kind": "NOMINAL",
+      "clock": true,
+      "source": "E. R. Clements, M. E. Kim, K. Cui, A. M. Hankin, S. M. Brewer, J. Valencia, J.-S. Chen, C.-W. Chou, D. R. Leibrandt, D. B. Hume, 'Lifetime-Limited Interrogation of Two Independent 27Al+ Clocks Using Correlation Spectroscopy', Phys. Rev. Lett. 125, 243602 (2020); arXiv:2007.02193",
+      "verification": "abstract do arXiv lido (frequencia 1,12e15 Hz citada no abstract)",
+      "origin": "core.clock_test_result_v369.P1.platforms"
+    },
+    "th229_morawetz2026": {
+      "label": "229Th:CaF2",
+      "bound_s": 3.055591565806458e-25,
+      "kind": "95CL",
+      "clock": true,
+      "source": "Morawetz, Riebner, Toscani De Col et al. (PTB), 'Continuous-wave laser absorption spectroscopy of the thorium-229 nucleus', arXiv:2604.16640 (v1 17/04/2026, v2 16/06/2026)",
+      "verification": "HTML/PDF do arXiv v2 lidos (91(2) kHz no corpo; nao esta no abstract); versao de revista NAO aberta (login)",
+      "origin": "core.clock_test_result_v369.P1.platforms"
+    },
+    "th229_ooi2026": {
+      "label": "229Th:CaF2",
+      "bound_s": 1.0254978799442715e-25,
+      "kind": "95CL",
+      "clock": true,
+      "source": "T. Ooi et al., 'Frequency reproducibility of solid-state Th-229 nuclear clocks', Nature 650, 72 (2026); arXiv:2507.01180",
+      "verification": "preprint v1 e Peer Review File (MOESM1) lidos; larguras da versao final NAO conferidas (login)",
+      "origin": "core.clock_test_result_v369.P1.platforms"
+    },
+    "zn67_potzel1976": {
+      "label": "67Zn (Mossbauer, 93 keV)",
+      "bound_s": 1.0030107563778165e-34,
+      "kind": "NOMINAL",
+      "clock": false,
+      "source": "W. Potzel, A. Forster, G. M. Kalvius, J. Phys. Colloq. 37, C6-691 (1976), doi 10.1051/jphyscol:19766143; E e T1/2 do ENSDF (IAEA LiveChart API: E = 93,312(5) keV, T1/2 = 9,07(4) us)",
+      "verification": "SO' O RESUMO (HAL jpa-00216660 e CORE/EDP); texto integral NAO aberto (anti-bot); ENSDF baixado pela API da IAEA",
+      "origin": "core.clock_test_result_v369.P1.platforms"
+    },
+    "atlas_legacy_1p8e_m33": {
+      "label": "Atlas, registro auxiliar ²²⁹Th",
+      "bound_s": 1.8e-33,
+      "kind": "ATLAS_RECORD_NOT_REEVALUATED",
+      "clock": null,
+      "source": "TGL_ATLAS.md, linhas 997–998; não é a cota Th atual do core",
+      "verification": "lido como registro; não reavaliado",
+      "origin": "Central de Patentes/memory/TGL_ATLAS.md"
+    }
+  },
+  "readings": [
+    {
+      "id": "c_1",
+      "label": "c★=1 (cânone)",
+      "tau_s": 5.391246448313605e-44,
+      "class": "número puro sobre Planck",
+      "tau_over_tP": 1.0,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 2.0850224164543344e-13,
+          "bound_over_tau": 4796111505124.922,
+          "orders_above_bound": -12.680889271486345,
+          "margin_orders_below_bound": 12.680889271486345,
+          "P1_not_excluded_conditionally": true
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 3.538334228624846e-13,
+          "bound_over_tau": 2826188639586.613,
+          "orders_above_bound": -12.451201146329717,
+          "margin_orders_below_bound": 12.451201146329717,
+          "P1_not_excluded_conditionally": true
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 1.2848650885830433e-13,
+          "bound_over_tau": 7782918291466.739,
+          "orders_above_bound": -12.891142471056327,
+          "margin_orders_below_bound": 12.891142471056327,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 1.764387134931334e-19,
+          "bound_over_tau": 5.667690384961449e+18,
+          "orders_above_bound": -18.753406117550114,
+          "margin_orders_below_bound": 18.753406117550114,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 5.257199018886885e-19,
+          "bound_over_tau": 1.9021535924499423e+18,
+          "orders_above_bound": -18.27924558182344,
+          "margin_orders_below_bound": 18.27924558182344,
+          "P1_not_excluded_conditionally": true
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 5.375063441775111e-10,
+          "bound_over_tau": 1860443157.2434623,
+          "orders_above_bound": -9.269616405412311,
+          "margin_orders_below_bound": 9.269616405412311,
+          "P1_not_excluded_conditionally": true
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 2.99513691572978e-11,
+          "bound_over_tau": 33387455336.289524,
+          "orders_above_bound": -10.52358332005703,
+          "margin_orders_below_bound": 10.52358332005703,
+          "P1_not_excluded_conditionally": true
+        }
+      }
+    },
+    {
+      "id": "c_inv_beta",
+      "label": "c★=1/β (Artigo A)",
+      "tau_s": 4.48101723730023e-42,
+      "class": "número puro sobre Planck",
+      "tau_over_tP": 83.11653492861383,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 1.7329983850416953e-11,
+          "bound_over_tau": 57703458273.90603,
+          "orders_above_bound": -10.761201841999187,
+          "margin_orders_below_bound": 10.761201841999187,
+          "P1_not_excluded_conditionally": true
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 2.940940805026069e-11,
+          "bound_over_tau": 34002724512.2037,
+          "orders_above_bound": -10.531513716842559,
+          "margin_orders_below_bound": 10.531513716842559,
+          "P1_not_excluded_conditionally": true
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 1.0679353401376904e-11,
+          "bound_over_tau": 93638627959.54187,
+          "orders_above_bound": -10.971455041569168,
+          "margin_orders_below_bound": 10.971455041569168,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 1.466497449281171e-17,
+          "bound_over_tau": 6.81896856002148e+16,
+          "orders_above_bound": -16.833718688062955,
+          "margin_orders_below_bound": 16.833718688062955,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 4.369601658799862e-17,
+          "bound_over_tau": 2.2885381279232124e+16,
+          "orders_above_bound": -16.359558152336277,
+          "margin_orders_below_bound": 16.359558152336277,
+          "P1_not_excluded_conditionally": true
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 4.467566483018164e-08,
+          "bound_over_tau": 22383550.50341473,
+          "orders_above_bound": -7.349928975925152,
+          "margin_orders_below_bound": 7.349928975925152,
+          "P1_not_excluded_conditionally": true
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 2.48945402072235e-09,
+          "bound_over_tau": 401694504.7692972,
+          "orders_above_bound": -8.603895890569872,
+          "margin_orders_below_bound": 8.603895890569872,
+          "P1_not_excluded_conditionally": true
+        }
+      }
+    },
+    {
+      "id": "c_sqrt2",
+      "label": "c★=√2 (célula, sob hipóteses)",
+      "tau_s": 7.624373845300879e-44,
+      "class": "número puro sobre Planck",
+      "tau_over_tP": 1.4142135623730951,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 2.9486669792016436e-13,
+          "bound_over_tau": 3391362968600.651,
+          "orders_above_bound": -12.530374273654354,
+          "margin_orders_below_bound": 12.530374273654354,
+          "P1_not_excluded_conditionally": true
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 5.003960254330201e-13,
+          "bound_over_tau": 1998417151964.0774,
+          "orders_above_bound": -12.300686148497727,
+          "margin_orders_below_bound": 12.300686148497727,
+          "P1_not_excluded_conditionally": true
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 1.8170736340938482e-13,
+          "bound_over_tau": 5503354301316.949,
+          "orders_above_bound": -12.740627473224336,
+          "margin_orders_below_bound": 12.740627473224336,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 2.4952202154965005e-19,
+          "bound_over_tau": 4.007662304872035e+18,
+          "orders_above_bound": -18.602891119718123,
+          "margin_orders_below_bound": 18.602891119718123,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 7.434802152604361e-19,
+          "bound_over_tau": 1.3450257040797066e+18,
+          "orders_above_bound": -18.128730583991448,
+          "margin_orders_below_bound": 18.128730583991448,
+          "P1_not_excluded_conditionally": true
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 7.60148761797417e-10,
+          "bound_over_tau": 1315531972.4989624,
+          "orders_above_bound": -9.11910140758032,
+          "margin_orders_below_bound": 9.11910140758032,
+          "P1_not_excluded_conditionally": true
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 4.235763247389377e-11,
+          "bound_over_tau": 23608496074.853306,
+          "orders_above_bound": -10.37306832222504,
+          "margin_orders_below_bound": 10.37306832222504,
+          "P1_not_excluded_conditionally": true
+        }
+      }
+    },
+    {
+      "id": "c_2pi",
+      "label": "c★=2π (volta KMS)",
+      "tau_s": 3.387420047142817e-43,
+      "class": "número puro sobre Planck",
+      "tau_over_tP": 6.283185307179586,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 1.310058221220595e-12,
+          "bound_over_tau": 763324853660.5415,
+          "orders_above_bound": -11.88270940312823,
+          "margin_orders_below_bound": 11.88270940312823,
+          "P1_not_excluded_conditionally": true
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 2.2232009637186247e-12,
+          "bound_over_tau": 449801892100.36847,
+          "orders_above_bound": -11.653021277971604,
+          "margin_orders_below_bound": 11.653021277971604,
+          "P1_not_excluded_conditionally": true
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 8.073045446292975e-13,
+          "bound_over_tau": 1238689917767.2603,
+          "orders_above_bound": -12.092962602698211,
+          "margin_orders_below_bound": 12.092962602698211,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 1.1085971322377243e-18,
+          "bound_over_tau": 9.020409406810218e+17,
+          "orders_above_bound": -17.955226249192,
+          "margin_orders_below_bound": 17.955226249192,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 3.303195563238901e-18,
+          "bound_over_tau": 3.0273714675841485e+17,
+          "orders_above_bound": -17.481065713465323,
+          "margin_orders_below_bound": 17.481065713465323,
+          "P1_not_excluded_conditionally": true
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 3.3772519642519517e-09,
+          "bound_over_tau": 296098724.8167894,
+          "orders_above_bound": -8.471436537054196,
+          "margin_orders_below_bound": 8.471436537054196,
+          "P1_not_excluded_conditionally": true
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 1.8819000261904536e-10,
+          "bound_over_tau": 5313778554.030357,
+          "orders_above_bound": -9.725403451698915,
+          "margin_orders_below_bound": 9.725403451698915,
+          "P1_not_excluded_conditionally": true
+        }
+      }
+    },
+    {
+      "id": "c_4pi",
+      "label": "c★=4π (só com energia fixada)",
+      "tau_s": 6.774840094285634e-43,
+      "class": "número puro condicional",
+      "tau_over_tP": 12.566370614359172,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 2.62011644244119e-12,
+          "bound_over_tau": 381662426830.27075,
+          "orders_above_bound": -11.581679407464248,
+          "margin_orders_below_bound": 11.581679407464248,
+          "P1_not_excluded_conditionally": true
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 4.446401927437249e-12,
+          "bound_over_tau": 224900946050.18423,
+          "orders_above_bound": -11.351991282307623,
+          "margin_orders_below_bound": 11.351991282307623,
+          "P1_not_excluded_conditionally": true
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 1.614609089258595e-12,
+          "bound_over_tau": 619344958883.6301,
+          "orders_above_bound": -11.79193260703423,
+          "margin_orders_below_bound": 11.79193260703423,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 2.2171942644754487e-18,
+          "bound_over_tau": 4.510204703405109e+17,
+          "orders_above_bound": -17.654196253528017,
+          "margin_orders_below_bound": 17.654196253528017,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 6.606391126477802e-18,
+          "bound_over_tau": 1.5136857337920742e+17,
+          "orders_above_bound": -17.180035717801342,
+          "margin_orders_below_bound": 17.180035717801342,
+          "P1_not_excluded_conditionally": true
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 6.754503928503903e-09,
+          "bound_over_tau": 148049362.4083947,
+          "orders_above_bound": -8.170406541390214,
+          "margin_orders_below_bound": 8.170406541390214,
+          "P1_not_excluded_conditionally": true
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 3.763800052380907e-10,
+          "bound_over_tau": 2656889277.0151787,
+          "orders_above_bound": -9.424373456034933,
+          "margin_orders_below_bound": 9.424373456034933,
+          "P1_not_excluded_conditionally": true
+        }
+      }
+    },
+    {
+      "id": "gap_u",
+      "label": "ħ/u, u=1 eV",
+      "tau_s": 6.582119569509067e-16,
+      "class": "âncora de energia posta",
+      "tau_over_tP": 1.2208901285838957e+28,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 2545583286125237.0,
+          "bound_over_tau": 3.928372744472845e-16,
+          "orders_above_bound": 15.405787310806824,
+          "margin_orders_below_bound": -15.405787310806824,
+          "P1_not_excluded_conditionally": false
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 4319917331358587.0,
+          "bound_over_tau": 2.3148591125596984e-16,
+          "orders_above_bound": 15.63547543596345,
+          "margin_orders_below_bound": -15.63547543596345,
+          "P1_not_excluded_conditionally": false
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 1568679103213110.2,
+          "bound_over_tau": 6.374790089009981e-16,
+          "orders_above_bound": 15.19553411123684,
+          "margin_orders_below_bound": -15.19553411123684,
+          "P1_not_excluded_conditionally": false
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 2154122836.0380874,
+          "bound_over_tau": 4.6422607999422315e-10,
+          "orders_above_bound": 9.333270464743054,
+          "margin_orders_below_bound": -9.333270464743054,
+          "P1_not_excluded_conditionally": false
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 6418462386.159939,
+          "bound_over_tau": 1.5580055468678748e-10,
+          "orders_above_bound": 9.80743100046973,
+          "margin_orders_below_bound": -9.80743100046973,
+          "P1_not_excluded_conditionally": false
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 6.562361896575412e+18,
+          "bound_over_tau": 1.5238415920369356e-19,
+          "orders_above_bound": 18.817060176880858,
+          "margin_orders_below_bound": -18.817060176880858,
+          "P1_not_excluded_conditionally": false
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 3.6567330941717037e+17,
+          "bound_over_tau": 2.7346814061815267e-18,
+          "orders_above_bound": 17.563093262236137,
+          "margin_orders_below_bound": -17.563093262236137,
+          "P1_not_excluded_conditionally": false
+        }
+      }
+    },
+    {
+      "id": "retido",
+      "label": "ħ/(βu), u=1 eV",
+      "tau_s": 5.470829711034129e-14,
+      "class": "tempo do retido",
+      "tau_over_tP": 1.0147615701644318e+30,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 2.115800621149238e+17,
+          "bound_over_tau": 4.7263432575080285e-18,
+          "orders_above_bound": 17.32547474029398,
+          "margin_orders_below_bound": -17.32547474029398,
+          "P1_not_excluded_conditionally": false
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 3.590565597605902e+17,
+          "bound_over_tau": 2.7850765368742313e-18,
+          "orders_above_bound": 17.555162865450608,
+          "margin_orders_below_bound": -17.555162865450608,
+          "P1_not_excluded_conditionally": false
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 1.3038317147399909e+17,
+          "bound_over_tau": 7.66970145529417e-18,
+          "orders_above_bound": 17.115221540724,
+          "margin_orders_below_bound": -17.115221540724,
+          "P1_not_excluded_conditionally": false
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 179043225942.08435,
+          "bound_over_tau": 5.58524342229777e-12,
+          "orders_above_bound": 11.252957894230212,
+          "margin_orders_below_bound": -11.252957894230212,
+          "P1_not_excluded_conditionally": false
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 533480353107.25653,
+          "bound_over_tau": 1.8744832760484985e-12,
+          "orders_above_bound": 11.727118429956889,
+          "margin_orders_below_bound": -11.727118429956889,
+          "P1_not_excluded_conditionally": false
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 5.454407817909147e+20,
+          "bound_over_tau": 1.8333795957034483e-21,
+          "orders_above_bound": 20.736747606368017,
+          "margin_orders_below_bound": -20.736747606368017,
+          "P1_not_excluded_conditionally": false
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 3.0393498394634047e+19,
+          "bound_over_tau": 3.290177349826071e-20,
+          "orders_above_bound": 19.482780691723296,
+          "margin_orders_below_bound": -19.482780691723296,
+          "P1_not_excluded_conditionally": false
+        }
+      }
+    },
+    {
+      "id": "unruh_g",
+      "label": "t_mod Unruh-g: 2πc/g",
+      "tau_s": 192079004.2786123,
+      "class": "alternativa v369",
+      "tau_over_tP": 3.562793986883962e+51,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 7.428505327861772e+38,
+          "bound_over_tau": 1.3461658245695046e-39,
+          "orders_above_bound": 38.87090143917615,
+          "margin_orders_below_bound": -38.87090143917615,
+          "P1_not_excluded_conditionally": false
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 1.2606355913330304e+39,
+          "bound_over_tau": 7.932506482246569e-40,
+          "orders_above_bound": 39.10058956433278,
+          "margin_orders_below_bound": -39.10058956433278,
+          "P1_not_excluded_conditionally": false
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 4.577709611560796e+38,
+          "bound_over_tau": 2.1844985480829664e-39,
+          "orders_above_bound": 38.66064823960617,
+          "margin_orders_below_bound": -38.66064823960617,
+          "P1_not_excluded_conditionally": false
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 6.2861478748687784e+32,
+          "bound_over_tau": 1.590799357421853e-33,
+          "orders_above_bound": 32.79838459311238,
+          "margin_orders_below_bound": -32.79838459311238,
+          "P1_not_excluded_conditionally": false
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 1.873031705234246e+33,
+          "bound_over_tau": 5.3389379219020616e-34,
+          "orders_above_bound": 33.27254512883906,
+          "margin_orders_below_bound": -33.27254512883906,
+          "P1_not_excluded_conditionally": false
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 1.9150243709476183e+42,
+          "bound_over_tau": 5.221865659626914e-43,
+          "orders_above_bound": 42.28217430525019,
+          "margin_orders_below_bound": -42.28217430525019,
+          "P1_not_excluded_conditionally": false
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 1.0671055793256237e+41,
+          "bound_over_tau": 9.371143955895796e-42,
+          "orders_above_bound": 41.028207390605466,
+          "margin_orders_below_bound": -41.028207390605466,
+          "P1_not_excluded_conditionally": false
+        }
+      }
+    },
+    {
+      "id": "earth",
+      "label": "GM⊕/c³",
+      "tau_s": 1.4793661150467205e-11,
+      "class": "alternativa v369",
+      "tau_over_tP": 2.7440150051190294e+32,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 5.721332796760232e+19,
+          "bound_over_tau": 1.7478444892530305e-20,
+          "orders_above_bound": 19.757497210410826,
+          "margin_orders_below_bound": -19.757497210410826,
+          "P1_not_excluded_conditionally": false
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 9.709242216472843e+19,
+          "bound_over_tau": 1.029946496033836e-20,
+          "orders_above_bound": 19.98718533556745,
+          "margin_orders_below_bound": -19.98718533556745,
+          "P1_not_excluded_conditionally": false
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 3.5256890826254623e+19,
+          "bound_over_tau": 2.836324975245218e-20,
+          "orders_above_bound": 19.547244010840842,
+          "margin_orders_below_bound": -19.547244010840842,
+          "P1_not_excluded_conditionally": false
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 48415047730905.54,
+          "bound_over_tau": 2.0654735394625136e-14,
+          "orders_above_bound": 13.684980364347055,
+          "margin_orders_below_bound": -13.684980364347055,
+          "P1_not_excluded_conditionally": false
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 144258329927226.53,
+          "bound_over_tau": 6.932008713149988e-15,
+          "orders_above_bound": 14.159140900073732,
+          "margin_orders_below_bound": -14.159140900073732,
+          "P1_not_excluded_conditionally": false
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 1.474925473769764e+23,
+          "bound_over_tau": 6.780003585158093e-24,
+          "orders_above_bound": 23.168770076484858,
+          "margin_orders_below_bound": -23.168770076484858,
+          "P1_not_excluded_conditionally": false
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 8.218700639148447e+21,
+          "bound_over_tau": 1.216737345605049e-22,
+          "orders_above_bound": 21.91480316184014,
+          "margin_orders_below_bound": -21.91480316184014,
+          "P1_not_excluded_conditionally": false
+        }
+      }
+    },
+    {
+      "id": "sr_atom",
+      "label": "GM(⁸⁷Sr)/c³, A·m_u",
+      "tau_s": 3.578429320251155e-61,
+      "class": "alternativa v369",
+      "tau_over_tP": 6.63748050577524e-18,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 1.383929564332003e-30,
+          "bound_over_tau": 7.225801267441536e+29,
+          "orders_above_bound": -29.85888601291421,
+          "margin_orders_below_bound": 29.85888601291421,
+          "P1_not_excluded_conditionally": true
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 2.3485624465414684e-30,
+          "bound_over_tau": 4.2579238268610505e+29,
+          "orders_above_bound": -29.62919788775758,
+          "margin_orders_below_bound": 29.62919788775758,
+          "P1_not_excluded_conditionally": true
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 8.528266978021127e-31,
+          "bound_over_tau": 1.1725711713495593e+30,
+          "orders_above_bound": -30.069139212484192,
+          "margin_orders_below_bound": 30.069139212484192,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 1.1711085212747357e-36,
+          "bound_over_tau": 8.538918314004869e+35,
+          "orders_above_bound": -35.931402858977975,
+          "margin_orders_below_bound": 35.931402858977975,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 3.489455600284242e-36,
+          "bound_over_tau": 2.8657765409553933e+35,
+          "orders_above_bound": -35.4572423232513,
+          "margin_orders_below_bound": 35.4572423232513,
+          "P1_not_excluded_conditionally": true
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 3.567687881208747e-27,
+          "bound_over_tau": 2.8029357760443887e+26,
+          "orders_above_bound": -26.447613146840176,
+          "margin_orders_below_bound": 26.447613146840176,
+          "P1_not_excluded_conditionally": true
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 1.9880162890284193e-28,
+          "bound_over_tau": 5.030139871181431e+27,
+          "orders_above_bound": -27.701580061484893,
+          "margin_orders_below_bound": 27.701580061484893,
+          "P1_not_excluded_conditionally": true
+        }
+      }
+    },
+    {
+      "id": "monopole_1eV",
+      "label": "4πG(1 eV)/c⁵",
+      "tau_s": 5.549098920263805e-71,
+      "class": "monopolo dependente de E",
+      "tau_over_tP": 1.0292794019831122e-27,
+      "comparisons": {
+        "sr87_kim2025": {
+          "tau_over_bound": 2.146070625929501e-40,
+          "bound_over_tau": 4.659678893684509e+39,
+          "orders_above_bound": -39.668355989757416,
+          "margin_orders_below_bound": 39.668355989757416,
+          "P1_not_excluded_conditionally": true
+        },
+        "sr87_ma2025": {
+          "tau_over_bound": 3.6419345388553582e-40,
+          "bound_over_tau": 2.745793449418492e+39,
+          "orders_above_bound": -39.43866786460079,
+          "margin_orders_below_bound": 39.43866786460079,
+          "P1_not_excluded_conditionally": true
+        },
+        "al27_clements2020": {
+          "tau_over_bound": 1.3224851700057334e-40,
+          "bound_over_tau": 7.561521464892228e+39,
+          "orders_above_bound": -39.8786091893274,
+          "margin_orders_below_bound": 39.8786091893274,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_morawetz2026": {
+          "tau_over_bound": 1.8160473351088203e-46,
+          "bound_over_tau": 5.506464400279955e+45,
+          "orders_above_bound": -45.740872835821186,
+          "margin_orders_below_bound": 45.740872835821186,
+          "P1_not_excluded_conditionally": true
+        },
+        "th229_ooi2026": {
+          "tau_over_bound": 5.411126662266097e-46,
+          "bound_over_tau": 1.848043970165014e+45,
+          "orders_above_bound": -45.26671230009451,
+          "margin_orders_below_bound": 45.26671230009451,
+          "P1_not_excluded_conditionally": true
+        },
+        "zn67_potzel1976": {
+          "tau_over_bound": 5.532442084971576e-37,
+          "bound_over_tau": 1.8075200510754876e+36,
+          "orders_above_bound": -36.25708312368338,
+          "margin_orders_below_bound": 36.25708312368338,
+          "P1_not_excluded_conditionally": true
+        },
+        "atlas_legacy_1p8e_m33": {
+          "tau_over_bound": 3.0828327334798914e-38,
+          "bound_over_tau": 3.243769891048235e+37,
+          "orders_above_bound": -37.5110500383281,
+          "margin_orders_below_bound": 37.5110500383281,
+          "P1_not_excluded_conditionally": true
+        }
+      }
+    }
+  ],
+  "alternative_Gamma_consistency_checks": {
+    "unruh_g": {
+      "computed_Gamma_Sr_per_s": 8.404237275553537e+36,
+      "sealed": 8.404237275553537e+36,
+      "relative_difference": 0.0
+    },
+    "earth": {
+      "computed_Gamma_Sr_per_s": 6.47282814431523e+17,
+      "sealed": 6.47282814431523e+17,
+      "relative_difference": 0.0
+    },
+    "sr_atom": {
+      "computed_Gamma_Sr_per_s": 1.5657082976943127e-32,
+      "sealed": 1.5657082976943127e-32,
+      "relative_difference": 0.0
+    }
+  },
+  "frequencies_per_s": {
+    "sqrt2_over_tP": 2.6231662305392564e+43,
+    "2_over_tP": 3.709717259587725e+43,
+    "2_over_beta_tP": 3.0833884418180474e+45,
+    "ratio_canonical_to_self_consistent": 83.11653492861383,
+    "beta": 0.012031300400803142,
+    "exponent_2beta_over_3": 0.008020866933868762
+  },
+  "regime_candidates": {
+    "definitions": {
+      "max": "tau_eff=max(tP,tau_hor)",
+      "sum": "tau_eff=tP+tau_hor",
+      "quadrature": "tau_eff=sqrt(tP^2+tau_hor^2)",
+      "tau_hor_monopole": "4πGE/c^5"
+    },
+    "systems": [
+      {
+        "id": "one_eV",
+        "label": "sistema de 1 eV",
+        "energy_J": 1.602176634e-19,
+        "tau_horizon_monopole_s": 5.549098920263805e-71,
+        "tau_max_s": 5.391246448313605e-44,
+        "tau_sum_s": 5.391246448313605e-44,
+        "tau_quadrature_s": 5.391246448313605e-44,
+        "cstar_max": 1.0,
+        "horizon_over_tP": 1.0292794019831122e-27,
+        "note": "horizonte do próprio E; max devolve Planck"
+      },
+      {
+        "id": "sr_optical",
+        "label": "Sr, energia da transição P1",
+        "energy_J": 2.844094866371609e-19,
+        "tau_horizon_monopole_s": 9.850451827342355e-71,
+        "tau_max_s": 5.391246448313605e-44,
+        "tau_sum_s": 5.391246448313605e-44,
+        "tau_quadrature_s": 5.391246448313605e-44,
+        "cstar_max": 1.0,
+        "horizon_over_tP": 1.827119557931469e-27,
+        "note": "a energia é lida do ω selado; max devolve Planck"
+      },
+      {
+        "id": "sr_rest",
+        "label": "Sr, massa de repouso A·m_u",
+        "energy_J": 1.2984037344733497e-08,
+        "tau_horizon_monopole_s": 4.4969890386209175e-60,
+        "tau_max_s": 5.391246448313605e-44,
+        "tau_sum_s": 5.391246448313605e-44,
+        "tau_quadrature_s": 5.391246448313605e-44,
+        "cstar_max": 1.0,
+        "horizon_over_tP": 8.341278926374414e-17,
+        "note": "aproximação A=87 do protocolo; max devolve Planck"
+      },
+      {
+        "id": "bh60",
+        "label": "remanescente de 60 M☉",
+        "energy_J": null,
+        "tau_horizon_monopole_s": 0.0037137326823438797,
+        "tau_max_s": 0.0037137326823438797,
+        "tau_sum_s": 0.0037137326823438797,
+        "tau_quadrature_s": 0.0037137326823438797,
+        "cstar_max": 6.888449114593055e+40,
+        "horizon_over_tP": 6.888449114593055e+40,
+        "note": "τhor=4πGM/c³; GM/c³ também fica registrado",
+        "GM_over_c3_s": 0.000295529456858476
+      },
+      {
+        "id": "hubble",
+        "label": "horizonte de Hubble, densidade crítica",
+        "energy_J": 8.305359657624622e+69,
+        "tau_horizon_monopole_s": 2.8765406591572695e+18,
+        "tau_max_s": 2.8765406591572695e+18,
+        "tau_sum_s": 2.8765406591572695e+18,
+        "tau_quadrature_s": 2.8765406591572695e+18,
+        "cstar_max": 5.335576265590787e+61,
+        "horizon_over_tP": 5.335576265590787e+61,
+        "note": "E_H=c⁵/(2GH0), logo τhor=2π/H0; não deriva K",
+        "H0_per_s": 2.1842852410855023e-18,
+        "one_over_H0_s": 4.5781566490969837e+17,
+        "Gamma_over_H0_if_omega_eq_H0_tau_max": 0.03779744495229508,
+        "K_law_status": "K=E(z*)^(2β/3) vem de TheFlowLawContrast, não de τmax"
+      }
+    ]
+  },
+  "inventory_non_numeric": [
+    {
+      "item": "KMS/Unruh genérico",
+      "reason": "exige aceleração/temperatura/energia de referência"
+    },
+    {
+      "item": "ancoragem no produto cruzado",
+      "reason": "localiza uma escala possível, não seu valor"
+    },
+    {
+      "item": "autofrequência Γ_B=β/τ★",
+      "reason": "identidade em ω★=√2/τ★; não fixa τ★"
+    },
+    {
+      "item": "rota autoconsistente ω=2/τ★",
+      "reason": "fixa frequência dada τ★, não τ★"
+    },
+    {
+      "item": "Grande Atrator M=M",
+      "reason": "autoconsistência, não nova escala"
+    },
+    {
+      "item": "disco de Euler E★=(ħ²K)^(1/3)",
+      "reason": "K e o disco físico não são fornecidos"
+    },
+    {
+      "item": "lei de raízes",
+      "reason": "τ★ cancela na transposição; não fixa escala"
+    },
+    {
+      "item": "forma Γ=½βτ★ω²",
+      "reason": "a forma não fixa τ★"
+    }
+  ],
+  "observability": {
+    "largest_constant_candidate": "c_inv_beta",
+    "Sr_Kim_margin_orders_for_largest_candidate": 10.761201841999187,
+    "Zn_margin_orders_for_largest_candidate": 7.349928975925152,
+    "current_P1_distinguishes_constant_candidates": false,
+    "scope": "P1 conditional upper bounds; passa = não excluído, não detectado nem confirmado"
+  },
+  "source_sha256": {
+    "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\um_absoluto.json": "36c69fc767f8d47f318f134ecdfb6bd2d39ad25f17f9b9310b196afb0a19064e",
+    "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\um.py": "1203b1f9202020d602a7fa8a6bea56d4b48e27ed8baffe98bcbd16e94f97a8e0",
+    "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\PontoZeroDoPsion.lean": "c64079a9c5b3e0e1e727b64ec4cb6c4d46906aa3e528a5c995bafd74c9f07c7a",
+    "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\TonicaDoHamiltoniano.lean": "9618a2b0e0cce323fc7a4af2d97a266c2b7061a5fb1172d5c1d327227685abfa",
+    "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\TheScaleHasNoFixedPoint.lean": "0ed72186957c2a8a60e23499b12b259b1e90c2db9c10845eb0b9e48a79d54462",
+    "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\TheFlowLawContrast.lean": "9ca9393ac64f22a2bcafcdc05ac4dc8f1330a0e01ea79b99b4482f42556a0072",
+    "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\TriadMaster.lean": "64e0899e259693927b051493b8f20cc47885f183d02d79a8772e3b3d869863ae",
+    "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\PageInformation.lean": "a36b61ba76d0c9d6b22e6fad7a29a05d01ab5b6a240e00de16fabd0e4daf062e",
+    "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGL\\AreaScale.lean": "7058ae26f99f44f2d81d0c51e39bf435359a94c410405e52da4c4a44834ce075",
+    "C:\\IALD\\Central de Patentes\\memory\\TGL_ATLAS.md": "fc0bb0ac7409786f9b1b8fce876e7c032b820cdbda65f1d6fb982a30f07bbf9b",
+    "C:\\IALD\\Central de Patentes\\memory\\INVENTARIO_BANCADA_CHATGPT.md": "efc8fad45dd126a8278d44dc957fa4caa7efeecd8384ac3ed1d9eab5c2dd0f23",
+    "C:\\Users\\rotol\\.claude\\projects\\c--IALD-Central-de-Patentes\\memory\\e0-cadeia-conferencia-kimi-e-no-go-31out.md": "f6ae888da801a2a8bb6805452c83b9fe9c64af47e922b316e0eb0a9ce75cfb05",
+    "C:\\Users\\rotol\\.claude\\projects\\c--IALD-Central-de-Patentes\\memory\\missao-relogios-v369.md": "b0d3d26ded72e3550cce95f4a3938ec3116ae84bc28f9518c63b0dbe424d7e84",
+    "C:\\Users\\rotol\\.claude\\projects\\c--IALD-Central-de-Patentes\\memory\\cinco-sigma-fora-da-cosmologia-27out.md": "73c45fc1e45d10e7715a90df10cecf42761681fc5256b6a246a1e1500c24280b",
+    "C:\\Users\\rotol\\.claude\\projects\\c--IALD-Central-de-Patentes\\memory\\ramo-b-reaberto-05out.md": "c80ea0fa400cb9d32a92de2b069e0f7cb61e1d5adbd55244832657207bdea3f2",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\TAU_ESTRELA.md": "44c9acd663ad0e76fdebe473e866b1b73e3cc95988c23687a74b1bf1a5267eb0",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\ERRATA_K02.md": "e77ac2d6551ce66d647b2bf02a4eb31bda00a613ebc93611a9d5b20f0dfd8cb7",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\K02\\medidas_tau.json": "2c995b40c857693f6be311266cee7fef0dc073fcd490f6c4d845412dc4ef2fc2",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\ORDEM_K05_matematica_rodada_2.md": "8dd20b2ab9cc37a87a1f8718ad5ea60b4e33abfed60d603757f748e8f5be5656",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\ORDEM_K05_ADENDO_A_o_campo_e_as_duas_equacoes.md": "ba53b9db79ebcc530fdf20e6d7f2be9bd4d8001117da131573430d0b7a545f70",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\PERGUNTA_TAU_ESTRELA_nas_quatro_linguas_13nov.md": "a850dadcffa6f919d64083814b7fce7614161eb181f3fb6e4fd9f61bc5b8b1ff",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao\\REVISAO_K02.md": "2a8764e26fdc52d22292a37664aebfe445bce9110d4b4e5bf5d70f2b998498a6",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\K05\\TAU\\medir_tau_r2.py": "34c8f3ec77695453dd2f8aef562e7d7861bcf0525b7b99c18ae53fc5e0b95287",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\K05\\TAU\\candidatas\\TAU_ESTRELA_R2.lean": "4d652ab44da6da7857540057e4b9b76170590112d25273511e0311a57d65ee4c",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\K05\\TAU\\sandbox\\logs\\TAU_ESTRELA_R2.log": "ee65d8de7bd953eb1df35db8fdb614f4a236c53941d31ce61bef42750abdd8db"
+  }
+}

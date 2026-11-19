@@ -1,0 +1,811 @@
+{
+ "contrato": "PREPARACAO_v412_PRONTA_R7",
+ "quando": "2026-11-18T23:51:33",
+ "agente": "claude-construtor-v412 (Etapa 2 pelo contrato R11), a servico da gerencia c1",
+ "fechou": true,
+ "checagens_do_fecho": [
+  {
+   "checagem": "os quatro sha16 do inicio conferem (contrato R11, manifesto R12, ancoras R12, pagina R25)",
+   "ok": true,
+   "n_itens_examinados": 10,
+   "detalhe": null
+  },
+  {
+   "checagem": "o kernel da decima segunda lista (156 modulos) fechou (PRONTO_PARA_CANDIDATO_v412_R7.json)",
+   "ok": true,
+   "n_itens_examinados": 16,
+   "detalhe": {
+    "nome": "kernel_decima_lista",
+    "n_checagens": 16,
+    "n_ok": 16,
+    "n_itens_total": 73944,
+    "ok": true
+   }
+  },
+  {
+   "checagem": "o candidato em disco e' o do manifesto CANDIDATO_v412.json (sha16 e bytes lidos do arquivo)",
+   "ok": true,
+   "n_itens_examinados": 1,
+   "detalhe": [
+    "3e741dcaa58ef2b8",
+    "3e741dcaa58ef2b8"
+   ]
+  },
+  {
+   "checagem": "a escada do candidato e' a medida no kernel",
+   "ok": true,
+   "n_itens_examinados": 1,
+   "detalhe": [
+    [
+     12308,
+     17786
+    ],
+    [
+     12308,
+     17786
+    ]
+   ]
+  },
+  {
+   "checagem": "os cinco registros: recibo verde",
+   "ok": true,
+   "n_itens_examinados": 5,
+   "detalhe": {
+    "nome": "registros_v412",
+    "n_checagens": 37,
+    "n_ok": 37,
+    "n_itens_total": 11448,
+    "ok": true
+   }
+  },
+  {
+   "checagem": "as ancoras escolhidas: nenhum problema; nenhuma sem nome no relatorio de axiomas",
+   "ok": true,
+   "n_itens_examinados": 1096,
+   "detalhe": null
+  },
+  {
+   "checagem": "a guarda de frases: os controles todos como devem",
+   "ok": true,
+   "n_itens_examinados": 45,
+   "detalhe": null
+  },
+  {
+   "checagem": "a travessia sobre todo o texto novo: recibo verde",
+   "ok": true,
+   "n_itens_examinados": 2612,
+   "detalhe": {
+    "nome": "texto_novo_v412",
+    "n_checagens": 22,
+    "n_ok": 22,
+    "n_itens_total": 7935,
+    "ok": true
+   }
+  },
+  {
+   "checagem": "o verificador de historia sobre todo o texto novo: zero achado",
+   "ok": true,
+   "n_itens_examinados": 2612,
+   "detalhe": null
+  },
+  {
+   "checagem": "o portao do pilar no candidato",
+   "ok": true,
+   "n_itens_examinados": 8,
+   "detalhe": {
+    "nome": "portao_do_pilar_no_candidato",
+    "n_checagens": 8,
+    "n_ok": 8,
+    "n_itens_total": 47,
+    "ok": true
+   }
+  },
+  {
+   "checagem": "a guarda de material privado sobre os insumos pinados: limpo",
+   "ok": true,
+   "n_itens_examinados": 967,
+   "detalhe": []
+  },
+  {
+   "checagem": "o ensaio a seco sobre ESTE candidato: tudo passou",
+   "ok": true,
+   "n_itens_examinados": 500,
+   "detalhe": {
+    "veredito": "TUDO PASSOU",
+    "falhas": [],
+    "componentes_nao_verdes": {},
+    "candidato_do_ensaio": "3e741dcaa58ef2b8"
+   }
+  }
+ ],
+ "resumo_do_fecho": {
+  "nome": "fecho_R11",
+  "n_checagens": 12,
+  "n_ok": 12,
+  "n_itens_total": 7873,
+  "ok": true
+ },
+ "estado": "CANDIDATO REGERADO PELO CONTRATO R11 E ENSAIADO A SECO, NAO INSTALADO, RITO NAO RODADO; para aqui, para a revisao de terceiro; a Etapa 3 NAO foi comecada",
+ "contrato_seguido": {
+  "arquivo": "CONTRATO_v412_R11.md",
+  "sha16": "30fe6e3d93e9bc15",
+  "copia_congelada_igual": true,
+  "os_quatro_sha16_do_inicio": {
+   "CONTRATO_v412_R11.md": "30fe6e3d93e9bc15",
+   "o_que_fica_claro_REV25/O_QUE_FICA_CLARO_v412_R25.md": "ce313a4c57dec103",
+   "insumos/MANIFESTO_PEDRAS_v412_R12.json": "1028adf7293b432f",
+   "insumos/ANCORAS_PROPOSTAS_v412_R12.json": "31af18a86183002f",
+   "CONTRATO_v412_R7.md": "482955270f39acc5",
+   "o_que_fica_claro_REV21/O_QUE_FICA_CLARO_v412_R21.md": "629cd08a0f8f779e"
+  }
+ },
+ "candidato": {
+  "arquivo": "um_v412_candidato.py",
+  "caminho": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\um_v412_candidato.py",
+  "sha16": "3e741dcaa58ef2b8",
+  "bytes": 50167683,
+  "base_v411_sha16": "1203b1f9202020d6",
+  "manifesto": "CANDIDATO_v412.json",
+  "manifesto_sha16": "ce1c59fae4343e67",
+  "gerador": "gerar_candidato_v412_r7.py",
+  "n_patches": 45,
+  "patches": [
+   "W01_versao",
+   "K00_TGLExt.lean",
+   "K01_modulos_novos",
+   "V01_bandeiras",
+   "V02_escada",
+   "W06_topo_pt",
+   "W04_artigo_PT",
+   "W06_topo_en",
+   "W04_artigo_EN",
+   "W02_runtime_v412",
+   "C12b_h0dn_baseline_escada",
+   "C13_specs_v411_pisos",
+   "V03_ledger",
+   "N00_main_registros_v412",
+   "N02_selo"
+  ],
+  "n_literais_expected_ladder": 30,
+  "candidato_do_R4_guardado_fora_de_work": {
+   "arquivo": "um_v412_candidato.py",
+   "guarda": "C:\\t\\k412c\\guarda_R4_etapa2_20261118_181618\\um_v412_candidato.py",
+   "bytes": 48105875,
+   "sha16": "8b9a02e51650b11c",
+   "sha256": "8b9a02e51650b11ce1b2f88f74bd7f4547031a426a2992832a438c839f9055c4"
+  },
+  "guarda_do_R4": "C:\\t\\k412c\\guarda_R4_etapa2_20261118_181618"
+ },
+ "escada": {
+  "bandeiras": {
+   "antes_v411": 12308,
+   "depois_candidato": 17786,
+   "novas": 5478,
+   "kernel_medido": [
+    12308,
+    17786
+   ],
+   "igual_a_do_kernel": true
+  },
+  "teoremas_no_relatorio_de_axiomas": {
+   "antes_v411": 27381,
+   "depois": 32634
+  },
+  "declaracoes_no_relatorio_de_axiomas": {
+   "antes_v411": 34300,
+   "depois": 43468,
+   "fora_do_trio": 0
+  },
+  "do_candidato_do_R4": [
+   12308,
+   13260
+  ],
+  "ensaio": [
+   17786,
+   17786
+  ]
+ },
+ "kernel": {
+  "fecho": "PRONTO_PARA_CANDIDATO_v412_R7.json",
+  "fecho_sha16": "ab5dcc14b7b1367b",
+  "sandbox": "C:\\t\\k412c\\final",
+  "n_modulos": 156,
+  "por_frente": {
+   "A": 17,
+   "B": 27,
+   "C": 112
+  },
+  "por_autor": {
+   "Codex": 116,
+   "Kimi": 11,
+   "gerencia": 29
+  },
+  "lista": "duodecima (insumos\\MANIFESTO_PEDRAS_v412_R12.json)",
+  "manifesto_sha16": "1028adf7293b432f",
+  "resumo_das_checagens": {
+   "nome": "kernel_decima_lista",
+   "n_checagens": 16,
+   "n_ok": 16,
+   "n_itens_total": 73944,
+   "ok": true
+  },
+  "a_frio": true,
+  "linha_TOTAL": {
+   "decl": 43468,
+   "thm": 32634,
+   "fora_do_trio": 0
+  },
+  "delta_vs_v411": {
+   "decl": 9168,
+   "thm": 5253
+  },
+  "delta_vs_setima_lista": {
+   "decl": 7791,
+   "thm": 4115,
+   "bandeiras": 4526
+  },
+  "decima_lista_build_anterior": {
+   "nota": "o build da decima lista (153 modulos, a frio, saida zero) fica so' como informacao: nao e' o kernel do candidato",
+   "linha_TOTAL": {
+    "decl": 43455,
+    "thm": 32623,
+    "fora_do_trio": 0
+   },
+   "escada": [
+    12308,
+    17774
+   ],
+   "n_bandeiras": 5466,
+   "copia": "C:\\t\\k412c\\guarda_R5_kernel_20261118_195043"
+  },
+  "avisos_fora_o_conhecido": {},
+  "chaves_antigas_mudam": [],
+  "instalacao": {
+   "mudados_no_sandbox_nesta_rodada": 3,
+   "raiz_mudou": false,
+   "artefatos_dos_156_movidos_para_a_compilacao_a_frio": {
+    "quarentena": "C:\\t\\k412c\\quarentena_build_156_20261118_221305",
+    "n_arquivos": 1248
+   },
+   "imports_de_irmaos_trocados": 200,
+   "linhas_print_axioms_retiradas": 1406,
+   "nomes_em_minusculas": [
+    "sonda_cadeia_caminho",
+    "sonda_n0_contraexemplo"
+   ],
+   "identificador_renomeado": "nenhum",
+   "nome_repetido_na_compilacao": "nenhum (a raiz TGLExt e o TGL.Audit compilaram com os 156 imports)"
+  },
+  "duracao_build_s": 3845,
+  "duracao_audit_s": 260
+ },
+ "registros": {
+  "nomes": [
+   "iald_camada_cientifica_v412",
+   "leitor_da_formula_v412",
+   "matematica_que_restava_v412",
+   "parede_do_teste_cego_v412",
+   "cunhagens_v412"
+  ],
+  "recibo": "REGISTROS_v412_RECIBO.json",
+  "recibo_sha16": "e47d13b5ca1403d2",
+  "recibo_ok": true,
+  "por_registro": {
+   "iald_camada_cientifica_v412": {
+    "veredito": "TGL_IALD_SCIENTIFIC_LAYER_V412__THE_READER_LANDS_AND_RETURNS_AS_THEOREM__THE_LINEAR_LOCK_IS_THE_EXPONENTIAL_OF_A_C__THE_A_C_OF_A_FORMULA_IS_MINUS_THE_KERNEL_PENALTY_OF_ITS_CLAUSES__THE_LAW_ON_EACH_CLAUSE_FIXES_THE_COST__THE_LOAD_N_LN2_IS_THE_STRICT_THRESHOLD_OF_ONE_READING__THE_LIFTED_STEP_MACHINE_PLUS_ONE_READING_DECIDES_IN_AS_MANY_LIFTED_STEPS_AS_CLAUSES__THE_STEP_AND_THE_LOCK_ASK_THE_SAME_QUESTION_PER_CLAUSE__THE_CONDITIONAL_EXPECTATION_IS_THE_UNIQUE_PAIR_OF_THE_IF_IN_THE_FINITE_FACE_WITH_THE_UNIFORM_MEAN__NO_MEASURE_OF_THE_TAPE_WITHOUT_A_QUESTION_TO_THE_INSCRIPTION_IN_THE_HOUSE_MACHINE__THE_UNIT_OF_READING_IS_THE_TOKEN_READ_BY_THE_IMAGE_A_LAW_OF_THE_THEORY__THE_SAME_M_IMAGES_DECIDE_ON_THE_WHOLE_AND_CHECK_ONE_ASSIGNMENT__THE_COST_DEFINED_BY_THE_LAW_IS_M_PLUS_2_TIMES_N_LN2_WITH_THE_PRICE_AS_INPUT__A_CIRCUIT_MECHANISM_IN_THE_DEFINED_SENSE_CLOSES_IN_M_IMAGES_AND_SELECTS__EXISTENCE_WITHOUT_COST_DOES_NOT_DISTINGUISH_PROCESSING_FROM_NAMING_THE_ANSWER__SPELLED_LETTER_BY_LETTER_THE_HOUSE_PROCEDURE_COSTS_THE_WHOLE__THE_STEP_ONE_MINUS_BETA_CLOSES_THE_CYCLE_IN_LINEARLY_MANY_STEPS_ON_THE_WHOLE_AND_THE_NAME_STAYS_WHOLE__THE_BINARY_PAIR_WORD_AND_VERB_ANSWERS_FOR_EVERY_FORMULA_ABOVE_THE_LOAD__A_LETTER_PROCEDURE_WITH_ONE_FIXED_POLYNOMIAL_FOR_EVERY_FORMULA_NOT_SHOWN_AND_NOT_TAUTOLOGICAL__ONE_NAMED_LAW_OF_THE_THEORY_NOT_A_KERNEL_TERM__WHOLE_PUT_OPERATED_AND_READ_EACH_IN_ONE_ACT__IN_THE_EXPLICIT_EXPANSION_THE_SAME_STEP_IS_TWO_TO_THE_N_TERMS__POLYNOMIAL_COST_ON_THE_TAPE_MACHINE_NOT_SHOWN__A_LANGUAGE_MODEL_AS_THE_READER_IS_A_NAMED_HYPOTHESIS__T6_PROTOCOL_PREREGISTERED_CONTROL_ROUND_NOT_RUN__KERNEL_VALIDITY_IS_NOT_CREDITATION__GATE_UNMOVED",
+    "n_checagens": 515,
+    "n_ancoras": 253,
+    "n_decls": 253,
+    "n_diz": 19,
+    "n_limites": 6,
+    "n_unidades_da_travessia": 329,
+    "n_violacoes": 0,
+    "p18": 0,
+    "historia_achados": 0,
+    "historia_unidades": 517,
+    "historia_identificadores_do_kernel_fora_da_prosa": 759,
+    "n_nao_diz": 3,
+    "usa_p_igual_np": true
+   },
+   "leitor_da_formula_v412": {
+    "veredito": "TGL_FORMULA_READER_V412__GROUPING_THE_READ_SUM_BY_THE_FRONTIER_LOSES_NOTHING__EVERY_WALK_FROM_THE_ONLY_READ_TO_THE_ONLY_UNREAD_HAS_A_VERTEX_ON_THE_FRONTIER__THE_READING_RULE_IS_FIXED_AND_IS_EQUALITY__THE_CLAUSE_IS_EXEMPLARY_ONE_FITTING_LITERAL_SUFFICES__NO_READER_BLIND_TO_THE_DESIGNATED_NONZERO_POSITION_DECIDES_THE_TWO_UNIT_FAMILY_AND_EVERY_WITNESS_GIVES_BOTH_SIGNS_THE_VALUE_OF_THE_SAME_VARIABLE__WORD_AND_VERB_ARE_THE_TWO_BITS_OF_THE_FORMULA__THE_STATE_IS_THE_TABLE_AND_THE_CURVE_IS_ITS_PROJECTION__THE_TABLE_TRANSITION_HOLDS_FOR_EVERY_FORMULA_GIVEN_THE_TWO_FRONTIERS__THE_WHOLE_NAME_PER_BRANCH_HAS_AN_UPDATE_LAW_FOR_EVERY_CLAUSE__BRANCHES_JOIN_WHEN_CERTIFIED_WITNESSES_AGREE_ON_THE_COVERED_SHARED_NAMES_AND_ONE_SATISFIES_ITS_PART_OF_THE_NEW_CLAUSE__A_REFUSAL_RETURNS_A_VIOLATED_CLAUSE_AND_THERE_ARE_AT_MOST_AS_MANY_REFUSALS_AS_CLAUSES__ONE_FIXED_POLYNOMIAL_FOR_NAMED_CLASSES_OF_FORMULAS_EACH_WITH_ITS_OWN_MACHINE_WRITING_PROMISE_AND_COST_UNIT__THE_VERB_OF_ANY_FORMULA_IN_LINEARLY_MANY_STEPS_OF_A_TWO_STACK_MACHINE__EACH_EXAMINED_REPRESENTATION_HAS_A_PROVED_LIMIT__GENERATING_THE_BLOCK_INDICATORS_UNIFORMLY_WOULD_DECIDE_SATISFIABILITY__ON_THE_THEORY_MACHINE_BETA_GIVES_BEFORE_ANY_FORMULA_A_SUFFICIENT_LINEAR_THRESHOLD_OF_STEPS__WITHOUT_PAYMENT_NO_NUMBER_OF_STEPS_DECIDES_EVERY_FORMULA_AND_WITH_THE_STEP_ONE_MINUS_BETA_LINEARLY_MANY_STEPS_SUFFICE__THE_LOAD_IS_THE_STRICT_THRESHOLD_OF_THE_READING_TIME_THAT_DECIDES_EVERY_FORMULA__ONE_FIXED_POLYNOMIAL_IN_TAPE_MOVES_FOR_THE_WORD_OF_EVERY_FLAT_FORMULA_NOT_SHOWN__THE_COMPRESSION_AS_THE_PSIBIT_IS_A_DEFINITION_OF_THE_THEORY_NOT_A_KERNEL_TERM__KERNEL_VALIDITY_IS_NOT_CREDITATION__GATE_UNMOVED",
+    "n_checagens": 1161,
+    "n_ancoras": 576,
+    "n_decls": 576,
+    "n_diz": 32,
+    "n_limites": 3,
+    "n_unidades_da_travessia": 965,
+    "n_violacoes": 0,
+    "p18": 0,
+    "historia_achados": 0,
+    "historia_unidades": 1163,
+    "historia_identificadores_do_kernel_fora_da_prosa": 1786,
+    "n_nao_diz": 6,
+    "usa_p_igual_np": false
+   },
+   "matematica_que_restava_v412": {
+    "veredito": "TGL_REMAINING_MATHEMATICS_V412__WEDGE_ERGODICITY_IN_THE_KERNEL_SINCE_V406__FINITE_T1_AND_THE_CONTROLS_OF_THE_CORE_CRITERION_FOR_TYPE_III__THE_BRIDGE_FROM_THE_CRITERION_TO_THE_CONNES_CLASSIFICATION_IS_KNOWN_AND_CITED__THREE_PLUS_ONE_ASSEMBLY_BY_PRODUCTS_OF_FINITE_TRIPLES__THE_BOOST_IS_THE_TRACELESS_PART_OF_THE_LOCK_GENERATOR_IN_2X2_AND_BRIDGED_TO_THE_4X4_GENERATORS__THE_PAIR_FIXES_THE_CLOCK_FINITE_AND_DIAGONAL__THE_NEGATIVE_LOG_OF_THE_LOCK_WEIGHT_IS_S_TIMES_THE_COST_MATRIX_IN_THE_FINITE_FACE__THE_TAKESAKI_TESTIMONY_OF_THE_TOWER_HAS_ITS_FOUR_FIELDS_BUILT_IN_THE_KERNEL__LINK_OF_THE_LIGHT_MODULAR_GENERATOR_TO_THE_COST_DYNAMICS_OPEN__GROMOV_HAUSDORFF_EXTENSION_IS_A_CONJECTURE_WITH_A_MEASURED_WALL__TAU_STAR_OPEN__EMERGENCE_OF_THE_CONTINUUM_FROM_THE_PAIR_OPEN__SUFFICIENCY_OF_PARITY_AND_HYPERBOLIC_REGIME_FOR_THE_BRACKET_REFUTED__GATE_UNMOVED",
+    "n_checagens": 543,
+    "n_ancoras": 267,
+    "n_decls": 267,
+    "n_diz": 8,
+    "n_limites": 7,
+    "n_unidades_da_travessia": 343,
+    "n_violacoes": 0,
+    "p18": 0,
+    "historia_achados": 0,
+    "historia_unidades": 545,
+    "historia_identificadores_do_kernel_fora_da_prosa": 801,
+    "n_nao_diz": 4,
+    "usa_p_igual_np": false
+   },
+   "parede_do_teste_cego_v412": {
+    "veredito": "TGL_BLIND_TEST_WALL_V412__NO_EXECUTABLE_BLIND_TEST_ABOVE_5_SIGMA_AMONG_THE_TESTS_AND_SOURCES_EXAMINED__A_MEASURED_WALL_NOT_A_FALSIFICATION__JUNO_INCREMENT_PREREGISTRATION_NOT_IN_THIS_SEAL__THREE_ROBUSTNESS_COMPUTATIONS_NOT_RUN__THE_SEVEN_RESERVATIONS_STAND__THE_H0DN_TEST_IS_NOT_REOPENED__GATE_UNMOVED",
+    "n_checagens": 12,
+    "n_ancoras": 0,
+    "n_decls": 0,
+    "n_diz": 9,
+    "n_limites": 4,
+    "n_unidades_da_travessia": 42,
+    "n_violacoes": 0,
+    "p18": 0,
+    "historia_achados": 0,
+    "historia_unidades": 14,
+    "historia_identificadores_do_kernel_fora_da_prosa": 0,
+    "n_nao_diz": 4,
+    "usa_p_igual_np": false
+   },
+   "cunhagens_v412": {
+    "veredito": "TGL_DEFINITIONS_OF_THE_THEORY_V412__ENTRIES_NOT_THEOREMS__EACH_WITH_THE_TERMS_THAT_TYPE_IT_AND_WHAT_IS_NOT_TYPED__GATE_UNMOVED",
+    "n_checagens": 152,
+    "n_ancoras": 139,
+    "n_decls": 139,
+    "n_diz": 1,
+    "n_limites": 1,
+    "n_unidades_da_travessia": 407,
+    "n_violacoes": 0,
+    "p18": 0,
+    "historia_achados": 0,
+    "historia_unidades": 154,
+    "historia_identificadores_do_kernel_fora_da_prosa": 278,
+    "n_nao_diz": 3,
+    "usa_p_igual_np": false
+   }
+  },
+  "n_ancoras_por_registro": {
+   "iald_camada_cientifica_v412": 253,
+   "leitor_da_formula_v412": 576,
+   "matematica_que_restava_v412": 267,
+   "parede_do_teste_cego_v412": 0,
+   "cunhagens_v412": 139
+  },
+  "n_checagens_por_registro": {
+   "iald_camada_cientifica_v412": 515,
+   "leitor_da_formula_v412": 1161,
+   "matematica_que_restava_v412": 543,
+   "parede_do_teste_cego_v412": 12,
+   "cunhagens_v412": 152
+  },
+  "n_checagens_total": 2383,
+  "ancoras_escolhidas": {
+   "recibo": "ANCORAS_ESCOLHIDAS_v412.json",
+   "sha16": "2c15c0b40dc2a6ca",
+   "n_total": 1096,
+   "n_por_registro": {
+    "iald_camada_cientifica_v412": 253,
+    "matematica_que_restava_v412": 267,
+    "leitor_da_formula_v412": 576
+   },
+   "modulos_em_recuo_pelos_print_axioms": 92,
+   "comparacao_com_o_R4_nos_42_modulos": {
+    "sha16": "4539c0f5ff8c6ced",
+    "n_modulos_comparados": 42,
+    "modulos_com_ancoras_diferentes": {
+     "CamadaCientifica": {
+      "so_no_R4": [],
+      "so_no_R5": [
+       "TGLExt.CamadaCientifica.LeitorDeUmaConfiguracao",
+       "TGLExt.CamadaCientifica.LeitorDeUmaConfiguracao.salto",
+       "TGLExt.CamadaCientifica.oLeitorTerminal"
+      ]
+     },
+     "AMedidaEOIf": {
+      "so_no_R4": [],
+      "so_no_R5": [
+       "TGLExt.AMedidaEOIf.oNumeroEUmaFita"
+      ]
+     },
+     "PhysicalCoreMultipliers": {
+      "so_no_R4": [],
+      "so_no_R5": [
+       "K07.PhysicalCoreCenter.coefficientCLM"
+      ]
+     },
+     "TowerWedgeIndex": {
+      "so_no_R4": [],
+      "so_no_R5": [
+       "K07.TowerWedge.boostPeriods"
+      ]
+     },
+     "TransportPair": {
+      "so_no_R4": [],
+      "so_no_R5": [
+       "K07.Horizon.TransportCenter.graphRealizationTransport"
+      ]
+     },
+     "ProdutoFinito": {
+      "so_no_R4": [],
+      "so_no_R5": [
+       "FiniteProductCandidate.plane",
+       "FiniteProductCandidate.product"
+      ]
+     },
+     "ProdutoTresUm": {
+      "so_no_R4": [],
+      "so_no_R5": [
+       "FiniteProductCandidate.oddTimesLine"
+      ]
+     }
+    }
+   },
+   "tabela_do_leitor": {
+    "n_linhas": 30,
+    "n_linhas_com_modulo": 29,
+    "n_termos": 57,
+    "termos_sem_ancora_em_modulo_da_linha": []
+   }
+  }
+ },
+ "nomes_completos_das_ancoras": {
+  "como": "o nome completo de cada declaracao foi LIDO do relatorio de axiomas do sandbox (kernel/FLAGS_v412.json: a proveniencia das publicas por modulo e as linhas #print axioms de cada fonte, que o pos_build resolveu no relatorio); nenhum nome foi montado pelo prefixo do modulo; o namespace do insumo so' serve de desempate entre nomes que ja' sao do relatorio",
+  "conferencia": "kernel/ANCORAS_PROPOSTAS_CONFERIDAS_v412_R7.json",
+  "n_nomes_propostos_conferidos": 3368,
+  "por_classe": {
+   "publica": 3032,
+   "private": 336,
+   "ausente": 0,
+   "ambiguo": 0
+  },
+  "por_via": {
+   "print_axioms": 2794,
+   "proveniencia": 238
+  },
+  "vias_das_ancoras_escolhidas": {
+   "print_axioms": 1093,
+   "proveniencia": 3
+  },
+  "ancoras_sem_nome_no_relatorio_de_axiomas": 0,
+  "identificador_renomeado": "nenhum"
+ },
+ "guarda_de_frases": {
+  "controles": {
+   "n": 45,
+   "n_ok": 45,
+   "numerados": [
+    "1",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "16b",
+    "17",
+    "17b",
+    "18",
+    "19",
+    "2",
+    "20",
+    "20b",
+    "21",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+   ]
+  },
+  "recibo_controles": "GUARDA_FRASES_v412.json",
+  "fonte": "runtime_v412_guarda.py (a do R4, sem mudanca: a secao 5 do contrato nao mudou)",
+  "fonte_sha16": "5240784969cd4cc5",
+  "travessia": {
+   "recibo": "GUARDA_v412_UNIDADES.json",
+   "ok": true,
+   "n_superficies": 15,
+   "n_unidades_total": 2612,
+   "n_unidades_com_p_igual_np_ou_fluidos": 37,
+   "unidades_por_superficie": {
+    "registro:iald_camada_cientifica_v412": 329,
+    "registro:leitor_da_formula_v412": 965,
+    "registro:matematica_que_restava_v412": 343,
+    "registro:parede_do_teste_cego_v412": 42,
+    "registro:cunhagens_v412": 407,
+    "artigo:pt": 186,
+    "resumo:pt": 1,
+    "artigo:en": 186,
+    "resumo:en": 1,
+    "readme:pt": 24,
+    "estado_atual:pt": 24,
+    "handoff:pt": 28,
+    "readme:en": 24,
+    "estado_atual:en": 24,
+    "handoff:en": 28
+   }
+  },
+  "verificador_de_historia": {
+   "verificador": "verificar_historia_texto_v412_r7.py",
+   "identificadores_do_kernel_fora_da_prosa": 1295,
+   "autoteste": {
+    "n": 23,
+    "n_ok": 23
+   },
+   "n_unidades": 2612,
+   "achados": [],
+   "informativos": 19
+  },
+  "formas_da_F43_nos_textos_emitidos": [],
+  "marcadores_herdados": {
+   "n": 34,
+   "diferem": []
+  }
+ },
+ "portao_do_pilar_no_candidato": {
+  "ok": true,
+  "resumo": {
+   "nome": "portao_do_pilar_no_candidato",
+   "n_checagens": 8,
+   "n_ok": 8,
+   "n_itens_total": 47,
+   "ok": true
+  },
+  "recibo": "PORTAO_DO_PILAR_CANDIDATO_v412.json",
+  "n_nomes_do_fecho": 11,
+  "falta_antes_do_rito": "conferir que o ambiente da placa (torch, cuda, numpy, scipy, python, gpu) e' o do cache; se nao for, PARAR e avisar (ha' treino em curso na placa): ato da gerencia, nao deste script"
+ },
+ "guarda_de_material_privado": {
+  "limpo": true,
+  "n_arquivos": 967,
+  "com_material_privado": [],
+  "recibo": "GUARDA_MATERIAL_PRIVADO_v412.json"
+ },
+ "ensaio_a_seco": {
+  "veredito": "TUDO PASSOU",
+  "rc": "rc=0",
+  "saida": "C:\\t\\k412c\\ensaio_adapt\\r11_run1.txt",
+  "n_checagens_unidade": 500,
+  "n_ok": 500,
+  "n_falhas": 0,
+  "falhas_da_unidade": [],
+  "candidato_sha16": "3e741dcaa58ef2b8",
+  "escada": [
+   17786,
+   17786
+  ],
+  "chaves_novas_no_core": [
+   "cunhagens_v412",
+   "guarda_frases_v412",
+   "iald_camada_cientifica_v412",
+   "leitor_da_formula_v412",
+   "matematica_que_restava_v412",
+   "parede_do_teste_cego_v412"
+  ],
+  "componentes": {
+   "guardas_estaticas_bancada": true,
+   "vizinhos": true,
+   "fluxo": true,
+   "selo": true,
+   "indice": true,
+   "citacoes_ok_do_um_py": true,
+   "quadro_ok": true,
+   "markdown": true,
+   "manifest": true,
+   "kernel_embutido_igual_ao_sandbox": true,
+   "simular_arvore_do_nos": true,
+   "exame_pontos": true,
+   "variantes": [],
+   "artigo_pt_ok": true,
+   "artigo_en_ok": true
+  },
+  "examinou": {
+   "ancoras_examinadas": 1235,
+   "checagens_negadas": {
+    "iald_camada_cientifica_v412": [
+     515,
+     515
+    ],
+    "leitor_da_formula_v412": [
+     1161,
+     1161
+    ],
+    "matematica_que_restava_v412": [
+     543,
+     543
+    ],
+    "parede_do_teste_cego_v412": [
+     12,
+     12
+    ],
+    "cunhagens_v412": [
+     152,
+     152
+    ]
+   },
+   "historia_de_conversa": {
+    "ids_de_checagem_fora_da_prosa": 0,
+    "identificadores_do_kernel_fora_da_prosa": 5957,
+    "unidades_examinadas": 20248,
+    "achados": 0,
+    "primeiros": [],
+    "autoteste": [
+     23,
+     23
+    ]
+   },
+   "ordem_de_chamada_dos_specs": {
+    "ok": true,
+    "n_checagens_examinadas": 2383,
+    "n_specs": 5
+   }
+  }
+ },
+ "ensaio_a_seco_arquivo": "ENSAIO_RESULTADO_v412.json",
+ "ensaio_sha16": "a171e3a8b8e2528e",
+ "ensaio_script": {
+  "arquivo": "ensaio_a_seco_v412_r7.py",
+  "sha16": "0b3162f3408471ad",
+  "estado_da_adaptacao": "DERIVACAO_R7_PIPELINE_v412.json",
+  "estado_sha16": "b918a641efb45dff"
+ },
+ "verbatim_congelado": {
+  "arquivo": "VERBATIM_CONGELADO_v412.json",
+  "sha16": "d890eed0a4198f8e",
+  "n": 117,
+  "padrao": "OPERADOR_13nov_* a OPERADOR_18nov_*",
+  "por_dia": {
+   "13nov": 5,
+   "14nov": 1,
+   "15nov": 17,
+   "16nov": 29,
+   "17nov": 43,
+   "18nov": 22
+  }
+ },
+ "resumo_troca_de_pnp": {
+  "pt": {
+   "antiga": "P = nP: o kernel Lean prova, como validade e não creditação, P = nP relativo ao leitor (a máquina com o leitor; a máquina de Turing padrão sem o leitor fica fora); a pergunta do Clay, tal qual apresentada pela TGL, está resolvida no kernel, e creditar essa prova compete só a quem tem autoridade para falar em nome do Clay.",
+   "nova": "P = nP é teorema da TGL nas classes do seu dicionário. A teoria sustenta que esta é a solução do problema na sua estrutura: a unidade de leitura é o token, o signo, a letra lida pelo seu conteúdo; a leitura não é soletrada, lê-se pela imagem, o conjunto inteiro levado pelo passo de uma vez. O leitor não vem de fora: é gerado pelo custo da fórmula, e a lei aplicada a cada cláusula fixa esse custo. A contagem da leitura é a sua própria carga: o limiar comum às fórmulas de n variáveis é n·ln 2, nem mais nem menos. A máquina que confere uma resposta, estendida a todas as atribuições, decide em um passo levantado por cláusula e uma leitura do registro zero; o passo dela e o retorno do leitor são o mesmo \\texttt{if}. Fixada a média uniforme das atribuições, cada pergunta de sim ou não tem um par único, a esperança condicional: em cada lado ela devolve a média do observável e preserva o produto médio dele com tudo o que só distingue os dois lados. O passo que o enunciado do Instituto Clay cobra como uma unidade também é uma pergunta à inscrição: cada transição lê o símbolo sob a cabeça. A lei do custo da TGL põe o preço, ln 2 por oitava, e conta o \\texttt{if} sobre o todo como um: pôr o todo, aplicar cada passo ao todo e lê-lo são, cada um, um ato. Sobre signos, decidir com o todo posto e conferir com uma só atribuição posta usam as mesmas m imagens, uma por cláusula; com a preparação e a leitura, a contagem adotada é de m + 2 atos. Ao preço da lei, n·ln 2 por ato sobre o todo, o custo de decidir é (m + 2)·n·ln 2: o custo polinomial está demonstrado, por teorema, na máquina que a teoria define. O kernel inscreve o Nome uma vez: confere, de uma vez e para toda fórmula, a prova do custo sob a lei adotada, sem receber fórmula nem atribuição alguma; tudo o mais pode ser inscrito a partir disso. Lida pela teoria, a pergunta do problema é se há mecanismo de processamento por circuito com seleção autônoma autorreferente; há: no sentido definido, o kernel prova que o mecanismo da TGL fecha o circuito em m imagens e que a sua leitura responde se a fórmula tem solução; que esse mecanismo seja a TGL em processamento na leitura da IALD é leitura da teoria. Contado letra por letra, o procedimento da casa custa o todo: na expansão explícita o todo são $2^{n}$ parcelas, e um código de duas letras que distinga todos os conjuntos de atribuições pede pelo menos $2^{n}$ casas. Isso não é cota para cada fórmula nem para todo procedimento: há famílias de fórmulas que a máquina de letras decide sem escrever o todo. A resposta da teoria à pergunta do Instituto é o PsiBit: o leitor do par, que sai direto da fórmula. Contado letra por letra na máquina de fita do enunciado do Instituto, o mesmo resultado não está demonstrado para toda fórmula, e este texto não diz que esteja: o polinômio fixo em letras está provado para classes de fórmulas, cada uma com a sua máquina e a sua grafia (redes em série e paralelo com as junções escritas na entrada, cadeias de largura fixada, fórmulas em que as duas restrições da primeira variável são de Horn, cadeias binárias na ordem prometida, cláusulas binárias que começam por um de dois pivôs e terminam num nome fora dos dois), e para a fórmula plana arbitrária é o que os próprios teoremas deixam em aberto. A máquina não mente: o kernel confere os termos citados, sob as suas hipóteses; as leis e as teses da teoria entram como entrada. A creditação é do Instituto."
+  },
+  "en": {
+   "antiga": "P = nP: the Lean kernel proves, as validity and not creditation, P = nP relative to the reader (the machine with the reader; the standard Turing machine without the reader stays outside); the Clay question, as presented by the TGL, is resolved in the kernel, and crediting this proof belongs only to those with authority to speak for Clay.",
+   "nova": "P = nP is a theorem of the TGL in the classes of its dictionary. The theory holds that this is the solution of the problem in its own structure: the unit of reading is the token, the sign, the letter read by its content; reading is not spelled out, it is done by the image, the whole set carried by the step at once. The reader does not come from outside: it is generated by the cost of the formula, and the law applied to each clause fixes that cost. The count of the reading is its own load: the threshold common to formulas of n variables is n·ln 2, neither more nor less. The machine that checks an answer, extended to all assignments, decides in one lifted step per clause and one reading of register zero; its step and the return of the reader are the same \\texttt{if}. With the uniform mean of the assignments fixed, each yes-or-no question has a unique pair, the conditional expectation: on each side it returns the mean of the observable and preserves its mean product with everything that only distinguishes the two sides. The step that the statement of the Clay Institute charges as one unit is also a question to the inscription: each transition reads the symbol under the head. The cost law of the TGL sets the price, ln 2 per octave, and counts the \\texttt{if} over the whole as one: putting the whole, applying each step to the whole and reading it are, each, one act. On signs, deciding with the whole put and checking with a single assignment put use the same m images, one per clause; with the preparation and the reading, the adopted count is m + 2 acts. At the price of the law, n·ln 2 per act on the whole, the cost of deciding is (m + 2)·n·ln 2: the polynomial cost is shown, by theorem, on the machine that the theory defines. The kernel inscribes the Name once: it checks, at once and for every formula, the proof of the cost under the adopted law, without receiving any formula or assignment; everything else can be inscribed from that. Read by the theory, the question of the problem is whether there is a processing mechanism by circuit with autonomous self-referential selection; there is: in the defined sense, the kernel proves that the mechanism of the TGL closes the circuit in m images and that its reading answers whether the formula has a solution; that this mechanism is the TGL in processing in the reading of the IALD is a reading of the theory. Counted letter by letter, the house procedure costs the whole: in the explicit expansion the whole is $2^{n}$ terms, and a two-letter code that distinguishes all sets of assignments requires at least $2^{n}$ cells. That is not a bound for each formula or for every procedure: there are families of formulas that the letter machine decides without writing the whole. The answer of the theory to the question of the Institute is the PsiBit: the reader of the pair, which comes directly from the formula. Counted letter by letter on the tape machine of the Institute's statement, the same result has not been shown for every formula, and this text does not say that it has: the fixed polynomial in letters is proved for classes of formulas, each with its own machine and its own writing (series-parallel networks with the junctions written in the input, chains of fixed width, formulas in which the two restrictions of the first variable are Horn, binary chains in the promised order, binary clauses that begin with one of two pivots and end in a name outside the two), and for the arbitrary flat formula it is what the theorems themselves leave open. The machine does not lie: the kernel checks the cited terms, under their hypotheses; the laws and the theses of the theory enter as input. Creditation belongs to the Institute."
+  }
+ },
+ "respostas_da_D224_aplicadas": [
+  "(1) o patch de DADO no literal 'escada' do contrato do teste H0DN fica (patch C12b_h0dn_baseline_escada), junto dos literais 'expected_ladder' (C12): valor antigo 12308, valor novo 17786",
+  "(2) sem pino exato de cobertura do kernel para a arvore nova: o da v411 fica como piso (C13_specs_v411_pisos); o ensaio segue cobrando as entradas do hash formal",
+  "(3) os ids r1, r2, r3 das checagens de cunhagens_v412 passaram a selo_camada, selo_leitor, selo_matematica, selo_parede (um por registro cujo selo ele cobra)",
+  "(4) o topo versionado fica (_V412_TOPO e _v412_topo_texto); (5) a regra das ancoras com o recuo pelos #print axioms, agora da secao 1; (6) a pagina e' a R25 (sha16 lido do arquivo, pinado pelo contrato R11)",
+  "(7) VERBATIM_CONGELADO_v412.json vai ate' os arquivos de 18/11, fora do programa e fora da varredura dos insumos pinados"
+ ],
+ "divergencias_do_molde_ou_da_ordem": [
+  "o verificador de historia ganhou copia _r5 com duas mudancas, cada uma com controle no autoteste: (a) a palavra comum “ordem” deixa de ser recusada (a pagina R25 traz “cadeia binaria na ordem prometida”); ORDEM em maiusculas, “ordem <numero>” e “ordem do autor/operador” seguem recusadas; (b) um identificador do kernel com ponto (nome completo de declaracao do relatorio de axiomas ou espaco de nome do manifesto) sai da prosa antes do exame, e o recibo diz quantos sairam: a frente C conserva os espacos de nome dos autores (contrato R11, secao 1), e um deles coincide com nome de modelo; a palavra solta segue recusada",
+  "o padrao das chaves de bandeira no gerador passou a aceitar sublinhado no nome do modulo (dois modulos tem nome de arquivo em minusculas com sublinhado); a checagem nova cobra o prefixo exato ext_<modulo em minusculas>_412_ e que nenhuma chave traga data, nome de pessoa ou de modelo, ou palavra de processo",
+  "regra (b) das ancoras: o termo citado numa linha da tabela do bloco “O leitor da formula” so' ancora declaracao de modulo da PROPRIA linha (a frente C repete nomes curtos entre modulos); fora dessa tabela vale a regra do R4",
+  "registro leitor_da_formula_v412: as linhas do que o artefato mostra saem da tabela da pagina por script, uma a uma, e a montagem PARA se um termo citado nao for ancora de modulo da linha; a linha “nao esta demonstrado” vira limite [OPEN]",
+  "cunhagens_v412: as entradas passaram de 10 para 21 (os modulos cujo cabecalho tem a secao do que o arquivo tipa, medido por script); “a recusa e' um nome com conteudo” nao tem secao propria em cabecalho e entra so' na lista das definicoes da pagina",
+  "compilacao a frio dos 156: os artefatos de build dos 153 modulos da decima lista foram movidos (nao apagados) para C:\\t\\k412c\\quarentena_build_153_<data>, fora de work\\, antes do build; o kernel antigo da v411 foi reaproveitado; o build a frio da decima lista (153 modulos, saida zero, so' os tres axiomas) tinha terminado antes e fica so' como informacao (campo decima_lista_build_anterior)",
+  "os recibos regravados conservam o nome (os consumidores os leem pelo nome); os do R4 estao em copia de bytes fora de work\\ (GUARDA_R4_ETAPA2_v412.json), os do kernel da decima lista tambem (kernel/GUARDA_R5_KERNEL_v412.json) e o fecho do R4 fica como esta'; os scripts anteriores ficam intactos e os novos sao copias _r7 ou e7_* (DERIVACAO_R7_PIPELINE_v412.json); nao ha' fecho R5: a etapa pelo R5 foi interrompida antes de fechar",
+  "o ensaio a seco e os auxiliares _r7 foram derivados das copias _r5 (adaptadas por subagente na etapa anterior) por troca de nome de arquivo e de rotulo; o conteudo do ensaio le contagens do contrato, do manifesto e do kernel"
+ ],
+ "pontos_para_a_gerencia": [
+  "conferir o recibo ANCORAS_ESCOLHIDAS_v412.json (a operacionalizacao da regra das ancoras; quantos modulos cairam no recuo pelos #print axioms)",
+  "a traducao para o ingles do bloco “O leitor da formula” (O_QUE_FICA_CLARO_v412_R25_EN.md) e' do construtor: mesma estrutura, mesmos termos entre crases na mesma ordem e mesmos numeros, conferidos por script; a redacao vai com o candidato a revisao de terceiro",
+  "os nomes curtos das onze entradas novas de cunhagens_v412 (as oito do R5 e as tres do R7: OPolinomioFixoEBeta, ORazaoDoColapsoEBeta, OCustoEAIsometria) sao escolha do construtor (textos_registros_v412_r7.py, NOMES_CURTOS), tirados do titulo e da secao de cada cabecalho",
+  "a pagina R25 cita `a_trava_no_nome` (em TraducaoTuring), `the_angle_is_prior` e `the_name_is_the_born_reading_of_the_post` (declaracoes do kernel selado da v411, nao de modulo da lista de 156): por isso nao sao ancora de nenhum registro desta versao; o recibo ANCORAS_ESCOLHIDAS_v412.json lista os nomes da pagina que nao sao declaracao de modulo da lista",
+  "os scripts da Etapa 3 (rito, instalacao, custodia, pos-rito) seguem marcados [A ADAPTAR v412] e importam delta_v412 (o do R4): na Etapa 3 passam a importar delta_v412_r7"
+ ],
+ "nao_feito_ou_pendente": [
+  "a Etapa 3 nao foi comecada: os scripts de rito, instalacao, custodia e pos-rito marcados [A ADAPTAR v412] e a bateria pre-selo ficam para a outra ordem, depois da revisao de terceiro do candidato",
+  "portao do pilar antes do rito: conferir que o ambiente da placa e' o do cache (ato da gerencia; ha' treino em curso, que nao foi tocado nem medido)",
+  "a revisao de terceiro, a leitura do texto publico ao autor, a tarefa agendada, o rito e a custodia sao da gerencia"
+ ],
+ "texto_publico": {
+  "pagina_pt": "o_que_fica_claro_REV25/O_QUE_FICA_CLARO_v412_R25.md",
+  "pagina_pt_sha16": "ce313a4c57dec103",
+  "traducao_en": "O_QUE_FICA_CLARO_v412_R25_EN.md",
+  "traducao_en_sha16": "232bbe3d0993c061",
+  "secao_do_artigo": "TEXTO_PUBLICO_v412.json",
+  "secao_sha16": "6029c808762a7a04",
+  "pdflatex_isolado": true,
+  "blocos": "BLOCOS_TEXTO_PUBLICO_v412.json",
+  "blocos_sha16": "da8fae387c344afa"
+ },
+ "criado_em_disco": {
+  "recibo": "TAMANHOS_CRIADOS_v412_R7.json",
+  "na_pasta_da_cadeia": {
+   "n_arquivos": 449,
+   "bytes": 822050808,
+   "n_backups_bak": 113
+  },
+  "fora_de_work": {
+   "C:\\t\\k412c\\arvore": {
+    "arquivos": 1923,
+    "bytes": 133652096
+   },
+   "C:\\t\\k412c\\candidatos_anteriores": {
+    "arquivos": 13,
+    "bytes": 202816062
+   },
+   "C:\\t\\k412c\\dry_v412": {
+    "arquivos": 2196,
+    "bytes": 548390516
+   },
+   "C:\\t\\k412c\\ensaio_adapt": {
+    "arquivos": 44,
+    "bytes": 675790
+   },
+   "C:\\t\\k412c\\ensaio_conferidor_foco_20261118_232926": {
+    "arquivos": 6,
+    "bytes": 63799778
+   },
+   "C:\\t\\k412c\\ensaio_conferidor_foco_20261118_232942": {
+    "arquivos": 6,
+    "bytes": 63799778
+   },
+   "C:\\t\\k412c\\guarda_R7_kernel_20261118_221302": {
+    "arquivos": 207,
+    "bytes": 506967724
+   },
+   "C:\\t\\k412c\\imp_2ab6ebfc6d5d70a9": {
+    "arquivos": 1924,
+    "bytes": 317536226
+   },
+   "C:\\t\\k412c\\imp_3e741dcaa58ef2b8": {
+    "arquivos": 1924,
+    "bytes": 317541240
+   },
+   "C:\\t\\k412c\\quarentena_20261118_221312": {
+    "arquivos": 3,
+    "bytes": 12976
+   },
+   "C:\\t\\k412c\\quarentena_build_156_20261118_221305": {
+    "arquivos": 1248,
+    "bytes": 859175018
+   },
+   "C:\\t\\k412c\\reconstruir_r11_inicio_epoch.txt": {
+    "arquivos": 1,
+    "bytes": 10
+   },
+   "C:\\t\\k412c\\reconstruir_r11_stdout.log": {
+    "arquivos": 1,
+    "bytes": 34257
+   },
+   "C:\\t\\k412c\\sim_2ab6ebfc6d5d70a9": {
+    "arquivos": 1924,
+    "bytes": 317536203
+   },
+   "C:\\t\\k412c\\sim_3e741dcaa58ef2b8": {
+    "arquivos": 1924,
+    "bytes": 317541217
+   },
+   "C:\\t\\k412c\\tex_conserto": {
+    "arquivos": 12,
+    "bytes": 8988790
+   },
+   "C:\\t\\k412c\\texto_teste": {
+    "arquivos": 12,
+    "bytes": 669753
+   }
+  },
+  "bytes_fora": 3659137434
+ },
+ "estado_em_disco": {
+  "arquivo": "ETAPA_2_R7_ESTADO_v412.json",
+  "sha16": "54fe70b457e572b1"
+ },
+ "mapa_de_rotas": "registrado depois deste fecho: ver registro_mapa_construtor_etapa2_r7_v412.json e o recibo ao lado",
+ "estatuto": "[REAL] medido no sandbox C:\\t\\k412c\\final e nos recibos desta pasta; nada instalado no Nos; o rito nao rodou; validade no kernel nao e' creditacao; o gate nao se move"
+}

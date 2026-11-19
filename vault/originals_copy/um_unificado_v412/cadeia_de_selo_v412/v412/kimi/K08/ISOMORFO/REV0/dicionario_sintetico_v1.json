@@ -1,0 +1,60 @@
+{
+  "schema": "k08-r4-versioned-isomorph-dictionary-v1",
+  "dictionary_id": "k08-sintetico-v1",
+  "version": 1,
+  "term_map": {
+    "laboratório Aurora": "instituto NARA",
+    "pêndulo de cobre": "oscilador LIO",
+    "relatório Serena": "registro TAVO",
+    "caixa azul": "caixa LIO",
+    "caixa verde": "caixa VEDA",
+    "relatório": "registro",
+    "caderno": "diário",
+    "mais lenta": "mais rápida",
+    "mais rápida": "mais lenta"
+  },
+  "counterfactual_numeric": {
+    "mode": "DECLARED_FACTUAL_COUNTERFACTUAL",
+    "number_map": {
+      "40,0": "46,0",
+      "42,0": "43,0"
+    },
+    "flip_atom_polarity": [
+      "segunda_mais_rapida"
+    ],
+    "changes": [
+      {
+        "change_id": "NUM01",
+        "kind": "MEASURED_VALUE_COUNTERFACTUAL",
+        "old": "40,0 segundos",
+        "new": "46,0 segundos",
+        "reason": "Valor sintético contrafactual; não é uma medida da natureza nem uma correção empírica."
+      },
+      {
+        "change_id": "NUM02",
+        "kind": "MEASURED_VALUE_COUNTERFACTUAL",
+        "old": "42,0 segundos",
+        "new": "43,0 segundos",
+        "reason": "Valor sintético contrafactual; preserva unidade e o mesmo número de oscilações."
+      },
+      {
+        "change_id": "REL01",
+        "kind": "DEPENDENT_ASSERTIONS_UPDATED",
+        "old": "A segunda série foi mais lenta que a primeira.",
+        "new": "A segunda série foi mais rápida que a primeira.",
+        "reason": "Com durações 46,0 e 43,0 para o mesmo número de oscilações, a relação comparativa precisa inverter; trocar só os números deixaria o texto incoerente."
+      }
+    ]
+  },
+  "numeric_free_policy": {
+    "mode": "RESTRICT_TO_TEXTS_WITHOUT_NUMBERS",
+    "numeric_word_list": [
+      "zero", "um", "uma", "dois", "duas", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez",
+      "onze", "doze", "treze", "catorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove", "vinte",
+      "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa", "cem", "cento", "mil",
+      "milhão", "milhões", "bilhão", "bilhões", "primeiro", "primeira", "segundo", "segunda", "terceiro",
+      "terceira", "quarto", "quarta", "quinto", "quinta", "meio", "meia", "dobro", "triplo"
+    ],
+    "guard_scope": "Bloqueio lexical de dígitos, palavras numéricas listadas e sinais matemáticos comuns; não é prova semântica de ausência de todo conteúdo quantitativo."
+  }
+}

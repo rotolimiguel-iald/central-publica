@@ -389,7 +389,13 @@ def _ap_e15(ctx):
 def _conf_e15(ctx):
     ctx._cache_t.clear()
     ctx._cache_j.clear()
-    return ["número citado defasado: %s cita %s=%s, real %s" % (x["superficie"], x["arquivo"], x["citado"], x["real"]) for x in auditar_numeros_citados(ctx, CITADAS_DO_E15)]
+    f = ["número citado defasado: %s cita %s=%s, real %s" % (x["superficie"], x["arquivo"], x["citado"], x["real"]) for x in auditar_numeros_citados(ctx, CITADAS_DO_E15)]
+    # AO LADO (13/11/2026, claude-site-custodia; a vitrine, parte 2; as duas travas da gerência c1): o rótulo do cartão nunca sem o texto do cartão; a frase do
+    # elo fechado só em superfície que traz as duas linhas e o caminho para as sete ressalvas
+    from . import h0dn as _h0dn
+    sup = _h0dn.superficies_de_texto(ctx.c.SITE, "site/")
+    f += _h0dn.guarda_do_rotulo(sup.get("site/index.html", ""), sup.get("site/i18n.js", "")) + _h0dn.guarda_do_elo(sup)
+    return f
 
 
 # =================================================================== E16 — sitemap e manifesto de subida

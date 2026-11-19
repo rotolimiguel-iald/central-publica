@@ -1,0 +1,874 @@
+--- v411/pos_rito/harness_textos_ensaio_v411.py
++++ v412/pos_rito/harness_textos_ensaio_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/harness_textos_ensaio_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__harness_textos_ensaio_v412.py.diff
+@@ -6,5 +7,5 @@
+-# a frase obrigatoria removida, o ESPERADOS sem registros_funcao_v411.h0dn: a mutacao do ESPERADOS e do CANDIDATO e' feita NA MEMORIA por um shim de json, nenhum arquivo do pacote e' tocado); a secao 6 da pedra (o atrator) e a c16 no iald2_v410; as QUINZE falas de 06 a 09/11 (quatro so' o trecho); as decisoes D63 a D76; as erratas E29 e E30; textos_v411.secao_h0dn renderizada e conferida; os bullets do paragrafo da README descobertos do proprio paragrafo.
+-r"""harness_textos_ensaio_v411.py -- o HARNESS DO POS-RITO da v411 em modo ENSAIO (molde: harness_textos_ensaio_v410.py, que rodou na v410; adaptado DE VERDADE a v411 em 12/11/2026 pelo claude-sonnet-posrito-H-v411).
+-A v411: o teste H0DN x BG1 ABERTO UMA VEZ; NENHUM modulo novo de kernel (o da v410, byte a byte; escada 12308 = a da v410; nenhuma bandeira nova; o bundle e' vazio); UM registro com funcao, h0dn_bg1_v411 (16 checagens, recalculado no rito); cunhagens_v411 e kh_n1_cobertura_v411 (por spec);
+-os QUATRO registros com funcao da v410 (iald2_v410, a_escala_v410, h0dn_bg1_v410, h0dn_fontes_hms13_v410) e os dois por spec da v410 RECRIADOS (seguem selados; nao sao novos); o traducao_turing_v409, o tetelestai_terminal_v408, o psion_canto_v407 e o fechamento_v406 HERDADOS.
+-Importa os modulos REAIS textos_v411.py e leitura_v411.py (os que a cadeia usa) e os executa contra um NOS EMULADO montado do falso Nos de ENSAIO (ou, se ele nao existir, de dry_v411: core_ensaio.json -> um_absoluto.json, selo_ensaio.json -> um_absoluto_selo.json, o um.py, o kernel, o .md, o artigo PT/EN e o sumario);
++# a frase obrigatoria removida, o ESPERADOS sem registros_funcao_v412.h0dn: a mutacao do ESPERADOS e do CANDIDATO e' feita NA MEMORIA por um shim de json, nenhum arquivo do pacote e' tocado); a secao 6 da pedra (o atrator) e a c16 no iald2_v410; as QUINZE falas de 06 a 09/11 (quatro so' o trecho); as decisoes D63 a D76; as erratas E29 e E30; textos_v412.secao_h0dn renderizada e conferida; os bullets do paragrafo da README descobertos do proprio paragrafo.
++r"""harness_textos_ensaio_v412.py -- o HARNESS DO POS-RITO da v412 em modo ENSAIO (molde: harness_textos_ensaio_v411.py, que rodou na v411; adaptado DE VERDADE a v412 em 12/11/2026 pelo claude-sonnet-posrito-H-v412).
++A v412: o teste H0DN x BG1 ABERTO UMA VEZ; NENHUM modulo novo de kernel (o da v411, byte a byte; escada 12308 = a da v411; nenhuma bandeira nova; o bundle e' vazio); UM registro com funcao, h0dn_bg1_v411 (16 checagens, recalculado no rito); cunhagens_v411 e kh_n1_cobertura_v411 (por spec);
++os QUATRO registros com funcao da v411 (iald2_v410, a_escala_v410, h0dn_bg1_v410, h0dn_fontes_hms13_v410) e os dois por spec da v411 RECRIADOS (seguem selados; nao sao novos); o traducao_turing_v409, o tetelestai_terminal_v408, o psion_canto_v407 e o fechamento_v406 HERDADOS.
++Importa os modulos REAIS textos_v412.py e leitura_v412.py (os que a cadeia usa) e os executa contra um NOS EMULADO montado do falso Nos de ENSAIO (ou, se ele nao existir, de dry_v412: core_ensaio.json -> um_absoluto.json, selo_ensaio.json -> um_absoluto_selo.json, o um.py, o kernel, o .md, o artigo PT/EN e o sumario);
+@@ -12 +13 @@
+-ENTRADAS DO ENSAIO (V411_ENSAIO_TOPO_PROPOSTO=1): C:\t\k411c\ensaio_topo_proposto\PRONTO_PARA_O_POS_RITO.json (gravado pela outra frente quando o ensaio terminou; SEM ele o harness RECUSA com rc 3, sem escrever nada). Chaves LIDAS (todas opcionais; ausente => o caminho padrao do delta_v411, dito no resumo; presente e inexistente => RECUSA rc 4):
++ENTRADAS DO ENSAIO (V412_ENSAIO_TOPO_PROPOSTO=1): C:\t\k412c\ensaio_topo_proposto\PRONTO_PARA_O_POS_RITO.json (gravado pela outra frente quando o ensaio terminou; SEM ele o harness RECUSA com rc 3, sem escrever nada). Chaves LIDAS (todas opcionais; ausente => o caminho padrao do delta_v412, dito no resumo; presente e inexistente => RECUSA rc 4):
+@@ -14 +15 @@
+-SAIDAS: no ensaio, tudo vai para C:\t\k411c\ensaio_topo_proposto\pos_rito\ (harness_saida_v411\ para as copias e o Nos emulado; o resumo HARNESS_TEXTOS_ENSAIO_v411.json em DL.saida(pos_rito\...)); fora do ensaio, as copias ficam em C:\t\h411\harness_saida_v411 e o resumo em pos_rito\ (como antes). NADA e' escrito em work\ no ensaio.
++SAIDAS: no ensaio, tudo vai para C:\t\k412c\ensaio_topo_proposto\pos_rito\ (harness_saida_v412\ para as copias e o Nos emulado; o resumo HARNESS_TEXTOS_ENSAIO_v412.json em DL.saida(pos_rito\...)); fora do ensaio, as copias ficam em C:\t\h412\harness_saida_v412 e o resumo em pos_rito\ (como antes). NADA e' escrito em work\ no ensaio.
+@@ -16,11 +17,11 @@
+-  precondicoes   o artefato (ESPERADOS == manifesto == arquivo == dry_v411/um.py) e, fora do ensaio, a regeneracao terminada (refazer_out_v411.txt mostra '== FIM'); a evidencia carrega mtime e sha16 de cada entrada;
+-  conferidor     o conferir_rito_v411.py REAL roda NO LUGAR (cwd = o pacote real), SEM -I, com V411_NOS apontando para o Nos emulado e o sufixo _HARNESS; da' TUDO BATE; a conferencia que a leitura le;
+-  leitura        a leitura_v411.ler() REAL contra o Nos emulado: zero PROBLEMAS; mais controles NEGATIVOS: o registro NOVO h0dn_bg1_v411 [ausente, nao selado, checagem falsa, numero de checagens, valor adulterado (K, as duas linhas), ramo, beta, veredito, opened_once, observed_vector_read, gate, escada, as sete ressalvas, o que nao decide,
+-                 a emenda as claras, a guarda de finitude, os insumos pinados, os citados, o texto do registro (token proibido, a frase velha da v410, F67), o resumo no selo, o bloco do stdout, a conferencia, ESPERADOS e CANDIDATO mutados na memoria]; cunhagens_v411 e kh_n1_cobertura_v411 [falas, erratas E41 a E43 e a dos pisos, as decisoes do delta, ressalvas, alcance de P = nP, regra do nome, D65, moldura];
+-                 os QUATRO com funcao e os DOIS por spec da v410 RECRIADOS [ausente, nao selado, veredito, checagens]; os HERDADOS traducao_turing_v409, tetelestai_terminal_v408, psion_canto_v407 e fechamento_v406 e os cunhagens/kh de v409 a v406; os recriados de v405 a v399; o gate; o sidecar; os resumos do selo; as linhas [v411] a [v397] do stdout; os bundles anteriores no kernel (v410 a v406);
+-  textos         todas as funcoes publicas de textos_v411 renderizam, a guarda P18 e a da DIRECAO ficam limpas em cada saida, os marcadores que a cadeia exige estao nos textos; secao_aescala (da v410) FALHA A VISTA por desenho;
+-  paragrafos     o PARAGRAFO DO QUADRO (v397, intocado) e o PARAGRAFO NOVO da v411 (o teste decisivo aberto uma vez) passam nas verificacoes, com controles negativos (numero adulterado, as quatro obrigacoes da F67 uma a uma, ressalva removida, citacao nao verbatim, o 4,44 intruso, ...); a secao do H0DN;
+-  custodia       (S6d) textos_custodia_handoff_v411.main(nos, pkg, recibo_dir) DE VERDADE sobre o Nos emulado (diario = a linhagem renderizada aqui; handoff = o renderizado aqui), mais teste_textos_custodia_sem_candidato_v411.py e teste_gatilho_custodia_sem_candidato_v411.py (sandboxes proprios sob o ensaio);
+-  cita_so_o_que_existe, superficies (em COPIAS, tres cenarios), b3_recibo (recibos SINTETICOS), mapa (registrar_mapa_v411.montar contra o core emulado, so' leitura do livro), marcas.
+-uso: python -B -X utf8 harness_textos_ensaio_v411.py [--sem-superficies] [--sem-b3] [--sem-negativos] [--rotulo <nome>] [--nao-exigir-refazer] [--manter-copias] [--so leitura] [--out <nome>]   (rc 0 = tudo passou; rc 3 = PRONTO_PARA_O_POS_RITO.json ausente (ensaio);
+-rc 4 = precondicao nao satisfeita, nada foi rodado; --nao-exigir-refazer so' vale FORA do ensaio e so' para depurar (o resumo vai para HARNESS_TEXTOS_ENSAIO_v411_DEPURACAO_sem_refazer.json); --so leitura: so' as etapas precondicoes, nos_emulado, conferidor, leitura e leitura_negativos;
++  precondicoes   o artefato (ESPERADOS == manifesto == arquivo == dry_v412/um.py) e, fora do ensaio, a regeneracao terminada (refazer_out_v412.txt mostra '== FIM'); a evidencia carrega mtime e sha16 de cada entrada;
++  conferidor     o conferir_rito_v412.py REAL roda NO LUGAR (cwd = o pacote real), SEM -I, com V412_NOS apontando para o Nos emulado e o sufixo _HARNESS; da' TUDO BATE; a conferencia que a leitura le;
++  leitura        a leitura_v412.ler() REAL contra o Nos emulado: zero PROBLEMAS; mais controles NEGATIVOS: o registro NOVO h0dn_bg1_v411 [ausente, nao selado, checagem falsa, numero de checagens, valor adulterado (K, as duas linhas), ramo, beta, veredito, opened_once, observed_vector_read, gate, escada, as sete ressalvas, o que nao decide,
++                 a emenda as claras, a guarda de finitude, os insumos pinados, os citados, o texto do registro (token proibido, a frase velha da v411, F67), o resumo no selo, o bloco do stdout, a conferencia, ESPERADOS e CANDIDATO mutados na memoria]; cunhagens_v411 e kh_n1_cobertura_v411 [falas, erratas E41 a E43 e a dos pisos, as decisoes do delta, ressalvas, alcance de P = nP, regra do nome, D65, moldura];
++                 os QUATRO com funcao e os DOIS por spec da v411 RECRIADOS [ausente, nao selado, veredito, checagens]; os HERDADOS traducao_turing_v409, tetelestai_terminal_v408, psion_canto_v407 e fechamento_v406 e os cunhagens/kh de v409 a v406; os recriados de v405 a v399; o gate; o sidecar; os resumos do selo; as linhas [v411] a [v397] do stdout; os bundles anteriores no kernel (v411 a v406);
++  textos         todas as funcoes publicas de textos_v412 renderizam, a guarda P18 e a da DIRECAO ficam limpas em cada saida, os marcadores que a cadeia exige estao nos textos; secao_aescala (da v411) FALHA A VISTA por desenho;
++  paragrafos     o PARAGRAFO DO QUADRO (v397, intocado) e o PARAGRAFO NOVO da v412 (o teste decisivo aberto uma vez) passam nas verificacoes, com controles negativos (numero adulterado, as quatro obrigacoes da F67 uma a uma, ressalva removida, citacao nao verbatim, o 4,44 intruso, ...); a secao do H0DN;
++  custodia       (S6d) textos_custodia_handoff_v412.main(nos, pkg, recibo_dir) DE VERDADE sobre o Nos emulado (diario = a linhagem renderizada aqui; handoff = o renderizado aqui), mais teste_textos_custodia_sem_candidato_v412.py e teste_gatilho_custodia_sem_candidato_v412.py (sandboxes proprios sob o ensaio);
++  cita_so_o_que_existe, superficies (em COPIAS, tres cenarios), b3_recibo (recibos SINTETICOS), mapa (registrar_mapa_v412.montar contra o core emulado, so' leitura do livro), marcas.
++uso: python -B -X utf8 harness_textos_ensaio_v412.py [--sem-superficies] [--sem-b3] [--sem-negativos] [--rotulo <nome>] [--nao-exigir-refazer] [--manter-copias] [--so leitura] [--out <nome>]   (rc 0 = tudo passou; rc 3 = PRONTO_PARA_O_POS_RITO.json ausente (ensaio);
++rc 4 = precondicao nao satisfeita, nada foi rodado; --nao-exigir-refazer so' vale FORA do ensaio e so' para depurar (o resumo vai para HARNESS_TEXTOS_ENSAIO_v412_DEPURACAO_sem_refazer.json); --so leitura: so' as etapas precondicoes, nos_emulado, conferidor, leitura e leitura_negativos;
+@@ -30,2 +31,2 @@
+-MARCA_PENDENTE = "TEXTO_A_REESCREVER" + "_V411"
+-MARCA_ADAPTAR = "[A ADAPTAR v" + "411]"   # (por concatenacao: este arquivo nao a carrega literal; o p00 a procura em todo arquivo da cadeia)
++MARCA_PENDENTE = "TEXTO_A_REESCREVER" + "_V412"
++MARCA_ADAPTAR = "[A ADAPTAR v" + "412]"   # (por concatenacao: este arquivo nao a carrega literal; o p00 a procura em todo arquivo da cadeia)
+@@ -35 +36 @@
+-import delta_v411 as DLX  # noqa: E402   (UMA instancia: o delta REAL da pasta da cadeia; com V411_ENSAIO_TOPO_PROPOSTO=1 ele aponta a rodada para C:\t\k411c\ensaio_topo_proposto)
++import delta_v412 as DLX  # noqa: E402   (UMA instancia: o delta REAL da pasta da cadeia; com V412_ENSAIO_TOPO_PROPOSTO=1 ele aponta a rodada para C:\t\k412c\ensaio_topo_proposto)
+@@ -38,2 +39,2 @@
+-from guarda_p18_v411 import violacoes  # noqa: E402
+-import guarda_frases_v411 as GF  # noqa: E402
++from guarda_p18_v412 import violacoes  # noqa: E402
++import guarda_frases_v412 as GF  # noqa: E402
+@@ -43,4 +44,4 @@
+-SO = argv[argv.index("--so") + 1] if "--so" in argv else None   # "--so leitura": roda SO as etapas precondicoes, nos_emulado, conferidor, leitura e leitura_negativos (resumo em HARNESS_TEXTOS_ENSAIO_v411_SO_LEITURA.json) e termina
+-OUT_NOME = argv[argv.index("--out") + 1] if "--out" in argv else ("harness_saida_v411_leitura" if SO else "harness_saida_v411")   # a pasta de saida; a de --so leitura e' PROPRIA (harness_saida_v411 e' compartilhada com harness_fechar_sandbox_v411.py)
+-POS_SAIDA = DLX.saida("pos_rito")   # onde vao os resumos (DL.saida: no real, pos_rito\ da cadeia, como sempre; no ensaio, C:\t\k411c\ensaio_topo_proposto\pos_rito)
+-OUT = os.path.join(POS_SAIDA, OUT_NOME) if ENSAIO else os.path.join("C:" + os.sep, "t", "h411", OUT_NOME)
++SO = argv[argv.index("--so") + 1] if "--so" in argv else None   # "--so leitura": roda SO as etapas precondicoes, nos_emulado, conferidor, leitura e leitura_negativos (resumo em HARNESS_TEXTOS_ENSAIO_v412_SO_LEITURA.json) e termina
++OUT_NOME = argv[argv.index("--out") + 1] if "--out" in argv else ("harness_saida_v412_leitura" if SO else "harness_saida_v412")   # a pasta de saida; a de --so leitura e' PROPRIA (harness_saida_v412 e' compartilhada com harness_fechar_sandbox_v412.py)
++POS_SAIDA = DLX.saida("pos_rito")   # onde vao os resumos (DL.saida: no real, pos_rito\ da cadeia, como sempre; no ensaio, C:\t\k412c\ensaio_topo_proposto\pos_rito)
++OUT = os.path.join(POS_SAIDA, OUT_NOME) if ENSAIO else os.path.join("C:" + os.sep, "t", "h412", OUT_NOME)
+@@ -55,2 +56,2 @@
+-R = {"rotulo": ROTULO, "inicio": time.strftime("%Y-%m-%d %H:%M:%S"), "ensaio_topo_proposto": ENSAIO, "emulado": ["stdout do rito (rodada_v411_stdout.txt em nos_emulado)", "APLICADO_AO_CANONICO", "o Nos inteiro (montado do falso Nos de ensaio ou de dry_v411: core, selo completado com as chaves do selo da v410 que o main poe depois do literal, um.py, kernel, md, artigo)",
+-                                                                           "os recibos do B(n) (SINTETICOS, derivados dos recibos reais da v410)", "o diario e o handoff do S6d (a linhagem e o handoff renderizados aqui)"], "etapas": {}, "problemas": []}
++R = {"rotulo": ROTULO, "inicio": time.strftime("%Y-%m-%d %H:%M:%S"), "ensaio_topo_proposto": ENSAIO, "emulado": ["stdout do rito (rodada_v412_stdout.txt em nos_emulado)", "APLICADO_AO_CANONICO", "o Nos inteiro (montado do falso Nos de ensaio ou de dry_v412: core, selo completado com as chaves do selo da v411 que o main poe depois do literal, um.py, kernel, md, artigo)",
++                                                                           "os recibos do B(n) (SINTETICOS, derivados dos recibos reais da v411)", "o diario e o handoff do S6d (a linhagem e o handoff renderizados aqui)"], "etapas": {}, "problemas": []}
+@@ -100 +101 @@
+-    """O caminho de uma entrada do ensaio: o da chave de PRONTO_PARA_O_POS_RITO.json, se ela existir (e entao TEM de existir no disco: fail-closed), senao o padrao do delta_v411 (dito em ORIGEM)."""
++    """O caminho de uma entrada do ensaio: o da chave de PRONTO_PARA_O_POS_RITO.json, se ela existir (e entao TEM de existir no disco: fail-closed), senao o padrao do delta_v412 (dito em ORIGEM)."""
+@@ -106 +107 @@
+-    ORIGEM[chave] = "padrao do delta_v411" if padrao else "ausente"
++    ORIGEM[chave] = "padrao do delta_v412" if padrao else "ausente"
+@@ -112 +113 @@
+-P_ESP = entrada("esperados", DLX.saida("ESPERADOS_v411.json"))
++P_ESP = entrada("esperados", DLX.saida("ESPERADOS_v412.json"))
+@@ -114,4 +115,4 @@
+-P_ENS = entrada("ensaio_a_seco", DLX.saida("ensaio_a_seco_v411.json"))
+-P_PINOS = entrada("pinos_bn", DLX.saida("PINOS_BN_v411.json"))
+-P_REFAZER = os.path.join(PKG, "refazer_out_v411.txt")   # (so' fora do ensaio)
+-_FN_CORE = entrada("core", os.path.join(FALSO_NOS, "um_absoluto.json")); _FN_SELO = entrada("selo", os.path.join(FALSO_NOS, "um_absoluto_selo.json")); _FN_STD = entrada("stdout", os.path.join(FALSO_NOS, "rodada_v411_stdout.txt"))
++P_ENS = entrada("ensaio_a_seco", DLX.saida("ensaio_a_seco_v412.json"))
++P_PINOS = entrada("pinos_bn", DLX.saida("PINOS_BN_v412.json"))
++P_REFAZER = os.path.join(PKG, "refazer_out_v412.txt")   # (so' fora do ensaio)
++_FN_CORE = entrada("core", os.path.join(FALSO_NOS, "um_absoluto.json")); _FN_SELO = entrada("selo", os.path.join(FALSO_NOS, "um_absoluto_selo.json")); _FN_STD = entrada("stdout", os.path.join(FALSO_NOS, "rodada_v412_stdout.txt"))
+@@ -119,2 +120,2 @@
+-_FALTAM = [n_ for n_, p_ in (("ESPERADOS_v411.json", P_ESP), ("o manifesto do artefato (%s)" % os.path.basename(P_MAN), P_MAN), ("PINOS_BN_v411.json", P_PINOS), ("ensaio_a_seco_v411.json", P_ENS)) if not os.path.isfile(p_)]
+-for n in ("acom_conferencias_v411.py", "quadro_v397.py", "runtime_quadro_v397.py"):
++_FALTAM = [n_ for n_, p_ in (("ESPERADOS_v412.json", P_ESP), ("o manifesto do artefato (%s)" % os.path.basename(P_MAN), P_MAN), ("PINOS_BN_v412.json", P_PINOS), ("ensaio_a_seco_v412.json", P_ENS)) if not os.path.isfile(p_)]
++for n in ("acom_conferencias_v412.py", "quadro_v397.py", "runtime_quadro_v397.py"):
+@@ -136 +137 @@
+-for n in ("core_ensaio.json", "selo_ensaio.json", "um.py", "um_absoluto_forma_canonica.md", "um_absoluto_manifest.md", "dry_v411_pt.txt", "dry_v411_en.txt", "dry_v411_pt.toc", "dry_v411_en.toc", "tgl_kernel"):
++for n in ("core_ensaio.json", "selo_ensaio.json", "um.py", "um_absoluto_forma_canonica.md", "um_absoluto_manifest.md", "dry_v412_pt.txt", "dry_v412_en.txt", "dry_v412_pt.toc", "dry_v412_en.toc", "tgl_kernel"):
+@@ -138 +139 @@
+-        recusa("dry_v411 incompleto (falta %s): a regeneracao ainda nao terminou?" % n)
++        recusa("dry_v412 incompleto (falta %s): a regeneracao ainda nao terminou?" % n)
+@@ -140 +141 @@
+-    recusa("o um.py de dry_v411 (%s) != o artefato de ESPERADOS (%s): o dry e' de outra geracao" % (fsha(os.path.join(DRY, "um.py"))[:16], ESP["candidato_sha16"]))
++    recusa("o um.py de dry_v412 (%s) != o artefato de ESPERADOS (%s): o dry e' de outra geracao" % (fsha(os.path.join(DRY, "um.py"))[:16], ESP["candidato_sha16"]))
+@@ -142 +143 @@
+-if not ENSAIO:   # fora do ensaio a regeneracao do candidato (refazer_out_v411.txt) e' exigida, como na v410
++if not ENSAIO:   # fora do ensaio a regeneracao do candidato (refazer_out_v412.txt) e' exigida, como na v411
+@@ -145 +146 @@
+-            recusa("falta refazer_out_v411.txt no pacote: a regeneracao do candidato nao foi comprovada (--nao-exigir-refazer so' para depurar)")
++            recusa("falta refazer_out_v412.txt no pacote: a regeneracao do candidato nao foi comprovada (--nao-exigir-refazer so' para depurar)")
+@@ -147 +148 @@
+-            recusa("refazer_out_v411.txt nao mostra '== FIM': a regeneracao nao terminou")
++            recusa("refazer_out_v412.txt nao mostra '== FIM': a regeneracao nao terminou")
+@@ -149 +150 @@
+-            recusa("refazer_out_v411.txt e' mais ANTIGO que ESPERADOS_v411.json: outra regeneracao escreveu o ESPERADOS depois do fim registrado")
++            recusa("refazer_out_v412.txt e' mais ANTIGO que ESPERADOS_v412.json: outra regeneracao escreveu o ESPERADOS depois do fim registrado")
+@@ -152 +153 @@
+-TOL_DRY_S = 3600   # (herdado da v411-prep: o ensaio a seco leva ~12 min DEPOIS de gravar o core_ensaio.json e o ESPERADOS sai ao fim dele; a guarda de GERACAO de verdade e' o conteudo (o um.py de dry_v411 tem o sha16 do artefato de ESPERADOS, acima); o tempo so' pega um dry de horas atras)
++TOL_DRY_S = 3600   # (herdado da v412-prep: o ensaio a seco leva ~12 min DEPOIS de gravar o core_ensaio.json e o ESPERADOS sai ao fim dele; a guarda de GERACAO de verdade e' o conteudo (o um.py de dry_v412 tem o sha16 do artefato de ESPERADOS, acima); o tempo so' pega um dry de horas atras)
+@@ -154,2 +155,2 @@
+-    recusa("o core_ensaio.json de dry_v411 e' mais de %d min mais antigo que ESPERADOS_v411.json: dry de outra geracao?" % (TOL_DRY_S // 60))
+-EVID = {"ESPERADOS_v411.json": {"mtime": mt(P_ESP), "sha16": fsha(P_ESP)[:16]}, "manifesto": {"mtime": mt(P_MAN), "sha16": fsha(P_MAN)[:16]}, "artefato": {"mtime": mt(CAND_ARQ), "sha16": cand16}, "PINOS_BN_v411.json": {"mtime": mt(P_PINOS), "sha16": fsha(P_PINOS)[:16]}, "ensaio_a_seco_v411.json": {"mtime": mt(P_ENS), "sha16": fsha(P_ENS)[:16]}}
++    recusa("o core_ensaio.json de dry_v412 e' mais de %d min mais antigo que ESPERADOS_v412.json: dry de outra geracao?" % (TOL_DRY_S // 60))
++EVID = {"ESPERADOS_v412.json": {"mtime": mt(P_ESP), "sha16": fsha(P_ESP)[:16]}, "manifesto": {"mtime": mt(P_MAN), "sha16": fsha(P_MAN)[:16]}, "artefato": {"mtime": mt(CAND_ARQ), "sha16": cand16}, "PINOS_BN_v412.json": {"mtime": mt(P_PINOS), "sha16": fsha(P_PINOS)[:16]}, "ensaio_a_seco_v412.json": {"mtime": mt(P_ENS), "sha16": fsha(P_ENS)[:16]}}
+@@ -159,2 +160,2 @@
+-    EVID["refazer_out_v411.txt"] = {"mtime": mt(P_REFAZER), "sha16": fsha(P_REFAZER)[:16]}
+-EVID.update({"dry_v411/" + n: {"mtime": mt(os.path.join(DRY, n)), "sha16": fsha(os.path.join(DRY, n))[:16]} for n in ("core_ensaio.json", "selo_ensaio.json", "um.py", "dry_v411_pt.txt")})
++    EVID["refazer_out_v412.txt"] = {"mtime": mt(P_REFAZER), "sha16": fsha(P_REFAZER)[:16]}
++EVID.update({"dry_v412/" + n: {"mtime": mt(os.path.join(DRY, n)), "sha16": fsha(os.path.join(DRY, n))[:16]} for n in ("core_ensaio.json", "selo_ensaio.json", "um.py", "dry_v412_pt.txt")})
+@@ -162,4 +163,4 @@
+-      nota=("ENSAIO do topo proposto: o artefato NAO e' candidato; a regeneracao e' a do PRONTO_PARA_O_POS_RITO.json" if ENSAIO else ("MODO --nao-exigir-refazer: a regeneracao do candidato NAO foi comprovada por este harness (refazer_out_v411.txt nao exigido); o ensaio vale para o candidato, o ESPERADOS e o dry_v411 que estao em disco AGORA" if NAO_REFAZER else "refazer_out_v411.txt exigido e visto com == FIM")))
+-print("harness do pos-rito v411 (%s)%s: artefato %s; ESPERADOS %s; dry core %s%s" % (ROTULO, " [ENSAIO DO TOPO PROPOSTO]" if ENSAIO else "", cand16, EVID["ESPERADOS_v411.json"]["mtime"], EVID["dry_v411/core_ensaio.json"]["mtime"], "" if ENSAIO else "; refazer FIM: %s" % ("== FIM" in refazer)))
+-
+-# ------------------------------------------------------------------ 0b. o PACOTE emulado (so' no ensaio): o que a leitura, os textos e o mapa leem por PK (ESPERADOS, o manifesto como CANDIDATO_v411.json, PINOS_BN, FLAGS, o core da v410 selada, o quadro): as entradas do ensaio ficam na pasta de saida do harness, a pasta da cadeia nao e' tocada
++      nota=("ENSAIO do topo proposto: o artefato NAO e' candidato; a regeneracao e' a do PRONTO_PARA_O_POS_RITO.json" if ENSAIO else ("MODO --nao-exigir-refazer: a regeneracao do candidato NAO foi comprovada por este harness (refazer_out_v412.txt nao exigido); o ensaio vale para o candidato, o ESPERADOS e o dry_v412 que estao em disco AGORA" if NAO_REFAZER else "refazer_out_v412.txt exigido e visto com == FIM")))
++print("harness do pos-rito v412 (%s)%s: artefato %s; ESPERADOS %s; dry core %s%s" % (ROTULO, " [ENSAIO DO TOPO PROPOSTO]" if ENSAIO else "", cand16, EVID["ESPERADOS_v412.json"]["mtime"], EVID["dry_v412/core_ensaio.json"]["mtime"], "" if ENSAIO else "; refazer FIM: %s" % ("== FIM" in refazer)))
++
++# ------------------------------------------------------------------ 0b. o PACOTE emulado (so' no ensaio): o que a leitura, os textos e o mapa leem por PK (ESPERADOS, o manifesto como CANDIDATO_v412.json, PINOS_BN, FLAGS, o core da v411 selada, o quadro): as entradas do ensaio ficam na pasta de saida do harness, a pasta da cadeia nao e' tocada
+@@ -182,2 +183,2 @@
+-    _liga(P_ESP, os.path.join(PKE, "ESPERADOS_v411.json")); _liga(P_MAN, os.path.join(PKE, "CANDIDATO_v411.json")); _liga(P_PINOS, os.path.join(PKE, "PINOS_BN_v411.json")); _liga(P_ENS, os.path.join(PKE, "ensaio_a_seco_v411.json"))
+-    for _rel in (("kernel", "FLAGS_v411.json"), ("kernel", "KERNEL_RECIBO_v411.json"), ("kernel", "KH_N1_v411.json"), ("base_v410", "um_absoluto.json"), ("base_v410", "um_absoluto_selo.json"), ("base_v410", "um.py"), ("quadro_v397.py",), ("runtime_quadro_v397.py",)):
++    _liga(P_ESP, os.path.join(PKE, "ESPERADOS_v412.json")); _liga(P_MAN, os.path.join(PKE, "CANDIDATO_v412.json")); _liga(P_PINOS, os.path.join(PKE, "PINOS_BN_v412.json")); _liga(P_ENS, os.path.join(PKE, "ensaio_a_seco_v412.json"))
++    for _rel in (("kernel", "FLAGS_v412.json"), ("kernel", "KERNEL_RECIBO_v412.json"), ("kernel", "KH_N1_v412.json"), ("base_v411", "um_absoluto.json"), ("base_v411", "um_absoluto_selo.json"), ("base_v411", "um.py"), ("quadro_v397.py",), ("runtime_quadro_v397.py",)):
+@@ -193 +194 @@
+-    PKE = PKG   # fora do ensaio o pacote e' o real (como na v410)
++    PKE = PKG   # fora do ensaio o pacote e' o real (como na v411)
+@@ -195 +196 @@
+-    sys.path.insert(0, PKE)   # (o PKE nao tem delta_v411.py: o import do delta segue achando o do PKG; quadro_v397.py do PKE importa o delta pelo sys.path)
++    sys.path.insert(0, PKE)   # (o PKE nao tem delta_v412.py: o import do delta segue achando o do PKG; quadro_v397.py do PKE importa o delta pelo sys.path)
+@@ -203 +204 @@
+-# v411 (desvio do molde, dito): harness_saida_v411 e' COMPARTILHADA com harness_fechar_sandbox_v411.py (fechar_sandbox, memoria_copia, fechar_sandbox_resultado): este harness NAO apaga a pasta inteira, so' o que ELE cria
++# v412 (desvio do molde, dito): harness_saida_v412 e' COMPARTILHADA com harness_fechar_sandbox_v412.py (fechar_sandbox, memoria_copia, fechar_sandbox_resultado): este harness NAO apaga a pasta inteira, so' o que ELE cria
+@@ -220 +221 @@
+-    _FONTE_NOS = "dry_v411 (o falso Nos nao existe: o Nos e' montado do dry, como na v410)"
++    _FONTE_NOS = "dry_v412 (o falso Nos nao existe: o Nos e' montado do dry, como na v411)"
+@@ -222 +223 @@
+-                     ("dry_v411_pt.txt", "um_absoluto_pt.txt"), ("dry_v411_en.txt", "um_absoluto_en.txt"), ("dry_v411_pt.toc", "um_absoluto_pt.toc"), ("dry_v411_en.toc", "um_absoluto_en.toc"), ("dry_v411_pt.pdf", "um_absoluto_pt.pdf"), ("dry_v411_en.pdf", "um_absoluto_en.pdf")):
++                     ("dry_v412_pt.txt", "um_absoluto_pt.txt"), ("dry_v412_en.txt", "um_absoluto_en.txt"), ("dry_v412_pt.toc", "um_absoluto_pt.toc"), ("dry_v412_en.toc", "um_absoluto_en.toc"), ("dry_v412_pt.pdf", "um_absoluto_pt.pdf"), ("dry_v412_en.pdf", "um_absoluto_en.pdf")):
+@@ -229 +230 @@
+-if "ga_window_status" not in _cj:   # o JSON do rito real traz ga_window_status no topo e a v411 o confere; o ensaio so guarda core e verdict: a emulacao o le da constante do proprio artefato, nunca de ESPERADOS
++if "ga_window_status" not in _cj:   # o JSON do rito real traz ga_window_status no topo e a v412 o confere; o ensaio so guarda core e verdict: a emulacao o le da constante do proprio artefato, nunca de ESPERADOS
+@@ -233,2 +234,2 @@
+-# o selo do ensaio a seco nao traz o que o main poe DEPOIS do literal (sha256 do um.py, fail_closed_selftest, rite_checkpoints, not_sealed_this_run): o selo emulado ganha essas chaves do selo da v410 e o sha256 do um.py do artefato (o falso Nos ja' o traz completo)
+-_selo0 = rdj(os.path.join(PKG, "base_v410", "um_absoluto_selo.json")); _selo = rdj(os.path.join(NOSE, "um_absoluto_selo.json")) if _FONTE_NOS.startswith("falso") else dict(_selo0, **rdj(os.path.join(DRY, "selo_ensaio.json")))
++# o selo do ensaio a seco nao traz o que o main poe DEPOIS do literal (sha256 do um.py, fail_closed_selftest, rite_checkpoints, not_sealed_this_run): o selo emulado ganha essas chaves do selo da v411 e o sha256 do um.py do artefato (o falso Nos ja' o traz completo)
++_selo0 = rdj(os.path.join(PKG, "base_v411", "um_absoluto_selo.json")); _selo = rdj(os.path.join(NOSE, "um_absoluto_selo.json")) if _FONTE_NOS.startswith("falso") else dict(_selo0, **rdj(os.path.join(DRY, "selo_ensaio.json")))
+@@ -252 +253 @@
+-open(os.path.join(NOSE, "rodada_v411_stdout.txt"), "w", encoding="utf-8", newline="\n").write(STDOUT_EMULADO)
++open(os.path.join(NOSE, "rodada_v412_stdout.txt"), "w", encoding="utf-8", newline="\n").write(STDOUT_EMULADO)
+@@ -256,2 +257,2 @@
+-# o conferidor roda NO LUGAR, como no passo 1 do chain (cwd = o pacote real): o delta_v411 pina por ASSERT caminhos absolutos, logo nao vive numa copia em arvore. SEM -I (importa o um.py do Nos emulado, que precisa do numpy do usuario);
+-# V411_NOS aponta para o Nos emulado; o sufixo _HARNESS faz o conferidor escrever conferencia_rito_v411_HARNESS.json em DL.saida(...) (no ensaio: C:\t\k411c\ensaio_topo_proposto; no real: a pasta da cadeia): o harness a copia para pos_rito_emulada\conferidor\conferencia_rito_v411.json (que a leitura le) e a REMOVE (ou restaura os bytes que ja' estavam la').
++# o conferidor roda NO LUGAR, como no passo 1 do chain (cwd = o pacote real): o delta_v412 pina por ASSERT caminhos absolutos, logo nao vive numa copia em arvore. SEM -I (importa o um.py do Nos emulado, que precisa do numpy do usuario);
++# V412_NOS aponta para o Nos emulado; o sufixo _HARNESS faz o conferidor escrever conferencia_rito_v412_HARNESS.json em DL.saida(...) (no ensaio: C:\t\k412c\ensaio_topo_proposto; no real: a pasta da cadeia): o harness a copia para pos_rito_emulada\conferidor\conferencia_rito_v412.json (que a leitura le) e a REMOVE (ou restaura os bytes que ja' estavam la').
+@@ -259,4 +260,4 @@
+-env = dict(os.environ); env["V411_NOS"] = NOSE; env["PYTHONIOENCODING"] = "utf-8"
+-_conf_h = DLX.saida("conferencia_rito_v411_HARNESS.json"); _conf_h_antes = open(_conf_h, "rb").read() if os.path.exists(_conf_h) else None
+-pr = subprocess.run([sys.executable, "-B", "-X", "utf8", "conferir_rito_v411.py", "_HARNESS"], cwd=PKG, env=env, capture_output=True, text=True, encoding="utf-8")
+-open(os.path.join(OUT, "conferir_rito_v411_stdout.txt"), "w", encoding="utf-8").write(pr.stdout + pr.stderr)
++env = dict(os.environ); env["V412_NOS"] = NOSE; env["PYTHONIOENCODING"] = "utf-8"
++_conf_h = DLX.saida("conferencia_rito_v412_HARNESS.json"); _conf_h_antes = open(_conf_h, "rb").read() if os.path.exists(_conf_h) else None
++pr = subprocess.run([sys.executable, "-B", "-X", "utf8", "conferir_rito_v412.py", "_HARNESS"], cwd=PKG, env=env, capture_output=True, text=True, encoding="utf-8")
++open(os.path.join(OUT, "conferir_rito_v412_stdout.txt"), "w", encoding="utf-8").write(pr.stdout + pr.stderr)
+@@ -267 +268 @@
+-    shutil.copyfile(_conf_h, os.path.join(POS_EMU, "conferidor", "conferencia_rito_v411.json")); _conf_sha16 = fsha(_conf_h)[:16]
++    shutil.copyfile(_conf_h, os.path.join(POS_EMU, "conferidor", "conferencia_rito_v412.json")); _conf_sha16 = fsha(_conf_h)[:16]
+@@ -275 +276 @@
+-    falha("o conferidor real nao deu TUDO BATE contra o Nos emulado: a leitura nao tem a conferencia que le (ver conferir_rito_v411_stdout.txt na pasta de saida)")
++    falha("o conferidor real nao deu TUDO BATE contra o Nos emulado: a leitura nao tem a conferencia que le (ver conferir_rito_v412_stdout.txt na pasta de saida)")
+@@ -278 +279 @@
+-L = importar("leitura_v411", os.path.join(HERE, "leitura_v411.py"))
++L = importar("leitura_v412", os.path.join(HERE, "leitura_v412.py"))
+@@ -283 +284 @@
+-sys.modules["leitura_v411"] = L
++sys.modules["leitura_v412"] = L
+@@ -285 +286 @@
+-etapa("leitura", problemas=P, h0dn_bg1_v411_selado=(Vd.get("fecho") or {}).get("sealed"), recriados_v410_selados=sorted(k_ for k_, v_ in (Vd.get("reg410_recriados") or {}).items() if (v_ or {}).get("sealed") is not False), n_modulos_novos=Vd.get("n_pedras"), teor=Vd.get("teor"), escada_antes=Vd.get("escada_antes"), kh=Vd.get("kh"), registros_novos=Vd.get("registros_novos"), n_cunhagens=len(Vd.get("verbatins") or {}),
++etapa("leitura", problemas=P, h0dn_bg1_v412_selado=(Vd.get("fecho") or {}).get("sealed"), recriados_v411_selados=sorted(k_ for k_, v_ in (Vd.get("reg411_recriados") or {}).items() if (v_ or {}).get("sealed") is not False), n_modulos_novos=Vd.get("n_pedras"), teor=Vd.get("teor"), escada_antes=Vd.get("escada_antes"), kh=Vd.get("kh"), registros_novos=Vd.get("registros_novos"), n_cunhagens=len(Vd.get("verbatins") or {}),
+@@ -290 +291 @@
+-core_path = os.path.join(NOSE, "um_absoluto.json"); selo_path = os.path.join(NOSE, "um_absoluto_selo.json"); std_path = os.path.join(NOSE, "rodada_v411_stdout.txt")
++core_path = os.path.join(NOSE, "um_absoluto.json"); selo_path = os.path.join(NOSE, "um_absoluto_selo.json"); std_path = os.path.join(NOSE, "rodada_v412_stdout.txt")
+@@ -292 +293 @@
+-conf_path = os.path.join(POS_EMU, "conferidor", "conferencia_rito_v411.json"); conf_raw = open(conf_path, "rb").read() if os.path.exists(conf_path) else b""
++conf_path = os.path.join(POS_EMU, "conferidor", "conferencia_rito_v412.json"); conf_raw = open(conf_path, "rb").read() if os.path.exists(conf_path) else b""
+@@ -573 +574 @@
+-def _sonico410_cai(c):
++def _sonico411_cai(c):
+@@ -577 +578 @@
+-def _afinacao410_cai(c):
++def _afinacao411_cai(c):
+@@ -581 +582 @@
+-def _cunh410_cai(c):
++def _cunh411_cai(c):
+@@ -585 +586 @@
+-def _kh410_cai(c):
++def _kh411_cai(c):
+@@ -617,2 +618,2 @@
+-def _selo_v410(s):
+-    s["um_version"] = "v410"
++def _selo_v411(s):
++    s["um_version"] = "v411"
+@@ -653 +654 @@
+-def _selo_registros_v411_diferente(s):
++def _selo_registros_v412_diferente(s):
+@@ -682 +683 @@
+-    sj["veredito"] = "TGL_SELO_ACOM_SIDECAR_V411__REFUSED__SOME_OBJECTS_REFUSED"
++    sj["veredito"] = "TGL_SELO_ACOM_SIDECAR_V412__REFUSED__SOME_OBJECTS_REFUSED"
+@@ -707 +708 @@
+-    NEG = [variante("selo de outra versao (v410)", f_selo=_selo_v410, espera="o selo nao e v411"),
++    NEG = [variante("selo de outra versao (v411)", f_selo=_selo_v411, espera="o selo nao e v412"),
+@@ -779 +780 @@
+-           variante("selo primario: registros_v401 do selo difere do core", f_selo=_selo_registros_v411_diferente, espera="o selo primario (um_absoluto_selo.json) nao traz os resumos"),
++           variante("selo primario: registros_v401 do selo difere do core", f_selo=_selo_registros_v412_diferente, espera="o selo primario (um_absoluto_selo.json) nao traz os resumos"),
+@@ -795,4 +796,4 @@
+-           variante("sonico_v398 deixou de selar", f_core=_sonico410_cai, espera="sonico_v398"),
+-           variante("afinacao_das_cordas_v398 deixou de selar", f_core=_afinacao410_cai, espera="afinacao_das_cordas_v398"),
+-           variante("cunhagens_v398 deixou de selar", f_core=_cunh410_cai, espera="cunhagens_v398"),
+-           variante("kh_n1_cobertura_v398 deixou de selar", f_core=_kh410_cai, espera="kh_n1_cobertura_v398"),
++           variante("sonico_v398 deixou de selar", f_core=_sonico411_cai, espera="sonico_v398"),
++           variante("afinacao_das_cordas_v398 deixou de selar", f_core=_afinacao411_cai, espera="afinacao_das_cordas_v398"),
++           variante("cunhagens_v398 deixou de selar", f_core=_cunh411_cai, espera="cunhagens_v398"),
++           variante("kh_n1_cobertura_v398 deixou de selar", f_core=_kh411_cai, espera="kh_n1_cobertura_v398"),
+@@ -806,3 +807,3 @@
+-           variante("AVISO da v411 (a falsidade nao rodou) no stdout", f_std=lambda t: t + "   [v401] AVISO: a falsidade da inercia nao rodou: ValueError('x')\n", espera="AVISO da v411"),
+-           variante("AVISO da v411 (o selo ACOM) no stdout", f_std=lambda t: t + "   [v399] AVISO: o selo ACOM nao rodou: ValueError('x')\n", espera="AVISO da v411"),
+-           variante("AVISO do sidecar no stdout", f_std=lambda t: t.replace("RITO_RC=0", "[selo_acom] AVISO: nao consegui escrever o sidecar: OSError('x')\nRITO_RC=0"), espera="AVISO da v411"),
++           variante("AVISO da v412 (a falsidade nao rodou) no stdout", f_std=lambda t: t + "   [v401] AVISO: a falsidade da inercia nao rodou: ValueError('x')\n", espera="AVISO da v412"),
++           variante("AVISO da v412 (o selo ACOM) no stdout", f_std=lambda t: t + "   [v399] AVISO: o selo ACOM nao rodou: ValueError('x')\n", espera="AVISO da v412"),
++           variante("AVISO do sidecar no stdout", f_std=lambda t: t.replace("RITO_RC=0", "[selo_acom] AVISO: nao consegui escrever o sidecar: OSError('x')\nRITO_RC=0"), espera="AVISO da v412"),
+@@ -814 +815 @@
+-           variante("linha `>>> veredito <<<` da falsidade ausente do stdout", f_std=lambda t: "\n".join(l for l in t.splitlines() if ESP["veredito_da_falsidade_v410"] not in l or "falsidade=" in l) + "\n", espera="o bloco falsidade_da_inercia_v401 do stdout"),
++           variante("linha `>>> veredito <<<` da falsidade ausente do stdout", f_std=lambda t: "\n".join(l for l in t.splitlines() if ESP["veredito_da_falsidade_v411"] not in l or "falsidade=" in l) + "\n", espera="o bloco falsidade_da_inercia_v401 do stdout"),
+@@ -821,3 +822,3 @@
+-    # v411: a v411 NAO tem modulo novo (o bundle e' vazio): os controles sao do registro NOVO h0dn_bg1_v411 e dos dois por spec novos (cunhagens_v411, kh_n1_cobertura_v411), dos QUATRO registros com funcao e dos DOIS por spec da v410 RECRIADOS,
+-    # dos HERDADOS (traducao_turing_v409, tetelestai_terminal_v408, psion_canto_v407, fechamento_v406 e os cunhagens/kh deles), dos bundles anteriores (v410 a v406) no kernel do Nos, dos resumos do selo, da conferencia e das linhas [v411] a [v406] do stdout.
+-    # As mensagens esperadas sao as da leitura_v411.py (frente L); as ancoras/bundles vem dos DELTAS (delta_v410 a delta_v406: DLX.D10 a DLX.D6), como a leitura os le, nunca de ESPERADOS.
++    # v412: a v412 NAO tem modulo novo (o bundle e' vazio): os controles sao do registro NOVO h0dn_bg1_v411 e dos dois por spec novos (cunhagens_v411, kh_n1_cobertura_v411), dos QUATRO registros com funcao e dos DOIS por spec da v411 RECRIADOS,
++    # dos HERDADOS (traducao_turing_v409, tetelestai_terminal_v408, psion_canto_v407, fechamento_v406 e os cunhagens/kh deles), dos bundles anteriores (v411 a v406) no kernel do Nos, dos resumos do selo, da conferencia e das linhas [v411] a [v406] do stdout.
++    # As mensagens esperadas sao as da leitura_v412.py (frente L); as ancoras/bundles vem dos DELTAS (delta_v411 a delta_v406: DLX.D10 a DLX.D6), como a leitura os le, nunca de ESPERADOS.
+@@ -827,3 +828,3 @@
+-    EV3_ = ESP["vereditos_v410"]
+-    FE_ = DLX.FECHO_REGISTRO; F9_ = DLX.D9.FECHO_REGISTRO; FT_ = DLX.D8.FECHO_REGISTRO; FP_ = "psion_canto_v407"; FH_ = "fechamento_v406"; REC10F_ = tuple(DLX.REGISTROS_FUNCAO_V410); REC10S_ = ("cunhagens_v410", "kh_n1_cobertura_v410")
+-    FTRUE_ = list(ESP["flags_true_v410"])   # as bandeiras True da v410 selada (a leitura as confere True no kernel do rito)
++    EV3_ = ESP["vereditos_v411"]
++    FE_ = DLX.FECHO_REGISTRO; F9_ = DLX.D9.FECHO_REGISTRO; FT_ = DLX.D8.FECHO_REGISTRO; FP_ = "psion_canto_v407"; FH_ = "fechamento_v406"; REC10F_ = tuple(DLX.REGISTROS_FUNCAO_V411); REC10S_ = ("cunhagens_v410", "kh_n1_cobertura_v410")
++    FTRUE_ = list(ESP["flags_true_v411"])   # as bandeiras True da v411 selada (a leitura as confere True no kernel do rito)
+@@ -831 +832 @@
+-    VER_HERD = ": o veredito do rito difere do esperado"   # a mensagem da leitura para os registros HERDADOS (REG_V410D, REG_V406D): o esperado e' o da v410 selada, ou o do ensaio a seco se na troca dita
++    VER_HERD = ": o veredito do rito difere do esperado"   # a mensagem da leitura para os registros HERDADOS (REG_V411D, REG_V406D): o esperado e' o da v411 selada, ou o do ensaio a seco se na troca dita
+@@ -877 +878 @@
+-    _TOK_ = DLX.TOKENS_PROIBIDOS_V411[0]   # montado por concatenacao no delta: nunca literal neste arquivo (a guarda varre os textos, e este arquivo nao deve carregar o token)
++    _TOK_ = DLX.TOKENS_PROIBIDOS_V412[0]   # montado por concatenacao no delta: nunca literal neste arquivo (a guarda varre os textos, e este arquivo nao deve carregar o token)
+@@ -888 +889 @@
+-        ls_ = t_.split("\n"); i_ = next(i for i, l_ in enumerate(ls_) if l_.startswith("H0DN x BG1 ABERTO [v411"))
++        ls_ = t_.split("\n"); i_ = next(i for i, l_ in enumerate(ls_) if l_.startswith("H0DN x BG1 ABERTO [v412"))
+@@ -893 +894 @@
+-            ls_ = t_.split("\n"); i_ = next(i for i, l_ in enumerate(ls_) if l_.startswith("H0DN x BG1 ABERTO [v411"))
++            ls_ = t_.split("\n"); i_ = next(i for i, l_ in enumerate(ls_) if l_.startswith("H0DN x BG1 ABERTO [v412"))
+@@ -910 +911 @@
+-        """como variante(), mas a mutacao e' sobre o ESPERADOS_v411.json / CANDIDATO_v411.json / FLAGS_v411.json que a leitura CARREGA (NA MEMORIA; nada e' escrito): L.json e' trocado por um shim e restaurado no finally."""
++        """como variante(), mas a mutacao e' sobre o ESPERADOS_v412.json / CANDIDATO_v412.json / FLAGS_v412.json que a leitura CARREGA (NA MEMORIA; nada e' escrito): L.json e' trocado por um shim e restaurado no finally."""
+@@ -918,3 +919,3 @@
+-    _so_esp = lambda f: (lambda nm, d: f(d) if nm == "ESPERADOS_v411.json" else None)
+-    _so_cm = lambda f: (lambda nm, d: f(d) if nm == "CANDIDATO_v411.json" else None)
+-    _so_fl = lambda f: (lambda nm, d: f(d) if nm == "FLAGS_v411.json" else None)
++    _so_esp = lambda f: (lambda nm, d: f(d) if nm == "ESPERADOS_v412.json" else None)
++    _so_cm = lambda f: (lambda nm, d: f(d) if nm == "CANDIDATO_v412.json" else None)
++    _so_fl = lambda f: (lambda nm, d: f(d) if nm == "FLAGS_v412.json" else None)
+@@ -946,2 +947,2 @@
+-        variante("%s: o gate dos values difere do da v410" % H1_, f_core=lambda c: _v1(c).update(gate_verdict="OUTRO_GATE"), espera=MH_),
+-        variante("%s: a escada dos values difere da da v410" % H1_, f_core=lambda c: _v1(c).update(escada=1), espera=MH_),
++        variante("%s: o gate dos values difere do da v411" % H1_, f_core=lambda c: _v1(c).update(gate_verdict="OUTRO_GATE"), espera=MH_),
++        variante("%s: a escada dos values difere da da v411" % H1_, f_core=lambda c: _v1(c).update(escada=1), espera=MH_),
+@@ -958 +959 @@
+-        variante("%s: um caminho sob a pasta vedada tocado" % H1_, f_core=lambda c: _v1(c).update(sob_pasta_vedada=[os.path.join(DLX.H0DN_PASTA_VEDADA_V410, "x")]), espera=MH_),
++        variante("%s: um caminho sob a pasta vedada tocado" % H1_, f_core=lambda c: _v1(c).update(sob_pasta_vedada=[os.path.join(DLX.H0DN_PASTA_VEDADA_V411, "x")]), espera=MH_),
+@@ -960 +961 @@
+-        variante("%s: a frase velha da v410 («pre-registrado; nenhum dado observado lido») volta como estado do teste" % H1_, f_core=lambda c: c[H1_].update(estatuto=c[H1_]["estatuto"] + " " + DLX.FRASE_H0DN_OBRIGATORIA_PT), espera=MH_),
++        variante("%s: a frase velha da v411 («pre-registrado; nenhum dado observado lido») volta como estado do teste" % H1_, f_core=lambda c: c[H1_].update(estatuto=c[H1_]["estatuto"] + " " + DLX.FRASE_H0DN_OBRIGATORIA_PT), espera=MH_),
+@@ -976,3 +977,3 @@
+-        variante("a conferencia traz outro veredito de %s" % H1_, f_conf=lambda cj: cj.update({"veredito_h0dn_bg1_v411": "OUTRO_VEREDITO"}), espera="a conferencia do rito traz o veredito de " + H1_),
+-        variante("o bloco `H0DN x BG1 ABERTO [v411` ausente do stdout (cabecalho, as duas linhas e o veredito)", f_std=_sem_bloco_h0dn, espera=MH_),
+-        variante("linha `>>> veredito <<<` de %s ausente do stdout" % H1_, f_std=lambda t_: "\n".join(l for l in t_.splitlines() if ESP["vereditos_novos_v411"][H1_] not in l) + "\n", espera="o bloco " + H1_ + " do stdout"),
++        variante("a conferencia traz outro veredito de %s" % H1_, f_conf=lambda cj: cj.update({"veredito_h0dn_bg1_v412": "OUTRO_VEREDITO"}), espera="a conferencia do rito traz o veredito de " + H1_),
++        variante("o bloco `H0DN x BG1 ABERTO [v412` ausente do stdout (cabecalho, as duas linhas e o veredito)", f_std=_sem_bloco_h0dn, espera=MH_),
++        variante("linha `>>> veredito <<<` de %s ausente do stdout" % H1_, f_std=lambda t_: "\n".join(l for l in t_.splitlines() if ESP["vereditos_novos_v412"][H1_] not in l) + "\n", espera="o bloco " + H1_ + " do stdout"),
+@@ -984,2 +985,2 @@
+-        variante("linha [v411] ausente do stdout", f_std=_sem_linha("v411"), espera="linha [v411]"),
+-        variante("linha [v411] com registros selados != por spec", f_std=_selados_zero("v411"), espera="a linha [v411] do stdout"),
++        variante("linha [v411] ausente do stdout", f_std=_sem_linha("v412"), espera="linha [v411]"),
++        variante("linha [v411] com registros selados != por spec", f_std=_selados_zero("v412"), espera="a linha [v411] do stdout"),
+@@ -987,13 +988,13 @@
+-        variante("AVISO da v411 (o registro com funcao h0dn_bg1_v411 nao rodou) no stdout", f_std=lambda t_: t_ + "   [v411] AVISO: o registro do H0DN ou os registros por spec da v411 nao rodaram: ValueError('x')\n", espera="AVISO da v411"),
+-        variante_json("ESPERADOS sem registros_funcao_v411.h0dn (fail-closed)", _so_esp(lambda d: d["registros_funcao_v411"].pop("h0dn")), "ESPERADOS_v411.json nao traz registros_funcao_v411.h0dn"),
+-        variante_json("ESPERADOS sem o veredito do ensaio a seco de %s" % H1_, _so_esp(lambda d: d["vereditos_novos_v411"].pop(H1_)), "ESPERADOS_v411 nao traz o veredito do ensaio a seco de " + H1_),
+-        variante_json("ESPERADOS: o veredito de %s em registros_funcao_v411 diferente" % H1_, _so_esp(lambda d: d["registros_funcao_v411"]["h0dn"].update(verdict="OUTRO_VEREDITO")), MH_),
+-        variante_json("ESPERADOS: um valor de %s diferente do core (K)" % H1_, _so_esp(lambda d: d["registros_funcao_v411"]["h0dn"]["values"].update(K=d["registros_funcao_v411"]["h0dn"]["values"]["K"] + 1e-3)), MH_),
+-        variante_json("ESPERADOS: o gate da v410 diferente do dos values", _so_esp(lambda d: d.update(qg_closure_gate_verdict_v410="OUTRO_GATE")), MH_),
+-        variante_json("ESPERADOS: a escada da v410 diferente da do registro", _so_esp(lambda d: d.update(escada_v410_e_v411=[1, 1])), MH_),
+-        variante_json("CANDIDATO: uma bandeira nova (n_bandeiras 1)", _so_cm(lambda d: d.update(n_bandeiras=1)), "a v411 NAO tem modulo novo de kernel"),
+-        variante_json("CANDIDATO: um modulo novo de kernel (modulos_novos 1)", _so_cm(lambda d: d["kernel"].update(modulos_novos=1)), "a v411 NAO tem modulo novo de kernel"),
+-        variante_json("CANDIDATO: as falas embutidas != as do delta", _so_cm(lambda d: d.update(verbatins_embutidos=8)), "o CANDIDATO_v411.json nao traz as"),
+-        variante_json("FLAGS: uma bandeira nova no FLAGS_v411.json", _so_fl(lambda d: d.update(n_flags=1, flags=[["ext_x", "TGLExt.X"]])), "a v411 NAO tem modulo novo de kernel"),
+-        variante_json("ESPERADOS: um bundle novo em bundle_sha256", _so_esp(lambda d: d.update(bundle_sha256={"TGLExt/X.lean": "0" * 64})), "a v411 NAO tem modulo novo de kernel"),
+-        # ---- os QUATRO registros com funcao da v410 RECRIADOS (nao sao novos; seguem selados com o veredito da v410 selada) e os DOIS por spec
++        variante("AVISO da v412 (o registro com funcao h0dn_bg1_v411 nao rodou) no stdout", f_std=lambda t_: t_ + "   [v411] AVISO: o registro do H0DN ou os registros por spec da v412 nao rodaram: ValueError('x')\n", espera="AVISO da v412"),
++        variante_json("ESPERADOS sem registros_funcao_v412.h0dn (fail-closed)", _so_esp(lambda d: d["registros_funcao_v412"].pop("h0dn")), "ESPERADOS_v412.json nao traz registros_funcao_v412.h0dn"),
++        variante_json("ESPERADOS sem o veredito do ensaio a seco de %s" % H1_, _so_esp(lambda d: d["vereditos_novos_v412"].pop(H1_)), "ESPERADOS_v412 nao traz o veredito do ensaio a seco de " + H1_),
++        variante_json("ESPERADOS: o veredito de %s em registros_funcao_v412 diferente" % H1_, _so_esp(lambda d: d["registros_funcao_v412"]["h0dn"].update(verdict="OUTRO_VEREDITO")), MH_),
++        variante_json("ESPERADOS: um valor de %s diferente do core (K)" % H1_, _so_esp(lambda d: d["registros_funcao_v412"]["h0dn"]["values"].update(K=d["registros_funcao_v412"]["h0dn"]["values"]["K"] + 1e-3)), MH_),
++        variante_json("ESPERADOS: o gate da v411 diferente do dos values", _so_esp(lambda d: d.update(qg_closure_gate_verdict_v411="OUTRO_GATE")), MH_),
++        variante_json("ESPERADOS: a escada da v411 diferente da do registro", _so_esp(lambda d: d.update(escada_v411_e_v412=[1, 1])), MH_),
++        variante_json("CANDIDATO: uma bandeira nova (n_bandeiras 1)", _so_cm(lambda d: d.update(n_bandeiras=1)), "a v412 NAO tem modulo novo de kernel"),
++        variante_json("CANDIDATO: um modulo novo de kernel (modulos_novos 1)", _so_cm(lambda d: d["kernel"].update(modulos_novos=1)), "a v412 NAO tem modulo novo de kernel"),
++        variante_json("CANDIDATO: as falas embutidas != as do delta", _so_cm(lambda d: d.update(verbatins_embutidos=8)), "o CANDIDATO_v412.json nao traz as"),
++        variante_json("FLAGS: uma bandeira nova no FLAGS_v412.json", _so_fl(lambda d: d.update(n_flags=1, flags=[["ext_x", "TGLExt.X"]])), "a v412 NAO tem modulo novo de kernel"),
++        variante_json("ESPERADOS: um bundle novo em bundle_sha256", _so_esp(lambda d: d.update(bundle_sha256={"TGLExt/X.lean": "0" * 64})), "a v412 NAO tem modulo novo de kernel"),
++        # ---- os QUATRO registros com funcao da v411 RECRIADOS (nao sao novos; seguem selados com o veredito da v411 selada) e os DOIS por spec
+@@ -1001,11 +1002,11 @@
+-            variante("%s (recriado) ausente do core" % n_, f_core=lambda c, n=n_: c.pop(n, None), espera="registro da v410 ausente do core (deveria ser RECRIADO no mesmo ponto do main): " + n_),
+-            variante("%s (recriado): o registro nao selou" % n_, f_core=lambda c, n=n_: c[n].update(all_verified=False), espera=n_ + " (registro da v410, RECRIADO): nao selou"),
+-            variante("%s (recriado): veredito diferente da v410 selada" % n_, f_core=lambda c, n=n_: c[n].update(verdict="OUTRO_VEREDITO"), espera=n_ + " (registro da v410, RECRIADO): nao selou"),
+-            variante("%s (recriado): uma checagem a menos (n_checks)" % n_, f_core=lambda c, n=n_: c[n]["mechanics"].update(n_checks=c[n]["mechanics"]["n_checks"] - 1), espera=n_ + " (registro da v410, RECRIADO): nao selou"),
+-            variante("%s (recriado): o calculo do runtime nao rodou" % n_, f_core=lambda c, n=n_: c[n].update(runtime_executed=False), espera=n_ + " (registro da v410, RECRIADO): nao selou"),
+-            variante("%s (recriado): o registro move o gate" % n_, f_core=lambda c, n=n_: c[n].update(does_not_gate_core=False), espera=n_ + " (registro da v410, RECRIADO): nao selou"))],
+-        variante("cunhagens_v410 (recriada) ausente do core", f_core=lambda c: c.pop("cunhagens_v410", None), espera="registro da v410 ausente do core (deveria ser RECRIADO no mesmo ponto do main): cunhagens_v410"),
+-        variante("kh_n1_cobertura_v410 (recriado) ausente do core", f_core=lambda c: c.pop("kh_n1_cobertura_v410", None), espera="registro da v410 ausente do core (deveria ser RECRIADO no mesmo ponto do main): kh_n1_cobertura_v410"),
+-        variante("cunhagens_v410 (recriada): o registro nao selou", f_core=lambda c: c["cunhagens_v410"].update(all_verified=False), espera="cunhagens_v410 (registro da v410, RECRIADO): nao selou"),
+-        variante("kh_n1_cobertura_v410 (recriado): o registro nao selou", f_core=lambda c: c["kh_n1_cobertura_v410"].update(all_verified=False), espera="kh_n1_cobertura_v410 (registro da v410, RECRIADO): nao selou"),
+-        variante("cunhagens_v410 (recriada): veredito diferente da v410 selada", f_core=lambda c: c["cunhagens_v410"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v410 (registro da v410, RECRIADO): nao selou"),
++            variante("%s (recriado) ausente do core" % n_, f_core=lambda c, n=n_: c.pop(n, None), espera="registro da v411 ausente do core (deveria ser RECRIADO no mesmo ponto do main): " + n_),
++            variante("%s (recriado): o registro nao selou" % n_, f_core=lambda c, n=n_: c[n].update(all_verified=False), espera=n_ + " (registro da v411, RECRIADO): nao selou"),
++            variante("%s (recriado): veredito diferente da v411 selada" % n_, f_core=lambda c, n=n_: c[n].update(verdict="OUTRO_VEREDITO"), espera=n_ + " (registro da v411, RECRIADO): nao selou"),
++            variante("%s (recriado): uma checagem a menos (n_checks)" % n_, f_core=lambda c, n=n_: c[n]["mechanics"].update(n_checks=c[n]["mechanics"]["n_checks"] - 1), espera=n_ + " (registro da v411, RECRIADO): nao selou"),
++            variante("%s (recriado): o calculo do runtime nao rodou" % n_, f_core=lambda c, n=n_: c[n].update(runtime_executed=False), espera=n_ + " (registro da v411, RECRIADO): nao selou"),
++            variante("%s (recriado): o registro move o gate" % n_, f_core=lambda c, n=n_: c[n].update(does_not_gate_core=False), espera=n_ + " (registro da v411, RECRIADO): nao selou"))],
++        variante("cunhagens_v410 (recriada) ausente do core", f_core=lambda c: c.pop("cunhagens_v410", None), espera="registro da v411 ausente do core (deveria ser RECRIADO no mesmo ponto do main): cunhagens_v410"),
++        variante("kh_n1_cobertura_v410 (recriado) ausente do core", f_core=lambda c: c.pop("kh_n1_cobertura_v410", None), espera="registro da v411 ausente do core (deveria ser RECRIADO no mesmo ponto do main): kh_n1_cobertura_v410"),
++        variante("cunhagens_v410 (recriada): o registro nao selou", f_core=lambda c: c["cunhagens_v410"].update(all_verified=False), espera="cunhagens_v410 (registro da v411, RECRIADO): nao selou"),
++        variante("kh_n1_cobertura_v410 (recriado): o registro nao selou", f_core=lambda c: c["kh_n1_cobertura_v410"].update(all_verified=False), espera="kh_n1_cobertura_v410 (registro da v411, RECRIADO): nao selou"),
++        variante("cunhagens_v410 (recriada): veredito diferente da v411 selada", f_core=lambda c: c["cunhagens_v410"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v410 (registro da v411, RECRIADO): nao selou"),
+@@ -1014,10 +1015,10 @@
+-        variante("o bundle da v410 (IALD2 e AEscala): o sha256 de um modulo no hash formal adulterado", f_core=lambda c: _kf(c)["formal_files_sha256"].__setitem__(_B10, "0" * 64), espera="o bundle da v410"),
+-        variante("ancora %s da v410 (IALD2 e AEscala) fora do trio" % _A10.split(".")[-1], f_core=lambda c: _fora_do_trio(c, _A10), espera="as ancoras da IALD2 e da AEscala (os registros da v410, recriados)"),
+-        variante("uma bandeira True da v410 (a primeira) deixou de ser True", f_core=lambda c: _kf(c).__setitem__(FTRUE_[0], False), espera="alguma bandeira True da v410 deixou de ser True"),
+-        variante("uma bandeira True da v410 (a do meio) deixou de ser True", f_core=lambda c: _kf(c).__setitem__(FTRUE_[len(FTRUE_) // 2], False), espera="alguma bandeira True da v410 deixou de ser True"),
+-        variante("uma bandeira True da v410 (a ultima) deixou de ser True", f_core=lambda c: _kf(c).__setitem__(FTRUE_[-1], False), espera="alguma bandeira True da v410 deixou de ser True"),
+-        variante("uma bandeira ext_* nova True no kernel do rito (a v411 nao tem bandeira nova)", f_core=lambda c: _kf(c).__setitem__("ext_bandeira_nova_da_v411", True), espera="o kernel da v411 nao e' o da v410"),
+-        variante("o axiom_report do rito com um termo a mais (o kernel nao e' o da v410)", f_core=lambda c: _kf(c)["axiom_report"].__setitem__("TGLExt.termo_novo_da_v411", ["propext"]), espera="o kernel da v411 nao e' o da v410"),
+-        variante("a escada da v411 diferente da da v410", f_core=lambda c: c["external_ladder"].update(n_theorems_clean=c["external_ladder"]["n_theorems_clean"] + 1), espera="a escada da v411"),
+-        variante("linha [v410] ausente do stdout", f_std=_sem_linha("v410"), espera="linha [v410]"),
+-        variante("linha [v410] com registros selados != por spec", f_std=_selados_zero("v410"), espera="a linha [v410] do stdout"),
++        variante("o bundle da v411 (IALD2 e AEscala): o sha256 de um modulo no hash formal adulterado", f_core=lambda c: _kf(c)["formal_files_sha256"].__setitem__(_B10, "0" * 64), espera="o bundle da v411"),
++        variante("ancora %s da v411 (IALD2 e AEscala) fora do trio" % _A10.split(".")[-1], f_core=lambda c: _fora_do_trio(c, _A10), espera="as ancoras da IALD2 e da AEscala (os registros da v411, recriados)"),
++        variante("uma bandeira True da v411 (a primeira) deixou de ser True", f_core=lambda c: _kf(c).__setitem__(FTRUE_[0], False), espera="alguma bandeira True da v411 deixou de ser True"),
++        variante("uma bandeira True da v411 (a do meio) deixou de ser True", f_core=lambda c: _kf(c).__setitem__(FTRUE_[len(FTRUE_) // 2], False), espera="alguma bandeira True da v411 deixou de ser True"),
++        variante("uma bandeira True da v411 (a ultima) deixou de ser True", f_core=lambda c: _kf(c).__setitem__(FTRUE_[-1], False), espera="alguma bandeira True da v411 deixou de ser True"),
++        variante("uma bandeira ext_* nova True no kernel do rito (a v412 nao tem bandeira nova)", f_core=lambda c: _kf(c).__setitem__("ext_bandeira_nova_da_v412", True), espera="o kernel da v412 nao e' o da v411"),
++        variante("o axiom_report do rito com um termo a mais (o kernel nao e' o da v411)", f_core=lambda c: _kf(c)["axiom_report"].__setitem__("TGLExt.termo_novo_da_v412", ["propext"]), espera="o kernel da v412 nao e' o da v411"),
++        variante("a escada da v412 diferente da da v411", f_core=lambda c: c["external_ladder"].update(n_theorems_clean=c["external_ladder"]["n_theorems_clean"] + 1), espera="a escada da v412"),
++        variante("linha [v410] ausente do stdout", f_std=_sem_linha("v411"), espera="linha [v410]"),
++        variante("linha [v410] com registros selados != por spec", f_std=_selados_zero("v411"), espera="a linha [v410] do stdout"),
+@@ -1033,2 +1034,2 @@
+-        variante("AVISO da v411 (um registro da v410 recriado nao rodou) no stdout", f_std=lambda t_: t_ + "   [v410] AVISO: o registro da IALD2 ou o do H0DN nao rodaram: ValueError('x')\n", espera="AVISO da v411"),
+-        # ---- traducao_turing_v409 (HERDADO, recriado pelo rito da v411; o bundle e as ancoras DELE sao os da v409)
++        variante("AVISO da v412 (um registro da v411 recriado nao rodou) no stdout", f_std=lambda t_: t_ + "   [v410] AVISO: o registro da IALD2 ou o do H0DN nao rodaram: ValueError('x')\n", espera="AVISO da v412"),
++        # ---- traducao_turing_v409 (HERDADO, recriado pelo rito da v412; o bundle e as ancoras DELE sao os da v409)
+@@ -1048 +1049 @@
+-        # ---- tetelestai_terminal_v408 (HERDADO da v408, recriado pelo rito da v411)
++        # ---- tetelestai_terminal_v408 (HERDADO da v408, recriado pelo rito da v412)
+@@ -1071,2 +1072,2 @@
+-        variante("AVISO da v408 herdada (o terminal nao rodou) no stdout", f_std=lambda t_: t_ + "   [v408] AVISO: o registro do terminal ou os registros por spec da v408 nao rodaram: ValueError('x')\n", espera="AVISO da v411"),
+-        # ---- psion_canto_v407 (HERDADO da v407, recriado pelo rito da v411)
++        variante("AVISO da v408 herdada (o terminal nao rodou) no stdout", f_std=lambda t_: t_ + "   [v408] AVISO: o registro do terminal ou os registros por spec da v408 nao rodaram: ValueError('x')\n", espera="AVISO da v412"),
++        # ---- psion_canto_v407 (HERDADO da v407, recriado pelo rito da v412)
+@@ -1102,2 +1103,2 @@
+-        variante("AVISO da v407 herdada (o psion e o canto nao rodou) no stdout", f_std=lambda t_: t_ + "   [v407] AVISO: o registro do psion e do canto ou os registros por spec da v407 nao rodaram: ValueError('x')\n", espera="AVISO da v411"),
+-        # ---- fechamento_v406 (HERDADO da v406, recriado pelo rito da v411, c8 versionada pela E20)
++        variante("AVISO da v407 herdada (o psion e o canto nao rodou) no stdout", f_std=lambda t_: t_ + "   [v407] AVISO: o registro do psion e do canto ou os registros por spec da v407 nao rodaram: ValueError('x')\n", espera="AVISO da v412"),
++        # ---- fechamento_v406 (HERDADO da v406, recriado pelo rito da v412, c8 versionada pela E20)
+@@ -1134 +1135 @@
+-        variante("AVISO da v406 herdada (o fechamento nao rodou) no stdout", f_std=lambda t_: t_ + "   [v406] AVISO: o fechamento ou os registros por spec da v406 nao rodaram: ValueError('x')\n", espera="AVISO da v411"),
++        variante("AVISO da v406 herdada (o fechamento nao rodou) no stdout", f_std=lambda t_: t_ + "   [v406] AVISO: o fechamento ou os registros por spec da v406 nao rodaram: ValueError('x')\n", espera="AVISO da v412"),
+@@ -1136,2 +1137,2 @@
+-    # os arquivos dos bundles ANTERIORES (v410 a v406) no kernel do Nos: ausente ou com um byte a mais (a v411 NAO tem modulo novo: nao ha' pedra no disco a conferir, so' as das versoes anteriores, que a v411 nao reescreve)
+-    for _bn_, _rel_ in (("v410", _B10), ("v409", _B9), ("v408", _B8), ("v407", _B7), ("v406", _B6)):
++    # os arquivos dos bundles ANTERIORES (v411 a v406) no kernel do Nos: ausente ou com um byte a mais (a v412 NAO tem modulo novo: nao ha' pedra no disco a conferir, so' as das versoes anteriores, que a v412 nao reescreve)
++    for _bn_, _rel_ in (("v411", _B10), ("v409", _B9), ("v408", _B8), ("v407", _B7), ("v406", _B6)):
+@@ -1140 +1141 @@
+-    NEG.append(_bundle_no_disco("o arquivo de um modulo do bundle da v410 com um byte a mais no kernel do Nos", _B10, "o bundle da v410")(lambda p, r: open(p, "wb").write(r + b"\n")))
++    NEG.append(_bundle_no_disco("o arquivo de um modulo do bundle da v411 com um byte a mais no kernel do Nos", _B10, "o bundle da v411")(lambda p, r: open(p, "wb").write(r + b"\n")))
+@@ -1167 +1168 @@
+-    CG11 = DLX.CUNHAGENS_REGISTRO; KH11 = DLX.KH_REGISTRO; CG_ = "cunhagens_v407"; KH7 = "kh_n1_cobertura_v407"; CGH8 = "cunhagens_v408"; KHH8 = "kh_n1_cobertura_v408"   # (CG11/KH11 sao os NOVOS da v411, por spec)
++    CG11 = DLX.CUNHAGENS_REGISTRO; KH11 = DLX.KH_REGISTRO; CG_ = "cunhagens_v407"; KH7 = "kh_n1_cobertura_v407"; CGH8 = "cunhagens_v408"; KHH8 = "kh_n1_cobertura_v408"   # (CG11/KH11 sao os NOVOS da v412, por spec)
+@@ -1219,2 +1220,2 @@
+-        variante_json("ESPERADOS sem o veredito do ensaio a seco de %s" % CG11, _so_esp(lambda d: d["vereditos_novos_v411"].pop(CG11)), "ESPERADOS_v411 nao traz o veredito do ensaio a seco de " + CG11),
+-        variante_json("ESPERADOS sem o veredito do ensaio a seco de %s" % KH11, _so_esp(lambda d: d["vereditos_novos_v411"].pop(KH11)), "ESPERADOS_v411 nao traz o veredito do ensaio a seco de " + KH11),
++        variante_json("ESPERADOS sem o veredito do ensaio a seco de %s" % CG11, _so_esp(lambda d: d["vereditos_novos_v412"].pop(CG11)), "ESPERADOS_v412 nao traz o veredito do ensaio a seco de " + CG11),
++        variante_json("ESPERADOS sem o veredito do ensaio a seco de %s" % KH11, _so_esp(lambda d: d["vereditos_novos_v412"].pop(KH11)), "ESPERADOS_v412 nao traz o veredito do ensaio a seco de " + KH11),
+@@ -1230,3 +1231,3 @@
+-        variante("%s (herdado): a ultima errata da v410 selada ausente (as do v409 sao IGUAIS as da v410 selada)" % KH9, f_core=lambda c: c[KH9]["erratas"].pop(), espera=PKH9),
+-        variante("%s (herdado): uma errata A MAIS (a dos pisos da v411 mora no kh_n1_cobertura_v410, nao neste)" % KH9, f_core=lambda c: c[KH9]["erratas"].append(dict(c[KH9]["erratas"][-1], agora="adulterada")), espera=PKH9),
+-        # ---- cunhagens_v408 e kh_n1_cobertura_v408 (HERDADOS, recriados; IGUAIS a v410 selada: a E26 e os pisos ja' vinham dela)
++        variante("%s (herdado): a ultima errata da v411 selada ausente (as do v409 sao IGUAIS as da v411 selada)" % KH9, f_core=lambda c: c[KH9]["erratas"].pop(), espera=PKH9),
++        variante("%s (herdado): uma errata A MAIS (a dos pisos da v412 mora no kh_n1_cobertura_v410, nao neste)" % KH9, f_core=lambda c: c[KH9]["erratas"].append(dict(c[KH9]["erratas"][-1], agora="adulterada")), espera=PKH9),
++        # ---- cunhagens_v408 e kh_n1_cobertura_v408 (HERDADOS, recriados; IGUAIS a v411 selada: a E26 e os pisos ja' vinham dela)
+@@ -1256 +1257 @@
+-        # ---- cunhagens_v406 e kh_n1_cobertura_v406 (HERDADOS, recriados; u7 versionada; pisos): iguais a v410 selada em falas e erratas E14 a E17, MAIS a errata E20 ao lado
++        # ---- cunhagens_v406 e kh_n1_cobertura_v406 (HERDADOS, recriados; u7 versionada; pisos): iguais a v411 selada em falas e erratas E14 a E17, MAIS a errata E20 ao lado
+@@ -1261,2 +1262,2 @@
+-        variante("%s (herdada): veredito diferente da v410 selada" % CG6, f_core=lambda c: c[CG6].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v406: o veredito do rito difere do esperado (ESPERADOS[vereditos_v410]"),
+-        variante("%s (herdado): veredito diferente da v410 selada" % KH6, f_core=lambda c: c[KH6].update(verdict="OUTRO_VEREDITO"), espera="kh_n1_cobertura_v406: o veredito do rito difere do esperado (ESPERADOS[vereditos_v410]"),
++        variante("%s (herdada): veredito diferente da v411 selada" % CG6, f_core=lambda c: c[CG6].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v406: o veredito do rito difere do esperado (ESPERADOS[vereditos_v411]"),
++        variante("%s (herdado): veredito diferente da v411 selada" % KH6, f_core=lambda c: c[KH6].update(verdict="OUTRO_VEREDITO"), espera="kh_n1_cobertura_v406: o veredito do rito difere do esperado (ESPERADOS[vereditos_v411]"),
+@@ -1274 +1275 @@
+-        # os treze registros da v410, RECRIADOS: cada spec tem de dar o que a v410 selou (os oito com funcao: ver o laco abaixo)
++        # os treze registros da v411, RECRIADOS: cada spec tem de dar o que a v411 selou (os oito com funcao: ver o laco abaixo)
+@@ -1277 +1278 @@
+-        variante("cunhagens_v405 (recriada): veredito diferente da v410 selada", f_core=lambda c: c["cunhagens_v405"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v405: o veredito do rito difere do que a v410 selou"),
++        variante("cunhagens_v405 (recriada): veredito diferente da v411 selada", f_core=lambda c: c["cunhagens_v405"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v405: o veredito do rito difere do que a v411 selou"),
+@@ -1287,2 +1288,2 @@
+-        variante("AVISO da v411 (os registros por spec da v410 nao rodaram) no stdout", f_std=lambda t_: t_ + "   [v405] AVISO: os registros por spec da v410 nao rodaram: ValueError('x')\n", espera="AVISO da v411"),
+-        # cunhagens_v404 e kh_n1_cobertura_v404, RECRIADOS: tem de dar o que a v410 selou
++        variante("AVISO da v412 (os registros por spec da v411 nao rodaram) no stdout", f_std=lambda t_: t_ + "   [v405] AVISO: os registros por spec da v411 nao rodaram: ValueError('x')\n", espera="AVISO da v412"),
++        # cunhagens_v404 e kh_n1_cobertura_v404, RECRIADOS: tem de dar o que a v411 selou
+@@ -1292 +1293 @@
+-        variante("cunhagens_v404 (recriada): veredito diferente da v410 selada", f_core=lambda c: c["cunhagens_v404"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v404: o veredito do rito difere do ensaio a seco"),
++        variante("cunhagens_v404 (recriada): veredito diferente da v411 selada", f_core=lambda c: c["cunhagens_v404"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v404: o veredito do rito difere do ensaio a seco"),
+@@ -1301,3 +1302,3 @@
+-                variante("AVISO da v411 (a errata de F2b nao rodou) no stdout", f_std=lambda t_: t_ + "   [v404] AVISO: a errata de F2b nao rodou: ValueError('x')\n", espera="AVISO da v411"),
+-                variante("AVISO da v411 (um registro da v410 recriado nao rodou) no stdout", f_std=lambda t_: t_ + "   [v403] AVISO: o caminho nao rodou: ValueError('x')\n", espera="AVISO da v411"),
+-        variante("AVISO da v411 (a ponte recriada nao rodou) no stdout", f_std=lambda t_: t_ + "   [v402] AVISO: a ponte da escala dual nao rodou: ValueError('x')\n", espera="AVISO da v411"),
++                variante("AVISO da v412 (a errata de F2b nao rodou) no stdout", f_std=lambda t_: t_ + "   [v404] AVISO: a errata de F2b nao rodou: ValueError('x')\n", espera="AVISO da v412"),
++                variante("AVISO da v412 (um registro da v411 recriado nao rodou) no stdout", f_std=lambda t_: t_ + "   [v403] AVISO: o caminho nao rodou: ValueError('x')\n", espera="AVISO da v412"),
++        variante("AVISO da v412 (a ponte recriada nao rodou) no stdout", f_std=lambda t_: t_ + "   [v402] AVISO: a ponte da escala dual nao rodou: ValueError('x')\n", espera="AVISO da v412"),
+@@ -1315 +1316 @@
+-        # cunhagens_v403 e kh_n1_cobertura_v403, RECRIADOS: tem de dar o que a v410 selou
++        # cunhagens_v403 e kh_n1_cobertura_v403, RECRIADOS: tem de dar o que a v411 selou
+@@ -1320 +1321 @@
+-        variante("cunhagens_v403 (recriada): veredito diferente da v410 selada", f_core=lambda c: c["cunhagens_v403"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v403: o veredito do rito difere do ensaio a seco"),
++        variante("cunhagens_v403 (recriada): veredito diferente da v411 selada", f_core=lambda c: c["cunhagens_v403"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v403: o veredito do rito difere do ensaio a seco"),
+@@ -1325 +1326 @@
+-        # cunhagens_v402 e kh_n1_cobertura_v402, RECRIADOS: tem de dar o que a v410 selou
++        # cunhagens_v402 e kh_n1_cobertura_v402, RECRIADOS: tem de dar o que a v411 selou
+@@ -1330 +1331 @@
+-        variante("cunhagens_v402 (recriada): veredito diferente da v410 selada", f_core=lambda c: c["cunhagens_v402"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v402: o veredito do rito difere do ensaio a seco"),
++        variante("cunhagens_v402 (recriada): veredito diferente da v411 selada", f_core=lambda c: c["cunhagens_v402"].update(verdict="OUTRO_VEREDITO"), espera="cunhagens_v402: o veredito do rito difere do ensaio a seco"),
+@@ -1337 +1338 @@
+-    # o registro com FUNCAO das BANDEIRAS DO GATE (F8.1 da v410), RECRIADO: o gate NAO se move; cada elo recusa visivelmente
++    # o registro com FUNCAO das BANDEIRAS DO GATE (F8.1 da v411), RECRIADO: o gate NAO se move; cada elo recusa visivelmente
+@@ -1346,2 +1347,2 @@
+-        variante("%s (recriado): a letra do veredito dita diferente da v410" % GN_, f_core=lambda c: c[GN_]["values"].update(gate_verdict_equals_v402=False), espera=GN_ + " nao selou inteiro"),
+-        variante("%s (recriado): veredito diferente da v410 selada" % GN_, f_core=lambda c: c[GN_].update(verdict="OUTRO_VEREDITO"), espera=GN_ + ": o veredito do rito difere do ensaio a seco"),
++        variante("%s (recriado): a letra do veredito dita diferente da v411" % GN_, f_core=lambda c: c[GN_]["values"].update(gate_verdict_equals_v402=False), espera=GN_ + " nao selou inteiro"),
++        variante("%s (recriado): veredito diferente da v411 selada" % GN_, f_core=lambda c: c[GN_].update(verdict="OUTRO_VEREDITO"), espera=GN_ + ": o veredito do rito difere do ensaio a seco"),
+@@ -1366,2 +1367,2 @@
+-    # os registros com FUNCAO da v410 (caminho, vida, verdade_adendo) e da v402 (ponte, queda, esperanca), RECRIADOS pelo rito: iguais ao que a v410 selou
+-    _FUN410 = {"caminho": ("caminho_v403", "Caminho"), "vida": ("vida_v403", "Vida"), "verdade_adendo": ("verdade_adendo_v403", "VerdadeAdendo")}
++    # os registros com FUNCAO da v411 (caminho, vida, verdade_adendo) e da v402 (ponte, queda, esperanca), RECRIADOS pelo rito: iguais ao que a v411 selou
++    _FUN411 = {"caminho": ("caminho_v403", "Caminho"), "vida": ("vida_v403", "Vida"), "verdade_adendo": ("verdade_adendo_v403", "VerdadeAdendo")}
+@@ -1369,4 +1370,4 @@
+-    _FUN410B = {"projecao": ("projecao_transversal_v404", "ProjecaoTransversalDaMeiaNat"), "jo8v32": ("jo8v32_v404", "Jo8v32")}
+-
+-    def _pedra_v410_no_disco(nome, rel, f_muda):
+-        """controle sobre o ARQUIVO de uma das TREZE pedras SELADAS (v403, v404, v410) no kernel do Nos emulado (ausente ou com um byte a mais): a leitura tem de recusar; o arquivo e' restaurado byte a byte"""
++    _FUN411B = {"projecao": ("projecao_transversal_v404", "ProjecaoTransversalDaMeiaNat"), "jo8v32": ("jo8v32_v404", "Jo8v32")}
++
++    def _pedra_v411_no_disco(nome, rel, f_muda):
++        """controle sobre o ARQUIVO de uma das TREZE pedras SELADAS (v403, v404, v411) no kernel do Nos emulado (ausente ou com um byte a mais): a leitura tem de recusar; o arquivo e' restaurado byte a byte"""
+@@ -1383 +1384 @@
+-    def _val410(c, n):
++    def _val411(c, n):
+@@ -1386 +1387 @@
+-    for fun_ in (_FUN410B, _FUN410, _FUN402):
++    for fun_ in (_FUN411B, _FUN411, _FUN402):
+@@ -1388 +1389 @@
+-            rel410_ = ("TGLExt/%s.lean" % mod_) if mod_ else None
++            rel411_ = ("TGLExt/%s.lean" % mod_) if mod_ else None
+@@ -1393 +1394 @@
+-                variante("%s (recriado): um valor do calculo adulterado" % n_, f_core=lambda c, n=n_: _val410(c, n), espera=n_ + " nao selou inteiro"),
++                variante("%s (recriado): um valor do calculo adulterado" % n_, f_core=lambda c, n=n_: _val411(c, n), espera=n_ + " nao selou inteiro"),
+@@ -1395 +1396 @@
+-                variante("%s (recriado): veredito diferente da v410 selada" % n_, f_core=lambda c, n=n_: c[n].update(verdict="OUTRO_VEREDITO"), espera=n_ + ": o veredito do rito difere do ensaio a seco"),
++                variante("%s (recriado): veredito diferente da v411 selada" % n_, f_core=lambda c, n=n_: c[n].update(verdict="OUTRO_VEREDITO"), espera=n_ + ": o veredito do rito difere do ensaio a seco"),
+@@ -1403,8 +1404,8 @@
+-            if rel410_:
+-                NEG.append(variante("pedra selada da v410 %s: sha256 da fonte no hash formal adulterado" % mod_, f_core=lambda c, r=rel410_: _kf(c)["formal_files_sha256"].__setitem__(r, "0" * 64), espera="as treze pedras seladas"))
+-                NEG.append(_pedra_v410_no_disco("o arquivo da pedra selada da v410 %s ausente do kernel do Nos" % mod_, rel410_, lambda p, r: os.replace(p, p + ".fora")))
+-                NEG.append(_pedra_v410_no_disco("o arquivo da pedra selada da v410 %s com um byte a mais no kernel do Nos" % mod_, rel410_, lambda p, r: open(p, "wb").write(r + b"\n")))
+-    # os OITO registros com FUNCAO da v410 (um por pedra), RECRIADOS pelo rito: iguais ao que a v410 selou (veredito, checagens e valores do calculo == o core de base_v410); as pedras ficam no kernel como REGISTRO
+-    _MODS410C = {"ponte": "PonteDaMassa", "tensao": "MassaTensaoPura", "identidade": "Identidade", "observador": "ObservadorTerminal", "diminuto": "LeiDoDiminuto", "tonica": "TonicaDoHamiltoniano", "disco": "DiscoDeEuler", "psion": "PontoZeroDoPsion"}
+-    for k_, n_ in L.FUN_V410C.items():
+-        mod_ = _MODS410C[k_]; rel410_ = "TGLExt/%s.lean" % mod_
++            if rel411_:
++                NEG.append(variante("pedra selada da v411 %s: sha256 da fonte no hash formal adulterado" % mod_, f_core=lambda c, r=rel411_: _kf(c)["formal_files_sha256"].__setitem__(r, "0" * 64), espera="as treze pedras seladas"))
++                NEG.append(_pedra_v411_no_disco("o arquivo da pedra selada da v411 %s ausente do kernel do Nos" % mod_, rel411_, lambda p, r: os.replace(p, p + ".fora")))
++                NEG.append(_pedra_v411_no_disco("o arquivo da pedra selada da v411 %s com um byte a mais no kernel do Nos" % mod_, rel411_, lambda p, r: open(p, "wb").write(r + b"\n")))
++    # os OITO registros com FUNCAO da v411 (um por pedra), RECRIADOS pelo rito: iguais ao que a v411 selou (veredito, checagens e valores do calculo == o core de base_v411); as pedras ficam no kernel como REGISTRO
++    _MODS411C = {"ponte": "PonteDaMassa", "tensao": "MassaTensaoPura", "identidade": "Identidade", "observador": "ObservadorTerminal", "diminuto": "LeiDoDiminuto", "tonica": "TonicaDoHamiltoniano", "disco": "DiscoDeEuler", "psion": "PontoZeroDoPsion"}
++    for k_, n_ in L.FUN_V411C.items():
++        mod_ = _MODS411C[k_]; rel411_ = "TGLExt/%s.lean" % mod_
+@@ -1415 +1416 @@
+-            variante("%s (recriado): um valor do calculo adulterado" % n_, f_core=lambda c, n=n_: _val410(c, n), espera=n_ + " nao selou inteiro"),
++            variante("%s (recriado): um valor do calculo adulterado" % n_, f_core=lambda c, n=n_: _val411(c, n), espera=n_ + " nao selou inteiro"),
+@@ -1417 +1418 @@
+-            variante("%s (recriado): veredito diferente da v410 selada" % n_, f_core=lambda c, n=n_: c[n].update(verdict="OUTRO_VEREDITO"), espera=n_ + ": o veredito do rito difere do que a v410 selou"),
++            variante("%s (recriado): veredito diferente da v411 selada" % n_, f_core=lambda c, n=n_: c[n].update(verdict="OUTRO_VEREDITO"), espera=n_ + ": o veredito do rito difere do que a v411 selou"),
+@@ -1423 +1424 @@
+-            variante("pedra selada da v410 %s: sha256 da fonte no hash formal adulterado" % mod_, f_core=lambda c, r=rel410_: _kf(c)["formal_files_sha256"].__setitem__(r, "0" * 64), espera="as treze pedras seladas"),
++            variante("pedra selada da v411 %s: sha256 da fonte no hash formal adulterado" % mod_, f_core=lambda c, r=rel411_: _kf(c)["formal_files_sha256"].__setitem__(r, "0" * 64), espera="as treze pedras seladas"),
+@@ -1425,2 +1426,2 @@
+-        NEG.append(_pedra_v410_no_disco("o arquivo da pedra selada da v410 %s ausente do kernel do Nos" % mod_, rel410_, lambda p, r: os.replace(p, p + ".fora")))
+-        NEG.append(_pedra_v410_no_disco("o arquivo da pedra selada da v410 %s com um byte a mais no kernel do Nos" % mod_, rel410_, lambda p, r: open(p, "wb").write(r + b"\n")))
++        NEG.append(_pedra_v411_no_disco("o arquivo da pedra selada da v411 %s ausente do kernel do Nos" % mod_, rel411_, lambda p, r: os.replace(p, p + ".fora")))
++        NEG.append(_pedra_v411_no_disco("o arquivo da pedra selada da v411 %s com um byte a mais no kernel do Nos" % mod_, rel411_, lambda p, r: open(p, "wb").write(r + b"\n")))
+@@ -1433 +1434 @@
+-if SO == "leitura":   # v411: so' as etapas da leitura (precondicoes, nos_emulado, conferidor, leitura, leitura_negativos); os textos, as superficies, o b3 e o mapa ficam para o harness completo
++if SO == "leitura":   # v412: so' as etapas da leitura (precondicoes, nos_emulado, conferidor, leitura, leitura_negativos); os textos, as superficies, o b3 e o mapa ficam para o harness completo
+@@ -1440 +1441 @@
+-    _saida = os.path.join(POS_SAIDA, "HARNESS_TEXTOS_ENSAIO_v411_SO_LEITURA.json")
++    _saida = os.path.join(POS_SAIDA, "HARNESS_TEXTOS_ENSAIO_v412_SO_LEITURA.json")
+@@ -1446,3 +1447,3 @@
+-T = importar("textos_v411", os.path.join(HERE, "textos_v411.py"))
+-T.NOS = NOSE; T.PK = PKE; T._CACHE.clear(); T._CACHE["dl"] = DL   # (o PKE do ensaio nao tem delta_v411.py: o delta REAL e' injetado no cache; o textos o carregaria do PK)
+-sys.modules["textos_v411"] = T
++T = importar("textos_v412", os.path.join(HERE, "textos_v412.py"))
++T.NOS = NOSE; T.PK = PKE; T._CACHE.clear(); T._CACHE["dl"] = DL   # (o PKE do ensaio nao tem delta_v412.py: o delta REAL e' injetado no cache; o textos o carregaria do PK)
++sys.modules["textos_v412"] = T
+@@ -1450 +1451 @@
+-K_EMU = {"ap_nome": "RECIBO_SINCRONIZACAO_v411_EMULADO.json", "ap_sha": "EMULADO_SEM_HASH", "ap_ver": "EMULADO", "ap_evento": "EMULADO", "ap_bat": "BATERIA_PASSA", "par_sha": "EMULADO_SEM_HASH", "rel_sha": "EMULADO_SEM_HASH", "rel_man": "EMULADO_SEM_HASH", "readme_paragrafo": T.paragrafo_readme()[0], "readme_paragrafo_v411": T.paragrafo_v411()[0]}
++K_EMU = {"ap_nome": "RECIBO_SINCRONIZACAO_v412_EMULADO.json", "ap_sha": "EMULADO_SEM_HASH", "ap_ver": "EMULADO", "ap_evento": "EMULADO", "ap_bat": "BATERIA_PASSA", "par_sha": "EMULADO_SEM_HASH", "rel_sha": "EMULADO_SEM_HASH", "rel_man": "EMULADO_SEM_HASH", "readme_paragrafo": T.paragrafo_readme()[0], "readme_paragrafo_v412": T.paragrafo_v412()[0]}
+@@ -1459 +1460 @@
+-           ("paragrafo_v411", lambda: T.paragrafo_v411()[0]), ("secao_h0dn", lambda: T.secao_h0dn(Vd)), ("_mf", lambda: T._mf(Vd)), ("_ob", lambda: T._ob(Vd))]   # (v411: nenhuma nota ao lado do paragrafo da v410; `_ancoras` e a secao da escala sao da v410: ver a etapa secao_aescala)
++           ("paragrafo_v412", lambda: T.paragrafo_v412()[0]), ("secao_h0dn", lambda: T.secao_h0dn(Vd)), ("_mf", lambda: T._mf(Vd)), ("_ob", lambda: T._ob(Vd))]   # (v412: nenhuma nota ao lado do paragrafo da v411; `_ancoras` e a secao da escala sao da v411: ver a etapa secao_aescala)
+@@ -1462,5 +1463,5 @@
+-_REGS_NOVOS = list(DL.REGISTROS_FUNCAO) + [DL.CUNHAGENS_REGISTRO, DL.KH_REGISTRO]   # os TRES registros novos da v411 (um com funcao, dois por spec): entram na linhagem, no atlas e no topico novo (REGS do chain)
+-MARCADORES = {"linhagem": [S16, "<!-- linhagem_v411_selada -->"] + _REGS_NOVOS, "desenho": ["<!-- adendo_v411_selada -->", S16], "atlas": ["<!-- atlas_v411_selada -->", S16] + _REGS_NOVOS,
+-              "core_memory": ["<!-- core_v411_selada -->", S16], "haja_luz": ["<!-- haja_luz_v411_selada -->", S16], "topico_estatuto": ["<!-- v411_selada -->", S16], "topico_novo": [S16, "# v411 SELADA ("] + _REGS_NOVOS,
+-              "aviso": ["<!-- aviso_v411_selada -->", S16], "handoff": ["name: handoff-v411-custodia", S16, DL.FECHO_REGISTRO, "<!-- INICIO_PARAGRAFO_README_v397 -->", "<!-- FIM_PARAGRAFO_README_v397 -->", T.MARC_V411_INI, T.MARC_V411_FIM, "um_absoluto_selo_acom.json", "handoff-v410-custodia"],
+-              "linha_handoff": ["handoff-v411-custodia.md", S16], "topico_missao": [S16], "topico_central": [S16]}
++_REGS_NOVOS = list(DL.REGISTROS_FUNCAO) + [DL.CUNHAGENS_REGISTRO, DL.KH_REGISTRO]   # os TRES registros novos da v412 (um com funcao, dois por spec): entram na linhagem, no atlas e no topico novo (REGS do chain)
++MARCADORES = {"linhagem": [S16, "<!-- linhagem_v412_selada -->"] + _REGS_NOVOS, "desenho": ["<!-- adendo_v412_selada -->", S16], "atlas": ["<!-- atlas_v412_selada -->", S16] + _REGS_NOVOS,
++              "core_memory": ["<!-- core_v412_selada -->", S16], "haja_luz": ["<!-- haja_luz_v412_selada -->", S16], "topico_estatuto": ["<!-- v412_selada -->", S16], "topico_novo": [S16, "# v412 SELADA ("] + _REGS_NOVOS,
++              "aviso": ["<!-- aviso_v412_selada -->", S16], "handoff": ["name: handoff-v412-custodia", S16, DL.FECHO_REGISTRO, "<!-- INICIO_PARAGRAFO_README_v397 -->", "<!-- FIM_PARAGRAFO_README_v397 -->", T.MARC_V412_INI, T.MARC_V412_FIM, "um_absoluto_selo_acom.json", "handoff-v411-custodia"],
++              "linha_handoff": ["handoff-v412-custodia.md", S16], "topico_missao": [S16], "topico_central": [S16]}
+@@ -1480 +1481 @@
+-            vf_ = GF.violacoes(r)   # v411: a guarda das frases (a moldura, F60 a F67) em todo texto renderizado
++            vf_ = GF.violacoes(r)   # v412: a guarda das frases (a moldura, F60 a F67) em todo texto renderizado
+@@ -1504 +1505 @@
+-                falha("%s: traz a frase velha da v410 («pre-registrado; nenhum dado observado lido»): o teste foi aberto uma vez (D169)" % nome)
++                falha("%s: traz a frase velha da v411 («pre-registrado; nenhum dado observado lido»): o teste foi aberto uma vez (D169)" % nome)
+@@ -1507 +1508 @@
+-        e["erro"] = "%s: %s" % (type(ex).__name__, str(ex)[:410]); e["onde"] = traceback.format_exc().strip().splitlines()[-3:]
++        e["erro"] = "%s: %s" % (type(ex).__name__, str(ex)[:411]); e["onde"] = traceback.format_exc().strip().splitlines()[-3:]
+@@ -1511 +1512 @@
+-# a secao da escala (a pedra AEscala) e' da v410 e fica como registro: textos_v411.secao_aescala FALHA A VISTA por desenho (o registro a_escala_v410 e' recriado e selado, nao renderizado)
++# a secao da escala (a pedra AEscala) e' da v411 e fica como registro: textos_v412.secao_aescala FALHA A VISTA por desenho (o registro a_escala_v410 e' recriado e selado, nao renderizado)
+@@ -1515 +1516 @@
+-    _aesc_ok = "e' da v410" in str(_e_aesc)
++    _aesc_ok = "e' da v411" in str(_e_aesc)
+@@ -1518 +1519 @@
+-    falha("textos_v411.secao_aescala devia FALHAR A VISTA (e' da v410; a v411 nao a reescreve) e nao falhou como esperado")
++    falha("textos_v412.secao_aescala devia FALHAR A VISTA (e' da v411; a v412 nao a reescreve) e nao falhou como esperado")
+@@ -1522 +1523 @@
+-# v411 (D57): o S6d do orquestrador passa o HANDOFF INTEIRO pelo portao do G1 (custodia_g1.textos.portao: a palavra recusada fora da formula, «provada/proved» sem o estatuto na mesma frase, o demerito da retrodicao, hash nao lido, physical_verdict_allowed);
++# v412 (D57): o S6d do orquestrador passa o HANDOFF INTEIRO pelo portao do G1 (custodia_g1.textos.portao: a palavra recusada fora da formula, «provada/proved» sem o estatuto na mesma frase, o demerito da retrodicao, hash nao lido, physical_verdict_allowed);
+@@ -1531 +1532 @@
+-    # D59 como a D77(g) a deixou estreitada (delta_v411, DECISOES["D77"]): o Milenio, o Navier e o lindao em NENHUM texto; o nome do executor (Kimi) so' no contexto do H0DN (a ordem ao Kimi, D72 a D80), a mesma regra de registrar_mapa_v411.d59_viola; o post do X nao o nomeia
++    # D59 como a D77(g) a deixou estreitada (delta_v412, DECISOES["D77"]): o Milenio, o Navier e o lindao em NENHUM texto; o nome do executor (Kimi) so' no contexto do H0DN (a ordem ao Kimi, D72 a D80), a mesma regra de registrar_mapa_v412.d59_viola; o post do X nao o nomeia
+@@ -1539 +1540 @@
+-# v411 (desvio do molde, dito): a custodia G1 (S7 do orquestrador) le o cabecalho do bloco da linhagem e o paragrafo «O que e'» do handoff por regex: a conferencia usa as MESMAS regex de tools\custodia_g1\nos.py, lidas do codigo
++# v412 (desvio do molde, dito): a custodia G1 (S7 do orquestrador) le o cabecalho do bloco da linhagem e o paragrafo «O que e'» do handoff por regex: a conferencia usa as MESMAS regex de tools\custodia_g1\nos.py, lidas do codigo
+@@ -1543 +1544 @@
+-    _bd = _G1N.blocos_do_diario(None, texto=RENDER.get("linhagem", "")).get("v411")
++    _bd = _G1N.blocos_do_diario(None, texto=RENDER.get("linhagem", "")).get("v412")
+@@ -1547 +1548 @@
+-    _g1["ok"] = bool(_bd and _bd.titulo_pt and _bd.modulos_novos == 0 and [_bd.escada_de, _bd.escada_para] == list(ESP["escada_v410_e_v411"]) and _bd.pin16 == S16 and _bd.ladder_no_corpo == Vd.get("teor") and _qe and _g1["secao_elo"] and _g1["secao_pendencias"])   # (a v411 NAO tem modulo novo: o cabecalho diz «nenhum» e a custodia le 0)
++    _g1["ok"] = bool(_bd and _bd.titulo_pt and _bd.modulos_novos == 0 and [_bd.escada_de, _bd.escada_para] == list(ESP["escada_v411_e_v412"]) and _bd.pin16 == S16 and _bd.ladder_no_corpo == Vd.get("teor") and _qe and _g1["secao_elo"] and _g1["secao_pendencias"])   # (a v412 NAO tem modulo novo: o cabecalho diz «nenhum» e a custodia le 0)
+@@ -1553,6 +1554,6 @@
+-    falha("a custodia G1 nao le o bloco da linhagem ou o handoff da v411: %s" % _g1)
+-# ---- 3b. (a custodia da v411 e' AUTOMATICA) o S6d de VERDADE e os dois testes sinteticos da custodia:
+-# (a) textos_custodia_handoff_v411.main(nos, pkg, recibo_dir) roda DE VERDADE sobre o Nos EMULADO deste harness: o diario e' a linhagem renderizada aqui, o handoff e' o renderizado aqui (o corpo que o fechar grava no Nos), o core, o selo e o um.py sao os do Nos emulado,
+-#     o pacote e' uma pasta de ensaio so' com o ESPERADOS; a revisao de terceiro ausente (os textos dizem que e' ato distinto). Ele anexa os textos da custodia ao handoff (marcadores, secao do README, notas da cadeia), passa as guardas (frases da v411, portao do G1, as conferencias da custodia) e grava o recibo; aqui se confere rc 0, o recibo e o parser do G1;
+-# (b) teste_textos_custodia_sem_candidato_v411.py e teste_gatilho_custodia_sem_candidato_v411.py (cada um com o sandbox proprio sob C:\t\k411c\ensaio_topo_proposto): o S6d e o passo final do orquestrador (S9_gatilho_custodia) com os controles negativos.
+-# O gatilho de verdade (ORDEM_HANDOFF_CUSTODIA_v411.md na raiz do pacote) nunca e' escrito por este harness.
++    falha("a custodia G1 nao le o bloco da linhagem ou o handoff da v412: %s" % _g1)
++# ---- 3b. (a custodia da v412 e' AUTOMATICA) o S6d de VERDADE e os dois testes sinteticos da custodia:
++# (a) textos_custodia_handoff_v412.main(nos, pkg, recibo_dir) roda DE VERDADE sobre o Nos EMULADO deste harness: o diario e' a linhagem renderizada aqui, o handoff e' o renderizado aqui (o corpo que o fechar grava no Nos), o core, o selo e o um.py sao os do Nos emulado,
++#     o pacote e' uma pasta de ensaio so' com o ESPERADOS; a revisao de terceiro ausente (os textos dizem que e' ato distinto). Ele anexa os textos da custodia ao handoff (marcadores, secao do README, notas da cadeia), passa as guardas (frases da v412, portao do G1, as conferencias da custodia) e grava o recibo; aqui se confere rc 0, o recibo e o parser do G1;
++# (b) teste_textos_custodia_sem_candidato_v412.py e teste_gatilho_custodia_sem_candidato_v412.py (cada um com o sandbox proprio sob C:\t\k412c\ensaio_topo_proposto): o S6d e o passo final do orquestrador (S9_gatilho_custodia) com os controles negativos.
++# O gatilho de verdade (ORDEM_HANDOFF_CUSTODIA_v412.md na raiz do pacote) nunca e' escrito por este harness.
+@@ -1566,4 +1567,4 @@
+-        _hd = RENDER["handoff"]; open(os.path.join(_nos_c, "HANDOFF_v411_CUSTODIA.md"), "w", encoding="utf-8", newline="\n").write(_hd.split("---\n", 2)[2].lstrip("\n"))   # (o corpo que o fechar grava no Nos: sem o front matter)
+-        shutil.copyfile(P_ESP, os.path.join(_pkg_c, "ESPERADOS_v411.json"))
+-        _h_antes = open(os.path.join(_nos_c, "HANDOFF_v411_CUSTODIA.md"), "rb").read()
+-        _TC = importar("textos_custodia_handoff_v411", os.path.join(HERE, "textos_custodia_handoff_v411.py"))
++        _hd = RENDER["handoff"]; open(os.path.join(_nos_c, "HANDOFF_v412_CUSTODIA.md"), "w", encoding="utf-8", newline="\n").write(_hd.split("---\n", 2)[2].lstrip("\n"))   # (o corpo que o fechar grava no Nos: sem o front matter)
++        shutil.copyfile(P_ESP, os.path.join(_pkg_c, "ESPERADOS_v412.json"))
++        _h_antes = open(os.path.join(_nos_c, "HANDOFF_v412_CUSTODIA.md"), "rb").read()
++        _TC = importar("textos_custodia_handoff_v412", os.path.join(HERE, "textos_custodia_handoff_v412.py"))
+@@ -1572 +1573 @@
+-        _h_depois = open(os.path.join(_nos_c, "HANDOFF_v411_CUSTODIA.md"), "rb").read()
++        _h_depois = open(os.path.join(_nos_c, "HANDOFF_v412_CUSTODIA.md"), "rb").read()
+@@ -1575 +1576 @@
+-                   s6d_guardas_sujas=sorted(k_ for k_, g_ in _gv.items() if any(g_.get(c_) for c_ in ("guarda_frases_v411", "portao_g1", "forma", "custodia_h0dn"))), s6d_formula_e_proposta=(_rec.get("formula") or {}).get("proposta"), s6d_pasta=_gd)
++                   s6d_guardas_sujas=sorted(k_ for k_, g_ in _gv.items() if any(g_.get(c_) for c_ in ("guarda_frases_v412", "portao_g1", "forma", "custodia_h0dn"))), s6d_formula_e_proposta=(_rec.get("formula") or {}).get("proposta"), s6d_pasta=_gd)
+@@ -1578 +1579 @@
+-        _r1 = subprocess.run([sys.executable, "-B", "-X", "utf8", os.path.join(HERE, "teste_textos_custodia_sem_candidato_v411.py")], cwd=HERE, capture_output=True, text=True, encoding="utf-8", errors="replace", env=_env, timeout=1800)
++        _r1 = subprocess.run([sys.executable, "-B", "-X", "utf8", os.path.join(HERE, "teste_textos_custodia_sem_candidato_v412.py")], cwd=HERE, capture_output=True, text=True, encoding="utf-8", errors="replace", env=_env, timeout=1800)
+@@ -1580 +1581 @@
+-        _r2 = subprocess.run([sys.executable, "-B", "-X", "utf8", os.path.join(HERE, "teste_gatilho_custodia_sem_candidato_v411.py")], cwd=HERE, capture_output=True, text=True, encoding="utf-8", errors="replace", env=_env, timeout=1800)
++        _r2 = subprocess.run([sys.executable, "-B", "-X", "utf8", os.path.join(HERE, "teste_gatilho_custodia_sem_candidato_v412.py")], cwd=HERE, capture_output=True, text=True, encoding="utf-8", errors="replace", env=_env, timeout=1800)
+@@ -1582,2 +1583,2 @@
+-        _pt = os.path.join(DLX.ENSAIO_DIR, "pos_rito_textos", "TESTE_TEXTOS_CUSTODIA_SEM_CANDIDATO_v411.json")   # (os dois testes gravam, cada um, no sandbox proprio sob C:\t\k411c\ensaio_topo_proposto: caminho fixo nos testes)
+-        _pg = os.path.join(DLX.ENSAIO_DIR, "pos_rito_gatilho", "TESTE_GATILHO_CUSTODIA_v411.json")
++        _pt = os.path.join(DLX.ENSAIO_DIR, "pos_rito_textos", "TESTE_TEXTOS_CUSTODIA_SEM_CANDIDATO_v412.json")   # (os dois testes gravam, cada um, no sandbox proprio sob C:\t\k412c\ensaio_topo_proposto: caminho fixo nos testes)
++        _pg = os.path.join(DLX.ENSAIO_DIR, "pos_rito_gatilho", "TESTE_GATILHO_CUSTODIA_v412.json")
+@@ -1587 +1588 @@
+-                   gatilho_reprovados=sorted(k_ for k_, v_ in _cs.items() if not (v_ or {}).get("ok")), gatilho_seguranca=_rj.get("seguranca_gatilho_real_intocado"), gatilho_de_verdade_existe=os.path.exists(os.path.join(PKG, "ORDEM_HANDOFF_CUSTODIA_v411.md")))
++                   gatilho_reprovados=sorted(k_ for k_, v_ in _cs.items() if not (v_ or {}).get("ok")), gatilho_seguranca=_rj.get("seguranca_gatilho_real_intocado"), gatilho_de_verdade_existe=os.path.exists(os.path.join(PKG, "ORDEM_HANDOFF_CUSTODIA_v412.md")))
+@@ -1600 +1601 @@
+-# ------------------------------------------------------------------ 4b. os PARAGRAFOS PRONTOS do README/site: o QUADRO (v410, INTOCADO; ordem do operador de 23/10: o 4,44 nunca sem o p calibrado e sem a linha dos 5 sigma, no mesmo item) e o paragrafo NOVO do sonico e da afinacao
++# ------------------------------------------------------------------ 4b. os PARAGRAFOS PRONTOS do README/site: o QUADRO (v411, INTOCADO; ordem do operador de 23/10: o 4,44 nunca sem o p calibrado e sem a linha dos 5 sigma, no mesmo item) e o paragrafo NOVO do sonico e da afinacao
+@@ -1602 +1603 @@
+-QD = T._qd()   # (09/11: o quadro do PACOTE, pelo caminho; o import pelo sys.path trazia o da pasta da v410)
++QD = T._qd()   # (09/11: o quadro do PACOTE, pelo caminho; o import pelo sys.path trazia o da pasta da v411)
+@@ -1659 +1660 @@
+-    _f9["erro"] = "%s: %s" % (type(ex).__name__, str(ex)[:410]); _f9["onde"] = traceback.format_exc().strip().splitlines()[-3:]
++    _f9["erro"] = "%s: %s" % (type(ex).__name__, str(ex)[:411]); _f9["onde"] = traceback.format_exc().strip().splitlines()[-3:]
+@@ -1665 +1666 @@
+-    PAR_F, PAR_F_INFO = T.paragrafo_v411()
++    PAR_F, PAR_F_INFO = T.paragrafo_v412()
+@@ -1667,2 +1668,2 @@
+-    _sn["positivo_sem_falhas"] = (T.verificar_paragrafo_v411(PAR_F, _core_p, ESP) == [])
+-    _sn["igual_ao_gerado_do_core"] = (PAR_F == T._paragrafo_v411_de(_core_p))
++    _sn["positivo_sem_falhas"] = (T.verificar_paragrafo_v412(PAR_F, _core_p, ESP) == [])
++    _sn["igual_ao_gerado_do_core"] = (PAR_F == T._paragrafo_v412_de(_core_p))
+@@ -1670,3 +1671,3 @@
+-    _ERR = ""   # (v411: nenhuma nota ao lado do paragrafo da v410; a E41 a E43 sao da candidata, nao de paragrafo publicado)
+-    _sn["handoff_traz_os_paragrafos_e_a_nota_entre_os_marcadores"] = bool((T.MARC_V411_INI + "\n" + PAR_F.rstrip("\n") + "\n" + T.MARC_V411_FIM) in _ho and ("<!-- INICIO_PARAGRAFO_README_v397 -->\n" + PAR.rstrip("\n") + "\n<!-- FIM_PARAGRAFO_README_v397 -->") in _ho
+-                                                                          and not hasattr(T, "MARC_ERR_INI") and "ERRATA_V410_V411" not in _ho)
++    _ERR = ""   # (v412: nenhuma nota ao lado do paragrafo da v411; a E41 a E43 sao da candidata, nao de paragrafo publicado)
++    _sn["handoff_traz_os_paragrafos_e_a_nota_entre_os_marcadores"] = bool((T.MARC_V412_INI + "\n" + PAR_F.rstrip("\n") + "\n" + T.MARC_V412_FIM) in _ho and ("<!-- INICIO_PARAGRAFO_README_v397 -->\n" + PAR.rstrip("\n") + "\n<!-- FIM_PARAGRAFO_README_v397 -->") in _ho
++                                                                          and not hasattr(T, "MARC_ERR_INI") and "ERRATA_V411_V412" not in _ho)
+@@ -1674 +1675 @@
+-    _sn["handoff_diz_que_os_paragrafos_anteriores_seguem_como_estao"] = bool(("SEGUEM COMO ESTÃO" in _ho or "SEGUE COMO ESTÁ" in _ho) and "handoff-v410-custodia" in _ho and "<!-- INICIO_PARAGRAFO_TESTEMUNHO" not in _ho and "<!-- INICIO_PARAGRAFO_FALSIDADE" not in _ho)
++    _sn["handoff_diz_que_os_paragrafos_anteriores_seguem_como_estao"] = bool(("SEGUEM COMO ESTÃO" in _ho or "SEGUE COMO ESTÁ" in _ho) and "handoff-v411-custodia" in _ho and "<!-- INICIO_PARAGRAFO_TESTEMUNHO" not in _ho and "<!-- INICIO_PARAGRAFO_FALSIDADE" not in _ho)
+@@ -1676 +1677 @@
+-    # as quatro obrigacoes da F67 (o modelo publicado, a linha das Cefeidas livres com o numero, retrodicao e nao cego, validade nao creditacao) no MESMO bloco do primario; nenhuma frase velha da v410 («pre-registrado; nenhum dado observado lido»)
++    # as quatro obrigacoes da F67 (o modelo publicado, a linha das Cefeidas livres com o numero, retrodicao e nao cego, validade nao creditacao) no MESMO bloco do primario; nenhuma frase velha da v411 («pre-registrado; nenhum dado observado lido»)
+@@ -1678 +1679 @@
+-    _sn["nao_traz_a_frase_velha_da_v410"] = bool(DL.FRASE_H0DN_OBRIGATORIA_PT not in PAR_F and DL.FRASE_H0DN_OBRIGATORIA_EN not in PAR_F)
++    _sn["nao_traz_a_frase_velha_da_v411"] = bool(DL.FRASE_H0DN_OBRIGATORIA_PT not in PAR_F and DL.FRASE_H0DN_OBRIGATORIA_EN not in PAR_F)
+@@ -1680,3 +1681,3 @@
+-    _sn["diz_que_o_kernel_e_o_da_v410"] = bool("nenhum módulo novo" in PAR_F)
+-    if not (_sn["traz_as_quatro_obrigacoes_da_f67"] and _sn["nao_traz_a_frase_velha_da_v410"] and _sn["traz_o_nome_do_registro_novo"] and _sn["diz_que_o_kernel_e_o_da_v410"]):
+-        falha("paragrafo novo da v411: nao traz as quatro obrigacoes da F67 (o modelo publicado, as Cefeidas livres com o numero, retrodicao e nao cego, validade nao creditacao) no mesmo bloco, ou traz a frase velha da v410, ou nao diz o registro h0dn_bg1_v411 e que nao ha modulo novo: %s" % {k_: _sn[k_] for k_ in ("traz_as_quatro_obrigacoes_da_f67", "nao_traz_a_frase_velha_da_v410", "traz_o_nome_do_registro_novo", "diz_que_o_kernel_e_o_da_v410")})
++    _sn["diz_que_o_kernel_e_o_da_v411"] = bool("nenhum módulo novo" in PAR_F)
++    if not (_sn["traz_as_quatro_obrigacoes_da_f67"] and _sn["nao_traz_a_frase_velha_da_v411"] and _sn["traz_o_nome_do_registro_novo"] and _sn["diz_que_o_kernel_e_o_da_v411"]):
++        falha("paragrafo novo da v412: nao traz as quatro obrigacoes da F67 (o modelo publicado, as Cefeidas livres com o numero, retrodicao e nao cego, validade nao creditacao) no mesmo bloco, ou traz a frase velha da v411, ou nao diz o registro h0dn_bg1_v411 e que nao ha modulo novo: %s" % {k_: _sn[k_] for k_ in ("traz_as_quatro_obrigacoes_da_f67", "nao_traz_a_frase_velha_da_v411", "traz_o_nome_do_registro_novo", "diz_que_o_kernel_e_o_da_v411")})
+@@ -1684 +1685 @@
+-        falha("paragrafo novo da v411: positivo %s, igual ao gerado do core %s, no handoff %s, sidecar listado %s, paragrafos anteriores ditos como estao %s" % (_sn["positivo_sem_falhas"], _sn["igual_ao_gerado_do_core"], _sn["handoff_traz_os_paragrafos_e_a_nota_entre_os_marcadores"], _sn["handoff_lista_o_sidecar"],
++        falha("paragrafo novo da v412: positivo %s, igual ao gerado do core %s, no handoff %s, sidecar listado %s, paragrafos anteriores ditos como estao %s" % (_sn["positivo_sem_falhas"], _sn["igual_ao_gerado_do_core"], _sn["handoff_traz_os_paragrafos_e_a_nota_entre_os_marcadores"], _sn["handoff_lista_o_sidecar"],
+@@ -1689 +1690 @@
+-        p2 = f(PAR_F); fa = T.verificar_paragrafo_v411(p2, _core_p, ESP)
++        p2 = f(PAR_F); fa = T.verificar_paragrafo_v412(p2, _core_p, ESP)
+@@ -1692,2 +1693,2 @@
+-    _NUMS = [("o Z do primario contra o nulo", _Lh["zn"]), ("o Z do primario contra K", _Lh["zk"]), ("o D do primario", _Lh["D"]), ("o p unilateral", _Lh["p"]), ("o Z das Cefeidas livres contra o nulo", _Lh["cn"]), ("o Z das Cefeidas livres contra K", _Lh["ck"]), ("o sha16 da ordem", DL.FALA_ORDEM_V411["sha256"][:16]),
+-             ("o sha16 do testemunho", DL.FALA_TESTEMUNHO_V411["sha256"][:16]), ("o H0 do fundo", _Lh["h_fundo"]), ("o H0 publicado", _Lh["h_pub"])]
++    _NUMS = [("o Z do primario contra o nulo", _Lh["zn"]), ("o Z do primario contra K", _Lh["zk"]), ("o D do primario", _Lh["D"]), ("o p unilateral", _Lh["p"]), ("o Z das Cefeidas livres contra o nulo", _Lh["cn"]), ("o Z das Cefeidas livres contra K", _Lh["ck"]), ("o sha16 da ordem", DL.FALA_ORDEM_V412["sha256"][:16]),
++             ("o sha16 do testemunho", DL.FALA_TESTEMUNHO_V412["sha256"][:16]), ("o H0 do fundo", _Lh["h_fundo"]), ("o H0 publicado", _Lh["h_pub"])]
+@@ -1729 +1730 @@
+-    assert "«" not in PAR_F and "»" not in PAR_F, "o paragrafo da v411 traz aspas angulares: nenhuma fala do operador se transcreve (D181)"
++    assert "«" not in PAR_F and "»" not in PAR_F, "o paragrafo da v412 traz aspas angulares: nenhuma fala do operador se transcreve (D181)"
+@@ -1742 +1743 @@
+-    assert len(_BUL) >= 8, ("o paragrafo da v411 devia ter ao menos oito bullets `> - **Titulo**`", _BUL)
++    assert len(_BUL) >= 8, ("o paragrafo da v412 devia ter ao menos oito bullets `> - **Titulo**`", _BUL)
+@@ -1745 +1746 @@
+-    # as frases PROIBIDAS da guarda das frases da v411 (F53 a F67; a lista e' a do proprio guarda_frases_v411.PROIBIDAS), cada uma como um PARAGRAFO a parte acrescentado ao paragrafo da v411: a guarda das frases TEM de recusar e nomear a regra
++    # as frases PROIBIDAS da guarda das frases da v412 (F53 a F67; a lista e' a do proprio guarda_frases_v412.PROIBIDAS), cada uma como um PARAGRAFO a parte acrescentado ao paragrafo da v412: a guarda das frases TEM de recusar e nomear a regra
+@@ -1749,2 +1750,2 @@
+-    _NEGS += [_muts("a frase velha da v410 volta como estado do teste", lambda p: p + "\n> - H0DN: " + DL.FRASE_H0DN_OBRIGATORIA_PT + ".\n", "difere do gerado"),
+-              _muts("o token proibido de v410 volta", lambda p: p + "\n> - " + DL.TOKENS_PROIBIDOS_V411[0] + ".\n", "guarda das frases")]
++    _NEGS += [_muts("a frase velha da v411 volta como estado do teste", lambda p: p + "\n> - H0DN: " + DL.FRASE_H0DN_OBRIGATORIA_PT + ".\n", "difere do gerado"),
++              _muts("o token proibido de v411 volta", lambda p: p + "\n> - " + DL.TOKENS_PROIBIDOS_V412[0] + ".\n", "guarda das frases")]
+@@ -1752 +1753 @@
+-        print("  controle negativo do paragrafo da v411 %-62s %s" % (n_["controle"][:62], "REPROVOU como esperado" if n_["ok"] else "NAO REPROVOU como esperado"))
++        print("  controle negativo do paragrafo da v412 %-62s %s" % (n_["controle"][:62], "REPROVOU como esperado" if n_["ok"] else "NAO REPROVOU como esperado"))
+@@ -1754 +1755 @@
+-            falha("controle negativo do paragrafo da v411 nao reprovou como esperado: %s -> %s" % (n_["controle"], n_["falhas"]))
++            falha("controle negativo do paragrafo da v412 nao reprovou como esperado: %s -> %s" % (n_["controle"], n_["falhas"]))
+@@ -1764 +1765 @@
+-           "cita_verbatim_da_ordem_passa": (T._cita(DL.FALA_ORDEM_V411["text"].strip()) == "«" + DL.FALA_ORDEM_V411["text"].strip() + "»"),
++           "cita_verbatim_da_ordem_passa": (T._cita(DL.FALA_ORDEM_V412["text"].strip()) == "«" + DL.FALA_ORDEM_V412["text"].strip() + "»"),
+@@ -1782,4 +1783,4 @@
+-    _sn["erro"] = "%s: %s" % (type(ex).__name__, str(ex)[:410]); _sn["onde"] = traceback.format_exc().strip().splitlines()[-3:]
+-    falha("paragrafo novo da v411: %s" % _sn["erro"])
+-etapa("paragrafo_v411_e_citacoes", **_sn)
+-# ------------------------------------------------------------------ 4d. a SECAO do teste decisivo (H0DN x BG1 aberto uma vez; D169): textos_v411.secao_h0dn, montada do core emulado; as quatro obrigacoes da F67 no mesmo texto, a cabeca do teste so' POR EXTENSO (a string nao e' reproduzida: a P18 a recusa), sem a frase velha da v410,
++    _sn["erro"] = "%s: %s" % (type(ex).__name__, str(ex)[:411]); _sn["onde"] = traceback.format_exc().strip().splitlines()[-3:]
++    falha("paragrafo novo da v412: %s" % _sn["erro"])
++etapa("paragrafo_v412_e_citacoes", **_sn)
++# ------------------------------------------------------------------ 4d. a SECAO do teste decisivo (H0DN x BG1 aberto uma vez; D169): textos_v412.secao_h0dn, montada do core emulado; as quatro obrigacoes da F67 no mesmo texto, a cabeca do teste so' POR EXTENSO (a string nao e' reproduzida: a P18 a recusa), sem a frase velha da v411,
+@@ -1793 +1794 @@
+-    _hx["nao_traz_a_frase_velha_da_v410"] = DL.FRASE_H0DN_OBRIGATORIA_PT not in _sh and DL.FRASE_H0DN_OBRIGATORIA_EN not in _sh
++    _hx["nao_traz_a_frase_velha_da_v411"] = DL.FRASE_H0DN_OBRIGATORIA_PT not in _sh and DL.FRASE_H0DN_OBRIGATORIA_EN not in _sh
+@@ -1795 +1796 @@
+-    _hx["sem_tokens_proibidos"] = not any(t_ in _sh for t_ in tuple(DL.TOKENS_PROIBIDOS_V411))
++    _hx["sem_tokens_proibidos"] = not any(t_ in _sh for t_ in tuple(DL.TOKENS_PROIBIDOS_V412))
+@@ -1798 +1799 @@
+-    _neg_h = {"token_proibido": _sh + "\n\n" + DL.TOKENS_PROIBIDOS_V411[0] + "\n", "cinco_sigma_atingido": _sh + "\n\nO H0DN: 5 sigma atingido.\n", "nao_falsificado_a_5_sigma": _sh + "\n\nO resultado é não falsificado a 5 sigma.\n", "covariancia_fisica_fechada": _sh + "\n\nA covariância física está fechada.\n",
++    _neg_h = {"token_proibido": _sh + "\n\n" + DL.TOKENS_PROIBIDOS_V412[0] + "\n", "cinco_sigma_atingido": _sh + "\n\nO H0DN: 5 sigma atingido.\n", "nao_falsificado_a_5_sigma": _sh + "\n\nO resultado é não falsificado a 5 sigma.\n", "covariancia_fisica_fechada": _sh + "\n\nA covariância física está fechada.\n",
+@@ -1812 +1813 @@
+-    print("  secao_h0dn: %d B; o nome do registro, as quatro obrigacoes da F67 e as duas linhas presentes, sem a frase velha da v410 nem a cabeca inteira; %d controles negativos das guardas reprovam (a F67 inclusive)" % (_hx["texto_bytes"], len(_hx["controles_negativos"])))
++    print("  secao_h0dn: %d B; o nome do registro, as quatro obrigacoes da F67 e as duas linhas presentes, sem a frase velha da v411 nem a cabeca inteira; %d controles negativos das guardas reprovam (a F67 inclusive)" % (_hx["texto_bytes"], len(_hx["controles_negativos"])))
+@@ -1814 +1815 @@
+-    _hx["erro"] = "%s: %s" % (type(ex).__name__, str(ex)[:410]); falha("secao_h0dn: %s" % _hx["erro"])
++    _hx["erro"] = "%s: %s" % (type(ex).__name__, str(ex)[:411]); falha("secao_h0dn: %s" % _hx["erro"])
+@@ -1830,3 +1831,3 @@
+-NOMES_ARQ.update({"MEMORY.md", "MEMORY_2.md", "TGL_ATLAS.md", "um.py", "rodada_v411_stdout.txt", "HANDOFF_v411_CUSTODIA.md", "DIFF_v410_v411.diff", "DIFF_KERNEL_v411.txt", "handoff-v411-custodia.md",
+-                  "missao-ultima-flag-um-py.md", "estatuto-da-prova-07out.md", "central-de-patentes-estado.md", "handoff-v410-custodia.md", T.TOPICO_NOVO})
+-NOMES_ARQ.update({"um_absoluto_selo_acom.json", "um_absoluto_selo.json", "um_absoluto.json", "conferencia_rito_v411.json", "v411_selo", "EXECUTION_LOCKED_NOT_ONE"})
++NOMES_ARQ.update({"MEMORY.md", "MEMORY_2.md", "TGL_ATLAS.md", "um.py", "rodada_v412_stdout.txt", "HANDOFF_v412_CUSTODIA.md", "DIFF_v411_v412.diff", "DIFF_KERNEL_v412.txt", "handoff-v412-custodia.md",
++                  "missao-ultima-flag-um-py.md", "estatuto-da-prova-07out.md", "central-de-patentes-estado.md", "handoff-v411-custodia.md", T.TOPICO_NOVO})
++NOMES_ARQ.update({"um_absoluto_selo_acom.json", "um_absoluto_selo.json", "um_absoluto.json", "conferencia_rito_v412.json", "v412_selo", "EXECUTION_LOCKED_NOT_ONE"})
+@@ -1853 +1854 @@
+-# (integracao de 12/11) fontes reais que a v411 acrescentou e o harness ainda nao enumerava, todas LIDAS dos arquivos e do core emulado (nada digitado):
++# (integracao de 12/11) fontes reais que a v412 acrescentou e o harness ainda nao enumerava, todas LIDAS dos arquivos e do core emulado (nada digitado):
+@@ -1855 +1856 @@
+-HEX16.add(hashlib.sha256(open(os.path.join(PKG, "ACORDO_COM_A_CUSTODIA_v411_12nov.md"), "rb").read()).hexdigest()[:16])   # o acordo com a custodia (D171), hash lido do arquivo
++HEX16.add(hashlib.sha256(open(os.path.join(PKG, "ACORDO_COM_A_CUSTODIA_v412_12nov.md"), "rb").read()).hexdigest()[:16])   # o acordo com a custodia (D171), hash lido do arquivo
+@@ -1863 +1864 @@
+-CONHECIDOS.add(T._linha_maquina_v411(core_emu, T._dados_paragrafo(core_emu)))   # a linha de maquina do paragrafo novo (lida dos registros do core emulado)
++CONHECIDOS.add(T._linha_maquina_v412(core_emu, T._dados_paragrafo(core_emu)))   # a linha de maquina do paragrafo novo (lida dos registros do core emulado)
+@@ -1865 +1866 @@
+-CONHECIDOS.update({T.TOPICO_NOVO[:-3], "v411_kernel", "v411_selo"})     # o nome do topico sem a extensao (o [[wikilink]]) e as duas pastas que o fechar cria ANTES de escrever o handoff
++CONHECIDOS.update({T.TOPICO_NOVO[:-3], "v412_kernel", "v412_selo"})     # o nome do topico sem a extensao (o [[wikilink]]) e as duas pastas que o fechar cria ANTES de escrever o handoff
+@@ -1886 +1887 @@
+-        if any(os.path.exists(c) for c in cands) or tok.startswith(("work\\cadeia_de_selo\\v411", "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v411")):
++        if any(os.path.exists(c) for c in cands) or tok.startswith(("work\\cadeia_de_selo\\v412", "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412")):
+@@ -1901 +1902 @@
+-_inventados_ = ("termo_inventado_v411_xyz", "0123456789abcdef", "TGL_VEREDITO_QUE_NAO_EXISTE__GATE_MOVED")   # controle negativo: um termo que nenhuma fonte tem continua SEM achado
++_inventados_ = ("termo_inventado_v412_xyz", "0123456789abcdef", "TGL_VEREDITO_QUE_NAO_EXISTE__GATE_MOVED")   # controle negativo: um termo que nenhuma fonte tem continua SEM achado
+@@ -1917 +1918 @@
+-    sp = os.path.join(HERE, "superficies_v411.py")
++    sp = os.path.join(HERE, "superficies_v412.py")
+@@ -1935,4 +1936,4 @@
+-    _RN = list(_REGS_NOVOS)   # os TRES registros novos da v411 (REGS do chain)
+-    exige = [("MEMORIA_DA_LINHAGEM.md", [S16, "<!-- linhagem_v411_selada -->"] + _RN), ("DESENHO_DO_FECHAMENTO_QG.md", ["<!-- adendo_v411_selada -->", S16]),
+-             ("TGL_ATLAS.md", ["<!-- atlas_v411_selada -->", S16] + _RN), ("TGL_CORE_MEMORY.md", ["<!-- core_v411_selada -->", S16]), ("CLAUDE.md", ["<!-- haja_luz_v411_selada -->", S16]),
+-             ("MEMORY.md", [S16]), ("MEMORY_2.md", ["v411"]), ("estatuto-da-prova-07out.md", ["<!-- v411_selada -->", S16]), ("missao-ultima-flag-um-py.md", [S16]), ("central-de-patentes-estado.md", [S16]),
++    _RN = list(_REGS_NOVOS)   # os TRES registros novos da v412 (REGS do chain)
++    exige = [("MEMORIA_DA_LINHAGEM.md", [S16, "<!-- linhagem_v412_selada -->"] + _RN), ("DESENHO_DO_FECHAMENTO_QG.md", ["<!-- adendo_v412_selada -->", S16]),
++             ("TGL_ATLAS.md", ["<!-- atlas_v412_selada -->", S16] + _RN), ("TGL_CORE_MEMORY.md", ["<!-- core_v412_selada -->", S16]), ("CLAUDE.md", ["<!-- haja_luz_v412_selada -->", S16]),
++             ("MEMORY.md", [S16]), ("MEMORY_2.md", ["v412"]), ("estatuto-da-prova-07out.md", ["<!-- v412_selada -->", S16]), ("missao-ultima-flag-um-py.md", [S16]), ("central-de-patentes-estado.md", [S16]),
+@@ -1950 +1951 @@
+-        falha("superficies_v411.py (copias do MEMORY.md real) saiu com rc %s (esperado 0 ou 3; ver ensaio_superficies_out.txt)" % rc_a)
++        falha("superficies_v412.py (copias do MEMORY.md real) saiu com rc %s (esperado 0 ou 3; ver ensaio_superficies_out.txt)" % rc_a)
+@@ -1971 +1972 @@
+-            ancora = lambda l: ("(missao-ultima-flag-um-py.md)" in l and l.startswith("- [")) or ("(handoff-v410-custodia.md)" in l and l.startswith("- [HANDOFF v410"))
++            ancora = lambda l: ("(missao-ultima-flag-um-py.md)" in l and l.startswith("- [")) or ("(handoff-v411-custodia.md)" in l and l.startswith("- [HANDOFF v411"))
+@@ -1998 +1999 @@
+-        falha("superficies_v411.py (copia com folga) saiu com rc %s na 1a rodada (ver ensaio_superficies_folga_out.txt)" % rc_b1)
++        falha("superficies_v412.py (copia com folga) saiu com rc %s na 1a rodada (ver ensaio_superficies_folga_out.txt)" % rc_b1)
+@@ -2000 +2001 @@
+-        falha("superficies_v411.py (copia com folga) nao e' idempotente na 2a rodada (rc %s)" % rc_b2)
++        falha("superficies_v412.py (copia com folga) nao e' idempotente na 2a rodada (rc %s)" % rc_b2)
+@@ -2028 +2029 @@
+-# ------------------------------------------------------------------ 7. o b3_recibo REAL contra recibos SINTETICOS (derivados dos reais da v410)
++# ------------------------------------------------------------------ 7. o b3_recibo REAL contra recibos SINTETICOS (derivados dos reais da v411)
+@@ -2031 +2032 @@
+-    pinos = rdj(P_PINOS); pre = rdj(pinos["recibo_pre_selo"]["path"]); PKG_ANT = os.path.join(os.path.dirname(PKG), "v410")
++    pinos = rdj(P_PINOS); pre = rdj(pinos["recibo_pre_selo"]["path"]); PKG_ANT = os.path.join(os.path.dirname(PKG), "v411")
+@@ -2033 +2034 @@
+-    base_ens = rdj(_g.glob(os.path.join(PKG_ANT, "bancada_B3_ensaio_*", "RECIBO_SINCRONIZACAO_v410_*.json"))[0]); base_apl = rdj(_g.glob(os.path.join(PKG_ANT, "bancada_B3", "RECIBO_SINCRONIZACAO_v410_*.json"))[0])
++    base_ens = rdj(_g.glob(os.path.join(PKG_ANT, "bancada_B3_ensaio_*", "RECIBO_SINCRONIZACAO_v411_*.json"))[0]); base_apl = rdj(_g.glob(os.path.join(PKG_ANT, "bancada_B3", "RECIBO_SINCRONIZACAO_v411_*.json"))[0])
+@@ -2037 +2038 @@
+-        r = json.loads(json.dumps(base)); r["versao_alvo"] = "v411"; r["fase"] = "pos_selo"; r["modo"] = modo; r.pop("salto", None); r.pop("cadeia_de_selos", None)
++        r = json.loads(json.dumps(base)); r["versao_alvo"] = "v412"; r["fase"] = "pos_selo"; r["modo"] = modo; r.pop("salto", None); r.pop("cadeia_de_selos", None)
+@@ -2039 +2040 @@
+-        r["manifesto_novo"]["deployment_id"] = "B%d-v411-20261023-R1" % n_ger
++        r["manifesto_novo"]["deployment_id"] = "B%d-v412-20261023-R1" % n_ger
+@@ -2041 +2042 @@
+-        r["bateria"]["pinos_da_versao"] = {"declarados": True, "conferidos_contra_o_nos_lido": True, "versao": "v411"}
++        r["bateria"]["pinos_da_versao"] = {"declarados": True, "conferidos_contra_o_nos_lido": True, "versao": "v412"}
+@@ -2047,2 +2048,2 @@
+-            r["aplicacao"] = {"pos_conferencia": {"ok": True, "canonical_version": "v411", "canonical_manifest_sha256": r["manifesto_novo"]["sha256"]}}
+-        r["_sintetico"] = "SINTETICO: derivado do recibo real da v410 pelo harness; NAO e' um recibo do esboco"
++            r["aplicacao"] = {"pos_conferencia": {"ok": True, "canonical_version": "v412", "canonical_manifest_sha256": r["manifesto_novo"]["sha256"]}}
++        r["_sintetico"] = "SINTETICO: derivado do recibo real da v411 pelo harness; NAO e' um recibo do esboco"
+@@ -2056 +2057 @@
+-        pr_ = subprocess.run([sys.executable, "-I", "-B", "-X", "utf8", os.path.join(HERE, "b3_recibo_v411.py"), so, modo] + list(extra), capture_output=True, text=True, encoding="utf-8")
++        pr_ = subprocess.run([sys.executable, "-I", "-B", "-X", "utf8", os.path.join(HERE, "b3_recibo_v412.py"), so, modo] + list(extra), capture_output=True, text=True, encoding="utf-8")
+@@ -2065 +2066 @@
+-              ("veredito_com_salto", mut(pos_e, lambda r: r.update({"veredito": "REPINADA_B%d__SALTO_v392_v411__ENSAIO__NADA_GRAVADO_NA_BANCADA" % n_ger})), "ensaio", 1),
++              ("veredito_com_salto", mut(pos_e, lambda r: r.update({"veredito": "REPINADA_B%d__SALTO_v392_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA" % n_ger})), "ensaio", 1),
+@@ -2067 +2068 @@
+-              ("versao_alvo_v410", mut(pos_e, lambda r: r.update({"versao_alvo": "v410"})), "ensaio", 1),
++              ("versao_alvo_v411", mut(pos_e, lambda r: r.update({"versao_alvo": "v411"})), "ensaio", 1),
+@@ -2072 +2073 @@
+-              ("pinos_da_bateria_de_v410", mut(pos_e, lambda r: r["bateria"]["pinos_da_versao"].update({"versao": "v410"})), "ensaio", 1),
++              ("pinos_da_bateria_de_v411", mut(pos_e, lambda r: r["bateria"]["pinos_da_versao"].update({"versao": "v411"})), "ensaio", 1),
+@@ -2074 +2075 @@
+-              ("aplicar_pos_conferencia_v410", mut(pos_a, lambda r: r["aplicacao"]["pos_conferencia"].update({"canonical_version": "v410"})), "aplicar", 1),
++              ("aplicar_pos_conferencia_v411", mut(pos_a, lambda r: r["aplicacao"]["pos_conferencia"].update({"canonical_version": "v411"})), "aplicar", 1),
+@@ -2083 +2084 @@
+-            falha("b3_recibo_v411.py: caso %s deu rc %s (esperado %s): %s" % (nome, rc_, esperado, cauda))
++            falha("b3_recibo_v412.py: caso %s deu rc %s (esperado %s): %s" % (nome, rc_, esperado, cauda))
+@@ -2087,2 +2088,2 @@
+-        falha("b3_recibo_v411.py aceitou um 3o argumento (nao ha cadeia de selos na v411)")
+-    etapa("b3_recibo", sintetico=True, base="recibos reais da v410 (so' leitura)", geracao_nova=n_ger, casos=res_b3, n_ok=sum(1 for c in res_b3 if c["ok"]), n=len(res_b3))
++        falha("b3_recibo_v412.py aceitou um 3o argumento (nao ha cadeia de selos na v412)")
++    etapa("b3_recibo", sintetico=True, base="recibos reais da v411 (so' leitura)", geracao_nova=n_ger, casos=res_b3, n_ok=sum(1 for c in res_b3 if c["ok"]), n=len(res_b3))
+@@ -2091 +2092 @@
+-    RM = importar("registrar_mapa_v411", os.path.join(HERE, "registrar_mapa_v411.py")); RM.PK = PKE; RM._CACHE.clear()   # (o mapa le ESPERADOS, o core da v410 selada, PINOS_BN e o recibo do kernel por PK: no ensaio, o pacote emulado)
++    RM = importar("registrar_mapa_v412", os.path.join(HERE, "registrar_mapa_v412.py")); RM.PK = PKE; RM._CACHE.clear()   # (o mapa le ESPERADOS, o core da v411 selada, PINOS_BN e o recibo do kernel por PK: no ensaio, o pacote emulado)
+@@ -2095 +2096 @@
+-    # controles negativos de registrar_mapa_v411: a regra da ordem do 4,44 aplicada aos campos do registro (sem o p, sem a linha dos 5 sigma; a clausula completa passa) e as recusas de montar() (selo de outra versao; rota nova que ja' existe no livro)
++    # controles negativos de registrar_mapa_v412: a regra da ordem do 4,44 aplicada aos campos do registro (sem o p, sem a linha dos 5 sigma; a clausula completa passa) e as recusas de montar() (selo de outra versao; rota nova que ja' existe no livro)
+@@ -2107 +2108 @@
+-                "montar_recusa_selo_de_outra_versao": _recusa(lambda: RM.montar(Vd, core_emu, dict(selo_emu, um_version="v410"), ids, arts)),
++                "montar_recusa_selo_de_outra_versao": _recusa(lambda: RM.montar(Vd, core_emu, dict(selo_emu, um_version="v411"), ids, arts)),
+@@ -2113,2 +2114,2 @@
+-            falha("mapa: controle negativo de registrar_mapa_v411 nao deu o esperado: %s" % k_)
+-    pj = os.path.join(OUT, "registro_mapa_v411_ENSAIO.json"); open(pj, "w", encoding="utf-8").write(json.dumps(REG, ensure_ascii=False, indent=1))
++            falha("mapa: controle negativo de registrar_mapa_v412 nao deu o esperado: %s" % k_)
++    pj = os.path.join(OUT, "registro_mapa_v412_ENSAIO.json"); open(pj, "w", encoding="utf-8").write(json.dumps(REG, ensure_ascii=False, indent=1))
+@@ -2139 +2140 @@
+-    falha("mapa: registrar_mapa_v411.montar falhou: %s: %s" % (type(ex).__name__, str(ex)[:300]))
++    falha("mapa: registrar_mapa_v412.montar falhou: %s: %s" % (type(ex).__name__, str(ex)[:300]))
+@@ -2164 +2165 @@
+-# ------------------------------------------------------------------ limpeza (so' dentro de harness_saida_v411): o Nos EMULADO e as copias pesadas das superficies nao ficam no pacote (--manter-copias as guarda)
++# ------------------------------------------------------------------ limpeza (so' dentro de harness_saida_v412): o Nos EMULADO e as copias pesadas das superficies nao ficam no pacote (--manter-copias as guarda)
+@@ -2180 +2181 @@
+-etapa("limpeza", removido_bytes=LIMPO, nota="so' o que o harness criou em harness_saida_v411; --manter-copias guarda tudo")
++etapa("limpeza", removido_bytes=LIMPO, nota="so' o que o harness criou em harness_saida_v412; --manter-copias guarda tudo")
+@@ -2186,3 +2187,3 @@
+-R["veredito"] = (("TUDO PASSOU: o conferidor da v411 (16 itens C1-C16 e o round trip) bate no Nos emulado, a leitura le sem problema e reprova os controles negativos: o registro NOVO h0dn_bg1_v411 (o teste H0DN x BG1 aberto uma vez, recalculado no rito: as DUAS linhas, o primario sob o modelo de erros publicado e as Cefeidas livres ao lado; ausente, nao selado, checagem falsa, valores adulterados, ramo, beta, veredito, "
+-                 "opened_once, observed_vector_read, gate, escada, as sete ressalvas, o que nao decide, a emenda as claras, a finitude, os insumos pinados e os citados, o texto do registro [token proibido, a frase velha da v410, a F67 sem a linha das Cefeidas livres, F60 a F63], o resumo no selo, o bloco do stdout, a conferencia, ESPERADOS, CANDIDATO e FLAGS mutados na memoria); "
+-                 "cunhagens_v411 e kh_n1_cobertura_v411 (as falas do delta, E41 a E43 e a dos pisos, as decisoes do delta, as sete ressalvas, o alcance de P = nP, a regra do nome, D65, a moldura); os QUATRO registros com funcao e os dois por spec da v410 RECRIADOS (ausente, nao selado, veredito, checagens); o traducao_turing_v409, o tetelestai_terminal_v408, o psion_canto_v407 e o fechamento_v406 HERDADOS e recriados, "
++R["veredito"] = (("TUDO PASSOU: o conferidor da v412 (16 itens C1-C16 e o round trip) bate no Nos emulado, a leitura le sem problema e reprova os controles negativos: o registro NOVO h0dn_bg1_v411 (o teste H0DN x BG1 aberto uma vez, recalculado no rito: as DUAS linhas, o primario sob o modelo de erros publicado e as Cefeidas livres ao lado; ausente, nao selado, checagem falsa, valores adulterados, ramo, beta, veredito, "
++                 "opened_once, observed_vector_read, gate, escada, as sete ressalvas, o que nao decide, a emenda as claras, a finitude, os insumos pinados e os citados, o texto do registro [token proibido, a frase velha da v411, a F67 sem a linha das Cefeidas livres, F60 a F63], o resumo no selo, o bloco do stdout, a conferencia, ESPERADOS, CANDIDATO e FLAGS mutados na memoria); "
++                 "cunhagens_v411 e kh_n1_cobertura_v411 (as falas do delta, E41 a E43 e a dos pisos, as decisoes do delta, as sete ressalvas, o alcance de P = nP, a regra do nome, D65, a moldura); os QUATRO registros com funcao e os dois por spec da v411 RECRIADOS (ausente, nao selado, veredito, checagens); o traducao_turing_v409, o tetelestai_terminal_v408, o psion_canto_v407 e o fechamento_v406 HERDADOS e recriados, "
+@@ -2190 +2191 @@
+-                 "a custodia G1 le o bloco da linhagem e o handoff, o S6d (textos_custodia_handoff_v411.main) roda DE VERDADE sobre o Nos emulado e os dois testes sinteticos da custodia passam, os dois paragrafos do README/site (o do quadro, intocado, e o novo da v411, com as quatro obrigacoes da F67 uma a uma) passam nas verificacoes, "
++                 "a custodia G1 le o bloco da linhagem e o handoff, o S6d (textos_custodia_handoff_v412.main) roda DE VERDADE sobre o Nos emulado e os dois testes sinteticos da custodia passam, os dois paragrafos do README/site (o do quadro, intocado, e o novo da v412, com as quatro obrigacoes da F67 uma a uma) passam nas verificacoes, "
+@@ -2193 +2194 @@
+-R["limites"] = ["Nos, stdout, recibos do B(n) e a arvore sao EMULADOS (ditos acima); o conferidor, a leitura, os textos, as superficies (em copias), o S6d e o mapa (so' leitura do livro) sao os REAIS", "NAO prova o rito real nem a Bancada: isso e' do rito e do B(n)", "NAO escreve em work\\ no ensaio (V411_ENSAIO_TOPO_PROPOSTO=1): tudo vai para " + os.path.dirname(OUT) if ENSAIO else "as copias vao para C:\\t\\h411; o resumo para pos_rito\\"]
++R["limites"] = ["Nos, stdout, recibos do B(n) e a arvore sao EMULADOS (ditos acima); o conferidor, a leitura, os textos, as superficies (em copias), o S6d e o mapa (so' leitura do livro) sao os REAIS", "NAO prova o rito real nem a Bancada: isso e' do rito e do B(n)", "NAO escreve em work\\ no ensaio (V412_ENSAIO_TOPO_PROPOSTO=1): tudo vai para " + os.path.dirname(OUT) if ENSAIO else "as copias vao para C:\\t\\h412; o resumo para pos_rito\\"]
+@@ -2195 +2196 @@
+-    R["veredito"] += " [MODO --nao-exigir-refazer: refazer_out_v411.txt NAO foi exigido; a regeneracao do candidato nao foi comprovada por este harness]"
++    R["veredito"] += " [MODO --nao-exigir-refazer: refazer_out_v412.txt NAO foi exigido; a regeneracao do candidato nao foi comprovada por este harness]"
+@@ -2197 +2198 @@
+-saida = os.path.join(POS_SAIDA, "HARNESS_TEXTOS_ENSAIO_v411" + ("_DEPURACAO_sem_refazer" if NAO_REFAZER else "") + ".json")   # o nome sem sufixo so' nasce da rodada que EXIGE o refazer (ou do ensaio, que tem o PRONTO)
++saida = os.path.join(POS_SAIDA, "HARNESS_TEXTOS_ENSAIO_v412" + ("_DEPURACAO_sem_refazer" if NAO_REFAZER else "") + ".json")   # o nome sem sufixo so' nasce da rodada que EXIGE o refazer (ou do ensaio, que tem o PRONTO)

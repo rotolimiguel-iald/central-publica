@@ -1,0 +1,65 @@
+--- v411/pos_rito/blocos_custodia_v411.py
++++ v412/pos_rito/blocos_custodia_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/blocos_custodia_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__blocos_custodia_v412.py.diff
+@@ -4,3 +5,3 @@
+-# [AO LADO, 12/11/2026 11h, mesmo autor] aditivo 4: a FORMULA deixou de ser PROPOSTA: tudo sai de TOPO_RATIFICADO_v411.json (ratificado pelo operador; o painel curto e a frase de estado), cortado para caber em cada lugar; o acervo (as cobrancas do livro) entra so' com falsificadas == 0
+-"""blocos_custodia_v411.py -- monta, do core SELADO (os registros `h0dn_bg1_v411`, `teste_de_veracidade_fase9_v397`, `estatuto_da_prova_v391`, `kernel_formalization`, `cunhagens_v411`) e de UMA fonte de texto,
+-`TOPO_RATIFICADO_v411.json` (a formula RATIFICADA pelo operador em 12/11/2026, com o acrescimo do acervo que ele ordenou; a fonte unica dos tres tamanhos), os textos que a custodia (G1) le do HANDOFF da v411 entre
++# [AO LADO, 12/11/2026 11h, mesmo autor] aditivo 4: a FORMULA deixou de ser PROPOSTA: tudo sai de TOPO_RATIFICADO_v412.json (ratificado pelo operador; o painel curto e a frase de estado), cortado para caber em cada lugar; o acervo (as cobrancas do livro) entra so' com falsificadas == 0
++"""blocos_custodia_v412.py -- monta, do core SELADO (os registros `h0dn_bg1_v411`, `teste_de_veracidade_fase9_v397`, `estatuto_da_prova_v391`, `kernel_formalization`, `cunhagens_v411`) e de UMA fonte de texto,
++`TOPO_RATIFICADO_v412.json` (a formula RATIFICADA pelo operador em 12/11/2026, com o acrescimo do acervo que ele ordenou; a fonte unica dos tres tamanhos), os textos que a custodia (G1) le do HANDOFF da v412 entre
+@@ -17 +18 @@
+-acervo do painel curto (ela esta' na frase de estado), nunca um dos quatro obrigatorios da F67. `conferir()` roda as MESMAS conferencias da custodia e a guarda de frases da v411; nada aqui escreve."""
++acervo do painel curto (ela esta' na frase de estado), nunca um dos quatro obrigatorios da F67. `conferir()` roda as MESMAS conferencias da custodia e a guarda de frases da v412; nada aqui escreve."""
+@@ -33,4 +34,4 @@
+-import guarda_frases_v411 as GF  # noqa: E402
+-
+-VERSAO = "v411"
+-ANTERIOR = "v410"
++import guarda_frases_v412 as GF  # noqa: E402
++
++VERSAO = "v412"
++ANTERIOR = "v411"
+@@ -40 +41 @@
+-TOPO_ARQ = os.path.join(PK, "TOPO_RATIFICADO_v411.json")
++TOPO_ARQ = os.path.join(PK, "TOPO_RATIFICADO_v412.json")
+@@ -46,4 +47,4 @@
+-APONTADOR_EN = "`ESTADO_ATUAL.md`"   # (D174, B: a linha EN do H0DN aponta para a leitura inteira; a palavra “reservations” e' a da secao EN do artigo, quadro_v411.py)
+-
+-
+-# ------------------------------------------------------------------------------------------------ a fonte: TOPO_RATIFICADO_v411.json
++APONTADOR_EN = "`ESTADO_ATUAL.md`"   # (D174, B: a linha EN do H0DN aponta para a leitura inteira; a palavra “reservations” e' a da secao EN do artigo, quadro_v412.py)
++
++
++# ------------------------------------------------------------------------------------------------ a fonte: TOPO_RATIFICADO_v412.json
+@@ -52 +53 @@
+-        raise ValueError("TOPO_RATIFICADO_v411.json ausente: os textos da custodia saem SO' dele (aditivo 4)")
++        raise ValueError("TOPO_RATIFICADO_v412.json ausente: os textos da custodia saem SO' dele (aditivo 4)")
+@@ -56 +57 @@
+-            raise ValueError("TOPO_RATIFICADO_v411.json sem a chave %s" % k)
++            raise ValueError("TOPO_RATIFICADO_v412.json sem a chave %s" % k)
+@@ -250 +251 @@
+-        raise ValueError("o rotulo do P2 (TOPO_RATIFICADO_v411.json:rotulo_p2) ou o campo p2_ao_lado_da_v387 do registro (registro_selado, rotulo_selado_da_v387) faltam: o texto do P2 nao sai sem eles")
++        raise ValueError("o rotulo do P2 (TOPO_RATIFICADO_v412.json:rotulo_p2) ou o campo p2_ao_lado_da_v387 do registro (registro_selado, rotulo_selado_da_v387) faltam: o texto do P2 nao sai sem eles")
+@@ -257 +258 @@
+-    """(tj, fonte, N, est, P, A): o arquivo ratificado, os numeros, a frase de estado preenchida, os pedacos dela (EN, PT) e as formas ASCII; os outros textos da custodia (textos_custodia_handoff_v411) saem DAQUI."""
++    """(tj, fonte, N, est, P, A): o arquivo ratificado, os numeros, a frase de estado preenchida, os pedacos dela (EN, PT) e as formas ASCII; os outros textos da custodia (textos_custodia_handoff_v412) saem DAQUI."""
+@@ -322 +323 @@
+-        raise ValueError("as linhas do P2 do gerar_estado_atual.py mudaram (h0dn_trechos_estatuto.json): o fim que a v411 troca nao esta uma vez em cada uma")
++        raise ValueError("as linhas do P2 do gerar_estado_atual.py mudaram (h0dn_trechos_estatuto.json): o fim que a v412 troca nao esta uma vez em cada uma")
+@@ -328 +329 @@
+-    rel = {"fonte": fonte, "ratificada": True, "proposta": False, "formula_origem": "TOPO_RATIFICADO_v411.json (sha256 %s)" % fonte["sha256"], "p2_rotulo": rot, "p2_registro_selado": reg_sel,
++    rel = {"fonte": fonte, "ratificada": True, "proposta": False, "formula_origem": "TOPO_RATIFICADO_v412.json (sha256 %s)" % fonte["sha256"], "p2_rotulo": rot, "p2_registro_selado": reg_sel,
+@@ -334 +335 @@
+-# ------------------------------------------------------------------------------------------------ as conferencias (as da custodia + a guarda de frases da v411)
++# ------------------------------------------------------------------------------------------------ as conferencias (as da custodia + a guarda de frases da v412)
+@@ -358 +359 @@
+-    """{marcador: [violacoes]} (lista vazia = passa). As mesmas conferencias que a custodia aplica (forma, F67, numeros, cabeca, sigma inteiro, portao, regra do 4,44, ASCII) + a guarda de frases da v411."""
++    """{marcador: [violacoes]} (lista vazia = passa). As mesmas conferencias que a custodia aplica (forma, F67, numeros, cabeca, sigma inteiro, portao, regra do 4,44, ASCII) + a guarda de frases da v412."""
+@@ -397 +398 @@
+-        v += ["guarda_frases_v411 %s: %s" % (r, s[:120]) for r, s in GF.violacoes(t)]
++        v += ["guarda_frases_v412 %s: %s" % (r, s[:120]) for r, s in GF.violacoes(t)]
+@@ -408 +409 @@
+-    L = ["**Textos da custódia que a abertura do H0DN × BG1 torna obrigatórios (v411; números lidos do core selado; texto: a fórmula RATIFICADA pelo operador em 12/11/2026, `TOPO_RATIFICADO_v411.json`, sha256 "
++    L = ["**Textos da custódia que a abertura do H0DN × BG1 torna obrigatórios (v412; números lidos do core selado; texto: a fórmula RATIFICADA pelo operador em 12/11/2026, `TOPO_RATIFICADO_v412.json`, sha256 "

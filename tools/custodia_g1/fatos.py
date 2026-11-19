@@ -367,6 +367,15 @@ def sondar(c, v, anterior=None, fonte=None, handoff="auto"):
         if kk:
             khc, kht = kh_de(core, kk[len("kh_n1_cobertura_"):])
             kh_reg = kk
+    if khc is None and util.versao_num(v) >= 412:
+        # AO LADO (19/11/2026, gerência c1, em nome próprio; a v412 não traz kh_n1_cobertura próprio: o contrato R11 tem cinco registros): o
+        # registro kh mais novo NO CORE DESTA versão. Os kh_n1_cobertura_vK são RECRIADOS e RELIDOS a cada rito, e o `lido` deles mede o kernel
+        # do rito (no core da v412 eles leem as constantes e os teoremas do kernel da v412). É a regra que a anterior já tinha (25/10), aplicada
+        # à corrente. Antes da v412 nada muda (backup .bak_20261119_022117_c1_v412).
+        kk = _mais_novo_entre(core, "kh_n1_cobertura_", "v0", v)
+        if kk:
+            khc, kht = kh_de(core, kk[len("kh_n1_cobertura_"):])
+            kh_reg = kk
     khcB, khtB = kh_de(coreB, ant)
     kh_reg_ant = "kh_n1_cobertura_" + ant
     if khcB is None:                      # 25/10/2026: a anterior não trouxe kh próprio (a v400): o registro mais novo até ela, no core dela
@@ -383,6 +392,13 @@ def sondar(c, v, anterior=None, fonte=None, handoff="auto"):
         mudados.append({"nome": nome, "so_digitos_e_pino": so})
 
     novos_reg = sorted(k for k in core if k not in coreB)
+    aux_novos = []
+    if util.versao_num(v) >= 412:
+        # AO LADO (19/11/2026, gerência c1, em nome próprio; a v412): chave nova do core SEM `verdict` não é registro (a v412 traz
+        # `guarda_frases_v412`, o mapa das guardas de frase dos seus cinco registros, sem veredito próprio). Fica dita em
+        # `blocos_auxiliares_novos` e sai de `registros_novos`, que o C1 compara com os registros do artigo. Antes da v412 nada muda.
+        aux_novos = [k for k in novos_reg if isinstance(core.get(k), dict) and "verdict" not in core[k]]
+        novos_reg = [k for k in novos_reg if k not in aux_novos]
     sumidos = sorted(k for k in coreB if k not in core)
     um = A.um_text()
     dics = nomes_toplevel(um, r"_V%s_[A-Z0-9_]+" % v[1:])
@@ -397,7 +413,7 @@ def sondar(c, v, anterior=None, fonte=None, handoff="auto"):
         "schema": ESQUEMA_FATOS, "versao": v, "anterior": ant, "anterior_pin16": _pin16_cofre(c, ant, B),
         "fonte": fonte, "pin": pin, "pin16": pin[:16], "timestamp": selo.get("timestamp"), "bytes_um_py": A.um_py.stat().st_size,
         "selftest": selo.get("fail_closed_selftest"), "gate": selo.get("qg_closure_verdict"),
-        "registros_novos": novos_reg, "registros_sumidos": sumidos,
+        "registros_novos": novos_reg, "registros_sumidos": sumidos, "blocos_auxiliares_novos": aux_novos,
         "bandeiras_novas": [k for k in kf if k not in kfB],
         "bandeiras_do_gate": {"total": len(flags), "ligadas": sorted(k for k, x in flags.items() if x is True),
                               "apagadas": sorted(k for k, x in flags.items() if x is False)},

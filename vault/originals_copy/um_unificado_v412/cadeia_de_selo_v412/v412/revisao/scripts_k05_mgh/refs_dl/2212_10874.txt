@@ -1,0 +1,482 @@
+arXiv:2212.10874v2 [math.FA] 20 Feb 2023                 A COMPARISON OF TWO QUANTUM DISTANCES
+
+                                                                                        JENS KAAD AND DAVID KYED
+
+                                                    Abstract. We show that Rieffel's quantum Gromov-Hausdorff distance between two
+                                                    compact quantum metric spaces is not equivalent to the ordinary Gromov-Hausdorff dis-
+                                                    tance applied to the associated state spaces.
+
+                                                                                       1. Introduction
+
+                                             Rieffel's theory of compact quantum metric spaces provides an elegant non-commutative
+                                          extension of the theory of classical compact metric spaces, and part of its success is due to
+                                          the fact that it allows for a natural analogue of the Gromov-Hausdorff distance [7, 4, 5].
+                                          In fact, quite a few such notions have been proposed [20, 11, 17, 18, 14, 13, 16, 15, 12],
+                                          each having certain advantages and disadvantages. The relationship between the differ-
+                                          ent versions is generally well understood, but quite recently Connes and van Suijlekom
+                                          initiated a programme to re-cast the theory of non-commutative geometry in the setting
+                                          of operator systems [21, 2, 3, 6], in which a new variation appears: instead of measuring
+                                          the quantum Gromov-Hausdorff distance between the quantum metric spaces in question,
+                                          the convergence results in [21] are formulated by applying the classical Gromov-Hausdorff
+                                          distance to the associated state spaces. This emphasises the question whether this is only
+                                          a minor cosmetic difference or if these two quantum metrics are actually in-equivalent,
+                                          and the aim of the present note is to show that the latter situation is the case.
+
+                                             To be more precise, if (X, LX) is a compact quantum metric space (see Section 2 for
+                                          definitions), the associated state space S(X) naturally becomes a compact metric space
+                                          for the Connes metric dLX (�, ) := {|�(x) - (x)| : LX (x) 1} . Given two compact quan-
+                                          tum metric spaces, (X, LX ) and (Y, LY ), one may therefore either consider their quantum
+                                          Gromov-Hausdorff distance distGQH((X, LX ); (X, LY )) (see (2.1)), or the related notion
+
+                                                           distGH((X, LX ); (X, LY )) := distGH ((S(X), dLX ); (S(Y ), dLY )) ,
+                                          where the right hand side is the classical Gromov-Hausdorff distance [5] applied to the
+                                          state spaces. Formally speaking, distGQH and distGH, as defined above, are only metrics on
+                                          the space of isometry classes of compact quantum metric spaces [20, Theorem 7.8], just
+                                          like the ordinary Gromov-Hausdorff distance is a metric on the space of isometry classes
+                                          of compact metric spaces. As is customary, we shall suppress the difference between a
+                                          compact quantum metric space and its isometry class in the sequel. The main result
+
+                                             2020 Mathematics Subject Classification. 58B34, 46L89, 46L30.
+                                             Key words and phrases. Quantum metric spaces, Gromov-Hausdorff distance.
+
+                                                                                                                      1
+2  JENS KAAD AND DAVID KYED
+
+of this paper is that these two notions of quantum Gromov-Hausdorff distance are not
+equivalent:
+
+Theorem A. The two metrics distGH and distQGH are not equivalent.
+
+   The strategy to prove this result is to devise a sequence (Xn, Ln) of compact quantum
+metric spaces which is convergent for distGH but which is bounded away from the limit
+point with respect to distGQH. The estimates needed in order to prove this are surprisingly
+subtle and involve a careful analysis of the so-called Mazur map as well as an application
+of Clarkson's inequalities; see Section 3 for more details.
+
+Acknowledgments. The authors gratefully acknowledge the financial support from the
+Independent Research Fund Denmark through grant no. 9040-00107B, 7014-00145B and
+1026-00371B. This note grew out of discussions with Walter van Suijlekom during the 2022
+NseaG-workshop at the Lorentz center in Leiden. We would like to thank the Lorentz
+center for their hospitality and the nice research environment they provide. Furthermore,
+the authors wish to thank Alexander Kahle, Fr�ed�eric Latr�emoli`ere and Marc Rieffel for
+their input in connection with the problem addressed in the present note.
+
+                               2. Compact quantum metric spaces
+
+   The theory of compact quantum metric spaces has yet to reach its final form, and there
+are therefore a number of competing, but strongly related, definitions available [19, 17, 14].
+We shall here use the setting of operator systems as basis for the definitions, since this
+seems to provide a convenient flexibility compared with the C-algebraic setting [17, 14],
+and furthermore has the advantage of being in line with some of the recent developments
+in non-commutative geometry [21, 2]. By a complete operator system we shall mean a
+closed subset X of a unital C-algebra A, which is furthermore invariant under the adjoint
+operation and contains the unit of A. The usual definition of a state carries over to this
+setting, and the state space S(X) becomes a compact topological space for the weak
+topology.
+
+Definition 2.1. A compact quantum metric space is a complete operator system X
+equipped with a semi-norm L : X [0, ] satisfying that
+
+    (1) L is -invariant and L(1) = 0.
+    (2) the set dom(L) := {x  X : L(x) < } is dense in X.
+    (3) the function dL : S(X) � S(X) [0, ] given by
+
+                               dL(�, ) := sup{|�(x) - (x)| : L(x) 1}
+
+         metrises the weak topology.
+
+In this case, L is referred to as a Lip-norm.
+
+   Since the purpose of the present note is somewhat specific, we shall not dwell on the
+basic properties of compact quantum metric spaces, but refer the reader to [9, Section 2]
+for a comparison between the definition above and Rieffel's original definition [19], and
+A COMPARISON OF TWO QUANTUM DISTANCES                                             3
+
+the references therein for a number of important examples. In analogy with the classi-
+
+cal Gromov-Hausdorff distance [7, 4], Rieffel developed his quantum Gromov-Hausdorff
+
+distance based on the notion of an admissible seminorm. More precisely, if (X, LX ) and
+(Y, LY ) are compact quantum metric spaces a Lip-norm L : X  Y [0, ] is called
+admissible if dom(L) = dom(LX)  dom(LY ) and if the quotient semi-norm induced by
+L on the self-adjoint parts Xsa and Ysa agree with (the restrictions of) LX and LY , re-
+spectively. Given such an admissible seminorm L, the coordinate projections dualise to
+
+isometric embeddings
+
+(S(X), dLX ) -X (S(X  Y ), dL) Y- (S(Y ), dLY )
+
+and it therefore makes sense to define
+
+distQGH((X, LX ); (Y, LY )) := inf distH X (S(X)), Y (S(Y )) : L admissible   (2.1)
+
+where distH is the Hausdorff distance [8] measured with respect to dL. As demonstrated
+in [9, Lemma 2.2], the above quantum Gromov-Hausdorff distance agrees with Rieffel's
+
+original definition [20] applied to the order unit spaces dom(LX)sa and dom(LY )sa. We
+may therefore also apply Li's alternative description from [18, Proposition 3.2]:
+
+distGQH((X, LX); (Y, LY )) = inf distH iX (S(X)), iY (S(Y ))                  (2.2)
+
+where the infimum runs over all affine isometric embeddings iX : S(X)         V and
+
+iY : S(Y ) V into arbitrary real normed spaces V and distH denotes the Hausdorff
+
+distance measured with respect to the metric coming from the norm on V . It follows
+immediately from (2.1) that distGQH dominates distGH and to prove Theorem A, we shall
+therefore show that no constant C > 0 exists for which distGQH C � distGH. To do so, we
+have to manufacture compact quantum metric spaces with quite specific state spaces which
+
+is possible due to another result of Li [18, Proposition 3.1]. This result ensures that any
+
+compact convex subset K of a real normed space V is affinely isometrically isomorphic to
+
+the state space of a compact quantum metric space. In our setting, the relevant operator
+
+system X is the closure of the affine Lipschitz continuous functions LipAff(K, C) inside
+the unital C-algebra C(K, C) and the corresponding Lip-norm computes the Lipschitz
+
+constant of the functions in X.
+
+We are going to apply the above constructions to the unit balls in finite dimensional
+
+p-spaces. More precisely, for p 1 and N  N we consider the compact convex subset
+
+KpN := {x  RN : x p 1}  RN ,
+
+where we consider RN as a real normed space with respect to the p-norm, so that the
+metric on the closed unit ball KpN is given by dpN (x, y) := x-y p. We denote by (XpN , LNp )
+the associated compact quantum metric space whose state space (S(XpN ), dLNp ) is affinely,
+isometrically isomorphic to (KpN , dpN ).
+
+   In the following section, we show that there exist a sequence {pn} in (1, 2) with
+
+limn  pn = 1 and a sequence {Nn} of natural numbers such that
+
+lim  distGH                      (XpNnn  ,  LNn    );  (X1Nn  ,  L1Nn  )  =0
+                                               pn
+n
+4                            JENS KAAD AND DAVID KYED
+
+but for which
+
+                   distQGH            (XpNnn   ,  LNn    );  (X1Nn  ,  L1Nn  )  1
+                                                     pn                         4
+
+for all n  N. This implies the statement of Theorem A.
+
+   We remark that a similar problem was solved within the theory of Banach spaces in [10]
+
+where the authors compare a version of the Gromov-Hausdorff distance to the so-called
+
+Kadets distance, and the constructions in the present paper draw also on the techniques
+
+from [10].
+
+                                    3. Estimating the distances
+
+   The first step towards the proof of Theorem A is to obtain an estimate on the Gromov-
+Hausdorff distance between XpN and X1N which is independent of N . We provide such an
+estimate in the following proposition, whose proof is a minor modification of the corre-
+sponding argument for infinite dimensional p-spaces given in [10]; we include it here, with
+added details, for the reader's convenience.
+
+Proposition 3.1. Let N  N and p  [1, ). It holds that
+                                distGH (XpN , LNp ); (X1N , LN1 ) 2p - 2.
+
+   For the proof of Proposition 3.1, it is convenient to first single out the following lemma.
+
+Lemma 3.2. Let p  [1, ). The following holds:
+
+    (1) The function f : [0, 2] R given by f (x) = |xp - x| attains its maximum at x = 2.
+    (2) For all t s 0 it holds that (t - s)p + sp tp 2p-1 (t - s)p + sp .
+
+Proof. The two claims are trivial for p = 1 so we focus on the case where p  (1, ).
+
+   We start out by proving (1). The only candidates for the maximum are at the points
+
+0, 1, 2 and the critical point x0 :=     1  1/(p-1).     Since f       vanishes at 0 and 1 we only need to
+                                         p
+show that
+
+                                            x0 - xp0 2p - 2.
+
+To establish this inequality, put q := p/(p - 1) and record that
+
+               x0  - xp0  =   1             -  1   =     p-1           p-1      2p - 2.
+                             pq-1              pq          pq
+
+   We now turn to the proof of (2). As p > 1, the function g : [0, )                     R given by
+g(x) = xp is convex and hence
+
+                             (        1  x  +  1  y)p        1  xp  +  1  yp,
+                                      2        2             2         2
+
+so that (x + y)p 2p-1(xp + yp). Furthermore, as a consequence of the triangle inequality
+for the p-norm, it holds that xp + yp (x + y)p. The two inequalities in (2) now follow by
+
+putting x = t - s and y = s.
+           A COMPARISON OF TWO QUANTUM DISTANCES                                          5
+
+Proof of Proposition 3.1. We shall use the characterisation of Gromov-Hausdorff distance
+in terms of correspondences as described, for instance, in [5]. More precisely, [5, Theorem
+4.11] shows that if one can find a bijective map  : A B between compact metric spaces
+(A, dA) and (B, dB) whose distortion
+
+           dis() := sup{|dA(a1, a2) - dB((a1), (a2))| : a1, a2  A}
+
+is bounded by , then distGH((A, dA), (B, dB))   1  .  In our situation, the relevant map
+                                                2
+will be the Mazur map  : KpN K1N given by
+
+           (x1, . . . , xN ) = (sgn(x1)|x1|p, . . . , sgn(xN )|xN |p) ,
+
+and we therefore need to estimate the quantity
+
+                                          x - y p - (x) - (y) 1              (a, b  R).
+for x, y  Kpn. We now claim that
+
+           |a - b|p - sgn(a)|a|p - sgn(b)|b|p (2p-1 - 1)(|a|p + |b|p)
+
+To see this, note first that by symmetry it suffices to treat the two cases a b 0 and
+
+b 0 and a < 0; in the first case the claim follows from Lemma 3.2 (2) with t = a and
+s = b, and in the second case by using s = |a| and t = b + |a|. For x, y  KpN , we therefore
+get
+
+x-y  p  -  (x) - (y) 1   N
+     p
+                             |xi - yi|p - sgn(xi)|xi|p - sgn(yi)|yi|p
+
+                        i=1
+
+                         N
+
+                           (2p-1 - 1)(|xi|p + |yi|p) 2(2p-1 - 1) = 2p - 2.
+
+                        i=1
+
+Combining this with the estimate from Lemma 3.2 (1) we obtain
+
+x - y p - (x) - (y) 1   x-y  p-                 x-y   p  +     x-y     p  -  (x) - (y) 1
+                                                      p                p
+
+                        2p - 2 + 2p - 2 = 2(2p - 2)
+
+Thus, the bijection  has distortion at most 2(2p - 2) and hence
+
+distGH((XpN , LNp ); (X1N , LN1 )) = distGH((KpN , dpN ); (K1N , dN1 )) 2p - 2.
+
+Next we turn towards a lower bound on the quantum Gromov-Hausdorff distance:
+
+Proposition 3.3. Let N  N and p  (1, 2). It holds that
+
+           distGQH (XpN , LpN ); (X1N , LN1 )            1  -  N  . 1-1
+                                                         2
+                                                                  p
+
+   For the proof we need the following two lemmas, which are likely known to experts in
+the field but for which we were unable to find an explicit reference.
+6                                     JENS KAAD AND DAVID KYED
+
+Lemma 3.4. Let p  (1, 2) and N  N. For every n  N and x1, . . . , xn  KpN there exist
+                                                                      1
+                                            n
+1, . . . , n  {-1, 1} such that             i=1   i  xi     p      np.
+
+Proof. The proof runs by induction on n  N. The case where n = 1 is clear. Let n  N
+
+and suppose that x1, . . . , xn+1  KpN and that 1, . . . , n  {-1, 1} are chosen such that
+                  1
+   n                                    p
+   i=1  ixi    p  np.     Put  q  :=  1-p    so   that    1/p + 1/q         = 1.     From             Clarkson's   inequality  [1,
+
+Theorem 2], we know that
+
+                               x+y       q  +     x-y       q      2     x  p  +     y  p         q
+                                         p                  p               p           p
+                                                                                                  p.
+
+for all x, y  RN . Hence with x :=                   n    ixi      and   y  :=    xn+1            we  get    from  the  induction
+                                                     i=1
+hypothesis that
+                                                                                               q
+                                  x+y          q  +  x-y           q
+                                               p                   p     2(n + 1) p .
+
+This implies that either       x+y    q  or       x-y     q    is  bounded     by                         q  and hence that either
+                                      p                   p
+                                                                                        (n + 1) p
+
+   x + y p or     x-y  p  is bounded by        (n    +  1)  1  .
+                                                            p
+
+   The following lemma is certainly well known, but for the sake of completeness, we present
+the main idea of the proof.
+
+Lemma 3.5. Let V and W be real normed spaces and denote by BV1 (0) the closed unit ball
+in V . Then for any affine isometric map  : BV1 (0) W there exists a unique isometric
+linear map  : V W such that (x) = (x) + (0) for all x  BV1 (0).
+
+Proof. Define the affine isometric map  : B1V (0) W by putting (x) := (x) - (0).
+                                                                                                             1
+The relevant map  : V             W is then defined by (x) :=                                     x �        x  x  for x = 0 and
+
+(0) := 0. We leave it to the reader to verify that  has the desired properties.
+
+Proof of Proposition 3.3. We use Li's formula (2.2) to estimate the quantum Gromov-
+
+Hausdorff distance. Let therefore V be any real normed space and let  : KpN V
+and  : K1N V be affine isometric maps. Put  := distH (KpN ), (K1N ) , where the
+
+Hausdorff distance is measured with respect to the metric induced by the norm � V
+
+on V . Upon applying a global translation if necessary, we may assume that (0) = 0.
+
+Denote by e1, . . . , eN  RN the standard basis and choose x1, . . . , xN  KpN such that
+ (xi) - (ei) V  for all i  {1, . . . , n}. Choose, moreover, x0  KpN such that
+
+ (x0) - (0) V .
+   We apply the notation Np and N1 for RN equipped with the p-norm and the 1-norm,
+
+respectively. By Lemma 3.5, we know that  and 0 :=  - (0) extend to isometric linear
+
+maps
+
+                                : Np V                    and 0 : N1 V.
+
+Furthermore, by Lemma 3.4 we may choose signs 1, . . . , N  {-1, 1} such that
+
+                                       N                                 2  �  N  1  .
+                                                                                  p
+                                          j(xj - x0)
+                                                                     p
+                                      j=1
+                              A COMPARISON OF TWO QUANTUM DISTANCES                                                          7
+
+We now estimate as follows:
+
+               N                      N
+
+      N=           jej =                 j 0(ej )             V
+                           1
+             j=1                j=1
+
+               N                      N                             N                              N
+
+                   j0(ej) - j(xj) + j(0) +                                                              j (x0) - (0)
+                                                                                 V                                     V
+             j=1                j=1                              j=1                            j=1
+
+                  N
+
+          +          j (xj) - (x0)                      V
+
+               j=1
+
+            N                                                                                      N
+
+                  (ej) - (xj) V + N � (x0) - (0) V +                                                    j (xj) - (x0)     V
+
+            j=1                                                                                    j=1
+
+            2N  + 2N 1/p.
+
+This  establishes    the  desired     inequality           1  -     N  1  -1      and the proof is complete.
+                                                           2           p
+
+With the above results at our disposal, Theorem A now follows easily:
+
+Proof of Theorem A. Let {pn} be a sequence in (1, 2) with limn  pn = 1. For each n  N,
+                                     1
+choose  Nn     N  such    that           -1         1/4. By Proposition 3.3 we then get that
+                                Nnpn
+
+                     distGQH    (XpNnn   ,  LXn     );  (X1Nn       ,  LX1 n  )  1              for all n  N.
+                                               pn                                4
+
+On the other hand, by Proposition 3.1, we have that
+
+                   distGH     (XpNnn  ,  LNn    );  (X1Nn     ,  L1Nn  )         2pn - 2              for all n  N
+and hence that                              pn                                                        = 0.
+
+                              lim     distGH        (XpNnn       ,  LNn    );  (X1Nn  ,  LN1 n  )
+                                                                       pn
+                              n
+
+Remark 3.6. Theorem A only shows that distGH and distQGH are inequivalent metrics, but
+does not exclude the fact that they could induce the same topology on the space of (isometry
+classes) of compact quantum metric spaces. Although we believe this not to be the case,
+the techniques above seem not to be adaptable to prove such a more general result.
+
+Remark 3.7. Despite the difference between distGQH and distGH demonstrated above, van
+Suijlekom's main convergence result [21, Theorem 5] holds true also when distGH is replaced
+by distQGH, as can be seen, for instance, by an application of [9, Proposition 2.14].
+
+                                                        References
+
+[1] James A. Clarkson. Uniformly convex spaces. Trans. Amer. Math. Soc., 40(3):396�414, 1936.
+[2] Alain Connes and Walter D. van Suijlekom. Spectral truncations in noncommutative geometry and
+
+    operator systems. Commun. Math. Phys., 383(3):2021�2067, 2021.
+[3] Alain Connes and Walter D. van Suijlekom. Tolerance relations and operator systems. Acta Sci. Math.,
+
+    88(1):101�129, 2022.
+8  JENS KAAD AND DAVID KYED
+
+ [4] David A. Edwards. The structure of superspace. In Studies in topology (Proc. Conf., Univ. North
+      Carolina, Charlotte, N. C., 1974; dedicated to Math. Sect. Polish Acad. Sci.), pages 121�133, 1975.
+
+ [5] Steven N. Evans. Probability and real trees, volume 1920 of Lecture Notes in Mathematics. Springer,
+      Berlin, 2008. Lectures from the 35th Summer School on Probability Theory held in Saint-Flour, July
+      6�23, 2005.
+
+ [6] Mick Gielen and Walter D. van Suijlekom. Operator systems for tolerance relations on finite sets.
+      Indag. Math (to appear), 2022. arXiv:2207.07735v1
+
+ [7] Mikhael Gromov. Groups of polynomial growth and expanding maps. Inst. Hautes E�tudes Sci. Publ.
+      Math., (53):53�73, 1981.
+
+ [8] Felix Hausdorff. Grundzu�ge der Mengenlehre. Chelsea Publishing Company, New York, N. Y., 1949.
+ [9] Jens Kaad and David Kyed. The quantum metric structure of quantum SU (2). Preprint, 2022.
+
+      arXiv:2205.06043
+[10] Nigel J. Kalton and Mikhail I. Ostrovskii. Distances between Banach spaces. Forum Math., 11(1):17�
+
+      48, 1999.
+[11] David Kerr. Matricial quantum Gromov-Hausdorff distance. J. Funct. Anal., 205(1):132�167, 2003.
+[12] David Kerr and Hanfeng Li. On Gromov-Hausdorff convergence for operator metric spaces. J. Operator
+
+      Theory, 62(1):83�109, 2009.
+[13] Fr�ed�eric Latr�emoli`ere. The dual Gromov-Hausdorff propinquity. J. Math. Pures Appl. (9), 103(2):303�
+
+      351, 2015.
+[14] Fr�ed�eric Latr�emoli`ere. The quantum Gromov-Hausdorff propinquity. Trans. Amer. Math. Soc.,
+
+      368(1):365�411, 2016.
+[15] Fr�ed�eric Latr�emoli`ere. The modular Gromov-Hausdorff propinquity. Dissertationes Math., 544:70,
+
+      2019.
+[16] Fr�ed�eric Latr�emoli`ere. The Gromov-Hausdorff propinquity for metric spectral triples. Adv. Math.,
+
+      404:Paper No. 108393, 2022.
+[17] Hanfeng Li. C-algebraic quantum Gromov�Hausdorff distance, 2003.
+[18] Hanfeng Li. Order-unit quantum Gromov-Hausdorff distance. J. Funct. Anal., 231(2):312�360, 2006.
+[19] Marc A. Rieffel. Metrics on state spaces. Doc. Math., 4:559�600, 1999.
+[20] Marc A. Rieffel. Gromov-Hausdorff distance for quantum metric spaces. Mem. Amer. Math. Soc.,
+
+      168(796):1�65, 2004. Appendix 1 by Hanfeng Li.
+[21] Walter D. van Suijlekom. Gromov-Hausdorff convergence of state spaces for spectral truncations. J.
+
+      Geom. Phys., 162:11, 2021. Id/No 104075.
+
+   Jens Kaad, Department of Mathematics and Computer Science, University of Southern
+Denmark, Campusvej 55, DK-5230 Odense M, Denmark
+
+   Email address: kaad@imada.sdu.dk
+
+   David Kyed, Department of Mathematics and Computer Science, University of South-
+ern Denmark, Campusvej 55, DK-5230 Odense M, Denmark
+
+   Email address: dkyed@imada.sdu.dk
+

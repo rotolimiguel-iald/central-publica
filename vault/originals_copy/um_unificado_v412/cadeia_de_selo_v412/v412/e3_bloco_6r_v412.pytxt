@@ -1,0 +1,165 @@
+# (6r) [v412] OS QUATRO REGISTROS POR ESPECIFICACAO (iald_camada_cientifica_v412, matematica_que_restava_v412, parede_do_teste_cego_v412, cunhagens_v412): so' dados, o motor e' o da v392 (nenhum registro com funcao novo). Tudo certo NO PONTO REAL do main (c[...]),
+#      as palavras de veredito do CONTRATO (lidas pelo delta, nunca digitadas), os numeros RECALCULADOS aqui por OUTRO caminho (o recibo da escolha das ancoras, o FLAGS_v412.json do kernel, o texto dos 40 modulos embutidos, o relatorio de axiomas do PROPRIO rito, as listas de modulos do contrato),
+#      a heranca (gate, neutrino e H0DN com o veredito da v411 selada; a escada so' fecha com as bandeiras), cada elo recusa visivelmente (cada checagem negada, a bandeira e a declaracao faltando, o axioma fora do trio, a frase proibida plantada) e nenhum texto novo traz historia de conversa.
+#      Cada contagem diz quantos itens examinou; zero examinado e' falha visivel (nao passagem).
+import inspect as _insp12
+import verificar_historia_texto_v412 as _VH12
+import guarda_frases_v412 as _GF12c
+_DEL12 = object()
+_trio12 = {"propext", "Classical.choice", "Quot.sound"}
+_N12 = list(um._V412_NOMES_REGISTROS); _SP12 = {s_["nome"]: s_ for s_ in um._V412_SPECS}
+assert _N12 == list(DL.REGISTROS_SPEC_V412) == [s_["nome"] for s_ in um._V412_SPECS] and len(_N12) == 4 and _N12[-1] == "cunhagens_v412"
+_FJ12 = json.load(open(os.path.join(KD, "FLAGS_v412.json"), encoding="utf-8")); _ANC12 = json.load(open(os.path.join(HERE, "ANCORAS_ESCOLHIDAS_v412.json"), encoding="utf-8"))
+_kf12 = c["kernel_formalization"]; R12 = {n_: (c.get(n_) or {}) for n_ in _N12}
+
+
+def _cow12(core_, onde_, caminho_, valor_):
+    """copia-ao-escrever: copia so' os dicts do caminho (o core carrega 35 mil declaracoes: um deepcopy por checagem custaria minutos); devolve um core novo com o valor trocado; valor_ = _DEL12 apaga a chave."""
+    novo_ = dict(core_)
+    if onde_ == "kf":
+        novo_["kernel_formalization"] = dict(core_["kernel_formalization"]); alvo_ = novo_["kernel_formalization"]
+    else:
+        alvo_ = novo_
+    for k_ in caminho_[:-1]:
+        alvo_[k_] = dict(alvo_[k_]); alvo_ = alvo_[k_]
+    if valor_ is _DEL12:
+        alvo_.pop(caminho_[-1], None)
+    else:
+        alvo_[caminho_[-1]] = valor_
+    return novo_
+
+
+# --- (a) tudo certo no ponto real do main: o veredito e' a palavra do contrato; os numeros do kernel e das checagens
+_tudo12 = {}
+for n_ in _N12:
+    r_, s_ = R12[n_], _SP12[n_]
+    _tudo12[n_] = bool(r_.get("all_verified") is True and r_.get("verdict") == DL.PALAVRAS_DE_VEREDITO[n_] == s_["veredito_prefixo"] + "__" + s_["veredito_sufixo"] and r_["verdict"].endswith("GATE_UNMOVED") and r_.get("does_not_gate_core") is True and not r_.get("guarda_p18_violacoes")
+                       and len(r_.get("checks") or []) == len(s_["checks"]) > 0 and all(ck_["ok"] for ck_ in r_["checks"]) and r_["kernel"]["bandeiras"] == [len(s_["kernel_flags"])] * 2 and r_["kernel"]["declaracoes_no_trio"] == [len(s_["kernel_decls"])] * 2
+                       and not s_["fontes"] and not s_["verbatins"] and not s_["leituras_do_operador"] and not s_["erratas"] and "<" not in r_["verdict"])
+U["v412_registros_por_spec_tudo_certo_no_ponto_real_com_a_palavra_de_veredito_do_contrato"] = bool(all(_tudo12.values()) and len(_tudo12) == 4)
+# --- (b) os numeros RECALCULADOS aqui por outro caminho
+_CT12 = DL._CONTRATO_TXT
+_mA = re.search(r"Frente A \(a camada científica\), (\d+) m[óo]dulos: (.*?)\.\n", _CT12, re.S); _mB = re.search(r"Frente B \(a matemática que restava\), (\d+) m[óo]dulos: (.*?)\.\n", _CT12, re.S)
+_modA12, _modB12 = re.findall(r"`(\w+)`", _mA.group(2)), re.findall(r"`(\w+)`", _mB.group(2))
+_decl2mod12 = {d_: m_ for f_, d_, m_, o_ in _FJ12["flags"]}; _flag2decl12 = {f_: d_ for f_, d_, m_, o_ in _FJ12["flags"]}
+_num12 = {}
+for n_, mods_ in (("iald_camada_cientifica_v412", _modA12), ("matematica_que_restava_v412", _modB12)):
+    s_ = _SP12[n_]; reg_ = _ANC12["registros"][n_]["modulos"]
+    fl_ = [a_["bandeira"] for d_ in reg_.values() for a_ in d_["ancoras"]]; dc_ = [a_["nome"] for d_ in reg_.values() for a_ in d_["ancoras"]]
+    _num12[n_] = {"modulos_do_contrato": len(mods_), "n_ancoras": len(fl_), "modulos_iguais": bool(set(reg_) == set(mods_) == set(s_["extras"]["modulos"]) and len(reg_) == len(mods_) == len(s_["extras"]["modulos"]) == s_["extras"]["n_modulos"]), "ancoras_iguais_ao_recibo": bool(s_["kernel_flags"] == fl_ and s_["kernel_decls"] == dc_ and s_["extras"]["n_ancoras"] == len(fl_) == len(dc_) > 0)}
+_num12["total_de_ancoras_do_recibo"] = _ANC12["n_ancoras_total"]
+_todas_fl12 = [f_ for n_ in _N12 for f_ in _SP12[n_]["kernel_flags"]]; _todas_dc12 = [d_ for n_ in _N12 for d_ in _SP12[n_]["kernel_decls"]]
+_no_texto12 = 0; _no_trio12 = 0; _flag_ok12 = 0; _aponta12 = 0
+for n_ in _N12:
+    for f_, d_ in zip(_SP12[n_]["kernel_flags"], _SP12[n_]["kernel_decls"]):
+        _aponta12 += int(um._LEAN_THEOREM_FLAGS.get(f_) == d_ == _flag2decl12.get(f_)); _flag_ok12 += int(_kf12.get(f_) is True)
+        _no_trio12 += int(d_ in _kf12["axiom_report"] and set(_kf12["axiom_report"][d_] or []) <= _trio12)
+        _no_texto12 += int(d_.split(".")[-1] in EMB["TGLExt/" + _decl2mod12[d_].split(".")[-1] + ".lean"])
+_nanc12 = len(_todas_fl12)
+_num12["bandeiras_examinadas"] = _nanc12
+U["v412_os_numeros_foram_recalculados_aqui_ancoras_modulos_e_declaracoes"] = bool(_nanc12 == len(_todas_dc12) > 0 and _aponta12 == _flag_ok12 == _no_trio12 == _no_texto12 == _nanc12
+                                                                                  and all(v_["modulos_iguais"] and v_["ancoras_iguais_ao_recibo"] for k_, v_ in _num12.items() if isinstance(v_, dict) and "modulos_iguais" in v_) and _num12["iald_camada_cientifica_v412"]["n_ancoras"] + _num12["matematica_que_restava_v412"]["n_ancoras"] == _ANC12["n_ancoras_total"]
+                                                                                  and len(_modA12) == int(_mA.group(1)) and len(_modB12) == int(_mB.group(1)) and int(_mA.group(1)) + int(_mB.group(1)) == DL.N_BUNDLE == len(DL.BUNDLE_RELS) and set(_modA12 + _modB12) == {m_.split("/")[-1][:-5] for m_ in DL.BUNDLE_RELS} and len(_modA12 + _modB12) == len(set(_modA12 + _modB12)) > 0)
+# --- (c) a escada so' fecha com as bandeiras novas; nenhuma chave antiga muda de literal
+_fl_novas12 = [f_ for f_, d_, m_, o_ in _FJ12["flags"]]
+_kf0b12 = core0["kernel_formalization"]; _el12 = c["external_ladder"]
+_c12 = {"n_flags": bool(len(_fl_novas12) == len(set(_fl_novas12)) == _FJ12["n_flags"] == CM["n_bandeiras"] == DL.N_FLAGS > 0), "todas_true_e_na_tabela": bool(all(_kf12.get(f_) is True and f_ in um._LEAN_THEOREM_FLAGS for f_ in _fl_novas12)), "nenhuma_ja_na_base": not (set(_fl_novas12) & set(_kf0b12)),
+        "escada_igual_a_base_mais_as_novas": bool(ESP == CM["escada"][1] == E409 + len(_fl_novas12) == _el12["n_theorems_clean"] == _el12["n_theorems_expected"] and _el12["all_verified"] is True),
+        "nenhuma_chave_antiga_muda_de_literal": bool(all(_kf0b12[k_] == _kf12[k_] for k_ in _kf0b12 if isinstance(_kf0b12[k_], bool) and k_.startswith("ext_")) and sum(1 for k_ in _kf0b12 if k_.startswith("ext_")) > 1000),
+        "os_modulos_novos_no_hash_formal": bool(set(DL.BUNDLE_RELS) <= set(_kf12["formal_files_sha256"])), "entradas_do_hash_formal": len(_kf12["formal_files_sha256"]) == H8_ENTRADAS}
+U["v412_a_escada_so_fecha_com_as_bandeiras_novas_e_nenhuma_chave_antiga_muda"] = bool(all(_c12.values()))
+# --- (d) a heranca: o gate, o neutrino e o H0DN com o veredito da v411 selada
+_her12 = {"gate": (c["qg_closure"].get("gate") or {}).get("verdict") == (core0["qg_closure"].get("gate") or {}).get("verdict"), "neutrino": c["neutrino_mass"]["verdict"] == core0["neutrino_mass"]["verdict"], "h0dn": c[DL.FECHO_REGISTRO]["verdict"] == core0[DL.FECHO_REGISTRO]["verdict"] and c[DL.FECHO_REGISTRO]["all_verified"] is True,
+          "qg_closure_verdict_do_selo": bool(selo0.get("qg_closure_verdict"))}
+U["v412_heranca_o_gate_o_neutrino_e_o_h0dn_com_o_veredito_da_v411_selada"] = bool(all(_her12.values()) and (c["qg_closure"].get("gate") or {}).get("verdict"))
+# --- (e) cada elo recusa: cada checagem negada, a bandeira e a declaracao faltando, o axioma fora do trio, a frase proibida plantada
+_neg12 = {}
+_OPNEG12 = {"verdadeiro": False, "falso": True, "igual": "ADULTERADO", "existe": _DEL12, "maior_igual": -1, "tamanho_igual": []}
+for n_ in _N12:
+    s_ = _SP12[n_]; ss_ = dict(s_, sem_guarda=True)   # (a guarda de texto e' medida a parte, abaixo; aqui o que se mede e' a checagem negada)
+    cnt_ = [0, 0]; semop_ = []
+    for ck_ in s_["checks"]:
+        if ck_["op"] not in _OPNEG12 or ck_["onde"] not in ("core", "kf"):
+            semop_.append(ck_["id"]); continue
+        r_ = um._v392_registro(ss_, _cow12(c, ck_["onde"], ck_["caminho"], _OPNEG12[ck_["op"]]))
+        cnt_[0] += 1; cnt_[1] += int(r_["all_verified"] is False and ("CHECK_" + ck_["id"]) in r_["verdict"])
+    ext_ = {"checagens_negadas": cnt_, "checagens_sem_negacao_possivel": semop_}
+    if s_["kernel_flags"]:
+        r_ = um._v392_registro(ss_, _cow12(c, "kf", [s_["kernel_flags"][0]], False)); ext_["bandeira_faltando_recusa"] = bool(r_["all_verified"] is False and "KERNEL_BANDEIRAS" in r_["verdict"])
+        r_ = um._v392_registro(ss_, _cow12(c, "kf", ["axiom_report", s_["kernel_decls"][0]], ["propext", "sorryAx"])); ext_["axioma_fora_do_trio_recusa"] = bool(r_["all_verified"] is False and "KERNEL_DECLARACOES" in r_["verdict"])
+        r_ = um._v392_registro(ss_, _cow12(c, "kf", ["axiom_report", s_["kernel_decls"][-1]], _DEL12)); ext_["declaracao_ausente_recusa"] = bool(r_["all_verified"] is False and "KERNEL_DECLARACOES" in r_["verdict"])
+    ext_["frases_proibidas_plantadas_recusam"] = []
+    for f_ in ("a singularidade converge", "o Nome fixo", "não provou", "singularity converges", "the Name is fixed", "post-diction"):
+        r_ = um._v392_registro(dict(s_, diz=list(s_["diz"]) + ["a cadeia: " + f_]), c); ext_["frases_proibidas_plantadas_recusam"].append(bool(r_["all_verified"] is False and "GUARDA_P18" in r_["verdict"] and r_["guarda_p18_violacoes"]))
+    ext_["intacto_sela"] = um._v392_registro(s_, c)["all_verified"] is True
+    _neg12[n_] = ext_
+_neg_ok12 = bool(all(v_["checagens_negadas"][0] == v_["checagens_negadas"][1] > 0 and v_["intacto_sela"] and all(v_["frases_proibidas_plantadas_recusam"]) and len(v_["frases_proibidas_plantadas_recusam"]) == 6 and v_.get("bandeira_faltando_recusa", True) is True and v_.get("axioma_fora_do_trio_recusa", True) is True and v_.get("declaracao_ausente_recusa", True) is True for v_ in _neg12.values())
+                 and sum(v_["checagens_negadas"][0] for v_ in _neg12.values()) + sum(len(v_["checagens_sem_negacao_possivel"]) for v_ in _neg12.values()) == sum(len(s_["checks"]) for s_ in um._V412_SPECS))
+U["v412_cada_elo_recusa_cada_checagem_negada_a_bandeira_a_declaracao_o_axioma_e_a_frase_plantada"] = _neg_ok12
+# --- (f) a ligacao entre os registros: o cunhagens_v412 cobra o selo dos outros tres; a parede traz as sete ressalvas e as tres contas nao rodadas; as entradas (leis e definicoes da teoria) so' apontam para o cabecalho
+_cn12, _pa12 = R12["cunhagens_v412"], R12["parede_do_teste_cego_v412"]; _sp_cn12, _sp_pa12 = _SP12["cunhagens_v412"], _SP12["parede_do_teste_cego_v412"]
+_r_sem3 = um._v392_registro(dict(_sp_cn12, sem_guarda=True), dict(c, **{"parede_do_teste_cego_v412": dict(c["parede_do_teste_cego_v412"], all_verified=False)}))
+_ent12 = (_sp_cn12.get("extras") or {}).get("entradas") or []
+_pa_ex12 = _sp_pa12["extras"]
+_lig12 = {"cunhagens_cobra_o_selo_dos_outros_tres": bool(_r_sem3["all_verified"] is False and "CHECK_r3" in _r_sem3["verdict"]), "n_entradas": len(_ent12), "entradas_so_apontam_para_o_cabecalho": bool(len(_ent12) == _sp_cn12["extras"]["n_entradas"] > 0 and {e_["modulo"] for e_ in _ent12} <= {m_.split("/")[-1][:-5] for m_ in DL.BUNDLE_RELS} and all(_kf12.get(a_["bandeira"]) is True for e_ in _ent12 for a_ in e_["ancoras"]) and all(set(e_) == {"nome", "estatuto_de_entrada", "modulo", "titulo_da_secao_do_cabecalho", "ancoras", "nao_tipado"} and e_["estatuto_de_entrada"] in ("[INPUT]", "[ONTO]") and e_["ancoras"] and e_["titulo_da_secao_do_cabecalho"] for e_ in _ent12)),
+          "parede": bool(len(_pa_ex12["ressalvas_e_atos"]) == _pa_ex12["n_ressalvas"] == len(c[DL.FECHO_REGISTRO]["values"]["ressalvas_secao8"]) == 7 and _pa_ex12["n_contas_nao_rodadas"] == 3 and _pa_ex12["pre_registro_do_incremento_do_juno_no_selo"] is False and c[DL.FECHO_REGISTRO]["opened_once"] is True and len(c[DL.FECHO_REGISTRO]["o_que_o_teste_nao_decide"]) > 0
+                         and all(set(x_) == {"ressalva", "sobre", "ato_que_resolve"} and all(x_.values()) for x_ in _pa_ex12["ressalvas_e_atos"]))}
+U["v412_a_ligacao_entre_os_registros_cunhagens_cobra_o_selo_dos_outros_tres_a_parede_e_as_entradas"] = bool(all(v_ is True for k_, v_ in _lig12.items() if k_ != "n_entradas") and _lig12["n_entradas"] > 0)   # n_entradas_lidas do spec: o numero de leis e definicoes da teoria que o registro lista, lido, nao digitado
+# --- (g) a guarda de frases da v412 (contrato R4, secao 5): as quatro funcoes EMBUTIDAS (a guarda sobre UMA unidade, a divisao em unidades, a divisao do TeX, a travessia) sao as da cadeia, funcao por funcao; os controles do contrato rodam contra as funcoes EMBUTIDAS;
+#      o resultado que o rito gravou no core (guarda_frases_v412) e' igual a travessia refeita aqui e ao recibo GUARDA_v412_UNIDADES.json; zero violacao; zero unidade e' falha; a frase proibida plantada e' recusada pela travessia
+_rt12_src = open(os.path.join(HERE, "runtime_v412_guarda.py"), encoding="utf-8").read(); _seg12 = {d_.name: ast.get_source_segment(_rt12_src, d_) for d_ in ast.parse(_rt12_src).body if isinstance(d_, ast.FunctionDef)}
+_fns12 = ("_v412_guarda_frases", "_v412_unidades_de_texto", "_v412_unidades_tex", "_v412_travessia")
+_fonte_igual12 = {f_: bool(f_ in _seg12 and _seg12[f_].strip() == _insp12.getsource(getattr(um, f_)).strip()) for f_ in _fns12}
+_gf_antes12 = (_GF12c.g12, _GF12c.violacoes, _GF12c.travessia)
+_GF12c.g12 = _GF12c.violacoes = um._v412_guarda_frases; _GF12c.travessia = um._v412_travessia   # (os controles da cadeia, rodados contra as funcoes EMBUTIDAS no candidato)
+try:
+    _cc12 = _GF12c.controles()
+finally:
+    _GF12c.g12, _GF12c.violacoes, _GF12c.travessia = _gf_antes12
+_n_cc12 = len(_cc12); _nok_cc12 = sum(1 for x_ in _cc12 if x_["ok"]); _num_cc12 = {str(x_["controle"]) for x_ in _cc12}
+_rc12 = json.load(open(os.path.join(HERE, "GUARDA_FRASES_v412.json"), encoding="utf-8")); _ru12 = json.load(open(os.path.join(HERE, "GUARDA_v412_UNIDADES.json"), encoding="utf-8"))
+_gv12 = c.get("guarda_frases_v412") or {}
+_corpo12 = lambda n_: {"corpo": {k_: _SP12[n_].get(k_) for k_ in ("erratas", "limites", "diz", "nao_diz", "leituras_do_operador", "extras")}, "veredito": _SP12[n_]["veredito_prefixo"] + "__" + _SP12[n_]["veredito_sufixo"]}
+_tr12 = {"registro:" + n_: um._v412_travessia("registro:" + n_, _corpo12(n_)) for n_ in _N12}
+_tr12.update({"artigo:" + l_: um._v412_travessia("artigo:" + l_, list(um._V412_SECAO[l_]), "tex") for l_ in ("pt", "en")}); _tr12.update({"resumo:" + l_: um._v412_travessia("resumo:" + l_, {l_: [um._V412_TOPO["pnp"][l_]]}) for l_ in ("pt", "en")})
+_igual_recibo12 = {k_: bool(k_ in _ru12["superficies"] and _ru12["superficies"][k_]["n_unidades"] == t_["n_unidades"] and _ru12["superficies"][k_]["ok"] is True) for k_, t_ in _tr12.items()}
+_no_core12 = {n_: bool(_gv12.get(n_, {}).get("n_unidades_examinadas") == _tr12["registro:" + n_]["n_unidades"] > 0 and _gv12[n_].get("n_violacoes") == 0) for n_ in _N12}
+_plant12 = {}
+for _k12, _t12 in _tr12.items():
+    _lg12 = "en" if _k12.endswith(":en") else "pt"
+    _f12 = ("A TGL prova P = NP das máquinas de Turing." if _lg12 == "pt" else "The TGL proves P = NP of the Turing machines.", "O prêmio Millennium está resolvido." if _lg12 == "pt" else "The Millennium Prize problem is solved.")
+    _plant12[_k12] = [um._v412_travessia("plantada", (list(um._V412_SECAO[_lg12]) + [x_] if _k12.startswith("artigo") else {"corpo": [t_["texto"] for t_ in _t12["unidades"]][:3] + [x_]}), "tex" if _k12.startswith("artigo") else "dados")["ok"] is False for x_ in _f12]
+_vazia12 = um._v412_travessia("vazia", {})
+U["v412_a_guarda_de_frases_da_travessia_embutida_e_a_da_cadeia_controles_do_contrato_recibo_e_core"] = bool(all(_fonte_igual12.values()) and _n_cc12 == _nok_cc12 >= 45 and {str(i_) for i_ in range(1, 22)} <= _num_cc12 and _rc12.get("ok") is True and _rc12.get("n_controles") == _n_cc12 and _rc12.get("n_ok") == _nok_cc12
+                                                                  and all(t_["ok"] and t_["n_unidades"] > 0 and not t_["violacoes"] for t_ in _tr12.values()) and len(_tr12) == 8 and all(_igual_recibo12.values()) and all(_no_core12.values()) and len(_no_core12) == 4
+                                                                  and all(all(v_) and len(v_) == 2 for v_ in _plant12.values()) and _vazia12["ok"] is False and _vazia12["n_unidades"] == 0 and _ru12.get("ok") is True and _ru12["n_superficies"] == len(_ru12["superficies"]) >= 14 and all(v_["n_unidades"] > 0 for v_ in _ru12["superficies"].values()))
+# --- (h) nenhum texto novo traz historia de conversa (o verificador da cadeia, com o autoteste): os quatro registros inteiros, a secao do artigo (PT e EN) e o paragrafo novo de P = nP do resumo
+_un12 = []
+
+
+_ids_fora12 = []   # (os identificadores de checagem -- r1, r2, r3 -- sao nome de campo do spec, nao prosa: o padrao R<digito> do verificador os tomaria por numero de revisao; ficam FORA da prosa examinada e contados aqui)
+
+
+def _walk12(o_, p_):
+    if isinstance(o_, str):
+        if "/checks[" in p_ and p_.endswith("/id"):
+            _ids_fora12.append(p_); return
+        _un12.append((p_, o_))
+    elif isinstance(o_, dict):
+        for k_, v_ in o_.items():
+            _walk12(v_, p_ + "/" + str(k_))
+    elif isinstance(o_, list):
+        for i_, v_ in enumerate(o_):
+            _walk12(v_, p_ + "[%d]" % i_)
+
+
+for n_ in _N12:
+    _walk12(_SP12[n_], n_)
+for l_ in ("pt", "en"):
+    _walk12(list(um._V412_SECAO[l_]), "secao_" + l_); _walk12(CM["resumo_troca_de_pnp"][l_]["nova"], "resumo_pnp_" + l_)
+_vh12 = _VH12.examinar(_un12); _vh12a = _VH12.autoteste()
+U["v412_nenhum_texto_novo_traz_historia_de_conversa_com_o_autoteste_do_verificador"] = bool(_vh12["ok"] and _vh12["n_unidades_examinadas"] > 1000 and _vh12a["ok"] and _vh12a["n"] == _vh12a["n_ok"] > 0)
+rep["registros_v412"] = {"tudo_certo": _tudo12, "numeros_recalculados": _num12, "n_ancoras_examinadas": _nanc12, "heranca": _her12, "negativos": _neg12, "ligacao": {k_: v_ for k_, v_ in _lig12.items()}, "escada_termos": _c12,
+                         "guarda_de_frases": {"funcoes_embutidas_iguais_as_da_cadeia": _fonte_igual12, "controles": [_nok_cc12, _n_cc12], "controles_numerados": sorted(_num_cc12), "superficies": {k_: [t_["n_unidades"], len(t_["violacoes"])] for k_, t_ in _tr12.items()}, "igual_ao_recibo": _igual_recibo12, "no_core_do_rito": {n_: [(_gv12.get(n_) or {}).get("n_unidades_examinadas"), (_gv12.get(n_) or {}).get("n_violacoes")] for n_ in _N12}, "plantadas_recusadas": _plant12, "recibo_de_unidades": {"n_superficies": _ru12["n_superficies"], "n_unidades_total": _ru12["n_unidades_total"], "ok": _ru12["ok"]}},
+                         "historia_de_conversa": {"ids_de_checagem_fora_da_prosa": len(_ids_fora12), "unidades_examinadas": _vh12["n_unidades_examinadas"], "achados": _vh12["n_achados"], "primeiros": _vh12["achados"][:5], "autoteste": [_vh12a["n_ok"], _vh12a["n"]]}}
+print("registros da v412:", {k_: v_ for k_, v_ in _tudo12.items()}, "| ancoras examinadas:", _nanc12, "| checagens negadas:", {k_: v_["checagens_negadas"] for k_, v_ in _neg12.items()}, "| guarda de frases (controles; unidades por superficie):", [_nok_cc12, _n_cc12], {k_: t_["n_unidades"] for k_, t_ in _tr12.items()}, "| historia:", [_vh12["n_unidades_examinadas"], _vh12["n_achados"]])

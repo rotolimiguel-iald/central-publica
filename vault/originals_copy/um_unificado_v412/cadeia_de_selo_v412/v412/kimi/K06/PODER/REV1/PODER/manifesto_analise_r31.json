@@ -1,0 +1,127 @@
+{
+  "annex_alignment_dependency": "anexos de outros agentes com 8 interações ou p=4,r=6 exigem emenda própria; não editados aqui",
+  "cluster_rule": "27 clusters texto-conscientes; diferenças por bloco; sinais no nível dos clusters; n bruto nunca substituído por n_eff",
+  "clusters": 27,
+  "deterministic_base_repeat": {
+    "identical_bytes": true,
+    "sha256": "2100b5e630943f76bc3083226cb6895b407a92eb4f38cbf2b5811f6dd4afb642"
+  },
+  "falsified_union": "3 intervalos focais + 6 direções ISO; Bonferroni alpha/9",
+  "focal_interval": "t robusto por 27 clusters; não CP binomial; cauda 5σ não validada e bloqueada",
+  "gates": [
+    {
+      "gate": "FFT_EXATA_VS_ENUMERACAO_E_DP",
+      "status": "PASS",
+      "value": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "gate": "TAMANHO_GLOBAL_ALPHA_005",
+      "nominal": 0.05,
+      "status": "FAIL",
+      "value": 0.74
+    },
+    {
+      "gate": "TAMANHO_GLOBAL_5SIGMA",
+      "nominal": 2.866515718791933e-07,
+      "note": "1000 corridas não resolvem a cauda nominal; não declarar PASS",
+      "status": "OPEN_RESOLUCAO_MC",
+      "value": 0.001
+    },
+    {
+      "gate": "TOST_TAMANHO_ALPHA_005_DUAS_FRONTEIRAS",
+      "nominal": 0.05,
+      "status": "FAIL",
+      "value": [
+        0.737,
+        0.751
+      ]
+    },
+    {
+      "gate": "TOST_TAMANHO_5SIGMA_DUAS_FRONTEIRAS",
+      "nominal": 2.866515718791933e-07,
+      "note": "não declarar validação da cauda",
+      "status": "OPEN_RESOLUCAO_MC",
+      "value": [
+        0.001,
+        0.002
+      ]
+    },
+    {
+      "gate": "NONSPECIFIC_POWERED_PROBABILIDADE",
+      "reference_target": 0.9,
+      "status": "FAIL",
+      "value": {
+        "n320_alpha005": 0.022,
+        "n618_alpha5sigma": 0.311,
+        "n655_alpha5sigma": 0.412
+      }
+    },
+    {
+      "gate": "WALD_T_FOCAL_5SIGMA",
+      "status": "FAIL_BLOQUEADO",
+      "value": "intervalo t por cluster não validado na cauda 5σ"
+    },
+    {
+      "gate": "EXTRATOR_CERTIFICADO",
+      "status": "FAIL_BLOQUEADO",
+      "value": "tetos 0,619206/0,091028; independência dos 96 erros aberta"
+    },
+    {
+      "gate": "ENTRADA_JANELA_TOKENIZERS",
+      "status": "OPEN_BLOQUEADO",
+      "value": "modelos/tokenizers/janelas não escolhidos"
+    },
+    {
+      "gate": "LEXICO_ISOMORFO",
+      "status": "OPEN_BLOQUEADO",
+      "value": "léxico e perturbações não congelados"
+    },
+    {
+      "gate": "PRODUCAO",
+      "status": "FAIL_BLOQUEADO",
+      "value": "portas de tamanho, poder, extrator, janela, léxico e ratificação"
+    }
+  ],
+  "interactions": 12,
+  "manipulation_contamination": "6 Q PLA/OUT como diagnóstico e 12 S como checagens; não são evidência primária de convergência",
+  "monte_carlo_intervals": "aproximação normal da incerteza de simulação; não intervalos para modelos reais; custos são médias sem IC",
+  "nonspecific_rule": "6 TOST Holm + focal inferior>0,80 + sem FALSIFIED; precedência sobre POWERED",
+  "nsim_per_scenario": 1000,
+  "old_aggregate_numbers": "MODELO_AGREGADO_INCOMPLETO_NAO_PODER_INTEGRAL",
+  "primary": "3 famílias × ISO-A/ISO-B = 6 testes de não inferioridade; Holm global 6; PLA/OUT fora da evidência primária",
+  "production_status": "BLOQUEADO_PARA_PRODUCAO",
+  "results_sha256": "09b4fb473e61338342644b67e817d99d2be3113a05a2e55004c4d8b6ac3b8f0e",
+  "return": "p=8,r=10",
+  "rev0_preservation_manifest": "REV0/PRESERVACAO_SHA256.txt",
+  "rev0_preserved": "REV0/",
+  "schema": "K06_R31_ANALISE_CANDIDATA_V1",
+  "seeds": {
+    "BASE_INDEPENDENTE_R31": 2026111501,
+    "CINCO_SIGMA_N618": 2026112713,
+    "CINCO_SIGMA_N655": 2026112814,
+    "CONTROLE_070": 2026111804,
+    "CONTROLE_080": 2026111905,
+    "EXTRATOR_TETO_POOL": 2026112410,
+    "EXTRATOR_TETO_POR_BRACO": 2026112511,
+    "ICC_015_TEXTO_010": 2026111602,
+    "ICC_035_TEXTO_020": 2026111703,
+    "NULO_ESPECIFICO_090": 2026112107,
+    "NULO_ESPECIFICO_090_N618": 2026113016,
+    "NULO_ESPECIFICO_090_N655": 2026113117,
+    "NULO_GLOBAL_060": 2026112006,
+    "NULO_GLOBAL_ISO_FRONTEIRA": 2026112915,
+    "NULO_GLOBAL_ISO_FRONTEIRA_N618": 2026113218,
+    "STRESS_INTEGRIDADE": 2026112612,
+    "TOST_FRONTEIRA_MAIS_075_060": 2026112208,
+    "TOST_FRONTEIRA_MAIS_075_060_N618": 2026113319,
+    "TOST_FRONTEIRA_MENOS_060_075": 2026112309,
+    "TOST_FRONTEIRA_MENOS_060_075_N618": 2026113420
+  },
+  "sessions": "individuais pareadas; A8 e retorno separados; Q-S dependentes; focal fixa; controles com efeito de texto",
+  "status": "REVISADA_INTERNAMENTE_NAO_RATIFICADA",
+  "tost": "duas caudas exatas: 20D+3 e 20D-3; p=max(p+,p-); Holm sobre 6 PLA/OUT; empates incluídos"
+}

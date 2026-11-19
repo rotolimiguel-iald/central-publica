@@ -1,0 +1,1017 @@
+                                                                  TRUNCATED GEOMETRY ON THE CIRCLE
+
+                                                                                                    E. HEKKELMAN
+
+                                                Abstract. In this letter we prove that the pure state space on the n � n complex Toeplitz
+
+                                                matrices converges in the Gromov-Hausdorff sense to the state space on C(S1) as n grows to
+
+                                                infinity, if we equip these sets with the metrics defined by the Connes distance formula for their
+
+                                                respective natural Dirac operators. A direct consequence of this fact is that the set of measures
+
+arXiv:2111.13865v2 [math.QA] 1 Mar 2022         on S1 with density functions c  n       (1  -    cos(t  -  j ))  is  dense  in  the  set  of  all  positive  Borel
+                                                                                j=1
+
+                                                measures on S1 in the weak topology.
+
+                                                                                        1. Introduction
+
+                                         In the framework of noncommutative geometry [3], we study the pure states on the Toeplitz
+                                         matrices as a metric space. The results of this letter can be understood with little prior knowledge,
+
+                                         however. With n�n Toeplitz matrices we mean those matrices in Mn(C) for which each descending
+                                         diagonal is constant, i.e. the matrices T for which Ti,j = Ti+1,j+1. We denote this set by C(S1)(n),
+                                         as these Toeplitz matrices can also be seen as a truncation of C(S1) which we will explain later on.
+
+                                         The reader need only know that these matrices inherit a structure of positivity from Mn(C) which
+                                         allows us to talk about positive linear functionals. Likewise, states on the Toeplitz system can be
+
+                                         defined as those positive linear functionals  for which (I) = 1, and pure states as the extreme
+                                         points in the state space. We denote these spaces as S(C(S1)(n)) and P(C(S1)(n)), respectively.
+                                         The states on C(S1)(n) can be equipped with a metric that metrises the weak-topology via the
+
+                                         Connes distance formula which is defined as
+
+                                                                      dn(, ) = sup {|(T ) - (T )| : [Dn, T ]  1},
+
+                                                                                                        T C(S1)(n)
+
+                                         where Dn denotes the matrix Dn := diag(1, . . . , n). Importantly, this is completely analogous to a
+                                         formula that defines the Monge-Kantorovich metric on the state space of C(S1),
+
+                                                                       d(, ) = sup {|(f ) - (f )| : [D, f ]  1},
+
+                                                                                          f C(S1)
+
+                                         where  D  =  -i  d   is  the  Dirac  operator  on  S1,  which     metrises  the    weak-topology          on  S (C (S 1 ))  [11].
+                                                          dx
+                                         In this language, the main result of this letter is that the metric spaces (P(C(S1)(n)), dn) converge
+
+                                         in the Gromov-Hausdorff sense to the metric space (S(C(S1)), d).
+
+                                         The reader who is familiar with noncommutative geometry may be interested to know how the
+                                         above relates to prior work in that area. Related to physical applications of noncommutative
+                                         geometry, extensive study has been made of spectral geometry for which only part of the spectral
+                                         data is available [4, 6, 14]. Indeed, detectors in physical experiments are limited and thus only give
+                                         information up to a certain energy level with finite resolution. Suggested first by F. D'Andrea, F.
+                                         Lizzi, and P. Martinetti [6] and put in the language of operator systems in an article by A. Connes
+                                         and W.D. van Suijlekom [4], the correct theoretical framework for such truncations seems to be to
+                                         truncate a spectral triple (A, H, D) with a projection P onto a part of the spectrum of D resulting in
+                                         the triple (P AP, P H, P D). The Toeplitz matrices arise as exactly such a truncation of the algebra
+                                         A = C(S1) in the spectral triple of the circle. Note also that a first result on Gromov-Hausdorff
+                                         convergence of state spaces in this context is put forward in [6]. A more detailed explanation of
+                                         the connection between the results presented in this letter and noncommutative geometry can be
+                                         found in the Master's thesis [8].
+
+                                                                                                                                    1
+2                                E. HEKKELMAN
+
+Before continuing on, the author would like to thank Walter van Suijlekom for his invaluable
+guidance.
+
+                                                    2. Preliminaries
+
+These preliminaries consist of two parts, namely preliminaries on Gromov-Hausdorff convergence
+and on truncated geometry on the circle.
+
+2.1. Gromov-Hausdoff convergence. In the spirit of work by M. Rieffel [12], we are interested
+in studying limits of sequences of metric spaces in the Gromov-Hausdorff sense. The Gromov-
+Hausdorff distance is a pseudo-metric on the class of all compact metric spaces, and is zero if and
+only if two spaces are isometric [1, Theorem 7.3.30]. Hence it functions a metric on the isomorphism
+classes of compact metric spaces, although one has to be careful to dodge set-theoretic paradoxes
+in such a description. In any case, it gives a useful notion of convergence and there are several
+techniques that can be used to prove Gromov-Hausdorff convergence of sequences of compact
+metric spaces.
+
+For a subset S in a metric space, denote the r-neighbourhood of S by Ur(S), i.e.
+
+                                                   Ur(S) = Br(x),
+
+                                                                                           xS
+
+where Br(x) is the open ball of radius r and center x.
+
+Definition 2.1. Let A and B be subsets of a metric space. The Hausdorff distance between A
+and B is defined as
+
+                             dH (A, B) = inf{r > 0 : A  Ur(B) and B  Ur(A)}.
+
+Definition 2.2. Let X and Y be metric spaces. The Gromov-Hausdorff distance between X and Y
+is defined as the infimum of all r > 0 such that there exists a metric space Z with subsets X, Y   Z
+isometric to X and Y respectively with dH (X, Y ) < r, where dH (X, Y ) is the Hausdorff distance
+between X and Y . We will denote the Gromov-Hausdorff distance by dGH (X, Y ) in the rest of
+
+this letter as well.
+
+These definitions are exactly [1, Definition 7.3.1] and [1, Definition 7.3.10].
+
+Definition 2.3. Let X and Y be two sets. A total onto correspondence between X and Y is a set
+R  X � Y such that for every x  X there exists at least one y  Y with (x, y)  R and similarly
+for every y  Y there exists an x  X with (x, y)  R.
+
+Note that the above definition is simply called a correspondence in [1, Chapter 7], although this
+is not usual terminology. To prevent any confusion we will stick to calling the above total onto
+correspondences.
+
+Definition 2.4. Let R be a total onto correspondence between metric spaces X and Y . The
+distortion of R is defined by
+
+                           dis R = sup{|dX (x, x) - dY (y, y)| : (x, y), (x, y)  R}.
+
+Theorem 2.5. For any two metric spaces X and Y
+
+                                 dGH (X, Y )  =  1  inf(dis R),
+                                                 2
+                                                     R
+
+where the infimum is taken over all total onto correspondences R between X and Y .
+
+Proof. See [1, Theorem 7.3.25].
+                                 TRUNCATED GEOMETRY ON THE CIRCLE                                                 3
+
+As a direct corollary, there is a similar approach of using -isometries.
+
+Definition 2.6. Let X be a metric space and  > 0. A set S  X is called an -net if dist(x, S)  
+for every x  X.
+
+Definition 2.7. Let X and Y be metric spaces and f : X  Y an arbitrary map. The distortion
+of f is defined by
+
+                                 dis f = sup |dY (f (x1), f (x2)) - dX (x1, x2)|.
+
+                                                              x1,x2X
+
+Definition 2.8. Let X and Y be metric spaces and  > 0. A (possibly non-continuous) map
+f : X  Y is called an -isometry if dis f   and f (X) is an -net in Y .
+
+Corollary 2.9. Let X and Y be metric spaces and  > 0.
+      1. If dGH(X, Y ) < , then there exists a 2-isometry from X to Y .
+      2. If there exists an -isometry from X to Y , then dGH (X, Y ) < 2.
+
+Proof. See [1, Corollary 7.3.28].
+
+More details on the Gromov-Hausdorff metric can be found in Chapter 7 of A Course in Metric
+Geometry [1] by D. Burago, I. Burago and S. Ivanov.
+
+2.2. Truncated Geometry on the Circle. As mentioned in the introduction, the Toeplitz
+
+matrices arise as a truncation of the algebra of continuous functions C(S1). Indeed, C(S1) has a
+
+basis  {en(t)  =  eint}nZ,  consisting  of  all  eigenfunctions  of  the  Dirac  operator  D  =  -i  d   on  S1.  We
+                                                                                                     dx
+
+can then consider the projection onto spanC{e1, � � � , en}, denote this projection by Pn. For any
+
+function f  C(S1), the action of Pnf Pn on the finite dimensional Hilbert space spanC{ek}kn=1
+
+can be represented as the n � n Toeplitz matrix
+
+                   f^(0)                f^(-1) f^(-2) � � � f^(-n + 1) 
+
+                            f^(1)           f^(0)    f^(-1)      ���      f^(-n + 2)  
+                                                                                      
+                            f^(2)           f^(1)    f^(0)                f^(-n + 3)
+                                                                 ���                    .
+                                                                                      
+
+                            ...             ...      ...             ...         ...  
+                                                                                      
+
+                                                                                      
+
+                            f^(n - 1) f^(n - 2) f^(n - 3) � � �           f^(0)
+
+This is the reason why we denote the set of Toeplitz matrices by C(S1)(n).
+
+It has already been proven in [14] that the state spaces S(C(S1)(n)) converge to S(C(S1)) in the
+Gromov-Hausdorff sense. To prove our result, a main ingredient of [14] will be used in this letter
+as well, which is the map
+
+                                            Rn : C(S1)  C(S1)(n)
+                                                     f  Pnf Pn.
+
+Lemma 2.10. The map
+
+                                   Rn : S(C(S1)(n))  S(C(S1))
+
+                                                             Rn
+
+is well-defined and satisfies dis Rn  0 as n  .
+
+Proof. See [14].
+4                                 E. HEKKELMAN
+
+Next, let us give a description of the pure states on C(S1)(n). This has already been done via a
+duality of the Toeplitz operator system with the Fej�er-Riesz operator system [4], but here we will
+use a more direct approach.
+
+A very useful ingredient for this is the following decomposition theorem dating from 1911 proven
+by C. Caratheodory and L. Fej�er [2]. We introduce the notation
+
+                                    fz = 1n 1 z z2 � � � zn-1  Cn,
+which is a column of a so-called Vandermonde matrix.
+
+Theorem 2.11. Any positive Toeplitz matrix T  C(S1)(n) of rank r  n - 1 can be uniquely
+
+decomposed as T =   r    dk  |fk  fk | where d1, . . . , dr > 0 and 1, . . . , r  S1. This is called
+                    k=1
+
+the Vandermonde decomposition. If the rank of T is n, this decomposition is still possible but not
+
+unique.
+
+Proof. See [15].
+
+While we use this classical theorem to classify the pure states on the Toeplitz operator system,
+the same result can also be derived by the aforementioned operator system duality, see [4, Theo-
+rem 4.14].
+
+Proposition 2.12. A state on C(S1)(n) is pure if and only if it is a vector state  : T  , T  ,
+where  = (0, 1, . . . , n-1)  Cn is a unit vector such that the polynomial Q(z) := k kzn-k-1
+has all its zeroes on S1.
+
+Proof. First of all, any pure state on C(S1)(n) admits an extension to a pure state on Mn(C) [4,
+Fact 2.9]. Since all pure states on Mn(C) are vector states, any pure state on C(S1)(n) must
+likewise be of the form  : T  , T  for some unit vector   Cn.
+
+By the Vandermonde decomposition of Toeplitz matrices, we can write any positive T  C(S1)(n)
+
+in the form                         r
+
+                                      dk |fk  fk |
+
+                                  k=1
+
+with d1, . . . , dr  0, this is Theorem 2.11. Observe that on S1, we have  = -1 and so
+
+                                            n-1
+
+                             f,  = k-k = -n+1Q().
+
+                                             k=0
+
+Therefore,
+
+                                  r                 r
+
+                   (T ) = , T  = dk | fk ,  |2 = dk |Q(k)|2 .
+
+                                  k=1               k=1
+
+Now let us investigate for what  this state is pure. Note that  is pure if and only if
+                                        (T )  (T ) 0  T  C(S1)(n)
+
+implies that   C (see [10, p. 144]), and by the above calculation this is equivalent to
+
+                                  |Q(z)|  |Q(z)| z  S1
+
+implying that   C.
+
+We claim that if |Q(z)|  |Q(z)| for all z  S1 and   S1 is a root of Q, then  must also be a
+root of Q with at least the same multiplicity. The first part of this claim is immediate. To prove
+                                    TRUNCATED GEOMETRY ON THE CIRCLE                                                    5
+
+the second part, suppose the multiplicity of the root  is m for Q but strictly more than that for
+
+Q. Then we must still have
+
+                                               Q (z )              Q (z )
+                                              (z - )m            (z - )m
+
+on S1, but with the right-hand side evaluating to zero at z =  whereas the left-hand side does
+
+not, we arrive at a contradiction.
+
+Therefore, if Q has all its roots on S1, the above observation combined with the fact that Q
+and Q are polynomials of the same degree leads to the conclusion that |Q(z)|  |Q(z)| z  S1
+implies that Q  CQ. Hence indeed  is pure, which completes one direction of the proposition.
+
+For the other direction, suppose that   Cn is a vector such that the polynomial Q has roots
+1, � � � , n (counted with multiplicities), of which say n is not an element of S1. Then |z - n|
+attains a minimum on S1 which is strictly greater than zero, say  > 0. Choose any   S1 and
+note that |z - |  2 on S1. Then
+
+                                                                  n
+
+                                       |Q(z)|2 = c (z - k) 2
+
+                                                    k=1
+
+                                                    2                  n-1       2,
+                                                    4
+                                                        c(z - ) (z - k)
+
+                                                                 k=1
+
+so  the  polynomial       c(z  - )     kn=-11(z - k) =: k kzn-k-1 corresponds to some   Cn with the
+                       2
+
+property that
+
+                                                    , T   , T 
+
+for all positive T  C(S1)(n). Clearly, Q is not a scalar multiple of Q so   C, and hence the
+vector state  is not pure.
+
+Corollary 2.13. The pure states of C(S1)(n) are exactly the linear functionals of the form
+
+Pnf Pn  S1 f |Q|2 d, where   Cn is a unit vector and Q :=                                      n-1  k  z n-k-1    has   all
+its roots on S1.                                                                               k=0
+
+Proof. According to Proposition 2.12, the pure states on C(S1)(n) are given by T  , T  , where
+
+the unit vector   Cn is such that the polynomial Q has all its roots on S1. A short calculation
+
+gives that
+
+                                        , Pnf Pn =               (  )j f^(-j),
+
+                                                        |j|n-1
+
+where (v w)j =         min(n-1,n-j-1)   v-k   wj+k  is  the  discrete  convolution   product   and  (v)j       =  vn-j -1 .
+                       k=max(0,-j)
+
+By noting that (  )j is exactly the jth Fourier coefficient of |Q|2 we can use the Plancherel
+
+Theorem [13, Theorem 9.13] to conclude that
+
+                                        , Pnf Pn = f |Q|2 d.
+
+                                                                    S1
+
+This corollary essentially characterises the pure states  of C(S1)(n) by the Radon-Nikodym de-
+
+rivative of Rn  as a state (i.e. probability measure) on C(S1). This works since the Fourier basis
+{en}nZ forms an orthonormal basis of C(S1), hence for a function g  spanC{e1, . . . en} there
+is some ambivalence in considering a state  : Pnf Pn  S1 f gd on C(S1)(n) or its pullback
+Rn  : f  S1 f gd. We will exploit this, although responsibly in order to prevent confusion.
+
+Notation. When considering a pure state  on C(S1)(n), we will somewhat abusively refer to the
+
+Radon-Nikodym          derivative  of  Rn  ,  with  respect  to  the  normalised  Haar-measure      d      on  S1,  as  d
+                                                                                                                        d
+              dRn 
+(instead  of    d   )  because  this   function  uniquely    defines  the  pure  state  .  In  the  other  way    around,
+
+if f is a function of the form such that it defines a pure state on C(S1)(n), we will denote that
+
+pure  state   f .  In  summary,     df  = f.
+                                    d
+6                                                 E. HEKKELMAN
+
+Proposition 2.14. If  is a pure state on C(S1)(n), then
+
+                             d  (t)  =  |Q |2  (eit)  =  c   n-1      -  2  cos(t  -  j )),
+                             d
+                                                                 (2
+
+                                                             j=1
+
+where eij are the roots of the polynomial Q := k kzn-k-1 and c  R is a scaling factor such
+      d
+that  d  integrates  to  1.  Likewise,  any  function    of  this  form     defines   a   pure  state.
+
+Proof. According to Corollary 2.13, any pure state  on C(S1)(n) corresponds to a function of the
+form |Q|2. Denoting the roots of Q by eij , there must be a constant c such that
+
+                                Q(eit) 2 = c      n-1        eit - eij 2
+
+                                                      j=1
+
+                                                      n-1
+
+                                               = c (2 - 2 cos(t - j)).
+
+                                                      j=1
+
+Furthermore, |Q|2 must integrate to 1 because Q 2 =  since the Fourier transform is unitary.
+
+For the other way around, the above proves that any function of the form c                      n-1  (2  -  2  cos(t - j ))  is
+                                                                                                j=1
+
+equal to Q(eit) 2 for some vector   Cn such that Q has all its zeroes on S1. And again because
+
+   Q 2 =  , |Q|2 integrating to 1 implies that  is a unit vector. According to Corollary 2.13,
+this function therefore indeed defines a pure state on C(S1)(n).
+
+                                           3. Convergence to S(C(S1))
+
+We will now prove the convergence of P(C(S1)(n)) to S(C(S1)) by establishing -isometries between
+these spaces, employing Corollary 2.9. The candidate maps we propose are the maps Rn for which
+we already have that dis Rn  0 (Lemma 2.10). If we can now establish that Rn (P(C(S1)(n)))
+is an -net if we choose n large enough, Gromov-Hausdorff convergence follows directly. First,
+we will prove that all states on the circle can be approximated by the pullback of pure states in
+P(C(S1)(n)). Next, we check that this can be done uniformly in n.
+
+3.1. Approximating states. In this subsection, three steps of increasing difficulty will be carried
+out to prove that any state on the circle can be approximated by the pullbacks of pure states on
+the truncated circle.
+
+      1. We approximate any state  on C(S1) by a state                      m    ti  evi  on  C (S 1 ),  which  is  a  convex
+                                                                            i=1
+
+         combination of evaluations at the m-roots of unity;
+
+      2. We then approximate any such convex combination of evaluations by a state
+
+                                              m    d     (i )         evj
+                                             i=1
+                                                   d       d  (j   )
+                                                  m        d
+
+                                                  j=1
+
+         on C(S1), where j are the m-roots of unity and  is a pure state on C(S1)(n);
+
+      3. Finally, we approximate any state of that particular form by a state Rn  on C(S1) where
+          is a pure state on C(S1)(n).
+
+Recall that a pure state  on C(S1)(n) is uniquely characterised by the Radon-Nikodym derivative
+
+with respect  to the normalised Haar-measure           on S1 of Rn , which is a state (i.e. a                   probability
+measure) on   C(S1), and that we denote this                                                                        dRn 
+                                                       Radon-Nikodym               derivative   d  instead      of    d      to
+                                                                                                d
+
+ease notation. See also Subsection 2.2. For the third and most important step, the essential
+
+property of the pure state space we will exploit is that it is possible to multiply these Radon-
+
+Nikodym derivatives to construct new pure states, as can be seen from the form of these functions
+
+in Proposition 2.14.
+                                         TRUNCATED GEOMETRY ON THE CIRCLE                                                                     7
+
+The first step in the outlined scheme is by far the easiest. Because the roots of unity are dense in
+S1 and the standard topology on S1 coincides with the weak-topology on the pure states, which
+in turn is induced by the Monge-Kantorovich metric [11], it follows that the set
+
+                                m                                                     m
+
+                                      tievi : m  N, 0  ti  1, ti = 1, m i = 1 ,
+
+                             i=1                                                   i=1
+
+i.e. convex combinations of evaluations at the roots of unity, is dense in S(C(S1)) with respect to
+
+the topology induced by the Monge-Kantorovich metric.
+
+The second step can be done in a single lemma. In spirit, this lemma should be compared with
+the assertion that one can always fit a polynomial P of degree n - 1 (or higher, if desired) through
+n prescribed points. Here, we must choose a pure state  such that the function
+
+                                                                   d
+
+                                                                   d
+
+                                                               m       d  (i  )
+                                                               i=1     d
+
+evaluates (approximately) to ti at the points i.
+
+Lemma 3.1. Let 1, ..., m be the solutions of m = 1 (the m-roots of unity), and take any state
+
+of the form   m    ti   evi      with      m     ti  =1    and     ti  0    for          all  i.     Then  for    every     l   Z0  and  >0
+              i=1                          i=1
+
+we can find   P(C(S1)(m+1+l)) such that on C(S1)
+
+                                           m               m                                      
+
+                                      d  tievi ,                        d   (j  )           evj        <  .
+                                                                        d       (i
+                                           i=1            j=1          m     d           )
+                                                                             d
+                                                                       i=1
+
+Proof.  Let us first prove the case l = 0.           Take the pure state N                           on C(S1)m+1         defined by  dN  (t)  =
+                                                                                                                                      d
+
+c  m    (1-cos(t-  j    +        2tj  )).  This    indeed  corresponds           to      a  pure     state in   P (C(S1)(m+1))       according
+   j=1                           N
+
+to Proposition 2.14. Consider what happens at the points i if we take N large.
+
+By Taylor expansion of the factors, it is a quick calculation to see that
+
+                                                                                                                                  
+
+              dN  (i)   =    c       ti  +O          1                      (1 - cos(i - j)) + O                     1            
+               d                     N             N 3/2                                                               N
+                                                                  j=i
+
+                        =    c   ti        (1 - cos(i - j)) + O                   1               .
+                                 N                                              N 3/2
+                                      j=i
+
+Notice that c j=i(1 - cos(i - j)) has the same value for all i by symmetry. Hence if we pass
+these values to the projective space RP m-1 we end up with the ratio
+
+              dN        (1)  :   ���  :  dN     (m)  =         t1  +O         1               :   ���  :  tm   +  O    1
+               d                          d                    N            N 3/2                         N          N 3/2
+
+                                                     = t1 + O               1               : � � � : tm + O         1         .
+                                                                              N                                        N
+
+It then follows that the vectors
+
+                                                1              dN      (1),     .  .  .  ,  dN       (m)
+                                                                d                            d
+                                           m    dN   (j )
+                                           j=1   d
+
+converge  to  (t1, . .  . , tm)  in Rm as N  . Therefore the states                                            1               m    dN  (j )evj
+converge  to            tj evj    in the weak-topology. Again we can use                                                       j=1   d
+                  m                                                                                       m    dN    (j  )
+                  j=1                                                                                     j=1    d
+
+                                                                                                           that the      Monge-Kantorovich
+
+metric induces the weak-topology to conclude that we can choose N such that
+
+                                           m              m                                          
+
+                                      d  tievi ,                       dN   (j     )        evj        <   .
+                                                                        d          (i
+
+                                                                   m dN                  )
+
+                                           i=1            j=1      i=1 d
+8                                                      E. HEKKELMAN
+
+The cases l  1 follow more or less immediately. If we choose some point � on the circle that is not
+
+equal to any of the j , we can guarantee that 1 - cos(t - �) has no roots in the points 1, . . . , m.
+
+For  any  l    N,  we  can  take   N        P (C (S 1 )(m) )       such     that   the  ratio     [  dN   (1   )  :  ���   :   dN   (m   )]  is
+                                                                                                      d                         d
+
+arbitrarily close to
+
+                                             t1   - �))l     :  ���  :            tm      - �))l
+                                   (1 - cos(1                           (1 - cos(m
+
+by  the  argument  for  the  case  l  =  0  above.       Then      dN   (1  -  cos(t   -    �))l  defines      the   pure      state  (up    to
+                                                                    d
+scaling) in P(C(S1)(m+1+l)) that satisfies the statement in the lemma.
+
+For the third and final step, we need to prove that the states of this type can be approximated
+by the pullback of some pure state on the truncated circle. To accomplish that, we will need the
+following propositions.
+
+Proposition 3.2. Let K  X be some compact subset of Rn and let f  C(K) be a positive
+
+function attaining its maximum in the unique point x0. Then the sequence of linear functionals
+                                      fn
+(n)nN defined by n : g             K  fn    1  gdx,    converges        to  evx0   in   the  weak-topology           on        C (K ) .
+
+Proof. Denote the maximum of f by M . For every  > 0, f -1(M -, M ] is an open neighbourhood
+
+of x0, denote this by U. Outside this neighbourhood                         fn  1  -n---       0  uniformly,         since
+                                                                            fn
+
+                                   fn 1                  f ndx > U/2 (M - /2)n,
+
+                                                  U/2
+
+and so for x  U                          fn       (x)          1         M -            n
+Therefore,                               fn                  U/2        M - /2
+                                                                                          .
+
+                                               1
+
+          |n(g) - evx0 (g)| =            fn       gdx  -  evx0 (g)
+                                =        fn
+                                   K           1
+                                
+                                         fn       (g  -  g(x0))dx
+                                         fn
+                                   K           1
+
+                                            fn        |g  -  g(x0)|     dx  +           fn        (g  -   g(x0))dx
+                                            fn                                          fn
+                                   K -U           1                                U           1
+
+                                             fn       |g - g(x0)| dx + sup |g(x) - g(x0)|                            fn         dx .
+
+                                   K -U     fn    1                            xU                              U     fn        1
+
+                                               --n --0                                  ---0 0                       1
+
+Since the second term becomes small as   0 independent of n, we see that this converges to 0
+indeed.
+
+Proposition 3.3. The convex combinations                        m       1  evj  ,  where     j    are     the  solutions       of   m    =   1,
+                                                                j=1     m
+
+are weak -limits in S(C(S1)) of sequences (Rn(m+1)n)nN with n  P(C(S1)(n(m+1))).
+
+Proof. Take the polynomial Q :=                k kzm-k          =  1    (1  -  zm),   i.e.     =     1    (-1,  0,   ...,  0,  1).  Then  the
+                                                                     2                                 2
+function
+
+                                      gm(t) := Q(eit) 2 = 1 - cos(mt)
+
+defines a pure state gm on C(S1)(m+1) in the manner of Proposition 2.12. Likewise, due to
+                                      (gm )n
+Proposition 2.14, the function        (gm )n 1    defines a pure state n :=                     (gm )n    on C(S1)(n(m+1)).
+                                                                                               (gm)n 1
+                                         TRUNCATED GEOMETRY ON THE CIRCLE                                                              9
+
+Note that gm reaches its maximum in the m points j , denote the roots in between by �j (to
+
+be precise, each �j is the rotation of j by /m). By symmetry of gm,                                         (gm[�j ,�j+1])n 1 =
+
+1   (gm)n 1. Hence                                               m
+m                                                               j=1
+                                                                         (gm[�j ,�j+1])n
+                                            (gm)n         =  1           (gm[�j ,�j+1])n             ,
+                                            (gm)n            m
+                                                     1                                              1
+
+and by applying Proposition 3.2 on all these terms we conclude that
+
+                                                 Rn(m+1)n -w-             m       1
+                                                                                  m
+                                                                                     evj   .
+
+                                                                         j=1
+
+Therefore, convex combinations of this type can indeed be approximated by pure states of the
+truncated circle. We will now use one more trick, which is to multiply the convergent sequence
+of pure states of the proposition above with the Radon-Nikodym derivative of another pure state,
+which results in a new sequence of pure states that converges to what we need.
+
+Proposition 3.4. Let 1, ..., m be the solutions of m = 1, and take any   P(C(S1)(k)) such
+
+that    d  (j  )  =  0  for  at  least  one  j.  Then
+        d
+
+                                                      m          d   (j )         evj
+                                                     j=1         d
+                                                                m    d   (i    )
+                                                                     d
+                                                                i=1
+
+is the weak -limit of a sequence (Rk+n(m+1)n)nN with n  P(C(S1)(k+n(m+1))).
+
+Proof. Consider the space of linear functionals C(S1). Observe that on C(S1):
+
+        1. The map
+
+                                                     Mf : C(S1)  C(S1)
+                                                                        Mf ,
+
+           where Mf indicates multiplication by f , is weak-continuous. This is trivial, since if
+           n -w-  , then by definition n(f g)   (f g) for all g  C(S1) so Mfn -w- Mf .
+
+        2. If n -w-  , then by definition also n(1)   (1).                                    As scalar multiplication is weak-
+
+           continuous                                      n     -w-        
+                                                          n(1)              (1)
+                                                                                  ,
+
+           provided that these scalars are nonzero.
+
+Take   P(C(S1)(k)). For this proof, we will ease some notation by denoting the linear functional
+
+g  S1 f g d on C(S1) simply by f . As seen in the proof of Proposition 3.3, if we define
+
+gm(t) = 1 - cos(mt) have that                                             m
+                                                                         j=1
+                                                     (gm)n       -w-           1  evj      .
+                                                     (gm)n                     m
+                                                             1
+
+If  we  apply     observation    1   on  this  sequence      with    M      ,  we     get  that
+
+                                                                         d
+
+                                                                         d
+
+                                                 (gm)n    d  -w-      m    d      (j  )  evj     .
+                                                          d          j=1   d
+
+                                                 (gm)n 1                       m
+
+When    d  (j     )  =  0  for   at  least  one  j,  all  these  are     nonzero      positive      linear  functionals  on  C (S 1 )  so
+        d
+
+evaluating these functionals at 1 gives a nonzero scalar.
+
+By observation 2, we can therefore conclude that
+
+                                            (gm  )n  d                m      d    (j )           evj  .
+                                                     d
+                                                             -w-             d
+                                            (gm)n    d                      m        d   (i   )
+                                                     d           j=1                 d
+                                                          1                 i=1
+10                                         E. HEKKELMAN
+
+Finally, the functional f   S1 f  (gm )n   d     d  is  exactly    Rk+(n(m+1)) n  for  n  the  pure  state  on
+                                           d
+                                           d
+                                  (gm  )n  d  1
+
+C(S1)(k+(n(m+1))), defined via Proposition 2.14 by
+
+                                       dn     =     (gm  )n  d        .
+                                       d                     d
+
+                                                    (gm)n   d      1
+                                                            d
+
+We have completed all the steps that were described in the beginning of this subsection. Combined,
+that gives following proposition.
+
+Proposition 3.5. Given any state   S(C(S1)) and  > 0, there exists N  N such that for
+
+any n  N we can find a pure state n  P(C(S1)(n)) with d(, Rn (n)) < , where d is the
+Monge-Kantorovich metric on S(C(S1)).
+
+Proof. The proof of this proposition is nothing but the execution of the steps as described at the
+start of this section. There is one subtlety, however, so we do not omit the proof altogether.
+
+Take   S(C(S1)) and  > 0. Using Lemma 3.1 and the observation that the set
+
+                            n                               n
+
+                                 tievi : 0  ti  1, ti = 1, ni = 1
+
+                            i=1                          i=1
+
+is dense in S(C(S1)) with respect to the weak *-topology, we can choose a (non-pure) state on
+
+C (S 1 )
+
+                                           m      d     (j  )   )  evj
+                                                  d         (i
+                                  =              m       d
+                                                         d
+                                          j=1    i=1
+
+with  a pure state in P(C(S1)(m+1)) such that d(, ) < .
+
+According to Lemma 3.4 we can find a sequence (n)nN with n  P(C(S1)(m+n(m+1))) such that
+Rm +n(m+1)(n) converges to  in the Monge-Kantorovich metric. However, we have to `fill in the
+gaps' to show that the distance of  to the intermediate pure state spaces also shrinks arbitrarily
+
+small.
+
+We can exploit Proposition 3.1, which shows that we can also find a pure state of higher `degree'
+l  P(C(S1)(m+1+l)) such that d(l, ) < , for any l  Z0. The argument above can then be
+repeated to find a sequence l,n  P(C(S1)(l+m+n(m+1))) converging to l. Choosing l = 0, ..., m
+
+results in a finite number of interlacing, separate sequences, which we can combine into one sequence
+of pure states (n)nN such that n  P(C(S1)(n)). For this Frankenstein sequence, Rn (n) might
+not converge, but there does exist an N such that n  N implies d(Rn (n), ) < 2 which proves
+the proposition.
+
+3.2. Uniformity. The result of the previous section means we can approximate all elements in
+S(C(S1)) by pullbacks of elements in P(C(S1)(n)). In order to show Gromov-Hausdorff conver-
+gence, it remains to be shown that this approximation can be done uniformly so that P(C(S1)(n))
+forms an -net in S(C(S1)). A simple argument suffices, since S(C(S1)) is weak compact.
+
+Proposition 3.6. For every  > 0, there exists N  N such that for n  N , Rn (P(C(S1)(n)))
+forms an -net in S(C(S1)).
+
+Proof. By the Banach-Alaoglu Theorem [5, Theorem V.3.1], the unit ball of C(S1) is weak-
+compact. The set S(C(S1)), as a weak-closed subset of the unit ball, is then compact as well.
+Hence, given  > 0, we can find a finite number of 1, ..., m  S(C(S1)) such that the balls B(i)
+cover S(C(S1)).
+                            TRUNCATED GEOMETRY ON THE CIRCLE                                       11
+
+According to Proposition 3.5, for each i we can find Ni  N such that for n  Ni there exists a
+pure state i  P(C(S1)(n)) such that d(i, Rn (i)) < . Thus we have that for any   B(i)
+and n  Ni,
+
+            dist(, Rn (P(C(S1)(n))))  d(, i) + dist(i, Rn (P(C(S1)(n)))) <  +  = 2.
+
+Now take any   S(C(S1)). Because
+
+                                                                                               m
+
+                                                 S(C(S1))  B(i),
+
+                                                                                              i=1
+
+ must be an element of the ball B(i) for some i. For n  N := maxi Ni we have, by the
+calculation above, that
+
+                                            dist(, Rn (P(C(S1)(n)))) < .
+Hence Rn (P(C(S1)(n))) forms an -net in S(C(S1)) for n  N .
+
+Corollary 3.7. The set of measures on S1 whose Radon-Nikodym derivatives with respect to the
+
+normalised Haar-measure on S1 is of the form c nj=1(1 - cos(t - j)) is dense in the set of Borel
+measures on S1 with respect to the vague topology.
+
+Proof. Denote the set of positive Borel measures on S1 by M+(S1). By Proposition 3.6, we see
+
+that for the set
+
+                                                                                         
+
+A  :=                 M+(S1)  :  d�  =        n  - cos(t - j)), c    R0, 1, . . . , n            
+                                 d
+              �                           c (1                                           [0, 2) ,
+       n=1                                                                                       
+                                            j=1
+
+we have for any �  M+(S1) that dist(A, �) = 0. Hence A is dense in M+(S1) with respect to
+the weak-topology, i.e. the vague topology.
+
+Proposition 3.6 also concludes the proof of the Gromov-Hausdorff convergence of P(C(S1)(n)) to
+S(C(S1)) as metric spaces.
+
+Theorem 3.8. The metric spaces P(C(S1)(n)) converge to the metric space S(C(S1)) in
+Gromov-Hausdorff convergence.
+
+Proof. Corollary 2.9, Lemma 2.10 and Proposition 3.6 combined immediately give the result.
+
+                                                   4. Recovering S1
+
+It may come as a surprise that the limit of the spaces P(C(S1)(n)) is S(C(S1)), and not P(C(S1)) =
+S1. However, since by this identification S1 is a subset of S(C(S1)), it must also be possible to
+recover S1 as a Gromov-Hausdorff limit of a sequence of subsets of pure states. In this section we
+will demonstrate this.
+
+Lemma 4.1. The Fej�er kernel rotated by  = ei
+
+                              fn(x) =              1  -  |k|  eik(-x),
+                                                         n
+                                          |k|n-1
+
+defines a pure state on C(S1)(n) in the sense of Corollary 2.13.
+
+Proof. Take the polynomial    n-1  zk  .  Observe  that
+                              k=0
+
+                                                    n-1
+
+                                       (z - 1) zk = zn - 1,
+
+                                          k=0
+12                                                E. HEKKELMAN
+
+and hence the roots of   n-1         zk  are  precisely  the   nth  roots      of  unity        with    the  exception  of   1  itself.
+                         k=0
+          n-1                                                                                                |Q |2
+In fact,  k=0   z  k  =  Q (z )   where       is  the  vector    =   1    (1,  ...,  1)         Cn,     and         defines  a  pure
+                                                                       n
+
+state. A simple calculation gives that
+
+                                         |Q(z)|2 =                1  -    |k|      zk,
+                                                                          n
+                                                       |k|n-1
+
+hence the function       |k|n-1      1   -  |k|   eikx =       |k|n-1      1   -     |k|  e-ikx  C(S1) defines a pure
+                                            n                                        n
+
+state on C(S1)(n). Rotations of this pure state are then also pure states by rotational invariance
+
+of S1.
+
+Compare these pure states fn to the states on C(S1) denoted x,N in [6, Section 5.4]. The rela-
+tion between these is that Rn (fn ) =  ,n. These Fej�er states recover the entire circle, which we
+will show in the next proposition. Note the similarity with [6, Proposition 5.11] and [6, Proposi-
+tion 5.12]. The difference is that in this thesis we are talking about the intrinsic distance on the
+truncated circle, so we have to add a a small step to move between the intrinsic distance and the
+distance on the whole spectral triple.
+
+Proposition 4.2. Define the subsets Fn  P(C(S1)(n)) by
+                                                  Fn := {fn :   S1},
+
+where fn are states defined by Fej�er kernels like in Lemma 4.1. Then the sequence of metric spaces
+(Fn, dn) converges to (S1, d) in the Gromov-Hausdorff sense.
+
+Proof. Define the sets
+                                        Rn = {(fn , ) :   S1}  Fn � S1.
+
+Because the elements of Fn are labeled by S1, the projections of Rn onto the first and second
+coordinate are both surjective, making these sets total onto correspondences (Definition 2.3). We
+
+now want to show that the distortion of these correspondences converges to zero, in order to use
+Theorem 2.5.
+
+Because the Fej�er kernel is a good kernel [9, Chapter 2], the states Rn (fn ) converge to ev in
+S(C(S1)) as n  . It thus follows immediately that
+
+                                      lim     d(Rn (fn ),  Rn (fn� ))   =    d(,     �),
+
+                                     n
+
+and because of Lemma 2.10 also
+
+                                             lim  dn(fn ,  fn� )  =  d(,     �).
+
+                                            n
+
+We now want to estimate
+
+                                      sup     d(Rn (fn ), Rn (fn� )) - d(, �)                .
+
+                                     ,�S1
+
+By definition,
+
+          d(Rn (fn ),    Rn (fn� ))      =     sup {     Rn (fn )(g)      -    Rn (fn )(g)           :  g   1}.
+
+                                            gC  (S 1 )
+
+As Rn (fn ) and Rn (fn� ) are both states, we can freely subtract a constant function from g, so we
+might as well impose the extra condition
+
+        d(Rn (fn ),   Rn (fn� ))  =     sup {     Rn (fn )(g)    -   Rn (fn )(g)          :     g   1,       g   }.
+
+                                     gC  (S 1 )
+
+Observe that for any smooth function g with g   1, g   ,
+        Rn (fn )(g) - Rn (fn� )(g)  Rn (fn )(g) - g() + Rn (fn� )(g) - g(�) + |g() - g(�)|
+                                           Rn (fn )(g) - g() + Rn (fn� )(g) - g(�) + d(, �),
+                      TRUNCATED GEOMETRY ON THE CIRCLE                                            13
+
+and furthermore if we denote the -neighbourhood of  in S1 by U ,
+
+Rn (fn )(g) - g()     1     fn(x) |g(x) - g()| dx
+                      2
+                         S1
+
+                   =  1         fn(x)  |g(x)       -  g()|    dx  +  1     fn(x) |g(x) - g()| dx
+                      2                                              2
+                         S1\U                                           U
+
+                             fn(x)dx + .
+
+                      S1\U 
+
+Note that this last estimate is independent of g and even of  by rotational invariance. Collecting
+
+the statements above, taking any  > 0 gives
+
+ sup               d(Rn (fn ), Rn (fn� )) - d(, �)        2              fn(x)dx + 2.
+
+,�S1                                                              S1\U 
+
+By the properties of the Fej�er kernel [9, Chapter 2], we may conclude that S1\U fn(x)dx converges
+to zero and therefore
+
+                                 lim         dist  Rn  =  0,
+
+                                n
+
+so by Theorem 2.5
+
+                              lim  dGH       (Fn,  S1)    =   0.
+
+                             n
+
+As a final remark, this proposition is comparable to a result proven by L. Glaser and A. Stern [7],
+which asserts that the pure state space of any spectral triple is the Gromov-Hausdorff limit of
+`localised' (not necessarily pure) states on the truncated spectral triple.
+
+Declaration. The author states that there is no conflict of interest.
+
+                                                 References
+
+ [1] D. Burago, I.U.D. Burago, and S. Ivanov. A Course in Metric Geometry. Crm Proceedings & Lecture
+      Notes. American Mathematical Soc., 2001.
+
+ [2] C. Carath�eodory and L. Fej�er. U� ber den Zusammenhang der Extremen von harmonischen Funktionen
+      mit ihren Koeffizienten und u�ber den Picard-Landau'schen Satz. Rendiconti del Circolo Matematico di
+      Palermo (1884-1940), 32(1):218�239, 1911.
+
+ [3] A. Connes. Noncommutative Geometry. Elsevier Science, 1994.
+ [4] A. Connes and W. D. van Suijlekom. Spectral truncations in noncommutative geometry and operator
+
+      systems. Communications in Mathematical Physics, 2020.
+ [5] J. B. Conway. A Course in Functional Analysis. Graduate Texts in Mathematics. Springer New York,
+
+      1994.
+ [6] F. D'Andrea, F. Lizzi, and P. Martinetti. Spectral geometry with a cut-off: topological and metric aspects.
+
+      Journal of Geometry and Physics, 82:18�45, 2014.
+ [7] L. Glaser and A. B. Stern. Reconstructing manifolds from truncations of spectral triples. Journal of
+
+      Geometry and Physics, 159:103921, 2021.
+ [8] E. Hekkelman. Truncated geometry on the circle. Master's thesis, Radboud University Nijmegen, July
+
+      2021.
+ [9] K. Hoffman. Banach spaces of analytic functions. Courier Corporation, 2007.
+[10] G. J. Murphy. C*-Algebras and Operator Theory. Elsevier Science, 1990.
+[11] M. A. Rieffel. Metrics on state spaces. Documenta Mathematica, 4:559�600, 1999.
+[12] M. A. Rieffel. Gromov�hausdorff distance for quantum metric spaces. Mem. Am. Math. Soc., 168(796):1�
+
+      65, 2004.
+[13] W. Rudin. Real and Complex Analysis. Higher Mathematics Series. McGraw-Hill Education, 1987.
+[14] W. D. van Suijlekom. Gromov�Hausdorff convergence of state spaces for spectral truncations. Journal of
+
+      Geometry and Physics, 162:104075, 2021.
+[15] Z. Yang, L. Xie, and P. Stoica. Vandermonde decomposition of multilevel Toeplitz matrices with applica-
+
+      tion to multidimensional super-resolution. IEEE Transactions on Information Theory, 62(6):3685�3701,
+      2016.
+

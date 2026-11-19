@@ -23,6 +23,12 @@ MARCADORES_OPCIONAIS = ("TITULO_EN", "ENTROU_EN", "KERNEL_LEITURA_EN", "ABERTOS_
 FORMULAS = ("CONFIRMED is accreditation, the one refused word", "PROVADA ≠ CONFIRMADA", "PROVADA ≠ CONFIRMADA", "CONFIRMADA = creditação, recusada",
             "NOT_CONFIRMED", "NOT_A_CONFIRMATION", "Not falsified is not a confirmation", "NOT_FALSIFIED nunca é CONFIRMED", "Proved is not a judgement of nature",
             "PROVED is validity", "PROVADA = validade", "nunca é a palavra da creditação")
+# AO LADO (13/11/2026, claude-site-custodia; D196 da gerência c1, errata depois do auditar limpo da v411): a forma NEGADA
+# « never CONFIRMED» (ESTADO_ATUAL: «… more sensitive data can revise — never CONFIRMED», «… the operator’s act, never CONFIRMED»)
+# nega a palavra e reprovava como falso positivo. Entra COM o espaço antes, porque a lista é de substrings: sem ele, «whenever
+# CONFIRMED» passaria. No começo de linha ou depois de hífen segue reprovando (fica do lado fechado). Controles dos dois lados em
+# work\custodia_v411_preparo_12nov\testar_d196_formula_negada_13nov.py.
+FORMULAS = FORMULAS + (" never CONFIRMED",)
 
 
 # =================================================================== utilidades
@@ -179,6 +185,7 @@ def avaliar_fontes(ctx, pend_ids=None):
         if pend_ids is None or "E04" in pend_ids:
             precisa.add(h0dn.MARCADOR_NOTA)
             precisa |= set(h0dn.MARCADORES_ESTATUTO)   # AO LADO (12/11/2026, claude-site-custodia; de acordo da gerencia c1): os onze textos do estatuto (E04)
+            precisa |= set(h0dn.MARCADORES_VITRINE)    # AO LADO (13/11/2026, claude-site-custodia; a vitrine, parte 2): os textos do estatuto_h0dn.json v2
         if pend_ids is None or "E08" in pend_ids:
             precisa |= set(h0dn.MARCADORES_README)
     for ident in MARCADORES_OPCIONAIS + extras:
@@ -323,7 +330,7 @@ def construir(ctx):
     T.err_en = Item(cab + "\n\n".join(itens), "molde-factual" if (not m) else "handoff+molde")
     # --- NOTA ---
     ap = F["bandeiras_do_gate"]["apagadas"]
-    fontes_desc = "the new stones (%s), the KH-N1 coverage of %s%s" % (", ".join(mods) or "none", v, (" and the %d inscriptions of %s" % (cun["n"], cun["data"][:5])) if cun else "")
+    fontes_desc = "the new stones (%s), the KH-N1 coverage of %s%s" % (", ".join(mods) or "none", v, (" and the %d inscriptions%s" % (cun["n"], (" of " + cun["data"][:5]) if cun.get("data") else "")) if cun else "")   # 19/11 (claude-site-custodia): a data pode vir vazia (v412), como nas linhas 287/414/428
     ver_nota = ""
     if ver and ver.get("z_disc_calibrado") is not None:
         pdn = ("%.1e" % ver["p_disc_unilateral"]).replace("e-0", "e-")

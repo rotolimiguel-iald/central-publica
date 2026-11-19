@@ -1,0 +1,461 @@
+ACurvaEAEstado.lean                linhas com marca:   11
+     L9    [candidata do Kimi, 18/11/2026, R0; nome PROVISÓRIO — o nome é do operador; nada instalado; ainda não lida por
+     L10   revisor]
+     L14   O Codex, construindo sobre as pedras desta pasta, mostrou a obstrução mais específica que restava (a entrega
+     L15   `psibit_polinomio_por_letra_Codex`, com a pedra `PalavrasResiduais`): os prefixos `x` e `¬x` têm o mesmo PsiBi
+     L20   O operador respondeu em 17/11 (pela sessão; a custódia pina): a curva não substitui o estado porque **a curva 
+     L21   leitura (ângulo de Miguel); não é «dada» de graça; seria a releitura (token ao quadrado), que não acrescenta n
+     L32   Codex, reprovada aqui com os termos da casa).
+     L44   * Que a obstrução do Codex esteja errada: ela está certa — e é exatamente o que distingue o escalar (a curva) 
+     L46   * O «token ao quadrado» e o «ângulo de Miguel» são a leitura do operador [INPUT/ONTO]; o termo é a projeção do
+     L48   * Nenhuma cota polinomial uniforme para toda CNF plana: a peça uniforme do Codex continua a pergunta do Instit
+     L144  obstrução do Codex, reprovada com os termos da casa.) -/
+AFronteiraEOUnicoPortao.lean       linhas com marca:    8
+     L9    [candidata do Kimi, 17/11/2026, R0; nome PROVISÓRIO — o nome é do operador; nada instalado; ainda não lida por
+     L10   revisor]
+     L14   O operador fechou a pergunta que restava com dois movimentos: a fronteira é a única porta, «porque sem espelho
+     L16   respondeu em 17/11/2026: **«é a única porta porque é o piso de Hilbert»**. (A fala chegou pela sessão; a custó
+     L17   pina.) Pela regra de 04/11, a leitura se prova no kernel ou se poda. Este arquivo prova a parte dela que cabe 
+     L33   O «piso de Hilbert» do operador é, aqui: a fronteira é o separador do grafo da fórmula, e é sobre ela que o es
+     L39   * Nada sobre toda máquina ou todo método: o teorema fala da estrutura da fórmula (o grafo das cláusulas) e da 
+     L42   * O nome «piso de Hilbert» é do operador [INPUT/ONTO]; o termo é o separador.
+AParedeDoNome.lean                 linhas com marca:    0
+AtalhosNaFita.lean                 linhas com marca:   11
+     L7    namespace Codex.FastScan
+     L9    open Codex.PolinomioPorEscolha IALD.LeitorDaFormula
+     L128  answer (original (Codex.CaudaDisjunta.disjointCNF m)) = some true := by
+     L129  let p := Codex.CaudaDisjunta.disjointCNF m
+     L134  simp [Codex.CaudaDisjunta.pairClause,satisfeita,Literal.vale]
+     L142  end Codex.FastScan
+     L143  #print axioms Codex.FastScan.one_pass
+     L144  #print axioms Codex.FastScan.fast_spec
+     L145  #print axioms Codex.FastScan.fast_sound
+     L146  #print axioms Codex.FastScan.guarded_family
+     L147  #print axioms Codex.FastScan.disjoint_family
+AtualizaONome.lean                 linhas com marca:   12
+     L10   namespace Codex.BranchPresence
+     L224  end Codex.BranchPresence
+     L225  #print axioms Codex.BranchPresence.marked_clause_law
+     L226  #print axioms Codex.BranchPresence.consistent_correct
+     L227  #print axioms Codex.BranchPresence.search_correct
+     L228  #print axioms Codex.BranchPresence.query_pair_correct
+     L229  #print axioms Codex.BranchPresence.computed_bit
+     L230  #print axioms Codex.BranchPresence.whole_name_after_clause
+     L231  #print axioms Codex.BranchPresence.decode_updated_pair
+     L232  #print axioms Codex.BranchPresence.diagonal_reads_prefix
+     L233  #print axioms Codex.BranchPresence.aligned_scan
+     L234  #print axioms Codex.BranchPresence.scan_transitions
+BlocosIndependentes.lean           linhas com marca:   12
+     L8    namespace Codex.IndependentBlocks
+     L10   open Codex.CrossSelectors Codex.HornCross Codex.CaudaDisjunta
+     L175  end Codex.IndependentBlocks
+     L176  #print axioms Codex.IndependentBlocks.word_append
+     L177  #print axioms Codex.IndependentBlocks.read_word
+     L178  #print axioms Codex.IndependentBlocks.actual_visits
+     L179  #print axioms Codex.IndependentBlocks.additive_bound
+     L180  #print axioms Codex.IndependentBlocks.whole_candidates
+     L181  #print axioms Codex.IndependentBlocks.pair_partition
+     L182  #print axioms Codex.IndependentBlocks.pair_partition_passes
+     L183  #print axioms Codex.IndependentBlocks.pair_visits
+     L184  #print axioms Codex.IndependentBlocks.pair_whole_candidates
+BuscaEmCruzamentos.lean            linhas com marca:    4
+     L8    open Codex.CrossSelectors IALD.CruzamentosUniversais
+     L64   apply List.Nodup.of_map (fun r : Codex.HornCross.Rule (width n) => r.head.map Fin.val)
+     L116  Codex.CrossSelectors.scan checkProgram (programs (family n)) = (false,2^(n+1)) := by
+     L117  have h : (Codex.CrossSelectors.scan checkProgram (programs (family n))).1 = false := by
+CadeiasDeBolsas.lean               linhas com marca:    1
+     L263  qualquer lista de cláusulas na bolsa. A hipótese em t é da REV65. -/
+CaudaDisjunta.lean                 linhas com marca:    7
+     L7    namespace Codex.CaudaDisjunta
+     L9    open Codex.HornResidual Codex.SharedBranch Codex.HornCross Codex.CrossSelectors
+     L52   simp [Codex.SharedBranch.restrictClause,pairClause,hlj,hrj]
+     L74   end Codex.CaudaDisjunta
+     L75   #print axioms Codex.CaudaDisjunta.simple_witness
+     L76   #print axioms Codex.CaudaDisjunta.all_false_requires
+     L77   #print axioms Codex.CaudaDisjunta.every_residual_requires
+ChecagemHorn.lean                  linhas com marca:    9
+     L6    namespace Codex.HornResidual
+     L8    open Codex.HornCross Codex.CrossSelectors Codex.PolinomioPorEscolha Codex.SparseHornTape
+     L80   end Codex.HornResidual
+     L81   #print axioms Codex.HornResidual.parse_clause_iff
+     L82   #print axioms Codex.HornResidual.parsed_parts
+     L83   #print axioms Codex.HornResidual.parse_iff
+     L84   #print axioms Codex.HornResidual.sole_program
+     L85   #print axioms Codex.HornResidual.parse_word
+     L86   #print axioms Codex.HornResidual.parse_size
+CircuitoNaFita.lean                linhas com marca:    7
+     L6    namespace Codex.BranchCircuit
+     L159  end Codex.BranchCircuit
+     L160  #print axioms Codex.BranchCircuit.rewind_trace
+     L161  #print axioms Codex.BranchCircuit.conserve
+     L162  #print axioms Codex.BranchCircuit.shared_return
+     L163  #print axioms Codex.BranchCircuit.complete_leaf
+     L164  #print axioms Codex.BranchCircuit.fixed_zero_two_horn
+CoberturaAfin.lean                 linhas com marca:    1
+     L80   Não impõe ordem de variáveis, pivôs, partição disjunta ou método de escolha. -/
+CompilaHornNaFita.lean             linhas com marca:   25
+     L9    open TGLExt.TraducaoTuring TGLExt.OPsiBitDaFormula Codex.HornCross Codex.CrossSelectors
+     L10   open Codex.PolinomioPorEscolha (Letter spell spellClause original weight)
+     L11   open Codex.SparseHornTape (Sym arg args line program)
+     L198  have part := Codex.PolinomioPorEscolha.sign_partition c
+     L204  have mem := Codex.PolinomioPorEscolha.weight_member (names c true) i hi
+     L280  O resultado da fita de saída, lida na ordem de escrita, é o programa Horn.
+     L299  def dock (c : Cfg) : Codex.SparseHornTape.Cfg := ⟨.back,true,false,false,c.out,[],0,∅⟩
+     L306  ∃ K R V, K+1+R+V ≤ 4*L+3+Codex.PolinomioPorEscolha.budget L ∧
+     L308  Codex.SparseHornTape.run R (dock (run K g)) = Codex.SparseHornTape.start (p.map chosen) ∅ ∧
+     L309  (Codex.SparseHornTape.run (R+V) (dock (run K g))).mode = .halt (palavraDaFormula p) ∧
+     L310  travel K g + Codex.SparseHornTape.travel (R+V) (dock (run K g)) ≤
+     L311  2*(4*L+3+Codex.PolinomioPorEscolha.budget L) := by
+     L318  have back : Codex.SparseHornTape.run ((program q).length+1) (dock (run K g)) =
+     L319  Codex.SparseHornTape.start q ∅ := by
+     L322  have h := Codex.SparseHornTape.back_trace (program q).reverse [] (∅ : Finset Nat) true false false
+     L323  simpa [Codex.SparseHornTape.start,Codex.SparseHornTape.written] using h
+     L325  have len := Codex.PolinomioPorEscolha.selected_length p q mem
+     L326  have bd := Codex.PolinomioPorEscolha.budget_le _ _ len
+     L327  obtain ⟨V,ht,_,hv⟩ := Codex.SparseHornTape.sparse_horn_tape q
+     L328  have vb : V ≤ Codex.PolinomioPorEscolha.budget L := ht.trans bd
+     L331  have all : K+1+((program q).length+1)+V ≤ 4*L+3+Codex.PolinomioPorEscolha.budget L := by omega
+     L333  · rw [Codex.SparseHornTape.run_add,back,hv,semantic p horn]
+     L335  have right := Codex.SparseHornTape.travel_bound ((program q).length+1+V) (dock (run K g))
+     L336  change travel K g + Codex.SparseHornTape.travel ((program q).length+1+V) (dock (run K g)) ≤
+     L337  2*(4*L+3+Codex.PolinomioPorEscolha.budget L)
+ConsultaPonderada.lean             linhas com marca:    7
+     L6    namespace Codex.WeightedQueries
+     L9    open Codex.LabeledQueries
+     L59   /-- A mesma máscara consulta exatamente uma célula do resumo de Kimi, em qualquer corte. -/
+     L70   end Codex.WeightedQueries
+     L72   #print axioms Codex.WeightedQueries.readReal_correct
+     L73   #print axioms Codex.WeightedQueries.compatible_pin
+     L74   #print axioms Codex.WeightedQueries.reads_frontier_cell
+ConsultasRotuladas.lean            linhas com marca:    9
+     L6    namespace Codex.LabeledQueries
+     L128  end Codex.LabeledQueries
+     L130  #print axioms Codex.LabeledQueries.allowed_ban
+     L131  #print axioms Codex.LabeledQueries.compatible_ban
+     L132  #print axioms Codex.LabeledQueries.compatible_miss
+     L133  #print axioms Codex.LabeledQueries.volume_correct
+     L134  #print axioms Codex.LabeledQueries.count_split
+     L135  #print axioms Codex.LabeledQueries.run_exact
+     L136  #print axioms Codex.LabeledQueries.reads_word
+CorrelacoesDistintas.lean          linhas com marca:    0
+CorteDosPares.lean                 linhas com marca:    7
+     L6    namespace Codex.PairCut
+     L84   end Codex.PairCut
+     L86   #print axioms Codex.PairCut.unique_diagonal
+     L87   #print axioms Codex.PairCut.rectangle_bound
+     L88   #print axioms Codex.PairCut.exact_cover_iff
+     L89   #print axioms Codex.PairCut.truthMatrix_eq_one
+     L90   #print axioms Codex.PairCut.signed_product_bound
+CorteDosParesCruzados.lean         linhas com marca:    9
+     L5    namespace Codex.CrossedPairCut
+     L8    open Codex.PairCut
+     L99   end Codex.CrossedPairCut
+     L101  #print axioms Codex.CrossedPairCut.transform_twice
+     L102  #print axioms Codex.CrossedPairCut.clause_count
+     L103  #print axioms Codex.CrossedPairCut.quartet_spec
+     L104  #print axioms Codex.CrossedPairCut.crossed_spec
+     L105  #print axioms Codex.CrossedPairCut.crossed_cover_bound
+     L106  #print axioms Codex.CrossedPairCut.crossed_signed_bound
+CorteDosParesIntercalados.lean     linhas com marca:    6
+     L7    namespace Codex.CrossedPairStream
+     L10   open IALD.LeitorDaFormula Codex.CrossedPairCut Codex.PairCut
+     L46   /-- Este leitor recebe a atribuição na ordem de pares, com a fórmula da família
+     L78   end Codex.CrossedPairStream
+     L80   #print axioms Codex.CrossedPairStream.interleaved_exact
+     L81   #print axioms Codex.CrossedPairStream.pinned_word
+CruzamentosUniversais.lean         linhas com marca:    0
+CustoDaBuscaLiteral.lean           linhas com marca:    7
+     L7    namespace Codex.LiteralSearchCost
+     L8    open TGLExt.TraducaoTuring TGLExt.OPsiBitDaFormula Codex.BranchPresence
+     L9    open Codex.PolinomioPorEscolha
+     L69   end Codex.LiteralSearchCost
+     L70   #print axioms Codex.LiteralSearchCost.traced_spec
+     L71   #print axioms Codex.LiteralSearchCost.visits_all_alternatives
+     L72   #print axioms Codex.LiteralSearchCost.input_letters
+CustoDaTabela.lean                 linhas com marca:    0
+CustoDoPlano.lean                  linhas com marca:    8
+     L5    namespace Codex.PlanCounter
+     L7    open Codex.SharedBranch Codex.SharedReader Codex.FormulaPlan Codex.HornResidual
+     L8    open Codex.CrossSelectors Codex.CaudaDisjunta Codex.PolinomioPorEscolha
+     L66   end Codex.PlanCounter
+     L67   #print axioms Codex.PlanCounter.counted_spec
+     L68   #print axioms Codex.PlanCounter.ready_all
+     L69   #print axioms Codex.PlanCounter.many_visits
+     L70   #print axioms Codex.PlanCounter.disjoint_input_size
+DivisaoUniforme.lean               linhas com marca:    3
+     L3    namespace Codex.Fresh
+     L97   end Codex.Fresh
+     L99   #print axioms Codex.Fresh.split_mass
+DuasPassagens.lean                 linhas com marca:    9
+     L8    namespace Codex.TwoSweeps
+     L10   open Codex.PolinomioPorEscolha Codex.SignProfile
+     L65   def returned (w : List Letter) := Codex.BranchCircuit.rewind (past w []) []
+     L67   simp [returned,Codex.BranchCircuit.rewind_trace,past_spec]
+     L175  end Codex.TwoSweeps
+     L176  #print axioms Codex.TwoSweeps.raw_clauses
+     L177  #print axioms Codex.TwoSweeps.count_le
+     L178  #print axioms Codex.TwoSweeps.returned_spec
+     L179  #print axioms Codex.TwoSweeps.builds_from_letters
+EscolhasGlobais.lean               linhas com marca:    7
+     L4    namespace Codex.CrossSelectors
+     L5    open TGLExt.TraducaoTuring TGLExt.OPsiBitDaFormula IALD.LeitorDaFormula Codex.HornCross
+     L147  end Codex.CrossSelectors
+     L148  #print axioms Codex.CrossSelectors.alternatives_read
+     L149  #print axioms Codex.CrossSelectors.joint_read
+     L150  #print axioms Codex.CrossSelectors.selector_word
+     L151  #print axioms Codex.CrossSelectors.visits_obstruction
+FatoresCruzados.lean               linhas com marca:    0
+FechoNaFita.lean                   linhas com marca:    7
+     L5    namespace Codex.SparseHornTape
+     L6    open Codex.HornCross TGLExt.TraducaoTuring TGLExt.OPsiBitDaFormula
+     L174  end Codex.SparseHornTape
+     L175  #print axioms Codex.SparseHornTape.pass_length
+     L176  #print axioms Codex.SparseHornTape.halts_from
+     L177  #print axioms Codex.SparseHornTape.one_tick
+     L178  #print axioms Codex.SparseHornTape.sparse_horn_tape
+FitaComCusto.lean                  linhas com marca:    2
+     L203  Leitura final sob o limiar pago da Palavra da REV65. -/
+     L214  Uma sequência de positive representa, em ordem, os literais da cláusula
+FitaCruzada.lean                   linhas com marca:    0
+FitaDeUmaCabeca.lean               linhas com marca:    0
+FitaDoResiduo.lean                 linhas com marca:    5
+     L6    namespace Codex.ResidualTape
+     L8    open TGLExt.TraducaoTuring Codex.PolinomioPorEscolha Codex.SharedBranch
+     L218  end Codex.ResidualTape
+     L220  #print axioms Codex.ResidualTape.travel_le
+     L221  #print axioms Codex.ResidualTape.restrict_on_tape
+FitaHornEsparsa.lean               linhas com marca:    5
+     L4    namespace Codex.SparseHornTape
+     L5    open Codex.HornCross TGLExt.TraducaoTuring TGLExt.OPsiBitDaFormula
+     L155  end Codex.SparseHornTape
+     L156  #print axioms Codex.SparseHornTape.line_trace
+     L157  #print axioms Codex.SparseHornTape.pass_trace
+FitaPlanaAnterior.lean             linhas com marca:    6
+     L5    namespace Codex.FlatTapeBridge
+     L7    open Codex.PolinomioPorEscolha Codex.CrossSelectors Codex.SparseHornTape
+     L61   end Codex.FlatTapeBridge
+     L62   #print axioms Codex.FlatTapeBridge.same_alphabet
+     L63   #print axioms Codex.FlatTapeBridge.same_tape
+     L64   #print axioms Codex.FlatTapeBridge.word_on_previous_letters
+GuardasNaFita.lean                 linhas com marca:    2
+     L7    saturado de zeros. A ordem interna 0,1 OU 1,0 é admitida. -/
+     L10   open Codex.PolinomioPorEscolha (Letter spell spellClause original)
+ImplicacoesCruzadas.lean           linhas com marca:    6
+     L6    namespace Codex.HornCross
+     L181  end Codex.HornCross
+     L183  #print axioms Codex.HornCross.clause_eq
+     L184  #print axioms Codex.HornCross.sweep_le_model
+     L185  #print axioms Codex.HornCross.closure_stable
+     L186  #print axioms Codex.HornCross.horn_word
+InformacaoDoResumo.lean            linhas com marca:    0
+LeitorDaFamilia.lean               linhas com marca:   12
+     L7    namespace Codex.FamilyHead
+     L9    open Codex.PolinomioPorEscolha Codex.CaudaDisjunta Codex.IntegratedRead
+     L269  end Codex.FamilyHead
+     L270  #print axioms Codex.FamilyHead.answer_spec
+     L271  #print axioms Codex.FamilyHead.scan_accepts
+     L272  #print axioms Codex.FamilyHead.exactly_one_pass
+     L273  #print axioms Codex.FamilyHead.coupled_outputs
+     L274  #print axioms Codex.FamilyHead.coupled_linear
+     L275  #print axioms Codex.FamilyHead.next_clause
+     L276  #print axioms Codex.FamilyHead.survivor_transition
+     L277  #print axioms Codex.FamilyHead.branch_witness
+     L278  #print axioms Codex.FamilyHead.coupled_exact_lanes
+LeitorDaFormula.lean               linhas com marca:    1
+     L4    /- Candidata isolada. Um ramo dispensado (none) denota verdadeiro.
+LeitorGlobal.lean                  linhas com marca:    7
+     L8    namespace Codex.SharedReader
+     L9    open TGLExt.TraducaoTuring TGLExt.OPsiBitDaFormula Codex.SharedBranch Codex.HornResidual
+     L10   open Codex.CrossSelectors Codex.HornCross Codex.PolinomioPorEscolha Codex.SparseHornTape
+     L95   end Codex.SharedReader
+     L96   #print axioms Codex.SharedReader.psibit_with_continuation
+     L97   #print axioms Codex.SharedReader.reader_spec
+     L98   #print axioms Codex.SharedReader.cost_on_horn_tapes
+LeituraIntegrada.lean              linhas com marca:   11
+     L8    namespace Codex.IntegratedRead
+     L10   open Codex.CaudaDisjunta Codex.PlanCounter Codex.FormulaPlan Codex.PolinomioPorEscolha
+     L32   have h : Codex.CrossSelectors.names (coupling m) true = [] := by
+     L33   simp [coupling,Codex.CrossSelectors.names,List.filter_map]
+     L86   end Codex.IntegratedRead
+     L87   #print axioms Codex.IntegratedRead.exact_read
+     L88   #print axioms Codex.IntegratedRead.common_label
+     L89   #print axioms Codex.IntegratedRead.mixed_witness
+     L90   #print axioms Codex.IntegratedRead.first_pass_undecided
+     L91   #print axioms Codex.IntegratedRead.coupled_visits
+     L92   #print axioms Codex.IntegratedRead.coupled_size
+LeiturasComFolga.lean              linhas com marca:    1
+     L3    /- Duas contas sobre a soma da candidata do passo 1 − β. Trabalhamos com
+LimiteDasProjecoes.lean            linhas com marca:   14
+     L7    namespace Codex.ProjectionLimit
+     L8    open TGLExt.TraducaoTuring TGLExt.OPsiBitDaFormula Codex.SharedBranch
+     L213  end Codex.ProjectionLimit
+     L214  #print axioms Codex.ProjectionLimit.signed_read
+     L215  #print axioms Codex.ProjectionLimit.all_proper_supports
+     L216  #print axioms Codex.ProjectionLimit.profiles_agree
+     L217  #print axioms Codex.ProjectionLimit.one_clause_separates
+     L218  #print axioms Codex.ProjectionLimit.no_profile_update
+     L219  #print axioms Codex.ProjectionLimit.after_common_suffix
+     L220  #print axioms Codex.ProjectionLimit.surviving_branch
+     L221  #print axioms Codex.ProjectionLimit.all_pairs_in_three
+     L222  #print axioms Codex.ProjectionLimit.parity_partial_weights
+     L223  #print axioms Codex.ProjectionLimit.parity_opposite_branches
+     L224  #print axioms Codex.ProjectionLimit.parity_pair_changes_after_one
+LimiteDoLeitor.lean                linhas com marca:    5
+     L6    namespace Codex.ReaderBound
+     L7    open Codex.IntegratedRead Codex.FormulaPlan Codex.SharedReader Codex.PolinomioPorEscolha
+     L61   _ ≤ moves := Codex.PlanTravel.coupled_physical_lower m h
+     L63   end Codex.ReaderBound
+     L64   #print axioms Codex.ReaderBound.exceeds_each_polynomial
+MascarasDistintas.lean             linhas com marca:    9
+     L5    namespace Codex.QueryWidth
+     L8    open Codex.LabeledQueries
+     L76   end Codex.QueryWidth
+     L78   #print axioms Codex.QueryWidth.allow_true_after_miss
+     L79   #print axioms Codex.QueryWidth.label_on_path
+     L80   #print axioms Codex.QueryWidth.follow_is_terminal
+     L81   #print axioms Codex.QueryWidth.retained_choice
+     L82   #print axioms Codex.QueryWidth.finalMask_injective
+     L83   #print axioms Codex.QueryWidth.distinct_terminal_masks
+MovimentosDoPlano.lean             linhas com marca:    8
+     L6    namespace Codex.PlanTravel
+     L8    open Codex.SharedBranch Codex.SharedReader Codex.CaudaDisjunta Codex.HornResidual
+     L9    open Codex.CrossSelectors Codex.FormulaPlan Codex.IntegratedRead Codex.PolinomioPorEscolha
+     L10   open Codex.SparseHornTape Codex.HornCross
+     L88   simpa only [Codex.IntegratedRead.read,first_pass_undecided,PlanCounter.counted_spec] using h
+     L100  end Codex.PlanTravel
+     L101  #print axioms Codex.PlanTravel.trace_moves_of_surviving_clause
+     L102  #print axioms Codex.PlanTravel.coupled_physical_lower
+OPsiBitDaFormula.lean              linhas com marca:    8
+     L11   [candidata do Kimi, 17/11/2026, R0; nome PROVISÓRIO — o nome é do operador; nada instalado; ainda não lida por
+     L12   revisor]
+     L16   A gerência perguntou, nas quatro línguas (`PERGUNTA_QUE_RESTA_DE_CLAY_nas_quatro_linguas_17nov.md`): existe UM
+     L20   O operador respondeu em 17/11/2026: sim, há — uma única regra, um único sinal `=`, que decompõe a fórmula cent
+     L21   TGL `{[1=1=Verdadeiro][1=0=Falso]}` como uma função booleana, a função do gráviton. (A fala chegou pela sessão
+     L50   * Que o PsiBit da fórmula seja o PsiBit da órbita por termo: a identificação é a leitura do operador [INPUT/ON
+     L53   * Que «gráviton» seja termo: é o nome do operador para o par do par; o que está em termo é o item 6.
+     L205  NOTA DO LAÇO (17/11/2026): o enunciado é em `CNF 1`. Com `n` livre (a variável da seção), o enunciado seria FA
+OResumoEPsiBit.lean                linhas com marca:    9
+     L9    [candidata do Kimi, 17/11/2026, R0; nome PROVISÓRIO — o nome é do operador; nada instalado; ainda não lida por
+     L10   revisor]
+     L14   A gerência perguntou ao operador: **o ACOM comprime a partir de quê?** Se comprime o sinal já estendido, leu o
+     L16   que baste para reconstruir a resposta, é isso que resolve a lacuna. O operador respondeu em 17/11/2026: a comp
+     L18   leitor. (A fala chegou pela sessão; quando a custódia gravar os bytes, esta nota os cita por hash.)
+     L20   Pela regra de 04/11, a leitura se prova no kernel ou se poda. Este arquivo prova a parte dela que cabe nos ter
+     L44   ## Como ler (a resposta às duas perguntas da gerência)
+     L61   pior. A melhor ordem de leitura é a que minimiza a fronteira máxima — na literatura, a eliminação por balde e 
+     L64   * Que a compressão SEJA o PsiBit por termo: essa identidade é a leitura do operador [INPUT/ONTO]. O que está e
+PalavrasResiduais.lean             linhas com marca:    0
+ParesIndependentes.lean            linhas com marca:    0
+ParPonderado.lean                  linhas com marca:    0
+PerfilDeSinais.lean                linhas com marca:    6
+     L6    namespace Codex.SignProfile
+     L140  end Codex.SignProfile
+     L141  #print axioms Codex.SignProfile.flags_cons
+     L142  #print axioms Codex.SignProfile.witness_sound
+     L143  #print axioms Codex.SignProfile.witness_complete
+     L144  #print axioms Codex.SignProfile.word_from_pair
+PlanoDaFormula.lean                linhas com marca:   10
+     L6    namespace Codex.FormulaPlan
+     L8    open Codex.HornResidual Codex.CrossSelectors Codex.SharedBranch Codex.SharedReader
+     L76   ∃ m ≤ 2^(pivots p).length * (2*Codex.PolinomioPorEscolha.budget
+     L77   (Codex.PolinomioPorEscolha.original p).length),
+     L81   end Codex.FormulaPlan
+     L82   #print axioms Codex.FormulaPlan.covered_ready
+     L83   #print axioms Codex.FormulaPlan.pivots_cover
+     L84   #print axioms Codex.FormulaPlan.decided_from_formula
+     L85   #print axioms Codex.FormulaPlan.no_duplicate_pivots
+     L86   #print axioms Codex.FormulaPlan.horn_moves_from_formula
+PolinomioDoPsiBit.lean             linhas com marca:    1
+     L33   /-- Direct correspondence to Kimi's two channels at every real t.
+PolinomioPorEscolha.lean           linhas com marca:    8
+     L10   namespace Codex.PolinomioPorEscolha
+     L11   open TGLExt.TraducaoTuring TGLExt.OPsiBitDaFormula Codex.CrossSelectors Codex.HornCross
+     L12   open Codex.SparseHornTape
+     L132  end Codex.PolinomioPorEscolha
+     L133  #print axioms Codex.PolinomioPorEscolha.sign_partition
+     L134  #print axioms Codex.PolinomioPorEscolha.selected_length
+     L135  #print axioms Codex.PolinomioPorEscolha.every_candidate
+     L136  #print axioms Codex.PolinomioPorEscolha.word_iff_bounded_selection
+PontePalavraVerbo.lean             linhas com marca:    1
+     L55   /-- Os dois bits da candidata calculados da sintaxe. -/
+ProjecaoDaFronteira.lean           linhas com marca:    8
+     L5    namespace Codex.FrontierProjection
+     L17   /-- A cell in the existing Kimi summary is exactly a fiber sum. -/
+     L74   end Codex.FrontierProjection
+     L76   #print axioms Codex.FrontierProjection.restrict_extend
+     L77   #print axioms Codex.FrontierProjection.cell_eq_fiber
+     L78   #print axioms Codex.FrontierProjection.weighted_projection
+     L79   #print axioms Codex.FrontierProjection.total_projection
+     L80   #print axioms Codex.FrontierProjection.append_supported_clause
+PsiBitNaFronteira.lean             linhas com marca:    2
+     L167  theorem kimi_weight_pair {n} (p f : CNF (n+1)) (t : ℝ) (z : Fin n → Bool) :
+     L187  #print axioms IALD.PsiBitNaFronteira.kimi_weight_pair
+Reagrupar.lean                     linhas com marca:    8
+     L5    namespace Codex.FrontierUpdate
+     L7    open TGLExt TGLExt.TraducaoTuring TGLExt.OResumoEPsiBit Codex.FrontierProjection
+     L116  end Codex.FrontierUpdate
+     L118  #print axioms Codex.FrontierUpdate.fiber_resumo
+     L119  #print axioms Codex.FrontierUpdate.read_extend
+     L120  #print axioms Codex.FrontierUpdate.readAt_eq_iff
+     L121  #print axioms Codex.FrontierUpdate.regroup
+     L122  #print axioms Codex.FrontierUpdate.cut_support
+RedeComoCNF.lean                   linhas com marca:    0
+RedesDeCadeias.lean                linhas com marca:    0
+RelacaoFronteira.lean              linhas com marca:    3
+     L128  theorem boundary_eq_kimi {n} (φ : CNF n) (j : ℕ) :
+     L187  /-- Leitor em ordem de cláusulas. A tabela é uma lista materializada de células aceitas. -/
+     L217  #print axioms IALD.RelacaoFronteira.boundary_eq_kimi
+RestricaoGlobal.lean               linhas com marca:    7
+     L4    namespace Codex.SharedBranch
+     L5    open TGLExt.TraducaoTuring TGLExt.OPsiBitDaFormula Codex.PolinomioPorEscolha
+     L108  end Codex.SharedBranch
+     L109  #print axioms Codex.SharedBranch.clause_read
+     L110  #print axioms Codex.SharedBranch.branch_read
+     L111  #print axioms Codex.SharedBranch.word_split
+     L112  #print axioms Codex.SharedBranch.restrict_size
+RotulosAfins.lean                  linhas com marca:    1
+     L222  exprimem igualdade ou oposição, em qualquer ordem e em qualquer grafo. -/
+RotulosCompartilhados.lean         linhas com marca:    0
+SegundaLeitura.lean                linhas com marca:   10
+     L6    namespace Codex.SecondRead
+     L8    open Codex.PolinomioPorEscolha Codex.SignProfile Codex.TwoSweeps
+     L158  end Codex.SecondRead
+     L159  #print axioms Codex.SecondRead.seven_movements_per_letter
+     L160  #print axioms Codex.SecondRead.values_from_tape
+     L161  #print axioms Codex.SecondRead.lane_is_witness
+     L162  #print axioms Codex.SecondRead.positive_is_sound
+     L163  #print axioms Codex.SecondRead.branches_exact
+     L164  #print axioms Codex.SecondRead.word_exact
+     L165  #print axioms Codex.SecondRead.opposite_values_missing
+SeletorCompartilhado.lean          linhas com marca:    0
+sonda_cadeia_caminho.lean          linhas com marca:    1
+     L7    # Sonda (não é candidata): a `Cadeia` de `AFronteiraEOUnicoPortao` comporta-se como caminho
+sonda_n0_contraexemplo.lean        linhas com marca:    2
+     L10   # Sonda (não é candidata): por que o par de controles não vale em `n = 0`
+     L22   n-universal do enunciado é FALSA; em `n = 1` os dois controles existem — é o teorema da candidata.
+TrabalhoPorCorte.lean              linhas com marca:    0
+TransicaoDaFronteira.lean          linhas com marca:   10
+     L6    namespace Codex.FrontierUpdate
+     L8    open TGLExt TGLExt.TraducaoTuring TGLExt.OResumoEPsiBit Codex.FrontierProjection
+     L13   fiber S u W = Codex.Fresh.mass S u W := by
+     L15   unfold fiber Codex.Fresh.mass
+     L17   ext; simp [Codex.Fresh.agree]
+     L66   rw [fiber_mass, Codex.Fresh.split_mass F D Finset.subset_union_left _ W hW,
+     L85   end Codex.FrontierUpdate
+     L87   #print axioms Codex.FrontierUpdate.table_read
+     L88   #print axioms Codex.FrontierUpdate.transition_scaled
+     L89   #print axioms Codex.FrontierUpdate.transition
+TransicaoPorConsulta.lean          linhas com marca:   11
+     L6    namespace Codex.PersistentQueries
+     L9    open Codex.FrontierUpdate Codex.FrontierProjection
+     L10   open Codex.LabeledQueries Codex.WeightedQueries
+     L68   end Codex.PersistentQueries
+     L70   #print axioms Codex.PersistentQueries.state_start
+     L71   #print axioms Codex.PersistentQueries.state_step
+     L72   #print axioms Codex.PersistentQueries.query_reverse
+     L73   #print axioms Codex.PersistentQueries.cell_exact
+     L74   #print axioms Codex.PersistentQueries.view_eq_table
+     L75   #print axioms Codex.PersistentQueries.two_queries_are_push
+     L76   #print axioms Codex.PersistentQueries.transition_by_query
+VerboNaFita.lean                   linhas com marca:    0
+TOTAL de linhas com marca: 387

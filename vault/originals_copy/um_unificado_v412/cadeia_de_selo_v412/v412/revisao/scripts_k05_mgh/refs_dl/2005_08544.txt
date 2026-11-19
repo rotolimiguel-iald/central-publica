@@ -1,0 +1,892 @@
+arXiv:2005.08544v2 [math.QA] 12 Jan 2021  GROMOV�HAUSDORFF CONVERGENCE OF STATE SPACES
+                                                                 FOR SPECTRAL TRUNCATIONS
+
+                                                                                   WALTER D. VAN SUIJLEKOM
+
+                                                 Abstract. We study the convergence aspects of the metric on spectral trunca-
+                                                 tions of geometry. We find general conditions on sequences of operator system
+                                                 spectral triples that allows one to prove a result on Gromov�Hausdorff conver-
+                                                 gence of the corresponding state spaces when equipped with Connes' distance
+                                                 formula. We exemplify this result for spectral truncations of the circle, Fourier
+                                                 series on the circle with a finite number of Fourier modes, and matrix algebras
+                                                 that converge to the sphere.
+
+                                                 1. Introduction
+
+                                             We continue our study of spectral truncations of (noncommutative) geometry
+                                          that we started in [10] and here focus on the metric convergence aspect of so-called
+                                          operator system spectral triples. This is part of a program that tries to extend the
+                                          spectral approach to geometry to cases where (possibly) only part of the spectral
+                                          data is available, very much in line with [11]. And even though the mathematical
+                                          motivation should be sufficient, there is a clear physical motivation for this. Indeed,
+                                          from experiments we will only have access to part of the spectrum since we are
+                                          limited by the power and resolution of our detectors: we typically study physical
+                                          phenomena up to a certain energy scale and with finite resolution.
+
+                                             The usual spectral approach to geometry [9] in terms of a -algebra A of operators
+                                          on H and a self-adjoint operator D on H has been adapted in [11, 10] to deal
+                                          with such spectral truncations. The -algebra is replaced by an operator system E
+                                          (dating back to [7]), which is by definition a -closed subspace of B(H) containing
+                                          the identity.
+
+                                             More precisely, we have the following definition.
+
+                                          Definition 1. An operator system spectral triple is a triple (E, H, D) where E is a
+                                          dense subspace of an operator system E in B(H), H is a Hilbert space and D is a
+                                          self-adjoint operator in H with compact resolvent and such that [D, T ] is a bounded
+                                          operator for all T  E.
+
+                                             An operator system comes with an ordering, namely, one can speak of positive
+                                          operators in E  B(H). As a consequence states on E can be defined as positive
+                                          linear functionals of norm 1. The above triple then induces a (generalized) distance
+                                          function on the state space S(E) by setting
+
+                                          (1)                    d(, ) = sup {|(x) - (x)| : x 1  1}
+                                          where
+                                                                                            xE
+
+                                                 � 1 denote the Lipschitz semi-norm:
+
+                                                                          x 1 = [D, x] ; (x  E).
+
+                                          Date: January 12, 2021.
+                                                                                                                 1
+2  WALTER D. VAN SUIJLEKOM
+
+   If E = A is a -algebra then this reduces to the usual distance function [8, 9]
+on the state space of the C-algebra A = A . It also agrees with the definition of
+quantum metric spaces based on order-unit spaces given in [27, 28, 17, 18, 21, 22, 23].
+Note, however, that in the present work we restrict our attention to the metric
+structure on the state spaces, that is to say, as an ordinary metric space. In
+contrast, in loc.cit. the authors develop the notion of quantum metric space and
+quantum Gromov�Hausdorff distance which are formulated in the dual category (of
+C-algebras, order-unit spaces, et cetera) and with a more general version of the
+above distance function.
+
+   So, we will study the properties of this metric distance function and the notions
+of Gromov�Hausdorff convergence it gives rise to. We consider sequences of spectral
+triples on operator systems and formulate general conditions under which we prove
+the state spaces equipped with the above distance functions to converge to a limit-
+ing state space. The latter is also described by an operator system spectral triple.
+One of the novelties of our work is that we use the ideas of correspondences be-
+tween compact metric spaces and their relation to Gromov�Hausdorff convergence
+as described for instance in [6, Section 7.3.3].
+
+   We exemplify our main result on Gromov�Hausdorff convergence by considering:
+
+       � spectral truncations on the circle;
+       � Fourier series with only a finite number of non-zero Fourier coefficients;
+       � matrix algebras converging to the sphere.
+
+Previous results in the literature on the distance function for spectral truncations
+have been reported in [11, 14, 13]. However, in these works the distance function
+on states of the truncated system was only computed after pulling back these states
+to the original metric geometry. Extensions of the results contained in the present
+paper to tori are contained in the master's thesis [4].
+
+   The convergence of matrix algebras to the sphere was studied by Rieffel in [29]
+while computer simulations were performed in [3]. Using the general approach be-
+low we re-establish part of this convergence result, namely, the Gromov�Hausdorff
+convergence of the corresponding (classical) metric spaces.
+
+   We note that other convergence results on the distance function on quantum
+spaces are obtained for quantum tori in [20], for coherent states on the Moyal plane
+in [12]. More generally, in [13] certain sets of states have been identified for which
+the Connes' distance formula has good convergence properties with respect to a
+given metric on a Riemannian manifold.
+
+Acknowledgements. I would like to thank IHE�S for their hospitality and support
+during a visit in February 2020. I thank Alain Connes, Jens Kaad and Marc Rieffel
+for fruitful discussions. I am grateful to an anonymous referee for useful remarks
+and suggestions.
+
+         2. Gromov�Hausdorff convergence for operator systems
+
+   Given a sequence of operator system spectral triples (En, Hn, Dn) we want to
+understand when and how this approximates an operator system spectral triple
+(E, H, D). We will adopt the point of view of [28] and consider the convergence
+(in Gromov�Hausdorff distance) of the corresponding state spaces S(En)  S(E)
+equipped with the distance formula (1). Since this notion of convergence is most
+suited to deal with compact metric spaces, we will assume below (cf. Theorem 5)
+    GH CONVERGENCE OF STATE SPACES FOR SPECTRAL TRUNCATIONS                    3
+
+that the topology defined by the metric d coincides with the weak- topology (with
+respect to which we know the state spaces to be compact). For the examples that
+follow this assumption is indeed satisfied, see also Remark 3 below.
+
+Definition 2. Let {(En, Hn, Dn)}n be a sequence of operator system spectral triples
+and let (E, H, D) be an operator system spectral triple. An approximate order iso-
+morphism for this set of data is given by linear maps Rn : E  En and Sn : En  E
+for any n such that the following three condition hold:
+
+(1) the maps Rn, Sn are positive, unital maps
+(2) there exist sequences n, n both converging to zero such that
+
+    Sn  Rn(a) - a  n a 1,
+
+    Rn  Sn(h) - h  n h 1.
+
+   In other words, we use the Lipschitz semi-norms to quantify how close the posi-
+
+tive maps Rn and Sn are to being each other's inverse (i.e. form an order isomor-
+phism) as n  .
+
+   We will call a map between operator systems C1-contractive if it is contractive
+
+with respect to both the operator norms and the Lipschitz semi-norms (thus as-
+
+suming that we are given two operator system spectral triples for them). Finally,
+we say that the pair of maps (Rn, Sn) is a C1-approximate order isomorphism if
+(Rn, Sn) is an approximate order isomorphism in the above sense and for which all
+maps Rn and Sn are C1-contractive.
+
+   Note that the positivity and unitality condition on Rn, Sn in particular implies
+that we may pull back states as follows:
+
+    Rn : S(En)  S(E);  n  n  Rn,
+    Sn : S(E)  S(En);      Sn.
+
+Remark 3. Even though it would be more natural to consider completely positive
+maps Rn, Sn between the operators systems En and E, this turns out not to be
+necessary for the proof of our main result as in fact we restrict our attention to the
+states space and the metric thereon. However, in all examples discussed below we
+find that E is a commutative C-algebra so that these maps are in fact completely
+positive (cf. [25, Theorems 3.9 and 3.11]).
+
+   Let us denote the distance functions (1) for (En, Hn, Dn) and (E, H, D) by dEn
+and dE, respectively.
+
+Proposition 4. If (Rn, Sn) is a C1-approximate order isomorphism for (En, Hn, Dn)
+and (E, H, D), then
+
+    (1) For all n, n  S(En) we have
+
+         dE(n  Rn, n  Rn)  dEn (n, n)  dE(n  Rn, n  Rn) + 2n.
+    (2) For all ,   S(E) we have
+
+    dEn (  Sn,   Sn)  dE(, )  dEn (  Sn,   Sn) + 2n.
+
+Proof. Since Rn is Lipschitz contractive it follows that if a 1  1 then also
+ Rn(a) 1  1. Hence
+
+sup {|  Rn(a) -   Rn(a)| : a 1  1}  sup {|(h) - (h)| : h 1  1} .
+
+aE                     hEn
+
+This establishes the first inequality (also proven in [11, Proposition 3.6]).
+4  WALTER D. VAN SUIJLEKOM
+
+   For the second, note that for all h  En with h 1  1 we have
+
+     |n(h) - n(h)|  |n(Rn(Sn(h))) - n(Rn(Sn(h)))|
+
+                              + |n(h) - n(Rn(Sn(h)))| + |n(h) - n(Rn(Sn(h)))|
+
+                            dE(n  Rn, n  Rn) + 2n.
+
+since n = n = 1 and Sn(h) 1  h 1  1. The second claim follows
+similarly.
+
+   The final justification for the above definition of C1-approximate order isomor-
+phism is our following, main result.
+
+Theorem 5. Suppose (En, Hn, Dn) (n = 1, 2, � � � ) and (E, H, D) are operator sys-
+tem spectral triples such that the topologies on S(En) and S(E) defined by the
+metrics dEn and dE, respectively, agree with the weak- topologies on them.
+
+   If (Rn, Sn) is a C1-approximate order isomorphism for (En, Hn, Dn) and (E, H, D),
+then the state spaces (S(En), dEn ) converge to (S(E), dE) in Gromov�Hausdorff
+distance.
+
+Proof. This follows by applying techniques for correspondences between metric
+spaces and their relation to Gromov�Hausdorff convergence via the notion of dis-
+tortion (cf. [6, Theorem 7.3.25]). In the case at hand one has for the Gromov�
+Hausdorff distance that
+
+                                                                       1
+                         dGH ((S(En), dEn ), (S(E), dE))  2 dis(Rn)
+where the correspondence Rn  S(En) � S(E) is defined by
+             Rn = {(n, Rn (n)) : n  S(En)}  {(Sn(), ) :   S(E)}
+
+with distortion (cf. [6, Defn 7.3.21])
+
+           dis(Rn) = sup {|dEn (n, n) - dE(,  )| : (n, ), (n,  )  Rn}
+
+But from Proposition 4 it follows that this can be bounded by 2n + 2n, which
+converges to 0 as n  .
+
+Remark 6. Given an operator system spectral triple (E, H, D), it is an interesting
+question to see when the metric topology on S(E) defined by d coincides with the
+weak- topology. For the commutative case, this was already established in [8] while
+more generally it is also shown in that paper that if the set {h  E : [D, h] 
+1}/C1 is bounded in E, then d is a metric. Rieffel then established [26, Theorem
+1.8] the most general result (for the compact case) stating that when the above set
+is totally bounded, the d-topology agrees with the weak- topology.
+
+   Below we will consider only finite-dimensional operator system spectral triples
+for which also ker[D, �] = C, so that the above set is totally bounded. Indeed, in
+this case [D, �] induces a norm on the quotient E/C1 for which the unit ball is
+compact. Hence, under these assumptions the d-topology coincides with the weak-
+topology; a fact that we will tacitly use throughout the rest of the paper.
+
+Remark 7. Following up on the previous remark, there is a close relation between
+our notion of C1-approximate order isomorphism and the (, C)-approximations of
+operator systems E equipped with a Lipschitz semi-norm L that were considered
+recently in [16]. Such (, C)-approximations are defined by two maps i,  : E 
+F into some other operator system F such that (1) C-1 a  i(a)  C a ,
+     GH CONVERGENCE OF STATE SPACES FOR SPECTRAL TRUNCATIONS        5
+
+ (a)  C a for all a  E; (2) ran()  F is finite dimensional; and (3)
+
+ i(a) - (a)  L(a).
+   Thus, if (Rn, Sn) is a C1-approximate order isomorphism in the sense we just
+
+defined, then, with the additional assumption that ran(Rn) or ran(Sn) is finite-
+dimensional, the pair (i = idE, Sn  Rn) gives a (n, 1)-approximation of the pair
+(E, � 1). Note that in all examples discussed below this assumption of finite-
+dimensionality will be met.
+
+     3. Examples of Gromov�Hausdorff convergence
+
+3.1. Spectral truncations of the circle converge. We will analyze a spectral
+truncation of the distance function on the circle, the latter being described by the
+spectral triple
+
+(2)     A = C(S1), H = L2(S1), D = -i d .
+                                                         dx
+
+We will consider a spectral truncation defined by the orthogonal projection P = Pn
+of rank n onto spanC{e1, e2, . . . , en} for some fixed n  1, where ek(x) = eikx
+(k  Z) is the orthonormal (Fourier) eigenbasis of D. In the following we will
+suppress the representation of C(S1) on L2(S1) by pointwise multiplication and
+
+simply write f for the corresponding bounded operator. An arbitrary element T =
+P f P in P C(S1)P can be written as an n � n Toeplitz matrix Tkl = ek, f el = ak-l
+
+in terms of the Fourier coefficients aj of f . In matrix form we thus have
+
+            a0 a-1 � � � a-n+2 a-n+1
+
+            a1           a0 a-1                          a-n+2
+
+             ...                              ...        ...  
+
+(3)  T  =                a1 a0                                   .
+                                                              
+
+                                 ... ...                       
+                                                               
+           an-2                                          a-1 
+
+           an-1 an-2 � � �                    a1         a0
+
+The corresponding operator system P C(S1)P = P C(S1)P is called the Toeplitz
+operator system and is denoted by C(S1)(n); it has been analyzed at length in [10].
+
+   An operator system spectral triple for the Toeplitz operator system is given by
+(C(S1)(n), P L2(S1), P DP ).
+
+3.1.1. Fej�er kernel. Clearly, the compression f  P f P by P = Pn defines a
+positive map Rn : C(S1)  C(S1)(n). In order to find an approximate in-
+
+verse to this map we take inspiration from [29, Section 2]. In fact, we define
+
+Sn : C(S1)(n)  C(S1) to be its (formal) adjoint when we equip C(S1) with the
+L2-norm and C(S1)(n) with the (normalized) Hilbert�Schmidt norm. Let x denote
+the natural action of S1 on C(S1)(n), and define a norm 1 vector | in P L2(S1)
+
+by
+
+                         1
+             |        =          (e1  +  ���  +   en) .
+                           n
+
+Proposition 8. The map Sn : C(S1)(n)  C(S1) defined for any T  C(S1)(n) by
+Sn(T )(x) = Tr (| |x(T )) satisfies
+
+           f, Sn(T )  L2 (S 1 )  =    1  Tr ((Rn(f ))T ) .
+                                      n
+6                          WALTER D. VAN SUIJLEKOM
+
+      Figure 1.  The Fej�er kernel FN         =         1 sin2(N x/2)  for N   = 10.
+                                                        N sin2(x/2)
+
+Moreover, we may write
+
+                                         n-1       |k|     akeikx = (Fn  f )(x)
+                                              1-
+      Sn(Rn(f ))(x) =
+                                                    n
+                              k=-n+1
+
+in terms of the Fej�er kernel Fn and the Fourier coefficients ak of f .
+
+Proof. Let us first check the formula for Sn(T ) by computing that
+
+                                1       Tkl ei(k-l)x    =  1  n-1
+      Tr (| |x(T )) = n                                    n
+                                                                     (n - |k|)akeikx
+
+                                   k,l                        k=-n+1
+
+Thus, Sn(T ) = Fn  f when T = P f P --again understanding f as an operator
+acting on L2(S1)-- and we may use elementary Fourier theory (cf. [30, Proposition
+
+3.1(vi)])to derive
+
+                                              n-1                      |k|
+
+      g, Sn(T ) = g, Fn  f =                               bk ak  1-        ,
+                                                                        n
+                                              k=-n+1
+
+where bk are the Fourier coefficients of g. On the other hand, we have
+
+   1                       1       n-1                        1 n-1
+   n                       n
+      Tr ((Rn(g))T )    =                     bk-lak-l = n             bkak (n - |k|) .
+
+                              k,l=-n+1                        k=-n+1
+
+3.1.2. The circle as a limit of its spectral truncations. Let us now show in a series
+of Lemma's that the conditions of Definition 2 are satisfied.
+
+Lemma 9. For any f  C(S1) we have Rn(f )  f and [D, Rn(f )] 
+ [D, f ] .
+
+Proof. Since Rn(f ) = P f P and P commutes with D this follows directly since P
+is a projection.
+
+Lemma 10. There exists a sequence {n} converging to 0 such that
+                                   f - Sn(Rn(f ))  n [D, f ]
+
+for all f  C(S1).
+       GH CONVERGENCE OF STATE SPACES FOR SPECTRAL TRUNCATIONS                                      7
+
+Proof. Since [D, f ] is equal to the Lipschitz constant for f [8, Proposition 1] we
+
+have that |f (x) - f (z)|  |x - z| [D, f ] . We use this in the following estimate
+
+                                         1    
+       |f (x) - Sn(Rn(f ))(x)|  2
+                                                 Fn(y)|f (x) - f (y - x)|dy
+                                         1
+                                             -
+                                              
+                                        2
+                                                 Fn(y)|y|dy � [D, f ] =: n [D, f ] .
+
+                                             -
+
+Becasue the Fej�er kernels form an approximate delta-function at 0 (cf. [30, Theorem
+4.1 and Lemma 5.1]) imply that n  0.
+
+Lemma 11. For any T  C(S1)(n) we have Sn(T )  T and [D, Sn(T )] 
+ [D, T ] .
+
+Proof. First note that [D, Sn(T )] is a function on S1 (it is i times the derivative of
+Sn(T )). Moreover, we have
+
+   |[D, Sn(T )](x)| = | Tr (| |x([D, T ])) |  | | 1 x([D, T ])  [D, T ] .
+
+Since this holds for any x, we may take the supremum to arrive at the desired
+inequality. The other inequality is even easier.
+
+Lemma 12. There exists a sequence {n} converging to 0 such that
+                                   T - Rn(Sn(T ))  n [D, T ]
+
+for all T  C(S1)(n).
+
+Proof. Write T = P gP for g = k bkeikx. Then the matrix coefficients of the
+Toeplitz matrix T - Rn(Sn(T )) are given by
+
+          (Tkl - Rn(Sn(T ))kl) =        bk-l      -        1    -  |k-l|  bk-l     =   |k-l|  bk-l
+                                                                     n                   n
+
+                               = (Tn - Tn)                         k-l  bk-l
+                                                                    n
+
+                               =        1         -        Tn)     [D, T ]
+                                        n (Tn
+
+in terms of the Schur product with Tn and Tn where
+
+                                           1 0 � � � 0
+
+                                           1 1 � � � 0
+
+                               Tn  =         ...      ...  ...     ...    .
+                                                                        
+                                                                        
+
+                                             1 1 ��� 1
+
+Now the norm of the map A  Tn A for A  Mn(C) coincides with Tn cb (cf.
+[25, Chapter 8]). In [1, Theorem 1] the following estimate for this norm was derived:
+
+                               Tn cb                  1
+                                            1 + (1 + log(n))                    .
+                                                 
+
+Hence we have
+
+                 T - Rn(Sn(T ))             2     Tn cb [D, T ]
+                                                                              n [D, T ]
+                                           n
+
+where  n  :=  2  1+  1  (1  +  log(n))  .   It    is  clear     that    n    0     as  n  .
+              n      
+
+   Thus we find that the pair of maps (Rn, Sn) for {(C(S1)(n), PnL2(S1), PnDPn)}n
+and (C(S1), L2(S1), D) forms a C1-approximate order isomorphism. We may
+
+conclude from Theorem 5 that
+8    WALTER D. VAN SUIJLEKOM
+
+     Figure 2. The distance function dn(0, x)  dn(0, Sn(evx)) on the
+     Toeplitz operator system (Proposition 13) for n = 3, 5, 9. The
+
+     blue band corresponds to the lower bounds d(0, x) - 2n given in
+     Proposition 4 with the constants n given in Lemma 10.
+
+Proposition 13. The sequence of state spaces {(S(C(S1)(n)), dn)}n converges to
+(S(C(S1)), d) in Gromov�Hausdorff distance.
+
+   Using a simple Python script we have computed the distance function for states
+on C(S1)(n) of the form Sn(evx) for n = 3, 5, 9, where evx is the pure state on C(S1)
+given by evaluation at x. The optimization problem for computing the distance has
+
+been solved numerically using the standard sequential least squares programming
+
+(SLSQP) method and we claim absolutely no originality or proficiency here. We
+
+have illustrated the numerical results in Figure 2.
+
+3.2. Fej�er�Riesz operator systems converge to the circle. In [10] we found
+the dual operator system of C(S1)(n) to be equal to the operator system of functions
+on S1 with only a finite number of non-zero Fourier coefficients. It gives a different
+type of truncation, this time taking place at the level of the function algebra, as
+opposed to a spectral truncation in Hilbert space.
+
+   More precisely, we will consider the so-called Fej�er�Riesz operator system:
+
+(4)  C(Z)(n) = {a = (ak)kZ : supp(a)  (-n, n)} .
+
+The elements in C(Z)(n) are thus given by sequences with finite support of the
+form
+
+             a = (. . . , 0, a-n+1, a-n+2, . . . , a-1, a0, a1, . . . , an-2, an-1, 0, . . .)
+and this allows to view C(Z)(n) as an operator subsystem of C(Z) = C(S1).
+
+   The adjoint a  a is given by ak = a-k and an element a  C(Z)(n) is positive
+iff k akeikx defines a positive function on S1.
+
+   Since this naturally is an operator subsystem of C(S1) it is natural to consider
+
+the following spectral triple:
+           GH CONVERGENCE OF STATE SPACES FOR SPECTRAL TRUNCATIONS                                  9
+
+(5)                       C  (Z)(n) ,   H  =  L2(S1),      D  =  -i  d    .
+                                                                     dx
+
+   We will be looking for positive and contractive maps Kn : C(S1)  C(Z)(n)
+and Ln : C(Z)(n)  C(S1) satisfying the conditions of Definition 2 so that we can
+apply Theorem 5 to conclude Gromov�Hausdorff convergence of the corresponding
+
+state spaces.
+
+   We introduce
+
+                          Kn : C(S1)  C(Z)(n)
+                                       f  Fn  f
+
+where we recall that Fn = |k|n-1(1 - |k|/n)eikx is the Fej�er kernel so that
+
+Kn indeed maps to C(Z)(n) considered as an operator subsystem of C(S1). The
+map Ln is simply the linear embedding of C(Z)(n) as an operator subsystem of
+C(Z) = C(S1):
+
+                          Ln : C(Z)(n)  C(S1)
+
+                                          (ak)  x  akeikx .
+
+                                                                                          k
+
+Positivity and contractiveness of Kn for the norm and Lipschitz norm is an easy
+consequence of the good kernel properties of Fn while for Ln they are trivially
+satisfied.
+
+Lemma 14. There exists a sequence n converging to 0 such that
+                                   Ln  Kn(f ) - f  n [D, f ]
+
+for all f  C(S1).
+
+Proof. Since Ln  Kn(f ) = Fn  f the proof is analogous to that of Lemma 10.
+
+Lemma 15. There exists a sequence n converging to 0 such that
+                                   Kn  Ln(a) - a  n [D, a]
+
+for all a  C(Z)(n).
+
+Proof. From the Fourier coefficients of the Fej�er kernel we find that
+
+                                                           |k|     .
+                          Kn  Ln(a) - a =             - n ak
+                                                                  k
+
+We   will  estimate  the  sup-norm  of  the   function     f (x)  =  1    k |k|akeikx by the Lip-
+                                                                     n
+
+schitz norm of a. First of all, we may write f as a convolution product f = g  h
+
+where g =  n-1            sgn(k)eikx  and    h  =  1       n-1       kak  eikx  =      1  [D,  a].  Then
+           k=-n+1                                  n       k=-n+1                      n
+
+f   g 1 h  where
+                                                         
+                          g 1  g 2 = 2n - 1.
+
+                                                                     2n-1
+                                                                      n
+We conclude that g  h   n [D, a]  with n =                                      0  as  n       .
+
+   We conclude that the pair of maps (Kn, Ln) for {(C(Z)(n), L2(S1), D)}n and
+(C(S1), L2(S1), D) forms a C1-approximate order isomorphism and we have
+10  WALTER D. VAN SUIJLEKOM
+
+          Figure 3. The distance function dn(0, x)  dn(0, Lnevx) on the
+          Fej�er�Riesz operator system (Proposition 16) for n = 2, 3. The
+          blue band corresponds to the lower bounds d(0, x) - 2n given in
+          Proposition 4 with the constants N given in Lemma 14.
+
+Proposition 16. The sequence of state spaces {(S(C(Z)(n)), dn)}n converges to
+(S(C(S1)), d) in Gromov�Hausdorff distance.
+
+   We again illustrate the numerical results for the first few cases in Figure 3. As
+compared to the Toeplitz operator system (Figure 2) the optimization is much more
+cumbersome. This is essentially due to the fact that it involves the computation of
+a supremum norm of a trigonometric polynomial.
+
+Remark 17. If we recall the duality between C(S1)(n) and C(Z)(n) as operator
+systems from [10] it is quite surprising that both operator system spectral triples
+converge to the circle as n  .
+
+3.3. Matrix algebras converge to the sphere. In [28, 29] Rieffel analyzed quan-
+tum Gromov�Hausdorff convergence for so-called quantum metric spaces. Such a
+space is given by a pair (A, L) of an order-unit space A and a so-called Lipschitz
+norm L on A. At first sight, such spaces appear to be more general than (operator
+system) spectral triples and the distance function they give rise to. However, as
+Rieffel shows in [28, Appendix 2] Dirac operators are universal in the sense that
+the Lipschitz semi-norms can always be realized as norms of commutators with a
+self-adjoint operator D. Note that it remains an open question, however, for what
+Lipschitz semi-norms one can find an operator D with compact resolvent imple-
+menting that semi-norm.
+
+   We show below that the corresponding state spaces with Connes' distance for-
+mula converge in Gromov�Hausdorff distance to the state space on the round two-
+sphere. This is closely connected --certainly at the technical level-- to the results
+of [29] which is that the matrix algebras that describe the fuzzy two-sphere converge
+     GH CONVERGENCE OF STATE SPACES FOR SPECTRAL TRUNCATIONS                          11
+
+in quantum Gromov�Hausdorff distance to the round two-sphere. Even though for
+much of the analysis we may refer to [28, 29] we do formulate the main results in our
+framework of operator system spectral triples and, as said, restrict our attention to
+the classical metric spaces.
+
+We will describe the round two-sphere by the following spectral triple:
+
+(6)                       (C(S2), C2  L2(S2), DS2 )
+
+We write S2 = {(x1, x2, x3)  R3 : x21 + x22 + x23 = 1} so that the following vector
+fields
+
+                                 Xjk = xjk - xkj; (j < k).
+are tangent to S2. Of course, these vector fields are fundamental vector fields and
+generate the Lie algebra su(2). Note that the normal vector field is given by x
+itself.
+
+   In terms of the three Pauli matrices we may then write the Dirac operator as
+[32]
+
+(7)                       DS2 = (x � ) j k  Xjk.
+
+                                          j<k
+
+Note that (x � ) :=  3    xk k  acts  as  the  chirality  operator  and  makes  sure  that
+                     k=1
+the spinor bundle on S2 is actually non-trivial (as it should).
+
+The fuzzy sphere [24] is obtained when one considers spherical harmonics on the
+
+sphere only up to some maximum total spin. More precisely, it is described by a
+
+matrix algebra L(Vn) where Vn is the n-dimensional irreducible representation of
+
+SU (2). A Dirac operator on the fuzzy sphere was introduced in [15] (see also [2]):
+
+(8)                       Dn := jk  [Ljk, �]
+
+                                j<k
+
+where Ljk are standard generators of su(2) in the n-dimensional representation,
+satisfying
+
+                     [Ljk, Llm] = klLjm - kmLjl - jlLkm + jmLkl.
+
+This gives rise to the following spectral triple
+
+(9)                       (L(Vn), C2  L(Vn), Dn)
+
+The comparison between (7) and (8) is convincing, except for the absence of the
+chirality operator in the case of the fuzzy sphere. However, as shown in [2] this
+can be repaired for by a doubling of the representation space and a corresponding
+doubling constructing for the Dirac operator. Note that this does not alter the
+corrresponding Lipschitz norms, so we may just as well work with the Dirac operator
+defined in (8).
+
+Remark 18. The paper [2] also contains a detailed discussion on the nature of the
+spectral truncation that applies to the case at hand (see [2, Section 6.3]). It depends
+on the decomposition of the Hilbert space of spinors into irreducible representations
+of Spin(3). However, since we will not need the specific form of the truncation here,
+we refrain from including it here.
+
+   Let us now proceed to show that there is a C1-approximate order isomorphism
+(, ) for the sequence of spectral triples defined in (9) and the spectral triple of (6).
+As a consequence, we thus re-establish part of the conclusion of [29, Theorem 3.2]
+12    WALTER D. VAN SUIJLEKOM
+
+that the fuzzy sphere converges to the two-sphere in Gromov�Hausdorff distance
+as n  . Note that loc.cit. goes further in establishing that this limit is the
+unique limit of the sequence of fuzzy spheres (and also extends to more general
+coadjoint orbits). The reason we have included this example here is that it is
+formulated entirely in terms of spectral triples, and fits the general framework set
+up in Section 2.
+
+3.3.1. Berezin symbol and Berezin quantization. Following [29] we start by defining
+maps  : L(Vn)  C(S2) and  : C(S2)  L(Vn). Given a projection P  L(Vn),
+
+say, on the highest-weight vector of Vn, we define the Berezin symbol  : L(Vn) 
+C(S2) by [5]
+
+(10)  (T )(g)  T (g) := Tr(T g(P ))
+
+where g is the action of g  SU (2) induced by conjugation on L(V ). Since
+
+u(P ) = P for all u  U (1), it follows that (T ) is U (1)-invariant and thus descends
+to a function on SU (2)/U (1) = S2. Moreover, we readily see that  is an SU (2)-
+
+equivariant map which will turn out to be useful later.
+   We let  : C(S2)  L(Vn) be the adjoint of the map  when C(S2) comes
+
+equipped with the L2-inner product and L(Vn) with the Hilbert�Schmidt inner
+
+product. There is also the following explicit expression (cf. [29, Sect.2]).
+
+Proposition 19. The map  defined by (f )  f = n f (g)g(P )dg satisfies
+                                                      1
+
+                                         f, T = n Tr(f T ).
+Moreover, we may write the so-called Berezin transform as a convolution product
+
+      (f )(g) = (f  HP )(g)  f (gh-1)HP (h)dh
+
+where HP is a probability measure defined by
+                                      HP (g) = n Tr(P g(P )).
+
+Proof. As in [29, Sect.2] we check the formula for (f ) by computing that
+
+                 f, T = f (g) Tr(T g(P ))dg = Tr f (g)T g(P )dg
+so that the result follows.
+
+   For the Berezin transform we then indeed have that
+            (f )(g) = Tr (f x(P )) = Tr n f (h)h(P )dhg(P )
+                        = n f (h) Tr(P h-1g(P ))dh = n f (gh-1)HP (h)dh
+
+using also that HP (h-1) = HP (h).
+   Again, one readily observes that  is an SU (2)-equivariant map.
+GH CONVERGENCE OF STATE SPACES FOR SPECTRAL TRUNCATIONS          13
+
+3.3.2. The sphere as a limit of matrix algebras. We now show in a series of Lemma's
+that the conditions of Definition 2 hold for Rn =  and Sn = .
+
+Lemma 20. For any f  C(S2) we have f  f and [Dn, f ]  [DS2 , f ] .
+
+Proof. The contractive property of  is proved for instance in [19, Theorem 1.3.5]
+where  is the Berezin quantization map. Then, by SU (2)-equivariance of  we
+have
+
+                                                      
+
+[Dn, f ] = jk  [Ljk, f ] =  jk  ([Xjk, f ]) = (1  )[DS2 , f ].
+
+j<k                                  j<k
+
+Since  is a positive map from a commutative domain to a C-algebra, it follows by
+a Theorem by Stinespring [31] (cf. [25, Theorem 3.11]) that  is completely positive.
+But then, it follows from [25, Proposition 3.6] that  is completely bounded with
+
+  cb =  . In particular, 1      1 so that it follows that
+
+     [Dn, f ]  (1  ) [DS2 , f ]  [DS2 , f ] .
+
+Lemma 21. There exists a sequence {n} converging to 0 such that
+
+                      f - (f )  n [DS2 , f ]
+
+for all f  C(S2).
+
+Proof. We exploit the expression for (f ) as a convolution product from Proposi-
+tion 19. Indeed,
+
+|f (g) - (f )(g)| = (f (g) - f (h))HP (h-1g)dh
+
+                            f Lip d(g, h)HP (h-1g)dh = f Lip d(e, h)HP (h)dh
+
+where d is the SU (2)-invariant (round) distance on SU (2)/U (1) and f Lip is the
+corresponding Lipschitz seminorm of f . Since f Lip = [DS2 , f ] by standard
+arguments [9, Sect. VI.1] and d(e, h)HP (h)dh  0 as n  , the result follows.
+
+Lemma 22. For any T  L(Vn) we have T  T and [DS2 , T ]  [Dn, T ] .
+
+Proof. The map  is a contraction:
+
+T = sup | Tr T g(P )|  T sup Tr |g(P )| = T .
+
+                   g                      g
+
+Since  is also SU (2)-equivariant we again find that
+
+                                                      
+
+[DS2 , T ] = jk  [Xjk, T ] =  jk  ([Ljk, T ]) = (1  )[Dn, T ].
+
+j<k                                  j<k
+
+Since the range of  is a commutative C-algebra it follows from [25, Theorem 3.9]
+that  cb =  . Hence
+
+                         [DS2 , T ]  (1  ) [Dn, T ]  [Dn, T ]
+since  is a contraction.
+14  WALTER D. VAN SUIJLEKOM
+
+Lemma 23. There exists a sequence {n} converging to 0 such that
+                                     T - (T )  n [Dn, T ]
+
+for all T  L(Vn).
+
+Proof. This is based on a highly non-trivial result [29, Theorem 6.1] which states
+
+that there exists a sequence {n} converging to 0 such that
+
+    T - (T )  nLn(T )
+
+for all T  L(Vn), where Ln is the Lipschitz norm on L(Vn) defined by
+
+    Ln(T ) = sup          g(T ) - T
+                              l(g)
+                     g=e
+
+for a length function g on SU (2) that induces the round metric on S2. However,
+
+as in the proof of [26, Theorem 3.1] we may estimate
+
+                             Ln(T )  sup { [X, T ] : X  1}
+
+                                                            X su(2)
+
+while the right-hand side can be bounded from above by k [D, T ] for some constant
+k independent of n (as in the display preceding [26, Theorem 4.2].
+
+   We have thus verified that the maps (, ) between {L(Vn), C2  L(Vn), Dn) and
+(C(S2), C2  L2(S2), DS2 ) forms a C1-approximate order isomorphism and we
+
+may conclude from Theorem 5 that
+
+Proposition 24. The sequence of state spaces {(S(L(Vn)), dn)}n converges in
+Gromov�Hausdorff distance to (S(C(S2)), d).
+
+                                             References
+
+ [1] J. R. Angelos, C. C. Cowen, and S. K. Narayan. Triangular truncation and finding the norm
+      of a Hadamard multiplier. Linear Algebra Appl. 170 (1992) 117�135.
+
+ [2] J. W. Barrett. Matrix geometries and fuzzy spaces as finite spectral triples. J. Math. Phys.
+      56 (2015) 082301, 25.
+
+ [3] J. W. Barrett and L. Glaser. Monte Carlo simulations of random non-commutative geometries.
+      J. Phys. A49 (2016) 245001.
+
+ [4] T. Berendschot. Truncated geometry. Master's thesis, Radboud University Nijmegen, 2019.
+ [5] F. A. Berezin. General concept of quantization. Comm. Math. Phys. 40 (1975) 153�174.
+ [6] D. Burago, Y. Burago, and S. Ivanov. A course in metric geometry, volume 33 of Graduate
+
+      Studies in Mathematics. American Mathematical Society, Providence, RI, 2001.
+ [7] M. D. Choi and E. G. Effros. Injectivity and operator spaces. J. Functional Analysis 24 (1977)
+
+      156�209.
+ [8] A. Connes. Compact metric spaces, Fredholm modules, and hyperfiniteness. Ergodic Theory
+
+      Dynam. Systems 9 (1989) 207�220.
+ [9] A. Connes. Noncommutative Geometry. Academic Press, San Diego, 1994.
+[10] A. Connes and W. van Suijlekom. Spectral truncations in noncommutative geometry and
+
+      operator systems. To appear in Commun. Math. Phys. [arXiv:2004.14115].
+[11] F. D'Andrea, F. Lizzi, and P. Martinetti. Spectral geometry with a cut-off: topological and
+
+      metric aspects. J. Geom. Phys. 82 (2014) 18�45.
+[12] F. D'Andrea, F. Lizzi, and J. C. Va�rilly. Metric properties of the fuzzy sphere. Lett. Math.
+
+      Phys. 103 (2013) 183�205.
+[13] L. Glaser and A. Stern. Reconstructing manifolds from truncated spectral triples.
+
+      arXiv:1912.09227.
+[14] L. Glaser and A. Stern. Understanding truncated non-commutative geometries through com-
+
+      puter simulations. J. Math. Phys. 61 (2020) 033507.
+[15] H. Grosse and P. Presnajder. The Dirac operator on the fuzzy sphere. Lett. Math. Phys. 33
+
+      (1995) 171�181.
+GH CONVERGENCE OF STATE SPACES FOR SPECTRAL TRUNCATIONS  15
+
+[16] J. Kaad. Exterior products of compact quantum metric spaces. (work in progress).
+[17] D. Kerr. Matricial quantum Gromov-Hausdorff distance. J. Funct. Anal. 205 (2003) 132�167.
+[18] D. Kerr and H. Li. On Gromov-Hausdorff convergence for operator metric spaces. J. Operator
+
+      Theory 62 (2009) 83�109.
+[19] N. P. Landsman. Mathematical Topics between Classical and Quantum Mechanics. Springer,
+
+      New York, 1998.
+[20] F. Latr�emoli`ere. Convergence of fuzzy tori and quantum tori for the quantum Gromov-
+
+      Hausdorff propinquity: an explicit approach. Mu�nster J. Math. 8 (2015) 57�98.
+[21] F. Latr�emoli`ere. The dual Gromov-Hausdorff propinquity. J. Math. Pures Appl. (9) 103
+
+      (2015) 303�351.
+[22] F. Latr�emoli`ere. The quantum Gromov-Hausdorff propinquity. Trans. Amer. Math. Soc. 368
+
+      (2016) 365�411.
+[23] F. Latr�emoli`ere. Quantum metric spaces and the Gromov-Hausdorff propinquity. In Non-
+
+      commutative geometry and optimal transport, volume 676 of Contemp. Math., pages 47�133.
+      Amer. Math. Soc., Providence, RI, 2016.
+[24] J. Madore. The fuzzy sphere. Classical Quantum Gravity 9 (1992) 69�87.
+[25] V. Paulsen. Completely bounded maps and operator algebras, volume 78 of Cambridge Studies
+      in Advanced Mathematics. Cambridge University Press, Cambridge, 2002.
+[26] M. A. Rieffel. Metrics on states from actions of compact groups. Doc. Math. 3 (1998) 215�229.
+[27] M. A. Rieffel. Metrics on state spaces. Doc. Math. 4 (1999) 559�600.
+[28] M. A. Rieffel. Gromov-Hausdorff distance for quantum metric spaces. Mem. Amer. Math.
+      Soc. 168 (2004) 1�65.
+[29] M. A. Rieffel. Matrix algebras converge to the sphere for quantum Gromov-Hausdorff distance.
+      Mem. Amer. Math. Soc. 168 (2004) 67�91.
+[30] E. M. Stein and R. Shakarchi. Fourier analysis, volume 1 of Princeton Lectures in Analysis.
+      Princeton University Press, Princeton, NJ, 2003. An introduction.
+[31] W. F. Stinespring. Positive functions on C-algebras. Proc. Amer. Math. Soc. 6 (1955) 211�
+      216.
+[32] A. Trautman. Spinors and the Dirac operator on hypersurfaces. I. General theory. J. Math.
+      Phys. 33 (1992) 4011�4019.
+
+    Institute for Mathematics, Astrophysics and Particle Physics, Radboud University
+Nijmegen, Heyendaalseweg 135, 6525 AJ Nijmegen, The Netherlands.
+
+    Email address: [dado pessoal removido]
+

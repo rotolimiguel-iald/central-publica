@@ -1,0 +1,23 @@
+{
+ "tipo": "ERRATA",
+ "rota_id": "formal.k05_t1_montagem_gh_tau_campo_v412",
+ "corrige": 2060,
+ "titulo": "15/11: errata da gerência ao seq 2060: H_erg NÃO é ausente no kernel; para a cunha da luz livre a ergodicidade é teorema sem condição (certificado habitado desde a v406)",
+ "resultado": "[REAL] O seq 2060 registra que H_erg (o centralizador do estado é trivial) é ausente no kernel. É falso negativo. O kernel tem LightRhoStar.centralizer_is_trivial (LightRhoStar.lean, linha 71), condicional a um FockCertificate, e o certificado está habitado: physicalFockCertificate (F1Fecho394/CanonicalFockModularCoreInputR1.lean, linha 126). O core e o selo da v411 trazem certificate_inhabited verdadeiro no registro fechamento_v406, e o Atlas tem o registro de 16/10/2026 dos 21 campos preenchidos. Um revisor distinto compilou a derivação da ergodicidade na forma da candidata a partir só do que o kernel já tinha (terceiro artefato, código de saída 0, só o trio); a gerência conferiu por busca recursiva no kernel. O levantamento de 15/11 (quarto artefato) repetia o erro numa segunda forma (condicional a um certificado não habitado), e a gerência o disse assim ao operador antes de corrigir na mesma conversa.",
+ "veredito": "H_ERG_NA_CUNHA_DA_LUZ_LIVRE_JA_ERA_TEOREMA_DO_KERNEL__CERTIFICADO_HABITADO__FALSO_NEGATIVO_DE_AFERICAO_CORRIGIDO",
+ "estatuto": "REAL",
+ "status": "EXAMINADA",
+ "olhou_dados": false,
+ "nao_refazer": "Não escrever que H_erg falta no kernel nem que o certificado do Fock não está habitado. Não afirmar ausência no kernel pela ferramenta de busca do Claude Code: ela respeita o gitignore e não enxerga a pasta F1Fecho394 (linha 37 do gitignore do Nós); usar grep recursivo pelo terminal ou script, e dizer qual consulta foi feita. Não buscar um teorema só por nomes adivinhados: o nome real era centralizer_is_trivial e a busca procurava centralizer_trivial.",
+ "proximo_passo": "A caixa da T1 para a cunha da luz livre fica: estado normal fiel e H_K-chapéu implicam a caixa. O Kimi decide na K07 se H_K-chapéu é o Axioma E transcrito (adendo B de 15/11 no túnel). O resíduo do horizonte da TGL não muda.",
+ "artefatos": [
+  "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\LightRhoStar.lean",
+  "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\F1Fecho394\\CanonicalFockModularCoreInputR1.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao\\scripts_ergodicidade_15nov\\TesteDuplicacao.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao\\LEVANTAMENTO_FRENTE_B_15nov\\L3-fiacao-na-luz.md",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao\\REVISAO_CANDIDATA_ERGODICIDADE_DE_MAUTNER.md",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao\\REVISAO_K05_T1.md",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\ADENDO_15nov_B_K07_a_gerencia_fez_a_construcao_2_e_a_ergodicidade_da_cunha_ja_era_do_kernel.md"
+ ],
+ "nota": "Erro da gerência c1, em nome próprio; herdado da conferência da K05 e do levantamento, e propagado ao Kimi pela ORDEM K07 (2d). Memória da casa: t1-ergodicidade-na-luz-candidata-15nov e grep-da-ferramenta-nao-ve-o-gitignore-15nov."
+}

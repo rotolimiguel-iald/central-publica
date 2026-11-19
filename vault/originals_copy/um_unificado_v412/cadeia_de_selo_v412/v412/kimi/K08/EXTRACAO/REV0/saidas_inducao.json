@@ -1,0 +1,3691 @@
+{
+  "schema": "k08-r4-induction-v1",
+  "model_calls": 0,
+  "llm_judge": false,
+  "seeds_preregistered_in_code": [
+    13,
+    29,
+    53,
+    79
+  ],
+  "full_cross_product_reported": true,
+  "mechanisms_are_not_models": true,
+  "original_text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+  "grammar_only_text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+  "items": [
+    {
+      "id": "F01",
+      "assertion": "A caixa vermelha contém duas cartas.",
+      "gabarito": "SIM",
+      "kind": "base"
+    },
+    {
+      "id": "F02",
+      "assertion": "O envelope está aberto.",
+      "gabarito": "NÃO",
+      "kind": "base"
+    },
+    {
+      "id": "F03",
+      "assertion": "A chave está na gaveta.",
+      "gabarito": "NÃO",
+      "kind": "base"
+    },
+    {
+      "id": "F04",
+      "assertion": "O relógio marca meio-dia.",
+      "gabarito": "SIM",
+      "kind": "base"
+    },
+    {
+      "id": "I01",
+      "assertion": "A caixa vermelha contém três cartas.",
+      "gabarito": "NÃO",
+      "kind": "bait_incompatible"
+    },
+    {
+      "id": "I02",
+      "assertion": "Há uma caneta sobre a mesa.",
+      "gabarito": "O TEXTO NÃO DIZ",
+      "kind": "bait_silent"
+    },
+    {
+      "id": "I03",
+      "assertion": "O relógio foi comprado ontem.",
+      "gabarito": "O TEXTO NÃO DIZ",
+      "kind": "bait_silent"
+    }
+  ],
+  "runs": [
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "ORDEM_ORIGINAL",
+      "seed": null,
+      "presented_ids": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "I01",
+        "I02",
+        "I03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nF02=NÃO\nF03=NÃO\nF04=SIM\nI01=NÃO\nI02=O TEXTO NÃO DIZ\nI03=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "F02": "NÃO",
+          "F03": "NÃO",
+          "F04": "SIM",
+          "I01": "NÃO",
+          "I02": "O TEXTO NÃO DIZ",
+          "I03": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "ORDEM_ORIGINAL",
+      "seed": null,
+      "presented_ids": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "I01",
+        "I02",
+        "I03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nF02=SIM\nF03=SIM\nF04=SIM\nI01=SIM\nI02=SIM\nI03=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "F02": "SIM",
+          "F03": "SIM",
+          "F04": "SIM",
+          "I01": "SIM",
+          "I02": "SIM",
+          "I03": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "ORDEM_ORIGINAL",
+      "seed": null,
+      "presented_ids": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "I01",
+        "I02",
+        "I03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nF02=NÃO\nF03=NÃO\nF04=SIM\nI01=NÃO\nI02=O TEXTO NÃO DIZ\nI03=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "F02": "NÃO",
+          "F03": "NÃO",
+          "F04": "SIM",
+          "I01": "NÃO",
+          "I02": "O TEXTO NÃO DIZ",
+          "I03": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "SEMENTE_13",
+      "seed": 13,
+      "presented_ids": [
+        "F04",
+        "F01",
+        "I02",
+        "I01",
+        "F02",
+        "I03",
+        "F03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF01=SIM\nI02=O TEXTO NÃO DIZ\nI01=NÃO\nF02=NÃO\nI03=O TEXTO NÃO DIZ\nF03=NÃO\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F01": "SIM",
+          "I02": "O TEXTO NÃO DIZ",
+          "I01": "NÃO",
+          "F02": "NÃO",
+          "I03": "O TEXTO NÃO DIZ",
+          "F03": "NÃO"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "SEMENTE_13",
+      "seed": 13,
+      "presented_ids": [
+        "F04",
+        "F01",
+        "I02",
+        "I01",
+        "F02",
+        "I03",
+        "F03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF01=SIM\nI02=SIM\nI01=SIM\nF02=SIM\nI03=SIM\nF03=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F01": "SIM",
+          "I02": "SIM",
+          "I01": "SIM",
+          "F02": "SIM",
+          "I03": "SIM",
+          "F03": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "SEMENTE_13",
+      "seed": 13,
+      "presented_ids": [
+        "F04",
+        "F01",
+        "I02",
+        "I01",
+        "F02",
+        "I03",
+        "F03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF01=NÃO\nI02=NÃO\nI01=SIM\nF02=NÃO\nI03=O TEXTO NÃO DIZ\nF03=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F01": "NÃO",
+          "I02": "NÃO",
+          "I01": "SIM",
+          "F02": "NÃO",
+          "I03": "O TEXTO NÃO DIZ",
+          "F03": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 3,
+        "total": 7,
+        "accuracy_given_parseable": 0.42857142857142855,
+        "joint_accuracy": 0.42857142857142855,
+        "per_id": {
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F01": {
+            "expected": "SIM",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "SEMENTE_29",
+      "seed": 29,
+      "presented_ids": [
+        "F04",
+        "F02",
+        "I02",
+        "I03",
+        "F03",
+        "F01",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF02=NÃO\nI02=O TEXTO NÃO DIZ\nI03=O TEXTO NÃO DIZ\nF03=NÃO\nF01=SIM\nI01=NÃO\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F02": "NÃO",
+          "I02": "O TEXTO NÃO DIZ",
+          "I03": "O TEXTO NÃO DIZ",
+          "F03": "NÃO",
+          "F01": "SIM",
+          "I01": "NÃO"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "SEMENTE_29",
+      "seed": 29,
+      "presented_ids": [
+        "F04",
+        "F02",
+        "I02",
+        "I03",
+        "F03",
+        "F01",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF02=SIM\nI02=SIM\nI03=SIM\nF03=SIM\nF01=SIM\nI01=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F02": "SIM",
+          "I02": "SIM",
+          "I03": "SIM",
+          "F03": "SIM",
+          "F01": "SIM",
+          "I01": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "SEMENTE_29",
+      "seed": 29,
+      "presented_ids": [
+        "F04",
+        "F02",
+        "I02",
+        "I03",
+        "F03",
+        "F01",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF02=NÃO\nI02=NÃO\nI03=SIM\nF03=NÃO\nF01=O TEXTO NÃO DIZ\nI01=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F02": "NÃO",
+          "I02": "NÃO",
+          "I03": "SIM",
+          "F03": "NÃO",
+          "F01": "O TEXTO NÃO DIZ",
+          "I01": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 3,
+        "total": 7,
+        "accuracy_given_parseable": 0.42857142857142855,
+        "joint_accuracy": 0.42857142857142855,
+        "per_id": {
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F01": {
+            "expected": "SIM",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": false
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "SEMENTE_53",
+      "seed": 53,
+      "presented_ids": [
+        "F01",
+        "I02",
+        "F03",
+        "I03",
+        "F04",
+        "F02",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nI02=O TEXTO NÃO DIZ\nF03=NÃO\nI03=O TEXTO NÃO DIZ\nF04=SIM\nF02=NÃO\nI01=NÃO\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "I02": "O TEXTO NÃO DIZ",
+          "F03": "NÃO",
+          "I03": "O TEXTO NÃO DIZ",
+          "F04": "SIM",
+          "F02": "NÃO",
+          "I01": "NÃO"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "SEMENTE_53",
+      "seed": 53,
+      "presented_ids": [
+        "F01",
+        "I02",
+        "F03",
+        "I03",
+        "F04",
+        "F02",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nI02=SIM\nF03=SIM\nI03=SIM\nF04=SIM\nF02=SIM\nI01=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "I02": "SIM",
+          "F03": "SIM",
+          "I03": "SIM",
+          "F04": "SIM",
+          "F02": "SIM",
+          "I01": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "SEMENTE_53",
+      "seed": 53,
+      "presented_ids": [
+        "F01",
+        "I02",
+        "F03",
+        "I03",
+        "F04",
+        "F02",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nI02=NÃO\nF03=NÃO\nI03=SIM\nF04=NÃO\nF02=O TEXTO NÃO DIZ\nI01=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "I02": "NÃO",
+          "F03": "NÃO",
+          "I03": "SIM",
+          "F04": "NÃO",
+          "F02": "O TEXTO NÃO DIZ",
+          "I01": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F04": {
+            "expected": "SIM",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": false
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "SEMENTE_79",
+      "seed": 79,
+      "presented_ids": [
+        "I02",
+        "I01",
+        "F01",
+        "I03",
+        "F03",
+        "F04",
+        "F02"
+      ],
+      "response": "INICIO_LEITURA_K08\nI02=O TEXTO NÃO DIZ\nI01=NÃO\nF01=SIM\nI03=O TEXTO NÃO DIZ\nF03=NÃO\nF04=SIM\nF02=NÃO\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "I02": "O TEXTO NÃO DIZ",
+          "I01": "NÃO",
+          "F01": "SIM",
+          "I03": "O TEXTO NÃO DIZ",
+          "F03": "NÃO",
+          "F04": "SIM",
+          "F02": "NÃO"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "SEMENTE_79",
+      "seed": 79,
+      "presented_ids": [
+        "I02",
+        "I01",
+        "F01",
+        "I03",
+        "F03",
+        "F04",
+        "F02"
+      ],
+      "response": "INICIO_LEITURA_K08\nI02=SIM\nI01=SIM\nF01=SIM\nI03=SIM\nF03=SIM\nF04=SIM\nF02=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "I02": "SIM",
+          "I01": "SIM",
+          "F01": "SIM",
+          "I03": "SIM",
+          "F03": "SIM",
+          "F04": "SIM",
+          "F02": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F01": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F04": {
+            "expected": "SIM",
+            "observed": "SIM",
+            "correct": true
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "ORIGINAL",
+      "text": "A caixa vermelha contém duas cartas. O envelope não está aberto. A chave não está na gaveta. O relógio marca meio-dia.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "SEMENTE_79",
+      "seed": 79,
+      "presented_ids": [
+        "I02",
+        "I01",
+        "F01",
+        "I03",
+        "F03",
+        "F04",
+        "F02"
+      ],
+      "response": "INICIO_LEITURA_K08\nI02=SIM\nI01=NÃO\nF01=NÃO\nI03=SIM\nF03=NÃO\nF04=O TEXTO NÃO DIZ\nF02=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "I02": "SIM",
+          "I01": "NÃO",
+          "F01": "NÃO",
+          "I03": "SIM",
+          "F03": "NÃO",
+          "F04": "O TEXTO NÃO DIZ",
+          "F02": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F01": {
+            "expected": "SIM",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "NÃO",
+            "observed": "NÃO",
+            "correct": true
+          },
+          "F04": {
+            "expected": "SIM",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": false
+          },
+          "F02": {
+            "expected": "NÃO",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "SIM",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "NÃO",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "ORDEM_ORIGINAL",
+      "seed": null,
+      "presented_ids": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "I01",
+        "I02",
+        "I03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=O TEXTO NÃO DIZ\nF02=O TEXTO NÃO DIZ\nF03=O TEXTO NÃO DIZ\nF04=O TEXTO NÃO DIZ\nI01=O TEXTO NÃO DIZ\nI02=O TEXTO NÃO DIZ\nI03=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "O TEXTO NÃO DIZ",
+          "F02": "O TEXTO NÃO DIZ",
+          "F03": "O TEXTO NÃO DIZ",
+          "F04": "O TEXTO NÃO DIZ",
+          "I01": "O TEXTO NÃO DIZ",
+          "I02": "O TEXTO NÃO DIZ",
+          "I03": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "ORDEM_ORIGINAL",
+      "seed": null,
+      "presented_ids": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "I01",
+        "I02",
+        "I03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nF02=SIM\nF03=SIM\nF04=SIM\nI01=SIM\nI02=SIM\nI03=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "F02": "SIM",
+          "F03": "SIM",
+          "F04": "SIM",
+          "I01": "SIM",
+          "I02": "SIM",
+          "I03": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 0,
+        "total": 7,
+        "accuracy_given_parseable": 0.0,
+        "joint_accuracy": 0.0,
+        "per_id": {
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "ORDEM_ORIGINAL",
+      "seed": null,
+      "presented_ids": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "I01",
+        "I02",
+        "I03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nF02=NÃO\nF03=NÃO\nF04=SIM\nI01=NÃO\nI02=O TEXTO NÃO DIZ\nI03=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "F02": "NÃO",
+          "F03": "NÃO",
+          "F04": "SIM",
+          "I01": "NÃO",
+          "I02": "O TEXTO NÃO DIZ",
+          "I03": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "SEMENTE_13",
+      "seed": 13,
+      "presented_ids": [
+        "F04",
+        "F01",
+        "I02",
+        "I01",
+        "F02",
+        "I03",
+        "F03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=O TEXTO NÃO DIZ\nF01=O TEXTO NÃO DIZ\nI02=O TEXTO NÃO DIZ\nI01=O TEXTO NÃO DIZ\nF02=O TEXTO NÃO DIZ\nI03=O TEXTO NÃO DIZ\nF03=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "O TEXTO NÃO DIZ",
+          "F01": "O TEXTO NÃO DIZ",
+          "I02": "O TEXTO NÃO DIZ",
+          "I01": "O TEXTO NÃO DIZ",
+          "F02": "O TEXTO NÃO DIZ",
+          "I03": "O TEXTO NÃO DIZ",
+          "F03": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "SEMENTE_13",
+      "seed": 13,
+      "presented_ids": [
+        "F04",
+        "F01",
+        "I02",
+        "I01",
+        "F02",
+        "I03",
+        "F03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF01=SIM\nI02=SIM\nI01=SIM\nF02=SIM\nI03=SIM\nF03=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F01": "SIM",
+          "I02": "SIM",
+          "I01": "SIM",
+          "F02": "SIM",
+          "I03": "SIM",
+          "F03": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 0,
+        "total": 7,
+        "accuracy_given_parseable": 0.0,
+        "joint_accuracy": 0.0,
+        "per_id": {
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "SEMENTE_13",
+      "seed": 13,
+      "presented_ids": [
+        "F04",
+        "F01",
+        "I02",
+        "I01",
+        "F02",
+        "I03",
+        "F03"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF01=NÃO\nI02=NÃO\nI01=SIM\nF02=NÃO\nI03=O TEXTO NÃO DIZ\nF03=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F01": "NÃO",
+          "I02": "NÃO",
+          "I01": "SIM",
+          "F02": "NÃO",
+          "I03": "O TEXTO NÃO DIZ",
+          "F03": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "SEMENTE_29",
+      "seed": 29,
+      "presented_ids": [
+        "F04",
+        "F02",
+        "I02",
+        "I03",
+        "F03",
+        "F01",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=O TEXTO NÃO DIZ\nF02=O TEXTO NÃO DIZ\nI02=O TEXTO NÃO DIZ\nI03=O TEXTO NÃO DIZ\nF03=O TEXTO NÃO DIZ\nF01=O TEXTO NÃO DIZ\nI01=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "O TEXTO NÃO DIZ",
+          "F02": "O TEXTO NÃO DIZ",
+          "I02": "O TEXTO NÃO DIZ",
+          "I03": "O TEXTO NÃO DIZ",
+          "F03": "O TEXTO NÃO DIZ",
+          "F01": "O TEXTO NÃO DIZ",
+          "I01": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "SEMENTE_29",
+      "seed": 29,
+      "presented_ids": [
+        "F04",
+        "F02",
+        "I02",
+        "I03",
+        "F03",
+        "F01",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF02=SIM\nI02=SIM\nI03=SIM\nF03=SIM\nF01=SIM\nI01=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F02": "SIM",
+          "I02": "SIM",
+          "I03": "SIM",
+          "F03": "SIM",
+          "F01": "SIM",
+          "I01": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 0,
+        "total": 7,
+        "accuracy_given_parseable": 0.0,
+        "joint_accuracy": 0.0,
+        "per_id": {
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "SEMENTE_29",
+      "seed": 29,
+      "presented_ids": [
+        "F04",
+        "F02",
+        "I02",
+        "I03",
+        "F03",
+        "F01",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF04=SIM\nF02=NÃO\nI02=NÃO\nI03=SIM\nF03=NÃO\nF01=O TEXTO NÃO DIZ\nI01=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F04": "SIM",
+          "F02": "NÃO",
+          "I02": "NÃO",
+          "I03": "SIM",
+          "F03": "NÃO",
+          "F01": "O TEXTO NÃO DIZ",
+          "I01": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "SEMENTE_53",
+      "seed": 53,
+      "presented_ids": [
+        "F01",
+        "I02",
+        "F03",
+        "I03",
+        "F04",
+        "F02",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=O TEXTO NÃO DIZ\nI02=O TEXTO NÃO DIZ\nF03=O TEXTO NÃO DIZ\nI03=O TEXTO NÃO DIZ\nF04=O TEXTO NÃO DIZ\nF02=O TEXTO NÃO DIZ\nI01=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "O TEXTO NÃO DIZ",
+          "I02": "O TEXTO NÃO DIZ",
+          "F03": "O TEXTO NÃO DIZ",
+          "I03": "O TEXTO NÃO DIZ",
+          "F04": "O TEXTO NÃO DIZ",
+          "F02": "O TEXTO NÃO DIZ",
+          "I01": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "SEMENTE_53",
+      "seed": 53,
+      "presented_ids": [
+        "F01",
+        "I02",
+        "F03",
+        "I03",
+        "F04",
+        "F02",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nI02=SIM\nF03=SIM\nI03=SIM\nF04=SIM\nF02=SIM\nI01=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "I02": "SIM",
+          "F03": "SIM",
+          "I03": "SIM",
+          "F04": "SIM",
+          "F02": "SIM",
+          "I01": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 0,
+        "total": 7,
+        "accuracy_given_parseable": 0.0,
+        "joint_accuracy": 0.0,
+        "per_id": {
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "SEMENTE_53",
+      "seed": 53,
+      "presented_ids": [
+        "F01",
+        "I02",
+        "F03",
+        "I03",
+        "F04",
+        "F02",
+        "I01"
+      ],
+      "response": "INICIO_LEITURA_K08\nF01=SIM\nI02=NÃO\nF03=NÃO\nI03=SIM\nF04=NÃO\nF02=O TEXTO NÃO DIZ\nI01=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "F01": "SIM",
+          "I02": "NÃO",
+          "F03": "NÃO",
+          "I03": "SIM",
+          "F04": "NÃO",
+          "F02": "O TEXTO NÃO DIZ",
+          "I01": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "ORACULO_SINTETICO",
+      "order_name": "SEMENTE_79",
+      "seed": 79,
+      "presented_ids": [
+        "I02",
+        "I01",
+        "F01",
+        "I03",
+        "F03",
+        "F04",
+        "F02"
+      ],
+      "response": "INICIO_LEITURA_K08\nI02=O TEXTO NÃO DIZ\nI01=O TEXTO NÃO DIZ\nF01=O TEXTO NÃO DIZ\nI03=O TEXTO NÃO DIZ\nF03=O TEXTO NÃO DIZ\nF04=O TEXTO NÃO DIZ\nF02=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "I02": "O TEXTO NÃO DIZ",
+          "I01": "O TEXTO NÃO DIZ",
+          "F01": "O TEXTO NÃO DIZ",
+          "I03": "O TEXTO NÃO DIZ",
+          "F03": "O TEXTO NÃO DIZ",
+          "F04": "O TEXTO NÃO DIZ",
+          "F02": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 7,
+        "total": 7,
+        "accuracy_given_parseable": 1.0,
+        "joint_accuracy": 1.0,
+        "per_id": {
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "FORMATO_APENAS_SIM",
+      "order_name": "SEMENTE_79",
+      "seed": 79,
+      "presented_ids": [
+        "I02",
+        "I01",
+        "F01",
+        "I03",
+        "F03",
+        "F04",
+        "F02"
+      ],
+      "response": "INICIO_LEITURA_K08\nI02=SIM\nI01=SIM\nF01=SIM\nI03=SIM\nF03=SIM\nF04=SIM\nF02=SIM\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "I02": "SIM",
+          "I01": "SIM",
+          "F01": "SIM",
+          "I03": "SIM",
+          "F03": "SIM",
+          "F04": "SIM",
+          "F02": "SIM"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 0,
+        "total": 7,
+        "accuracy_given_parseable": 0.0,
+        "joint_accuracy": 0.0,
+        "per_id": {
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        }
+      ]
+    },
+    {
+      "condition": "SO_GRAMATICA",
+      "text": "O jardim tem roseiras junto ao muro. O portão permanece fechado durante a chuva.",
+      "mechanism": "MEMORIA_POSICIONAL_ORIGINAL",
+      "order_name": "SEMENTE_79",
+      "seed": 79,
+      "presented_ids": [
+        "I02",
+        "I01",
+        "F01",
+        "I03",
+        "F03",
+        "F04",
+        "F02"
+      ],
+      "response": "INICIO_LEITURA_K08\nI02=SIM\nI01=NÃO\nF01=NÃO\nI03=SIM\nF03=NÃO\nF04=O TEXTO NÃO DIZ\nF02=O TEXTO NÃO DIZ\nFIM_LEITURA_K08\n",
+      "score": {
+        "format_ok": true,
+        "canonical_format": true,
+        "status": "OK",
+        "errors": [],
+        "details": [],
+        "answers": {
+          "I02": "SIM",
+          "I01": "NÃO",
+          "F01": "NÃO",
+          "I03": "SIM",
+          "F03": "NÃO",
+          "F04": "O TEXTO NÃO DIZ",
+          "F02": "O TEXTO NÃO DIZ"
+        },
+        "outer_prose": false,
+        "order_matches_prompt": true,
+        "record_count": 7,
+        "correct": 2,
+        "total": 7,
+        "accuracy_given_parseable": 0.2857142857142857,
+        "joint_accuracy": 0.2857142857142857,
+        "per_id": {
+          "I02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "I01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "F01": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "I03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "SIM",
+            "correct": false
+          },
+          "F03": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "NÃO",
+            "correct": false
+          },
+          "F04": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          },
+          "F02": {
+            "expected": "O TEXTO NÃO DIZ",
+            "observed": "O TEXTO NÃO DIZ",
+            "correct": true
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "I02",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "I01",
+          "kind": "bait_incompatible",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F01",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "I03",
+          "kind": "bait_silent",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "SIM"
+        },
+        {
+          "id": "F03",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "NÃO"
+        },
+        {
+          "id": "F04",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        },
+        {
+          "id": "F02",
+          "kind": "base",
+          "expected": "O TEXTO NÃO DIZ",
+          "observed": "O TEXTO NÃO DIZ"
+        }
+      ]
+    }
+  ]
+}

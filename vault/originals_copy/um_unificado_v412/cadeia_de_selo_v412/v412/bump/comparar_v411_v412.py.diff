@@ -1,0 +1,108 @@
+--- v411/comparar_v410_v411.py
++++ v412/comparar_v411_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/comparar_v410_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/comparar_v411_v412.py.diff
+@@ -3,5 +4,5 @@
+-"""comparar_v410_v411.py -- NADA DA v410 PERDIDO: compara, no a no (AST), a v410 SELADA (base_v410\\um.py) com o candidato v411 (ou, com V411_ENSAIO_TOPO_PROPOSTO=1, com o ARTEFATO DE ENSAIO do topo proposto, que NAO e' candidato):
+-todo no nomeado da v410 existe IGUAL, ou foi mudado por um PATCH declarado (EXPLICACOES, uma por no); nenhum no e' removido. Todo no mudado SEM explicacao, todo no removido, todo no anonimo perdido ou novo reprovam (rc 1).
+-A v411 NAO tem modulo novo: _EMBEDDED_KERNEL_FILES, _LEAN_THEOREM_FLAGS, prove_external_ladder e _ESQUELETO_STONES ficam IGUAIS, e nenhum contrato que pina a escada muda (a escada e' a da v410). Os nos NOVOS sao exatamente os do
+-bloco de runtime da v411 (o registro com funcao h0dn_bg1_v411, o miolo _v411_*/_V411_*), LIDOS do NOVOS_NOMES do gerar_candidato_v411.py, nunca digitados. Os patches do manifesto (campo `patches`) sao mapeados aos nos que eles
+-mudam (PATCH_PARA_NOS): o conjunto de ids tem de ser IGUAL ao do manifesto e a uniao dos nos IGUAL aos nos mudados. O que nasceu na v410 (os quatro registros com funcao e o miolo _v410_*/_V410_*) segue IGUAL, salvo o
++"""comparar_v411_v412.py -- NADA DA v411 PERDIDO: compara, no a no (AST), a v411 SELADA (base_v411\\um.py) com o candidato v412 (ou, com V412_ENSAIO_TOPO_PROPOSTO=1, com o ARTEFATO DE ENSAIO do topo proposto, que NAO e' candidato):
++todo no nomeado da v411 existe IGUAL, ou foi mudado por um PATCH declarado (EXPLICACOES, uma por no); nenhum no e' removido. Todo no mudado SEM explicacao, todo no removido, todo no anonimo perdido ou novo reprovam (rc 1).
++A v412 NAO tem modulo novo: _EMBEDDED_KERNEL_FILES, _LEAN_THEOREM_FLAGS, prove_external_ladder e _ESQUELETO_STONES ficam IGUAIS, e nenhum contrato que pina a escada muda (a escada e' a da v411). Os nos NOVOS sao exatamente os do
++bloco de runtime da v412 (o registro com funcao h0dn_bg1_v411, o miolo _v412_*/_V412_*), LIDOS do NOVOS_NOMES do gerar_candidato_v412.py, nunca digitados. Os patches do manifesto (campo `patches`) sao mapeados aos nos que eles
++mudam (PATCH_PARA_NOS): o conjunto de ids tem de ser IGUAL ao do manifesto e a uniao dos nos IGUAL aos nos mudados. O que nasceu na v411 (os quatro registros com funcao e o miolo _v411_*/_V411_*) segue IGUAL, salvo o
+@@ -9,3 +10,3 @@
+-o topo e as duas trocas, a frase ao lado do estatuto e do coracao, a secao antes da da v410), o .md (o quadro e a linha), o conversor TXT (A2: uma linha antes da dissolucao das chaves) e o main (UMA instrucao, logo depois
+-do bloco do HMS/13 e antes de emit_figures; o selo ganha so' h0dn_bg1_v411 e registros_v411). Escreve COMPARACAO_V410_v411.json em DL.saida (no ensaio, fora de work\\, com a marca de ensaio).
+-uso: python -I -B -X utf8 comparar_v410_v411.py"""
++o topo e as duas trocas, a frase ao lado do estatuto e do coracao, a secao antes da da v411), o .md (o quadro e a linha), o conversor TXT (A2: uma linha antes da dissolucao das chaves) e o main (UMA instrucao, logo depois
++do bloco do HMS/13 e antes de emit_figures; o selo ganha so' h0dn_bg1_v411 e registros_v411). Escreve COMPARACAO_V411_v412.json em DL.saida (no ensaio, fora de work\\, com a marca de ensaio).
++uso: python -I -B -X utf8 comparar_v411_v412.py"""
+@@ -15 +16 @@
+-import delta_v411 as DL  # noqa: E402
++import delta_v412 as DL  # noqa: E402
+@@ -19 +20 @@
+-assert E_ANT == E_NOVA and NB == 0 and NM == 0, ("a v411 nao tem modulo nem bandeira nova (manifesto)", CM["escada"], NB, NM)
++assert E_ANT == E_NOVA and NB == 0 and NM == 0, ("a v412 nao tem modulo nem bandeira nova (manifesto)", CM["escada"], NB, NM)
+@@ -22 +23 @@
+-_G = ast.parse(open(os.path.join(HERE, "gerar_candidato_v411.py"), encoding="utf-8").read())
++_G = ast.parse(open(os.path.join(HERE, "gerar_candidato_v412.py"), encoding="utf-8").read())
+@@ -26 +27 @@
+-_ORDEM_MD = ast.literal_eval(repr(DL.MD_ROTULO_H0DN_V411))
++_ORDEM_MD = ast.literal_eval(repr(DL.MD_ROTULO_H0DN_V412))
+@@ -29,6 +30,6 @@
+-    "_V410_SPECS": "C13: kh_n1_cobertura_v410 h2/h3/h6 -> pisos e h8 -> tamanho minimo (a igualdade exata da v411 esta' em kh_n1_cobertura_v411), +1 errata; cunhagens_v410 nao muda; os vereditos nao mudam",
+-    "main": "N00/N02: UMA instrucao try/AVISO com a chamada do `h0dn_bg1_v411` e os registros por spec da v411 (`_v411_rodar_specs`), logo depois do bloco do h0dn_fontes_hms13_v410 e antes de emit_figures; o selo ganha `h0dn_bg1_v411` e `registros_v411`; nada do que existia muda",
+-    "build_pt": "W03/W03b/W06/W07/W08/W10/W11/W04: o quadro H0DN x BG1 antes do quadro da v397 (que fica) e a remissao logo depois dele; o paragrafo de apresentacao abre com o topo (5.1 b) e as duas trocas ditas (tambem no metodo); a frase ao lado do estatuto da prova e do coracao; a secao «O teste decisivo» antes da secao da v410",
+-    "build_en": "W03/W03b/W06/W07/W08/W10/W11/W05: the same in the EN article (the H0DN x BG1 box above the v397 box, the remission, the top text and the two stated swaps, the sentence beside the status of the proof and the heart, the section before the v410 one)",
+-    "emit_canonical_md": "W03_quadro_md/W09: o quadro H0DN x BG1 no topo do .md (antes do quadro da v397) e a linha «%s» antes da linha da IALD2 (v410)" % _ORDEM_MD,
+-    "_tex_to_txt": "W12 (A2 da revisao de terceiro da v410): uma linha que agrupa o expoente ^{X} de 2 ou mais caracteres como ^(X) antes de dissolver as chaves; nada mais no conversor muda",
++    "_V410_SPECS": "C13: kh_n1_cobertura_v410 h2/h3/h6 -> pisos e h8 -> tamanho minimo (a igualdade exata da v412 esta' em kh_n1_cobertura_v411), +1 errata; cunhagens_v410 nao muda; os vereditos nao mudam",
++    "main": "N00/N02: UMA instrucao try/AVISO com a chamada do `h0dn_bg1_v411` e os registros por spec da v412 (`_v411_rodar_specs`), logo depois do bloco do h0dn_fontes_hms13_v410 e antes de emit_figures; o selo ganha `h0dn_bg1_v411` e `registros_v411`; nada do que existia muda",
++    "build_pt": "W03/W03b/W06/W07/W08/W10/W11/W04: o quadro H0DN x BG1 antes do quadro da v397 (que fica) e a remissao logo depois dele; o paragrafo de apresentacao abre com o topo (5.1 b) e as duas trocas ditas (tambem no metodo); a frase ao lado do estatuto da prova e do coracao; a secao «O teste decisivo» antes da secao da v411",
++    "build_en": "W03/W03b/W06/W07/W08/W10/W11/W05: the same in the EN article (the H0DN x BG1 box above the v397 box, the remission, the top text and the two stated swaps, the sentence beside the status of the proof and the heart, the section before the v411 one)",
++    "emit_canonical_md": "W03_quadro_md/W09: o quadro H0DN x BG1 no topo do .md (antes do quadro da v397) e a linha «%s» antes da linha da IALD2 (v411)" % _ORDEM_MD,
++    "_tex_to_txt": "W12 (A2 da revisao de terceiro da v411): uma linha que agrupa o expoente ^{X} de 2 ou mais caracteres como ^(X) antes de dissolver as chaves; nada mais no conversor muda",
+@@ -37,2 +38,2 @@
+-PATCH_PARA_NOS = {"W01_versao": ["UM_VERSION"], "W03_quadro_md": ["emit_canonical_md"], "W09_md": ["emit_canonical_md"], "W12_a2_txt": ["_tex_to_txt"], "W02_runtime_v411": [],
+-                  "C13_specs_v410_pisos": ["_V410_SPECS"], "N00_main_h0dn_v411": ["main"], "N02_selo": ["main"]}
++PATCH_PARA_NOS = {"W01_versao": ["UM_VERSION"], "W03_quadro_md": ["emit_canonical_md"], "W09_md": ["emit_canonical_md"], "W12_a2_txt": ["_tex_to_txt"], "W02_runtime_v412": [],
++                  "C13_specs_v411_pisos": ["_V410_SPECS"], "N00_main_h0dn_v412": ["main"], "N02_selo": ["main"]}
+@@ -40 +41 @@
+-    for _p in ("W06_topo_", "W07_troca1_", "W03_quadro_", "W03b_remissao_", "W10_estatuto_", "W08_troca2_", "W08_troca2_metodo_", "W11_coracao_", "W13_p2_v387_"):   # (v411, aditivo da gerencia de 12/11: W13, o P2 ao lado da v387)
++    for _p in ("W06_topo_", "W07_troca1_", "W03_quadro_", "W03b_remissao_", "W10_estatuto_", "W08_troca2_", "W08_troca2_metodo_", "W11_coracao_", "W13_p2_v387_"):   # (v412, aditivo da gerencia de 12/11: W13, o P2 ao lado da v387)
+@@ -45 +46 @@
+-KERNEL_IGUAL = ("_EMBEDDED_KERNEL_FILES", "_LEAN_THEOREM_FLAGS", "prove_external_ladder", "_ESQUELETO_STONES")   # a v411 nao tem modulo novo: os quatro nos do kernel ficam IGUAIS
++KERNEL_IGUAL = ("_EMBEDDED_KERNEL_FILES", "_LEAN_THEOREM_FLAGS", "prove_external_ladder", "_ESQUELETO_STONES")   # a v412 nao tem modulo novo: os quatro nos do kernel ficam IGUAIS
+@@ -48 +49 @@
+-MEXIDOS_DECLARADOS_POR_VERSAO = {"v410": {"_V410_SPECS": "C13"}, "v409": {}, "v408": {}, "v407": {}, "v406": {}, "v405": {}}
++MEXIDOS_DECLARADOS_POR_VERSAO = {"v411": {"_V410_SPECS": "C13"}, "v409": {}, "v408": {}, "v407": {}, "v406": {}, "v405": {}}
+@@ -81 +82 @@
+-# os nos anonimos novos esperados: so' os dois `update` que entregam as fontes e as falas da v411 ao motor de registros (v392)
++# os nos anonimos novos esperados: so' os dois `update` que entregam as fontes e as falas da v412 ao motor de registros (v392)
+@@ -85 +86 @@
+-# ---- nenhum contrato que pina a escada muda (a escada da v411 e' a da v410): a contagem de {'expected_ladder': E} e' a mesma, e todo no que a tem fica IGUAL
++# ---- nenhum contrato que pina a escada muda (a escada da v412 e' a da v411): a contagem de {'expected_ladder': E} e' a mesma, e todo no que a tem fica IGUAL
+@@ -104 +105 @@
+-    return {"base_v410": ast.literal_eval(da["UM_VERSION"].value) == DL.BASE_VERSION, "candidato_v411": ast.literal_eval(db["UM_VERSION"].value) == DL.UM_VERSION}
++    return {"base_v411": ast.literal_eval(da["UM_VERSION"].value) == DL.BASE_VERSION, "candidato_v412": ast.literal_eval(db["UM_VERSION"].value) == DL.UM_VERSION}
+@@ -155 +156 @@
+-    p2_ = acha("_v411_p2_ao_lado_tex(core, '%s')" % lg)   # (v411, aditivo de 12/11) o P2 ao lado da v387
++    p2_ = acha("_v411_p2_ao_lado_tex(core, '%s')" % lg)   # (v412, aditivo de 12/11) o P2 ao lado da v387
+@@ -159 +160 @@
+-    tx1 = ("lê a razão de Hubble pelo teste acima", "Remissão expressa (registro da v410)") if lg == "pt" else ("reads the Hubble ratio through the test above", "Express remission (v410 record)")
++    tx1 = ("lê a razão de Hubble pelo teste acima", "Remissão expressa (registro da v411)") if lg == "pt" else ("reads the Hubble ratio through the test above", "Express remission (v411 record)")
+@@ -164 +165 @@
+-    return {"nada_removido_so_insercao_ou_troca": all(op[0] in ("insert", "replace") for op in ops) and len(b) == len(a) + 6,   # (v411: +6 -- o quadro, a remissao, o estatuto, o coracao, a secao e o P2 ao lado da v387)
++    return {"nada_removido_so_insercao_ou_troca": all(op[0] in ("insert", "replace") for op in ops) and len(b) == len(a) + 6,   # (v412: +6 -- o quadro, a remissao, o estatuto, o coracao, a secao e o P2 ao lado da v387)
+@@ -170 +171 @@
+-            "a_secao_nova_uma_vez_logo_antes_da_da_v410": len(s_) == 1 and "iald2_v410" in vizinho(s_[0], 1),
++            "a_secao_nova_uma_vez_logo_antes_da_da_v411": len(s_) == 1 and "iald2_v410" in vizinho(s_[0], 1),
+@@ -181 +182 @@
+-    qj = [j for j in ib if "_v411_quadro_md(core.get('h0dn_bg1_v411')" in tb[j]]; lj = [j for j in ib if DL.MD_ROTULO_H0DN_V411 in tb[j] and "_v411_linha_md(core.get('h0dn_bg1_v411'))" in tb[j]]
++    qj = [j for j in ib if "_v411_quadro_md(core.get('h0dn_bg1_v411')" in tb[j]]; lj = [j for j in ib if DL.MD_ROTULO_H0DN_V412 in tb[j] and "_v411_linha_md(core.get('h0dn_bg1_v411'))" in tb[j]]
+@@ -183 +184 @@
+-            "a_linha_do_h0dn_v411_logo_antes_da_da_iald2_v410": len(lj) == 1 and lj[0] + 1 < len(b) and "IALD2 (v410" in _txt(b[lj[0] + 1])}
++            "a_linha_do_h0dn_v412_logo_antes_da_da_iald2_v411": len(lj) == 1 and lj[0] + 1 < len(b) and "IALD2 (v411" in _txt(b[lj[0] + 1])}
+@@ -208,2 +209,2 @@
+-    return {"uma_unica_instrucao_inserida": ok_ins, "a_instrucao_chama_o_h0dn_v411_e_depois_os_specs": "h0dn_bg1_v411(core)" in txt and "_v411_rodar_specs(core)" in txt and 0 <= txt.find("h0dn_bg1_v411(core)") < txt.find("_v411_rodar_specs(core)"),
+-            "logo_depois_do_bloco_do_hms13_v410": "h0dn_fontes_hms13_v410(core)" in anterior or "_v410_rodar_specs" in anterior, "logo_antes_do_emit_figures": "emit_figures" in seguinte,
++    return {"uma_unica_instrucao_inserida": ok_ins, "a_instrucao_chama_o_h0dn_v412_e_depois_os_specs": "h0dn_bg1_v411(core)" in txt and "_v411_rodar_specs(core)" in txt and 0 <= txt.find("h0dn_bg1_v411(core)") < txt.find("_v411_rodar_specs(core)"),
++            "logo_depois_do_bloco_do_hms13_v411": "h0dn_fontes_hms13_v410(core)" in anterior or "_v410_rodar_specs" in anterior, "logo_antes_do_emit_figures": "emit_figures" in seguinte,
+@@ -211 +212 @@
+-            "o_selo_so_ganha_as_duas_chaves_da_v411": bool(sel) and sel["chaves_da_base_preservadas_na_ordem"] and sel["valores_da_base_iguais"] and sorted(sel["chaves_novas"]) == sorted(["h0dn_bg1_v411", "registros_v411"]),
++            "o_selo_so_ganha_as_duas_chaves_da_v412": bool(sel) and sel["chaves_da_base_preservadas_na_ordem"] and sel["valores_da_base_iguais"] and sorted(sel["chaves_novas"]) == sorted(["h0dn_bg1_v411", "registros_v411"]),
+@@ -235 +236 @@
+-for v_ in ("v410", "v409", "v408", "v407", "v406", "v405"):
++for v_ in ("v411", "v409", "v408", "v407", "v406", "v405"):
+@@ -243 +244 @@
+-res = {"contrato": "COMPARACAO_V410_v411", **DL.MARCA_ENSAIO, "artefato": DL.ROTULO_DO_ARTEFATO, "nos_nomeados_v410": len(da), "iguais": len(ig), "mudados": {k: EXPLICACOES.get(k, "SEM EXPLICACAO") for k in mud}, "n_mudados": len(mud),
++res = {"contrato": "COMPARACAO_V411_v412", **DL.MARCA_ENSAIO, "artefato": DL.ROTULO_DO_ARTEFATO, "nos_nomeados_v411": len(da), "iguais": len(ig), "mudados": {k: EXPLICACOES.get(k, "SEM EXPLICACAO") for k in mud}, "n_mudados": len(mud),
+@@ -245 +246 @@
+-       "anonimos_perdidos": [ast.unparse(n)[:160] for n in anon_perdidos], "anonimos_novos": anon_novos_txt, "os_dois_anonimos_novos_sao_os_update_das_fontes_e_das_falas_v411": anon_novos_ok,
++       "anonimos_perdidos": [ast.unparse(n)[:160] for n in anon_perdidos], "anonimos_novos": anon_novos_txt, "os_dois_anonimos_novos_sao_os_update_das_fontes_e_das_falas_v412": anon_novos_ok,
+@@ -253 +254 @@
+-_p = DL.saida("COMPARACAO_V410_v411.json")
++_p = DL.saida("COMPARACAO_V411_v412.json")

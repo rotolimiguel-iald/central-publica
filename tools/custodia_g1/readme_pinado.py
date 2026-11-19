@@ -244,7 +244,8 @@ def b_mudou(C):
             ("Ready paragraph \u2014 **%s** \u2014 in [`ESTADO_ATUAL.md`](%s) and the ledger (statutes, quotes, machine line)." % (tp, C.u("estado"))) if tp
             else ("Ready paragraphs: [`ESTADO_ATUAL.md`](%s) and the ledger." % C.u("estado"))))
     cm = v("custodia.commit_espelho")
-    if cm:
+    # (13/11/2026, o teto do README): com o H0DN aberto a frase sai; ela nasce velha por construção (o commit da custódia ainda não existe quando o README é gerado)
+    if cm and not h0dn_aberto(C):
         t += " Latest published custody commit: `custodia(%s)` `%s` (%s)." % (v("custodia.versao_do_commit"), cm[:8], v("custodia.data_do_commit"))
     return t + "\n"
 
@@ -286,7 +287,9 @@ def b_primordial_h0dn(C):
     if s.count(_ANCORA_HUBBLE) != 1:
         raise Falha("H0DN aberto: a ancora do painel da Fase 9 V2 nao esta uma vez no b_primordial")
     i = s.index(_ANCORA_HUBBLE)
-    return s[:i + 2] + "\n" + C.v("h0dn.readme.painel") + "\n\n" + C.v("h0dn.readme.fase9_v2") + "\n\n> " + C.v("h0dn.readme.primordial_5sigma") + "\n"
+    # AO LADO (13/11/2026, claude-site-custodia; a vitrine, parte 3; decisão 5 do operador): o registro da Fase 9 V2 sai do topo e vai, inteiro, para junto da
+    # tabela dos ritos (b_ritos_h0dn); o topo fica com o painel do resultado e a frase da régua
+    return s[:i + 2] + "\n" + C.v("h0dn.readme.painel") + "\n\n> " + C.v("h0dn.readme.primordial_5sigma") + "\n"
 
 
 def b_hubble_pt_h0dn(C):
@@ -300,7 +303,12 @@ def b_status_h0dn(C):
     d = C.v("hubble.degrau_creditacao_sigma")
     velho = ("What nature decides is not proved: the decisive open factor is **\u03b2_TGL in nature at \u2265 %d\u03c3**. *Provada, como validade, em tr\u00eas apoios; "
              "ainda n\u00e3o creditada; o fator decisivo aberto \u00e9 \u03b2_TGL na natureza a %d\u03c3.*" % (d, d))
-    return _trocar(s, velho, C.v("h0dn.readme.status_5sigma"), "b_status")
+    novo = C.v("h0dn.readme.status_5sigma")
+    # (13/11/2026, o estatuto sem repetir): o texto ratificado em 13/11 já diz a creditação («Creditation is not ours to give: CONFIRMED is accreditation…»);
+    # a frase do gerador que a dizia logo antes sai junto, e a linha sai como o operador a ratificou. Um texto que não a diga mantém a frase do gerador.
+    if "CONFIRMED is accreditation" in novo:
+        velho = "Not yet accredited: CONFIRMED is accreditation, the one refused word. " + velho
+    return _trocar(s, velho, novo, "b_status")
 
 
 def b_ritos_h0dn(C):
@@ -308,7 +316,36 @@ def b_ritos_h0dn(C):
     if not h0dn_aberto(C):
         return s
     velho = "| Hubble ratio, Phase 9 V2 | `NOT_FALSIFIED_POWERED` (the panel at the top) | \u03b2 in nature at %d\u03c3: the step was not reached |\n" % C.v("hubble.degrau_creditacao_sigma")
-    return _trocar(s, velho, C.v("h0dn.readme.ritos").strip("\n") + "\n", "b_ritos")
+    # (13/11/2026) depois da tabela, o registro da Fase 9 V2 (README_FASE9_V2), inteiro e sem mudar uma letra
+    return _trocar(s, velho, C.v("h0dn.readme.ritos").strip("\n") + "\n", "b_ritos") + "\n" + C.v("h0dn.readme.fase9_v2").strip("\n") + "\n"
+
+
+def b_apoios_h0dn(C):
+    """(13/11/2026) O fecho do bloco dos três apoios com o H0DN aberto: a frase «What nature decides is not proved: the decisive open factor…»
+    dá lugar ao texto ratificado (h0dn.readme.apoios_fecho). Os números do texto ratificado têm de ser os que o gerador lê hoje; senão PARA."""
+    s = b_apoios(C)
+    if not h0dn_aberto(C):
+        return s
+    v = C.v
+    d = v("hubble.degrau_creditacao_sigma")
+    esc1, esc2 = v("massa.escada_primeira"), v("massa.escada_ultima")
+    d1, m2 = "%.2f" % v("d1.tensao_sigma"), "%.2f" % v("massa.tensao_sigma")
+    escada = "the ladder %sσ (%s) \u2192 %sσ (%s)" % ("%.2f" % esc1["tensao_sigma"], esc1["data"], "%.2f" % esc2["tensao_sigma"], esc2["data"])
+    velho = ("**None of the three failed.** **What nature decides is not proved:** the decisive open factor is \u03b2_TGL itself at \u2265 %d\u03c3; the tensions measured against \u03b2 are below %d\u03c3 too "
+             "(D1 %sσ, charge R6 inconclusive; neutrino m\u2082 %sσ, %s). Full reading and what is **not claimed**: [`ESTADO_ATUAL.md`](%s).\n" % (d, d, d1, m2, escada, C.u("estado")))
+    novo = v("h0dn.readme.apoios_fecho").strip("\n")
+    falta = [x for x in ("D1 %sσ" % d1, "neutrino m\u2082 %sσ" % m2, escada, "%d\u03c3 kill rule" % d) if x not in novo]
+    if falta:
+        raise Falha("H0DN aberto: o fecho ratificado dos três apoios não traz os números que o gerador lê hoje: %s" % falta)
+    if novo.count("`ESTADO_ATUAL.md`") != 1:
+        raise Falha("H0DN aberto: o fecho ratificado dos três apoios não nomeia `ESTADO_ATUAL.md` uma vez (o link não se monta)")
+    return _trocar(s, velho, novo.replace("`ESTADO_ATUAL.md`", "[`ESTADO_ATUAL.md`](%s)" % C.u("estado")) + "\n", "b_apoios")
+
+
+def b_proveniencia_h0dn(C):
+    """(13/11/2026) Com o H0DN aberto, o hash que a linha chamava «Hubble result» é o do resultado da Fase 9 V2: passa a ser chamado pelo nome."""
+    s = b_proveniencia(C)
+    return _trocar(s, "Hubble result `", "Phase 9 V2 result `", "b_proveniencia") if h0dn_aberto(C) else s
 
 
 def b_h0dn_paragrafo(C):
@@ -354,6 +391,14 @@ def registro_fase9_v2(C):
     if s.count(_ANCORA_HUBBLE) != 1:
         raise Falha("H0DN aberto: a ancora do painel da Fase 9 V2 nao esta uma vez no b_primordial")
     hub = "> **Hubble-ratio test**" + s[s.index(_ANCORA_HUBBLE) + len(_ANCORA_HUBBLE):]
+    # AO LADO (13/11/2026, claude-site-custodia; a vitrine, parte 3): a oração «β_TGL in nature at Nσ is the open step» era o estatuto daquela data; no registro
+    # ela sai (o estatuto de hoje está no topo do README) e o cabeçalho diz que saiu
+    # AO LADO (13/11/2026, claude-site-custodia; a vitrine, parte 4; achado M2 do verificador distinto): a correção vai AO LADO; o registro NÃO é cortado. A oração
+    # fica como estava, e uma nota datada, logo abaixo do painel, diz onde está o estatuto de hoje (as quatro linhas da parte 3, acima, ficam sem efeito)
+    aberto = "\u03b2_TGL in nature at %d\u03c3 is the open step" % C.v("hubble.degrau_creditacao_sigma")
+    if hub.count(aberto) != 1:
+        raise Falha("H0DN aberto: a oração do passo aberto não está uma vez no painel da Fase 9 V2 (o registro não se monta)")
+    hub += ">\n> \u26a0 **Beside (13/11/2026):** the closing clause above (\u00ab%s\u00bb) was the status of that date; the status now is at the top of the README.\n" % aberto
     d_regra, sha_regra = _regra_fala()
     return ("# Record \u00b7 registro: the Phase 9 V2 panel (Hubble ratio, opened once on %s)\n\n"
             "<!-- PINADO por tools/custodia_g1/readme_pinado.py \u00b7 fonte PRIMORDIAL.json sha16 %s \u00b7 pino PINO_README.json \u00b7 n\u00e3o editar \u00e0 m\u00e3o -->\n\n"
@@ -364,8 +409,8 @@ def registro_fase9_v2(C):
             + hub + "\n" + _hubble_pt_registro(C))
 
 
-BLOCOS = {"primordial": b_primordial_h0dn, "hubble_pt": b_hubble_pt_h0dn, "status": b_status_h0dn, "apoios": b_apoios, "ritos": b_ritos_h0dn, "selo": b_selo,
-          "proveniencia": b_proveniencia, "mudou": b_mudou, "h0dn_paragrafo": b_h0dn_paragrafo, "h0dn_paragrafo_en": b_h0dn_paragrafo_en}
+BLOCOS = {"primordial": b_primordial_h0dn, "hubble_pt": b_hubble_pt_h0dn, "status": b_status_h0dn, "apoios": b_apoios_h0dn, "ritos": b_ritos_h0dn, "selo": b_selo,
+          "proveniencia": b_proveniencia_h0dn, "mudou": b_mudou, "h0dn_paragrafo": b_h0dn_paragrafo, "h0dn_paragrafo_en": b_h0dn_paragrafo_en}
 
 
 # ================================================================================================= o motor do template

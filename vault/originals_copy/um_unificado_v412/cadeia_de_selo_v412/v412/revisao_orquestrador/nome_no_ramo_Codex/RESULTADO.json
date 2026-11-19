@@ -1,0 +1,281 @@
+{
+  "unidade": "F1.PSIBIT_NOME_NO_RAMO_20261118",
+  "data": "2026-11-18T14:20:49-03:00",
+  "estado": "CANDIDATAS_COMPILADAS_REVISAO_PENDENTE",
+  "cota_determinista_para_toda_CNF": "OPEN",
+  "entrada": "Grafia plana; endereços unários, sinais, terminadores. L é o número de letras.",
+  "resultados": {
+    "atualizacao": "Para quaisquer marcas M existe uma testemunha no prefixo e na próxima cláusula se, e só se, algum literal da cláusula é conjuntamente compatível com as marcas no prefixo.",
+    "angulo": "Representação existencial dos sinais dos dois bits corretos.",
+    "familia_coupled": "Exatamente L avanços e uma transição terminal. Os dois bits respondem à existência de testemunha em cada ramo para k positivo.",
+    "perfil": "Duas passagens pela entrada original, banco local de quatro indicadores por endereço. Até 7L deslocamentos para o leitor de testemunhas; exato quando fora do pivô cada endereço de sinais mistos ocorre em cláusula unitária.",
+    "guarda": "A guarda de cobertura e os dois bits são calculados juntos na segunda passagem, ≤7L. A entrada fora da classe recebe sim por testemunha, ou inconclusivo. Busca exata apenas onde o classificador se abstém.",
+    "limite_projecoes": "As somas em todas as células dos pares podem coincidir nos dois prefixos de paridade; depois de uma nova cláusula, as respostas divergem.",
+    "busca_literal": "Busca completa correta. Para k cópias de uma disjunção binária seguidas de duas unitárias opostas há 2^k verificações nas folhas em 4k+8 letras. Em outra família, satisfatível nos dois ramos, a guarda não decide e cada consulta à busca verifica pelo menos 2^k folhas para 6k+14 letras. Contagem de folhas, distinta dos movimentos do classificador."
+  },
+  "compilador": {
+    "path": "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+    "bytes": 83456,
+    "sha256": "9b216deb50d37c32c829d1efaaa5bafd5560417d382df35a815489e31a31593f"
+  },
+  "modulos": 9,
+  "declaracoes_auditadas": 73,
+  "provas": {
+    "AtualizaONome": {
+      "receipt": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\AtualizaONome.verificado.json",
+        "bytes": 3259,
+        "sha256": "71cdde93c6af5539048e1bb2b3de4b432fd50e0a3cc66509117e47b8b1c56171"
+      },
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\AtualizaONome.lean",
+        "bytes": 10123,
+        "sha256": "8a9cd93edb2b51d780bf32faf5dc1a42334d670468995ee35c6bc5aee66c67bf"
+      },
+      "declarations": [
+        "Codex.BranchPresence.marked_clause_law",
+        "Codex.BranchPresence.consistent_correct",
+        "Codex.BranchPresence.search_correct",
+        "Codex.BranchPresence.query_pair_correct",
+        "Codex.BranchPresence.computed_bit",
+        "Codex.BranchPresence.whole_name_after_clause",
+        "Codex.BranchPresence.decode_updated_pair",
+        "Codex.BranchPresence.diagonal_reads_prefix",
+        "Codex.BranchPresence.aligned_scan",
+        "Codex.BranchPresence.scan_transitions"
+      ]
+    },
+    "LeitorDaFamilia": {
+      "receipt": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\LeitorDaFamilia.verificado.json",
+        "bytes": 2843,
+        "sha256": "4ce3a5f0a3c49e3ee75284cfa661c0425e79a9bcd137025a4f364c1401c9d032"
+      },
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\LeitorDaFamilia.lean",
+        "bytes": 11654,
+        "sha256": "14416acd17f90aa0f163813c637e4466725743a4fa9f7769a9d6adf4af54bee9"
+      },
+      "declarations": [
+        "Codex.FamilyHead.answer_spec",
+        "Codex.FamilyHead.scan_accepts",
+        "Codex.FamilyHead.exactly_one_pass",
+        "Codex.FamilyHead.coupled_outputs",
+        "Codex.FamilyHead.coupled_linear",
+        "Codex.FamilyHead.next_clause",
+        "Codex.FamilyHead.survivor_transition",
+        "Codex.FamilyHead.branch_witness",
+        "Codex.FamilyHead.coupled_exact_lanes"
+      ]
+    },
+    "LimiteDasProjecoes": {
+      "receipt": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\LimiteDasProjecoes.verificado.json",
+        "bytes": 3331,
+        "sha256": "5e71ac2ecaa53860ec07955c010745d8b514c0e3be260fbc4c1d60ca19635551"
+      },
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\LimiteDasProjecoes.lean",
+        "bytes": 10162,
+        "sha256": "e824be8667d45de0e9f08005c662e8f2589966404d2cb5fd81a7c9c6f608f4eb"
+      },
+      "declarations": [
+        "Codex.ProjectionLimit.signed_read",
+        "Codex.ProjectionLimit.all_proper_supports",
+        "Codex.ProjectionLimit.profiles_agree",
+        "Codex.ProjectionLimit.one_clause_separates",
+        "Codex.ProjectionLimit.no_profile_update",
+        "Codex.ProjectionLimit.after_common_suffix",
+        "Codex.ProjectionLimit.surviving_branch",
+        "Codex.ProjectionLimit.all_pairs_in_three",
+        "Codex.ProjectionLimit.parity_partial_weights",
+        "Codex.ProjectionLimit.parity_opposite_branches",
+        "Codex.ProjectionLimit.parity_pair_changes_after_one"
+      ]
+    },
+    "PerfilDeSinais": {
+      "receipt": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\PerfilDeSinais.verificado.json",
+        "bytes": 1855,
+        "sha256": "47741bb60b583b953b64464efeeecf159fb749542cb32743660eb03279cdfa13"
+      },
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\PerfilDeSinais.lean",
+        "bytes": 6363,
+        "sha256": "1feadef1d8227eabb8f8d20ede9aa0505fd655bbb0ab5c7598b6d3b74b4975b0"
+      },
+      "declarations": [
+        "Codex.SignProfile.flags_cons",
+        "Codex.SignProfile.witness_sound",
+        "Codex.SignProfile.witness_complete",
+        "Codex.SignProfile.word_from_pair"
+      ]
+    },
+    "DuasPassagens": {
+      "receipt": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\DuasPassagens.verificado.json",
+        "bytes": 1938,
+        "sha256": "9c98b90b15ae9c7b2581ce96336ed60926fd489c7aba1c3f3fc22cae865fd8a5"
+      },
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\DuasPassagens.lean",
+        "bytes": 7483,
+        "sha256": "5b6989418702960ebc1af03798dfa249e2c65c58020b0db5cc89c6127d3d0c7a"
+      },
+      "declarations": [
+        "Codex.TwoSweeps.raw_clauses",
+        "Codex.TwoSweeps.count_le",
+        "Codex.TwoSweeps.returned_spec",
+        "Codex.TwoSweeps.builds_from_letters"
+      ]
+    },
+    "SegundaLeitura": {
+      "receipt": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\SegundaLeitura.verificado.json",
+        "bytes": 2850,
+        "sha256": "4ae7d6a4dcc2270d80d80dd7d483ba7ad19a05e03b7faadb224e7ca3c7aac2ab"
+      },
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\SegundaLeitura.lean",
+        "bytes": 7638,
+        "sha256": "a72ce32a3e5f01c60d22f3673936fd68cb3751d5edf642f982b1c24d631ed401"
+      },
+      "declarations": [
+        "Codex.SecondRead.seven_movements_per_letter",
+        "Codex.SecondRead.values_from_tape",
+        "Codex.SecondRead.lane_is_witness",
+        "Codex.SecondRead.positive_is_sound",
+        "Codex.SecondRead.branches_exact",
+        "Codex.SecondRead.word_exact",
+        "Codex.SecondRead.word_positive",
+        "Codex.SecondRead.certified",
+        "Codex.SecondRead.opposite_values_missing"
+      ]
+    },
+    "GuardaDoPerfil": {
+      "receipt": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\GuardaDoPerfil.verificado.json",
+        "bytes": 1642,
+        "sha256": "bf383d577d2fd203c21172f9f615a2ba3d7cddb8615ddf2dda11777299fe9e37"
+      },
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\GuardaDoPerfil.lean",
+        "bytes": 3278,
+        "sha256": "174b19d41906063850aa7c003e2d2bdf05b3a0acabb532d74da19c4308f8e4ce"
+      },
+      "declarations": [
+        "Codex.ProfileGuard.unvisited_blank",
+        "Codex.ProfileGuard.letters_guard",
+        "Codex.ProfileGuard.guard_exact"
+      ]
+    },
+    "LeituraCertificada": {
+      "receipt": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\LeituraCertificada.verificado.json",
+        "bytes": 4514,
+        "sha256": "ac43612618b4794d9591275a19b21dafae0083fbadc997deb7811034c3e872a8"
+      },
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\LeituraCertificada.lean",
+        "bytes": 9194,
+        "sha256": "7f17cd5762780ef30e755f371487a2f5126735809f43a7d2f99da884af2d7f3a"
+      },
+      "declarations": [
+        "Codex.CertifiedRead.witness_projection",
+        "Codex.CertifiedRead.guard_projection",
+        "Codex.CertifiedRead.at_most_seven_per_letter",
+        "Codex.CertifiedRead.positive_sound",
+        "Codex.CertifiedRead.negative_sound",
+        "Codex.CertifiedRead.classified_when_covered",
+        "Codex.CertifiedRead.branch_search_exact",
+        "Codex.CertifiedRead.resolve_exact",
+        "Codex.CertifiedRead.whole_word_exact",
+        "Codex.CertifiedRead.decision_exact",
+        "Codex.CertifiedRead.mixed_outcomes",
+        "Codex.CertifiedRead.before_unit_both_branches",
+        "Codex.CertifiedRead.unit_selects_opposite_branches",
+        "Codex.CertifiedRead.positive_iff",
+        "Codex.CertifiedRead.negative_iff",
+        "Codex.CertifiedRead.unknown_iff"
+      ]
+    },
+    "CustoDaBuscaLiteral": {
+      "receipt": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\CustoDaBuscaLiteral.verificado.json",
+        "bytes": 2998,
+        "sha256": "4106e11859d96fb944cf6f275f89db358571d727acf28ac95eafcb9dd9e2734e"
+      },
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\CustoDaBuscaLiteral.lean",
+        "bytes": 6720,
+        "sha256": "5631a74aebd86f061923ce2bf8d41a2737c0c4e73ff3b6a5f7951f67d3043495"
+      },
+      "declarations": [
+        "Codex.LiteralSearchCost.traced_spec",
+        "Codex.LiteralSearchCost.visits_all_alternatives",
+        "Codex.LiteralSearchCost.input_letters",
+        "Codex.LiteralSearchCost.every_branch_possible",
+        "Codex.LiteralSearchCost.delayed_checks",
+        "Codex.LiteralSearchCost.delayed_inconclusive",
+        "Codex.LiteralSearchCost.delayed_letters"
+      ]
+    }
+  },
+  "fontes": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\ENTREGA.md",
+      "bytes": 8065,
+      "sha256": "8b88560a9d8f581020d16346261953223f278314a33a91888ae34755d88ea685"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\UNIDADE.json",
+      "bytes": 347,
+      "sha256": "3a0de8424e6083a057514390185deeb28ae71bb72e3533842a546a22dc6e8ea7"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\PEDIDO_OPERADOR.txt",
+      "bytes": 221,
+      "sha256": "4ca89bf89af219238a92f4ef70728712e5d37b01786f0419401dd8c86085973c"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\conferir_local.py",
+      "bytes": 2961,
+      "sha256": "dd307f076ceaad88b6d9bb9fe783bb8e4202e7f9b48e347fe3e58b98365f7761"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\controle_finito.py",
+      "bytes": 11523,
+      "sha256": "551bce4bfb430d300623a19ccd3300ff54e16e0e23d7eeac7113cf0beff4b14a"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\nome_no_ramo_Codex\\controle_finito.json",
+      "bytes": 5859,
+      "sha256": "fc60e992034f627ae6a189e4c48aff00f8e210aa8c93e72a7f3e560bdcede475"
+    }
+  ],
+  "controle": {
+    "comparacoes": 3500157,
+    "consultas_ao_produtor_por_escolha_literal": 488394,
+    "por_numero_de_marcas": {
+      "0": 81399,
+      "1": 488394,
+      "2": 2930364
+    },
+    "verdadeiras": 1756446
+  },
+  "perfil_controle": {
+    "bits_comparados": 3786,
+    "bits_verdadeiros_oraculo": 3154,
+    "bits_verdadeiros_reconhecidos": 2946,
+    "dentro_da_classe": 1269,
+    "fora_da_classe": 624,
+    "formulas": 1893,
+    "formulas_com_algum_bit_perdido_fora_da_classe": 176,
+    "formulas_sat_com_dois_bits_lidos_falsos": 48
+  },
+  "limites": [
+    "O modelo conta deslocamentos nas fitas pela grafia unária; codificação binária não examinada.",
+    "O custo de produzir todas as compatibilidades da busca geral permanece sem cota uniforme.",
+    "Compilação local não é o aceite da gerência."
+  ]
+}

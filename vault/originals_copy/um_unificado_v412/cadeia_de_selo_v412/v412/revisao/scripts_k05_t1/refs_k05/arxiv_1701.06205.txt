@@ -1,0 +1,1720 @@
+arXiv:1701.06205v4 [quant-ph] 2 Jul 2017  Multiplicative Properties of Quantum Channels 
+
+                                                                         Mizanur Rahaman
+
+                                                                             July 4, 2017
+
+                                              Department of Mathematics and Statistics, University of Regina
+                                          Regina, Saskatchewan S4S 0A2, Canada
+
+                                                                                             Abstract
+
+                                                       In this paper, we study the multiplicative behaviour of quantum chan-
+                                                  nels, mathematically described by trace preserving, completely positive
+                                                  maps on matrix algebras. It turns out that the multiplicative domain of
+                                                  a unital quantum channel has a close connection to its spectral proper-
+                                                  ties. A structure theorem (Theorem 2.5), which reveals the automorphic
+                                                  property of an arbitrary unital quantum channel on a subalgebra, is pre-
+                                                  sented. Various classes of quantum channels (irreducible, primitive etc.)
+                                                  are then analysed in terms of this stabilising subalgebra. The notion of
+                                                  the multiplicative index of a unital quantum channel is introduced, which
+                                                  measures the number of times a unital channel needs to be composed with
+                                                  itself for the multiplicative algebra to stabilise. We show that the maps
+                                                  that have trivial multiplicative domains are dense in completely bounded
+                                                  norm topology in the set of all unital completely positive maps. Some
+                                                  applications in quantum information theory are discussed.
+
+                                          Introduction
+
+                                          Quantum channels are the most general input-output transformations allowed
+                                          by quantum mechanics. Physically, they play a central role in quantum in-
+                                          formation theory, where they represent the communication from a sender to a
+                                          receiver ([41]), in quantum information processing ([42], [15], [12]), and in the
+                                          theory of quantum open systems (see the monograph [20]). The steps of a quan-
+                                          tum computation and also the effects of errors and noise on quantum registers
+                                          are modeled as quantum channels. In quantum statistical mechanics involving
+                                          finitely many particles, the typical domain on which a quantum channel acts is
+                                          the d � d complex matrices which we denote by Md.
+
+                                              Although the maps in discussion are linear, their domain, the d � d complex
+                                          matrices Md, has an algebraic structure. Thus, it is of interest to investigate the
+                                          multiplicative nature of such linear maps. The domain on which the quantum
+                                          channel is multiplicative is known as the multiplicative domain and the main
+
+                                              2010 Mathematics Subject Classification: Primary 46L05; Secondary 46L60, 81R15
+
+                                                                                             1
+theme of this paper is to study this domain in detail. The scheme of quantum
+error correction, one of the major themes of current research in information
+theory, was successfully analysed from the point of view of the multiplicative
+nature of channels ( see [24], [28], [14]). Also, the multiplicative domain appears
+to be a useful area to explore in the study of private algebras and complementary
+quantum channels (see [31]).
+
+    From a purely operator algebraic perspective, the multiplicative domains of
+positive and completely positive maps have been studied by many authors for
+independent interests ([13], [37], [9]). In this context, it is essential to mention
+the work of Bulinskii in [8] where the author considers the dynamical system
+(M, ,  ) and investigates the asymptotic automorphic behaviour of the dy-
+namical system, where M is a von Neumann algebra,  = (t)t0 is a family
+of unital normal completely positive maps on M parametrised over the positive
+real numbers and  is a faithful normal state on M such that (x) =   t(x),
+for every t  0 and x  M. The main result of this work asserts that there
+exists a subalgebra (named as "automorphy subalgebra") on which each t is
+an automorphism. Later, St�rmer in [37] studied multiplicative properties of
+a positive map on a von Neumann algebra and obtained more general results
+concerning the automorphic behaviour.
+
+    Our aim in this paper is to study multiplicative properties of quantum chan-
+nels acting on a matrix algebra Md. It is well known that a quantum channel
+E : Md  Md is represented by a set of (non-unique) operators {ki}in=1 such
+that
+
+n                       n
+
+E(x) = kj xkj, x  Md and kjkj = 1.
+
+j=1                     j=1
+
+The operators {ki}in=1 are known as Kraus operators. Our first result is: for a
+unital quantum channel, we have the equality of two sets
+
+     ME = FEE ,
+
+where ME is the multiplicative domain of E and FEE denotes the fixed point
+set of EE. Here E is the adjoint of E when Md is thought of as a Hilbert space
+with the Hilbert-Schmidt inner product a, b = Tr(ab) for all a, b  Md. The
+adjoint E satisfies the relation Tr(E(a)b) = Tr(aE(b)) for all a, b  Md. This
+
+result seems to be known before (see Theorem 10, 11 in [14] and also [28]) but
+
+we present a different proof here. Exploiting the same relationship for powers
+of the channel, that is for En, n  1, we arrive at the chain of subalgebras with
+
+the following inclusion
+
+ME  ME2  � � �  MEn  � � � .
+
+Since the underlying space is of finite dimension, this finding motivates us to
+predict the existence of a stabilising subalgebra which we denote by
+
+               
+
+     ME :=       MEn .
+
+            n=1
+
+            2
+This subalgebra captures precisely the automorphic behaviour of E which is the
+content of the main theorem (2.5) of this paper. It turns out that E acts as
+a bijective homomorphism on ME and also this set is the algebra generated
+by the eigen operators of E corresponding to the peripheral eigenvalues. The
+sub algebra ME carries the intrinsic automorphic attribute of a unital channel
+which also manifests the asymptotic behaviour of E. Theorem 2.5 then sets the
+foundation of introducing the notion of multiplicative index of a unital channel.
+It is the smallest n  N such that MEn = ME. It turns out that the multi-
+plicative index has important connection in quantum error correction which is
+described in Section 5.
+
+    Much of the work presented in this paper is based on viewing a channel
+in the Schr�odinger picture where trace preservation is assumed and exploited
+heavily. In a non-unital case, such a channel is realised as a unital completely
+positive map in the Heisenberg picture (that is, in the dual picture). In Section
+4, we prove that the set of unital completely positive maps that have trivial
+multiplicative domains is cb dense in the class of all unital completely positive
+maps. Also a new result is obtained (Theorem 4.5) which can be viewed as an
+extension to the Arveson's boundary theorem (4.3) on matrix algebras.
+
+    The paper is organised as follows. For a unital channel E : Md  Md we
+start with Section 1 that develops the techniques needed to prove the relation-
+ship between the fixed point set of E  E and the multiplicative domain of E.
+Some related corollaries are noted down. In Section 2 we introduce the notion
+of multiplicative index. The main theorem (Theorem 2.5) characterises the sta-
+bilising subalegbra ME in terms of the peripheral eigenvectors of E. Also the
+multiplicative index is calculated for some quantum channels. Section 3 is con-
+cerned with the multiplicative properties of irreducible and primitive quantum
+channels, types of channels that appear to be very important in information
+theory. In Section 4 the multiplicative nature of unital completely positive (not
+necessarily trace preserving) maps is explored. The tools and techniques de-
+veloped throughout the paper are exploited in Section 5 to demonstrate some
+applications in information theory, specifically in quantum error correction. Sec-
+tion 6 contains the summary and some discussions on the topological aspects of
+sets with fixed multiplicative index.
+
+1 Fixed Point and Multiplicative Domain
+
+We begin with some terminology and general theory of positive and completely
+positive maps on C-algebras which be needed for further discussion. The books
+[35] and [39] are amongst many good references in this topic.
+
+    Let E : A  B be a unital completely positive map of C algebras A and
+B . The following sets are called the set of fixed points and the multiplicative
+domain respectively:
+
+                                   FE = {a  A : E(a) = a},
+
+           ME = {a  A : E(ab) = E(a)E(b), E(ba) = E(b)E(a) b  A}.
+
+                                                   3
+Recall that a completely positive unital map E satisfies the Schwarz inequality
+E(aa)  E(a)E(a), for every a  A. Choi ([13]) showed, for a unital completely
+positive map, the set ME is same as the following set
+
+             S = {x  Md : E(xx) = E(x)E(x), E(xx) = E(x)E(x)}.
+
+Recall that for a unital completely positive map  : A  B(H), the Stinespring
+dilation theorem says that there exist a Hilbert space K, a bounded linear
+operator V : H  K and a  homomorphism  : A  B(K) such that (x) =
+V (x)V , for all x  A. Furthermore, ||V ||2  ||(1)|| = 1. We first state a
+theorem regarding multiplicative domain of a unital completely positive (ucp
+for short!) map defined on a C-algebra which can be found as an exercise in
+[35], see also [9]
+
+Theorem 1.1. Let A be a unital C algebra, and let E : A  B(H) be a ucp
+map with the minimal Stinespring representation (, V, K). An element a  A
+satisfies E(aa) = E(a)E(a) and E(aa) = E(a)E(a) if and only if V H is a
+reducing subspace for (a). Moreover, the collection of such elements is a C
+sub-algebra of A and equals to the multiplicative domain of E.
+
+    The following theorem provides useful characterisations of projections and
+unitaries to belong to the multiplicative domain of a ucp map.
+
+Theorem 1.2. Let E : A  B be a ucp map between unital C algebras. Then
+
+   1. for a projection p  A, p  ME if and only if E(p) is a projection.
+
+   2. for a unitary element u  A, u  ME if and only if E(u) is a unitary
+       element.
+
+Proof. 1. If a projection p  ME , then by Theorem 1.1 E(p) = E(p2) =
+       E (p)E (p).
+       Conversely, for a projection p  A, if E(p)2 = E(p), then E(p2) = E(p)E(p)
+       and hence p gives equality in the Schwarz inequality and by the Theorem
+       1.1, p  ME .
+
+   2. If u  ME and u is a unitary, then E(1) = 1 = E(uu) = E(u)E(u) and
+       similarly the other direction.
+       Conversely, if E(u) is unitary for a unitary u  A, then it is easy to see
+       that u satisfies the equality in the Schwarz inequality as well and hence
+       we get u  ME .
+
+Assumptions.
+
+   1. With the exception of Example 1.6 all quantum channels considered hence-
+       forth in this paper are assumed to act on the matrix algebra Md.
+
+                                                   4
+2. Given a quantum channel E : Md  Md, we can identify its dual map
+
+or adjoint map E via the relation Tr(E(a)b) = Tr(aE(b))  a, b  Md
+
+where a, b = Tr(ab) for all a, b  Md, defines an inner product on Md
+
+which makes Md a Hilbert space. This is known as Hilbert-Schmidt inner
+
+product. We will frequently denote the norm of an element x  Md,
+                                       2
+arising from this inner product as  x  H.S  :=  x, x  = Tr(xx).
+
+We are now ready to state the following theorem. The result was known before
+(see [14], [28]) but we present a different proof here. The technique used in this
+proof will be used significantly throughout the rest of the paper.
+
+Theorem 1.3. Let E : Md  Md be a unital quantum channel. Then
+
+                                          ME = F(EE).
+
+That is, the multiplicative domain of E equals to the fixed point set of (E  E).
+
+Proof. If x  ME , then E(xy) = E(x)E(y) and E(yx) = E(y)E(x) for all y  Md.
+We then have, for any z  Md,
+
+            x, z = Tr(zx) = Tr(E(zx)) = Tr(E(z)E(x)) = E(x), E(z) .
+
+Invoking the adjoint relation, we have
+                                      x, z = E  E(x), z .
+
+Since this happens for all z  Md, by the non-degeneracy of the pairing we have
+E  E(x) = x.
+Conversely, if x  Md is such that E  E(x) = x, then
+
+                         x, x = Tr(xx) = Tr(E(xx))
+                                                Tr(E(x)E(x))
+                                               = E(x), E(x)
+                                               = E  E(x), x = x, x .
+
+Where the inequality arises from from the Schwarz inequality for the ucp map
+
+E. Since the extreme ends of the above equations are same, the inequalities
+become equality. So we have Tr(E(xx)) = Tr(E(x)E(x)), and hence by the
+faithfulness of the trace we have E(xx) = E(x)E(x). Now by Theorem 1.1, we
+
+conclude x  ME .
+
+    Now we relate the multiplicative domain with the commutant of product of
+Kraus operators of a unital channel.
+
+Corollary 1.4 (Commutant of the Kraus Operators). Let E : Md  Md be
+                                                                 n
+a unital quantum channel with the Kraus representation: E(x) =   j=1  aj  xaj,
+
+for all x  Md. Then an element   ME if and only if aiaj = aiaj for all
+i, j = 1, 2, � � � , n.
+
+                         5
+Proof. Let us note that if E is unital channel, then E  E is a unital channel
+
+as well. Since E is completely positive and trace preserving, E is positive and
+
+unital because Tr(x) = Tr(x � 1) = Tr(E(x) � 1) = Tr(xE(1)) for all x  B(H)
+
+and hence E(1) = 1. If E is completely positive, then so is E(see [39]). Also
+
+since E is unital, E is trace preserving because Tr(E(x)) = Tr(E(x)1) =
+
+Tr(xE(1)) = Tr(x). And hence E is a ucp and trace preserving map and hence
+                                                 n
+the composition E  E is the same. Now if E(x) =  j=1    aj   xaj  x    Md,  is  a
+
+Kraus representation, a little calculation shows that E  E is represented by
+
+                     n
+
+     E  E(x) =              ai aj xaj ai.
+
+                     i,j=1
+
+And so the Kraus operators for E  E are {aiaj}i,j. Now by the fixed point and
+commutant theorem ([27], Theorem 2.1) and by the theorem 1.3 we get   ME
+if and only if
+
+                                       ai aj = ai aj , i, j.
+
+Remark 1.5. Trace preservation of E (equivalently, the unitality of E) is the
+key factor of the above theorem. Below we give an example where an element
+lies in the multiplicative domain of a ucp (but not trace preserving) map with a
+given Kraus representation does not satisfy the commutant condition. We use
+the example of a ucp map that arose in [7].
+Let  : M3  M3 be a ucp map given by
+
+      x11 x12 x13        x11 0                             0
+  x21 x22 x23        =  0 x22
+                                                           0
+        x31 x32 x33          00
+                                                        x11 +x22
+                                                             2
+
+Let us choose a set of Kraus operators for  as follows
+
+1 0 0  0 0 0                                      0 0 0
+
+k1 =  0 0 0  , k2 =  0 1 0  , k3 =  0 0 0 
+                                                        1
+000                  000                                  2  0    0
+
+                     0 0 0
+
+     and k4 =  0 0 0 
+                            1
+                     0        2  0
+
+                          1 0 0
+
+Now note that a =  0 1 0   M because (a) = 1 where 1 denote the
+                             000
+
+3 � 3 identity matrix and so (a) = 1. Moreover (aa) = (a) = 1 and
+(a)(a) = 1. And hence a  M.
+But a does not commute with k3k1 = k3.
+
+                     6
+    In infinite dimension, Theorem 1.4 is not true as the following example
+suggests. This example was first given in [2] in a context of proving that the
+fixed point set is not necessarily equal to the commutant of Kraus operators
+of a channel. Since our context is similar, we use this example and expand it
+accordingly. Recall in infinite dimension, the issue of trace preserving needs to
+be addressed as the algebra in context might not have a finite trace. To this end,
+we follow the notion of quantum operation given in [2]. For a Hilbert space H, if
+B(H) is the set of bounded linear operators, then a linear map E : B(H)  B(H)
+
+                                                                                                                                     
+
+which is induced by a set of operators {ai}i=1 and defined as E(x) = aixai
+
+                                                                                                                                    i=1
+
+is called trace preserving if Tr(E(b)) = Tr b, for every trace class operator b.
+
+                                        
+
+It turns out that if ai ai = 1, where the convergence is in the ultra-weak
+
+                                       i=1
+
+topology, then E is trace preserving. With these notations in hand, a quantum
+operation is a completely positive trace preserving map.
+
+Example 1.6. Let F2 be the free group of two generators g1, g2, with the
+identity element e. So F2 is a countable group. Let H be the complex separable
+Hilbert space
+
+                           H = {f : F2  C : x |f (x)|2 < }.
+Now define the following function for x  F2,
+
+                       x(y) =        1 if y = x
+                                     0 otherwise.
+
+Then {x : x  F2} is an orthonormal basis for H. It is well known that
+the group C-algebra C(F2) corresponding to the left regular representation
+ : F2  B(H) has a faithful trace  , defined by  (x) = xe, e .
+
+Define two unitary operators on H by u, v in the following way:
+
+                      u(x) = g1x and v(x) = g2x for all x  F2.
+Now define E : B(H)  B(H) by
+
+             E (a)  =  1  uau  +  1  vav  for  all  a    B(H).
+                       2          2
+
+Then E defines a ucp and trace preserving map. Let us call M the von Neumann
+algebra generated by {uv, vu, 1}.
+
+    Suppose an operator b is defined as b(x) = xx for all x  F2 and x  [0, 1].
+
+The operator b is positive and in the multiplicative domain ME of E if and
+only if we have E(bb) = E(b)E(b) which yields for all x  F2, E(bb)(x) =
+E(b)E(b)(x). Unwinding the definition of E, we get
+
+1  (ubbu  +  vbbv)(x)     =    1  (ubu  +  vbv  )   1  (ub  u  +  vbv)(x).
+2                              2                    2
+
+Now applying the definition of u, v and b, we get
+
+                                     7
+(          1  2       x  +  1  2       x  )  =  (  1  g1-1  x  +  1  g2-1  x  )2  f or  all  x    F2.  (1)
+           2                2                      2              2
+                g1-1             g2-1
+
+Now, if we assume b  M, and if x = g1-1g2y for some y  F2, then we have,
+
+xx = bx = bg1-1g2y = buvy = uvby = yuvy = y x.
+
+And hence
+
+                                       g1-1g2y = y, y  F2.                                             (2)
+
+.
+    If b is defined as b(x) = xx, where
+
+                                      0               if x ends with g2-1
+                                                      if x ends with g1-1
+                                                      otherwise.
+                               x = 1
+                                      1
+
+                                               2
+
+Then one can check that b satisfies equation 1 and hence b  ME . But b / M
+
+because otherwise, we saw from Equation 2, g1-1g2y = y for all y  F2. Now
+putting y = g2-1 we have 1 = g1-1 = g2-1 = 0, a contradiction.
+
+2 Multiplicative Index of a Unital Quantum Chan-
+     nel
+
+In this section we discover more intrinsic properties of a unital channel concern-
+ing its multiplicative behaviour. The relationship between spectral properties
+and the multiplicative nature will be explored but first we start with the follow-
+ing lemma which will be useful in subsequent discussion.
+
+Lemma 2.1. For a unital quantum channel E, we have
+
+                                    MEE = FEE = ME .
+
+Proof. The last equality is from Theorem 1.3. We will establish the first equality
+of sets. Since the fixed point set is a subalgebra of the multiplicative domain,
+we automatically have FEE  MEE . For the converse part, let a  MEE .
+So it gives equality in Schwarz inequality for the map E  E and we get
+
+                            E  E(aa) = E  E(a)E  E(a)                                                  (3)
+
+                                                      8
+Now we have
+
+                                Tr(aa) = Tr(E  E(aa))
+                                            Tr(E[E(a)E(a)])
+                                            Tr(EE(a)EE(a))
+                                           = Tr(E  E(aa))
+                                           = Tr(aa)
+
+where the first two inequalities follow from Schwarz inequality for E and E
+and then we have used the relation in Equation 3. Since the extreme ends of
+the above equation are same, we have equalities in all the inequalities. This
+gives Tr((E  E(aa)) = Tr(E[E(a)E(a)]). Since E is trace preserving, we
+get Tr(E(aa)) = Tr(E(a)E(a)). Hence by the faithfulness of trace, we get
+E(aa) = E(a)E(a) and a  ME = FEE .
+
+    Given a linear map  : Md  Md, the spectrum of  which is denoted by
+Spec(), is defined as
+
+                Spec() = {  C : (1 - ) is not invertible on Md},
+
+where 1 denotes the identity operator on Md. Recall that the spectral radius
+of  which is denoted as r(), is defined as
+
+                               r() = sup{|| :   Spec()}.
+
+It follows that if  is a unital positive map, then r()  1 and hence all
+eigenvalues lie in the unit disc of the complex plane (see Proposition 6.1 in
+[43]). For a unital channel  the set Spec()  T is called the set of peripheral
+eigenvalues, where T is the unit circle in the complex plane. If an element
+a  Md satisfies the relation (a) = a for || = 1, then a is called a peripheral
+eigenvector of . Note that the fixed point set of , that is F, is the set
+of all peripheral eigenvectors corresponding to the eigenvalue 1. With these
+terminology in hand, we are ready to note down the corollary to Lemma 2.1.
+
+Corollary 2.2. For any unital channel E, the channel E  E does not have any
+peripheral eigenvalue other than 1.
+
+Proof. We will show that any peripheral eigenvector corresponding to a periph-
+eral eigenvalue of a unital channel  is in the multiplicative domain M. To
+this end, let (= 1) is a peripheral eigenvalue of , that is || = 1 and suppose
+a  Md is such that (a) = a. Now it follows form the positivity of  that
+ preserves the -operation, that is, (x) = (x), for every x  Md. Hence
+(a) = �a. We get
+
+                                (aa)  (a)(a) = a�a
+                                                            = aa
+
+                                                   9
+Using the trace preservation and faithfulness of trace, we get (aa) = aa and
+
+hence a  M.
+    Now for a unital channel E, if a is a peripheral eigenvector of E  E cor-
+
+responding to a peripheral eigenvalue (= 1), then a  MEE . But Lemma
+2.1 asserts that MEE = FEE , which implies a is an eigenvector of E  E
+corresponding to the eigenvalue 1. Hence we get a contradiction.
+
+    The next lemma sets the foundation of the concept of the multiplicative index
+of a quantum channel. It gives the description of the multiplicative domain of
+a composition of two quantum channels.
+
+Lemma 2.3. Let E =    where ,  are two unital quantum channels. Then
+
+                               ME = {a  M : (a)  M}.
+
+Proof. If a  M such that (a)  M, then
+    E(aa) = ((aa)) = ((a)(a)) =   (a)  (a) = E(a)E(a).
+
+and hence a  ME .
+    Conversely, let a  ME . Then
+
+                         E(a)E(a) = E(aa) =   (aa)
+                                                     ((a)(a))
+                                                     ((a))((a))
+                                                    = E(a)E(a).
+
+Hence all the inequalities must be equalities and we first get   (aa) =
+((a)(a)). Now the trace preservation property of  would imply (aa) =
+(a)(a) and we get a  M. Using the second inequality it's immediate that
+(a)  M.
+
+    Now we can proceed in exploring the multiplicative domain of compositions
+of a channel E with itself.
+
+Corollary 2.4. For En = E  � � �  E (n-times, n  N), we have
+
+                          MEn = {a  MEn-1 : E (a)  MEn-1}.
+In particular, we have the following inclusion
+
+ME  ME2  � � �  MEn  � � � .
+
+    Now since multiplicative domain of En is a C-algebra for each n  N and
+the underlying subspace is of finite dimension, the above decreasing chain of
+subalgebras will stabilise at a fixed subalgebra. Let us denote this sub-algebra
+as ME i.e
+
+      
+
+ME =       ME n
+
+      n=1
+
+10
+We will see that on this subalgebra ME, E acts as an automorphism. Also, it is
+not necessarily true that if a  ME , then E(a)  ME . However, it will be evident
+that if a  ME, then E(a)  ME. Note that St�rmer in [37] deals with a set
+related to a positive map, which he calls the multiplicative core and proves that
+the positive linear map when restricted to this set, is a Jordan automorphism.
+In our context, the underlying space is of finite dimension and the linear map is
+completely positive which is stronger than positivity. The indispensable effect of
+the adjoint of a quantum channel in this whole discussion about multiplicative
+property, might be traced back to the work of Ku�mmerer in [29], Sec. 3.2 where
+the author deals with dilations of asymptotic automorphic dynamical systems.
+Now we state and prove the main theorem of this section.
+
+Theorem 2.5. Let E : Md  Md be a unital quantum channel. Then
+
+1. There exists a subalgebra of Md, namely ME, upon which E acts as a
+   bijective homomorphism with the inverse being the adjoint E.
+
+2. Md decomposes into two orthogonal subspaces as Md = ME ME ,
+   where the orthogonality is with respect to the Hilbert-Schmidt inner prod-
+
+   uct. Moreover, we have a precise description for the set ME given by
+
+ME  =  {x    Md  :   lim                  E n (x)        = 0}.
+
+                    n
+
+   3. The spectrum of this automorphism is equal to the peripheral spectrum of
+       E, that is Spec(E|ME ) = Spec(E)  T. Moreover, if NE = {a  Md :
+       E(a) = a, || = 1}, then ME is the algebra generated by NE .
+
+Proof. 1. We will first show that E(ME )  ME. To see this, let a  ME.
+For any k  N, we have
+
+Ek+1(aa) = Ek(E(aa)) = Ek(E(a)E(a))
+                                 EkE(a)EkE(a)
+                                = E k+1(a)E k+1(a)
+                                = Ek+1(aa).
+
+Where we have just used the Schwarz inequality for the map Ek and the equality
+                                          
+follows because of the fact that a  ME =  n=1  ME  n  .  Clearly,  we  have  equal-
+
+ity in all the inequalities and we obtain Ek(E(a)E(a)) = Ek(E(a))Ek(E(a)).
+
+Hence E(a)  MEk for every k  N and we get E(a)  ME.
+    Injectivity follows easily; let a  ME such that E(a) = 0, then
+
+Tr(aa) = Tr(E(aa)) = Tr(E(a)E(a)) = 0,
+
+which forces a = 0. So E : ME  ME is an injective linear map. Since
+ME is finite dimensional vector space, the rank-nullity theorem asserts that
+E is surjective.
+Now we prove that the inverse of E|ME is E. From Theorem 1.3, it is evident
+
+             11
+that on ME  ME , E  E = 1 where 1 is the identity operator. As E is
+bijective on ME, for any a  ME, there exists an element b  ME such
+that E(b) = a. Applying the adjoint both sides we get EE(b) = E(a). But
+ME is a subset of the fixed point of E  E and hence we get b = E(a). As
+a was arbitrary, we have proved E(ME)  ME . One can show similarly
+as was shown for E, that E is a bijective homomorphism on ME. Now to
+show E is the right inverse, we let a  ME and find a b  ME such that
+E(b) = a and hence E  E(a) = E  E(E(b)) = E(b) = a. So on ME, we get
+E  E = E  E = 1.
+
+    2. The decomposition of Md is now clear since ME is an invariant sub-
+space for both E and E as was shown in part 1 of the proof. Now to get the
+characterisation of ME we follow the method taken by St�rmer in [37]. Let
+a  ME. Then we compute for any n  N,
+
+                           ||En+1(a)||2H.S = Tr(En+1(a)En+1(a))
+                                               Tr(E(En(a)En(a)))
+
+                                              = Tr(En(a)En(a))
+
+                                              = ||En(a)||H2 .S
+
+So {||En(a)||2H.S} n=1 is a decreasing sequence and suppose En(a)  a0 in the
+H.S sense. We will show that a0  ME. Since {||En(a)||H2 .S }n=1 is decreasing,
+we have
+
+            ||En(a)||2H.S - ||En+1(a)||2H.S  0 as n  .                               (4)
+
+By Schwarz inequality we see that
+
+                  E(En(a)En(a)) - En+1(a)En+1(a)  0
+
+Taking trace and using Equation 4, we obtain E(En(a)En(a)) = En+1(a)En+1(a)
+
+as n   i.e limn En(a)  ME . Using this argument repeatedly we can show
+ lim En(a)                                                          E n (a)
+             MEk  for  every  k   1.  And    we  obtain   lim                  ME .  Since
+n
+                                                         n
+the underlying space is a finite dimensional C-algebra, the weak limit is the
+
+norm limit and because ME is a C-algebra, we find a0  ME.
+    Lastly, if a  ME, then Ek(a)  ME for any k  1. Indeed, note that
+
+for every such k, Ek is bijective on ME and for any b  ME, there exists an
+element c  ME such that Ek(c) = b. So for any b  ME, we have
+
+            Tr(Ek(a)b) = Tr(Ek(a)Ek(c)) = Tr(Ek(ac)) = Tr(ac) = 0.
+
+Hence Ek(a)  ME for all k  1. So we have a0  ME  ME, which forces
+a0 = 0. Hence we get
+
+            ME         =  {x     Md   :   lim  ||E  n  (x)||H.S  =  0}.
+
+                                         n
+
+                                         12
+As || � ||  || � ||H.S , we have the desired description of the set.
+    3. We first prove that the eigen operators corresponding to the peripheral
+
+eigenvalues algebraically span the set ME. It is not hard to see that NE 
+ME. Indeed if E(a) = a where || = 1, then we get Ek(a) = ka, for any
+k  1. Hence Ek(aa)  Ek(a)Ek(a) = k�kaa = aa. Taking trace and
+using the faithfulness of trace, we get Ek(aa) = Ek(a)Ek(a). Hence it follows
+that a  MEk for all k  1 and subsequently, a  ME. Hence the algebra
+generated by NE is contained in ME .
+
+    Conversely, the map E : ME  ME is a bijection which satisfies E 
+E = E  E = 1 that is a unitary operator on the Hilbert subspace ME
+equipped with the Hilbert-Schmidt inner product. In particular, E is a normal
+operator and hence diagonalisable that is there exists a basis of eigenvectors of
+E which span the entire space ME. Now if a  ME such that E(a) = a,
+then E(aa) = E(a)E(a) = �aa. Taking trace in both sides we see that
+� = ||2 = 1 that is a is one of the peripheral eigen operators of E. So, ME
+is spanned by the eigen operators corresponding the peripheral eigenvalues of E
+showing ME is contained in the algebra spanned by NE and hence we get the
+required equality. It is now obvious that Spec(E|ME ) = Spec(E)  T.
+
+Remark 2.6. Theorem 2.5 displays the stable behaviour of the channel on the
+algebra generated by the peripheral eigen-operators and on its complementary
+part, E asymptotically approaches to zero. In [4], similar results were obtained
+for a unital completely positive maps (not necessarily trace preserving) where
+the given map acts as an isometry on the operator system spanned by NE .
+See also [11] for the related discussion on quantum Markov semigroups. Our
+attention has been finite dimensional C-algebra and the maps E were unital
+completely positive and trace preserving. The existence of the adjoint E and
+subsequently the identity ME = FEE helps to have a very different approach
+to this topic from the above mentioned cases.
+
+Remark 2.7. The decreasing chain of subalgebras
+
+                               ME  ME2  � � �  MEn  � � �
+
+must stabilise at a finite stage because the underlying space is of finite dimension.
+Call  to be the smallest number for which we have MEn = ME , n  . It is
+evident that ME = ME. This  is uniquely determined for every quantum
+channel E and can be used to differentiate between two quantum channels. We
+call this  as the multiplicative index of E.
+
+    Now we note down the following corollary which will be useful in future
+reference. Note that a channel is called normal or diagonalisable if EE = E E.
+
+Corollary 2.8. If a unital channel E satisfies EE = E E, then ME = ME .
+Hence the multiplicative index of such channels is 1.
+
+Proof. If a  ME = FEE , then E E(a) = a and applying E E once again we
+get E E(E E(a)) = a. Now using the commutativity, we get (E)2 E2(a) = a.
+We will show ME2 = ME .
+
+                                                  13
+For a  ME , we have
+
+                   Tr(aa) = Tr(E2(aa)) = Tr(E(E(a)E(a)))
+                                                   Tr(E2(a)E2(a))
+                                                  = Tr((E)2E2(a)a)
+                                                  = Tr(aa).
+
+So the inequality must be an equality and hence we get E(a)  ME which yields
+a  ME2. Now by Corollary 2.4, we get ME2 = ME . This process can be
+repeated for every n  N to get a  MEn , which forces a  ME.
+
+    Recall that the qubit Pauli operators are described by the following 2 � 2
+matrices
+
+I=  10            ,X =    0  1     ,Y =   0 -i       ,Z =           10    .
+    01                    1  0            i0                        0 -1
+
+Channels whose Kraus decompositions consist of Pauli operators are called Pauli
+Channels. The generalised Pauli channels in dimension d consists of random
+mixtures of unitaries in the discrete Weyl-Heisenberg representation. The Pauli
+or generalised Pauli channels are diagonalisable ([10]) and hence they all have
+multiplicative index 1.
+
+Remark 2.9. By Theorem 2.5, we get a decomposition of the unital channel
+
+E as follows E =  E0  0   , where E0 is the automorphism on ME and E1 is
+                  0   E1
+
+another quantum channel. This decomposition of E gives more information than
+
+the Jordan decomposition for E. Recall that a linear operator  : Md  Md,
+
+regarded as an element of Md2, admits a Jordan decomposition of the form
+
+                                                    1 
+
+    =P                    Jk (k )  P -1,  Jk()  =    . . . 1 ,
+                                                   
+
+                                                           
+
+where the Jk's are Jordan blocks of size dk and k dk = d2. From the Jor-
+dan decomposition it follows that each of the peripheral eigenvalues for a trace
+preserving or unital positive map , has one-dimensional Jordan blocks (see
+for example [43], Proposition 6.2). Although the Jordan decomposition is very
+useful in studying eigen values and their locations, the multiplicative nature of
+a channel cannot be investigated by just looking at the Jordan decomposition.
+
+    Now we enlist some examples showing the different values of the multi-
+
+plicative index  of unital channels and the corresponding algebras ME. In
+what follows e1, � � � , ed denote the standard basis of Cd. For any two vectors
+,   Cd, the rank one operator  : Cd  Cd is defined by (x) = x,  ,
+for all x  Cd.
+
+                                   14
+Example 2.10. If E is a unitary channel that is E(x) = uxu for some unitary
+u and for all x  Md, then E is multiplicative in the whole domain and ME =
+Md and  = 1.
+
+Example 2.11. Let   C be such that 3 = 1. Define a quantum channel
+E : M3  M3 in the following way:
+
+                                                                          3
+
+                                        E(x) = sjxsj ,
+
+                                                                        j=1
+
+for all x  M3. Where
+
+s1 =        1     0     0       s2 =         0      1   0                  s3  =        0     0  1
+      1     1     0     0  ,           1     0          0  ,                      1     0     0  2  .
+            1     0     0                    0          0                               0     0
+        3                                3          2                               3            
+
+Calculation shows that
+
+                                                                        3
+
+                                E  E(x) = ajxaj ,
+
+                                                                      j=1
+
+          1 0 0                        0 0 0                               0 0 0
+
+where a1 =  0 0 0  , a2 =  0 1 0  , a3 =  0 0 0  .
+
+              000                      000                                     001
+
+                                       a 0 0                                      , which is the algebra
+
+    Clearly ME = FEE =  0 b 0  : a, b, c  C
+                                           00c
+
+of diagonal matrices, a commutative C-algebra.
+
+                                  9
+
+    Now E2(x) = bjxbj,
+
+                                j=1
+
+where
+
+b1 =           1     0     0                 1      0  0                           1       0  0
+               1     0     0   , b2 =               0  0    , b3 =                 2       0  0 ,
+          1    1     0     0           1            0  0                       1           0  0
+          3                            3     2                                 3   
+
+b4 =           0     1     0                 0         0                           0    2     0
+               0     1     0   , b5 =        0  2      0    , b6 =                 0          0 ,
+          1    0     1     0           1     0         0                       1   0    1     0
+          3                            3        1                              3
+
+b7 =           0     0     1                 0  0      2                           0    0     
+               0     0     1   , b8 =        0  0      1    , b9 =                 0    0
+          1    0     0     1           1     0  0                              1   0    0     1 .
+          3                            3                                       3              2
+
+Actually  E2(x) =    Tr(x)  1,  for all x  M3.      We    have ME2                = A,  where    A  is the
+                        3
+algebra generated by the set {bibj : i, j = 1, � � � , 9}. Now Since A generates the
+full matrix algebra M3, we get A = C1. So ME2 = C1. Hence for every n  2,
+
+MEn = C1, resulting ME = ME2 = C1. Hence the multiplicative index  = 2
+
+and also we have found ME  ME .
+
+                                                15
+Example 2.12. The above example is a particular case (d = 3) of a more
+general example that can be constructed on Md (see example after Theorem 13
+in [10]), where E : Md  Md is defined by
+
+                                                                          d
+
+                                        E(x) = sjxsj ,
+
+                                                                        j=1
+
+where sk = fkek, where ek's are standard basis of Cd and fk's are the Fourier ba-
+                  d
+
+sis  fk  =   1         e2ikj /d ek .  It  follows  that   E 2 (x)  =  Tr(x)  1  and  hence  has  trivial
+               d                                                             d
+
+                  j=1
+
+multiplicative domain and hence ME = ME2 = C1. However the multiplica-
+tive domain of E is generated by the rank one projections e1e1, � � � , eded. So
+
+ME  ME and (E) = 2 for every dimension d.
+
+Example 2.13. Now we construct a channel on M3 with  = 3. Let E : M3 
+M3 be given by
+
+                                                                          3
+
+                                        E(x) = sjxsj ,
+
+                                                                        j=1
+
+                       0 0 1                          0 1 0                          0 0 0
+
+where    s1  =    1      0  0  1      ,   s2  =  1        0  -1    0  and s3 =  0           0    0 .
+                    2    0  0  0                   2      0   0                             0    0
+                                                                   0                    1
+
+                                                   3
+
+     It can be seen that E  E(x) = ajxaj , where aj = ejej, for j = 1, 2, 3,
+
+                                                                   j=1
+
+that is the rank one projections on standard basis {e1, e2, e3}. So
+
+                       ME = FEE =                a 0 0
+                                                  0 b 0  : a, b, c  C .
+
+                                                    00c
+
+                       0 0 0                                                         1 1 0
+
+Now, take p =  0            0  0      , then it can be checked that E(p) =           1  1   1    0 ,
+
+                         001                                                         2  000
+
+and hence E(p)  ME . Since p  ME and E(p)  ME , we get p  ME2. Indeed
+one checks that
+
+                                          0 0 0 1 0 0
+
+                       ME2 = span  0 1 0  ,  0 0 0  .
+
+                                              001                  000
+
+                      1 0 0
+    Now for q =  0 0 0 , it turns out that E2(q)  ME2 and hence q 
+
+                          000
+
+ME3 . Indeed we get ME3 = C1  ME2 , which yields ME = ME3 = C1 and
+hence (E) = 3.
+
+                                                      16
+    It is worth mentioning at this point that the value of the multiplicative index
+ of a unital channel E : Md  Md can not range from 1 to d2. The reason
+is the reduction of dimension of maximal proper -subalgebras of Md. The
+
+maximum possible value of  is the longest chain of the following subalgebras
+
+ME  ME2  � � �  ME = ME .  (5)
+
+Now note that the subalgebra ME can not be taken Md to begin with. This
+would mean the multiplicative domain of E is Md and hence E is a homomor-
+phism and the kernel of E, Ker(E) is an ideal of Md. Since Md is simple as an
+algebra that is it can not contain a non-trivial two sided ideal, E has to have
+
+trivial kernel which makes E an isomorphism. So there exists another unital
+
+homomorphism  : Md : Md such that E  (x) =   E(x) = x, for all
+x  Md. Hence we get for every x,
+
+x =   E(x)  E(x)  x .
+
+This makes E an isometric isomorphism and hence following Kadison's work in
+[25] we conclude that E(x) = uxu for some unitary u in Md, that is E is a
+unitary channel. Now by Example 2.10 we get ME = ME = Md and  = 1.
+
+    To get a possible value of  which is bigger than 1, one starts with a channel
+E with ME to be a proper subalegbra of Md. This choice significantly reduces
+the path of the the chain in Equation 5 because of the dimension criteria for
+any proper - subalgebras. In a very recent article [1], it was shown that the
+maximal dimension of a proper unital subalgebra of Md is d2 - d + 1. Since we
+are concerned with proper subalgebras which are also -closed, the dimension
+of a maximal proper unital -subalgebra of Md will be bounded by d2 - d + 1.
+With this choice of ME , the algebra ME2 will also have lesser dimension than
+that of ME and at the end even if ME = ME = C1, we will get  < d2.
+
+    In the case of d = 3, it is more easily seen. By the Wedderburn's theorem,
+the -subalgebras of M3 are described below upto isomorphism
+
+              M2  M1, M1  M1  M1, (M1  12)  M1, M1  13,
+
+where M1 = C1 and 12, 13 are identity matrices in M2 and M3 respectively.
+Example 2.13 shows the chain in 5 starting with M1  M1  M1 and going
+down all the way to M1  13 yielding  = 3.
+
+    We end this section with the following proposition which asserts that ME
+is generated by partial isometries. Recall that an element v  Md is a partial
+isometry if vv = p and vv = q where p, q's are projections. Before we state
+our proposition, we state the following theorem
+
+Theorem 2.14. ([10]) Let  : Md  Md be a unital channel given by (x) =
+
+  n
+
+    ajxaj. Then an element a  Md satisfies (a) = a with  = 1 if and only
+
+j=1
+
+if
+                                  aja = aaj , j = 1, � � � , n.
+
+17
+Moreover, the eigenspace of  corresponding to  is (linearly) spanned by partial
+isometries.
+
+    Now part 3 of Theorem 2.5, ME is generated by the eigenvectors corre-
+sponding to the peripheral eigenvalues. Since the above theorem asserts that
+each peripheral eigenvector is a linear combination of partial isometries, we con-
+clude that ME is generated by partial isometries. We note down this fact as
+the following proposition.
+
+Proposition 2.15. For a unital channel E : Md  Md, the algebra ME is
+generated by partial isometries.
+
+3 Irreducibility and Primitivity
+
+In this section we study the fixed points and multiplicative properties of irre-
+ducible positive linear maps on Md. We recall some definitions and mention
+some well known facts below.
+
+Definition 3.1. A positive linear map  : Md  Md is called irreducible if
+there exist no non trivial projection p  Md such that
+
+                                      (p)  p for  > 0.
+
+    We note some basic facts about irreducible positive linear maps on finite
+dimensional C algebras (see also [16], [17]). In the literature of quantum infor-
+mation theory, such maps are also known as ergodic linear maps (see [10]). In
+what follows Md+ denotes the set of all positive semidefinite elements of Md.
+We start with the spectral properties of an irreducible positive linear map.
+
+Theorem 3.2. (see [16]) Let  be a positive linear map on Md and let r be its
+spectral radius. Then
+
+   1. There is a non zero x  Md+ such that (x) = rx
+
+   2. If  is irreducible and if y  Md+ is an eigenvector of  corresponding to
+       some eigenvalue s of , then s = r and y is a positive scalar multiple of x.
+
+   3. If  is unital, irreducible and satisfies the Schwarz inequality for positive
+       linear maps then
+
+           � r = 1 and F = C1.
+           � Every peripheral eigenvalue   Spec()  T is simple and the corre-
+
+              sponding eigenspace is spanned by a unitary u which satisfies (ux) =
+              u(x), for all x  Md.
+           � The set  = Spec()  T is a cyclic subgroup of the group T and the
+              corresponding eigenvectors form a cyclic group which is isomorphic
+              to  under the isomorphism   u.
+
+                                                  18
+    With these set up we are ready to note down the following definition.
+
+Definition 3.3. Let E : Md  Md be a irreducible positive linear map. If E
+has trivial peripheral spectrum, then E is called primitive.
+
+    We refer to [43] for some properties of primitive maps. We begin with
+describing the set ME for a irreducible and primitive channel E.
+
+Lemma 3.4. Let E be a unital irreducible channel. Then ME is a commuta-
+tive C-algebra.
+
+Proof. Since the channel E is unital and satisfies the Schwarz inequality, the
+peripheral spectrum  = Spec(E)  T is a cyclic subgroup. So  = exp(2iZm)
+for some m  d2. If u is the eigen vector for the eigenvalue  = exp(2i/m),
+then it is easy to see that E(uk) = kuk for all k  N. This shows that the
+peripheral eigen operators are generated by the powers of u and hence NE is
+spanned by the single unitary u. Since ME is then algebraically generated by
+a unitary, we get ME is commutative C-algebra.
+
+    Note that from the work of St�rmer in [38] it can be deduced that if E is
+unital entanglement breaking channel, then ME (and hence ME) is abelian
+C-algebra where an entanglement breaking channel is one whose all Kraus
+operators are of rank one [23]. Lemma 3.4 reflects upon similar characterisation
+of ME in the case of irreducible channels which are found in abundance in the
+set of quantum channels.
+
+Corollary 3.5. A unital quantum channel is primitive if and only if ME =
+C1.
+
+    The following proposition captures the description of the stabilising algebra
+of a composition of two channels. The commutativity of channels is a necessary
+condition.
+
+Proposition 3.6. If two unital channels ,  commute that is    =   ,
+then M() = {a  M : k(a)  M k  N}.
+
+Proof. The proof is based on the same idea which was used in Lemma 2.3. One
+side is straight forward. For the other side, let a  M(). Then for any
+k  N, we have
+
+                          (  )k(aa) = k(k(aa))
+                                              k{(k(a))k(a)}
+                                              k(k(a))k(k(a))
+                                             = kk(aa)
+                                             = (  )k(aa).
+
+Since the two extreme ends are same, the inequalities become equality and using
+the trace preservation of ,  and faithfulness of trace, we obtain the result.
+
+                                                  19
+    Note that starting from the Perron-Frobenius theory of positive and non-
+negative matrices, the notions of irreducibility and primitivity of matrices have
+attracted wide attention in matrix theory [22]. These concepts have been applied
+in algebraic graph theory, finite Markov chains and other related fields. In [36],
+the author is concerned with irreducibility and primitivity of sums and products
+of non-negative matrices. Since unital quantum channels can be thought of as
+non-commutative generalisations of bistochastic matrices (matrices with non-
+negative real entires where each row and column sums to 1), the remaining
+part of this section addresses similar notions of irreducibility and primitivity of
+products of unital channels.
+
+    Note that product of primitive channels need not be primitive. To get a
+glimpse of the importance of primitivity of product of channels, we observe that
+to quantify the increment of entropy of a quantum system under a primitive
+channel, the logarithmic-Sobolev (LS) constant plays an important role [34].
+The discrete LS constant in [34] is defined assuming E  E is primitive. So
+primitivity of composition of two channels seems to be a useful assertion. We
+derive a necessary condition for the composition of two channels to be primitive.
+
+Theorem 3.7. Let two unital channels ,  be such that    =   . If one
+of the two channels is primitive, then    is primitive.
+
+Proof. Proposition 3.6 implies that
+
+                                 M()  M M .
+
+Now if one of them (say ) is primitive, then M = C1, forcing M() =
+C1, making    primitive.
+
+    Now we give a new proof to the following theorem concerning the primitivity
+of E  E, which was first given in [10], Theorem 13.
+
+Theorem 3.8. Let E be a unital channel. If E  E is irreducible, then E is
+primitive. Furthermore, if E  E = E  E and E is primitive, then E  E is
+primitive and hence irreducible.
+
+Proof. Let E  E be irreducible. Then we have FEE = C1. It is easy to see
+that if for any a, E(a) = a with || = 1, then a  ME. Now by Lemma 2.1 we
+get ME = FEE = C1. Hence the peripheral spectrum has to be trivial. So E
+is primitive.
+
+    The other assertion is a direct application of Theorem 3.7.
+
+    The following result appeared in [40], Lemma 2, which was used to show
+that the set of primitive channels with a fixed Kraus rank is path connected.
+We give an alternate proof of the result using the techniques we have developed.
+
+Theorem 3.9. Let E be a unital quantum channel. Then E is irreducible if and
+only if E + E2 is primitive.
+
+                                                  20
+Proof. First we observe that E + E2 = E(1 + E) = (1 + E)E and hence E and
+1 + E commute. Now it is well known (see [43], Theorem 6.2, 6.7) that if E is
+irreducible, then 1 + E is primitive. Now by the Proposition 3.6, M(E+E2) =
+M(E(1+E))  ME M(1+E) . As M(1+E) = C1, we have M(E+E2) is
+C1, forcing E + E2 to be primitive.
+
+    Conversely, let E + E2 be primitive. If E is not irreducible, then there exists
+a non trivial projection p such that E(p)  p. Furthermore, using the Kraus
+operators it can be shown that E(p)  p ([7], Lemma 3.1). Since E is trace
+preserving, we get by faithfulness of trace, E(p) = p. This yields, (E + E2)(p) =
+2p and subsequently (E + E2)n(p) = 2np. Now following [43], Theorem 6.7, if
+E + E2 is primitive, then limn(E + E2)n(p) is a positive definite matrix. But
+if (E + E2)n = 2np, then limn(E + E2)n(p) does not exists, contradicting the
+primitivity of (E + E2).
+
+    Exploiting the relation FEE = ME , we give a different proof of the follow-
+ing proposition given in [10], Proposition 2.
+
+Proposition 3.10. Let E be a unital channel. Then E  E is irreducible if and
+only if there is no projection p < 1 and no unitary u such that E(p) = upu.
+
+Proof. Let E  E be irreducible. Then C1 = FEE = ME . If there is a
+projection p and a unitary u such that E(p) = upu, then E(p)2 = up2u =
+upu = E(p) = E(p2) and hence p  ME , contradicting the hypothesis.
+
+    Conversely, assume the contrary that is FEE = C, then ME = C1 and
+hence assume a  ME . As ME is a C-algebra, replacing a by the real part a
+and the imaginary a part of a, we can assume a is self adjoint. Furthermore,
+replacing a by a + a 1 and noting that E is unital, we can assume a is positive.
+By the spectral decomposition theorem, let a = 1p1 + � � � kpk where i's are
+the eigenvalues and pi's are the corresponding eigen projections. Since a  ME ,
+it is easy to see that pi  ME , for every i = 1, 2, � � � , k. Hence for any such j,
+using Theorem 1.2 we get E(pj) is a projection and because E is trace preserving,
+E(pj) is a projection of the same rank as pj. This means there is a unitary u
+such that E(pj) = upju. This violates the assumption.
+
+4 In the Heisenberg Picture
+
+In general setting, a quantum channel (E) that is a completely positive trace
+preserving linear maps is defined on the trace class operators T (H) where H can
+be an infinite dimensional Hilbert space. The positivity of a map on T (H) is
+realised by considering T (H) as a matrix ordered space. This map E : T (H) 
+T (H) is seen as a linear operator in the Schr�odinger picture. Since the dual
+of T (H) is B(H), that is B(H) = T (H), the map E induces a unital, normal
+and completely positive map on B(H). The dual picture where a completely
+positive and trace preserving map on trace class operators induces a unital
+completely positive map E : B(H)  B(H) is also an important association to
+a channel. The two maps are related via the relation Tr(aE(b)) = Tr(E(a)b)
+
+                                                  21
+for all a  B(H), b  T (H). This scenario where the map E : B(H)  B(H)
+is a unital normal and completely positive, is known as Heisenberg picture. In
+finite dimensional Hilbert spaces, both the spaces are same but thought of as
+different matrix ordered spaces. That is, although the matrix ordered spaces
+Md and Md are different, a linear map, if it is completely positive on Md
+is equivalent to being completely positive on Md. The discussion on positivity
+and quantum channel is mentioned in detail in [19], Section III.A . We discuss
+the multiplicative property of a linear map in the Heisenberg picture and hence
+we will consider unital completely positive (ucp) maps on Md.
+
+Density of Trivial Multiplicative Domain Maps
+
+Theorem 4.1. The set of unital completely positive maps on Md that have
+trivial multiplicative domains is dense in the completely bounded norm topology
+inside the set of unital completely positive maps.
+
+Proof. Lets start with an arbitrary ucp map  and define a new map E : Md 
+                         1           1         1
+Md  by   E (x)  =  (1 -  n  )(x)  +  n  Tr(x)  d  ,  for  all  x    Md   where  n(>     1)    N  and
+
+1 is the identity operator in Md.
+
+One can check E is unital completely positive. Note also that E is strictly
+
+positive which means it sends positive semi definite operators to positive definite
+
+i.e invertible and positive elements. Hence it is clear that E is irreducible. Now
+                                                     E~(x)
+we  see  E  approximates    .   Since   the   map              =  Tr(x)  I  is  unital  and positive
+                                                                         d
+and the cb norm is attained at 1. We have
+
+                            ||  -  E ||cb  =  ||  1  (  -  E~)||cb
+                                                  n
+
+                                              1   [||||cb  + ||E~||cb]
+                                              n
+
+                                           =  2
+                                              n
+
+As we can take n large enough, it shows that E approximates an arbitrary ucp
+
+maps .
+
+    Suppose E has a non trivial multiplicative domain and let a  ME . Since
+ME is a C algebra, a is also in ME . So we can assume a to be self adjoint.
+Also since E is unital by replacing a by a + ||a||1 we can assume a is a positive
+
+operator. Now let us assume a has the following spectral decomposition: a =
+1p1 +� � �+kpk where each pi is a projection. Since E(a2) = E(a.a) = E(a)E(a)
+we have E(am) = E(a)m for all m > 0. So for any polynomial f , we have
+
+E(f (a)) = f (E(a)). So for any polynomials f , f (a) is in the multiplicative
+domain of E and since it is a C-algebra, all the spectral projections pi  ME ,
+for every i. By Theorem 1.2 E(pi) is also a projection. Since E is strictly positive,
+the only possibility of E(pi) is 1. Now, if E(pi) = 1, then E(1 - pi) = 0 which
+violates the irreducibility of E. This shows the multiplicative domain of E can
+
+not contain any non-trivial elements.
+
+    From the standpoint of C-algebra theory on finite dimensional Hilbert
+spaces, Theorem 4.1 reveals an interesting property that the majority of ucp
+
+                                               22
+maps on Md don't display any multiplicative nature even when restricted to
+a subdomain. From the viewpoint of quantum information theory, specially
+in quantum error correction where a tacit relationship between multiplicative
+domain of a unital channel and error correcting codes have been discovered
+(see [14], [24]), Theorem 4.1 rules out the possibility of perfect error correction
+for majority of channels. Section 5 contains further discussion on the effect of
+multiplicative domain of a unital channel on error correction.
+
+    We end this subsection with another observation which reinforce the effect
+of the Theorem 4.1 in the study of the convex set of all ucp maps on Md. We
+first state the following Theorem
+
+Theorem 4.2. (Choi,[13]) If E, ,  are ucp maps on a C-algebra A such that
+
+E  =  1  (  +  ),  then
+      2
+
+               ME = M  M  {x  A : E(x) = (x) = (x)}.
+
+    Now if a ucp map  is such that M = C1, then Choi's theorem implies
+that any ucp map lying in the line-segment passing through  must have trivial
+multiplicative domain. Since by Theorem 4.1 such 's are dense, it follows that
+every line-segment passing through the elements of this dense set contains ucp
+maps with trivial multiplicative domain. Hence ucp maps which do not show
+any multiplicative nature is quite generic in general sense.
+
+On Arveson's Boundary type theorem on matrix algebras Recall that
+an operator a on a Hilbert space H is called irreducible if there exists no non
+trivial projection p such that ap = pa. The celebrated Boundary theorem ([3])
+of Arveson in finite dimension asserts:
+
+Theorem 4.3. ([18]) If a  Md is irreducible and if  : Md  Md is a unital
+completely positive linear transformation such that a  F, then (x) = x for
+all x  Md.
+
+    We state a simple lemma, the proof of which can be easily derived using the
+fact that the algebra generated by {1, a, a} is Md, where a is an irreducible
+operator.
+
+Lemma 4.4. Let E : Md  Md be a ucp map and let a  Md be irreducible
+such that a  ME. Then E is an automorphism.
+
+Proof. Easy.
+
+    Now we state and prove the main theorem of the section. Since in the dis-
+cussion about multiplicative index, the eigen operators play an important role,
+the following theorem provides some more information extending the Theorem
+4.3. For a ucp map E : Md  Md, we recall that NE = {x  Md : E(x) =
+x, || = 1}. Clearly the set NE contains the fixed point set FE . Then we have
+the following theorem.
+
+                         23
+Theorem 4.5. Let E : Md  Md be a ucp map. Suppose an irreducible
+operator a  Md is inside NE . Then NE , the peripheral eigen operators of E,
+span the entire Md.
+
+Proof. For a ucp E, Kuperberg in [30] proved that there is a sequence of integers
+n1 < n2 < � � � such that Enk converges to a unique idempotent and completely
+positive map P : Md  Md and Ran(P )=span-NE. Now we proceed similarly
+as in [18] and using Choi-Effrose product on span-NE we can make it a C-
+algebra. Let us define a  b = P (ab) where a, b  span-NE and it is well known
+that with this multiplication span-NE=Ran(P ) is a C-algebra. Since P is a
+conditional expectation, we have P (yz) = P (yP (z)) for y  span-NE, z  Md.
+Now, we see for any a  span-NE , P (a) = a and
+P (xy) = P (xP (y)) = x  P (y) = P (x)  P (y), x  span- NE , y  Md.
+Similarly if x1, x2  span-NE , y  Md we get
+P ((x1x2)y) = P (x1P (x2y)) = x1  P (x2y) = (P (x1)  P (x2))  P (y).
+Hence by induction, if  is any word with 2n non commutative variables and if
+x1, � � � , xn  span-NE and y  Md we have
+
+         P ((x1, � � � ,xn, x1, � � � , xn )y)
+                          = (P (x1), � � � , P (xn), P (x1), � � � , P (xn))  P (y).
+
+Where (P (x1), � � � , P (xn), P (x1), � � � , P (xn)) denotes the  product of the
+letters of the word .
+Now since NE contains an irreducible operator a and since NE is  closed we
+have a  NE . By irreducibility of a, the set {1, a, a} algebraically generates
+the entire Md. So for any x  Md is of the form (x1, � � � , xn, x1, � � � , xn) with
+n varies over N and xi  NE we have
+
+                         P (xz) = P (x)  P (z) for all x, z  Md.
+
+So P : Md  span-(NE , ) is a homomorphism between the algebra Md and
+span-(NE , ).
+Since Md is simple as an algebra and NE is not trivial, we get Ker(P ) is trivial,
+and hence P is an isomorphism and therefore the set span-NE is exactly the set
+Md.
+
+    Note that in [4],[5] Arveson studied asymptotic stability of ucp maps on
+C-algebras where the maps in discussion satisfy certain properties. Isometric
+invertible operators acting on a general Banach space X whose peripheral eigen-
+vectors span the domain X seem to have played a significant role in studying
+the asymptotic stability of ucp maps. Such maps were named diagonalisable
+in [4]. Theorem 4.5 exhibits similar behaviour of a ucp map if it contains an
+irreducible operator as a peripheral eigenvector. Since FE  NE for a unital
+linear map, Theorem 4.5 also suggests a different prospective of the Boundary
+Theorem of Arveson (Theorem 4.3) on finite dimensional spaces from a more
+spectral theoretic viewpoint.
+
+                                                  24
+5 Application
+
+In this section we note down some applications of the techniques and results
+developed throughout this paper. Quantum error correction is one of the areas
+where we find appropriate set up for exhibiting such applications. See [26],[14]
+for more detailed discussion in the theory of error correction.
+
+    The standard model of error correction can be described by a triple (E, R, C).
+Here E : B(H)  B(H) is a quantum channel, where H is a finite dimensional
+Hilbert space. C is a subspace of H known as the code and R is another quantum
+channel on B(H) known as recovery operation. Denote PC by the projection onto
+C. The triple should satisfy the condition
+
+                               R(E()) = , where PCPC = .
+
+With this set up, the "Noiseless Subsystem" (NS) protocol (see [21],[26]) seeks
+subsystems HB (with dim HB > 1) of the full system H such that H =
+(HA HB) K, where K is another subspace of H such that A, B there
+exists a A satisfying
+
+                                    E(A  B) = A  B.
+
+Here we write A (resp. B) for operators on B(HA) (resp. B(HB)). Noiseless
+subsystems of any unital channel E are obtained precisely from the fixed point
+set FE of E.
+
+    A subsystem B is called correctable for E via a recovery operation R if it is
+a noiseless subsystem for the quantum operation R  E. An important class of
+subsystems is the unitarily correctable subsystem (UCS) which is also known as
+unitarily correctable codes where the recovery operation R can be chosen to be
+the unitary channel x  uxu, for a unitary operator u and for all x  B(H).
+The following theorem relates the UCS of a unital channel E to the noiseless
+subsystems of E  E.
+
+Theorem 5.1. [28] Let E be a unital quantum channel. Then the following
+statements are equivalent:
+
+   1. B is a unitarily correctable subsystem for E.
+
+   2. B is a noiseless subsystem for E  E.
+
+    In [14], the UCC algebra for a unital channel is defined to be the FEE and
+in Theorem 11 it was shown that this is precisely the multiplicative domain.
+
+    With these background we are ready to exhibit the application of the tech-
+niques developed in this paper. We will prove that for a unital channel E, even
+if we require the recovery operation R to be a unital channel (not necessarily
+a unitary channel), we still get the multiplicative domain of E to be the exact
+correctable code. This means we don't get any extra correctable codes other
+than those arising from the multiplicative domain as in Theorem 5.1 even if we
+allow our recovery map to be any unital channel. We formulate the following
+proposition:
+
+                                                  25
+Proposition 5.2. Given a unital channel E : Md  Md, define the following
+set
+
+                      CE = {FRE : for unital channels R on Md}.
+
+Then we have
+
+              ME = CE .
+
+Proof. First we see that ME  CE by the aid of the Theorem 1.3 that asserts
+ME = FEE . Hence E is one of the choices of R.
+
+    Conversely let a  Md be such that a  FRE for a unital channel R. Since
+a  FRE as well, we have
+
+              Tr(aa) = Tr(R  E(aa))
+                         Tr(R(E(a)E(a)))
+                         Tr(R  E(a)R  E(a))
+                        = Tr(aa).
+
+Where we have use the Schwarz inequality for the unital maps E and R. So
+the inequalities above are all equalities. Subsequently, by the trace preservation
+property of R, we get Tr(E(aa)) = Tr(E(a)E(a)) and hence by the faithfulness
+of trace and the Schwarz inequality for E we get E(aa) = E(a)E(a), which
+shows a  ME. Hence we have the desired equality of sets.
+
+    Since the unitary channels are a particular case for arbitrary unital channels,
+it can be noted that Theorem 5.1 appears as a special case of the Proposition
+5.2. It is now evident from Proposition 5.2 that even if we collect the unitally
+correctable codes of a unital channel via a unital recovery operation, we don't
+get anything other than the unitarily correctable codes.
+
+    A UCS code B of  is called unitarily noiseless subsystem (UNS) for  (see
+[33], [6] ) if B is UCS code for n for every n  1. Now by the aid of the Theorem
+5.1, the UCS codes of n are exactly the noiseless subsystems for n  n for
+n  1, which can be obtained precisely from the algebra Fnn . Since for
+each n  N, n is a unital channel, Theorem 1.3 asserts that
+
+              Mn = Fn n .
+
+So if B is a UNS code, then it can be obtained from the set Fnn which
+
+                                                                                                                 n1
+
+is essentially the stabilising algebra M . Hence the UNS codes for a unital
+channel  are exactly those that arise from the stabilising subalgebra M.
+
+    In this connection the following proposition relates to the notion of multi-
+plicative index of a unital channel and the UNS codes.
+
+Proposition 5.3. Let E : Md  Md be a unital channel with multiplicative
+index 1, that is (E) = 1. Then every UCS code for E is a UNS code. Moreover,
+if (E) > 1, then there exist UCS codes which are not UNS.
+
+              26
+Proof. As (E) = 1, ME = MEn = ME , for every n  1. Hence the stabilising
+subalgebra ME is obtained after applying the channel only once. Clearly if B
+is UCS then B is obtained from the set ME = ME which is same as MEn, for
+all n  1 and the first assertion follows.
+
+    For the other assertion, note that if (E) > 1, then we have proper contain-
+ment ME  ME . Hence there is a UCS code B corresponding to ME such
+that it is not UCS for E2, and hence not UCS for En if n  2. So B ca not be
+UNS.
+
+    Note that by the Corollary 2.8, all the channels that commute with the
+adjoints have multiplicative index 1 and hence have UCS codes as UNS codes.
+As a corollary to the above result we capture the following well known result
+for Pauli Channels which constitute an important class of quantum channels .
+
+Corollary 5.4. ([32], Section 3.2.1) A UCS code for Pauli Channels or gener-
+alised Pauli channels is also a UNS code.
+
+Proof. If E is a Pauli channel or a generalised Pauli channel, then E  E = E  E
+([10], see discussion after definition 6). Hence by the Corollary 2.8, we get
+ME = ME and hence (E) = 1 and Proposition 5.3 applies.
+
+6 Summary and Discussion
+
+We have put forward a structure theorem for a unital quantum channel that
+depicts the asymptotic automorphic behaviour of the channel on a stabilising
+subalgebra. This subalgebra is generated by the peripheral eigen operators of
+the channel. Based on the finite dimensionality of the system, the notion of
+multiplicative index has been introduced which measures the number of times
+the channel needs to be composed with itself for the multiplicative domain to
+stabilise. Some applications of the results obtained in the paper have been
+shown in quantum error correction.
+
+    It is interesting to note that any unital channel  : Md  Md can be
+approximated by a channel E with (E) = 1. Indeed the set
+
+                       S1 = {E : Md  Md : (E) = 1}
+
+is dense inside the convex set of unital channels. For given a channel , pro-
+
+ceeding similarly as in the proof of the Theorem 4.1, for each n  N, there exists
+
+a channel E such that  -E  cb <  1  and ME  = C1.   Each of these E's has
+                                 n
+(E) = 1 as ME = ME = C1.
+
+Even though S1 is dense, it follows that S1 is not relatively open set inside
+
+the set of unital channels. To see this, define a channel  : M2  M2 as follows
+
+                       (x) = pxp + qxq, x  M2,
+
+where p =  10  ,q =    0   0  .
+           00          0   1
+
+                                 27
+Then it is easily verified that
+
+                       M =            a0      : a, b  C .
+                                      0b
+
+Also since  = , we get from Corollary 2.8 that M = M and hence
+ = 1 and we have   S1.
+
+    Now for each t  [0, 1], define t : M2  M2 by
+
+                       t(x) = p(t)xp(t) + q(t)xq(t),
+
+where  p(t)  =  1  1+t 0  , q(t)   =   1  0 -t      , and c =  (1 + t)2 + t2.
+                c    t0                c  0 1+t
+
+    Then t is a unital quantum channel for each t  [0, 1] such that 0 = .
+So it follows that t  t is a continuous path starting from  and ending at
+1. We will show that for each t > 0, we will have (t) > 1. Since any open
+neighbourhood of  will intersect this path, it will be evident then that  can
+
+not admit a neighbourhood consisting of channels with  = 1 only, implying
+
+the fact that S1 is not a relatively open set. To this end, we note that for any
+x  M2,
+
+                                    t  t(x) = pxp + qxq,
+
+where p =       10     and q =  0   0     . Hence we have
+                00              0   1
+
+                       Mt =           a0      : a, b  C .
+                                      0b
+
+Now for p =        10    Mt ,   we  compute   t(p)  =  1   (1 + t)2  (1 + t)t  .
+                   00                                  c2  (1 + t)t     t2
+
+Evidently t(p)  Mt if t = 0. And by definition we get p  M2t . Hence
+Mt2  Mt and subsequently  > 1 as desired.
+
+    It can be also seen that for any value n > 1, the set
+
+                       Sn = {E : Md  Md : (E) = n}
+
+can not be relatively open as S1 is a dense set.
+    Notwithstanding the discussion on channels with fixed multiplicative index,
+
+it will be interesting to know: given a unital channel E on Md, how to get the
+exact value of the multiplicative index () of E. The exact upper bound for 
+
+is an interesting problem itself. The discussion after the Example 2.13 suggests
+that it is strictly less than d2. The question may have a connection with the
+
+exact dimension of proper maximal unital -subalgebras of Md.
+
+7 Acknowledgements
+
+The work is supported by the Graduate Research Fellowship at the University of
+Regina. The author likes to thank Dr. Douglas Farenick for various stimulating
+
+                                          28
+discussions, Dr. Sarah Plosker for reading the manuscript and providing with
+feedback and Sam Jaques for a lot of insightful discussions on this topic. The
+author also wants to thank the anonymous referees for various comments and
+suggestions to improve the quality and exposition of this work.
+
+References
+
+[1] Ana L. Agore, The maximal dimension of unital subalgebras of the matrix
+    algebra, Forum Math. 29 (2017), no. 1, 1�5. MR 3592590
+
+[2] A. Arias, A. Gheondea, and S. Gudder, Fixed points of quantum operations,
+    J. Math. Phys. 43 (2002), no. 12, 5872�5881. MR 1939622
+
+[3] William Arveson, Subalgebras of C-algebras. II, Acta Math. 128 (1972),
+    no. 3-4, 271�308. MR 0394232
+
+[4]  , Asymptotic stability. I. Completely positive maps, Internat. J.
+
+     Math. 15 (2004), no. 3, 289�312. MR 2060791
+
+[5]  , The asymptotic lift of a completely positive map, J. Funct. Anal.
+
+     248 (2007), no. 1, 202�224. MR 2329688
+
+[6] Robin Blume-Kohout, Hui Khoon Ng, David Poulin, and Lorenza Viola,
+    Characterizing the structure of preserved information in quantum processes,
+    Phys. Rev. Lett. 100 (2008), 030501.
+
+[7] O. Bratteli, P. E. T. Jorgensen, A. Kishimoto, and R. F. Werner, Pure
+    states on Od, J. Operator Theory 43 (2000), no. 1, 97�143. MR 1740897
+
+[8] A. V. Bulinskii, Some asymptotic properties of W -dynamical systems,
+    Funktsional. Anal. i Prilozhen. 29 (1995), no. 2, 64�67. MR 1340305
+
+[9] John Bunce and Norberto Salinas, Completely positive maps on C-algebras
+    and the left matricial spectra of an operator, Duke Math. J. 43 (1976), no. 4,
+    747�774. MR 0430793
+
+[10] D. Burgarth, G. Chiribella, V. Giovannetti, P. Perinotti, and K. Yuasa,
+      Ergodic and mixing quantum channels in finite dimensions, New J. Phys.
+      15 (2013), no. July, 073045, 33. MR 3094122
+
+[11] Raffaella Carbone, Emanuela Sasso, and Veronica Umanit`a, Decoherence
+      for quantum Markov semi-groups on matrix algebras, Ann. Henri Poincar�e
+      14 (2013), no. 4, 681�697. MR 3046452
+
+[12] Giulio Chiribella and Jinyu Xie, Optimal design and quantum benchmarks
+      for coherent state amplifiers, Phys. Rev. Lett. 110 (2013), 213602.
+
+[13] Man Duen Choi, A Schwarz inequality for positive linear maps on C -
+      algebras, Illinois J. Math. 18 (1974), 565�574. MR 0355615
+
+            29
+[14] Man-Duen Choi, Nathaniel Johnston, and David W. Kribs, The multi-
+      plicative domain in quantum error correction, J. Phys. A 42 (2009), no. 24,
+      245303, 15. MR 2515540
+
+[15] Giacomo Mauro D'Ariano, Chiara Macchiavello, and Paolo Perinotti, Su-
+      perbroadcasting of mixed states, Phys. Rev. Lett. 95 (2005), 060503.
+
+[16] David E. Evans and Raphael H�egh-Krohn, Spectral properties of positive
+      maps on C-algebras, J. London Math. Soc. (2) 17 (1978), no. 2, 345�355.
+      MR 0482240
+
+[17] D. R. Farenick, Irreducible positive linear maps on operator algebras, Proc.
+      Amer. Math. Soc. 124 (1996), no. 11, 3381�3390. MR 1340385
+
+[18] Douglas Farenick, Arveson's criterion for unitary similarity, Linear Algebra
+      Appl. 435 (2011), no. 4, 769�777. MR 2807232
+
+[19] Douglas Farenick, Samuel Jaques, and Mizanur Rahaman, The fidelity of
+      density operators in an operator-algebraic framework, Journal of Mathe-
+      matical Physics 57 (2016), no. 10.
+
+[20] Teiko Heinosaari and Ma�rio Ziman, The mathematical language of quantum
+      theory, Cambridge University Press, Cambridge, 2012, From uncertainty to
+      entanglement. MR 2896337
+
+[21] John A. Holbrook, David W. Kribs, and Raymond Laflamme, Noiseless
+      subsystems and the structure of the commutant in quantum error correction,
+      Quantum Inf. Process. 2 (2003), no. 5, 381�419 (2004). MR 2065970
+
+[22] Roger A. Horn and Charles R. Johnson, Matrix analysis, Cambridge Uni-
+      versity Press, Cambridge, 1990, Corrected reprint of the 1985 original. MR
+      1084815
+
+[23] Michael Horodecki, Peter W. Shor, and Mary Beth Ruskai, Entanglement
+      breaking channels, Rev. Math. Phys. 15 (2003), no. 6, 629�641. MR 2001114
+
+[24] Nathaniel Johnston and David W. Kribs, Generalized multiplicative do-
+      mains and quantum error correction, Proc. Amer. Math. Soc. 139 (2011),
+      no. 2, 627�639. MR 2736344
+
+[25] Richard V. Kadison, Isometries of operator algebras, Ann. Of Math. (2) 54
+      (1951), 325�338. MR 0043392
+
+[26] Emanuel Knill and Raymond Laflamme, Theory of quantum error-
+      correcting codes, Phys. Rev. A 55 (1997), 900�911.
+
+[27] David W. Kribs, Quantum channels, wavelets, dilations and representations
+      of On, Proc. Edinb. Math. Soc. (2) 46 (2003), no. 2, 421�433. MR 1998572
+
+                                                  30
+[28] David W. Kribs and Robert W. Spekkens, Quantum error-correcting sub-
+      systems are unitarily recoverable subsystems, Phys. Rev. A 74 (2006),
+      042329.
+
+[29] Burkhard Ku�mmerer, Markov dilations on W -algebras, J. Funct. Anal. 63
+      (1985), no. 2, 139�177. MR 803091
+
+[30] Greg Kuperberg, The capacity of hybrid quantum memory, IEEE Trans.
+      Inform. Theory 49 (2003), no. 6, 1465�1473. MR 1984935
+
+[31] J. Levick, An Uncertainty Principle For Completely Positive Maps, ArXiv
+      e-prints (2016).
+
+[32] Magesan, Easwar, Gaining information about a quantum channel via
+      twirling, Master's thesis, 2008.
+
+[33]  , Characterizing noise in quantum systems, Ph.D. thesis, 2012.
+
+[34] Alexander Mu�ller-Hermes, Daniel Stilck Franc�a, and Michael M. Wolf, En-
+      tropy production of doubly stochastic quantum channels, J. Math. Phys. 57
+      (2016), no. 2, 022203, 22. MR 3457927
+
+[35] Vern Paulsen, Completely bounded maps and operator algebras, Cambridge
+      Studies in Advanced Mathematics, vol. 78, Cambridge University Press,
+      Cambridge, 2002. MR 1976867
+
+[36] Stefan Schwarz, New kinds of theorems on non-negative matrices,
+      Czechoslovak Math. J. 16 (91) (1966), 285�295. MR 0201453
+
+[37] Erling St�rmer, Multiplicative properties of positive maps, Math. Scand.
+      100 (2007), no. 1, 184�192. MR 2331197
+
+[38] Erling St�rmer, Separable states and positive maps, J. Funct. Anal. 254
+      (2008), no. 8, 2303�2312. MR 2402111
+
+[39] Erling St�rmer, Positive linear maps of operator algebras, Springer Mono-
+      graphs in Mathematics, Springer, Heidelberg, 2013. MR 3012443
+
+[40] Oleg Szehr and Michael M. Wolf, Connected components of irreducible maps
+      and 1D quantum phases, J. Math. Phys. 57 (2016), no. 8, 081901, 16. MR
+      3541858
+
+[41] J. Watrous, Theory of quantum information, draft manuscript, 2015.
+
+[42] R. F. Werner, Optimal cloning of pure states, Phys. Rev. A 58 (1998),
+      1827�1832.
+
+[43] M. M. Wolf, Quantum channels and operations- guided tour, Online Lecture
+      Notes, 2012.
+
+      31
+

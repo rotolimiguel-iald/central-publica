@@ -1,0 +1,76 @@
+--- v411/fechar_preparacao_v411.py
++++ v412/fechar_preparacao_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/fechar_preparacao_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/fechar_preparacao_v412.py.diff
+@@ -6,5 +7,5 @@
+-"""fechar_preparacao_v411.py -- o fim da preparacao, depois de gerar_relatorio_v411.py: (1) a ANOTACAO de fechamento da rota do Mapa de Rotas aberta pela preparacao (o rota_id e' LIDO do registro que a abriu: registro_mapa_prep_v411_ABERTA.json, se a gerencia o gravou, ou registro_mapa_construtor_v411.json, o da abertura pelo construtor em 12/11: a rota cadeia.preparacao_v411),
+-Tudo LE PREPARACAO_v411_PRONTA.json: nenhum hash e' digitado aqui. Idempotente por marcador (.FECHADA_<sha16 do PRONTA>): uma segunda rodada com o mesmo PRONTA nao repete nada. Molde: fechar_preparacao_v410.py, adaptado em 12/11/2026 a v411 pelo fork B do claude-construtor-v411 (nenhum modulo novo; o registro h0dn_bg1_v411; nenhuma chave antiga muda).
+-FAIL-CLOSED ANTES de qualquer efeito: exige PREPARACAO_v411_PRONTA.json com pronta = true (e nao o ensaio do topo proposto), a SESSION_REFERENCE_prep_v411.json (a inscricao ACOM da preparacao), o registro da abertura da rota e os artefatos que a anotacao cita; sem eles PARA sem efeito.
+-NAO foi executado na adaptacao (ato do gerente, depois do gerar_relatorio_v411.py e da revisao de terceiro).
+-uso: python -I -B -X utf8 fechar_preparacao_v411.py"""
++"""fechar_preparacao_v412.py -- o fim da preparacao, depois de gerar_relatorio_v412.py: (1) a ANOTACAO de fechamento da rota do Mapa de Rotas aberta pela preparacao (o rota_id e' LIDO do registro que a abriu: registro_mapa_prep_v412_ABERTA.json, se a gerencia o gravou, ou registro_mapa_construtor_v412.json, o da abertura pelo construtor em 12/11: a rota cadeia.preparacao_v412),
++Tudo LE PREPARACAO_v412_PRONTA.json: nenhum hash e' digitado aqui. Idempotente por marcador (.FECHADA_<sha16 do PRONTA>): uma segunda rodada com o mesmo PRONTA nao repete nada. Molde: fechar_preparacao_v411.py, adaptado em 12/11/2026 a v412 pelo fork B do claude-construtor-v412 (nenhum modulo novo; o registro h0dn_bg1_v411; nenhuma chave antiga muda).
++FAIL-CLOSED ANTES de qualquer efeito: exige PREPARACAO_v412_PRONTA.json com pronta = true (e nao o ensaio do topo proposto), a SESSION_REFERENCE_prep_v412.json (a inscricao ACOM da preparacao), o registro da abertura da rota e os artefatos que a anotacao cita; sem eles PARA sem efeito.
++NAO foi executado na adaptacao (ato do gerente, depois do gerar_relatorio_v412.py e da revisao de terceiro).
++uso: python -I -B -X utf8 fechar_preparacao_v412.py"""
+@@ -14,2 +15,2 @@
+-if os.environ.get("V411_ENSAIO_TOPO_PROPOSTO") == "1":   # (v411) o ensaio do topo proposto depura a cadeia: nao e' preparacao
+-    raise SystemExit("RECUSO: modo de ensaio do topo proposto (V411_ENSAIO_TOPO_PROPOSTO=1): nada vai ao Mapa, a fila nem a ACOM")
++if os.environ.get("V412_ENSAIO_TOPO_PROPOSTO") == "1":   # (v412) o ensaio do topo proposto depura a cadeia: nao e' preparacao
++    raise SystemExit("RECUSO: modo de ensaio do topo proposto (V412_ENSAIO_TOPO_PROPOSTO=1): nada vai ao Mapa, a fila nem a ACOM")
+@@ -17,2 +18,2 @@
+-_sp_dl = _ilu.spec_from_file_location("delta_v411_fechar", os.path.join(HERE, "delta_v411.py")); DL = _ilu.module_from_spec(_sp_dl); _sp_dl.loader.exec_module(DL)   # (v411) a moldura e as listas, LIDAS do DESENHO pelo delta
+-PR = os.path.join(HERE, "PREPARACAO_v411_PRONTA.json"); J = json.load(open(PR, encoding="utf-8")); S = hashlib.sha256(open(PR, "rb").read()).hexdigest()[:16]
++_sp_dl = _ilu.spec_from_file_location("delta_v412_fechar", os.path.join(HERE, "delta_v412.py")); DL = _ilu.module_from_spec(_sp_dl); _sp_dl.loader.exec_module(DL)   # (v412) a moldura e as listas, LIDAS do DESENHO pelo delta
++PR = os.path.join(HERE, "PREPARACAO_v412_PRONTA.json"); J = json.load(open(PR, encoding="utf-8")); S = hashlib.sha256(open(PR, "rb").read()).hexdigest()[:16]
+@@ -24,6 +25,6 @@
+-REF_ = os.path.join(HERE, "SESSION_REFERENCE_prep_v411.json")
+-ABERTA_ = os.path.join(HERE, "registro_mapa_prep_v411_ABERTA.json")
+-if not os.path.exists(ABERTA_):   # (v411) a rota da preparacao foi aberta pelo construtor, em 12/11, por este registro
+-    ABERTA_ = os.path.join(HERE, "registro_mapa_construtor_v411.json")
+-for _n_ in (REF_, ABERTA_, os.path.join(HERE, "RELATORIO_PREPARACAO_v411.md"), os.path.join(HERE, "PLANO_v411.md")):
+-    assert os.path.exists(_n_), ("FAIL-CLOSED: falta %s -- nao registro no Mapa, nao deposito na fila e nao transiciono a ACOM (a inscricao ACOM e a rota da preparacao v411 sao ato da gerencia)" % os.path.basename(_n_))
++REF_ = os.path.join(HERE, "SESSION_REFERENCE_prep_v412.json")
++ABERTA_ = os.path.join(HERE, "registro_mapa_prep_v412_ABERTA.json")
++if not os.path.exists(ABERTA_):   # (v412) a rota da preparacao foi aberta pelo construtor, em 12/11, por este registro
++    ABERTA_ = os.path.join(HERE, "registro_mapa_construtor_v412.json")
++for _n_ in (REF_, ABERTA_, os.path.join(HERE, "RELATORIO_PREPARACAO_v412.md"), os.path.join(HERE, "PLANO_v412.md")):
++    assert os.path.exists(_n_), ("FAIL-CLOSED: falta %s -- nao registro no Mapa, nao deposito na fila e nao transiciono a ACOM (a inscricao ACOM e a rota da preparacao v412 sao ato da gerencia)" % os.path.basename(_n_))
+@@ -37,2 +38,2 @@
+-MOLDURA = DL.FRASE_MOLDURA_V411_PT % (fpt(_pri.get("z_null")), fpt(_pri.get("z_tgl")), _pri.get("ramo", "n/d"), fpt(_cef.get("z_null")), _cef.get("ramo", "n/d"))
+-res = ("candidato %s (%s B, base v410 %s); pronta=%s; portoes que passaram: %s; que nao passaram: %s; kernel recibo %s (%s modulo novo: o kernel e' o da v410); ESPERADOS %s; p00 %s (%s/%s; pendentes: %s); ensaio a seco %s; escada %s; %s bandeiras novas" % (
++MOLDURA = DL.FRASE_MOLDURA_V412_PT % (fpt(_pri.get("z_null")), fpt(_pri.get("z_tgl")), _pri.get("ramo", "n/d"), fpt(_cef.get("z_null")), _cef.get("ramo", "n/d"))
++res = ("candidato %s (%s B, base v411 %s); pronta=%s; portoes que passaram: %s; que nao passaram: %s; kernel recibo %s (%s modulo novo: o kernel e' o da v411); ESPERADOS %s; p00 %s (%s/%s; pendentes: %s); ensaio a seco %s; escada %s; %s bandeiras novas" % (
+@@ -42,4 +43,4 @@
+-         "titulo": "v411 preparada (o teste H0DN x BG1 aberto e recalculado no rito; nenhum modulo novo): candidato %s; pronta=%s" % (J["candidato_sha16"], J["pronta"]), "resultado": res,
+-         "proximo_passo": "revisao de terceiro (o Sonnet, D109: uma rodada de conserto e uma conferencia unica; quem constroi nao aprova); depois o orquestrador pos_treino_v411 instala, roda o rito e a cadeia ate' o HANDOFF; a rota da versao selada sera a da v411",
+-         "nota": "quem constroi nao aprova: " + J["nao_revisado_por_terceiro"], "artefatos": [PR, os.path.join(HERE, "RELATORIO_PREPARACAO_v411.md"), os.path.join(HERE, "PLANO_v411.md")], "refs": REFS}]
+-ja = os.path.join(HERE, "registro_mapa_preparacao_v411_ANOTACAO.json")
++         "titulo": "v412 preparada (o teste H0DN x BG1 aberto e recalculado no rito; nenhum modulo novo): candidato %s; pronta=%s" % (J["candidato_sha16"], J["pronta"]), "resultado": res,
++         "proximo_passo": "revisao de terceiro (o Sonnet, D109: uma rodada de conserto e uma conferencia unica; quem constroi nao aprova); depois o orquestrador pos_treino_v412 instala, roda o rito e a cadeia ate' o HANDOFF; a rota da versao selada sera a da v412",
++         "nota": "quem constroi nao aprova: " + J["nao_revisado_por_terceiro"], "artefatos": [PR, os.path.join(HERE, "RELATORIO_PREPARACAO_v412.md"), os.path.join(HERE, "PLANO_v412.md")], "refs": REFS}]
++ja = os.path.join(HERE, "registro_mapa_preparacao_v412_ANOTACAO.json")
+@@ -47 +48 @@
+-r1 = subprocess.run([PY, "-B", "-X", "utf8", ROTAS, "registrar", ja, "--quem", "claude-construtor-v411"], capture_output=True, text=True, encoding="utf-8")
++r1 = subprocess.run([PY, "-B", "-X", "utf8", ROTAS, "registrar", ja, "--quem", "claude-construtor-v412"], capture_output=True, text=True, encoding="utf-8")
+@@ -51 +52 @@
+-txt = ("v411 (o teste decisivo: H0DN x BG1 aberto uma vez, depois do commit publico do pre-registro; a emenda e o resultado RECALCULADO no rito pelo registro %s, a partir dos bytes embutidos; nenhum modulo novo de kernel) preparada em 12/11/2026 por claude-construtor-v411 para a gerencia c1 (nada instalado; o rito nao rodou). " % DL.FECHO_REGISTRO + res + ".\n\n"
++txt = ("v412 (o teste decisivo: H0DN x BG1 aberto uma vez, depois do commit publico do pre-registro; a emenda e o resultado RECALCULADO no rito pelo registro %s, a partir dos bytes embutidos; nenhum modulo novo de kernel) preparada em 12/11/2026 por claude-construtor-v412 para a gerencia c1 (nada instalado; o rito nao rodou). " % DL.FECHO_REGISTRO + res + ".\n\n"
+@@ -53,2 +54,2 @@
+-       + "; ".join("%d %s" % (i_ + 1, r_) for i_, r_ in enumerate(DL.RESSALVAS_ROTULOS_PT)) + ". As erratas ao lado, em nome proprio da gerencia c1: " + ", ".join(DL.ERRATAS_IDS_V411)
+-       + ". P = nP " + DL.D10.FRASE_QUALIFICADOR_PT + " (D64 e D84 da v410).\n\n"
++       + "; ".join("%d %s" % (i_ + 1, r_) for i_, r_ in enumerate(DL.RESSALVAS_ROTULOS_PT)) + ". As erratas ao lado, em nome proprio da gerencia c1: " + ", ".join(DL.ERRATAS_IDS_V412)
++       + ". P = nP " + DL.D10.FRASE_QUALIFICADOR_PT + " (D64 e D84 da v411).\n\n"
+@@ -56 +57 @@
+-ta = os.path.join(HERE, "DEPOSITO_PREPARACAO_v411.md")
++ta = os.path.join(HERE, "DEPOSITO_PREPARACAO_v412.md")
+@@ -58,2 +59,2 @@
+-r2 = subprocess.run([PY, "-X", "utf8", MEM, "depositar", "--quem", "claude-construtor-v411", "--tipo", "project", "--estatuto", "REAL", "--alvo", "novo:v411-preparada-12nov", "--casa", "Central de Patentes", "--slug", "v411-preparada-12nov",
+-                     "--fonte", PR, "--fonte", os.path.join(HERE, "RELATORIO_PREPARACAO_v411.md"), "--texto-arquivo", ta], capture_output=True, text=True, encoding="utf-8")
++r2 = subprocess.run([PY, "-X", "utf8", MEM, "depositar", "--quem", "claude-construtor-v412", "--tipo", "project", "--estatuto", "REAL", "--alvo", "novo:v412-preparada-12nov", "--casa", "Central de Patentes", "--slug", "v412-preparada-12nov",
++                     "--fonte", PR, "--fonte", os.path.join(HERE, "RELATORIO_PREPARACAO_v412.md"), "--texto-arquivo", ta], capture_output=True, text=True, encoding="utf-8")
+@@ -65,2 +66,2 @@
+-req = {"operation": "transition", "reference": ref, "expected_revision": rev, "event_id": "prep-v411-fechada-" + S, "actor": {"id": "claude-construtor-v411", "kind": "agent"},
+-       "changes": {"records": [{"id": "prep_v411_fechada_" + S, "kind": "fact", "statute": "REAL", "text": res, "sources": [{"kind": "artifact", "ref": PR}]}], "flow": {"phase": "entregue_a_gerencia", "next_action": "a gerencia e o orquestrador pos-treino decidem a partir de PREPARACAO_v411_PRONTA.json"}}}
++req = {"operation": "transition", "reference": ref, "expected_revision": rev, "event_id": "prep-v412-fechada-" + S, "actor": {"id": "claude-construtor-v412", "kind": "agent"},
++       "changes": {"records": [{"id": "prep_v412_fechada_" + S, "kind": "fact", "statute": "REAL", "text": res, "sources": [{"kind": "artifact", "ref": PR}]}], "flow": {"phase": "entregue_a_gerencia", "next_action": "a gerencia e o orquestrador pos-treino decidem a partir de PREPARACAO_v412_PRONTA.json"}}}

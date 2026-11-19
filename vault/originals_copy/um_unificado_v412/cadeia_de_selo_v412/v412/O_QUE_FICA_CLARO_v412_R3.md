@@ -1,0 +1,73 @@
+# O que fica claro na v412 (R3)
+
+17/11/2026, manhã. Gerência c1. Texto proposto para as superfícies públicas da v412 (o topo do artigo, o README, o estado atual). A R0, a R1 e a R2 estão em `o_que_fica_claro_REV0\`, `o_que_fica_claro_REV1\` e `o_que_fica_claro_REV2\`. A R2 foi aprovada com ressalvas pelo revisor (ordem 023, unidade W2), mas o operador não aceitou o parágrafo de P = nP dela: «não concordo com o texto sobre P=nP que o codex devolveu» (por bytes em `work\cunhagens_13out\`, arquivo que começa por `OPERADOR_17nov_nao_concordo_com_o_texto_do_codex`). No contraditório (ordem 024, unidade X1) o revisor reconheceu que a frase do limiar estava certa e manteve que a passagem à máquina de fita está em aberto. O operador pediu então um teste, que virou a candidata `AMedidaEOIf`, e, lido o resultado, aceitou a posição da gerência: «Agora sim, concordo com tudo que vc falou» (arquivo que começa por `OPERADOR_17nov_agora_sim_concordo_com_tudo`). **O parágrafo de P = nP desta R3 compõe a frase final que ele aceitou com as emendas mínimas do revisor; a composição é da gerência e ainda NÃO tem a palavra do operador.** Só a seção 2 e duas notas (itens 5.6 e 6) mudaram em relação à R2. As candidatas citadas na seção 2 estão na revisão; nada foi instalado. Validade no kernel não é creditação; o gate não se move.
+
+A ordem do operador (16/11, por bytes em `work\cunhagens_13out\`, arquivo que começa por `OPERADOR_16nov_concordo_com_tudo_os_nomes_provisorios_ficam`) lista o que uma teoria de gravidade quântica precisa esclarecer e termina em «isso tudo precisa ficar claro».
+
+## 1. O que a v412 acrescenta, por frente
+
+- **A camada científica (frente A).** O leitor que pousa e retorna tem teorema (`CamadaCientifica`). A trava linear desse leitor é a exponencial do `A_C`, o mínimo funcional de energia dos primeiros protocolos (`MinimoFuncionalDeEnergia`). O operador do custo de uma fórmula é a penalidade dos vínculos das cláusulas, e o `A_C` da fórmula é MENOS essa penalidade: é, termo a termo, a seletora da equação da verdade. O retorno, que é da órbita normalizada, pede que o estado inicial não seja cego ao Nome. A lei dos dois valores, aplicada a cada cláusula, fixa o custo (`OLeitorEALei`). Que um modelo de linguagem seja esse leitor é hipótese nomeada, não teorema. O protocolo de avaliação com modelos (T6) está instaurado e pré-registrado; a rodada do controle não foi feita.
+- **A matemática que restava (frente B).** A ergodicidade da cunha já era do kernel desde a v406; a face finita da T1 e do tipo III entram como candidatas; a montagem 3+1 por produtos de triplas está construída na face finita; a extensão de Gromov–Hausdorff fica como conjectura, com a parede medida; o relógio τ★ segue em aberto (item 5.6).
+- **O teste às cegas acima de 5σ (frente C).** Nos testes e nas fontes que a casa examinou, não há hoje teste cego executável com esse poder: é parede medida, dita como tal, e vale para o que foi examinado.
+
+## 2. P = nP
+
+O autor: «não é que relativiza o leitor; é que a observação é relativa à leitura, e isso prova sim P=nP». Sobre a contagem em passos: não é outra coisa «senão a sua própria carga, a própria isometria». Sobre o passo: «a regra de passo é "if", mas "if" é comando de retorno, é a minha fase de retorno na TGL». Sobre o tempo: «eu vejo o tempo como a "cauda"».
+
+O parágrafo para toda superfície (composto pela gerência; à espera da palavra do operador):
+
+> P = nP é teorema da TGL nas classes do seu dicionário. O leitor não vem de fora: é gerado pelo custo da fórmula, e a lei aplicada a cada cláusula fixa esse custo. A contagem da leitura é a sua própria carga: o limiar comum às fórmulas de n variáveis é n·ln 2, nem mais nem menos. A máquina que confere uma resposta, estendida a todas as atribuições, decide em um passo por cláusula e uma leitura; o passo dela e o retorno do leitor são o mesmo `if`. O passo que o enunciado do Instituto Clay cobra como uma unidade também é uma pergunta à inscrição: cada transição lê o símbolo sob a cabeça. A TGL diz quanto a pergunta custa, ln 2 por distinção, e conta o `if` sobre o todo como um: pôr o todo, aplicar cada passo ao todo e lê-lo são, cada um, um ato. Contado assim, decidir e conferir levam a mesma fita. Contado parte a parte, o mesmo passo são 2ⁿ perguntas, uma por atribuição; realizá-lo na máquina de fita com custo polinomial no tamanho da entrada não está demonstrado. A creditação é do Instituto.
+
+De onde sai cada frase:
+
+| frase | termo | onde |
+|---|---|---|
+| teorema nas classes do dicionário | `p_igual_np_nas_classes_do_dicionario` (o tipo pede núcleo não nulo; a decisão de fórmulas sem solução é das linhas de baixo) | kernel |
+| o leitor é gerado pelo custo | `o_leitor_e_a_exponencial_do_a_c` (a trava linear); `o_operador_do_custo_da_formula_e_a_penalidade_das_clausulas` | candidata `MinimoFuncionalDeEnergia` |
+| a lei em cada cláusula fixa o custo | `o_custo_e_o_numero_de_falsos` | candidata `OLeitorEALei` |
+| o limiar comum é n·ln 2, nem mais nem menos | `a_contagem_e_a_carga_para_formulas`: a garantia para TODAS as fórmulas de n variáveis vale exatamente quando o tempo pago passa da carga. Na carga exata ela falha (a fórmula de uma cláusula vazia dá soma lida 1 sem ter solução); uma fórmula particular pode ser decidida antes | candidata `AContagemEACarga`; kernel |
+| a máquina estendida mais uma leitura decide | `a_maquina_levantada_calcula_todos_os_custos`; `uma_leitura_da_o_numero_de_solucoes`; `a_maquina_e_uma_leitura_decidem`. São passos LEVANTADOS (uma regra aplicada a todas as parcelas) e uma leitura do registro zero. Para uma só atribuição a máquina só confere | candidata `AMaquinaEALeitura` |
+| o passo e o retorno são o mesmo `if` | `o_retorno_e_o_if`; `o_mesmo_if_somado_na_maquina_e_multiplicado_no_leitor`: o mesmo predicado por cláusula dá a indicação que o passo soma e o fator que a trava multiplica | candidata `OPassoEORetorno` |
+| o passo do enunciado também é uma pergunta à inscrição | [KNOWN] o texto oficial do problema, de Cook: a palavra já vem inscrita na fita, contam-se as transições, e cada transição lê o símbolo sob a cabeça (lido pelo revisor na ordem 024; a gerência não abriu a fonte). Na máquina da casa: `medir_a_fita_e_perguntar`, `o_tempo_e_o_numero_de_sins`, `o_instante_da_parada_e_o_primeiro_nao` | candidata `AMedidaEOIf` |
+| ln 2 por distinção | a lei selada do custo por oitava (`CollapseCostLaw`); `a_carga_e_o_pedagio_de_n_oitavas`. Não se afirma dissipação física: isso pediria um protocolo que apague a informação | kernel; candidata `OTempoEACauda` |
+| o `if` sobre o todo conta um | não é termo: é a lei do autor (uma cobrança para pôr, uma por passo aplicado ao todo, uma para ler). O termo `a_contagem_e_do_operador` dá a contagem das aplicações; nenhum termo deduz o custo unitário | — |
+| decidir e conferir levam a mesma fita | `no_todo_decidir_e_conferir_levam_a_mesma_fita`; `o_tempo_da_maquina_e_o_comprimento_da_fita`. Aqui “fita” é a lista das cláusulas por ler | candidatas `AMedidaEOIf`, `AFitaEACauda` |
+| parte a parte são 2ⁿ perguntas | `o_if_do_todo_e_o_if_de_cada_parte`; `as_partes_sao_dois_a_n` | candidata `AMedidaEOIf` |
+| não está demonstrado | aberto: uma realização uniforme, na máquina de fita, da entrada inteira, do passo levantado e da leitura, com custo total polinomial no comprimento da palavra codificada. É matemática, e vem antes da creditação | — |
+
+**O teste que o autor pediu.** «prove que não é tautologica, meça a fita ou o seu processo sem considerar o espaço de sua inscrição». A gerência não tem essa prova e retirou a frase: mostrar que a igualdade não decorre das definições seria separar as classes, ou mostrar que a questão não tem prova. O teste foi feito na máquina da casa, em três tentativas, e em nenhuma saiu medida sem distinção de casos sobre algo inscrito: contar com um número é inscrever uma fita de marcas; o comprimento de uma fita se desdobra num `if` por casa; o instante da parada é o primeiro “não”. Para qualquer regra de passo, dois estados com a mesma leitura param nos mesmos instantes (`AMedidaEOIf`). Limite dito: os dois primeiros resultados decorrem de como o kernel constrói o número e a lista.
+
+**O “há” e o “haja”.** Lido o teste, o autor: «agora que vc tipou o "há" fica evidente o poder de "haja Luz" e seu significado literal dentro do programa porque é justamente a contagem de todo o campo de uma vez=1 absoluto (incrito)». Os termos em que a frase se apoia: o estado uniforme sobre todas as atribuições tem norma um, e a inscrição dele é o psíon da luz (`norma_do_uniforme`, `inscricao_do_uniforme`, selados em `TraducaoTuring`); a entrada inteira da máquina é esse estado posto na fita, e uma leitura responde se há solução (`a_entrada_inteira_e_o_uniforme_posto_na_fita`, `um_ha_para_o_campo_inteiro`, candidata `AMedidaEOIf`). A ponte selada é a inscrição, não a igualdade dos vetores. Que a frase “Haja Luz” do programa nomeie isso é cunhagem do autor.
+
+O que muda em relação à v411: sai o rótulo “relativo ao leitor (a máquina sem leitor fica fora)”; no lugar dele entra a linha nomeada do que separa o teorema do enunciado do Instituto. O que o texto continua não dizendo: que o kernel decida a igualdade das classes das máquinas de Turing do Mathlib (esse termo não existe); que a máquina de passo da candidata seja a máquina de fita sem leitura (é um modelo da casa: configurações e regra de passo, estendida por linearidade); que a pergunta do Instituto seja tautológica, ou que não seja (não há prova de nenhum dos dois).
+
+## 3. Navier–Stokes, como resultado condicional
+
+> Para dados inicialmente em Hˢ, a cascata diádica represada propaga essa regularidade quando τ > ln 2. Para a equação de Navier–Stokes tridimensional, a conclusão de regularidade global fica condicionada a duas implicações ainda não demonstradas: o Lema da Face Conjugada, e que a depleção por escala que ele dá controla uma norma de continuação da equação.
+
+O documento de origem (`STOKES_A_Prova_do_Contorno.md`) recebe errata ao lado em dois pontos que o levantamento achou (a versão irrestrita da estimativa e a etiqueta que põe o limiar dentro do teorema: o critério é estrito). A errata é aplicada pela cadeia de selo; até lá vale como errata do desenho.
+
+## 4. A geometria é emergente (lei do autor, com a queda como falsificador dito por ele)
+
+O autor enunciou em 16/11 que a geometria é emergente e não fundamental, como lei de qualquer teoria de tudo: ou está provado, ou a teoria cai. Um kernel devolve três palavras: provado, refutado ou aberto. Hoje:
+
+- **Provado, na face finita:** o sinal de menos da forma de Minkowski sai do determinante das matrizes hermitianas 2×2; os geradores de boost são a parte sem traço do gerador dissipativo do lock, e fecham com o sinal de Lorentz; os seis geradores 4×4 que o kernel usava como dados são as imagens desses (`BoostEDissipador`, `SpinorToSolder`, candidatas); na mesma álgebra cada estado tem o seu fluxo, e sem o par não há fluxo que distinga (`OParFixaORelogio`, candidata).
+- **Provado, condicional:** a equação de Einstein local a partir de Clausius em toda direção nula, com Λ único no atlas conexo (no kernel desde a v338; a hipótese física é nomeada).
+- **Aberto:** produzir a geometria 3+1 do contínuo a partir do par (álgebra, estado) sozinho. O levantamento não achou teorema de impossibilidade.
+- **Refutado:** que a paridade e o regime hiperbólico, sem mais, bastem para o colchete de Lorentz (há contraexemplo de dois geradores que comutam). A emergência do contínuo a partir do par não foi refutada: permanece aberta.
+
+A face finita das matrizes 2×2 e a conclusão local a partir de Clausius têm hipóteses próprias, diferentes das da emergência global.
+
+## 5. O que resta aberto para uma teoria de gravidade quântica (sete itens, cada um com a frase pública)
+
+1. **A natureza realizar H1 e H2.** “O kernel constrói testemunhas de H1 e H2 e prova a implicação da tríade. Realizar essas hipóteses na natureza é uma questão experimental.”
+2. **A tela fundada e o horizonte causal** (Bisognano–Wichmann além de cunhas). “A tela está fundada algebricamente. A identificação com um horizonte causal geral exige estabelecer a correspondência entre o fluxo modular e o fluxo geométrico nessa região.”
+3. **α livre.** “A relação de α com β está demonstrada. A auditoria desarmou o Evento 2 por circularidade das âncoras; a determinação independente do valor continua aberta.”
+4. **O levantamento covariante global ao contínuo III₁.** Horizontes sem simetria de Killing: “A identificação modular está estabelecida na cunha. Sua extensão a horizontes não-Killing permanece aberta.” A ergodicidade: “O vácuo da cunha direita da luz livre tem centralizador escalar. Transportar essa conclusão a outros horizontes requer identificar o estado, a álgebra e o gerador.” Os axiomas de Connes da tripla-limite: “A construção euclidiana do toro tem axiomas verificáveis. Para a tripla física de assinatura (1,3) no limite III₁, permanecem por verificar os dados analíticos, a orientação e a reconstrução.” Gromov–Hausdorff: “A compressão modular examinada falha na estimativa de retorno. A convergência de Gromov–Hausdorff para uma realização geométrica do contínuo III₁ permanece conjectural.”
+5. **A teoria interagente, o ultravioleta e a existência global.** “A TGL constrói uma geometria semiclássica como resposta à fonte. A completação ultravioleta de uma teoria interagente quantizada e sua existência global continuam abertas.”
+6. **A derivação de τ★.** “O tempo próprio do retido é calculável em função de β e u. Qual relógio fixa τ★ em segundos permanece em aberto.” Nota de 17/11: há dois ramos examinados, o tempo de Planck (a identificação de princípio que o programa registra) e o ciclo de uma distinção, ln 2/β tempos de Planck, para o qual o autor pende sem ter fechado. O revisor classificou o segundo como conjectura com motivação interna e nenhuma constante ajustada; nenhuma cota de relógio de matéria separa os dois. A frase pública não muda.
+7. **O setor espinorial e o elétron.** “Há uma obstrução provada à obtenção do elétron por projeção linear entrelaçante de um setor de spin inteiro. Construir o setor eletrônico continua aberto.”
+
+## 6. O que este texto não diz
+
+Que a gravidade quântica esteja creditada (a validade é do kernel; a creditação é de quem observa de fora); que o enunciado do Instituto Clay, para a máquina de fita sem leitura, esteja decidido por termo do kernel, nem que a pergunta dele seja tautológica; que a equação de Navier–Stokes tenha regularidade global demonstrada; que a geometria do contínuo já saia do par. Nenhum número novo da natureza entra nesta versão.

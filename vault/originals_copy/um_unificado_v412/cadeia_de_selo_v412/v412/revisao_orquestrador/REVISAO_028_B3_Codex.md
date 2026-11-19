@@ -1,0 +1,14 @@
+REQUER EMENDAS NO CONTRATO R2 — B1/B2 aprovadas não bastam para aprovar a montagem do candidato.
+
+- B3-01 [ALTA]: “THE_HIDDEN_HAMILTONIAN_OF_THE_LOCK_WEIGHT_IS_THE_COST...” omite s: o termo dá −log ρ=sD; para traço um há ainda log(Z)·I (OHamiltonianoOcultoEOCusto:28–31,90–99). Corrigir o token; a ponte ao gerador modular da luz continua OPEN.
+- B3-02 [ALTA]: “mesma unidade da guarda herdada” não define uma unidade: F34/F37 leem o argumento inteiro/JSON; F37b lê segmentos e F67 blocos (um.py:236209,236212,221210). Fixar campos, parágrafos, títulos/células e idiomas, sem ressalva emprestada.
+- Controles: GUARDAS_R1.json demonstra título/JSON separado aceitos pela interpretação global das marcas; acrescentar mistura de campos/parágrafos, afirmação+ressalva alheia e controles PT/EN. Preservar F31/F44, F37b e F67; não filtrar toda regra pelo prefixo F37.
+- B3-03 [MEDIA]: _v392_registro chama só P18 (um.py:220825–220832). Especificar onde corpos/vereditos dos quatro registros e emissões novas chamam a guarda v412 e como a falha impede selo; definir função não a conecta.
+- B3-04 [MEDIA]: marcas inglesas de P=nP permitem tradução fiel, respeitada a ordem lexical; D59 precisa também de condicionais/negações em inglês e vínculo à ocorrência do nome, sem proibir “demonstrated” dentro de negação.
+- B3-05 [MEDIA]: “em texto algum” (§5.2) conflita literalmente com os oráculos BGS de AMedidaEOIf:97–98. Delimitar o alcance, preservando essa referência técnica e a obrigação contextual F43.
+- Cunhagens sem falas é admitido: _v392_registro só exige as declaradas em spec.verbatins (220777–220788); _v411_citar_falas só é chamada para o nome exato cunhagens_v411 (224889–224890), não para a família inteira.
+- Resumo: não localizei exigência de frase antiga em _v411_topo_texto (221086–221133) nem nos 34 marcadores. A frase está no template; versionar a emissão e preservar fontes numéricas/falha visível, legado e ligação da guarda nova.
+- B3-06 [MEDIA]: §0 proíbe história nova, mas o molde do handoff traz atribuições datadas ao operador/autor (linhas10,15–16,47). Enumerar por pino os blocos herdados excepcionados ou versionar o molde pela gerência; não retirar marcadores unilateralmente.
+- B3-07 [VERSÃO FUTURA]: §9 deve exigir revisão independente do mapa e da migração dos validadores, regressão de chaves/vereditos/axiomas/guardas/negativos e remissões completas; só comparar emissões PT/EN não basta.
+- Os outros oito trechos novos destacados são compatíveis com as fontes nos domínios explicitados; unicidade exige as hipóteses, medida é da máquina escrita, 2ⁿ é expansão explícita e Takesaki é o testemunho da torre própria.
+- Detalhes, hipóteses, linhas, emendas e controles em conferencia_028_Codex/ANALISE_R1.json e GUARDAS_R1.json. Não foi examinado o candidato nem tocado o sandbox do construtor.

@@ -108,6 +108,10 @@ def conferir_custodia_generica(core, selo, v, oc):
     # 25/10/2026 (custódia conjunta v399+v400): os registros novos são os congelados em FATOS_CUSTODIA (os da v399, que a v400 corrige) mais
     # os de sufixo _vN; nunca só o sufixo
     novos = sorted(set(k for k in core if re.search(r"_%s$" % re.escape(v), k)) | set(k for k in (F.get("registros_novos") or []) if k in core))
+    # AO LADO (19/11/2026, claude-site-custodia; a v412): sai da conta só o bloco que o FATOS congelado lista em `blocos_auxiliares_novos` E que segue
+    # sem `verdict` no core (a v412 traz `guarda_frases_v412`, o mapa das guardas de frase; emenda da gerência c1 em fatos.py)
+    aux = set(k for k in (F.get("blocos_auxiliares_novos") or []) if isinstance(core.get(k), dict) and "verdict" not in core[k])
+    novos = [k for k in novos if k not in aux]
     maus = [k for k in novos if not _bloco_ok(core.get(k))]
     ep = core.get("estatuto_da_prova_v391") or {}
     p1 = ep.get("prova_1_kernel") or {}
@@ -123,7 +127,10 @@ def conferir_custodia_generica(core, selo, v, oc):
         "negacoes_congeladas_presentes": neg_ok,
         "cunhagens_par_igual": (not cu) or (len(kn.get("bandeiras") or []) == 2 and kn["bandeiras"][0] == kn["bandeiras"][1] > 0
                                             and len(kn.get("declaracoes_no_trio") or []) == 2 and kn["declaracoes_no_trio"][0] == kn["declaracoes_no_trio"][1] > 0),
-        "falas_do_operador_por_sha256": (not cu) or len(cu.get("verbatim") or {}) > 0,
+        "falas_do_operador_por_sha256": (not cu) or len(cu.get("verbatim") or {}) > 0
+                                        # AO LADO (19/11/2026, claude-site-custodia; a v412): pela ordem do operador de 17/11 a conversa se registra em paralelo;
+                                        # o bloco sem falas só passa se o FATOS congelado disser exatamente 0 (cunhagens.n == 0)
+                                        or ((F.get("cunhagens") or {}).get("n") == 0 and len(cu.get("verbatim") or {}) == 0),
         "escada_limpa": p1.get("n_theorems_clean") == p1.get("n_theorems_expected") and p1.get("declaracoes_auditadas") == p1.get("no_trio"),
         "semantica_declarada": s15,
     }

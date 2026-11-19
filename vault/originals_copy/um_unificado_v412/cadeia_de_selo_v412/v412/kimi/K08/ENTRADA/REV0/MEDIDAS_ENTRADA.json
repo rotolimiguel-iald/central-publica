@@ -1,0 +1,170 @@
+{
+  "tokenizador": {
+    "nome": "fallback_bytes_v1",
+    "regra": "cada byte UTF-8 é exatamente um token",
+    "modelo_ou_pesos": false,
+    "bibliotecas_de_referencia_no_python_gerenciado": {
+      "tiktoken": false,
+      "tokenizers": false,
+      "transformers": false,
+      "sentencepiece": false
+    },
+    "ressalva": "não é contagem cl100k/o200k nem previsão do custo de um modelo específico"
+  },
+  "palavras": {
+    "regex": "[^\\W_]+(?:['’\\-–][^\\W_]+)*",
+    "regra": "sequências Unicode alfanuméricas com apóstrofo/hífen/travessão interno; pontos e vírgulas separam"
+  },
+  "candidatas": {
+    "ABSTRACT": {
+      "n_assercoes": 16,
+      "n_clausulas": 17,
+      "completo": {
+        "arquivo": "ABSTRACT.md",
+        "bytes": 3308,
+        "palavras": 487,
+        "tokens": 3308,
+        "sha256": "4465ab5de23cba859a948be04ad9643a7eabfd891ac31b7c38ddefaf3cf78e24"
+      },
+      "compacto": {
+        "arquivo": "CANDIDATA_ABSTRACT.md",
+        "bytes": 2958,
+        "palavras": 429,
+        "tokens": 2958,
+        "sha256": "4db59a9f839958607de1ce6ed8e60f6930e41eae1b40d4cb00d1aa2358d14313"
+      },
+      "controle_pc": {
+        "arquivo": "CONTROLE_PC_ABSTRACT.md",
+        "bytes": 2999,
+        "palavras": 437,
+        "tokens": 2999,
+        "sha256": "7048ebc8c2f574a9f7a69f6d2e7b6b4d7824bfa6c09f37481341d4d22ec115e2"
+      },
+      "tokens_compacto_sobre_completo": 0.8941958887545345,
+      "custo_texto": {
+        "formula_geral": "C(r) = r × T; r é o número de entradas da fita, não o número de interações",
+        "regra_do_desenho": "r = 1 por sessão, porque a fonte não volta depois do primeiro passo",
+        "P_A_fonte_so_no_primeiro_passo": 2958,
+        "P_B_fonte_so_no_primeiro_passo": 2958,
+        "P_C_controle_so_no_primeiro_passo": 2999,
+        "P_D_fonte_so_no_primeiro_passo": 2958,
+        "fonte_completa_uma_fita_para_comparacao": 3308,
+        "contrafactual_P_A_com_m_fitas_nao_usado": 50286
+      }
+    },
+    "READ_BRIEF": {
+      "n_assercoes": 26,
+      "n_clausulas": 27,
+      "completo": {
+        "arquivo": "read-brief.md",
+        "bytes": 24533,
+        "palavras": 3688,
+        "tokens": 24533,
+        "sha256": "4390ecab7cab98839a80494822b3cb2a368c4742692a812127567c2cf4c401ac"
+      },
+      "compacto": {
+        "arquivo": "CANDIDATA_READ_BRIEF.md",
+        "bytes": 13555,
+        "palavras": 2073,
+        "tokens": 13555,
+        "sha256": "21cc74147bf6cc1a5bf1bc019f19903d6a0c28da36587ed4569044b4603bf633"
+      },
+      "controle_pc": {
+        "arquivo": "CONTROLE_PC_READ_BRIEF.md",
+        "bytes": 13596,
+        "palavras": 2081,
+        "tokens": 13596,
+        "sha256": "3b883da61c66ebb663d26c4a2e192b24ece1b10d3ecfc43234134d672f47865f"
+      },
+      "tokens_compacto_sobre_completo": 0.5525210940366038,
+      "custo_texto": {
+        "formula_geral": "C(r) = r × T; r é o número de entradas da fita, não o número de interações",
+        "regra_do_desenho": "r = 1 por sessão, porque a fonte não volta depois do primeiro passo",
+        "P_A_fonte_so_no_primeiro_passo": 13555,
+        "P_B_fonte_so_no_primeiro_passo": 13555,
+        "P_C_controle_so_no_primeiro_passo": 13596,
+        "P_D_fonte_so_no_primeiro_passo": 13555,
+        "fonte_completa_uma_fita_para_comparacao": 24533,
+        "contrafactual_P_A_com_m_fitas_nao_usado": 365985
+      }
+    },
+    "LLMS": {
+      "n_assercoes": 19,
+      "n_clausulas": 19,
+      "completo": {
+        "arquivo": "llms.txt",
+        "bytes": 26444,
+        "palavras": 4173,
+        "tokens": 26444,
+        "sha256": "b83098531201d5797416cfa6074b18419844c78d9964bdc316acfa4c38ec0002"
+      },
+      "compacto": {
+        "arquivo": "CANDIDATA_LLMS.md",
+        "bytes": 11760,
+        "palavras": 1877,
+        "tokens": 11760,
+        "sha256": "5c2eb5cf57f236a6025ac78926bf58b6a2a5a2605e456531241d3429da96a8b0"
+      },
+      "controle_pc": {
+        "arquivo": "CONTROLE_PC_LLMS.md",
+        "bytes": 11801,
+        "palavras": 1885,
+        "tokens": 11801,
+        "sha256": "89e29f7ad1c622a64485700a0849308b1439017f9e448c54ecb65e367abf6e61"
+      },
+      "tokens_compacto_sobre_completo": 0.44471335652700045,
+      "custo_texto": {
+        "formula_geral": "C(r) = r × T; r é o número de entradas da fita, não o número de interações",
+        "regra_do_desenho": "r = 1 por sessão, porque a fonte não volta depois do primeiro passo",
+        "P_A_fonte_so_no_primeiro_passo": 11760,
+        "P_B_fonte_so_no_primeiro_passo": 11760,
+        "P_C_controle_so_no_primeiro_passo": 11801,
+        "P_D_fonte_so_no_primeiro_passo": 11760,
+        "fonte_completa_uma_fita_para_comparacao": 26444,
+        "contrafactual_P_A_com_m_fitas_nao_usado": 223440
+      }
+    },
+    "README": {
+      "n_assercoes": 28,
+      "n_clausulas": 31,
+      "completo": {
+        "arquivo": "README.md",
+        "bytes": 40695,
+        "palavras": 6253,
+        "tokens": 40695,
+        "sha256": "d741c9933c05a23f1fbb8070d2a44ac7d9bc224bfcf7abe62eb5ca8d2a12f98c"
+      },
+      "compacto": {
+        "arquivo": "CANDIDATA_README.md",
+        "bytes": 23544,
+        "palavras": 3764,
+        "tokens": 23544,
+        "sha256": "45526d4c7b0c145f68b716fe7bd74be30c526920af9b079136b4769bbd765fb4"
+      },
+      "controle_pc": {
+        "arquivo": "CONTROLE_PC_README.md",
+        "bytes": 23585,
+        "palavras": 3772,
+        "tokens": 23585,
+        "sha256": "9114645aaeca1556bc3f3756cb30df3bf7ccd53afab3027bf3ecdbf42a58cb2e"
+      },
+      "tokens_compacto_sobre_completo": 0.578547733136749,
+      "custo_texto": {
+        "formula_geral": "C(r) = r × T; r é o número de entradas da fita, não o número de interações",
+        "regra_do_desenho": "r = 1 por sessão, porque a fonte não volta depois do primeiro passo",
+        "P_A_fonte_so_no_primeiro_passo": 23544,
+        "P_B_fonte_so_no_primeiro_passo": 23544,
+        "P_C_controle_so_no_primeiro_passo": 23585,
+        "P_D_fonte_so_no_primeiro_passo": 23544,
+        "fonte_completa_uma_fita_para_comparacao": 40695,
+        "contrafactual_P_A_com_m_fitas_nao_usado": 729864
+      }
+    }
+  },
+  "escolha": {
+    "candidata": "READ_BRIEF",
+    "criterio": "clareza e completude do catálogo; custo só desempata",
+    "razao": "as oito partes separam axioma, constante, ação, gerador, dinâmica, estatuto, programa e instrumentos, com hipóteses e limites explícitos; README tem mais asserções no catálogo, mas mistura núcleo, painel, P=nP, selo e navegação",
+    "nao_criterio": "nenhuma expectativa sobre P-A/P-B/P-C/P-D"
+  }
+}

@@ -1,0 +1,1702 @@
+arXiv:0812.1511v1 [math.OA] 8 Dec 2008  MODULAR THEORY FOR THE VON NEUMANN
+                                           ALGEBRAS OF LOCAL QUANTUM PHYSICS
+
+                                                                             DANIELE GUIDO
+
+                                         Abstract. In the first part, the second quantization procedure and the
+                                         free Bosonic scalar field will be introduced, and the axioms for quantum
+                                         fields and nets of observable algebras will be discussed.
+
+                                              The second part is mainly devoted to an illustration of the Bisognano-
+                                         Wichmann theorem for Wightman fields and in the algebraic setting,
+                                         with a discussion on the physical meaning of this result.
+
+                                              In the third part some reconstruction theorems based on modular
+                                         groups will be described, in particular the possibility of constructing an
+                                         action of the symmetry group of a given theory via modular groups,
+                                         and the construction of free field algebras via representations of the
+                                         symmetry group.
+
+                                                                   Contents
+
+                                        1. Introduction                                                               1
+
+                                        2. Free quantum fields and local quantum theories                             2
+
+                                        2.1. Free scalar field                                                        2
+
+                                        2.2. Axioms for Quantum Field Theories                                        11
+
+                                        3. Bisognano-Wichmann relations.                                              14
+
+                                        3.1. The Theorem by Bisognano and Wichmann                                    14
+
+                                        3.2. Borchers theorem and BW relations for conformal nets                     17
+
+                                        3.3. Physical interpretations: Hawking radiation & Unruh effect 20
+
+                                        4. Modular covariance and modular localization.                               21
+
+                                        4.1. Modular covariance                                                       21
+
+                                        4.2. Modular localization                                                     23
+
+                                        References                                                                    25
+
+                                                                             1. Introduction
+
+                                           Since the beginning of modular theory for von Neumann algebras in the
+                                        late sixties [55], the relations with quantum physics became apparent, first
+                                        through the interpretation of the analyticity properties of the modular au-
+                                        tomorphism group as a condition for thermodynamical equilibrium due to
+                                        Haag, Hugenoltz and Winnink [37], and few years later with the theorem
+
+                                            Date: October 27, 2018.
+                                                                                                           1
+2  DANIELE GUIDO
+
+of Bisognano and Wichmann [4, 5], relating the symmetries of quantum
+field theory on Minkowski space with the modular objects associated with
+suitable regions. The mathematical instruments needed to prove and con-
+solidate these relations are the theory of operator algebras together with its
+connections with the theory of analytic functions in one or more variables
+and the theory of group representations, plus some geometrical properties
+of the spacetimes. In this notes we present the descriptions of quantum field
+theory by the G�arding-Wightman axioms and by the Haag-Kastler axioms
+together with the common example of the free scalar field, showing in par-
+ticular how, for the free Bose fields, the local subspaces and the associated
+modular objects in the one-particle space are connected with the algebras of
+local observables and the associated modular objects on the Fock space. We
+refer to [45] for the analogous connection in the case of Fermi fields (CAR
+algebras). Then we discuss the relations of the modular objects for the alge-
+bras of observables of some regions with the symmetry group of the quantum
+theory, both in the concrete form of the Bisognano-Wichmann theorem for
+Wightman fields and in the more abstract form of the Borchers theorem.
+Finally we analyze some reconstruction results in this context, e.g. recon-
+struct modular objects via symmetries of a net of von Neumann algebras,
+reconstruct the symmetries of a net of von Neumann algebras via modular
+objects, reconstruct a net of von Neumann algebras via a representation of
+the symmmetry group.
+
+         2. Free quantum fields and local quantum theories
+
+2.1. Free scalar field. As a first basic example of a quantum field, I will
+introduce the free quantum scalar field (of mass m) on the Minkowski space.
+This example is ubiquitous, so I quote here only some basic references, the
+book of Streater & Wightman [54], chapter X.7 of the book of Reed and
+Simon [50], and the papers of Araki [1, 2], by which this presentation has
+been strongly influenced. Other references will be given below.
+
+2.1.1. Spacetime and Symmetries. Let me recall that the (four-dimensional)
+Minkowski space M 4 is the real manifold R4 with the Minkowski pseudomet-
+ric given by the signature (+, -, -, -), the first component describing the
+time coordinate, the others the space coordinates. The group of diffeomor-
+phisms of M 4 preserving this (pseudo)-metric is the so called Poincar�e group
+P, which is given by the semi-direct product L � R4 of the Lorentz group L
+with the translations, where L is the group of isometries of M 4 as a vector
+space with the (indefinite) inner product x � y = x0y0 - x1y1 - x2y2 - x3y3.
+The Lorentz group is a finite dimensional locally compact Lie group. We
+denote by L+ the proper Lorentz group, namely the subgroup of orientation
+preserving transformations, and by L the orthochronous Lorentz group,
+namely the subgroup of time-orientation preserving transformations. L+ is
+also denoted by SO(1, 3). The intersection L+ = L+  L is the identity
+MODULAR THEORY IN LOCAL QUANTUM PHYSICS                                3
+
+component of L. Subgroups P+ = P+ P of the Poincar�e group are defined
+analogously.
+
+Elements of the Lorentz group can be represented as 4 � 4 matrices.
+
+Elements of the form     1  0  , where V is an orthogonal transformation on
+                         0  V
+
+R3, represent a change of the space coordinates. Elements of the form
+
+ cosh  - sinh  0 0
+
+- sinh                         cosh   0 0  ,    R,
+                                  0   1 0
+                      0
+
+
+                      0        0 01
+
+are called boosts, and relate two reference frames in relative uniform motion.
+
+In the example above, the motion is along the axis x1, with velocity v given
+by cosh  = (1 + v2/c2)-1/2.
+
+   Only positive energy representations of P+ will be considered, namely
+representations for which the joint spectrum of the unitaries implementing
+
+the translation group is contained in the closed forward light cone V + =
+{x  M 4 : x � x  0, x0  0}. Such condition is also called spectrum
+condition.
+
+   Positive energy, irreducible representations of the (proper orthochronous)
+Poincar�e group are labeled by two parameters, the mass m  0 and the spin
+s  N (indeed for m = 0 also "infinite spin" is allowed).
+
+   More precisely, since P+ = L+ � R4, irreducible positive energy repre-
+sentations are constructed as follows: consider the action of L+ on R4 and
+choose an orbit contained in the closed forward light cone with the origin
+excluded. These orbits are the mass hyperboloids Hm = {p  M 4 : p � p =
+m2, p0 > 0}, m  0. Then choose an irreducible representation of the stabi-
+lizer of a point in the given orbit. For m > 0, the stabilizer is (isomorphic
+
+to) SO(3), the group of orientation preserving rotations; for m = 0 the sta-
+
+bilizer is (isomorphic to) E(2), the Euclidean group of the plane. Finally
+
+use Mackey induction to get a representation of the Poincar�e group (cf. e.g.
+
+[44, 53]). Since irreducible representations of SO(3) are parametrized by
+the spin s = 0, 1, 2, . . . , irreducible representations of P+ are labeled by the
+pair (m, s).
+
+   The irreducible representations of E(2) are of two kinds: finite dimen-
+
+sional, when the translational part is trivially represented, and infinite-
+
+dimensional, otherwise. The first are just representations of the circle group,
+hence are labeled by the so-called helicity s  Z. They give rise to the mass
+
+zero, helicity s representations. The latter give rise to the so called infinite
+
+spin representations, cf. section 4.2.
+
+2.1.2. One-particle space. Let me describe the mass m, spin 0 irreducible
+
+representation u of the (proper, orthochronous) Poincar�e group. It acts on
+the Hilbert space L2(Hm, dm) of square-summable functions on the mass-
+hyperboloid Hm, w.r.t. the Lorentz invariant measure dm. It is called the
+4                         DANIELE GUIDO
+
+one-particle space for the quantum fields describing particles of mass m and
+spin s. The representation u acts follows:
+
+(1)  (u(, a))(p) = eia�p(-1p),             L+, a  R4,
+
+where elements of P+ are written as pairs (, a) with   L+, a  R4. Since
+the measure dm is Lorentz invariant, the action is unitary.
+
+   Let us notice that, if we wish to extend the representation to the proper
+
+Lorentz group, it is sufficient to describe u(, 0), where  represents the
+
+space-time reflection. If P denotes the four component generator of the
+translation subgroup, we have u(, 0)eia�P u(, 0) = e-ia�P , which implies
+
+u(, 0)iP u(, 0) = -iP . In order to have positive energy, u(, 0) has to
+
+be conjugate-linear. We call (anti)-unitary a representation of P+ such
+that u(g) is unitary if g is time-preserving and is anti-unitary if g is time-
+
+reversing. In quantum field theory, the anti-unitary implementing the reflec-
+
+tion  is called the PCT (parity, charge conjugation, time) transformation,
+
+and is denoted by .
+
+   We shall consider the following real-linear embedding of the space S(M 4, R)
+
+of smooth rapidly decreasing functions  idntomt)h, Ee cfo(mp)p=lexH2ilbf^e(rpt)s, ppaceHLm2(.Hm,  dm):
+(2) f  S(M 4, R)  Ef  L2(Hm,
+
+f^ denoting the Fourier transform (up to a sign). Proposition below follows
+
+by a direct computation.
+
+Proposition 2.1. Setting f(,a)(x) = f (-1(x - a)),   L+ , a  R4, we
+have
+
+(3)                       Ef(,a) = u(, a)Ef.
+
+Remark 2.2. Equation (3) can be used as a prescription for the definition of
+u(, 0). A straightforward computation gives u(, 0) = .
+
+2.1.3. Local structure of the one-particle space. Now, for any bounded open
+region O  M 4, let us define the corresponding local space as the real-linear
+
+closed vector space given by
+
+(4)  K(O) = {Ef : f  S(M 4, R), supp f  O}-.
+
+By Proposition 2.1, K(gO) = u(g)K(O), for any g  P+ .
+   For unbounded regions C, we set K(C) = OC K(O),  denoting the
+
+generated real-linear closed space.
+
+   For any open region O  M 4, we consider its (open) space-like comple-
+ment O, with
+
+(5)  O = {x  M 4 : (x - y)2 < 0, y  O}.
+
+   For any real-linear closed subspace K  L2(Hm, dm), we set
+
+(6)  K = {h  L2(Hm, dm) : (h, k) = 0, k  K}.
+
+   The following theorem has been proven by Araki [2]
+                     MODULAR THEORY IN LOCAL QUANTUM PHYSICS                                     5
+
+Theorem 2.3. For any bounded open nonempty simply connected region O
+
+with regular boundary we have
+(i) K(O) = K(O).
+
+(ii) K(O)  iK(O) = {0}.
+
+(iii) K(O) + iK(O) is dense.
+
+2.1.4. Tomita-Takesaki theorem for real subspaces. A closed real subspace K
+satisfying properties (ii) and (iii) of Theorem 2.3 is called standard. Given
+a standard subspace K, let us consider the following operator:
+
+(7)                               sK : K + iK  K + iK
+                                           h + ik  h - ik
+
+Proposition 2.4. There is a one-to-one correspondence between standard
+
+subspaces and closed, anti-linear operators s satisfying D(s) = Rg(s) and
+s2 = 1. Let now K be a standard subspace, sK be as above, sK = jK K1/2 be
+the polar decomposition. We have:
+(i) sK = sK and K  K = {x : jK x = x & Kx = x}.
+(ii) jK K = K, Kit K = K.
+
+Proof. Assume K is standard. The operator sK is clearly well defined, since
+property K  iK = {0} implies that a vector in K + iK can be uniquely
+
+decomposed as k1 + ik2, with k1, k2  K, and densely defined. A simple
+                                                  2                        2+  k2 2), namely (K +
+computation shows that                  k1 + ik2  G(sK )  =    2(      k1
+
+iK, � G(sK )) is isomorphic, as a real Hilbert space, to K K, hence is closed.
+Properties D(sK) = Rg(sK ) and s2K = 1 are now obvious. Conversely,
+if s has the mentioned properties, any vector x  D(s) can be uniquely
+
+decomposed as a sum of an invariant and of an anti-invariant vector for s,
+      1                 1
+x  =  2  (x  +  sx)  +  2  (x  -  sx),  x  is  invariant  iff  ix  is  anti-invariant,  hence  setting
+
+K := {x : sx = x} we get a closed standard subspace. In the following we
+
+drop the subscript K from the operators s, j,  when no confusion arises.
+
+   (i). From the properties above we get j2 = 1, jj = -1, and s = j-1/2,
+
+hence D(s) = Rg(s) and (s)2  1. This implies that, as for the operator
+
+s, s is determined by its invariant subspace {x  H : sx = x}.
+
+   Let us recall that, since s is antilinear, (sx, y) = (sy, x). If sk = k and
+
+sh = h, we have (k, h) = (sk, h) = (sh, k) = (h, k), namely (k, h) = 0.
+
+As a consequence, sK  sK . Conversely, if k1, k2  K and h1, h2  K,
+one gets, by a straightforward computation, (h1 + ih2, s(k1 + ik2)) = (k1 +
+                                                D(sK) and      sKK(hi1ff+sKihx2)==xha1n-d
+ik2, h1 - ih2), hence h1 + ih2                 Then, x  K                                  ih2.  This
+prove the equality sK = sK .                                                               sK x  = x,
+
+namely x = ssx = x, from which 1/2x = x and jx = x. The converse
+
+implication is proved analogously.
+
+   (ii). Let me first give the idea of the proof: we may decompose the com-
+
+plex Hilbert space H as a direct integral of 2-dimensional spaces (possibly
+
+up to the eigenspace {x = x}, which may be odd-dimensional), in such a
+
+way that K, K, s and s are decomposed accordingly. In any such fiber,
+6                                       DANIELE GUIDO
+
+the operators j and  can be written as
+
+                      j=      0    C          =         tan2              0        ,
+                              C    0                           2
+                                                            0        tan-2   
+                                                                             2
+
+where C denotes the complex conjugation and   (0, /2], the space K is
+generated by the vectors
+
+                            y+ =   cos               y- = -i icosisn22 ,
+                                   sin     2
+                                           2
+
+and the space K is generated by the vectors
+
+                            y+ =   sin               y- = -iiscinos22 .
+                                   cos     2
+
+                                           2
+
+Form  this  one    gets  jy�  =   y� ,  hence     jK  =     K,    and   it y�   =  cos[(log      tan2     )t]y��
+                                                                                                       2
+          tan2                     it K
+sin[(log        2  )t]y,    hence          =  K.
+
+   The previous argument can be made rigorous as in [35], Proposition 1.14,
+
+where we are assuming for symplicity that 1  p():
+   Let us choose a selfadjoint antiunitary C commuting with j and , and set
+
+U = jC, so that U (log )U = - log . Then denote with L the real vector
+space of C-invariant vectors in the spectral subspace {log  > 0} and by �
+
+the  maps   +   :  y     L    U   cos      y+sin        y,  -     :  y    L     iU    cos     y  -i  sin     y,
+                                        2            2                                     2              2
+                                                                                
+where  the  operator          is  defined     by  |  log  |  =  -2 log    tan   2  ,  ()         [0, /2].
+
+   Since U maps the spectral space {log  > 0} onto the spectral space
+
+{log  < 0}, both + and - are isometries, and a simple calculation shows
+
+that their ranges are real-orthogonal. Moreover, decomposing H as {log  <
+
+0}  {log  > 0}, one can show that any solution of the equation sx = x can
+be written as a sum +(y) + -(z), namely the map - + + : L R L  K
+
+is an isometric isomorphism of real Hilbert spaces. For a more detailed proof
+
+and the relation of  with the angle between K and iK, see [27].
+
+Remark 2.5. Let us notice that, if R is a von Neumann algebra acting on a
+Hilbert space H with a standard vector , the closure K of the real space
+Rsa is standard, and the Tomita operator S coincides with the operator
+sK considered above. Compare the statement of the previous theorem with
+that of the Tomita-Takesaki theorem in this volume [45]
+
+2.1.5. Second quantization functor. Let H be a complex separable Hilbert
+space. The symmetric Fock space over it is
+
+                                                  
+
+                                        eH =          HSymn
+
+                                               n=0
+
+where HSymn is the subspace of the n-th tensor product of H which is
+
+pointwise invariant under the natural action of the permutation group. More
+precisely, HSymn = Sym(Hn), where the orthogonal projection Sym is
+            MODULAR THEORY IN LOCAL QUANTUM PHYSICS                       7
+
+defined as
+
+            Sym(x1    ���    xn)  :=  1          x(1)  � � �  x(n).
+                                      n!
+                                          P (n)
+
+HSymn is called the n-particle space1.
+   The set of coherent vectors in eH consists of the vectors
+
+                                        eh =  hn .
+                                               n=0 n!
+
+This set turns out to be total in eH (see property (a) below).
+   The first important class of operators acting on eH is that of second quan-
+
+tization operators. For any closed, densely defined, operator a on the one-
+particle space H, we set
+
+                                                                  
+
+                                        ea = an ,
+
+                                                                n=0
+
+on the linear span of the symmetrized elementary tensors on D(a), namely
+of the vectors Sym(x1  � � �  xn), with xi  D(a), i = 1, . . . , n, so that ea
+is densely defined. Let us observe that (ea)  e(a), and since the latter
+is densely defined, ea is indeed closable, cf. [49] Theorem VIII.1. In the
+following, we shall denote its closure with the same symbol ea.
+
+   In the particular case in which u is unitary on the one-particle space, eu
+is unitary on the Fock space. Setting U (g) = eu(g), g  P+ , for the represen-
+tation u of the Poincar�e group on H, we get a positive energy representation
+U on the Fock space.
+
+   The second class consists of Weyl unitaries, which are the range of the
+map
+
+                                          h  W (h)
+
+from H to the unitaries on eH defined by
+
+            W (h)e0 = exp     -   1   h   2  e   i     h  ,  hH
+                                  4                 2
+
+            W (h)W (k) = exp  -   i   (h,    k)  W (h + k)       h, k  H
+                                  2
+
+   The vector e0 =  is called vacuum and the relations in the last equality
+are called Canonical Commutation Relations (CCR). We refer to [45] for the
+treatment of fields obeying Canonical Anticommutation Relations (CAR).
+
+   Via the preceding equalities W (h) becomes a well defined, isometric and
+invertible (with inverse W (-h)) operator on the dense set spanned by co-
+herent vectors, and hence it extends to a unitary on eH. Weyl unitaries
+generate the so-called second quantization algebras. With each closed real
+
+    1The reason for Sym is to the fact that we describe quantum particles (hence indistin-
+guishable particles) obeying Bose-Einstein statistics.
+8                            DANIELE GUIDO
+
+linear subspace K  H, a von Neumann algebra R(K) is associated, defined
+by
+
+                               R(K) = {W (h), h  K}.
+
+   The following theorems give some properties of the second quantization
+algebras and their modular operators.
+
+Theorem 2.6 ([25]). A second quantization algebra R(K) is in standard
+form w.r.t. the vacuum if and only if K is standard. In this case S = es,
+ = e, and J = ej, where S is the Tomita operator of (R(K), e0) and
+
+S = J1/2, s = j1/2 are the polar decompositions of S and s, respectively.
+
+Theorem 2.7 ([1]). The map K  R(K) is an isomorphism of comple-
+
+mented nets, where the complementation of an algebra is its commutant
+
+and the complementation of a real subspace K is the simplectic complement
+K = {h  H : (h, k) = 0}.
+
+2.1.6. Some proofs. We shall now prove the main results concerning second
+quantization algebras, and in particular the following results from Theorems
+2.6 and 2.7:
+
+    (a) The vacuum vector  is cyclic and separating for the second quan-
+          tization algebra R(K) if and only if K is standard. In particular, in
+          this case the set {ek : k  K} is total in eH.
+
+     (b) If K is standard, S = es,  = e, and J = ej. In this case R(K) =
+          R(K  ).
+
+Lemma 2.8. Let a be a closed, densely defined, operator on the one-particle
+space H. Then the vectors eh, with h  D(a), belong to D(ea), and eaeh =
+
+eah.
+
+Proof. For any h  H,
+
+     eh - N hn                         h 2n        0, for  N      ,
+           n=0 n!                      n!
+                        2
+
+                               n=N +1
+
+as a consequence, when h  D(a),     nN=0   hn    converges    to  eh  in  the  graph
+norm of ea. The thesis follows.              n!
+
+Lemma 2.9. Symmetrized elementary tensors can be written as linear com-
+binations of tensor powers xn, more precisely
+
+                                                                  n
+
+(8)  Sym(x1    ���      xn)  =  1      (-1)|F |+n  xj ,
+                                n!
+                                    F (n)            jF
+
+where (n) is the set of the first n natural numbers, and |F | denotes the
+cardinality of the subset F .
+              MODULAR THEORY IN LOCAL QUANTUM PHYSICS                                          9
+
+Proof. In the following, I will denote a multi-index in (N  {0})n. We set
+
+           n                                    n  =     I1!    n!  � In! ,  xI  =            xj Ij .
+                                                I             ����
+|I| = Ij, supp(I) = {j : Ij = 0},                                                   j supp(I )
+
+          j=1
+
+Since under symmetrization the order in the tensor product does not matter,
+
+we have
+
+         n                                n
+
+ xj                = Sym  xj                    =               Sym(xj1  � � �  xjn)
+
+   jF                              jF              j1 ,...jn F
+
+                   =                      n     Sym(xI ).
+                                          I
+                      supp(I)  F
+
+                      |I| = n
+
+As a consequence,
+
+                      n
+
+(-1)|F |+n  xj                       =          (-1)|F |+n                       n  Sym(xI )
+                                                                                 I
+F (n)           jF                      F (n)               supp(I)  F
+
+                                                                |I| = n
+
+                                     =          n  Sym(xI )                         (-1)|F |+n.
+                                                I
+                                        |I |=n                      supp(I)F (n)
+
+We now observe that, setting j = | supp(I)|, the number of sets F of cardi-
+
+nality  such that supp(I)  F  (n) is               n-j        , hence
+                                                   -j
+
+                                  n     n-j                         n-j  n-j        (-1)m+j+n
+                                        -j                                 m
+         (-1)|F |+n =                           (-1)+n =
+
+supp(I)F (n)          =j                                           m=0
+
+                      = (-1)j+njn = jn.
+
+Since the only index I with |I| = n and | supp(I)| = n is I = (1, . . . , 1) we
+get the thesis.
+
+Lemma 2.10. Let a be a selfadjoint operator on the one-particle space H.
+Then ea is selfadjoint.
+
+Proof. Let eU be the spectral projection of the operator a for the Borel set
+U . Making use of Lemma 2.9, one can show that vectors of the form xn,
+n  N, x  D(a), e[-,]x = x,  > 0, form a total set in eH. By a direct
+computation, such vectors are analytic for ea. The thesis follows by Nelson
+
+Theorem, [50] Theorem X.39.
+
+Lemma 2.11. For any vector h  H,
+
+                      dn             eth  |t=0  =        hn,
+                      dtn                            n!
+10                                          DANIELE GUIDO
+
+where derivatives converge in norm.
+
+Proof. We prove by induction on n that the following formula is true in
+
+norm:                                       
+
+                            dn   eth     =        (j +      n)!   tj  h(j+n).
+                            dtn                     j!
+                                            j=0
+
+The result is true for n = 0. Assume it for n, then
+
+    d(n+1)   eth  =  lim  -1                (j +  n)!  ((t  +  )j     -  tj )h(j+n)
+    dt(n+1)                    j=0            j!
+                     0
+
+                                            (j + n +   1)!   ((t  +   )(j+1)  -  t(j+1))h(j+n+1)
+                                             (j + 1)!
+                  = lim -1
+
+                      0
+                                    j=0
+
+If || < 1,
+
+(t  +  )(j+1)  -  t(j+1)    -  (j  +     1)tj      j+1      (j + 1)      ||p-1|t|j+1-p
+                                                               p
+                                               
+
+                                                   p=2
+
+                                                        j+1    (j + 1)      |t|j+1-p  ||(|t| + 1)j+1.
+                                                                  p
+                                                ||
+
+                                                       p=0
+
+As a consequence,
+
+       (j + n +      1)!  (t  +  )(j+1)     -    t(j+1)                          (j  +n   +  1)!
+        (j + 1)!                                                                      j!
+                                                         h(j+n+1)        -                        tj h(j+n+1)  2
+
+j=0                                                                         j=0
+
+               (j + n + 1)! h(j+n+1) (t + )(j+1) - t(j+1) - (j + 1)tj                             2
+
+=                 (j + 1)!                                        
+
+       j=0
+
+             (j + n + 1)!
+             ((j + 1)!)2
+ 2                             h   2(j+n+1)(|t| + 1)2(j+1)
+
+       j=0
+
+ Lemma 2.12. Let  be a standard vector for R(K), S the associated Tomita
+ operator. Then
+(i) If k  K, Seik = e-ik.
+(ii) Let D be the linear span of the vectors eik, k  K. Then the closure of
+ D w.r.t. the graph norm of S is the domain of S.
+(iii) For k1, . . . , kn  K, Sym(k1  � � �  kn) belongs to the domain of S, and
+ is invariant under S.
+
+ Proof. (i). If k  K, we have SW (k) = W (-k), which implies the thesis.
+    (ii). Indeed, any operator A  R(K) can be written as the limit, in the
+
+ strong-topology, of operators Ai, with Ai in the linear span of the W (k)'s,
+ k  K, therefore Ai converges to A in the graph norm of S, i.e. A  D.
+                 MODULAR THEORY IN LOCAL QUANTUM PHYSICS                       11
+
+Since D(S) is the closure, w.r.t. the graph norm, of {A, A  R(K)}, the
+
+thesis follows.                                kconsKeq,udedtnnnceei,tkk|t=n0
+
+   (iii). By Lemma   2.11, one gets that, for                                  is a limit, in
+the graph norm of S  , of elements of D. As a                                   D(S), and,
+
+because of (i), Skn = kn. By Lemma 2.9 one gets that, for k1, . . . , kn  K,
+
+Sym(k1  � � �  kn) belongs to the domain of S, and is invariant under S.
+
+                                                                                             
+
+Proof of Property (a). Since W (k) = e- k 2/4eik/ 2, the sets {W (k) :
+
+k  K} and {eik : k  K} span the same space. From the Lemmas 2.9
+
+and 2.11 above, the norm closure of the linear span of the set {ek : k  K}
+
+contains all symmetrized elementary tensors of the form Sym(x1  � � �  xn),
+with xi  K. Therefore, if K + iK is dense,  is cyclic for R(K). On
+the other hand, if k  K and k  K, (k, k) = 0, therefore the canoni-
+
+cal commutation relations imply [W (k), W (k)] = 0, i.e. R(K)  R(K).
+
+Then, K  iK = {0} implies, passing to the real-orthogonal complement,
+
+K + iK is dense. As a consequence, R(K) is dense, hence R(K) is
+
+dense, namely  is separating for R(K).
+
+Conversely, if  is cyclic for R(K) the set {eik : k  K} is total in eH. Since
+
+the norm closure of the linear span of the symmetrized elementary tensors
+
+of the form Sym(x1  � � �  xn), xi  K, contains {eik : k  K}, the sym-
+metrized elementary tensors above are total in eH. In particular, K is total
+
+in H, namely K + iK is dense. If moreover  is separating, the operator
+
+S is defined and, by Lemma 2.12 (iii), k  K implies Sk = k. Then, if
+
+k  K  iK, we get Sk = k and Sk = -k, namely k = 0
+
+Proof of Property (b). By Lemma 2.12 (iii), one gets S  es. On the other
+hand, by Lemma 2.8, eik  D(es), k  K, and es coincides with S on such
+
+vectors. Since the linear span D of such vectors is a core for S by Lemma
+2.12 (ii), we get es  S. We now observe that, given the polar decomposition
+
+s = j1/2, ej is anti-unitary, e1/2 is positive selfadjoint by Lemma 2.10, and
+S = es = eje1/2 . Since S is invertible, its polar decomposition J1/2 is
+
+uniquely determined by the requirement that J is anti-unitary and   0,
+hence J = ej and  = e.
+Finally, R(K) = JR(K)J = J{W (k) : k  K}J = {JW (k)J : k  K} =
+{W (jk) : k  K} = R(K).
+
+2.2. Axioms for Quantum Field Theories.
+
+2.2.1. Observable algebras & Haag-Kastler axioms. We now put together
+
+the net of local spaces with the second quantization algebra construction.
+If H = L2(Hm, dm), we may consider the following net of von Neumann
+algebras on eH.
+
+(9)                  O  R(O) := R(K(O)).
+
+The algebra R(O) is interpreted as the algebra whose self-adjoint elements
+describe the physical quantities which can be observed in the region O.
+12  DANIELE GUIDO
+
+Such net describes non-interacting neutral (i.e. self-adjoint fields) spin-zero
+Bose particles. In the following we shall only consider causally complete
+regions, namely regions for which O = O, and more specially double cones.
+A double cone is obtained by applying any Poincar�e transformation to the
+causal completion of an open ball in the time-zero plane. The net O 
+R(O), O being a causally complete region in M 4, satisfies the following
+properties:
+
+    (1) (isotony). O1  O2  R(O1)  R(O2);
+    (2) (locality). O1  O2  R(O1)  R(O2);
+    (2) (Haag duality). R(O) = R(O);
+    (3) (Poincar�e symmetry). The Poincar�e group acts as automorphisms
+
+          of the net, in such a way that g(R(O)) = R(gO), g  P+ .
+
+   Properties (1), (2), (3) of a net of von Neumann algebras (or C-algebras)
+on double-cones of the Minkowski space are called Haag-Kastler axioms, and
+have been proposed as a minimal set of axioms for a local quantum theory
+(cf. [36]).
+
+   A representation  of a net O  R(O) on a Hilbert space H is a family
+{O}, with O a representation of R(O) on H, such that O2|R(O1) = O1 if
+O1  O2. When the family of regions is directed, this is the same as giving
+a representation of the inductive limit C-algebra.
+
+   The net O  R(O) of local algebras for the free scalar field is equipped
+with a representation 0 satisfying
+
+    (3) (Poincar�e covariance). There exists a strongly continuous unitary
+          representation U of the Poincar�e group P+ such that U (g)0(R(O))U (g) =
+          0(R(gO)), g  P+ .
+
+    (4) (Positive energy) The joint spectrum of the generators of the trans-
+          lation subgroup lies in the closed forward light cone.
+
+    (5) (vacuum). There exists a unique (up to a multiplicative constant)
+          translation invariant vector . The set {0(A), A  R(O), O dou-
+          ble cone}, is dense in H.
+
+   A representation 0 of a Haag-Kastler net on a Hilbert space is called a
+vacuum representation if properties (3), (4), (5) above hold.
+
+Proposition 2.13. With the assumptions above, U (g) = , for any g 
+P+ .
+
+Proof. Let g be an element of the Lorentz group. Then
+
+                       U (x)U (g) = U (g)U (g-1x) = U (g),
+
+namely U (g) is translation invariant. Uniqueness up to a constant imply
+U (g) = cg, with |cg| = 1, namely g  cg is a one-dimensional represen-
+tation of L+. Since the Lorentz group is perfect, it has no non-trivial one
+dimensional representations, namely cg = 1.
+MODULAR THEORY IN LOCAL QUANTUM PHYSICS  13
+
+   The following theorem is due to Borchers in this setting, but is usually
+called Reeh-Schlieder theorem, because of the analogous result in the Wight-
+man setting (see Theorem 3.2).
+
+Theorem 2.14 ([6]). If axioms (1), (2), (3), (4), (5) are satisfied, and addi-
+tivity holds, namely O = iOi implies R(O) = iR(Oi), then the vacuum
+vector is cyclic and separating for any double cone.
+
+2.2.2. Free fields & the G�arding-Wightman axioms. Let us now come back
+to the free field example. Assume f is in S(M 4, R), Ef is the corresponding
+element in L2(Hm, dm), and denote by (f ) the self-adjoint generator of
+the one-parameter group W (Ef ), W (�) denoting the Weyl unitary. The
+map
+
+                                     f  S(M 4)  (f )
+
+is called the free scalar field of mass m The map  is usually extended
+linearly to complex-valued functions.
+
+   It satisfies the following properties:
+
+    (A) The map f  (f ) is an operator valued tempered distribution.
+   (B) There is a dense common invariant domain D for all fields (f ), and
+
+          (f )  (f ).
+   (B) The field operators (f ) are essentially self-adjoint on a dense com-
+
+          mon invariant domain D, for real-valued f .
+   (C) There is a strongly continuous, positive energy unitary representa-
+
+          tion U of the Poincar�e group P+ satisfying U (g)(f )U (g) = (fg).
+   (D) There is a unique (up to a multiplicative constant) translation in-
+
+          variant vector , the vacuum vector, contained in D.
+   (E) If the supports of f and g are space-like separated, (f )(g) and
+
+          (g)(f ) coincide on D.
+   (E) If the supports of f and g are space-like separated, (f ) and (g)
+
+          commute as self-adjoint operators, namely the spectral projections
+          of the former commute with the spectral projections of the latter.
+
+   Properties (A), (B), (C), (D) and (E) are the so called G�arding-Wightman
+axioms for a neutral field of spin zero. They have been proposed (in the
+generalized form for charged fields of any spin) as a minimal set of axioms
+for Quantum Field Theory [54].
+
+Remark 2.15. The relations between the G�arding-Wightman axioms and the
+Haag-Kastler axioms have long been investigated. It is not difficult to show
+that, assuming the extra-axioms (B) and (E), we obtain a net of observable
+algebras obeying Haag-Kastler axioms, together with the vacuum represen-
+tation. Conversely there are many papers that tried to recover fields from
+observables. One problem is that fields are not necessarily observable (they
+are not gauge-invariant). The problem of the reconstruction of the global
+gauge group and of the field algebras has been solved by Doplicher-Roberts
+14                               DANIELE GUIDO
+
+[24] in terms of their theory of superselection sectors. The actual reconstruc-
+tion of fields as operator-valued distributions has been addressed by Freden-
+hagen and Hertel [29], Fredenhagen and Jo�rss [30], and Bostelmann[12].
+
+                       3. Bisognano-Wichmann relations.
+
+   The property described by Bisognano and Wichmann in their papers [4, 5]
+concerns the relation between the modular operators associated with certain
+space-time regions of the Minkowski space-time in the vacuum representa-
+tion. We now describe this property in the case of the free scalar field.
+
+3.1. The Theorem by Bisognano and Wichmann.
+
+3.1.1. One-particle Bisognano-Wichmann theorem. Let us consider the so-
+called right wedge region W = {x  M 4 : x1 > |x0|}, and observe that such
+
+region is invariant for the one-parameter subgroup W (t) of the Lorentz
+group
+
+                  cosh(2t) - sinh(2t) 0 0
+
+      W  (t)  =  -               sinh(2t)  cosh(2t)  0 0
+                                    0           0    1 0
+                                                0
+                                                     01
+
+                                 0
+
+Theorem 3.1. Let K(W ) be the closed real subspace of the one-particle
+space for the free scalar field, corresponding to the wedge region W . The
+modular group and conjugation associated with the space K(W ) have a geo-
+metric action. More precisely
+
+(10)     jW = u(r1, 0), it = u(W (t), 0),
+
+where r1 denotes the (proper, time-reversing) transformation changing sign
+to the x0 and x1 coordinates. Making use of the one-particle PCT transfor-
+mation , one may also write jW =  � u(R23(), 0), where R23 denotes a
+rotation on the (x2, x3)-plane.
+
+3.1.2. The general case. Assume  is a neutral scalar field satisfying the
+G�arding-Wightman axioms in the stronger form (A), (B), (C), (D) and (E),
+
+and assume also that the field is irreducible, namely nothing but multiples
+
+of the identity commutes with all fields.
+   For any open region O, denote by R(O) the von Neumann algebra gen-
+
+erated by bounded functional calculi of the fields (f ), with suppf  O.
+
+Then:
+
+Theorem 3.2 (Reeh-Schlieder Theorem). For any non-empty open region
+O, the vacuum vector  is cyclic for the algebra R(O). In particular, if O
+
+is non-empty,  is a standard vector for R(O).
+
+    For a proof, see e.g. [54].
+      MODULAR THEORY IN LOCAL QUANTUM PHYSICS                15
+
+Theorem 3.3 (Bisognano-Wichmann Theorem [4]). If JW , W denote the
+modular operators for the pair (R(W ), ), then
+
+(11)  JW =  � U (R23(), 0), it = U (W (t), 0).
+
+Moreover, wedge duality holds, namely R(W ) = R(W ).
+
+   A somewhat simpler proof is contained in [51]. The generalization to
+non-necessarily scalar fields was given in [5].
+
+   Up to now, the only region for which the modular objects have been
+
+proved to have a geometrical meaning is the right wedge. However, the
+
+vacuum is invariant under the Poincar�e group. Therefore, denoting by WR
+tchideersigwhitthwUed(gge),StWhReUm(ogd)u.laWr eopthereantocralSl gwWeRdgfeoratnhyeepleamire(nRt (ogfWthRe),set)Wcoi:n=-
+{gWR, g  P+ }, and observe that for any W  W the corresponding mod-
+ular operators have a geometrical meaning; setting gWR(t) = gWR (t)g-1,
+rgWR = grWRg-1, we get JW = U (rW ), iWt = U (W (t)).
+
+   Given a net O  R(O), O double cone, we may set R(C) = OCR(O)
+for a general open region C. Then the dual net is defined by Rd(O) = R(O).
+
+The dual net does not necessarily satisfy locality, but if it does, it clearly
+satisfies Haag duality: R(O)  R(O) implies Rd(O) = R(O)  R(O) =
+Rd(O), on the other hand locality for Rd(O) gives the reverse inclusion.
+The net O  R(O) is said to satisfy essential duality if O  Rd(O) is local
+
+(hence dual) for double cones. The following result can be found e.g. in [51].
+
+Corollary 3.4. With the assumptions of the present section, the net O 
+R(O) satisfies essential duality.
+
+Proof. We first note that the two a-priori different notions for R(W ) actually
+coincide, namely the von Neumann algebra generated by fields localized in
+W coincides with the algebra OW R(O). Indeed, OW R(O) is contained
+in R(W ), and is globally invariant under the action of the modular group of
+R(W ), since the group acts geometrically. By a theorem of Takesaki, we get
+a conditional expectation from R(W ) to the invariant subalgebra. Since the
+vacuum is cyclic for the latter, the conditional expectation is the identity,
+namely the two algebras coincide.
+
+   Let us observe that if O and O0 are space-like separated double cones,
+there exists a wedge W such that O  W  O0 . Then, for any double cone
+O0 we get, by wedge duality,
+
+                                                      
+
+      Rd(O0) = R(O0 ) =   R(O) =                      R(W )
+
+               OO0                      W O0
+
+      =        R(W ) =          R(W ).
+
+         W O0             W O0
+16                          DANIELE GUIDO
+
+Finally, if O0 and O1 are space-like separated double cones, we find a wedge
+W such that O0  W and O1  W , hence the corresponding algebras
+Rd(O0), Rd(O1) commute, namely Rd is local.
+
+Remark 3.5. A striking result in quantum field theory is the relation be-
+tween the statistical behavior of quantum particles, which may be described
+either by the Bose-Einstein statistics or by the Fermi-Dirac statistics, and
+is manifested by either the commutation or the anticommutation relations
+for fields at space-like distance, and the integer or half-integer values for
+the spin, corresponding to the symmetry group being truly represented, or
+represented up to a phase, namely the appearance of a representation of the
+symmetry group or of its universal covering. In the Wightmann framework
+the proof of this connection follows by the implementability of the PCT
+symmetry by the operator  (the so called PCT theorem, cf. [54]). As
+shown by the Bisognano-Wichmann theorem, such PCT operator is related
+to the modular conjugation JW . In the algebraic setting, the geometrical
+meaning of JW is indeed the base for a proof of the connection between spin
+and statistics (cf. [33, 34, 41]).
+
+3.1.3. The conformal case. As shown above, the larger is the symmetry
+
+group the larger is the family of regions for which the modular objects have
+
+a geometric meaning. This observation produced an important result of
+
+Hislop and Longo.
+
+    Let us recall that on a (semi)-Riemannian manifold, a conformal transfor-
+
+mation is a transformation which preserves the metric tensor up to a scalar
+
+function. In dimension  3, the conformal group is a finite dimensional Lie
+
+group; for the space M 4 its identity component is generated by the proper
+
+Poincar�e  group  and  the  relativistic  ray  inversion  transformation  x     x   .  A
+                                                                               x�x
+quantum field theory on M 4 is conformal if the identity component of the
+
+conformal group acts as the symmetry group. We note here that conformal
+
+transformations are singular on some submanifolds. The way to treat this
+
+problem is to extend the theory to a suitable compactification of the space-
+
+time (or better to its universal covering). For a detailed description of this
+
+procedure see [16].
+
+ Theorem 3.6 (Hislop-Longo [39]). Assume  is an irreducible neutral scalar
+ field satisfying the G�arding-Wightman axioms in the stronger form (A), (B), (C), (D)
+ and (E), where
+(C) There is a strongly continuous, positive energy unitary representation U
+ of the conformal group satisfying U (g)(f )U (g) = (fg).
+(D) There is a unique (up to a multiplicative constant) translation invariant
+
+ vector , the vacuum vector, contained in D, which is also conformally
+
+ invariant.
+
+    Then the modular conjugations and groups of the von Neumann algebras
+
+ associated with wedges, double cones, and forward and backward light cones
+
+ have a geometric meaning, namely for any such region C there is a conformal
+
+ reflection rC and a one parameter group C of conformal transformations
+           MODULAR THEORY IN LOCAL QUANTUM PHYSICS  17
+
+such that
+
+(12)       JC = U (rC),  iCt = U (C (t)).
+
+Sketch of the proof. It is enough to show that double cones and forward and
+backward cones may be obtained by wedges via conformal transformation.
+
+Indeed, applying the relativistic ray inversion transformation to the right
+wedge translated by the vector (0, r/2, 0, 0) one gets the double cone whose
+basis is the ball of radius 1/r and center (0, -1/r, 0, 0) in the hyperplane
+x0 = 0. All other double cones are obtained via Poincar�e transformations.
+Applying the ray inversion transformation to the double cone whose basis is
+
+the ball of radius r and center (r, 0, 0, 0) in the hyperplane x0 = r one gets
+the forward cone based on the point (1/2r, 0, 0, 0). All other cones can be
+
+obtained via translations and space-time reflections.
+
+3.1.4. The case of the de Sitter space. Instead of changing only the symme-
+try group, one can change the spacetime itself, and study the geometrical
+meaning of modular operators on different spacetimes. The four-dimensional
+de Sitter space may be seen as the hyperboloid {(t, x)  M 5 : x2 = R2 + t2}
+in the five-dimensional Minkowski space-time. The intersections of the hy-
+perboloid with the wedges of M 5 whose edge contains the origin play the
+ro^le of the wedges, and the Lorentz group plays the ro^le of the symmetry
+group. An analog of the Bisognano-Wichmann theorem for the de Sitter
+space has been proven in [15], where the spectrum condition, which is un-
+available in de Sitter space since there are no translations, is replaced by
+analyticity properties of the n-point functions.
+
+3.2. Borchers theorem and BW relations for conformal nets. For
+many years, the Theorem by Bisognano and Wichmann was a kind of para-
+doxical result: while its formulation is very natural in the Haag-Kastler
+formalism, its proof was given only in the G�arding-Wightman setting. The
+first main result in the algebraic formalism is due to Borchers, and is of a
+quite abstract nature.
+
+Theorem 3.7 (Borchers [7]). Let R be a von Neumann algebra with a
+standard vector , and U (a) a one-parameter group of unitaries with positive
+generator leaving  fixed and such that, for a  0, U (a)RU (a)  R. The
+the following commutation relations between the modular operators  and J
+for (R, ) and U (a) hold:
+
+(13) itU (a)-it = U (e-2ta), J U (a)J = U (-a), t, a  R.
+
+   The following proof is due to Florig [28].
+
+Proof. Set V (a) = JU (-a)J. Let us observe that V (a) = JU (-a)J = ,
+and, if x  R, x  R, a  0,
+
+           [V (a)xV (a), x] = V (a)[x, V (a)xV (a)]V (a)
+                                 = V (a)[x, JU (a)(JxJ)U (a)J]V (a) = 0,
+18                                               DANIELE GUIDO
+
+since (JxJ)  R, and U (a) implements endomorphisms of R for a  0.
+Moreover, if H denotes the selfadjoint generator of the one-parameter group
+U , the selfadjoint generator of V is given by
+
+                     -i  d     V  (a)  =  -i  d   J  e-iaH  J     =  -iJ (-iH )J          =  J H J,
+                         da                   da
+
+namely V has a positive generator, too. This shows that V has the same
+
+properties of U .                 x    R,                   1
+                                                            2
+      Now,  for   x      R,                0        z          ,  set
+
+                     fU (z) = (-izx, U (e2za)-izx),                                       a  0.
+
+Let us prove that f is continuous and bounded in the closed strip 0  z 
+1                                                                             1
+2  ,  and   analytic        in    the  open   strip     0   <     z        <  2  .  Indeed, e-2za belongs
+
+to the upper half-plane, where U , having a positive generator, is analytic.
+
+Moreover,
+
+                            -izx = |-[0i1z] + |-(1i,z-)1/2|1(1/,2) x
+                                       = |[-0i1z] x + |-(1i,z-)1/21/2x,
+
+where |E = P(E), with P(E) the spectral projection of  relative to
+the measurable set E. Now, since |[01]  I, |[w01] is analytic for w > 0,
+namely |[-01iz] is analytic for z > 0. Analogously, since |(1,)  I, |w(1,)
+
+is analytic for w < 0, namely |(-1i,z-)1/2 is analytic for z < 1/2. The ana-
+
+lyticity of -izx in the open strip follows, since x  D(1/2). The same
+
+argument shows that in the closed strip |[-0i1z]  1 and |-(1i,z-)1/2  1,
+
+hence -izx  x + 1/2x . In an analogous way we get analyt-
+icity and boundedness for -izx.
+
+      Since V has the same properties as U , we get that fV (z) is continuous
+                                                                     1
+and   bounded        in     the   closed  strip      0     z         2  ,  and      analytic  in  the  open  strip
+
+0  <  z     <  1  .
+               2
+                                              i
+      We  now     show      that     fU (t +  2  )  =   fV (t),   t        R, a       0.  Indeed
+
+            fU (t    +   i  )  =  (-   1  -itx,         U  (e2t   ei    a)-it         1  x)
+                         2             2                                              2
+
+                               =  (-   1  -itx,         U  (-e2ta)-itJ              x)
+                                       2
+
+                               =  (-   1  -itx,         JV  (e2t a)-it x it V                (e2ta))
+                                       2
+
+                               = (-itx, SV (e2ta)-itxitV (e2ta))
+
+                               = (-itx, V (e2ta)-itx) = fV (t),
+
+where in the third (and fifth) equation we used the invariance of  under
+V (a) and it, and in the fifth one we used the fact that V (e2za)-itxitV (e2ta) 
+R, since it implements automorphisms of R for t  R, and V (a) imple-
+
+ments endomorphisms of R for a  0.
+              MODULAR THEORY IN LOCAL QUANTUM PHYSICS                                            19
+
+   In  the  same  way,   fV (t +    i  )  =     fU (t),     since  the  map  U (a)     JU (-a)J  is
+                                    2
+an involution. As a consequence, gluing copies of the functions fU and fV
+
+we get a continuous function f on the complex plane which is periodic of
+                                                m                               m          m+1
+period  i,  satisfies  f (z)  =  fU (z    -  i  2  )  on    any  closed  strip  2     z      2  for
+
+m  even  and  satisfies  f (z)   =  fV (z       -  i  m  )  on  any  closed  strip  m    z    m+1
+                                                      2                             2           2
+for m odd. As a consequence, by the edge of the wedge theorem (cf. e.g.
+
+[54]), f is analytic on C, and, being bounded, is indeed constant by Liouville
+
+theorem. This entails
+
+        (-itx, U (e2ta)-itx) = f (t) = f (0) = (x, U (a)x),
+
+        (x, U (a)x) = f (0) = f (i/2) = fV (0) = (x, JU (-a)Jx).
+
+Since  is cyclic and separating for R, we get
+
+(14)                   U (a) = itU (e2ta)-it,                      a  0, t  R.
+
+                       U (a) = JU (-a)J
+
+The same relations should hold for V , therefore we get (14) for a  0.
+
+   The previous theorem has a direct corollary for two-dimensional quantum
+field theories in the algebraic setting, which motivated Borchers theorem.
+
+ Corollary 3.8 ([7]). Assume we are given a net O  R(O) of von Neumann
+
+ algebras, where O is a double cone in the two-dimensional Minkowski space
+ M 2, acting in the vacuum representation, so that axioms (1), (2), (4), (5) are
+ satisfied, with axiom (3) replaced by
+(3) There exists a strongly continuous, positive energy, unitary representa-
+ tion U of the translation group such that U (x)0(R(O))U (x) = 0(R(O+
+
+ x)), where x denotes the translation by the vector x.
+
+    Then the representation U extends to a representation of the proper Poincar�e
+ group in such a way that (3) is satisfied for the dual net Rd(O) and Bisognano-
+
+ Wichmann relations hold. In particular essential duality holds for the given
+
+ net.
+
+Remark 3.9. In the previous Corollary Poincar�e covariance is not assumed,
+indeed the Lorentz boosts are constructed via modular groups. More pre-
+cisely what is proved is a geometric action of the modular groups and re-
+flections (see next section). This is stronger than the Bisognano-Wichmann
+result, however rises the question of the uniqueness of the implementation of
+the Poincar�e symmetry. It may happen that the theory was endowed with a
+Poincar�e action which does not coincide with the one recovered by modular
+theory. A uniqueness result is contained in [16], a comprehensive review on
+these questions is given in [11].
+
+Remark 3.10. It is possible to reverse the statement of the previous Corol-
+
+lary, namely reconstruct the net of local algebras starting with the vacuum
+vector , the right wedge algebra M and a positive energy representation U
+of the translation group on the two-dimensional Minkowski space M 2. The
+
+standard hypotheses are required, namely  should be cyclic and separating
+20  DANIELE GUIDO
+
+for M and invariant under U , and U (x) has to implement endomorphisms
+of M when x is space-like and pointing to the right. In this way one re-
+constructs the algebras R(W ) for all wedges together with a representation
+of the Poincar�e group in two dimensions (cf. the reconstrution results for
+conformal theories on the circle in Theorem 4.3). Then one may define the
+double cone algebras via intersection (cf. eq. (19) below). However, the
+non triviality of the double cone algebras is not guaranteed in general. This
+problem has been solved under the further assumption of modular nuclearity,
+bringing to the construction of interacting theories (see [43] and references
+therein).
+
+   The results by Hislop-Longo and the theorem of Borchers have been used
+to get the following.
+
+Theorem 3.11 ([16],[31]). Let O  R(O) a conformally covariant net of
+von Neumann algebras acting on a Hilbert space. Then it satisfies essential
+duality, and the modular conjugations and groups of the von Neumann alge-
+bras associated with wedges, double cones, and forward and backward cones
+have a geometric meaning. In particular, for any such region C, the relations
+in (12) are satisfied.
+
+   The previous result is the first 4-dimensional example of a complete proof
+of the Bisognano-Wichmann relations in the algebraic setting, though under
+the conformal symmetry assumption. A proof for massive Poincar�e covariant
+theories is due to Mund [47].
+
+3.3. Physical interpretations: Hawking radiation & Unruh effect.
+In the early seventies, Haag, Hugenholtz and Winnink [37] showed that the
+analyticity condition enjoyed by the modular group was indeed equivalent
+to the so-called KMS condition in quantum thermodynamics, characterizing
+equilibrium states for a given time evolution. According to this interpreta-
+tion, the Bisognano-Wichmann relations for wedge-like regions mean that
+the vacuum state is a thermal equilibrium state for the time evolution given
+by the Lorentz boosts. Indeed, as observed by Sewell [52], an observer whose
+time-evolution is given by Lorentz boosts is a uniformly accelerated observer,
+and, by the Einstein equivalence principle, behaves like a free-falling observer
+in a gravitational field. The wedge region, as a space-time in itself, is known
+as the Rindler wedge, and is one of the space-times describing a black hole,
+the wedge boundary describing the event horizon. A fundamental result of
+Hawking [38] showed that free falling observers in a black hole feel a tem-
+perature, the so called Hawking temperature. A heuristic explanation is the
+following: spontaneous particle pairs creation happens on the event horizon,
+negative energy particles may tunnel into the inaccessible region, the others
+contribute to the thermal radiation. This explains why the vacuum becomes
+a thermal state for an accelerated observer. The general fact that a vacuum
+state may become a temperature state because of acceleration is generally
+called Unruh effect [59]. Furthermore, the width of the analyticity strip
+             MODULAR THEORY IN LOCAL QUANTUM PHYSICS                             21
+
+associated with the KMS state is interpreted as the inverse temperature,
+
+hence, according to the re-parametrization of the boosts, for a uniformly
+                                                                              a
+accelerated  observer  with  acceleration  a,  the  vacuum  has  temperature  2  .
+
+   A similar motivation explains Bisognano-Wichmann relations for the de
+Sitter space-time. Gibbons and Hawking [32] have shown that a spacetime
+M with repulsive (i.e. positive) cosmological constant has certain similari-
+ties with a black hole spacetime. M is expanding so rapidly that, if  is a
+freely falling observer in M, there are regions of M that are inaccessible to
+, even if he waits indefinitely long; in other words the past of the world line
+of  is a proper subregion N of M. The boundary H of N is a cosmological
+event horizon for . As in the black hole case, one argues that  detects
+a temperature related to the surface gravity of H. A heuristic explanation
+can be given as above, the event horizon being replaced by the cosmological
+horizon.
+
+          4. Modular covariance and modular localization.
+
+   Once the geometric meaning of the modular objects in quantum field
+theory has been established, one may try to reverse the procedure, namely
+to start with modular objects and reconstruct some aspects of a quantum
+field theory.
+
+4.1. Modular covariance. In the spirit of Theorem 3.7 of Borchers and in
+fact based on it, one may ask if the modular conjugations or one-parameter
+groups associated to wedge regions generate a representation of the Poincar�e
+group which acts geometrically on the net. So, instead of assuming Poincar�e
+symmetry one may try to recover it by modular objects. A hypothesis which
+is sufficient for that is the request that the adjoint action of the modular
+groups maps local algebras to local algebras in some prescribed way. These
+assumptions have been called modular covariance or geometrical modular
+action. The first result in this direction is the following [17, 33]
+
+Theorem 4.1. Let O  R(O) a net of von Neumann algebras acting on a
+Hilbert space H and satisfying the following properties:
+
+       � (isotony). O1  O2  R(O1)  R(O2);
+       � (locality). O1  O2  R(O1)  R(O2);
+       � (Reeh-Schlieder property). There exists a vector  which is ciclic
+
+          for the algebras R(O) associated with double cones.
+       � (modular covariance) For any wedge W and any double cone O, we
+
+          have
+                        W it R(O)W -it = R(W (t)O), t  R.
+
+Then there exists a unique positive-energy anti-unitary representation U of
+the proper Poincar�e group such that U (g)R(O)U (g) = R(gO), and the
+Bisognano-Wichmann relations hold. In particular the net satisfies essential
+duality.
+22  DANIELE GUIDO
+
+   If we assume essential duality, the thesis still holds if we replace modular
+covariance with the less restrictive assumption
+
+                     W t (R(O)) = R(W (t)O), t  R, O  W,
+
+where tW denotes the modular automorphism group associated with (R(W ), ).
+
+   Many results of this type have been given later, among which we quote
+[8, 9, 20, 21, 22, 23]. In particular, Buchholz, Dreyer, Florig and Summers
+proved a quite general result, which we state here in the classical case of
+wedge algebras of the Minkowski space.
+
+   A map W  R(W ) from wedges to von Neumann algebras satisfies the
+Condition of Geometric Modular Action (CGMA) if (i) preserves inclusion;
+(ii) if W1  W2 = , the vacuum is cyclic for R(W1)  R(W2); (iii) if the
+vacuum is cyclic for R(W1)  R(W2), then W1  W2 = ; (iv) for any wedge
+W0, JW0 implements an automorphism of the family {R(W )}.
+
+   The map W  R(W ) satisfies the Condition of Geometric Action for the
+Modular Group (CMG) if (i), (ii), (iii) above are satisfied, and (v) for any
+wedge W0, t  R, W it 0 implements an automorphism of the family {R(W )}.
+
+   The map W  R(W ) satisfies the Modular Stability Condition if the
+modular unitaries of any wedge are contained in the group generated by the
+modular conjugations of all wedges.
+
+Theorem 4.2 ([21, 22]). Assume we have a map W  R(W ) from wedge
+regions to von Neumann algebras acting on a given Hilbert space such that
+CGMA is satisfied, and the group generated by the JW 's acts transitively
+on the wedge algebras. Then there is a (anti)-unitary representation of
+the proper Poincar�e group such that JW = U (rW ) and U (g)R(W )U (g) =
+R(gW ). In particular wedge duality holds.
+
+   If we assume modular stability then the spectrum condition holds (up to
+a sign).
+
+   If we assume CMG with transitive action we get a strongly continuous
+unitary representation of the covering group of the proper orthochronous
+Poincar�e group such that U (g)R(W )U (g) = R(gW ) and W it = U (W (t)).
+
+   If locality is further assumed, the representation extends to the proper
+Poincar�e group, JW = U (rw) and the spectrum condition holds.
+
+   Let us remark that the result just quoted was indeed stated and proved in
+a far more general setting, in order to treat general space-times and general
+symmetry groups, via suitable family of "wedge like" regions.
+
+   A direct analysis of the de Sitter space in terms of a suitable thermal
+behavior of the vacuum vector is contained in [10].
+
+   We conclude this subsection by mentioning some important results due
+to Borchers and Wiesbrock, of particular interest in the case of conformal
+theories.
+
+   As already mentioned, for conformally covariant theories Bisognano-Wichmann
+relations hold (cf. Theorem 3.11). Chiral two dimensional theories split in
+a tensor product of two nets on a line, and any such net is covariant w.r.t.
+      MODULAR THEORY IN LOCAL QUANTUM PHYSICS                   23
+
+the group of fractional linear transformations (M�obius group). Therefore,
+any such net extend to a net on the one-point compactification, namely a
+net on the circle.
+
+   Such nets are given by a map I  R(I) from the open intervals of the
+circle to von Neumann algebras acting on a Hilbert space, verifying the
+suitably modified Haag-Kastler axioms, with the space-like complement re-
+placed by the interior of the complement, the symmetry group replaced by
+the M�obius group, and the spectrum condition by the positivity of the gen-
+erator of rotations (cf. e.g. [46] for a thorough description of the properties
+of conformal nets on the circle).
+
+   Under these hypotheses  is cyclic and separating for the algebras R(I),
+and the Bisognano-Wichmann relations hold, namely Iit = U (I (t)), where
+I (t) is the unique one-parameter subgroup of the M�obius group leaving
+I globally invariant, the re-scaling being fixed by the KMS condition, or,
+equivalently, by the Borchers relations.
+
+   As already mentioned, we may also recover the M�obius symmetry assum-
+ing modular covariance for the modular groups plus Reeh-Schlieder property.
+
+   With the following result, Wiesbrock showed that one may reconstruct
+the covariant net itself starting with few algebras. Indeed, assume we have
+a conformal net on the line, and consider the algebras M := R(-1, 1) and
+N := R(0, ). It turns out that JM implements the ray inversion map,
+hence preserves N , therefore
+
+(15)  JMN JM = N .
+
+M it moves points in (-1, 1) toward 1 for negative t, therefore, since MN =
+R(0, 1),
+
+(16)  iMt (M  N )-Mit  M  N , t  0.
+
+Finally, iNt implements contractions for positive t, therefore
+
+(17)  Nit (M  N )-Nit  M  N , t  0.
+
+Theorem 4.3 ([60]). Assume we have two von Neumann algebras acting on
+a Hilbert space H with a common cyclic and separating vector . If relations
+(15), (16), (17), hold, these data reconstruct in a canonical way a Mo�bius
+covariant net of von Neumann algebras on the circle.
+
+   Let me just remark that the proof of previous theorem was based on a
+result of the same author, whose proof however had a gap. Such gap was
+filled by a subsequent paper by Araki-Zsido [3], cf. also [28].
+
+   Similar techniques have been used by Wiesbrock and collaborators to
+recover Poincar�e covariant nets on the 3-dimensional and 4-dimensional
+Minkowski space from few algebras with suitable relations [61, 40].
+
+4.2. Modular localization. This last section is devoted to the observation
+that, in the case of free fields, the whole net may be reconstructed via
+the representation of the symmetry group, in terms of one-particle modular
+24                               DANIELE GUIDO
+
+operators. For related results and applications we refer to [26] and references
+quoted therein.
+
+   As we have seen in section 2.1.3, in the one-particle Hilbert space we have
+a map O  K(O) which associates a standard vector space K(O) with any
+double cone O. Since K(O) is standard, we may define its modular oper-
+ators JO, O. When wedge regions are considered, Bisognano-Wichmann
+relations (10) hold.
+
+   Now suppose a strongly continuous, (anti)-unitary, positive energy repre-
+sentation u of the proper Poincar�e group is given, acting on a Hilbert space
+H. We may use Bisognano-Wichmann relations as a prescription: first we
+associate with any wedge region W the corresponding reflection rW and
+one-parameter group W (t), then set jW = u(rW ), Wit = u(W (t)).
+
+   With this definition, jW is anti-linear and commutes with Wit , therefore it
+anti-commutes with W1/2. Hence, setting sW = jW 1/2 we get an anti-linear
+closed operator such that sW 2  I. We may therefore set
+
+(18)           KW := {h  D(sW ) : sW h = h}.
+
+    The following result holds.
+
+Theorem 4.4 ([18]). Assume we are given a strongly continuous, (anti)-
+unitary, positive energy representation u of the proper Poincar�e group, act-
+ing on a Hilbert space H. For any wedge W , the space K(W ) constructed
+as above is standard, with Tomita operator sW . The family W  K(W )
+satisfies the following properties:
+
+    (isotony)  W1  W2  K(W1)  K(W2);
+    (duality)  K(W ) = K(W );
+(covariance)   u(g)K(W ) = K(gW ), g  P+.
+
+By definition, the Bisognano-Wichmann relations hold.
+
+   Let us observe that the properties of covariance and Bisognano-Wichmann
+are quite direct consequences of the definitions. As for duality, it follows
+from the relations JW = JW  and W it = W -it. Finally, it is sufficient to
+prove isotony for the inclusion xWR  WR, where x is a translation and
+x = (t, t, 0, 0), t  0. The latter is a partial converse of the (one particle)
+Borchers theorem, the commutation relations, positivity of the generator of
+translations and cyclicity of the vacuum being assumed, and the endomor-
+phic action of translations to be proved. We refer to [18] or to the recent
+general notes of Longo [46] for a proof.
+
+   The net W  K(W ) may be extended to general causally complete re-
+gions as follows:
+
+(19)           K(O) :=           K(W ) O convex,
+
+                        W O
+
+(20)           K(C) := K(O) O convex, C not convex.
+
+                        OC
+MODULAR THEORY IN LOCAL QUANTUM PHYSICS  25
+
+Clearly the properties of isotony, locality, and covariance hold for this ex-
+tended net. Duality for double cones holds too, as in Corollary 3.4. The
+non-trivial property is the standard property for K(O). One may anyway
+use the second quantization functor and construct the algebras on the Fock
+space as above: R(O) = {W (h) : h  K(O)}.
+
+   In fact, Theorem 3.1 shows that the usual free fields may be alternatively
+reconstructed via modular localization. However, not all irreducible positive
+energy representations of the Poincar�e group are considered in physics. A
+subfamily of them, called infinite spin representations, have always been
+considered as non-physical, cf. e.g. [62], where it is shown that the con-
+struction of free fields associated with these representations is not allowed.
+The procedure described above however allows the construction of a free
+field net for these representations. Indeed, for infinite spin representation,
+it is conjectured that K(O) is not standard for double cones. However the
+following holds.
+
+Theorem 4.5 ([18]). Let C be a space-like cone, namely a convex cone
+generated by a point and a double cone which are space-like separated.
+
+   With the assumptions above, the space K(C) is standard. If u does not
+contain the trivial representation, the second quantization algebra R(C) is a
+type III1 factor.
+
+   The quoted results, in particular the idea that for infinite spin repre-
+sentations local algebras for bounded regions may be trivial, but those for
+arbitrarily thin cones are not, suggested the construction of string localized
+fields for infinite spin representations [48].
+
+   An interesting aspect of the previous construction is the possibility of
+generalizing it to more general space-times or symmetry groups. The main
+point is to identify a suitable family of regions endowed with a reflection and
+a one-parameter group with prescribed properties. One example is given by
+conformal theories: in this case the family is that of double cones; given
+any representation of the conformal group for M d one may construct the
+associated free field algebras as above. The second example is the de Sitter
+space: in this case the family consists of the wedges considered in section
+3.1.4; given a representation of the Lorentz group one may e.g. reconstruct
+the free field algebras described by Bros and Moschella [14]. While the
+method in [18] for the de Sitter space applies to all representations of the
+Lorentz group, the standard property for bounded regions was proved only
+for those representations which extend to a representation of P+ with non-
+trivial translations.
+
+                                       References
+
+[1] H. Araki, A lattice of von Neumann algebras associated with the quantum field theory
+    of a free Bose field, J. Math. Phys. 4 (1963), 1343-1362.
+
+[2] H. Araki, Von Neumann algebras of local observables for free scalar field, J. Math.
+    Phys. 5 (1964), 1-13.
+26  DANIELE GUIDO
+
+ [3] H. Araki and L. Zsido�, Extension of the structure theorem of Borchers and its appli-
+      cation to half-sided modular inclusions, Rev. Math. Phys. 17 (2005), 491-543.
+
+ [4] J. Bisognano and E. Wichmann, On the duality condition for a Hermitian scalar field,
+      J. Math. Phys. 16 (1975), 985-1007
+
+ [5] J. Bisognano and E. Wichmann, On the duality condition for quantum fields, J. Math.
+      Phys. 17 (1976), 303-321.
+
+ [6] H.-J. Borchers, On the converse of the Reeh-Schlieder theorem, Comm. Math. Phys.
+      10 (1968) 269273.
+
+ [7] H.-J. Borchers, The CPT theorem in two-dimensional theories of local observables,
+      Commun. Math. Phys. 143 (1992), 315.
+
+ [8] H.-J. Borchers, Half-sided modular inclusion and the construction of the Poincar�e
+      group, Comm. Math. Phys. 179 (1996), 703-723.
+
+ [9] H.-J. Borchers, On Poincar�e transformations and the modular group of the algebra
+      associated with a wedge, Lett. Math. Phys. 46 (1998), 295-301.
+
+[10] H.-J. Borchers and D. Buchholz, Global properties of vacuum states in de Sitter space,
+      Ann. Inst. H. Poincar Phys. Thor. 70 (1999), 23-40.
+
+[11] H.-J. Borchers and J. Yngvason, On the PCT-theorem in the theory of local observ-
+      ables, Mathematical physics in mathematics and physics (Siena, 2000), 39-64, Fields
+      Inst. Commun. 30, Amer. Math. Soc., Providence, RI, 2001.
+
+[12] H. Bostelmann, Phase space properties and the short distance structure in quantum
+      field theory, J. Math. Phys. 46 (2005), 052301.
+
+[13] O. Bratteli and D.W. Robinson, Operator Algebras and Quantum Statistical Mechan-
+      ics 1, Springer Verlag, Berlin, 1987.
+
+[14] J. Bros and U. Moschella, Two-point functions and quantum fields in de Sitter uni-
+      verse, Rev. Math. Phys. 8 (1996) 327391.
+
+[15] J. Bros, H. Epstein and U. Moschella, Analyticity properties and thermal effects for
+      general quantum field theory on de Sitter space-time, Comm. Math. Phys. 196 (1998),
+      535-570.
+
+[16] R. Brunetti, D. Guido and R. Longo, Modular structure and duality in conformal
+      quantum field theory, Commun. Math. Phys. 156 (1993), 201-219.
+
+[17] R. Brunetti, D. Guido and R. Longo, Group cohomology, modular theory and space-
+      time symmetries, Rev. Math. Phys. 7 (1994), 57-71.
+
+[18] R. Brunetti, D. Guido and R. Longo, Modular localization and Wigner particles, Rev.
+      Math. Phys. 14 (2002), 759-786.
+
+[19] D. Buchholz and S.J. Summers, An algebraic characterization of vacuum states in
+      Minkowski space, Comm. Math. Phys. 155 (1993), 449-458.
+
+[20] D. Buchholz, M. Florig and S.J. Summers, An algebraic characterization of vacuum
+      states in Minkowski space. II. Continuity aspects, Lett. Math. Phys. 49 (1999), 337-
+      350.
+
+[21] D. Buchholz, O. Dreyer, M. Florig and S.J. Summers, Geometric modular action and
+      spacetime symmetry groups, Rev. Math. Phys. 12 (2000), 475-560.
+
+[22] D. Buchholz and S.J. Summers, An algebraic characterization of vacuum states in
+      Minkowski space. III. Reflection maps, Comm. Math. Phys. 246 (2004), 625-641.
+
+[23] D. Buchholz and S.J. Summers, Geometric modular action and spontaneous symmetry
+      breaking, Ann. Henri Poincar�e 6 (2005), 607-624.
+
+[24] S. Doplicher and J.E. Roberts, Why there is a field algebra with a compact gauge
+      group describing the superselection structure in particle physics, Comm. Math. Phys.
+      131 (1990), 51-107.
+
+[25] J.P. Eckmann and K. Osterwalder, An application of Tomita's theory of modular
+      Hilbert algebras: Duality for free Bose fields, J. Funct. Analysis 13 (1973), 1-22.
+
+[26] L. Fassarella and B. Schroer, Wigner particle theory and local quantum physics, J.
+      Phys. A 35 (2002), 9123-9164.
+MODULAR THEORY IN LOCAL QUANTUM PHYSICS  27
+
+[27] F. Figliolini and D. Guido, On the type of second quantization factors, Journal of
+      Operator Theory 31 (1994), 229-252.
+
+[28] M. Florig, On Borchers' theorem, Lett. Math. Phys. 46 (1998), 289�293.
+[29] K. Fredenhagen and J. Hertel, Local algebras of observables and pointlike localized
+
+      fields, Comm. Math. Phys. 80 (1981), 555-561.
+[30] K. Fredenhagen and M. J�or�, Conformal Haag-Kastler nets, pointlike localized fields
+
+      and the existence of operator product expansions, Comm. Math. Phys. 176 (1996),
+      541-554.
+[31] F. Gabbiani and J. Fr�ohlich, Operator algebras and conformal field theory, Comm.
+      Math. Phys. 155 (1993), 569-640.
+[32] G.W. Gibbons and S. Hawking, Cosmological event horizon, thermodynamics, and
+      particle creation, Phys. Rev. D 15 (1977), 2738-2752.
+[33] D. Guido and R. Longo, An algebraic spin and statistics theorem, Commun. Math.
+      Phys. 172 (1995), 517-533.
+[34] D. Guido and R. Longo, The conformal spin and statistics theorem, Commun. Math.
+      Phys., 181 (1996), 11-35.
+[35] D. Guido and R. Longo, Natural Energy Bounds in Quantum Thermodynamics, Com-
+      mun. Math. Phys. 218 (2001), 513-536.
+[36] R. Haag, Local Quantum Physics, Springer-Verlag, New York-Berlin-Heidelberg 1996.
+[37] R. Haag, N.M. Hugenholtz and M. Winnink, On the equilibrium states in quantum
+      statistical mechanics, Comm. Math. Phys. 5 (1967), 215-236.
+[38] S.W. Hawking, Particle creation by black holes, Commun. Math. Phys. 43, 199 (1975).
+[39] P. Hislop and R. Longo, Modular structure of the local observables associated with the
+      free massless scalar field theory, Comm. Math. Phys. 84 (1982), 71-85.
+[40] R. K�ahler and H-W. Wiesbrock, Modular theory and the reconstruction of four-
+      dimensional quantum field theories, J. Math. Phys. 42 (2001), 74-86.
+[41] B. Kuckert, A new approach to spin and statistics, Lett. Math. Phys. 35 (1995),
+      319-331.
+[42] B. Kuckert, Borchers commutation relations and modular symmetries, Lett. Math.
+      Phys. 41 (1997), 307-320.
+[43] G. Lechner Construction of Quantum Field Theories with Factorizing S-Matrices,
+      Commun. Math. Phys. 277 (2008), 821860.
+[44] R.L. Lipsman, Group representations. A survey of some current topics, Lecture Notes
+      in Mathematics, Vol. 388. Springer-Verlag, Berlin-New York, 1974.
+[45] F. Lledo�, Modular theory by example, Contemporary Math., this volume.
+[46] R. Longo, Real hilbert subspaces, modular theory, SL(2, R) and CFT, to appear in
+      "Von Neumann algebras in Sibiu", pp. 33-91, Theta Foundation.
+[47] J. Mund, The Bisognano-Wichmann theorem for massive theories, Ann. Henri
+      Poincar�e 2 (2001), 907-926.
+[48] J. Mund, B. Schroer and J. Yngvason, String-localized quantum fields and modular
+      localization, Comm. Math. Phys. 268 (2006), 621-672.
+[49] M. Reed and B. Simon, Methods of modern mathematical physics. I. Functional anal-
+      ysis, Academic Press, New York-London, 1972.
+[50] M. Reed and B. Simon, Methods of modern mathematical physics. II. Fourier analysis,
+      self-adjointness, Academic Press, New York-London, 1975.
+[51] C. Rigotti, On the essential duality condition for Hermitian scalar field, Alg`ebres
+      d'op�erateurs et leurs applications en physique math�ematique (Proc. Colloq., Mar-
+      seille, 1977), pp. 307�320, Colloq. Internat. CNRS, 274, CNRS, Paris, 1979.
+[52] G.L. Sewell, Relativity of temperature and the Hawking effect, Phys. Lett. A 79 (1980),
+      23-24.
+[53] D.J. Simms, Lie groups and quantum mechanics, Lecture Notes in Mathematics, No.
+      52 Springer-Verlag, Berlin-New York 1968.
+28                               DANIELE GUIDO
+
+[54] R.F. Streater and A.S. Wightman, PCT, spin and statistics, and all that, Addison
+
+      Wesley, Reading, MA 1989.
+
+[55] M. Takesaki, Tomita's theory of modular Hilbert algebras and its applications, Lecture
+
+      Notes in Mathematics, Vol. 128 Springer-Verlag, Berlin-New York 1970.
+
+[56] M. Takesaki, Theory of Operator Algebras I, Springer Verlag, Berlin, 2002.
+
+[57]  , Theory of Operator Algebras II, Springer Verlag, Berlin, 2003.
+
+[58]  , Theory of Operator Algebras III, Springer Verlag, Berlin, 2003.
+
+[59] W.G. Unruh, Notes on black hole evaporation, Phys. Rev. D14 (1976), 870.
+
+[60] H-W. Wiesbrock, Conformal quantum field theory and half-sided modular inclusions
+
+      of von Neumann algebras, Comm. Math. Phys. 158 (1993), 537-543.
+
+[61] H.W. Wiesbrock, Modular intersections of von Neumann algebras in quantum field
+
+      theory, Comm. Math. Phys. 193 (1998), 269-285.
+
+[62] J. Yngvason, Zero-mass infinite spin representations of the Poincar�e group and quan-
+
+      tum field theory, Comm. Math. Phys. 18 (1970), 195-203.
+
+    Department of Mathematics, Universita` di Roma "Tor Vergata"
+    E-mail address: [dado pessoal removido]
+

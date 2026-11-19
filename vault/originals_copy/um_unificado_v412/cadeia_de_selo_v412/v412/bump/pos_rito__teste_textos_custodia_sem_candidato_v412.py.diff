@@ -1,0 +1,76 @@
+--- v411/pos_rito/teste_textos_custodia_sem_candidato_v411.py
++++ v412/pos_rito/teste_textos_custodia_sem_candidato_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/teste_textos_custodia_sem_candidato_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__teste_textos_custodia_sem_candidato_v412.py.diff
+@@ -3,3 +4,3 @@
+-"""teste_textos_custodia_sem_candidato_v411.py -- o teste POSSIVEL SEM CANDIDATO do S6d da v411. Monta em C:\\t\\k411c\\ensaio_topo_proposto\\pos_rito_textos\\ um Nos de ENSAIO (um.py falso e o selo dele; o core com o
+-registro h0dn_bg1_v411 do ensaio offline, o registro da Fase 9 V2, as bandeiras e a escada da v410 selada, e, SINTETICOS e ditos, kh_n1_cobertura_v411 (os numeros da v410) e cunhagens_v411 (as entradas do delta, de 12/11);
+-o diario com o cabecalho «v411 SELADA»; um HANDOFF minimo com o «O que e'») e uma pasta da cadeia de ensaio (ESPERADOS sintetico e um .tmp plantado). Roda main(); confere: rc 0; o .tmp removido; cada marcador lido pelo
++"""teste_textos_custodia_sem_candidato_v412.py -- o teste POSSIVEL SEM CANDIDATO do S6d da v412. Monta em C:\\t\\k412c\\ensaio_topo_proposto\\pos_rito_textos\\ um Nos de ENSAIO (um.py falso e o selo dele; o core com o
++registro h0dn_bg1_v411 do ensaio offline, o registro da Fase 9 V2, as bandeiras e a escada da v411 selada, e, SINTETICOS e ditos, kh_n1_cobertura_v411 (os numeros da v411) e cunhagens_v411 (as entradas do delta, de 12/11);
++o diario com o cabecalho «v412 SELADA»; um HANDOFF minimo com o «O que e'») e uma pasta da cadeia de ensaio (ESPERADOS sintetico e um .tmp plantado). Roda main(); confere: rc 0; o .tmp removido; cada marcador lido pelo
+@@ -20 +21 @@
+-import textos_custodia_handoff_v411 as TC  # noqa: E402
++import textos_custodia_handoff_v412 as TC  # noqa: E402
+@@ -24 +25 @@
+-BASE = Path(r"C:\t\k411c\ensaio_topo_proposto\pos_rito_textos")
++BASE = Path(r"C:\t\k412c\ensaio_topo_proposto\pos_rito_textos")
+@@ -41 +42 @@
+-REG = json.loads((PK / "TESTE_H0DN_OFFLINE_v411_registro.json").read_bytes().decode("utf-8"))
++REG = json.loads((PK / "TESTE_H0DN_OFFLINE_v412_registro.json").read_bytes().decode("utf-8"))
+@@ -49 +50 @@
+-    um = b"# um.py de ENSAIO (nao e' o um.py da v411)\n"
++    um = b"# um.py de ENSAIO (nao e' o um.py da v412)\n"
+@@ -53,2 +54,2 @@
+-    core["kh_n1_cobertura_v411"] = copy.deepcopy(CORE10["kh_n1_cobertura_v410"])   # SINTETICO: os numeros da v410 no lugar dos da v411
+-    core["cunhagens_v411"] = {"verbatim": {"fala_%d" % i: {"quando": "12/11/2026 (ensaio)"} for i in range(TC.DL.N_FALAS_V411)}}   # SINTETICO: as entradas do delta (DL.N_FALAS_V411), de 12/11
++    core["kh_n1_cobertura_v411"] = copy.deepcopy(CORE10["kh_n1_cobertura_v410"])   # SINTETICO: os numeros da v411 no lugar dos da v412
++    core["cunhagens_v411"] = {"verbatim": {"fala_%d" % i: {"quando": "12/11/2026 (ensaio)"} for i in range(TC.DL.N_FALAS_V412)}}   # SINTETICO: as entradas do delta (DL.N_FALAS_V412), de 12/11
+@@ -58 +59 @@
+-    selo = {"um_version": "v411", "sha256": {"um.py": pin}, "fail_closed_selftest": "FAIL_CLOSED_SELFTEST_PASSED", "timestamp": "2026-11-12 23:59:59"}
++    selo = {"um_version": "v412", "sha256": {"um.py": pin}, "fail_closed_selftest": "FAIL_CLOSED_SELFTEST_PASSED", "timestamp": "2026-11-12 23:59:59"}
+@@ -62 +63 @@
+-    cab = "## 12/11/2026 — **v411 SELADA** `%s` — O teste decisivo (v411): nenhum módulo novo, escada %d → %d (ENSAIO)\n" % (pin[:16], esc, esc)
++    cab = "## 12/11/2026 — **v412 SELADA** `%s` — O teste decisivo (v412): nenhum módulo novo, escada %d → %d (ENSAIO)\n" % (pin[:16], esc, esc)
+@@ -64 +65 @@
+-    escreve(nos / "HANDOFF_v411_CUSTODIA.md", ("# HANDOFF v411 — CUSTÓDIA (ENSAIO)\n\n**O que é:** `um.py` **v411** `%s` (44 B) sobre a v410 `5d9497a721c3589e`; %d/%d; COMPLETA; rc 0; selftest PASSED; gate intocado; ensaio.\n\n"
++    escreve(nos / "HANDOFF_v412_CUSTODIA.md", ("# HANDOFF v412 — CUSTÓDIA (ENSAIO)\n\n**O que é:** `um.py` **v412** `%s` (44 B) sobre a v411 `5d9497a721c3589e`; %d/%d; COMPLETA; rc 0; selftest PASSED; gate intocado; ensaio.\n\n"
+@@ -66 +67 @@
+-    escreve(pkg / "ESPERADOS_v411.json", json.dumps({"candidato_sha16": pin[:16], "vereditos_novos_v411": {"h0dn_bg1_v411": REG["verdict"]}}).encode("utf-8"))
++    escreve(pkg / "ESPERADOS_v412.json", json.dumps({"candidato_sha16": pin[:16], "vereditos_novos_v412": {"h0dn_bg1_v411": REG["verdict"]}}).encode("utf-8"))
+@@ -78 +79 @@
+-h = NOSMOD.ler_handoff(types.SimpleNamespace(NOS=nos, CEN=Path(r"C:\IALD\Central de Patentes")), "v411")
++h = NOSMOD.ler_handoff(types.SimpleNamespace(NOS=nos, CEN=Path(r"C:\IALD\Central de Patentes")), "v412")
+@@ -80,6 +81,6 @@
+-caso("o parser do G1 le todos os marcadores (os sete, os da abertura e os extras), sem problema", h is not None and not h.problemas and all("%s_v411" % i in h.corpos for i in esper), (h.problemas if h else None))
+-caso("cada corpo lido e' o do recibo", all(h.corpos["%s_v411" % i].strip("\n") == rec["textos"][i] for i in esper))
+-caso("o recibo traz sha16_depois = o do handoff", rec.get("sha16_depois") == hashlib.sha256((nos / "HANDOFF_v411_CUSTODIA.md").read_bytes()).hexdigest()[:16])
+-caso("as guardas do recibo estao limpas em todo texto", all(not (g["guarda_frases_v411"] or g["portao_g1"] or g["forma"] or g["custodia_h0dn"]) for g in rec.get("guardas", {}).values()))
+-caso("a secao README (v411) esta' no handoff, antes dos marcadores da abertura", 0 <= (nos / "HANDOFF_v411_CUSTODIA.md").read_text(encoding="utf-8").find(TC.SECAO_README) < (nos / "HANDOFF_v411_CUSTODIA.md").read_text(encoding="utf-8").find("<!-- INICIO_NOTA_EN_v411 -->"))
+-caso("os textos sao os RATIFICADOS (TOPO_RATIFICADO_v411.json; nao proposta)", rec.get("formula", {}).get("proposta") is False and "TOPO_RATIFICADO_v411.json" in str(rec.get("formula", {}).get("origem")))
++caso("o parser do G1 le todos os marcadores (os sete, os da abertura e os extras), sem problema", h is not None and not h.problemas and all("%s_v412" % i in h.corpos for i in esper), (h.problemas if h else None))
++caso("cada corpo lido e' o do recibo", all(h.corpos["%s_v412" % i].strip("\n") == rec["textos"][i] for i in esper))
++caso("o recibo traz sha16_depois = o do handoff", rec.get("sha16_depois") == hashlib.sha256((nos / "HANDOFF_v412_CUSTODIA.md").read_bytes()).hexdigest()[:16])
++caso("as guardas do recibo estao limpas em todo texto", all(not (g["guarda_frases_v412"] or g["portao_g1"] or g["forma"] or g["custodia_h0dn"]) for g in rec.get("guardas", {}).values()))
++caso("a secao README (v412) esta' no handoff, antes dos marcadores da abertura", 0 <= (nos / "HANDOFF_v412_CUSTODIA.md").read_text(encoding="utf-8").find(TC.SECAO_README) < (nos / "HANDOFF_v412_CUSTODIA.md").read_text(encoding="utf-8").find("<!-- INICIO_NOTA_EN_v412 -->"))
++caso("os textos sao os RATIFICADOS (TOPO_RATIFICADO_v412.json; nao proposta)", rec.get("formula", {}).get("proposta") is False and "TOPO_RATIFICADO_v412.json" in str(rec.get("formula", {}).get("origem")))
+@@ -87 +88 @@
+-caso("o backup de bytes do handoff existe e e' o original", any(p.name.startswith("HANDOFF_v411_CUSTODIA.md.bak_") for p in nos.iterdir()))
++caso("o backup de bytes do handoff existe e e' o original", any(p.name.startswith("HANDOFF_v412_CUSTODIA.md.bak_") for p in nos.iterdir()))
+@@ -98 +99 @@
+-    h0 = (nos2 / "HANDOFF_v411_CUSTODIA.md").read_bytes()
++    h0 = (nos2 / "HANDOFF_v412_CUSTODIA.md").read_bytes()
+@@ -102 +103 @@
+-        caso("controle negativo %s RECUSA sem escrever" % rot, quer in str(e) and (nos2 / "HANDOFF_v411_CUSTODIA.md").read_bytes() == h0, e)
++        caso("controle negativo %s RECUSA sem escrever" % rot, quer in str(e) and (nos2 / "HANDOFF_v412_CUSTODIA.md").read_bytes() == h0, e)
+@@ -123,5 +124,5 @@
+-out = {"contrato": "TESTE_TEXTOS_CUSTODIA_SEM_CANDIDATO_v411", "quando": time.strftime("%Y-%m-%dT%H:%M:%S"), "ok": RES["ok"], "falhas": RES["falhas"], "TUDO_PASSOU": not RES["falhas"],
+-       "ensaio": str(BASE), "sintetico": "um.py, selo, diario, HANDOFF minimo, ESPERADOS, kh_n1_cobertura_v411 (numeros da v410) e cunhagens_v411 (as entradas do delta) sao de ENSAIO; o registro h0dn_bg1_v411 e' o do ensaio offline",
+-       "handoff_de_ensaio": str(nos / "HANDOFF_v411_CUSTODIA.md"), "bytes_do_acrescimo": (nos / "HANDOFF_v411_CUSTODIA.md").stat().st_size}
+-escreve(BASE / "TESTE_TEXTOS_CUSTODIA_SEM_CANDIDATO_v411.json", json.dumps(out, ensure_ascii=False, indent=1).encode("utf-8"))
+-print("teste do S6d sem candidato: %d ok, %d falha(s); saida %s" % (RES["ok"], len(RES["falhas"]), BASE / "TESTE_TEXTOS_CUSTODIA_SEM_CANDIDATO_v411.json"))
++out = {"contrato": "TESTE_TEXTOS_CUSTODIA_SEM_CANDIDATO_v412", "quando": time.strftime("%Y-%m-%dT%H:%M:%S"), "ok": RES["ok"], "falhas": RES["falhas"], "TUDO_PASSOU": not RES["falhas"],
++       "ensaio": str(BASE), "sintetico": "um.py, selo, diario, HANDOFF minimo, ESPERADOS, kh_n1_cobertura_v411 (numeros da v411) e cunhagens_v411 (as entradas do delta) sao de ENSAIO; o registro h0dn_bg1_v411 e' o do ensaio offline",
++       "handoff_de_ensaio": str(nos / "HANDOFF_v412_CUSTODIA.md"), "bytes_do_acrescimo": (nos / "HANDOFF_v412_CUSTODIA.md").stat().st_size}
++escreve(BASE / "TESTE_TEXTOS_CUSTODIA_SEM_CANDIDATO_v412.json", json.dumps(out, ensure_ascii=False, indent=1).encode("utf-8"))
++print("teste do S6d sem candidato: %d ok, %d falha(s); saida %s" % (RES["ok"], len(RES["falhas"]), BASE / "TESTE_TEXTOS_CUSTODIA_SEM_CANDIDATO_v412.json"))

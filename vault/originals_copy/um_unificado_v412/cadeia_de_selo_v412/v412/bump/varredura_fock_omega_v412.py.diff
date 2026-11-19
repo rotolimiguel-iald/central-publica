@@ -1,0 +1,77 @@
+--- v411/varredura_fock_omega_v411.py
++++ v412/varredura_fock_omega_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/varredura_fock_omega_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/varredura_fock_omega_v412.py.diff
+@@ -4,2 +5,2 @@
+-"""varredura_fock_omega_v411.py -- (claude-construtor-v410, 05/11/2026 ~22h50, pedido da gerencia apos a R2 do Sonnet; reaproveitada na v411 pelo claude-construtor-v411, 06/11/2026) VARREDURA, SO' LEITURA, de TODOS os textos que saem da preparacao da v411:
+-o core e o selo do ensaio, o .md canonico e os artigos PT/EN rendidos (dry_v411), os textos do pos-rito rendidos pelo harness (C:\\t\\h411\\harness_saida_v411: handoff, paragrafo do README/site, superficies, linhagem,
++"""varredura_fock_omega_v412.py -- (claude-construtor-v411, 05/11/2026 ~22h50, pedido da gerencia apos a R2 do Sonnet; reaproveitada na v412 pelo claude-construtor-v412, 06/11/2026) VARREDURA, SO' LEITURA, de TODOS os textos que saem da preparacao da v412:
++o core e o selo do ensaio, o .md canonico e os artigos PT/EN rendidos (dry_v412), os textos do pos-rito rendidos pelo harness (C:\\t\\h412\\harness_saida_v412: handoff, paragrafo do README/site, superficies, linhagem,
+@@ -7,3 +8,3 @@
+-e o ponto mediano do grupo de estatuto), (a) «Fock» com OPEN/aberto/abert/pendente/«ainda nao»/«por fazer»/v411/v411 e (b) «Omega/Ω» com «uniforme» e OPEN/aberto. Classifica cada achado: HISTORICO (cita a E21,
+-a v407/v410 selada, «deixou», «dizia», «ficava», «era»; ou e' texto selado/herdado de versao anterior dentro do um.py) ou NOVO (a corrigir). Grava VARREDURA_FOCK_OMEGA_v411.json; rc 1 se ha' achado NOVO.
+-uso: python -I -B -X utf8 varredura_fock_omega_v411.py"""
++e o ponto mediano do grupo de estatuto), (a) «Fock» com OPEN/aberto/abert/pendente/«ainda nao»/«por fazer»/v412/v412 e (b) «Omega/Ω» com «uniforme» e OPEN/aberto. Classifica cada achado: HISTORICO (cita a E21,
++a v407/v411 selada, «deixou», «dizia», «ficava», «era»; ou e' texto selado/herdado de versao anterior dentro do um.py) ou NOVO (a corrigir). Grava VARREDURA_FOCK_OMEGA_v412.json; rc 1 se ha' achado NOVO.
++uso: python -I -B -X utf8 varredura_fock_omega_v412.py"""
+@@ -14,3 +15,3 @@
+-_sp_dl = _ilu.spec_from_file_location("delta_v411_varredura", os.path.join(HERE, "delta_v411.py")); DL = _ilu.module_from_spec(_sp_dl); _sp_dl.loader.exec_module(DL)   # (v411) o dry e a saida da rodada vem do delta
+-H = os.path.join("C:" + os.sep, "t", "h411", "harness_saida_v411")
+-ARQ = [os.path.join(DL.DRY_DIR, n_) for n_ in ("core_ensaio.json", "selo_ensaio.json", "um_absoluto_forma_canonica.md", "dry_v411_pt.txt", "dry_v411_en.txt")]   # (v411) o dry da rodada, fora de work (D135)
++_sp_dl = _ilu.spec_from_file_location("delta_v412_varredura", os.path.join(HERE, "delta_v412.py")); DL = _ilu.module_from_spec(_sp_dl); _sp_dl.loader.exec_module(DL)   # (v412) o dry e a saida da rodada vem do delta
++H = os.path.join("C:" + os.sep, "t", "h412", "harness_saida_v412")
++ARQ = [os.path.join(DL.DRY_DIR, n_) for n_ in ("core_ensaio.json", "selo_ensaio.json", "um_absoluto_forma_canonica.md", "dry_v412_pt.txt", "dry_v412_en.txt")]   # (v412) o dry da rodada, fora de work (D135)
+@@ -18,6 +19,6 @@
+-ARQ += [os.path.join(HERE, "pos_rito", "CUSTODIA_v411_RASCUNHO.txt"), DL.saida("RELATORIO_PREPARACAO_v411.md"), DL.saida("PLANO_v411.md"), os.path.join(HERE, "DEPOSITO_CONSTRUTOR_v411.md")]
+-ARQ += [os.path.join(HERE, n_) for n_ in ("delta_v411.py", "registros_v411.py", "registros_h0dn_v411.py", "runtime_h0dn_v411.py", "quadro_v411.py", "gerar_candidato_v411.py", "gerar_relatorio_v411.py", "depositar_construtor_v411.py",
+-                                          "fechar_preparacao_v411.py", "acom_inscrever_prep_v411.py", "guarda_frases_v411.py")]   # (v411: as fontes autorais; nao ha runtime_v411 nem artigo_*_v411.pysnip)
+-ARQ += [os.path.join(HERE, "pos_rito", n_) for n_ in ("textos_v411_novo.pysnip", "textos_v411.py", "registrar_mapa_v411.py", "textos_custodia_handoff_v411.py", "gerar_x_custodia_v411.py", "leitura_v411.py")]
+-ARQ += sorted(glob.glob(os.path.join(os.path.expanduser("~"), ".claude", "projects", "c--IALD-Central-de-Patentes", "memory", "fila", "depositos", "claude-construtor-v411", "*.md")))[-1:]
+-ABERTO = re.compile(r"\bOPEN\b|\baberto\b|\baberta\b|\bem\s+abert|\bpendente|ainda\s+n[ãa]o|por\s+fazer|\bv41[2-9]\b|\bopen\b|\bpending\b|not\s+yet", re.I)   # (v411: a versao corrente, v411, nao conta como passagem futura; v412 em diante conta)
++ARQ += [os.path.join(HERE, "pos_rito", "CUSTODIA_v412_RASCUNHO.txt"), DL.saida("RELATORIO_PREPARACAO_v412.md"), DL.saida("PLANO_v412.md"), os.path.join(HERE, "DEPOSITO_CONSTRUTOR_v412.md")]
++ARQ += [os.path.join(HERE, n_) for n_ in ("delta_v412.py", "registros_v412.py", "registros_h0dn_v412.py", "runtime_h0dn_v412.py", "quadro_v412.py", "gerar_candidato_v412.py", "gerar_relatorio_v412.py", "depositar_construtor_v412.py",
++                                          "fechar_preparacao_v412.py", "acom_inscrever_prep_v412.py", "guarda_frases_v412.py")]   # (v412: as fontes autorais; nao ha runtime_v412 nem artigo_*_v412.pysnip)
++ARQ += [os.path.join(HERE, "pos_rito", n_) for n_ in ("textos_v412_novo.pysnip", "textos_v412.py", "registrar_mapa_v412.py", "textos_custodia_handoff_v412.py", "gerar_x_custodia_v412.py", "leitura_v412.py")]
++ARQ += sorted(glob.glob(os.path.join(os.path.expanduser("~"), ".claude", "projects", "c--IALD-Central-de-Patentes", "memory", "fila", "depositos", "claude-construtor-v412", "*.md")))[-1:]
++ABERTO = re.compile(r"\bOPEN\b|\baberto\b|\baberta\b|\bem\s+abert|\bpendente|ainda\s+n[ãa]o|por\s+fazer|\bv41[2-9]\b|\bopen\b|\bpending\b|not\s+yet", re.I)   # (v412: a versao corrente, v412, nao conta como passagem futura; v412 em diante conta)
+@@ -26 +27 @@
+-HIST = ("e21", "v407", "v410", "deixou", "dizia", "ficava", "selad", "sealed", "historic", "histórico", "registro da época", "era [open]", "fecha como construcao", "fecha como construção", "fechou",
++HIST = ("e21", "v407", "v411", "deixou", "dizia", "ficava", "selad", "sealed", "historic", "histórico", "registro da época", "era [open]", "fecha como construcao", "fecha como construção", "fechou",
+@@ -29,2 +30,2 @@
+-# o que e' texto SELADO/HERDADO dentro do core/um.py (nao e' texto novo da v411): as chaves dos registros anteriores
+-CHAVES_V411 = ("iald2_v410", "a_escala_v410", "h0dn_bg1_v410", "h0dn_fontes_hms13_v410", "cunhagens_v410", "kh_n1_cobertura_v410")   # (v411) os registros da v410, herdados e selados (registro)
++# o que e' texto SELADO/HERDADO dentro do core/um.py (nao e' texto novo da v412): as chaves dos registros anteriores
++CHAVES_V412 = ("iald2_v410", "a_escala_v410", "h0dn_bg1_v410", "h0dn_fontes_hms13_v410", "cunhagens_v410", "kh_n1_cobertura_v410")   # (v412) os registros da v411, herdados e selados (registro)
+@@ -33 +34 @@
+-_BASE = os.path.join(HERE, "base_v410")
++_BASE = os.path.join(HERE, "base_v411")
+@@ -36 +37 @@
+-                                                                                    os.path.join(_NOS, "rodada_v410_stdout.txt")) if os.path.isfile(p_))
++                                                                                    os.path.join(_NOS, "rodada_v411_stdout.txt")) if os.path.isfile(p_))
+@@ -60 +61 @@
+-R = {"arquivos": 0, "achados": [], "recorte": "texto NOVO da v411: no core e no selo, so' as chaves da v411; no .md canonico, so' a linha da v411; nos artigos rendidos, so' a secao da v411; nas superficies do harness, so' o acrescimo sobre o .bak; o resto inteiro"}
++R = {"arquivos": 0, "achados": [], "recorte": "texto NOVO da v412: no core e no selo, so' as chaves da v412; no .md canonico, so' a linha da v412; nos artigos rendidos, so' a secao da v412; nas superficies do harness, so' o acrescimo sobre o .bak; o resto inteiro"}
+@@ -72 +73 @@
+-        for k_ in [k_ for k_ in (c_ if isinstance(c_, dict) else {}) if "v411" in k_]:
++        for k_ in [k_ for k_ in (c_ if isinstance(c_, dict) else {}) if "v412" in k_]:
+@@ -78,4 +79,4 @@
+-        idx_ = [i_ for i_ in idx_ if "v411" in linhas_[i_]]
+-    elif (b_.startswith("dry_v411_") or b_.startswith("um_absoluto_")) and b_.endswith(".txt"):
+-        # (v411) o texto NOVO do artigo e' o que nao existe no artigo rendido da v410 (dry_v410), depois de desfazer SO' a mudanca do A2 no conversor para TXT (^(X) -> ^X):
+-        # o topo novo (o quadro, o resumo, as trocas, a frase do estatuto) e a secao da v411 entram; o texto herdado da v410 fica fora (a faixa de datas da v410 nao cobria o topo)
++        idx_ = [i_ for i_ in idx_ if "v412" in linhas_[i_]]
++    elif (b_.startswith("dry_v412_") or b_.startswith("um_absoluto_")) and b_.endswith(".txt"):
++        # (v412) o texto NOVO do artigo e' o que nao existe no artigo rendido da v411 (dry_v411), depois de desfazer SO' a mudanca do A2 no conversor para TXT (^(X) -> ^X):
++        # o topo novo (o quadro, o resumo, as trocas, a frase do estatuto) e a secao da v412 entram; o texto herdado da v411 fica fora (a faixa de datas da v411 nao cobria o topo)
+@@ -83 +84 @@
+-        _base_txt_ = os.path.join(os.path.dirname(HERE), "v410", "dry_v410", "dry_v410_%s.txt" % _lg_)
++        _base_txt_ = os.path.join(os.path.dirname(HERE), "v411", "dry_v411", "dry_v411_%s.txt" % _lg_)
+@@ -94 +95 @@
+-    if b_ == "guarda_frases_v411.py":   # META: as listas PROIBIDAS e LIMPAS sao a definicao da guarda (o controle negativo dela as testa)
++    if b_ == "guarda_frases_v412.py":   # META: as listas PROIBIDAS e LIMPAS sao a definicao da guarda (o controle negativo dela as testa)
+@@ -102 +103 @@
+-_out_ = DL.saida("VARREDURA_FOCK_OMEGA_v411.json"); open(_out_ + ".tmp", "w", encoding="utf-8").write(json.dumps(R, ensure_ascii=False, indent=1)); os.replace(_out_ + ".tmp", _out_)
++_out_ = DL.saida("VARREDURA_FOCK_OMEGA_v412.json"); open(_out_ + ".tmp", "w", encoding="utf-8").write(json.dumps(R, ensure_ascii=False, indent=1)); os.replace(_out_ + ".tmp", _out_)
+@@ -105 +106 @@
+-    print("NOVO", a_["tipo"], "|", a_["arquivo"].replace(HERE, "v411"), "|", a_["trecho"][:200])
++    print("NOVO", a_["tipo"], "|", a_["arquivo"].replace(HERE, "v412"), "|", a_["trecho"][:200])

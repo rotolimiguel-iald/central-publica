@@ -1,0 +1,105 @@
+--- v411/pos_rito/textos_custodia_handoff_v411.py
++++ v412/pos_rito/textos_custodia_handoff_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/pos_rito/textos_custodia_handoff_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/pos_rito__textos_custodia_handoff_v412.py.diff
+@@ -4 +5 @@
+-"""textos_custodia_handoff_v411.py -- (gerencia c1, pelo claude-construtor-v411-posrito, 12/11/2026) o S6d do orquestrador da v411: ENCADEADO depois da chain 14, anexa ao HANDOFF_v411_CUSTODIA.md do Nos:
++"""textos_custodia_handoff_v412.py -- (gerencia c1, pelo claude-construtor-v412-posrito, 12/11/2026) o S6d do orquestrador da v412: ENCADEADO depois da chain 14, anexa ao HANDOFF_v412_CUSTODIA.md do Nos:
+@@ -7,2 +8,2 @@
+-  (2) a secao «README: o que fica evidente» (v411) e, sob marcadores, os textos que a abertura torna obrigatorios (blocos_custodia_v411.secao_handoff: a NOTA inteira, os seis do README, os onze do estatuto e
+-      os dois extras), MONTADOS do core selado e da formula (TOPO_RATIFICADO_v411.json:formula_curta, quando existir; senao a PROPOSTA da gerencia, dita);
++  (2) a secao «README: o que fica evidente» (v412) e, sob marcadores, os textos que a abertura torna obrigatorios (blocos_custodia_v412.secao_handoff: a NOTA inteira, os seis do README, os onze do estatuto e
++      os dois extras), MONTADOS do core selado e da formula (TOPO_RATIFICADO_v412.json:formula_curta, quando existir; senao a PROPOSTA da gerencia, dita);
+@@ -10 +11 @@
+-Antes de anexar: cada texto passa na guarda de frases da v411 (guarda_frases_v411.violacoes), no portao do G1 (custodia_g1.textos.portao), nas regras de forma do ARCO e do COMMIT e, os da abertura, nas MESMAS
++Antes de anexar: cada texto passa na guarda de frases da v412 (guarda_frases_v412.violacoes), no portao do G1 (custodia_g1.textos.portao), nas regras de forma do ARCO e do COMMIT e, os da abertura, nas MESMAS
+@@ -12,2 +13,2 @@
+-de que cresceu; re-le pelo parser do G1 (custodia_g1.nos.ler_handoff) e exige cada corpo igual ao escrito; grava RECIBO_TEXTOS_CUSTODIA_HANDOFF_v411.json. Falha = rc 1 e NADA anexado.
+-Ensaio: V411_NOS_DIR (o Nos: le core, selo, diario e o HANDOFF e escreve SO' o HANDOFF), V411_PKG_DIR (onde estao ESPERADOS_v411.json e a revisao) e V411_RECIBO_DIR (onde vai o recibo); sem elas, os da casa.
++de que cresceu; re-le pelo parser do G1 (custodia_g1.nos.ler_handoff) e exige cada corpo igual ao escrito; grava RECIBO_TEXTOS_CUSTODIA_HANDOFF_v412.json. Falha = rc 1 e NADA anexado.
++Ensaio: V412_NOS_DIR (o Nos: le core, selo, diario e o HANDOFF e escreve SO' o HANDOFF), V412_PKG_DIR (onde estao ESPERADOS_v412.json e a revisao) e V412_RECIBO_DIR (onde vai o recibo); sem elas, os da casa.
+@@ -28 +29 @@
+-V = "v411"
++V = "v412"
+@@ -31,3 +32,3 @@
+-import guarda_frases_v411 as GF  # noqa: E402
+-import delta_v411 as DL  # noqa: E402
+-import blocos_custodia_v411 as BC  # noqa: E402
++import guarda_frases_v412 as GF  # noqa: E402
++import delta_v412 as DL  # noqa: E402
++import blocos_custodia_v412 as BC  # noqa: E402
+@@ -37,3 +38,3 @@
+-SECAO_README = "**README: o que fica evidente (v411)**"
+-NOME_RECIBO = "RECIBO_TEXTOS_CUSTODIA_HANDOFF_v411.json"
+-DEPOIS_DO_HANDOFF = ("pos_rito/" + NOME_RECIBO, "ORDEM_HANDOFF_CUSTODIA_v411.md", "orquestrador/RELATORIO_POS_TREINO_v411.md", "orquestrador/RELATORIO_POS_TREINO_v411.json")   # o que a cadeia ainda grava DEPOIS deste passo
++SECAO_README = "**README: o que fica evidente (v412)**"
++NOME_RECIBO = "RECIBO_TEXTOS_CUSTODIA_HANDOFF_v412.json"
++DEPOIS_DO_HANDOFF = ("pos_rito/" + NOME_RECIBO, "ORDEM_HANDOFF_CUSTODIA_v412.md", "orquestrador/RELATORIO_POS_TREINO_v412.md", "orquestrador/RELATORIO_POS_TREINO_v412.json")   # o que a cadeia ainda grava DEPOIS deste passo
+@@ -47,2 +48,2 @@
+-    """a lista EN do que o teste nao decide: o literal `_V411_NAO_DECIDE_EN` do quadro que vai embutido no um.py (quadro_v411.py da pasta da cadeia), lido por ast; nunca redigitado aqui."""
+-    arv = ast.parse((PKG_REAL / "quadro_v411.py").read_text(encoding="utf-8"))
++    """a lista EN do que o teste nao decide: o literal `_V411_NAO_DECIDE_EN` do quadro que vai embutido no um.py (quadro_v412.py da pasta da cadeia), lido por ast; nunca redigitado aqui."""
++    arv = ast.parse((PKG_REAL / "quadro_v412.py").read_text(encoding="utf-8"))
+@@ -54 +55 @@
+-    raise ValueError("quadro_v411.py nao traz _V411_NAO_DECIDE_EN")
++    raise ValueError("quadro_v412.py nao traz _V411_NAO_DECIDE_EN")
+@@ -62,2 +63,2 @@
+-    vno = (esp.get("vereditos_novos_v411") or {}).get(DL.FECHO_REGISTRO)
+-    assert vno is None or vno == R["verdict"], "o veredito do registro != o de ESPERADOS_v411.json"
++    vno = (esp.get("vereditos_novos_v412") or {}).get(DL.FECHO_REGISTRO)
++    assert vno is None or vno == R["verdict"], "o veredito do registro != o de ESPERADOS_v412.json"
+@@ -65 +66 @@
+-    assert selo.get("um_version") == V and pin == esp.get("candidato_sha16"), "o selo do Nos nao e' o da v411 ou o pino != o candidato de ESPERADOS"
++    assert selo.get("um_version") == V and pin == esp.get("candidato_sha16"), "o selo do Nos nao e' o da v412 ou o pino != o candidato de ESPERADOS"
+@@ -71 +72 @@
+-    assert k in ("nenhum", "0"), "a v411 nao tem modulo novo, e o diario diz %r" % k
++    assert k in ("nenhum", "0"), "a v412 nao tem modulo novo, e o diario diz %r" % k
+@@ -76 +77 @@
+-    assert nfal == DL.N_FALAS_V411, "cunhagens_%s traz %d falas, o DESENHO pede %d" % (V, nfal, DL.N_FALAS_V411)
++    assert nfal == DL.N_FALAS_V412, "cunhagens_%s traz %d falas, o DESENHO pede %d" % (V, nfal, DL.N_FALAS_V412)
+@@ -79 +80 @@
+-    _tj, _fonte, Nn, _est, P, A = BC.pecas(core)   # (aditivo 4) os pedacos da frase de estado RATIFICADA (TOPO_RATIFICADO_v411.json), os mesmos dos textos da abertura
++    _tj, _fonte, Nn, _est, P, A = BC.pecas(core)   # (aditivo 4) os pedacos da frase de estado RATIFICADA (TOPO_RATIFICADO_v412.json), os mesmos dos textos da abertura
+@@ -88 +89 @@
+-        ("ENTROU_EN", "%s: no new kernel module (the kernel of v410, byte for byte; ladder %d -> %d, nothing outside the trio); one registry with function, `%s` (%d checks, all verified), which recomputes in the rite, "
++        ("ENTROU_EN", "%s: no new kernel module (the kernel of v411, byte for byte; ladder %d -> %d, nothing outside the trio); one registry with function, `%s` (%d checks, all verified), which recomputes in the rite, "
+@@ -98 +99 @@
+-        ("ARCO_EN", "The custody of v411 (complete round): the decisive test, H0DN × BG1, opened once. It is the local/background Hubble ratio, opened on %s after the public pre-registration and recomputed in the rite "
++        ("ARCO_EN", "The custody of v412 (complete round): the decisive test, H0DN × BG1, opened once. It is the local/background Hubble ratio, opened on %s after the public pre-registration and recomputed in the rite "
+@@ -101 +102 @@
+-        ("ARCO_PT", "A custódia da v411 (rodada completa): o teste decisivo, H0DN × BG1, aberto uma vez. É a razão de Hubble local/fundo, aberta em %s depois do pré-registro público e recalculada no rito a partir "
++        ("ARCO_PT", "A custódia da v412 (rodada completa): o teste decisivo, H0DN × BG1, aberto uma vez. É a razão de Hubble local/fundo, aberta em %s depois do pré-registro público e recalculada no rito a partir "
+@@ -104 +105 @@
+-        ("COMMIT", "v411: o teste decisivo H0DN x BG1, aberto uma vez em %s depois do pre-registro publico e recalculado no rito dos bytes embutidos (registro %s, %d checagens): %s: %s; %s; %s; %s. Nenhum modulo novo "
++        ("COMMIT", "v412: o teste decisivo H0DN x BG1, aberto uma vez em %s depois do pre-registro publico e recalculado no rito dos bytes embutidos (registro %s, %d checagens): %s: %s; %s; %s; %s. Nenhum modulo novo "
+@@ -130 +131 @@
+-    texto = ("**Notas da cadeia para a custódia (v411; D133, D135, decisão (c) da gerência de 12/11):** (1) a pasta `work\\cadeia_de_selo\\%s` não tem `.tmp` (%d removido(s) neste passo, antes do handoff%s); "
++    texto = ("**Notas da cadeia para a custódia (v412; D133, D135, decisão (c) da gerência de 12/11):** (1) a pasta `work\\cadeia_de_selo\\%s` não tem `.tmp` (%d removido(s) neste passo, antes do handoff%s); "
+@@ -140 +141 @@
+-    """as guardas de cada texto: a guarda de frases da v411, o portao do G1, a forma (ARCO/COMMIT, D59, D65, o 4,44 so' com a regra dele) e, sobre os textos da abertura, as conferencias da custodia (blocos_custodia_v411.conferir)."""
++    """as guardas de cada texto: a guarda de frases da v412, o portao do G1, a forma (ARCO/COMMIT, D59, D65, o 4,44 so' com a regra dele) e, sobre os textos da abertura, as conferencias da custodia (blocos_custodia_v412.conferir)."""
+@@ -163 +164 @@
+-        out[ident] = {"guarda_frases_v411": v1, "portao_g1": v2, "forma": v3, "custodia_h0dn": v4, "n_bytes": len(t.encode("utf-8"))}
++        out[ident] = {"guarda_frases_v412": v1, "portao_g1": v2, "forma": v3, "custodia_h0dn": v4, "n_bytes": len(t.encode("utf-8"))}
+@@ -170,3 +171,3 @@
+-    nos = Path(nos or os.environ.get("V411_NOS_DIR") or r"C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós")
+-    pkg = Path(pkg or os.environ.get("V411_PKG_DIR") or PKG_REAL)
+-    recibo_dir = Path(recibo_dir or os.environ.get("V411_RECIBO_DIR") or HERE)
++    nos = Path(nos or os.environ.get("V412_NOS_DIR") or r"C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós")
++    pkg = Path(pkg or os.environ.get("V412_PKG_DIR") or PKG_REAL)
++    recibo_dir = Path(recibo_dir or os.environ.get("V412_RECIBO_DIR") or HERE)
+@@ -179 +180 @@
+-    esp = json.loads((pkg / "ESPERADOS_v411.json").read_text(encoding="utf-8"))
++    esp = json.loads((pkg / "ESPERADOS_v412.json").read_text(encoding="utf-8"))
+@@ -181 +182 @@
+-    revp = pkg / "revisao_terceiro" / "REVISAO_TERCEIRO_v411.json"
++    revp = pkg / "revisao_terceiro" / "REVISAO_TERCEIRO_v412.json"
+@@ -201 +202 @@
+-           "anexar: a guarda de frases da v411, o portão da G1 e, nos textos da abertura do H0DN × BG1, as mesmas conferências da custódia; nenhum módulo novo; validade no kernel não é creditação):**\n" % V)
++           "anexar: a guarda de frases da v412, o portão da G1 e, nos textos da abertura do H0DN × BG1, as mesmas conferências da custódia; nenhum módulo novo; validade no kernel não é creditação):**\n" % V)
+@@ -209 +210 @@
+-    rec = {"quando": datetime.datetime.now().isoformat(timespec="seconds"), "quem": "gerencia c1 (orquestrador da v411, S6d)", "handoff": str(hpath), "sha16_antes": s16b(hb), "sha16_depois": s16b(novo),
++    rec = {"quando": datetime.datetime.now().isoformat(timespec="seconds"), "quem": "gerencia c1 (orquestrador da v412, S6d)", "handoff": str(hpath), "sha16_antes": s16b(hb), "sha16_depois": s16b(novo),
+@@ -214 +215 @@
+-           "estatuto": "REAL (numeros lidos do core selado, do selo e do diario); o texto e' o RATIFICADO pelo operador (TOPO_RATIFICADO_v411.json), cortado em oracoes inteiras para cada lugar; os conectivos sao da gerencia c1, em nome proprio; NOT_FALSIFIED nunca e' a palavra da creditacao; o gate nao se move"}
++           "estatuto": "REAL (numeros lidos do core selado, do selo e do diario); o texto e' o RATIFICADO pelo operador (TOPO_RATIFICADO_v412.json), cortado em oracoes inteiras para cada lugar; os conectivos sao da gerencia c1, em nome proprio; NOT_FALSIFIED nunca e' a palavra da creditacao; o gate nao se move"}

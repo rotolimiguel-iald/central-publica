@@ -1,0 +1,119 @@
+{
+ "gerado_em": "2026-11-18 17:18:57",
+ "trocas_exatas": [
+  [
+   "OResumoEPsiBit",
+   "**De onde sai a compressão?** Direto da fórmula — mas o tamanho do resumo é a largura\nda fronteira, não o número de variáveis. E há fórmula cuja fronteira é o universo (item 7): aí o resumo é o todo.",
+   "**De onde sai a compressão?** Direto da fórmula — mas a tabela do resumo tem `2^w` células, com `w` a largura\nda fronteira. E há fórmula cuja fronteira é o universo (item 7): aí são `2ⁿ` células.",
+   1
+  ],
+  [
+   "OResumoEPsiBit",
+   "* Que o resumo seja pequeno para TODA fórmula: ele tem o tamanho da fronteira; a parede do item 7 mostra o caso\n  pior. A melhor ordem de leitura é a que minimiza a fronteira máxima — na literatura, a eliminação por balde e a\n  largura de árvore da fórmula [KNOWN; Dechter e a decomposição em árvore; não é termo deste arquivo].",
+   "* Que o resumo seja pequeno para TODA fórmula: uma fronteira de largura `w` indexa `2^w` células; a parede do item 7\n  mostra o caso pior. O termo conta células; a escolha da melhor ordem de leitura (na literatura, a eliminação por\n  balde e a largura de árvore da fórmula [KNOWN; Dechter e a decomposição em árvore; não é termo deste arquivo]) e o\n  tempo de execução são outras questões.",
+   1
+  ],
+  [
+   "OResumoEPsiBit",
+   "`TransicaoDaFronteira.transition`",
+   "`Codex.FrontierUpdate.transition` (arquivo `TransicaoDaFronteira`)",
+   2
+  ],
+  [
+   "OResumoEPsiBit",
+   "`ProjecaoDaFronteira.total_projection`",
+   "`Codex.FrontierProjection.total_projection` (arquivo `ProjecaoDaFronteira`)",
+   1
+  ],
+  [
+   "OPsiBitDaFormula",
+   "a regra existe, é única e é anterior a toda fórmula (é a igualdade, já tipada no kernel\ncomo `Literal.vale`)",
+   "a regra existe, é fixa e é anterior a toda fórmula (é a igualdade, já tipada no kernel\ncomo `Literal.vale`; o termo não compara regras rivais)",
+   1
+  ],
+  [
+   "OPsiBitDaFormula",
+   "   (`AContagemEACarga`), que a fronteira calcula sem tocar as `2ⁿ` parcelas (`OResumoEPsiBit`).",
+   "   (`AContagemEACarga`); a soma reagrupa-se por célula da fronteira (`OResumoEPsiBit`), e com a fronteira plena são\n   `2ⁿ` células.",
+   1
+  ],
+  [
+   "OPsiBitDaFormula",
+   "7. `a_parede_fica_de_pe`: a contagem deste leitor, letra a letra, é a fronteira; há fórmula cuja fronteira é o\n   universo (`OResumoEPsiBit.a_parede_de_todas_as_variaveis`). A régua do Instituto fica exatamente aí.",
+   "7. `a_parede_fica_de_pe`: o número de células da tabela explícita deste leitor é o da fronteira; há fórmula cuja\n   fronteira é o universo (`OResumoEPsiBit.a_parede_de_todas_as_variaveis`). O termo não conta movimentos.",
+   1
+  ],
+  [
+   "OPsiBitDaFormula",
+   "* Que exista máquina de letras com polinômio fixo para toda fórmula: a contagem por letra deste leitor é a fronteira,\n  e o caso pior é o universo. A pergunta do Instituto, na régua deles, fica aberta — e localizada.",
+   "* Que exista máquina de letras com polinômio fixo para toda fórmula: o número de células da tabela explícita deste\n  leitor é o da fronteira, e o caso pior é o universo. A pergunta do Instituto, na régua deles, fica aberta.",
+   1
+  ],
+  [
+   "OPsiBitDaFormula",
+   "paga a carga, a soma lida decide se o Nome está habitado — e a fronteira\ncalcula a soma sem tocar as `2ⁿ` parcelas (`OResumoEPsiBit.a_leitura_pela_fronteira_e_exata`). -/",
+   "com o tempo pago acima da carga, a soma lida decide se o Nome está habitado; a\nsoma reagrupa-se por célula da fronteira (`OResumoEPsiBit.a_leitura_pela_fronteira_e_exata`). -/",
+   1
+  ],
+  [
+   "OPsiBitDaFormula",
+   "/-- **A PAREDE FICA DE PÉ**: a contagem por letra deste leitor é a fronteira; há fórmula cuja fronteira é o universo.\nA pergunta do Instituto, na régua deles, fica aberta — e localizada. -/",
+   "/-- **A PAREDE FICA DE PÉ**: o número de células da tabela explícita deste leitor é o da fronteira; há fórmula cuja\nfronteira é o universo. O termo não conta movimentos. -/",
+   1
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "# A fronteira é o único portão: toda cadeia do lido ao por-ler a atravessa",
+   "# A fronteira e a cadeia: havendo cadeia do só-lido ao só-por-ler, a fronteira não é vazia",
+   1
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "3. ★ `a_leitura_tem_um_so_portao`: com a pedra `OResumoEPsiBit`, a leitura da resposta final mora na fronteira\n   (`a_fronteira_basta_ao_resumo`)",
+   "3. ★ `a_leitura_tem_um_so_portao`: com `OResumoEPsiBit`, o resumo do prefixo fatora-se pela fronteira\n   (`a_fronteira_basta_ao_resumo`)",
+   1
+  ],
+  [
+   "AFronteiraEOUnicoPortao",
+   "a pertinência ao percurso é `OSeparadorNoPercurso.o_percurso_atravessa_a_fronteira`.",
+   "a pertinência ao percurso é\n   `TGLExt.OSeparadorNoPercurso.o_percurso_atravessa_a_fronteira`.",
+   1
+  ],
+  [
+   "ACurvaEAEstado",
+   "O estado é o par (a tabela da fronteira); a curva é\na releitura dela, e a releitura não acrescenta.**",
+   "O estado é o par (a tabela da fronteira).** Chamar a\ncurva de releitura, que não acrescenta, é a leitura acima [INPUT/ONTO].",
+   1
+  ],
+  [
+   "ACurvaEAEstado",
+   "   A curva é a releitura do resumo — e a releitura não acrescenta.",
+   "   (Que a curva seja a releitura do resumo é a leitura acima [INPUT/ONTO].)",
+   1
+  ],
+  [
+   "ACurvaEAEstado",
+   "localizada (a tabela tem o tamanho da fronteira).",
+   "localizada (uma fronteira de largura `w` indexa `2^w` células).",
+   1
+  ],
+  [
+   "ACurvaEAEstado",
+   "a tabela (o resumo) não. A curva é a releitura do resumo — e a releitura não acrescenta. -/",
+   "a tabela (o resumo) não. -/",
+   1
+  ],
+  [
+   "ACurvaEAEstado",
+   "`ProjecaoDaFronteira.total_projection`",
+   "`Codex.FrontierProjection.total_projection` (arquivo `ProjecaoDaFronteira`)",
+   1
+  ]
+ ],
+ "sha256_depois": {
+  "ACurvaEAEstado": "be9ff441933c34900cea50fd254727e8f018b1c5bc8c12c11fb04f21678d4252",
+  "AFronteiraEOUnicoPortao": "7289c4510b5eb7465f5e60be9d9994a65e17d1a8903913dee5d58cea6740ed20",
+  "OPsiBitDaFormula": "b59eb84c7a529a87203a7c0492ab5dd5e826bc3dff5c9c41b24dafe3e97fabf2",
+  "OResumoEPsiBit": "3ebb19fe91fba04f4cfdb6ba319b5446c7f12b7bfa988f7ae4766c3d41cb3299"
+ }
+}

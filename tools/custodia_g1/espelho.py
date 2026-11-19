@@ -351,6 +351,28 @@ def _nao_levados(ctx):
     return base
 
 
+def _termos_isentos(ctx):
+    r"""[19/11/2026, claude-site-custodia, por decisão do operador] Nomes EXATOS que casam com um marcador privado por acaso (ex.: a
+    estrutura Lean `IALD.FatoresCruzados.Env` casa com o marcador de `.env`) e que o operador liberou ao público, dito:
+    work\custodia_G1\decisoes\TERMO_PRIVADO_ISENTO_vNNN.json = {"versao", "ordem", "ordem_sha256", "nomes_exatos": [...]}.
+    Só a versão corrente; o verbatim tem de existir com o sha256 conferido; nome vazio ou curto (< 12 caracteres) é recusado.
+    Sem o arquivo: tupla vazia, e a guarda segue como era. Falha de leitura é PARAR (fail-closed)."""
+    c, v = ctx.c, ctx.versao
+    p = c.G1 / "decisoes" / ("TERMO_PRIVADO_ISENTO_%s.json" % v)
+    if not p.is_file():
+        return ()
+    d = util.ler_json(p)
+    vb = Path(str(d.get("ordem", "")))
+    if not vb.is_absolute():
+        vb = c.CEN / vb
+    if d.get("versao") != v or not vb.is_file() or util.sha256_arquivo(vb) != d.get("ordem_sha256"):
+        raise Parar("decisão de nomes isentos da guarda privada sem versão ou verbatim conferível", [str(p)])
+    nomes = tuple(d.get("nomes_exatos") or ())
+    if not nomes or any(not isinstance(s, str) or len(s) < 12 for s in nomes):
+        raise Parar("decisão de nomes isentos com nome vazio ou curto demais", [str(p)])
+    return nomes
+
+
 def _fontes_nao_publicadas(ctx):
     r"""[04/11/2026, gerência c1, errata ao lado — v407 parou aqui] A DECISÃO DO OPERADOR de deixar uma FONTE pinada fora do espelho:
     work\custodia_G1\decisoes\FONTES_NAO_PUBLICADAS_vNNN.json = {"versao", "decisao_do_operador": {"verbatim": caminho, "sha16"},
@@ -390,17 +412,19 @@ def _ap_e03(ctx):
     R["selo"], man = _gates_do_selo(ctx)
     fmap = man["formal_files_sha256"]
     # varredura de material privado: nenhum termo-guarda a MAIS que no espelho em artefato do programa
+    isentos = _termos_isentos(ctx)
     barrados, varridos = [], 0
     for src, dst, tipo in P.lista:
         if src.suffix.lower() == ".pdf":
             continue
-        nn = EP.guarda_conta(src, priv)
-        nv = EP.guarda_conta(dst, priv) if dst.is_file() else 0
+        nn = EP.guarda_conta(src, priv, isentos)
+        nv = EP.guarda_conta(dst, priv, isentos) if dst.is_file() else 0
         varridos += 1
         if nn and nn > (nv or 0):
             barrados.append({"arquivo": str(src), "tipo": tipo, "ocorrencias_novo": nn, "ocorrencias_espelho": nv})
     R["varredura_privada"] = {"termos_da_casa": [g.pattern for g in EP.GUARDA], "marcadores_privados": "%d (padroes nao gravados)" % len(priv),
-                              "arquivos_varridos": varridos, "barrados": barrados}
+                              "arquivos_varridos": varridos, "barrados": barrados,
+                              "nomes_isentos_por_decisao_do_operador": list(isentos)}
     fora_dec = _fontes_nao_publicadas(ctx)   # [04/11/2026, c1] a decisão do operador: a fonte fica FORA do espelho (não é copiada), sem parar a custódia
     for b in barrados:
         if b["arquivo"] in fora_dec:
@@ -833,6 +857,9 @@ def _conf_e08(ctx):
     if len(ctx.ler(ctx.c.TB / "README.md").encode("utf-8")) > 40960:
         f.append("README passou do teto de 40.960 bytes (L01)")
     f += _verificar_readme_pinado(ctx)   # [AO LADO, 03/11/2026] o pino do README: editado fora do gerador, pino ou PRIMORDIAL defasados PARAM a custódia
+    # AO LADO (13/11/2026, claude-site-custodia; a vitrine, parte 2; a trava 2 da gerência c1): a frase do elo fechado só em superfície do espelho que traz as
+    # duas linhas e o caminho para as sete ressalvas
+    f += h0dn.guarda_do_elo(h0dn.superficies_de_texto(ctx.c.TB))
     return f
 
 

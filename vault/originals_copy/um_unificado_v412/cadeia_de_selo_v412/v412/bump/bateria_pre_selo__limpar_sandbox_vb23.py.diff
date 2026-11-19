@@ -1,0 +1,38 @@
+--- v411/bateria_pre_selo/limpar_sandbox_vb22.py
++++ v412/bateria_pre_selo/limpar_sandbox_vb23.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/bateria_pre_selo/limpar_sandbox_vb22.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/bateria_pre_selo__limpar_sandbox_vb23.py.diff
+@@ -4,4 +5,4 @@
+-# (nota herdada da adaptacao da v408 [fork C, 04/11/2026], reconferida em 05/11/2026 pelo fork B do claude-construtor-v410 e em 06/11/2026 pelo fork B do claude-construtor-v410, com os rotulos subidos; na v411, adaptado em 12/11/2026 pelo fork B do claude-construtor-v411, retomada) molde v410/bateria_pre_selo/limpar_sandbox_vb22.py (rotulos subidos por _bump_copia_v411.py; diff em bump/); conferido em 04/11/2026: o corpo nao depende de modulos nem de versao: apaga so' C:\t\vb22, depois de provar que nao ha juncao nem link
+-"""limpar_sandbox_vb22.py -- apaga o sandbox curto C:\\t\\vb22 (so' o que a preparacao da v411 criou: fotografias, copias adulteradas do conferidor, scripts de leitura), DEPOIS de provar
+-que nao ha juncao nem link simbolico dentro dele (um rmtree seguiria uma juncao para fora). Confere que a pasta-mae C:\\t nao perde nenhum outro filho. Grava LIMPEZA_SANDBOX_vb22.json ao lado.
+-Recusa (SystemExit) se o caminho nao for exatamente C:\\t\\vb22, se achar qualquer juncao/link, ou se a pasta-mae mudar. uso: python -I -B -X utf8 limpar_sandbox_vb22.py"""
++# (nota herdada da adaptacao da v408 [fork C, 04/11/2026], reconferida em 05/11/2026 pelo fork B do claude-construtor-v411 e em 06/11/2026 pelo fork B do claude-construtor-v411, com os rotulos subidos; na v412, adaptado em 12/11/2026 pelo fork B do claude-construtor-v412, retomada) molde v411/bateria_pre_selo/limpar_sandbox_vb23.py (rotulos subidos por _bump_copia_v412.py; diff em bump/); conferido em 04/11/2026: o corpo nao depende de modulos nem de versao: apaga so' C:\t\vb23, depois de provar que nao ha juncao nem link
++"""limpar_sandbox_vb23.py -- apaga o sandbox curto C:\\t\\vb23 (so' o que a preparacao da v412 criou: fotografias, copias adulteradas do conferidor, scripts de leitura), DEPOIS de provar
++que nao ha juncao nem link simbolico dentro dele (um rmtree seguiria uma juncao para fora). Confere que a pasta-mae C:\\t nao perde nenhum outro filho. Grava LIMPEZA_SANDBOX_vb23.json ao lado.
++Recusa (SystemExit) se o caminho nao for exatamente C:\\t\\vb23, se achar qualquer juncao/link, ou se a pasta-mae mudar. uso: python -I -B -X utf8 limpar_sandbox_vb23.py"""
+@@ -18 +19 @@
+-    """(v411) onde a bateria grava: no ensaio do topo proposto (V411_ENSAIO_TOPO_PROPOSTO=1, lido pelo delta_v411) a pasta de ensaio, fora de work; no real, esta pasta e v411\\ (como na v410)."""
++    """(v412) onde a bateria grava: no ensaio do topo proposto (V412_ENSAIO_TOPO_PROPOSTO=1, lido pelo delta_v412) a pasta de ensaio, fora de work; no real, esta pasta e v412\\ (como na v411)."""
+@@ -20 +21 @@
+-    _s = _u.spec_from_file_location("delta_v411_pre_selo", os.path.join(V, "delta_v411.py")); _m = _u.module_from_spec(_s); _s.loader.exec_module(_m)
++    _s = _u.spec_from_file_location("delta_v412_pre_selo", os.path.join(V, "delta_v412.py")); _m = _u.module_from_spec(_s); _s.loader.exec_module(_m)
+@@ -26 +27 @@
+-ALVO = os.path.join("C:" + os.sep, "t", "vb22")
++ALVO = os.path.join("C:" + os.sep, "t", "vb23")
+@@ -28,2 +29,2 @@
+-assert ALVO == r"C:\t\vb22", ALVO
+-dest = os.path.join(OUTB, "LIMPEZA_SANDBOX_vb22.json")
++assert ALVO == r"C:\t\vb23", ALVO
++dest = os.path.join(OUTB, "LIMPEZA_SANDBOX_vb23.json")
+@@ -34 +35 @@
+-irmaos_antes = sorted(x for x in os.listdir(PAI) if x != "vb22")
++irmaos_antes = sorted(x for x in os.listdir(PAI) if x != "vb23")
+@@ -54,2 +55,2 @@
+-irmaos_depois = sorted(x for x in os.listdir(PAI) if x != "vb22")
+-rec = {"contrato": "LIMPEZA_SANDBOX_vb22", "quando": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "alvo": ALVO, "arquivos": n_arq, "pastas": n_dir, "bytes": n_bytes, "juncoes_ou_links_antes_de_apagar": len(reparse),
++irmaos_depois = sorted(x for x in os.listdir(PAI) if x != "vb23")
++rec = {"contrato": "LIMPEZA_SANDBOX_vb23", "quando": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "alvo": ALVO, "arquivos": n_arq, "pastas": n_dir, "bytes": n_bytes, "juncoes_ou_links_antes_de_apagar": len(reparse),
+@@ -57 +58 @@
+-       "nota": "as fotografias e as listas que valem como prova estao copiadas em %s (gerar_pino_recibo_pre_selo_v411.py); o resto do sandbox era descartavel" % os.path.join(OUTB, "prova_producao"), **_DLM.MARCA_ENSAIO}
++       "nota": "as fotografias e as listas que valem como prova estao copiadas em %s (gerar_pino_recibo_pre_selo_v412.py); o resto do sandbox era descartavel" % os.path.join(OUTB, "prova_producao"), **_DLM.MARCA_ENSAIO}

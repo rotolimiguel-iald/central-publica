@@ -1,0 +1,121 @@
+{
+  "data": "2026-11-17T16:09:37.149390-03:00",
+  "fonte": {
+    "arquivo": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_c1\\REV56\\OSignoEAImagem.lean",
+    "bytes": 13206,
+    "sha256": "53f05bc66855927fa2b6327e3649622f7298dad0618da7c2df1a8b8e07a2bbc6"
+  },
+  "estatuto": "REAL quanto à leitura, compilação e resultados registrados; interpretações e construção paralela qualificadas abaixo.",
+  "S1": {
+    "veredito": "APROVADO_O_NUCLEO_FORMAL__REQUER_EMENDAS_DE_ESCOPO_NO_CABECALHO",
+    "itens_do_cabecalho": [
+      {
+        "item": 1,
+        "veredito": "FIEL",
+        "termo": "o_ato_sobre_uma_parcela_e_o_passo",
+        "alcance": "Imagem de singleton é singleton do passo; compilado. Este termo não figura entre os onze #print axioms do arquivo."
+      },
+      {
+        "item": 2,
+        "veredito": "FIEL",
+        "termo": "le_se_pela_imagem",
+        "alcance": "Iterar k imagens diretas coincide com a imagem do passo iterado k vezes; identidade de conjuntos, sem custo de implementação."
+      },
+      {
+        "item": 3,
+        "veredito": "FIEL",
+        "termo": "o_signo_em_ato_calcula_todos_os_custos",
+        "alcance": "Depois de m imagens do conjunto inicial, as configurações contêm cada atribuição e custoCNF, com resto vazio."
+      },
+      {
+        "item": 4,
+        "veredito": "EMENDA_DE_ESTATUTO",
+        "termo": "o_signo_decide / atos",
+        "alcance": "A equivalência SAT ↔ existência de configuração de registro zero está provada. m+2 é a definição de atos, com preparação e leitura contadas como um ato cada; não conclusão do termo o_signo_decide, mínimo provado ou número de transições de fita."
+      },
+      {
+        "item": 5,
+        "veredito": "FIEL",
+        "termo": "o_signo_em_ato_devolve_o_conteudo_da_forma / ha_solucao_sse_o_conteudo_nao_e_vazio",
+        "alcance": "Projeção das configurações de registro zero dá o conjunto das atribuições satisfatórias; SAT equivale à sua não vacuidade."
+      },
+      {
+        "item": 6,
+        "veredito": "FIEL_COM_LEITURA_ONTO",
+        "termo": "a_palavra_e_o_sinal_fixado",
+        "alcance": "Depois de m imagens, mais uma não muda o conjunto. A atribuição palavra/sentido a essa estabilidade é a interpretação declarada, não teorema geral de semântica."
+      },
+      {
+        "item": 7,
+        "veredito": "FIEL",
+        "termo": "o_signo_e_a_maquina_levantada_decidem_o_mesmo",
+        "alcance": "Equivalência com leituraDoZero da máquina levantada; não identidade de custos entre modelos."
+      },
+      {
+        "item": 8,
+        "veredito": "FORMULA_CORRETA_COM_PRECO_INPUT",
+        "termo": "o_preco_de_um_ato_e_a_carga / o_custo_pela_lei_e_polinomial",
+        "alcance": "custoPelaLei é definido como atos vezes n·ln2. O termo demonstra igualdade e limite superior (m+2)n. A identidade n·ln2=carga é cardinal/logarítmica; não deduz preço físico ou tempo de execução. O próprio cabeçalho já reconhece que o preço é INPUT. Explicitar que a contagem também é adotada."
+      },
+      {
+        "item": 9,
+        "veredito": "DESIGUALDADES_CORRETAS_EMENDA_DA_PROSA",
+        "termo": "soletrar_todo_signo_pede_dois_a_card_letras / com_duas_letras_soletrar_o_signo_pede_dois_a_n_casas / para_caber_num_token_so_o_vocabulario_cresce",
+        "alcance": "Código injetivo de todos os Finset A em palavras de comprimento comum L implica 2^|A| ≤ |Letra|^L; para atribuições e alfabeto binário, 2^n ≤ L; código injetivo de todos esses subconjuntos em um Token finito exige |Token| ≥ 2^(2^n).",
+        "emenda": "Dizer comprimento comum L de um código que distingue todos os subconjuntos. Não dizer que todo signo particular exige 2^n casas, nem que toda codificação variável/todo algoritmo obedece à mesma conclusão. Os teoremas não tratam de todos os Set (Config n), cujo espaço inclui resto e contador."
+      }
+    ],
+    "tipagem_da_lei": {
+      "veredito": "Escolha honesta e explicitamente ONTO; não é a única leitura determinada pela fala do autor.",
+      "preservar": [
+        "forma = CNF escrita",
+        "conteúdo = conjunto de soluções",
+        "singularizado = um objeto Set, não singleton",
+        "imagem = imagem direta",
+        "palavra = signo estabilizado"
+      ],
+      "ainda_nao_tipado": [
+        "Teoria geral de signo, significado e tradução entre forma e conteúdo; fórmulas distintas podem ter o mesmo conjunto de soluções.",
+        "Representação efetiva de conjuntos e procedimento executável para preparação, imagem e pergunta existencial.",
+        "Vínculo entre custoPelaLei e uma contagem de transições de máquina, incluindo tamanho da codificação e leitura dos literais de uma cláusula.",
+        "Preço por ato como consequência de hipóteses de uma estrutura de lei de custo: nesta pedra está incorporado na definição."
+      ],
+      "limite": "Um termo Set em Lean não se torna por isso símbolo de um alfabeto de fita finito fixo; a equivalência lógica não é extração de algoritmo de custo provado."
+    },
+    "nao_se_afirma": {
+      "avaliacao": "As ressalvas existentes estão corretas; complementar com contagem adotada, comprimento comum do código e distinção trabalho/profundidade.",
+      "redacao_paralela": "[KNOWN] Trabalho total e profundidade paralela são medidas distintas (Blelloch); P no enunciado de Cook conta transições em função do tamanho da entrada. [DERIVED] Na realização explícita, pode-se avaliar a fórmula nas 2^n atribuições em paralelo e combinar as respostas numa árvore binária de OU de profundidade n; obtém-se profundidade polinomial com recursos exponenciais. Set.image não formaliza processadores, comunicação nem essa realização; não demonstra tempo sequencial polinomial.",
+      "nao_dizer": "Um ato sobre um conjunto é necessariamente computação paralela. A semântica de imagem direta, sozinha, não escolhe implementação."
+    },
+    "token": {
+      "avaliacao": "Correta apenas como convenção para esta máquina; glosa universal forma com conteúdo precisa de qualificação. A fala do autor sobre token é pergunta, não definição técnica ratificada.",
+      "redacao": "Neste modelo, chama-se token ao símbolo elementar de Γ lido numa transição; Γ é finito e fixo para a máquina. Em computação, token também pode designar unidade léxica com várias letras; o nome não fixa sozinho o custo de ler ou processar seu conteúdo."
+    },
+    "historia": "Não localizada história de conversa no cabeçalho nem nos docstrings lidos. As escolhas de leitura e os estatutos são conteúdo pertinente. Nenhuma limpeza desses arquivos foi realizada.",
+    "compilacao": {
+      "arquivo": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\conferencia_029_Codex\\COMPILACAO_R1.json",
+      "bytes": 3884,
+      "sha256": "2e36ea38ae0e98d58f34a8653fb48a370f8463a2a27e484d3289e35572e9e111"
+    },
+    "limite_compilacao": "Recompilação própria da candidata com dependências precompiladas, não reconstrução fria de todo o kernel. Doze teoremas compilados; onze declarações com #print axioms auditados."
+  },
+  "S2": {
+    "veredito": "REQUER_REDACAO_EXPLICITA_DAS_PREMISSAS",
+    "problema": "A sequência Assim a decisão leva ... polinomial, por teorema pode atribuir ao termo um custo de decisão executável que não foi formalizado. A ressalva posterior limita a fita, mas não distingue por si só a definição de atos do teorema nem amarra explicitamente o preço assumido.",
+    "redacao_recomendada": "Nesta formalização da lei, o signo é um conjunto de configurações e a leitura pela imagem é a imagem direta desse conjunto pelo passo. Adotam-se m + 2 atos sobre signos — preparação, uma imagem por cláusula e leitura final — e, como lei de custo da teoria tomada como entrada, o preço n·ln 2 por ato. Sob essas definições, o teorema estabelece que o custo definido é (m + 2)·n·ln 2 ≤ (m + 2)·n, polinomial em m e n.",
+    "local": "Inserir no mesmo parágrafo antes de Na expansão explícita; conservar a ressalva de máquina de fita e as classes do dicionário.",
+    "guardas": {
+      "arquivo": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\conferencia_029_Codex\\GUARDAS_R1.json",
+      "bytes": 16400,
+      "sha256": "0f7b90eee0240dace83e6c71ff9a6bd1587638a1c4f565ec3c088dbedc6cfddb"
+    },
+    "interpretacao_guardas": "As guardas herdadas disparam F34 no parágrafo base, proposto e recomendado. A regra documental R2 §5.2.2 retira exclusivamente esse F34 quando ambos os marcadores ocorrem na mesma unidade textual. O trecho isolado não dispara e isso não certifica fidelidade semântica. Controles negativos preservam as recusas e não removem outras guardas.",
+    "limite": "Aplicação documental DERIVED de R2 aos casos PT; não valida a implementação futura, as 21 obrigações, travessia de todas as folhas, versão EN ou candidato v412."
+  },
+  "referencias": {
+    "arquivo": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\conferencia_029_Codex\\REFERENCIAS_R1.json",
+    "bytes": 2867,
+    "sha256": "6ca652df30c3e14a4e9727a2394b1eb4eb63496609543ad3b32c4473ac86d1f4"
+  },
+  "nenhuma_promocao": "A candidata continua fora da lista e do contrato lidos; eventual incorporação exige nova versão pela gerência. Não instalada, nenhum gate alterado."
+}

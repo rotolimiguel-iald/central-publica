@@ -1,0 +1,32 @@
+{
+ "tipo": "ROTA",
+ "rota_id": "kernel.montagem_das_gamas_candidata_15nov",
+ "dominio": "KERNEL_FORMAL",
+ "titulo": "15/11: candidata MontagemDasGamas (frente B da v412, a montagem 3+1): a álgebra finita das quatro gamas, os sinais no nível das gamas e a soma sobre as 24 permutações",
+ "pergunta": "O que da montagem 3+1 por produtos de triplas (a K05 conferida) pode subir a termo no kernel hoje, e com que etiqueta honesta?",
+ "dados": [],
+ "metodo": "Um construtor escreveu a candidata reusando as matrizes de Pauli e o produto de Kronecker do kernel; Lean 4.31 sobre os .olean do sandbox k411c. Um revisor distinto recompilou, conferiu cada sinal com script numérico próprio, testou num espaço truncado de modos e fez quatro mutações.",
+ "resultado": "[REAL no sandbox] Segunda versão: código de saída 0, zero avisos, 55 teoremas só no trio. As quatro gamas 4 por 4 têm quadrado 1, anticomutam e são autoadjuntas; o quadrado da soma das gamas com coeficientes reais é a soma dos quadrados vezes a identidade (com a versão em anel abstrato); chi tem quadrado 1, anticomuta com as gamas e é autoadjunta; com C igual a sigma y vezes 1: C vezes o conjugado de C é menos 1, C inverte cada gama e fixa chi; a soma sobre as 24 permutações com sinal vale 24 vezes o produto das quatro gamas, e normalizada por menos 1 sobre 24 dá chi. As quatro mutações do revisor derrubam a compilação: os enunciados não são ocos.",
+ "veredito": "CANDIDATA_COMPILADA_NO_TRIO__APROVADA_COM_RESSALVAS__ALGEBRA_FINITA_SEM_CONSUMIDOR_NO_KERNEL__INSTALACAO_NAO_RECOMENDADA_PELO_REVISOR__NADA_INSTALADO",
+ "estatuto": "REAL",
+ "status": "EXAMINADA_COM_DEFEITO",
+ "olhou_dados": false,
+ "defeito": "Do sinal de J com D só sai a metade das gamas, que vale menos 1; o mais 1 final depende da reflexão de modos em L2, que não está formalizada (medido pelo revisor num espaço truncado: sem a reflexão o sinal troca). O ciclo de Hochschild não é construído: a soma sobre as permutações é identidade finita. O kernel não tem o tipo de tripla espectral: o arquivo é ilha. Quinze teoremas são dobráveis. A segunda versão não foi relida.",
+ "nao_refazer": "Não chamar a candidata de tripla espectral do toro, de operador de Dirac nem de montagem formalizada. Não citar o sinal de J com D como provado: só a metade das gamas. Não subir as contas de escala e de sinais do produto de J (gordura sem consumidor, pelo levantamento).",
+ "proximo_passo": "Entra ou não na v412: do operador (a regra de não pôr gordura no um.py pesa contra enquanto não houver o tipo de tripla espectral). O Kimi corrige a constante no texto da montagem na K07.",
+ "onde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_c1",
+ "artefatos": [
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_c1\\MontagemDasGamas.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_c1\\build\\MontagemDasGamas.log",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_c1\\REV0\\MontagemDasGamas.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao\\REVISAO_CANDIDATA_MONTAGEM_DAS_GAMAS.md",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao\\LEVANTAMENTO_FRENTE_B_15nov\\L4-montagem-e-gh.md",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\kimi\\MONTAGEM_3MAIS1_R2.md",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao\\REVISAO_K05_MONTAGEM_GH.md"
+ ],
+ "refs": [
+  "formal.k05_t1_montagem_gh_tau_campo_v412",
+  "kernel.ergodicidade_de_mautner_candidata_15nov"
+ ],
+ "nota": "GH em III1 segue conjectura; o levantamento não achou enunciado Lean para ela que não fosse tipagem oca."
+}

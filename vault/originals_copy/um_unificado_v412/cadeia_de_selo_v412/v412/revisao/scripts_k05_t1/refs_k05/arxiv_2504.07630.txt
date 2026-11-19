@@ -1,0 +1,2522 @@
+arXiv:2504.07630v1 [hep-th] 10 Apr 2025             An intrinsic cosmological observer
+
+                                                                         Antony J. Speranza1,2
+
+                                           1Institute for Theoretical Physics, University of Amsterdam, Science Park 904, 1098 XH,
+                                                                                  Amsterdam, The Netherlands
+
+                                          2Department of Physics, University of Illinois, Urbana-Champaign, Urbana IL 61801, USA
+
+                                                                              April 10, 2025
+
+                                                                                               Abstract
+                                                 There has been much recent interest in the necessity of an observer degree of freedom
+                                             in the description of local algebras in semiclassical gravity. In this work, we describe an
+                                             example where the observer can be constructed intrinsically from the quantum fields.
+                                             This construction involves the slow-roll inflation example recently analyzed by Chen and
+                                             Penington, in which the gauge-invariant gravitational algebra arises from marginalizing
+                                             over modular flow in a de Sitter static patch. We relate this procedure to the Connes-
+                                             Takesaki theory of the flow of weights for type III von Neumann algebras, and further
+                                             show that the resulting gravitational algebra can naturally be presented as a crossed
+                                             product. This leads to a decomposition of the gravitational algebra into quantum field
+                                             and observer degrees of freedom, with different choices of observer being related to
+                                             changes in a quantum reference frame for the algebra. We also connect this example
+                                             to other constructions of type II algebras in semiclassical gravity, and argue they all
+                                             share the feature of being the result of gauging modular flow. The arguments in this
+                                             work involve various properties of automorphism groups of hyperfinite factors, and so
+                                             in an appendix we review the structure of these groups, which may be of independent
+                                             interest for further investigations into von Neumann algebras in quantum gravity.
+
+                                         [dado pessoal removido]
+
+                                                                                                1
+Contents
+
+1 Introduction                                                                                          2
+
+2 Quantization of the rolling scalar                                                                    8
+
+3 Integrable Bunch-Davies weight                                                                        12
+
+4 Crossed product description of gravitational algebra                                                  16
+
+5 Construction of the centralizer                                                                       20
+
+6 Time operator                                                                                         26
+
+7 Observer in vacuum dS                                                                                 30
+
+8 Discussion                                                                                            35
+
+8.1 Centralizers and semiclassical gravity . . . . . . . . . . . . . . . . . . . . . . 35
+
+8.2 Quantum reference frames . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+
+A Automorphism groups of hyperfinite factors                                                            38
+
+1 Introduction
+
+Entanglement entropies for subregions in quantum field theory suffer from well-known UV
+divergences coming from the highly entangled structure of the vacuum at short distances.
+This leads to various challenges when working with QFT entanglement entropies, since they
+are quite sensitive to the choice of regulator, and extracting regulator-independent quantities
+can be a delicate process. It also prevents one from using rigorous algebraic techniques, such
+as the Haag-Kastler approach involving von Neumann algebras for local subregions [1, 2],
+to define entanglement entropies, thereby also precluding the powerful information-theoretic
+tools that come with such an algebraic formulation [3]. The algebraic approach instead
+forces one to focus on UV-finite quantities such as relative entropies or vacuum-subtracted
+entropies computed with specific regularization schemes [4�8].
+
+The situation in quantum gravity is expected to be much better, where the entropy
+
+associated with the exterior of a black hole, for example, is given by the generalized entropy
+
+Sgen  =  A   +  Sout.  This is  a finite quantity whose leading contribution is given by                the
+         4G            entropy                                                                          the
+Bekenstein-Hawking              A   [9�11],  and  Sout  is  the  entropy  of  degrees  of  freedom  in
+                                4G
+region outside the black hole horizon. By interpreting Sout as the entanglement entropy
+
+                                                  2
+of quantum fields restricted to the black hole exterior, one can argue that the generalized
+entropy is UV-finite, with the UV-divergence in the entanglement entropy canceling against
+loop effects that renormalize the gravitational coupling constant G [12�17].
+
+    Recently, there has been much interest in the definition of entropy in semiclassical gravity,
+in which one takes the limit of small gravitational coupling, G  0. In this limit the
+generalized entropy diverges since G appears in the denominator of the Bekenstein-Hawking
+term, and this is the expected behavior when gravity decouples, since this limit admits a
+description in terms of quantum field theory in curved spacetime. However, a number of
+recent papers have argued that this description is modified when properly accounting for
+diffeomorphism constraints coming from the interacting theory [18�29]. This modification
+requires that one explicitly include certain global gravitational degrees of freedom, such as the
+ADM mass in a black hole background, and that operators localized to a region of spacetime
+be appropriately dressed to these global degrees of freedom. This has a dramatic effect on
+the local algebras. In the language of von Neumann algebras, the undressed operators form
+an algebra of type III1, while the dressed algebras are type II.
+
+    Type II algebras differ from their type III counterparts in that every state can be described
+by a density matrix, and hence be associated with a renormalized notion of entropy. These
+properties follow from the existence of a semifinite trace defined on the algebra. Given a von
+Neumann algebra A, i.e. a weakly closed algebra of bounded operators acting on a Hilbert
+space, a trace is a linear functional  on the algebra--or rather, on a subalgebra m  A of
+operators, known as the definition ideal, for which  is finite--satisfying the cyclic property
+
+ (ab) =  (ba), a, b  m.                                                (1.1)
+
+In the familiar case where A is the type I algebra of all bounded linear operators acting
+on an infinite-dimensional Hilbert space, the trace is given by the usual formula summing
+over the expectation values in an orthonormal basis. In this case, m consists of the trace
+class operators. More generally, one says that a trace is semifinite if m is weakly dense in
+A. One of the defining properties of type III algebras is that they do not possess a (normal)
+semifinite trace, whereas type I and II algebras do [30, Section V.2].
+
+    The density matrix  for a state  is then defined as the positive operator affiliated with
+A that reproduces expectation values when inserted into the trace,
+
+(a) =  (a).                                                            (1.2)
+
+One then defines an entropy for the state in terms of  by the formula
+
+S() = - ( log ).                                                       (1.3)
+
+For type I factors where the trace is normalized to 1 on the minimal projections, this is the
+familiar von Neumann entropy of the density matrix, which is positive and bounded above
+by the dimension of the Hilbert space on which A acts irreducibly. For type II factors, the
+entropy defined by (1.3) is known as the Segal entropy [31] [3, Chapter 7], and has somewhat
+different properties. It is no longer required to be positive, and ranges either from - to
+ when A is type II, or from - to 0 when A is type II1, where the trace is normalized
+
+3
+in the latter case by  (�) = 1. Although a negative entropy might sound strange, it simply
+
+follows from the appropriate interpretation of the Segal entropy as an entropy difference
+from a reference state. This interpretation is related to the fact that for type II algebras,
+the trace  is not the usual Hilbert space trace, but rather something more like an infinitely
+rescaled version of it. This renormalization of the trace results in a shift in the entropy, and
+allows for negative values to be attained.
+
+    Returning to the discussion of semiclassical quantum gravity, we see the statement that
+the algebra is type II translates to the statement that entropy differences are well defined
+in the G  0 limit of quantum gravity. Furthermore, calculations of the perturbative
+backreaction of states of the quantum fields on the geometry have demonstrated that these
+entropy differences match onto differences in the generalized entropy [19,20,23]. Hence, even
+at infinitesimally weak gravitational coupling where the full generalized entropy diverges, a
+well-defined notion of vacuum-subtracted generalized entropy exists, and can be computed
+using algebraic techniques.
+
+    The way in which the type II structure was identified for the gravitational algebras was
+through an algebraic construction known as the modular crossed product. This construc-
+tion enlarges a given algebra A by an operator that generates modular flow of a state on
+A, and for type III algebras it is known via the work of Takesaki to result in a type II
+algebra [32] [33, Chapter XII]. While the mathematics underlying in the construction is
+clear, there remain some questions regarding the intuitive explanation behind the emergence
+of a renormalized trace and entropy. Two points in particular stand out. The first is that
+although it is straightforward to check that the crossed product algebra possesses a trace
+via computations involving Tomita-Takesaki theory, it is not immediately clear what the
+underlying mechanism is that leads to this trace, and in particular, whether it relies on the
+specific details in each construction, or if it is a more generic feature. The second question
+involves the interpretation of the additional operator that is added to the algebra in the
+crossed product constructions. This operator has different interpretations in different con-
+texts: for constructions involving black holes, it is interpreted as an asymptotic charge such
+as the ADM Hamiltonian, while for the static patch of de Sitter, the additional operator is
+an extra degree of freedom associated with an observer. The de Sitter static patch example
+is particularly vexing, since one might have expected that the quantum fields themselves
+provide the full collection physical observables, so it feels somewhat unnatural to include an
+additional degree of freedom by hand.
+
+    In this work, we will address these two points. The first question relates to the underlying
+reason for the emergence of a trace in the gravitational algebra constructions. Our proposal
+for how to understand this result is that the gravitational algebras arise from gauging modular
+flow on a kinematical type III algebra A. The justification for gauging modular flow is the so-
+called geometric modular flow conjecture proposed in [23]. The intuition for this conjecture
+is that modular flow for the type III1 algebras describing operators localized to a subregion
+in quantum field theory should look like a boost close to the entangling surface. This
+follows from the expectation that on the one hand, all states in quantum field theory should
+approach the vacuum at short distances, while on the other hand, all entangling surfaces
+look locally like the bifurcation surface of Rindler space at short distances. According to the
+
+                                                          4
+Bisognano-Wichmann theorem and the related Unruh effect [34, 35], the vacuum modular
+Hamiltonian of Rindler space is precisely the boost generator in Minkowski space. The
+precise statement of the geometric modular flow conjecture is then that given a flow that
+acts as a diffeomorphism on a Cauchy slice and approaches a constant-surface-gravity boost
+at the entangling surface, there exists a normal, semifinite weight on the algebra A whose
+modular Hamiltonian generates the given flow. For some works investigating aspects of this
+conjecture, see [36, 37].
+
+    Since diffeomorphisms are gauged in gravitational theories, the geometric modular flow
+conjecture then suggests that the appropriate dressed algebra arises from gauging modular
+flow. In practice, this means that starting from a type III1 kinematical algebra of quan-
+tum fields in a causally complete subregion of a background spacetime, the dressed algebra
+consists of operators that commute with the modular flow of the weight whose modular
+Hamiltonian generates the boost. The collection of operators that commute with modular
+flow of a weight  on an algebra is called the centralizer of the weight, denoted A, and in
+many cases such centralizers possess a trace. The reason for this is fairly intuitive: one can
+think of modular flow as being generated by the density matrix  for the weight, and so
+the centralizer then consists of operators that commute with the density matrix. For such
+operators, the original weight  defines a trace. We can verify this statement explicitly in
+the type I and II case, where the density matrix is well-defined. In those cases, we have for
+a, b in the centralizer A,
+
+(ab) = Tr (ab) = Tr (ab) = Tr (ba) = (ba).  (1.4)
+
+    Crucially, the fact that  defines a trace on its centralizer holds also in the type III
+case [33, Theorem VIII.2.6], even though the above argument involving density matrices
+is not applicable. This statement is almost enough to conclude the centralizer possesses a
+trace; however, there is a subtlety when working with proper unbounded weights, since they
+might not define finite expectation values on their centralizer; see the discussion in section
+3. The cases of interest for recent works on gravitational algebras, however, all are examples
+involving centralizers with a well-defined trace. In particular, both the crossed product
+construction and the observer in the static patch of de Sitter are examples of algebras that
+arise as centralizers of weights, as explained explicitly in section 7. This then sheds some
+light on why semiclassical gravitational algebras possess renormalized traces and entropies:
+both arise as a consequence of gauging modular flow.
+
+    The second point we address in this work is the interpretation of the observer operator
+appearing in certain constructions of gravitational algebras. This operator features promi-
+nently in the Chandrasekaran-Longo-Penington-Witten (CLPW) algebra for the static patch
+of de Sitter [19], and was necessary for a seemingly technical reason: the modular flow for
+the static patch of de Sitter is ergodic, meaning the centralizer consists only of multiples of
+the identity. By enlarging the algebra for the static patch by an observer with nontrivial
+energy, CLPW found a type II1 algebra associated with the centralizer, and with it a non-
+trivial notion of entropy. However, one might have expected that the observer should be
+constructed intrinsically from the quantum fields.
+
+    A step in this direction was provided by Chen and Penington [28], who considered a
+
+5
+modification of the CLPW construction involving a slowly rolling inflaton scalar field. The
+potential for the scalar was chosen so that the field eternally decays to smaller values, and
+hence it can be used to define a clock with respect to which operators can be dressed. They
+argued directly that the centralizer for the natural weight associated with this potential
+is nontrivial, and results in a type II gravitational algebra. This argument involves an
+averaging procedure over modular flow, and as explained in the present work in section 3,
+such a procedure is directly related to the Connes-Takesaki theory of integrable weights [38].1
+For Chen and Penington, the existence of an observer is implicitly associated with the clock
+that the rolling scalar field provides, but they do not define an explicit operator that plays
+the role of the observer Hamiltonian.
+
+    A central result of this paper is to show how such an operator can be constructed, thereby
+providing an intrinsic notion of observer constructed from the quantum fields. We make this
+identification by showing that the inflationary algebra of Chen and Penington has a natural
+representation as a crossed product algebra. As explained in section 4, the key feature in
+exhibiting this crossed product is the existence of a preferred family of automorphisms that
+rescale the trace defined on the inflationary algebra. These automorphisms arise from the
+shift symmetry of the scalar field. The shift-symmetric operators form a type III1 subalgebra
+A0, and the full inflationary algebra has the structure of a modular crossed product of A0.
+The observer Hamiltonian is simply the additional operator that must be added to A0 to
+generate the full inflationary algebra. This choice of additional operator is not canonical,
+and we argue that different choices are related to crossed product descriptions by different
+weights. This ambiguity in the choice of observer has an interpretation as a choice of quantum
+reference frame for the description of the algebra. We give a comparison to other recent works
+on quantum reference frames and gravitational algebras in section 8.2
+
+    From this example, we conclude that there are two separate effects occurring in the
+construction of gravitational algebras. The existence of a trace and renormalized entropies
+is not directly related to the inclusion of an observer; rather, it is the result of gauging
+modular flow. The existence of an observer operator is additional structure associated with
+the algebra coming from representing it as a crossed product.
+
+    In section 7, we re-analyze the CLPW construction of an observer in the dS static patch
+from the perspective of gauging modular flow. We show that the algebra in this case is
+once again the centralizer of an integrable weight, and the Connes-Takesaki classification
+gives an explanation for why a type II1 algebra arises in this case. A possible puzzle arises
+in this context since the type II1 centralizer does not admit a description as a modular
+crossed product, nor does it have a type III1 subalgebra associated with the quantum field
+operators. We describe a possible resolution, in that one should instead focus on the existence
+of time operators in the kinematical algebra, and define the observer Hamiltonian as a
+canonical conjugate in the gravitational algebra to this operator. The connection between
+observers and time operators was also a crucial aspect of the construction of an observer in
+
+    1The connection between inflationary and crossed-product algebras and the Connes-Takesaki theory has
+also been emphasized in [39�41]. However, we differ in some of our conclusions, in part because the above-
+mentioned works contain some erroneous claims about the Connes-Takesaki classification theorem and prop-
+erties of centralizers.
+
+                                                          6
+holography at large N recently explored in [42], and has also been emphasized in cosmological
+setups in [43, 44]. This picture points to a broader interpretation for how to understand
+observers and time operators in gravitational algebras, and we discuss that the correct general
+description should be in terms of a subfactor inclusion A  A of a semifinite gravitational
+algebra A inside a larger type III1 algebra A that includes time operators.
+
+    The paper is organized as follows. In section 2, we describe the setup of the kinematical
+algebra for the slow-roll inflation gravitational algebra. We work with a simplified version
+of the model considered by Chen and Penington by restricting to two-dimensional de Sitter
+space; this model contains the same essential feature as the more realistic four dimensional
+model from [28], but has the advantage of being computationally simpler. We derive the
+Bunch-Davies weight for a scalar field with linear potential, and argue in section 3 that
+it defines a dominant weight, in the terminology of the Connes-Takesaki classification [38].
+Then in section 4, we show that the resulting algebra has a canonical description as a crossed
+product coming from the existence of a preferred trace-scaling automorphism. Section 5 gives
+a procedure for perturbatively constructing operators in the centralizer of the Bunch-Davies
+weight, as well as a construction of the intrinsic observer Hamiltonian present in the crossed-
+product description. Section 6 discusses the relation between the crossed product description
+and an existence of a time operator, and points out a small puzzle regarding the appropriate
+identification of a time operator. Finally in section 7, we analyze the CLPW construction
+involving an observer in the de Sitter static patch, and connect the resulting II1 algebra to
+the Connes-Takesaki classification of integrable weights. We conclude in section 8 with some
+open questions and ideas for future work. In much of this work, we make use of certain
+properties of automorphism groups of hyperfinite factors. Therefore in appendix A, we
+review a number of facts about the structure of these automorphism groups; this summary
+may be useful for other investigations into von Neumann algebras in semiclassical gravity
+and quantum field theory.
+
+Notation. We will assume some familiarity with von Neumann algebras and properties
+of modular flows; we refer to [45] for an accessible introduction. We generally denote the
+modular automorphism on an algebra by t, but note that our convention is t(a) = eithae-ith,
+where a is an element of a von Neumann algebra A, and h = - log  is the modular
+Hamiltonian of a weight. This definition uses the opposite convention for the sign of t
+from most of the mathematics literature (e.g. [33]), and this results in some different sign
+conventions in certain formulas. We use angle brackets to denote the von Neumann algebra
+generated by the listed operators or algebras, so, for example A, B = A  B = {A  B},
+and  denotes the commutant, as usual. Composition of weights or automorphisms is denoted
+by , so that, for example,   s(a) =  (s(a)). The star operation on operators will be
+denoted by ; when these operators act on a Hilbert space, this operation agrees with the
+Hermitian adjoint, commonly denoted as  in other works. All weights and operator-valued
+weights considered in the work are assumed to be normal, which is a statement of continuity
+with respect to the -weak topology (see [33, Definition VII.1.1, Definition IX.4.12]).
+
+                                                          7
+2 Quantization of the rolling scalar
+
+The focus of this work will be on the slow-roll inflation example considered by Chen and
+Penington [28]. They considered a scalar field in 4-dimensional de Sitter space in the semi-
+classical gravity limit with G  0. The dynamical degrees of freedom in their model are the
+modes of the scalar field and the free gravitons. The small G limit suppresses back-reaction
+on the metric, leading to an exactly de Sitter background spacetime on which the fields are
+quantized.
+
+    The algebra of interest is the collection of modes in causal contact with a single worldline
+in the spacetime, which heuristically can be viewed as the algebra accessible to an observer
+in the spacetime. These degrees of freedom coincide with quantum fields localized within
+a single static patch of de Sitter space. The gauge-invariant algebra is then constructed
+from these degrees of freedom as the set of operators invariant under the static-patch time
+translation, which is the isometry of de Sitter space that is future directed in the patch,
+past-directed in the complementary patch, and acts at a boost at the bifurcation surface on
+the boundary. We will refer to this as the boost isometry.
+
+    For standard fields in de Sitter space, one expects this boost to act ergodically on the
+operators localized to the static patch, leading to the conclusion that the gauge-invariant al-
+gebra is trivial. This point was the original motivation for CLPW [19] to introduce an explicit
+gravitating observer in order to obtain a nontrivial algebra for the de Sitter static patch.
+Doing so allowed for the construction of relational observables dressed to the observer's clock,
+resulting in operators that are invariant under the static patch boost symmetry. Chen and
+Penington proposed an alternative resolution that does not require the introduction of an
+explicit observer into the theory. Instead, they chose a potential for the scalar field such that
+it perpetually rolls to lower values, so that there is no normalizable stationary state for the
+field. The scalar then provides a notion of clock to which the other degrees of freedom can
+be dressed, and Chen and Penington argue that this leads to nontrivial operators invariant
+under the boost flow.
+
+    In the present work, we will analyze a simplified version of Chen and Penington's model
+that maintains the important features of the construction. The simplification is to work in 2D
+de Sitter space. Doing so eliminates the need to consider gravitons as well as considerations
+of higher spherical harmonic modes for the scalar field. This model is still relevant because
+the interesting effect leading to the type II algebra in Chen and Penington's work happens
+in the s-wave scalar sector, and one can argue that the inclusion of other fields such as
+gravitons or higher angular momentum modes does not change the essential conclusions.
+In particular, the arguments for nontrivial, boost-invariant operators in the 2D model are
+exactly the same as in the 4D case, as is the argument that the resulting algebra is a crossed
+product. The 2D model has the advantage that explicit computations are somewhat easier
+to perform, so we will focus on this case, and comment in various places on how the argument
+would generalize to higher dimensions.
+
+                                                          8
+The metric of dS2 in conformally compactified coordinates is
+
+                       ds2  =     2       (-dT       2  + d2),                       (2.1)
+                               cos2(T
+                                       )
+
+with  a 2-periodic coordinate on the spatial circle,    and T      (-      ,     ).  The scalar field is
+                                                                        2     2
+taken to be massless with an exactly linear potential, whose action is
+
+                   S=  d2x-g   -   1  aa                -  c                         (2.2)
+                                   2                                                 (2.3)
+
+                   =   dT     2    1    2      -  1  2  -    c2    )       .
+                                   2              2        cos2(T
+                                d
+
+                            0
+
+The linear potential is a good approximation for an inflaton field in a slow-roll regime far from
+the minimum of the potential. In this model, the linear potential pushes the scalar to smaller
+values under time evolution, so that it never settles down to a stationary configuration.
+
+Since this is a free field theory, it can be quantized by imposing canonical commutation
+
+relations in the time slicing defined by the coordinate T . The momentum field on such a
+
+slice is given by
+
+                               () = (),                                              (2.4)
+
+and the equal-time commutation relation reads
+
+                       [(1), (2)] = i(1 - 2).                                        (2.5)
+
+To construct the Hilbert space, we also need to specify an appropriate vacuum state on which
+to build the representation of the commutation relation. Here, there is an important subtlety
+related to the existence of a zero mode for the massless scalar. The action (2.2) is invariant
+up to a -independent constant under the shift transformation (x)  (x)+a, necessitating
+a separate treatment of the spatially homogeneous modes of the scalar field. The zero modes
+are responsible for the well-known issues with IR divergences in the massless scalar 2-point
+function in de Sitter space [46]. Our approach to handling these zero modes will be as in [28]
+(see also [47�49]): the zero mode sector will consist of a single canonical pair quantized in
+the standard way on Hilbert space H0 = L2(R). The main subtlety is that there will not
+be a preferred normalizable de-Sitter-invariant state for this zero mode sector, and hence
+all normalizable states must involve a specification of a wavefunction for the zero modes.
+Nevertheless, there is a distinguished unnormalizable state, the Bunch-Davies weight, which
+will play a crucial role in the subsequent discussion.
+
+A second point to note is that because the potential in (2.2) is linear in , it can be
+
+eliminated from the action, up to a total derivative, by a field redefinition. This means we
+
+can write
+
+                                = cl + ,                                             (2.6)
+
+where cl is a c-number solution to the classical equations of motion, and  is the quantum
+operator representing the perturbation around this background. cl is straightforward to
+
+                                       9
+determine: the equations of motion in this coordinate system is an inhomogeneous wave
+
+equation                                                        c2
+                                                              cos2(T
+                                             �  -      =  -           )  .                                  (2.7)
+
+Taking a spatially homogeneous profile  = 0, this equation can be integrated to obtain
+
+                                             cl = c2 log(cos(T )).                                          (2.8)
+
+    The field operator  then satisfies the homogeneous wave equation
+
+                                                    � -  = 0.                                               (2.9)
+
+Quantization now proceeds as usual. The zero mode solutions have  = 0 and are given
+
+by  (T ) =    1    (0   +  0T )   for  real  coefficients    0, 0.    The    remaining  solutions     have  spatial
+                2
+profiles ein for n  (Z - {0}) and oscillate in time with frequencies  = �|n|. Hence the
+
+field  admits the expansion2
+
+                   =    1      0  +  T    0  +                ein           e-i|n|T an + ei|n|T a- n        (2.10)
+                          2            2                      4|n|
+                                                n(Z-{0})
+
+    The vacuum we will use to complete the quantization is the Bunch-Davies weight. The
+term "weight" refers to the fact that this state will not be normalizable due to its behavior in
+the zero-mode sector. Nevertheless, it can be used to construct the Hilbert space for the field
+quantization using a GNS-like procedure known as the semicyclic representation [33, Section
+VII.1]. This weight is the unique de-Sitter-invariant weight with the appropriate short-
+distance behavior for the (x) two-point function. It can be computed by evaluating the
+classical Euclidean action on solutions that are regular at the south pole of the 2-sphere,
+which is the Euclidean continuation of dS2. This south pole is located at T = +i, and
+so the constant solution 0 as well as the oscillating solutions involving an ei|n|T are the
+appropriate ones.
+
+    The general solution with this boundary condition can be written
+
+                        (T, ) =           cl(T ) + ic2T       +   1          neinei|n|T ,                   (2.11)
+                                                                    2
+                                                                         nZ
+
+where n are the Fourier coefficients of the field value at the T = 0 surface, and cl(T )+ic2T
+is the background solution that is regular at T  +i. The action (2.3) on this solution
+
+evaluates to
+
+                                          
+                                            2c2
+                   iS = i      dT      -  cos2(T )  0  -  2       n-nn2e2i|n|T + const.,                    (2.12)
+
+                                                             n>0
+
+    2The solution fn(T, ) multiplying the coefficient an is chosen to have unit Klein-Gordon inner product,
+
+i  2  d(fnfn  -  fnfn)  =  1.
+   0
+
+                                                          10
+where the constant only involves contributions from the background solution cl + ic2T . To
+arrive at the final result, we perform the T integral along a contour that follows the imaginary
+axis from +i to 0. This leads to the expression for the Bunch-Davies wavefunction
+
+                                                                                        (2.13)
+           BD  exp[iS] = exp - 2c20 - nn-n .
+
+                                                                                   n>0
+
+    The first point to note about this wavefunction is that it is not normalizable. It depends
+exponentially on the zero mode 0, which ranges from - to , hence the contribution
+to the norm coming from the zero mode sector is divergent. This is the manifestation of
+the usual IR divergence for massless fields in de Sitter, and indeed we would find that the
+2-point function BD|(x)(y)|BD is divergent in this state. This same divergence is
+present for the standard massless scalar potential V () = 0 obtained by setting c = 0, since
+the constant wavefunction for 0 is still a nonnormalizable state. However, we can still
+use BD to construct a Hilbert space for the scalar field, as long as we interpret BD as
+a semifinite weight, meaning it assigns finite expectation values only to a dense subset of
+operators in the theory. Such operators must involve functions of 0 that decay rapidly as
+0  - to cancel the exponential growth in the wavefunction. The normalizable states of
+the theory must then all involve a nontrivial wavefunction of 0 that provides an effective
+IR cutoff on correlation functions; see, for example, the vacua constructed in [47, 50]. Since
+all such wavefunctions will break some de-Sitter symmetries, we see in this case that there
+are no normalizable dS-invariant states.
+
+    The second point to note is that the representation we obtain of the field algebra using
+the vacuum weight BD is isomorphic to the field algebra of the standard massless scalar with
+c = 0. Both field algebras are labeled by the modes n and their conjugate momenta, and
+the only difference between the Bunch-Davies weights for c = 0 and c = 0 is the wavefunction
+for the zero mode. Since the zero mode sector represents only a single degree of freedom,
+and the canonical commutation relations have a unique representation in finite dimensions,
+we see that the quantizations with respect to BD(c = 0) and BD(c = 0) must be unitarily
+equivalent.
+
+    The important difference between the two quantizations is how the de Sitter isometries
+act on the field modes n. For any Killing vector a of dS2, the generators H are defined
+to act on the field (x) via the Lie derivative,
+
+           [H, (x)] = -i�(x) = -iaa(x).                                                 (2.14)
+
+For the standard massless theory, the background solution satisfies cl = 0, and so by (2.6),
+
+the perturbation  and the original field  are equal. On the other hand, when c = 0,
+
+the background solution is nonzero, and so  and  differ by the c-number function cl(T ).
+
+Since H commutes with all c-numbers, we find that its action on the field perturbation is
+
+modified,
+
+           [H, (x)] = [H, (x)] = -i�(x) - i�cl(T ).                                     (2.15)
+
+This modified action of H on (x) ends up being responsible for the existence of nontrivial
+operators in the static patch that are invariant under the boost isometry.
+
+           11
+    The modified action can also be explained from the form of the stress tensor in the
+slow-roll theory. The scalar stress tensor is given by
+
+                              Tab   =  ab             -  1  gabcc   -  cgab.            (2.16)
+                                                         2
+
+From this, we can construct the generator of the static patch boost by smearing against the
+
+Killing vector a = cos  cos T Ta - sin  sin T a, and integrating over a Cauchy slice. Taking
+the T = 0 slice, this gives
+
+               H =     dT TT T =                 d cos  1 ()2 + 1()2 + c2() .           (2.17)
+                                                            2       2
+
+Noting that cl and cl vanish on the T = 0 slice, we see that the term linear in () accounts
+for the modified action of H on the field operators .
+
+Finally, it is important to emphasize that |BD defines a KMS weight for operators
+
+localized  in  the  static  patch,  defined      as   the   region  |T | + ||  <     .  There are plenty of
+                                                                                  2
+operators smeared only in the static patch that have a nontrivial component in the zero
+
+mode sector: take, for example, the spatially smeared field operator
+
+                                             f = df ()(),                               (2.18)
+
+with  f ()  supported  in       [-     ,     ],  and     df () = 0. Taking bounded functions of this
+                                    2     2
+operator that decay rapidly enough at large negative arguments will result in an operator
+
+with a finite expectation value in |BD . We expect the full collection of operators with finite
+expectation values to form a weakly dense subalgebra of A, the full von Neumann algebra of
+
+operators localized to the static patch. This implies that |BD defines a semifinite weight on
+
+A. The boost isometry generated by H which fixes the static patch leaves |BD invariant,
+and one can argue from the Euclidean path integral construction that correlation functions
+
+satisfy a KMS condition for this flow [28],
+
+                                BD|atb|BD = BD|bat+2i|BD ,                              (2.19)
+
+for operators a and b with finite expectation value in |BD , and where at := eiHtae-iHt.
+This implies that H must generate the modular automorphism of A for the weight corre-
+sponding to |BD [33, Theorem VIII.1.2], with the modular Hamiltonian h given by
+
+                                                 h = 2H.                                (2.20)
+
+3 Integrable Bunch-Davies weight
+
+The inflationary gravitational algebra A is obtained as the boost-invariant subalgebra of
+A, the algebra of operators localized to the static patch. As discussed above, the boost
+
+                                                         12
+generates an automorphism of A which we denote by t(a) = ei2Htae-i2Ht. One way to
+try to form boost-invariant operators is to average a non-invariant operator a over time,
+
+                                           (3.1)
+
+T (a) = dt t(a).
+
+                 -
+
+Assuming this integral converges, the image of T will always result in an operator that
+commutes with H. In the present context, we expect this integral to converge on a dense
+set of operators in the static patch. The reason comes from the modified commutation
+relation (2.15) for the action of H on the field operators. This equation shows that in
+addition to their standard time evolution in the patch, the field operators pick up a c-
+number shift coming from the fact that the background solution is not invariant under the
+Killing flow. Hence by forming bounded combinations of the field operators that decay at
+large arguments, such as exp - f  2 where f is a smearing function supported in an
+
+open region in the static patch, one can construct operators for which the time average (3.1)
+converges, and we expect the full set of such operators is weakly dense in A. When this
+occurs, the automorphism t is called integrable.
+
+    The time average operation T is an example of a semifinite operator-valued weight [51,52]
+[33, Section IX.4], and since these will be used throughout this section, we take a moment
+here to review their essential properties. Operator-valued weights are unbounded versions
+of conditional expectations, much like how weights are unbounded versions of states. In
+general, if A  A is a von Neumann subaglebra, an operator-valued weight is defined as a
+linear map map from a definition subaglebra mT  A to A satisfying the bimodule property
+
+T (~ab~c) = ~aT (b)~c, ~a, ~c  A, b  mT .  (3.2)
+
+T assigns an infinite value to any operator not contained in the definition subalgebra. When
+mT is -weakly dense in A, T is said to be semifinite. Unlike conditional expectations,
+operator-valued weights are not required to be idempotent, i.e. in general T  T = T . In
+fact, for the operator-valued weights of interest in the present work, none of the operators in
+A are contained in the definition domain, so that T  T = . It can be helpful to view T as
+an unnormalized conditional expectation satisfying T  T = N T , where the normalization
+coefficient N can be infinite.
+
+    In addition to being integrable, the automorphism t also satisfies a KMS condition (2.19)
+for the Bunch-Davies weight BD = BD| � |BD . The KMS condition for t immediately
+implies that t generates modular flow for the weight BD [33, Theorem VIII.1.2], in which
+case the algebra A consists of operators invariant under modular flow, and is called the
+centralizer of the weight BD. The weight BD is called an integrable weight since its associated
+modular flow is an integrable automorphism.
+
+    Centralizers of weights are interesting because they often are semifinite, meaning they are
+endowed with a semifinite trace. This is easy to see for a normalized state  which assigns
+a finite value to every operator in A. Operators in the centralizer A are invariant under
+modular flow, which for type I or II algebras would mean these operators commute with the
+density matrix  for the state . But this means (ab) = (ba) for a, b  A, so  defines
+
+13
+a trace on A. Even in the type III case where density matrices are ill-defined, operators in
+the centralizer still satisfy the tracial property (ab) = (ba) [33, Theorem VIII.2.6]. The
+argument is more subtle when  is a weight, since it may not be semifinite when restricted
+
+to A, meaning it will not assign a finite value to a dense subset of operators in A. A
+weight that remains semifinite when restricted to its centralizer is called strictly semifinite.
+
+For such weights, there is a conditional expectation E : A  A that preserves .
+
+    On the other hand, integrable weights are never strictly semifinite, since one can straight-
+forwardly show that an integrable weight assigns an infinite value to any element of the
+centralizer. This just follows from the fact that an integrable weight  can be written as
+ =   T , where T is the operator-valued weight (3.1), and  is a semifinite weight on the
+centralizer. Whenever a  A, it is invariant under the flow t, and so the integral in (3.1)
+clearly diverges, showing that  is not semifinite on its centralizer. However, Haagerup's
+theorem applied to the operator-valued weight T implies that  must induce a modular
+flow on A that agrees with that of  [52] [33, Theorem IX.4.18]. But since A is fixed by
+modular flow, it must be that modular flow of  is trivial, and hence  defines a trace on
+A. Thus we see there are two interesting cases where the centralizer is semifinite: either
+when the weight is strictly semifinite and there is a conditional expectation, or when the
+weight is integrable and there is an operator-valued weight. In the most general case, the
+centralizer of a weight  is semifinite if and only if there exists a semifinite operator-valued
+weight from A to the centralizer A [52, Theorem 5.7]. Note there are examples of weights 
+for which the centralizer is type III, in which case there is no trace defined on the centralizer
+and correspondingly no operator-valued weight that preserves the weight  [53].
+
+There is a detailed theory of integrable weights on type III von Neumann algebras devel-
+
+oped by Connes and Takesaki, which is broadly referred to as the flow of weights [38] [33, Sec-
+
+tion XII.4]. Integrable weights are classified (up to equivalence--see section 7 for details of
+
+this comparison theory for weights) by weights on an abelian algebra CA that appears as
+
+the center of the modular crossed product algebra A  R. This classification is particularly
+
+simple in the type III1 case, since the crossed product algebra is a factor, and hence CA = C�.
+
+The weight ~C on CA associated to an integrable weight  is then just determined by a pos-
+
+itive number w = ~C(�)  (0, ]. We can easily ascertain the value of this number by first
+
+noting that CA can be identified with the (trivial) center of the centralizer, Z(A). We then
+
+define a weight  on A by demanding that  =   T , with T the operator-valued weight
+
+(3.1). Notably, this unambiguously fixes the normalization of the weight , and its value
+
+on the identity determines w = (�) [38, Corollary II.3.2]. When w < , we can define a
+
+normalized  trace  ^  =  1    on  A,  showing  in  this  case  that  A  is  type  II1.  When  w  =  ,
+                         w
+the weight  is known as a dominant weight, and the centralizer A is a type II algebra
+
+isomorphic to the modular crossed product. As we discuss in section 7, the integrable weights
+
+with w <  are relevant to constructions of gravitational algebras involving an observer in
+
+the de Sitter static patch. On the other hand, the slow-roll inflation example results in a
+
+type II algebra, which can be confirmed due to the existence of an automorphism s of A
+that rescales the trace according to   s = e-s. Such an automorphism is only possible
+
+for type II algebras, and hence implies that the Bunch-Davies weight is dominant. As
+
+explained in more detail in section 4, this automorphism comes from the shift symmetry of
+
+the massless scalar field.
+
+                                               14
+    Once we have identified BD as a dominant weight, we are able to conclude a number of
+properties of its centralizer, the gravitational algebra A. As stated above, it immediately
+follows that the centralizer is a type II factor, isomorphic to the modular crossed product
+algebra. This verifies the expectation from Chen-Penington that the gravitational algebra
+has a trivial center. In particular, since A is the unique hyperfinite III1 factor R, its
+centralizer must be the unique hyperfinite II factor R0,1, invoking, e.g., the result that the
+fixed point algebra of an injective algebra with respect to the action of a locally compact
+amenable group must be injective (see [54, Theorem XV.3.16]). A second property relates to
+
+a renormalization that occurs between the Bunch-Davies weight BD and the trace BD on
+A. As we have seen, BD diverges on any element of the centralizer A, but this divergence is
+associated with a universal infinite rescaling that comes from passing the operator through
+the operator-valued weight T . On elements of A, we can formally write T (~a) = N~a, viewing
+N as a divergent constant. Then since BD = BD  T , we find that
+
+BD(~a)  =  1  BD(T  (~a))  =  1  BD(~a),  (3.3)
+           N                  N
+
+showing that the trace BD can formally be viewed as an infinitely rescaled version of BD on
+elements of A. The unbounded operator-valued weight T thus provides a mathematically
+rigorous characterization of this formally infinite renormalization of BD A related discussion
+of this infinite renormalization appears in [28], and we see here it has a natural explanation
+in terms of the operator-valued weight T .
+
+    An important comment can be made at this point justifying the choice to focus on two
+dimensions. The reason we do this is that the arguments leading to the conclusion that
+BD is dominant are unaffected by the inclusion of higher angular momentum modes. For
+example, the four-dimensional Bunch-Davies weight computed in [28] factorizes between the
+spherically symmetric sector and the rest of the algebra. Hence in that case one can write
+the quantum field algebra as A = Am=0  Am>0, with Am=0 the spherically symmetric
+algebra. The Bunch-Davies weight then factorizes as BD = 0  >0. The spherically
+symmetric weight 0 behaves much like the Bunch-Davies weight for the two-dimensional
+model considered in the present work. In particular, 0 is a dominant weight on Am=0. This
+immediately implies that the higher dimensional Bunch-Davies weight is dominant, since any
+time D is a dominant weight on an algebra A, the product weight D  is dominant on the
+product algebra A  B, where  is any faithful weight on B.3 The same argument explains
+why one does not need to consider the graviton contribution in detail in four or higher
+dimensions. The gravitons simply appear as an additional factor in the algebra, and since
+the scalar Bunch-Davies weight is already dominant, tensoring in the graviton contribution
+also produces a dominant weight. Hence including gravitons or other matter fields does not
+affect the conclusion that BD is dominant, and therefore still has a type II centralizer.
+
+    3This follows easily from the property that when D is dominant, there exists a unitary u  A for any
+ > 0 such that D(u � u) = D(�). This same unitary rescales the factorized weight D  , and since
+being unitarily equivalent to the rescaled weight is the defining property of a dominant weight [38, Theorem
+II.1.1] [33, Theorem XII.4.18], we see that D   is dominant.
+
+                                                         15
+4 Crossed product description of gravitational algebra
+
+Although the identification of A as the centralizer of a dominant weight on the type III1
+algebra A immediately implies that it is isomorphic to a modular crossed product, the
+isomorphism is not canonical at this point. In order to to canonically identify A as a crossed
+product algebra, it is necessary to decompose A into a type III1 subalgebra and a collection of
+operators generating the action of a modular automorphism on the subalgebra. Arriving at
+this canonical decomposition requires the second key feature of the inflationary gravitational
+algebra, which is the existence of a preferred family of trace-scaling automorphisms s.
+These automorphisms correspond with the shift symmetry of the massless scalar field. The
+operators invariant under the shift symmetry will form the type III1 subalgebra, and A is
+then represented as a crossed product by adding an additional operator that plays the role
+of an observer Hamiltonian. There ends up being a further ambiguity in determining this
+observer Hamiltonian, which can be interpreted as a freedom to choose a quantum reference
+frame for the description of the algebra A.
+
+     The generator of the shift symmetry for the scalar field is the constant momentum mode,
+
+which we write as                 -1              -1          2
+                                 2 2c2           4c2
+                              =         0     =                 d().                (4.1)
+
+                                                            0
+
+Since it generates a shift in the scalar field (x), it acts only on the zero mode 0 =
+     2
+1    0  d(),  shifting  it  by  an  operator  proportional      to  the  identity,
+  2
+
+                                eis0e-is      =  0   -    s         �.              (4.2)
+                                                         2 2c2
+
+From this relation, we see that the shift symmetry rescales the Bunch-Davies weight (2.13),
+
+                                    e-isBD       =   e-  s  BD  .                   (4.3)
+                                                         2
+
+It is also straightforward to verify using the canonical commutation relations (2.5) that
+ commutes with the boost Hamiltonian (2.17), which means that  also generates an
+automorphism of the centralizer A. Denoting the automorphism as s = Ad(eis), we see
+that it must commute with the time-average operator-valued weight T , and hence must
+rescale the trace on A:
+
+              (  s)  T =   T  s = BD  s = e-sBD = (e-s )  T ,                       (4.4)
+
+from which we conclude
+
+                                      s = e-s.                                      (4.5)
+
+    The factor e-s by which the trace is rescaled is known as the module of the automorphism
+
+s when acting on A, and its exponential dependence on the parameter s follows from the
+requirement that s be a homomorphism from R into Aut(A), the automorphism group of A.
+This implies that s+u = s  u, which then imposes that the modules satisfy mod(s+u) =
+mod(s) mod(u). The only solution to this relation is mod(s) = e-s, and by rescaling the
+flow parameter s we can set  = 1 whenever the module is not identically equal to 1.
+
+                                                 16
+    One-parameter groups of trace-scaling automorphisms on semifinite von Neumann alge-
+bras have been classified by Takesaki in developing the structure theorems for type III von
+Neumann algebras [32] [33, Section XII.1]. We are particularly interested in the structure
+of the fixed-point algebra A0 = A, consisting of all operators invariant under the automor-
+phism s. As we discuss below, this fixed point algebra must be a type III1 factor when A is
+a type II factor. An essential point in reaching this conclusion is the observation that every
+one parameter group of trace-scaling automorphisms is integrable (see the proof of Lemma
+XII.1.2 of [33] or the proof of Theorem III.5.1(ii) of [38]), so that the integral
+
+                                                               (4.6)
+
+                       S(~a) = ds s(~a)
+
+                                        -
+
+defines a semifinite operator-valued weight S from A to A0. This allows any weight  on A0
+to be lifted to a weight ~ on A by composing it with the operator-valued weight, ~ =   S.
+Because A possesses a trace, the weight ~ can be represented by a positive, self-adjoint
+density matrix  affiliated with A according to the relation
+
+                       ~(~a) =  ( ~a)                          (4.7)
+
+The density matrix  is an eigenoperator of the automorphism s, which follows from the
+fact that the weight ~ is invariant under s. This implies that
+
+ (s()~a) = e-s (-s(~a)) = e-s~(-s(~a)) = e-s~(~a) = e-s (~a),  (4.8)
+
+and thus s() = e-s. Equivalently, it implies that ^ = log  transforms by shifts under
+the automorphism,
+
+                       s(^) = ^ - s.                           (4.9)
+
+    The operator ^ plays a role analogous to the observer Hamiltonian in the CLPW grav-
+itational algebra in vacuum de Sitter or the asymptotic charges in the gravitational crossed
+product constructions [18�20, 23, 24, 26]. Crucially, it generates an automorphism t of the
+subalgebra A0 by conjugation t(a0) = e-it^ a0eit^ , which follows from the fact that
+
+s e-it^ a0eit^ = eiste-it^ s(a0)eit^ e-ist = e-it^ a0eit^ ,    (4.10)
+
+showing that t(a0)  A0 since it is invariant under s. This automorphism is just the
+
+modular automorphism for the weight , since  generates modular flow on A of a weight
+that is fixed by S [51] [33, Theorem IX.4.18]. In fact, the existence of the unitary s-
+eigenoperators e-it^ in A generating the automorphism t allows us to apply Landstad's
+theorem [55, Theorem 2] [33, Proposition X.2.6] in order to conclude that A has the structure
+
+of a crossed product,
+
+                       A = A0  R.                              (4.11)
+
+Furthermore, the theorem implies that s is the generator of the dual automorphism to t
+on the crossed product algebra A0  R. See [56] for a similar approach using Landstad's
+theorem to identify a crossed-product structure on an algebra.
+
+                       17
+    Although this proves that A is a crossed product algebra, it does not immediately deter-
+
+mine the properties of A0, which could in principle be the trivial algebra C�. To see that
+
+this is not the case, we invoke the structure theorem for type III algebras as well as Takesaki
+
+duality. Because A is a type II factor, the structure theorem [33, Theorem XII.1.1] implies
+that taking the crossed product by the trace-scaling automorphism s results in a type III1
+factor A = A  R. However, A is itself already a crossed product algebra, and so
+
+A = (A0  R)  R,                                                             (4.12)
+
+with  the dual automorphism to . In such a situation, Takesaki duality implies that A is
+isomorphic to the tensor product algebra
+
+A  A0  F,                                                                   (4.13)
+
+where F = B(L2(R)) is the type I algebra of all bounded operators on the Hilbert space
+L2(R) [32] [33, Theorem X.2.3]. Since A is a type III1 factor and F is a type I factor,
+
+this equation implies that A0 must be a type III1 factor, which is in fact isomorphic to A,
+since then A0  F  A0.
+
+    The above discussion shows that any flow of trace-scaling automorphisms s on a II
+factor must have a fixed point algebra that is a type III1 factor. This contrasts starkly with
+the situation for modular automorphisms on type III1 factors, where depending on the choice
+of weight , the centralizer can vary: for integrable weights, centralizers of types II and
+type II1 appeared, and there also exist ergodic states with trivial centralizer, such as the
+Minkowski vacuum for a Rindler wedge. This difference between modular automorphisms
+
+and trace-scaling automorphisms has a cohomological explanation. By Connes's cocycle
+derivative theorem [57] [33, Theorem VIII.3.3], any two modular flows t, t with respect
+to the weights  and  on a type III1 factor M are outer equivalent, meaning they are
+related by a cocycle perturbation,
+
+t = Ad(ut)  t,                                                              (4.14)
+
+where Ad(ut) is the inner automorphism ut(�)ut generated by the unitary ut  M, and the
+Connes cocycle ut is a family of unitary operators in M satisfying the cocycle condition
+
+ut+u = utt(uu).                                                             (4.15)
+
+A cocycle is called a coboundary if it can be written as [33, Section X.1]
+
+ut = wt(w)                                                                  (4.16)
+
+with w a unitary operator in M. When the cocycle relating the flows t and t is a
+coboundary, the two flows are actually conjugate, as opposed to only outer conjugate, since
+
+t = Ad(wt(w))  t = Ad(w)  t  Ad(w),                                         (4.17)
+
+making use of the identity Ad(t(w)) = t  Ad(w)  -t. In this case, the centralizers of
+the two weights are related by conjugation,
+
+M = wMw.                                                                    (4.18)
+
+18
+Thus, when two weights ,  have non-conjugate centralizers, the cocycle us must not
+be a coboundary, meaning that it defines a nontrivial element of the cohomology class
+H1 (R, U (M)).
+
+    On the other hand, for a trace-scaling flow s, one can prove that every cocycle is a
+coboundary [33, Theorem XII.1.11], meaning that any flow that is outer conjugate s will
+have a unitarily equivalent fixed point algebra. This is consistent with the result discussed
+above that on a II factor, any trace-scaling flow has a type III1 fixed-point algebra; there
+is no way to find an outer-equivalent flow with a trivial fixed-point algebra. Note that
+in principle, a given II factor could admit distinct trace-scaling flows s and s that are
+not conjugate, in which case their respective type III1 fixed point algebras would not be
+isomorphic. However, for the hyperfinite II algebra, the trace-scaling flow is unique up to
+conjugation, which follows from the uniqueness of the hyperfinite III1 algebra that appears
+as the fixed point algebra for the flow [58, 59].
+
+    In order to identify A as a crossed product algebra, we had to specify a weight  on the
+fixed point algebra A0, which then led to the s-eigenoperators eit^ . The question then arises
+as to which aspects of the algebra A depend on this choice of weight. Clearly both A and
+
+A0 are defined independent of , so the only aspect of A that depends on this choice is the
+explicit parameterization of s-eigenoperators that, together with A0, generate A. Choosing
+a different weight  on A0 leads to a different set of eigenoperators eit^. Since ^ must
+
+generate modular flow with respect to the weight  on A0, we find that the eigenoperators
+must be related by
+
+eit^ = uteit^ ,  (4.19)
+
+where ut  A0 is the Connes cocycle relating the modular flows t and t on A0 according
+to (4.14). The fact that one can generate the same algebra A from A0 by adding either sets
+of operators {eit^} or {eit^ } points to a kind of frame independence of the gravitational
+
+algebra A. A similar connection between cocycle perturbations and equivalences of the
+gravitational algebras was noted by Witten in his original paper on gravitational crossed
+product [18]. There, this equivalence was identified as background independence of the
+gravitational algebra, but the above discussion suggests that we should instead interpret
+cocycle equivalences as an independence of the full algebra on the choice of frame. This
+distinguishes it from the much broader notion of background independence later considered
+by Witten in [60].
+
+    The frame-dependence inherent to the choice of observer has obvious connections to
+recent works on quantum reference frames. Each choice for the observer Hamiltonian ^ is
+associated with a different notion of time translation for the shift-symmetric algebra A0.
+The notion of time provided by the observer Hamiltonian is actually modular time, with
+different choices of states corresponding to different modular time flows on the algebra. The
+connection made here between the crossed product description and quantum reference frames
+is closely related to similar ideas that have appeared before [56, 61�63]. We provide further
+comments on connections to these works in section 8.2, but note that one difference is that in
+the present context, the observer Hamiltonian is constructed intrinsically from the quantum
+fields, and hence the reference frame is completely intrinsic. This differs from approaches in
+
+19
+which the reference frame is an external system with additional degrees of freedom, and is
+one of the most interesting features of the inflationary model.
+
+5 Construction of the centralizer
+
+Although the identification of A as the image of the time-averaging operator-valued weight
+T (3.1) determines a number of its properties, it is somewhat difficult in practice to use
+
+this procedure to construct explicit operators in A. This is because the standard local
+field operators (x), or even spacetime smeared versions of them f , do not have finite
+expectation values in the Bunch-Davies weight |BD due to the IR divergence discussed in
+section 2. The operators on which T converges involve nontrivial functions of the smeared
+fields, and the explicit evaluation of the time-average integral on these operators is generally
+complicated. Here, we will given an alternative procedure for constructing elements of the
+centralizer, based on a perturbation series in the slope of the scalar field potential c2. This
+series gives good approximations to the elements of the centralizer when the slope is large.
+At large values of c2, the scalar field rolls down more quickly, and thus provides a more
+accurate clock for constructing dressed observables. The corrections to the local smeared
+operators generated by the perturbation series are generically nonlocal, but are small in the
+limit of large potential slope. Hence, we find that the boost-invariant operators look more
+local as the clock becomes more accurate.
+
+    For this construction, we would like to directly take advantage of the commutation re-
+lation (2.5) by working with fields smeared only on the T = 0 Cauchy surface. Normally,
+smearing on a spatial surface is not enough to produce well-defined operators with finite fluc-
+tuations; instead, one normally requires operators to be smeared in timelike directions [64].
+In the present context, however, the free scalar field (x) has a low enough scaling dimension
+that spatial smearing is sufficient. Here we will derive the precise condition on the smearing
+function for () and (), and then use these operators to generate the algebras of interest.
+
+We can obtain normalizable states for the scalar field by acting on the Bunch-Davies
+
+weight (2.13) with an operator constructed from the scalar field zero mode f (0) satisfying
+
+the condition that   dye-22c2y|f (y)|2 < .
+
+                                                         (5.1)
+
+                    -
+
+In any such state, the Wightman two-point function of the scalar field will have a good
+
+short-distance behavior, characterized by the fact that its singular structure has Hadamard
+
+form. In dS2 near the T = 0 slice, this condition reads
+
+(T, 1)(S, 2) = log -(T - S - i)2 + (1 - 2)2 + finite     (5.2)
+
+where the limit   0 defines this two-point function as a distribution for real values of
+T, S. Since we are only interested in the possible singularities in this two-point function at
+coincident points, we will drop the finite terms and simply analyze the behavior of smeared
+operators coming only from the log term. On the T = S = 0 slice, this becomes
+
+                    (1)(2) = log (1 - 2)2 + 2            (5.3)
+
+                       20
+We also want to analyze the () two-point function, we we can obtain from (5.2) by taking
+T and S derivatives (note that no contact terms appear because this is a Wightman function,
+as opposed to a time-ordered correlation function),
+
+           (T, 1)(S, 2) = T S log -(T - S - i)2 + (1 - 2)2          (5.4)
+                                 = 12 log -(T - S - i)2 + (1 - 2)2
+                                 T,=S=0 1 2 log (1 - 2)2 + 2 .
+
+    Using these, we can determine the condition on the spatially smeared field operators f =
+  df ()(0, ), g = dg()(0, ) to ensure that the operators have finite fluctuations.
+Beginning with f , the smeared two-point function is (with 12 = 1 - 2)
+
+                 2f = d1 d2f (1)f (2) log(2 + 212)                  (5.5)
+                      = d2f (2) d12f (12 + 2) log(2 + 122)
+
+The possible divergence clearly comes from 12 near zero, and by Taylor expanding f (2+12)
+near 2, only the leading term in the expansion f (2) appears multiplying a divergent
+integrand as   0. To check that this contribution is finite as   0, we can simply
+integrate log(12 + 2) between (-, ), where  is small but finite. This gives
+
+                                                                    (5.6)
+
+                    d12 log(122 + 2) = 4(log() - 1) + O(),
+
+                 -
+
+which is therefore finite as   0. Hence, as long as the smearing function f () is finite
+everywhere, we obtain an operator with finite fluctuations. In particular, f () need not be
+continuous, much less smooth.
+
+    The smeared () operator has a higher dimension than (), so we should expect a
+stronger divergence in the two-point function. However, the particular form of the two-point
+function (5.4) involving spatial derivatives will result in a class of spatial smearings that
+work. We take the smearing g() to be supported between  = a and  = b, and find
+
+   b          b
+
+g2 = d1 d2g(1)g(2)12 log(212 + 2)
+a          a
+
+                       b        b
+= g(1)g(2) log(212 + 2) 1=a 2=a
+
+-2      b  d1g(2)g(1)  log(212  +  2)  b    +    b     b
+      a                                2=a
+                                                 d1    d2g(1)g(2) log(122 + 2).
+
+                                               a     a
+
+                                                                    (5.7)
+
+By a similar argument as before the integrals in the second line are finite as long as g()
+and g() are finite, hence we require g() to be differentiable almost everywhere on the
+
+interior of its support. The first line contains the possible divergences when 1 = 2 = a or
+
+                                       21
+1 = 2 = b, proportional to g(a)2 log 2, g(b)2 log(2). To avoid these, we require that g()
+vanish on the boundary of its support. This condition in fact follows from the differentiability
+of g(), since this implies that g() is continuous. Since it vanishes by definition on the
+complement of the support, by continuity it also vanishes on the boundary.4 In higher
+dimensions, similar arguments can be used to show that spatial smearing with a bounded
+function f (x) is sufficient for the field (x), and a differentiable function for the momentum
+(x). Hence the procedure described in this section has straightforward generalizations to
+higher dimensional constructions.
+
+    The local static patch algebra is then generated by products of the spatially smeared
+operators f and g, where both f and g are supported in the static patch, f is finite
+everywhere but not necessarily continuous, and g is continuous and differentiable everywhere
+(although g need not be continuous). To find the boost-invariant operators, we write the
+boost generator (2.17) as
+
+H = H0 + c2(x^ - x^)                     (5.10)
+                                         (5.11)
+H0 =     d cos      1  ()2    +  1  ()2  (5.12)
+                    2            2
+                                         (5.13)
+                  
+                  2
+
+x^ = d cos ()
+
+      -  
+         2
+
+               3
+
+x^ = -         2
+
+                 cos ().
+
+            
+            2
+
+By the above discussion, x^ is a well-defined operator affiliated with the static patch algebra,
+while x^ is affiliated with the commutant algebra A. H0 is the boost generator for the
+standard massless scalar field with no potential. This operator also generates a modular
+
+flow on A associated with the Bunch-Davies weight of the scalar with zero potential. The
+
+modular flow associated to H0 is expected to act ergodically on A, so we should not expect
+
+    4One could also try to weaken the restrictions on g() by adding boundary terms to the smeared g
+operator at points where g() is not differentiable. An operator with the correct dimension is just (), and
+one might attempt to cancel the divergent fluctuations in g from nondifferentiable points of g against the
+local fluctuations in (), e.g. with an operator of the form
+
+                  g + (a)                (5.8)
+
+in the case where  = a is the only point where g() is discontinuous. This ends up not working because
+the divergences coming from g2 and (a)2 both have positive coefficients respectively proportional to g(a)2
+and 2, and hence cannot cancel each other, while the contribution coming from the cross terms g(a)
+
+and (a)g are finite (if one uses complex  and g, the same issue would arise when computing (g +
+(a))(g +(a)) , with divergences involving |g(a)|2 and ||2). This is because the short distance behavior
+
+of ()(a) , obtained by taking a time derivative of (5.2), goes like
+
+        ()(a)       (    2i   +  2 ,     (5.9)
+                       - a)2
+
+which yields only finite contributions as   0 when integrating  around  = a. Since these terms
+then cannot cancel the divergence, we see that any improved operator of the form (5.8) also has divergent
+fluctuations.
+
+                  22
+to find any operators that commute with H0.
+
+    The operators x^ and x^ are then related to the Connes cocycles between the two Bunch-
+Davies weights Bc D and B0 D. The cocycle associated with the algebra A can be defined in
+terms of the relative modular operators according to
+
+                                uc|0(s) = cis-0|cis,                                         (5.14)
+
+and it determines the relation between the modular flows of the two weights via5
+
+                                tc = Ad(uc|0(-t))  t0.                                       (5.15)
+
+The operator x^ is then just the leading order piece of the cocycle at small s:
+
+                                uc|0(-s) = � + is2x^ + . . . .                               (5.16)
+
+Similarly, the operator x^ is related to the cocycle for the commutant algebra,
+
+               u0|c(s) = -0 isi0s|,      u0|c(-s) = � - is2x^ + . . . .                      (5.17)
+
+Since all operators in A commute with x^, the problem reduces to finding operators in A
+
+that  commute  with H0 + c2x^.  This can be solved     recursively  as a  power  series  in   1  .  We
+                                                                                             c2
+express the operator ~a affiliated with the centralizer as
+
+                                                1
+                                              (c2
+                                   ~a =            )n  an.                                   (5.18)
+
+                                         n=0
+
+The condition that ~a commutes with H0 + c2x^ then translates to the following recursion
+
+relation on operators an:
+
+                           [x^, an] =    0                  n=0                              (5.19)
+                                         -[H0, an-1]        n1
+
+    This leads to an algorithm for perturbatively solving for the operators an. It is straightfor-
+ward to parameterize the operators solving the initial condition [x^, a0] = 0: x^ is linear in the
+field operator (), and it commutes with all spatially smeared field operators f affiliated
+with A, as well as spatially smeared momentum operators g subject to the condition
+
+                                   
+
+                                   2
+
+                                       d cos()g() = 0                                        (5.20)
+
+                                -  
+                                   2
+
+A generic operator affiliated with A commuting with x^ will then be expressible as a sum of
+products of these smeared single-field operators f and g.
+
+    5The minus sign in uc|0(-t) is appearing because we have defined the forward time direction for modular
+flow t opposite to the standard choice in mathematics literature, i.e. our definition is t(a) = -itait =
+eithae-ith. This choice is more convenient since modular flow then satisfies a KMS condition with positive
+
+temperature, whereas the math convention leads to a KMS condition with negative temperature. We have
+kept the definition of the cocycle (5.14) the same as in mathematics literature, which then results in the
+
+minus sign in (5.15).
+
+                                           23
+    Since H0 is quadratic in the field operators, its action on such a product of smeared
+field operators is straightforward to determine using the commutation relation (2.5) and the
+Leibniz rule. For example,
+
+            [H0, g] = d1d2g(2) cos(1)(1)[(1), (2)]
+
+                             = i d1d2g(2) cos(1)(1)1(1 - 2)
+
+                             = -i dg()(cos()())
+
+                             = -i(g cos())                                                          (5.21)
+
+On an operator involving j single-field operators of the form f1f2 � � � fj where  is either
+ or  and fi are appropriate smearings, the commutator with H0 will result in a sum of
+terms involving at most j single field operators. Hence the right hand side of the recursion
+
+(5.19) can always be computed.
+
+    Finally, we need to check that given a multi-field operator bj = f1 � � � fj , we can always
+find a new operator cj+1 with x^ satisfying [x^, cj+1] = bj. Using the canonical commutation
+relation (2.5) we can always express bj as a finite sum of terms of the form
+
+                                         (g^)n~f1 � � � ~fj-m-n                                     (5.22)
+
+where the ~fk are all single-field operators that commute with x^, and m  0, so that all
+terms involve at most j single-field smeared operators. The function g^ is chosen to be
+
+g^()  =  4  cos()(||  -      ),  with    the     Heaviside   step  function,  so  that   g^  is  a  canonical
+                          2
+conjugate to x^ satisfying [x^, g^] = i. Then the operator appearing in (5.22) can be written
+
+as a commutator with x^,
+
+            x^,        -i    1 (g^)n+1~f1  �  �  �  ~fj-m-n  = (g^)n~f1 � � � ~fj-m-n .             (5.23)
+                      n+
+
+This demonstrates that, given the operator bn = -[H0, an-1] appearing in the recursion
+relation (5.19), we can always find an satisfying [x^, an] = bn. There are in fact many solutions
+to this relation, since given any one solution, we can always add an operator commuting
+with x^. The plethora of solutions found at each step in the recursion relation leads to many
+operators ~a, constructed as in (5.18), that formally commutes with H0 + c2x^. To make this
+procedure precise, one would also have to check that the sum (5.18) produces an operator
+with finite fluctuations, and this may impose some constraints on how to choose the an at
+each step in the recursion. We do not examine these constraints in detail here, but it seems
+clear that there will be many choices that result in well-defined operators ~a affiliated with
+the centralizer.
+
+Note that each term in the sum (5.18) is suppressed by a power of                  1     .   At large value
+                                                                                  c2
+of the scalar field slope c2  1, the corrections to the leading terms in the sum become
+
+increasingly suppressed. It is also the case that each term in the sum is more nonlocal
+
+than the preceding term, in the sense that if an involves the product of k integrated field
+
+                                                    24
+operators fi, any solution for an+1 must involve products of at least k + 1 fi's, since the
+x^ commutator decreases the number fi appearing in a product, while H0 preserves the
+number. This leads to the conclusion that the nonlocality in the operators induced by the
+requirement that they commute with the boost generator is suppressed when the slope c2
+
+is large. This limit is associated with a more quickly rolling scalar field, in which case it
+
+provides a more accurate clock for dressing the operator in the static patch. This increased
+
+accuracy appears quantitatively in the fact that the nonlocal corrections to an operator a0
+                                                                           1
+that  make   it  boost  invariant  are  suppressed     by  powers     of  c2  .
+
+In the limit of small slope c2  0, this perturbative procedure breaks down, because
+
+each term in the sum (5.18) is enhanced relative to the previous one, suggesting that it will
+
+not converge to an operator with finite fluctuations. This is in line with the expectation that
+
+the zero-slope modular Hamiltonian 2H0 acts ergodically, so that no operators localized to
+the static patch commute with it.
+
+    Via a slight specialization of the above procedure, one can construct the observer Hamilto-
+nian ^ guaranteed to exist in the crossed product description of A according to the discussion
+of section 4. This operator is defined by the relations
+
+                                        [H, ^] = 0, [, ^] = i                    (5.24)
+
+where  is the generator of the shift symmetry defined in (4.1). As above, we write the
+
+operator  ^  as  a  power  series  in   1  ,
+                                       c2
+
+                                                          1
+                                                        (c2
+                                              ^ =             )n  n.             (5.25)
+
+                                                   n=0
+
+For the initial operator 0, we choose a canonical conjugate to , the simplest of which is
+the constant smeared field operator,
+
+                                                           
+
+                                              0 = 4c2      2                     (5.26)
+
+                                                             d().
+
+                                                        -  
+                                                           2
+
+We then solve for the subsequent operators n, subject to the additional requirement that
+[, n] = 0 for n  1. This requirement implements the second condition in (5.24), since
+then [, ^] = [, 0] = i.
+
+It remains to check that this additional condition can always be satisfied. First note that
+
+because                                                    
+
+                                                                              2  (5.27)
+
+                           [H0, 0] = -i4c2 d cos()(),
+                                                           
+                                                        -  2
+
+it holds that [, [H0, 0]] = 0. Additionally, for n  1, if we have shown that n commutes
+with , then we also have that [, [H0, n]] = 0, since [, H0] = 0. We therefore have to
+show that whenever [, [H0, n]] = 0, we can find a solution n+1 to the recursion relation
+(5.19) satisfying [, n+1] = 0. Take bn+1 to be a generic solution to the relation, so that
+[x^, bn+1] = -[H0, n]. Then since [, x^] = 0, we find that
+
+                                   0 = [, [x^, bn+1]] = [x^, [, bn+1]].          (5.28)
+
+                                                       25
+This shows that although an arbitrary solution bn+1 may not commute with , the commu-
+
+tator with  commutes with x^. A generic operator commuting with x^ can be written as a
+sum of terms of the form k0ak, with 0k the part that does not commute with , and ak an
+operator that commutes with . We therefore have the relation
+
+                    [, bn+1] = 0kak,                                            (5.29)
+
+                                            k
+
+which is solved by
+
+                    bn+1 =                 -i  k0+1ak  +  ck                    (5.30)
+                                          k+1
+                                    k
+
+where [, ck] = 0. The terms 0k+1ak all commute with x^, and hence they can be subtracted
+from bn+1 to obtain another solution to the recursion relation. Hence, the operator
+
+                    n+1 = bn+1 -           -i  1  0k+1ak  =      ck ,           (5.31)
+                                          k+
+                                       k                      k
+
+gives the desired solution to the recursion relation that also commutes with .
+
+    The remaining ambiguity in the choice of n at each step is an operator that commutes
+with both  and x^. There are many such operators; the full algebra of them is generated by
+field operators f with df () = 0 and momentum operators g with d cos()g() = 0.
+As discussed in section 4, each such solution will correspond to a different weight on the shift-
+symmetric subalgebra A0, for which ^ is the generator of modular flow.
+
+6 Time operator
+
+Although we showed in section 4 that A has a canonical description as a crossed product, the
+presentation of the algebra looks different from crossed products that have appeared recently
+in other works on gravitational algebras [18�20,23,24,26]. In these descriptions, the kinemat-
+ical algebra possesses a natural tensor factorization into a factor associated with quantum
+fields and a factor associated with the observer which contains the observer Hamiltonian and
+a canonically conjugate time operator. The discussion of section 4 showed that the observer
+Hamiltonian ^ must exist, and in section 5 we gave a perturbative construction of this oper-
+ator. Hence the main obstruction to matching the present inflationary example to previous
+crossed product constructions is the identification of a time operator in the kinematical al-
+gebra A. In this section, we describe the properties that such an operator should have, and
+attempt to determine this operator in A. However, despite various uniqueness results involve
+trace-scaling automorphisms of hyperfinite factors, we will find that there does not appear
+to be an operator in the kinematical algebra that generates the action of the automorphism
+s on A. We will show that there is a different class of trace-scaling automorphisms of A
+that do arise from time operators in A, but none of them appear to be canonically preferred,
+unlike the shift symmetry generator . This lack of preferred time operator is therefore one
+of the central differences between the inflationary gravitational algebra and other crossed
+product constructions.
+
+                                                         26
+For this discussion, we will define a time operator t^ as an operator affiliated with the kine-
+
+matical algebra A that is canonically conjugate to the Bunch-Davies modular Hamiltonian
+
+h = 2H,
+
+                          [h, t^] = -i.                                   (6.1)
+
+Such an operator is guaranteed to exist when H is the generator of modular flow of a
+dominant weight on A. To see why, recall that A is the centralizer of this dominant weight
+and A is isomorphic to a crossed product algebra,
+
+                          A  A  R                                         (6.2)
+
+where s is a particular trace-scaling flow of automorphisms of A. There then must be a
+one-parameter group of unitary operators (s)  A implementing s on A by conjugation:
+
+                          (s)~a(s) = s(~a), ~a  A.                        (6.3)
+
+These (s) define a family of inner automorphisms of the kinematical algebra A that com-
+mutes with the modular flow t of the Bunch-Davies weight. Because of this, the automor-
+phism Ad((s)) commutes with the operator-valued weight T defined by (3.1). Furthermore
+since BD = BD  T and because s rescales the trace BD, we find that the automorphism
+Ad((s)) rescales the Bunch-Davies weight,
+
+                          BD  Ad((s)) = e-sBD.                            (6.4)
+
+In fact, the existence of such unitary operators in A rescaling the weight BD is the defining
+property of a dominant weight [38, Theorem II.1.1] [33, Theorem XII.4.18].
+
+Since the modular automorphism t is the dual automorphism associated with the real-
+
+ization of A as an s-crossed product, the operators (s) are unitary eigenoperators for the
+
+modular flow, satisfying
+
+                          t((s)) = eith(s)e-ith = eist(s).                (6.5)
+
+Hence, writing (s) = eist^, this relation shows that t^ is conjugate to h, satisfying the com-
+mutation relation (6.1).
+
+    Next we discuss the relation between s and the trace-scaling automorphism s associated
+with the massless field shift symmetry. An important point here is that because A is a
+hyperfinite II factor, flows of trace-scaling automorphisms are unique up to conjugation
+(see appendix A), meaning that there is some   Aut(A) such that
+
+                          s =   s  -1.                                    (6.6)
+
+Crossed products by conjugate flows are isomorphic [33, Theorem X.1.7], and the isomor-
+phism  : A  R  A acts by
+
+                          (~a) = -1(~a), (�(s)) = (s),                    (6.7)
+
+where �(s) are the unitary operators in A  R generating the action of s.
+
+                          27
+    Unfortunately, this is not enough to conclude that there are operators in A that imple-
+ment the automorphism s on its A subalgebra. If  in equation (6.7) could be chosen such
+that it lifts to an automorphism of A, this would lead to the desired result, since then the
+operators ((s)) would generate s on the A subalgebra:
+
+               ((s))~a((s)) = ((s)-1(~a)(s)) =   s  -1(~a) = s(~a).  (6.8)
+
+Conversely, if s lifts to a family of inner automorphisms on A, we can again apply Landstad's
+theorem [55, Theorem 2] [33, Proposition X.2.6] to conclude that A is canonically an s-
+crossed product, meaning that the  in (6.7) defines an automorphism of A.
+
+This raises the question as to which automorphisms   Aut(A) lift to automorphisms
+
+of A = A  R. Since any inner automorphism of A lifts trivially to an inner automorphisms
+
+of A, we need only characterize the subgroup of the outer automorphism group Out(A)
+
+coming from automorphisms that lift to A. Using, for example, the arguments in the proof
+
+of Theorem XII.1.10(iv) in [33] as well as the uniqueness of the trace-scaling automorphism
+
+s up to conjugation, we find that the relevant subgroup is Out(A), consisting of automor-
+phisms that commute with s modulo inner automorphisms. This group has a direct product
+structure
+
+               Out(A) = Out, (A) � R,                                (6.9)
+
+where Out, (A) is the subgroup of trace-preserving automorphisms in Out(A), and the
+
+factor R is the trace-scaling automorphism generated by s. Without loss of generality we
+
+can choose  in (6.6) to be trace-preserving by making an appropriate shift     s0 for
+
+some s0. Then if  lifts to an automorphism of A, its image in Out(A) must lie in Out, (A),
+
+and hence there exists some unitary ~v  A such that Ad(~v)   commutes with s. This
+
+implies that
+
+               s = Ad(~v)  s  Ad(~v) =   s  -1,                      (6.10)
+
+so in particular s is related to s by conjugation by an inner automorphism Ad(~v). We can
+then define an s-cocycle ~cs = ~vs(~v), in terms of which s can be written
+
+               s = Ad(~cs)  s,                                       (6.11)
+
+showing in this case that it is cocycle-equivalent to s, and hence has the same image as s
+in the outer automorphism group Out(A).
+
+This argument additionally can be used to prove the existence of trace-scaling flows on
+
+A that do not arise from inner automorphisms of A. Choose any flow s  Aut, (A) of
+trace-preserving automorphisms commuting with s. Then s = s  s is a trace-scaling
+flow that lifts to a flow of automorphisms on A. However, its image in Out(A) differs from
+
+that of s unless s is inner. As argued above, whenever s is not inner, the automorphism
+ relating the flows s and s in (6.6) cannot be chosen to lift to an automorphism of A,
+and hence s must arise from a flow of outer automorphisms in A. This example gives a
+
+complete characterization of the possible trace-scaling automorphisms of A: any such s can
+
+be written as
+
+               s = Ad(~cs)  s  s                                     (6.12)
+
+               28
+with ~cs a unitary in A, and s  Aut, (A). We will assume ~cs = � since we already argued
+
+that perturbing by inner automorphisms does not affect the ability to lift s to an inner
+automorphism of A. Hence, s represents the true obstruction to lifting s.
+
+    The obstruction s has an interesting interpretation in terms of the fixed point algebra
+A0 = A. Because s commutes with s, it also commutes with s, and hence s de-
+fines an automorphism of A0. In fact, any automorphism of A0 lifts to a trace-preserving
+automorphism of A commuting with s, and the groups Aut(A0) and Aut, (A) are isomor-
+phic [65] [33, Exercise XII.1]. This contrasts with the analogous situation on the relation
+
+between A and A, where only a subgroup of automorphisms of A lifts to automorphisms of
+A. Hence, if s itself does not lift to an inner automorphism of A, it must be a combination
+of an outer automorphism s of the quantum field theory subalgebra A0 and the trace-scaling
+flow s which is realized as an inner automorphism of A. An example of a possible choice
+of s to keep in mind is a rotation transformation of the de Sitter static patch about some
+axis in spacetime dimensions D  2.
+
+      We now argue that the shift symmetry generator  defines an outer automorphism of
+
+the kinematical algebra A, thereby precluding the existence of a time operator associated
+
+with this automorphism. If  generated an inner automorphism of A, it would be possible
+
+to split the generator  = A + A, with A affiliated with A and A affiliated with the
+commutant. It is clear what these two operators should be:  is given by an integral of ()
+
+over the full T = 0 Cauchy slice with constant smearing, and hence A, A should be given
+by the component of these integrals restricted either to the static patch or its complement,
+
+i.e.                                                     1       
+                                                       4c2
+                                       A      =     -             2                                      (6.13)
+
+                                                                    d().
+
+                                                               -  
+                                                                  2
+
+However, we argued in section 5 that in order for a spatial smearing of () to define a good
+
+operator with finite fluctuations, the smearing must vanish on the boundary of its support.
+
+The   step-function     smearing   (||        -     )  is  discontinuous    at  its  boundary,  and  so  A  does
+                                                 2
+not have finite fluctuations. Since it is not possible to split  into well-defined operators
+
+affiliated with A and A, it defines an outer automorphism of A.
+
+      Although s is not generated by a time operator in A, the above discussion indicates that
+
+there is a different trace-scaling automorphism s generated by a time operator. We can in
+
+fact solve for this time operator using a similar procedure to the one described in section 5.
+
+We    write  t^ as  an  expansion  in   1  ,
+                                       c2
+
+                                                              1
+                                                            (c2
+                                                 t^ =            )n  tn  ,                               (6.14)
+
+                                                       n=0
+
+and impose the relations
+
+                                       [x^, tn] =        -i                 n=0.                         (6.15)
+                                                       2c2                  n1
+
+                                                       -[H0, tn-1]
+
+These relations then ensure that
+
+                                       [2H, t^] = [2c2x^, t0] = -i.                                      (6.16)
+
+                                                           29
+    While this procedure always results in a time operator t^, it is by no means unique.
+There is considerable ambiguity in choosing the initial canonical conjugate t0 to x^, and as
+in section 5, the solution to the recursion relation at each step is ambiguous up to operators
+that commute with x^. These ambiguities will result in different time operators related by
+operators in A, and this is precisely the ambiguity present in s discussed above. We conclude
+that there does not appear to be a preferred time operator in the kinematical algebra A.
+
+    This raises the question of how to interpret this lack of a canonical time operator in
+the kinematical algebra A. One possible interpretation is that the lack of a canonical time
+operator indicates further ambiguity in decomposing the system in to an observer algebra
+and a quantum field algebra. Hence, the choice of a preferred inner automorphism s of A
+indicates additional frame dependence. On the other hand, the kinematical algebra A is not
+necessarily an algebra of physical observables in the global gravitational Hilbert space; rather,
+it also contains non-gauge-invariant operators, while the only physical operators are those
+contained in A. It could therefore make sense to only regard A as an auxiliary structure, in
+which case it is not important that the shift symmetry s does not define a time operator in
+A. When representing A on a physical Hilbert space, one could think of the time operator as
+living in an enlarged algebra obtained from A by including the generator of s, A = A  .6
+As discussed above, A is a type III1 algebra isomorphic to the crossed product A  R. This
+interpretation has the advantage of giving a possibly more general interpretation of how one
+should characterize observers algebraically: they are given by a subalgebra inclusion A  A,
+where A is constructed from the gravitational algebra A by including operators associated
+with the frame data, such as the time operator. This interpretation also has the advantage
+of applying in the case that the gravitational algebra is type II1, in which case there cannot
+be a type III1 quantum field theory subalgebra.
+
+7 Observer in vacuum dS
+
+The previous sections focused on the slow-roll inflation example, where the appearance of
+a type II gravitational algebra was a consequence of being the centralizer of a dominant
+weight, the Bunch-Davies weight defined in (2.13). In this section, we will return to the
+original construction of CLPW involving an observer in the static patch of dS, and reinterpret
+the resulting algebra again as a centralizer of an integrable weight. In this case, the fact
+that the algebra is type II1 can be directly related to the Connes-Takesaki classification of
+integrable weights. This therefore provides a unifying description of all current constructions
+of semifinite gravitational algebras that also includes crossed product constructions [18�20,
+23, 24, 26]. In each case, the gravitational algebra is the centralizer of an integrable weight,
+with the type, II1 or II, determined by the properties of the given weight.
+
+    We begin by reviewing the construction of CLPW [19], which constructs a gravitational
+
+    6This requires that the commutant of A in the physical representation is also type II. When the com-
+mutant is type II1, the trace-scaling automorphism of A is not unitarily implemented. In fact, trace-scaling
+automorphisms are the only example of automorphisms of a factor that may not be unitarily implemented
+in some representations [66].
+
+                                                         30
+algebra for the static patch of dS via a modification of the crossed product construction.
+
+The starting kinematical algebra consists of an algebra AQFT of fields localized to the static
+patch. We take the fields to be ordinary matter and graviton fields with potentials that are
+
+bounded below, as opposed to the linear potential model considered in previous sections.
+
+The modular Hamiltonian of the Bunch-Davies weight BD generates the boost in the static
+
+patch, and in this case is expected to act ergodically on the quantum fields, so that there are
+no operators in the centralizer AQBFDT. To obtain nontrivial boost-invariant operators, one
+introduces an auxiliary Hilbert space Hobs = L2(R) associated with an observer, where the
+observer's boost energy ^ acts as the position operator on L2(R), and its canonical conjugate
+is the time operator t^ satisfying [t^, ^] = i. Together, the energy and time operators generate
+
+a type I algebra Aobs of all operators acting on Hobs.
+
+The  full  boost  energy  is  then  given  by  the  sum  H  =  HQFT  +   ^  ,  where  we  have  normalized
+                                                                        2
+the observer energy with respect to modular time. To see this, we define a weight obs, on
+
+Aobs with density matrix  = e-^,
+
+                              obs(ao) = Tr(e-^ao), ao  Aobs.                                    (7.1)
+
+This weight is a dominant weight on Aobs, and this implies that the tensor product of
+this weight with any faithful weight on A is dominant for the total kinematical algebra
+
+A = AQFT  Aobs [38, Theorem II.1.3(ii)]. In particular, choosing the Bunch-Davies weight
+
+for AQFT, we have that
+
+                                            = BD  obs                                           (7.2)
+
+is dominant, and its modular Hamiltonian is given by
+
+                                           h = h0 + ^,                                          (7.3)
+
+where h0 = 2HQFT is the modular Hamiltonian for the quantum fields.
+
+    The gauge-invariant algebra consists of operators commuting with the boost generator
+H, and hence it is again the centralizer of a dominant weight on A. In this case, the algebra
+is exactly the crossed product of AQFT by the modular flow generated by h0:
+
+                              A = e-it^h0aeit^h0, ^ , a  AQFT.                                  (7.4)
+
+As previously mentioned, this crossed product algebra is a type II factor.
+
+    A final feature of the CLPW construction is to impose that the observer energy is positive.
+This is done by acting with the projection e = (^), where  is the step function. Hence
+the final gravitational algebra is given by
+
+                                               A = eAe.                                         (7.5)
+
+The projection e is an element of A, and has a finite trace. The trace on A is just given by
+the restriction of the trace on A, and since e becomes the identity operator in A, we see
+that A is type II1.
+
+    This construction of A has an alternative description directly in terms of a centralizer.
+Starting with the dominant weight (7.2), we can first impose the positive energy projection
+
+                                                    31
+and construct a non-faithful weight that is nonzero only on operators with positive observer
+
+energy,
+
+                          e(�) = (e � e).  (7.6)
+
+In this context, the projection e is known as the support of the weight e, being the largest
+
+projection for which e defines a faithful weight on the reduced von Neumann algebra eAe.
+
+We can define the modular flow on this reduced algebra, where it is generated by the projected
+
+Hamiltonian
+
+                          he = h0 + ^(^).  (7.7)
+
+The gravitational algebra A then appears as the centralizer of eAe, which again reproduces
+(7.5).
+
+    The Connes-Takesaki theory of integrable weights can immediately be applied to conclude
+
+that e is integrable. To state the classification, we need to employ the comparison theory
+
+of weights on a von Neumann algebra [33, Section XII.4], which is somewhat analogous to
+
+the comparison theory for projections. Two weights  and  on a von Neumann algebra A
+are called equivalent if there exists a partial isometry v  A with initial projection e = vv
+equal to the support of  and final projection f = vv equal to the support of , such that
+
+                          (�) = (v � v).   (7.8)
+
+This is therefore a generalization of two weights being unitarily equivalent that applies to non-
+
+faithful weights. We write    when the two weights are equivalent. On the other hand,
+
+if a weight  can be written as a projection g acting on another weight  via (�) = (g � g),
+
+ is said to be a subweight of . This defines a partial order on weights by saying that
+
+  if  is equivalent to a subweight of , meaning there exists a partial isometry v and
+
+a projection g such that
+
+                          (�) = (gv � vg)  (7.9)
+
+The classification theorem [38, Theorem II.2.2] [33, Theorem XII.4.21] then states that a
+weight  is integrable if and only if  , where  is a dominant weight. Hence, because
+e defined above is a subweight of the dominant weight , we immediately conclude that it
+is integrable.
+
+    Although in this example e is not a faithful weight on A, there are cases where a weight
+is faithful and integrable, but at the same time not dominant, so that it possesses a type II1
+centralizer. In fact, the weight defined above is one such example if we take e to be defined
+on the reduced algebra Ae = eAe. This reduced algebra is still a type III1 factor, and, by
+definition, e is faithful on it. However, we cannot say that e is a subweight of  on the
+reduced algebra, since  is a weight on a different algebra A. This is where it is important to
+use the comparison theory for weights, since we only need to find a weight equivalent to e
+that is a subweight of a dominant weight on Ae. Hence, we need to find a dominant weight
+D on Ae and a partial isometry v  Ae and projection g  Ae such that
+
+                          e = D(gv � vg).  (7.10)
+
+    To find the dominant weight on Ae, we note that because A is type III, e is an infinite
+projection, and hence is equivalent to the identity [30, Proposition V.1.39]. There then exists
+
+                          32
+an isometry u  A satisfying
+
+                               uu = �, uu = e.                       (7.11)
+
+Conjugating A by u exhibits the isomorphism between A and Ae, i.e. uAu = Ae. We can
+
+then define a dominant weight D on Ae as the equivalent weight to  under the co-isometry
+
+u,
+
+                               D(�) = (u � u).                       (7.12)
+
+The support projection of D is e, and hence it is faithful on Ae, and we can check that it
+
+possesses the defining property of a dominant weight, namely being unitarily related to the
+
+rescaled weight D for any  > 0 [33, Theorem XII.4.18]. This readily follows from the
+
+fact that  is dominant on A, so for any  > 0, there is a unitary operator w  A such that
+
+(w � w) = (�). Then the operator uwu performs the same function on D: using (7.11),
+we find
+
+    D(uwu � uwu) = (uuwu � uwuu) = (u � u) = D(�).                   (7.13)
+
+    Now we consider the image of u under the isomorphism,            (7.14)
+                                                v = uuu = eue.
+
+This is a partial isometry in Ae with initial and final projections  (7.15)
+                                          e = vv, g = vv = ueu.
+
+The claim is that v maps e to the subweight D(g � g) of the dominant weight D. We
+compute
+
+    D(g � g) = (ug � gu) = (uueu � ueuu) = (eu � ue) = (v � v) = (ev � ve)
+
+    = e(v � v).                                                      (7.16)
+
+This relation then shows that
+
+                 e(�) = e(vv � vv) = D(gv � vg),                     (7.17)
+
+verifying (7.10). Hence, e is equivalent to a subweight of a dominant weight on Ae, as is
+required for it to be an integrable weight.
+
+    This discussion shows that quite generally, the semifinite algebras that have appeared in
+recent works on semiclassical gravity all have a description as a centralizer of an integrable
+weight. One difference when the algebra is type II1 is that there cannot be a type III1
+subalgebra associated with the pure quantum field degrees of freedom with which to construct
+a crossed product description. This follows from the basic fact that all subalgebras of a type
+II1 algebra have a tracial state defined on them, coming from the restriction of the canonical
+trace on the original algebra. Hence there can be no infinite subalgebras, so in particular
+no factors of type I, II, or III. The existence of a crossed product description in the
+inflationary example was related in section 4 to the separation on the gravitational algebra
+into quantum field degrees of freedom and an observer. Hence, it is less clear how to make
+this separation when the centralizer is type II1.
+
+                               33
+One comment on this is that there still exist operators in Ae that play the role of time
+
+operators, in the sense that they are eigenoperators of t, the modular flow of the integrable
+weight. If a  Ae is an operator for which the modular time-average (3.1) converges, then the
+
+following Fourier transform of this operator with respect to modular time is also convergent
+
+[38, Lemma II.2.3],
+
+                          
+
+                     a =     dtt(a)e-it.            (7.18)
+
+                          -
+
+It is straightforward to verify that u(a) = eiua, showing that it an eigenoperator of the
+
+modular flow. Performing a polar decomposition on the eigenoperator a = w|a|, we see
+that the partial isometry w is the modular flow eigenoperator with eigenvalue eiu and the
+
+norm |a| is in the centralizer. It is also clear that w maps the centralizer A to itself, since
+
+if b  A, we have
+
+                     u(wbw ) = eiuwbw e-iu = wbw .  (7.19)
+
+Hence, w behaves like the exponentiated time operator eit^. However, it does not define an
+automorphism of A, since in general w is not unitary. This is important, since otherwise
+we would find a trace-scaling automorphism of the II1 factor A, but this cannot occur since
+all automorphisms of type II1 factors are trace-preserving.
+
+    These time operators have a more explicit description in terms of the dominant weight
+D defined on Ae. There, the time operators are given by ueit^u, where t^ is the original
+time operator defined on A in the discussion of the crossed product, and u is defined above
+(7.11). We then map this to a time operator for the faithful integrable weight e using
+the partial isometry v defined in (7.14). This results in the operators vueit^vu which are
+then the eigenoperators for the modular flow of e. From (7.11) and (7.14), this operator is
+equivalent to eeit^e, which is just the projection of the time operator in the larger algebra a
+to the support of e.
+
+    Hence, a somewhat general picture emerges for how to view the time operators. One could
+characterize them as a subfactor inclusion A  Aext, where A is a semifinite gravitational
+algebra possessing a trace, and Aext is an extended algebra that includes time operators.
+The interesting case in our context seems to be when Aext is a type III1 factor associated
+with quantum fields, and the inclusion is irreducible, meaning that the relative commutant
+A  Aext is trivial, consisting of operators proportional to the identity. Semifiniteness of A
+means that there must be an operator-valued weight T : Aext  A [52], which, as discussed
+
+above, always occurs when A is the centralizer of an integrable weight. The time operators
+are then the additional operators one must add to A to construct the full extended algebra
+Aext. For the case of a general subfactor inclusion, these additional operators are related to
+the Pimsner-Popa basis for the inclusion [67�70].
+
+    Although the subfactor picture gives a more general definition of time operators, it does
+not give a proposal for the observer Hamiltonian ^ in the general case. One such proposal
+valid in the case of a centralizer of an integrable weight is to use the map v to find an
+equivalent weight that is a subweight of a dominant weight D. The centralizer of the
+dominant weight admits a crossed-product description, which then results in an observer
+Hamiltonian, subject to choices of frame, as described in section 4. We can then map these
+
+                             34
+observer Hamiltonians back to the original algebra using v to obtain a collection of operators
+in the type II1 algebra that behave like the projected observer Hamiltonian ^(^). This then
+gives an algebraic way of characterizing observers in situations where a direct crossed product
+description is not available.
+
+8 Discussion
+
+This work has sought to provide a unifying explanation for the occurrence of type II algebras
+in semiclassical gravity and to clarify the role of observers in their construction. This was
+done by way of example through the slow-roll inflation model considered by Chen and Pening-
+ton [28]. The gravitational algebra in this case is the centralizer of the Bunch-Davies weight,
+and is nontrivial due to the linear potential chosen for the scalar field. We emphasized that
+the appearance of a trace and the associated renormalized entropy is a consequence of being
+the centralizer of a modular flow, and we proposed that this is the crucial feature shared by
+all recent examples of semifinite gravitational algebras. We also gave a canonical description
+of the inflationary algebra as a crossed product by identifying a preferred trace-scaling auto-
+morphism. This allowed for the identification of an observer degree of freedom constructed
+intrinsically from the quantum field degrees of freedom. The ambiguity in the choice of the
+observer Hamiltonian was related to a kind of quantum reference frame dependence of the
+algebra's description. From this, we see that the existence of an observer is an additional
+structure attached to the algebra needed to represent it as a crossed product, and is not
+in itself directly responsible for the existence of a trace. We also discussed a more general
+definition of observer degrees of freedom that would be valid in the type II1 case in which no
+modular crossed product description is permitted. We suggested that the appropriate way
+to understand observers in this context is via a subfactor inclusion A  A, where the larger
+algebra A is a physical algebra that includes time operators for the observer in A.
+
+    We conclude with a few comments on some interesting directions for future investigations.
+
+8.1 Centralizers and semiclassical gravity
+
+A clear outcome of this investigation is that centralizers of weights are potentially very
+interesting objects to study in the context of semiclassical gravity (this point has also been
+advocated in [39�41]). In the present work, we focused specifically on integrable weights,
+which are those for which the modular time-averaging operation (3.1) is useful, in that it
+defines a semifinite operator-valued weight. This characterization could potentially be used
+beyond the free field theory examples considered here. A natural question to consider is
+what sorts of potentials give rise to integrable Bunch-Davies weights, such as the one found
+in the present work. The appearance of a type II centralizer was clearly related to the
+apparent instability of the model, with the potential for  being unbounded below. It would
+be interesting to determine whether this is the only feature necessary, and whether more
+general interacting theories admit a natural Bunch-Davies weight that is integrable.
+
+                                                         35
+    A related question concerns when type II1 centralizers can arise. If we make the scalar
+field potential bounded below by giving it a mass, we expect the Bunch-Davies wavefunction
+to be a normalizable state with an ergodic modular flow, and hence not to have an interesting
+centralizer. One can then ask if there is any natural potential that leads to a type II1 cen-
+tralizer, which we can phrase mathematically as whether the Bunch-Davies weight can ever
+be faithful, integrable, and non-dominant. A similar question can be posed when including
+an explicit observer in the static patch of de Sitter, as in the CLPW construction. There, the
+type II1 algebra was obtained by explicitly projecting to a finite subalgebra, but we could
+also ask whether a different choice of observer Hamiltonian still leads to an integrable weight
+but does not involve the explicit projection. A related question in this case is whether inter-
+actions between the observer and quantum fields can destroy integrability of the weight. The
+characterization of the allowed interactions preserving integrability likely has an interesting
+connection to the cohomology discussed in section 4 of the Connes cocycles.
+
+    While we focused in this work on integrable weights, these are not the only weights on
+a type III1 algebra with nontrivial centralizer. Another interesting class of weights are the
+strictly semifinite weights mentioned in section 3. These weights also have a modular-time-
+averaging procedure, but it involves a normalized average [52]:
+
+E  (a)  =  lim   1              (8.1)
+                2
+                       dtt(a).
+
+                    -
+
+In this case, E defines a conditional expectation, i.e. a normalized operator-valued weight
+satisfying E  E = E. Note that the hyperfinite type III1 algebra R prevalent in quantum
+field theory admits many such weights with type II factors as centralizers [58], hence it
+would be interesting to see if they have any applications to the current gravitational algebra
+constructions. An interesting comment in the case that the centralizer has trivial relative
+commutant in the type III1 algebra is that the modular operator  for such weights is
+diagonalizable, meaning there exists a complete basis of normalizable eigenstates for it [71,
+72].7 Such a weight is known as almost periodic. If there is a physically relevant model
+involving such a weight, it would be interesting to determine the properties of the time
+operator in this case. As the conjugate of an operator with a discrete spectrum, the time
+operator ought to have an associated periodicity. One might hope to be able to characterize
+this time operator using the subfactor description of a type II1 algebra embedded in a type
+III1 algebra, perhaps using the techniques developed in [72].
+
+8.2 Quantum reference frames
+
+One of the outcomes of representing the inflationary gravitational algebra as a crossed prod-
+uct in section 3 is that it lead to the identification of a class of observer Hamiltonians, each
+of which was associated with a choice of quantum reference frame for the quantum field
+subalgebra. This then ties the present work to a number of others that have emphasized the
+connection between crossed products and quantum reference frames [56, 61�63]. The identi-
+fication of the observer Hamiltonian intrinsically from the quantum fields is a distinguishing
+
+    7Since R it type III1, the eigenvalues associated with this basis must form a dense subset of R+.
+
+                                                         36
+feature of the present work, but is closely related to the top-down approach to quantum
+reference frames discussed in [56]. An important consequence of this intrinsic observer is
+that the entropy computed for states on the algebra is frame-independent: the choice of
+observer simply gives a way to decompose the algebra as a crossed product, but the entropy
+only depends on the state of the algebra as a whole, and is thus independent of this choice of
+frame. This contrasts with the conclusions found in [62, 63], where the entropy was argued
+to be frame-dependent. This difference stems from the frame being intrinsically defined in
+the present work, as opposed to being externally imposed.
+
+    We also discussed in section 7 how one should interpret the time operator and the quan-
+tum reference frame description in the type II1 case where the crossed product is not appli-
+cable. It would be good to compare these ideas to those presented in [61�63]. In particu-
+lar, [62,63] interpreted the type II1 algebras as situations where one has a non-ideal clock, and
+it would be useful to spell out this characterization in the present model. Additionally, the
+Connes-Takesaki classification shows that since the type II1 examples involving an observer
+in de Sitter space arise as centralizers of integrable weights, there is always a description
+where the algebra appears as a finite projection acting on a crossed product algebra. This
+description may provide a way to characterize non-ideal clocks more broadly.
+
+    One of the key questions addressed in the work [61] was the characterization of when the
+gravitational algebra is semifinite. They gave a sufficient condition for this to occur, which
+required that one form a crossed product by a group containing the modular automorphism
+group as a factor. They did not, however, identify whether this condition is necessary. A
+stronger result was derived in [73], where it was shown that if one takes a crossed product by
+any group containing the modular automorphism group, the resulting algebra is semifinite
+only if the modular automorphism group is central. This result is perhaps not so surprising
+in light of the fact that modular flow is always central in the outer automorphism group
+(see the discussion in appendix A). Hence, up to inner automorphisms, modular flow always
+appears as a central generator in a given crossed product construction. A stronger result
+proved in [42] showed that the only crossed product of a type III1 factor that leads to
+a semifinite algebra is the modular crossed product, thereby demonstrating that this is a
+necessary condition. In the present work, we have emphasized that gauging modular flow is
+the key aspect leading to a semifinite algebra. In the most general case, the gravitational
+algebra appears as a subfactor A  A, with A the centralizer of a weight on A. A theorem
+by Haagerup [52, Theorem 5.7] then demonstrates that semifiniteness of A is equivalent
+to the existence of an operator-valued weight T : A  A. This description in terms of
+subfactors and operator-valued weights appears to be the most general case possible, and it
+would be worth considering whether other mathematical results involving subfactor theory
+could be useful in understanding gravitational algebras [68�70, 74]. See [75] for some recent
+applications of subfactor theory to the physics of black holes.
+
+Acknowledgments
+
+I thank Tom Faulkner, Ben Freivogel, Oliver Janssen, Victor Gorbenko, David Penneys,
+Geoff Penington, and Kamran Vaziri for helpful discussions. This research is supported by
+
+                                                         37
+the Air Force Office of Scientific Research under award number FA9550-19-1-036, and from
+the Heising-Simons Foundation `Observational Signatures of Quantum Gravity' QuRIOS
+collaboration grant 2021-2817.
+
+A Automorphism groups of hyperfinite factors
+
+We want to take advantage of some classification results of hyperfinite factors in order to
+conclude certain properties about the structure of the gravitational algebra. Here we will give
+a brief summary of these classification theorems, and provide some comments on the structure
+of automorphism groups for more general factors. We will restrict attention to separable von
+Neumann algebras below, meaning they always have a representation on a separable Hilbert
+space. See [76,77] for fairly concise overviews, and [78, Chapter 5], [54, Chapters XIV, XVII,
+XVIII] for more detailed treatments.
+
+    Given a von Neumann algebra M, its automorphism group Aut(M) is the set all bijective
+maps  : M  M such that (ab) = (a)(b) and (a) = (a). There are a number
+of normal subgroups of Aut(M) that arise in its characterization. The first of these is
+the group Int(A) of inner automorphisms, generated by the adjoint actions Adu = u(�)u
+by unitary operators u  M. The outer automorphism group Out(M) is the quotient
+group Aut(M)/ Int(M), consisting of equivalence classes of automorphisms modulo inner
+automorphisms,   Adu  . For type I factors, all automorphisms are inner [33, Lemma
+XI.3.7], so the only factors with nontrivial outer automorphism groups are type II or type III
+(although there also exist some type II factors for which all automorphisms are inner [79]).
+
+    The next normal subgroup is the group of approximately inner automorphisms, denoted
+Int(M). This group consists of automorphisms that arise as limits of inner automorphisms,
+so in particular Int(M)  Int(M). These limits are taken with respect to a topology on
+Aut(M) inherited from the strong operator topology on the unitary operators implementing
+the automorphisms in a standard form representation of M [80,81] [33, Section IX.1]. In this
+standard implementation, the Hilbert space H is a GNS representation of M with respect
+to a faithful normal state (or more generally, a semicyclic representation with respect to a
+faithful semifinite normal weight [33, Section VII.1]), and each automorphism  maps to
+a unique unitary operator U  B(H) that commutes with the conjugation JUJ = U
+and preserves the natural cone UP = P associated to the representation. A sequence of
+automorphisms n limits to  in this topology if the corresponding standard unitaries Un
+limit to U strongly, meaning that
+
+(Un - U)| n- 0,   |  H.                       (A.1)
+
+Note that for an inner automorphism   Int(M), the implementing unitary factorizes
+according to U = uu, with u  M and u  M. This factorization fails for an approx-
+
+imately inner automorphism   Int(M) that is not inner, since although U is a limit of
+factorizing unitaries Un = unun, the individual factors un, u n fail to have well-defined
+limits.
+
+38
+    This sequence of approximate factorizations that exists for approximately inner auto-
+morphisms appears to be the reason that one can think of the modular automorphism of
+hyperfinite type III factors as being generated by singular density matrices. Occasionally
+it is helpful to employ the formal expression is = is()-is to denote the generator of
+modular flow on an algebra, where  and  are the density matrices for the state on the
+algebra and its commutant. This expression is valid for type I and II algebras which admit
+well-defined density matrices, but is not correct in the type III case since the density matrix
+is not defined. However, one could approximate these density matrices using a sequence
+Un(s) = un(s)un(-s) that limits to the modular automorphism generator is. Then we
+could define the regulated density matrix by the relation ins = e-isKn = un(s). This leads to
+a proposal for defining the regulated entanglement Hamiltonian (sometimes referred to as the
+one-sided modular Hamiltonian) Kn = - log n. Although Kn cannot limit to a well-defined
+unbounded operator as n   due to the fact that modular flow is outer for almost all
+values of s on type III factors, we expect that Kn will limit to a sesquilinear form K, which
+has finite expectation values in a dense set of states. In this case, we conjecture that the
+modular Hamiltonian h = - log  factorizes into entanglement Hamiltonians h = K - K,
+where K and K are sesquilinear forms, whenever modular flow is approximately inner.
+
+    This factorization of h was a crucial feature used in [8] to give an invariant definition
+of entanglement entropy differences for type III1 factors appearing in quantum field the-
+ory. Interestingly, there exist type III factors in which the modular automorphism is not
+approximately inner; for example, there are full factors in which all approximately inner au-
+tomorphisms are actually inner, and hence do not include the modular automorphism [71].
+For such algebras, the definition of entanglement entropy differences proposed in [8] would
+not work. As we discuss below, modular flow is approximately inner for the hyperfinite III1
+factor R, which suggests that the ability to compute entropy differences in quantum field
+theory is closely tied to hyperfiniteness of the local algebras. It would be interesting to in-
+vestigate this point further, and to understand if an alternative notion of entropy differences
+exists for (non-hyperfinite) algebras in which modular flow is not approximately inner.
+
+    For the hyperfinite II1 factor R0, it turns out that all of its automorphisms are ap-
+proximately inner, Aut(R0) = Int(R0) [54, Theorem XIV.2.16]. In this case, the inner
+automorphisms are a maximal normal subgroup of Aut(R0), implying that Out(R0) is a
+simple group [82] [54, Corollary XVII.3.21]. The only other hyperfinite factor for which
+all automorphisms are approximately inner is the hyperfinite III1 factor R, so in this case
+Aut(R) = Int(R) as well [59] [54, Theorem XVIII.4.29]. However, we will see shortly that
+Out(R) is not simple, and in fact has a center coinciding with the modular automorphism
+group.
+
+    This last point requires the introduction of the normal subgroup Cnt(M) of centrally
+trivial automorphisms. These automorphisms are defined in terms of their action on strongly
+central sequences, which are bounded sequences of operators xn  M that asymptotically
+commute with all linear functionals in the predual M. More precisely, for any   M, we
+can define new linear functionals xn and xn by
+
+xn(a) = (axn), xn(a) = (xna).  (A.2)
+                       39
+Then the sequence (xn) is strongly central if
+
+0 = lim    xn - xn  = lim sup                             [xn, a]    M.  (A.3)
+        n               n aM
+
+                                                   a 1
+
+Two strongly central sequences (xn) and (yn) are said to be equivalent if the difference xn -yn
+converges to 0 in the -strong topology, and a sequence (xn) is called trivial if it is equivalent
+to a sequence (an) in which all an are in the center of M. Nontrivial strongly central sequences
+exist for any algebra in which Int(M) = Int(M) [71] [54, Theorem XIV.3.8] (i.e. whenever
+
+M is not full), so in particular all hyperfinite algebras admit such nontrivial sequences. An
+
+automorphism   Aut(M) then is called centrally trivial if its action on every strongly
+central sequence yields an equivalent sequence, i.e. (xn) - xn converges -strong-ly to 0 for
+every central sequence (xn).
+
+    All inner automorphisms are centrally trivial since uxnu - xn = u[xn, u], and [xn, u]
+converges to zero -strong-ly whenever xn is strongly central [54, Lemma XIV.3.4]. Hence
+
+it is always the case that Int(M)  Cnt(M). For the hyperfinite type II1 factor R0 and II
+factor R0,1 = R0  F (where F is the unique type I factor of all bounded operators
+on an infinite separable Hilbert space), all centrally trivial automorphisms are inner, so
+
+Cnt(R0) = Int(R0), Cnt(R0,1) = Int(R0,1) [82] [54, Theorem XIV.4.16, Lemma XVII.3.11].
+On the other hand, these equalities do not hold for type III factors, since one can show that
+modular automorphisms t are always centrally trivial [71] [54, Proposition XVII.2.12], but
+in any type III algebra, modular automorphisms are not inner for almost all values of t [57].
+
+    Centrally trivial and approximately inner automorphisms commute with each other up to
+elements of Int(M); i.e. Cnt(M)/ Int(M) and Int(M)/ Int(M) are commuting subgroups of
+Out(M) [82] [54, Lemma XIV.4.14]. For hyperfinite factors, Cnt(M)/ Int(M) is the central-
+izer of Int(M)/ Int(M), so it contains all automorphisms that outer-commute with the ap-
+proximately inner automorphisms [82] [54, Corollary XVII.2.11].8 Since all automorphisms of
+the hyperfinite III1 factor R are approximately inner, this shows that Cnt(R)/ Int(R)
+is the center of Out(R). One can further show that any automorphism in Cnt(R) is
+a combination of a modular automorphism and an inner automorphism [83] [54, Theorem
+XVIII.4.29], which then implies that Cnt(R)/ Int(R) coincides with the image of modular
+automorphisms in Out(R). Hence, modular flows define the center of the outer automor-
+phism group Out(R).
+
+    There is a final normal subgroup that is relevant for type II and type III algebras with
+ = 1, identified in [65] as the collection of approximately pointwise inner automorphisms.
+
+These are automorphisms  that can be approximated by inner automorphisms in a state-
+
+dependent manner, meaning that given a state  and an error tolerance , one can find a
+unitary u = u(, )  M such that   -1 and uu-1 are close in norm, i.e.
+
+             -1 - uu-1 < .                                               (A.4)
+
+This group of automorphisms will be denoted API(M). These automorphisms can equiva-
+lently be described as the kernel of the Connes-Takesaki mod homomorphism [38], which we
+
+    8In fact this occurs whenever M is isomorphic to M  R0; such factors are called strongly stable [54,
+Definition XIV.4.1].
+
+                                               40
+now review.
+    The mod homomorphism is easiest to describe for II factors. In that case there is
+
+a tracial weight  that is unique up to rescaling, and hence any automorphism  must
+preserve the trace up to a rescaling:    = e-s , e-s  R+. The number e-s is known
+as the module of the automorphism, and the map mod() = e-s is a homomorphism from
+Aut(M) into R+. API(M) is the kernel of this homomorphism, so in the type II case it
+coincides with the trace-preserving automorphisms. There is also a definition of the mod
+homomorphism for type III algebras, arising from the fact that any automorphism  induces
+an automorphism on the smooth flow of weights, which is the center of the modular crossed
+product algebra [38] [33, Section XII.4]. Note that mod is the trivial homomorphism for type
+II1 and type III1 algebras, and so in these cases API(M) = Aut(M). This occurs because all
+automorphisms of a II1 factor are trace-preserving, and because the flow of weights is trivial
+for a III1 factor. It is straightforward to show that Int(M)  API(M), and because the mod
+homomorphism is continuous, it follows that Int(M)  API(M) [38]. For any hyperfinite
+algebra R, this last inclusion is saturated, so we have that API(R) = Int(R) [83]. In general,
+Cnt(M) need not be a subgroup of API(M), but for a hyperfinite factor R the inclusion
+Cnt(R)  API(R) does hold [83, 84].
+
+    We will be interested in the trace-scaling automorphisms for the hyperfinite II factor
+R0,1. In this case, there is a unique automorphism, up to conjugation, for any given value
+of the module e-s = 1 [82] [54, Theorem XVII.3.12]. This does not quite imply that all
+one-parameter flows of automorphisms s with mod(s) = e-s are conjugate, but this fact
+follows from the proof of the uniqueness of the hyperfinite III1 factor [58, 59].
+
+    The subgroup structures for the hyperfinite factors R0, R0,1, and R can therefore be
+summarized by the following diagrams, with inclusions going from bottom to top: for the
+hyperfinite II1 factor R0, we have
+
+                                       Aut(R0) = Int(R0) = API(R0)
+
+                                              Int(R0) = Cnt(R0)
+
+Next, the hyperfinite II factor R0,1 subgroup structure is
+
+                                                    Aut(R0,1)
+
+                                             Int(R0,1) = API(R0,1)
+
+                                             Int(R0,1) = Cnt(R0,1)
+
+                                                         41
+Finally, the subgroup structure for the hyperfinite III1 factor R is
+
+                                     Aut(R) = Int(R) = API(R)
+
+                                                     Cnt(R)
+
+                                                     Int(R)
+
+References
+
+ [1] R. Haag and D. Kastler, An algebraic approach to quantum field theory,
+      J. Mathematical Phys. 5 (1964) 848�861.
+
+ [2] R. Haag, Local quantum physics: Fields, particles, algebras. Springer-Verlag, Berlin,
+      1992.
+
+ [3] M. Ohya and D. Petz, Quantum entropy and its use. Texts and Monographs in
+      Physics. Springer-Verlag, Berlin, 1993.
+
+ [4] H. Casini, Mutual information challenges entropy bounds,
+      Class. Quant. Grav. 24 (2007) 1293�1302. [arXiv:gr-qc/0609126].
+
+ [5] H. Casini and M. Huerta, Remarks on the entanglement entropy for disconnected re-
+      gions, JHEP 03 (2009) 048. [arXiv:0812.1773].
+
+ [6] H. Casini, M. Huerta, R. C. Myers and A. Yale, Mutual information and the F-
+      theorem, JHEP 10 (2015) 003. [arXiv:1506.06195].
+
+ [7] S. Dutta and T. Faulkner, A canonical purification for the entanglement wedge cross-
+      section, JHEP 03 (2021) 178. [arXiv:1905.00577].
+
+ [8] J. Kudler-Flam, S. Leutheusser, A. A. Rahman, G. Satishchandran and A. J. Sper-
+      anza, A covariant regulator for entanglement entropy: proofs of the Bekenstein bound
+      and QNEC, [arXiv:2312.07646].
+
+ [9] J. D. Bekenstein, Black holes and the second law,
+      Lett. Nuovo Cimento 4 (1972) 737�740.
+
+[10] J. D. Bekenstein, Black Holes and Entropy, Phys. Rev. D 7 (1973) 2333�2346.
+[11] S. W. Hawking, Particle Creation by Black Holes,
+
+      Commun. Math. Phys. 43 (1975) 199�220.
+[12] L. Susskind and J. Uglum, Black hole entropy in canonical quantum gravity and su-
+
+      perstring theory, Phys. Rev. D 50 (1994) 2700�2711. [arXiv:hep-th/9401070].
+
+                                                         42
+[13] T. Jacobson, Black hole entropy and induced gravity, [arXiv:gr-qc/9404039].
+
+[14] F. Larsen and F. Wilczek, Renormalization of black hole entropy and of
+      the gravitational coupling constant, Nucl. Phys. B 458 (1996) 249�266.
+      [arXiv:hep-th/9506066].
+
+[15] J. H. Cooperman and M. A. Luty, Renormalization of Entanglement Entropy and the
+      Gravitational Effective Action, JHEP 12 (2014) 045. [arXiv:1302.1878].
+
+[16] S. N. Solodukhin, Entanglement entropy of black holes, Living Rev. Rel. 14 (2011) 8.
+      [arXiv:1104.3712].
+
+[17] R. Bousso, Z. Fisher, S. Leichenauer and A. C. Wall, Quantum focusing conjecture,
+      Phys. Rev. D 93 (2016) 064044. [arXiv:1506.02669].
+
+[18] E. Witten, Gravity and the crossed product, JHEP 10 (2022) 008.
+      [arXiv:2112.12828].
+
+[19] V. Chandrasekaran, R. Longo, G. Penington and E. Witten, An algebra of observables
+      for de Sitter space, JHEP 02 (2023) 082. [arXiv:2206.10780].
+
+[20] V. Chandrasekaran, G. Penington and E. Witten, Large N algebras and generalized
+      entropy, JHEP 04 (2023) 009. [arXiv:2209.10454].
+
+[21] G. Penington and E. Witten, Algebras and States in JT Gravity, [arXiv:2301.07257].
+
+[22] D. K. Kolchmeyer, von Neumann algebras in JT gravity, JHEP 06 (2023) 067.
+      [arXiv:2303.04701].
+
+[23] K. Jensen, J. Sorce and A. J. Speranza, Generalized entropy for general subregions in
+      quantum gravity, JHEP 12 (2023) 020. [arXiv:2306.01837].
+
+[24] J. Kudler-Flam, S. Leutheusser and G. Satishchandran, Generalized black hole entropy
+      is von Neumann entropy, Phys. Rev. D 111 (2025) 025013. [arXiv:2309.15897].
+
+[25] M. Ali and V. Suneeta, Local generalized second law in crossed product constructions,
+      Phys. Rev. D 111 (2025) 024015. [arXiv:2404.00718].
+
+[26] T. Faulkner and A. J. Speranza, Gravitational algebras and the generalized second law,
+      JHEP 11 (2024) 099. [arXiv:2405.00847].
+
+[27] J. Kudler-Flam, S. Leutheusser and G. Satishchandran, Algebraic Observational Cos-
+      mology, [arXiv:2406.01669].
+
+[28] C.-H. Chen and G. Penington, A clock is just a way to tell the time: gravitational al-
+      gebras in cosmological spacetimes, [arXiv:2406.02116].
+
+[29] G. Penington and E. Witten, Algebras and states in super-JT gravity,
+      [arXiv:2412.15549].
+
+                                                         43
+[30] M. Takesaki, Theory of operator algebras. I , vol. 124 of Encyclopaedia of Mathemati-
+      cal Sciences. Springer-Verlag, Berlin, 2002.
+
+[31] I. E. Segal, A note on the concept of entropy, J. Math. Mech. 9 (1960) 623�629.
+
+[32] M. Takesaki, Duality for crossed products and the structure of von Neumann algebras
+      of type III, Acta Math. 131 (1973) 249�310.
+
+[33] M. Takesaki, Theory of operator algebras. II , vol. 125 of Encyclopaedia of Mathemati-
+      cal Sciences. Springer-Verlag, Berlin, 2003.
+
+[34] J. J. Bisognano and E. H. Wichmann, On the duality condition for a hermitian scalar
+      field, J. Math. Phys. (1975) 985�1007.
+
+[35] W. G. Unruh, Notes on black hole evaporation, Phys. Rev. D 14 (1976) 870.
+
+[36] J. Sorce, Analyticity and the Unruh effect: a study of local modular flow,
+      JHEP 24 (2024) 040. [arXiv:2403.18937].
+
+[37] J. Caminiti, F. Capeccia, L. Ciambelli and R. C. Myers, Geometric modular flows in
+      2d CFT and beyond, [arXiv:2502.02633].
+
+[38] A. Connes and M. Takesaki, The flow of weights on factors of type III,
+      Tohoku Math. J. (2) 29 (1977) 473�575.
+
+[39] C. Gomez, Traces and Time: a de Sitter Black Hole correspondence,
+      [arXiv:2307.01841].
+
+[40] C. Gomez, On the algebraic meaning of quantum gravity for closed Universes,
+      [arXiv:2311.01952].
+
+[41] C. Gomez, Inflationary Cosmology as flow of integrable weights, [arXiv:2407.20671].
+
+[42] K. Jensen, S. Raju and A. J. Speranza, Holographic observers for time-band algebras,
+      [arXiv:2412.21185].
+
+[43] C. Gomez, Entanglement, Observers and Cosmology: a view from von Neumann Alge-
+      bras, [arXiv:2302.14747].
+
+[44] C. Gomez, Clocks, Algebras and Cosmology, [arXiv:2304.11845].
+
+[45] E. Witten, APS Medal for Exceptional Achievement in Research: Invited article on
+      entanglement properties of quantum field theory, Rev. Mod. Phys. 90 (2018) 045003.
+      [arXiv:1803.04993].
+
+[46] B. Allen, Vacuum States in de Sitter Space, Phys. Rev. D 32 (1985) 3136.
+
+[47] K. Kirsten and J. Garriga, Massless minimally coupled fields in de Sitter space: O(4)
+      symmetric states versus de Sitter invariant vacuum, Phys. Rev. D 48 (1993) 567�577.
+      [arXiv:gr-qc/9305013].
+
+                                                         44
+[48] A. J. Tolley and N. Turok, Quantization of the massless minimally coupled scalar field
+      and the dS / CFT correspondence, [arXiv:hep-th/0108119].
+
+[49] J. Kudler-Flam, K. Prabhu and G. Satishchandran, Vacua and infrared radiation in
+      de Sitter quantum field theory, [arXiv:2503.19957].
+
+[50] B. Allen and A. Folacci, The Massless Minimally Coupled Scalar Field in De Sitter
+      Space, Phys. Rev. D 35 (1987) 3771.
+
+[51] U. Haagerup, Operator-valued weights in von Neumann algebras. I,
+      J. Functional Analysis 32 (1979) 175�206.
+
+[52] U. Haagerup, Operator-valued weights in von Neumann algebras. II,
+      J. Functional Analysis 33 (1979) 339�361.
+
+[53] U. Haagerup, An example of a weight with type III centralizer,
+      Proc. Amer. Math. Soc. 62 (1977) 278�280.
+
+[54] M. Takesaki, Theory of operator algebras. III , vol. 127 of Encyclopaedia of Mathemat-
+      ical Sciences. Springer-Verlag, Berlin, 2003.
+
+[55] M. B. Landstad, Duality theory for covariant systems,
+      Trans. Amer. Math. Soc. 248 (1979) 223�267.
+
+[56] S. Ali Ahmad, W. Chemissany, M. S. Klinger and R. G. Leigh, Quantum refer-
+      ence frames from top-down crossed products, Phys. Rev. D 110 (2024) 065003.
+      [arXiv:2405.13884].
+
+[57] A. Connes, Une classification des facteurs de type III,
+      Ann. Sci. �cole Norm. Sup. (4) 6 (1973) 133�252.
+
+[58] U. Haagerup, Connes' bicentralizer problem and uniqueness of the injective factor of
+      type III1, Acta Math. 158 (1987) 95�148.
+
+[59] A. Connes, Factors of type III1, property L and closure of inner automorphisms,
+      J. Operator Theory 14 (1985) 189�211.
+
+[60] E. Witten, A background-independent algebra in quantum gravity,
+      JHEP 03 (2024) 077. [arXiv:2308.03663].
+
+[61] J. C. Fewster, D. W. Janssen, L. D. Loveridge, K. Rejzner and J. Waldron, Quantum
+      Reference Frames, Measurement Schemes and the Type of Local Algebras in Quantum
+      Field Theory, Commun. Math. Phys. 406 (2025) 19. [arXiv:2403.11973].
+
+[62] J. De Vuyst, S. Eccles, P. A. Hoehn and J. Kirklin, Gravitational entropy is observer-
+      dependent, [arXiv:2405.00114].
+
+[63] J. De Vuyst, S. Eccles, P. A. Hoehn and J. Kirklin, Crossed products and quan-
+      tum reference frames: on the observer-dependence of gravitational entropy,
+      [arXiv:2412.15502].
+
+                                                         45
+[64] H.-J. Borchers, Field operators as C functions in spacelike directions, Nuovo Ci-
+      mento (10) 33 (1964) 1600�1613.
+
+[65] U. Haagerup and E. St�rmer, Equivalence of normal states on von Neumann algebras
+      and the flow of weights, Adv. Math. 83 (1990) 180�262.
+
+[66] R. V. Kadison, Isomorphisms of factors of infinite type,
+      Canadian J. Math. 7 (1955) 322�327.
+
+[67] M. Pimsner and S. Popa, Entropy and index for subfactors,
+      Ann. Sci. �cole Norm. Sup. (4) 19 (1986) 57�106.
+
+[68] R. H. Herman and A. Ocneanu, Index theory and Galois theory for infinite index in-
+      clusions of factors, C. R. Acad. Sci. Paris S�r. I Math. 309 (1989) 923�927.
+
+[69] F. Nill and H.-W. Wiesbrock, A comment on Jones inclusions with infinite index,
+      vol. 7, pp. 599�630. 1995. Workshop on Algebraic Quantum Field Theory and Jones
+      Theory (Berlin, 1994).
+
+[70] M. Enock and R. Nest, Irreducible inclusions of factors, multiplicative unitaries, and
+      Kac algebras, J. Funct. Anal. 137 (1996) 466�543.
+
+[71] A. Connes, Almost periodic states and factors of type III1,
+      J. Functional Analysis 16 (1974) 415�445.
+
+[72] C. Jones and D. Penneys, Realizations of algebra objects and discrete subfactors,
+      Adv. Math. 350 (2019) 588�661.
+
+[73] S. Ali Ahmad, M. S. Klinger and S. Lin, Semifinite von Neumann algebras in gauge
+      theory and gravity, Phys. Rev. D 111 (2025) 045006. [arXiv:2407.01695].
+
+[74] V. F. R. Jones, Index for subfactors, Invent. Math. 72 (1983) 1�25.
+
+[75] J. van der Heijden and E. Verlinde, An operator algebraic approach to black hole in-
+      formation, JHEP 02 (2025) 207. [arXiv:2408.00071].
+
+[76] E. St�rmer, Normal subgroups of the automorphism group of a factor, in Operator
+      algebras, mathematical physics, and low-dimensional topology (Istanbul, 1991), vol. 5
+      of Res. Notes Math., pp. 287�299. A K Peters, Wellesley, MA, 1993.
+
+[77] T. Masuda and R. Tomatsu, Actions of groups and quantum groups on amenable fac-
+      tors, Sugaku Expositions 30 (2017) 111�136.
+
+[78] A. Connes, Noncommutative Geometry. Academic Press, 1994.
+
+[79] A. Ioana, J. Peterson and S. Popa, Amalgamated free products of weakly rigid fac-
+      tors and calculation of their symmetry groups, Acta Math. 200 (2008) 85�153.
+      [arXiv:math/0505589v6].
+
+                                                         46
+[80] H. Araki, Some properties of modular conjugation operator of von neumann
+      algebras and a non-commutative Radon-Nikodym theorem with a chain rule,
+      Pac. J. Math. 50 (1974) 309�354.
+
+[81] U. Haagerup, The standard form of von Neumann algebras,
+      Math. Scand. 37 (1975) 271�283.
+
+[82] A. Connes, Outer conjugacy classes of automorphisms of factors,
+      Ann. Sci. �cole Norm. Sup. (4) 8 (1975) 383�419.
+
+[83] Y. Kawahigashi, C. E. Sutherland and M. Takesaki, The structure of the automor-
+      phism group of an injective factor and the cocycle conjugacy of discrete abelian group
+      actions, Acta Math. 169 (1992) 105�130.
+
+[84] U. Haagerup and E. St�rmer, Pointwise inner automorphisms of von Neumann alge-
+      bras, J. Funct. Anal. 92 (1990) 177�201.
+
+                                                         47
+

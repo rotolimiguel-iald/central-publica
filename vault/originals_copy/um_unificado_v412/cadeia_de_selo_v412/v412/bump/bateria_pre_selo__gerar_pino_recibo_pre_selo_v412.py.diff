@@ -1,0 +1,90 @@
+--- v411/bateria_pre_selo/gerar_pino_recibo_pre_selo_v411.py
++++ v412/bateria_pre_selo/gerar_pino_recibo_pre_selo_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/bateria_pre_selo/gerar_pino_recibo_pre_selo_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/bateria_pre_selo__gerar_pino_recibo_pre_selo_v412.py.diff
+@@ -4 +5 @@
+-# (nota herdada da adaptacao da v408 [fork C, 04/11/2026], reconferida em 05/11/2026 pelo fork B do claude-construtor-v410 e em 06/11/2026 pelo fork B do claude-construtor-v410, com os rotulos subidos; na v411, adaptado em 12/11/2026 pelo fork B do claude-construtor-v411, retomada) molde v410/bateria_pre_selo/gerar_pino_recibo_pre_selo_v410.py (rotulos subidos por _bump_copia_v411.py; diff em bump/); conferido em 04/11/2026: a lista `esta_tarefa_escreveu_so_em` diz o que o rodar_bn_pre_selo_v411.sh escreve de fato;
++# (nota herdada da adaptacao da v408 [fork C, 04/11/2026], reconferida em 05/11/2026 pelo fork B do claude-construtor-v411 e em 06/11/2026 pelo fork B do claude-construtor-v411, com os rotulos subidos; na v412, adaptado em 12/11/2026 pelo fork B do claude-construtor-v412, retomada) molde v411/bateria_pre_selo/gerar_pino_recibo_pre_selo_v411.py (rotulos subidos por _bump_copia_v412.py; diff em bump/); conferido em 04/11/2026: a lista `esta_tarefa_escreveu_so_em` diz o que o rodar_bn_pre_selo_v412.sh escreve de fato;
+@@ -6,5 +7,5 @@
+-"""gerar_pino_recibo_pre_selo_v411.py -- gera PINO_RECIBO_PRE_SELO_v411.json e PROVA_PRODUCAO_INTACTA_v411_pre_selo.json (em v411\\) a partir do recibo do ensaio, do stdout, do lancador,
+-dos pinos do esboco e da bateria, da conferencia pelo esboco (conferencia_pelo_esboco_v411.json) e das fotografias da producao (antes / depois / final). TUDO LIDO dos arquivos, por script;
+-nada digitado de memoria. Nao grava na Bancada, no Nos nem no tunel: escreve so' os dois JSON em v411\\ e copia as listas de arquivos para v411\\bateria_pre_selo\\prova_producao\\.
+-Molde: v410\\bateria_pre_selo\\gerar_pino_recibo_pre_selo_v410.py (mesmas chaves do pino; aqui o ensaio PASSA e a regra e' aplicada pela funcao do proprio esboco).
+-uso: python -I -B -X utf8 gerar_pino_recibo_pre_selo_v411.py <pasta das fotografias (C:\\t\\vb22\\snap)>"""
++"""gerar_pino_recibo_pre_selo_v412.py -- gera PINO_RECIBO_PRE_SELO_v412.json e PROVA_PRODUCAO_INTACTA_v412_pre_selo.json (em v412\\) a partir do recibo do ensaio, do stdout, do lancador,
++dos pinos do esboco e da bateria, da conferencia pelo esboco (conferencia_pelo_esboco_v412.json) e das fotografias da producao (antes / depois / final). TUDO LIDO dos arquivos, por script;
++nada digitado de memoria. Nao grava na Bancada, no Nos nem no tunel: escreve so' os dois JSON em v412\\ e copia as listas de arquivos para v412\\bateria_pre_selo\\prova_producao\\.
++Molde: v411\\bateria_pre_selo\\gerar_pino_recibo_pre_selo_v411.py (mesmas chaves do pino; aqui o ensaio PASSA e a regra e' aplicada pela funcao do proprio esboco).
++uso: python -I -B -X utf8 gerar_pino_recibo_pre_selo_v412.py <pasta das fotografias (C:\\t\\vb23\\snap)>"""
+@@ -26 +27 @@
+-V14 = os.path.join(os.path.dirname(V), "v410")
++V14 = os.path.join(os.path.dirname(V), "v411")
+@@ -29 +30 @@
+-    """(v411) onde a bateria grava: no ensaio do topo proposto (V411_ENSAIO_TOPO_PROPOSTO=1, lido pelo delta_v411) a pasta de ensaio, fora de work; no real, esta pasta e v411\\ (como na v410)."""
++    """(v412) onde a bateria grava: no ensaio do topo proposto (V412_ENSAIO_TOPO_PROPOSTO=1, lido pelo delta_v412) a pasta de ensaio, fora de work; no real, esta pasta e v412\\ (como na v411)."""
+@@ -31 +32 @@
+-    _s = _u.spec_from_file_location("delta_v411_pre_selo", os.path.join(V, "delta_v411.py")); _m = _u.module_from_spec(_s); _s.loader.exec_module(_m)
++    _s = _u.spec_from_file_location("delta_v412_pre_selo", os.path.join(V, "delta_v412.py")); _m = _u.module_from_spec(_s); _s.loader.exec_module(_m)
+@@ -49 +50 @@
+-rps = glob.glob(os.path.join(OUTB, "ensaio_1", "RECIBO_SINCRONIZACAO_v410_*.json"))
++rps = glob.glob(os.path.join(OUTB, "ensaio_1", "RECIBO_SINCRONIZACAO_v411_*.json"))
+@@ -56,3 +57,3 @@
+-LANC = os.path.join(HERE, "rodar_ensaio_1_pre_selo_v411.sh")
+-pbn = lj(os.path.join(V14, "PINOS_BN_v410.json"))
+-pbat = lj(os.path.join(V14, "bateria_pos_selo", "PINOS_BATERIA_v410.json"))
++LANC = os.path.join(HERE, "rodar_ensaio_1_pre_selo_v412.sh")
++pbn = lj(os.path.join(V14, "PINOS_BN_v411.json"))
++pbat = lj(os.path.join(V14, "bateria_pos_selo", "PINOS_BATERIA_v411.json"))
+@@ -67 +68 @@
+-conf_p = os.path.join(OUTB, "conferencia_pelo_esboco_v411.json")
++conf_p = os.path.join(OUTB, "conferencia_pelo_esboco_v412.json")
+@@ -162 +163 @@
+-    "contrato": "PROVA_PRODUCAO_INTACTA_v411_pre_selo",
++    "contrato": "PROVA_PRODUCAO_INTACTA_v412_pre_selo",
+@@ -164 +165 @@
+-    "o_que_se_prova": ("o ensaio pre_selo da v411 (esboco R3.5, --modo ensaio, bateria da v410) so' LEU a Bancada de producao e o Nos: a lista (caminho, tipo, tamanho, mtime_ns) de toda a arvore de cada um, "
++    "o_que_se_prova": ("o ensaio pre_selo da v412 (esboco R3.5, --modo ensaio, bateria da v411) so' LEU a Bancada de producao e o Nos: a lista (caminho, tipo, tamanho, mtime_ns) de toda a arvore de cada um, "
+@@ -167 +168 @@
+-               "lancador": LANC, "lancador_sha256": sha(LANC), "script_de_fotografia": {"path": os.path.join(HERE, "snap_producao_v411.py"), "sha256": sha(os.path.join(HERE, "snap_producao_v411.py"))}},
++               "lancador": LANC, "lancador_sha256": sha(LANC), "script_de_fotografia": {"path": os.path.join(HERE, "snap_producao_v412.py"), "sha256": sha(os.path.join(HERE, "snap_producao_v412.py"))}},
+@@ -178,3 +179,3 @@
+-    "esta_tarefa_escreveu_so_em": [V + "\\bateria_pre_selo\\ (ensaio_1, scripts, stdout, conferencia, prova_producao)", V + "\\PINO_RECIBO_PRE_SELO_v411.json", V + "\\PROVA_PRODUCAO_INTACTA_v411_pre_selo.json",
+-                                   "C:\\t\\vb22 (sandbox curto, apagado no fim por limpar_sandbox_vb22.py)",
+-                                   "depois deste script, os passos 8 e 9 do rodar_bn_pre_selo_v411.sh regravam, em " + V + "\\, DIFF_KERNEL_v411.txt, DIFF_v410_v411.diff, PINOS_BN_v411.json (diff_e_pinos_v411.py) e PRECONDICOES_v411.json (p00_precondicoes_v411.py)"],
++    "esta_tarefa_escreveu_so_em": [V + "\\bateria_pre_selo\\ (ensaio_1, scripts, stdout, conferencia, prova_producao)", V + "\\PINO_RECIBO_PRE_SELO_v412.json", V + "\\PROVA_PRODUCAO_INTACTA_v412_pre_selo.json",
++                                   "C:\\t\\vb23 (sandbox curto, apagado no fim por limpar_sandbox_vb23.py)",
++                                   "depois deste script, os passos 8 e 9 do rodar_bn_pre_selo_v412.sh regravam, em " + V + "\\, DIFF_KERNEL_v412.txt, DIFF_v411_v412.diff, PINOS_BN_v412.json (diff_e_pinos_v412.py) e PRECONDICOES_v412.json (p00_precondicoes_v412.py)"],
+@@ -184 +185 @@
+-# ---- o pino (as chaves do PINO_RECIBO_PRE_SELO_v410, mais as que a passagem do ensaio permite)
++# ---- o pino (as chaves do PINO_RECIBO_PRE_SELO_v411, mais as que a passagem do ensaio permite)
+@@ -189 +190 @@
+-    motivos.append("a producao NAO esta intacta: ver PROVA_PRODUCAO_INTACTA_v411_pre_selo.json")
++    motivos.append("a producao NAO esta intacta: ver PROVA_PRODUCAO_INTACTA_v412_pre_selo.json")
+@@ -193 +194 @@
+-    contrato="PINO_RECIBO_PRE_SELO_v411_ENSAIO",
++    contrato="PINO_RECIBO_PRE_SELO_v412_ENSAIO",
+@@ -217,2 +218,2 @@
+-    conferido_por=dict(script=os.path.join(HERE, "conferir_recibo_pre_selo_v411.py"), script_sha256=conf["script"]["sha256"], resultado_em=conf_p, resultado_sha256=sha(conf_p),
+-                       funcao="conferir_recibo_pre_selo do esboco R3.5 (ja_sincronizada=False; sem cadeia; selo e manifesto do kernel anteriores = v411/base_v410)",
++    conferido_por=dict(script=os.path.join(HERE, "conferir_recibo_pre_selo_v412.py"), script_sha256=conf["script"]["sha256"], resultado_em=conf_p, resultado_sha256=sha(conf_p),
++                       funcao="conferir_recibo_pre_selo do esboco R3.5 (ja_sincronizada=False; sem cadeia; selo e manifesto do kernel anteriores = v412/base_v411)",
+@@ -223 +224 @@
+-                         nota="um re-pino da producao antes do B(n) da v411 torna o recibo obsoleto: a conferencia do esboco o recusa"),
++                         nota="um re-pino da producao antes do B(n) da v412 torna o recibo obsoleto: a conferencia do esboco o recusa"),
+@@ -226 +227 @@
+-        "T12/T13/T14 so' rodam no pre_selo (fases=['pre_selo'] na bateria): no B(n) da v411 valem por ESTE recibo, medidos contra o um.py v410 (o Nos de hoje), nao contra o um.py v411 [REAL: bateria v410 e rodar_bateria do esboco R3.5]",
++        "T12/T13/T14 so' rodam no pre_selo (fases=['pre_selo'] na bateria): no B(n) da v412 valem por ESTE recibo, medidos contra o um.py v411 (o Nos de hoje), nao contra o um.py v412 [REAL: bateria v411 e rodar_bateria do esboco R3.5]",
+@@ -228 +229 @@
+-        "o T17 e o nos_pinado do pos_selo so' se decidem com o selo, o manifesto do kernel e o recibo do kernel REAIS da v411",
++        "o T17 e o nos_pinado do pos_selo so' se decidem com o selo, o manifesto do kernel e o recibo do kernel REAIS da v412",
+@@ -235 +236 @@
+-        criterio="lista (caminho, tipo, tamanho, mtime_ns) de toda a arvore, antes do ensaio, logo depois e depois da conferencia do recibo; prova completa em PROVA_PRODUCAO_INTACTA_v411_pre_selo.json",
++        criterio="lista (caminho, tipo, tamanho, mtime_ns) de toda a arvore, antes do ensaio, logo depois e depois da conferencia do recibo; prova completa em PROVA_PRODUCAO_INTACTA_v412_pre_selo.json",
+@@ -253 +254 @@
+-if _DLM.ENSAIO_TOPO_PROPOSTO:   # (v411) o ensaio do topo proposto: marcado, na pasta de ensaio (nunca na pasta da cadeia)
++if _DLM.ENSAIO_TOPO_PROPOSTO:   # (v412) o ensaio do topo proposto: marcado, na pasta de ensaio (nunca na pasta da cadeia)
+@@ -255,2 +256,2 @@
+-d_prova = gravar_novo(os.path.join(OUTV, "PROVA_PRODUCAO_INTACTA_v411_pre_selo.json"), prova)
+-d_pino = gravar_novo(os.path.join(OUTV, "PINO_RECIBO_PRE_SELO_v411.json"), pino)
++d_prova = gravar_novo(os.path.join(OUTV, "PROVA_PRODUCAO_INTACTA_v412_pre_selo.json"), prova)
++d_pino = gravar_novo(os.path.join(OUTV, "PINO_RECIBO_PRE_SELO_v412.json"), pino)

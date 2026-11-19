@@ -1,0 +1,1582 @@
+arXiv:2302.07877v2 [math.OA] 17 Jan 2024  GROMOV�HAUSDORFF CONVERGENCE OF SPECTRAL
+                                                                   TRUNCATIONS FOR TORI
+
+                                                           MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+                                               Abstract. We consider operator systems associated to spectral truncations
+                                               of tori. We show that their state spaces, when equipped with the Connes
+                                               distance function, converge in the Gromov�Hausdorff sense to the space of all
+                                               Borel probability measures on the torus equipped with the Monge�Kantorovich
+                                               distance. A crucial role will be played by the relationship between Schur and
+                                               Fourier multipliers. Along the way, we introduce the spectral Fej�er kernel and
+                                               show that it is a good kernel. This allows to make the estimates sufficient to
+                                               prove the desired convergence of state spaces. We conclude with some structure
+                                               analysis of the pertinent operator systems, including the C*-envelope and the
+                                               propagation number, and with an observation about the dual operator system.
+
+                                                                           Contents
+
+                                          1. Introduction                                                                       1
+
+                                          Acknowledgements                                                                      5
+
+                                          2. Preliminaries                                                                      6
+
+                                          2.1. Actions and commutators                                                          6
+
+                                          2.2. Good kernels                                                                     6
+
+                                          2.3. Fourier and Schur multipliers                                                    7
+
+                                          3. Convergence of Spectral Truncations of the d-Torus                                 8
+
+                                          3.1. A candidate for the C1-approximate order isomorphism                             8
+
+                                          3.2. A transference result                                                            10
+
+                                          3.3. The spectral Fej�er kernel                                                       12
+
+                                          4. Structure Analysis of the Operator System CpTdqpq                                  14
+
+                                          4.1. C*-envelope and propagation number                                               14
+
+                                          4.2. Dual                                                                             18
+
+                                          Appendix A. Some convex geometry                                                      19
+
+                                          References                                                                            21
+
+                                                                                    1. Introduction
+
+                                             In a spectral approach to geometry, such as the one advocated in noncommu-
+                                          tative geometry [7], a natural question that arises is how one may approximate a
+                                          geometric space if only part of the spectral data is available [8]. In fact, for the
+                                          so-called spectral truncations that are relevant in this paper one is naturally led to
+                                          consider quantum metric spaces in the sense of Rieffel [24].
+
+                                              Date: January 17, 2024.
+                                                                                                                       1
+2    MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+   More precisely, we consider a spectral triple pA, H, Dq consisting of a C*-algebra
+A acting as bounded operators on a Hilbert space H, together with a self-adjoint
+operator D such that rD, as extends to a bounded operator for a in a dense �-
+subalgebra of A, and such that the resolvent of D is a compact operator. A spectral
+truncation for this set of data is given in terms of a spectral projection P of D
+onto the eigenspaces with eigenvalues of modulus  . The C*-algebra A is then
+replaced by an operator system, to wit PAP. It acts on the Hilbert space PH
+and also D restricts to a self-adjoint operator thereon.
+
+   The above question may then be sharply formulated in terms of Gromov�Hausdorff
+convergence (as  � 8) of the state spaces SpPAPq when equipped with the
+Connes distance function [7]
+
+(1)  dPAP p, q " sup t|paq � paq| : }rPDP, as} " 1u.
+
+     aPP AP
+
+The limit structure one is aiming for is then of course the state space SpAq, this
+time equipped with the metric
+
+(2)  dAp, q " supt|paq � paq| : }rD, as} " 1u.
+
+     aPA
+
+Note that in the definition of quantum metric spaces there is an additional (and
+natural) requirement of compatibility betweeen the above metric structure and the
+given weak-� topology on the pertinent state spaces (cf. [24, Definition 2.1]). If A "
+CpM q and D " DM is the Dirac operator on a compact Riemannian spin manifold
+M --indeed our case of interest-- this is the case, as was shown in [6]. In fact,
+Connes' distance function then coincides with the Monge�Kantorovich distance
+on the state space SpCpM qq of all Borel probability measures. In addition, for
+finite-dimensional operator systems --such as the above PAP-- Connes' distance
+function metrizes the weak-� topology as follows from [23, Theorem 1.8] (see also
+[31, Remark 6]).
+
+   In a previous work, a convergence of spectral truncations has been established for
+the circle, when equipped with the natural Dirac operator [31]. This was formulated
+in the following general framework, which we will also exploit here.
+
+Definition 1.1. An operator system spectral triple is a triple pE, H, Dq where E is
+a dense subspace of a (concrete) operator system E in BpHq, H is a Hilbert space
+and D is a self-adjoint operator in H with compact resolvent and such that rD, T s
+is a bounded operator for all T P E.
+
+   The relation between sequences of operator system spectral triples and a limit
+structure is then captured by the following notion of an approximate order isomor-
+phism.
+
+Definition 1.2. Let pE, H, Dq and pE, H, Dq, for all   0, be operator system
+spectral triples. For all , let  : E � E and  : E � E be linear maps with
+the following properties:
+
+     (i)  and  are positive and unital,
+    (ii)  and  are C1-contractive, i.e. they are contractive both with respect
+
+          to norm } � } and with respect to Lipschitz seminorm }rD, �s}, respectively
+          }rD, �s},
+            GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI                                3
+
+    (iii) the compositions    and    approximate the respective identities
+          on E and E with respect to Lipschitz seminorm, i.e.
+
+                                 }a �   paq}  }rD, as}
+
+                                }T �   pT q}  }rD, T s},
+
+for some net pq0 with  � 0 as  � 8. Then we call the pair of maps p, q
+(by which we mean the collection of pairs of maps p, q) a C1-approximate order
+isomorphism.
+
+   It was then shown in [31, Theorem 5] that if the metrics dE , for all   0, and
+dE (defined as in (1) and (2)) metrize the respective weak�-topologies on the state
+spaces SpEq and SpEq and if a C1-approximate order isomorphism exists, then the
+sequence of metric spaces pSpEq, dE q converges to pSpEq, dE q in Gromov�Hausdorff
+distance. By exploiting this criterion it was shown in [31] that spectral truncations
+of the circle converge.
+
+   Other results on Gromov�Hausdorff convergence that can be cast in this general
+framework include [2, 1, 25]. Note also the recent developments around the related
+notion of propinquity [17, 18, 19], also in the context of spectral triples, but which,
+however, mainly focuses on C*-algebras. It should be mentioned that, even though
+we are phrasing the question about convergence of spectral truncations in terms
+of Gromov�Hausdorff distance, another point of view would be quantum Gromov�
+Hausdorff distance [24]. In fact, these notions are not equivalent [16]. However, as
+the authors point out, it follows from [15, Proposition 2.14] that Gromov�Hausdorff
+convergence still implies quantum Gromov�Hausdorff convergence in the case which
+we consider below.
+
+   In this article, we show that the conditions in the above Definition can be met
+for tori in any dimension d  1. Let us spend the remainder of this introduction
+by giving an extended overview of our setup and approach.
+
+Consider the spectral triple of the d-dimensional torus Td " Rd{2Zd:
+
+                              `C8pTdq, L2pSpTdqq, D
+
+This consists of the �-algebra of smooth functions acting on the Hilbert space of
+
+L2-sections of the spinor bundle SpTdq (by multiplication) and the Dirac operator
+
+D which acts on the dense subspace of smooth sections of the spinor bundle. We
+
+identify SpTdq with the trivial bundle Td b V , where V :" Ctd{2u, and we write H :"
+
+L2pTdq b V  � L2pSpTdqq  for  the  Hilbert  space.  Recall  that  D  "  �i  d       B�  b  �
+
+                                                                               �"1
+
+and that the spectrum of D (which is point-spectrum only) is given by pDq "
+
+tpn21 ` � � � ` n2dq1{2 : ni P Zu. The Dirac operator gives rise to the distance
+function (2) on the state space SpCpTdqq which metrizes the weak�-topology on it
+
+and recovers the usual Riemannian distance on Td when restricted to pure states.
+
+For any   0, let P be the orthogonal projection to the subspace of H spanned
+
+by the eigenspinors e of the eigenvalues  with ||  . More concretely, we have
+PH " spanten : n P Zd, }n}  u b V , with enpxq :" ein�x, for all x P Td. The
+
+spectral projection P gives rise to the following operator system spectral triple:
+
+                         `PC8pTdqP, PH, PDP
+
+We use the notation CpTdqpq :" PC8pTdqP and write D :" PDP. We also
+abbreviate d :" dPC8pTdqP for the distance function defined in (1).
+4                 MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+   Observe that elements T of the operator system CpTdqpq are of the form T "
+ptk�lqk,lPBZ , where BZ :" B X Zd is the set of Zd-lattice points in the closed ball
+of radius , and where tk�l " xek, T ely. In particular, CpT1qpq is the operator
+system of p2tu ` 1q ^ p2tu ` 1q-Toeplitz matrices which was investigated at length
+
+in [8] and [11].
+   The candidate for the map  : C8pTdq � CpTdqpq in Definition 1.2 is canoni-
+
+cally inherent in the problem, namely, it is the compression map given by pf q "
+Pf P. It is easy to see that this map is positive, unital and C1-contractive
+
+(Lemma 3.1). It is, however, less obvious what the candidate for the map  :
+CpTdqpq � C8pTdq should be. Inspired by the choice of the map given in [31] in
+
+the case of the circle, we propose the following map:
+
+                                             1
+                             pT q :" NBpq Tr p|y x| pT qq
+
+Here,    is  the  Td-action  (4)  on  CpTdqpq,  the  vector  |y  is  given  by     |y  "           en,
+
+                                                                                             nPBZ
+
+and NBpq :" #B X Zd " #BZ is the number of Zd-lattice points in the closed
+
+ball of radius . Note that the image of an element T " ptk�lqk,lPBZ of the operator
+
+system CpTdqpq under this map is a function on Td as follows:
+
+                                     1      �                  eipk�lq�x           �
+                                  NBpq       p1qk,lPBZ
+                  pT qpxq    "          Tr              ptk�l             qk,lPBZ
+
+                                            �                                      
+
+                                            �                        
+
+                                  1             �     tm�l eipm�lq�x ,
+
+                             "          Tr  �                                      <
+                                                                                   ,
+                                  NBpq 
+                                                mPBZ
+                                                                          k,lPBZ
+
+                                    1       �   tm�neipm�nq�x,
+                             "
+                                        m,nPBZ
+                                NBpq
+
+for all x P Td. One may consider [24, Section 2] as another instance of inspiration
+
+for this choice of map  by realizing that the map  is the formal adjoint of
+the map  when the �-algebra C8pTdq is equipped with the L2-inner product and
+the operator system CpTdqpq is equipped with the Hilbert�Schmidt inner product.
+Similarly as for , it is easy to see that the map  is positive, unital and C1-
+
+contractive (Lemma 3.2).
+   In order to show that our choice of maps  and  gives rise to a C1-approximate
+
+order isomorphism it remains to show that their compositions approximate the
+respective identities on C8pTdq and CpTdqpq in Lipschitz seminorm. We show by
+direct computations (Lemma 3.3) that the maps   and   act on C8pTdq,
+respectively CpTdqpq as follows:
+
+                                          ��
+                          pf q " mfp q": Fm pf q
+
+                         pT q " pmpk � lqtk�lqk,lPBZ ": Sm pT q
+
+The map Fm is known as Fourier multiplication and the map Sm as Schur mul-
+tiplication, respectively with symbol
+
+                                      mpnq  :"  NLp, nq ,
+                                                 NBpq
+     GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI             5
+
+where NLp, nq :" #B X Bpnq X Zd " #LZ pnq is the number of Zd-lattice points
+in the intersection of the closed ball of radius  with a copy of itself translated by
+n (we call this intersection a lense and denote the set of Zd-lattice points in it by
+LZ pnq).
+
+   We denote the compression of the Dirac operator by D :" PDP. We apply
+an "antiderivative trick" (Lemma 3.4) to see that for obtaining estimates of the
+
+maps idC8pTdq � Fm and idCpTdqpq � Sm in Lipschitz seminorm, one needs to
+estimate the following two maps:
+
+             i   d        b t�, �u : rD, C8pTdqs � C8pTdq;
+             2
+                �
+
+     Fw  :"          Fw�
+
+                �"1
+
+             i   d        b t�, �u : rD, CpTdqpqs    � CpTdqpq,
+             2
+                �
+
+     Sw  :"          Sw�
+
+                �"1
+
+where Fw� and Sw� are now respectively Fourier and Schur multiplication with the
+symbol
+
+                      #
+
+(3)          w�pnq "      0, if n " 0
+
+                          p1  �  mpnqq   n�   ,  if  n  0.
+                                        }n}2
+
+A variation of the classical Bozejko-Fendler transference theorem for Fourier and
+
+Schur multipliers (Lemma 3.5) then shows that the cb-norm of Sw is bounded by
+the cb-norm of Fw . Since the latter map takes values in a commutative C�-algebra
+its cb-norm coincides with its norm, so this is what is left to estimate.
+
+   It is not hard to see that Fm is an approximate identity controlled in Lipschitz
+seminorm, if the convolution kernel Km " mq  is a good kernel (Lemma 2.2). We
+show that this is indeed the case by exploiting the fact that Km is the square
+of the spherical Dirichlet kernel, whence positive. Since this is analogous to the
+
+1-dimensional case, we call Km the spectral Fej�er kernel. As outlined above, our
+main result that p, q is a C1-approximate order isomorphism and hence that
+spectral truncations of the d-torus converge for all d  1 is now simply a corollary
+of the fact that the spectral Fej�er kernel is good.
+
+   In the last section, we give a computation of the propagation number of the
+operator system CpTdqpq. We conclude by pointing out some obstacles on the road
+to determining its operator system dual. In particular, we argue that, for d  2,
+the operator system dual cannot quite be the one that we would have expected.
+
+Acknowledgements. We thank Nigel Higson for the comments at an early stage
+of this project. ML thanks Gerrit Vos for an introduction to Fourier and Schur
+multipliers and Dimitris Gerontogiannis for fruitful discussions. After having pub-
+lished a first preprint version of this article we were pointed to Proposition 3.8,
+which makes many technicalities obsolete and at the same time enables us to prove
+convergence of spectral truncations of tori in any dimension (also higher than 3).
+We are indepted to Yvann Gaudillot-Estrada for this contribution. Furthermore,
+we thank Jens Kaad and Tirthankar Bhattacharyya for their input. This work was
+funded by NWO under grant OCENW.KLEIN.376.
+6                   MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+                                      2. Preliminaries
+
+2.1. Actions and commutators. We spell out a few simple facts used throughout
+this article. Recall the usual action of CpTdq on H:
+
+                                               ��
+
+                    f pg b vq " pf gq b v "               fppn � mqgppmqen b v
+
+                                               nPZd mPZd
+
+This induces an action of CpTdqpq on PH:
+
+                          �                    
+
+                                �                    ��
+
+                     T  akek b v,"                             tk�lalek b v
+
+                             kPBZ                   kPBZ lPBZ
+
+Furthermore, we have the standard Td-action on CpTdq (as a subalgebra of BpHq):
+
+                                     pf q " � fppnqenein�
+
+                                               nPZd
+
+This induces an action of Td on CpTdqpq (as an operator subsystem of BpPHq):
+
+                                            �             �
+                                pT q " tk�leipk�lq�
+(4)
+
+                                                             k,lPBZ
+
+   Recall that the following holds:
+
+                                            d
+
+                                            �    �   n�fppnqen b �
+                                rD, f s "
+
+                                         �"1 nPZd
+
+Similarly, we have:
+
+                                      d
+
+(5)                       rD, T s " � ppk� � l�qtk�lqk,lPBZ b �
+
+                                      �"1
+
+2.2. Good kernels. We follow the convention in [30] and call an approximate
+identity in the Banach �-algebra L1pTdq (with convolution) a good kernel :
+
+Definition 2.1. For all   0, let K P L1pTdq. The family tKu0 is called a
+good kernel, if the following holds:
+
+     (1)       Kpxqdx     "  1  and
+
+           Td                               
+
+     (2)  for  all    0,  we    have  that   TdzB p0q  Kpxqdx  �     0,  as   � 8.
+
+   Good kernels provide a way to approximate the identity on C8pTdq not only in
+L1- and sup-norm, but also in Lipschitz seminorm:
+
+Lemma 2.2. If K is a good kernel, then, for all f P C8pTdq, the following holds:
+
+                                    }f � K � f }  }rD, f s},
+
+where  � 0 as  � 8.
+
+Proof. The proof is as in [2, Lemma 5.13]. For all x P Td, we have:
+
+                                                
+                   |K � f pxq � f pxq|  |Kpyqpf px � yq � f pxqq|dy
+
+                                                                      Td
+
+                                                
+                                             |Kpyq|}y}}f }Lipdy
+
+                                                                      Td
+
+                                                
+                                            " |Kpyq|}y}dy}rD, f s}
+
+                                                                      Td
+              GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI               7
+
+We   set     :"       |Kpyq|}y}dy.   Let   0.       Let 0   be large enough such that, for
+
+                  Td
+              
+all       0,          |K   pyq|dy    .  Then,  for      0,  we  obtain:
+               }y}
+
+                                                    
+
+                       "           |Kpyq|}y}dy `           |Kpyq|}y}dy
+
+                           }y}                        }y}
+
+                             ~                                           �
+
+                                                      
+
+                      d              |Kpyq|dy `              |Kpyq|dy
+
+                                }y}                     }y}
+
+                       d p ` Cq ,
+
+where  C  "   sup0         |Kpyq|dy        8.                               
+
+                       Td
+
+2.3. Fourier and Schur multipliers. Let  be a discrete group and let  :  �
+Bp2pqq be its left-regular representation given by gf phq " f pghq. We denote by
+C�pq the reduced group C�-algebra, i.e. the completion of the group ring Crs in
+Bp2pqq with respect to the norm }x}red :" }pxq}Bp2pqq. A function  :  � C
+gives rise to a multiplier on the group ring as follows:
+
+                                     Crs � Crs
+
+                                     �         �
+
+                                        agg �� pgqagg
+
+                                   gP          gP
+
+If this map extends to a bounded linear map M : C�pq � C�pq we call this
+extension the multiplier on C�pq with symbol . We record the obvious fact that
+if  is finitely supported it always induces a multiplier on C�pq.
+
+   Recall that if  is abelian, then C�pq " C�pq � Cppq, where p is the Pontrya-
+gin dual of . In this case, we call the multiplier on Cppq the Fourier multiplier
+with symbol  and denote it by F. The Fourier multiplier takes on the following
+form:
+
+                                        �               �
+
+(6)                          Fpf q " g �� pgqfppgq q" q � f
+
+See e.g. [14, Chapter 6] for the relevant Fourier theory of locally compact abelian
+
+groups.
+
+   Let k :  ^  � C be a function, also called a kernel. A kernel k gives rise to
+a linear map with domain Bp2pqq given by Sk : ptg,hqg,hP �� pkpg, hqtg,hqg,hP,
+where tg,h " xg, T hy, for T P Bp2pqq. If this map is bounded with range in
+Bp2pqq, we call it a Schur multiplier. See e.g. [32] for a survey and [22, Chap-
+
+ter 5] as a standard reference which includes a discussion of the connection with
+
+Grothendieck's theorem. We collect some well-known facts about Schur multipliers.
+
+Proposition 2.3. Let k : ^ � C be a kernel. Then the following are equivalent:
+
+     (i) Sk is a Schur multiplier of norm }Sk}  1.
+    (ii) Sk is a completely bounded Schur multiplier of cb-norm }Sk}cb  1.
+   (iii) There exists a Hilbert space H and families of vectors tgugP, thuhP  H
+
+          with }g}, }h}  1 such that kpg, hq " xg, hy, for all g, h P .
+
+   For an elementary proof of the equivalence of (i) and (ii), we refer to [21, Theorem
+8.7 and Corollary 8.8]. A proof of the equivalence of (ii) and (iii) can be found e.g.
+in [5, Theorem D.4], which we now sketch: Assuming that }Sk}cb  1, Wittstock's
+factorization theorem gives a factorization of Sk through BpHq, for some Hilbert
+8                    MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+space H, which allows to construct appropriate g and h. For the converse impli-
+cation, the map Sk is factorized through Bp2pq b Hq as SkpT q " V �pT b 1HqW ,
+
+for the contractions V g :" g b g and W h :" h b h. The same works when
+
+tensoring with 1Mn , for arbitrary n P N, which shows complete contractivity of Sk.
+
+   We are mainly interested in Schur multipliers Sk induced by a function  :  �
+C, i.e. kpg, hq :" pgh�1q. We call such a Schur multiplier a Schur multiplier with
+
+symbol  and slightly abuse notation to denote it by S. It is easy to see that
+
+S        pq  "  M.      Indeed, let f  P C�pq and tgugP be an orthonormal basis for
+     C�
+2pq. Then the matrix associated to f (viewed as an element of Bp2pqq) is a
+
+Toeplitz matrix in the following sense:
+
+                                      �                   �
+
+                xg, f hy " xg, f  phqy " xg, f hy " fgh�1
+
+                                      P                   P
+
+It follows that the matrix associated to Mpf q is the following Toeplitz matrix:
+
+                                 xg, Mpf qhy " pgh�1qfgh�1 ,
+
+which shows that Sppfgh�1 qg,hPq " ppMpf qqg,hqg,hP.
+
+         3. Convergence of Spectral Truncations of the d-Torus
+
+     The goal of this section is to prove that the maps  : C8pTdq � CpTdqpq,
+
+given by the compression pf q :" Pf P, and  : CpTdqpq � C8pTdq, given by
+
+pT q     :"       1  Trp|y  x  |  pT  qq,  form  a  C1-approximate     order  isomorphism   in     the
+              NB pq
+
+sense of Definition 1.2.
+
+3.1. A candidate for the C1-approximate order isomorphism. We begin by
+checking unitality, positivity and C1-contractivity for the maps  and .
+
+Lemma 3.1. The map  : C8pTdq � CpTdqpq is unital, positive and C1-
+contractive.
+
+                                           �                        �
+
+Proof. Unitality is clear as P1P                    anen     b  sn     "              anen  b sn,  for
+
+                                              nPBZ                              nPBZ
+
+all           anen   b  sn  P  PH.     Also positivity is obvious since xP aP , P yP K "
+
+        nPBZ
+
+xaP , P yK  0, for any Hilbert space K, any projection P P BpKq and any positive
+
+operator a P BpKq`. Contractivity in norm follows from Plancherel's theorem:
+
+         }Pf P}2 "                }Pf P}2           �      2           �      2
+                                                          fppnq              fppnq " }f }2
+                            sup                                              
+
+                        PP H                        nPBZ               nPZd
+
+                          }}1
+
+For contractivity in Lipschitz seminorm, we first observe that  commutes with
+rD, �s in the following sense, which is an immediate consequence of the fact that D
+commutes with P:
+
+                                  rD, pf qs " PrD, f sP
+
+This immediately gives }rD, �s}-contractivity:
+
+                            }rD, pf qs} " }PrD, f sP}  }rD, f s}
+
+                                                                                                   
+
+Lemma 3.2. The map  : CpTdqpq � C8pTdq is unital, positive and C1-
+contractive.
+           GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI                                            9
+
+Proof. Unitality is clear as, for all x P Td, we have:
+
+                             1                                  1
+     p1qpxq          "  NBpq Tr p|y x| xp1qq             "            Tr p|y x| 1q       "   1
+                                                             NBpq
+
+Positivity is also immediate from the definition. Namely, let T P CpTdqp`q be a
+
+positive operator on PH and let PH Q  �� QT pq :" x, T y be its associated
+
+quadratic  form.  For     "           en,  we   obtain:
+
+                                nPBZ
+
+0             1                 "     1    Tr   �     x|  `e�pm�nqtm�n       �           "  pT qpxq,
+           NBpq QT pqpxq           NBpq          |y                     
+
+                                                                         m,n
+
+for all x P Td. For contractivity, we compute:
+
+                                       1
+                  |pT qpxq|  NBpq Trp|y x|q}xpT q} " }T }
+
+For contractivity in Lipschitz seminorm, we first observe that  commutes with
+rD, �s in the following sense, which is an easy consequence of (5):
+
+rD,  pT    qs     "  �i     d      1       �    in�tnen  b   �
+                                NBpq
+                          �               nPBZ
+
+                          �"1
+
+                       d     1            �           �                                  ��     �
+                          NBpq             |y          ppn�
+                  "  �             Tr           x|           �  m�qtn�mqn,mPBZ               b
+
+                     �"1
+
+                  "  b 1prD, T sq
+
+This immediately gives }rD, �s}-contractivity:
+
+                  }rD, pT qs} " } b 1 prD, T sq }  }rD, T s}
+
+                                                                                                      
+
+We now compute the compositions    and   :
+
+Lemma 3.3. The two compositions    : C8pTdq � C8pTdq and    :
+CpTdqpq � CpTdqpq are given respectively by the Fourier multiplier and by the
+
+Schur multiplier with the symbol m:
+
+                                             " Fm
+                                             " Sm
+
+Proof. Both identities are just simple computations:
+
+                                     1
+             pf qpxq " NBpq Tr p|y x| xpPf Pqq
+
+                                   1^                        ^                           
+
+                                                                �       �
+
+                                "           Tr  |y x| x         fppk � lq
+                                   NBpq
+                                                                                 k,lPBZ
+
+                                       1     � fppk � lqeipk�lq�x
+                                "
+                                   NBpq k,lPBZ
+
+                                "     �      NLp, nq     fppnqen   pxq
+                                              NBpq
+                                   nPBZ �BZ
+10      MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+                      ^1                                          
+
+      pT q "  NBpq Tr p|y x| ,pT qq
+
+                      �                                    
+
+                "                     1�         tk�lek�l,
+
+                                         k,lPBZ
+                         NBpq
+
+                      �                                        
+
+                "           �            NLp, nq       tn  en  ,
+                                          NBpq
+
+                         nPBZ �BZ
+
+                   ^  NLp, m �           nq         
+                          NBpq
+                "                             tm�n
+
+                                                          m,nPBZ
+
+                                                                                              
+
+3.2. A transference result. In order to show that the pair p, q is a C1-
+approximate order isomorphism it remains to check that the compositions   
+and    approximate the identity respectively on CpTdq and CpTdqpq in Lip-
+schitz seminorm.
+
+   Recall the definition of w� pnq, for � " 1, . . . , d and n P Zd from (3).
+
+Lemma 3.4. For every f P C8pTdq we have the following equality of bounded
+operators on the Hilbert space L2pTdq b V :
+
+                                      i  ~d                    �
+                                      2    �           t�, �u prD, f sq,
+
+    pf  �      pf qq  b    1  "               Fw�  b
+
+                                         �"1
+
+where Fw� is the Fourier multiplier on the �-algebra C8pTdq with symbol w�.
+   Similarly, for every T P CpTdqpq, we have the following equality of bounded
+
+operators on the Hilbert space PL2pTdq b V :
+
+                                      i  ~d                    �
+                                      2    �           t�, �u prD, T sq,
+
+    pT  �     pT qq   b    1  "               Sw�  b
+
+                                         �"1
+
+where Sw� denotes Schur (i.e. entrywise) multiplication on the operator system
+CpTdqpq with symbol w�.
+
+Proof. For the first claim, we have:
+
+                                                �
+    f �   pf q " f � Fm pf q " p1 � mpnqqfppnqen
+
+                                                 nPZd
+
+                   "    d                �    mpnqq     n�     �  n�fppnqen
+                                                       }n}2
+                      ��
+                                p1
+
+                      �"1 nPZd
+
+                           d
+
+                   " � Fw� p�iB f q � � .
+
+                       �,"1
+
+The first claimed result then follows by writing 2� � 1 " t�, u.
+   The computation for the second claim is largely analogous:
+
+    T �   pT q " T � Sm pT q
+
+             "   d^        �  mpk        �  lqq  k� � l�   �   pk�  �          
+                �                                }k � l}2
+                                                                       l�qtk�l
+                       p1
+                                                                                      k,lPBZ
+                �"1
+     GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI                              11
+
+                               d    �                     �
+
+                               �    Sw� ppk � l qtk�lqk,lPBZ � � .
+
+                          "i
+
+                              �,"1
+
+The result now follows by combining the defining relations for the gamma-matrices
+
+as before with the expression (5) for the operator rD, T s P BpPHq.               
+
+   It is a classical result of Bozejko and Fendler [4] that for any discrete group  and
+function  :  � C the cb-norm of Schur multiplication S on Bp2pqq coincides
+with the cb-norm of Fourier multiplication F on C�pq (see also [22, Theorem 6.4]
+and [5, Proposition D.6]). However, the two linear maps obtained in Lemma 3.4
+
+act on the operator subsystems of differential forms on H and PH, respectively, so
+the result of Bozejko and Fendler does not apply directly. We prove a variation on
+
+it which relates the cb-norms of the two linear maps which appear in Lemma 3.4:
+
+                       i   d        b t�, �u : rD, C8pTdqs � C8pTdq;
+                       2
+                          �
+
+(7)  Fw  :"                    Fw�
+
+                          �"1
+
+                       i   d        b t�, �u : rD, CpTdqpqs � CpTdqpq,
+                       2
+                          �
+
+(8)  Sw            :"          Sw�
+
+                          �"1
+
+Here we consider rD, C8pTdqs and rD, CpTdqpqs as (dense subsets of) operator
+systems in BpL2pTdq b V q.
+
+Lemma 3.5. For the above two linear maps we have the following norm inequality:
+
+                                            }Sw }  }Fw }
+
+Proof. We vary on the proof given in [22, Theorem 6.4]. First identify L2pTdqbV �
+2pZdq b V using the Fourier basis tenunPZd , and write H :" 2pZdq b V . Consider
+the unitary operator U defined on H b H by a combination of a shift in Fourier
+space and a tensor flip in spinor space:
+
+                          U pen b v b em b v1q " en b v1 b en`m b v
+Recall that an elementary matrix Ekl (k, l P Zd) acts on H as:
+
+                                      Eklpen b vq " lnek b v,
+
+in contrast to a generator ek in the group C�-algebra C�pZdq � CpTdq, which acts
+as
+
+                                  ekpen b vq " en`k b v.
+
+Note furthermore that under the identification L2pTdq � 2pZdq we have
+
+(9)                Dpen b vq " nen b �v, pn P Zd, v P V q.
+
+We then find that
+
+                             U pEkl b 1HqU � " Ekl b ek�l
+                          U pEkl� b 1HqU � " Ekl b ek�l�
+
+where � acts of course on the spinor space V . Note that in view of Equation (9)
+we also have U prD, Ekls b 1HqU � " Ekl b rD, ek�ls P KpHq b rD, C8pTdqs.
+
+   Using this we may now show
+
+U `pSw b idBpHqq`rD, Ekls b 1H U � " � U pSw p�pk � lq�Eklq b 1Hq U �
+
+                                                                               �
+12                 MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+                                                " i � U pw� pk � lqpk � lq�Ekl b 1Hq U �
+
+                                                        �
+
+                                                " i � Ekl b w� pk � lqpk � lq�ek�l
+
+                                                        �
+
+                                                " Ekl b Fw prD, ek�lsq
+                                                " pidBpHq b Fw q pU prD, Ekls b 1HqU �q .
+
+This  extends  by  linearity  to  arbitrary  x  "             tk�lEkl  P  CpTdqpq  to  yield
+
+                                                      k,lPBZ
+
+    U `pSw b idBpHqq`rD, xs b 1H U � " pidBpHq b Fw q pU prD, xs b 1HqU �q .
+
+From this we obtain the following estimate:
+
+               }Sw prD, xsq} " }Sw prD, xsq b 1H}
+                                 " }pSw b idBpHqqprD, xs b 1Hq}
+                                 " }U `pSw b idBpHqq`rD, xs b 1H U �}
+                                 " }pidBpHq b Fw q pU prD, xs b 1HqU �q }
+                                  }idKpHq b Fw }}U prD, xs b 1HqU �}
+                                 " }Fw }cb}rD, xs},
+
+where the penultimate step follows from the fact that U prD, xs b 1HqU � P KpHq b
+rD, C8pTdqs. This implies that }Sw }  }Fw }cb.
+
+   Finally, supposing that Fw is a bounded linear map its norm and cb-norm
+coincide because its range is a subset of a commutative C�-algebra, namely CpTdq
+
+(cf. [21, Theorem 3.9]).                                                                      
+
+Remark 3.6. Note that the classical transference theorem is stated as an equality
+of the cb-norms of a Schur multiplier S and a Fourier multiplier F. However, for
+this it is crucial that F and S are defined on the C�-algebras C�pq and Bp2pqq
+which is not the situation we find in the above lemma. In fact, the maps (7) and
+(8) are only defined on operator subsystems and do not extend to the C�-algebras
+CpTdq and BpHq respectively, so equality in Lemma 3.5 is not to be expected.
+
+   Our task is thus reduced to the computation of the norm of the map Fw :
+rD, C8pTdqs � C8pTdq given in Equation (7).
+
+3.3. The spectral Fej�er kernel. We define Km as the convolution kernel corre-
+sponding to the Fourier multiplier Fm as in (6), i.e.
+
+                                              Km :" mq .
+
+In view of Lemma 2.2 it would be desirable to see that Km is a good kernel. Indeed,
+by Lemma 3.4 this would give precisely the estimate of Fw which remains to show.
+
+Lemma 3.7. For every n P Zd, we have that mpnq � 1, as  � 8.
+
+Proof. Th?is follows from two simple geometric observations. One is that |NBpq �
+VBpq|  dABpq, where VBpq is the volume of the d-dimensional ball of radius
+ and ABpq is its surface area. The other is that a lense (i.e. the intersection of
+two d-dimensional balls of radius  one of them shifted by a parameter n P Zd)
+                GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI                                              13
+
+contains the ball of radius  � }n}, if this number is non-negative. Together, these
+observations yield the following estimates:
+
+                                 1
+          |1 � mpnq| " NBpq |NBpq � NLp, nq|
+
+                                 1  ? |VBp `                  ?   dq � VBpp �       ?  d � }n}q`q|
+
+                           VBp � dq
+
+                      "    p      1       |p        `   ?dqd  �   pp     �  ?    �  }n}q`  qd|
+                                   ?                                          d
+                                � dqd
+                                          loooooooooooooooooooooomoooooooooooooooooooooon
+
+                                                                  "Opd�1 q
+
+                      � 0,
+
+as  � 8. (Here t` :" t, if t  0, and t` :" 0, if t  0, for t P R.)                                           
+
+Proposition 3.8. The function Km is positive and is a good kernel.
+
+Proof. We begin by showing positivity of Km . Indeed, Km " mq  is the (inverse)
+Fourier transform of a convolution-square:
+
+                           mpnq  "     NLp, nq
+                                          NB
+
+                                          1�
+                                 "                           BZ pkqBZpnqpkq
+(10)                                   NBpq
+                                                        kPZd
+
+                                          1�                         �
+
+                                 " NBpq BZ � BZ pnq
+
+  Next, we check the total mass of Km :
+
+                                                        1�                    �
+
+                           Td Km pxq dx " NBpq BZ � BZ p0q
+
+                                              "     NLp, 0q       "  1
+                                                     NBpq
+
+   Last, we argue that the mass of Km becomes concentrated around 0 as  � 8.
+Fix some   0 and let   0 be arbitrary. Let  be a non-negative trigonometric
+
+polynomial such that the following holds:
+
+                                                                   
+                                1 � B    1 � B{2 ` 2
+
+The existence of such a trigonometric polynomial  follows from Weierstra�'s ap-
+
+proximation     theorem    for  trigonometric           polynomials      since   the       -neighborhood     of
+                                                                                       4
+
+the continuous function , given by
+
+                                $      ,  if x P B{2,
+                                    4
+                                '
+                                &
+
+                      pxq "         2  }x}    `         � 1,  if  x P BzB{2,
+                                                    4
+
+                                '%1 `         ,     if  Td zB ,
+                                          4
+
+lies  between  1 � B  and  1 � B{2 `             .  Let  0        0  be  large   enough    such  that,  for  all
+                                              2                      
+
+      0,  we   have  that    max |1 � mpnq|                                .  This     is  of  course  possible
+                                                              2}p}1pZdq
+                           nPsuppppq
+
+since the pointwise convergence from Lemma 3.7 implies uniform convergence to 1
+
+of the restriction of m to the finite set suppppq. Then the following holds:
+
+                                       
+
+                      Km pxq dx " Km pxqp1 � B pxqq dx
+
+               Td zB                      Td
+14  MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+                                    
+
+     Km pxqpxq dx
+
+          Td
+
+                                          Km pxqpxq  dx  �         `  
+                                                                      2
+                                                            p0q
+                                     Td                          
+
+                                                                   
+
+                                    �                    � 
+
+    "                                     mpnqppnq �        ppnq ` 2
+                                    
+
+                                    nPZd              nPZd         
+
+                                                                         
+     } pm � 1q |suppppq}8pZdq � }p}1pZdq ` 2
+                                    
+                                       `   ,
+                                    2     2
+
+for all   0. In the fourth step we applied the Plancherel formula and in the
+
+fifth step the H�older inequality.                                         
+
+Remark 3.9. Note that (10) shows that the function Km is precisely the square of
+the well-known spherical Dirichlet kernel (cf. Lipschitz seminorminition 3.1.6]Gra14).
+However, by a classical result by du Bois-Reymond the latter is not a good kernel
+(cf. [12, Proposition 3.3.5]). The feature of Km which is crucial for its good behav-
+ior is positivity. We emphasize that our spectral Fej�er kernel does not coincide with
+the so-called circular Fej�er kernel which is investigated in [12, Chapter 3]. Note in
+particular, that the circular Fej�er kernel fails to be good in dimensions d  3 which
+motivates the introduction of Bochner�Riesz summability methods.
+
+Theorem 3.10. Spectral truncations of Td converge, for all d  1.
+
+Proof. From pT �   pT qq b 1 " Sw pT q (Lemma 3.4) and }Sw }  }Fw }
+(Lemma 3.5), together with Fw pf q " pf �   pf qq b 1 " pf � Kw � f q b 1
+(again Lemma 3.4), we obtain from Lemma 2.2 a sequence  � 0, as  � 8, such
+that
+
+    }T �   pT q}  }rD, T s} and
+    }f �   pf q}  }rD, f s},
+
+since the spectral Fej�er kernel Km is a good kernel (Proposition 3.8). Together
+with Lemma 3.1 and Lemma 3.2 this shows that p, q is a C1-approximate order
+
+isomorphism which by [31, Theorem 5] implies our result.                   
+
+Remark 3.11. We point out that similarly convergence of other kinds of trunca-
+tions of Td can be shown. In particular, by replacing our projections P with the
+projections PN with ranpPN q " ten : ni " �N, . . . , N, for i " 1, . . . , du, analo-
+gous arguments to the ones presented in this chapter yield a new proof that the
+"box-truncations" of Td, which were considered in [2], converge.
+
+           4. Structure Analysis of the Operator System CpTdqpq
+
+4.1. C*-envelope and propagation number. Recall [13] (see also [21, Chapter
+15]) that a C�-extension of a unital operator system E is a unital C�-algebra A
+together with an injective completely positive map  : E � A such that C�ppEqq "
+A. A C�-extension A of E is called the C�-envelope and denoted by C�envpEq if, for
+every unital C�-algebra B and every unital completely positive map  : A � B, the
+map  is a complete order injection if the composition    is. Recall furthermore
+from [8] that the propagation number proppEq is the smallest positive integer n such
+      GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI                        15
+
+that ppEqqn  Ce�nvpEq is a C�-algebra, where F n " spantf1 � � � fn : fi P F u, for
+a unital operator subsystem F of a unital C�-algebra A.
+
+   For p P BZ ` BZ, we define the following operator in CpTdqpq  BpPHq:
+
+               �                 �
+
+(11)  Tp :"            En�p,n "             En,n`p,
+
+             nPLZ ppq            nPLZ p�pq
+
+where Ek,l P BpPHq is the matrix unit given by xem, Ek,leny " mkln, for
+
+k, l, m, n P BZ . It is not hard to check that tTpupPBZ`BZ is a basis for the op-
+erator system CpTdqpq.
+
+   With the preparations of Appendix A, we are in position to treat the C�-envelope
+and propagation number of the operator system CpTdqpq.
+
+Proposition 4.1. The C�-envelope and the propagation number of CpTdqpq are
+given by C�envpCpTdqpqq " BpPHq and proppCpTdqpqq " 2.
+
+Proof. The matrix order structure on CpTdqpq is the one inherited from the inclu-
+sion into BpPHq. It remains to show that the inclusion CpTdqpq �� BpPHq is a
+C�-extension, i.e. that it generates BpPHq. Indeed, if this is the case, it is clear
+that BpPHq � C�envpCpTdqpqq since BpPHq is simple.
+
+   We will see that BpPHq is in fact spanned by respective products of two basic
+
+operators (11). To this end, let p, q P BZ ` BZ. Then, the following holds:
+
+         �                 �                         
+
+               �                 �
+
+      TpTq "            En�p,n,                En,n`q ,
+
+              nPLZ ppq              nPLZ p�qq
+
+                 �        En�p,n`q
+      "
+
+         nPLZppqXLZ p�qq
+
+                  �
+
+      "                    En�p�q,n,
+
+         nPLZpp`qqXLZ pqq
+
+where we used the fact that `Lppq X Lp�qq ` q " Lpp ` qq X Lpqq which can
+
+be easily checked. As a special case, for l, k P BZ ` BZ such that l ` k P BZ ` BZ ,
+we obtain:
+
+                           �
+
+(12)  T�kTl`k "                           En�l,n
+
+                        nPLZplqXLZ pl`kq
+
+Note that this generalizes the formula given in the proof of [8, Proposition 4.2]
+where d was equal to 1. 1
+
+   We need some elementary geometric observations. For 1  0, let K1 :"
+co �BZ1 � denote the convex hull of the set of Zd-lattice points in the closed ball
+
+of radius 1. Note that KZ1 :" K1 X Zd " BZ1 . Furthermore, K1 is a poly-
+tope which is symmetric under reflections along coordinate axes and diagonals (i.e.
+
+under changing signs of coordinates and exchanging coordinates). Clearly, all the
+
+extreme points of K1 , the set of which is denoted by expK1 q, have integer co-
+ordinates. Moreover, if x P K1 is of norm }x} " 1 it is an extreme point, but
+
+    1Moreover, this formula may be interpreted in a similar way: The operator T�kTl`k can be
+regarded as "matrix" (with multi-indexed entries) which has 0-entries everywhere except for the
+
+l-th "diagonal" where its entries are either 1 or 0 depending on the parameter k.
+16    MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+not necessarily all extreme points of K1 are of norm 1 as can be seen in the case
+d " 2, 1 " 3 (cf. Figure 1).
+
+      Figure 1. A plot of th?e boun?darie?s of the balls B and the poly-
+      topes K, for  " 0, 1, 2, 2, 5, 2 2, 3.
+
+   In order to prove the claim it is enough to write every rank-one operator Ep,q P
+
+BpPHq as a linear combination of products of the form (12), where p, q P BZ and
+l, k P BZ ` BZ such that l ` k P BZ ` BZ. To this end, fix p, q P BZ and set
+l :" q � p P BZ ` BZ . Set 1 :" }q}. We claim that we can find an extreme point
+m P expKq such that the following holds:
+
+(13)  K1 X pK � m ` qq " tqu.
+
+To see this, note that q is an extreme point of K1 and that the smallest cone
+r0, 8q � pK1 � qq ` q which contains K1 is locally compact (trivially in this finite
+dimensional case), closed, convex, proper and has vertex q. By Corollary A.3
+we can find an extreme point m P expKq such that pK � mq X pK1 � qq "
+pK � mq X pr0, 8q � pK1 � qq ` qq " t0u, which is equivalent to (13).
+
+   Now, fix an extreme point m P expKq such that (13) is satisfied and set k :"
+q � l � m " p � m. Note that for this l and k the product (12) makes sense, i.e.
+k P BZ ` BZ and l ` k P BZ ` BZ . Furthermore, the following holds:
+
+                                 `LZplq X LZ pl ` kq X K1 " tqu
+
+The converse inclusion is clear from (13) together with LZ pl ` kq  BZpl ` kq "
+KZ ` q � m, where q � m " l ` k was used.
+            GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI                                              17
+
+   This shows that, for l " q � p and k " p � m, the rank-one operator Ep,q is a
+summand of T�kTl`k as in (12) where, for all the other rank-one operators En�l,n
+appearing in the sum, we have that }n}  }q}, i.e.
+
+                                                           �
+
+(14)                       Ep,q " T�kTl`k �                          En�l,n.
+
+                                                 nPLZ pl`kqXLZ plq
+
+                                                            }n}}q}
+
+Moreover, for each En�l,n in the above sum, a similar expression can be obtained,
+and so forth. Hence, after finitely many steps this gives a finite linear combination
+
+of products of the form (12) for Ep,q.
+
+Altogether,       this  proves   that   BpPHq              span  T�k Tl`k     l,  k,  l  `  k  P  BZ  `  BZ (
+                                                                            
+
+which shows that C�envpCpTdqpqq � BpPHq and proppCpTdqpqq  2. Realizing
+
+that E0,0 R CpTdqpq it is clear that proppCpTdqpqq  1. This finishes the proof. 
+
+   We illustrate the procedure of expressing elementary matrices Ep,q P BpPHq
+in terms of products of basic operators of the form (12) as described in the above
+proof in the following two examples.
+
+Example 4.2. Let p, q P BZ such that }q} " . Finding an m P expKq such
+that (13) holds is particularly easy in this case, namely, set m :" �q. Then set
+k :" p � m " p ` q and, with l " q � p, we obtain:
+
+                       Ep,q " T�kTl`k " T�p�qTq�p`p`q " T�p�qT2q,
+
+according to (14), since there are no n P BZ with }n}  }q} " .
+
+Example     4.3.  Let   d  "  2  and    "  ?     i.e.  BZ  consists  of  9  points  and     K     "  co `BZ
+                                             2,
+
+is the square with side length 2. For p " p0, 0q and q " p1, 0q, we want to express
+
+the matrix unit Ep,q as a linear combination of products of basic operators (12)
+with l " q � p " p1, 0q. Set 1 :" }q} " 1. Now, find an extreme point m P expKq
+
+such that (13) holds. A valid choice is e.g. m :" p�1, �1q. Set k :" p � m " p1, 1q.
+
+Then we have:
+
+            LZplq X LZ pl ` kq " LZ?2p1, 0q X L?Z 2p2, 1q " tp1, 0q, p1, 1qu
+
+Therefore:
+
+                                           �
+
+T�kTl`k " Tp�1,�1qTp2,1q "                                 En�p1,0q,n " Ep0,0q,p1,0q `Ep0,1q,p1,1q
+
+                                                                            loooomoooon
+
+                                 nPLZ? p1,0qXLZ? p2,1q                        "Ep,q
+                                        2              2
+
+                           ?
+Note that }p1, 1q} " 2  }q} " 1.
+
+By Example 4.2, we have Ep0,1q,p1,1q " Tp�1,�2qTp2,2q. Altogether, we obtain:
+
+                        Ep0,0q,p1,0q " Tp�1,�1qTp2,1q � Tp�1,�2qTp2,2q
+
+Remark 4.4. We point out that analogously to the proof of Proposition 4.1 one
+can show that the Ce�nvpPK C8pTdqPK q " BpPK Hq and proppPK C8pTdqPK q " 2,
+where K is a convex compact subset of Rd which is symmetric with respect to
+reflections along the coordinate axes and diagonals and where PK P BpHq is the
+orthogonal projection with ranpPK q " ten : n P p � Kq X Zdu. In particular, this
+shows that the propagation number of the operator system obtained from "box-
+
+truncations", which were considered in [2], is also 2.
+18                    MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+4.2. Dual. In [11, Theorem 3.1] it was shown that the operator system of pN ^N q-
+
+Toeplitz matrices CpS1qpNq is dual to the Fej�er�Riesz system CpS1qpNq which con-
+
+sists  of  trigonometric       polynomials    of   the  form     N �1     `1  anen.  In   fact,  this  was    al-
+
+                                                                    n"�N
+
+ready    stated  in  [8]  but  it  was  only  shown   in   [11]  that  CpS 1 qpN q   �  `CpS  1  qpN   d  in  the
+
+                                                                                                      q
+
+sense that there is a unital complete order isomorphism. For the proof, the (opera-
+
+tor valued) Fej�er�Riesz theorem plays an essential role. Recall that the Fej�er�Riesz
+
+theorem    states    that  every   non-negative       Laurent      polynomial    P   "   N            ak ek     0
+
+                                                                                            k"�N
+
+can    be  expressed  as   a   hermitian      square  of   an  analytic   polynomial      Q   "  N        bk ek ,
+
+                                                                                                    k"0
+
+i.e.
+
+                                                  P " Q�Q.
+
+A generalization to the case where the coefficients ak and bk are operators on a
+Hilbert space is due to Rosenblum. See [10] for a survey on the operator-valued
+
+Fej�er�Riesz theorem.
+
+    In view of the duality result for S1, it would be natural to expect that the op-
+
+erator system CpTdqpq is dual to the operator system CpTdqp2q which consists
+
+of  trigonometric     polynomials         on  the  d-torus     of  the  form              anen.       However,
+
+                                                                                   nPB2Z
+
+this duality must fail even algebraically as soon as d  2. Indeed, it is clear that
+
+dim `CpTdqp2q " #B2Z " NBp2q and from the above considerations about a
+
+basis we conclude that dim `CpTdqpq " # `BZ � BZ  " # `BZ ` BZ . In gen-
+
+eral, however, the inclusion BZ ` BZ  B2Z is strict, as the following examples
+
+demonstrate:
+
+Example 4.5. If d " 2, we have that p3, 2q P BZ4 z `BZ2 ` B2Z. If d  3, we have
+that p1, � � � , 1q P BZ2 z `B1Z ` BZ1 .
+
+    In view of these remarks, a more promising candidate for the dual operator
+
+system of CpTdqpq might be the operator subsystem CpTdqpq`pq of CpTdq which
+
+consists   of  trigonometric       polynomials     on   the   d-torus   of  the  form                  anen.
+
+                                                                                           nPBZ `BZ
+
+    In order to generalize the proof of [11] to this setting, one would need to show
+
+that the following map is a complete order isomorphism:
+
+                                    : CpTdqpq � pCpTdqpq`pqqd
+                                                 t �� t,
+
+where
+
+                                                        �
+
+                                        tpf q "                  t�nan,
+
+                                                   nPBZ `BZ
+
+for t " ptk�lqk,lPBZ `BZ           and f  "                anen    P CpTdqpq`pq.          It is easy to see
+
+                                                 nPBZ `BZ
+
+that  is unital and an isomorphism of vector spaces, so it remains to show that 
+
+and �1 are completely positive.
+
+    While the proof of complete positivity of �1 is largely analogous to the one in
+
+[11], for the proof of complete positivity of  a multivariate version of the (operator-
+
+valued) Fej�er�Riesz theorem would be needed. In fact, it would be sufficient to be
+
+able to express a (dense subset of the cone of) non-negative Laurent polynomials
+
+in  d  variables  P   "            anen   as  a    finite  sum     of  squares   of  analytic    polynomials
+
+                             nPBZ
+
+Qi    "              binen,    where    `BZ       "  B     X  pZ0qd.      Although it is not known to
+           nPpBZ q`
+                                               `
+
+the authors if such a result holds for a dense subset of the positive cone , at least
+GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI  19
+
+for d  3 it must fail for some non-negative Laurent polynomials even if higher
+degrees of the analytic polynomials Qi are admitted ([29]). For d " 2, Dritschel
+proved ([9, Theorem 4.1]) that if P is a non-negative Laurent polynomial of degree
+pd1, d2q (with Hilbert space operators as coefficients), then P is a sum of at most
+2d2 squares of analytic polynomials each of degree at most pd1, d2 � 1q. However,
+as it is stated in the conclusion of that article it is not clear by how much the
+number of summands and in particular the bound on the degree can be improved.
+Yet, there are examples of non-negative polynomials of degree pd1, d2q which are
+not a finite sum of squares of analytic polynomials of degree pd1, d2q ([20], [27],
+[28, Section 3.6]). Note that it is in fact true that a strictly positive trigonometric
+polynomial P  0 in d variables is a finite sum of squares of analytic polynomials
+([10, Theorem 5.1]), but the degrees might get out of control.
+
+   We see that it is apparently not as straightforward to determine the operator
+system dual of CpTdqpq as one might expect at first thought and we have to leave
+this to further research to be conducted.
+
+                          Appendix A. Some convex geometry
+
+   In order to compute the propagation number of the operator system CpTdqpq,
+some facts from convex geometry are required. Since the natural setting for these is
+
+locally convex spaces we formulate all the required results in this abstract language
+
+even though we only make use of them in the finite dimensional case. See e.g. [26,
+
+Section 11] and [3, Chapter II] for much of the standard terminology.
+
+   Throughout this section, let X be a Hausdorff locally convex space over R with
+continuous dual X1. Every linear functional l on X and every real number  P R
+give rise to a hyperplane in X given by Hl" " tx P X | lpxq " u. Clearly, Hl" "
+kerpl � q and the hyperplane Hl" is closed if and only if l is continuous which is
+the only case we consider. Every hyperplane Hl" gives rise to an open positive and
+an open negative half-space denoted by Hl and Hl respectively and defined
+by Hl :" tx P X | lpxq  u and similarly for Hl. Their respective closures are
+called the closed positive and the closed negative half-space associated to Hl" and
+denoted by Hl and Hl respectively. Of course Hl " tx P X | lpxq  u and
+similarly for Hl.
+
+   If K, L  X are two convex sets, it is said that they are separated by the
+hyperplane Hl" if K  Hl and L  Hl. The sets K and L are called properly
+separated if additionally K  Hl" or L  Hl". The sets K and L are called
+strictly separated by Hl" if K  Hl and L  Hl. A hyperplane Hl" is
+called a supporting hyperplane for a non-empty convex set K  X, if K  Hl
+and x P Hl", for at least one x P K. A supporting hyperplane Hl" for K is
+called non-trivial if K  Hl".
+
+   Recall that a cone C  X is called pointed if 0 P C, salient if it does not contain
+any 1-dimensional subspaces of X and proper if C X p�Cq " t0u. We only consider
+convex cones. A convex pointed cone is salient if and only if it is proper. For x P X,
+we call a set C ` x a cone with vertex x if C is a pointed cone. A cone with vertex
+x is called proper if C � x is a proper cone.
+
+   Let K  X be convex set with 0 R K. Set C :" r0, 8q � K. Clearly, C is a
+convex pointed cone. Moreover, C is the smallest convex pointed cone which which
+
+contains K in the sense that every convex pointed cone which contains K must
+
+contain C.
+20                      MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+   If C is a convex pointed cone, a subset B  C is called a base (or sole in [3,
+II, �8.3]) if there exists a closed hyperplane H S 0 such that B " H X C and such
+that C is the smallest convex pointed cone which contains B. It is well-known that
+a convex subset B of a convex pointed cone C is a base if and only if, for every
+x P Czt0u, there exists a unique pair p, yq P p0, 8q ^ B such that x " y.
+
+   The statement of the following lemma can be found in [3, II, �7.2, Exercise 21a].
+
+Lemma A.1. Let C  X be a locally compact, closed, convex, proper cone with
+vertex x. Then there exists a closed supporting hyperplane H of C such that HXC "
+txu.
+
+Proof. To simplify notation we assume, without loss of generality, that x " 0. Let
+
+U  X be a convex open neighborhood of 0 such that K :" U X C is compact. We
+
+claim that C " r0, 8q � K, i.e. C is the smallest convex pointed cone which contains
+
+K. In fact, the inclusion C  r0, 8q � K is clear from the cone property. To see
+
+that C  r0, 8q � K, let y P C. Since every 0-neighborhood in a locally convex
+
+space is absorbent, there exists a positive scalar   0 such that y P U . Hence,
+
+1  y  P  U  X  1  C  "  U  XC    K  and  therefore  y  "    1  y  P  K    r0, 8q  � K.
+                                                            
+    By [3, II, �7.1, Proposition 2], there is an open half-space Hl  X such that
+
+0 P Hl X K  U X C. We may assume that the scalar  is positive, otherwise
+
+pass to the functional �l instead. The boundary BHl " Hl" of this half-space
+
+is a closed hyperplane of X which does not contain 0.
+
+    We claim that the cone C is the smallest closed convex pointed cone which
+
+contains Hl" X C, i.e. C " r0, 8q � pHl" X Cq. To see this, observe that the
+following inclusion holds:
+
+                  r0, 8q � pHl" X Cq " r0, 8q � pHl X Cq  r0, 8q � K " C
+
+The converse inclusion r0, 8q � pHl X Cq  r0, 8q � K follows from the continuity
+and hence boundedness on the compact set K of the functional l by observing that
+
+there exists a positive real number   0 such that Hl " Hl  K.
+   Now, set H :" Hl"0. Then we have:
+
+               H X C " H X r0, 8q � pHl" X Cq " pH X r0, 8q � Hl"q X C " t0u
+
+So H is the desired closed supporting hyperplane for C.                                 
+
+Lemma A.2. Let K  X be a non-empty compact convex subset. Let l P X1 be a
+continuous linear functional and Hl"0 be the associated closed hyperplane through
+0. Then there exists an extreme point x P expKq such that K � x  Hl0.
+
+Proof. By continuity of l, the image lpKq  R is bounded. Set  :" infplpKqq. In
+
+other words,  is the largest real number such that K  Hl. In particular, Hl"
+is a closed supporting hyperplane of K. By [3, II, �7.1, Corollary to Proposition
+
+1], the hyperplane Hl" contains an extreme point x of K. Moreover, K � x is
+
+contained in the positive half-space Hl0.                                               
+
+   Combining the previous two lemmas, we obtain the following immediate conse-
+quence:
+
+Corollary A.3. Let C  X be a locally compact, closed, convex, proper cone with
+vertex x and let K  X be a non-empty compact convex set. Then there exists
+an extreme point y P expKq and a closed hyperplane H which separates C � x and
+K � y. Moreover, these two sets only intersect in 0, i.e. pC � xq X pK � yq " t0u.
+GH CONVERGENCE OF SPECTRAL TRUNCATIONS FOR TORI  21
+
+                                             References
+
+ [1] K. Aguilar, J. Kaad, and D. Kyed. The Podle�s spheres converge to the sphere. Comm. Math.
+      Phys., 392(3):1029�1061, 2022.
+
+ [2] T. Berendschot. Truncated Geometry. Spectral Approximation of the Torus. Master's thesis,
+      Radboud University Nijmegen, 2019.
+
+ [3] N. Bourbaki. Elements of mathematics. Topological vector spaces. Chapters 1-5. Transl. from
+      the French by H. G. Eggleston and S. Madan. Berlin etc.: Springer-Verlag, 1987.
+
+ [4] M. Bozejko and G. Fendler. Herz-Schur multipliers and completely bounded multipliers of the
+      Fourier algebra of a locally compact group. Boll. Unione Mat. Ital., VI. Ser., A, 3:297�302,
+      1984.
+
+ [5] N. P. Brown and N. Ozawa. C�-algebras and finite-dimensional approximations, volume 88
+      of Grad. Stud. Math. Providence, RI: American Mathematical Society (AMS), 2008.
+
+ [6] A. Connes. Compact metric spaces, Fredholm modules, and hyperfiniteness. Ergodic Theory
+      Dynam. Systems, 9(2):207�220, 1989.
+
+ [7] A. Connes. Noncommutative Geometry. Academic Press, San Diego, 1994.
+ [8] A. Connes and W. D. van Suijlekom. Spectral truncations in noncommutative geometry and
+
+      operator systems. Commun. Math. Phys., 383(3):2021�2067, 2021.
+ [9] M. A. Dritschel. Factoring Non-negative Operator Valued Trigonometric Polynomials in Two
+
+      Variables. arXiv:1811.06005, 2018.
+[10] M. A. Dritschel and J. Rovnyak. The operator Fej�er-Riesz theorem. In A glimpse at Hilbert
+
+      space operators. Paul R. Halmos in memoriam, pages 223�254. Basel: Birkh�auser, 2010.
+[11] D. Farenick. The operator system of Toeplitz matrices. Trans. Am. Math. Soc., Ser. B,
+
+      8:999�1023, 2021.
+[12] L. Grafakos. Classical Fourier analysis, volume 249. New York, NY: Springer, 2014.
+[13] M. Hamana. Injective envelopes of operator systems. Publ. Res. Inst. Math. Sci., 15:773�785,
+
+      1979.
+[14] E. Hewitt and K. A. Ross. Abstract harmonic analysis. Volume I: Structure of topological
+
+      groups, integration theory, group representations., volume 115 of Grundlehren Math. Wiss.
+      Berlin: Springer-Verlag, 2nd edition, 1994.
+[15] J. Kaad and D. Kyed. The quantum metric structure of quantum SU(2). arXiv:2205.06043,
+      2022.
+[16] J. Kaad and D. Kyed. A comparison of two quantum distances. Math. Phys. Anal. Geom.,
+      26(1):Paper No. 8, 9, 2023.
+[17] F. Latr�emoli`ere. The quantum Gromov-Hausdorff propinquity. Trans. Amer. Math. Soc.,
+      368(1):365�411, 2016.
+[18] F. Latr�emoli`ere. Quantum metric spaces and the Gromov-Hausdorff propinquity. In Non-
+      commutative geometry and optimal transport, volume 676 of Contemp. Math., pages 47�133.
+      Amer. Math. Soc., Providence, RI, 2016.
+[19] F. Latr�emoli`ere. The Gromov-Hausdorff propinquity for metric spectral triples. Adv. Math.,
+      404:Paper No. 108393, 56, 2022.
+[20] A. Naftalevich and M. Schreiber. Trigonometric polynomials and sums of squares. In Num-
+      ber theory (New York, 1983�84), volume 1135 of Lecture Notes in Math., pages 225�238.
+      Springer, Berlin, 1985.
+[21] V. Paulsen. Completely bounded maps and operator algebras, volume 78 of Camb. Stud. Adv.
+      Math. Cambridge: Cambridge University Press, 2002.
+[22] G. Pisier. Similarity problems and completely bounded maps, volume 1618 of Lect. Notes
+      Math. Berlin: Springer, 1995.
+[23] M. A. Rieffel. Metrics on states from actions of compact groups. Doc. Math., 3:215�229, 1998.
+[24] M. A. Rieffel. Gromov-Hausdorff distance for quantum metric spaces. Matrix algebras con-
+      verge to the sphere for quantum Gromov-Hausdorff distance, volume 796. Providence, RI:
+      American Mathematical Society (AMS), 2004.
+[25] M. A. Rieffel. Convergence of Fourier truncations for compact quantum groups and finitely
+      generated groups. J. Geom. Phys., 192:Paper No. 104921, 13, 2023.
+[26] R. T. Rockafellar. Convex analysis. Princeton, NJ: Princeton University Press, 1997.
+[27] W. Rudin. The extension problem for positive-definite functions. Ill. J. Math., 7:532�539,
+      1963.
+22  MALTE LEIMBACH AND WALTER D. VAN SUIJLEKOM
+
+[28] L. A. Sakhnovich. Interpolation theory and its applications, volume 428 of Math. Appl.,
+      Dordr. Dordrecht: Kluwer Academic Publishers, 1997.
+
+[29] C. Scheiderer. Sums of squares of regular functions on real algebraic varieties. Trans. Am.
+      Math. Soc., 352(3):1039�1069, 2000.
+
+[30] E. M. Stein and R. Shakarchi. Fourier analysis. An Introduction, volume 1 of Princeton Lect.
+      Anal. Princeton, NJ: Princeton University Press, 2003.
+
+[31] W. D. van Suijlekom. Gromov-Hausdorff convergence of state spaces for spectral truncations.
+      J. Geom. Phys., 162:Paper No. 104075, 11, 2021.
+
+[32] I. G. Todorov and L. Turowska. Schur and operator multipliers. In Banach algebras 2009.
+      Proceedings of the 19th international conference, Be�dlewo, Poland, July 14�24, 2009, pages
+      385�410. Warszawa: Polish Academy of Sciences, Institute of Mathematics, 2010.
+
+    Institute for Mathematics, Astrophysics and Particle Physics, Radboud University
+Nijmegen, Heyendaalseweg 135, 6525 AJ Nijmegen, The Netherlands.
+
+    Email address: [dado pessoal removido], [dado pessoal removido]
+

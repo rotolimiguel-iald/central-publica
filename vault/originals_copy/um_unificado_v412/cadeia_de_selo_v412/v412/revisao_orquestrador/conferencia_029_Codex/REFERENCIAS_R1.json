@@ -1,0 +1,46 @@
+{
+  "consultadas_em": "2026-11-17T16:09:37.149390-03:00",
+  "modo": "Leitura de fontes primárias pelo navegador de pesquisa; sem hash alegado dos documentos remotos.",
+  "fontes": [
+    {
+      "id": "cook",
+      "titulo": "Stephen Cook, The P versus NP Problem",
+      "url": "https://www.claymath.org/wp-content/uploads/2022/06/pvsnp.pdf",
+      "localizacao": "seção 1, pp. 1–2; apêndice, pp. 9–10",
+      "estatuto": "KNOWN",
+      "apoia": "P usa número de transições polinomial no tamanho da entrada; alfabeto finito fixado por máquina; transição lê o símbolo sob a cabeça, escreve símbolo, muda estado e desloca a cabeça. Não obriga enumerar todas as atribuições.",
+      "nao_apoia": "Não define token como unidade universal de custo e não demonstra o preço de Set.image."
+    },
+    {
+      "id": "blelloch_work_depth",
+      "titulo": "Guy E. Blelloch, Programming Parallel Algorithms, CACM 39(3), 1996",
+      "url": "https://www.cs.cmu.edu/~scandal/cacm/node1.html",
+      "localizacao": "Work and Depth",
+      "estatuto": "KNOWN",
+      "apoia": "Trabalho total e profundidade da cadeia de dependências são medidas diferentes; redução binária distingue número de operações e profundidade.",
+      "nao_apoia": "A construção SAT abaixo é nossa aplicação DERIVED, não teorema SAT citado literalmente deste artigo."
+    },
+    {
+      "id": "blelloch_running_time",
+      "titulo": "Guy E. Blelloch, Programming Parallel Algorithms — Relationship to Running Time",
+      "url": "https://www.cs.cmu.edu/~scandal/cacm/node3.html",
+      "localizacao": "Relationship to Running Time",
+      "estatuto": "KNOWN",
+      "apoia": "Relação entre trabalho, profundidade, processadores e tempo exige modelo de execução.",
+      "nao_apoia": "Não identifica um objeto Set de Lean com processadores físicos nem fornece implementação desta pedra."
+    },
+    {
+      "id": "stanford_token",
+      "titulo": "Eric Roberts, Stanford C++ Library — TokenScanner",
+      "url": "https://cs.stanford.edu/people/eroberts/StanfordCPPLib/doc/TokenScanner-class.html",
+      "localizacao": "TokenScanner, nextToken, addOperator",
+      "estatuto": "KNOWN",
+      "apoia": "Token léxico pode ser uma cadeia com vários caracteres; a unidade depende do modelo.",
+      "nao_apoia": "Nomear um conteúdo token não demonstra processamento integral em custo constante."
+    }
+  ],
+  "aplicacao_paralela": {
+    "estatuto": "DERIVED",
+    "texto": "Uma realização explícita avalia a fórmula nas 2^n atribuições em paralelo e reduz as respostas por OU em árvore binária de profundidade n; com avaliação local polinomial, resulta profundidade polinomial e recursos exponenciais. É uma realização possível, não identificação obrigatória de Set.image com paralelismo nem cota inferior de todos os algoritmos."
+  }
+}

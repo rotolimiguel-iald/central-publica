@@ -1,0 +1,27 @@
+{
+  "fonte": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\ACurvaEAEstado.lean",
+  "sha256_fonte": "a134176a6083a64fd131a55393121cc8160e4cafb1de3613845368f96f6d9872",
+  "rc": 0,
+  "segundos_compilacao": 40,
+  "lean": "Lean (version 4.31.0, x86_64-w64-windows-gnu, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)",
+  "avisos": [],
+  "sorry": false,
+  "axiomas_novos": false,
+  "open": [],
+  "axiomas_por_teorema": {
+    "sat_clausula_true_em_1": ["propext", "Quot.sound"],
+    "sat_clausula_false_em_1": ["propext", "Quot.sound"],
+    "flip1_involutive": ["propext", "Quot.sound"],
+    "custo_flip1": ["propext", "Quot.sound"],
+    "a_curva_e_a_soma_das_celulas": ["propext", "Classical.choice", "Quot.sound"],
+    "mesma_curva_para_todo_tempo": ["propext", "Classical.choice", "Quot.sound"],
+    "palavras_opostas_depois_da_mesma_clausula": ["propext", "Classical.choice", "Quot.sound"],
+    "a_fronteira_distingue_os_prefixos": ["propext", "Classical.choice", "Quot.sound"],
+    "a_curva_identifica_o_que_o_resumo_distingue": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "log": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\build\\ACurvaEAEstado.log",
+  "sha256_log": "6294a571b56c48b71ea1204fde99838ade789f35c9b80cd3e8b78596acfc255b",
+  "olean": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\build\\ACurvaEAEstado.olean",
+  "plano": "A",
+  "nota": "Os cinco teoremas fecharam pelo plano do briefing; todos os enunciados preservados literalmente (nenhum falso). Auxiliares novos marcados como auxiliares do laço: sat_clausula_true_em_1/sat_clausula_false_em_1 (leitura da cláusula unitária, por Bool.or_false — a lista é [lit], o any vira (vale || false)), flip1/flip1_involutive (a involução de sinal) e custo_flip1 (a troca de custo pelo flip). Laço: (1) a_curva_e_a_soma_das_celulas fechou de primeira por ← Finset.sum_fiberwise + congruência de filtros (a fibra da restrição é exatamente a célula do levanta, via dif_pos); (2) mesma_curva_para_todo_tempo por Fintype.sum_equiv com a equivalência involutiva ⟨flip1, flip1, flip1_involutive, flip1_involutive⟩ e custo_flip1 (sem soma explícita); (3) palavras por a_palavra_e_o_sat + custoCNF_zero_sse (kernel) — as duas atribuições de Fin 1 → Bool cobertas por cases h : x 0 + simp [h]; (4) fronteira dos dois prefixos computada por ext+simp (varsDas de cláusula unitária = {0}, interseção idempotente), fibra do singleton por Fin.eq_zero, resumos = 1 e e^{−t} pelo fator, e Real.one_lt_exp_iff/Real.exp_lt_one_iff com lt_or_gt_of_ne para e^{−t} ≠ 1; (5) conjunção direta. Achado do laço: a notação prefix ! (Bool.not) tem precedência MENOR que == nesta versão — `!(x 0) == true` elabora como `Bool.not ((x 0) == true)` — por isso o lema do flip usa Bool.not explícito. Avisos: nenhum."
+}

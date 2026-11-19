@@ -1,0 +1,308 @@
+--- v411/gerar_esperados_v411.py
++++ v412/gerar_esperados_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/gerar_esperados_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/gerar_esperados_v412.py.diff
+@@ -3 +4 @@
+-"""gerar_esperados_v411.py -- ESPERADOS_v411.json LIDOS dos artefatos (molde: gerar_esperados_v410.py FINAL). A v411 NAO tem modulo novo no kernel (o da v410, byte a byte; escada e cobertura iguais); tem UM registro com funcao,
++"""gerar_esperados_v412.py -- ESPERADOS_v412.json LIDOS dos artefatos (molde: gerar_esperados_v411.py FINAL). A v412 NAO tem modulo novo no kernel (o da v411, byte a byte; escada e cobertura iguais); tem UM registro com funcao,
+@@ -5,7 +6,7 @@
+-guarda, teste nao cego; provado e' validade, nao creditacao; o gate nao se move), e os dois por spec cunhagens_v411 (as 11 falas de 11 e 12/11 CITADAS por data e sha256, nao transcritas, lidas de DL.FALAS_V411; D159 a D181, DL.DECISOES_V411; as erratas E41 a E44 ao lado) e kh_n1_cobertura_v411.
+-O ESQUEMA e' o do ESPERADOS_v410 com os rotulos subidos: as chaves `*_v410` de ESTADO DA BASE (vereditos_v410, flags_true_v410, qg_closure_v410_*, selo_registros_v410...) descrevem a v410 SELADA (base_v410); `registros_funcao_v411`,
+-`vereditos_novos_v411`, `registros_v411`, `titulo_secao_v411`, `md_h0dn_v411` sao os desta versao; `registros_funcao_v410` (iald2, aescala/a_escala, h0dn, hms13), `estrelas_v410`, `estrelas_aescala_v410`, `bundle_v410_sha256` e os
+-titulos/linhas da v410 sao HERANCA (RECRIADOS no ensaio e iguais ao selado; lidos do ESPERADOS_v410). `estrelas_v411`, `bundle_sha256`, `bandeiras_novas_*` ficam VAZIOS (nenhum modulo, nenhuma bandeira nova).
+-A TROCA DITA e' a do ensaio (so' numeros e o hash proprio do um.py no estatuto da prova); nenhuma de texto; NENHUMA chave antiga muda. O GATE NAO SE MOVE (o qg_closure do rito tem de ser o da v410 selada).
+-Nada digitado: cada numero e hash vem do manifesto do candidato (ou do ARTEFATO DE ENSAIO do topo proposto, com V411_ENSAIO_TOPO_PROPOSTO=1: NAO e' candidato), do ensaio a seco, do core/selo da v410 (base_v410), do ESPERADOS_v410,
+-do FORMAL_MAP, de kernel\\FLAGS_v411.json e kernel\\KH_N1_v411.json. Os registros novos e herdados sao lidos do ensaio (chave do registro no ensaio_a_seco_v411.json) ou, se o ensaio nao os traz no topo, do core que o
++guarda, teste nao cego; provado e' validade, nao creditacao; o gate nao se move), e os dois por spec cunhagens_v411 (as 11 falas de 11 e 12/11 CITADAS por data e sha256, nao transcritas, lidas de DL.FALAS_V412; D159 a D181, DL.DECISOES_V412; as erratas E41 a E44 ao lado) e kh_n1_cobertura_v411.
++O ESQUEMA e' o do ESPERADOS_v411 com os rotulos subidos: as chaves `*_v410` de ESTADO DA BASE (vereditos_v411, flags_true_v411, qg_closure_v411_*, selo_registros_v411...) descrevem a v411 SELADA (base_v411); `registros_funcao_v412`,
++`vereditos_novos_v412`, `registros_v411`, `titulo_secao_v412`, `md_h0dn_v412` sao os desta versao; `registros_funcao_v411` (iald2, aescala/a_escala, h0dn, hms13), `estrelas_v411`, `estrelas_aescala_v411`, `bundle_v411_sha256` e os
++titulos/linhas da v411 sao HERANCA (RECRIADOS no ensaio e iguais ao selado; lidos do ESPERADOS_v411). `estrelas_v412`, `bundle_sha256`, `bandeiras_novas_*` ficam VAZIOS (nenhum modulo, nenhuma bandeira nova).
++A TROCA DITA e' a do ensaio (so' numeros e o hash proprio do um.py no estatuto da prova); nenhuma de texto; NENHUMA chave antiga muda. O GATE NAO SE MOVE (o qg_closure do rito tem de ser o da v411 selada).
++Nada digitado: cada numero e hash vem do manifesto do candidato (ou do ARTEFATO DE ENSAIO do topo proposto, com V412_ENSAIO_TOPO_PROPOSTO=1: NAO e' candidato), do ensaio a seco, do core/selo da v411 (base_v411), do ESPERADOS_v411,
++do FORMAL_MAP, de kernel\\FLAGS_v412.json e kernel\\KH_N1_v412.json. Os registros novos e herdados sao lidos do ensaio (chave do registro no ensaio_a_seco_v412.json) ou, se o ensaio nao os traz no topo, do core que o
+@@ -13 +14 @@
+-estrutural. uso: python -B -X utf8 gerar_esperados_v411.py [--seco]   (`--ensaio CAMINHO` e `--saida CAMINHO` so' para o ensaio do proprio script)"""
++estrutural. uso: python -B -X utf8 gerar_esperados_v412.py [--seco]   (`--ensaio CAMINHO` e `--saida CAMINHO` so' para o ensaio do proprio script)"""
+@@ -19,3 +20,3 @@
+-import delta_v411 as DL  # noqa: E402
+-import registros_v411 as RG  # noqa: E402
+-sys.modules.setdefault("delta_v410", DL)   # (a ponte por sys.modules, como no ensaio e no conferidor: a copia do quadro_v397.py importa o delta pelo nome antigo; ele usa so' F9_CAMINHOS e lido(), herdados no delta_v411)
++import delta_v412 as DL  # noqa: E402
++import registros_v412 as RG  # noqa: E402
++sys.modules.setdefault("delta_v411", DL)   # (a ponte por sys.modules, como no ensaio e no conferidor: a copia do quadro_v397.py importa o delta pelo nome antigo; ele usa so' F9_CAMINHOS e lido(), herdados no delta_v412)
+@@ -23 +24 @@
+-import guarda_frases_v411 as GF  # noqa: E402
++import guarda_frases_v412 as GF  # noqa: E402
+@@ -46 +47 @@
+-assert h16(os.path.join(BASE, "um.py")) == CM["base_v410_sha16"] == DL.BASE_SHA16_DA_ORDEM, "a base nao e' a v410 selada que a ordem deu"
++assert h16(os.path.join(BASE, "um.py")) == CM["base_v411_sha16"] == DL.BASE_SHA16_DA_ORDEM, "a base nao e' a v411 selada que a ordem deu"
+@@ -49 +50 @@
+-E410 = json.load(open(os.path.join(DL.V410, "ESPERADOS_v410.json"), encoding="utf-8")); assert E410["candidato_sha16"] == CM["base_v410_sha16"], "o ESPERADOS_v410 nao e' da v410 selada"
++E411 = json.load(open(os.path.join(DL.V411, "ESPERADOS_v411.json"), encoding="utf-8")); assert E411["candidato_sha16"] == CM["base_v411_sha16"], "o ESPERADOS_v411 nao e' da v411 selada"
+@@ -52 +53 @@
+-# ---- o kernel desta versao: NENHUM modulo novo, NENHUMA bandeira nova (o da v410 byte a byte); a cobertura igual
++# ---- o kernel desta versao: NENHUM modulo novo, NENHUMA bandeira nova (o da v411 byte a byte); a cobertura igual
+@@ -54,6 +55,6 @@
+-FJ = json.load(open(os.path.join(HERE, DL.KERNEL_DIR, "FLAGS_v411.json"), encoding="utf-8")); KH = json.load(open(os.path.join(HERE, DL.KERNEL_DIR, DL.KH_N1_INSUMO), encoding="utf-8"))
+-assert FJ["n_flags"] == CM["n_bandeiras"] == 0 and not FJ["flags"] and CM["kernel"]["modulos_novos"] == 0 and CM["escada"][0] == CM["escada"][1] == E410["escada"][1], ("a v411 nao tem modulo nem bandeira nova", CM["escada"])
+-assert all(F.get(r_) == s_ for r_, s_ in kf["formal_files_sha256"].items() if r_ in F) and len(F) == CM["formal_files_n"], "o FORMAL_MAP do candidato diverge do hash formal da v410 selada num arquivo embutido"
+-VBASE = {k: V(k) for k, m in core0.items() if isinstance(m, dict) and m.get("verdict")}   # o estado SELADO da v410 (a base)
+-REG_V410 = list(D10.REGISTROS_FUNCAO)   # iald2_v410, a_escala_v410, h0dn_bg1_v410, h0dn_fontes_hms13_v410
+-SEL_KEYS = tuple(E410["selo_registros_v409"]) + tuple(REG_V410) + ("registros_v410",)   # as chaves do selo das versoes anteriores (as da v410 entram como heranca)
++FJ = json.load(open(os.path.join(HERE, DL.KERNEL_DIR, "FLAGS_v412.json"), encoding="utf-8")); KH = json.load(open(os.path.join(HERE, DL.KERNEL_DIR, DL.KH_N1_INSUMO), encoding="utf-8"))
++assert FJ["n_flags"] == CM["n_bandeiras"] == 0 and not FJ["flags"] and CM["kernel"]["modulos_novos"] == 0 and CM["escada"][0] == CM["escada"][1] == E411["escada"][1], ("a v412 nao tem modulo nem bandeira nova", CM["escada"])
++assert all(F.get(r_) == s_ for r_, s_ in kf["formal_files_sha256"].items() if r_ in F) and len(F) == CM["formal_files_n"], "o FORMAL_MAP do candidato diverge do hash formal da v411 selada num arquivo embutido"
++VBASE = {k: V(k) for k, m in core0.items() if isinstance(m, dict) and m.get("verdict")}   # o estado SELADO da v411 (a base)
++REG_V411 = list(D10.REGISTROS_FUNCAO)   # iald2_v410, a_escala_v410, h0dn_bg1_v410, h0dn_fontes_hms13_v410
++SEL_KEYS = tuple(E411["selo_registros_v409"]) + tuple(REG_V411) + ("registros_v410",)   # as chaves do selo das versoes anteriores (as da v411 entram como heranca)
+@@ -61 +62 @@
+-# ---- o QUADRO do topo (v397) e o resultado pinado do Teste da Unica Palavra: o que a v410 pinou == o que esta em disco
++# ---- o QUADRO do topo (v397) e o resultado pinado do Teste da Unica Palavra: o que a v411 pinou == o que esta em disco
+@@ -64 +65 @@
+-assert E410["veracidade"]["numeros_do_resultado"] == numeros9 and E410["veracidade"]["resultado"]["sha256"] == DL.F9_RESULTADO_SHA256_DA_ORDEM, "o que a v410 pinou do Teste da Unica Palavra != o resultado em disco"
++assert E411["veracidade"]["numeros_do_resultado"] == numeros9 and E411["veracidade"]["resultado"]["sha256"] == DL.F9_RESULTADO_SHA256_DA_ORDEM, "o que a v411 pinou do Teste da Unica Palavra != o resultado em disco"
+@@ -66,2 +67,2 @@
+-assert mach_pt == E410["quadro"]["linha_de_maquina_pt"] and mach_en == E410["quadro"]["linha_de_maquina_en"], "a linha de maquina do quadro da v397 mudou: o quadro NAO se mexe"
+-# ---- o artigo e o .md da v411: os titulos LIDOS do delta (do DESENHO); as marcas e as frases de «nao selou» LIDAS do PROPRIO candidato (as funcoes do runtime v411), nunca digitadas
++assert mach_pt == E411["quadro"]["linha_de_maquina_pt"] and mach_en == E411["quadro"]["linha_de_maquina_en"], "a linha de maquina do quadro da v397 mudou: o quadro NAO se mexe"
++# ---- o artigo e o .md da v412: os titulos LIDOS do delta (do DESENHO); as marcas e as frases de «nao selou» LIDAS do PROPRIO candidato (as funcoes do runtime v412), nunca digitadas
+@@ -71 +72 @@
+-assert set(_fns) == {"_v411_secao_tex", "_v411_quadro_tex"}, "as funcoes do artigo da v411 nao estao no candidato"
++assert set(_fns) == {"_v411_secao_tex", "_v411_quadro_tex"}, "as funcoes do artigo da v412 nao estao no candidato"
+@@ -83 +84 @@
+-TIT411 = {"pt": _tu(DL.TITULO_SECAO_PT), "en": _tu(DL.TITULO_SECAO_EN)}   # (como o titulo_secao_h0dn_v410: a forma LaTeX; o conferidor aplica _tt)
++TIT412 = {"pt": _tu(DL.TITULO_SECAO_PT), "en": _tu(DL.TITULO_SECAO_EN)}   # (como o titulo_secao_h0dn_v411: a forma LaTeX; o conferidor aplica _tt)
+@@ -86,2 +87,2 @@
+-MARCAS411 = {"pt": [TIT411["pt"]] + _ms[:_i_en], "en": [TIT411["en"]] + _ms[_i_en:]}
+-assert min(len(MARCAS411["pt"]), len(MARCAS411["en"])) >= 8 and MARCAS411["pt"][1].startswith("A lei e a pergunta") and MARCAS411["en"][1].startswith("The law and the question"), MARCAS411   # (o numero pode diferir por idioma: uma marca EN traz LaTeX dentro e nao entra)
++MARCAS412 = {"pt": [TIT412["pt"]] + _ms[:_i_en], "en": [TIT412["en"]] + _ms[_i_en:]}
++assert min(len(MARCAS412["pt"]), len(MARCAS412["en"])) >= 8 and MARCAS412["pt"][1].startswith("A lei e a pergunta") and MARCAS412["en"][1].startswith("The law and the question"), MARCAS412   # (o numero pode diferir por idioma: uma marca EN traz LaTeX dentro e nao entra)
+@@ -89,6 +90,6 @@
+-NAO411 = {"pt": sorted({re.sub(r"\s+", " ", x_).strip() for x_ in _nao if x_.startswith("Nesta rodada") and "texttt" not in x_}), "en": sorted({re.sub(r"\s+", " ", x_).strip() for x_ in _nao if x_.startswith("This round") and "texttt" not in x_})}
+-NAO411 = {l_: [x_ for x_ in v_ if not any(y_ != x_ and y_.startswith(x_) for y_ in v_) and ("NÃO selou" in x_ or "did NOT seal" in x_)] for l_, v_ in NAO411.items()}   # (so' as frases inteiras: o recorte antes de um \texttt nao entra)
+-assert NAO411["pt"] and NAO411["en"], ("as frases de «nao selou» da v411 nao foram achadas no candidato", _nao)
+-MD_H0DN_V411 = re.match(r"^> \*\*(.+?):\*\*$", DL.MD_ROTULO_H0DN_V411).group(1)
+-assert ("> **" + MD_H0DN_V411 + ":**") in _cand_txt and _cand_txt.index("> **" + MD_H0DN_V411 + ":**") < _cand_txt.index("> **" + E410["md_iald2"] + ":**"), "a linha do .md da v411 tem de vir antes da da IALD2 (v410) no candidato"
+-# ---- as falas (as de DL.FALAS_V411, 11 desde a ordem da gerencia de 12/11, por sha256; o numero == o do manifesto), as decisoes (DL.DECISOES_V411, D159 a D173) e as erratas (E41, E42, E43): o candidato == o delta == os registros
++NAO412 = {"pt": sorted({re.sub(r"\s+", " ", x_).strip() for x_ in _nao if x_.startswith("Nesta rodada") and "texttt" not in x_}), "en": sorted({re.sub(r"\s+", " ", x_).strip() for x_ in _nao if x_.startswith("This round") and "texttt" not in x_})}
++NAO412 = {l_: [x_ for x_ in v_ if not any(y_ != x_ and y_.startswith(x_) for y_ in v_) and ("NÃO selou" in x_ or "did NOT seal" in x_)] for l_, v_ in NAO412.items()}   # (so' as frases inteiras: o recorte antes de um \texttt nao entra)
++assert NAO412["pt"] and NAO412["en"], ("as frases de «nao selou» da v412 nao foram achadas no candidato", _nao)
++MD_H0DN_V412 = re.match(r"^> \*\*(.+?):\*\*$", DL.MD_ROTULO_H0DN_V412).group(1)
++assert ("> **" + MD_H0DN_V412 + ":**") in _cand_txt and _cand_txt.index("> **" + MD_H0DN_V412 + ":**") < _cand_txt.index("> **" + E411["md_iald2"] + ":**"), "a linha do .md da v412 tem de vir antes da da IALD2 (v411) no candidato"
++# ---- as falas (as de DL.FALAS_V412, 11 desde a ordem da gerencia de 12/11, por sha256; o numero == o do manifesto), as decisoes (DL.DECISOES_V412, D159 a D173) e as erratas (E41, E42, E43): o candidato == o delta == os registros
+@@ -97 +98 @@
+-assert len(_vd) == DL.N_FALAS_V411 == len(DL.FALAS_V411) == CM["falas_citadas"] and [v_["sha256"] for v_ in _vd.values()] == [f_["sha256"] for f_ in DL.FALAS_V411] and all(DL.sha256_arquivo(f_["arquivo"]) == f_["sha256"] for f_ in DL.FALAS_V411)
++assert len(_vd) == DL.N_FALAS_V412 == len(DL.FALAS_V412) == CM["falas_citadas"] and [v_["sha256"] for v_ in _vd.values()] == [f_["sha256"] for f_ in DL.FALAS_V412] and all(DL.sha256_arquivo(f_["arquivo"]) == f_["sha256"] for f_ in DL.FALAS_V412)
+@@ -99,2 +100,2 @@
+-assert _cand_txt.count("_V411_FALAS_CITADAS = ") == 1 and _cand_txt.count("_V411_VERBATINS2 = {}") == 1 and all(v_["sha256"] in _cand_txt for v_ in CUN.values()), "as falas da v411 nao estao no candidato por sha256 (citadas) ou o _V411_VERBATINS2 nao esta' vazio"
+-CH = CM["h0dn"]; assert CH["registro"] == DL.FECHO_REGISTRO and CH["n_checks"] == DL.N_CHECKS_FECHO and len(CH["insumos"]) == len(DL.INSUMOS_V411) and all(CH["insumos"][i_["nome"]]["sha256"] == i_["sha256"] for i_ in DL.INSUMOS_V411)
++assert _cand_txt.count("_V411_FALAS_CITADAS = ") == 1 and _cand_txt.count("_V411_VERBATINS2 = {}") == 1 and all(v_["sha256"] in _cand_txt for v_ in CUN.values()), "as falas da v412 nao estao no candidato por sha256 (citadas) ou o _V411_VERBATINS2 nao esta' vazio"
++CH = CM["h0dn"]; assert CH["registro"] == DL.FECHO_REGISTRO and CH["n_checks"] == DL.N_CHECKS_FECHO and len(CH["insumos"]) == len(DL.INSUMOS_V412) and all(CH["insumos"][i_["nome"]]["sha256"] == i_["sha256"] for i_ in DL.INSUMOS_V412)
+@@ -110 +111 @@
+-    print("SECO: parte estrutural OK | artefato %s (%s) | marcas v411 %d/%d | nao-selou %s | md %s | falas %d" % (CM["sha16"], DL.ROTULO_DO_ARTEFATO, len(MARCAS411["pt"]), len(MARCAS411["en"]), NAO411, MD_H0DN_V411, len(CUN)))
++    print("SECO: parte estrutural OK | artefato %s (%s) | marcas v412 %d/%d | nao-selou %s | md %s | falas %d" % (CM["sha16"], DL.ROTULO_DO_ARTEFATO, len(MARCAS412["pt"]), len(MARCAS412["en"]), NAO412, MD_H0DN_V412, len(CUN)))
+@@ -114 +115 @@
+-_ens_p = _arg("--ensaio", DL.saida("ensaio_a_seco_v411.json"))
++_ens_p = _arg("--ensaio", DL.saida("ensaio_a_seco_v412.json"))
+@@ -138,2 +139,2 @@
+-assert "troca_dita_v411" not in CM, "o candidato declara uma troca dita de texto: este script foi adaptado para NENHUMA"
+-assert not ((ens.get("troca_dita_v411") or {}).get("declarada_no_candidato") or []), "o ensaio diz que ha troca dita de texto"
++assert "troca_dita_v412" not in CM, "o candidato declara uma troca dita de texto: este script foi adaptado para NENHUMA"
++assert not ((ens.get("troca_dita_v412") or {}).get("declarada_no_candidato") or []), "o ensaio diz que ha troca dita de texto"
+@@ -141,4 +142,4 @@
+-for k_ in ("rede_fock_v394", "psibit_v395", "testemunha_estatica_v396", "fechamento_v406", "psion_canto_v407", "tetelestai_terminal_v408", "traducao_turing_v409") + tuple(REG_V410) + (D10.CUNHAGENS_REGISTRO, D10.KH_REGISTRO):
+-    assert k_ not in mud and k_ not in te_, ("o veredito de %s mudou no ensaio: na v411 NENHUMA chave antiga muda" % k_, mud.get(k_) or te_.get(k_))
+-troca = sorted(set(mud) | set(te_))   # o que muda: so' numeros e o hash proprio do um.py (estatuto da prova); a v411 nao muda o kernel, logo a escada e a cobertura NAO estao aqui
+-assert set(te_) <= {"estatuto_da_prova_v391"} and set(troca) <= set(E410["troca_dita"]) | {"estatuto_da_prova_v391"}, ("a troca do ensaio excede o que pode mudar numa versao sem modulo", troca)
++for k_ in ("rede_fock_v394", "psibit_v395", "testemunha_estatica_v396", "fechamento_v406", "psion_canto_v407", "tetelestai_terminal_v408", "traducao_turing_v409") + tuple(REG_V411) + (D10.CUNHAGENS_REGISTRO, D10.KH_REGISTRO):
++    assert k_ not in mud and k_ not in te_, ("o veredito de %s mudou no ensaio: na v412 NENHUMA chave antiga muda" % k_, mud.get(k_) or te_.get(k_))
++troca = sorted(set(mud) | set(te_))   # o que muda: so' numeros e o hash proprio do um.py (estatuto da prova); a v412 nao muda o kernel, logo a escada e a cobertura NAO estao aqui
++assert set(te_) <= {"estatuto_da_prova_v391"} and set(troca) <= set(E411["troca_dita"]) | {"estatuto_da_prova_v391"}, ("a troca do ensaio excede o que pode mudar numa versao sem modulo", troca)
+@@ -146,2 +147,2 @@
+-difere_selo = next((v_ for k_, v_ in ens["selo"].items() if k_.startswith("difere_do_selo_v410")), None)
+-assert difere_selo is not None, "o ensaio nao traz selo.difere_do_selo_v410"
++difere_selo = next((v_ for k_, v_ in ens["selo"].items() if k_.startswith("difere_do_selo_v411")), None)
++assert difere_selo is not None, "o ensaio nao traz selo.difere_do_selo_v411"
+@@ -153 +154 @@
+-_MFk = next((k_ for k_ in mf if k_.startswith("registros_novos_v411")), None)
++_MFk = next((k_ for k_ in mf if k_.startswith("registros_novos_v412")), None)
+@@ -159 +160 @@
+-assert DL.PREFIXO_DA_FAIXA in PH["verdict"] and "BESIDE_FREE_CEPHEIDS_" in PH["verdict"] and "PRIMARY_UNDER_THE_PUBLISHED_MODEL_" in PH["verdict"] and not GF.violacoes(PH["verdict"]) and not any(t_ in PH["verdict"] for t_ in DL.TOKENS_PROIBIDOS_V411), PH["verdict"]
++assert DL.PREFIXO_DA_FAIXA in PH["verdict"] and "BESIDE_FREE_CEPHEIDS_" in PH["verdict"] and "PRIMARY_UNDER_THE_PUBLISHED_MODEL_" in PH["verdict"] and not GF.violacoes(PH["verdict"]) and not any(t_ in PH["verdict"] for t_ in DL.TOKENS_PROIBIDOS_V412), PH["verdict"]
+@@ -167 +168 @@
+-assert HV["gate_verdict"] == (core0.get("qg_closure") or {}).get("gate", {}).get("verdict") == selo0.get("qg_closure_verdict") and HV["escada"] == CM["escada"][1], "o gate e a escada do h0dn_bg1_v411 != os da v410 selada"
++assert HV["gate_verdict"] == (core0.get("qg_closure") or {}).get("gate", {}).get("verdict") == selo0.get("qg_closure_verdict") and HV["escada"] == CM["escada"][1], "o gate e a escada do h0dn_bg1_v411 != os da v411 selada"
+@@ -169 +170 @@
+-# ---- os specs da v411
++# ---- os specs da v412
+@@ -171,2 +172,2 @@
+-assert PCU["all_verified"] is True and PCU["verdict"].startswith(DL.CUNHAGENS_PREFIXO + "__") and ("ERRATA_%s_BESIDE" % DL.ERRATAS_TOKEN_V411) in PCU["verdict"] and PKH["all_verified"] is True and PKH["verdict"].startswith(DL.KH_PREFIXO + "__"), (PCU.get("verdict"), PKH.get("verdict"))
+-# ---- os HERDADOS da v410 (recriados; o veredito e' o selado)
++assert PCU["all_verified"] is True and PCU["verdict"].startswith(DL.CUNHAGENS_PREFIXO + "__") and ("ERRATA_%s_BESIDE" % DL.ERRATAS_TOKEN_V412) in PCU["verdict"] and PKH["all_verified"] is True and PKH["verdict"].startswith(DL.KH_PREFIXO + "__"), (PCU.get("verdict"), PKH.get("verdict"))
++# ---- os HERDADOS da v411 (recriados; o veredito e' o selado)
+@@ -176 +177 @@
+-    assert _r["all_verified"] is True and _r["verdict"] == V(_nm) == E410["registros_funcao_v410"][_ap]["verdict"] and _r["n_checks"] == E410["registros_funcao_v410"][_ap]["n_checks"], ("o registro herdado da v410 mudou", _nm)
++    assert _r["all_verified"] is True and _r["verdict"] == V(_nm) == E411["registros_funcao_v411"][_ap]["verdict"] and _r["n_checks"] == E411["registros_funcao_v411"][_ap]["n_checks"], ("o registro herdado da v411 mudou", _nm)
+@@ -178 +179 @@
+-    RH10[_ap] = {"nome": _nm, "verdict": _r["verdict"], "n_checks": _r["n_checks"], "values": _v, "recriado_na_v411": True}
++    RH10[_ap] = {"nome": _nm, "verdict": _r["verdict"], "n_checks": _r["n_checks"], "values": _v, "recriado_na_v412": True}
+@@ -183,2 +184,2 @@
+-    _r = _reg(_n); assert _r["all_verified"] is True and _r["verdict"] == V(_n), ("o spec da v410 mudou de veredito", _n)
+-# os herdados de antes da v410 (recriados no ensaio; veredito == o selado)
++    _r = _reg(_n); assert _r["all_verified"] is True and _r["verdict"] == V(_n), ("o spec da v411 mudou de veredito", _n)
++# os herdados de antes da v411 (recriados no ensaio; veredito == o selado)
+@@ -188 +189 @@
+-assert chaves_v407_esperadas == E410["chaves_v407_esperadas"], "as chaves que o psion_canto_v407 le mudaram (nenhuma chave antiga muda)"
++assert chaves_v407_esperadas == E411["chaves_v407_esperadas"], "as chaves que o psion_canto_v407 le mudaram (nenhuma chave antiga muda)"
+@@ -194 +195 @@
+-assert J(_qgE) == J(qg0), "o qg_closure do core do ensaio difere do da v410 selada: o gate se moveu"
++assert J(_qgE) == J(qg0), "o qg_closure do core do ensaio difere do da v411 selada: o gate se moveu"
+@@ -198 +199 @@
+-# ---- o artigo do ensaio: as marcas, os titulos e o sumario da v411 estao no TXT e no .toc que o ensaio rendeu (o que o conferidor vai cobrar do rito)
++# ---- o artigo do ensaio: as marcas, os titulos e o sumario da v412 estao no TXT e no .toc que o ensaio rendeu (o que o conferidor vai cobrar do rito)
+@@ -200,2 +201,2 @@
+-_txt = {l_: re.sub(r"\s+", " ", _rd(os.path.join(DL.DRY_DIR, "dry_v411_%s.txt" % l_))) for l_ in ("pt", "en")}
+-_toc = {l_: re.sub(r"(\\[A-Za-z]+) (?=[$}0-9])", r"\1", _rd(os.path.join(DL.DRY_DIR, "dry_v411_%s.toc" % l_)).replace("\n", "")) for l_ in ("pt", "en")}
++_txt = {l_: re.sub(r"\s+", " ", _rd(os.path.join(DL.DRY_DIR, "dry_v412_%s.txt" % l_))) for l_ in ("pt", "en")}
++_toc = {l_: re.sub(r"(\\[A-Za-z]+) (?=[$}0-9])", r"\1", _rd(os.path.join(DL.DRY_DIR, "dry_v412_%s.toc" % l_)).replace("\n", "")) for l_ in ("pt", "en")}
+@@ -203,3 +204,3 @@
+-_falta_txt = {l_: [m_ for m_ in MARCAS411[l_] if re.sub(r"\s+", " ", _tt(m_)) not in _txt[l_]] for l_ in ("pt", "en")}
+-assert not any(_falta_txt.values()), ("marca da v411 ausente do TXT do artigo do ensaio", _falta_txt)
+-TOC = {"pt": [TIT411["pt"]] + [w for w in E410["toc"]["pt"] if not w.startswith("v384 a ")] + ["v384 a " + DL.UM_VERSION], "en": [TIT411["en"]] + [w for w in E410["toc"]["en"] if not w.startswith("v384 to ")] + ["v384 to " + DL.UM_VERSION]}
++_falta_txt = {l_: [m_ for m_ in MARCAS412[l_] if re.sub(r"\s+", " ", _tt(m_)) not in _txt[l_]] for l_ in ("pt", "en")}
++assert not any(_falta_txt.values()), ("marca da v412 ausente do TXT do artigo do ensaio", _falta_txt)
++TOC = {"pt": [TIT412["pt"]] + [w for w in E411["toc"]["pt"] if not w.startswith("v384 a ")] + ["v384 a " + DL.UM_VERSION], "en": [TIT412["en"]] + [w for w in E411["toc"]["en"] if not w.startswith("v384 to ")] + ["v384 to " + DL.UM_VERSION]}
+@@ -207,3 +208,3 @@
+-assert not any(_falta_toc.values()), ("o sumario do artigo do ensaio nao lista o que o conferidor vai cobrar (o titulo da v411 na forma LaTeX, as secoes anteriores, v384 a v411)", _falta_toc)
+-
+-esp = {"candidato_sha16": CM["sha16"], "candidato_bytes": CM["bytes"], "origem_sha16": CM["base_v410_sha16"], "escada": [CM["escada"][1], CM["escada"][1]], "escada_v410_e_v411": [E410["escada"][1], CM["escada"][1]], "n_bandeiras_novas": 0,
++assert not any(_falta_toc.values()), ("o sumario do artigo do ensaio nao lista o que o conferidor vai cobrar (o titulo da v412 na forma LaTeX, as secoes anteriores, v384 a v412)", _falta_toc)
++
++esp = {"candidato_sha16": CM["sha16"], "candidato_bytes": CM["bytes"], "origem_sha16": CM["base_v411_sha16"], "escada": [CM["escada"][1], CM["escada"][1]], "escada_v411_e_v412": [E411["escada"][1], CM["escada"][1]], "n_bandeiras_novas": 0,
+@@ -211,3 +212,3 @@
+-       "cunhagens": CUN, "cunhagens_v410": E410["cunhagens"], "kernel": {"modulos_novos": 0, "modelo": CM["kernel"]["modelo"], "raiz_sha16": F["TGLExt.lean"][:16], "audit_sha16": F["TGL/Audit.lean"][:16], "pos_build": CM["kernel"].get("pos_build"), "sandbox": CM["kernel"].get("sandbox")},
+-       "bundle_sha256": {}, "bundle_v410_sha256": E410["bundle_sha256"], "bundle_v409_sha256": E410["bundle_v409_sha256"], "bundle_v408_sha256": E410["bundle_v408_sha256"], "bundle_v407_sha256": E410["bundle_v407_sha256"], "bundle_v406_sha256": E410["bundle_v406_sha256"],
+-       "formal_files_n": CM["formal_files_n"], "pedras_v405_sha256": E410["pedras_v405_sha256"],
++       "cunhagens": CUN, "cunhagens_v410": E411["cunhagens"], "kernel": {"modulos_novos": 0, "modelo": CM["kernel"]["modelo"], "raiz_sha16": F["TGLExt.lean"][:16], "audit_sha16": F["TGL/Audit.lean"][:16], "pos_build": CM["kernel"].get("pos_build"), "sandbox": CM["kernel"].get("sandbox")},
++       "bundle_sha256": {}, "bundle_v411_sha256": E411["bundle_sha256"], "bundle_v409_sha256": E411["bundle_v409_sha256"], "bundle_v408_sha256": E411["bundle_v408_sha256"], "bundle_v407_sha256": E411["bundle_v407_sha256"], "bundle_v406_sha256": E411["bundle_v406_sha256"],
++       "formal_files_n": CM["formal_files_n"], "pedras_v405_sha256": E411["pedras_v405_sha256"],
+@@ -215,3 +216,3 @@
+-       "qg_closure_v410_json_sha256": hashlib.sha256(J(qg0).encode("utf-8")).hexdigest(),
+-       "qg_closure_v410_sem_checks_json_sha256": hashlib.sha256(J({k: v for k, v in qg0.items() if k != "checks"}).encode("utf-8")).hexdigest(),
+-       "qg_closure_v410_checks": json.loads(J(qg0.get("checks"))), "qg_closure_gate_verdict_v410": (qg0.get("gate") or {}).get("verdict"),
++       "qg_closure_v411_json_sha256": hashlib.sha256(J(qg0).encode("utf-8")).hexdigest(),
++       "qg_closure_v411_sem_checks_json_sha256": hashlib.sha256(J({k: v for k, v in qg0.items() if k != "checks"}).encode("utf-8")).hexdigest(),
++       "qg_closure_v411_checks": json.loads(J(qg0.get("checks"))), "qg_closure_gate_verdict_v411": (qg0.get("gate") or {}).get("verdict"),
+@@ -219,2 +220,2 @@
+-       "vereditos_v410": VBASE, "troca_dita": troca, "troca_dita_textual": troca_dita_textual, "veredito_da_troca_no_ensaio": {k: (mud.get(k) or te_.get(k) or {}).get("depois") for k in troca},
+-       "regra_da_mudanca_dita": "so' os vereditos de `troca_dita` podem mudar: na v411 (nenhum modulo novo) so' o estatuto da prova (o hash proprio do um.py) e o que o ensaio mediu como so' numeros; NENHUM de texto (`troca_dita_textual` vazio); nenhuma chave antiga muda; os registros da v410 e anteriores nao mudam de veredito; qualquer outra mudanca reprova",
++       "vereditos_v411": VBASE, "troca_dita": troca, "troca_dita_textual": troca_dita_textual, "veredito_da_troca_no_ensaio": {k: (mud.get(k) or te_.get(k) or {}).get("depois") for k in troca},
++       "regra_da_mudanca_dita": "so' os vereditos de `troca_dita` podem mudar: na v412 (nenhum modulo novo) so' o estatuto da prova (o hash proprio do um.py) e o que o ensaio mediu como so' numeros; NENHUM de texto (`troca_dita_textual` vazio); nenhuma chave antiga muda; os registros da v411 e anteriores nao mudam de veredito; qualquer outra mudanca reprova",
+@@ -222 +223 @@
+-       "selo_registros_v410": {k: selo0.get(k) for k in SEL_KEYS}, "selo_chaves_que_mudam": selo_chaves_que_mudam, "selo_difere_do_v410_no_ensaio": difere_selo,
++       "selo_registros_v411": {k: selo0.get(k) for k in SEL_KEYS}, "selo_chaves_que_mudam": selo_chaves_que_mudam, "selo_difere_do_v411_no_ensaio": difere_selo,
+@@ -224,7 +225,7 @@
+-       "flags_true_v410": sorted(k for k, v in kf.items() if v is True), "axiom_report_v410_n": len(axr0),
+-       "runtime_seals_v410": core0["runtime_of_the_one"]["seals"], "what_remains_v410": core0["tgl_closure"]["what_remains_named"],
+-       "neutrino_frozen_hash_v410": nm0["frozen_hash"], "neutrino_angle_status_antigo_sha256": hashlib.sha256(nm0["angle_status"].encode("utf-8")).hexdigest(),
+-       "f2b_antes": E410["f2b_antes"], "f2b_depois": E410["f2b_depois"], "m_nu_meV_v404": nm0["m_nu_meV"],
+-       "titulo_secao_v411": TIT411, "titulo_secao_v411_unicode": {"pt": DL.TITULO_SECAO_PT, "en": DL.TITULO_SECAO_EN}, "titulo_quadro_v411": _tu(DL.TITULO_QUADRO_TOPO_PT), "titulo_quadro_v411_unicode": DL.TITULO_QUADRO_TOPO_PT, "titulo_secao_v410": E410["titulo_secao_v410"], "titulo_secao_aescala_v410": E410["titulo_secao_aescala_v410"], "titulo_secao_h0dn_v410": E410["titulo_secao_h0dn_v410"],
+-       "titulo_secao_v409": E410["titulo_secao_v409"], "titulo_secao_v408": E410["titulo_secao_v408"], "titulo_secao_v407": E410["titulo_secao_v407"],
+-       "vereditos_novos_v411": {k: v["verdict"] for k, v in MF4.items()},
++       "flags_true_v411": sorted(k for k, v in kf.items() if v is True), "axiom_report_v411_n": len(axr0),
++       "runtime_seals_v411": core0["runtime_of_the_one"]["seals"], "what_remains_v411": core0["tgl_closure"]["what_remains_named"],
++       "neutrino_frozen_hash_v411": nm0["frozen_hash"], "neutrino_angle_status_antigo_sha256": hashlib.sha256(nm0["angle_status"].encode("utf-8")).hexdigest(),
++       "f2b_antes": E411["f2b_antes"], "f2b_depois": E411["f2b_depois"], "m_nu_meV_v404": nm0["m_nu_meV"],
++       "titulo_secao_v412": TIT412, "titulo_secao_v412_unicode": {"pt": DL.TITULO_SECAO_PT, "en": DL.TITULO_SECAO_EN}, "titulo_quadro_v412": _tu(DL.TITULO_QUADRO_TOPO_PT), "titulo_quadro_v412_unicode": DL.TITULO_QUADRO_TOPO_PT, "titulo_secao_v411": E411["titulo_secao_v411"], "titulo_secao_aescala_v411": E411["titulo_secao_aescala_v411"], "titulo_secao_h0dn_v411": E411["titulo_secao_h0dn_v411"],
++       "titulo_secao_v409": E411["titulo_secao_v409"], "titulo_secao_v408": E411["titulo_secao_v408"], "titulo_secao_v407": E411["titulo_secao_v407"],
++       "vereditos_novos_v412": {k: v["verdict"] for k, v in MF4.items()},
+@@ -233,4 +234,4 @@
+-       **{"registros_v4%02d" % n_: E410["registros_v4%02d" % n_] for n_ in (9, 8, 7, 6, 5, 4, 3, 2, 1)}, "registros_v399": E410["registros_v399"],
+-       "ga_values": (ens.get("ga_registro") or {}).get("values", E410["ga_values"]), "gap_values": (ens.get("gap_registro") or {}).get("values", E410["gap_values"]), "ga_window_status": R0["ga_window_status"],
+-       "veredito_da_falsidade_v410": V("falsidade_da_inercia_v401"),
+-       "registros_funcao_v411": {"h0dn": {"nome": DL.FECHO_REGISTRO, "verdict": PH["verdict"], "n_checks": PH["n_checks"], "values": {k_: v_ for k_, v_ in HV.items() if k_ not in _FORA}, "fora_do_values_porque_dependem_da_pasta_do_rito": list(_FORA),
++       **{"registros_v4%02d" % n_: E411["registros_v4%02d" % n_] for n_ in (9, 8, 7, 6, 5, 4, 3, 2, 1)}, "registros_v399": E411["registros_v399"],
++       "ga_values": (ens.get("ga_registro") or {}).get("values", E411["ga_values"]), "gap_values": (ens.get("gap_registro") or {}).get("values", E411["gap_values"]), "ga_window_status": R0["ga_window_status"],
++       "veredito_da_falsidade_v411": V("falsidade_da_inercia_v401"),
++       "registros_funcao_v412": {"h0dn": {"nome": DL.FECHO_REGISTRO, "verdict": PH["verdict"], "n_checks": PH["n_checks"], "values": {k_: v_ for k_, v_ in HV.items() if k_ not in _FORA}, "fora_do_values_porque_dependem_da_pasta_do_rito": list(_FORA),
+@@ -239,5 +240,5 @@
+-       "registros_funcao_v410": RH10, "registros_funcao_v409": E410["registros_funcao_v409"], "registros_funcao_v408": E410["registros_funcao_v408"], "registros_funcao_v407": E410["registros_funcao_v407"], "registros_funcao_v406": E410["registros_funcao_v406"],
+-       "registros_funcao_v405": E410["registros_funcao_v405"], "registros_funcao_v404": E410["registros_funcao_v404"], "registros_funcao_v403": E410["registros_funcao_v403"],
+-       "estrelas_v411": {}, "estrelas_v410": E410["estrelas_v410"], "estrelas_aescala_v410": E410["estrelas_aescala_v410"],
+-       **{"estrelas_v4%02d" % n_: E410["estrelas_v4%02d" % n_] for n_ in (9, 8, 7, 6, 5, 4, 3)},
+-       "bandeiras_das_pedras_v405": E410["bandeiras_das_pedras_v405"], "teoremas_das_pedras_v405": E410["teoremas_das_pedras_v405"], "contrato_das_pedras_v405": E410["contrato_das_pedras_v405"], "suporte_das_pedras_v405": E410["suporte_das_pedras_v405"],
++       "registros_funcao_v411": RH10, "registros_funcao_v409": E411["registros_funcao_v409"], "registros_funcao_v408": E411["registros_funcao_v408"], "registros_funcao_v407": E411["registros_funcao_v407"], "registros_funcao_v406": E411["registros_funcao_v406"],
++       "registros_funcao_v405": E411["registros_funcao_v405"], "registros_funcao_v404": E411["registros_funcao_v404"], "registros_funcao_v403": E411["registros_funcao_v403"],
++       "estrelas_v412": {}, "estrelas_v411": E411["estrelas_v411"], "estrelas_aescala_v411": E411["estrelas_aescala_v411"],
++       **{"estrelas_v4%02d" % n_: E411["estrelas_v4%02d" % n_] for n_ in (9, 8, 7, 6, 5, 4, 3)},
++       "bandeiras_das_pedras_v405": E411["bandeiras_das_pedras_v405"], "teoremas_das_pedras_v405": E411["teoremas_das_pedras_v405"], "contrato_das_pedras_v405": E411["contrato_das_pedras_v405"], "suporte_das_pedras_v405": E411["suporte_das_pedras_v405"],
+@@ -249,14 +250,14 @@
+-                      "direcao_do_testemunho": E410["declaracao"]["direcao_do_testemunho"]},
+-       "sidecar": {"arquivo": DL.SIDECAR_NOME, "esquema": E410["sidecar"]["esquema"], "objetos": [o["nome"] for o in sc["objetos"]], "veredito_esperado_prefixo": E410["sidecar"]["veredito_esperado_prefixo"], "um_py": next(o for o in sc["objetos"] if o["nome"] == "um.py"),
+-                   "tempo_s_no_ensaio": sc["tempo_s"], "entra_na_custodia": E410["sidecar"]["entra_na_custodia"]},
+-       "acom_estudo": E410["acom_estudo"],
+-       "decisoes_da_gerencia": dict(DL.DECISOES, **DL.DECISOES_V411), "decisoes_v411_ids": list(DL.DECISOES_V411), "decisoes_v410_ids": E410["decisoes_v410_ids"],
+-       "erratas_E24_E27": ["%s -- %s" % (e_["id"], e_["texto"]) for e_ in DL.ERRATAS_V411], "erratas_v411": ["%s -- %s" % (e_["id"], e_["texto"]) for e_ in DL.ERRATAS_V411], "erratas_v410": E410["erratas_v410"],
+-       "ressalvas": list(DL.RESSALVAS_ROTULOS_PT), "ressalvas_v410": E410["ressalvas"], "leitura_v411": {}, "leitura_v410": E410["leitura_v410"],
+-       "chaves_v411": [], "chaves_v410": E410["chaves_v410"], "chaves_v409": E410["chaves_v409"], "chaves_v408": E410["chaves_v408"], "chaves_v407": E410["chaves_v407"], "chaves_v407_esperadas": chaves_v407_esperadas,
+-       "fica_false_por_teorema": list(DL.FICAM_FALSE_POR_TEOREMA), "fica_aberto": E410["fica_aberto"], "regra_do_4_44": DL.REGRA_DO_4_44, "guarda_frases": GF.controle_negativo()["ok"],
+-       "veracidade": E410["veracidade"], "quadro": E410["quadro"],
+-       "artigo_marcas": {l_: list(MARCAS411[l_]) + list(E410["artigo_marcas"][l_]) for l_ in ("pt", "en")}, "artigo_nao": {l_: list(E410["artigo_nao"][l_]) + list(NAO411[l_]) for l_ in ("pt", "en")}, "toc": TOC,
+-       "the_iald_index_v410": {"all_verified": (core0.get("the_iald_index") or {}).get("all_verified"), "verdict": V("the_iald_index")}, "the_iald_index_v411": {"verdict": ens["indice_da_iald"]["verdict"]},
+-       "md_carimbo": "**Versão %s**" % DL.UM_VERSION, "md_h0dn_v411": MD_H0DN_V411, "md_quadro_v411": DL.TITULO_QUADRO_TOPO_PT,
+-       **{k_: E410[k_] for k_ in ("md_iald2", "md_aescala", "md_h0dn", "md_hms13", "md_traducao", "md_massa", "md_jo8", "md_caminho", "md_ponte", "md_falsidade", "md_errata", "md_testemunho", "md_sonico", "md_token", "md_testemunha", "md_psibit", "md_fechamento", "md_psion", "md_tetelestai")},
++                      "direcao_do_testemunho": E411["declaracao"]["direcao_do_testemunho"]},
++       "sidecar": {"arquivo": DL.SIDECAR_NOME, "esquema": E411["sidecar"]["esquema"], "objetos": [o["nome"] for o in sc["objetos"]], "veredito_esperado_prefixo": E411["sidecar"]["veredito_esperado_prefixo"], "um_py": next(o for o in sc["objetos"] if o["nome"] == "um.py"),
++                   "tempo_s_no_ensaio": sc["tempo_s"], "entra_na_custodia": E411["sidecar"]["entra_na_custodia"]},
++       "acom_estudo": E411["acom_estudo"],
++       "decisoes_da_gerencia": dict(DL.DECISOES, **DL.DECISOES_V412), "decisoes_v412_ids": list(DL.DECISOES_V412), "decisoes_v411_ids": E411["decisoes_v411_ids"],
++       "erratas_E24_E27": ["%s -- %s" % (e_["id"], e_["texto"]) for e_ in DL.ERRATAS_V412], "erratas_v412": ["%s -- %s" % (e_["id"], e_["texto"]) for e_ in DL.ERRATAS_V412], "erratas_v411": E411["erratas_v411"],
++       "ressalvas": list(DL.RESSALVAS_ROTULOS_PT), "ressalvas_v411": E411["ressalvas"], "leitura_v412": {}, "leitura_v411": E411["leitura_v411"],
++       "chaves_v412": [], "chaves_v411": E411["chaves_v411"], "chaves_v409": E411["chaves_v409"], "chaves_v408": E411["chaves_v408"], "chaves_v407": E411["chaves_v407"], "chaves_v407_esperadas": chaves_v407_esperadas,
++       "fica_false_por_teorema": list(DL.FICAM_FALSE_POR_TEOREMA), "fica_aberto": E411["fica_aberto"], "regra_do_4_44": DL.REGRA_DO_4_44, "guarda_frases": GF.controle_negativo()["ok"],
++       "veracidade": E411["veracidade"], "quadro": E411["quadro"],
++       "artigo_marcas": {l_: list(MARCAS412[l_]) + list(E411["artigo_marcas"][l_]) for l_ in ("pt", "en")}, "artigo_nao": {l_: list(E411["artigo_nao"][l_]) + list(NAO412[l_]) for l_ in ("pt", "en")}, "toc": TOC,
++       "the_iald_index_v411": {"all_verified": (core0.get("the_iald_index") or {}).get("all_verified"), "verdict": V("the_iald_index")}, "the_iald_index_v412": {"verdict": ens["indice_da_iald"]["verdict"]},
++       "md_carimbo": "**Versão %s**" % DL.UM_VERSION, "md_h0dn_v412": MD_H0DN_V412, "md_quadro_v412": DL.TITULO_QUADRO_TOPO_PT,
++       **{k_: E411[k_] for k_ in ("md_iald2", "md_aescala", "md_h0dn", "md_hms13", "md_traducao", "md_massa", "md_jo8", "md_caminho", "md_ponte", "md_falsidade", "md_errata", "md_testemunho", "md_sonico", "md_token", "md_testemunha", "md_psibit", "md_fechamento", "md_psion", "md_tetelestai")},
+@@ -265,2 +266,2 @@
+-       "n_bandeiras_por_grupo": {}, "politica_de_bandeiras": {"n_flags": 0, "escada_antes": CM["escada"][0], "escada_depois": CM["escada"][1], "fonte": "FLAGS_v411.json (pos_build_kernel_v411.py): nenhuma bandeira nova, nenhum modulo novo"},
+-       "candidato_anterior_sha16": CM["base_v410_sha16"],
++       "n_bandeiras_por_grupo": {}, "politica_de_bandeiras": {"n_flags": 0, "escada_antes": CM["escada"][0], "escada_depois": CM["escada"][1], "fonte": "FLAGS_v412.json (pos_build_kernel_v412.py): nenhuma bandeira nova, nenhum modulo novo"},
++       "candidato_anterior_sha16": CM["base_v411_sha16"],
+@@ -268,3 +269,3 @@
+-       "h0dn_v411": dict(CH, pasta_vedada=DL.H0DN_PASTA_VEDADA, contrato_de_registro_fora_da_escada=list(DL.CONTRATOS_DE_REGISTRO_FORA_DA_ESCADA), n_caminhos_vistos_no_ensaio=pvk["n_caminhos_vistos"], veto={"tocados_sob_vedada": [], "controle_negativo_detecta": True}),
+-       "h0dn": E410["h0dn"], "aescala": E410["aescala"], "hms13": E410["hms13"],
+-       "tabela_secao7_v411": list(DL.TABELA_SECAO7),
++       "h0dn_v412": dict(CH, pasta_vedada=DL.H0DN_PASTA_VEDADA, contrato_de_registro_fora_da_escada=list(DL.CONTRATOS_DE_REGISTRO_FORA_DA_ESCADA), n_caminhos_vistos_no_ensaio=pvk["n_caminhos_vistos"], veto={"tocados_sob_vedada": [], "controle_negativo_detecta": True}),
++       "h0dn": E411["h0dn"], "aescala": E411["aescala"], "hms13": E411["hms13"],
++       "tabela_secao7_v412": list(DL.TABELA_SECAO7),
+@@ -272,3 +273,3 @@
+-assert esp["the_iald_index_v410"]["all_verified"] is True and esp["not_sealed_formais"] == [], (esp["the_iald_index_v410"], esp["not_sealed_formais"])
+-assert esp["h8_entradas"] == len(esp["h8_residuais_do_nos"]) + CM["formal_files_n"] == E410["h8_entradas"], "a arvore do Nos depois do rito tem de ser a da v410 (nenhum modulo novo)"
+-assert all(kf["formal_files_sha256"].get(r_) == s_ for r_, s_ in esp["bundle_v410_sha256"].items()) and len(esp["bundle_v410_sha256"]) == E410["kernel"]["modulos_novos"], "os modulos da v410 nao estao todos no hash formal do core selado"
++assert esp["the_iald_index_v411"]["all_verified"] is True and esp["not_sealed_formais"] == [], (esp["the_iald_index_v411"], esp["not_sealed_formais"])
++assert esp["h8_entradas"] == len(esp["h8_residuais_do_nos"]) + CM["formal_files_n"] == E411["h8_entradas"], "a arvore do Nos depois do rito tem de ser a da v411 (nenhum modulo novo)"
++assert all(kf["formal_files_sha256"].get(r_) == s_ for r_, s_ in esp["bundle_v411_sha256"].items()) and len(esp["bundle_v411_sha256"]) == E411["kernel"]["modulos_novos"], "os modulos da v411 nao estao todos no hash formal do core selado"
+@@ -276,2 +277,2 @@
+-assert _cb["decl"] == esp["axiom_report_esperado_min"] == KH["linha_TOTAL"]["decl"] == E410["cobertura_kh_n1"]["decl"] and _cb["thm"] == KH["linha_TOTAL"]["thm"] == E410["cobertura_kh_n1"]["thm"] and _cb.get("fora_do_trio") == 0 == KH["linha_TOTAL"]["fora_do_trio"] and esp["axiom_report_esperado_min"] == esp["axiom_report_v410_n"], _cb
+-_vn = esp["vereditos_novos_v411"]
++assert _cb["decl"] == esp["axiom_report_esperado_min"] == KH["linha_TOTAL"]["decl"] == E411["cobertura_kh_n1"]["decl"] and _cb["thm"] == KH["linha_TOTAL"]["thm"] == E411["cobertura_kh_n1"]["thm"] and _cb.get("fora_do_trio") == 0 == KH["linha_TOTAL"]["fora_do_trio"] and esp["axiom_report_esperado_min"] == esp["axiom_report_v411_n"], _cb
++_vn = esp["vereditos_novos_v412"]
+@@ -279,4 +280,4 @@
+-assert esp["qg_closure_gate_verdict_v410"] == E410["qg_closure_gate_verdict_v409"] == esp["qg_closure_verdict"], "o gate da v410 selada nao e' o da v409 (o gate nunca se moveu): conferir a base"
+-assert esp["selo_acom"]["perfil"] == E410["selo_acom"]["perfil"] and esp["selo_acom"]["controles"] == E410["selo_acom"]["controles"] and esp["selo_acom"]["all_verified"] is True and esp["declaracao"]["all_verified"] is True and esp["declaracao"]["verbatim_sha256"] == E410["declaracao"]["verbatim_sha256"]
+-assert esp["selo_acom"]["sha256_do_um_py"] != E410["selo_acom"]["sha256_do_um_py"], "o selo ACOM do ensaio tem de ser do um.py NOVO"
+-# o selo da v411 difere do da v410 SELADA em: o selo ACOM (hashes do novo um.py), a versao, o sha256, as chaves novas (h0dn_bg1_v411, registros_v411) e o que a troca dita carrega; o ensaio EXPLICA chave por chave
++assert esp["qg_closure_gate_verdict_v411"] == E411["qg_closure_gate_verdict_v409"] == esp["qg_closure_verdict"], "o gate da v411 selada nao e' o da v409 (o gate nunca se moveu): conferir a base"
++assert esp["selo_acom"]["perfil"] == E411["selo_acom"]["perfil"] and esp["selo_acom"]["controles"] == E411["selo_acom"]["controles"] and esp["selo_acom"]["all_verified"] is True and esp["declaracao"]["all_verified"] is True and esp["declaracao"]["verbatim_sha256"] == E411["declaracao"]["verbatim_sha256"]
++assert esp["selo_acom"]["sha256_do_um_py"] != E411["selo_acom"]["sha256_do_um_py"], "o selo ACOM do ensaio tem de ser do um.py NOVO"
++# o selo da v412 difere do da v411 SELADA em: o selo ACOM (hashes do novo um.py), a versao, o sha256, as chaves novas (h0dn_bg1_v411, registros_v411) e o que a troca dita carrega; o ensaio EXPLICA chave por chave
+@@ -287 +288 @@
+-out = _arg("--saida", DL.saida("ESPERADOS_v411.json"))
++out = _arg("--saida", DL.saida("ESPERADOS_v412.json"))
+@@ -291,2 +292,2 @@
+-print("ESPERADOS_v411 (%s): %s | vereditos v410 pinados: %d | flags True v410: %d | troca dita (so' numeros e o hash proprio): %s | selo_chaves_que_mudam: %s | h0dn_bg1_v411: %s, primario ramo %s, Cefeidas livres ramo %s | veto medido (%d caminhos)"
+-      % (DL.ROTULO_DO_ARTEFATO, esp["candidato_sha16"], len(esp["vereditos_v410"]), len(esp["flags_true_v410"]), troca, selo_chaves_que_mudam, PH["n_checks"], HV["primario"]["ramo"], HV["cefeidas_livres"]["ramo"], pvk["n_caminhos_vistos"]))
++print("ESPERADOS_v412 (%s): %s | vereditos v411 pinados: %d | flags True v411: %d | troca dita (so' numeros e o hash proprio): %s | selo_chaves_que_mudam: %s | h0dn_bg1_v411: %s, primario ramo %s, Cefeidas livres ramo %s | veto medido (%d caminhos)"
++      % (DL.ROTULO_DO_ARTEFATO, esp["candidato_sha16"], len(esp["vereditos_v411"]), len(esp["flags_true_v411"]), troca, selo_chaves_que_mudam, PH["n_checks"], HV["primario"]["ramo"], HV["cefeidas_livres"]["ramo"], pvk["n_caminhos_vistos"]))

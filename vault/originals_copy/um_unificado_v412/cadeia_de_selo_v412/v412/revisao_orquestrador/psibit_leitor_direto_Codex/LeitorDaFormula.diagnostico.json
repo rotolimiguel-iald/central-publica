@@ -1,0 +1,70 @@
+{
+  "source": {
+    "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\psibit_leitor_direto_Codex\\LeitorDaFormula.lean",
+    "bytes": 7162,
+    "sha256": "3085287b6375a0835f5eed647e7f0250f16b0ec45bf03b48289892d90619d08c"
+  },
+  "lean": {
+    "path": "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+    "bytes": 83456,
+    "sha256": "9b216deb50d37c32c829d1efaaa5bafd5560417d382df35a815489e31a31593f"
+  },
+  "imports": [
+    {
+      "path": "C:\\t\\k411c\\final\\.lake\\build\\lib\\lean\\TGLExt\\TraducaoTuring.olean",
+      "bytes": 1712928,
+      "sha256": "6f01f7931e8e72278fe541ece46470add592d0247c4e6a3b432e5e26e449841e"
+    },
+    {
+      "path": "C:\\t\\k411c\\final\\.lake\\build\\lib\\lean\\TGLExt\\Psibit.olean",
+      "bytes": 1544248,
+      "sha256": "d2a76e7906d20f263913468ac375d46d0183c0f594e869c53ec6131e9f29a4aa"
+    }
+  ],
+  "lean_path": [
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\revisao_orquestrador\\psibit_leitor_direto_Codex",
+    "C:\\t\\k411c\\final\\.lake\\build\\lib\\lean",
+    "C:\\t\\k411c\\final\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean",
+    "C:\\t\\k411c\\final\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean",
+    "C:\\t\\k411c\\final\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean",
+    "C:\\t\\k411c\\final\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean",
+    "C:\\t\\k411c\\final\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean",
+    "C:\\t\\k411c\\final\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean",
+    "C:\\t\\k411c\\final\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean",
+    "C:\\t\\k411c\\final\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\pedras_limpas\\build",
+    "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_c1\\build_sobre_limpas"
+  ],
+  "rc": 1,
+  "seconds": 205.904,
+  "axioms": {
+    "IALD.LeitorDaFormula.stream_spec": [
+      "propext",
+      "sorryAx"
+    ],
+    "IALD.LeitorDaFormula.leitura_psibit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext",
+      "sorryAx"
+    ],
+    "IALD.LeitorDaFormula.merge_size": [
+      "propext"
+    ],
+    "IALD.LeitorDaFormula.solve_spec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext",
+      "sorryAx"
+    ]
+  },
+  "required_checks": [
+    "IALD.LeitorDaFormula.stream_spec",
+    "IALD.LeitorDaFormula.leitura_psibit",
+    "IALD.LeitorDaFormula.merge_size",
+    "IALD.LeitorDaFormula.solve_spec"
+  ],
+  "verified": false,
+  "output": null,
+  "log": "LeitorDaFormula.lean:72:16: error: unsolved goals\ncase cons.false\nn : ℕ\nx : Fin n → Bool\nc : Clausula (n + 1)\nf : List (Clausula (n + 1))\ns : Summary n\ncons_pass : ∀ (z : Fin (n + 1) → Bool), passes (c :: f) z = (satisfeita c z && passes f z)\nih :\n  ∀ (s : Summary n),\n    passes (branch false (List.foldl update s f)) x =\n      ((passes f fun i => Fin.cases false x i) && passes (branch false s) x)\n⊢ ((passes f fun i => Fin.cases false x i) && ((satisfeita c fun i => Fin.cases false x i) && passes s.1 x)) =\n    (((satisfeita c fun i => Fin.cases false x i) && passes f fun i => Fin.cases false x i) && passes s.1 x)\n\ncase cons.true\nn : ℕ\nx : Fin n → Bool\nc : Clausula (n + 1)\nf : List (Clausula (n + 1))\ns : Summary n\ncons_pass : ∀ (z : Fin (n + 1) → Bool), passes (c :: f) z = (satisfeita c z && passes f z)\nih :\n  ∀ (s : Summary n),\n    passes (branch true (List.foldl update s f)) x =\n      ((passes f fun i => Fin.cases true x i) && passes (branch true s) x)\n⊢ ((passes f fun i => Fin.cases true x i) && ((satisfeita c fun i => Fin.cases true x i) && passes s.2 x)) =\n    (((satisfeita c fun i => Fin.cases true x i) && passes f fun i => Fin.cases true x i) && passes s.2 x)\nLeitorDaFormula.lean:75:62: warning: This simp argument is unused:\n  Bool.and_left_comm\n\nHint: Omit it from the simp argument list.\n  simp [branch, update, extend_spec, cons_pass,̵ ̵B̵o̵o̵l̵.̵a̵n̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nLeitorDaFormula.lean:110:6: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.\nIf you'd rather continue using `push_neg` in your project, you can implement it as follows:\n```\nopen Lean.Parser.Tactic in\nmacro \"push_neg\" cfg:optConfig loc:(location)? : tactic =>\n  `(tactic| push $cfg:optConfig Not $[$loc]?)\n```\n'IALD.LeitorDaFormula.stream_spec' depends on axioms: [propext, sorryAx]\n'IALD.LeitorDaFormula.leitura_psibit' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n'IALD.LeitorDaFormula.merge_size' depends on axioms: [propext]\n'IALD.LeitorDaFormula.solve_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n"
+}

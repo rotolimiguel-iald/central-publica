@@ -1,0 +1,9 @@
+APROVADO_COM_RESSALVAS
+
+## V6 · AContagemEACarga, R0
+
+[REAL] Para n variáveis booleanas, N=2ⁿ e carga=ln N=n·ln 2. Para cada tempo real s, o bicondicional “há custo zero se e somente se Z(s)≥1” vale simultaneamente para todos os custos naturais exatamente quando s>ln N. A candidata prova a mesma equivalência para todas as CNFs com n variáveis.
+[REAL] A necessidade já vale para a CNF cuja única cláusula é vazia. Ela tem custo constante 1 e nenhuma solução, mas produz Z(s)=N exp(−s). Na igualdade s=ln N, resulta Z=1. Até n=0 respeita a fronteira: uma atribuição vazia e uma cláusula vazia. Para uma CNF específica o critério pode funcionar antes.
+[MÉDIO] A docstring formal do item 3 explicita os quantificadores; o título e “nem mais, nem menos” sugerem um instante suficiente na própria carga ou uma duração necessária a cada fórmula. A carga é o ínfimo aberto de tempos uniformemente suficientes para esse critério; inexiste menor tempo real suficiente. Proposta para a frase explicativa: “A carga n·ln 2 é a fronteira estrita do critério uniforme de uma leitura.”
+[REAL/DERIVED] O item 5 prova a identidade 1/N=exp(−carga). A separação da leitura normalizada vem do termo de AEscala. Limiar não equivale a tolerância a erro: se s=ln N+δ, uma instância sem solução tem média ≤exp(−δ)/N e a satisfazível tem média ≥1/N. Com δ=ln 2 a separação garantida é 1/(2N), que exige ordem n de bits fracionários para aproximação com margem. Avaliar a soma com essa precisão e representar o tempo são custos distintos.
+[INPUT] As duas expressões citadas provêm da fala do operador sobre carga, isometria e isotropia. A passagem para carga logarítmica e o bicondicional são a realização escolhida pela gerência. Falta uma implementação uniforme sobre entrada codificada com custo e erro controlados para fazer a passagem aos movimentos de fita.

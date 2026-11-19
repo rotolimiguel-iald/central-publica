@@ -1,0 +1,102 @@
+--- v411/bancada_B3_servico/controle_negativo/mutar_conferidor_v411.py
++++ v412/bancada_B3_servico/controle_negativo/mutar_conferidor_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/bancada_B3_servico/controle_negativo/mutar_conferidor_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/bancada_B3_servico__controle_negativo__mutar_conferidor_v412.py.diff
+@@ -4,4 +5,4 @@
+-# (nota herdada da adaptacao da v408 [fork C, 04/11/2026], reconferida de versao a versao) molde v410/bancada_B3_servico/controle_negativo/mutar_conferidor_v410.py (rotulos subidos por _bump_copia_v411.py; diff em bump/). Adaptado (v411, 12/11/2026, fork B): M4 e M6 falam da ORDEM da v411 (fala de 12/11); M5 volta a data da autorizacao anterior (06/11/2026, a da v410) como texto; o sandbox curto C:\t\vb22 que esta corrida cria
+-# so' para as pastas temporarias e' REMOVIDO no fim se ficou vazio (o molde o deixava vazio, e o B(n) pre-selo recusa rodar com C:\t\vb22 existente: a ordem das etapas da cadeia ficava refem disso); o resultado registra isso em `sandbox_curto`.
+-"""mutar_conferidor_v411.py -- CONTROLE NEGATIVO do conferidor estatico (conferir_exigencias_servico_v411.py). NADA do servico e' executado e nenhum script real e' alterado.
+-Adaptado em 04/11/2026 da v410 (que o herdou da v406): cada mutacao roda SOZINHA numa pasta TEMPORARIA nova (copia dos tres scripts derivados da v411 + a mutacao + uma copia do conferidor apontada para elas); antes, o controle sem mutacao (os tres scripts reais) tem de dar rc 0,
++# (nota herdada da adaptacao da v408 [fork C, 04/11/2026], reconferida de versao a versao) molde v411/bancada_B3_servico/controle_negativo/mutar_conferidor_v411.py (rotulos subidos por _bump_copia_v412.py; diff em bump/). Adaptado (v412, 12/11/2026, fork B): M4 e M6 falam da ORDEM da v412 (fala de 12/11); M5 volta a data da autorizacao anterior (06/11/2026, a da v411) como texto; o sandbox curto C:\t\vb23 que esta corrida cria
++# so' para as pastas temporarias e' REMOVIDO no fim se ficou vazio (o molde o deixava vazio, e o B(n) pre-selo recusa rodar com C:\t\vb23 existente: a ordem das etapas da cadeia ficava refem disso); o resultado registra isso em `sandbox_curto`.
++"""mutar_conferidor_v412.py -- CONTROLE NEGATIVO do conferidor estatico (conferir_exigencias_servico_v412.py). NADA do servico e' executado e nenhum script real e' alterado.
++Adaptado em 04/11/2026 da v411 (que o herdou da v406): cada mutacao roda SOZINHA numa pasta TEMPORARIA nova (copia dos tres scripts derivados da v412 + a mutacao + uma copia do conferidor apontada para elas); antes, o controle sem mutacao (os tres scripts reais) tem de dar rc 0,
+@@ -9,8 +10,8 @@
+-  M1  recibo_parada_v411.py      : o `assert AUT` passa para DEPOIS da criacao do socket (E/S antes da exigencia da autorizacao);
+-  M2  recibo_religamento_v411.py : a leitura da variavel de ambiente volta a V410_AUTORIZACAO_OPERADOR (nome da versao anterior sobrando);
+-  M3  evento_c1_b3_v411.py       : o `assert os.path.isfile(ESP)` passa para o FIM, depois do subprocess.run que anota no quadro;
+-  M4  recibo_parada_v411.py      : sai a conferencia da ordem de 12/11 (a ordem da v411: o assert com a fala e o ORDEM_SHA16): qualquer texto de autorizacao passaria;
+-  M5  recibo_religamento_v411.py : volta a data da ordem anterior (06/11/2026, a da v410) como texto no script (autorizacao anterior sobrando).
+-  M6  recibo_parada_v411.py      : o caminho do arquivo da fala de 12/11 vira um nome que NAO existe (um rotulo de versao enfiado no nome: o tipo de defeito que uma subida mecanica de rotulo introduz).
+-Grava RESULTADO_CONTROLE_NEGATIVO_v411.json ao lado (no modo de ensaio do topo proposto, em <pasta de ensaio>\\bancada_B3_servico\\controle_negativo, fora de work; nao sobrescreve) com os diffs das mutacoes e as condicoes que falharam. Nao deixa nenhum script mutado em disco (as pastas temporarias somem).
+-uso: python -I -B -X utf8 mutar_conferidor_v411.py   (a variavel V411_MUTAR_TEMP muda a pasta temporaria; o padrao e' o sandbox curto da cadeia, C:\\t\\vb22, que a cadeia limpa depois)"""
++  M1  recibo_parada_v412.py      : o `assert AUT` passa para DEPOIS da criacao do socket (E/S antes da exigencia da autorizacao);
++  M2  recibo_religamento_v412.py : a leitura da variavel de ambiente volta a V411_AUTORIZACAO_OPERADOR (nome da versao anterior sobrando);
++  M3  evento_c1_b3_v412.py       : o `assert os.path.isfile(ESP)` passa para o FIM, depois do subprocess.run que anota no quadro;
++  M4  recibo_parada_v412.py      : sai a conferencia da ordem de 12/11 (a ordem da v412: o assert com a fala e o ORDEM_SHA16): qualquer texto de autorizacao passaria;
++  M5  recibo_religamento_v412.py : volta a data da ordem anterior (06/11/2026, a da v411) como texto no script (autorizacao anterior sobrando).
++  M6  recibo_parada_v412.py      : o caminho do arquivo da fala de 12/11 vira um nome que NAO existe (um rotulo de versao enfiado no nome: o tipo de defeito que uma subida mecanica de rotulo introduz).
++Grava RESULTADO_CONTROLE_NEGATIVO_v412.json ao lado (no modo de ensaio do topo proposto, em <pasta de ensaio>\\bancada_B3_servico\\controle_negativo, fora de work; nao sobrescreve) com os diffs das mutacoes e as condicoes que falharam. Nao deixa nenhum script mutado em disco (as pastas temporarias somem).
++uso: python -I -B -X utf8 mutar_conferidor_v412.py   (a variavel V412_MUTAR_TEMP muda a pasta temporaria; o padrao e' o sandbox curto da cadeia, C:\\t\\vb23, que a cadeia limpa depois)"""
+@@ -29,3 +30,3 @@
+-SRV = os.path.dirname(HERE)                         # ...\v411\bancada_B3_servico
+-V = os.path.dirname(SRV)                            # ...\cadeia_de_selo\v411
+-V14 = os.path.join(os.path.dirname(V), "v410")
++SRV = os.path.dirname(HERE)                         # ...\v412\bancada_B3_servico
++V = os.path.dirname(SRV)                            # ...\cadeia_de_selo\v412
++V14 = os.path.join(os.path.dirname(V), "v411")
+@@ -33,2 +34,2 @@
+-NOMES = ("evento_c1_b3_v411.py", "recibo_parada_v411.py", "recibo_religamento_v411.py")
+-TEMP_DIR = os.environ.get("V411_MUTAR_TEMP") or "C:" + os.sep + "t" + os.sep + "vb22"   # o sandbox curto da cadeia (some ao sair do with)
++NOMES = ("evento_c1_b3_v412.py", "recibo_parada_v412.py", "recibo_religamento_v412.py")
++TEMP_DIR = os.environ.get("V412_MUTAR_TEMP") or "C:" + os.sep + "t" + os.sep + "vb23"   # o sandbox curto da cadeia (some ao sair do with)
+@@ -59 +60 @@
+-    a = 'os.environ.get("V411_AUTORIZACAO_OPERADOR"'
++    a = 'os.environ.get("V412_AUTORIZACAO_OPERADOR"'
+@@ -61 +62 @@
+-    return t.replace(a, 'os.environ.get("V410_AUTORIZACAO_OPERADOR"', 1)
++    return t.replace(a, 'os.environ.get("V411_AUTORIZACAO_OPERADOR"', 1)
+@@ -69 +70 @@
+-def m4(t):   # sai a conferencia da ordem de 12/11 (a ordem da v411)
++def m4(t):   # sai a conferencia da ordem de 12/11 (a ordem da v412)
+@@ -74 +75 @@
+-    a = '"""10-ter da v411'
++    a = '"""10-ter da v412'
+@@ -80 +81 @@
+-    a = '"cunhagens_13out", "OPERADOR_12nov_otimo_vamos_rodar_tudo_pode_abrir_chegou_a_hora_da_v411_verbatim.txt")'   # (so' o caminho que o script ABRE)
++    a = '"cunhagens_13out", "OPERADOR_12nov_otimo_vamos_rodar_tudo_pode_abrir_chegou_a_hora_da_v412_verbatim.txt")'   # (so' o caminho que o script ABRE)
+@@ -82 +83 @@
+-    return t.replace(a, a.replace("OPERADOR_12nov_", "OPERADOR_12nov_v411_"), 1)
++    return t.replace(a, a.replace("OPERADOR_12nov_", "OPERADOR_12nov_v412_"), 1)
+@@ -86,7 +87,7 @@
+-MUTACOES = [("M1_assert_AUT_depois_do_socket", "recibo_parada_v411.py", m1, "recibo_parada_v411.py: nenhuma chamada de E/S antes do assert AUT"),
+-            ("M2_nome_da_versao_anterior_na_variavel", "recibo_religamento_v411.py", m2, "recibo_religamento_v411.py: ha a atribuicao AUT"),
+-            ("M3_assert_do_ESPERADOS_depois_do_subprocess", "evento_c1_b3_v411.py", m3, "evento: assert os.path.isfile(ESP)"),
+-            ("M4_sem_a_conferencia_da_ordem_de_12nov", "recibo_parada_v411.py", m4, "recibo_parada_v411.py: a ordem de 12/11 (a ordem da v411) e' conferida"),
+-            ("M5_data_da_ordem_de_06nov_no_script", "recibo_religamento_v411.py", m5, "recibo_religamento_v411.py: nenhum texto, data ou hash de autorizacao anterior"),
+-            ("M6_arquivo_da_fala_inexistente_no_caminho", "recibo_parada_v411.py", m6, "recibo_parada_v411.py: o arquivo da fala que o script abre (ORDEM) existe")]
+-CONF = ler(os.path.join(SRV, "conferir_exigencias_servico_v411.py"))
++MUTACOES = [("M1_assert_AUT_depois_do_socket", "recibo_parada_v412.py", m1, "recibo_parada_v412.py: nenhuma chamada de E/S antes do assert AUT"),
++            ("M2_nome_da_versao_anterior_na_variavel", "recibo_religamento_v412.py", m2, "recibo_religamento_v412.py: ha a atribuicao AUT"),
++            ("M3_assert_do_ESPERADOS_depois_do_subprocess", "evento_c1_b3_v412.py", m3, "evento: assert os.path.isfile(ESP)"),
++            ("M4_sem_a_conferencia_da_ordem_de_12nov", "recibo_parada_v412.py", m4, "recibo_parada_v412.py: a ordem de 12/11 (a ordem da v412) e' conferida"),
++            ("M5_data_da_ordem_de_06nov_no_script", "recibo_religamento_v412.py", m5, "recibo_religamento_v412.py: nenhum texto, data ou hash de autorizacao anterior"),
++            ("M6_arquivo_da_fala_inexistente_no_caminho", "recibo_parada_v412.py", m6, "recibo_parada_v412.py: o arquivo da fala que o script abre (ORDEM) existe")]
++CONF = ler(os.path.join(SRV, "conferir_exigencias_servico_v412.py"))
+@@ -95,2 +96,2 @@
+-CONF = CONF.replace(a, "V = " + repr(V) + "\n")   # o conferidor copiado: HERE = a pasta temporaria (os scripts), V e V14 = as pastas reais v411 e v410
+-a = 'V14 = os.path.join(os.path.dirname(V), "v410")'
++CONF = CONF.replace(a, "V = " + repr(V) + "\n")   # o conferidor copiado: HERE = a pasta temporaria (os scripts), V e V14 = as pastas reais v412 e v411
++a = 'V14 = os.path.join(os.path.dirname(V), "v411")'
+@@ -108 +109 @@
+-    env_ = {k_: v_ for k_, v_ in os.environ.items() if k_ != "V411_ENSAIO_TOPO_PROPOSTO"}   # (v411) a copia do conferidor grava na pasta temporaria, nunca na de ensaio
++    env_ = {k_: v_ for k_, v_ in os.environ.items() if k_ != "V412_ENSAIO_TOPO_PROPOSTO"}   # (v412) a copia do conferidor grava na pasta temporaria, nunca na de ensaio
+@@ -110 +111 @@
+-    saida = json.load(open(os.path.join(tmp, "CONFERENCIA_EXIGENCIAS_SERVICO_v411.json"), encoding="utf-8"))
++    saida = json.load(open(os.path.join(tmp, "CONFERENCIA_EXIGENCIAS_SERVICO_v412.json"), encoding="utf-8"))
+@@ -128 +129 @@
+-if CRIOU_SANDBOX:   # so' o que ESTA corrida criou, e so' se ficou vazio (os.rmdir recusa pasta com conteudo): o molde deixava C:\t\vb22 vazio e o B(n) pre-selo recusa rodar com ele existente
++if CRIOU_SANDBOX:   # so' o que ESTA corrida criou, e so' se ficou vazio (os.rmdir recusa pasta com conteudo): o molde deixava C:\t\vb23 vazio e o B(n) pre-selo recusa rodar com ele existente
+@@ -133,2 +134,2 @@
+-res = {"contrato": "RESULTADO_CONTROLE_NEGATIVO_v411", "sandbox_curto": SANDBOX, "script": {"path": os.path.abspath(__file__), "sha256": sha(open(os.path.abspath(__file__), "rb").read())},
+-       "conferidor": {"path": os.path.join(SRV, "conferir_exigencias_servico_v411.py"), "sha256": sha(open(os.path.join(SRV, "conferir_exigencias_servico_v411.py"), "rb").read())},
++res = {"contrato": "RESULTADO_CONTROLE_NEGATIVO_v412", "sandbox_curto": SANDBOX, "script": {"path": os.path.abspath(__file__), "sha256": sha(open(os.path.abspath(__file__), "rb").read())},
++       "conferidor": {"path": os.path.join(SRV, "conferir_exigencias_servico_v412.py"), "sha256": sha(open(os.path.join(SRV, "conferir_exigencias_servico_v412.py"), "rb").read())},
+@@ -141,2 +142,2 @@
+-_sp_dl = _ilu.spec_from_file_location("delta_v411_mutar", os.path.join(V, "delta_v411.py")); _DLM = _ilu.module_from_spec(_sp_dl); _sp_dl.loader.exec_module(_DLM)
+-OUT_DIR = os.path.join(_DLM.SAIDA, "bancada_B3_servico", "controle_negativo") if _DLM.ENSAIO_TOPO_PROPOSTO else HERE   # (v411) no ensaio do topo proposto, a saida vai a pasta de ensaio
++_sp_dl = _ilu.spec_from_file_location("delta_v412_mutar", os.path.join(V, "delta_v412.py")); _DLM = _ilu.module_from_spec(_sp_dl); _sp_dl.loader.exec_module(_DLM)
++OUT_DIR = os.path.join(_DLM.SAIDA, "bancada_B3_servico", "controle_negativo") if _DLM.ENSAIO_TOPO_PROPOSTO else HERE   # (v412) no ensaio do topo proposto, a saida vai a pasta de ensaio
+@@ -144 +145 @@
+-dest = os.path.join(OUT_DIR, "RESULTADO_CONTROLE_NEGATIVO_v411.json")
++dest = os.path.join(OUT_DIR, "RESULTADO_CONTROLE_NEGATIVO_v412.json")

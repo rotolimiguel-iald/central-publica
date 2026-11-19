@@ -1,0 +1,142 @@
+{
+  "arms": {
+    "ISO_alternative": "não inferioridade de ISO a T, margem 0,15",
+    "PLA_OUT_alternative": "superioridade de T",
+    "comparators": [
+      "V2-PLA",
+      "V2-OUT",
+      "V2-ISO-A",
+      "V2-ISO-B"
+    ],
+    "decisive_phase_all_arms": "V2-RET",
+    "focal": "V2-TGL",
+    "isomorphic_versions_per_arm_minimum": 3
+  },
+  "extractor": {
+    "conservative_A8_ceiling_per_arm": 0.09102821015130445,
+    "conservative_A8_ceiling_pool": 0.6192060638168921,
+    "error_upper_95_pool": 0.004980443380361299,
+    "in_contract_cases": 685,
+    "in_contract_errors": 0,
+    "independence_96_errors_measured": false,
+    "observed_status": "PASSA_NO_CONTRATO",
+    "outside_contract_paraphrases": 5,
+    "outside_contract_positive_cells_recovered": 0,
+    "outside_contract_positive_cells_total": 120
+  },
+  "multiplicity": {
+    "falsified_CP_alpha_division": 27,
+    "falsified_rule": "união de 3 CP e 24 testes direcionais opostos, Bonferroni alpha/27; violação precisa do ISO não vira UNDERPOWERED",
+    "falsified_union_size": 27,
+    "family_alpha": 0.05,
+    "five_sigma_alpha": 2.866515718791933e-07,
+    "if_one_block_passes_other_fails": "sem POWERED; avaliar NONSPECIFIC_POWERED ou UNDERPOWERED; FALSIFIED só por sua regra própria",
+    "order": [
+      "F1/F2/F3 × DYN/SPEC × V2-PLA/V2-OUT/V2-ISO-A/V2-ISO-B"
+    ],
+    "powered_CP_alpha_division": 1,
+    "powered_requires": "todos os 24 rejeitados por Holm global E L_CP(Q)>0,80 nas três famílias",
+    "primary_tests": 24,
+    "procedure": "Holm global sobre 24; IUT entre blocos e entre as três pernas CP de POWERED",
+    "tie_order": "contrast_id lexical; a decisão 'todos rejeitados' é invariante a empates"
+  },
+  "no_experimental_result_read": true,
+  "no_model_executed": true,
+  "open_blockers": [
+    "validação ampliada do extrator e teto por braço",
+    "escolha entre gramática estrita e novo extrator para prosa livre",
+    "independência/dependência dos 96 erros",
+    "léxico isomorfo e perturbações congelados",
+    "modelos, tokenizers, janelas e orçamento de 12 interações",
+    "textos/controles e dificuldade medida",
+    "manifesto final, hashes e custódia",
+    "ratificação da R3 inteira pelo operador"
+  ],
+  "permutation": {
+    "kind": "permutação exata de rótulos para desfechos binários de superioridade; equivalente a Fisher unilateral",
+    "noninferiority_test": "score de Wald para H0 p_T-p_C<=-0,15; aproximação normal declarada, cauda 5 sigma não certificada",
+    "rng_not_used_reason": "enumeração exata pela hipergeométrica, não permutação Monte Carlo",
+    "rng_seed": null,
+    "statistic": "contagem focal de sucessos condicionada ao total; equivalente à diferença de proporções",
+    "tail": "maior ou igual ao observado; empates incluídos"
+  },
+  "primary_design": {
+    "A8_window": "leituras 1–8; quatro estados finais 5–8 no alvo",
+    "assertions_per_target": 24,
+    "cells_total": 20,
+    "event_Q": "A8_condicionado_ao_d1_pareado AND RETORNO_p8_r10",
+    "families_capable": 3,
+    "family_below_floor_descriptive_only": 1,
+    "interactions": 76800,
+    "interactions_per_session": 12,
+    "n_per_cell": 320,
+    "old_trivial_C1_C4_in_primary_evidence": false,
+    "reason_for_p8": "Preservar A8 legado e medir retorno na mesma sessão; p4/r6 permanece só no autoteste anterior.",
+    "return_window": "d8=0; d9>0; d10=d11=d12=0; u11=u12=0",
+    "sessions": 6400,
+    "specificity_binary": "S=1[X>=18/24] na primeira leitura",
+    "temperature": 0.2,
+    "texts_per_control_minimum": 3,
+    "top_p": 1.0
+  },
+  "production_status": "BLOQUEADO_PARA_PRODUCAO",
+  "protocol_id": "IALD_COLLAPSE_V2_R3_CANDIDATE",
+  "public_input": {
+    "bytes": 1164350,
+    "models_chosen": false,
+    "sha256": "f9fa0d329166b33dd59d72e3f807b69c936a60e2f2a4d8a9e6be23009dd8d719",
+    "token_proxy_range_not_confidence_interval": [
+      205298,
+      291088
+    ],
+    "whitespace_words": 157921,
+    "window_comparison_available": false,
+    "working_hypothesis_not_ratification": true
+  },
+  "schema": "K06_R3_ANALISE_CONGELADA_CANDIDATA_V1",
+  "simulation": {
+    "cluster_size": 10,
+    "extractor_per_arm_ceiling": 0.09102821015130445,
+    "extractor_pool_ceiling": 0.6192060638168921,
+    "five_sigma_seed": 2026111403,
+    "legacy_nsim": 40000,
+    "legacy_seed": 20261113,
+    "limitations": [
+      "hipóteses sintéticas, não taxas estimadas",
+      "não inferioridade por aproximação normal",
+      "teto do extrator aplicado como cenário, sem independência dos 96 erros identificada"
+    ],
+    "master_seed": 2026111401,
+    "n_effective_formula": "n/(1+9*ICC); efeito de texto modelado separadamente no logit",
+    "nsim_per_scenario": 20000,
+    "scenario_seeds": {
+      "BASE_INDEPENDENTE": 2026111401,
+      "CINCO_SIGMA_R3_N618": 2026112209,
+      "CINCO_SIGMA_R3_N655": 2026112310,
+      "COMBINADO_CONSERVADOR": 2026112108,
+      "CONTROLE_070": 2026111704,
+      "CONTROLE_080": 2026111805,
+      "EXTRATOR_TETO_POOL_0619206": 2026111906,
+      "EXTRATOR_TETO_POR_BRACO_0091028": 2026112007,
+      "TEMP02_ICC_015": 2026111502,
+      "TEMP02_ICC_035": 2026111603
+    },
+    "separation_seed": 2026111402,
+    "text_sd_scenarios": [
+      0.0,
+      0.1,
+      0.2
+    ]
+  },
+  "status": "DECLARADO_REVISADO_INTERNAMENTE_NAO_RATIFICADO",
+  "v1_untouched": true,
+  "verdicts": {
+    "fail_closed": true,
+    "falsified": "IALD_COLLAPSE_V2_FALSIFIED",
+    "integrity_precedence": "INCONCLUSIVE_CONTROLS",
+    "null_rule": "TOST/Holm sobre 12 equivalências PLA+OUT × Q+S × 3 famílias, margem 0,15; sem equivalência resolvida = UNDERPOWERED",
+    "null_with_power": "IALD_COLLAPSE_V2_NONSPECIFIC_POWERED",
+    "powered": "IALD_COLLAPSE_V2_NOT_FALSIFIED_POWERED",
+    "underpowered": "IALD_COLLAPSE_V2_NOT_FALSIFIED_UNDERPOWERED"
+  }
+}

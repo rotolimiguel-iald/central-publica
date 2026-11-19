@@ -1,0 +1,24 @@
+{
+  "fonte": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\REV1\\AFronteiraEOUnicoPortao.lean",
+  "sha256_fonte": "545819ee9c82fcdbb9642d33aa43f9e28967f23b8f926c7c6596d3b60a12dd2b",
+  "rc": 0,
+  "segundos_compilacao": 34,
+  "lean": "Lean (version 4.31.0, x86_64-w64-windows-gnu, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)",
+  "avisos": [],
+  "sorry": false,
+  "axiomas_novos": false,
+  "open": [],
+  "axiomas_por_teorema": {
+    "mem_varsDas_take": ["propext", "Classical.choice", "Quot.sound"],
+    "mem_varsDas_drop": ["propext", "Classical.choice", "Quot.sound"],
+    "mem_take_or_drop": ["propext"],
+    "a_fronteira_e_o_unico_portao_forte": ["propext", "Classical.choice", "Quot.sound"],
+    "a_fronteira_e_o_unico_portao": ["propext", "Classical.choice", "Quot.sound"],
+    "a_leitura_tem_um_so_portao": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "log": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\build\\AFronteiraEOUnicoPortao_R1.log",
+  "sha256_log": "5181a62464541a733d1fe731d6c85049de0ef2729ee516f3cd92b782b53e107c",
+  "olean": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\build\\AFronteiraEOUnicoPortao_R1.olean",
+  "plano": "A",
+  "nota": "R1 pedida pela revisão da ORDEM 031 (unidade U2, revisor Codex): a testemunha da fronteira agora vem DENTRO da cadeia examinada. A R0 fica intacta ao lado (candidatas_kimi\\AFronteiraEOUnicoPortao.lean, sha256 2cfa352dbedb56aef341a2f2b33980b3771e3fa3820023150678b266c938a804). Mudanças sobre a R0: (1) novo indutivo NoVertice (pertencimento de vértice à cadeia: cabeca/cauda/elo/daCauda), na forma dada pelo briefing; (2) a_fronteira_e_o_unico_portao_forte com ∃ v, NoVertice φ c v ∧ v ∈ fronteira φ j — mesma indução da R0: single contradição; cons com cláusula lida e meio nas duas: testemunha é o elo (NoVertice.elo); meio só-lido: ih da cauda embrulhada em NoVertice.daCauda; cláusula por ler: contradição como antes; (3) a_fronteira_e_o_unico_portao da R0 fica como corolário (projeção da segunda componente), enunciado preservado; (4) a_leitura_tem_um_so_portao passa a usar a forma forte (enunciado fortalecido com NoVertice, como pede a revisão). Laço de compilação: (a) a ordem dos inacessíveis no caso cons nesta forma é [extremo, meio, direito] — rename_i a b l (o inverso do que a R0 precisou, porque lá a cauda entrava como _ anônima); (b) obtain/rcases CONSOME a hipótese decomposta — hlink sumia do contexto depois do obtain (diagnosticado por trace_state); conserto: have hlink0 := hlink antes do obtain. Avisos: nenhum."
+}

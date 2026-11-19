@@ -1,0 +1,115 @@
+--- v411/gerar_pronto_para_candidato_v411.py
++++ v412/gerar_pronto_para_candidato_v412.py
+@@ -1,0 +2 @@
++# [A ADAPTAR v412] SUBIDA MECANICA DE ROTULO (v411->v412) do molde v411/gerar_pronto_para_candidato_v411.py; o CORPO e' o da v411 (versao SEM modulo novo, registro com funcao h0dn_bg1_v411): o que depende de bundle nao vazio se adapta pelo molde v410/v409; nada rodou; ver bump/gerar_pronto_para_candidato_v412.py.diff
+@@ -3,2 +4,2 @@
+-"""gerar_pronto_para_candidato_v411.py -- escreve PRONTO_PARA_CANDIDATO_v411.json: o ESTADO MEDIDO da preparacao da v411 no fim da Etapa 1 (claude-construtor-v411), ANTES de gerar_candidato_v411.py (que exige o
+-TOPO_RATIFICADO_v411.json, da gerencia). Tudo LIDO do disco por script: sha16 dos insumos e dos scripts, as marcas do build/Audit do sandbox k411c, o recibo do kernel, a escada e as declaracoes, os resultados dos ensaios
++"""gerar_pronto_para_candidato_v412.py -- escreve PRONTO_PARA_CANDIDATO_v412.json: o ESTADO MEDIDO da preparacao da v412 no fim da Etapa 1 (claude-construtor-v412), ANTES de gerar_candidato_v412.py (que exige o
++TOPO_RATIFICADO_v412.json, da gerencia). Tudo LIDO do disco por script: sha16 dos insumos e dos scripts, as marcas do build/Audit do sandbox k412c, o recibo do kernel, a escada e as declaracoes, os resultados dos ensaios
+@@ -6 +7 @@
+-sao prosa do construtor. uso: python -B -X utf8 gerar_pronto_para_candidato_v411.py"""
++sao prosa do construtor. uso: python -B -X utf8 gerar_pronto_para_candidato_v412.py"""
+@@ -10 +11 @@
+-import delta_v411 as DL  # noqa: E402
++import delta_v412 as DL  # noqa: E402
+@@ -14,7 +15,7 @@
+-POS = J("kernel/POS_BUILD_v411.json"); REC = J("kernel/KERNEL_RECIBO_v411.json"); KH = J("kernel/KH_N1_v411.json"); TO = J("TESTE_H0DN_OFFLINE_v411.json"); GFJ = J("GUARDA_FRASES_v411.json")
+-TQ = J("TESTE_QUADRO_v411.json"); PV = J("PREVOO_GERADOR_v411.json"); P0 = J("PRECONDICOES_v411.json"); CC = J("conferir_citacoes_v411.json"); GMP = J("GUARDA_MATERIAL_PRIVADO_v411.json"); MI = J("MANIFESTO_INSUMOS_v411.json")
+-AUTORAIS = ["delta_v411.py", "registros_h0dn_v411.py", "runtime_h0dn_v411.py", "quadro_v411.py", "registros_v411.py", "guarda_frases_v411.py", "guarda_material_privado_v411.py", "gerar_candidato_v411.py", "p00_precondicoes_v411.py",
+-            "conferir_citacoes_v411.py", "copiar_insumos_v411.py", "copiar_base_v411.py", "copiar_k411c.sh", "construir_kernel_v411.sh", "conferir_fontes_k410c_vs_nos_v411.py", "pos_build_kernel_v411.py", "base_um_v410.py",
+-            "acom_init_construtor_v411.py", "_mk_motor_v411.py", "derivar_v411_motor.py", "_bump_copia_v411.py", "_marca_adaptado_v411.py", "_fix_aspas_v411.py", "_teste_h0dn_offline_v411.py", "_teste_quadro_v411.py",
+-            "gerar_pronto_para_candidato_v411.py", "acom_conferencias_v411.py", "guarda_p18_v411.py", "kernel/refazer_audit_v411.sh"]
+-_marca = "[A ADAPTAR v" + "411]"
++POS = J("kernel/POS_BUILD_v412.json"); REC = J("kernel/KERNEL_RECIBO_v412.json"); KH = J("kernel/KH_N1_v412.json"); TO = J("TESTE_H0DN_OFFLINE_v412.json"); GFJ = J("GUARDA_FRASES_v412.json")
++TQ = J("TESTE_QUADRO_v412.json"); PV = J("PREVOO_GERADOR_v412.json"); P0 = J("PRECONDICOES_v412.json"); CC = J("conferir_citacoes_v412.json"); GMP = J("GUARDA_MATERIAL_PRIVADO_v412.json"); MI = J("MANIFESTO_INSUMOS_v412.json")
++AUTORAIS = ["delta_v412.py", "registros_h0dn_v412.py", "runtime_h0dn_v412.py", "quadro_v412.py", "registros_v412.py", "guarda_frases_v412.py", "guarda_material_privado_v412.py", "gerar_candidato_v412.py", "p00_precondicoes_v412.py",
++            "conferir_citacoes_v412.py", "copiar_insumos_v412.py", "copiar_base_v412.py", "copiar_k412c.sh", "construir_kernel_v412.sh", "conferir_fontes_k411c_vs_nos_v412.py", "pos_build_kernel_v412.py", "base_um_v411.py",
++            "acom_init_construtor_v412.py", "_mk_motor_v412.py", "derivar_v412_motor.py", "_bump_copia_v412.py", "_marca_adaptado_v412.py", "_fix_aspas_v412.py", "_teste_h0dn_offline_v412.py", "_teste_quadro_v412.py",
++            "gerar_pronto_para_candidato_v412.py", "acom_conferencias_v412.py", "guarda_p18_v412.py", "kernel/refazer_audit_v412.sh"]
++_marca = "[A ADAPTAR v" + "412]"
+@@ -22 +23 @@
+-                  and not p_.endswith((".json", ".txt", ".diff", ".log", ".npz", ".lean", ".md")) and os.path.basename(p_) not in ("_bump_copia_v411.py", "p00_precondicoes_v411.py") and _marca in open(p_, "rb").read().decode("utf-8", "replace"))
++                  and not p_.endswith((".json", ".txt", ".diff", ".log", ".npz", ".lean", ".md")) and os.path.basename(p_) not in ("_bump_copia_v412.py", "p00_precondicoes_v412.py") and _marca in open(p_, "rb").read().decode("utf-8", "replace"))
+@@ -24,2 +25,2 @@
+-    "contrato": "PRONTO_PARA_CANDIDATO_v411", "quando": datetime.datetime.now().isoformat(timespec="seconds"), "agente": "claude-construtor-v411, a servico da gerencia c1",
+-    "estado": ("ETAPA 1 CONCLUIDA ate onde ela alcanca: tudo o que vem antes do candidato que nao depende do texto ratificado do topo; o candidato NAO foi gerado (TOPO_RATIFICADO_v411.json ausente: a Etapa 2 nao comecou, por regra); "
++    "contrato": "PRONTO_PARA_CANDIDATO_v412", "quando": datetime.datetime.now().isoformat(timespec="seconds"), "agente": "claude-construtor-v412, a servico da gerencia c1",
++    "estado": ("ETAPA 1 CONCLUIDA ate onde ela alcanca: tudo o que vem antes do candidato que nao depende do texto ratificado do topo; o candidato NAO foi gerado (TOPO_RATIFICADO_v412.json ausente: a Etapa 2 nao comecou, por regra); "
+@@ -28 +29 @@
+-    "desenho": {"arquivo": "DESENHO_v411.md", "sha16": DL.DESENHO_SHA16, "lido_por_script": ["a tabela dos 18 insumos (sha16 conferidos contra os arquivos)", "os 7 citados", "as 9 falas e os 5 textos da gerencia", "as 16 checagens (o texto de cada uma vira a descricao)",
++    "desenho": {"arquivo": "DESENHO_v412.md", "sha16": DL.DESENHO_SHA16, "lido_por_script": ["a tabela dos 18 insumos (sha16 conferidos contra os arquivos)", "os 7 citados", "as 9 falas e os 5 textos da gerencia", "as 16 checagens (o texto de cada uma vira a descricao)",
+@@ -30 +31 @@
+-    "kernel_k411c": {"sandbox": DL.SANDBOX, "origem": DL.SANDBOX_ORIGEM, "copia": "robocopy SEM /PURGE (copiar_k411c.sh); fontes conferidas por sha256 contra o Nos v410 ANTES e DEPOIS da copia (CONFERENCIA_FONTES_K410C/K411C_v411.json: 1764 comuns, 0 diferentes)",
++    "kernel_k412c": {"sandbox": DL.SANDBOX, "origem": DL.SANDBOX_ORIGEM, "copia": "robocopy SEM /PURGE (copiar_k412c.sh); fontes conferidas por sha256 contra o Nos v411 ANTES e DEPOIS da copia (CONFERENCIA_FONTES_K411C/K412C_v412.json: 1764 comuns, 0 diferentes)",
+@@ -32,5 +33,5 @@
+-                     "linha_TOTAL": POS["linha_TOTAL"], "audit_log_sha256": POS["audit_log_sha256"], "audit_log_igual_ao_da_v410": POS["audit_log_sha256"] == POS["audit_log_sha256_v410"], "escada": POS["escada"], "n_bandeiras_novas": 0, "bundle": [],
+-                     "recibo": {"arquivo": "kernel/KERNEL_RECIBO_v411.json", "sha16": s16(os.path.join(HERE, "kernel", "KERNEL_RECIBO_v411.json")), "rc": REC["rc"], "sorry": REC["sorry"], "erros": REC["erros"]},
+-                     "POS_BUILD_sha16": s16(os.path.join(HERE, "kernel", "POS_BUILD_v411.json")), "KH_N1_sha16": s16(os.path.join(HERE, "kernel", "KH_N1_v411.json")), "criterios": POS["criterios"],
+-                     "copias_do_kernel_fora_de_work": ["C:\\t\\k411c\\final (o sandbox)", "C:\\t\\k411c\\arvore_simulada_h8 (a arvore simulada do h8, do pre-voo do gerador)"]},
+-    "registro_h0dn_bg1_v411": {"n_checks": DL.N_CHECKS_FECHO, "offline": {"TUDO_PASSOU": TO["TUDO_PASSOU"], "n_ok": TO["n_ok"], "veredito": TO["veredito"], "c6_max_dif": TO["c6_max_dif"], "c9_max_dif": TO["c9_max_dif"],
++                     "linha_TOTAL": POS["linha_TOTAL"], "audit_log_sha256": POS["audit_log_sha256"], "audit_log_igual_ao_da_v411": POS["audit_log_sha256"] == POS["audit_log_sha256_v411"], "escada": POS["escada"], "n_bandeiras_novas": 0, "bundle": [],
++                     "recibo": {"arquivo": "kernel/KERNEL_RECIBO_v412.json", "sha16": s16(os.path.join(HERE, "kernel", "KERNEL_RECIBO_v412.json")), "rc": REC["rc"], "sorry": REC["sorry"], "erros": REC["erros"]},
++                     "POS_BUILD_sha16": s16(os.path.join(HERE, "kernel", "POS_BUILD_v412.json")), "KH_N1_sha16": s16(os.path.join(HERE, "kernel", "KH_N1_v412.json")), "criterios": POS["criterios"],
++                     "copias_do_kernel_fora_de_work": ["C:\\t\\k412c\\final (o sandbox)", "C:\\t\\k412c\\arvore_simulada_h8 (a arvore simulada do h8, do pre-voo do gerador)"]},
++    "registro_h0dn_bg1_v412": {"n_checks": DL.N_CHECKS_FECHO, "offline": {"TUDO_PASSOU": TO["TUDO_PASSOU"], "n_ok": TO["n_ok"], "veredito": TO["veredito"], "c6_max_dif": TO["c6_max_dif"], "c9_max_dif": TO["c9_max_dif"],
+@@ -39,2 +40,2 @@
+-                                                                              "arquivo": "TESTE_H0DN_OFFLINE_v411.json", "sha16": s16(os.path.join(HERE, "TESTE_H0DN_OFFLINE_v411.json"))},
+-                               "insumos_embutidos": {i_["nome"]: {"sha16": i_["sha256"][:16], "bytes": i_["bytes"], "reuso_v410": i_["reuso_v410"]} for i_ in DL.INSUMOS_V411}, "citados_nao_embutidos": {c_["nome"]: c_["sha256"][:16] for c_ in DL.CITADOS_V411},
++                                                                              "arquivo": "TESTE_H0DN_OFFLINE_v412.json", "sha16": s16(os.path.join(HERE, "TESTE_H0DN_OFFLINE_v412.json"))},
++                               "insumos_embutidos": {i_["nome"]: {"sha16": i_["sha256"][:16], "bytes": i_["bytes"], "reuso_v410": i_["reuso_v410"]} for i_ in DL.INSUMOS_V412}, "citados_nao_embutidos": {c_["nome"]: c_["sha256"][:16] for c_ in DL.CITADOS_V412},
+@@ -42,2 +43,2 @@
+-    "pre_voo_do_gerador": {"arquivo": "PREVOO_GERADOR_v411.json", "sha16_do_texto_que_seria_gerado_com_a_PROPOSTA": PV["sha16"], "bytes": PV["bytes"], "delta_bytes": PV["delta_bytes"], "n_patches": PV["n_patches"], "patches": [p_["id"] for p_ in PV["patches"]],
+-                           "h8_igual_ao_pino_da_v410": PV["h8"]["igual_ao_pino_da_v410"], "guardas_no_texto_renderizado": PV["guarda_frases"]["violacoes_no_texto_renderizado"], "topo_guarda_da_proposta": PV["topo_guarda"], "topo_p18_da_proposta": PV["topo_p18"],
++    "pre_voo_do_gerador": {"arquivo": "PREVOO_GERADOR_v412.json", "sha16_do_texto_que_seria_gerado_com_a_PROPOSTA": PV["sha16"], "bytes": PV["bytes"], "delta_bytes": PV["delta_bytes"], "n_patches": PV["n_patches"], "patches": [p_["id"] for p_ in PV["patches"]],
++                           "h8_igual_ao_pino_da_v411": PV["h8"]["igual_ao_pino_da_v411"], "guardas_no_texto_renderizado": PV["guarda_frases"]["violacoes_no_texto_renderizado"], "topo_guarda_da_proposta": PV["topo_guarda"], "topo_p18_da_proposta": PV["topo_p18"],
+@@ -45 +46 @@
+-    "guardas": {"frases_v411": {"controle_negativo": GFJ["controle_negativo"]["ok"], "n_proibidas": GFJ["n_proibidas"], "regras_superadas_da_v410": GFJ["regras_superadas_da_v410"]},
++    "guardas": {"frases_v412": {"controle_negativo": GFJ["controle_negativo"]["ok"], "n_proibidas": GFJ["n_proibidas"], "regras_superadas_da_v411": GFJ["regras_superadas_da_v411"]},
+@@ -47 +48 @@
+-                "citacoes": {"ok": CC["ok"], "nao_conferidos_corpo_da_v410_a_adaptar": len(CC["nao_conferidos_corpo_da_v410_a_adaptar"])}},
++                "citacoes": {"ok": CC["ok"], "nao_conferidos_corpo_da_v411_a_adaptar": len(CC["nao_conferidos_corpo_da_v411_a_adaptar"])}},
+@@ -49 +50 @@
+-    "insumos_copiados": MI["n"], "verbatim_congelado_sha16": s16(os.path.join(HERE, "VERBATIM_CONGELADO_v411.json")),
++    "insumos_copiados": MI["n"], "verbatim_congelado_sha16": s16(os.path.join(HERE, "VERBATIM_CONGELADO_v412.json")),
+@@ -51 +52 @@
+-    "scripts_ainda_com_a_marca_A_ADAPTAR_corpo_da_v410": MARCADOS, "n_scripts_a_adaptar": len(MARCADOS),
++    "scripts_ainda_com_a_marca_A_ADAPTAR_corpo_da_v411": MARCADOS, "n_scripts_a_adaptar": len(MARCADOS),
+@@ -62 +63 @@
+-        "1. GERENCIA: gravar TOPO_RATIFICADO_v411.json (chaves pt e en, com os quatro marcadores de numero ⟨...⟩ da proposta do DESENHO 5.1 b, um de cada); depois `python -B -X utf8 gerar_candidato_v411.py` (sem --prevoo) grava o candidato, CANDIDATO_v411.json, FORMAL_MAP_v411.json e v411_pins.py",
++        "1. GERENCIA: gravar TOPO_RATIFICADO_v412.json (chaves pt e en, com os quatro marcadores de numero ⟨...⟩ da proposta do DESENHO 5.1 b, um de cada); depois `python -B -X utf8 gerar_candidato_v412.py` (sem --prevoo) grava o candidato, CANDIDATO_v412.json, FORMAL_MAP_v412.json e v412_pins.py",
+@@ -64,3 +65,3 @@
+-        "3. ADAPTAR DE VERDADE os %d scripts que ainda trazem a marca de copia mecanica (o corpo e' o da v410: IALD2, AEscala, quatro registros com funcao): os grandes sao ensaio_a_seco, gerar_esperados, conferir_rito, exame_pontos, gerar_relatorio, conferir_instalar_rito, diff_e_pinos, simular_arvore_do_nos, o orquestrador (pos_treino_v411.py: S7 e S10 ja' fora no molde) e o pos-rito inteiro (textos, leitura, superficies, textos_custodia_handoff com os blocos do README e o portao sobre o HANDOFF inteiro, registrar_mapa, fechar)" % len(MARCADOS),
+-        "4. depois do candidato: comparar_v410_v411 -> ensaio_a_seco ate TUDO PASSOU -> gerar_esperados -> conferidores (controle negativo e caminho positivo) -> conferir_citacoes_v411.py --candidato -> diff_e_pinos -> conferir_instalar_rito -> p00 -> fim_de_cadeia_v411.sh (B20 pre-selo) -> gerar_relatorio -> PREPARACAO_v411_PRONTA.json",
+-        "5. GERENCIA: revisao de terceiro, fechar_preparacao_v411.py, acom_inscrever_prep_v411.py, pino_memoria_py_v411.py e a folga do MEMORY.md, a tarefa agendada IALD_pos_treino_v411 (C:\\Python314\\pythonw.exe C:\\t\\k411c\\run_pos_treino.py), o S3, o rito, a custodia"],
++        "3. ADAPTAR DE VERDADE os %d scripts que ainda trazem a marca de copia mecanica (o corpo e' o da v411: IALD2, AEscala, quatro registros com funcao): os grandes sao ensaio_a_seco, gerar_esperados, conferir_rito, exame_pontos, gerar_relatorio, conferir_instalar_rito, diff_e_pinos, simular_arvore_do_nos, o orquestrador (pos_treino_v412.py: S7 e S10 ja' fora no molde) e o pos-rito inteiro (textos, leitura, superficies, textos_custodia_handoff com os blocos do README e o portao sobre o HANDOFF inteiro, registrar_mapa, fechar)" % len(MARCADOS),
++        "4. depois do candidato: comparar_v411_v412 -> ensaio_a_seco ate TUDO PASSOU -> gerar_esperados -> conferidores (controle negativo e caminho positivo) -> conferir_citacoes_v412.py --candidato -> diff_e_pinos -> conferir_instalar_rito -> p00 -> fim_de_cadeia_v412.sh (B21 pre-selo) -> gerar_relatorio -> PREPARACAO_v412_PRONTA.json",
++        "5. GERENCIA: revisao de terceiro, fechar_preparacao_v412.py, acom_inscrever_prep_v412.py, pino_memoria_py_v412.py e a folga do MEMORY.md, a tarefa agendada IALD_pos_treino_v412 (C:\\Python314\\pythonw.exe C:\\t\\k412c\\run_pos_treino.py), o S3, o rito, a custodia"],
+@@ -69 +70 @@
+-        "b) a guarda de frases da v411 herda a da v410 MENOS duas regras superadas pela abertura (D169): a F54 (onde H0DN aparece, “pre-registrado; nenhum dado observado lido”) sai e da lugar a F67; da F56 sai so' “o teste aberto / a abertura feita” (a covariancia fisica dita fechada segue reprovada). A gerencia confirma ou corrige",
++        "b) a guarda de frases da v412 herda a da v411 MENOS duas regras superadas pela abertura (D169): a F54 (onde H0DN aparece, “pre-registrado; nenhum dado observado lido”) sai e da lugar a F67; da F56 sai so' “o teste aberto / a abertura feita” (a covariancia fisica dita fechada segue reprovada). A gerencia confirma ou corrige",
+@@ -73 +74 @@
+-        "f) os dois insumos de reuso (estimador congelado e BG1) apontam o blob da v410 (_V410_H0DN_INSUMOS), conferido pelo MESMO sha256; os outros 16 vao em base64 (668368 B de b64)",
++        "f) os dois insumos de reuso (estimador congelado e BG1) apontam o blob da v411 (_V410_H0DN_INSUMOS), conferido pelo MESMO sha256; os outros 16 vao em base64 (668368 B de b64)",
+@@ -75,6 +76,6 @@
+-        "h) a mecanica tem a assinatura v411_h0dn_mechanics(beta_, core_, c_, ...) com argumentos opcionais (texto, insumos, caminhos tocados, a funcao e o contrato da v410) para os controles negativos; no rito ela le os globais",
+-        "i) o vigia de arquivos da v410 (_v410_h0dn_vigia_arquivos) mede os caminhos tocados; a c1 recusa caminho sob a pasta do Kimi (o veto, medido); os 7 caminhos tocados no ensaio sao do import de submodulos do scipy",
+-        "j) o p00 da v411 foi REESCRITO (o da v410 e' de conteudo IALD2/AEscala); o veredito dele hoje e' FALHOU so' pela marca de copia mecanica nos %d scripts ainda nao adaptados, mais 4 pendentes (o topo, o candidato e o que segue, o pino do memoria.py, a folga do MEMORY.md)" % len(MARCADOS),
+-        "k) a marca historica de cabecalho das copias (# [ADAPTADO v410, ...]) foi PRESERVADA no bump (subir o rotulo dela diria que a v411 a escreveu); outras linhas historicas sem colchete subiram (ex.: no acom_conferencias, corrigido a mao)"],
+-    "pendencias_da_gerencia": ["TOPO_RATIFICADO_v411.json (a palavra do operador sobre 5.1 b)", "a revisao de terceiro", "acom_inscrever_prep_v411.py e fechar_preparacao_v411.py (os bumps estao com a marca)", "pino_memoria_py e a folga do MEMORY.md", "a tarefa agendada", "o S3, o rito, a custodia"],
+-    "nada_tocado": ["o Nos (so' leitura; base_v410 e' copia de bytes)", "o pacote work\\h0dn_bg1_v411_emenda_11nov (so' lido; o executor NAO rodou)", "work\\h0dn_bg1_v410_09nov\\kimi (nada lido)", "C:\\IALD\\TGL_IALD_NATIVE_QWEN5090 (o treino nao foi tocado nem medido)",
++        "h) a mecanica tem a assinatura v411_h0dn_mechanics(beta_, core_, c_, ...) com argumentos opcionais (texto, insumos, caminhos tocados, a funcao e o contrato da v411) para os controles negativos; no rito ela le os globais",
++        "i) o vigia de arquivos da v411 (_v410_h0dn_vigia_arquivos) mede os caminhos tocados; a c1 recusa caminho sob a pasta do Kimi (o veto, medido); os 7 caminhos tocados no ensaio sao do import de submodulos do scipy",
++        "j) o p00 da v412 foi REESCRITO (o da v411 e' de conteudo IALD2/AEscala); o veredito dele hoje e' FALHOU so' pela marca de copia mecanica nos %d scripts ainda nao adaptados, mais 4 pendentes (o topo, o candidato e o que segue, o pino do memoria.py, a folga do MEMORY.md)" % len(MARCADOS),
++        "k) a marca historica de cabecalho das copias (# [ADAPTADO v411, ...]) foi PRESERVADA no bump (subir o rotulo dela diria que a v412 a escreveu); outras linhas historicas sem colchete subiram (ex.: no acom_conferencias, corrigido a mao)"],
++    "pendencias_da_gerencia": ["TOPO_RATIFICADO_v412.json (a palavra do operador sobre 5.1 b)", "a revisao de terceiro", "acom_inscrever_prep_v412.py e fechar_preparacao_v412.py (os bumps estao com a marca)", "pino_memoria_py e a folga do MEMORY.md", "a tarefa agendada", "o S3, o rito, a custodia"],
++    "nada_tocado": ["o Nos (so' leitura; base_v411 e' copia de bytes)", "o pacote work\\h0dn_bg1_v411_emenda_11nov (so' lido; o executor NAO rodou)", "work\\h0dn_bg1_v410_09nov\\kimi (nada lido)", "C:\\IALD\\TGL_IALD_NATIVE_QWEN5090 (o treino nao foi tocado nem medido)",
+@@ -82 +83 @@
+-    "acom": {"referencia": os.path.join(HERE, "SESSION_REFERENCE_prep_v411.json"), "sha16": s16(os.path.join(HERE, "SESSION_REFERENCE_prep_v411.json")), "nota": "init da fonte DESENHO_v411.md e project; a transicao e' da gerencia (acom_inscrever_prep_v411.py)"},
++    "acom": {"referencia": os.path.join(HERE, "SESSION_REFERENCE_prep_v412.json"), "sha16": s16(os.path.join(HERE, "SESSION_REFERENCE_prep_v412.json")), "nota": "init da fonte DESENHO_v412.md e project; a transicao e' da gerencia (acom_inscrever_prep_v412.py)"},
+@@ -84 +85 @@
+-p = os.path.join(HERE, "PRONTO_PARA_CANDIDATO_v411.json")
++p = os.path.join(HERE, "PRONTO_PARA_CANDIDATO_v412.json")
+@@ -88 +89 @@
+-print("PRONTO_PARA_CANDIDATO_v411.json", hashlib.sha256(b).hexdigest()[:16], len(b), "B | a adaptar:", len(MARCADOS), "| p00:", P0["veredito"])
++print("PRONTO_PARA_CANDIDATO_v412.json", hashlib.sha256(b).hexdigest()[:16], len(b), "B | a adaptar:", len(MARCADOS), "| p00:", P0["veredito"])

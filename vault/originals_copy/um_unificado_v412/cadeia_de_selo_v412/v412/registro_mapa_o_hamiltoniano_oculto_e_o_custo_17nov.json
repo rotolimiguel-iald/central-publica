@@ -1,0 +1,30 @@
+{
+ "tipo": "ROTA",
+ "rota_id": "kernel.o_hamiltoniano_oculto_e_o_custo_17nov",
+ "dominio": "KERNEL",
+ "titulo": "17/11: o autor manda descarregar, resolver Tomita e fazer a ligação com o hamiltoniano oculto. Aferição do kernel selado e candidata OHamiltonianoOcultoEOCusto: na face finita, o hamiltoniano de Tomita do estado da trava é o operador do custo; o relógio deixa parados os blocos de mesmo custo. Antes: AEsperancaEOIf R1 com o diálogo entre o if e a esperança",
+ "pergunta": "O hamiltoniano oculto do custo (a fita, no dicionário) e o hamiltoniano de Tomita (menos o logaritmo do estado) são o mesmo objeto para o estado da trava? O que já está no kernel e o que falta para descarregar o contrato da esperança?",
+ "dados": [
+  "nenhum dado; leitura do kernel selado e compilação Lean só com o binário sobre os compilados do sandbox k411c"
+ ],
+ "metodo": "busca no kernel selado e no Atlas por hamiltoniano oculto; leitura de TheImportedExpectation, TheOathOnTheTower (contrato ExpectationInput), TomitaClosability (cabeçalho), ModularFlow e Ergodicity (assinaturas e enunciados); partitura lida ao autor; candidata nova de dez teoremas",
+ "resultado": "[REAL, lido no kernel selado] O hamiltoniano oculto aparece em QGReaderUVLock como K igual a menos log Delta da luz, e no dicionário de TraducaoTuring e AEscala como a fita, o operador do custo; nenhum termo achado liga os dois. A face finita de Tomita está selada desde setembro (FiniteTomita, ModularFlow com logRho e sigma, Ergodicity com sigma_diagonal_apply, sigma_fixed_iff_diag e dephase_tendsto_expectation, CondExpect, PPIndex, MarkovTower). O contrato da esperança na torre (ExpectationInput, em TheOathOnTheTower) tem três cláusulas: cai no centralizador, fixa o centralizador, é ortogonal ao que sobra; em TakesakiInput três campos são provados em casa e o quarto, a existência dessa esperança, é o único importado. [REAL no sandbox: OHamiltonianoOcultoEOCusto, saída zero, sem aviso, 10 teoremas só nos três axiomas; nada instalado; não revista] A trava é o operador do estado diagonal de pesos exponencial de menos s vezes o custo; o logaritmo desse estado é menos s vezes a matriz do custo; o fluxo modular gira cada entrada com a diferença dos custos; o que ele deixa parado em todo tempo são exatamente as matrizes sem entrada entre custos diferentes (com custos repetidos permitidos, o que o teorema selado não cobria); toda matriz diagonal fica parada, em particular o if de custo zero. [REAL no sandbox: AEsperancaEOIf R1, 25 teoremas] O diálogo: esperança, if, esperança é a esperança vezes o peso; if, esperança, if é o peso vezes a média do lado; cada volta paga o peso; renormalizada, a volta devolve o todo; no if de meio a meio k voltas custam k ln 2. [INPUT, por bytes] O autor disse que era isso, exatamente, e mandou descarregar, resolver Tomita e fazer a ligação, porque é o hamiltoniano oculto.",
+ "veredito": "LIGACAO_FEITA_NA_FACE_FINITA__O_HAMILTONIANO_DE_TOMITA_DO_ESTADO_DA_TRAVA_E_O_CUSTO__O_RELOGIO_DEIXA_PARADOS_OS_BLOCOS_DE_MESMO_CUSTO__TOMITA_FINITO_JA_ERA_DO_KERNEL__O_CONTRATO_DA_TORRE_INFINITA_SEGUE_IMPORTADO_NAO_TENTADO__NAO_REVISTA__NADA_INSTALADO",
+ "estatuto": "REAL",
+ "status": "EM_CURSO",
+ "olhou_dados": false,
+ "defeito": "a busca por termo que já ligasse os dois hamiltonianos ocultos foi por nomes e pode ter deixado passar (pedido ao revisor); o limite da média do relógio com custos repetidos (esperança por blocos) não foi provado; a construção da esperança na torre infinita não foi tentada e a parede não foi medida; o operador do custo e o K da luz vivem em espaços diferentes e não são afirmados como o mesmo operador",
+ "nao_refazer": "Não dizer que falta Tomita na face finita: está selado (FiniteTomita, ModularFlow, Ergodicity, CondExpect, MarkovTower). Não refazer a ligação do estado da trava com o custo: está em termo na candidata. Não escrever que o contrato de Takesaki da torre foi descarregado",
+ "proximo_passo": "parecer do Codex (ordem 025, adendo E, unidades Y4 e Y5, com a leitura da parede da torre); depois, a esperança por blocos de mesmo custo como limite da média do relógio; e medir a rota da torre (limite das esperanças dos andares finitos) antes de tentar",
+ "onde": "work\\cadeia_de_selo\\v412\\candidatas_c1 (REV48 e REV49); C:\\IALD\\TUNEL_CLAUDE_APP (ordem 025, adendo E)",
+ "artefatos": [
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_c1\\REV49\\OHamiltonianoOcultoEOCusto.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_c1\\RESULTADO_OHamiltonianoOcultoEOCusto.json",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_c1\\REV48\\AEsperancaEOIf.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_17nov_e_isso_exatamente_mas_tem_que_descarregar_e_resolver_tomita_fazer_a_ligacao_porque_e_o_hamiltoniano_oculto_a_fonte_de_todo_o_codigo_verbatim.txt"
+ ],
+ "refs": [
+  "kernel.a_esperanca_condicional_e_o_par_do_if_17nov"
+ ],
+ "nota": "Registro da gerência c1. Quem constrói não aprova."
+}

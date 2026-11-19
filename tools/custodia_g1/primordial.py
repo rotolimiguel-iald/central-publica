@@ -364,6 +364,16 @@ def montar(cfg):
     hp = Path(cfg.get("handoff") or (nos / ("HANDOFF_%s_CUSTODIA.md" % versao)))
     c.fonte("handoff", hp, json_=False, papel="o handoff da custódia (de onde vem «o que mudou»)")
     marc = _marcadores(hp.read_text(encoding="utf-8"), versao)
+    # AO LADO (13/11/2026, claude-site-custodia; a vitrine, parte 3; condições da gerência c1): os textos da vitrine RATIFICADOS pelo operador têm precedência
+    # sobre os marcadores README_* do handoff (a mesma regra do nos.py); arquivo de versão anterior, ou fonte pinada que mudou, PARA
+    try:
+        rat_v = H0DN.vitrine_ratificada(cam.CEN, versao)
+    except ValueError as e:
+        raise Falha(str(e))
+    if rat_v:
+        c.fonte("vitrine_ratificada", Path(cam.CEN) / "work" / "custodia_G1" / "decisoes" / ("VITRINE_RATIFICADA_%s.json" % versao), json_=False,
+                papel="os textos da vitrine ratificados pelo operador (precedência sobre os marcadores README_* do handoff)")
+    marc_h = H0DN.com_a_vitrine(marc, rat_v, versao)
     for k, id_ in (("TITULO_EN", "mudou.titulo_en"), ("ARCO_EN", "mudou.arco_en"), ("ARCO_PT", "mudou.arco_pt")):
         mk = "%s_%s" % (k, versao)
         if mk not in marc:
@@ -395,20 +405,37 @@ def montar(cfg):
         for k in ("z_null", "z_tgl", "D", "ramo", "outcome", "t", "modelo"):
             c.pegar("h0dn.cefeidas_livres." + k, "core", nome_h + "/values/cefeidas_livres/" + k)
         c.pegar("h0dn.cabeca", "core", nome_h + "/cabeca_do_teste")
+        # AO LADO (13/11/2026, claude-site-custodia; a vitrine, parte 4; achado M6 do verificador distinto): os números do painel que não tinham chave própria
+        for k in ("H0_fundo", "previsao_de_K_para_o_local", "lido_primario", "lido_cefeidas_livres", "publicado_pela_colaboracao", "desvio_publicado"):
+            c.pegar("h0dn.lei_em_km_s_Mpc." + k, "core", nome_h + "/values/lei_em_km_s_Mpc/" + k)
+        c.pegar("h0dn.K", "core", nome_h + "/values/K")
+        esp_c = [i_ for i_, x_ in enumerate(reg_h["values"].get("esperado_pelos_agregados") or []) if "cefeid" in str(x_.get("linha", "")).lower()]
+        if len(esp_c) != 1:
+            raise Falha("o registro %s não traz UMA linha das Cefeidas livres em values.esperado_pelos_agregados" % nome_h)
+        c.pegar("h0dn.cefeidas_livres.z_nulo_esperado", "core", nome_h + "/values/esperado_pelos_agregados/%d/z_nulo_esperado" % esp_c[0])
+        pre_p = Path(cam.CEN) / "work" / ("h0dn_bg1_%s_emenda_11nov" % nome_h.rsplit("_", 1)[1]) / ("EMENDA_E_PRE_REGISTRO_%s.md" % nome_h.rsplit("_", 1)[1].upper())
+        if pre_p.is_file():   # o desvio do fundo (± 0,30) mora no pré-registro pinado, não no registro do core
+            c.fonte("h0dn_pre_registro", pre_p, json_=False, papel="o pré-registro pinado do teste H0DN × BG1 (o fundo BG1: H0 e o desvio)")
+            m_bg = re.search(r"BG1[^\n]*?H0 = (\d+),(\d+) ± (\d+),(\d+)", pre_p.read_text(encoding="utf-8"))
+            if not m_bg:
+                raise Falha("o pré-registro do H0DN não traz, na linha do BG1, «H0 = N,NNN ± N,NNN» (o fundo)")
+            c.derivar("h0dn.fundo.desvio_H0", float(m_bg.group(3) + "." + m_bg.group(4)), "h0dn_pre_registro", "«H0 = … ± …» (o fundo BG1)", "regex")
+            c.conferir("o H0 do fundo do pré-registro é o do registro selado", abs(float(m_bg.group(1) + "." + m_bg.group(2)) - round(reg_h["values"]["lei_em_km_s_Mpc"]["H0_fundo"], len(m_bg.group(2)))) < 1e-9)
         c.pegar("h0dn.outcome", "core", nome_h + "/outcome")
-        faltam_h = ["INICIO_%s_%s" % (mk, versao) for mk in H0DN.MARCADORES_README if "%s_%s" % (mk, versao) not in marc]
+        faltam_h = ["INICIO_%s_%s" % (mk, versao) for mk in H0DN.MARCADORES_README if "%s_%s" % (mk, versao) not in marc_h]
         if faltam_h:
             raise Falha("o H0DN foi aberto (%s): o handoff nao traz %s (os blocos do README nao se inventam; o molde do 5 sigma ficou velho)" % (nome_h, ", ".join(faltam_h)))
         ids_h = {"README_PAINEL_H0DN": "painel", "README_FASE9_V2": "fase9_v2", "README_PRIMORDIAL_5SIGMA": "primordial_5sigma",
-                 "README_STATUS_5SIGMA": "status_5sigma", "README_H0DN": "paragrafo", "README_H0DN_EN": "paragrafo_en", "README_RITOS": "ritos"}
+                 "README_STATUS_5SIGMA": "status_5sigma", "README_H0DN": "paragrafo", "README_H0DN_EN": "paragrafo_en", "README_RITOS": "ritos",
+                 "README_APOIOS_FECHO": "apoios_fecho"}
         for mk in H0DN.MARCADORES_README:
-            txt = marc["%s_%s" % (mk, versao)].strip("\n")
+            txt = marc_h["%s_%s" % (mk, versao)].strip("\n")
             forma = []
             if "{{" in txt or "PORTAS:" in txt:
                 forma.append("traz «{{» ou o marcador das portas")
             if mk == "README_H0DN_EN" and not txt.startswith("**The H0DN × BG1 test:** "):
                 forma.append("tem de começar por «**The H0DN × BG1 test:** » (substitui a linha EN da parte P = nP)")
-            if mk in ("README_PRIMORDIAL_5SIGMA", "README_H0DN", "README_H0DN_EN") and "\n" in txt:
+            if mk in ("README_PRIMORDIAL_5SIGMA", "README_H0DN", "README_H0DN_EN", "README_APOIOS_FECHO") and "\n" in txt:
                 forma.append("tem de ser uma linha so (entra dentro de uma linha do README)")
             if mk == "README_H0DN" and "*" in txt:
                 forma.append("nao pode trazer «*» (entra dentro do italico da parte P = nP)")
@@ -421,7 +448,10 @@ def montar(cfg):
             viol = forma + H0DN.conferir_bloco(txt, Vh, mk, painel=(mk == "README_PAINEL_H0DN"), acervo=Ah)
             if viol:
                 raise Falha("o marcador %s_%s nao passa: %s" % (mk, versao, " | ".join(viol[:6])))
-            c.derivar("h0dn.readme." + ids_h[mk], txt, "handoff", "marcador INICIO_%s_%s" % (mk, versao), "marcador")
+            if rat_v and mk in rat_v["textos"]:
+                c.derivar("h0dn.readme." + ids_h[mk], txt, "vitrine_ratificada", "textos/%s/texto" % mk, "texto ratificado pelo operador")
+            else:
+                c.derivar("h0dn.readme." + ids_h[mk], txt, "handoff", "marcador INICIO_%s_%s" % (mk, versao), "marcador")
     # --- o depósito citável (Zenodo), do CITATION.cff
     cff = (tb / "CITATION.cff").read_text(encoding="utf-8")
     md = re.search(r"Zenodo deposit of (v\d{3}), deposited ([\d-]{10}) \(byte-identical to the seal: um\.py sha256 ([0-9a-f]{16})", cff)

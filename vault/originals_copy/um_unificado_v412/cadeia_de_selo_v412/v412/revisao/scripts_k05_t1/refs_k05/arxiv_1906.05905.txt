@@ -1,0 +1,1881 @@
+arXiv:1906.05905v3 [math-ph] 4 Mar 2020   Mathematical Physics, Analysis and Geometry manuscript No.
+                                          (will be inserted by the editor)
+
+                                         The induced semigroup of Schwarz maps to the
+                                         space of Hilbert-Schmidt operators
+
+                                         George Androulakis � Alexander
+                                         Wiedemann � Matthew Ziemke
+
+                                         Received: date / Accepted: date
+
+                                         Abstract We prove that for every semigroup of Schwarz maps on the von Neu-
+                                         mann algebra of all bounded linear operators on a Hilbert space which has
+                                         a subinvariant faithful normal state there exists an associated semigroup of
+                                         contractions on the space of Hilbert-Schmidt operators of the Hilbert space.
+                                         Moreover, we show that if the original semigroup is weak continuous then
+                                         the associated semigroup is strongly continuous. We introduce the notion of
+                                         the extended generator of a semigroup on the bounded operators of a Hilbert
+                                         space with respect to an orthonormal basis of the Hilbert space. We describe
+                                         the form of the generator of a quantum Markov semigroup on the von Neu-
+                                         mann algebra of all bounded linear operators on a Hilbert space which has an
+                                         invariant faithful normal state under the assumption that the generator of the
+                                         associated semigroup has compact resolvent.
+
+                                         Keywords Schwarz maps � strongly continuous semigroups � generator of a
+                                         semigroup � form generator � faithful normal states � Moore-Penrose inverse
+
+                                         Mathematics Subject Classification (2010) 47D03 � 47D07 � 46L57 �
+                                         81Q80
+
+                                         George Androulakis
+                                         Department of Mathematics, University of South Carolina, Columbia, SC
+                                         E-mail: giorgis@math.sc.edu
+                                         Alexander Wiedemann
+                                         Department of Mathematics, University of South Carolina, Columbia, SC
+                                         E-mail: alwiedemann@davidson.edu
+                                         Present address: Department of Mathematics and Computer Science, Davidson College,
+                                         Davidson, NC
+                                         Matthew Ziemke
+                                         Department of Mathematics, Drexel University, Philadelphia, PA
+                                         E-mail: mjz55@drexel.edu
+2               Androulakis, Wiedemann, Ziemke
+
+1 Introduction
+
+It is known that, under certain assumptions, semigroups on von Neumann al-
+gebras or their preduals give rise to associated semigroups on Hilbert spaces.
+Moreover, these associated semigroups often have stronger continuity prop-
+erties than the original semigroups. For example, in [35, Equation (2.1)] it
+is stated that if (Tt)t0 is a quantum Markov semigroup on a von Neumann
+algebra A which has an invariant faithful normal state, and if (K, , ) is the
+GNS triple associated to that state, then there exists a strongly continuous
+semigroup (Tt)t0 of contractions on K such that
+
+   Tt((A)) = (Tt(A)) for all A  A and t  0.  (1)
+
+Since the proof of this statement is not included in [35] we provide a proof
+here (see Remarks 2 and 9). Other results which give rise to semigroups on
+Hilbert spaces starting from semigroups defined on spaces of operators can be
+found in literature. For example, in [34, Footnote of Theorem 6] it is proved
+that every strongly continuous semigroup (Tt)t0 of positive isometries on
+the real Banach space of self-adjoint trace-class operators on a Hilbert space
+gives rise to a strongly continuous semigroup (Vt)t0 of isometries on the
+Hilbert space such that Tt is given as a conjugation by Vt for all t  0.
+In [19, Theorem 3] it is proved that, under appropriate assumptions, weakly
+continuous semigroups on B(H) (where H is a separable Hilbert space) give
+rise to corresponding semigroups of unitaries on some associated Hilbert space.
+In [31, Theorem 3.3.7] the author produces a strongly continuous group of
+unitaries associated with a norm continuous semigroup on the space of trace-
+class operators on a related Hilbert space.
+
+    In this work we prove a result similar to the result stated above in Equa-
+tion (1) (Theorem 2). More precisely, we prove that every semigroup of Schwarz
+maps on B(H) (where H is a Hilbert space) which has an invariant faithful
+
+state gives rise to an associated semigroup (Tt)t0 of contractions on the space
+of Hilbert-Schmidt operators on H. Our map is "more symmetric" than the
+one provided by Equation (1) (see the comments following Remark 2). We
+introduce the notion of the extended generator of a semigroup on bounded op-
+erators on a Hilbert space with respect to an orthonormal basis of the Hilbert
+space, and we explicitly describe how the generators of (Tt)t0 and (Tt)t0 and
+the extended generator of (Tt)t0 are related. We apply these descriptions to a
+quantum Markov semigroup (Tt)t0 having an invariant faithful normal state
+
+under the assumption that the generator of (Tt)t0 has compact resolvent,
+which allows us to describe the form of the extended generator (and thereby
+the generator) of the semigroup (Tt)t0 with respect to an orthonormal basis,
+and thereby the generator itself (see 4).
+The induced semigroup of Schwarz maps  3
+
+1.1 Structure
+
+� In Section 2 we establish formal notation and definitions, and give some
+historical notes on the terminology.
+� In Section 3 we consider several constructions arising from faithful, positive,
+normal functionals. In particular, in Subsection 3.1 we prove that every faith-
+ful positive normal functional on B(H) induces a canonical bounded linear
+map from B(H) to S2(H). This map is used in Theorem 1 to prove that for
+every bounded linear Schwarz map on B(H), which has a subinvariant faith-
+ful positive functional, there exists a corresponding contraction on S2(H). In
+Subsection 3.2 we consider an alternate construction for such induced maps
+using the GNS construction, and then compare and contrast the two methods.
+� In Section 4 we recall the basic notions of continuity for semigroups, as
+well as formalize the definition of a semigroup's generator and its generator's
+domain. In Subsection 4.1 we introduce the notion of an extended generator,
+which can be defined on a larger domain while still agreeing with the usual
+generator on all finite subspaces. Theorem 2 relates the domains and actions
+of the generator, the extended generator, and the generator of the semigroup
+induced on S2(H).
+� In Section 5 we investigate the applications of Theorem 2 in the study of
+quantum Markov semigroups (QMSs), for which the exact form of the genera-
+tor is known if the generator is bounded (see [28] and [36]). In Subsection 5.1,
+we describe the form of a QMS generator in the case that the generator of the
+semigroup induced on S2(H) has compact resolvent.
+
+2 Preliminaries
+
+We first fix some notation. If H is a Hilbert space, let (B(H), � ) denote the
+space of all bounded linear operators on H. For 1  p < , let (Sp(H), � p)
+denote the Schatten-p space of operators. In particular, (S2(H), � 2) denotes
+the space of Hilbert-Schmidt operators on H and (S1(H), � 1) denotes the
+space of trace-class operators on H. Let �, � S2(H) denote the inner product in
+S2(H). If L is a linear operator which is not necessarily bounded, then D(L)
+will denote the domain of L.
+
+    We adopt the convention that functional will always mean bounded lin-
+ear functional. Usually the functionals that we will consider will be faithful,
+positive, and normal, so this convention will help us to cut down the number
+of adjectives.
+
+    We would like to recall the Schwarz inequality and define the Schwarz
+maps. The classical Cauchy-Schwarz inequality states that | y, x |  y x
+for all vectors x, y in a Hilbert space. This inequality is extended to |(yx)| 
+
+   (yy) (xx) for all x, y in a C-algebra A, where  is a positive functional
+on A (see [33, Theorem 4.3.1]). The last inequality can be further extended to
+(T (yx))T (yx)  T (yy) T (xx) if T is a completely positive map from a
+C-algebra A to the C-algebra B(H) of all bounded operators on a Hilbert
+4  Androulakis, Wiedemann, Ziemke
+
+space H (see [5, Lemma 2.6]). If in the last inequality one assumes that A is
+unital and T is unital, then by replacing y by the unit we obtain
+
+   T (x)T (x)  T (xx) for all x  A.    (2)
+
+A similar inequality was proved by Choi [11, Corollary 2.8] who proved that
+if A is a unital C-algebra and T is a 2-positive unital map from A to A then
+T (x)T (x)  T (xx) for all x  A. Choi calls the last inequality "Schwarz in-
+
+equality". Similar inequalities appear in [32, Theorem 1] and [40, Theorem 7.4].
+Since a positive linear map T on a C-algebra A satisfies T (x) = T (x) for
+all x  A, the last inequality is equivalent to (2). Following [41, page 14],
+we say that a bounded linear operator T on a C-algebra A is a Schwarz
+
+map if Inequality (2) is satisfied. The advantage of Inequality (2), versus the
+
+inequality proved by Choi, is that Inequality (2) implies that T is positive. Be
+
+warned that Inequality (2) is not homogeneous for T , and therefore by scaling
+
+the operator T by a positive constant the above inequality is affected.
+
+    Next we recall the definition of invariant functionals and we define the
+notion of subinvariant positive functionals on a C-algebra. If X is a Banach
+space, T : X  X is a bounded linear operator, and  is a functional on X,
+
+then  is called invariant for T if
+
+   (T x) = (x) for all x  X.
+
+If A is a C-algebra, T : A  A is a positive bounded linear operator, and 
+is a positive functional on A, then we will say that  is subinvariant for T if
+
+   (T a)  (a) for all a  A with a  0.
+
+If H is a Hilbert space, then a functional  on B(H) is called normal if and
+only if it is positive and continuous in the w topology. This is equivalent to
+
+the fact that there exists a unique positive operator   S1(H) such that
+
+   (x) = Tr(x) for all x  B(H)         (3)
+
+where Tr denotes the trace. The positive functional  associated to the positive
+trace-class operator  via Equation (3) is denoted by . If  is a state (i.e.
+unital positive functional) on B(H) then  is normal if and only if the positive
+trace-class operator  which satisfies Equation (3) has trace equal to 1. Note
+that if H is a Hilbert space and T : B(H)  B(H) is a bounded linear operator,
+then a normal positive functional  (for some positive trace-class operator )
+is invariant for T if and only if
+
+                                            T () = ,
+
+where T  denotes the Banach dual operator of T restricted to S1(H) (viewed
+as a subspace of the dual of B(H)). Also, if H is a Hilbert space and T :
+B(H)  B(H) is a positive bounded linear operator, then a normal positive
+
+functional  (for some positive trace-class operator ) is subinvariant for T
+if and only if
+
+                                            T ()  .
+The induced semigroup of Schwarz maps                                    5
+
+    If H is a Hilbert space, recall that a positive functional  on B(H) is
+faithful provided that (x) > 0 for all x > 0. It is worth noting that B(H)
+has a faithful normal functional if and only if H is separable (see [6, Example
+2.5.5]).
+
+3 Constructions Using Faithful, Positive, Normal Functionals
+
+We extensively use the next proposition, so we want to give it along with a
+proof.
+
+  Proposition 1 Let H be a Hilbert space and   S1(H) be positive. Then the
+  following are equivalent:
+
+ (i) the positive normal functional  is faithful,
+(ii) the operator  is injective,
+(iii) the operator  has dense range.
+
+Proof [(i)  (ii)]. Suppose  is faithful. Let h be a nonzero element of H
+and Ph be the orthogonal projection onto the span of h. Then Ph is a positive
+non-zero operator on H. Hence, since  is faithful,
+
+0 < (Ph) = Tr(Ph) = Tr(1/2PhPh1/2) =   Ph1/2  2  =  1     1/2h       2,
+                                              2     h2
+
+and so 1/2h = 0. By using the same argument with h replaced by 1/2h, we
+
+have that h = 0. Thus,  is injective.
+    [(i)  (iii)]. Assume that  does not have dense range and let P be the
+
+orthogonal projection to Range(). Then P is a positive non-zero operator
+on H, and so (P ) > 0. However, P  = 0, and so
+
+(P ) = Tr(P ) = Tr(P ) = Tr(0) = 0
+
+which is a contradiction. Thus,  has dense range.
+    [(iii)  (i)]. Let A  B(H) and suppose (AA) = 0. Then
+
+0 = (AA) = Tr(AA) = Tr(1/2AA1/2) = A1/2 22.                          (4)
+
+Hence A1/2 = 0, and therefore A = 0. Since  has dense range, this implies
+
+A = 0. Thus,  is faithful.
+
+[(ii)  (i)]. Assume that  is injective and let A  B(H) such that
+
+(AA) = 0. Equation (4) implies that A1/2 = 0 and hence 1/2A = 0,
+thus A = 0. This implies Ax = 0 for any x  H, and since  is injective
+
+we have that Ax = 0 for all x  H, and so A = 0. Thus,  is faithful.      
+
+Remark 1 Note that in the proof of [(i)  (ii)] of the above proposition,
+we proved that (i) implies that 1/2 is injective. Since 1/2 = 1/41/4 we
+immediately obtain that 1/4 is injective. Since 3/4 = 1/21/4 we obtain that
+3/4 is injective as it is a composition of two injective maps. Further, since an
+operator is injective if and only if its adjoint has dense range, and 1/4, 1/2,
+and 3/4 are self-adjoint, we have that 1/4, 1/2, and 3/4 have dense range.
+6                                                            Androulakis, Wiedemann, Ziemke
+
+3.1 Inducing Maps on S2(H)
+
+Let H be a Hilbert space and fix   S1(H) which is positive. Define
+                      i : B(H)  B(H) by i(x) = 1/4x1/4.
+
+    The next proposition summarizes the properties of the map i. It is useful
+to first recall that for any Hilbert space H the following set inclusions hold:
+
+                                    S1(H)  S2(H)  B(H).
+
+Proposition 2 Let   S1(H) be positive such that  is a faithful positive
+functional. Then the following statements are valid:
+
+(a) The map i is injective.
+(b) The map i preserves positivity.
+(c) The restriction i|S2(H) of i to S2(H) is a contraction from S2(H) into
+
+     S1(H).
+(d) The map i is a contraction from B(H) onto a dense subset of S2(H).
+
+Proof To prove (a), let x  B(H) and suppose i(x) = 0. By Remark 1 we
+have that 1/4 is injective. Therefore, since 1/4x1/4 = 0, we obtain that
+x1/4 = 0. Further, since 1/4 has dense range, (by Remark 1 again), we
+obtain that x = 0. Thus i is injective.
+
+     To prove (b), let x  B(H) where x  0. Let h  H. Then
+
+              h, i(x)h = h, 1/4x1/4h = 1/4h, x1/4h  0
+
+since x  0. Thus i maps positive operators to positive operators.
+                                                                   1       1       1
+   To  prove  (c),  first  note  that  for  p, q, r    1     with  p  +    q  +    r  =    1  and  for
+
+x  Sp(H), y  Sq(H), and z  Sr(H), two applications of Holder's inequality
+
+give that xyz 1  x p y q z r. From this we obtain that for y  S2(H)
+
+with y 2  1 we have
+
+   i(y) 1 =   1/4y1/4 1          1/4 4 y 2 1/4 4 =                 1/4  y     2       1/4      11/4.
+                                                                   1                  1
+
+   To prove (d), first notice that i(x)  S2(H) for all x  B(H) since
+
+       i(x)   2     =  1/4x1/4   2     =  Tr  1/2 x 1/2 x
+              2                  2
+
+                     1/2x1/2x 1  1/2x 2 1/2x 2
+
+                    = Tr   (1/2 x ) (1/2 x )         1/2     (1/2x)(1/2x) 1/2
+
+                                                         Tr
+
+                    = Tr (xx)1/2 Tr (xx)1/2 < .
+
+    Let y  S2(H) such that y  i(x) for all x  B(H), (where the orthogo-
+nality is taken with respect to the Hilbert-Schmidt inner product). Then, for
+all x  B(H), we have
+
+                    0 = i(x), y S2(H) = 1/4x1/4, y S2(H)
+                      = Tr(1/4x1/4y) = x, 1/4y1/4 S2(H).
+The induced semigroup of Schwarz maps                               7
+
+Therefore 1/4y1/4 = 0. Since 1/4 is injective, we have that y1/4 = 0 and,
+since 1/4 has dense range, we have that y = 0. Therefore i has dense range.
+
+    To see that i : B(H)  S2(H)  1, let x  B(H) and notice that
+
+i(x) 2 = sup | i(x), y S2(H)| = sup | Tr(i(x)y)|
+yS2(H)                                 yS2(H)
+
+y 21                                   y 21
+
+= sup | Tr(1/4y1/4x)|  sup 1/4y1/4 1 x 
+
+yS2(H)                                 yS2(H)
+
+y 21                                             y 21
+
+= i|S2(H) : S2(H)  S1(H) x   x ,
+
+where we used part (c) for the last inequality.                     
+
+Definition 1 Let H be a Hilbert space and   S1(H) be a positive operator.
+If T : B(H)  B(H) is a bounded linear operator, we define the operator
+
+T : i(B(H))  i(B(H)) by
+
+T (1/4x1/4) = 1/4T (x)1/4 for all x  B(H).
+
+Note that T depends on  but, for simplicity, we chose notation which does
+not reflect this dependence.
+
+    The following theorem was first proven in [7]. For the convenience of the
+reader we provide a proof of it here.
+
+Theorem 1 Suppose H is a Hilbert space and   S1(H) be a positive operator
+such that  is a faithful positive functional on B(H). Let T : B(H)  B(H)
+be a bounded linear operator which is a Schwarz map such that  is a subin-
+
+variant functional for T . Then the corresponding operator T can be extended
+to all of S2(H) as a contraction from S2(H) to S2(H).
+
+Proof Since  is a faithful normal functional on B(H), we have that H must
+
+be separable (see the comment above Proposition 1), so let (ek)k0 be an
+                                                          n
+orthonormal basis for H which diagonalizes  and let Pn =  k=0  |ek  ek |.
+
+Note that  and its positive powers commute with each Pn. Define the linear
+subspace A = {x1/2 : x  B(H)} and the map T : A  A by T (x1/2) =
+
+T (x)1/2. Further, for n  N, define the map n : S2(H)  S2(H) by
+
+n(x) = Pn1/2x-1/2Pn for all x  S2(H)
+8                                         Androulakis, Wiedemann, Ziemke
+
+(note that 1/2 is not invertible but -1/2Pn is a bounded operator). Then,
+for any x  B(H), we have
+
+   T (i(x))  2  =  1/4T (x)1/4  2  =  Tr  1/4T (x)1/2T (x)1/4
+             2                  2
+
+                = lim Tr    1/2T (x)Pn1/2T (x)1/2-1/2Pn
+
+                    n
+
+                = lim  T (x)1/2, n(T (x)1/2)
+
+                    n                                                 S2(H)
+
+                = lim  T (x1/2), nT (x1/2)
+
+                    n                                             S2(H)
+
+                = lim  x1/2, T nT (x1/2)                                            (5)
+
+                    n                                            S2(H)
+
+where we will see later on why T  is well-defined.
+    Define  : A  A by (x1/2) = 1/2x, which is well-defined since 1/2
+
+has dense range (hence, for x, y  B(H), x1/2 = y1/2 implies x = y). Let
+
+B = {x : x  B(H)}. We make the following three claims:
+
+(i) T is a contraction on A. Therefore T can be extended to a contraction on
+
+     S2(H) since A is dense in S2(H)).
+(ii) 2n is positive. Therefore, by [37, Lemma 1.2], we have
+
+                       T nT        T 2nT  1/2                                       (6)
+
+                                              .
+
+(iii) T 2nT  2 on B. Thus,
+
+                      T n2 T 1/2  (2)1/2 = .                                        (7)
+
+    Hence, by combining (6) and (7), we obtain T nT   on B.
+
+Assume for the moment that the above claims (i), (ii), and (iii) are true. By
+replacing x by x1/2, in Equation (5) we obtain that
+
+   T (i(x1/2))  2  =   lim  x, T nT (x)
+                2
+                      n                                    S2 (H)
+
+                    x, (x) S2(H) =        x, 1/2x1/2
+
+                                                                     S2 (H)
+
+                   = Tr x1/2x1/2 = Tr 3/4x1/41/4x3/4
+
+                   =  1/4x3/4, 1/4x3/4    S2(H)                    =    i(x1/2)  2
+                                                                                 2
+
+and so T is a contraction on i(B(H)1/2). We now show that i(B(H)1/2)
+is dense in S2(H). Let y  S2(H) such that y  i(B(H)1/2). Then, for any
+x  B(H) we have that
+
+   0 = i(x1/2), y S2(H) = Tr(i(x1/2)y)
+     = Tr(1/41/2x1/4y) = x, 1/4y3/4 S2(H)
+The induced semigroup of Schwarz maps                                  9
+
+and hence 1/4y3/4 = 0. Since 1/4 is injective, we then have that y3/4 = 0
+and, since 3/4 has dense range, we obtain that y = 0. Therefore i(B(H)1/2)
+is dense in S2(H). Since T is a contraction on i(B(H)1/2), we can extend
+it to a contraction on S2(H). This finishes the proof of the theorem pending
+verification of claims (i), (ii), and (iii), as well as the fact that T  is well-
+defined.
+
+    First, we prove claim (i), i.e., that T is a contraction on A. Let x  B(H).
+Then
+
+           T (x1/2)  2  =  T (x)1/2    2  =  T (x)1/2, T (x)1/2 S2(H)
+                     2                 2
+
+                        = Tr(1/2T (x)T (x)1/2)  Tr(1/2T (xx)1/2)
+
+since T is a Schwarz map. Further,
+
+Tr(1/2T (xx)1/2) = Tr(T (xx))  Tr(xx) = Tr(1/2xx1/2)
+                          = x1/2, x1/2 S2(H) = x1/2 22.
+
+Therefore  T (x1/2)     2    x1/2 22, and so T is a contraction on A. Hence, T
+                        2
+
+can be extended to a contraction on S2(H) since A is dense in S2(H) (this
+
+also shows that T  is well-defined).
+
+    For claim (ii), i.e., that n2 is positive, first note that since  commutes
+with Pn we have
+
+                      2nx = PnxPn-1Pn for all x  S2(H)
+
+(note that  is not invertible but -1Pn is a bounded operator). Indeed, if
+x  S2(H) then
+
+x, 2nx S2(H) = x, PnxPn-1Pn S2(H) = Tr xPnxPn-1Pn
+                  = Tr 1/2PnxPn-1/2PnPn-1/2PnxPn1/2
+
+                  = Tr (1/2PnxPn-1/2Pn)(1/2PnxPn-1/2Pn)  0,
+
+and so n2 is positive. By [37, Lemma 1.2], we then have that
+
+                             T nT  (T 2nT )1/2.                        (8)
+10                                       Androulakis, Wiedemann, Ziemke
+
+    It is left to prove claim (iii), i.e., that T 2nT  2 on B. Indeed,
+
+x, T n2 T (x)          =  T (x1/2)1/2, 2nT (x1/2)1/2 S2(H)
+
+                S2 (H)
+
+                   = T (x1/2)1/2, PnT (x1/2)1/2Pn-1Pn
+
+                                                                                                       S2 (H)
+
+                   = Tr 1/2T (x1/2)PnT (x1/2)1/2Pn-1Pn
+
+                   = Tr T (x1/2)PnT (x1/2)Pn
+
+                    Tr T (x1/2)T (x1/2) (see below)                                                            (9)
+
+                    Tr T (x1/2)(x1/2)               (T is a Schwarz map)
+
+                    Tr (x1/2)(x1/2) ( is subinvariant for T )
+                   = Tr (xx) = Tr (x(x)) = Tr ((x)x)
+                   = Tr (x)2(x) (since 2(x) = x)
+                   = x, 2(x) S2(H) .
+
+This completes the proof as long as we justify the inequality (9). Indeed, we
+have that the inequality Tr(PnAPnA)  Tr(AA) holds in general for any
+A  S2(H), since if (ek)k1 is the orthonormal basis of H used to define each
+
+Pn, then
+
+                   
+
+    Tr(PnAPnA) =          ek, PnAPn2Aek
+
+                   k=1
+
+                                               n
+
+                =         PnAPnek, PnAek =          PnAek, PnAek ,
+
+                   k=1                         k=1
+
+and further
+
+             n                  n              n
+
+                PnAek, PnAek =       PnAek 2        Pn 2 Aek 2
+
+    k=1                         k=1            k=1
+
+                                
+
+                                     Aek 2 = Tr(AA).
+
+                                k=1
+
+                                                                                                               
+
+3.2 An Alternate Construction
+
+There is another situation where a bounded operator on a C-algebra gives rise
+to a corresponding operator on a Hilbert space, and we would like to mention
+this in the next remark.
+The induced semigroup of Schwarz maps                          11
+
+Remark 2 Let A be a unital C-algebra and  be a faithful state on A. Con-
+sider the GNS construction of A associated with . Let K be the Hilbert space
+associated with the GNS construction,  : A  B(K) be the -representation
+of A into the C-algebra of all bounded operators on K, and  denote the
+cyclic element of the Hilbert space K for the representation , (i.e. the sub-
+space {(a)() : a  A} is norm dense in K) which is equal to the unit of
+A viewed as an element of K. Let T be a bounded operator on A which is a
+
+Schwarz map. Assume that  is subinvariant for T . Define an operator T on
+the dense subspace {(a)() : a  A} of K with values in K by
+
+                  T ((a)()) = (T (a))() for all a  A.
+
+Then T is a contraction (hence it extends to K).
+
+Proof Since  is faithful, the quotient that is usually associated with the GNS
+
+construction does not take place, and the elements of A belong to K. Let
+
+�, �  denote the inner product in K and �  denote the norm of K. Then
+since  is faithful, we have that for a, b  A, a, b  = (ab) and hence
+            = (aa).
+((a))()  2
+         
+
+For every a  A we have
+
+T ((a)())   2  =  (T (a))()      2  = (T (a)T (a))  (T (aa))
+                                 
+
+                  (since  is positive and T is a Schwarz map)
+
+               (aa) (T  0 is a Schwarz map;  is subinvariant for T )
+
+               =  (a)()    2  ,
+                           
+
+which finishes the proof.                                      
+
+    Notice the similarities between Theorem 1 and Remark 2. Both refer to
+a bounded operator on some C-algebra where a positive linear functional
+
+is fixed, and they each conclude the existence of an associated contraction on
+
+some Hilbert space. But there are three key differences between Theorem 1 and
+Remark 2. First, Theorem 1 refers to an operator on B(H) for some Hilbert
+
+space H (which is necessarily separable since B(H) is assumed to admit a
+
+faithful normal state), while Remark 2 assumes that the operator is defined
+on a general C-algebra. Second, the state  which is mentioned in Theorem 1
+is normal since it is defined via the trace-class operator , while there is no
+
+such assumption in Remark 2 (the normality of the state  in Remark 2 does
+not make sense in general since A is simply assumed to be a C-algebra and
+
+not a von Neumann algebra as it is assumed in [35, Equation (2.1)]). Third,
+the Hilbert space that is used in Theorem 1 is the space S2(H) which does
+not depend on the positive linear functional, while the map i which maps
+B(H) to S2(H), does depend on the positive linear functional. On the other
+hand, the Hilbert space that is used in Remark 2 (i.e. the GNS construction
+associated to the faithful state  of the C-algebra A) depends on the state,
+while the -representation  of the von Neumann algebra which is associated
+
+with the GNS construction does not depend on the state. Notice also that
+12  Androulakis, Wiedemann, Ziemke
+
+the combinations of the Hilbert spaces with the representations in Theorem 1
+and Remark 2 are very similar. More precisely, for a, b  B(H) we have that
+i(a), i(b)  S2(H) hence
+
+          i(a), i(b) S2(H) = Tr(i(a)i(b))
+                                 = Tr(1/4a1/41/4b1/4) = Tr(a1/2b1/2).
+
+On the other hand, if we assume for the moment that the C-algebra A that
+appears in Remark 2 is equal to B(H) for some Hilbert space H, and the
+faithful state  on the C-algebra A is given by (a) = Tr(a) for some
+positive trace-class operator  on H, then the inner product of two elements
+a, b  A via the GNS construction is given by
+
+                                 a, b  = (ab) = Tr(ab).
+
+Thus the combination of the inner product with the representation that is used
+in Theorem 1 is slightly more "symmetric" than the combination of the inner
+product with the representation that is used in Remark 2. The reader of course
+will notice the difference between the complexity of the proof of Theorem 1
+and that of Remark 2. The extra intricacies in the proof of Theorem 1 is the
+price we pay in order to achieve the extra symmetry in the combination of the
+inner product and the representation as discussed above.
+
+Remark 3 The assumption that " is subinvariant for T " cannot be omitted
+in Remark 2.
+
+    An example where  is not a subinvariant functional for T but all the other
+assumptions of Remark 2 are valid is presented in Remark 11.7 of [43].
+
+Remark 4 Note that if H is a Hilbert space, T : B(H)  B(H) is a bounded
+positive linear operator, and  is a subinvariant positive faithful functional
+for T , then /(1) is a subinvariant faithful state for T (here 1 denotes the
+identity operator on H). Thus, instead of assuming the existence of subinvari-
+ant positive faithful functionals, we henceforth simply assume the existence
+of subinvariant faithful states. Our subsequent results thus remain valid if the
+assumptions of the existence of subinvariant faithful states are replaced by the
+assumptions of the existence of subinvariant positive faithful functionals.
+
+4 Semigroups of Schwarz Maps
+
+We first recall some basic definitions about semigroups.
+
+Definition 2 Let X be a Banach space. A one-parameter family (Tt)t0 of
+bounded operators on X is a semigroup on X if Tt+s = TtTs for all t, s  0,
+and T0 = I where I is the identity operator on X. We say the semigroup
+(Tt)t0 on a Banach space X is
+The induced semigroup of Schwarz maps                            13
+
+ � uniformly continuous if the map t  Tt is continuous with respect to
+    the operator norm.
+
+ � strongly continuous if for all x  X the map t  Ttx is continuous with
+    respect to the norm on X.
+
+ � weakly continuous if for all x  X and all x  X the map t  x(Ttx)
+    is continuous.
+
+ � weak continuous if X is a dual Banach space X = Y  and for all y  Y
+    and x  X the map t  (Tt(x))(y) is continuous.
+
+If H is a Hilbert space and X = B(H) then the semigroup (Tt)t0 on the
+Banach space X is WOT continuous (where this acronym stands as usually
+for the weak operator topology) if for all h1, h2  H and x  B(H) we have
+that the map t  h1, Tt(x)h2 is continuous.
+
+    It can be shown that a semigroup on a Banach space is strongly continuous
+if and only if it is weakly continuous (see [4, Thm. 3.31]). If (Tt)t0 is a
+uniformly continuous semigroup on a Banach space X then its generator is
+defined as the operator norm limit
+
+                                L  =   lim  Tt  -  I  .
+                                                t
+                                       t0
+
+This limit exists and it defines a bounded operator on X. If we do not assume
+the uniform continuity of the semigroup, then the definition of the generator
+is given next:
+
+Definition 3 Let (Tt)t0 be a strongly continuous semigroup (resp. weakly
+continuous, resp. weak continuous), on a Banach space X (of course, when
+
+we assume that the semigroup is weak continuous we assume that X is a dual
+
+Banach space). We say an element x  X belongs to the domain D(L) of the
+
+generator L of (Tt)t0, if
+
+                                lim     Tt(x)   -  x             (10)
+                                             t
+                                t0
+
+converges in norm (resp. weakly, resp. weak) and, in this case, define the
+generator to be the generally unbounded operator L such that
+
+L(x)  =                    lim  Tt(x)   -  x    for all x  D(L)  (11)
+                                     t
+                           t0
+
+where the last limit is taken in the norm (resp. weak, resp. weak) topology
+of X.
+
+    Since a semigroup on a Banach space is strongly continuous if and only if
+it is weakly continuous, it is natural to ask whether the limits (10) and (11)
+can be replaced by weak limits and end up with the same D(L) and L. It turns
+out that this is indeed the case (see [4, Proposition 3.36]). We will make use
+of this fact in the proof of Theorem 2.
+14                                     Androulakis, Wiedemann, Ziemke
+
+4.1 The Extended Generator L(hn) of (Tt)t0
+
+We now wish to extend the definition of the generator to include some cases
+where the limit (11) does not exist. We first require the following notation:
+
+Definition 4 Let H be a Hilbert space and (hn)nN be an (countable or
+uncountable) orthonormal basis of H. We let MN(hn) denote the set of all com-
+plex N � N matrices with rows and columns indexed by N . We view a ma-
+trix L  MN(hn) as a linear map L : D(L)  CN acting on H as follows:
+denote L = (Ln,m)n,m N , and define D(L)  H as the set of all vectors
+
+h = mN hm, h hm  H such that the series mN Ln,m hm, h converges
+for all n  N . Then
+
+    L(h) =            Ln,m hm, h             .
+
+            mN                           nN
+
+This is in particular the natural matrix multiplication of L against h written
+as a column vector.
+
+    The following definition is given as the minimal requirements for the out-
+puts of L to be considered as linear maps in the sense given above for a fixed
+orthonormal basis (hn)nN of H.
+
+Definition 5 Let H be a Hilbert space and (hn)nN be a (countable or un-
+countable) orthonormal basis of H. Let (Tt)t0 be a semigroup of bounded
+operators on B(H). To define the extended generator L(hn) of (Tt)t0 with
+respect to the basis (hn)nN we first define its domain as the linear subspace
+of all x  B(H) such that the function
+
+    [0, )  t  hn, Tt(x)hm
+
+is differentiable at 0 for every n, m  N ; that is, D(L(hn)) is the linear subspace
+of all x  B(H) such that the limit
+
+    lim     hn,       Tt(x)   -  x hm
+                           t
+    t0
+
+exists for every n, m  N . In general D(L(hn)) can be the zero subspace, but
+if the semigroup is WOT continuous then D(L(hn)) is WOT dense in B(H).
+Define the extended generator L(hn) of (Tt)t0 (with respect to the
+orthonormal basis (hn)nN) to be the map with domain D(L(hn)) whose
+range elements are matrices L(hi)(x)  MN(hn) with entries given by
+
+    [L(hi)(x)]n,m  =  lim  hn,   Tt(x)   - x hm  .
+                                      t
+                      t0
+The induced semigroup of Schwarz maps                             15
+
+    Next we want to compare the generator of a semigroup on B(H) with
+
+respect to an orthonormal basis of H to the usual generator. Since the def-
+
+inition of the generator depends on the continuity of the semigroup, in the
+next remark we will consider a weak continuous semigroup on B(H) for some
+Hilbert space H. The reason that we choose the weak continuity versus any
+
+other continuity assumption is because it is the weakest and the most natural
+
+among all continuity assumptions that appear in Definition 2.
+
+Remark 5 Let H be a Hilbert space, (Tt)t0 be a weak continuous semigroup
+of bounded operators on B(H), and let L denote its generator. Let (hn)nN
+be a (countable or uncountable) orthonormal basis of H, and let L(hn) denote
+the generator of (Tt)t0 with respect to (hn)nN . Then D(L)  D(L(hn)), and
+for every x  D(L) we have L(x) = L(hn)(x), by which we mean the matrix
+of L(x) with respect to (hn)nN and the matrix L(hn)(x) are equal.
+
+    Indeed, for fixed x  D(L) and every h, h  H we have that
+
+                    h,   Tt(x)   -  x  h     h, L(x)h  as t  0.   (12)
+                              t
+
+In particular,
+
+                    lim  hn,     Tt(x)    -  x hm  =  hn, L(x)hm
+                                      t
+                    t0
+
+for every n, m  N . Thus x  D(L(hn)).
+Notation: If N is a nonempty set, then we denote by fin(N ) the set of all
+finite subsets of N .
+
+Notation: Let H and K be Hilbert spaces with H  K and let A  B(H) and
+B  B(K). We shall denote by
+
+                                       A = prH(B)
+
+the fact that
+
+                                       A = PHB|H
+
+where |H denotes the restriction to H and PH : K  H denotes the orthog-
+onal projection from K onto H. The operator B is called a dilation of the
+
+operator A and the operator A is called a compression of the operator B.
+
+Remark 6 Let H be a Hilbert space with (countable or uncountable) dimension
+N , (hn)nN be an orthonormal basis of H, (Tt)t0 be a semigroup of bounded
+operators on B(H), and let L(hn) denote its generator with respect to (hn)nN .
+For x  D(L(hn)) and F  fin(N ) there exists a unique operator
+
+                       L(hn)(x)F : Span(hn)nF  Span(hn)nF
+
+satisfying
+
+lim  h,  Tt(x)   -  x h  =  h, L(hn)(x)F h         for all h, h  Span(hn)nF , (13)
+              t
+t0
+16                                                     Androulakis, Wiedemann, Ziemke
+
+or equivalently
+
+    prSpan(hn)nF   Tt(x) - x          - L(hn)(x)F                      0  as t  0.
+                        t                                                           (14)
+                                                       B(Span(hn)nF )
+
+    Indeed, fix F  fin(N ). From Definition 5, L(hn)(x)F : Span(xn)nF 
+Span(xn)nF is uniquely defined by
+
+[L(hi)(x)F ](h) =        lim    hn,   Tt(x)   -  x hm  hm, h hn  if h =       hm, h hm.
+                                           t
+                   n,mF  t0                                               mF
+
+                                                                              (15)
+
+    Then (13) is obvious from Definition 5 and (15). The equivalence of (13)
+
+and (14) then follows for any finite subset F of N , since all linear Hausdorff
+
+topologies on the space of linear operators on Span(hn)nF are equivalent.
+Thus the WOT on Span(hn)nF in (13) can be replaced by the B(Span(hn)nF )
+
+topology.
+
+Remark 7 Let H be a Hilbert space with (countable or uncountable) dimen-
+sion N , (hn)nN be an orthonormal basis of H, (Tt)t0 be a semigroup of
+bounded operators on B(H), and let L(hn)n denote its generator with respect
+to (hn)nN . Fix x  D(L(hn)). Then the family (L(hn)(x)F )F fin(N) is com-
+patible in the following sense: If G  F are two finite subsets of N then
+prSpan(hn)nG (L(hn)(x)F ) = L(hn)(x)G.
+
+    Indeed, this is obvious from (15).
+
+Remark 8 The generator of a semigroup with respect to an orthonormal basis
+
+that we defined above is related to the form generator which was defined
+
+by Davies [13] and was further studied in [29], [9], [39], [30], [10], [20], [3],
+and [38]. If (Tt)t0 is a weak continuous semigroup on B(H) for some Hilbert
+space H, then a form generator is the map  : K � B(H) � K  C where K is
+
+a dense linear subspace of H, defined by
+
+(h, x, h) =  h,    lim  Tt(x)   -  x  h  for every h, h  K and every x  B(H).
+                             t
+                   t0
+
+Note that if (hn)nN is an orthonormal basis of H and K denotes the linear
+span of (hn)nN then the form generator coincides with the generator with
+respect to (hn)nN if the domain of the generator with respect to (hn)nN is
+equal to B(H). Here we assume that the domain of the generator with respect
+to an orthonormal basis is a linear subspace of B(H), not necessarily equal to
+
+B(H).
+
+    We require a few more definitions in order to state the next result.
+
+Definition 6 Let H be a Hilbert space,  be a state on B(H) and (Tt)t0 be
+a semigroup of positive operators on B(H). We say that  is a subinvariant
+
+state for the semigroup (Tt)t0, if and only if  is subinvariant for Tt for every
+t  0.
+The induced semigroup of Schwarz maps                     17
+
+Definition 7 The Moore-Penrose inverse or pseudoinverse x(-1) of x 
+B(H) is defined as the unique linear extension of (x|N (x) )-1, the inverse as
+a function, to
+
+                                 D(x(-1)) := R(x) + R(x)
+
+with N (x(-1)) = R(x), where N (x) and R(x) denote the nullspace and
+range of x, respectively. Letting P and Q denote the orthogonal projections
+onto N (x) and R(x), respectively, it can be shown (see e.g. [17]) that x(-1) is
+uniquely determined by the relations
+
+                      x(-1)x = I - P and xx(-1) = Q|D(x(-1)).
+
+Notation: By i(-1) we mean the map from B(H) to the space of linear maps
+on H defined via
+
+                             i(-1) (x) = (1/4)(-1)x(1/4)(-1).
+
+    Now we are ready to state the next result.
+
+Theorem 2 Let H be a Hilbert space, (Tt)t0 be a semigroup of Schwarz maps
+on B(H), and let   S1(H) be such that  is a faithful state on B(H) which is
+subinvariant for the semigroup (Tt)t0. Then there exists a unique semigroup
+
+(Tt)t0 of contractions on S2(H) such that
+
+Tt(i(x)) = i(Tt(x)) for all x  B(H).                      (16)
+
+Moreover, if (Tt)t0 is weak-continuous then (Tt)t0 is strongly continuous.
+
+Let L denote the generator of (Tt)t0, let L denote the generator of (Tt)t0,
+and let L(hn) denote the generator of (Tt)t0 with respect to (hn)nN, where
+(hn)nN is an orthonormal basis of H consisting of eigenvectors of . Then
+
+x  D(L) implies i(x)  D(L), and moreover
+
+L(i(x)) = i(L(x));
+
+conversely, i(x)  D(L) implies x  D(L(hn)), and moreover
+
+L(hn)(x) = i(-1) (L(i(x))).                               (17)
+
+Proof The operators Tt are well-defined by Theorem 1. Uniqueness comes from
+Equation (16) and the fact that i(B(H)) is dense in S2(H). It is easy to see
+
+that Tt+s = TtTs and that T0 = 1 on i(B(H)), and the density of i(B(H))
+implies these hold on all of S2(H).
+
+    For the continuity statement, it suffices to assume that (Tt)t0 is weak-
+
+continuous and show (Tt)t0 is strongly continuous on i(B(H)), since i(B(H))
+18                                                                   Androulakis, Wiedemann, Ziemke
+
+is dense in S2(H) and Tt is a contraction on S2(H) for all t  0. To this end,
+let x  B(H). Then
+
+Tt(i(x)) - i(x)      2  =       1/4Tt(x)1/4 - 1/4x1/4                2
+                     2                                               2
+
+                        =       1/4Tt(x)1/4         2  +    1/4x1/4         2
+                                                    2                       2
+
+                             - 1/4x1/4, 1/4Tt(x)1/4 S2(H)
+                             - 1/4Tt(x)1/4, 1/4x1/4 S2(H)
+
+                        =       Tt(i(x))      2  +  i(x)       2
+                                              2                2
+
+                             - 2 1/4x1/4, 1/4Tt(x)1/4 S2(H)
+
+                        2          i(x)    2  -  2     tr(1/4 x 1/4 1/4 Tt (x)1/4 )
+                                           2
+
+                        = 2 tr(1/4x1/41/4x1/4-1/4x1/41/4Tt(x)1/4)
+
+                        = 2 tr 1/2x1/2(x - Tt(x))  0
+
+since 1/2x1/2 is trace-class. Therefore (Tt)t0 is a strongly continuous semi-
+group of contractions on S2(H).
+
+    To prove the final statement, first assume that x  D(L). Then
+
+                                weak  -    lim      Tt(x)   -  x  =  L(x).                    (18)
+                                                         t
+                                           t0
+
+Notice that for every y  S2(H) we obtain, by Proposition 2(c), that
+1/4y1/4  S1(H) and therefore the map B(H)  z  Tr(z1/4y1/4)  C
+is weak continuous. Thus Equation (18) implies
+
+            Tr  1/4     y1/4       Tt(x)      -  x  -t--0 Tr 1/4y1/4L(x) ;
+                                        t
+
+that is,
+
+            y,  1/4  Tt(x)      -  x  1/4            -t--0        y, 1/4L(x)1/4         ,
+                          t
+                                              S2 (H)                             S2(H)
+
+and hence,
+
+    y,    Tt (1/4 x1/4 )     -  1/4x1/4                 -t--0     y, 1/4L(x)1/4            .  (19)
+                          t
+                                                 S2 (H)                          S2(H)
+
+By [4, Proposition 3.36], we obtain that 1/4x1/4  D(L) and L(1/4x1/4) =
+1/4L(x)1/4.
+
+    Conversely, by the Spectral Theorem there exists an orthonormal basis
+(hn)nN of H formed by eigenvectors of . Let L(hn) denote the generator of
+The induced semigroup of Schwarz maps                                         19
+
+(Tt)t0 with respect to (hn)nN. Let x  B(H) and assume that 1/4x1/4 
+D(L). Then we have that
+
+           Tt(1/4x1/4) - 1/4x1/4             -t--0 L(1/4x1/4)  in S2(H),
+                           t
+
+and hence
+
+           1/4        Tt(x)   -  x 1/4  -t--0   L(1/4x1/4)  in S2(H).         (20)
+                           t
+
+We will prove that x  D(L(hn)). Indeed, we have that
+
+           h,      1/4   Tt  (x)  -  x  1/4  h  -t--0   h, L(1/4x1/4)h
+                               t
+
+for all h, h  H, so for any n, m  N we may set h = (1/4)(-1)hn and
+h = (1/4)(-1)hm to obtain
+
+                   (1/4 )(-1) hn ,   1/4  Tt(x)   -  x  1/4 (1/4 )(-1) hm
+                                               t
+
+           -t--0 (1/4)(-1)hn, L(1/4x1/4)(1/4)(-1)hm .
+
+Noting that (1/4) = 1/4, ((1/4)(-1)) = (1/4)(-1), and 1/4(1/4)(-1)hk =
+hk for all k  N, this implies
+
+hn,        Tt(x)   -  x  hm   -t--0     hn, (1/4)(-1)L(1/4x1/4)(1/4)(-1)hm .
+                t
+
+Because this limit exists for all n, m  N we have x  D(L(hn)), and moreover
+
+                   L(hn)(x) = (1/4)(-1)L(1/4x1/4)(1/4)(-1).
+
+                                                                              
+
+Remark 9 Since the proof of Equation (1) is not included in [35], we want to
+mention that its proof follows from our Remark 2 in a similar way that our
+Theorem 2 followed from our Theorem 1 (even the proof of the strong continu-
+ity of the semigroup (Tt)t0 follows the exact same argument as the proof of
+
+the strong continuity of the semigroup (Tt)t0 that appeared in Theorem 2).
+Moreover, the assumptions that the faithful state is normal and invariant for
+the semigroup and that the operators of the semigroup are completely positive
+that are mentioned in [35] for Equation (1) are not needed for its proof, be-
+cause such assumptions were not used in Remark 2. Instead, for the validity of
+Equation (1), one merely needs to assume that the faithful state is subinvari-
+ant for the semigroup of Schwarz maps. Note also that, unlike Equation (1),
+Theorem 2 relates the generators of the two semigroups.
+20  Androulakis, Wiedemann, Ziemke
+
+5 Applications to Quantum Markov Semigroups and Their
+Generators
+
+Since quantum Markov semigroups (QMSs) are semigroups of completely pos-
+itive maps on von Neumann algebras (and hence 2-positive maps and hence
+Schwarz maps), we naturally obtain applications of Theorem 2 in the study of
+QMSs. The existence of invariant normal states for QMSs has been discussed
+in [22] and [24]. Sufficient conditions for a semigroup to be decomposable into
+a sequence of irreducible semigroups each of them having an invariant normal
+state are given in [42] (see top half of page 608, Theorem 5 on page 608, and
+Proposition 5 on page 609). There are many results in the literature of semi-
+groups which depend on the existence of invariant faithful normal states (for
+example, see [26], [27], [21], [25], and [8]) and this assumption is often taken for
+granted as being physically reasonable. QMSs have been extensively studied
+since the 1970s with the exact form for the generators being one of the topics
+which has garnered a fair amount of attention. See for example [36], [28], [12],
+[14], [30], [1], [3], and [38]. The generator of a QMS is a generally unbounded
+operator defined on a weak dense linear subspace of B(H). If the generator
+is bounded then the semigroup is uniformly continuous and the exact form of
+the generator was found in [28] and [36]. In this section, given a Hilbert space
+H and a QMS on B(H) having an invariant faithful normal state we study the
+associated semigroup of contractions on S2(H). In particular, in Theorem 4 we
+describe the extended generator (and hence generator) of such a QMS under
+the assumption that the generator of the associated semigroup on S2(H) has
+compact resolvent.
+
+Definition 8 A quantum Markov semigroup (QMS) on B(H), (for some
+Hilbert space H), is a weak-continuous one-parameter semigroup of bounded
+linear operators acting on B(H), such that each member of the semigroup is
+
+completely positive and identity preserving.
+
+Remark 10 If H is a Hilbert space and (Tt)t0 is a QMS on B(H) which has
+a subinvariant normal state  for some   S1(H), then  is in fact an
+invariant state for (Tt)t0. Indeed for every t  0,
+
+    Tr(Tt()) = Tr(Tt()1) = Tr(Tt(1)) = Tr(1) = Tr(),
+
+which together with Tt()   implies that Tt() = .
+
+    Usually the notion of complete positivity applies to maps on C-algebras.
+In particular, if the C-algebra is equal to B(H) for some Hilbert space H,
+
+then the notion of complete positivity becomes equivalent to the following: A
+
+map T : B(H)  B(H) is completely positive if and only if for every n  N,
+x1, . . . , xn  B(H) and h1, . . . , hn  H,
+
+       n                                               (21)
+
+          hi, T (xixj )hj  0.
+
+    i,j=1
+The induced semigroup of Schwarz maps                                                          21
+
+Note that Equation (21) makes perfect sense even if the map T is not defined
+on a C-algebra, as long as T is defined on a Banach -algebra S of operators
+
+on a Hilbert space H. For example, S can be equal to S2(H) and T can be a
+bounded linear operator from S to S. We make this extension of the notion of
+
+complete positivity in the next definition.
+
+Definition 9 Let H be a Hilbert space and S be a Banach -algebra of
+bounded linear operators on H. A bounded linear map T : S  S will be called
+completely positive if for every n  N, x1, . . . , xn  S and h1, . . . , hn  H,
+Equation (21) holds.
+
+This terminology will be used in the next result.
+
+Proposition 3 Let (Tt)t0 be a weak-continuous semigroup of Schwarz maps
+on B(H) for some Hilbert space H which possesses an invariant faithful normal
+state  for some   S1(H). Then the operators Tt are completely positive
+
+for all t  0 if and only if the operators Tt constructed in Theorem 2 are
+completely positive for all t  0.
+
+Proof First, assume Tt is completely positive for t  0, and let x1, x2, . . . , xn 
+B(H) and h1, h2, . . . , hn  H. Then
+
+                      n
+
+                           hi, Tt (1/4xi1/4)(1/4xj 1/4) hj
+
+                      i,j=1
+
+                      n
+
+       =                     1/4hi, Tt (1/4xi)(1/4xj ) 1/4hj  0
+
+                      i,j=1
+
+since Tt is completely positive. Further, since the map i from Proposition 2
+
+has dense range, Tt is completely positive on S2(H).
+    Conversely, assume Tt is completely positive for t  0, and let t  0,
+
+x1, x2, . . . , xn  B(H) and h1, h2, . . . , hn  H. Then
+
+n                                       n
+
+       1/4hi, Tt(xixj )1/4hj =                 hj , Tt((xi1/4)(xj 1/4))hj  0
+
+i,j=1                                   i,j=1
+
+since Tt is completely positive. Because the map 1/4 has dense range, this is
+
+sufficient to show Tt is completely positive.                                                  
+
+For the next result, recall the notion of conditionally completely positive
+
+maps introduced by Lindblad in [36]. A linear operator L : D(L)( B(H)) 
+
+B(H) is called conditionally completely positive if for all n  N, for all
+
+a1, a2, . . . , an    B(H) such  that   aiaj  D(L) for all   i, j =  1,  2,  .  ..,  n,  that  for
+all h1, h2, . . . hn   H with           ai(hi) = 0, we have  that
+                                   n
+                                   i=1
+
+                                    n
+
+                                       hi, L(ai aj )hj  0.
+
+                                 i,j=1
+22                                             Androulakis, Wiedemann, Ziemke
+
+The next result is known for uniformly continuous semigroups. For example,
+see [20, Proposition 3.12 and Lemma 3.13], or see [18, Proposition 2.9]. In fact
+the known proof works for a more general setting as the next result indicates.
+
+Theorem 3 Let S be a Banach -algebra of operators acting on a Hilbert
+space H.
+
+1. Let (Tt)t0 be a WOT continuous semigroup on S and let L be its gener-
+    ator. If Tt is completely positive for all t  0 then L(a) = L(a) for all
+    a  D(L) and L is conditionally completely positive.
+
+2. Let (Tt)t0 be a uniformly continuous semigroup on S with generator L.
+    If L(a) = L(a) for all a  S and L is conditionally completely positive,
+    then Tt is completely positive for all t  0.
+
+Proof The proof of (2) immediately follows from [20, Proposition 3.12 and
+
+Lemma 3.13]. To prove (1), suppose a1, a2, . . . , an  S         such    that ai aj  D(L)
+for all i, j = 1, . . . , n and h1, h2, . . . , hn  H such that          ai(hi) = 0. Then,
+                                                                    n
+                                                                    i=1
+
+       n                   =   lim     n   1  hi, (Tt - 1)(ai aj)hj
+                                    i,j=1  t
+          hi, L(ai aj )hj     t0+
+
+    i,j=1
+
+                           =   lim     n   1  hi, Tt(ai aj )hj                 n
+                                    i,j=1  t
+                              t0+                               (since ai(hi) = 0)
+
+                                                                             i=1
+
+                           0
+
+since Tt is completely positive for all t  0.                                       
+
+Corollary 1 Let H be a Hilbert space and (Tt)t0 be a QMS on B(H) which
+
+possesses an invariant faithful normal state  for some   S1(H). Let L be
+
+the generator of the strongly continuous semigroup (Tt)t0 of contractions on
+S2(H) defined in Theorem 2. Then L(a) = L(a) for all a  D(L) and L is
+conditionally completely positive.
+
+Proof The proof follows immediately from Proposition 3 and Theorem 3(1).
+                                                                                                    
+
+5.1 The Form of L(hn) when the Resolvent of L is Compact
+
+In this subsection we consider the form of the extended generator L(hn) when
+the resolvent of L is compact, by which we mean that (L - )-1 is compact
+for some  in the resolvent set of L (equivalently all  in the resolvent set,
+by the resolvent identity). Notably, this assumption implies L is necessarily
+unbounded if H is infinite dimensional, since the composition of bounded with
+compact is compact but I = (L-)(L-)-1 is not compact. More information
+about operators on a Hilbert space with compact resolvent can be found in
+Theorems XIII.4.1 and XIII.4.2 of [15]. Examples of such operators are the
+The induced semigroup of Schwarz maps                             23
+
+diagonal operator with eigenvalues 1, 2, 3, . . ., or the Laplacian on a bounded
+domain of Rd.
+
+    We will make use of the following two notations:
+Notation: Let H be a Hilbert space and w, z  S2(H). Define Mw  z :
+S2(H)  H  S2(H)  H by
+
+Mw  z     k                                       k
+
+             xi  hi                         = xiw  z(hi).
+
+         i=1                                    i=1
+
+Notation: Let H be a Hilbert space and e  H such that e = 1. Define
+Te : S2(H)  H  S2(H)  H by
+
+    k                                       k
+
+Te       xi  hi = |xi(hi) e|  e.
+
+    i=1                                     i=1
+
+We are now ready to state the main result:
+
+Theorem 4 Let H be a Hilbert space, (Tt)t0 be a QMS on B(H) having an
+invariant faithful normal state  for some   S1(H), and L be the generator
+
+of (Tt)t0. Let (Tt)t0 be the strongly continuous semigroup of contractions
+on S2(H) defined in Theorem 2 and let L be its generator. Assume that the
+generator L has compact resolvent. Then the following assertions are valid:
+
+(a) There exist complete orthonormal families (an)nN and (bn)nN of self-
+     adjoint elements in S2(H) and a sequence of positive scalars (n)nN with
+     n   as n   (if H is infinite dimensional) such that
+
+                                                                  (22)
+
+                         L = I + n|an bn|
+
+                                         n=1
+
+where the sum converges in the SOT (if it is infinite), i.e. for every x 
+
+D(L) we have that L(x) = x+                 n    bn, x  an  with  n |n bn, x |2 < .
+                                       n=1
+(b) By the Spectral Theorem there is an orthonormal basis (hn)nN of H which
+
+consists of eigenvectors of . Let L(hn) denote the generator of (Tt)t0 with
+
+respect to (hn)nN. Then
+
+                                                                  (23)
+
+    L(hn) = I + n|i(-1) (an) i(bn)|
+
+                           n=1
+
+where the sum converges in the SOT (if it is infinite). We note that
+|i(-1) (an) i(bn)| has domain B(H) for all n, since
+
+|i(-1) (an) i(bn)|x = i(bn), x i(-1) (an) = bn, i(x) i(-1) (an)
+
+and bn, i(x)  S2(H). Explicitly, for every x  D(L(hn)) and every i, j  N
+we have that
+
+                                                                     
+
+       hi, [L(hn)(x)]hj = hi, xhj + n bn, i(x) hi, i(-1) (an)hj .
+
+                                                                   n=1
+24                                 Androulakis, Wiedemann, Ziemke
+
+(c) We have
+
+                        
+
+             I =-             n bn, 1/2 i(-1) (an),
+
+                        n=1
+
+     where the sum converges in the SOT (if it is infinite).
+(d) For all e  H with e = 1 we have that the operator L,e : S2(H)  H 
+
+     S2(H)  H is positive, where the operator L,e is defined by
+
+                              
+
+             L,e = (Id + Te)       nMbn  an (Id + Te)                      (24)
+
+                              n=1
+
+    where Id stands for the identity operator on S2(H)  H and the sum con-
+    verges in the SOT (if it is infinite).
+
+    We note that the sum in (22) is finite if and only if H is finite dimensional.
+
+Indeed, if L is bounded with compact resolvent then H is finite dimensional,
+as remarked in the preamble of this subsection. The proof of Theorem 4 is at
+the end of this subsection, after the following three results:
+
+Lemma 1 Let H be a separable Hilbert space and A be an invertible linear
+
+operator on S2(H) with dense domain which is closed under adjoints. If A
+satisfies A(a) = (A(a)) for all a  D(A), then D(A) and D(A-1) are closed
+under adjoints, A(b) = (A(b)) for all b  D(A), and A-1(c) = (A-1(c))
+for all c  D(A-1).
+
+Proof Let a  D(A) and b  D(A). Then
+
+           | A(a), b | = | (A(a)), b | = | b, A(a) |
+                          = | A(b), a | = | a, (A(b)) |  ||a||||(A(b))||,
+
+and so b  D(A) by definition. As before,
+                          a, A(b) = A(a), b = a, (A(b)) ,
+
+and since D(A) is dense this implies A(b) = (A(b)) for all b  D(A).
+
+Further, for every c  D(A-1) there exists an a  D(A) such that A(a) =
+
+c. Since A is star-preserving we have that A(a) = c. Then, by definition,
+
+(A-1(c)) = a = A-1(c).                                                     
+
+Lemma 2 Let H be a Hilbert space and A be a compact and self-adjoint linear
+operator on S2(H). Then A satisfies A(a) = (A(a)) for all a  S2(H) if
+and only if
+
+                                                                 
+
+                                      A = n|xn xn|
+
+                                                               n=1
+
+with (n)n=1  R and (xn)n=1 an orthonormal basis of S2(H) consisting of
+self-adjoint operators.
+The induced semigroup of Schwarz maps                                                     25
+
+Proof If A is compact and self-adjoint, then the Spectral Theorem implies
+there is an eigensystem decomposition
+
+                                      
+
+                            A = n|yn yn|,
+
+                                    n=1
+
+with (n)n=1  R and (yn)n=1 an orthonormal basis of S2(H). Because
+
+A is self-adjoint and star-preserving, we have that A(yn) = nyn implies
+A(yn) = nyn. Thus, every eigenspace of A is self-adjoint. Let E be an
+
+eigenspace of A corresponding to a fixed eigenvalues, and consider the or-
+
+thonormal basis (ynj )jN=1  (yn)n=1 of E. Because E is self-adjoint, from
+              ynj , ynk =                           (+ynjy)nNjj=1anisd
+ ynj , ynk =  self-adjoint  jk it follows  that                         an  orthonormal basis
+of E. Define                operators aj   = ynj                        aN  +j = i(ynj - ynj )
+
+for each 1  j  N so that E = Span(aj)2j=N1. We follow the Gram-Schmidt
+
+process and set b1 = a1 and recursively define
+
+                                               k-1  bj , ak  bj
+                                                    bj, bj
+                            bk = ak -
+
+                                               j=1
+
+to produce a sequence of N many orthogonal operators which span E (the
+
+remaining N many operators produced by the Gram-Schmidt process be-
+
+come zero). Straight forward calculation reveals that aj , ak is real for every
+1  j, k  2N , and hence bj, ak is real for every 1  j, k  2N . Each bk is
+thus self-adjoint as a real combination of self-adjoint operators, and the set
+(bk)kN=1 can therefore be normalized to a set of self-adjoint orthonormal oper-
+ators (xj )Nj=1 which span E. Replacing yn with xn in the original eigensystem
+decomposition for each eigenspace E, we have
+
+                                      
+
+                            A = n|xn xn|,
+
+                                     n=1
+
+as desired.                                                                                   
+
+Lemma 3 Let H be a Hilbert space and L be a bounded linear operator on
+S2(H) which has the form (22). Then L is conditionally completely positive if
+and only if for some (equivalently all) normalized vector e  H, the operator
+
+L,e defined on the Hilbert space S2(H)  H, by Equation (24), is positive.
+
+Proof First note that I + A is conditionally completely positive if and only
+
+if A is (as is easily verified), so for simplicity we may assume instead that
+
+L=           n|an  bn|.
+    n=1
+
+We will start with the forward direction and suppose L is conditionally
+                                                                             k
+completely positive. Let e  H with         e        = 1. Since W = {         i=1  yi      hi  :
+
+yi  S2(H), hi  H} is dense in S2(H)  H, in order to verify that L,e  0
+                                                    k
+it is enough to consider an element w =             i=1      yi    hi     W  and  verify  that
+
+w, L,ew   0, where �, �  will denote the inner product of S2(H)  H.
+26                                                                   Androulakis, Wiedemann, Ziemke
+
+(The reason that we chose hi to denote a generic element of H is because we
+
+have used hn to denote the orthonormal eigenvectors of  in the statement
+
+of Theorem 4). We will denote the inner product of H by �, � H. Fix w =
+    k                                               k
+    i=1  yi    hi     W    and      let  v  =  -    i=1    yi(hi ).  Define  yk+1  =  |v  e| and hk +1 =
+
+e. Then        k+1    yi(hi )  =    0    and,  since    L  is  conditionally  completely    positive,  we
+               i=1
+have that
+
+                      k+1
+
+               0             hi , L(yiyj)hj H
+
+                      i,j=1
+
+                      k+1 
+
+                   =                n Tr(yiyj bn) hi , an(hj ) H
+
+                      i,j=1 n=1
+
+                      k+1 
+
+                   =                n yi  hi, yj bn  an(hj ) 
+
+                      i,j=1 n=1
+
+                      k+1 
+
+                   =                yi  hi , nMbn  an(yj  hj ) 
+
+                      i,j=1 n=1                                                       
+
+                      k+1                                              k+1
+
+                   =         yi  hi,                nMbn  an  yj  hj  .
+
+                      i=1                      n=1                     j=1                
+
+Notice that
+
+         k+1                     k                                            k
+
+               yi  hi = yi  hi + yk+1  hk+1 = w - |yi(hi)                                 e|  e
+
+         i=1                   i=1                                           i=1
+
+                                               k
+
+                          = w - Te                  yi  hi = (Id - Te)(w)
+
+                                               i=1
+
+where Id denotes the identity operator on S2(H)  H, which finishes the proof
+of the forward direction.
+
+    For the other direction, suppose that L,e  0 for some e  H with e = 1.
+
+Let k  N, y1, . . . , yk  S2(H) and h1, . . . , hk  H such that                           k    yi(hi)  =  0.
+                                                                                          i=1
+               k
+Let w =        i=1    yi     hi     S2(H)           H.  Then,
+
+               0  w, L,e(w)                                                                            (25)
+
+                   = w, (Id - Te)                       nMbn  an (Id - Te)(w)
+
+                                                  nN                                        
+
+                   = (Id - Te)w,                    nMbn  an (Id - Te)(w) .                            (26)
+
+                                               nN                                         
+The induced semigroup of Schwarz maps                                                        27
+
+Notice that
+
+                  k                      k
+
+Te(w) = Te           yi  hi        =         yi(hi)      e|  e = |0 e|  e = 0.
+
+                 i=1                    i=1
+
+Hence Inequality (25) gives
+
+             0  Id(w),                 nMbn  an Id(w)
+
+                                 nN                                   
+
+                 k
+
+             =                   yi  hi , nMbn  an(yj  hj ) 
+
+                 i,j=1 nN
+
+                 k
+
+             =               n yi  hi , yjbn  an(hj ) 
+
+                 i,j=1 nN
+
+                 k
+
+             =               n Tr(yiyjbn) hi , an(hj ) H
+
+                 i,j=1 nN
+
+                 k+1
+
+             =          hi, L(yiyj )hj H.
+
+                 i,j=1
+
+Therefore L is conditionally completely positive. This completes the proof. 
+
+The proof of Lemma 3 reveals the following:
+
+Remark 11 Let A = {     k    yi    hi    B(H)        H   :     k    yi(hi)  =  0}.  Then
+                        i=1                                    i=1
+
+� For every w =  k      yi    hi       B(H)  H       there     exists   yk+1        B(H)  and
+                 i=1
+                        k+1                                                      k+1
+hk+1  H such that       i=1  yi  hi         A  and   (Id - Thk +1 )(w)      =    i=1  yi    hi.
+
+� If a bounded operator L on H has form (22) then L is completely positive
+                                   
+if and only if the operator        n=1  nMbn         an     :  S2(H)    H      S2(H)      H  is
+
+positive.
+
+� For every e  H we have A  ker Te.
+
+We are now ready to present the
+
+Proof (Proof of Theorem 4) Since L generates a strongly continuous semi-
+group of contractions, we have that   (L) for all  > 0 by the Hille-Yosida
+
+Generation Theorem (e.g. Theorem 3.5 of [16]). Further, D(L) is dense in
+S2(H) by Theorem 3.1.16 of [6] and L is star-preserving by Corollary 1, and
+so K := (L - I)-1 is star-preserving by Lemma 1 as the inverse of a star-
+
+preserving map with dense domain. Because L has compact resolvent by as-
+sumption, we have that K is furthermore compact. Thus, KK is compact,
+self-adjoint, and star-preserving, and so Lemma 2 implies
+
+                                                                    
+
+                                   KK = n2 |vn vn|,
+
+                                                                  n=1
+28                                                     Androulakis, Wiedemann, Ziemke
+
+where {n2 }nN are the nonzero eigenvalues of KK corresponding to the sys-
+tem {vn}nN of self-adjoint orthonormal eigenoperators. This notation is cho-
+sen so that, following Section 2.2 of [17], the singular value expansion of K
+can be written
+
+                                                                 
+
+                                     K = n|un vn|,
+
+                                                               n=1
+
+where {un}nN are self-adjoint orthonormal eigenoperators of KK given by
+the relation nun := Kvn. By Theorem 2.8 of [17] we have that
+
+                 L  -         I  =  K (-1)  =       1  |vn   un|,
+                                               n=1  n
+
+and hence                                  
+                                          n=1
+                              L  =  I  +       1  |vn  un|,
+                                               n
+
+proving (22). Equation (23) follows from (22) and (17). Part (c) is valid since
+L(I) = 0, hence L(hn)(I) = 0, and hence
+
+                              
+
+                 I+                 n hn, 1/2 i(-1) (an) = 0.
+
+                     n=1
+
+Part (d) follows from Lemma 3; indeed, (Tt)t0 is a completely positive semi-
+
+group by Proposition 3, and so L is conditionally completely positive by The-
+
+orem 3.                                                                   
+
+Remark 12 Let H be a finite dimensional Hilbert space, and let (Tt)t0 be a
+QMS on B(H). Then (Tt)t0 possesses an invariant faithful normal state [23,
+Theorem 4.2] and so Theorem 4 applies. The sum in (23) is finite, and hence
+
+by linearity/conjugate linearity we can write
+
+                 L(hn) = I +        n|i(-1) (a+n - an-) i(bn+ - b-n )|
+
+                                 n
+
+                 = I + m  |i(-1) (cm) i(dm)|,
+
+                              m
+
+where cm  {an+, a-n : n}, dm  {bn+, bn- : n}, and m   {�n : n}. In particu-
+lar, cm, dm  0 and m   R. Thus, for every x  B(H),
+
+    |i(-1) (cm)  i(dm)|x = i(dm), x i(-1) (cm)
+
+                    = 1/4dm1/4, x -1/4cm-1/4
+                    = -1/4cm Tr 1/4dm1/4x cm-1/4
+
+                    = -1/4cm Tr                     dm1/4x1/4 dm cm-1/4.
+The induced semigroup of Schwarz maps                                            29
+
+    Now, fix any orthonormal basis (Ek)k of B(H). Then for every A  B(H)
+we have
+
+                                     Tr(A) = EkAEk.
+
+                                                                        k
+
+Thus,
+
+        Tr     dm1/4x1/4 dm =                    Ek dm1/4x1/4 dmEk,
+
+                                             k
+
+and so
+
+L(hn)(x) = x +             m  -1/4           Ek  dm1/4x1/4  dm  Ek        -1/4.
+                                         cm                           cm
+
+                     m,k
+
+By defining y = -1/4cmEkdm1/4 and  to be the corresponding m  ,
+we obtain
+
+                                L(hn)(x) = x + yxy.
+
+                                                                              
+
+Moreover, since L(hn)(I) = L(I) = 0 we obtain as in the proof of Theorem 4(c)
+that
+
+                                      I + yy = 0.
+
+                                                                 
+
+Thus
+
+L(hn ) (x)  =  1  I  x  +  1  xI  +    yxy =         yxy    -   1   {yy,  x}
+               2           2                                    2
+                                                 
+
+which resembles the standard GKSL form developed in [28] and [36], except
+with Hamiltonian part zero and without the demand that the jump operators
+y are traceless. A comparison of such GKSL form to the standard GKSL form,
+including conversion between the two, is discussed in section 2.1 of [2].
+
+6 Conflict of interest
+
+The authors declare that they have no conflict of interest.
+
+Acknowledgements We would like to thank Franco Fagnola. His contributions to the
+results of this work were vital from its conception to the final touches. Without his help the
+existence of this work would not be possible. We would also like to thank the referee for
+pointing our attention to a mistake in the original version of this article.
+30  Androulakis, Wiedemann, Ziemke
+
+References
+
+ 1. Alazzawi, S., Baumgartner, B.: Generalized Kraus operators and generators of quantum
+      dynamical semigroups. Rev. Math. Phys. 27(7), 1550016, 19 (2015)
+
+ 2. Androulakis, G., Wiedemann, A.: GKSL generators and digraphs: computing invariant
+      states. Journal of Physics A: Mathematical and Theoretical 52(30), 305201 (2019)
+
+ 3. Androulakis, G., Ziemke, M.: Generators of quantum Markov semigroups. J. Math.
+      Phys. 56(8), 083512, 16 (2015)
+
+ 4. Attal, S.: Lecture 3: Operator semigroups. In: Lectures in Quantum Noise Theory.
+      Retrieved from http://math.univ-lyon1.fr/ attal/
+
+ 5. Bhatt, S.J.: Stinespring representability and Kadison's Schwarz inequality in non-unital
+      Banach star algebras and applications. Proc. Indian Acad. Sci. Math. Sci. 108(3),
+      283�303 (1998)
+
+ 6. Bratteli, O., Robinson, D.W.: Operator algebras and quantum statistical mechanics. 1,
+      second edn. Texts and Monographs in Physics. Springer-Verlag, New York (1987). C-
+      and W -algebras, symmetry groups, decomposition of states
+
+ 7. Carbone, R., Fagnola, F.: Exponential convergence in L2 of quantum markov semigroups
+      on B(H). Mat. Zametki 68(4), 523�538 (2000)
+
+ 8. Carbone, R., Sasso, E., Umanit`a, V.: Environment induced decoherence for Markovian
+      evolutions. J. Math. Phys. 56(9), 092704, 22 (2015)
+
+ 9. Chebotarev, A.M., Fagnola, F.: Sufficient conditions for conservativity of quantum dy-
+      namical semigroups. J. Funct. Anal. 118(1), 131�153 (1993)
+
+10. Chebotarev, A.M., Fagnola, F.: Sufficient conditions for conservativity of minimal quan-
+      tum dynamical semigroups. J. Funct. Anal. 153(2), 382�404 (1998)
+
+11. Choi, M.D.: A Schwarz inequality for positive linear maps on C -algebras. Illinois J.
+      Math. 18, 565�574 (1974)
+
+12. Christensen, E., Evans, D.E.: Cohomology of operator algebras and quantum dynamical
+      semigroups. J. London Math. Soc. (2) 20(2), 358�368 (1979)
+
+13. Davies, E.B.: Quantum dynamical semigroups and the neutron diffusion equation. Rep.
+      Mathematical Phys. 11(2), 169�188 (1977)
+
+14. Davies, E.B.: Generators of dynamical semigroups. J. Funct. Anal. 34(3), 421�432
+      (1979)
+
+15. Dunford, N., Schwartz, J.T.: Linear operators. Part II: Spectral theory. Self adjoint
+      operators in Hilbert space. With the assistance of William G. Bade and Robert G.
+      Bartle. Interscience Publishers John Wiley & Sons New York-London (1963)
+
+16. Engel, K.J., Nagel, R.: One-parameter semigroups for linear evolution equations, Grad-
+      uate Texts in Mathematics, vol. 194. Springer-Verlag, New York (2000). With contri-
+      butions by S. Brendle, M. Campiti, T. Hahn, G. Metafune, G. Nickel, D. Pallara, C.
+      Perazzoli, A. Rhandi, S. Romanelli and R. Schnaubelt
+
+17. Engl, H.W., Hanke, M., Neubauer, A.: Regularization of inverse problems, Mathematics
+      and its Applications, vol. 375. Kluwer Academic Publishers Group, Dordrecht (1996)
+
+18. Evans, D.E.: Conditionally completely positive maps on operator algebras. Quart. J.
+      Math. Oxford Ser. (2) 28(111), 271�283 (1977)
+
+19. Evans, D.E., Lewis, J.T.: Dilations of dynamical semi-groups.
+      Comm. Math. Phys. 50(3), 219�227 (1976)
+
+20. Fagnola, F.: Quantum Markov semigroups and quantum flows. Proyecciones 18(3), 144
+      (1999)
+
+21. Fagnola, F., Rebolledo, R.: The approach to equilibrium of a class of quantum dynamical
+      semigroups. Infin. Dimens. Anal. Quantum Probab. Relat. Top. 1(4), 561�572 (1998)
+
+22. Fagnola, F., Rebolledo, R.: On the existence of stationary states for quantum dynamical
+      semigroups. J. Math. Phys. 42(3), 1296�1308 (2001)
+
+23. Fagnola, F., Rebolledo, R.: Some results on invariant states for quantum markov semi-
+      groups. In: G. Da Prato, L. Tubaro (eds.) Stochastic Partial Differential Equations and
+      Applications, pp. 197�208. CRC Press, Boca Raton (2002)
+
+24. Fagnola, F., Rebolledo, R.: Quantum Markov semigroups and their stationary states. In:
+      Stochastic analysis and mathematical physics II, Trends Math., pp. 77�128. Birkh�auser,
+      Basel (2003)
+The induced semigroup of Schwarz maps  31
+
+25. Fagnola, F., Rebolledo, R.: Algebraic conditions for convergence of a quantum Markov
+      semigroup to a steady state. Infin. Dimens. Anal. Quantum Probab. Relat. Top. 11(3),
+      467�474 (2008)
+
+26. Frigerio, A.: Quantum dynamical semigroups and approach to equilibrium. Lett. Math.
+      Phys. 2(2), 79�87 (1977/78)
+
+27. Frigerio, A.: Stationary states of quantum dynamical semigroups. Comm. Math. Phys.
+      63(3), 269�276 (1978)
+
+28. Gorini, V., Kossakowski, A., Sudarshan, E.C.G.: Completely positive dynamical semi-
+      groups of N -level systems. J. Mathematical Phys. 17(5), 821�825 (1976)
+
+29. Holevo, A.S.: On conservativity of covariant dynamical semigroups. In: Proceedings
+      of the XXV Symposium on Mathematical Physics (Torun�, 1992), vol. 33, pp. 95�110
+      (1993)
+
+30. Holevo, A.S.: On the structure of covariant dynamical semigroups. J. Funct. Anal.
+      131(2), 255�278 (1995)
+
+31. Holevo, A.S.: Statistical structure of quantum theory, Lecture Notes in Physics. Mono-
+      graphs, vol. 67. Springer-Verlag, Berlin (2001)
+
+32. Kadison, R.V.: A generalized Schwarz inequality and algebraic invariants for operator
+      algebras. Ann. of Math. (2) 56, 494�503 (1952)
+
+33. Kadison, R.V., Ringrose, J.R.: Fundamentals of the theory of operator algebras. Vol. I,
+      Graduate Studies in Mathematics, vol. 15. American Mathematical Society, Providence,
+      RI (1997). Elementary theory, Reprint of the 1983 original
+
+34. Kossakowski, A.: On quantum statistical mechanics of non-Hamiltonian systems. Rep.
+      Mathematical Phys. 3(4), 247�274 (1972)
+
+35. Kossakowski, A., Frigerio, A., Gorini, V., Verri, M.: Quantum detailed balance and KMS
+      condition. Comm. Math. Phys. 57(2), 97�110 (1977)
+
+36. Lindblad, G.: On the generators of quantum dynamical semigroups. Comm. Math.
+      Phys. 48(2), 119�130 (1976)
+
+37. Ohya, M., Petz, D.: Quantum entropy and its use. Texts and Monographs in Physics.
+      Springer-Verlag, Berlin (1993)
+
+38. Siemon, I., Holevo, A.S., Werner, R.F.: Unbounded generators of dynamical semigroups.
+      Open Syst. Inf. Dyn. 24(4), 1740015, 24 (2017)
+
+39. Sinha, K.B.: Quantum dynamical semigroups. In: Mathematical results in quantum
+      mechanics, Oper. Theory Adv. Appl., vol. 70, pp. 161�169. Birkh�auser, Basel (1994)
+
+40. St�rmer, E.: Positive linear maps of operator algebras. Acta Math. 110, 233�278 (1963)
+41. St�rmer, E.: Positive linear maps of operator algebras. Springer Monographs in Math-
+
+      ematics. Springer, Heidelberg (2013)
+42. Umanit`a, V.: Classification and decomposition of quantum Markov semigroups. Probab.
+
+      Theory Related Fields 134(4), 603�623 (2006)
+43. Wiedemann, A.: On the generators of quantum dynamical semigroups. (doctoral disser-
+
+      tation) (2019). Retrieved from https://scholarcommons.sc.edu/etd/5231
+
