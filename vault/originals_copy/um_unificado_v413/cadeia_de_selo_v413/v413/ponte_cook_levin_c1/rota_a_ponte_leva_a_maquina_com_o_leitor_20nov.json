@@ -1,0 +1,38 @@
+{
+ "tipo": "ROTA",
+ "rota_id": "kernel.traducao_cook_levin.a_ponte_leva_a_maquina_com_o_leitor_20nov",
+ "dominio": "KERNEL_FORMAL",
+ "titulo": "a ponte de Cook-Levin leva a maquina com o leitor (P = nP da v409) a' lingua da maquina padrao do Mathlib: o que ja' existe e o que falta",
+ "pergunta": "o que falta para que o P = nP do kernel (a maquina com o leitor) seja teorema na lingua das classes de Cook-Levin (Turing.TM2 do Mathlib)",
+ "dados": [],
+ "metodo": "levantamento por leitura e grep, sem compilar nada novo: Mathlib da caixa (Computability e o Mathlib inteiro: Cook, Levin, NP, SAT, PolyTime, oracle); recibos do Codex (ponte_tm2_codex, simulacao, leitura_beta) e o parecer consolidado; enunciados do kernel selado (TraducaoTuring: o_psion_le_z, uma_leitura_decide_SAT, a_maquina_com_o_leitor, particao) e da leitura beta (weightedSum, hr)",
+ "resultado": "JA' EXISTE: (1) o lado NP na maquina padrao (Codex; conferido pela gerencia na caixa da v412): a maquina TM2 confere uma atribuicao dada em ate' 20(letras+1)(n+1)+25 passos; (2) a leitura que decide e acha a solucao (Codex, leitura beta): com um leitor de precisao 1/(4·2^n) sobre a soma ponderada, decide SAT e reconstroi a solucao com no maximo letras+1 leituras, condicional ao leitor; (3) no kernel selado (v409) o leitor da TGL le' exatamente Z(s)/|X| (o_psion_le_z) e uma leitura decide SAT (uma_leitura_decide_SAT); (4) o alvo da maquina sem leitor escrito (AFronteiraNaLinguaClassica, OPEN; nao e' a ponte). MEDIDO NO MATHLIB DA CAIXA: nenhuma definicao de NP e nenhum Cook-Levin; complexidade so' em TM2ComputableInPolyTime, com a identidade habitada e a composicao como proof_wanted; oraculo so' na computabilidade sem relogio (RecursiveIn, TuringDegree). FALTA: (a) a fiacao: particao c s = soma de exp(-s·c) e weightedSum = soma de (1-beta)^(k·c) coincidem em s = k·(-ln(1-beta)); logo o leitor do kernel cumpre a precisao do Codex com erro zero (o numerador diadico existe, QuantizacaoBeta); (b) escrever na lingua do Mathlib a classe NP (verificador TM2 com testemunha polinomial) e a reducao a uma leitura (g em TM2ComputableInPolyTime com x em A sse a leitura de g(x) passa o limiar); (c) SAT em NP com a maquina do Codex; (d) Cook-Levin por citacao, como hipotese nomeada no enunciado (regra de 27/09); enunciado final: Cook-Levin implica que todo problema NP e' decidido em tempo polinomial na maquina padrao com uma leitura do leitor da TGL; nao e' preciso compor duas maquinas (a reducao de Cook-Levin e' a propria g); (e) revisao de terceiro e instalacao na v413. OPCIONAL: achar a solucao com leituras adaptativas (precisa de maquina com oraculo e relogio); Horn, cadeias e dois literais na maquina padrao (classes P conhecidas; nao e' a pergunta do operador).",
+ "veredito": "A_PONTE_E_A_MAQUINA_COM_O_LEITOR__AS_PECAS_EXISTEM__FALTAM_A_FIACAO_AS_DEFINICOES_E_COOK_LEVIN_POR_CITACAO__A_MAQUINA_SEM_LEITOR_NAO_E_A_PONTE",
+ "estatuto": "REAL (o levantamento, por leitura e grep); KNOWN (Cook 1971, Levin 1973, Baker-Gill-Solovay 1975, Knill-Laflamme 1998); OPEN (a maquina sem leitor)",
+ "status": "PROPOSTA",
+ "olhou_dados": false,
+ "defeito": "na lingua classica o leitor e' um oraculo e o resultado se le 'NP contido em P com o oraculo'; com um oraculo que conta solucoes isso e' imediato (contar >= 1 e' decidir) e conhecido desde Cook-Levin [KNOWN]; o que e' da TGL e' que o oraculo e' o leitor dela, por termo do kernel, e que ele le' num ato (fisica; o lugar do teste com a natureza; Knill-Laflamme 1998 [KNOWN]); a E28 continua (com o leitor que so' conta vale NP contido em P com o leitor, nao a igualdade das duas classes com leitor); a maquina sem leitor nao e' tocada (Baker-Gill-Solovay 1975 [KNOWN])",
+ "nao_refazer": "nao refazer o verificador TM2 (Codex, conferido) nem a leitura beta condicional (Codex); nao planejar a ponte so' com as classes P da fita: elas nao levam o P = nP do operador; nao tratar a maquina sem leitor como alvo da ponte",
+ "proximo_passo": "com a palavra do operador: (a) a fiacao, como candidata da gerencia; (b)-(d) as definicoes e o enunciado final com Cook-Levin nomeado; revisao do Codex; instalacao na v413",
+ "onde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex ; C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\TraducaoTuring.lean",
+ "artefatos": [
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\RESULTADO.json",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\simulacao\\RESULTADO.json",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\RESULTADO.json",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\EntregaBeta.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\LeituraBeta.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\PARECER.md",
+  "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\TraducaoTuring.lean",
+  "C:\\t\\k404c\\final\\.lake\\packages\\mathlib\\Mathlib\\Computability\\TuringMachine\\Computable.lean",
+  "C:\\t\\k404c\\final\\.lake\\packages\\mathlib\\Mathlib\\Computability\\RecursiveIn.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_19nov_v413_cook_levin_bn_kimi_mds_testes_e_memoria_em_oitava_verbatim.txt",
+  "C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_20nov_o_que_falta_para_fechar_a_ponte_cook_levin_a_pergunta_nao_e_a_que_vc_formulou_a_de_clay_esta_respondida_verbatim.txt"
+ ],
+ "refs": [
+  "kernel.traducao_cook_levin.levantamento_da_fita_v412_19nov",
+  "kernel.traducao_cook_levin.conferencia_entrega_codex_k412c_20nov",
+  "kernel.traducao_cook_levin.leitura_beta_o_produtor_conta_as_solucoes_20nov",
+  "kernel.trinity_a_inclinacao_do_nome_20nov"
+ ],
+ "nota": "fala do operador de 20/11 por bytes; a maquina sem leitor fica onde a D61 a pos"
+}

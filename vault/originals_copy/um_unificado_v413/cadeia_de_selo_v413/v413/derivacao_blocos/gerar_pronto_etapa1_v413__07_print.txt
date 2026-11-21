@@ -1,0 +1,7 @@
+print(json.dumps({"etapa_1_fechou": etapa_ok, "escada": pos.get("escada"), "decl": pos.get("n_decl_audit"), "compilaram": compilaram, "n_novos": n_mod, "n_corrigidos": n_kc,
+                  "checagens": "%d de %d" % (sum(1 for c_ in CH if c_["ok"]), len(CH)), "tamanhos": {"fora_gb": tam["total_fora_de_work_gb"], "work_mb": tam["total_em_work_mb"]},
+                  "pronto_sha16": sh16(p)}, ensure_ascii=False))
+for c_ in CH:
+    if not c_["ok"]:
+        print("FALHOU:", c_["checagem"], c_["n_itens_examinados"], str(c_["detalhe"])[:300])
+sys.exit(0 if etapa_ok else 1)

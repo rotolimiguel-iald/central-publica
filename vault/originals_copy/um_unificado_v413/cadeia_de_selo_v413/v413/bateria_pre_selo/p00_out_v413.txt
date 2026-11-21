@@ -1,0 +1,31 @@
+OK    o esboco R3.6 pinado em PINOS_BN_v411.json existe e tem o sha256 do pino 
+OK    a Bancada de producao pina o B20 da v411 (antes do APLICAR) ou o B21 da v413 (depois): o delta_bn o confere ao ser importado (N5) 
+OK    o Nos tem um selo que pina o um.py do disco (v412 antes da instalacao da v413; v413 depois) 
+OK    N6: v412\base_v411 e' a v411 selada (o selo diz v411 e pina o um.py e o kernel da copia): o anterior da BANCADA 
+OK    N6: v413\base_v412 e' a v412 selada (o selo diz v412 e pina o um.py e o kernel da copia): o anterior do UM.PY 
+OK    antes da instalacao da v413: v413\base_v412 == o Nos (um.py, selo, kernel), byte a byte por sha256 
+OK    a Bancada (B20) pina o um.py, o selo e o kernel de v412\base_v411 
+OK    M4: existem v413\base_v412 e v412\base_v411 (os tres arquivos de cada), a pasta da cadeia de selos (a cadeia e o pino), a bateria da v412 (bateria, pino ao lado, pino do um.py) e, quando ha' pino, o recibo pre-selo e o ensaio_1 
+OK    a cadeia de selos: arquivo == pino; CARREGADA PELO ESBOCO R3.6 (copias de bytes, selos, registro do instalador e backups do Nos de 18/11, N3); v411 -> v412 
+OK    o fim da cadeia e' a v412 de v413\base_v412 (um.py, selo, kernel) 
+OK    o inicio da cadeia e' o que a Bancada pina agora (conferir_cadeia_com_a_bancada do esboco) 
+OK    N3: os backups de 18/11 que a cadeia usa existem no Nos (so' leitura; nunca mover) e tem os sha da cadeia 
+OK    a bateria da v412: arquivo == pino ao lado; carregada pelo esboco (sha de cada teste); pinos_da_versao == a v412 da base 
+OK    a pasta da bateria da v412 NAO e' ancestral da --saida do ensaio (SAIDA_NA_PASTA_DE_FONTES) 
+OK    o recibo pre-selo do salto: arquivo == pino; utilizavel; veredito EXATO (REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA); versao_nos v412; a Bancada que ele viu e' o B20; a cadeia dele == a pinada 
+OK    N1: o recibo pre-selo foi gerado com o Nos na v412, ANTES da instalacao da v413 (lido do recibo e do APLICADO_AO_CANONICO da v413, se ja existe) 
+OK    a Bancada AINDA pina o que o recibo pre-selo viu (deployment, manifesto POR SHA256, versao, um.py, selo): o salto embute o sha do manifesto 
+OK    a prova de que a producao so' foi lida no pre-selo: producao_intacta True 
+OK    PINOS_BN_v413.json: todo pino com arquivo confere com o disco; a cadeia, os anteriores da v412, o delta_bn e o util_bn presentes e iguais aos de hoje; o anterior da Bancada e' o B20 
+PEND  PINOS_BN_v413.json: o pino delta esta' pendente | diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)
+PEND  PINOS_BN_v413.json: o pino candidato esta' pendente | diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)
+PEND  PINOS_BN_v413.json: o pino kernel_recibo esta' pendente | diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)
+PEND  PINOS_BN_v413.json: o pino esperados esta' pendente | diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)
+PEND  PINOS_BN_v413.json: o pino pins_do_candidato esta' pendente | diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)
+PEND  PINOS_BN_v413.json: o pino DIFF_KERNEL_v413.txt esta' pendente | diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)
+PEND  PINOS_BN_v413.json: o pino DIFF_v412_v413.diff esta' pendente | diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)
+OK    N8/M1: o sandbox curto vem do delta_bn (C:\t\vb<digitos>) e nao e' o de outra versao (vb22, vb23) nem o das guardas estaticas da Etapa 2 (vb25) 
+OK    N4: o livro do quadro conferido INTEIRO (2.2); os eventos 1687 (autorizacao do ciclo) e 1689 (salto na v413) conferem por hash com os arquivos que nomeiam; a fala do operador de 20/11 existe 
+OK    os scripts do B(n) existem, compilam (sem gravar .pyc), passam em `sh -n`, sem marca de adaptacao pendente e sem `python -c` 
+OK    D135: nenhum .tmp nas pastas do B(n) 
+NENHUMA FALHA, 7 PENDENTE(S) | 23 ok, 0 falha(s), 7 pendente(s) | C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\PRECONDICOES_BN_v413.json

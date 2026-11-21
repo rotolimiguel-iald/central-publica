@@ -1,0 +1,29 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\AMaquinaTM2DaVerificacao.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\AMaquinaTM2DaVerificacao.lean
+@@ -4,7 +4,7 @@
+ set_option maxRecDepth 8192
+ 
+ /-!
+-# Máquina de verificação do Kimi adaptada à saída booleana fixa
++# Máquina de verificação com saída booleana fixa
+ 
+ A prova geral de simulação é a hipótese explícita do último teorema.
+ -/
+@@ -34,7 +34,7 @@
+   | .saida => Bool
+   | _ => Simbolo
+ 
+-/-- [DEF] O programa da máquina — a planta do cabeçalho, escrita letra a letra. -/
++/-- [DEF] O programa da máquina (a planta). -/
+ def oPrograma : Rotulo → Turing.TM2.Stmt stackAlphabet Rotulo Estado
+   | .preparar =>
+     peek .entrada (fun s h => (s.1, decide (h = some Simbolo.sep), s.2.2))
+@@ -216,7 +216,7 @@
+     Nonempty (Turing.TM2OutputsInTime aMaquinaTM2 (codificaEntrada p)
+       (some (codificaSaida (verificaNaFita p.1 p.2))) (contaFases p))
+ 
+-/-- A simulação geral, se demonstrada, fornece a máquina exigida pela ponte corrigida. -/
++/-- A simulação geral, se demonstrada, fornece a máquina exigida por `ObjetivoTM2Polinomial`. -/
+ theorem o_objetivo_se_reduz_a_simulacao (h : ASimulacaoCompleta) : ObjetivoTM2Polinomial := by
+   classical
+   refine ⟨{ tm := aMaquinaTM2, inputAlphabet := Equiv.refl _, outputAlphabet := Equiv.refl _,

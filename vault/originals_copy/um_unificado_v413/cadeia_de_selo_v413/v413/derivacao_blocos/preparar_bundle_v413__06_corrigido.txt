@@ -1,0 +1,82 @@
+dependentes = {x: sorted({y for y in NOMES if x in deps[y]}) for x in NOMES}
+ORDEM_IGUAL_A_SUGERIDA = (ordem == SUG_NOMES)
+
+
+# ---------------------------------------------------------------- o modulo corrigido so' no texto (kernel_corrigido): conferido; quem depende dele no kernel (grafo de imports do sandbox)
+def _sem_comentarios(t_):
+    """tira os comentarios (-- ate' o fim da linha; /- ... -/ aninhados, inclusive /-- e /-!) e MANTEM as cadeias; normaliza os espacos: o que sobra e' o codigo"""
+    out_ = []; i_ = 0; n_ = len(t_); prof = 0; instr = False
+    while i_ < n_:
+        c_ = t_[i_]
+        if prof == 0 and instr:
+            out_.append(c_)
+            if c_ == "\\" and i_ + 1 < n_:
+                out_.append(t_[i_ + 1]); i_ += 2; continue
+            if c_ == '"':
+                instr = False
+            i_ += 1; continue
+        if t_.startswith("/-", i_):
+            prof += 1; i_ += 2; continue
+        if prof > 0:
+            if t_.startswith("-/", i_):
+                prof -= 1; i_ += 2; continue
+            i_ += 1; continue
+        if t_.startswith("--", i_):
+            j_ = t_.find("\n", i_)
+            i_ = n_ if j_ < 0 else j_; continue
+        if c_ == '"':
+            instr = True
+        out_.append(c_); i_ += 1
+    return " ".join("".join(out_).split())
+
+
+grafo = {}
+for raiz_ in ("TGL", "TGLExt"):
+    for dp_, dn_, fn_ in os.walk(K13 / raiz_):
+        for f_ in fn_:
+            if f_.endswith(".lean") and ".bak" not in f_:
+                pp_ = Path(dp_) / f_
+                mod_ = str(pp_.relative_to(K13))[:-len(".lean")].replace(os.sep, ".")
+                grafo[mod_] = re.findall(r"(?m)^import\s+(\S+)", LT.mascara_comentarios(pp_.read_bytes().decode("utf-8")))
+for f_ in ("TGLExt.lean", "TGL.lean"):
+    grafo[f_[:-len(".lean")]] = re.findall(r"(?m)^import\s+(\S+)", (K13 / f_).read_bytes().decode("utf-8"))
+for x in NOMES:
+    grafo["TGLExt." + x] = RX_IMPORT.findall(saida[x].decode("utf-8"))
+grafo["TGLExt"] = sorted(set(grafo.get("TGLExt", [])) | {"TGLExt." + x for x in NOMES})   # (a raiz nova importa os modulos novos)
+reverso = {}
+for a_, L_ in grafo.items():
+    for b_ in L_:
+        reverso.setdefault(b_, set()).add(a_)
+
+
+def dependentes_no_kernel(mod_):
+    vis_ = set(); fila_ = [mod_]
+    while fila_:
+        a_ = fila_.pop()
+        for y_ in reverso.get(a_, ()):
+            if y_ not in vis_:
+                vis_.add(y_); fila_.append(y_)
+    return vis_
+
+
+kc = {}
+for nome_, b_ in kc_bytes.items():
+    t_ = b_.decode("utf-8"); v_ = kc_rec[nome_]["manifesto"]; nos_t = kc_rec[nome_]["nos_bytes"].decode("utf-8")
+    assert "\r" not in t_, ("CR na fonte corrigida: PARE", nome_)
+    assert not re.search(r"(?m)^#print axioms", t_), ("linha #print axioms na fonte corrigida (o instalado tem de ser o insumo): PARE", nome_)
+    assert _sem_comentarios(t_) == _sem_comentarios(nos_t), ("o CODIGO da fonte corrigida (sem comentarios, com cadeias) difere do da origem no Nos: so' o texto pode mudar; PARE", nome_)
+    assert " ".join(LT.mascara_comentarios(t_).split()) == " ".join(LT.mascara_comentarios(nos_t).split()), ("o codigo mascarado da fonte corrigida difere do da origem: PARE", nome_)
+    cod_ = LT.mascara_comentarios(t_)
+    assert not re.search(r"\bsorry\b", cod_) and "#eval" not in cod_ and "#print" not in cod_ and not re.search(r"^\s*axiom\s", cod_, re.M), ("sorry/#eval/#print/axiom no codigo corrigido", nome_)
+    atual_ = (K13 / "TGLExt" / (nome_ + ".lean")).read_bytes()
+    assert sha(atual_) in (v_["sha256_origem"], v_["sha256_saida"]), ("o sandbox nao tem nem a fonte de origem nem a corrigida do modulo corrigido: PARE", nome_, sha(atual_)[:16])
+    dep_ = dependentes_no_kernel("TGLExt." + nome_)
+    dif_ = "".join(difflib.unified_diff(nos_t.splitlines(True), t_.splitlines(True), fromfile="Nos(v412)/tgl_kernel/TGLExt/%s.lean (sha256_origem)" % nome_,
+                                        tofile="C:/t/k413c/final/TGLExt/%s.lean (sha256_saida)" % nome_, n=1))
+    kc[nome_] = {"modulo": nome_, "modulo_completo": "TGLExt." + nome_, "rel": "TGLExt/%s.lean" % nome_, "insumo": kc_rec[nome_]["fonte"], "recibo_da_correcao": kc_rec[nome_]["recibo"],
+                 "recibo_da_correcao_sha256": kc_rec[nome_]["recibo_sha256"], "sha256_origem": v_["sha256_origem"], "sha256_insumo": sha(b_), "sha256": sha(b_), "sha16": sha(b_)[:16], "bytes": len(b_),
+                 "sha256_no_sandbox_antes_deste_preparo": sha(atual_), "codigo_identico_a_origem": True, "fundamento": v_.get("fundamento"), "sha256_fundamento": v_.get("sha256_fundamento"),
+                 "teoremas_publicos_do_manifesto": v_.get("teoremas_publicos"), "n_print_axioms_removidos": 0,
+                 "novos_que_dependem_dele": sorted(x for x in NOMES if ("TGLExt." + x) in dep_),
+                 "dependentes_antigos_no_kernel": sorted(y for y in dep_ if not (y.startswith("TGLExt.") and y[len("TGLExt."):] in NOMES)),
+                 "diff": "kernel/bundle/%s.diff" % nome_, "diff_texto": dif_}

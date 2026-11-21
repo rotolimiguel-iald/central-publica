@@ -1,0 +1,18 @@
+    kc_antes = {}
+    for r_ in KCRELS:
+        k_ = next(x for x in KCL if x["rel"] == r_)
+        kc_antes[r_] = {"formal_files_v412": ff.get(r_), "sha256_origem": k_["sha256_origem"], "depois_na_arvore": sha(rd(os.path.join(ARV, *r_.split("/")))), "instalado_pelo_preparo": k_["sha256"]}
+    chk("o modulo corrigido: ANTES == formal_files_sha256 do manifesto v412 pinado == sha256_origem; DEPOIS (na arvore) == o instalado pelo preparo (BUNDLE_v413.json)",
+        len(kc_antes) > 0 and all(v["formal_files_v412"] == v["sha256_origem"] and v["depois_na_arvore"] == v["instalado_pelo_preparo"] for v in kc_antes.values()),
+        {r: {k: (x or "")[:16] for k, x in v.items()} for r, v in kc_antes.items()})
+    # o B(n) (verificar_kernel_recibo, N1l) exige que as pedras do recibo sejam EXATAMENTE os arquivos formais NOVOS OU MUDADOS do manifesto pinado pelo selo: o corrigido muda de sha256,
+    # logo entra em `pedras` (com as declaracoes que o Audit imprime e que a fonte nomeia, N1k), alem do campo kernel_corrigido (antes e depois)
+    pedras_kc = []
+    for r_ in KCRELS:
+        fb_ = rd(os.path.join(ARV, *r_.split("/"))); fonte_ = fb_.decode("utf-8")
+        dkc_ = sorted({n for n in kc_decl[r_]["nomes"] if not n.startswith("_private.") and n.split(".")[-1].strip("«»")
+                       and re.search(r"(?<![\w'.])" + re.escape(n.split(".")[-1].strip("«»")) + r"(?![\w'])", fonte_)})
+        pedras_kc.append({"path": r_, "sha256": sha(fb_), "declaracoes": dkc_})
+    chk("o modulo corrigido entra nas pedras do recibo (o B(n), N1l: pedras == arquivos formais novos ou mudados) com >= 1 declaracao aceita (N1k)",
+        len(pedras_kc) == len(KCRELS) > 0 and all(p_["declaracoes"] for p_ in pedras_kc), {p_["path"]: len(p_["declaracoes"]) for p_ in pedras_kc})
+    # ------------------------------------------------------------------ os modulos (pedras) do recibo: declaracoes que o B(n) aceita (N1k)

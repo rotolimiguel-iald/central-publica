@@ -1,0 +1,9 @@
+if SECO:
+    mud = [x for x in ordem if not (K13 / "TGLExt" / (x + ".lean")).exists() or (K13 / "TGLExt" / (x + ".lean")).read_bytes() != saida[x]]
+    kc_mud = [x for x in kc if (K13 / "TGLExt" / (x + ".lean")).read_bytes() != kc_bytes[x]]
+    print("SECO: nada gravado | modulos novos:", len(ordem), "| a gravar/trocar no sandbox:", len(mud), "| corrigidos a trocar:", kc_mud, "| ordem:", " ".join(ordem),
+          "| igual a sugerida do manifesto:", ORDEM_IGUAL_A_SUGERIDA)
+    print("     | #print axioms removidos:", sum(e["n_print_axioms_removidos"] for e in entradas.values()), "| imports trocados:", sum(len(e["imports_trocados"]) for e in entradas.values()))
+    for x, e in kc.items():
+        print("     | corrigido %s: novos que dependem dele %d; dependentes antigos no kernel %d" % (x, len(e["novos_que_dependem_dele"]), len(e["dependentes_antigos_no_kernel"])))
+    sys.exit(0)

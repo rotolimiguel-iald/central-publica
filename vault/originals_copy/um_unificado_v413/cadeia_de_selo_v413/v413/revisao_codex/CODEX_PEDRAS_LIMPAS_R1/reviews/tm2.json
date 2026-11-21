@@ -1,0 +1,308 @@
+{
+  "schema": "iald.semantic-cleanup-review/v1",
+  "reviewer": "codex-limpeza-tm2",
+  "created_at": "2026-11-20T23:05:15.039800+00:00",
+  "scope": "Revisão documental dos sete módulos TM2; sem recompilar, instalar ou editar fontes. Validação mecânica de código/logs pertence ao integrador. Os hashes e a identidade de bytes dos quatro Sim foram medidos nesta leitura.",
+  "statute": "REAL — leitura e comparação documental; não constitui nova execução Lean nem aceite da missão.",
+  "mission_reference": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+  "mission_task": "review-pedras-limpas-v413",
+  "mission_revision_observed": 28,
+  "mission_lease": "23405aa3-fe4b-4deb-8419-4873066d3670",
+  "project_result": "ok=true; revisão 28; requisito vigente confirmado; nenhuma init, transição ou adoção de outra missão",
+  "verdict": "APROVADA_COM_RESSALVAS",
+  "summary": {
+    "modules": 7,
+    "approved": 6,
+    "approved_with_reservations": 1,
+    "rejected": 0,
+    "findings": 1,
+    "byte_identical_pairs": 4
+  },
+  "modules": [
+    {
+      "module": "TGLExt.AFronteiraNaLinguaClassica",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": "Enunciado, limites e estatutos [KNOWN]/[OPEN] preservados; nenhuma ampliação encontrada. A remissão ao arquivo SimCompleta foi trocada pelo namespace compartilhado SimTM2 e deve ser reposta.",
+      "findings": [
+        {
+          "id": "TM2-DOC-01",
+          "severity": "BAIXO",
+          "module": "TGLExt.AFronteiraNaLinguaClassica",
+          "file": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\AFronteiraNaLinguaClassica.lean",
+          "line_start": 7,
+          "line_end": 8,
+          "category": "LOCALIZADOR_TECNICO",
+          "original_text": "A ponte do Codex (`APonteAoTM2` + `SimCompleta`) prova que a máquina TM2 do Mathlib CONFERE uma testemunha recebida",
+          "current_text": "A ponte à máquina padrão (`TGLExt.APonteAoTM2`, `TGLExt.SimTM2`) prova que a máquina TM2 do Mathlib CONFERE uma",
+          "explanation": "SimCompleta é o módulo que contém verificacao_tm2_polinomial. TGLExt.SimTM2 é um namespace compartilhado por SimBase, SimLiteral, SimExterior e SimCompleta; não preserva o localizador de arquivo retirado. A afirmação matemática permanece sustentada pelo enunciado já existente.",
+          "proposed_text": "A ponte à máquina padrão (`TGLExt.APonteAoTM2` e `TGLExt.SimCompleta`, teorema\n`TGLExt.SimTM2.verificacao_tm2_polinomial`) prova que a máquina TM2 do Mathlib CONFERE uma\ntestemunha recebida em tempo polinomial (o lado NP).",
+          "apply_scope": "Substituir apenas a primeira frase do parágrafo nas linhas 7–8; manter o restante do parágrafo.",
+          "evidence": [
+            {
+              "file": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\AFronteiraNaLinguaClassica.lean",
+              "lines": [
+                9,
+                10
+              ]
+            },
+            {
+              "file": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\SimCompleta.lean",
+              "lines": [
+                4,
+                137,
+                138
+              ]
+            }
+          ],
+          "cost_status": "Nenhuma ressalva ao custo de verificação TM2 demonstrado; nenhuma exigência de resolver fronteira histórica."
+        }
+      ],
+      "pair_bytes_identical": false,
+      "source_lines": 65,
+      "clean_lines": 64,
+      "statutes_preserved": true,
+      "claims_not_enlarged": true,
+      "conflicting_old_text_found": false
+    },
+    {
+      "module": "TGLExt.AMaquinaTM2DaVerificacao",
+      "verdict": "APROVADA",
+      "reason": "Retirada de autoria/história sem ampliação de enunciado; preservados contaFases, a cota 20·L+5 e a hipótese explícita ASimulacaoCompleta do teorema final. A nova referência ObjetivoTM2Polinomial é precisa.",
+      "findings": [],
+      "pair_bytes_identical": false,
+      "source_lines": 241,
+      "clean_lines": 241,
+      "statutes_preserved": true,
+      "claims_not_enlarged": true,
+      "conflicting_old_text_found": false
+    },
+    {
+      "module": "TGLExt.APonteAoTM2",
+      "verdict": "APROVADA",
+      "reason": "Limpeza preserva semântica, codificações fixas, recursividade e cotas de tamanho. Referência APonteDeCookLevin mantida e a contagem letras distinguida da codificação de entrada; sem formulação antiga conflitante.",
+      "findings": [],
+      "pair_bytes_identical": false,
+      "source_lines": 382,
+      "clean_lines": 382,
+      "statutes_preserved": true,
+      "claims_not_enlarged": true,
+      "conflicting_old_text_found": false
+    },
+    {
+      "module": "TGLExt.SimBase",
+      "verdict": "APROVADA",
+      "reason": "Origem e saída idênticas por bytes; comentários de Runs e tmstep correspondem às definições. Não houve perda de identificador, estatuto ou limite.",
+      "findings": [],
+      "pair_bytes_identical": true,
+      "source_lines": 92,
+      "clean_lines": 92,
+      "statutes_preserved": true,
+      "claims_not_enlarged": true,
+      "conflicting_old_text_found": false
+    },
+    {
+      "module": "TGLExt.SimCompleta",
+      "verdict": "APROVADA",
+      "reason": "Origem e saída idênticas por bytes; preservadas simulação completa, verificação TM2 polinomial e cota para atribuição fornecida. Comentários não estendem o resultado à busca de testemunha.",
+      "findings": [],
+      "pair_bytes_identical": true,
+      "source_lines": 162,
+      "clean_lines": 162,
+      "statutes_preserved": true,
+      "claims_not_enlarged": true,
+      "conflicting_old_text_found": false
+    },
+    {
+      "module": "TGLExt.SimExterior",
+      "verdict": "APROVADA",
+      "reason": "Origem e saída idênticas por bytes; comentários de transferência, restauração e limpeza correspondem aos enunciados e às respectivas guardas. A palavra ordem refere-se à sequência de símbolos.",
+      "findings": [],
+      "pair_bytes_identical": true,
+      "source_lines": 188,
+      "clean_lines": 188,
+      "statutes_preserved": true,
+      "claims_not_enlarged": true,
+      "conflicting_old_text_found": false
+    },
+    {
+      "module": "TGLExt.SimLiteral",
+      "verdict": "APROVADA",
+      "reason": "Origem e saída idênticas por bytes; preservadas guarda safe, restauração da testemunha e leitura fora da fita. A palavra ordem descreve a pilha invertida e não autoria/história.",
+      "findings": [],
+      "pair_bytes_identical": true,
+      "source_lines": 177,
+      "clean_lines": 177,
+      "statutes_preserved": true,
+      "claims_not_enlarged": true,
+      "conflicting_old_text_found": false
+    }
+  ],
+  "read_files": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\AFronteiraNaLinguaClassica.lean",
+      "sha256": "b42d1a71bf3daeaea2a4a2f06a14c52d5891cbb400ae6740efaded92214d6123",
+      "bytes": 3139,
+      "role": "origem",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\AFronteiraNaLinguaClassica.lean",
+      "sha256": "f4cedf991fbf1168838568388b505f5aaa294cfa625b994231185af51be2ae88",
+      "bytes": 3013,
+      "role": "pedra_limpa",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\AMaquinaTM2DaVerificacao.lean",
+      "sha256": "373a2e370a23bd3ad36f98792cdfe7183608c6abe5f88e6a1e4cb3785128287f",
+      "bytes": 10892,
+      "role": "origem",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\AMaquinaTM2DaVerificacao.lean",
+      "sha256": "b9377b9416520cf802c41723e1ce325e8200914f5bc2e2fcde99ef3c95fe3fe6",
+      "bytes": 10844,
+      "role": "pedra_limpa",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\APonteAoTM2.lean",
+      "sha256": "47365fc2de4778e44417977f68d45a19aeb33530c35408864ab0d69ea90ad697",
+      "bytes": 17833,
+      "role": "origem",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\APonteAoTM2.lean",
+      "sha256": "d0552b0eaf224fca7e6a73a44548de5b7085d58a0e55dd4f00474ceeb8d45580",
+      "bytes": 17726,
+      "role": "pedra_limpa",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\SimBase.lean",
+      "sha256": "ffef326e6d24343cefbdba7585b6cad027818f40ff5d2dd0e0daf2555db3d5ba",
+      "bytes": 2996,
+      "role": "origem",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\SimBase.lean",
+      "sha256": "ffef326e6d24343cefbdba7585b6cad027818f40ff5d2dd0e0daf2555db3d5ba",
+      "bytes": 2996,
+      "role": "pedra_limpa",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\SimCompleta.lean",
+      "sha256": "136448407c64bc71409336a3be269d4f1b7897f2fd91c23945029313a84fb408",
+      "bytes": 7230,
+      "role": "origem",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\SimCompleta.lean",
+      "sha256": "136448407c64bc71409336a3be269d4f1b7897f2fd91c23945029313a84fb408",
+      "bytes": 7230,
+      "role": "pedra_limpa",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\SimExterior.lean",
+      "sha256": "57175184d2a65430b8fc6ae14c17f944609c77812c387d3fb590cd385d5d3294",
+      "bytes": 7814,
+      "role": "origem",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\SimExterior.lean",
+      "sha256": "57175184d2a65430b8fc6ae14c17f944609c77812c387d3fb590cd385d5d3294",
+      "bytes": 7814,
+      "role": "pedra_limpa",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\SimLiteral.lean",
+      "sha256": "8eb4a3bcf795f9a54efc54153b6ea0a25481fc8251724968feec8773020016f4",
+      "bytes": 8474,
+      "role": "origem",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\SimLiteral.lean",
+      "sha256": "8eb4a3bcf795f9a54efc54153b6ea0a25481fc8251724968feec8773020016f4",
+      "bytes": 8474,
+      "role": "pedra_limpa",
+      "coverage": "Leitura integral do texto limpo e comparação integral com origem por diff; nos pares idênticos, leitura integral do conteúdo comum."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\PEDIDO_DE_LEITURA_DAS_PEDRAS_LIMPAS_v413_20nov.md",
+      "sha256": "cd404c6edb42dda7d579fefa9837365c0c42bcde9023d9bcf606ffca43ebfc7f",
+      "bytes": 5768,
+      "role": "contexto_ou_pedido",
+      "coverage": "pedido integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\REGRAS_DA_LIMPEZA_v413.md",
+      "sha256": "894416ba928ff72c0d0b143c1301ed62e061f4cbc2741e04e2015d816a9643fd",
+      "bytes": 5920,
+      "role": "contexto_ou_pedido",
+      "coverage": "regras integrais"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\DIFF_DA_LIMPEZA_v413.txt",
+      "sha256": "9ef5b29fd30661ed3d890f67ebdad1338db6383b318927952e2f7f0e55824a2c",
+      "bytes": 67145,
+      "role": "contexto_ou_pedido",
+      "coverage": "seções dos sete módulos: linhas 1–37,143–191,725–744; diffs integrais também regenerados em memória"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+      "sha256": "b85ceec822be80beebead1e93a89a54751d425efbc852f70f77f7463f7120238",
+      "bytes": 677,
+      "role": "contexto_ou_pedido",
+      "coverage": "referência usada no project somente leitura"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PEDRAS_LIMPAS_R1\\MISSION_WORKING.json",
+      "sha256": "28c5ec60a9339bc2a429314283ef0fc7f2aa0fcd1591f0e136aa474049af9f29",
+      "bytes": 31040,
+      "role": "contexto_ou_pedido",
+      "coverage": "lease/estado delegado; saída geral extensa, campos vigentes confirmados pelo project"
+    },
+    {
+      "path": "C:\\IALD\\GESTAO_DE_TOKENS.md",
+      "sha256": "ed2b6e9b3d8fd8a1e4e7a83f7b27c30aae04b93002cf13f04b2237ec975b2976",
+      "bytes": 29867,
+      "role": "contexto_ou_pedido",
+      "coverage": "instruções de governança"
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\README.md",
+      "sha256": "261abfc6ec817da66e84550d4dff0f22e03dc3408f240328f1a345032980c0ef",
+      "bytes": 10843,
+      "role": "contexto_ou_pedido",
+      "coverage": "protocolo de memória"
+    },
+    {
+      "path": "C:\\Users\\rotol\\.agents\\skills\\tgl-atlas\\SKILL.md",
+      "sha256": "88a4adbde27ccdb4e0dc4eef83cc99a3c0ba664f1d40e529c8ef928075ba0907",
+      "bytes": 8598,
+      "role": "contexto_ou_pedido",
+      "coverage": "skill integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\memory\\TGL_ATLAS.md",
+      "sha256": "3b8e164fd39d4891a9819b217880b8de91bebcee1433d080fc04d86e18bea7e1",
+      "bytes": 15794410,
+      "role": "contexto_ou_pedido",
+      "coverage": "consulta localizada por rg: nomes dos módulos/v413; registro final das pedras lido"
+    }
+  ],
+  "limitations": [
+    "Não recompilados Lean/axiomas; parecer semântico separado da conferência mecânica do integrador.",
+    "Localizadores externos aos sete módulos preservados, cuja validação cruzada foi solicitada ao integrador: Codex.EntregaBeta/hr e TGLExt.SondaContagem.",
+    "Nenhuma restrição nova aos custos já reconhecidos; nenhuma demanda de resolver o objetivo histórico da fronteira."
+  ]
+}

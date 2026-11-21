@@ -1,0 +1,130 @@
+{
+  "schema": "iald.cross_review.v1",
+  "timestamp_utc": "2026-11-20T12:22:39.487860+00:00",
+  "reviewer": "codex-beta-witness",
+  "task": "/root/beta_witness",
+  "verdict": "PASS_WITH_SCOPE",
+  "status": "REAL_SOURCE_REVIEW_AND_PINNED_RC0_LOGS",
+  "scope": "Revisão matemática independente das fontes de relógio, folga, quantização e composição escritas por outros agentes. Conferência dos logs RC0 vinculados aos bytes atuais; sem repetir compilação.",
+  "excluded": [
+    "Reconstrucao.lean: autoria deste revisor; não aprovada nesta revisão.",
+    "Não é revisão independente do kernel canônico nem reprodução de toda a cadeia de dependências."
+  ],
+  "checks": [
+    {
+      "id": "fixed_clock",
+      "result": "PASS",
+      "detail": "hm exige m > log(2)/beta, fixado antes da fórmula. clock=m*(n+2) dá desigualdade estrita suficiente. Seleção de m de um real arbitrário não é apresentada como algoritmo."
+    },
+    {
+      "id": "gap",
+      "result": "PASS",
+      "detail": "SAT implica soma>=1; UNSAT implica soma<1/4. Erro racional absoluto<=1/4 separa pelo limiar1/2, inclusive extremos do erro."
+    },
+    {
+      "id": "normalization",
+      "result": "PASS",
+      "detail": "Divisão por2^n transporta a precisão para1/(4*2^n); o fator exponencial não é omitido."
+    },
+    {
+      "id": "finite_dyadic",
+      "result": "PASS",
+      "detail": "Para y em[0,1], piso(y*2^(n+2)) dá j<=2^(n+2) e erro<=2^-(n+2). Existência por piso de real não é algoritmo de obtenção."
+    },
+    {
+      "id": "inclusive_endpoint",
+      "result": "PASS",
+      "detail": "y=1 pode requerer j=2^(n+2); por isso n+3 bits binários bastam incluindo o extremo. Não são apenas n+2 bits para todo numerador."
+    },
+    {
+      "id": "integer_threshold",
+      "result": "PASS",
+      "detail": "Comparar j/2^(n+2) com1/(2*2^n) equivale exatamente j>=2. O código decide2<=j."
+    },
+    {
+      "id": "reader_hypothesis",
+      "result": "PASS",
+      "detail": "hr exige precisão para toda CNF no mesmo Fin n, incluindo fórmulas acrescidas de unidades; não é assumida só na fórmula original."
+    },
+    {
+      "id": "composition",
+      "result": "PASS_WITH_DEPENDENCY_EXCLUSION",
+      "detail": "Composição usa a interface condicional de Reconstrucao; não revisa nem aprova a implementação desse módulo, de autoria deste revisor."
+    },
+    {
+      "id": "cost_scope",
+      "result": "PASS",
+      "detail": "Consultas, comprimentos, n+3 bits e relógio do fator não são declarados tempo TM2 do produtor; fonte exclui largura de índices, movimentos e construção das consultas."
+    },
+    {
+      "id": "builds",
+      "result": "PASS",
+      "detail": "Cinco logs RC0 correspondem aos hashes atuais das fontes; nenhum aviso, erro ou sorryAx. Não houve nova compilação pelo revisor."
+    }
+  ],
+  "resolved_findings": [
+    {
+      "file": "EntregaBeta.lean",
+      "detail": "Open ausente de TGLExt.APonteDeCookLevin identificado; versão final inclui open e autoImplicit false e compilou RC0."
+    }
+  ],
+  "open_mathematical_obligation": "Construir da fórmula um produtor reader com a precisão hr, em codificação fixa e com prova de custo em movimentos de fita. Não demonstrado por estes cinco módulos.",
+  "gate_changed": false,
+  "sources": [
+    {
+      "source": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\RelogioBeta.lean",
+      "source_sha256": "cfd1b81bece7023f5c2ae581ecd7602a25598beb5ced46b12c159ce3caf343e9",
+      "source_bytes": 2328,
+      "log": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\RelogioBeta.log",
+      "log_sha256": "41ba6c5e3dd01b11f1820e3d3fbdad850e52aa36e07e9b05ddcce94b8414d651",
+      "observed_compile_rc": 0,
+      "olean": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\RelogioBeta.olean",
+      "olean_sha256": "976ca3abbf26da7e166d824405fa7034f819858ae01b735299b65e89fe60cc5b",
+      "compilation_repeated_by_reviewer": false
+    },
+    {
+      "source": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\LeituraBeta.lean",
+      "source_sha256": "9d35688728551052e5bdace560a0a704391e7eed4d011d717f6c7f13b0441758",
+      "source_bytes": 7212,
+      "log": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\LeituraBeta.log",
+      "log_sha256": "f57b22d87e7631c551416396db7283d3048335834e79d81952f4990624f3b01f",
+      "observed_compile_rc": 0,
+      "olean": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\LeituraBeta.olean",
+      "olean_sha256": "b00ad2dcc782d45dbddbd82e86299c1e3aaf64a6fd10d207393c629ddc3d82d2",
+      "compilation_repeated_by_reviewer": false
+    },
+    {
+      "source": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\QuantizacaoBeta.lean",
+      "source_sha256": "818a5e6602b44a3c242998f9f96c7c9c7de44a45d547c79aaea7f4bea45c52ed",
+      "source_bytes": 2960,
+      "log": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\QuantizacaoBeta.log",
+      "log_sha256": "84f24960904ca702d8aa62f3052adb3ab09783188e8688236546fa453abd8425",
+      "observed_compile_rc": 0,
+      "olean": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\QuantizacaoBeta.olean",
+      "olean_sha256": "cc2028f992782543bfc550ce528debc8a25d9f03cc66e33daeffe5cb5857b736",
+      "compilation_repeated_by_reviewer": false
+    },
+    {
+      "source": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\PonteLeituraBeta.lean",
+      "source_sha256": "58eaf84a6ab1fc6a23857860558d61a904e4fad8890b6288c8b5ed5e6d3cb966",
+      "source_bytes": 3361,
+      "log": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\PonteLeituraBeta.log",
+      "log_sha256": "d7acbdc69d55a3e1763f16acf35e4c5b42c7c17017a2b5593ceffcc239eb4722",
+      "observed_compile_rc": 0,
+      "olean": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\PonteLeituraBeta.olean",
+      "olean_sha256": "1d0e010f49ffd65a5e5a4e6ba1e147c32fe37b3ed917bb858214149fc411e215",
+      "compilation_repeated_by_reviewer": false
+    },
+    {
+      "source": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\EntregaBeta.lean",
+      "source_sha256": "ca40fbd8e3bcd517b36917ad0cd93b00b5d781a31181fa64b915450e63e375e2",
+      "source_bytes": 3157,
+      "log": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\EntregaBeta.log",
+      "log_sha256": "53f6d1bdacc2192e65c9b9f10fd51636cf7743e1af6c0804ab5d9fa50a7e389e",
+      "observed_compile_rc": 0,
+      "olean": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\EntregaBeta.olean",
+      "olean_sha256": "39bb8604adb0c50a0a71f9bfc971e915b7e40ab9cffba41e4d340fd93945ab4c",
+      "compilation_repeated_by_reviewer": false
+    }
+  ]
+}

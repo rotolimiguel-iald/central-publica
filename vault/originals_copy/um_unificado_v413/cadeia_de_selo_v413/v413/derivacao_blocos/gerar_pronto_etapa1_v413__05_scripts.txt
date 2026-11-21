@@ -1,0 +1,35 @@
+SCRIPTS = ["derivar_scripts_etapa1_v413.py", "conferir_fontes_k412c_vs_nos_v413.py", "copiar_k413c.sh", "copiar_base_v413.py", "pre_colisao_declaracoes_v413.py", "lean_texto_v413.py",
+           "preparar_bundle_v413.py", "construir_kernel_v413.sh", "pos_build_kernel_v413.py", "copiar_logs_do_kernel_v413.py", "reconstruir_kernel_v413.py", "portao_do_pilar_v413.py",
+           "inventario_cadeia_v413.py", "gerar_pronto_etapa1_v413.py"]
+scripts = {s: sh16(os.path.join(HERE, *s.split("/"))) for s in SCRIPTS}
+runners = {n: sh16(os.path.join(T13, n)) for n in ("run_build.py", "run_pos_treino.py")}
+# a derivacao (item 4): cada destino registrado em DERIVACAO_ETAPA1_v413.json, com o sha16 registrado e o que esta' em disco agora
+derivados = {}
+for nome_, r_ in (der.get("derivacoes") or {}).items():
+    dest_ = r_.get("destino")
+    derivados[nome_] = {"molde": r_.get("molde"), "molde_sha16": (r_.get("molde_sha256") or "")[:16], "destino": dest_, "destino_sha16_registrado": r_.get("destino_sha16"),
+                        "destino_sha16_em_disco": sh16(dest_) if dest_ else None, "modo": r_.get("modo"), "trocas": len(r_.get("trocas") or []),
+                        "rotulos_subidos": sum(v for k, v in (r_.get("rotulos_subidos") or {}).items() if k != "marcas_historicas_preservadas"),
+                        "marcas_historicas_preservadas": (r_.get("rotulos_subidos") or {}).get("marcas_historicas_preservadas", 0), "diff": r_.get("diff")}
+avisos = pos.get("avisos_por_modulo") or {}
+n_mod = int(bd.get("n") or 0)
+compilaram = sum(1 for v in (pos.get("por_modulo_marcas") or {}).values() if v.get("rc") == 0)
+# o que a etapa criou e quanto ocupa (fora de work: C:\t\k413c; em work: a pasta da v413, so' o que e' desta etapa)
+criados = {}
+for p_ in (os.path.join(T13, "final"), os.path.join(T13, "arvore")):
+    b_, n_ = tamanho(p_); criados[p_] = {"bytes": b_, "arquivos": n_, "nota": "sem seguir a juncao .lake\\packages" if p_.endswith("final") else "arvore so-fontes do recibo"}
+for e in (os.scandir(T13) if os.path.isdir(T13) else []):
+    if e.is_dir() and e.name.startswith("quarentena_"):
+        b_, n_ = tamanho(e.path); criados[e.path] = {"bytes": b_, "arquivos": n_, "nota": "backups de bytes do que o preparo trocou no sandbox"}
+soltos_t13 = [os.path.join(T13, f_) for f_ in ("run_build.py", "run_pos_treino.py", "robocopy_final.log", "robocopy_done.txt", "build_inicio.txt") if os.path.exists(os.path.join(T13, f_))]
+criados[os.path.join(T13, "(arquivos soltos)")] = {"bytes": sum(os.path.getsize(q_) for q_ in soltos_t13), "arquivos": len(soltos_t13)}
+for rel in ("base_v412", "kernel", "pedra", "bump", "vinculo", "derivacao_blocos"):
+    p_ = os.path.join(HERE, rel)
+    if os.path.exists(p_):
+        b_, n_ = tamanho(p_); criados[p_] = {"bytes": b_, "arquivos": n_}
+soltos = SCRIPTS + ["BUNDLE_v413.json", "kernel_modulos_novos_v413.json", "CONFERENCIA_FONTES_K412C_v413.json", "BASE_V412_COPIA.json", "PORTAO_DO_PILAR_v413.json", "DERIVACAO_ETAPA1_v413.json",
+                    "INVENTARIO_CADEIA_v413.json", "PRONTO_PARA_CANDIDATO_v413.json", "TAMANHOS_CRIADOS_v413.json"]
+b_soltos = sum(os.path.getsize(os.path.join(HERE, *s.split("/"))) for s in soltos if os.path.exists(os.path.join(HERE, *s.split("/"))))
+criados["(arquivos soltos desta etapa na pasta da v413)"] = {"bytes": b_soltos, "arquivos": len(soltos)}
+baks = [f_ for f_ in os.listdir(HERE) if ".bak_" in f_]
+criados["(backups .bak_ das rederivacoes, na pasta da v413)"] = {"bytes": sum(os.path.getsize(os.path.join(HERE, f_)) for f_ in baks), "arquivos": len(baks)}

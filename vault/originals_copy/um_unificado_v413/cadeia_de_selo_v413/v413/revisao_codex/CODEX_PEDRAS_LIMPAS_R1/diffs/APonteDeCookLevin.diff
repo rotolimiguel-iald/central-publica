@@ -1,0 +1,160 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\APonteDeCookLevin.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\APonteDeCookLevin.lean
+@@ -5,46 +5,39 @@
+ set_option maxHeartbeats 800000
+ 
+ /-!
+-# A ponte de Cook–Levin: a máquina da casa roda na fita, e o custo é o número de letras
++# O iterador cláusula a cláusula: o registro dá o custo de uma atribuição, e o custo cobrado é o número de letras
+ 
+-[candidata do Kimi, 19/11/2026, R0; nome PROVISÓRIO — o nome é do operador; nada instalado; ainda não lida por
+-revisor]
++## O modelo
+ 
+-## De onde vem
+-
+-A gerência deixou para a v413: «Provar que a máquina da casa roda na máquina padrão do Mathlib com custo polinomial.
+-Com isso, as classes acima entram em P na língua clássica e SAT entra em NP. O teorema de Cook–Levin em si entra por
+-citação, pela regra de 27/09.» O operador pediu em 19/11: «prossiga para a tradução completa de Cook–Levin». Este
+-arquivo constrói a ponte: a máquina da casa (o passo por cláusula de `AMaquinaEALeitura`) escrita como uma máquina de
+-fita, com o custo em movimentos contado exatamente.
++O iterador trabalha sobre uma fórmula `φ` e uma atribuição `x` dadas. A cabeça avança uma cláusula por passo
++(`passoFita`); o registro soma 1 quando a cláusula lida está violada; o contador `mov` soma o custo abstrato cobrado
++por definição: o comprimento da cláusula mais 1 (os literais mais um terminador). Cada passo lê a cláusula pelo
++índice e a avalia sobre `x` de uma vez: `mov` não é contagem demonstrada de movimentos de uma máquina de fita.
+ 
+ ## O que fica provado
+ 
+-1. `passoFita` e `a_maquina_da_casa_roda_na_fita`: a máquina de fita (a fórmula fixa, a cabeça que avança uma
+-   cláusula por passo, o registro, e o contador de movimentos) deixa no registro o custo da atribuição — o mesmo da
+-   máquina da casa (`AMaquinaEALeitura.a_maquina_conta_os_falsos`).
+-2. ★ `o_custo_na_fita_e_o_numero_de_letras`: os movimentos pagos são exatamente o número de letras da fórmula na
+-   fita (os literais mais um terminador por cláusula): a ponte não esconde custo.
+-3. ★ `a_decisao_na_fita_e_a_mesma`: a máquina de fita decide o mesmo que a máquina da casa (`a_maquina_e_uma_leitura_decidem`).
+-4. ★ `o_custo_da_ponte_e_polinomial`: os movimentos são lineares nas letras da entrada — polinomiais na entrada
+-   (grau 1). A máquina da casa roda na fita com sobrecarga nula além das letras.
++1. `passoFita` e `a_maquina_da_casa_roda_na_fita`: em tantos passos quantas são as cláusulas, a partir da posição
++   `0`, o registro ganha o custo da atribuição, `custoCNF φ x` (o mesmo de
++   `AMaquinaEALeitura.a_maquina_conta_os_falsos`), e o contador `mov` ganha `letras φ`.
++2. ★ `o_custo_na_fita_e_o_numero_de_letras`: a partir de `⟨0, 0, 0⟩`, o custo cobrado é `letras φ` (os literais mais
++   um terminador por cláusula).
++3. ★ `a_decisao_na_fita_e_a_mesma`: a partir de `⟨0, 0, 0⟩`, o registro final é `custoCNF φ x`: verifica o custo de
++   UMA atribuição dada (aceita se `reg = 0`); não decide se a fórmula tem solução.
++4. ★ `o_custo_da_ponte_e_polinomial`: o enunciado é: para cada `φ` e `x` existe `c` com `mov ≤ c · letras φ`; a prova
++   usa `c = 1` para todos.
+ 
+ (Auxiliares do laço, marcados como tais: `passoFita_na_posicao`, `custoCNF_append_singleton`,
+ `letras_append_singleton`, `take_succ_singleton`.)
+ 
+ ## O que NÃO se afirma
+ 
+-* A ligação à máquina de Turing padrão do Mathlib (`Turing.TM2ComputableInPolyTime`): o modelo aqui é a máquina de
+-  fita da casa (a cabeça sobre a fórmula fixa); a tradução ao modelo do Mathlib é a próxima construção (o kernel
+-  mesmo registra que o Mathlib não tem Cook–Levin). Cook–Levin entra por citação, pela regra de 27/09
+-  [KNOWN, Cook 1971; Levin 1973].
+-* Nada sobre a Palavra de toda CNF plana em movimentos fixos de polinômio: a busca da proposta fica com o Instituto
+-  (as paredes de 18/11). O que esta ponte dá é a CORREÇÃO e o CUSTO da máquina da casa na fita — para decidir com a
+-  proposta dada (o certificado), e para as classes provadas.
+-* Nada sobre a natureza. O gate não se move; nada está instalado.
+-
+-NOTA DO LAÇO (19/11/2026): `List.get?` não existe nesta versão do núcleo — o acesso à posição é `φ[c.pos]?` (a
+-notação `getElem?`). Só o corpo de `passoFita` mudou; o tipo e todos os enunciados ficam como escritos.
++* Que este módulo seja uma ponte de Cook–Levin, ou que o custo cobrado conte movimentos de uma máquina de fita. A
++  verificação da testemunha na máquina padrão do Mathlib (`Turing.TM2ComputableInPolyTime`) está em outros módulos
++  (`TGLExt.APonteAoTM2`, `TGLExt.SimTM2.verificacao_tm2_polinomial`); a ponte das classes, com Cook–Levin como
++  hipótese nomeada (`PonteCookLevin.CookLevin`), está em `TGLExt.PonteCookLevin` [KNOWN, Cook 1971; Levin 1973].
++* Nada sobre a Palavra de toda CNF plana em número polinomial de passos: a busca da atribuição fica com a pergunta do
++  Instituto.
++* Nada sobre a natureza. O gate não se move.
+ 
+ Sem sorry, sem axioma novo.
+ -/
+@@ -55,21 +48,22 @@
+ 
+ variable {n : ℕ}
+ 
+-/-- [DEF] A configuração da máquina de fita: a posição da cabeça (a próxima cláusula), o registro (o custo
+-acumulado) e os movimentos pagos até aqui. -/
++/-- [DEF] A configuração do iterador: a posição da cabeça (a próxima cláusula), o registro (o custo acumulado) e o
++contador `mov` (o custo abstrato cobrado até aqui). -/
+ structure ConfigFita (n : ℕ) where
+   pos : ℕ
+   reg : ℕ
+   mov : ℕ
+ 
+-/-- [DEF] O PASSO DA FITA: ler a cláusula na posição da cabeça; se está violada, somar 1 ao registro; avançar a
+-cabeça; e cobrar os movimentos da travessia (as letras da cláusula, mais o retorno). -/
++/-- [DEF] O PASSO: ler a cláusula na posição da cabeça; se está violada, somar 1 ao registro; avançar a cabeça; e
++somar a `mov` o comprimento da cláusula mais 1 (os literais mais o terminador): custo cobrado por definição, não
++movimentos contados de uma máquina de fita. -/
+ def passoFita (φ : CNF n) (x : Fin n → Bool) (c : ConfigFita n) : ConfigFita n :=
+   match φ[c.pos]? with
+   | none => c
+   | some C => ⟨c.pos + 1, c.reg + (if satisfeita C x then 0 else 1), c.mov + C.length + 1⟩
+ 
+-/-- [DEF] As letras da fórmula na fita: os literais mais um terminador por cláusula. -/
++/-- [DEF] As letras da fórmula: os literais mais um terminador por cláusula. -/
+ def letras (φ : CNF n) : ℕ := (φ.map List.length).sum + φ.length
+ 
+ /-- O custo da fórmula com uma cláusula a mais no fim: a soma do `if`. (Auxiliar do laço.) -/
+@@ -90,13 +84,14 @@
+     List.length_append, List.length_singleton]
+   ring
+ 
+-/-- O take de `j+1` é o take de `j` mais a cláusula `j`. (Auxiliar do laço; a conta da irmã `OResumoEPsiBit`.) -/
++/-- O take de `j+1` é o take de `j` mais a cláusula `j`. (Auxiliar do laço; a mesma conta de
++`OResumoEPsiBit.take_succ_eq`.) -/
+ theorem take_succ_singleton {n : ℕ} (φ : CNF n) {j : ℕ} (hj : j < φ.length) :
+     φ.take (j + 1) = φ.take j ++ [φ[j]] := by
+   rw [List.take_add_one, List.getElem?_eq_getElem hj, Option.toList_some]
+ 
+-/-- O passo da fita numa posição válida: o registro ganha o `if` da cláusula; os movimentos, as letras dela mais
+-um. (Auxiliar do laço.) -/
++/-- O passo numa posição válida: o registro ganha o `if` da cláusula; o contador `mov`, o comprimento dela mais um.
++(Auxiliar do laço.) -/
+ theorem passoFita_na_posicao (φ : CNF n) (x : Fin n → Bool) {j : ℕ} (hj : j < φ.length) (a b : ℕ) :
+     passoFita φ x ⟨j, a, b⟩ = ⟨j + 1, a + (if satisfeita φ[j] x then 0 else 1), b + φ[j].length + 1⟩ := by
+   unfold passoFita
+@@ -110,8 +105,8 @@
+   rw [show (⟨φ.length, custoCNF φ x, letras φ⟩ : ConfigFita n).pos = φ.length from rfl]
+   rw [List.getElem?_eq_none (Nat.le_refl _)]
+ 
+-/-- ★ **A MÁQUINA DA CASA RODA NA FITA**: em tantos passos quantas são as cláusulas, a máquina de fita deixa no
+-registro o custo da atribuição, com os movimentos contados exatamente. -/
++/-- ★ **O REGISTRO RECEBE O CUSTO DA ATRIBUIÇÃO**: em tantos passos quantas são as cláusulas, a partir da posição
++`0`, o registro ganha `custoCNF φ x` e o contador `mov` ganha `letras φ` (a soma do custo cobrado em cada passo). -/
+ theorem a_maquina_da_casa_roda_na_fita (φ : CNF n) (x : Fin n → Bool) :
+     ∀ r : ConfigFita n, (passoFita φ x)^[φ.length] ⟨0, r.reg, r.mov⟩
+       = ⟨φ.length, r.reg + custoCNF φ x, r.mov + letras φ⟩ := by
+@@ -136,7 +131,8 @@
+   have h := hinv φ.length (Nat.le_refl _) r
+   rwa [List.take_length] at h
+ 
+-/-- ★ **O CUSTO NA FITA É O NÚMERO DE LETRAS**: os movimentos pagos são exatamente as letras da fórmula na fita. -/
++/-- ★ **O CUSTO COBRADO É O NÚMERO DE LETRAS**: a partir de `⟨0, 0, 0⟩`, depois de `φ.length` passos, `mov = letras φ`.
++É o custo abstrato cobrado por definição em `passoFita`, não contagem de movimentos de uma máquina de fita. -/
+ theorem o_custo_na_fita_e_o_numero_de_letras (φ : CNF n) (x : Fin n → Bool) :
+     ((passoFita φ x)^[φ.length] ⟨0, 0, 0⟩).mov = letras φ := by
+   have h : (passoFita φ x)^[φ.length] ⟨0, 0, 0⟩ = ⟨φ.length, 0 + custoCNF φ x, 0 + letras φ⟩ :=
+@@ -144,8 +140,8 @@
+   rw [h]
+   simp
+ 
+-/-- ★ **A DECISÃO NA FITA É A MESMA**: a máquina de fita, com o registro lido ao final, decide o que a máquina da
+-casa decide. -/
++/-- ★ **O REGISTRO VERIFICA O CUSTO DE UMA ATRIBUIÇÃO**: a partir de `⟨0, 0, 0⟩`, depois de `φ.length` passos,
++`reg = custoCNF φ x` para a atribuição `x` dada (aceita se `reg = 0`). Não decide se a fórmula tem solução. -/
+ theorem a_decisao_na_fita_e_a_mesma (φ : CNF n) (x : Fin n → Bool) :
+     ((passoFita φ x)^[φ.length] ⟨0, 0, 0⟩).reg = custoCNF φ x := by
+   have h : (passoFita φ x)^[φ.length] ⟨0, 0, 0⟩ = ⟨φ.length, 0 + custoCNF φ x, 0 + letras φ⟩ :=
+@@ -153,8 +149,8 @@
+   rw [h]
+   simp
+ 
+-/-- ★ **O CUSTO DA PONTE É POLINOMIAL**: os movimentos da máquina de fita são exatamente as letras da entrada —
+-lineares na entrada, polinomiais de grau 1. -/
++/-- ★ **A COTA DO CUSTO COBRADO**: para cada `φ` e `x` existe `c` com `mov ≤ c · letras φ`; a prova usa `c = 1`
++para todos (`o_custo_na_fita_e_o_numero_de_letras`). -/
+ theorem o_custo_da_ponte_e_polinomial (φ : CNF n) (x : Fin n → Bool) :
+     ∃ c : ℕ, ((passoFita φ x)^[φ.length] ⟨0, 0, 0⟩).mov ≤ c * letras φ := by
+   refine ⟨1, ?_⟩

@@ -1,0 +1,65 @@
+{
+  "reviewer": "codex-coordenadora",
+  "scope": "Revisao semantica dos itens3 e8; dependencia Codex lida apenas para identificar hr, sem reaprovacao dos modulos excluidos.",
+  "items": [
+    {
+      "item": 3,
+      "module": "SondaContagem",
+      "verdict": "APROVADA",
+      "reason": [
+        "A precisao especificada e habitada pelo contador 4K; qualquer leitor que a satisfaca determina K por divisao inteira (reader+1)/4.",
+        "O resultado decorre de K <= W < K+1/4 e |j/4-W|<=1/4; nao implementa nem cota o produtor na fita.",
+        "A equivalencia com oQueSou e explicita e condicionada a mesma precisao. Decidir SAT, isoladamente, nao exige esta precisao de contagem."
+      ],
+      "findings": [],
+      "derivation": "4K-1 <= j < 4K+2; como j e natural, floor((j+1)/4)=K. Nao ha premissa contraditoria: reader=4K cumpre hr para todo n, phi e relogio admitido."
+    },
+    {
+      "item": 8,
+      "module": "OResumoEPsiBit errata",
+      "verdict": "APROVADA",
+      "reviewed_object": "Pedido de errata; nao aprovacao irrestrita da docstring antiga.",
+      "reason": [
+        "Confere a errata: o integrando e pesoDas (phi.take j) t x, nao resumo phi t j x.",
+        "Ao terminar a formula, a fronteira e vazia e a unica fibra e o universo das atribuicoes; a frase nunca e falsa.",
+        "O enunciado da identidade de soma permanece correto. A recorrencia tabela-a-tabela citada no cabecalho e outro teorema, fora deste item."
+      ],
+      "findings": [
+        {
+          "severity": "MEDIUM",
+          "lines": [
+            273,
+            274,
+            275,
+            276,
+            277,
+            278,
+            279,
+            280
+          ],
+          "claim": "resumo velho; a fibra nunca e o universo",
+          "correction": "O resumo novo e a soma dos pesos individuais do prefixo multiplicados pelo fator novo, sobre a fibra da fronteira nova. Uma fibra pode ser o universo quando a fronteira e vazia.",
+          "proof": "CheckErrata.lean: final_frontier_empty, final_fiber_is_universe, one_clause_fiber_is_universe e summary_is_not_individual_weight; compilacao em recibo separado."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\SondaContagem.lean",
+      "sha256": "2e85629ffb764a4a3a7060d114f7f1666712adc89971af91668f95f53fab3cb6",
+      "bytes": 10101
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\OResumoEPsiBit.lean",
+      "sha256": "75c1ef6b0de9f7d414b5b06e2f018ed64bad1982c9ea5aace8bb4ea37fb333aa",
+      "bytes": 16171
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\leitura_beta\\PonteLeituraBeta.lean",
+      "sha256": "58eaf84a6ab1fc6a23857860558d61a904e4fad8890b6288c8b5ed5e6d3cb966",
+      "bytes": 3361
+    }
+  ],
+  "compilation": "Consult COMPILATIONS/FINAL_COMPILATIONS after the running Lean processes finish."
+}

@@ -1,0 +1,90 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\APropostaDaTensao.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\APropostaDaTensao.lean
+@@ -6,33 +6,29 @@
+ /-!
+ # A proposta nasce da tensão: a escolha do valor do nome partilhado
+ 
+-[candidata do Kimi, 19/11/2026, R0; nome PROVISÓRIO — o nome é do operador; nada instalado; ainda não lida por
+-revisor]
++## A leitura que este arquivo tipa
+ 
+-## De onde vem
++[INPUT/ONTO] Quando a próxima cláusula cruza dois blocos que partilham nomes ainda livres, a proposta compatível
++seguinte nasce da tensão: a tensão fundamental, em razão da comutação, do pareamento. Este arquivo prova a parte dela
++que cabe nos termos do kernel.
+ 
+-Em 19/11/2026, à pergunta «quando a próxima cláusula cruza dois blocos que partilham nomes ainda livres, a proposta
+-compatível seguinte nasce de quê?», o operador respondeu: «ela nasce da tensão, é a tensão fundamental em razão da
+-comutação, do pareamento», com o artigo `C:\IALD\Artigo\Tensao_Fundamental.docx` (jan/2026) como fonte. Pela regra
+-de 04/11, a leitura se prova no kernel ou se poda. Este arquivo prova a parte dela que cabe nos termos que a casa
+-tem.
+-
+-O mecanismo do artigo: a ligação entre psions de paridades opostas anticomuta com o operador de paridade
+-(`{P, H_lig} = 0`); o comutador `[P, H_lig] ≠ 0` é a tensão (`τ = V₀/ℏ = ω`); a tensão é irresolvível no plano e
+-força o boundary a dobrar-se. A leitura para a fórmula: os dois blocos são o par de paridades; a cláusula que os
+-cruza é a ligação; a tensão é a irresolubilidade das duas leituras do nome partilhado no plano; **a proposta é a
+-dobra — a resolução da tensão, nascida dela**.
++O mecanismo do artigo `Tensao_Fundamental` (jan/2026) [INPUT]: a ligação entre psions de paridades opostas anticomuta
++com a paridade (`{P, H_lig} = 0`); o comutador `[P, H_lig] ≠ 0` é a tensão (`τ = V₀/ℏ = ω`); a tensão é irresolvível
++no plano e força o boundary a dobrar-se. A leitura para a fórmula [INPUT/ONTO]: os dois blocos são o par de
++paridades; a cláusula que os cruza é a ligação; a tensão é a irresolubilidade das duas leituras do nome partilhado no
++plano; **a proposta é a dobra — a resolução da tensão, nascida dela**.
+ 
+ ## O que fica provado
+ 
+ 1. ★★ `a_proposta_nasce_da_escolha_do_nome`: a fórmula é satisfazível se e somente se EXISTE um valor do nome
+-   partilhado sob o qual o resíduo é satisfazível (`SAT φ ↔ ∃ b, SAT (restringe φ i b)`). A proposta nasce da
+-   escolha do valor — não da enumeração das atribuições.
++   partilhado sob o qual o resíduo é satisfazível (`SAT φ ↔ ∃ b, SAT (restringe φ i b)`). O iff não computa a
++   escolha do valor, não dá cota de busca e não elimina a enumeração.
+ 2. ★ `a_proposta_nos_dois_blocos`: para dois blocos que partilham o nome, a proposta é satisfazer os dois resíduos
+    sob o MESMO valor (`SAT (A ++ B) ↔ ∃ b, SAT (restringe A i b ++ restringe B i b)`). O par se resolve quando as
+    duas leituras comutam no nome.
+-3. ★ `a_tensao_e_o_par`: se os dois blocos admitem localmente os dois valores do nome, o nome está em tensão (cada
+-   lado tem o par) — e a proposta decide o valor.
++3. ★ `a_tensao_e_o_par`: de `h : SAT (A ++ B)` sai um valor comum sob o qual os dois resíduos se satisfazem juntos.
++   As hipóteses `_hA` e `_hB` (cada bloco admite localmente os dois valores do nome: o nome em tensão) não são usadas:
++   o lema é consequência da satisfatibilidade conjunta e não diz que a compatibilidade local garanta a global.
+ 4. ★ `a_tensao_irresoluvel_e_o_inominado`: se um bloco força o nome e o outro o nega, nenhum valor resolve a tensão
+    — nenhuma proposta nasce (o inominado do par: UNSAT). É o caso mínimo da pedra `ACurvaEAEstado` (os dois prefixos
+    com a mesma curva e Palavras opostas), citada por nome.
+@@ -40,10 +36,12 @@
+ ## O que NÃO se afirma
+ 
+ * A identificação da tensão computacional com a tensão de paridade do artigo (a anticomutação do hamiltoniano de
+-  ligação com a paridade) é a leitura do operador [INPUT/ONTO]; o termo é a escolha do valor do nome partilhado e a
+-  sua resolução (os itens 1–4). Nenhuma ponte nova à física é construída aqui.
+-* O preço em letras de fita da escolha: a régua do Instituto fica com a sua contagem, nomeada como deles.
+-* Nada sobre a natureza. O gate não se move; nada está instalado.
++  ligação com a paridade) é a leitura [INPUT/ONTO]; o termo é a escolha do valor do nome partilhado e a sua
++  resolução (os itens 1–4). Nenhuma ponte nova à física é construída aqui.
++* Que a compatibilidade local garanta a global (item 3).
++* O algoritmo e o preço da escolha: os iffs não computam o valor do nome, não dão cota de busca e não eliminam a
++  enumeração; a régua do Instituto fica com a sua contagem, nomeada como deles.
++* Nada sobre a natureza. O gate não se move.
+ 
+ Sem sorry, sem axioma novo.
+ -/
+@@ -65,7 +63,8 @@
+   fun j => if j = i then b else y j
+ 
+ /-- ★★ **A PROPOSTA NASCE DA ESCOLHA DO NOME**: `SAT φ ↔ ∃ b, SAT (restringe φ i b)`. A proposta é satisfazer o
+-resíduo sob algum valor do nome partilhado — não enumerar as atribuições. -/
++resíduo sob algum valor do nome partilhado. O iff não computa a escolha de `b`, não dá cota de busca e não elimina a
++enumeração das atribuições. -/
+ theorem a_proposta_nasce_da_escolha_do_nome (φ : CNF n) (i : Fin n) :
+     SAT φ ↔ ∃ b : Bool, SAT (restringe φ i b) := by
+   constructor
+@@ -162,8 +161,10 @@
+     unfold restringe
+     rw [List.filter_append, List.map_append]]
+ 
+-/-- ★ **A TENSÃO É O PAR**: se os dois blocos admitem localmente os dois valores do nome, o nome está em tensão —
+-cada lado tem o par — e a proposta, se existe, nasce de um valor que comuta nos dois lados. -/
++/-- ★ **A TENSÃO É O PAR**: de `h : SAT (A ++ B)` sai um valor `b` sob o qual os dois resíduos se satisfazem juntos
++(por `a_proposta_nos_dois_blocos`). As hipóteses `_hA` e `_hB` (os dois blocos admitem localmente os dois valores do
++nome: o nome em tensão, cada lado com o par) não são usadas na prova: o lema é consequência da satisfatibilidade
++conjunta e não diz que a compatibilidade local garanta a global. -/
+ theorem a_tensao_e_o_par (A B : CNF n) (i : Fin n)
+     (_hA : SAT (restringe A i true) ∧ SAT (restringe A i false))
+     (_hB : SAT (restringe B i true) ∧ SAT (restringe B i false))

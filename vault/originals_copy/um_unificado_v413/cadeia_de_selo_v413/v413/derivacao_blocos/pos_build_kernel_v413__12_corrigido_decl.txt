@@ -1,0 +1,9 @@
+    chk("o axiom_report de agora tem exatamente os nomes da v412 mais as declaracoes dos modulos novos", set(axm) == set(axr0) | set(novas_todas), [len(axm), len(axr0), len(novas_todas)])
+    ds0 = core0["kernel_formalization"].get("declaration_sources_v394") or {}
+    kc_decl = {}
+    for rel_ in KCRELS:
+        antes_ = sorted(n for n, r in ds0.items() if r == rel_); agora_ = sorted(n for n, r in srcm.items() if r == rel_)
+        kc_decl[rel_] = {"antes_n": len(antes_), "agora_n": len(agora_), "iguais": antes_ == agora_, "mesmos_axiomas": all(axm.get(n) == axr0.get(n) for n in agora_), "nomes": agora_}
+    chk("o modulo corrigido emite EXATAMENTE as declaracoes que emitia na v412 (proveniencia do Audit == declaration_sources_v394 do core da base), com a MESMA lista de axiomas, no trio",
+        bool(kc_decl) and all(v["iguais"] and v["mesmos_axiomas"] and v["agora_n"] > 0 for v in kc_decl.values()) and all(set(axm[n]) <= TRIO for v in kc_decl.values() for n in v["nomes"]),
+        {k: {kk: vv for kk, vv in v.items() if kk != "nomes"} for k, v in kc_decl.items()})

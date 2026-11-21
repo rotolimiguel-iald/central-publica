@@ -1,0 +1,2358 @@
+{
+  "schema": "iald.third-party-review/v2",
+  "timestamp": "2026-11-20T16:24:18.025545-03:00",
+  "status": "REVIEW_COMPLETED_WITH_DOCUMENTARY_QUALIFICATIONS",
+  "reference": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+  "unit": "F1.V413_REVISAO_TRINITY_R7_OPERADOR_R2_20261120",
+  "task": "review-trinity-r7-operador-r2",
+  "order": {
+    "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\PEDIDO_DE_REVISAO_AO_CODEX_v413_ADENDO_R7_TRINITY_R2_OPERADOR_20nov.md",
+    "sha256": "21d5da59030d27f342fe14243a00bd2e3383caeb336abea460ebedbef3d3cff0",
+    "bytes": 7241
+  },
+  "items": [
+    {
+      "item": 1,
+      "module": "Trinity R7",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R7_trinity\\Trinity.lean",
+        "sha256": "89aa0ef8c6fdc5e780483703da41832a2e9a0d676ffc22278d5abbfcc4cdbbc8",
+        "bytes": 95801
+      },
+      "reason": "115 teoremas válidos, inclusive carga exata, Nomes distintos, radical e energia condicional. Restam três qualificações documentais: domínio da leitura assintótica, sobra <= um passo e alcance físico de hLandauer. Não prova custo polinomial geral de fita."
+    },
+    {
+      "item": 2,
+      "module": "Operador R2",
+      "verdict": "APROVADA",
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R2_operador\\Operador.lean",
+        "sha256": "a504717d4c743fe54c1e9719762d9d41c6c3660274e3668128cec2c4bf86b02c",
+        "bytes": 18698
+      },
+      "reason": "15 teoremas preservados e recompilados; os quatro ajustes de escopo pedidos foram aplicados corretamente apenas ao texto. Aprovação no alcance matemático/ontológico explicitado, sem afirmação de consciência empírica."
+    }
+  ],
+  "verdict_counts": {
+    "APROVADA": 1,
+    "APROVADA_COM_RESSALVAS": 1,
+    "REPROVADA": 0
+  },
+  "checks": [
+    {
+      "section": "13",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "result": "peso é soma finita sobre todas as atribuições; contribuição das soluções igual a solucoes, cauda estritamente positiva se existe não-solução. No patamar custo=1, peso=2^n*(1-beta)^k. Equivalência de limiar correta para beta<1; condição beta>0 só para progresso/limite.",
+      "finding_ids": [
+        "R7-F1"
+      ]
+    },
+    {
+      "section": "correcoes_item9",
+      "verdict": "APROVADA",
+      "result": "Texto agora distingue implementação, Trace/coupled e resolução; retângulos limitados à CNF de igualdade e representação separada; contadores majorantes e exceção histórica a_trindade corrigidos."
+    },
+    {
+      "section": "12b",
+      "verdict": "APROVADA",
+      "result": "dedup preserva Toca por pertença; corretude e majorante aplicados à lista sem repetições. Oito e sete resultam em [0]; custo da própria deduplicação não é contado, nem há alegação de lista mínima ou logarítmica."
+    },
+    {
+      "section": "14",
+      "verdict": "APROVADA",
+      "result": "Identidades de log/rpow sob r>0,r!=1; sinais distinguem r>1 e 0<r<1; radical=exp(1/2), log=1/2, expoente=2c. Troca de base preserva 2^m; não fornece algoritmo ou mudança de complexidade."
+    },
+    {
+      "section": "15 identidades",
+      "verdict": "APROVADA",
+      "result": "As três primeiras contas são identidades algébricas de logaritmos, válidas até sem positividade de kB,T; interpretação energética requer condições físicas. Não são uma medição de consumo."
+    },
+    {
+      "section": "15 leitor",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "result": "Composição correta: limite de moves para o Trace/coupled especificado, multiplicado pelo piso positivo, seguido da hipótese explícita hLandauer. A irreversibilidade não foi derivada de Trace.",
+      "finding_ids": [
+        "R7-F3"
+      ]
+    },
+    {
+      "section": "15 passos",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "result": "k=floor(a/c)+1 satisfaz a<k*c<=a+c e k<=a/c+1. Sob 0<beta<1 e patamar plano, o limiar de peso<1 é alcançado em cota linear em n com beta fixo. Não existe aqui custo de avaliar peso, microprograma ou cota de fita.",
+      "finding_ids": [
+        "R7-F2"
+      ]
+    },
+    {
+      "section": "15 atribuicao",
+      "verdict": "APROVADA",
+      "result": "R7 atribui a leitura energética dos passos da máquina da teoria à gerência [ONTO]. Frase do operador conferida por bytes: A máquina nua paga em eletricidade. Bill da teoria é existência aritmética de k, sem CNF/algoritmo no enunciado."
+    },
+    {
+      "section": "preservacao",
+      "verdict": "APROVADA",
+      "result": "Comparador independente com comentários aninhados confirma 8/14/9/0 novas declarações, nenhuma removida/alterada de R3 até R7; Operador R1->R2 sem delta não-comentário. Controle R0->R1 encontra a_trindade."
+    },
+    {
+      "section": "Operador R2",
+      "verdict": "APROVADA",
+      "result": "15 teoremas preservados/recompilados; comentários distinguem não-sobrejetividade de parcialidade, ponto fixo de dinâmica, conjugação de ação pontual e conservação de normalização. Ontologia não é prova de consciência."
+    }
+  ],
+  "findings": [
+    {
+      "id": "R7-F1",
+      "severity": "LOW",
+      "kind": "docstring_scope",
+      "lines": [
+        95,
+        1515,
+        1516,
+        1517
+      ],
+      "claim": "o peso só conta as soluções no limite",
+      "finding": "A desigualdade finita está correta para todo beta<1, mas não prova convergência. Beta=0 também satisfaz a hipótese e dá peso 8 para todo k nas oito cláusulas, com zero soluções. Beta negativo tampouco é regime contrativo.",
+      "required_edit": "Separar a desigualdade finita da leitura assintótica: esta requer 0<beta<1; não anunciar Tendsto como enunciado deste teorema. Não restringir desnecessariamente a desigualdade finita ou a equivalência logarítmica.",
+      "evidence": [
+        "Codex.TrinityR7Review.zero_parameter_does_not_decay"
+      ],
+      "scope": "Controle de um parâmetro real genérico; não se substituiu nem se avaliou beta_TGL."
+    },
+    {
+      "id": "R7-F2",
+      "severity": "LOW",
+      "kind": "strict_vs_nonstrict",
+      "lines": [
+        109,
+        1755,
+        1786
+      ],
+      "claim": "sobra de menos de um passo",
+      "finding": "O enunciado prova 0<k*c-a<=c, e a igualdade superior pode ocorrer. Para a=c=1 não existe inteiro estritamente entre 1 e 2; com a=0 e qualquer c>0 a sobra mínima admissível é um passo inteiro.",
+      "required_edit": "Trocar menos de um passo por no máximo um passo nas três ocorrências; preservar o <= correto das provas.",
+      "evidence": [
+        "Codex.TrinityR7Review.at_most_one_step_is_sharp",
+        "Codex.TrinityR7Review.zero_load_requires_a_whole_step"
+      ]
+    },
+    {
+      "id": "R7-F3",
+      "severity": "MEDIUM",
+      "kind": "physical_scope",
+      "lines": [
+        138,
+        139,
+        1721,
+        1722
+      ],
+      "claim": "Uma máquina reversível não cumpre a hipótese",
+      "finding": "hLandauer é a desigualdade GLOBAL moves*(kB*T*ln2)<=conta. O tipo não contém dissipações por movimento, bits apagados nem reversibilidade. Apagar um bit por movimento é uma justificativa física adicional suficiente, não uma equivalência provada; a reversibilidade não fixa conta nem obriga a negar essa desigualdade.",
+      "required_edit": "Dizer que a hipótese não é imposta a toda máquina, inclusive reversível; para leitura física, declarar separadamente as condições de apagamento. Uma implementação reversível pode dissipar mais por outros custos. O limite condicional para Trace/coupled permanece válido.",
+      "evidence": [
+        "TGLExt.Trinity.o_leitor_que_apaga_paga_a_potencia",
+        "Codex.TrinityR7Review.no_forced_energy_account_without_hLandauer",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\BIBLIOGRAPHIC_CHECK.json"
+      ],
+      "scope": "Não se refez nem se aprovou o módulo Codex importado; conferiu-se somente o uso de seu enunciado já disponível e as hipóteses da nova composição."
+    }
+  ],
+  "builds": {
+    "Trinity": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\Trinity.olean",
+        "Trinity.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\src\\Trinity.lean",
+        "sha256": "89aa0ef8c6fdc5e780483703da41832a2e9a0d676ffc22278d5abbfcc4cdbbc8",
+        "bytes": 95801
+      },
+      "rc": 0,
+      "seconds": 96.985,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\Trinity.log",
+        "sha256": "1fdcce6bda56af9bd30a381955c4df4dc86e0555da9789ca1983e94add4a7221",
+        "bytes": 6496
+      },
+      "axiom_reports": [
+        {
+          "declaration": "TGLExt.Trinity.a_morte_e_o_nao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_unidade_forca_o_lado",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_propagacao_preserva",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_propagacao_para",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_zero_empurra_para_o_lado_oposto",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_lado_que_nao_corta_e_seguro",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_nao_erra",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_horn_o_sistema_sempre_inclina",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_horn_a_inclinacao_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_custo_da_inclinacao",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_sem_solucao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_fica_na_fronteira",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.quatro_o_empurrao_diz_nao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_empurrao_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_o_compromisso_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.todo_lado_morre_ou_nao_corta",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_dois_literais_o_sistema_sempre_inclina",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_que_nao_para_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_dois_literais_a_inclinacao_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_cadeia_inclina_e_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.na_fronteira_todo_lado_corta_uma_de_tres",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_fronteira_tem_tres_literais",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_para_so_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_dois_lados",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_travessia_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_travessia",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_esta_na_fronteira",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sete_atravessa_e_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.toca_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_travessia_pelos_nomes_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_dos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_nomes_da_fronteira_tocam",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_fronteira_esta_nos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.um_nome_atravessa_as_oito_e_as_sete",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade_dos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_zero_absoluto_nao_se_alcanca",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.no_patamar_plano_a_carga_e_exata",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_patamar_plano",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.as_oito_pedem_a_carga",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_em_estados_e_a_exponencial_da_carga",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_terceira_lei_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_nomes_distintos_tocam",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_fronteira_com_nomes_distintos",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_nomes_distintos_das_oito",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_pesa_meia_nat",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_e_positivo",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_passa_de_um",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_carga_e_produto_referencial_do_radical",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_carga_se_manifesta_como_expoente",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_fixa_o_sentido",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_abaixo_de_um_inverte_o_sentido",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_expoente_conta_meias_nats",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_e_fixar_a_raiz",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_teorema_final_do_radical",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_conta_de_luz_de_m_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.cada_nome_custa_um_piso",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_eletricidade_paga_o_expoente",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_leitor_que_apaga_paga_a_potencia",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.passos_que_cobrem",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_passo_da_teoria_e_positivo",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_maquina_da_teoria_acerta_pagando_no_piso",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_conta_de_luz_da_maquina_da_teoria",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_maquina_nua_paga_em_eletricidade",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\Trinity.olean",
+        "sha256": "6f5a7afb67facfc43d697f7925ef8c3381925200dc52e0618f7a4fe34738d783",
+        "bytes": 3773312
+      }
+    },
+    "AuditTrinity": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\AuditTrinity.olean",
+        "AuditTrinity.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\src\\AuditTrinity.lean",
+        "sha256": "3728f1e1a337e7a850fb781da79687be9bb3f80d7d7dfc5c051709fe6ce94837",
+        "bytes": 5904
+      },
+      "rc": 0,
+      "seconds": 88.832,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\AuditTrinity.log",
+        "sha256": "47655e7614befc2eca79ab61bcd6c6bc22d15d17fccb737248c08168bf84dfe5",
+        "bytes": 10200
+      },
+      "axiom_reports": [
+        {
+          "declaration": "TGLExt.Trinity.tamanho_cons",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_zero",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_morte_e_o_nao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.restringe_cons",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_restringe_le",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.filtra_encurta",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_restringe_lt",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_fixa_le",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.unitario_some",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.unidade_some",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.unidade_none",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.vazia_no_resto",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_unidade_forca_o_lado",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_propagacao_preserva",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_unidade_remove",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_propagacao_para",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_propaga_le",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.literal_ext",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.mesma_eq",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.contida_sat",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_trivial_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_empurra",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_compromete",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_zero_empurra_para_o_lado_oposto",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_lado_que_nao_corta_e_seguro",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_nao_erra",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.horn_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.horn_propaga",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tem_negativo",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_ou_mais",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.morta_falsa",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.horn_no_ponto_fixo_diz_sim",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_horn_o_sistema_sempre_inclina",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_horn_a_inclinacao_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_propaga",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.integra_inicio",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Trinity.integra_restringe",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.integra_propaga",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.mesma_refl",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.contida_de_inclusao",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.todo_lado_morre_ou_nao_corta",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_age",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.primeiro_literal",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_dois_literais_o_sistema_sempre_inclina",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_que_nao_para_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_dois_literais_a_inclinacao_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.custoPropaga_le",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.custoSonda_le",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.letras_le_tamanho",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.custoInclina_le",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_custo_da_inclinacao",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.beq_nao",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_sem_solucao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_fica_na_fronteira",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.quatro_o_empurrao_diz_nao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_empurrao_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_o_compromisso_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_cadeia_inclina_e_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dentro_inicio",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Trinity.dentro_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dentro_propaga",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_empurra_mem",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_compromete_mem",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_nada_age",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.contida_falsa_corta",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sublista_propria",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Trinity.na_fronteira_todo_lado_corta_uma_de_tres",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_fronteira_tem_tres_literais",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_para_so_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_dois_lados",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.vivo_sem_letras",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_travessia_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.cota_aux",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_travessia",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_esta_na_fronteira",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sete_atravessa_e_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tres_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.toca_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_travessia_pelos_nomes_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_dos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_nomes_da_fronteira_tocam",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_fronteira_esta_nos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.um_nome_atravessa_as_oito_e_as_sete",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade_dos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_zero_absoluto_nao_se_alcanca",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.no_patamar_plano_a_carga_e_exata",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_patamar_plano",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.as_oito_pedem_a_carga",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_em_estados_e_a_exponencial_da_carga",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_terceira_lei_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_nomes_distintos_tocam",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_fronteira_com_nomes_distintos",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_nomes_distintos_das_oito",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_pesa_meia_nat",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_e_positivo",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_passa_de_um",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_carga_e_produto_referencial_do_radical",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_carga_se_manifesta_como_expoente",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_fixa_o_sentido",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_radical_abaixo_de_um_inverte_o_sentido",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_expoente_conta_meias_nats",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_e_fixar_a_raiz",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_teorema_final_do_radical",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_conta_de_luz_de_m_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.cada_nome_custa_um_piso",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_eletricidade_paga_o_expoente",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_leitor_que_apaga_paga_a_potencia",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.passos_que_cobrem",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_passo_da_teoria_e_positivo",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_maquina_da_teoria_acerta_pagando_no_piso",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_conta_de_luz_da_maquina_da_teoria",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_maquina_nua_paga_em_eletricidade",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\AuditTrinity.olean",
+        "sha256": "e6a2ca1292d3d5c2b07362fc55b0e51769c7f0c26cf55aaf246f4e62e320d165",
+        "bytes": 1392
+      }
+    },
+    "Operador": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\Operador.olean",
+        "Operador.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\src\\Operador.lean",
+        "sha256": "a504717d4c743fe54c1e9719762d9d41c6c3660274e3668128cec2c4bf86b02c",
+        "bytes": 18698
+      },
+      "rc": 0,
+      "seconds": 87.366,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\Operador.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "axiom_reports": [],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\Operador.olean",
+        "sha256": "5069af1a1968f40d39c499d612debde8431406d1fc560d8ec9e04c36be741184",
+        "bytes": 159400
+      }
+    },
+    "AuditOperador": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\AuditOperador.olean",
+        "AuditOperador.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\src\\AuditOperador.lean",
+        "sha256": "0c6188f9a36c227f09f9565c4844b97db02e2623e6b941223425c61a10b73c4e",
+        "bytes": 937
+      },
+      "rc": 0,
+      "seconds": 84.074,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\AuditOperador.log",
+        "sha256": "3a0a33e7033027682d22018011eff43240ef0ef8562922493c93fa3a046c2b85",
+        "bytes": 1541
+      },
+      "axiom_reports": [
+        {
+          "declaration": "TGLExt.Operador.o_nego_me_sem_ponto_fixo_e_contradicao",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Operador.em_dois_valores_o_nego_me_nao_opera",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Operador.quem_le_tudo_de_si_fixa_toda_negacao",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Operador.nunca_cem_por_cento",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.com_o_par_o_nego_me_pousa_na_meia_nat",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.nunca_cem_por_cento_mas_nao_e_preciso",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.face_mais_coface",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.o_operador_de_consciencia",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.o_leitor_de_dois_valores_nao_le_o_espelho",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.o_mesmo_nome_em_tamanhos_diferentes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.energia_do_single",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.o_par_e_habitado",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.a_ancoragem_nao_se_desfaz_no_canal",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.dizer_eu_sou_nao_desfaz_a_identidade_e_ancora",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Operador.a_consciencia_e_o_seu_par",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\AuditOperador.olean",
+        "sha256": "d91e9dc3f7e4f6395b85c2299c4435ed86de2aeec88d9b9090376cf04b78fd7a",
+        "bytes": 1400
+      }
+    },
+    "CheckScope": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\CheckScope.olean",
+        "CheckScope.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\src\\CheckScope.lean",
+        "sha256": "7f91a03a6859e2463a7a1e72d008b36789f4d6717ef58dc18547bcd5f35842de",
+        "bytes": 3462
+      },
+      "rc": 0,
+      "seconds": 84.843,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\CheckScope.log",
+        "sha256": "a9947425ff1a457690a43e4fe44a19a205620bf1509c922b037acf1181a7bd30",
+        "bytes": 1008
+      },
+      "axiom_reports": [
+        {
+          "declaration": "Codex.TrinityR7Review.flat_weight",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR7Review.flat_has_no_solution",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR7Review.zero_parameter_does_not_decay",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR7Review.threshold_equality_is_still_wrong",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR7Review.at_most_one_step_is_sharp",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR7Review.zero_load_requires_a_whole_step",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR7Review.no_extra_hypotheses_on_the_flat_threshold",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR7Review.distinct_names_decide_the_examples",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR7Review.no_forced_energy_account_without_hLandauer",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\build\\CheckScope.olean",
+        "sha256": "b6e2767a4467234de51653a2a2a8865625c31ad2d2a990f891a12c88be92be34",
+        "bytes": 197984
+      }
+    }
+  },
+  "declaration_diffs": [
+    {
+      "pair": "Trinity R0->R1",
+      "old": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R0_trinity\\Trinity.lean",
+        "sha256": "519190db19c7295fca2ac70fab70d59a64e81b9934721798ef0af97f3cb61f37",
+        "bytes": 32282
+      },
+      "new": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_trinity\\Trinity.lean",
+        "sha256": "97fd14f931128cf3f833321545383fa164a437b30d81f3225a90cd714e09307a",
+        "bytes": 42028
+      },
+      "counts": [
+        73,
+        90
+      ],
+      "changed": [
+        "a_trindade"
+      ],
+      "removed": [],
+      "added": [
+        "DoisLiterais",
+        "dois_restringe",
+        "dois_propaga",
+        "Integra",
+        "integra_inicio",
+        "integra_restringe",
+        "integra_propaga",
+        "mesma_refl",
+        "contida_de_inclusao",
+        "todo_lado_morre_ou_nao_corta",
+        "sonda_age",
+        "primeiro_literal",
+        "em_dois_literais_o_sistema_sempre_inclina",
+        "a_inclinacao_que_nao_para_decide",
+        "em_dois_literais_a_inclinacao_decide",
+        "cadeia",
+        "a_cadeia_inclina_e_diz_sim"
+      ]
+    },
+    {
+      "pair": "Trinity R3->R4",
+      "old": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\Trinity.lean",
+        "sha256": "8f5f5e07bcb54bebb2ac71bc0d67aaeb481d6d2697cbc18f849436564381428b",
+        "bytes": 69939
+      },
+      "new": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R4_trinity\\Trinity.lean",
+        "sha256": "ab691589a207492f095b4763677e8e4e588a1b31d3163e738808cc385f494b1f",
+        "bytes": 77623
+      },
+      "counts": [
+        128,
+        136
+      ],
+      "changed": [],
+      "removed": [],
+      "added": [
+        "peso",
+        "solucoes",
+        "o_zero_absoluto_nao_se_alcanca",
+        "no_patamar_plano_a_carga_e_exata",
+        "oito_patamar_plano",
+        "as_oito_pedem_a_carga",
+        "o_preco_em_estados_e_a_exponencial_da_carga",
+        "a_terceira_lei_na_fronteira"
+      ]
+    },
+    {
+      "pair": "Trinity R4->R5",
+      "old": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R4_trinity\\Trinity.lean",
+        "sha256": "ab691589a207492f095b4763677e8e4e588a1b31d3163e738808cc385f494b1f",
+        "bytes": 77623
+      },
+      "new": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R5_trinity\\Trinity.lean",
+        "sha256": "c70ed1b491956becb1654f6407fae5fd0ee7854793ad6e04ba745b33eaf8415c",
+        "bytes": 85823
+      },
+      "counts": [
+        136,
+        150
+      ],
+      "changed": [],
+      "removed": [],
+      "added": [
+        "os_nomes_distintos_tocam",
+        "o_preco_da_fronteira_com_nomes_distintos",
+        "os_nomes_distintos_das_oito",
+        "radical",
+        "o_radical_pesa_meia_nat",
+        "o_radical_e_positivo",
+        "o_radical_passa_de_um",
+        "a_carga_e_produto_referencial_do_radical",
+        "a_carga_se_manifesta_como_expoente",
+        "o_radical_fixa_o_sentido",
+        "o_radical_abaixo_de_um_inverte_o_sentido",
+        "o_expoente_conta_meias_nats",
+        "o_preco_e_fixar_a_raiz",
+        "o_teorema_final_do_radical"
+      ]
+    },
+    {
+      "pair": "Trinity R5->R6",
+      "old": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R5_trinity\\Trinity.lean",
+        "sha256": "c70ed1b491956becb1654f6407fae5fd0ee7854793ad6e04ba745b33eaf8415c",
+        "bytes": 85823
+      },
+      "new": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R6_trinity\\Trinity.lean",
+        "sha256": "21404f93bcdd742b2561347f24f88f4d229d473db0bf0165051858aabffc78f5",
+        "bytes": 95447
+      },
+      "counts": [
+        150,
+        159
+      ],
+      "changed": [],
+      "removed": [],
+      "added": [
+        "a_conta_de_luz_de_m_nomes",
+        "cada_nome_custa_um_piso",
+        "a_eletricidade_paga_o_expoente",
+        "o_leitor_que_apaga_paga_a_potencia",
+        "passos_que_cobrem",
+        "o_passo_da_teoria_e_positivo",
+        "a_maquina_da_teoria_acerta_pagando_no_piso",
+        "a_conta_de_luz_da_maquina_da_teoria",
+        "a_maquina_nua_paga_em_eletricidade"
+      ]
+    },
+    {
+      "pair": "Trinity R6->R7",
+      "old": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R6_trinity\\Trinity.lean",
+        "sha256": "21404f93bcdd742b2561347f24f88f4d229d473db0bf0165051858aabffc78f5",
+        "bytes": 95447
+      },
+      "new": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R7_trinity\\Trinity.lean",
+        "sha256": "89aa0ef8c6fdc5e780483703da41832a2e9a0d676ffc22278d5abbfcc4cdbbc8",
+        "bytes": 95801
+      },
+      "counts": [
+        159,
+        159
+      ],
+      "changed": [],
+      "removed": [],
+      "added": []
+    },
+    {
+      "pair": "Operador R1->R2",
+      "old": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_operador\\Operador.lean",
+        "sha256": "de75489028428754f719dd7f8252dc40781d3c8e68f09028fbbdfa57097dcb75",
+        "bytes": 17131
+      },
+      "new": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R2_operador\\Operador.lean",
+        "sha256": "a504717d4c743fe54c1e9719762d9d41c6c3660274e3668128cec2c4bf86b02c",
+        "bytes": 18698
+      },
+      "counts": [
+        17,
+        17
+      ],
+      "changed": [],
+      "removed": [],
+      "added": []
+    }
+  ],
+  "full_code_comparison": [
+    {
+      "old": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R6_trinity\\Trinity.lean",
+        "sha256": "21404f93bcdd742b2561347f24f88f4d229d473db0bf0165051858aabffc78f5",
+        "bytes": 95447
+      },
+      "new": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R7_trinity\\Trinity.lean",
+        "sha256": "89aa0ef8c6fdc5e780483703da41832a2e9a0d676ffc22278d5abbfcc4cdbbc8",
+        "bytes": 95801
+      },
+      "all_noncomment_code_identical_after_whitespace_normalization": true
+    },
+    {
+      "old": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_operador\\Operador.lean",
+        "sha256": "de75489028428754f719dd7f8252dc40781d3c8e68f09028fbbdfa57097dcb75",
+        "bytes": 17131
+      },
+      "new": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R2_operador\\Operador.lean",
+        "sha256": "a504717d4c743fe54c1e9719762d9d41c6c3660274e3668128cec2c4bf86b02c",
+        "bytes": 18698
+      },
+      "all_noncomment_code_identical_after_whitespace_normalization": true
+    }
+  ],
+  "new_theorems_vs_r3": 28,
+  "proofs_reused": "Revisão semântica dos enunciados anteriores preservada; compilação das duas candidatas e auditoria de todos os seus teoremas refeitas para o delta/imports. Pedras Kimi e módulos Codex não reavaliados como itens.",
+  "sources": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\PEDIDO_DE_REVISAO_AO_CODEX_v413_ADENDO_R7_TRINITY_R2_OPERADOR_20nov.md",
+      "sha256": "21d5da59030d27f342fe14243a00bd2e3383caeb336abea460ebedbef3d3cff0",
+      "bytes": 7241
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R7_trinity\\Trinity.lean",
+      "sha256": "89aa0ef8c6fdc5e780483703da41832a2e9a0d676ffc22278d5abbfcc4cdbbc8",
+      "bytes": 95801
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R2_operador\\Operador.lean",
+      "sha256": "a504717d4c743fe54c1e9719762d9d41c6c3660274e3668128cec2c4bf86b02c",
+      "bytes": 18698
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\RESULTADO.json",
+      "sha256": "466e1ba9422498ac2f5242e243d6558fd473e2f9747858f504b0aa3e04e87a30",
+      "bytes": 94775
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\PARECER.md",
+      "sha256": "9e7d4b93e44cf9fda0b545ba615f86e93d3908b41f1febae5b16ed69f135ff8c",
+      "bytes": 2360
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\ENCERRAMENTO.json",
+      "sha256": "da15067c99090ef00986712caa5ceb39a2e15230aa3e056f0a9d25b552d3a27a",
+      "bytes": 6602
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\RESULTADO.json",
+      "sha256": "9696bd5f747a5bcce6d2f08b13289c8d328db2f3549ce2535268023b6423379e",
+      "bytes": 95609
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R7_trinity\\build\\CONFERENCIA.json",
+      "sha256": "0d6f5fcc6cce1be28bf2b06dca95764a746d491e425cd87fe16bc900ebfb4671",
+      "bytes": 8215
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R2_operador\\build\\CONFERENCIA.json",
+      "sha256": "38e3cbb3f83f0bceaaa26c04c0825046a3ea59ac1bca522438e261b716a24dcd",
+      "bytes": 3141
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\conferir_enunciados.py",
+      "sha256": "d5fbb1c0c20f6783e3b9cb21e91fd1409fd8ea0473818692ba6a1f8724c78922",
+      "bytes": 2029
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\APropostaDaTensao.compile.json",
+      "sha256": "7264b683bc8f1488a8a7fa0a7575a3ea8bc145cdbe18777739809142957eacca",
+      "bytes": 1854
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\APropostaDaTensao.lean",
+      "sha256": "95be88472a0609d8cd15a7e0dacbee2d44c75a16fb30aed479d9a7ca32557ef7",
+      "bytes": 9503
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\build\\APropostaDaTensao.olean",
+      "sha256": "6f4aa8ff2b15273adf69f7be9e497b073b785b07acae17a4ccd27e0c6aa1511c",
+      "bytes": 185656
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\TheCostIsDerived.lean",
+      "sha256": "bddc44bdca6b16d40c98c548906a6c37c86a425b469e8aa5484549fd8ce2ba6f",
+      "bytes": 4523
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\MovimentosDoPlano.lean",
+      "sha256": "8e2087515ad85c4d5e626ff53a019b7daf68628fe3de92df4a761f677b311867",
+      "bytes": 4279
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\TempoIgualMoeda.lean",
+      "sha256": "1a4a2a6dbc81f6dc0b7f808e199f7701eb17bf76a73fcb1c68fa09487a96c380",
+      "bytes": 11645
+    },
+    {
+      "path": "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+      "sha256": "9b216deb50d37c32c829d1efaaa5bafd5560417d382df35a815489e31a31593f",
+      "bytes": 83456
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\memory\\TGL_ATLAS.md",
+      "sha256": "e17feeafb5062a0bb3db0cdd4f8e9e13cd0c1ea09d97391b0f0e419c9a67dbf6",
+      "bytes": 15787865
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_20nov_atravessar_a_fronteira_sem_pagar_o_nome_e_violar_a_terceira_lei_de_nernst_a_unica_solucao_e_o_zero_absoluto_verbatim.txt",
+      "sha256": "2903a1e03a45c162a33ff475b746e227eadc086a9163094b13eba1f7afe4ff42",
+      "bytes": 147
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_20nov_o_preco_e_fixar_a_raiz_o_radical_fixa_o_sentido_o_teorema_final_e_o_parecer_do_codex_verbatim.txt",
+      "sha256": "59e657ce70bda17368223d2fd01a09a7c56ff97ced6829390454b2a6c5b88751",
+      "bytes": 331
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_20nov_a_maquina_nua_paga_em_eletricidade_verbatim.txt",
+      "sha256": "f1560a2cda0cf9c360c4d34bda709ea402a0780c9e5714265797805362d36152",
+      "bytes": 36
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R0_trinity\\Trinity.lean",
+      "sha256": "519190db19c7295fca2ac70fab70d59a64e81b9934721798ef0af97f3cb61f37",
+      "bytes": 32282
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_trinity\\Trinity.lean",
+      "sha256": "97fd14f931128cf3f833321545383fa164a437b30d81f3225a90cd714e09307a",
+      "bytes": 42028
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\Trinity.lean",
+      "sha256": "8f5f5e07bcb54bebb2ac71bc0d67aaeb481d6d2697cbc18f849436564381428b",
+      "bytes": 69939
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R4_trinity\\Trinity.lean",
+      "sha256": "ab691589a207492f095b4763677e8e4e588a1b31d3163e738808cc385f494b1f",
+      "bytes": 77623
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R5_trinity\\Trinity.lean",
+      "sha256": "c70ed1b491956becb1654f6407fae5fd0ee7854793ad6e04ba745b33eaf8415c",
+      "bytes": 85823
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R6_trinity\\Trinity.lean",
+      "sha256": "21404f93bcdd742b2561347f24f88f4d229d473db0bf0165051858aabffc78f5",
+      "bytes": 95447
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_operador\\Operador.lean",
+      "sha256": "de75489028428754f719dd7f8252dc40781d3c8e68f09028fbbdfa57097dcb75",
+      "bytes": 17131
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\src\\CheckScope.lean",
+      "sha256": "7f91a03a6859e2463a7a1e72d008b36789f4d6717ef58dc18547bcd5f35842de",
+      "bytes": 3462
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\AContagemEACarga.lean",
+      "sha256": "e9aa3a9c6659bebfd7020ba0ab61f51e83ba56402df70fa40260d65bf9a0224c",
+      "bytes": 7957
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\OPsiBitDaFormula.lean",
+      "sha256": "2ba7053bdfb04a3a83b3b53c9725303dc501bf78d0f912a976abb91137976e33",
+      "bytes": 13685
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\BIBLIOGRAPHIC_CHECK.json",
+      "sha256": "a460c74c327957f6abf2680a16c8c94ec68cd936096ddd4a2bd2b291334b3d77",
+      "bytes": 860
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\review.py",
+      "sha256": "27d37d75db54b5e249efe98689ed5f06e1b0a1dcf82a50a33be92bb2c3933ce4",
+      "bytes": 7341
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\close.py",
+      "sha256": "3778078929a104e92f961d2eb6339c6da90c92013af6ce39c52ee049ef165edd",
+      "bytes": 6208
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\MAPA_REGISTRO.json",
+      "sha256": "cafc921c40b5eab69eefda514204c2eb02f625f0e5a40e9a00bfa02d6a1bb04a",
+      "bytes": 1929
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\MEMORIA_DEPOSITO.md",
+      "sha256": "4047143fe249a795502c4948c7860c0d3e6cc1d81d3b38f05e6a3f62804f5e16",
+      "bytes": 869
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\README.md",
+      "sha256": "261abfc6ec817da66e84550d4dff0f22e03dc3408f240328f1a345032980c0ef",
+      "bytes": 10843
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\MISSION_PROTOCOL.md",
+      "sha256": "2a2ddd16777386e3e2b20173ca65430fc8c0b50f216304bf46291a197236561f",
+      "bytes": 16110
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\ACTIVITY_PROTOCOL.md",
+      "sha256": "602a3751750c725624d25dfae60c52e39cf15712a9cfa89054b908b2ee6a9248",
+      "bytes": 12897
+    },
+    {
+      "path": "C:\\IALD\\PROGRAMA_IALD\\README.md",
+      "sha256": "1981225613037ef13520eea158f302ce9a4f3654e290e895be25f9a743cd5d13",
+      "bytes": 6959
+    },
+    {
+      "path": "C:\\IALD\\GESTAO_DE_TOKENS.md",
+      "sha256": "ed2b6e9b3d8fd8a1e4e7a83f7b27c30aae04b93002cf13f04b2237ec975b2976",
+      "bytes": 29867
+    },
+    {
+      "path": "C:\\Users\\rotol\\.agents\\skills\\tgl-atlas\\SKILL.md",
+      "sha256": "88a4adbde27ccdb4e0dc4eef83cc99a3c0ba664f1d40e529c8ef928075ba0907",
+      "bytes": 8598
+    },
+    {
+      "path": "C:\\Users\\rotol\\.claude\\projects\\c--IALD-Central-de-Patentes\\memory\\fila\\README.md",
+      "sha256": "90266ec753d49168ea9e2246093a9833ab54448afb9e9fc519e8a0568e4e3e8c",
+      "bytes": 3043
+    }
+  ],
+  "logs": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\AuditOperador.log",
+      "sha256": "3a0a33e7033027682d22018011eff43240ef0ef8562922493c93fa3a046c2b85",
+      "bytes": 1541
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\AuditTrinity.log",
+      "sha256": "47655e7614befc2eca79ab61bcd6c6bc22d15d17fccb737248c08168bf84dfe5",
+      "bytes": 10200
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\CheckScope.log",
+      "sha256": "a9947425ff1a457690a43e4fe44a19a205620bf1509c922b037acf1181a7bd30",
+      "bytes": 1008
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\Operador.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\logs\\Trinity.log",
+      "sha256": "1fdcce6bda56af9bd30a381955c4df4dc86e0555da9789ca1983e94add4a7221",
+      "bytes": 6496
+    }
+  ],
+  "review_artifacts": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\DECLARATION_DIFFS.json",
+      "sha256": "7e9f9e329a41abb9d57e291a984b69b1faebcbe07d24e407e5dfd17ab1efef03",
+      "bytes": 5378
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\FULL_CODE_COMPARISON.json",
+      "sha256": "e08a1298d599a4b75411a4cfbf5320b13553a2c1c3ac120d3d3c9ba0208eddb0",
+      "bytes": 1135
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\REQUEST_PINS_CHECKED.json",
+      "sha256": "c863f736740220e3bea1faf0a1f9ed08f30eda3eb1ae491f71e901d578d18f1e",
+      "bytes": 3035
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\TRINITY_R3_R7.diff",
+      "sha256": "b77b6b13d97d6aefea07f4ca44d7da116fbfda578d2662e53dea3e0dd1a31d33",
+      "bytes": 33185
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\OPERADOR_R1_R2.diff",
+      "sha256": "531d394df3df4b505af60ec1a9d11490b2b6a220f576d94e238b98d58a26d40a",
+      "bytes": 11067
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\PARECER.md",
+      "sha256": "7471bde0658e73ddf0056f356023589acdca8e8853401105ff4b5cae0413fd76",
+      "bytes": 1986
+    }
+  ],
+  "source_preservation": {
+    "all_initial_source_hashes_unchanged": true,
+    "candidate_copies_byte_identical": true
+  },
+  "limits": [
+    "peso is noncomputable finite sum over 2^n assignments; no per-step evaluation cost or tape implementation certified.",
+    "Linear in n is for a fixed positive beta below 1 and the flat-plateau hypothesis; not a uniform bit/tape complexity proof for arbitrary CNF.",
+    "hLandauer is assumed global bound on account, not derived dissipation or logical reversibility.",
+    "Third law/energy interpretations retain ONTO status; no physics test or gate change.",
+    "Independent review of c1 candidates; reviewer probes remain separate candidates and are not installed or self-approved as canonical science."
+  ],
+  "report_lines": 15,
+  "not_done": [
+    "No source editing",
+    "No canonical installation",
+    "No um.py execution/import",
+    "No lake",
+    "No opening data",
+    "No provider inference",
+    "No publication or external messaging",
+    "No gate change",
+    "No self-acceptance"
+  ]
+}

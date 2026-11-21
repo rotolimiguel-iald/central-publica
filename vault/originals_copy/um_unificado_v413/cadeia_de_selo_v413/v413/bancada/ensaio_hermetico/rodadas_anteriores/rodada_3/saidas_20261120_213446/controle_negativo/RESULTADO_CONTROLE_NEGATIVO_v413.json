@@ -1,0 +1,533 @@
+{
+ "contrato": "RESULTADO_CONTROLE_NEGATIVO_v413",
+ "sandbox": {
+  "caminho": "C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm5\\tmp_mutador",
+  "existia_antes": true,
+  "criado_aqui": false,
+  "vazio_no_fim": null,
+  "removido_no_fim": false
+ },
+ "script": {
+  "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\bancada\\controle_negativo\\mutar_conferidor_v413.py",
+  "sha256": "10a98c65d4feff28aedecbaf8b28a8c1160a844ef5a8b304ed77559e63c58193"
+ },
+ "conferidor": {
+  "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\bancada\\conferir_exigencias_servico_v413.py",
+  "sha256": "df19601a074ea6e582deac219a02134bd1f0a65f6aef69da059acf27008b3353"
+ },
+ "controle_sem_mutacao": {
+  "rc": 0,
+  "esperado_rc": 0,
+  "n_condicoes": 48,
+  "n_condicoes_ok": 48,
+  "condicoes_que_falharam": []
+ },
+ "mutacoes": [
+  "M1_assert_AUT_depois_da_sonda_da_porta",
+  "M2_nome_da_v412_na_variavel",
+  "M3_assert_do_ESPERADOS_depois_do_subprocess",
+  "M4_sem_o_conteudo_do_AUT",
+  "M5_data_de_ordem_anterior_no_script",
+  "M6_fala_de_20nov_inexistente_no_delta_bn",
+  "M7_ja_fora_do_ar_aceita_pid_parado",
+  "M8_conferencia_A_sem_o_sha256",
+  "M9_ultimo_pid_vivo_com_um_bancada_aceito",
+  "M10a_chave_porta_fechada_renomeada",
+  "M10b_chave_religar_retirada",
+  "M10c_chave_versao_servida_renomeada",
+  "M11_livro_pula_linha_ilegivel"
+ ],
+ "esperado_rc": 1,
+ "resultados": {
+  "M1_assert_AUT_depois_da_sonda_da_porta": {
+   "script": "recibo_parada_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 45,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_parada_v413.py: o assert AUT vem logo depois da atribuicao (sem nada entre)",
+     "observado": [
+      8,
+      41
+     ]
+    },
+    {
+     "nome": "recibo_parada_v413.py: nenhuma chamada de E/S antes do assert AUT (so imports, D e AUT)",
+     "observado": [
+      "connect_ex",
+      "exists",
+      "livro_conferido",
+      "loads",
+      "open",
+      "read",
+      "socket"
+     ]
+    },
+    {
+     "nome": "recibo_parada_v413.py: 2.2: o livro do quadro e' conferido INTEIRO por U.livro_conferido(DBN.QUADRO), depois do assert AUT, e o script nao tem leitor proprio de eventos (que pularia linha ilegivel)",
+     "observado": [
+      41,
+      13,
+      true
+     ]
+    }
+   ],
+   "condicao_esperada": "recibo_parada_v413.py: nenhuma chamada de E/S antes do assert AUT",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M2_nome_da_v412_na_variavel": {
+   "script": "recibo_religamento_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 44,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_religamento_v413.py: ha a atribuicao AUT = os.environ.get(V413_AUTORIZACAO_OPERADOR).strip()",
+     "observado": null
+    },
+    {
+     "nome": "recibo_religamento_v413.py: o assert AUT vem logo depois da atribuicao (sem nada entre)",
+     "observado": [
+      null,
+      12
+     ]
+    },
+    {
+     "nome": "recibo_religamento_v413.py: V413_AUTORIZACAO_OPERADOR aparece 2 vezes (leitura e mensagem do assert)",
+     "observado": 1
+    },
+    {
+     "nome": "recibo_religamento_v413.py: nenhum nome da v412 sobrou (V412_AUTORIZACAO_OPERADOR, V412_PARADA, V412_PID_PARADO, RECIBO_*_v412.json, bancada_B3_servico da v412)",
+     "observado": true
+    }
+   ],
+   "condicao_esperada": "recibo_religamento_v413.py: ha a atribuicao AUT",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M3_assert_do_ESPERADOS_depois_do_subprocess": {
+   "script": "evento_c1_b3_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 47,
+   "condicoes_que_falharam": [
+    {
+     "nome": "evento (2.6): assert do stdout do ENSAIO < b3_recibo do ensaio < assert rc 0 dele < assert os.path.isfile(ESP) < CAND16 < assert startswith(CAND16) < subprocess.run (anotar) < assert rc 0 do iald.py < print EVENTO=",
+     "observado": [
+      13,
+      16,
+      17,
+      35,
+      22,
+      24,
+      25,
+      27,
+      34
+     ]
+    }
+   ],
+   "condicao_esperada": "evento (2.6): assert do stdout do ENSAIO",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M4_sem_o_conteudo_do_AUT": {
+   "script": "recibo_parada_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 46,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_parada_v413.py: N4: o recibo do evento 1687 pelo sha256 que o evento registra, a fala do 1689 pelo fala_sha16, a fala de 20/11 lida por bytes; o assert do CONTEUDO do AUT (hash16 dos dois eventos, sha16, resposta, decisao, fala de 20/11) vem DEPOIS",
+     "observado": [
+      14,
+      20,
+      27,
+      null
+     ]
+    },
+    {
+     "nome": "recibo_parada_v413.py: o modo da parada e' escolhido por V413_PARADA (pelo_pid | ja_fora_do_ar) e nunca presumido: o assert do modo vem DEPOIS do conteudo do AUT e ANTES da sonda da porta",
+     "observado": [
+      null,
+      34,
+      37
+     ]
+    }
+   ],
+   "condicao_esperada": "recibo_parada_v413.py: N4:",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M5_data_de_ordem_anterior_no_script": {
+   "script": "recibo_religamento_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 47,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_religamento_v413.py: nenhuma data dd/mm/aaaa nem hash de 16+ hex digitado no script",
+     "observado": [
+      [
+       "12/11/2026"
+      ],
+      []
+     ]
+    }
+   ],
+   "condicao_esperada": "recibo_religamento_v413.py: nenhuma data dd/mm/aaaa",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M6_fala_de_20nov_inexistente_no_delta_bn": {
+   "script": "delta_bn_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 46,
+   "condicoes_que_falharam": [
+    {
+     "nome": "delta_bn: a fala de 20/11 (FALA_AUTORIZACAO_20NOV) existe em cunhagens_13out, e' de 20/11 pelo nome e fala da Bancada",
+     "observado": "C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_20nov_v413_colei_no_codex_prossiga_concordo_com_tudo_veja_a_questao_da_bancada_verbatim.txt"
+    },
+    {
+     "nome": "o AUT que a gerencia passa (V413_AUTORIZACAO_OPERADOR no ambiente deste conferidor) traz: 'evento 1687' e o hash16 dele, o sha16 e a resposta do recibo; 'evento 1689' e o hash16 dele, o sha16 da fala e a decisao; a fala de 20/11 inteira e o sha16 dela",
+     "observado": {
+      "tem_AUT": true,
+      "ordem_sha16": "0c09a73ee42628f7",
+      "fala_decisao_sha16": "d96a96140eaa8d7f",
+      "fala_20nov_sha16": null
+     }
+    }
+   ],
+   "condicao_esperada": "delta_bn: a fala de 20/11",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M7_ja_fora_do_ar_aceita_pid_parado": {
+   "script": "recibo_parada_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 47,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_parada_v413.py: no ja_fora_do_ar nao finge parada: recusa V413_PID_PARADO e V413_PID_PARADO_CRIADO no ambiente (M7)",
+     "observado": [
+      "SA_P and os.path.isfile(SA_P) and (len(SA_PINO) == 64)",
+      "hashlib.sha256(SA_BYTES).hexdigest() == SA_PINO"
+     ]
+    }
+   ],
+   "condicao_esperada": "recibo_parada_v413.py: no ja_fora_do_ar nao finge parada",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M8_conferencia_A_sem_o_sha256": {
+   "script": "recibo_parada_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 47,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_parada_v413.py: no ja_fora_do_ar a conferencia A (V413_SAUDE_RECIBO) e' conferida pelo sha256 que a gerencia passa (V413_SAUDE_SHA256) (M8)",
+     "observado": [
+      "SA_P and os.path.isfile(SA_P) and (len(SA_PINO) == 64)"
+     ]
+    }
+   ],
+   "condicao_esperada": "recibo_parada_v413.py: no ja_fora_do_ar a conferencia A",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M9_ultimo_pid_vivo_com_um_bancada_aceito": {
+   "script": "recibo_parada_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 47,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_parada_v413.py: no ja_fora_do_ar o ultimo PID conhecido tem de estar AUSENTE ou ser outro programa, nunca VIVO com um_bancada (M9)",
+     "observado": [
+      "ULT == \"AUSENTE\" or ULT.startswith(\"VIVO|\")"
+     ]
+    }
+   ],
+   "condicao_esperada": "recibo_parada_v413.py: no ja_fora_do_ar o ultimo PID conhecido",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M10a_chave_porta_fechada_renomeada": {
+   "script": "recibo_parada_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 47,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_parada_v413.py: chaves do dict rec (ordem) = as do recibo REAL da v411 + os acrescimos da v413",
+     "observado": [
+      [
+       "passo",
+       "servico",
+       "pid",
+       "pid_estado",
+       "processos_um_bancada_vivos",
+       "linha_de_comando",
+       "porta",
+       "porta_fechada_v413",
+       "hora_recibo",
+       "hora",
+       "nota",
+       "religar",
+       "autor",
+       "autorizacao_do_operador",
+       "modo",
+       "autorizacao_conferida",
+       "evidencia_fora_do_ar",
+       "ultimo_boot"
+      ],
+      [
+       "passo",
+       "servico",
+       "pid",
+       "pid_estado",
+       "processos_um_bancada_vivos",
+       "linha_de_comando",
+       "porta",
+       "porta_fechada",
+       "hora_recibo",
+       "hora",
+       "nota",
+       "religar",
+       "autor",
+       "autorizacao_do_operador",
+       "modo",
+       "autorizacao_conferida",
+       "evidencia_fora_do_ar",
+       "ultimo_boot"
+      ]
+     ]
+    }
+   ],
+   "condicao_esperada": "recibo_parada_v413.py: chaves do dict rec",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M10b_chave_religar_retirada": {
+   "script": "recibo_parada_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 47,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_parada_v413.py: chaves do dict rec (ordem) = as do recibo REAL da v411 + os acrescimos da v413",
+     "observado": [
+      [
+       "passo",
+       "servico",
+       "pid",
+       "pid_estado",
+       "processos_um_bancada_vivos",
+       "linha_de_comando",
+       "porta",
+       "porta_fechada",
+       "hora_recibo",
+       "hora",
+       "nota",
+       "autor",
+       "autorizacao_do_operador",
+       "modo",
+       "autorizacao_conferida",
+       "evidencia_fora_do_ar",
+       "ultimo_boot"
+      ],
+      [
+       "passo",
+       "servico",
+       "pid",
+       "pid_estado",
+       "processos_um_bancada_vivos",
+       "linha_de_comando",
+       "porta",
+       "porta_fechada",
+       "hora_recibo",
+       "hora",
+       "nota",
+       "religar",
+       "autor",
+       "autorizacao_do_operador",
+       "modo",
+       "autorizacao_conferida",
+       "evidencia_fora_do_ar",
+       "ultimo_boot"
+      ]
+     ]
+    }
+   ],
+   "condicao_esperada": "recibo_parada_v413.py: chaves do dict rec",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M10c_chave_versao_servida_renomeada": {
+   "script": "recibo_religamento_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 47,
+   "condicoes_que_falharam": [
+    {
+     "nome": "recibo_religamento_v413.py: chaves do dict rec (ordem) = as do recibo REAL da v411 + os acrescimos da v413",
+     "observado": [
+      [
+       "passo",
+       "servico",
+       "porta",
+       "comando",
+       "no_ar_desde",
+       "pronta",
+       "identidade",
+       "versao",
+       "manifesto_sha256",
+       "recibo_do_10_bis",
+       "pid",
+       "mcp",
+       "hora_recibo",
+       "hora",
+       "autor",
+       "autorizacao_do_operador",
+       "modo_da_placa",
+       "fala_do_modo_da_placa",
+       "ambiente_do_processo",
+       "log",
+       "autorizacao_conferida",
+       "processo"
+      ],
+      [
+       "passo",
+       "servico",
+       "porta",
+       "comando",
+       "no_ar_desde",
+       "pronta",
+       "identidade",
+       "versao_servida",
+       "manifesto_sha256",
+       "recibo_do_10_bis",
+       "pid",
+       "mcp",
+       "hora_recibo",
+       "hora",
+       "autor",
+       "autorizacao_do_operador",
+       "modo_da_placa",
+       "fala_do_modo_da_placa",
+       "ambiente_do_processo",
+       "log",
+       "autorizacao_conferida",
+       "processo"
+      ]
+     ]
+    }
+   ],
+   "condicao_esperada": "recibo_religamento_v413.py: chaves do dict rec",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  },
+  "M11_livro_pula_linha_ilegivel": {
+   "script": "util_bn_v413.py",
+   "rc": 1,
+   "n_condicoes": 48,
+   "n_condicoes_ok": 47,
+   "condicoes_que_falharam": [
+    {
+     "nome": "util (M11): livro_conferido: o json.loads de cada linha fica num try cujo except LEVANTA (nunca continue/pass); confere anterior == o hash anterior e hash == o recalculado; recusa seq repetida",
+     "observado": {
+      "tem_funcao": true,
+      "except_levanta": false
+     }
+    }
+   ],
+   "condicao_esperada": "util (M11): livro_conferido",
+   "pegou_a_condicao_esperada": true,
+   "pegou": true
+  }
+ },
+ "rc_do_conferidor_por_mutacao": {
+  "M1_assert_AUT_depois_da_sonda_da_porta": 1,
+  "M2_nome_da_v412_na_variavel": 1,
+  "M3_assert_do_ESPERADOS_depois_do_subprocess": 1,
+  "M4_sem_o_conteudo_do_AUT": 1,
+  "M5_data_de_ordem_anterior_no_script": 1,
+  "M6_fala_de_20nov_inexistente_no_delta_bn": 1,
+  "M7_ja_fora_do_ar_aceita_pid_parado": 1,
+  "M8_conferencia_A_sem_o_sha256": 1,
+  "M9_ultimo_pid_vivo_com_um_bancada_aceito": 1,
+  "M10a_chave_porta_fechada_renomeada": 1,
+  "M10b_chave_religar_retirada": 1,
+  "M10c_chave_versao_servida_renomeada": 1,
+  "M11_livro_pula_linha_ilegivel": 1
+ },
+ "falhas_por_mutacao": {
+  "M1_assert_AUT_depois_da_sonda_da_porta": [
+   "recibo_parada_v413.py: o assert AUT vem logo depois da atribuicao (sem nada entre)",
+   "recibo_parada_v413.py: nenhuma chamada de E/S antes do assert AUT (so imports, D e AUT)",
+   "recibo_parada_v413.py: 2.2: o livro do quadro e' conferido INTEIRO por U.livro_conferido(DBN.QUADRO), depois do assert A"
+  ],
+  "M2_nome_da_v412_na_variavel": [
+   "recibo_religamento_v413.py: ha a atribuicao AUT = os.environ.get(V413_AUTORIZACAO_OPERADOR).strip()",
+   "recibo_religamento_v413.py: o assert AUT vem logo depois da atribuicao (sem nada entre)",
+   "recibo_religamento_v413.py: V413_AUTORIZACAO_OPERADOR aparece 2 vezes (leitura e mensagem do assert)",
+   "recibo_religamento_v413.py: nenhum nome da v412 sobrou (V412_AUTORIZACAO_OPERADOR, V412_PARADA, V412_PID_PARADO, RECIBO_"
+  ],
+  "M3_assert_do_ESPERADOS_depois_do_subprocess": [
+   "evento (2.6): assert do stdout do ENSAIO < b3_recibo do ensaio < assert rc 0 dele < assert os.path.isfile(ESP) < CAND16 "
+  ],
+  "M4_sem_o_conteudo_do_AUT": [
+   "recibo_parada_v413.py: N4: o recibo do evento 1687 pelo sha256 que o evento registra, a fala do 1689 pelo fala_sha16, a ",
+   "recibo_parada_v413.py: o modo da parada e' escolhido por V413_PARADA (pelo_pid | ja_fora_do_ar) e nunca presumido: o ass"
+  ],
+  "M5_data_de_ordem_anterior_no_script": [
+   "recibo_religamento_v413.py: nenhuma data dd/mm/aaaa nem hash de 16+ hex digitado no script"
+  ],
+  "M6_fala_de_20nov_inexistente_no_delta_bn": [
+   "delta_bn: a fala de 20/11 (FALA_AUTORIZACAO_20NOV) existe em cunhagens_13out, e' de 20/11 pelo nome e fala da Bancada",
+   "o AUT que a gerencia passa (V413_AUTORIZACAO_OPERADOR no ambiente deste conferidor) traz: 'evento 1687' e o hash16 dele,"
+  ],
+  "M7_ja_fora_do_ar_aceita_pid_parado": [
+   "recibo_parada_v413.py: no ja_fora_do_ar nao finge parada: recusa V413_PID_PARADO e V413_PID_PARADO_CRIADO no ambiente (M"
+  ],
+  "M8_conferencia_A_sem_o_sha256": [
+   "recibo_parada_v413.py: no ja_fora_do_ar a conferencia A (V413_SAUDE_RECIBO) e' conferida pelo sha256 que a gerencia pass"
+  ],
+  "M9_ultimo_pid_vivo_com_um_bancada_aceito": [
+   "recibo_parada_v413.py: no ja_fora_do_ar o ultimo PID conhecido tem de estar AUSENTE ou ser outro programa, nunca VIVO co"
+  ],
+  "M10a_chave_porta_fechada_renomeada": [
+   "recibo_parada_v413.py: chaves do dict rec (ordem) = as do recibo REAL da v411 + os acrescimos da v413"
+  ],
+  "M10b_chave_religar_retirada": [
+   "recibo_parada_v413.py: chaves do dict rec (ordem) = as do recibo REAL da v411 + os acrescimos da v413"
+  ],
+  "M10c_chave_versao_servida_renomeada": [
+   "recibo_religamento_v413.py: chaves do dict rec (ordem) = as do recibo REAL da v411 + os acrescimos da v413"
+  ],
+  "M11_livro_pula_linha_ilegivel": [
+   "util (M11): livro_conferido: o json.loads de cada linha fica num try cujo except LEVANTA (nunca continue/pass); confere "
+  ]
+ },
+ "toda_mutacao_foi_pega": true,
+ "diffs_das_mutacoes": {
+  "M1_assert_AUT_depois_da_sonda_da_porta": "--- real/recibo_parada_v413.py\n+++ mutado/recibo_parada_v413.py\n@@ -15,7 +15,6 @@\n \n D = os.path.dirname(os.path.abspath(__file__))\n AUT = os.environ.get(\"V413_AUTORIZACAO_OPERADOR\", \"\").strip()\n-assert AUT, \"defina V413_AUTORIZACAO_OPERADOR com a autorizacao do operador que cobre este ato (os eventos e a fala, com os hashes): o script nao presume autorizacao\"\n sys.dont_write_bytecode = True\n sys.path.insert(0, D)\n import delta_bn_v413 as DBN  # noqa: E402\n@@ -54,6 +53,7 @@\n s.settimeout(1)\n aberta = s.connect_ex((\"127.0.0.1\", DBN.PORTA)) == 0\n s.close()\n+assert AUT, \"defina V413_AUTORIZACAO_OPERADOR com a autorizacao do operador que cobre este ato (os eventos e a fala, com os hashes): o script nao presume autorizacao\"\n assert not aberta, \"a porta %d esta aberta: parar o servico pelo PID antes deste recibo\" % DBN.PORTA\n VIVOS = U.processos_um_bancada()\n n_proc = len(VIVOS)\n",
+  "M2_nome_da_v412_na_variavel": "--- real/recibo_religamento_v413.py\n+++ mutado/recibo_religamento_v413.py\n@@ -17,7 +17,7 @@\n import time\n \n D = os.path.dirname(os.path.abspath(__file__))\n-AUT = os.environ.get(\"V413_AUTORIZACAO_OPERADOR\", \"\").strip()\n+AUT = os.environ.get(\"V412_AUTORIZACAO_OPERADOR\", \"\").strip()\n assert AUT, \"defina V413_AUTORIZACAO_OPERADOR com a autorizacao do operador que cobre este ato (os eventos e as falas, com os hashes): o script nao presume autorizacao\"\n sys.dont_write_bytecode = True\n sys.path.insert(0, D)\n",
+  "M3_assert_do_ESPERADOS_depois_do_subprocess": "--- real/evento_c1_b3_v413.py\n+++ mutado/evento_c1_b3_v413.py\n@@ -28,7 +28,6 @@\n dados = {\"versao\": DBN.UM_VERSION_BN, \"acao\": \"sincronizacao\", \"bancada\": DBN.PRODUCAO,\n          \"um_py\": sh(os.path.join(DBN.NOS, \"um.py\")), \"selo\": sh(os.path.join(DBN.NOS, \"um_absoluto_selo.json\")), \"unidade\": \"F0.6\"}\n ESP = (PINOS.get(\"esperados\") or {}).get(\"path\") or \"\"\n-assert os.path.isfile(ESP) and sh(ESP) == (PINOS.get(\"esperados\") or {}).get(\"sha256\"), \"o ESPERADOS da v413 pinado em PINOS_BN_v413.json nao existe ou diverge do pino: sem ele o um.py do Nos nao tem com que ser conferido; nada foi anotado\"\n CAND16 = json.load(open(ESP, encoding=\"utf-8\"))[\"candidato_sha16\"]\n assert len(CAND16) >= 16, CAND16\n assert dados[\"um_py\"].startswith(CAND16), (\"o um.py do Nos nao e' o candidato do ESPERADOS da v413\", dados[\"um_py\"][:16], CAND16)\n@@ -43,3 +42,4 @@\n assert str(E.get(\"hash\")).startswith(RET[\"hash\"]) and E.get(\"quem\") == \"claude-c1\" and E.get(\"tipo\") == \"SINCRONIZACAO_BANCADA\" and E.get(\"dados\") == dados, \"o elo anotado nao e' o evento pedido, no livro conferido inteiro\"\n assert U.instante(E[\"quando\"]) > U.instante(U.ler_json(REC_ENSAIO)[\"fim_utc\"]), \"o evento nao e' posterior ao fim do recibo do ENSAIO pos-selo (2.6 c)\"\n print(\"EVENTO=%d EVENTO_HASH=%s\" % (RET[\"evento\"], RET[\"hash\"]))\n+assert os.path.isfile(ESP) and sh(ESP) == (PINOS.get(\"esperados\") or {}).get(\"sha256\"), \"o ESPERADOS da v413 pinado em PINOS_BN_v413.json nao existe ou diverge do pino: sem ele o um.py do Nos nao tem com que ser conferido; nada foi anotado\"\n",
+  "M4_sem_o_conteudo_do_AUT": "--- real/recibo_parada_v413.py\n+++ mutado/recibo_parada_v413.py\n@@ -42,10 +42,6 @@\n FALA_20NOV_SHA16 = hashlib.sha256(FALA_20NOV_BYTES).hexdigest()[:16]\n assert len(FALA_20NOV) >= 20 and \"bancada\" in U.texto_normalizado(FALA_20NOV), \"a fala do operador de 20/11 nao fala da Bancada\"\n H87, H89 = E87[\"hash\"][:16], E89[\"hash\"][:16]\n-assert ((\"evento %d\" % DBN.SEQ_AUTORIZACAO) in AUT and H87 in AUT and ORDEM_SHA16 in AUT and FRASE_DA_ORDEM in AUT and (\"evento %d\" % DBN.SEQ_DECISAO) in AUT and H89 in AUT and FALA_DECISAO_SHA16 in AUT\n-        and DECISAO in AUT and FALA_20NOV in AUT and FALA_20NOV_SHA16 in AUT), \\\n-    \"a autorizacao passada nao e' a do ciclo da v413 (exige no texto: os eventos %d e %d com os hash16 lidos do livro, o sha16 e a resposta do recibo do %d, a decisao e o sha16 da fala do %d, a fala de 20/11 inteira e o sha16 dela)\" % (\n-        DBN.SEQ_AUTORIZACAO, DBN.SEQ_DECISAO, DBN.SEQ_AUTORIZACAO, DBN.SEQ_DECISAO)\n MODO = os.environ.get(\"V413_PARADA\", \"\").strip()\n assert MODO in (\"pelo_pid\", \"ja_fora_do_ar\"), \"defina V413_PARADA=pelo_pid (o servico estava no ar e foi parado pelo PID lido da porta; com V413_PID_PARADO e V413_PID_PARADO_CRIADO) ou V413_PARADA=ja_fora_do_ar (nada foi parado): o script nao presume qual\"\n P_REC = os.path.join(DBN.SERVICO_DIR, \"RECIBO_PARADA_v413.json\")\n",
+  "M5_data_de_ordem_anterior_no_script": "--- real/recibo_religamento_v413.py\n+++ mutado/recibo_religamento_v413.py\n@@ -3,7 +3,7 @@\n # exatamente 1 cujo manifesto novo seja o do disco), N4 (os eventos 1687 e 1689 por hash e a fala de 20/11; mais a fala do operador com a escolha do MODO DA PLACA, por parametro: sem ela, AGUARDA), N6 (o anterior\n # da Bancada e' o B20 da v411) e N9 (este script LANCA o servico, destacado, com stdout e stderr em estado\\servidor.log e estado\\servidor_erros.log, e registra isso; no modo cpu, CUDA_VISIBLE_DEVICES=-1 no processo\n # lancado). A identidade e' lida SO' de /api/contratos (nunca /api/estado, que cria contexto CUDA).\n-\"\"\"10-ter da v413: religa o servico da Bancada Um e grava o recibo do religamento. Confere a identidade servida (/api/contratos) contra o Nos (um.py e selo lidos na hora) e contra o recibo do APLICAR\n+\"\"\"10-ter da v413 (autorizacao de 12/11/2026): religa o servico da Bancada Um e grava o recibo do religamento. Confere a identidade servida (/api/contratos) contra o Nos (um.py e selo lidos na hora) e contra o recibo do APLICAR\n (B21-v413-<data>-R1, o manifesto novo). Parametros: a variavel da autorizacao (com os hashes; a mesma da parada), V413_MODO_PLACA (cpu | normal) e V413_FALA_MODO_PLACA (o NOME do arquivo da fala do operador com a\n escolha, em work\\\\cunhagens_13out). Sem a fala ou o modo: AGUARDA_OPERADOR (rc 20), nada e' lancado. Se a identidade servida nao confere, o processo lancado FICA (parar e' ato do operador, pelo PID que a recusa grava).\"\"\"\n import datetime\n",
+  "M6_fala_de_20nov_inexistente_no_delta_bn": "--- real/delta_bn_v413.py\n+++ mutado/delta_bn_v413.py\n@@ -71,7 +71,7 @@\n SEQ_AUTORIZACAO = 1687                                         # AVISO_AUTORIZACAO_RECEBIDA (ciclo da Bancada, F0.6)\n SEQ_DECISAO = 1689                                             # AVISO_DECISAO_DO_OPERADOR_B21 (Salto na v413)\n CUNHAGENS_DIR = os.path.join(WK, \"cunhagens_13out\")\n-FALA_AUTORIZACAO_20NOV = os.path.join(CUNHAGENS_DIR, \"OPERADOR_20nov_colei_no_codex_prossiga_concordo_com_tudo_veja_a_questao_da_bancada_verbatim.txt\")\n+FALA_AUTORIZACAO_20NOV = os.path.join(CUNHAGENS_DIR, \"OPERADOR_20nov_v413_colei_no_codex_prossiga_concordo_com_tudo_veja_a_questao_da_bancada_verbatim.txt\")\n BENCH_DIR = os.path.join(WK, \"iald_v412_20261119\", \"bench\")    # onde o evento 1687 pede o retorno (os tres recibos e o pino conjunto)\n MODOS_DA_PLACA = (\"cpu\", \"normal\")                             # o religamento: cpu = CUDA_VISIBLE_DEVICES=-1 no processo lancado\n \n",
+  "M7_ja_fora_do_ar_aceita_pid_parado": "--- real/recibo_parada_v413.py\n+++ mutado/recibo_parada_v413.py\n@@ -75,7 +75,6 @@\n     NOTA = (\"nenhum processo um_bancada.py vivo e a porta fechada, conferidos por este script no momento do recibo; o script nao para nada; o PID parado, %s, e' o lido da porta, e a parada que precede este recibo \"\n             \"e' feita pelo PID (nunca por nome), nao por este script; ultimo boot da maquina: %s; quem a executou e sob que ordem do operador consta em autorizacao_do_operador\" % (PIDP, BOOT))\n else:\n-    assert not os.environ.get(\"V413_PID_PARADO\", \"\").strip() and not os.environ.get(\"V413_PID_PARADO_CRIADO\", \"\").strip(), \"no modo ja_fora_do_ar nenhum PID foi parado: V413_PID_PARADO e V413_PID_PARADO_CRIADO nao podem estar definidos\"\n     SA_P = os.environ.get(\"V413_SAUDE_RECIBO\", \"\").strip()\n     SA_PINO = os.environ.get(\"V413_SAUDE_SHA256\", \"\").strip().lower()\n     assert SA_P and os.path.isfile(SA_P) and len(SA_PINO) == 64, \"defina V413_SAUDE_RECIBO (a conferencia A de hoje, saude_bancada.py) e V413_SAUDE_SHA256 (o sha256 dela, lido por script pela gerencia)\"\n",
+  "M8_conferencia_A_sem_o_sha256": "--- real/recibo_parada_v413.py\n+++ mutado/recibo_parada_v413.py\n@@ -80,7 +80,6 @@\n     SA_PINO = os.environ.get(\"V413_SAUDE_SHA256\", \"\").strip().lower()\n     assert SA_P and os.path.isfile(SA_P) and len(SA_PINO) == 64, \"defina V413_SAUDE_RECIBO (a conferencia A de hoje, saude_bancada.py) e V413_SAUDE_SHA256 (o sha256 dela, lido por script pela gerencia)\"\n     SA_BYTES = open(SA_P, \"rb\").read()\n-    assert hashlib.sha256(SA_BYTES).hexdigest() == SA_PINO, \"a conferencia A diverge do sha256 que a gerencia passou\"\n     SA = json.loads(SA_BYTES.decode(\"utf-8\"))\n     assert SA.get(\"contrato\") == \"SAUDE_BANCADA\" and SA.get(\"veredito\") in (\"FORA_DO_AR\", \"FORA_DO_AR_APOS_REINICIO\") and str(SA.get(\"quando\", \"\"))[:10] == datetime.date.today().isoformat() \\\n         and SA.get(\"porta_aberta\") is False and SA.get(\"processos_um_bancada\") == [], (\"a conferencia A nao e' de hoje ou nao diz servico fora do ar (porta fechada e nenhum um_bancada.py)\", SA.get(\"veredito\"), SA.get(\"quando\"))\n",
+  "M9_ultimo_pid_vivo_com_um_bancada_aceito": "--- real/recibo_parada_v413.py\n+++ mutado/recibo_parada_v413.py\n@@ -86,7 +86,7 @@\n         and SA.get(\"porta_aberta\") is False and SA.get(\"processos_um_bancada\") == [], (\"a conferencia A nao e' de hoje ou nao diz servico fora do ar (porta fechada e nenhum um_bancada.py)\", SA.get(\"veredito\"), SA.get(\"quando\"))\n     ULT_P = U.processo(int(pid_v411))\n     ULT = \"AUSENTE\" if ULT_P is None else \"VIVO|\" + str(ULT_P.get(\"linha_de_comando\"))\n-    assert ULT == \"AUSENTE\" or (ULT.startswith(\"VIVO|\") and \"um_bancada\" not in ULT), (\"o ultimo PID conhecido (%s) nao foi lido como ausente nem como outro programa\" % pid_v411, ULT)\n+    assert ULT == \"AUSENTE\" or ULT.startswith(\"VIVO|\"), (\"o ultimo PID conhecido (%s) nao foi lido como ausente nem como outro programa\" % pid_v411, ULT)\n     PID_REC = int(pid_v411)\n     EVIDENCIA = {\"conferencia_A\": {\"path\": os.path.abspath(SA_P), \"sha256\": SA_PINO, \"veredito\": SA.get(\"veredito\"), \"quando\": SA.get(\"quando\")}, \"ultimo_pid_conhecido\": ULT[:200]}\n     PID_ESTADO = \"nenhum PID foi parado: o servico ja estava fora do ar quando o B(n) da v413 comecou; %s e' o ultimo PID conhecido, o do religamento da v411 (no ar desde %s), e hoje %s\" % (\n",
+  "M10a_chave_porta_fechada_renomeada": "--- real/recibo_parada_v413.py\n+++ mutado/recibo_parada_v413.py\n@@ -99,7 +99,7 @@\n        \"pid_estado\": PID_ESTADO,\n        \"processos_um_bancada_vivos\": n_proc,\n        \"linha_de_comando\": DBN.COMANDO_DO_RITO,\n-       \"porta\": DBN.PORTA, \"porta_fechada\": True,\n+       \"porta\": DBN.PORTA, \"porta_fechada_v413\": True,\n        \"hora_recibo\": agora, \"hora\": agora,\n        \"nota\": NOTA,\n        \"religar\": DBN.COMANDO_DO_RITO + \" (pelo recibo_religamento_v413.py: com os logs em estado\\\\servidor.log e estado\\\\servidor_erros.log, N9, e o modo da placa escolhido pelo operador)\",\n",
+  "M10b_chave_religar_retirada": "--- real/recibo_parada_v413.py\n+++ mutado/recibo_parada_v413.py\n@@ -102,7 +102,6 @@\n        \"porta\": DBN.PORTA, \"porta_fechada\": True,\n        \"hora_recibo\": agora, \"hora\": agora,\n        \"nota\": NOTA,\n-       \"religar\": DBN.COMANDO_DO_RITO + \" (pelo recibo_religamento_v413.py: com os logs em estado\\\\servidor.log e estado\\\\servidor_erros.log, N9, e o modo da placa escolhido pelo operador)\",\n        \"autor\": \"claude-c1 (gerencia)\", \"autorizacao_do_operador\": AUT,\n        \"modo\": MODO,\n        \"autorizacao_conferida\": {\"livro\": {\"path\": DBN.QUADRO, \"sha256\": LIVRO[\"sha256\"], \"n_elos\": LIVRO[\"n_elos\"], \"cabeca\": LIVRO[\"cabeca\"]},\n",
+  "M10c_chave_versao_servida_renomeada": "--- real/recibo_religamento_v413.py\n+++ mutado/recibo_religamento_v413.py\n@@ -135,7 +135,7 @@\n        \"comando\": \" \".join('\"%s\"' % x_ if \" \" in x_ else x_ for x_ in COMANDO),\n        \"no_ar_desde\": PROC_INFO.get(\"criado\"), \"pronta\": \"nao lida: /api/estado cria contexto CUDA; a identidade vem de /api/contratos\",\n        \"identidade\": {k: c.get(k) for k in (\"deployment_id\", \"canonical_version\", \"um_py_sha256\", \"seal_sha256\", \"canonical_manifest_sha256\")},\n-       \"versao_servida\": c.get(\"canonical_version\"), \"manifesto_sha256\": c.get(\"canonical_manifest_sha256\"),\n+       \"versao\": c.get(\"canonical_version\"), \"manifesto_sha256\": c.get(\"canonical_manifest_sha256\"),\n        \"recibo_do_10_bis\": {\"path\": os.path.abspath(RB), \"sha256\": U.sha256_arquivo(RB)},\n        \"pid\": PID_PORTA,\n        \"mcp\": \"a reconexao dos adaptadores MCP das sessoes (/mcp) e' ato do operador em cada sessao aberta\",\n",
+  "M11_livro_pula_linha_ilegivel": "--- real/util_bn_v413.py\n+++ mutado/util_bn_v413.py\n@@ -90,7 +90,7 @@\n         try:\n             e = json.loads(linha)\n         except ValueError as exc:\n-            raise ValueError(\"EVENTOS_JSONL_ILEGIVEL: linha %d: %s\" % (i, exc))\n+            continue\n         n += 1\n         if not isinstance(e, dict) or e.get(\"anterior\") != ant or e.get(\"hash\") != hash_evento(e):\n             raise ValueError(\"EVENTOS_CADEIA_QUEBRADA: no evento seq %r (elo %d, linha %d)\" % (e.get(\"seq\") if isinstance(e, dict) else None, n, i))\n"
+ },
+ "escopo": "nada do servico foi executado; nenhum script real foi alterado; as pastas temporarias foram apagadas; NOT_FALSIFIED nao e' creditacao; o gate nao se move"
+}

@@ -1,0 +1,10 @@
+assert all(k_.startswith("TGLExt.") and k_.count(".") == 1 for k_ in MAN["modulos_novos"]), "modulo novo fora da forma TGLExt.<Nome>"
+MODS = [dict(v_, modulo=k_.split(".", 1)[1], modulo_completo=k_) for k_, v_ in MAN["modulos_novos"].items()]
+NOMES = [m["modulo"] for m in MODS]
+assert len(NOMES) == len(set(NOMES)) == int(MAN["n_modulos_novos"]), ("o manifesto nao tem n_modulos_novos nomes distintos", len(NOMES), MAN["n_modulos_novos"])
+assert sum(int(m["teoremas_publicos"]) for m in MODS) == int(MAN["teoremas_publicos_novos"]), "a soma de teoremas_publicos nao e' a teoremas_publicos_novos do manifesto"
+assert all(set(m["imports_tglext"]) <= set(NOMES) for m in MODS), "imports_tglext do manifesto que nao e' modulo novo"
+SUG_NOMES = [x.split(".", 1)[1] for x in MAN["ordem_topologica_sugerida"]]
+assert sorted(SUG_NOMES) == sorted(NOMES), "a ordem_topologica_sugerida do manifesto nao tem exatamente os modulos novos"
+KC = MAN.get("kernel_corrigido") or {}
+assert all(k_.startswith("TGLExt.") and k_.count(".") == 1 and k_.split(".", 1)[1] not in NOMES for k_ in KC), "modulo corrigido fora da forma TGLExt.<Nome> ou repetido entre os novos"

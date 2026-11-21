@@ -1,0 +1,30 @@
+{
+ "tipo": "ROTA",
+ "rota_id": "kernel.traducao_cook_levin.conferencia_aponteaotm2_objetivo_vacuo_19nov",
+ "dominio": "KERNEL_FORMAL",
+ "titulo": "conferencia da APonteAoTM2 (Kimi, R0): os teoremas conferem; o alvo ObjetivoTM2Polinomial, como tipado, e' teorema vacuo",
+ "pergunta": "o alvo [OPEN] da pedra (uma maquina TM2 do Mathlib que compute a verificacao em tempo polinomial) diz o que o comentario diz?",
+ "metodo": "leitura da fonte (sha16 82ab2c6c6c05a3c9); leitura de Mathlib/Computability/TuringMachine/Computable.lean na caixa (assinatura com codificacoes alpha -> List Gamma, linha 179; idComputableInPolyTime, linha 221; proof_wanted comp, linha 284; o nome TM2ComputableInPolyTime aparece 11 vezes no Mathlib, todas nesse arquivo); sonda Lean que importa o .olean do Kimi e prova o alvo com codificacoes constantes e a maquina identidade; compilada so' com o binario do Lean no mesmo ambiente do Kimi (k411c + builds das irmas, so' leitura)",
+ "resultado": "os teoremas dizem o que o relato diz; o que a pedra diz do Mathlib confere (so' a identidade habita TM2ComputableInPolyTime; a composicao e' proof_wanted); mas o alvo quantifica as codificacoes com existencial, e no Mathlib elas sao funcoes quaisquer: com ea = eb = (fun _ => []), a idComputer cumpre a estrutura em um passo; a sonda prova ObjetivoTM2Polinomial assim (RC 0, sem aviso, trio). O comentario 'a igualdade pontual impede truque de renomeacao' nao vale: a igualdade fixa f, nao a codificacao.",
+ "veredito": "APONTEAOTM2_TEOREMAS_CONFEREM__OBJETIVO_TM2_POLINOMIAL_COMO_TIPADO_E_TEOREMA_VACUO__CONSERTO_FIXAR_AS_CODIFICACOES",
+ "estatuto": "REAL",
+ "status": "EXAMINADA",
+ "olhou_dados": false,
+ "defeito": "a sonda compila sobre a caixa da v411 (a do Kimi), nao sobre a da v412; a conferencia das 15 pedras sobre a v412 segue por fazer; o conserto (codificacao fixa, injetiva, de comprimento polinomial) e' do Kimi, nao foi construido pela gerencia",
+ "nao_refazer": "nao provar ObjetivoTM2Polinomial como tipado (e' vacuo: a sonda ja' o prova); nao procurar outra maquina polinomial no Mathlib da caixa (so' a identidade; a composicao e' proof_wanted)",
+ "proximo_passo": "o Kimi fixa no enunciado as codificacoes concretas (entrada num alfabeto finito, saida [b]) e prova injetividade e comprimento polinomial; quando ele terminar a maquina, a gerencia confere as pedras dele sobre a caixa da v412 (C:\\t\\k412c)",
+ "onde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_kimi",
+ "artefatos": [
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_kimi\\sonda_objetivo_tm2\\SondaObjetivoTM2.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_kimi\\sonda_objetivo_tm2\\compilar_sonda.py",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_kimi\\sonda_objetivo_tm2\\build\\SondaObjetivoTM2.log",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_kimi\\sonda_objetivo_tm2\\build\\CONFERENCIA_SONDA.json",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_kimi\\NOTA_DA_GERENCIA_CONFERENCIA_APonteAoTM2_19nov.md",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APonteAoTM2.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_19nov_perfeito_e_isso_mesmo_a_traducao_foi_fidedigna_o_kimi_esta_terminando_a_maquina_TM2_com_texto_do_kimi_colado_verbatim.txt"
+ ],
+ "refs": [
+  "kernel.traducao_cook_levin.levantamento_da_fita_v412_19nov"
+ ],
+ "nota": "o texto do Kimi colado pelo autor e' DECLARADO pelo Kimi; a conferencia e' da gerencia (quem constroi nao aprova)"
+}

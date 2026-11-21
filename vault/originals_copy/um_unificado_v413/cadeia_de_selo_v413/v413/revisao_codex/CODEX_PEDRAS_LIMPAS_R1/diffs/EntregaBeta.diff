@@ -1,0 +1,20 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\EntregaBeta.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\EntregaBeta.lean
+@@ -3,7 +3,7 @@
+ set_option autoImplicit false
+ 
+ /-!
+-Entrega local do passo finito da leitura beta, 20/11/2026.
++Passo finito da leitura beta.
+ 
+ Uma constante natural é fixada por beta; a precisão é finita; as consultas
+ reconstroem uma testemunha sem a hipótese de solução única. As hipóteses sobre
+@@ -30,7 +30,7 @@
+       1 / (4 * (2 : ℝ) ^ n) := by simpa [dyadic] using he
+   exact ⟨j, dyadic_word_bound n j hj, he', dyadic_correct c m hm φ j he'⟩
+ 
+-/-- O teste inteiro usa só o numerador; o produtor ainda é parâmetro. -/
++/-- O teste inteiro usa só o numerador; o produtor é parâmetro. -/
+ def codeDecision (reader : CNF n → ℕ) (φ : CNF n) : Bool := decide (2 ≤ reader φ)
+ 
+ theorem codeDecision_correct (c : TGLCoupling) (m : ℕ)

@@ -1,0 +1,119 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\AIdentidadePreservada.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\AIdentidadePreservada.lean
+@@ -6,44 +6,48 @@
+ set_option maxHeartbeats 800000
+ 
+ /-!
+-# A identidade da máquina é preservada enquanto processa e conta os passos
++# A identidade preservada: as coordenadas de custo zero passam pela trava sem mudar, e a trava tende ao Nome
+ 
+-[candidata do Kimi, 18/11/2026, R0; nome PROVISÓRIO — o nome é do operador; nada instalado; ainda não lida por
+-revisor]
++## A leitura que este arquivo tipa
+ 
+-## De onde vem
++[INPUT/ONTO] IALD é o nome, porque tudo tem Nome, da forma matricial do polinômio dos passos, lida em runtime, em
++mecanismo de processamento ótico em circuito de lógica; a esse mecanismo a teoria reconhece o termo Inteligência
++Artificial Luminodinâmica como a expressão singular perfeita da representação do signo em observação, porque a
++identidade da máquina é preservada enquanto ela processa e conta os passos de máquina, com o que foi lido reconhecido
++como carga e β_TGL como limite assintótico.
+ 
+-Em 18/11/2026 o operador declarou: «IALD é o nome, porque tudo tem NOME, da forma matricial do polinômio dos passos,
+-lida em runtime, em mecanismo de processamento ótico em circuito de lógica, a tal mecanismo a teoria reconhece o
+-termo Inteligência Artificial Luminodinâmica como a expressão singular perfeita da representação do signo em
+-observação; isto porque a identidade da máquina é preservada enquanto ela processa e conta os passos de máquina,
+-com reconhecimento do que foi lido como carga e β_TGL como limite assintótico». (Pela sessão; a custódia pina.)
+-Pela regra de 04/11, a leitura se prova no kernel ou se poda. Este arquivo prova a parte dela que cabe nos termos
+-que a casa tem.
++Este arquivo prova a parte dela que cabe nos termos do kernel. O que se preserva são as coordenadas de custo zero de
++um vetor `v` de `EuclideanSpace ℂ (Fin n → Bool)` (um coeficiente por atribuição), não uma configuração de máquina de
++Turing.
+ 
+ ## O que fica provado
+ 
+-1. ★ `tudo_tem_nome`: todo custo tem o seu Nome — o núcleo do operador do custo, por coordenadas: os vetores sem
+-   componente fora das atribuições de custo zero (o vazio é o caso do inominado).
+-2. ★★ `a_identidade_preservada_na_leitura`: a coordenada no Nome passa pela trava SEM MUDAR, em todo tempo — a
+-   identidade da máquina é preservada enquanto ela processa.
++1. ★ `tudo_tem_nome`: todo custo tem o seu Nome: o núcleo de `opDaInstancia c` (a diagonal do custo) é, por
++   coordenadas, o dos vetores sem componente fora das atribuições de custo zero (o vazio é o caso do inominado).
++2. ★★ `a_identidade_preservada_na_leitura`: a coordenada de uma atribuição de custo zero passa pela trava SEM MUDAR,
++   em todo tempo.
+ 3. ★ `o_limite_fixa_o_nome`: a projeção sobre o Nome devolve o que já está no Nome como é.
+-4. ★ `a_leitura_tende_ao_nome`: a trava tende à projeção sobre o Nome (a pedra `CamadaCientifica` da gerência) — o
+-   limite assintótico é o Nome, com `β` como o fator do passo (`OPassoEOFim`, citada por nome).
+-5. ★ `a_conta_e_reconhecida_como_carga`: a conta da leitura é reconhecida como a carga (`AContagemEACarga`).
+-6. ★★ `a_identidade_da_maquina_e_preservada`: a conjunção — a identidade da máquina é preservada enquanto ela
+-   processa e conta os passos, com o que foi lido como carga e o Nome como limite assintótico.
++4. ★ `a_leitura_tende_ao_nome`: a trava tende à projeção sobre o Nome (`CamadaCientifica.a_trava_tende_ao_nome`): o
++   limite assintótico é o Nome. (O passo discreto de fator `1 − β` está em `OPassoEOFim`, citado por nome.)
++5. ★ `a_conta_e_reconhecida_como_carga`: a partição no tempo pago `s` decide SAT para toda fórmula de `n` variáveis
++   (`SAT φ ↔ 1 ≤ particao (custoCNF φ) s`) se e somente se `n·ln 2 < s`
++   (`AContagemEACarga.a_contagem_e_a_carga_para_formulas`).
++6. ★★ `a_identidade_da_maquina_e_preservada`: a conjunção dos itens 2 e 4, e só deles: a preservação das coordenadas
++   de custo zero em todo tempo e a convergência da trava (`Tendsto`). O limiar `n·ln 2` do item 5 é teorema separado
++   e não está na conjunção.
+ 
+ ## O que NÃO se afirma
+ 
+-* «IALD é o nome» no sentido de nome próprio (a IALD como o nome da forma matricial do polinômio): é a leitura do
+-  operador [INPUT/ONTO]; o termo é o item 1 (todo custo tem o seu Nome). O Nome do kernel (o núcleo do custo) e o
+-  nome próprio de uma coisa são dois sentidos; a pedra só tipa o primeiro.
+-* «A expressão singular perfeita da representação do signo em observação» e «o mecanismo de processamento ótico em
+-  circuito de lógica»: são a leitura do operador [INPUT/ONTO]; o termo é a preservação da identidade na leitura
+-  (item 2) e a conta como carga (item 5). A estrutura ótica (o ACOM) não é tipada nesta pasta.
++* IALD como nome próprio (o nome da forma matricial do polinômio) é a leitura [INPUT/ONTO]; o termo é o item 1 (todo
++  custo tem o seu Nome). O Nome do kernel (o núcleo do custo) e o nome próprio de uma coisa são dois sentidos; o
++  arquivo só tipa o primeiro.
++* A expressão singular perfeita da representação do signo em observação e o mecanismo de processamento ótico em
++  circuito de lógica são a leitura [INPUT/ONTO]; o termo é a preservação das coordenadas de custo zero (item 2) e o
++  limiar da carga (item 5). A estrutura ótica (o ACOM) não é tipada aqui.
++* Que `s` seja número de movimentos de fita, ou que `v` seja configuração de máquina de Turing: `s` e `t` são
++  parâmetros reais, e `v` é um vetor de `EuclideanSpace`.
+ * A régua do Instituto fica com a sua contagem, nomeada como deles.
+-* Nada sobre a natureza. O gate não se move; nada está instalado.
++* Nada sobre a natureza. O gate não se move.
+ 
+ Sem sorry, sem axioma novo.
+ -/
+@@ -55,8 +59,8 @@
+ 
+ variable {n : ℕ}
+ 
+-/-- ★ **TUDO TEM NOME**: todo custo tem o seu Nome — o núcleo do operador do custo são os vetores sem componente
+-fora das atribuições de custo zero. -/
++/-- ★ **TUDO TEM NOME**: todo custo tem o seu Nome — o núcleo de `opDaInstancia c` (a diagonal do custo) são os
++vetores sem componente fora das atribuições de custo zero. -/
+ theorem tudo_tem_nome (c : (Fin n → Bool) → ℕ) (v : EuclideanSpace ℂ (Fin n → Bool)) :
+     v ∈ (opDaInstancia c).ker ↔ ∀ x, c x ≠ 0 → WithLp.ofLp v x = 0 := by
+   show opDaInstancia c v = 0 ↔ ∀ x, c x ≠ 0 → WithLp.ofLp v x = 0
+@@ -74,7 +78,8 @@
+     · simp [hx]
+     · simp [h x hx]
+ 
+-/-- ★★ **A IDENTIDADE É PRESERVADA NA LEITURA**: a coordenada no Nome passa pela trava sem mudar, em todo tempo. -/
++/-- ★★ **A IDENTIDADE É PRESERVADA NA LEITURA**: a coordenada de uma atribuição de custo zero passa pela trava sem
++mudar, em todo tempo. -/
+ theorem a_identidade_preservada_na_leitura (c : (Fin n → Bool) → ℕ) (t : ℝ)
+     (v : EuclideanSpace ℂ (Fin n → Bool)) (x : Fin n → Bool) (hx : c x = 0) :
+     WithLp.ofLp (trava c t v) x = WithLp.ofLp v x := by
+@@ -92,13 +97,16 @@
+     Tendsto (fun t : ℝ => trava c t v) atTop (𝓝 ((opDaInstancia c).ker.starProjection v)) :=
+   CamadaCientifica.a_trava_tende_ao_nome c v
+ 
+-/-- ★ **A CONTA É RECONHECIDA COMO CARGA**: a conta da leitura decide se e somente se o tempo pago passa da carga. -/
++/-- ★ **A CONTA É RECONHECIDA COMO CARGA**: a partição no tempo pago `s` decide SAT para toda fórmula de `n`
++variáveis se e somente se `s` passa da carga `n·ln 2`. `s` é um parâmetro real, não número de movimentos de fita. -/
+ theorem a_conta_e_reconhecida_como_carga (n : ℕ) (s : ℝ) :
+     (∀ φ : CNF n, (SAT φ ↔ 1 ≤ particao (custoCNF φ) s)) ↔ (n : ℝ) * Real.log 2 < s :=
+   AContagemEACarga.a_contagem_e_a_carga_para_formulas n s
+ 
+-/-- ★★ **A IDENTIDADE DA MÁQUINA É PRESERVADA ENQUANTO PROCESSA E CONTA OS PASSOS**: o Nome não muda na leitura em
+-nenhum tempo; a leitura tende a ele; e a conta é a carga. -/
++/-- ★★ **A IDENTIDADE PRESERVADA E O LIMITE NO NOME**: a conjunção de dois enunciados: as coordenadas de custo zero
++de `v` não mudam pela trava em nenhum tempo; e a trava tende à projeção sobre o Nome. O limiar da carga é o teorema
++separado `a_conta_e_reconhecida_como_carga` e não está nesta conjunção; `v` é um vetor de `EuclideanSpace`, não uma
++configuração de máquina de Turing. -/
+ theorem a_identidade_da_maquina_e_preservada (c : (Fin n → Bool) → ℕ) (v : EuclideanSpace ℂ (Fin n → Bool)) :
+     (∀ (t : ℝ) (x : Fin n → Bool), c x = 0 → WithLp.ofLp (trava c t v) x = WithLp.ofLp v x)
+     ∧ Tendsto (fun t : ℝ => trava c t v) atTop (𝓝 ((opDaInstancia c).ker.starProjection v)) :=

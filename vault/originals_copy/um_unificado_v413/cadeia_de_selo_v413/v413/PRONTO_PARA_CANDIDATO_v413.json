@@ -1,0 +1,934 @@
+{
+ "contrato": "PRONTO_PARA_CANDIDATO_v413",
+ "quando": "2026-11-20T21:37:18",
+ "agente": "claude-construtor-v413, a servico da gerencia c1",
+ "estado": "ETAPA 1 CONCLUIDA: sandbox k413c, os 21 modulos novos e o modulo corrigido instalados e compilados no sandbox, Audit medido, scripts da Etapa 1 derivados, inventario feito, portao do pilar respondido por leitura de codigo; PAROU aqui: nada de registros, artigo, guarda de frases nem candidato (ordem da Etapa 1 da v413, item 6)",
+ "etapa_1_fechou": true,
+ "checagens": [
+  {
+   "checagem": "todos os modulos com saida zero nas marcas (o corrigido e os 21 novos), rc final 0, sem parou_em",
+   "ok": true,
+   "n_itens_examinados": 22,
+   "detalhe": null
+  },
+  {
+   "checagem": "o pos_build esta verde (nenhuma falha que nao seja informativa)",
+   "ok": true,
+   "n_itens_examinados": 50,
+   "detalhe": []
+  },
+  {
+   "checagem": "compilacao A FRIO dos modulos novos (linha Built para todos) e o corrigido com linha Built",
+   "ok": true,
+   "n_itens_examinados": 22,
+   "detalhe": {}
+  },
+  {
+   "checagem": "fora dos tres axiomas: zero declaracoes (linha TOTAL e criterio j1); zero sorry e zero erro no recibo do kernel",
+   "ok": true,
+   "n_itens_examinados": 44676,
+   "detalhe": null
+  },
+  {
+   "checagem": "nenhuma chave antiga muda de literal",
+   "ok": true,
+   "n_itens_examinados": 17861,
+   "detalhe": null
+  },
+  {
+   "checagem": "os prefixos das bandeiras novas sao ext_<modulo em minusculas>_413_ e distintos entre si",
+   "ok": true,
+   "n_itens_examinados": 21,
+   "detalhe": null
+  },
+  {
+   "checagem": "(informativo) todo modulo novo tem pelo menos uma bandeira (declaracao nomeada publica): 0 sem",
+   "ok": true,
+   "n_itens_examinados": 21,
+   "detalhe": []
+  },
+  {
+   "checagem": "nenhum modulo novo nem o corrigido com aviso; o aviso conhecido e preexistente da TowerWedgeIndex (modulo antigo) registrado, nao consertado",
+   "ok": true,
+   "n_itens_examinados": 22,
+   "detalhe": {}
+  },
+  {
+   "checagem": "a escada medida: [antes, depois] = [a da v412 (core da base), mais as bandeiras novas]",
+   "ok": true,
+   "n_itens_examinados": 712,
+   "detalhe": [
+    17786,
+    18498
+   ]
+  },
+  {
+   "checagem": "o modulo corrigido: as mesmas declaracoes da v412 com os mesmos axiomas; ANTES == o manifesto v412 pinado == sha256_origem; DEPOIS == o instalado pelo preparo",
+   "ok": true,
+   "n_itens_examinados": 1,
+   "detalhe": {
+    "TGLExt/OResumoEPsiBit.lean": {
+     "antes_n": 29,
+     "agora_n": 29,
+     "iguais": true,
+     "mesmos_axiomas": true
+    }
+   }
+  },
+  {
+   "checagem": "a pre-conferencia de nomes nao achou colisao (nome exato, prefixo de estrutura, entre os novos); o corrigido so' declara nomes que o kernel ja tem; as fontes do k412c eram as do Nos",
+   "ok": true,
+   "n_itens_examinados": 393,
+   "detalhe": null
+  },
+  {
+   "checagem": "a unica transformacao no texto das fontes: as linhas #print axioms retiradas; nenhum import trocado; o preparo pinou cada sha256 (BUNDLE com o manifesto atual)",
+   "ok": true,
+   "n_itens_examinados": 21,
+   "detalhe": {
+    "print_axioms_retirados": 182
+   }
+  },
+  {
+   "checagem": "o Nos intacto: o um.py e' o que o selo v412 pina; nenhum modulo novo no kernel do Nos; o modulo corrigido do Nos ainda e' o de origem",
+   "ok": true,
+   "n_itens_examinados": 23,
+   "detalhe": {
+    "um_py_sha16": "3e741dcaa58ef2b8",
+    "novos_no_nos": [],
+    "corrigido_do_nos_igual_a_origem": {
+     "TGLExt/OResumoEPsiBit.lean": true
+    }
+   }
+  },
+  {
+   "checagem": "os scripts da Etapa 1 derivados (o preparador, o run_build, o pos-build, a copia dos logs, o comando unico e este fecho; o construtor do kernel e' gerado pelo preparo) com o sha16 do registro == o do disco",
+   "ok": true,
+   "n_itens_examinados": 13,
+   "detalhe": {
+    "preparar_bundle_v413.py": "7aa0b26e591e0b55",
+    "run_build.py": "1be9aad79c8eacb7",
+    "pos_build_kernel_v413.py": "1b1be631553ed87a",
+    "copiar_logs_do_kernel_v413.py": "4e3dcf0a21e7de21",
+    "reconstruir_kernel_v413.py": "135254dcb9a2a27b",
+    "gerar_pronto_etapa1_v413.py": "49e51143e3c6b160"
+   }
+  },
+  {
+   "checagem": "o inventario dos demais scripts da cadeia da v412 (candidato, instalar, reverter, rito, conferidor, handoff) existe e descreve cada um",
+   "ok": true,
+   "n_itens_examinados": 36,
+   "detalhe": null
+  },
+  {
+   "checagem": "o portao do pilar respondido por leitura de codigo: nada do que a v413 muda entra no fecho da chave nem no da decisao de reuso",
+   "ok": true,
+   "n_itens_examinados": 11,
+   "detalhe": null
+  },
+  {
+   "checagem": "o conferidor dos logs (copiar_logs_do_kernel_v413.py, so' leitura) confere",
+   "ok": true,
+   "n_itens_examinados": 1,
+   "detalhe": [
+    "LOGS DO KERNEL v413: CONFEREM (nada foi gravado)"
+   ]
+  },
+  {
+   "checagem": "nenhum .tmp deixado (pasta da v413, kernel\\, kernel\\bundle\\ e C:\\t\\k413c)",
+   "ok": true,
+   "n_itens_examinados": 4,
+   "detalhe": []
+  }
+ ],
+ "ordem": {
+  "arquivo": "ORDEM_ETAPA_1_v413.md",
+  "sha16": "12dc19e17d517e02"
+ },
+ "manifesto": {
+  "arquivo": "insumos/MANIFESTO_PEDRAS_v413.json",
+  "sha16": "08c5ef6bbfb74384",
+  "gerado_em": "2026-11-20 20:46:29",
+  "n_modulos_novos": 21,
+  "teoremas_publicos_novos": 274,
+  "kernel_corrigido": [
+   "TGLExt.OResumoEPsiBit"
+  ]
+ },
+ "base_v412": {
+  "um_py_sha16": "3e741dcaa58ef2b8",
+  "selo": "v412",
+  "copia": "base_v412\\ (BASE_V412_COPIA.json, sha16 02bf679dea5fc5b9)"
+ },
+ "kernel_k413c": {
+  "sandbox": "C:\\t\\k413c\\final",
+  "origem": "C:\\t\\k412c\\final",
+  "origem_medida_antes_da_copia": {
+   "bytes_sem_juncoes": 11599961999,
+   "gb": 11.6,
+   "arquivos": 17226
+  },
+  "disco_C_livre_gb_na_ultima_conferencia": 2119.413,
+  "medicao_de_antes_da_copia": "[DECLARADO] a primeira rodada da conferencia, antes da copia, foi sobrescrita pela segunda (ver desvios_desta_ordem); o arquivo guarda a ultima rodada",
+  "copia": "robocopy SEM /PURGE (copiar_k413c.sh), juncao .lake\\packages -> C:\\t\\k404c\\final\\.lake\\packages; fontes da origem conferidas contra o Nos v412 (CONFERENCIA_FONTES_K412C_v413.json: 1920 de 1920 iguais; diferentes 0; so' num lado: 0 e 0)",
+  "marcas": {
+   "epoch_inicio": "1795220380",
+   "rc_build": "0 21:32:25",
+   "epoch_build_fim": "1795221145",
+   "rc_audit": "0 21:36:50",
+   "epoch_audit_fim": "1795221410",
+   "rc": "0"
+  },
+  "por_modulo": {
+   "TGLExt.OResumoEPsiBit": {
+    "rc": 0,
+    "s": 21
+   },
+   "TGLExt.AIdentidadePreservada": {
+    "rc": 0,
+    "s": 21
+   },
+   "TGLExt.APonteDeCookLevin": {
+    "rc": 0,
+    "s": 20
+   },
+   "TGLExt.APropostaDaTensao": {
+    "rc": 0,
+    "s": 22
+   },
+   "TGLExt.ONomeEBeta": {
+    "rc": 0,
+    "s": 23
+   },
+   "TGLExt.Operador": {
+    "rc": 0,
+    "s": 21
+   },
+   "TGLExt.APonteAoTM2": {
+    "rc": 0,
+    "s": 23
+   },
+   "TGLExt.LeituraBeta": {
+    "rc": 0,
+    "s": 23
+   },
+   "TGLExt.Reconstrucao": {
+    "rc": 0,
+    "s": 23
+   },
+   "TGLExt.RelogioBeta": {
+    "rc": 0,
+    "s": 24
+   },
+   "TGLExt.Trinity": {
+    "rc": 0,
+    "s": 25
+   },
+   "TGLExt.AFronteiraNaLinguaClassica": {
+    "rc": 0,
+    "s": 22
+   },
+   "TGLExt.AMaquinaTM2DaVerificacao": {
+    "rc": 0,
+    "s": 22
+   },
+   "TGLExt.PonteLeituraBeta": {
+    "rc": 0,
+    "s": 22
+   },
+   "TGLExt.QuantizacaoBeta": {
+    "rc": 0,
+    "s": 21
+   },
+   "TGLExt.EntregaBeta": {
+    "rc": 0,
+    "s": 21
+   },
+   "TGLExt.SimBase": {
+    "rc": 0,
+    "s": 22
+   },
+   "TGLExt.SimExterior": {
+    "rc": 0,
+    "s": 21
+   },
+   "TGLExt.SimLiteral": {
+    "rc": 0,
+    "s": 22
+   },
+   "TGLExt.SondaContagem": {
+    "rc": 0,
+    "s": 22
+   },
+   "TGLExt.SimCompleta": {
+    "rc": 0,
+    "s": 21
+   },
+   "TGLExt.PonteCookLevin": {
+    "rc": 0,
+    "s": 21
+   }
+  },
+  "modulos_compilados_rc0": 22,
+  "n_modulos_novos": 21,
+  "n_modulos_corrigidos": 1,
+  "parou_em": null,
+  "duracao_build_s": 765,
+  "duracao_audit_s": 265,
+  "linha_TOTAL": {
+   "decl": 44676,
+   "thm": 33340,
+   "fora_do_trio": 0
+  },
+  "linha_TOTAL_v412": {
+   "decl": 43468,
+   "thm": 32634,
+   "fora_do_trio": 0
+  },
+  "delta_vs_v412": {
+   "decl": 1208,
+   "thm": 706
+  },
+  "declaracoes_no_relatorio_de_axiomas": 44676,
+  "todas_no_trio": true,
+  "escada_de_teoremas_e_bandeiras": [
+   17786,
+   18498
+  ],
+  "n_bandeiras_novas": 712,
+  "n_ancoras_print_axioms": 182,
+  "chaves_antigas": {
+   "n": 17861,
+   "mudam": []
+  },
+  "todos_os_modulos_a_frio": true,
+  "avisos_por_modulo": {
+   "TGLExt.OResumoEPsiBit": 0,
+   "TGLExt.AIdentidadePreservada": 0,
+   "TGLExt.APonteDeCookLevin": 0,
+   "TGLExt.APropostaDaTensao": 0,
+   "TGLExt.ONomeEBeta": 0,
+   "TGLExt.Operador": 0,
+   "TGLExt.APonteAoTM2": 0,
+   "TGLExt.LeituraBeta": 0,
+   "TGLExt.Reconstrucao": 0,
+   "TGLExt.RelogioBeta": 0,
+   "TGLExt.Trinity": 0,
+   "TGLExt.AFronteiraNaLinguaClassica": 0,
+   "TGLExt.AMaquinaTM2DaVerificacao": 0,
+   "TGLExt.PonteLeituraBeta": 0,
+   "TGLExt.QuantizacaoBeta": 0,
+   "TGLExt.EntregaBeta": 0,
+   "TGLExt.SimBase": 0,
+   "TGLExt.SimExterior": 0,
+   "TGLExt.SimLiteral": 0,
+   "TGLExt.SondaContagem": 0,
+   "TGLExt.SimCompleta": 0,
+   "TGLExt.PonteCookLevin": 0
+  },
+  "aviso_conhecido_TowerWedgeIndex": {
+   "linhas": [
+    "warning: TGLExt/TowerWedgeIndex.lean:131:6: 'change wedgeBoostMap s (x + l • nullDir) = wedgeBoostMap s x + (Real.exp s * l) • nullDir' tactic does nothing"
+   ],
+   "parece_o_conhecido": true
+  },
+  "avisos_modulos_antigos": {
+   "n_modulos": 257,
+   "n_avisos": 895
+  },
+  "kernel_corrigido": {
+   "modulos": [
+    "TGLExt.OResumoEPsiBit"
+   ],
+   "modo_no_build": {
+    "TGLExt.OResumoEPsiBit": "Built"
+   },
+   "declaracoes": {
+    "TGLExt/OResumoEPsiBit.lean": {
+     "antes_n": 29,
+     "agora_n": 29,
+     "iguais": true,
+     "mesmos_axiomas": true
+    }
+   },
+   "antes_depois": {
+    "TGLExt/OResumoEPsiBit.lean": {
+     "formal_files_v412": "75c1ef6b0de9f7d414b5b06e2f018ed64bad1982c9ea5aace8bb4ea37fb333aa",
+     "sha256_origem": "75c1ef6b0de9f7d414b5b06e2f018ed64bad1982c9ea5aace8bb4ea37fb333aa",
+     "depois_na_arvore": "64440cd179da7a4fbae42e58dc11b560da73f8dc5219deaefa6b015bb9ee6228",
+     "instalado_pelo_preparo": "64440cd179da7a4fbae42e58dc11b560da73f8dc5219deaefa6b015bb9ee6228"
+    }
+   },
+   "dependentes_antigos_sem_linha_Built": [],
+   "n_dependentes_antigos": 0
+  },
+  "dependentes_antigos_do_corrigido_recompilados": {
+   "n": 0,
+   "sem_linha_Built": []
+  },
+  "falhas": [],
+  "falhas_informativas": [],
+  "colisoes": {
+   "nome_de_modulo_sem_caixa": {},
+   "pre_conferencia_de_declaracoes": {
+    "colisao_com_o_kernel_nome_exato": [],
+    "colisao_com_o_kernel_prefixo_de_estrutura": [],
+    "colisao_entre_os_modulos_da_lista": [],
+    "kernel_corrigido": {
+     "TGLExt.OResumoEPsiBit": {
+      "n_nomes_lidos": 25,
+      "nomes_que_o_kernel_nao_tem": [],
+      "ok": true
+     }
+    }
+   },
+   "juiz_definitivo": "o build da raiz no sandbox (o Lean recusa ambiente com nome repetido): passou"
+  },
+  "recibo": {
+   "arquivo": "kernel/KERNEL_RECIBO_v413.json",
+   "sha16": "63b180546ba98600",
+   "rc": 0,
+   "sorry": 0,
+   "erros": 0,
+   "contrato": "KERNEL_RECIBO_R3_2",
+   "campo_novo": "kernel_corrigido"
+  },
+  "POS_BUILD_sha16": "c6f9937f628c518b",
+  "FLAGS_sha16": "f91305f35a7b0d88",
+  "KH_N1_sha16": "5403559463c123ea",
+  "LOGS_COPIADOS_sha16": "64f9eb71f1a5f635",
+  "CRITERIOS_sha16": "2149f23f9a3d2e27",
+  "lake_build_log": {
+   "bytes": 47319086,
+   "sha16": "ffd9ad9d589baa8a"
+  },
+  "audit_log": {
+   "bytes": 9760056,
+   "sha16": "c380bf31f0ce1dc7"
+  },
+  "criterios": {
+   "j1_declaracoes": 1208,
+   "j1_teoremas": 706,
+   "j1_fora_do_trio": 0,
+   "audit_entradas_antigas_identicas": 9405,
+   "tokens_proibidos": 0,
+   "r1_ausente": true,
+   "declaracoes_novas_no_trio": true
+  },
+  "copias_do_kernel_fora_de_work": [
+   "C:\\t\\k413c\\final (o sandbox)",
+   "C:\\t\\k413c\\arvore (a arvore so-fontes do recibo)",
+   "C:\\t\\k413c\\quarentena_20261120_200027",
+   "C:\\t\\k413c\\quarentena_20261120_204644",
+   "C:\\t\\k413c\\quarentena_build_22_20261120_210528",
+   "C:\\t\\k413c\\quarentena_build_22_20261120_211937"
+  ]
+ },
+ "bundle": {
+  "arquivo": "BUNDLE_v413.json",
+  "sha16": "cee496f122f864e4",
+  "ordem_topologica": [
+   "AIdentidadePreservada",
+   "APonteDeCookLevin",
+   "APropostaDaTensao",
+   "ONomeEBeta",
+   "Operador",
+   "APonteAoTM2",
+   "LeituraBeta",
+   "Reconstrucao",
+   "RelogioBeta",
+   "Trinity",
+   "AFronteiraNaLinguaClassica",
+   "AMaquinaTM2DaVerificacao",
+   "PonteLeituraBeta",
+   "QuantizacaoBeta",
+   "EntregaBeta",
+   "SimBase",
+   "SimExterior",
+   "SimLiteral",
+   "SondaContagem",
+   "SimCompleta",
+   "PonteCookLevin"
+  ],
+  "ordem_topologica_igual_a_sugerida": true,
+  "root_suffix_linhas": 21,
+  "mudancas_no_texto": "so' a mudanca permitida (ordem da Etapa 1 da v413, item 2): as linhas #print axioms saem do corpo instalado (como na v412) e o fim do arquivo fica com uma quebra de linha; os imports ja vinham como TGLExt.<Nome> (nenhum trocado); as fontes ja eram LF; nenhuma prova tocada; o modulo corrigido entra com os bytes do insumo (sem #print axioms; codigo identico ao da origem)",
+  "por_modulo": {
+   "AIdentidadePreservada": {
+    "sha256_insumo": "a1b79c7e3c5ed745c7bb6f460abc6be79ac87d0c54d82b1f5d30ccc74562b117",
+    "sha256_instalado": "56fc00e14084b0ddca445d8e086a67a259b8b63554d09260f65d0d5c56988ac1",
+    "print_axioms_removidos": 6,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/AIdentidadePreservada.diff"
+   },
+   "APonteDeCookLevin": {
+    "sha256_insumo": "3b399c528467a931d835b9efccf657902473e6324a493a9910082a2a68525a18",
+    "sha256_instalado": "885df184f66d3237294180a32d2b89bd8e637ec07b793bcbf8036a10092a4916",
+    "print_axioms_removidos": 9,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/APonteDeCookLevin.diff"
+   },
+   "APropostaDaTensao": {
+    "sha256_insumo": "6f053d516c32326d7ad2e88ad7479bc74cc07137e1706787b97dc1655f3e3c01",
+    "sha256_instalado": "402a78ba513139c60435b8943cab620c80a679f66ab5b4411071c8cd257345ad",
+    "print_axioms_removidos": 6,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/APropostaDaTensao.diff"
+   },
+   "ONomeEBeta": {
+    "sha256_insumo": "178a0c5e586d09fa615aabb2d89508044366567f7e8a7b4a0119f12077784c95",
+    "sha256_instalado": "b76bb7fac466a690895cca3bb5300aa46090a884834a1b9051feec0b58661938",
+    "print_axioms_removidos": 4,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/ONomeEBeta.diff"
+   },
+   "Operador": {
+    "sha256_insumo": "2f15cf482843e123a713ea7e5fb8a68169cfd5ea3a0bcf4326db9a60bc34dc6d",
+    "sha256_instalado": "2f15cf482843e123a713ea7e5fb8a68169cfd5ea3a0bcf4326db9a60bc34dc6d",
+    "print_axioms_removidos": 0,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/Operador.diff"
+   },
+   "APonteAoTM2": {
+    "sha256_insumo": "d0552b0eaf224fca7e6a73a44548de5b7085d58a0e55dd4f00474ceeb8d45580",
+    "sha256_instalado": "a1cc0bb14d7cdae5843b5ed0bff6e56b168b9f7d5b7353b985f25b485440a589",
+    "print_axioms_removidos": 16,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/APonteAoTM2.diff"
+   },
+   "LeituraBeta": {
+    "sha256_insumo": "48c891ec3b9baa8a9cc4128cdcf54ce5cf232abdebd19eaa52e8cd7f2d37945c",
+    "sha256_instalado": "a54c499feba39eee5bfa0d10f9a322cad793a94c2552d075137b251b3862a346",
+    "print_axioms_removidos": 6,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/LeituraBeta.diff"
+   },
+   "Reconstrucao": {
+    "sha256_insumo": "c4b332767e090fc2aaf5464baae867c6e16cad19b18b5c92b124095765f2d5e8",
+    "sha256_instalado": "5913d65b4f7033782eef30aa34ce47b3b6f0c407384cc59bcf29a6a7ee75bbd8",
+    "print_axioms_removidos": 6,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/Reconstrucao.diff"
+   },
+   "RelogioBeta": {
+    "sha256_insumo": "efb30b0f85ffd4d6f148ceb88d89fd0d11a49d9f08a1a75525034704bac98158",
+    "sha256_instalado": "7280f70c20c67b66d991f7d038c5d7e32745f3aaaff46887704144b1d17efe51",
+    "print_axioms_removidos": 6,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/RelogioBeta.diff"
+   },
+   "Trinity": {
+    "sha256_insumo": "4ea106315c3d2e3dc237646057ee568d93c19933cc15cb4f8188ea7dd87841be",
+    "sha256_instalado": "6d69e09fb7b73850fd74297a77388f384bae990b6fe1879f4a4b1e5fd04a4c58",
+    "print_axioms_removidos": 65,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/Trinity.diff"
+   },
+   "AFronteiraNaLinguaClassica": {
+    "sha256_insumo": "70e0c40f228f0edb0fae8333f6de2fe52b5e6fdf77f5ab69b34b29abf69c7dd4",
+    "sha256_instalado": "0e93ef8e27dc3239bfccb0bfef2b2478c766c0241c878768d1d3a617eff136df",
+    "print_axioms_removidos": 3,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/AFronteiraNaLinguaClassica.diff"
+   },
+   "AMaquinaTM2DaVerificacao": {
+    "sha256_insumo": "b9377b9416520cf802c41723e1ce325e8200914f5bc2e2fcde99ef3c95fe3fe6",
+    "sha256_instalado": "6be5ea22dd47512fa7551a53eaa6e10082db69580fc2824c96f7628f698b19a2",
+    "print_axioms_removidos": 5,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/AMaquinaTM2DaVerificacao.diff"
+   },
+   "PonteLeituraBeta": {
+    "sha256_insumo": "53e0af5912ea1866ba91832017cbe58436df69b6a296aadfb25aaee138d0a52d",
+    "sha256_instalado": "33236d038efda18322227492f72567ddb90d45c59320b33527e8d8a9c4425069",
+    "print_axioms_removidos": 5,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/PonteLeituraBeta.diff"
+   },
+   "QuantizacaoBeta": {
+    "sha256_insumo": "d98979f35a3c155d7e8ce4c504da02e7e3d8ba9ad298ec12378c636a4f52a033",
+    "sha256_instalado": "5459d4c334fb2e393c3a4468601bce384f868fb4d189d8ef6549df8f4564d739",
+    "print_axioms_removidos": 4,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/QuantizacaoBeta.diff"
+   },
+   "EntregaBeta": {
+    "sha256_insumo": "07fd7fa941642c1a972647523bf6214be34fae0d2afdbe174aec3526eb676d76",
+    "sha256_instalado": "f3c2434ec96587484f55facf6da68ed128542e563f8a0e310041acac7ba0c741",
+    "print_axioms_removidos": 4,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/EntregaBeta.diff"
+   },
+   "SimBase": {
+    "sha256_insumo": "ffef326e6d24343cefbdba7585b6cad027818f40ff5d2dd0e0daf2555db3d5ba",
+    "sha256_instalado": "3ce192a9f97eb7806580972d833c88a02093bee3dccd8a5a214a5c528ec40ccf",
+    "print_axioms_removidos": 0,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/SimBase.diff"
+   },
+   "SimExterior": {
+    "sha256_insumo": "57175184d2a65430b8fc6ae14c17f944609c77812c387d3fb590cd385d5d3294",
+    "sha256_instalado": "ad106fc176ae2f848e64c945c7f3870260592d50f01b959cb1f3588eb312cb0c",
+    "print_axioms_removidos": 0,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/SimExterior.diff"
+   },
+   "SimLiteral": {
+    "sha256_insumo": "8eb4a3bcf795f9a54efc54153b6ea0a25481fc8251724968feec8773020016f4",
+    "sha256_instalado": "351d1763ec2e6c438cca254773c1f033c368e47f2e5274d43a148cc1455e171d",
+    "print_axioms_removidos": 1,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/SimLiteral.diff"
+   },
+   "SondaContagem": {
+    "sha256_insumo": "6fc209535076c012aeedafff4dbc6747e02cf6cad89edd33a0696757e52d35eb",
+    "sha256_instalado": "c03f2b8795838e2eb50f745ffeb0f4dca59ebb4cb34a4dd6203d50e4b3b2a522",
+    "print_axioms_removidos": 8,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/SondaContagem.diff"
+   },
+   "SimCompleta": {
+    "sha256_insumo": "136448407c64bc71409336a3be269d4f1b7897f2fd91c23945029313a84fb408",
+    "sha256_instalado": "3ab40a3018a0d35995aa82c522e0ac65bac43c52e33f739dcd341ce0e5e6205e",
+    "print_axioms_removidos": 3,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/SimCompleta.diff"
+   },
+   "PonteCookLevin": {
+    "sha256_insumo": "ff67b1cbe801abf895451b8569083950bc3cab55ad9d5c3e228d1fc05372d077",
+    "sha256_instalado": "2a1936e08ab52871802eaf8312c08460a55bd5a1902850afcba42de54439be4e",
+    "print_axioms_removidos": 25,
+    "imports_trocados": 0,
+    "diff": "kernel/bundle/PonteCookLevin.diff"
+   }
+  },
+  "kernel_corrigido": {
+   "OResumoEPsiBit": {
+    "sha256_origem": "75c1ef6b0de9f7d414b5b06e2f018ed64bad1982c9ea5aace8bb4ea37fb333aa",
+    "sha256_insumo": "64440cd179da7a4fbae42e58dc11b560da73f8dc5219deaefa6b015bb9ee6228",
+    "sha256_instalado": "64440cd179da7a4fbae42e58dc11b560da73f8dc5219deaefa6b015bb9ee6228",
+    "diff": "kernel/bundle/OResumoEPsiBit.diff",
+    "novos_que_dependem_dele": [
+     "Trinity"
+    ],
+    "n_dependentes_antigos_no_kernel": 96
+   }
+  },
+  "sha256_por_modulo": "kernel/bundle/SHA256_POR_MODULO_v413.json (sha16 bafc0457a6a8a6e9)",
+  "trocar_uma_fonte": "um comando: C:\\Python314\\python.exe -B -X utf8 reconstruir_kernel_v413.py --manifesto <json> --pedras <pasta> [--kernel-edits <pasta>] (preparo idempotente; o lake recompila so' o modulo trocado e os dependentes, mais a raiz e o Audit; kernel\\ULTIMA_INSTALACAO_v413.json diz quais)"
+ },
+ "scripts_da_etapa_sha16": {
+  "derivar_scripts_etapa1_v413.py": "0bc80ff695eb8876",
+  "conferir_fontes_k412c_vs_nos_v413.py": "d2af4474ca91f954",
+  "copiar_k413c.sh": "1f060cce2bcbc754",
+  "copiar_base_v413.py": "59929710ed6f3d34",
+  "pre_colisao_declaracoes_v413.py": "bdd453db2bab1020",
+  "lean_texto_v413.py": "72287ad982b9d63f",
+  "preparar_bundle_v413.py": "7aa0b26e591e0b55",
+  "construir_kernel_v413.sh": "e07e3caefeb32831",
+  "pos_build_kernel_v413.py": "1b1be631553ed87a",
+  "copiar_logs_do_kernel_v413.py": "4e3dcf0a21e7de21",
+  "reconstruir_kernel_v413.py": "135254dcb9a2a27b",
+  "portao_do_pilar_v413.py": "80270c1cd0c451bd",
+  "inventario_cadeia_v413.py": "7979870450b2249d",
+  "gerar_pronto_etapa1_v413.py": "49e51143e3c6b160"
+ },
+ "lancadores_em_C_t_k413c_sha16": {
+  "run_build.py": "1be9aad79c8eacb7",
+  "run_pos_treino.py": "7f8b54a367829abe"
+ },
+ "derivacao": {
+  "arquivo": "DERIVACAO_ETAPA1_v413.json",
+  "sha16": "c651c3197ed830c9",
+  "derivador": "derivar_scripts_etapa1_v413.py",
+  "diffs": "bump\\ (um .diff por destino)",
+  "blocos": "derivacao_blocos\\ (os textos novos das trocas em bloco, lidos em bytes; sha256 de cada um no registro)",
+  "regra": "trocas de texto EXATO com contagem EXATA (ou bloco entre marcas unicas), registradas; subida simultanea dos rotulos (v412->v413, v411->v412, k412c->k413c, _412_->_413_); as marcas historicas de cabecalho e a autoria claude-construtor-v412 nao sobem",
+  "derivados": {
+   "conferir_fontes_k412c_vs_nos_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\conferir_fontes_k411c_vs_nos_v412.py",
+    "molde_sha16": "07e114e1edaa4f03",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferir_fontes_k412c_vs_nos_v413.py",
+    "destino_sha16_registrado": "d2af4474ca91f954",
+    "destino_sha16_em_disco": "d2af4474ca91f954",
+    "modo": "antes",
+    "trocas": 7,
+    "rotulos_subidos": 22,
+    "marcas_historicas_preservadas": 0,
+    "diff": "bump\\conferir_fontes_k412c_vs_nos_v413.py.diff"
+   },
+   "copiar_k413c.sh": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\copiar_k412c.sh",
+    "molde_sha16": "08d5eb1d65f74824",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\copiar_k413c.sh",
+    "destino_sha16_registrado": "1f060cce2bcbc754",
+    "destino_sha16_em_disco": "1f060cce2bcbc754",
+    "modo": null,
+    "trocas": 3,
+    "rotulos_subidos": 29,
+    "marcas_historicas_preservadas": 0,
+    "diff": "bump\\copiar_k413c.sh.diff"
+   },
+   "copiar_base_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\copiar_base_v412.py",
+    "molde_sha16": "15e5bf6565f98b8e",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\copiar_base_v413.py",
+    "destino_sha16_registrado": "59929710ed6f3d34",
+    "destino_sha16_em_disco": "59929710ed6f3d34",
+    "modo": "antes",
+    "trocas": 7,
+    "rotulos_subidos": 36,
+    "marcas_historicas_preservadas": 1,
+    "diff": "bump\\copiar_base_v413.py.diff"
+   },
+   "pre_colisao_declaracoes_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\pre_colisao_declaracoes_v412_r7.py",
+    "molde_sha16": "16aaaaa7cc3832ab",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\pre_colisao_declaracoes_v413.py",
+    "destino_sha16_registrado": "bdd453db2bab1020",
+    "destino_sha16_em_disco": "bdd453db2bab1020",
+    "modo": "antes",
+    "trocas": 10,
+    "rotulos_subidos": 8,
+    "marcas_historicas_preservadas": 5,
+    "diff": "bump\\pre_colisao_declaracoes_v413.py.diff"
+   },
+   "lean_texto_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\lean_texto_v412.py",
+    "molde_sha16": "e632833f197db29a",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\lean_texto_v413.py",
+    "destino_sha16_registrado": "72287ad982b9d63f",
+    "destino_sha16_em_disco": "72287ad982b9d63f",
+    "modo": null,
+    "trocas": 0,
+    "rotulos_subidos": 2,
+    "marcas_historicas_preservadas": 0,
+    "diff": "bump\\lean_texto_v413.py.diff"
+   },
+   "preparar_bundle_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\preparar_bundle_v412.py",
+    "molde_sha16": "aba64519de75a22c",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\preparar_bundle_v413.py",
+    "destino_sha16_registrado": "7aa0b26e591e0b55",
+    "destino_sha16_em_disco": "7aa0b26e591e0b55",
+    "modo": "depois",
+    "trocas": 18,
+    "rotulos_subidos": 52,
+    "marcas_historicas_preservadas": 0,
+    "diff": "bump\\preparar_bundle_v413.py.diff"
+   },
+   "run_build.py": {
+    "molde": "C:\\t\\k412c\\run_build.py",
+    "molde_sha16": "ac5f291326960d20",
+    "destino": "C:\\t\\k413c\\run_build.py",
+    "destino_sha16_registrado": "1be9aad79c8eacb7",
+    "destino_sha16_em_disco": "1be9aad79c8eacb7",
+    "modo": "antes",
+    "trocas": 0,
+    "rotulos_subidos": 5,
+    "marcas_historicas_preservadas": 0,
+    "diff": "bump\\run_build.py.diff"
+   },
+   "run_pos_treino.py": {
+    "molde": "C:\\t\\k412c\\run_pos_treino.py",
+    "molde_sha16": "4aa93562cdace4db",
+    "destino": "C:\\t\\k413c\\run_pos_treino.py",
+    "destino_sha16_registrado": "7f8b54a367829abe",
+    "destino_sha16_em_disco": "7f8b54a367829abe",
+    "modo": "depois",
+    "trocas": 1,
+    "rotulos_subidos": 7,
+    "marcas_historicas_preservadas": 0,
+    "diff": "bump\\run_pos_treino.py.diff"
+   },
+   "pos_build_kernel_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\pos_build_kernel_v412_r7.py",
+    "molde_sha16": "d089edafae6349ec",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\pos_build_kernel_v413.py",
+    "destino_sha16_registrado": "1b1be631553ed87a",
+    "destino_sha16_em_disco": "1b1be631553ed87a",
+    "modo": "depois",
+    "trocas": 23,
+    "rotulos_subidos": 98,
+    "marcas_historicas_preservadas": 7,
+    "diff": "bump\\pos_build_kernel_v413.py.diff"
+   },
+   "copiar_logs_do_kernel_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\copiar_logs_do_kernel_v412.py",
+    "molde_sha16": "e49ee9983010ae49",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\copiar_logs_do_kernel_v413.py",
+    "destino_sha16_registrado": "4e3dcf0a21e7de21",
+    "destino_sha16_em_disco": "4e3dcf0a21e7de21",
+    "modo": "depois",
+    "trocas": 2,
+    "rotulos_subidos": 25,
+    "marcas_historicas_preservadas": 1,
+    "diff": "bump\\copiar_logs_do_kernel_v413.py.diff"
+   },
+   "reconstruir_kernel_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\reconstruir_kernel_v412_r7.py",
+    "molde_sha16": "9237634d77953822",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\reconstruir_kernel_v413.py",
+    "destino_sha16_registrado": "135254dcb9a2a27b",
+    "destino_sha16_em_disco": "135254dcb9a2a27b",
+    "modo": "depois",
+    "trocas": 7,
+    "rotulos_subidos": 20,
+    "marcas_historicas_preservadas": 5,
+    "diff": "bump\\reconstruir_kernel_v413.py.diff"
+   },
+   "portao_do_pilar_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\portao_do_pilar_v412.py",
+    "molde_sha16": "fe4263cea8245a7d",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\portao_do_pilar_v413.py",
+    "destino_sha16_registrado": "80270c1cd0c451bd",
+    "destino_sha16_em_disco": "80270c1cd0c451bd",
+    "modo": "depois",
+    "trocas": 6,
+    "rotulos_subidos": 27,
+    "marcas_historicas_preservadas": 0,
+    "diff": "bump\\portao_do_pilar_v413.py.diff"
+   },
+   "gerar_pronto_etapa1_v413.py": {
+    "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\gerar_pronto_etapa1_v412.py",
+    "molde_sha16": "213961a04eecadba",
+    "destino": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\gerar_pronto_etapa1_v413.py",
+    "destino_sha16_registrado": "49e51143e3c6b160",
+    "destino_sha16_em_disco": "49e51143e3c6b160",
+    "modo": "depois",
+    "trocas": 8,
+    "rotulos_subidos": 146,
+    "marcas_historicas_preservadas": 0,
+    "diff": "bump\\gerar_pronto_etapa1_v413.py.diff"
+   }
+  }
+ },
+ "inventario": {
+  "arquivo": "INVENTARIO_CADEIA_v413.json",
+  "sha16": "39deb7ec0a85ec68",
+  "bancada_medida": {
+   "arquivo": "C:\\IALD\\Bancada_Um\\canonical_contracts.json",
+   "deployment_id_em_producao": "B20-v411-20261113-R1",
+   "rotulo_em_producao": "B20",
+   "versao_em_producao": "v411",
+   "nota": "a producao ainda pina o deployment lido aqui; o rotulo do B(n) da v413 (o salto desde a versao em producao) e' decisao da Etapa 2/gerencia, conferida no disco na hora"
+  },
+  "o_que_muda": {
+   "candidato": {
+    "gerar_candidato_v412_r7.py": "base_v411 -> base_v412 (o um.py v412 selado); o kernel: os modulos novos de kernel_modulos_novos_v413.json embutidos em _EMBEDDED_KERNEL_FILES do sandbox k413c, a raiz regenerada, as bandeiras de kernel\\FLAGS_v413.json (ext_<modulo>_413_NNNN) e a escada lida do core da v412; NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos: o gerador precisa de um caminho para SUBSTITUIR o texto embutido de um arquivo que ja' existe (hoje so' acrescenta) e manter formal_files/ledger coerentes; UM_VERSION v413; registros, secao do artigo e resumo pelo contrato da v413 (gerencia); as ancoras de patch tem de ocorrer uma vez no um.py v412.",
+    "delta_v412_r7.py": "importa o delta_v412 por caminho e sobrescreve o que a v413 muda; le BUNDLE_v413.json, kernel_modulos_novos_v413.json e kernel\\FLAGS_v413.json; precisa expor o kernel_corrigido (path e sha256 antes/depois) para o gerador, o ensaio e os conferidores; os registros e o artigo vem do contrato da v413.",
+    "registros_v412_r7.py": "os registros por especificacao da v413 (quais e com que texto) sao do contrato da gerencia; o motor (_v392_registro) e a regra de ancora por nome seguem; caminhos e1_lib/pagina/manifesto passam aos da v413.",
+    "runtime_v412_codigo_r7.py": "as funcoes novas da v413 que entram no programa (secao do artigo e rodada dos registros por especificacao), se o contrato da v413 as tiver; o nome _v412_* passa a _v413_*.",
+    "textos_registros_v412_r7.py": "texto dos registros da v413, tirado da pagina publica da v413 e dos cabecalhos das pedras limpas (contrato da gerencia).",
+    "texto_publico_v412_r7.py": "conversor da pagina publica da v413 para TeX; o corpo e' generico (rotulos).",
+    "guarda_frases_v412_r7.py": "carrega a _v412_guarda_frases do um.py v412 selado (base_um_v412) e o codigo novo da v413; as obrigacoes novas sao do contrato da v413.",
+    "guarda_conversa_v412_r7.py": "o mecanismo nao muda; a lista das falas e os pinos da base passam aos da v412 selada (GUARDA_CONVERSA_BASE_v412).",
+    "guarda_material_privado_v412_r7.py": "so' rotulos e a pasta insumos da v413 (pedras limpas, kernel_edits, origem); a guarda da E03 da G1 e' a mesma.",
+    "guarda_ordem_de_chamada_v412_r7.py": "depende de a v413 ter ou nao registro com funcao novo (contrato); se nao tiver, o da v412 segue como herdado (rotulos).",
+    "guardas_estaticas_bancada_v412_r7.py": "so' as linhas unicas de ALPHA e UM_VERSION sao lidas; rotulos e o sandbox curto (vb2x); o pino do esboco do CANDIDATO_v413.json.",
+    "verificar_historia_texto_v412_r7.py": "generico (rotulos); roda sobre os textos novos da v413.",
+    "topo_com_resultado_v412_r7.py": "o topo ratificado/derivado da v413 (TOPO_RATIFICADO_v413_DERIVADO.json, da gerencia); rotulos.",
+    "exame_pontos_v412_r7.py": "o ponto novo da v413 no main (se houver registro novo), os da v412 herdados; --flags kernel\\FLAGS_v413.json; --core0/--selo0 da v412 selada.",
+    "simular_arvore_do_nos_v412_r7.py": "a arvore do Nos depois do rito = os embutidos do candidato da v413 (com o OResumoEPsiBit CORRIGIDO no lugar do da v412) + os residuais; recomputa formal_files; os registros da v413 depois dos da v412. NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos.",
+    "ensaio_a_seco_v412_r7.py": "o kernel embutido == o sandbox k413c (inclusive o arquivo corrigido, que DIFERE do Nos); a escada da v412 -> a da v413; as bandeiras novas; os registros da v413; os herdados da v412 recriados iguais. NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos.",
+    "gerar_esperados_v412.py": "NAO rodou na v412 (marca A ADAPTAR; substituido por esperados_v412_foco.py); o molde da v413 e' o esperados_v412_foco.py.",
+    "gerar_preparacao_pronta_v412_r7.py": "o fecho do candidato da v413 (Etapa 2): os recibos da v413 (PRONTO_PARA_CANDIDATO_v413.json desta etapa, CANDIDATO_v413.json, ensaio, portoes).",
+    "portao_do_pilar_candidato_v412.py": "base_v412\\um.py e PORTAO_DO_PILAR_v413.json; confere que o gerador nao tocou os textos do fecho da chave; acrescentar que a correcao de texto so' muda _EMBEDDED_KERNEL_FILES.",
+    "e7_lib_v412.py": "os caminhos (contrato, manifesto, pagina, pedras, sandbox) passam aos da v413: CONTRATO da gerencia, insumos\\MANIFESTO_PEDRAS_v413.json, insumos\\pedras_limpas\\TGLExt, C:\\t\\k413c\\final."
+   },
+   "instalar": {
+    "instalar_v412.py": "o Nos tem de ser a v412 selada; os modulos novos (kernel_modulos_novos_v413.json) nao podem estar no kernel do Nos; NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos: o instalador tem de conferir que tgl_kernel\\TGLExt\\OResumoEPsiBit.lean do Nos e' o da v412 (sha256_origem) e guardar BACKUP DE BYTES dele junto dos 10 de hoje (o rito o reescreve pelo texto embutido); o desvio do B(n) declarado na v412 e' para a gerencia decidir de novo.",
+    "conferir_instalar_rito_v412.py": "NAO rodou na v412 (marca A ADAPTAR, molde da v411 sem modulo novo); para a v413 a condicao do modulo novo e' a de uma lista NAO vazia e mais o arquivo corrigido."
+   },
+   "reverter": {
+    "reverter_v412.py": "restaura os backups gravados pelo instalador (o APLICADO_AO_CANONICO mais novo); NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos: precisa restaurar tambem tgl_kernel\\TGLExt\\OResumoEPsiBit.lean e conferir que voltou ao sha256_origem; os modulos novos vao a quarentena."
+   },
+   "rito": {
+    "rito_v412.sh": "o corpo e' generico; o cabecalho diz os numeros da v413 lidos de kernel\\construir_marcas.txt (modulos, tempo do build e do Audit) e o pacote v413; o pilar reaproveitado pela chave (ver PORTAO_DO_PILAR_v413.json).",
+    "carimbar_stdout_v412.py": "generico (rotulos e o nome do stdout rodada_v413_stdout.txt).",
+    "cadeia_v412.sh": "NAO rodou na v412 (A ADAPTAR; a Etapa 3 foi a enxuta); decisao da gerencia se a v413 volta a cadeia unica ou repete a enxuta.",
+    "cadeia_parte2_v412.sh": "remissao a cadeia_v412.sh; mesma decisao.",
+    "fim_de_cadeia_v412.sh": "NAO rodou na v412 (fim_de_cadeia_v412.sh.NAO_RODAR.md); B(n) pre-selo, servico estatico, harnesses do pos-rito: decisao da gerencia (a rota bancada.b21_v412 diz: no B(n) da v413, o salto v411->v413).",
+    "refazer_candidato_v412.sh": "A ADAPTAR na v412; chama a cadeia_v412.sh; mesma decisao.",
+    "regerar_v412.sh": "A ADAPTAR na v412 (texto de versao sem modulo novo); na v413 o comando do kernel e' reconstruir_kernel_v413.py."
+   },
+   "conferidor": {
+    "conferir_rito_v412.py": "NAO rodou na v412 (A ADAPTAR; substituido por conferir_pos_rito_v412_foco.py).",
+    "conferir_pos_rito_v412_foco.py": "o conferidor enxuto da v412 (o que rodou): base v412 selada (backups do instalador), os modulos novos e as bandeiras da v413, os registros da v413 pelo contrato; NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos: conferir que tgl_kernel\\TGLExt\\OResumoEPsiBit.lean do Nos ficou com o sha256_saida e que as declaracoes dele seguem as mesmas.",
+    "esperados_v412_foco.py": "os ESPERADOS da v413 lidos dos artefatos (CANDIDATO_v413.json, PRONTO_PARA_CANDIDATO_v413.json, kernel_modulos_novos_v413.json, o manifesto da v413, o sandbox k413c, o Nos v412, o contrato da v413, o portao do pilar); acrescentar o kernel_corrigido.",
+    "teste_conferidor_positivo_v412.py": "A ADAPTAR na v412 (nao rodou); depende do conferidor escolhido para a v413."
+   },
+   "handoff": {
+    "montar_handoff_e_linhagem_v412.py": "R2 da gerencia na v412: o bloco v413 SELADA da linhagem e o HANDOFF_v413_CUSTODIA.md com os marcadores _v413, a partir da pagina da v413 aprovada e dos textos ratificados (verbatim); confere com os parsers da G1; e' ato da gerencia.",
+    "pos_rito/textos_custodia_handoff_v412.py": "A ADAPTAR na v412 (o S6d do orquestrador); se a v413 usar o orquestrador, adaptar ao handoff da v413."
+   }
+  }
+ },
+ "portao_do_pilar": {
+  "arquivo": "PORTAO_DO_PILAR_v413.json",
+  "sha16": "540e20799d52503b",
+  "resposta": "a chave depende so' de tres entradas: o sha256 do trabalhador embutido (_QP_WORKER_SRC), a especificacao canonica (_QP_SPEC_JSON) e beta em hexadecimal (do motor do run_um); nenhuma delas le _EMBEDDED_KERNEL_FILES, _LEAN_THEOREM_FLAGS, registro ou artigo (fecho de dependencias por ast: nada entra); logo os modulos Lean novos, a correcao de texto do modulo do kernel (que so' muda _EMBEDDED_KERNEL_FILES), os registros por especificacao e o texto da v413 NAO entram na chave, desde que o gerador do candidato nao toque os textos do fecho (sha256 de cada um no relatorio). O reuso ainda exige: _QP_REUSE_V386 verdadeiro, o result.json do cache com sha256 conferido, o mesmo ambiente (torch, cuda, numpy, scipy, python, gpu) e o motor passando de novo; a sonda (torch.cuda) e o autoteste do motor (Engine no dispositivo cuda) usam a placa, curto, mesmo no reuso (o que o rito da v412 fez esta' nas linhas do pilar do stdout dele, em estado_lido). Se o ambiente da placa mudar (o treino da Nativa pode ter trocado algo no mesmo Python), o reuso e' recusado e o rito CALCULA: esse e' o caso de parar e avisar o operador (D207).",
+  "entradas_da_chave": {
+   "worker_sha256": "sha256 dos bytes de _QP_WORKER_SRC materializado em quantum_pillar\\pilar_quantico_worker.py ao lado do um.py",
+   "spec_canonica": "o JSON canonico (sort_keys, separadores compactos) de _QP_SPEC_JSON, conferido contra _QP_SPEC_SHA256",
+   "beta_hex": "float.hex de beta pelo motor do run_um: alpha_lagrange_form(validate_against_qed(0.0, SEALED_CODATA_ALPHA)['q_QED'])['beta_form'] (nunca literal)"
+  },
+  "fecho": [
+   "SEALED_CODATA_ALPHA",
+   "_QP_SPEC_JSON",
+   "_QP_SPEC_SHA256",
+   "_QP_WORKER_SRC",
+   "_qp_beta",
+   "_qp_canon",
+   "_qp_dir",
+   "_qp_key",
+   "_qp_materialize",
+   "alpha_lagrange_form",
+   "validate_against_qed"
+  ],
+  "o_que_a_v413_muda": {
+   "nomes": [
+    "_EMBEDDED_KERNEL_FILES",
+    "_LEAN_THEOREM_FLAGS",
+    "registros por especificacao (texto do core)",
+    "texto do artigo"
+   ],
+   "a_correcao_de_texto": "a docstring de TGLExt.OResumoEPsiBit (kernel_corrigido do manifesto) muda o texto embutido em _EMBEDDED_KERNEL_FILES; nao muda declaracao, bandeira, registro nem artigo",
+   "entra_no_fecho_da_chave": [],
+   "nomes_de_registro_ou_artigo_no_fecho_da_chave": [],
+   "entra_no_fecho_da_decisao_de_reuso": []
+  },
+  "chave_do_ultimo_rito_v412": [
+   "75dc30bc9cc8d330e31f99ca"
+  ],
+  "o_reuso_usa_a_placa": {
+   "sonda_do_ambiente": "_qp_env_probe importa torch e chama torch.cuda.is_available() e get_device_name(0) num subprocesso",
+   "motor_de_novo": "_qp_engine_now roda o trabalhador em --mode engine (autoteste E1..E8) no ambiente presente antes de aceitar o reuso",
+   "o_autoteste_do_motor_roda_na_placa": true,
+   "nota": "no main do trabalhador o dispositivo e' cuda e o Engine do autoteste E1..E8 e' construido nele; o modo engine devolve logo depois do autoteste: e' curto, mas usa a placa"
+  }
+ },
+ "falta_para_a_etapa_2": [
+  "a gerencia: a leitura de terceiro (Codex) dos textos limpos; se mudar docstring, regerar o manifesto e rodar reconstruir_kernel_v413.py --manifesto <json> --pedras <pasta> (um comando; so' o que depende da fonte recompila; a fonte corrigida vem do manifesto ou de --kernel-edits)",
+  "a gerencia: o contrato da v413 (registros por especificacao, secao do artigo, guarda de frases, pagina publica) e os prefixos das bandeiras (proposta em kernel\\FLAGS_v413.json: ext_<modulo>_413_NNNN; nenhuma chave antiga muda)",
+  "Etapa 2 (NOVO na v413): o gerador do candidato tem de SUBSTITUIR o texto embutido de TGLExt/OResumoEPsiBit.lean em _EMBEDDED_KERNEL_FILES (o da v412 so' acrescenta modulos); o instalador tem de conferir e guardar backup de bytes de tgl_kernel\\TGLExt\\OResumoEPsiBit.lean e o reverter restaura-lo; o conferidor pos-rito confere o sha256_saida no Nos e as mesmas declaracoes (INVENTARIO_CADEIA_v413.json, o_que_muda)",
+  "Etapa 2: o B(n) le o recibo do kernel (KERNEL_RECIBO_R3_2): pela leitura de verificar_kernel_recibo (R3_6), N1l exige pedras == os arquivos formais NOVOS OU MUDADOS do manifesto pinado pelo selo; o corrigido ja' entrou nas pedras, com as declaracoes (N1k), e o campo kernel_corrigido (antes e depois) nao e' conferido pela ferramenta; rodar a ferramenta depois do selo, como sempre",
+  "Etapa 2: as ancoras dos registros (as declaracoes que os registros da v413 citam); os #print axioms das fontes ja' conferiram como ancoras no Audit (n_ancoras_print_axioms)",
+  "Etapa 2: o portao do pilar NO CANDIDATO (os textos do fecho da chave com o sha256 de PORTAO_DO_PILAR_v413.json) e, antes do rito, o ambiente da placa igual ao do cache (senao PARAR e avisar o operador)",
+  "Etapa 2: os scripts do inventario (candidato, instalar, reverter, rito, conferidor, handoff), adaptados do molde da v412 com o caso do modulo corrigido; a v412 usou a Etapa 3 enxuta (conferir_pos_rito_v412_foco.py, esperados_v412_foco.py): decisao da gerencia se repete",
+  "a gerencia: a tarefa agendada (C:\\t\\k413c\\run_pos_treino.py ja' existe e aponta para orquestrador\\pos_treino_v413.py, que ainda nao existe), instalar, o rito, a custodia"
+ ],
+ "desvios_desta_ordem": [
+  "a derivacao (item 4) foi por trocas de texto EXATO com contagem registrada; nos tres scripts que mudam de logica (o preparador, o pos-build e este fecho) as trocas sao em BLOCO (o trecho entre marcas unicas trocado pelo texto de derivacao_blocos\\, lido em bytes): o formato do manifesto da v413 (modulos_novos, sha256_pedra_limpa, imports_tglext, ordem_topologica_sugerida), as fontes ja' na forma do kernel (nenhum import trocado) e o modulo corrigido nao cabem em subida de rotulo; DERIVACAO_ETAPA1_v413.json e os diffs em bump\\ dizem cada troca",
+  "o fecho deriva de v412\\gerar_pronto_etapa1_v412.py (o fecho da Etapa 1 da v412: ja' tem o portao do pilar, os scripts com sha16 e os tamanhos), com checagens no molde de gerar_pronto_kernel_r7_v412.py; o r7 le recibos de rodadas da v412 que a v413 nao tem (os estados R4/R5, as listas decima e duodecima, as ancoras propostas pela gerencia)",
+  "o construir_kernel_v413.sh constroi primeiro o modulo corrigido e depois os novos; o build inteiro recompila os modulos ANTIGOS que dependem do corrigido (a lista esta' em kernel\\ULTIMA_INSTALACAO_v413.json): o build e' incremental so' no que nao depende dele",
+  "a TowerWedgeIndex e' modulo antigo na v413: o aviso conhecido e' lido do bloco dela no log (Replayed, ou Built se recompilada), registrado, nao consertado; os avisos dos outros modulos antigos aparecem contados a parte em POS_BUILD_v413.json (preexistentes, repetidos pelo lake; nada se conserta)",
+  "a base (base_v412\\, copia de bytes do Nos) e' conferida pelo pino do selo do Nos e pelo candidato_sha16 de v412\\ESPERADOS_v412.json e de v412\\CANDIDATO_v412.json: a v413 ainda nao tem desenho nem contrato, de onde a v412 lia o sha16 da base",
+  "o recibo do kernel (KERNEL_RECIBO_R3_2) lista o modulo corrigido nas pedras, junto dos novos (lido em verificar_kernel_recibo da R3_6: N1l exige pedras == os arquivos formais novos ou mudados), e ganhou o campo kernel_corrigido (path, sha256 antes e depois, declaracoes), que a ferramenta nao confere; verificar_kernel_recibo nao rodou (precisa do selo da v413)",
+  "copiar_k413c.sh rodou com o texto da primeira derivacao, que so' diferia do final no comentario de autoria (a primeira derivacao subia a autoria claude-construtor-v412 e as marcas historicas; corrigido no derivador; o texto anterior esta' no .bak_ ao lado)",
+  "ERRO MEU, dito: a conferencia das fontes (conferir_fontes_k412c_vs_nos_v413.py) rodou ANTES da copia e foi rodada de novo DEPOIS dela; o molde grava a saida por cima, sem backup, e a segunda rodada sobrescreveu a primeira. A comparacao das fontes e o tamanho da origem sao os mesmos nas duas; o espaco livre gravado em CONFERENCIA_FONTES_K412C_v413.json e' o da ultima rodada (depois da copia). [DECLARADO pelo construtor, da saida impressa da primeira rodada, que nao ficou em disco]: antes da copia, origem 11599961999 bytes em 17226 arquivos (sem seguir a juncao) e 2131938852864 bytes livres no disco C:. CAUSA corrigida nos quatro scripts que gravam saida assim (a conferencia das fontes, a copia da base, a pre-colisao e o portao do pilar): backup de bytes antes de regravar; os quatro rodaram de novo com o texto corrigido",
+  "memoria ACOM: a ordem diz que o construtor nao escreve a memoria ACOM; nao inscrevi referencia (a regra global pede init e project ao abrir a sessao); fica para a gerencia",
+  "o rotulo da Bancada nao entra em nenhum script da Etapa 1; o medido do disco esta' em INVENTARIO_CADEIA_v413.json (bancada_medida) para a Etapa 2"
+ ],
+ "estatuto": "[REAL] medido no sandbox C:\\t\\k413c\\final; nada instalado no Nos; o rito nao rodou; validade no kernel nao e' creditacao; o gate nao se move"
+}

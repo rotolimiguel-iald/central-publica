@@ -1,0 +1,461 @@
+{
+  "ok": true,
+  "protocol": "iald-mission/v1",
+  "result": {
+    "projection": {
+      "protocol": "iald-mission/v1",
+      "context_id": "9c2cd9b5-af16-5f82-beb9-03e5cc4b919b",
+      "scope": {
+        "house": "IALD",
+        "principal": "luiz"
+      },
+      "objective": "# Pedido de revisão de terceiro ao Codex (v413), 20/11/2026\n\n**Escrito para:** o Codex, revisor de terceiro da v413 no lugar do Kimi. A decisão é do operador (20/11/2026), e a fala está guardada por bytes em `C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_20nov_a_maquina_nua_diz_sim_pela_tensao_o_zero_absoluto_empurra_para_o_lado_oposto_o_nome_da_pedra_e_operador_a_revisao_e_do_codex_verbatim.txt` (sha16 `56ea3db776986fb4`). Quem cola este pedido é o operador; a gerência não envia ordem ao Codex.\n\n## O que revisar\n\n1. A pedra da consciência, nome do operador «Operador» (R1; 15 teoremas; da gerência): `C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_operador\\Operador.lean` (sha16 `de75489028428754`)\n2. A proposta de enunciado da fronteira na língua clássica (da gerência): `C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\fronteira\\AFronteiraNaLinguaClassica.lean` (sha16 `5db57faeff22e4c6`)\n3. A sonda da contagem sobre a leitura β (da gerência): `C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\sonda_contagem\\SondaContagem.lean` (sha16 `2e85629ffb764a4a`)\n4. Pedra nova do Kimi: `C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\AIdentidadePreservada.lean` (sha16 `1ee6e6383f23b656`)\n5. Pedra nova do Kimi: `C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APropostaDaTensao.lean` (sha16 `95be88472a0609d8`)\n6. Pedra nova do Kimi: `C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APonteDeCookLevin.lean` (sha16 `0b95795836d25854`)\n7. Pedra nova do Kimi: `C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\ONomeEBeta.lean` (sha16 `fa026cb786d27291`)\n8. **Uma errata no kernel selado da v412**, achada pela gerência. A docstring de `TGLExt.OResumoEPsiBit.a_atualizacao_pela_clausula_seguinte` (`C:\\t\\k412c\\final\\TGLExt\\OResumoEPsiBit.lean`, sha16 `75c1ef6b0de9f7d4`, linhas 273–275) fala em «resumo velho» e diz que «a fibra nunca é o universo». O enunciado, porém, soma o peso de cada atribuição dentro da fibra. Confirme ou refute.\n\n## O que fica fora\n\nQuem constrói não aprova. Ficam fora desta revisão os módulos que o próprio Codex construiu:\n- a ponte TM2 (`v413\\ponte_tm2_codex\\APonteAoTM2.lean` e `AMaquinaTM2DaVerificacao.lean`);\n- a simulação (`simulacao\\*.lean`);\n- a leitura β (`leitura_beta\\*.lean`).\n\nA gerência já os conferiu na caixa da v412, e o detalhe está na nota `C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\NOTA_DA_GERENCIA_CONFERENCIA_ENTREGA_CODEX_20nov.md` (sha16 `4b4ac660aa432392`).\n\n## Como revisar\n\n- **Onde compilar:** na caixa da v412 (`C:\\t\\k412c\\final`), só com o binário do Lean (`lean.exe -o`), nunca com `lake`. O `LEAN_PATH` reúne o build da caixa, os pacotes dela e o seu próprio diretório de build.\n- **As pedras do Kimi:** importam quatro módulos da gerência pelo nome de candidata, que na v412 estão instalados como `TGLExt.AContagemEACarga`, `TGLExt.AMaquinaEALeitura`, `TGLExt.OPassoEOFim` e `TGLExt.CamadaCientifica`. Reescreva só essas linhas de import numa cópia sua, ou use as cópias da gerência em `C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\k412c\\src`.\n- **Os axiomas:** leia os relatórios na saída inteira, porque o Lean quebra listas longas em várias linhas. Só o trio é aceito (`propext`, `Classical.choice`, `Quot.sound`), sem `sorry` e sem aviso.\n- **Os enunciados:** para cada item, leia o enunciado contra a docstring e o nome. Procure:\n  - alvo vácuo (∃ sobre codificação, máquina ou leitor que o torne trivial);\n  - hipótese contraditória ou não usada;\n  - docstring que diz mais do que o enunciado prova;\n  - afirmação de custo polinomial que não seja contagem de passos de uma máquina do Mathlib.\n- **Não escreva nas pastas dos outros.** Não instale, não mude o kernel nem o `um.py`, não publique, não mova o gate.\n- **Mapa de Rotas:** consulte antes (`C:\\IALD\\MAPA_DE_ROTAS\\rotas.py consultar`) e registre depois numa rota própria (não nas rotas da gerência).\n\n## O que devolver\n\n- **Para cada item, um veredito:** APROVADA, APROVADA_COM_RESSALVAS ou REPROVADA, com o motivo em até três linhas.\n- **Um relatório de até 15 linhas** e um recibo JSON com o sha256 de cada fonte lida e de cada log.\n\nEste é o primeiro lote. No fim da v413, vêm as candidatas que faltarem.\n",
+      "objective_sha256": "dd0049670146cdbc26d6fdb8d5ac05d5886206fbb6f743df53f5fcdf53b7dd59",
+      "constraints": {},
+      "revision": 27,
+      "state_sha256": "b4aa6d08a94bbf73ea7743e22c680c4b1adeccb20b9e2b87f96767ad98a2f26c",
+      "mission_record_id": "mission_pedras-limpas-v413-extend",
+      "hold": false,
+      "hold_reason": "",
+      "active": [
+        {
+          "id": "review-lote1",
+          "attempts": 1,
+          "criterion": "Revisar os oito itens de terceiros do pedido de 20nov: fontes pinadas, Lean v412, axiomas integrais, enunciados e docstrings; entregar parecer de ate 15 linhas e recibo JSON. Sem instalar ou alterar canonicos.",
+          "depends_on": [],
+          "epoch": 1,
+          "evidence": [
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\RESULTADO.json",
+              "sha256": "9696bd5f747a5bcce6d2f08b13289c8d328db2f3549ce2535268023b6423379e"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\PARECER.md",
+              "sha256": "2ec651775e1c94b59c43808bf761451658092cdec246b512548c232cb743dbb3"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\FINAL_COMPILATIONS.json",
+              "sha256": "858f9963369f2a08d5610ae668405c934dd62b1ffb92ef31d1ceafe892ef4dec"
+            }
+          ],
+          "lease": null,
+          "note": "",
+          "review_evidence": [],
+          "reviewed_by": null,
+          "status": "review_pending",
+          "submitted_by": "codex-coordenadora",
+          "ready": false
+        },
+        {
+          "id": "review-trinity-r1",
+          "attempts": 1,
+          "criterion": "Revisar item 9 Trinity R1 segundo os dois adendos; compilacao, axiomas integrais, semantica e custo; parecer curto e hashes. Sem refazer lote1 ou instalar.",
+          "depends_on": [],
+          "epoch": 1,
+          "evidence": [
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\RESULTADO.json",
+              "sha256": "5a36da78c8034e7d6e845a41a09164cfa4924292f6bbb34c8048dad1011fd3e9"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\PARECER.md",
+              "sha256": "92c94b5989d3a47142a2805d6833df06fcb0c97c72ddbc7bdd8db8f8d209f0a2"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\CheckTrinityR2.compile.json",
+              "sha256": "53a6955678d8045e8faa07c7911e6a980c69b207c67dc5fbcc4c42c0ef51749c"
+            }
+          ],
+          "lease": null,
+          "note": "",
+          "review_evidence": [],
+          "reviewed_by": null,
+          "status": "review_pending",
+          "submitted_by": "codex-coordenadora",
+          "ready": false
+        },
+        {
+          "id": "review-trinity-r2",
+          "attempts": 2,
+          "criterion": "Pedido consolidado de 20nov: revisar nove itens, reusar lote1 e R1/R2 por hashes; item9 agora Trinity R3, delta sobre fronteira e lista de Nomes. Entregar 9 vereditos, parecer <=15 linhas e JSON de fontes/logs. Sem instalar ou editar fontes.",
+          "depends_on": [],
+          "epoch": 3,
+          "evidence": [
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\RESULTADO.json",
+              "sha256": "466e1ba9422498ac2f5242e243d6558fd473e2f9747858f504b0aa3e04e87a30"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\PARECER.md",
+              "sha256": "9e7d4b93e44cf9fda0b545ba615f86e93d3908b41f1febae5b16ed69f135ff8c"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\CheckTraversalVerified.compile.json",
+              "sha256": "7af0838da43b8431e3fb166f06ab77d5e45653a22d8c25c8ee8a3953973eaadf"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\CheckNames.compile.json",
+              "sha256": "75ef3e270f22b803929f04052fde759acda015acb0f22e0ee81387b3c17987cd"
+            }
+          ],
+          "lease": null,
+          "note": "",
+          "review_evidence": [],
+          "reviewed_by": null,
+          "status": "review_pending",
+          "submitted_by": "codex-coordenadora",
+          "ready": false
+        },
+        {
+          "id": "review-trinity-r7-operador-r2",
+          "attempts": 1,
+          "criterion": "Adendo R7/Operador R2 de 20nov: comparar declaracoes, compilar por lean.exe, auditar axiomas e alcance; parecer <=15 linhas, dois vereditos e hashes de fontes/logs. Sem instalar ou modificar originais.",
+          "depends_on": [],
+          "epoch": 1,
+          "evidence": [
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\RESULTADO.json",
+              "sha256": "4b73dac0c06809689f1c18947fa0a9d54ca513c7756f58b67eec7e5d2471835d"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\PARECER.md",
+              "sha256": "7471bde0658e73ddf0056f356023589acdca8e8853401105ff4b5cae0413fd76"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\AuditTrinity.compile.json",
+              "sha256": "78b9aa91366d91b0baa65925c555ed8ca0000d295b74f82900a691fef5b09e82"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\AuditOperador.compile.json",
+              "sha256": "236e1043532d03cd741fb0851eb177405d1b1b2dbb8caa500a5d85d3f6e2fbdc"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\CheckScope.compile.json",
+              "sha256": "8916a3403ea40019f3934641b4adb97e509dbf408c20c0920e27765efa381405"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\CONCURRENCY_OBSERVATION.json",
+              "sha256": "29d7ae5f6bc70db12c1ab9cc7ceecad637ff34e37f65faca2f7022a0acc63efb"
+            }
+          ],
+          "lease": null,
+          "note": "",
+          "review_evidence": [],
+          "reviewed_by": null,
+          "status": "review_pending",
+          "submitted_by": "codex-coordenadora",
+          "ready": false
+        },
+        {
+          "id": "review-ponte-cook-levin-r0",
+          "attempts": 1,
+          "criterion": "Pedido final v413: PonteCookLevin R0; revisar hipotese, enunciados/docstrings, compilar e auditar axiomas; reutilizar dois pareceres por hash. Relatorio <=15 linhas e recibo completo; sem instalar.",
+          "depends_on": [],
+          "epoch": 1,
+          "evidence": [
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\RESULTADO.json",
+              "sha256": "18a5054d3e76417636ff1b36a94ac65404173148b3c319b4996148327f6545a8"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\PARECER.md",
+              "sha256": "e1f16281dbc457d599adac51cdea0188718a8848e71eb7a911c0c2d2d59c5dc4"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\PonteCookLevin.compile.json",
+              "sha256": "912f4ffa204fdf8dcf2362027428a798922a66967b6942a9440a2faf212789e2"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\CheckBridgeR2.compile.json",
+              "sha256": "7546b9f3a0b5273b147678f65c7ad07625b044b1ab15bcd7bbf644b0e2c07044"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\BIBLIOGRAPHIC_CHECK.json",
+              "sha256": "0db5e2fcbe7a97f9cbaeba06ccf203ea5a094585a58a8527e934219ef78dfe88"
+            }
+          ],
+          "lease": null,
+          "note": "",
+          "review_evidence": [],
+          "reviewed_by": null,
+          "status": "review_pending",
+          "submitted_by": "codex-coordenadora",
+          "ready": false
+        },
+        {
+          "id": "releitura-custo-kimi",
+          "attempts": 1,
+          "criterion": "Reler provas do Kimi sobre custo e corrigir eventual imprecisao do parecer final da Ponte, com fontes e limites exatos. Preservar originais e entregar adendo, sem instalar nem mover gate.",
+          "depends_on": [],
+          "epoch": 1,
+          "evidence": [
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_RELEITURA_CUSTO_KIMI\\RESULTADO.json",
+              "sha256": "9beb00b80ec2376f4e16b96ac9ebaa5991522a80723c98466bbf6eacbceb30c3"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_RELEITURA_CUSTO_KIMI\\PARECER.md",
+              "sha256": "00a26ecfbdfe2022385b0529d43d4950100011d3ac2740ac6b848c67340fdcf2"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_RELEITURA_CUSTO_KIMI\\AUDITORIA_LOGS.json",
+              "sha256": "27149cb1df913b814eb2620c5ff70291481fa7ea180d012587b6e5bf0fb3f689"
+            },
+            {
+              "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_RELEITURA_CUSTO_KIMI\\LEITURA_DELEGADA.md",
+              "sha256": "3e91dd2cf704c305f595b0a869ff07ece63affa465f2559d2b30e7774d455803"
+            }
+          ],
+          "lease": null,
+          "note": "",
+          "review_evidence": [],
+          "reviewed_by": null,
+          "status": "review_pending",
+          "submitted_by": "codex-coordenadora",
+          "ready": false
+        },
+        {
+          "id": "review-pedras-limpas-v413",
+          "attempts": 0,
+          "criterion": "Pedido pedras limpas:21modulos e errata OResumoEPsiBit; comparar texto/codigo/localizadores/estatutos; vereditos por modulo, texto proposto se ressalva, relatorio <=15linhas e hashes. Sem recompilacao desnecessaria ou instalacao.",
+          "depends_on": [],
+          "epoch": 0,
+          "evidence": [],
+          "lease": null,
+          "note": "Pedido humano posterior de leitura das pedras na forma final do kernel.",
+          "review_evidence": [],
+          "reviewed_by": null,
+          "status": "open",
+          "submitted_by": null,
+          "ready": true
+        }
+      ],
+      "settled": [],
+      "tetelestai": false,
+      "current_records": [
+        {
+          "id": "lote1-review-delivered",
+          "kind": "fact",
+          "sources": [
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\RESULTADO.json",
+              "sha256": "9696bd5f747a5bcce6d2f08b13289c8d328db2f3549ce2535268023b6423379e"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\PARECER.md",
+              "sha256": "2ec651775e1c94b59c43808bf761451658092cdec246b512548c232cb743dbb3"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\FINAL_COMPILATIONS.json",
+              "sha256": "858f9963369f2a08d5610ae668405c934dd62b1ffb92ef31d1ceafe892ef4dec"
+            }
+          ],
+          "statute": "REAL",
+          "text": "Revisao de terceiro do lote1 entregue: oito fontes RC0, 68 teoremas auditados e quatro sondas; zero avisos/sorryAx/axiomas fora do trio. Parecer registra tres itens aprovados, quatro ressalvados e item6 reprovado como alegacao de custo real de fita, preservando seus teoremas abstratos. Errata confirmada; nenhum canonico alterado. Quadro ENTREGUE evento1692; mapa proprio seq2188; deposito seq764 pendente de triagem. Aceite e integracao pela gerencia separados."
+        },
+        {
+          "id": "trinity-r1-delivered",
+          "kind": "fact",
+          "sources": [
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\RESULTADO.json",
+              "sha256": "5a36da78c8034e7d6e845a41a09164cfa4924292f6bbb34c8048dad1011fd3e9"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\PARECER.md",
+              "sha256": "92c94b5989d3a47142a2805d6833df06fcb0c97c72ddbc7bdd8db8f8d209f0a2"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\CheckTrinityR2.compile.json",
+              "sha256": "53a6955678d8045e8faa07c7911e6a980c69b207c67dc5fbcc4c42c0ef51749c"
+            }
+          ],
+          "statute": "REAL",
+          "text": "Revisao de terceiro do item9 Trinity R1 entregue: APROVADA_COM_RESSALVAS documentais. 60 teoremas auditados e sete verificacoes adicionais em Lean, RC0/sem avisos/so trio. Correcao geral e decisao Horn/dois literais conferidas; contador de fixacoes ligado a avaliador instrumentado, sem cota TM2. Delimitar generalizacao sobre ramificacao/resolucao; a_trindade foi ampliada. Nenhum canonico alterado; lote1 preservado. Quadro ENTREGUE evento1695; mapa proprio seq2191; deposito seq765 pendente de triagem. Sem autoaceite."
+        },
+        {
+          "id": "trinity-consolidado-r3-delivered",
+          "kind": "fact",
+          "sources": [
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\RESULTADO.json",
+              "sha256": "466e1ba9422498ac2f5242e243d6558fd473e2f9747858f504b0aa3e04e87a30"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\PARECER.md",
+              "sha256": "9e7d4b93e44cf9fda0b545ba615f86e93d3908b41f1febae5b16ed69f135ff8c"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\CheckTraversalVerified.compile.json",
+              "sha256": "7af0838da43b8431e3fb166f06ab77d5e45653a22d8c25c8ee8a3953973eaadf"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\CheckNames.compile.json",
+              "sha256": "75ef3e270f22b803929f04052fde759acda015acb0f22e0ee81387b3c17987cd"
+            }
+          ],
+          "statute": "REAL",
+          "text": "Pedido consolidado20nov revisado: itens1-8 inalterados reutilizados por hash; item9 TrinityR3,87teoremas e13sondas novas finais RC0/zeroavisos/so trio. 3APROVADA,5APROVADA_COM_RESSALVAS; item6 REPROVADA como custo real de fita, teoremas abstratos validos. R3 decide todaCNF com combustivel suficiente e3CNF por listaToca; cotas superiores exponenciais em fixacoes, naoTM2. Contadores majoram curto-circuito; lista conserva repeticoes; delimitar ramificacao/resolucao e retangulos. Nenhum original/kernel/um.py/gate alterado. Unidade originalmente R2 retargetada explicitamente ao consolidado/R3, ENTREGUE evento1699; mapa seq2194; deposito seq766 pendente. Sem autoaceite."
+        },
+        {
+          "id": "trinity-r7-operador-r2-delivered",
+          "kind": "fact",
+          "sources": [
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\RESULTADO.json",
+              "sha256": "4b73dac0c06809689f1c18947fa0a9d54ca513c7756f58b67eec7e5d2471835d"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\PARECER.md",
+              "sha256": "7471bde0658e73ddf0056f356023589acdca8e8853401105ff4b5cae0413fd76"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\AuditTrinity.compile.json",
+              "sha256": "78b9aa91366d91b0baa65925c555ed8ca0000d295b74f82900a691fef5b09e82"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\AuditOperador.compile.json",
+              "sha256": "236e1043532d03cd741fb0851eb177405d1b1b2dbb8caa500a5d85d3f6e2fbdc"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\CheckScope.compile.json",
+              "sha256": "8916a3403ea40019f3934641b4adb97e509dbf408c20c0920e27765efa381405"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R7_OPERADOR_R2\\CONCURRENCY_OBSERVATION.json",
+              "sha256": "29d7ae5f6bc70db12c1ab9cc7ceecad637ff34e37f65faca2f7022a0acc63efb"
+            }
+          ],
+          "statute": "REAL",
+          "text": "Adendo v413 R7/Operador R2 revisado: Trinity R7 APROVADA_COM_RESSALVAS; Operador R2 APROVADA. 115+15 teoremas e nove controles RC0/zero avisos/so trio. Correcao anterior de escopo e dedup conferem; fontes preservadas. Restam qualificacoes documentais: limite sob 0<beta<1, sobra <=um passo, hLandauer global assumido nao determinado por reversibilidade. Identidades de carga/radical e energia condicional validas; nenhuma nova cota polinomial uniforme de fita, instalacao ou alteracao de gate. Unidade ENTREGUE evento1702; mapa seq2202; deposito seq767 pendente. Requisito review_pending sem autoaceite."
+        },
+        {
+          "id": "ponte-cook-levin-r0-delivered",
+          "kind": "fact",
+          "sources": [
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\RESULTADO.json",
+              "sha256": "18a5054d3e76417636ff1b36a94ac65404173148b3c319b4996148327f6545a8"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\PARECER.md",
+              "sha256": "e1f16281dbc457d599adac51cdea0188718a8848e71eb7a911c0c2d2d59c5dc4"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\PonteCookLevin.compile.json",
+              "sha256": "912f4ffa204fdf8dcf2362027428a798922a66967b6942a9440a2faf212789e2"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\CheckBridgeR2.compile.json",
+              "sha256": "7546b9f3a0b5273b147678f65c7ad07625b044b1ab15bcd7bbf644b0e2c07044"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PONTE_COOK_LEVIN_R0\\BIBLIOGRAPHIC_CHECK.json",
+              "sha256": "0db5e2fcbe7a97f9cbaeba06ccf203ea5a094585a58a8527e934219ef78dfe88"
+            }
+          ],
+          "statute": "REAL",
+          "text": "PonteCookLevin R0 revisada: APROVADA_COM_RESSALVAS documentais; 22 relatorios publicos e oito controles finais RC0/zero avisos/sorry/fora do trio. Fiacao do leitor, precisao diadica, codificacao e SATcru conferidos. Controle prova EmPComUmaLeitura iff ReduzASAT sem hCL; falta explicitar o fecho many-one de SAT, nao toda P com oraculo. Concordancia matematica com traducao classica Cook-Levin (DERIVED/KNOWN), mas hCL continua hipotese sem habitante Lean nesta entrega. Trinity R7 ressalvada e Operador R2 aprovado, reutilizados por hash. Custo da leitura nao contado em TM2, sem P=NP em fita ou prova fisica de dispositivo num ato. Nenhum original/kernel/um.py/Atlas/gate alterado. Unidade ENTREGUE evento1705; mapa seq2204; deposito seq768 pendente de triagem. Sem autoaceite."
+        },
+        {
+          "id": "releitura-custo-kimi-scope-correction",
+          "kind": "fact",
+          "sources": [
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_RELEITURA_CUSTO_KIMI\\RESULTADO.json",
+              "sha256": "9beb00b80ec2376f4e16b96ac9ebaa5991522a80723c98466bbf6eacbceb30c3"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_RELEITURA_CUSTO_KIMI\\PARECER.md",
+              "sha256": "00a26ecfbdfe2022385b0529d43d4950100011d3ac2740ac6b848c67340fdcf2"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_RELEITURA_CUSTO_KIMI\\AUDITORIA_LOGS.json",
+              "sha256": "27149cb1df913b814eb2620c5ff70291481fa7ea180d012587b6e5bf0fb3f689"
+            },
+            {
+              "kind": "artifact",
+              "ref": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_RELEITURA_CUSTO_KIMI\\LEITURA_DELEGADA.md",
+              "sha256": "3e91dd2cf704c305f595b0a869ff07ece63affa465f2559d2b30e7774d455803"
+            }
+          ],
+          "statute": "REAL",
+          "text": "Releitura pedida pelo operador: custo Kimi beta/carga reconhecido, 18Lean/12MD e 16recibos conferidos, 106relatorios axiomas reutilizados por hashes, sem recompilar. Carga n ln2 e limiar estrito, k>n ln2/beta, m+2 atos com cobranca (m+2)n ln2. Corrigida ao lado a frase final da revisao anterior: custo interno do leitor em TM2 e limite de escopo, nao pendencia impeditiva da Ponte com leitor pedida em20nov. Ponte R0 ressalvada apenas conforme PCL-F1 documental; hCL explicito e limites E28 preservados. Nao se afirma P=NP irrestrito ou execucao fisica. Fontes, gate e originais intactos. Adendo ENTREGUE evento1707, rota seq2205, deposito seq769 pendente de triagem; sem autoaceite."
+        }
+      ],
+      "flow": {
+        "phase": "mission_sync",
+        "next_action": "Use current mission projection and preflight before each material action.",
+        "handles": []
+      },
+      "terminal_build_records": [],
+      "terminal_build_records_recovery": {
+        "operation": "get",
+        "context_id": "9c2cd9b5-af16-5f82-beb9-03e5cc4b919b",
+        "revision": 27,
+        "state_sha256": "b4aa6d08a94bbf73ea7743e22c680c4b1adeccb20b9e2b87f96767ad98a2f26c",
+        "field": "q.records",
+        "instruction": "Legacy terminal build tracker records only. Use the same mission reference. get returns current state; compare revision and state_sha256 and verify each complete record with record_sha256. Earlier states require journal replay. General facts, orders and errata are never compacted by this rule."
+      },
+      "terminal_handles": [],
+      "terminal_handles_recovery": {
+        "operation": "get",
+        "context_id": "9c2cd9b5-af16-5f82-beb9-03e5cc4b919b",
+        "revision": 27,
+        "state_sha256": "b4aa6d08a94bbf73ea7743e22c680c4b1adeccb20b9e2b87f96767ad98a2f26c",
+        "field": "p.handles",
+        "instruction": "Use the same mission reference. get returns current state; compare revision and state_sha256. Earlier states require journal replay."
+      },
+      "unresolved_handles": [],
+      "next_ready": [
+        "review-pedras-limpas-v413"
+      ],
+      "history": {
+        "operation": "get",
+        "context_id": "9c2cd9b5-af16-5f82-beb9-03e5cc4b919b",
+        "records": 27
+      },
+      "scope_note": "Operational satisfaction only. Original and history preserved. No scientific gate changes."
+    },
+    "projection_sha256": "6016a1171910d1b802c45b2f4b75576ad7a8c6996033739f98359187450b5c4c",
+    "actual_chars": 24408,
+    "receipt": {
+      "context_id": "9c2cd9b5-af16-5f82-beb9-03e5cc4b919b",
+      "scope": {
+        "house": "IALD",
+        "principal": "luiz"
+      },
+      "revision": 27,
+      "event_id": "pedras-limpas-v413-extend",
+      "event_hash": "ca175d423752c0e42f87f15b4634dc5ce2d2bf6445c03122bd321f9666df84a3",
+      "objective_sha256": "dd0049670146cdbc26d6fdb8d5ac05d5886206fbb6f743df53f5fcdf53b7dd59",
+      "anchor_sha256": "a03666d9bbd1fd543a7294a2f7ad2d3a9a8aec518eba360a5114b0b7519a60ac",
+      "state_sha256": "b4aa6d08a94bbf73ea7743e22c680c4b1adeccb20b9e2b87f96767ad98a2f26c",
+      "replayed": false
+    }
+  }
+}

@@ -1,0 +1,9 @@
+kc_mudados = []
+for x, e in kc.items():
+    troca_com_backup(PK / "pedra" / "origem" / (x + ".lean"), kc_bytes[x])
+    troca_com_backup(PK / "pedra" / (x + ".lean"), kc_bytes[x])
+    if troca_com_backup(K13 / "TGLExt" / (x + ".lean"), kc_bytes[x], no_lugar=False):   # (o antigo do sandbox vai para a quarentena, fora da arvore do lake, conferido)
+        kc_mudados.append(x)
+    assert (K13 / "TGLExt" / (x + ".lean")).read_bytes() == (PK / "pedra" / (x + ".lean")).read_bytes() == kc_bytes[x]
+    grava_txt(BD / (x + ".diff"), e["diff_texto"])
+raiz_mudou = troca_com_backup(K13 / "TGLExt.lean", raiz_nova, no_lugar=False)

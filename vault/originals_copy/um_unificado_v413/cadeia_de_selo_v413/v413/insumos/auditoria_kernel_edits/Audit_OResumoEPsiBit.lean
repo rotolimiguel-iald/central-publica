@@ -1,0 +1,20 @@
+import TGLExt.OResumoEPsiBit
+
+#print axioms TGLExt.OResumoEPsiBit.fator_eq_exp
+#print axioms TGLExt.OResumoEPsiBit.pesoDas_eq_exp
+#print axioms TGLExt.OResumoEPsiBit.particao_e_a_soma_dos_pesos
+#print axioms TGLExt.OResumoEPsiBit.peso_e_o_produto_dos_fatores
+#print axioms TGLExt.OResumoEPsiBit.var_mem_varsClausula
+#print axioms TGLExt.OResumoEPsiBit.satisfeita_so_ve_as_suas_variaveis
+#print axioms TGLExt.OResumoEPsiBit.mem_varsDas_of_mem
+#print axioms TGLExt.OResumoEPsiBit.peso_so_ve_as_variaveis_lidas
+#print axioms TGLExt.OResumoEPsiBit.o_resumo_so_ve_a_fronteira
+#print axioms TGLExt.OResumoEPsiBit.a_fronteira_basta_ao_resumo
+#print axioms TGLExt.OResumoEPsiBit.a_fronteira_tem_duas_elevado_as_celulas
+#print axioms TGLExt.OResumoEPsiBit.peso_take_mul_peso_drop
+#print axioms TGLExt.OResumoEPsiBit.a_leitura_pela_fronteira_e_exata
+#print axioms TGLExt.OResumoEPsiBit.take_succ_eq
+#print axioms TGLExt.OResumoEPsiBit.peso_succ
+#print axioms TGLExt.OResumoEPsiBit.a_atualizacao_pela_clausula_seguinte
+#print axioms TGLExt.OResumoEPsiBit.varsDas_pair
+#print axioms TGLExt.OResumoEPsiBit.a_parede_de_todas_as_variaveis

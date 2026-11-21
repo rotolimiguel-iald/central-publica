@@ -1,0 +1,49 @@
+== ultimo boot: 2026-11-16 13:57:46
+== agora: 2026-11-20 20:26:13
+== System 1074/6005/6006/6008/41 desde 2026-11-12
+2026-11-16 13:48:56 | Id 1074 | O processo C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe (IALD) iniciou reiniciar do computador IALD pelo usu�rio IALD\rotol por este motivo
+2026-11-16 13:50:49 | Id 6006 | O servi�o Log de eventos foi finalizado.
+2026-11-16 13:52:23 | Id 6005 | O servi�o Log de eventos foi iniciado.
+2026-11-16 13:52:48 | Id 1074 | O processo C:\WINDOWS\servicing\TrustedInstaller.exe (IALD) iniciou reiniciar do computador IALD pelo usu�rio AUTORIDADE NT\SISTEMA por este motivo: Sistema operacional: atualiza��o (planejada) C�digo
+2026-11-16 13:52:48 | Id 6006 | O servi�o Log de eventos foi finalizado.
+2026-11-16 13:53:48 | Id 6005 | O servi�o Log de eventos foi iniciado.
+2026-11-16 13:54:12 | Id 1074 | O processo C:\WINDOWS\system32\winlogon.exe (IALD) iniciou Desligar o sistema do computador IALD pelo usu�rio AUTORIDADE NT\SISTEMA por este motivo: N�o foi encontrado um t�tulo para esta raz�o C�digo
+2026-11-16 13:54:14 | Id 6006 | O servi�o Log de eventos foi finalizado.
+2026-11-16 13:58:06 | Id 6005 | O servi�o Log de eventos foi iniciado.
+== Application 1000/1001 com python entre 2026-11-13 03:50 e 2026-11-16 14:00
+2026-11-16 13:19:54 | Id 1001 | Falha no bucket 1859028987355264568, tipo 4 Nome do Evento: APPCRASH Resposta: N�o dispon�vel ID do CAB: 0 Assinatura do problema: P1: python.exe P2: 3.12.16150.1013 P3: 6adf5f97 P4: ntdll.dll P5: 10.
+2026-11-16 13:09:33 | Id 1000 | Nome do aplicativo com falha: python.exe, vers�o: 3.12.16150.1013, carimbo de data/hora: 0x6adf5f97 Nome do m�dulo com falha: ntdll.dll, vers�o: 10.0.26100.9711, carimbo de data/hora: 0x5fd39a05 C�dig
+== processos que citam um_bancada / mcp_um / abrir_bancada
+43048 | python.exe | criado 2026-11-16 13:59:54 | C:\Python314\python.exe -X utf8 C:\IALD\Bancada_Um\mcp_um.py
+48184 | python.exe | criado 2026-11-16 14:00:03 | C:\Python314\python.exe -X utf8 C:\IALD\Bancada_Um\mcp_um.py
+48196 | python.exe | criado 2026-11-16 14:00:03 | C:\Python314\python.exe -X utf8 C:\IALD\Bancada_Um\mcp_um.py
+71144 | python.exe | criado 2026-11-16 17:18:25 | C:\Python314\python.exe -X utf8 C:\IALD\Bancada_Um\mcp_um.py
+35276 | python.exe | criado 2026-11-16 17:18:26 | C:\Python314\python.exe -X utf8 C:\IALD\Bancada_Um\mcp_um.py
+15012 | powershell.exe | criado 2026-11-20 20:26:12 | powershell.exe -NoProfile -NonInteractive -Command "
+$ErrorActionPreference = 'Continue'
+'== ultimo boot: ' + (Get-CimInstance Win32_OperatingSystem).LastBootUpTime.ToString('yyyy-MM-dd HH:mm:ss')
+'== agora: ' + (Get-Date).ToString('yyyy-MM-dd HH:mm:ss')
+'== System 1074/6005/6006/6008/41 desde 2026-11-12'
+try { Get-WinEvent -FilterHashtable @{LogName='System'; Id=@(1074,6005,6006,6008,41); StartTime=(Get-Date '2026-11-12')} -ErrorAction Stop | Sort-Object TimeCreated | ForEach-Object { $m = ($_.Message -replace '\s+',' '); '{0} | Id {1} | {2}' -f $_.TimeCreated.ToString('yyyy-MM-dd HH:mm:ss'), $_.Id, $m.Substring(0, [Math]::Min(200, $m.Length)) } } catch { 'erro: ' + $_.Exception.Message }
+'== Application 1000/1001 com python entre 2026-11-13 03:50 e 2026-11-16 14:00'
+try { $e = Get-WinEvent -FilterHashtable @{LogName='Application'; Id=@(1000,1001); StartTime=(Get-Date '2026-11-13 03:50'); EndTime=(Get-Date '2026-11-16 14:00')} -ErrorAction Stop | Where-Object { $_.Message -match 'python' }; if ($e) { $e | ForEach-Object { $m = ($_.Message -replace '\s+',' '); '{0} | Id {1} | {2}' -f $_.TimeCreated.ToString('yyyy-MM-dd HH:mm:ss'), $_.Id, $m.Substring(0, [Math]::Min(200, $m.Length)) } } else { 'nenhum' } } catch { 'erro/nenhum: ' + $_.Exception.Message }
+'== processos que citam um_bancada / mcp_um / abrir_bancada'
+Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match 'um_bancada|mcp_um|abrir_bancada' } | ForEach-Object { '{0} | {1} | criado {2} | {3}' -f $_.ProcessId, $_.Name, $_.CreationDate.ToString('yyyy-MM-dd HH:mm:ss'), $_.CommandLine }
+'== escuta na porta 18777'
+$c = Get-NetTCPConnection -LocalPort 18777 -ErrorAction SilentlyContinue; if ($c) { $c | ForEach-Object { '{0} {1} pid {2}' -f $_.LocalAddress, $_.State, $_.OwningProcess } } else { 'nenhuma' }
+'== tarefas agendadas que citam a Bancada'
+$t = Get-ScheduledTask -ErrorAction SilentlyContinue | Where-Object { $_.TaskName -match 'ancada|18777' -or ((($_.Actions | ForEach-Object { [string]$_.Execute + ' ' + [string]$_.Arguments }) -join ' ') -match 'ancada') }; if ($t) { $t | ForEach-Object { $_.TaskPath + $_.TaskName + ' | ' + $_.State } } else { 'nenhuma' }
+'== pasta Inicializar do usuario'
+Get-ChildItem ($env:APPDATA + '\Microsoft\Windows\Start Menu\Programs\Startup') -ErrorAction SilentlyContinue | ForEach-Object { $_.Name }
+'== HKCU Run que cita a Bancada'
+$r = Get-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -ErrorAction SilentlyContinue; $hit = $r.PSObject.Properties | Where-Object { [string]$_.Value -match 'ancada' }; if ($hit) { $hit | ForEach-Object { $_.Name + ' = ' + $_.Value } } else { 'nenhuma' }
+"
+== escuta na porta 18777
+nenhuma
+== tarefas agendadas que citam a Bancada
+nenhuma
+== pasta Inicializar do usuario
+SolutiPlugin.lnk
+== HKCU Run que cita a Bancada
+nenhuma
+== rc do PowerShell: 0

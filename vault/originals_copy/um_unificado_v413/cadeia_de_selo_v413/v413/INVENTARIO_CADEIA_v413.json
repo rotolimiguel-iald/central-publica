@@ -1,0 +1,1096 @@
+{
+ "contrato": "INVENTARIO_CADEIA_v413",
+ "gerado": "2026-11-20T20:03:50",
+ "molde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412",
+ "bancada_medida": {
+  "arquivo": "C:\\IALD\\Bancada_Um\\canonical_contracts.json",
+  "deployment_id_em_producao": "B20-v411-20261113-R1",
+  "rotulo_em_producao": "B20",
+  "versao_em_producao": "v411",
+  "nota": "a producao ainda pina o deployment lido aqui; o rotulo do B(n) da v413 (o salto desde a versao em producao) e' decisao da Etapa 2/gerencia, conferida no disco na hora"
+ },
+ "numeros_medidos_v412": {
+  "n_modulos_novos_v412": 156,
+  "n_bandeiras_novas_v412": 5478,
+  "escada_v412": [
+   12308,
+   17786
+  ],
+  "decl_v412": 43468,
+  "thm_v412": 32634
+ },
+ "papeis": {
+  "candidato": {
+   "gerar_candidato_v412_r7.py": {
+    "sha16": "a7a730c30ae3e0c9",
+    "bytes": 32879,
+    "linhas": 365,
+    "dependencias_locais": [
+     "acom_conferencias_v412",
+     "delta_v412_r7",
+     "e7_05_derivar_gerador_v412",
+     "gerar_candidato_v412",
+     "gerar_candidato_v412_r5",
+     "gerar_candidato_v412_r7",
+     "guarda_frases_v412_r7",
+     "registros_v412_r7",
+     "runtime_v412_guarda",
+     "topo_v412",
+     "verificar_historia_texto_v412_r7"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 81,
+     "v411": 45,
+     "k412c": 2,
+     "base_v411": 7,
+     "rodadas_R5_R7_R11_R12_R25": 17,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {
+     "n_modulos_novos_v412": 4
+    },
+    "o_que_muda": "base_v411 -> base_v412 (o um.py v412 selado); o kernel: os modulos novos de kernel_modulos_novos_v413.json embutidos em _EMBEDDED_KERNEL_FILES do sandbox k413c, a raiz regenerada, as bandeiras de kernel\\FLAGS_v413.json (ext_<modulo>_413_NNNN) e a escada lida do core da v412; NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos: o gerador precisa de um caminho para SUBSTITUIR o texto embutido de um arquivo que ja' existe (hoje so' acrescenta) e manter formal_files/ledger coerentes; UM_VERSION v413; registros, secao do artigo e resumo pelo contrato da v413 (gerencia); as ancoras de patch tem de ocorrer uma vez no um.py v412."
+   },
+   "delta_v412_r7.py": {
+    "sha16": "76326709aacd6a74",
+    "bytes": 8823,
+    "linhas": 150,
+    "dependencias_locais": [
+     "delta_v412",
+     "delta_v412_r5",
+     "delta_v412_r7",
+     "e7_05_derivar_gerador_v412",
+     "um_v412_candidato"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 48,
+     "v411": 16,
+     "k412c": 1,
+     "base_v411": 1,
+     "rodadas_R5_R7_R11_R12_R25": 20,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {
+     "n_modulos_novos_v412": 4
+    },
+    "o_que_muda": "importa o delta_v412 por caminho e sobrescreve o que a v413 muda; le BUNDLE_v413.json, kernel_modulos_novos_v413.json e kernel\\FLAGS_v413.json; precisa expor o kernel_corrigido (path e sha256 antes/depois) para o gerador, o ensaio e os conferidores; os registros e o artigo vem do contrato da v413."
+   },
+   "registros_v412_r7.py": {
+    "sha16": "7d641780fb867c24",
+    "bytes": 18203,
+    "linhas": 231,
+    "dependencias_locais": [
+     "e7_04_derivar_texto_v412",
+     "e7_11_ancoras_escolhidas_v412",
+     "e7_lib_v412",
+     "registros_v412",
+     "registros_v412_r5",
+     "registros_v412_r7",
+     "textos_registros_v412_r7"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 60,
+     "v411": 12,
+     "k412c": 0,
+     "base_v411": 1,
+     "rodadas_R5_R7_R11_R12_R25": 15,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "os registros por especificacao da v413 (quais e com que texto) sao do contrato da gerencia; o motor (_v392_registro) e a regra de ancora por nome seguem; caminhos e1_lib/pagina/manifesto passam aos da v413."
+   },
+   "runtime_v412_codigo_r7.py": {
+    "sha16": "3c95ad83195cfc37",
+    "bytes": 3197,
+    "linhas": 34,
+    "dependencias_locais": [
+     "e7_04_derivar_texto_v412",
+     "runtime_v412_codigo",
+     "runtime_v412_guarda"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 25,
+     "v411": 0,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 8,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "as funcoes novas da v413 que entram no programa (secao do artigo e rodada dos registros por especificacao), se o contrato da v413 as tiver; o nome _v412_* passa a _v413_*."
+   },
+   "textos_registros_v412_r7.py": {
+    "sha16": "3bf2c9b853f12d17",
+    "bytes": 21559,
+    "linhas": 156,
+    "dependencias_locais": [
+     "e7_04_derivar_texto_v412",
+     "registros_v412_r7",
+     "textos_registros_v412",
+     "textos_registros_v412_r5",
+     "textos_registros_v412_r7"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 22,
+     "v411": 0,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 11,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "texto dos registros da v413, tirado da pagina publica da v413 e dos cabecalhos das pedras limpas (contrato da gerencia)."
+   },
+   "texto_publico_v412_r7.py": {
+    "sha16": "513960def8c8fc88",
+    "bytes": 6947,
+    "linhas": 145,
+    "dependencias_locais": [
+     "e7_04_derivar_texto_v412",
+     "texto_publico_v412",
+     "texto_publico_v412_r5"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 12,
+     "v411": 0,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 8,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "conversor da pagina publica da v413 para TeX; o corpo e' generico (rotulos)."
+   },
+   "guarda_frases_v412_r7.py": {
+    "sha16": "9636c6af260f5a96",
+    "bytes": 14050,
+    "linhas": 162,
+    "dependencias_locais": [
+     "base_um_v411",
+     "e7_04_derivar_texto_v412",
+     "e7_lib_v412",
+     "guarda_frases_v412",
+     "guarda_frases_v412_r5",
+     "runtime_v412_guarda"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 29,
+     "v411": 14,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 16,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "carrega a _v412_guarda_frases do um.py v412 selado (base_um_v412) e o codigo novo da v413; as obrigacoes novas sao do contrato da v413."
+   },
+   "guarda_conversa_v412_r7.py": {
+    "sha16": "df23de255b38eb4b",
+    "bytes": 15455,
+    "linhas": 227,
+    "dependencias_locais": [
+     "delta_v412_r7",
+     "e7_06_derivar_ensaio_v412",
+     "guarda_conversa_v412",
+     "guarda_conversa_v412_r5"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 23,
+     "v411": 19,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 9,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "o mecanismo nao muda; a lista das falas e os pinos da base passam aos da v412 selada (GUARDA_CONVERSA_BASE_v412)."
+   },
+   "guarda_material_privado_v412_r7.py": {
+    "sha16": "0807d143449ac307",
+    "bytes": 4621,
+    "linhas": 59,
+    "dependencias_locais": [
+     "e7_05_derivar_gerador_v412",
+     "guarda_material_privado_v412",
+     "guarda_material_privado_v412_r5",
+     "textos_registros_v412_r7"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 24,
+     "v411": 2,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 12,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "so' rotulos e a pasta insumos da v413 (pedras limpas, kernel_edits, origem); a guarda da E03 da G1 e' a mesma."
+   },
+   "guarda_ordem_de_chamada_v412_r7.py": {
+    "sha16": "cbcdcd9f3d807b3d",
+    "bytes": 38304,
+    "linhas": 347,
+    "dependencias_locais": [
+     "e7_06_derivar_ensaio_v412",
+     "guarda_ordem_de_chamada_v412",
+     "guarda_ordem_de_chamada_v412_r5"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 46,
+     "v411": 66,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 17,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "depende de a v413 ter ou nao registro com funcao novo (contrato); se nao tiver, o da v412 segue como herdado (rotulos)."
+   },
+   "guardas_estaticas_bancada_v412_r7.py": {
+    "sha16": "f784956ce8d45ea9",
+    "bytes": 13322,
+    "linhas": 120,
+    "dependencias_locais": [
+     "acom_conferencias_v412",
+     "delta_v412_r7",
+     "e7_06_derivar_ensaio_v412",
+     "gerar_candidato_v412",
+     "guardas_estaticas_bancada_v412",
+     "guardas_estaticas_bancada_v412_r5"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 46,
+     "v411": 5,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 9,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "so' as linhas unicas de ALPHA e UM_VERSION sao lidas; rotulos e o sandbox curto (vb2x); o pino do esboco do CANDIDATO_v413.json."
+   },
+   "verificar_historia_texto_v412_r7.py": {
+    "sha16": "0577b3f44fa6d475",
+    "bytes": 8953,
+    "linhas": 120,
+    "dependencias_locais": [
+     "e7_04_derivar_texto_v412",
+     "verificar_historia_texto_v412",
+     "verificar_historia_texto_v412_r5"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 16,
+     "v411": 0,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 9,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "generico (rotulos); roda sobre os textos novos da v413."
+   },
+   "topo_com_resultado_v412_r7.py": {
+    "sha16": "2a20ac82ed3a39bb",
+    "bytes": 4383,
+    "linhas": 42,
+    "dependencias_locais": [
+     "conferir_rito_v412",
+     "delta_v412_r7",
+     "e7_06_derivar_ensaio_v412",
+     "topo_com_resultado_v412",
+     "topo_com_resultado_v412_r5"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 25,
+     "v411": 7,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 9,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "o topo ratificado/derivado da v413 (TOPO_RATIFICADO_v413_DERIVADO.json, da gerencia); rotulos."
+   },
+   "exame_pontos_v412_r7.py": {
+    "sha16": "5bb8261caa4c0a31",
+    "bytes": 129612,
+    "linhas": 860,
+    "dependencias_locais": [
+     "delta_v412_r7",
+     "e7_06_derivar_ensaio_v412",
+     "exame_pontos_v412",
+     "exame_pontos_v412_r5",
+     "um"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 68,
+     "v411": 76,
+     "k412c": 0,
+     "base_v411": 1,
+     "rodadas_R5_R7_R11_R12_R25": 13,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "o ponto novo da v413 no main (se houver registro novo), os da v412 herdados; --flags kernel\\FLAGS_v413.json; --core0/--selo0 da v412 selada."
+   },
+   "simular_arvore_do_nos_v412_r7.py": {
+    "sha16": "4e7e15ec4d5be185",
+    "bytes": 20443,
+    "linhas": 130,
+    "dependencias_locais": [
+     "delta_v412_r7",
+     "e7_06_derivar_ensaio_v412",
+     "simular_arvore_do_nos_v412",
+     "simular_arvore_do_nos_v412_r5",
+     "um"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 35,
+     "v411": 34,
+     "k412c": 0,
+     "base_v411": 1,
+     "rodadas_R5_R7_R11_R12_R25": 12,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "a arvore do Nos depois do rito = os embutidos do candidato da v413 (com o OResumoEPsiBit CORRIGIDO no lugar do da v412) + os residuais; recomputa formal_files; os registros da v413 depois dos da v412. NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos."
+   },
+   "ensaio_a_seco_v412_r7.py": {
+    "sha16": "0b3162f3408471ad",
+    "bytes": 553283,
+    "linhas": 3858,
+    "dependencias_locais": [
+     "acom_conferencias_v412",
+     "conferir_citacoes_v412_r7",
+     "delta_v412_r7",
+     "e3_edicoes_ensaio_v412",
+     "e3_ensaio_adaptar_v412",
+     "e3_topo_derivado_v412",
+     "e7_06_derivar_ensaio_v412",
+     "ensaio_a_seco_v412",
+     "ensaio_a_seco_v412_r5",
+     "exame_pontos_v412_r7",
+     "guarda_conversa_v412_r7",
+     "guarda_frases_v412_r7",
+     "guarda_ordem_de_chamada_v412_r7",
+     "guardas_estaticas_bancada_v412_r7",
+     "quadro_v397_r7",
+     "runtime_v412_guarda",
+     "simular_arvore_do_nos_v412_r7",
+     "topo_com_resultado_v412_r7",
+     "um",
+     "verificar_historia_texto_v412_r7"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 230,
+     "v411": 219,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 146,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 2,
+     "primeiros": [
+      "02b22ba5c6d35c71922ae2f23939acc1c8f2283e8607bca31c4ff5b663fc36bf",
+      "1459b477b496e1f0"
+     ]
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "o kernel embutido == o sandbox k413c (inclusive o arquivo corrigido, que DIFERE do Nos); a escada da v412 -> a da v413; as bandeiras novas; os registros da v413; os herdados da v412 recriados iguais. NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos."
+   },
+   "gerar_esperados_v412.py": {
+    "sha16": "14a192dd2064b6f2",
+    "bytes": 38120,
+    "linhas": 294,
+    "dependencias_locais": [
+     "delta_v412",
+     "gerar_esperados_v412",
+     "guarda_frases_v412",
+     "pos_build_kernel_v412",
+     "quadro_v397",
+     "registros_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 66,
+     "v411": 129,
+     "k412c": 0,
+     "base_v411": 6,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "NAO rodou na v412 (marca A ADAPTAR; substituido por esperados_v412_foco.py); o molde da v413 e' o esperados_v412_foco.py."
+   },
+   "gerar_preparacao_pronta_v412_r7.py": {
+    "sha16": "2f7b564661f5e024",
+    "bytes": 22416,
+    "linhas": 167,
+    "dependencias_locais": [
+     "e7_07_derivar_fecho_v412",
+     "e7_lib_v412",
+     "ensaio_a_seco_v412_r7",
+     "gerar_preparacao_pronta_v412_r5",
+     "gerar_preparacao_pronta_v412_r7",
+     "runtime_v412_guarda",
+     "textos_registros_v412_r7",
+     "um_v412_candidato"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 99,
+     "v411": 13,
+     "k412c": 7,
+     "base_v411": 2,
+     "rodadas_R5_R7_R11_R12_R25": 64,
+     "decima_segunda_lista": 2,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {
+     "n_modulos_novos_v412": 4
+    },
+    "o_que_muda": "o fecho do candidato da v413 (Etapa 2): os recibos da v413 (PRONTO_PARA_CANDIDATO_v413.json desta etapa, CANDIDATO_v413.json, ensaio, portoes)."
+   },
+   "portao_do_pilar_candidato_v412.py": {
+    "sha16": "56df814dde97cd2d",
+    "bytes": 5221,
+    "linhas": 74,
+    "dependencias_locais": [
+     "e2_lib_v412",
+     "portao_do_pilar_candidato_v412",
+     "um_v412_candidato"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 17,
+     "v411": 2,
+     "k412c": 0,
+     "base_v411": 2,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "base_v412\\um.py e PORTAO_DO_PILAR_v413.json; confere que o gerador nao tocou os textos do fecho da chave; acrescentar que a correcao de texto so' muda _EMBEDDED_KERNEL_FILES."
+   },
+   "e7_lib_v412.py": {
+    "sha16": "7a11bec44a0d33ce",
+    "bytes": 4172,
+    "linhas": 97,
+    "dependencias_locais": [
+     "e5_lib_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 14,
+     "v411": 0,
+     "k412c": 1,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 15,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "os caminhos (contrato, manifesto, pagina, pedras, sandbox) passam aos da v413: CONTRATO da gerencia, insumos\\MANIFESTO_PEDRAS_v413.json, insumos\\pedras_limpas\\TGLExt, C:\\t\\k413c\\final."
+   }
+  },
+  "instalar": {
+   "instalar_v412.py": {
+    "sha16": "102eedc557da7521",
+    "bytes": 12096,
+    "linhas": 81,
+    "dependencias_locais": [
+     "adaptar_instalar_e_reverter_v412",
+     "esperados_v412_foco",
+     "instalar_v412",
+     "um_v412_candidato"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 37,
+     "v411": 28,
+     "k412c": 0,
+     "base_v411": 1,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {
+     "n_modulos_novos_v412": 7
+    },
+    "o_que_muda": "o Nos tem de ser a v412 selada; os modulos novos (kernel_modulos_novos_v413.json) nao podem estar no kernel do Nos; NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos: o instalador tem de conferir que tgl_kernel\\TGLExt\\OResumoEPsiBit.lean do Nos e' o da v412 (sha256_origem) e guardar BACKUP DE BYTES dele junto dos 10 de hoje (o rito o reescreve pelo texto embutido); o desvio do B(n) declarado na v412 e' para a gerencia decidir de novo."
+   },
+   "conferir_instalar_rito_v412.py": {
+    "sha16": "c95d9817e07038d9",
+    "bytes": 15352,
+    "linhas": 175,
+    "dependencias_locais": [
+     "carimbar_stdout_v412",
+     "conferir_instalar_rito_v412",
+     "delta_v412",
+     "instalar_v412",
+     "reverter_v412",
+     "rito_v412",
+     "um_v412_candidato"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 54,
+     "v411": 37,
+     "k412c": 0,
+     "base_v411": 1,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "NAO rodou na v412 (marca A ADAPTAR, molde da v411 sem modulo novo); para a v413 a condicao do modulo novo e' a de uma lista NAO vazia e mais o arquivo corrigido."
+   }
+  },
+  "reverter": {
+   "reverter_v412.py": {
+    "sha16": "6a8d05550fc06f32",
+    "bytes": 6225,
+    "linhas": 66,
+    "dependencias_locais": [
+     "adaptar_instalar_e_reverter_v412",
+     "instalar_v412",
+     "reverter_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 17,
+     "v411": 13,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {
+     "n_modulos_novos_v412": 6
+    },
+    "o_que_muda": "restaura os backups gravados pelo instalador (o APLICADO_AO_CANONICO mais novo); NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos: precisa restaurar tambem tgl_kernel\\TGLExt\\OResumoEPsiBit.lean e conferir que voltou ao sha256_origem; os modulos novos vao a quarentena."
+   }
+  },
+  "rito": {
+   "rito_v412.sh": {
+    "sha16": "f54fd8e6d428b19c",
+    "bytes": 24844,
+    "linhas": 266,
+    "dependencias_locais": [
+     "adaptar_rito_e_carimbo_v412",
+     "carimbar_stdout_v412",
+     "instalar_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 64,
+     "v411": 18,
+     "k412c": 1,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 3,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {
+     "n_modulos_novos_v412": 4
+    },
+    "o_que_muda": "o corpo e' generico; o cabecalho diz os numeros da v413 lidos de kernel\\construir_marcas.txt (modulos, tempo do build e do Audit) e o pacote v413; o pilar reaproveitado pela chave (ver PORTAO_DO_PILAR_v413.json)."
+   },
+   "carimbar_stdout_v412.py": {
+    "sha16": "665eb4c96a5d39dd",
+    "bytes": 4423,
+    "linhas": 59,
+    "dependencias_locais": [
+     "adaptar_rito_e_carimbo_v412",
+     "carimbar_stdout_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 11,
+     "v411": 6,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 1,
+     "primeiros": [
+      "fd8d88dae063b429"
+     ]
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "generico (rotulos e o nome do stdout rodada_v413_stdout.txt)."
+   },
+   "cadeia_v412.sh": {
+    "sha16": "ec4cbe09eb3816d1",
+    "bytes": 6353,
+    "linhas": 56,
+    "dependencias_locais": [
+     "cadeia_v412",
+     "comparar_v411_v412",
+     "conferir_citacoes_v412",
+     "conferir_instalar_rito_v412",
+     "conferir_rito_v412",
+     "diff_e_pinos_v412",
+     "ensaio_a_seco_v412",
+     "fim_de_cadeia_v412",
+     "gerar_candidato_v412",
+     "gerar_esperados_v412",
+     "gerar_relatorio_v412",
+     "guarda_frases_v412",
+     "p00_precondicoes_v412",
+     "purga_v412",
+     "teste_conferidor_positivo_v412",
+     "varredura_fock_omega_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 63,
+     "v411": 14,
+     "k412c": 2,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "NAO rodou na v412 (A ADAPTAR; a Etapa 3 foi a enxuta); decisao da gerencia se a v413 volta a cadeia unica ou repete a enxuta."
+   },
+   "cadeia_parte2_v412.sh": {
+    "sha16": "c74ec29cbcf7e395",
+    "bytes": 1367,
+    "linhas": 9,
+    "dependencias_locais": [
+     "cadeia_parte2_v412",
+     "cadeia_v412",
+     "depositar_construtor_v412",
+     "purga_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 14,
+     "v411": 10,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 1,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "remissao a cadeia_v412.sh; mesma decisao."
+   },
+   "fim_de_cadeia_v412.sh": {
+    "sha16": "4c82d8e18e475073",
+    "bytes": 8515,
+    "linhas": 67,
+    "dependencias_locais": [
+     "cadeia_v412",
+     "conferir_exigencias_servico_v412",
+     "delta_v412",
+     "fim_de_cadeia_v412",
+     "gerar_derivacao_pos_rito_v412",
+     "gerar_x_custodia_v412",
+     "harness_fechar_sandbox_v412",
+     "harness_textos_ensaio_v412",
+     "mutar_conferidor_v412",
+     "purga_v412",
+     "rodar_bn_pre_selo_v412",
+     "um_v412_candidato"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 66,
+     "v411": 11,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 1,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "NAO rodou na v412 (fim_de_cadeia_v412.sh.NAO_RODAR.md); B(n) pre-selo, servico estatico, harnesses do pos-rito: decisao da gerencia (a rota bancada.b21_v412 diz: no B(n) da v413, o salto v411->v413)."
+   },
+   "refazer_candidato_v412.sh": {
+    "sha16": "facf2adb0627cfcd",
+    "bytes": 2602,
+    "linhas": 24,
+    "dependencias_locais": [
+     "cadeia_v412",
+     "delta_v412",
+     "gerar_candidato_v412",
+     "guarda_frases_v412",
+     "quadro_v412",
+     "refazer_candidato_v412",
+     "regerar_v412",
+     "registros_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 31,
+     "v411": 9,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "A ADAPTAR na v412; chama a cadeia_v412.sh; mesma decisao."
+   },
+   "regerar_v412.sh": {
+    "sha16": "2b320f28bf778fee",
+    "bytes": 2960,
+    "linhas": 25,
+    "dependencias_locais": [
+     "conferir_fontes_k411c_vs_nos_v412",
+     "construir_kernel_v412",
+     "pos_build_kernel_v412",
+     "purga_v412",
+     "refazer_candidato_v412",
+     "regerar_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 31,
+     "v411": 12,
+     "k412c": 5,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "A ADAPTAR na v412 (texto de versao sem modulo novo); na v413 o comando do kernel e' reconstruir_kernel_v413.py."
+   }
+  },
+  "conferidor": {
+   "conferir_rito_v412.py": {
+    "sha16": "e44f5ea5034fb472",
+    "bytes": 151732,
+    "linhas": 928,
+    "dependencias_locais": [
+     "acom_conferencias_v412",
+     "conferir_conversa_v412",
+     "conferir_rito_v412",
+     "delta_v412",
+     "e3_topo_derivado_v412",
+     "guarda_frases_v412",
+     "quadro_v397",
+     "topo_com_resultado_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 104,
+     "v411": 200,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 13,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 1,
+     "primeiros": [
+      "02b22ba5c6d35c71922ae2f23939acc1c8f2283e8607bca31c4ff5b663fc36bf"
+     ]
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "NAO rodou na v412 (A ADAPTAR; substituido por conferir_pos_rito_v412_foco.py)."
+   },
+   "conferir_pos_rito_v412_foco.py": {
+    "sha16": "778ec6e1d67039a3",
+    "bytes": 9202,
+    "linhas": 112,
+    "dependencias_locais": [
+     "conferir_pos_rito_v412_foco",
+     "conferir_rito_v412",
+     "esperados_v412_foco"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 22,
+     "v411": 22,
+     "k412c": 0,
+     "base_v411": 1,
+     "rodadas_R5_R7_R11_R12_R25": 4,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {
+     "n_modulos_novos_v412": 3
+    },
+    "o_que_muda": "o conferidor enxuto da v412 (o que rodou): base v412 selada (backups do instalador), os modulos novos e as bandeiras da v413, os registros da v413 pelo contrato; NOVO na v413: um modulo ANTIGO muda de texto (kernel_corrigido: TGLExt.OResumoEPsiBit, so' a docstring); a v412 so' ACRESCENTAVA modulos: conferir que tgl_kernel\\TGLExt\\OResumoEPsiBit.lean do Nos ficou com o sha256_saida e que as declaracoes dele seguem as mesmas."
+   },
+   "esperados_v412_foco.py": {
+    "sha16": "d08f4566bf764527",
+    "bytes": 8561,
+    "linhas": 82,
+    "dependencias_locais": [
+     "conferir_pos_rito_v412_foco",
+     "esperados_v412_foco",
+     "gerar_esperados_v412",
+     "rito_v412",
+     "um_v412_candidato"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 46,
+     "v411": 22,
+     "k412c": 2,
+     "base_v411": 4,
+     "rodadas_R5_R7_R11_R12_R25": 17,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {
+     "n_modulos_novos_v412": 4,
+     "n_bandeiras_novas_v412": 1
+    },
+    "o_que_muda": "os ESPERADOS da v413 lidos dos artefatos (CANDIDATO_v413.json, PRONTO_PARA_CANDIDATO_v413.json, kernel_modulos_novos_v413.json, o manifesto da v413, o sandbox k413c, o Nos v412, o contrato da v413, o portao do pilar); acrescentar o kernel_corrigido."
+   },
+   "teste_conferidor_positivo_v412.py": {
+    "sha16": "a2b31f445143e067",
+    "bytes": 7351,
+    "linhas": 67,
+    "dependencias_locais": [
+     "conferir_rito_v412",
+     "delta_v412",
+     "gerar_esperados_v412",
+     "teste_conferidor_positivo_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 26,
+     "v411": 10,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "A ADAPTAR na v412 (nao rodou); depende do conferidor escolhido para a v413."
+   }
+  },
+  "handoff": {
+   "montar_handoff_e_linhagem_v412.py": {
+    "sha16": "28d496b1dc13e6c2",
+    "bytes": 31545,
+    "linhas": 294,
+    "dependencias_locais": [
+     "conferir_pos_rito_v412_foco",
+     "montar_handoff_e_linhagem_v412",
+     "reverter_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 91,
+     "v411": 27,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 24,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {
+     "n_modulos_novos_v412": 1
+    },
+    "o_que_muda": "R2 da gerencia na v412: o bloco v413 SELADA da linhagem e o HANDOFF_v413_CUSTODIA.md com os marcadores _v413, a partir da pagina da v413 aprovada e dos textos ratificados (verbatim); confere com os parsers da G1; e' ato da gerencia."
+   },
+   "pos_rito/textos_custodia_handoff_v412.py": {
+    "sha16": "a1a35489ac859630",
+    "bytes": 23493,
+    "linhas": 237,
+    "dependencias_locais": [
+     "blocos_custodia_v412",
+     "delta_v412",
+     "guarda_frases_v412",
+     "quadro_v412",
+     "textos_custodia_handoff_v412"
+    ],
+    "tokens_proprios_da_v412": {
+     "v412": 43,
+     "v411": 13,
+     "k412c": 0,
+     "base_v411": 0,
+     "rodadas_R5_R7_R11_R12_R25": 0,
+     "decima_segunda_lista": 0,
+     "Bancada_B2x": 0,
+     "deployment_B2x": 0
+    },
+    "hashes_pinados_16hex": {
+     "n": 0,
+     "primeiros": []
+    },
+    "numeros_medidos_da_v412_como_literal": {},
+    "o_que_muda": "A ADAPTAR na v412 (o S6d do orquestrador); se a v413 usar o orquestrador, adaptar ao handoff da v413."
+   }
+  }
+ }
+}

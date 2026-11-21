@@ -1,0 +1,40 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\AFronteiraNaLinguaClassica.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\AFronteiraNaLinguaClassica.lean
+@@ -2,20 +2,19 @@
+ set_option autoImplicit false
+ 
+ /-!
+-# A fronteira na língua clássica (proposta de enunciado da gerência c1, 20/11/2026)
++# A fronteira na língua clássica
+ 
+-[proposta de enunciado; não é candidata a instalar sem revisão; quem constrói não aprova]
++A ponte à máquina padrão (`TGLExt.APonteAoTM2`, `TGLExt.SimTM2`) prova que a máquina TM2 do Mathlib CONFERE uma
++testemunha recebida em tempo polinomial (o lado NP). A pergunta que resta é outra: recebendo SÓ a fórmula, decidir se
++há atribuição que a satisfaz. Este arquivo enuncia essa pergunta com a codificação fixa da ponte (a fórmula, a
++divisória e a testemunha vazia; índices em unário; saída `[b]`), sem `∃` sobre codificações, para que nenhuma máquina
++trivial a cumpra.
+ 
+-A ponte do Codex (`APonteAoTM2` + `SimCompleta`) prova que a máquina TM2 do Mathlib CONFERE uma testemunha recebida
+-em tempo polinomial (o lado NP). A pergunta que resta é outra: recebendo SÓ a fórmula, decidir se há atribuição que a
+-satisfaz. Este arquivo enuncia essa pergunta com a codificação fixa da ponte (a fórmula, a divisória e a testemunha
+-vazia; índices em unário; saída `[b]`), sem `∃` sobre codificações, para que nenhuma máquina trivial a cumpra.
+-
+-`AFronteira` é «SAT em P» para esta codificação, no modelo TM2 do Mathlib. Que isso equivalha a P = NP é o teorema de
++`AFronteira` é “SAT em P” para esta codificação, no modelo TM2 do Mathlib. Que isso equivalha a P = NP é o teorema de
+ Cook–Levin (1971) [KNOWN], fora deste kernel; e as codificações com índice unário e binário são polinomialmente
+ equivalentes depois de renomear as variáveis [KNOWN]. Estatuto: [OPEN].
+ 
+-O produtor da rota de β (`Codex.EntregaBeta`, hipótese `hr`) é mais forte que isto: a sonda `SondaContagem` prova
++O produtor da rota de β (`Codex.EntregaBeta`, hipótese `hr`) é mais forte que isto: `TGLExt.SondaContagem` prova
+ que ele conta as soluções. Decidir não exige contar.
+ -/
+ 
+@@ -35,7 +34,7 @@
+ def satisfazivel (f : List (List (ℕ × Bool))) : Prop := ∃ bs : List Bool, verificaNaFita f bs = true
+ 
+ open Classical in
+-/-- A resposta que a máquina deve escrever: o bit «é satisfazível». -/
++/-- A resposta que a máquina deve escrever: o bit “é satisfazível”. -/
+ noncomputable def decideSAT (f : List (List (ℕ × Bool))) : Bool := decide (satisfazivel f)
+ 
+ /-- [OPEN] A FRONTEIRA: uma máquina TM2 do Mathlib que, recebendo só a fórmula, escreve `[decideSAT f]` em um número

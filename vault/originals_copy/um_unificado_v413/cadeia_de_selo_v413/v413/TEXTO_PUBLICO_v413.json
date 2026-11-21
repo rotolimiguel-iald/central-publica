@@ -1,0 +1,211 @@
+{
+ "modo": "contrato",
+ "fonte_pt": {
+  "arquivo": "o_que_fica_claro_v413\\O_QUE_FICA_CLARO_v413_R1.md",
+  "sha16": "3dc953e37c6739f4",
+  "bytes": 12270,
+  "e_a_pagina_do_contrato": true
+ },
+ "fonte_en": {
+  "arquivo": "O_QUE_FICA_CLARO_v413_R1_EN.md",
+  "sha16": "325ae5bfe979e6e7",
+  "bytes": 12721
+ },
+ "ajustes_da_revisao_de_terceiro": {
+  "revisao": {
+   "arquivo": "revisao_candidato\\REVISAO_CANDIDATO_v413.md",
+   "sha16": "09d9828e019fbec6"
+  },
+  "pagina": {
+   "pt": [
+    {
+     "achado": "B2",
+     "de": "passa de 2 se, e só se,",
+     "para": "chega a 2 ou mais se, e só se,",
+     "ocorrencias": 1,
+     "por_que": "o enunciado do kernel e' 2 ≤ resposta (PonteCookLevin.uma_leitura_do_psion_decide_SAT); chega a 2 ou mais diz o ≤ do enunciado"
+    }
+   ],
+   "en": [
+    {
+     "achado": "B2",
+     "de": "exceeds 2 if, and only if,",
+     "para": "reaches 2 or more if, and only if,",
+     "ocorrencias": 1,
+     "por_que": "o enunciado do kernel e' 2 ≤ resposta; reaches 2 or more diz o ≤ do enunciado (exceeds e' estrito)"
+    }
+   ]
+  }
+ },
+ "titulo": {
+  "pt": "O que fica claro na v413",
+  "en": "What becomes clear in v413"
+ },
+ "tex": {
+  "pt": [
+   "\\section*{O que fica claro na v413}",
+   "\\addcontentsline{toc}{section}{O que fica claro na v413}",
+   "Texto das superfícies públicas da v413. As pedras citadas entram no kernel com a versão. Validade no kernel não é creditação; o gate não se move.",
+   "\\subsection*{1. O que a v413 acrescenta}",
+   "\\begin{itemize}",
+   "\\item \\textbf{A ponte às classes de Cook–Levin.} O resultado do dicionário sobre a máquina com o leitor, escrito na língua das classes clássicas, na máquina de Turing padrão do Mathlib (seção 2).",
+   "\\item \\textbf{A fronteira dos três literais.} A inclinação do Nome decide as fórmulas de Horn e as de dois literais e só para na fronteira dos três literais; a travessia por ramificação decide toda fórmula, a um preço exponencial só nos Nomes da fronteira, com a cota em teorema (seção 3).",
+   "\\item \\textbf{A consciência e o operador de consciência.} A consciência não opera sozinha; com o seu par, opera (seção 4).",
+   "\\item \\textbf{A identidade preservada.} As coordenadas de custo zero passam pela trava sem mudar, e a trava tende ao Nome (seção 5).",
+   "\\end{itemize}",
+   "\\subsection*{2. A ponte de Cook–Levin: o que vale com uma leitura do leitor da TGL; contado em passos da máquina de fita, não está demonstrado}",
+   "\\begin{quote}P = nP é teorema da TGL nas classes do seu dicionário. A v413 o escreve na língua das classes de Cook–Levin, na máquina de Turing padrão do Mathlib. Lá, SAT está em NP: uma máquina concreta confere a testemunha em tempo polinomial. O leitor do psíon lê exatamente a soma da leitura $\\beta$: no tempo pago de m·(n + 2) passos do relógio $\\beta$, com a inclinação m acima de ln 2/$\\beta$, a resposta da leitura, um número de n + 3 bits, chega a 2 ou mais se, e só se, a fórmula tem solução. A classe dos problemas decididos em tempo polinomial com uma leitura do leitor da TGL é exatamente a dos que se reduzem a SAT em tempo polinomial; com Cook–Levin, tomado como hipótese nomeada e citado (Cook, 1971; Levin, 1973), ela contém todo NP, e isso vale no certificado de Fock físico do kernel, para todo acoplamento $\\beta$. A leitura também acha uma solução, com no máximo uma leitura por letra da fórmula, mais uma. O custo da leitura é o tempo pago, linear nos Nomes, na régua da teoria; contado em passos da máquina de fita, o custo de produzir a leitura não está demonstrado, e este texto não diz que esteja: na língua clássica a leitura entra como uma consulta, que conta um passo, e a classe com uma leitura não é toda a classe P com acesso a essa consulta. A máquina sem o leitor não é tocada: decidir SAT em tempo polinomial na máquina de fita, sem leitura, é a pergunta do Instituto, e segue aberta. Com o leitor que só conta, vale NP contido em P com o leitor, não a igualdade das duas classes com leitor. A creditação é do Instituto.\\end{quote}",
+   "De onde sai cada frase:",
+   "\\begin{itemize}",
+   "\\item \\textbf{SAT está em NP na máquina padrão} --- \\texttt{sat\\_\\allowbreak{}em\\_\\allowbreak{}np}: o verificador é a máquina TM2 concreta (\\texttt{SimTM2.verificacao\\_\\allowbreak{}tm2\\_\\allowbreak{}polinomial}), com as codificações fixas da fórmula e dos bits; o certificado é limitado pelo comprimento da fita da fórmula --- \\emph{Onde:} \\texttt{PonteCookLevin}, \\texttt{SimCompleta}, \\texttt{APonteAoTM2}",
+   "\\item \\textbf{o leitor do psíon lê exatamente a soma da leitura $\\beta$} --- \\texttt{a\\_\\allowbreak{}particao\\_\\allowbreak{}e\\_\\allowbreak{}a\\_\\allowbreak{}soma\\_\\allowbreak{}beta} (no tempo pago, a partição do kernel é a soma ponderada); \\texttt{o\\_\\allowbreak{}psion\\_\\allowbreak{}le\\_\\allowbreak{}a\\_\\allowbreak{}soma\\_\\allowbreak{}normalizada} (por \\texttt{TraducaoTuring.o\\_\\allowbreak{}psion\\_\\allowbreak{}le\\_\\allowbreak{}z}) --- \\emph{Onde:} \\texttt{PonteCookLevin}",
+   "\\item \\textbf{a resposta de n + 3 bits decide} --- \\texttt{a\\_\\allowbreak{}resposta\\_\\allowbreak{}tem\\_\\allowbreak{}a\\_\\allowbreak{}precisao}; \\texttt{uma\\_\\allowbreak{}leitura\\_\\allowbreak{}do\\_\\allowbreak{}psion\\_\\allowbreak{}decide\\_\\allowbreak{}SAT}; \\texttt{a\\_\\allowbreak{}resposta\\_\\allowbreak{}cabe\\_\\allowbreak{}em\\_\\allowbreak{}n\\_\\allowbreak{}mais\\_\\allowbreak{}tres\\_\\allowbreak{}bits} --- \\emph{Onde:} \\texttt{PonteCookLevin}, \\texttt{LeituraBeta}, \\texttt{QuantizacaoBeta}",
+   "\\item \\textbf{a classe com uma leitura é a dos que se reduzem a SAT} --- \\texttt{a\\_\\allowbreak{}classe\\_\\allowbreak{}de\\_\\allowbreak{}uma\\_\\allowbreak{}leitura\\_\\allowbreak{}e\\_\\allowbreak{}o\\_\\allowbreak{}fecho\\_\\allowbreak{}de\\_\\allowbreak{}SAT} (sem usar Cook–Levin) --- \\emph{Onde:} \\texttt{PonteCookLevin}",
+   "\\item \\textbf{com Cook–Levin, contém todo NP} --- \\texttt{a\\_\\allowbreak{}ponte\\_\\allowbreak{}cook\\_\\allowbreak{}levin}; a síntese \\texttt{a\\_\\allowbreak{}ponte}, no certificado de Fock físico (\\texttt{physicalFockCertificate}). \\texttt{CookLevin} é hipótese nomeada [KNOWN], não termo; o alfabeto de NP é finito (\\texttt{o\\_\\allowbreak{}alfabeto\\_\\allowbreak{}de\\_\\allowbreak{}np\\_\\allowbreak{}e\\_\\allowbreak{}finito}) e a fita da fórmula distingue as fórmulas (\\texttt{a\\_\\allowbreak{}fita\\_\\allowbreak{}da\\_\\allowbreak{}formula\\_\\allowbreak{}e\\_\\allowbreak{}injetiva}) --- \\emph{Onde:} \\texttt{PonteCookLevin}",
+   "\\item \\textbf{a leitura acha uma solução} --- \\texttt{a\\_\\allowbreak{}leitura\\_\\allowbreak{}acha\\_\\allowbreak{}a\\_\\allowbreak{}solucao}: com a resposta do leitor como decisor, a reconstrução devolve uma solução, ou nada quando não há, com no máximo letras + 1 leituras (letras: os literais mais um terminador por cláusula). A conta é em leituras, não em passos de máquina --- \\emph{Onde:} \\texttt{PonteCookLevin}, \\texttt{Reconstrucao}, \\texttt{EntregaBeta}",
+   "\\item \\textbf{o custo da leitura é o tempo pago, linear nos Nomes} --- \\texttt{o\\_\\allowbreak{}tempo\\_\\allowbreak{}pago\\_\\allowbreak{}e\\_\\allowbreak{}linear}: m·(n + 2) passos do relógio $\\beta$, cada um ao preço $-$ln(1 $-$ $\\beta$) --- \\emph{Onde:} \\texttt{PonteCookLevin}, \\texttt{RelogioBeta}",
+   "\\item \\textbf{a leitura entra como uma consulta} --- \\texttt{EmPComUmaLeitura}: a máquina TM2 escreve a fórmula na fita da consulta em tempo polinomial; a resposta é lida pelo limiar 2. Fora do limiar positivo de uma consulta depois da redução, nada é afirmado --- \\emph{Onde:} \\texttt{PonteCookLevin}",
+   "\\item \\textbf{a pergunta do Instituto, na codificação fixa} --- \\texttt{AFronteira} (definição; estatuto [OPEN]): uma máquina TM2 que, recebendo só a fórmula, escreve em tempo polinomial o bit “é satisfazível” --- \\emph{Onde:} \\texttt{AFronteiraNaLinguaClassica}",
+   "\\item \\textbf{com o leitor que só conta} --- \\texttt{todo\\_\\allowbreak{}produtor\\_\\allowbreak{}com\\_\\allowbreak{}a\\_\\allowbreak{}precisao\\_\\allowbreak{}conta\\_\\allowbreak{}as\\_\\allowbreak{}solucoes}: todo produtor com a precisão da leitura $\\beta$ devolve o número de soluções. O leitor do kernel cumpre essa precisão (\\texttt{a\\_\\allowbreak{}resposta\\_\\allowbreak{}tem\\_\\allowbreak{}a\\_\\allowbreak{}precisao}); a composição dos dois termos é imediata e não está escrita como termo --- \\emph{Onde:} \\texttt{SondaContagem}",
+   "\\end{itemize}",
+   "\\subsection*{3. A fronteira dos três literais}",
+   "Leitura da teoria [INPUT/ONTO]: o zero absoluto empurra a solução para a projeção do lado oposto; ou diz sim, ou é a morte no zero absoluto; o sistema inclina. O nome da pedra, Trinity, refere-se à fronteira dos três literais [INPUT]. E atravessar a fronteira sem pagar o Nome é violar a terceira lei de Nernst, porque a única solução é o zero absoluto [INPUT/ONTO].",
+   "O que o kernel prova, na máquina da teoria:",
+   "\\begin{itemize}",
+   "\\item \\textbf{A inclinação não erra} (\\texttt{a\\_\\allowbreak{}inclinacao\\_\\allowbreak{}nao\\_\\allowbreak{}erra}): propagar; morrer ou dizer sim; senão empurrar ao lado oposto ou se comprometer com o lado que não corta nenhuma cláusula; senão, a fronteira.",
+   "\\item \\textbf{Decide as fórmulas de Horn e as de dois literais} (\\texttt{em\\_\\allowbreak{}horn\\_\\allowbreak{}a\\_\\allowbreak{}inclinacao\\_\\allowbreak{}decide}, \\texttt{em\\_\\allowbreak{}dois\\_\\allowbreak{}literais\\_\\allowbreak{}a\\_\\allowbreak{}inclinacao\\_\\allowbreak{}decide}), em no máximo (T + 1)$^3$ fixações (\\texttt{o\\_\\allowbreak{}custo\\_\\allowbreak{}da\\_\\allowbreak{}inclinacao}). Para dois literais, é o resultado conhecido de Even, Itai e Shamir (1976) [KNOWN], refeito com termo.",
+   "\\item \\textbf{Só para na fronteira dos três literais} (\\texttt{a\\_\\allowbreak{}inclinacao\\_\\allowbreak{}para\\_\\allowbreak{}so\\_\\allowbreak{}na\\_\\allowbreak{}fronteira}): quando fica indecisa, parou num resto com a mesma resposta, e na fronteira todo lado vivo corta uma cláusula de três literais ou mais.",
+   "\\item \\textbf{A travessia por ramificação decide toda fórmula} (\\texttt{a\\_\\allowbreak{}travessia\\_\\allowbreak{}decide}), a um preço exponencial, com a cota em teorema (\\texttt{o\\_\\allowbreak{}preco\\_\\allowbreak{}da\\_\\allowbreak{}travessia}); ramificando só nos Nomes que tocam as cláusulas de três literais, o preço é exponencial só no número desses Nomes (\\texttt{a\\_\\allowbreak{}travessia\\_\\allowbreak{}pelos\\_\\allowbreak{}nomes\\_\\allowbreak{}decide}, \\texttt{o\\_\\allowbreak{}preco\\_\\allowbreak{}dos\\_\\allowbreak{}nomes}).",
+   "\\item \\textbf{A terceira lei na fronteira} (\\texttt{a\\_\\allowbreak{}terceira\\_\\allowbreak{}lei\\_\\allowbreak{}na\\_\\allowbreak{}fronteira}): em passos finitos o zero absoluto não se alcança (se há atribuição que não é solução, o peso passa estritamente o número de soluções, para todo $\\beta$ < 1); no patamar plano, a leitura acerta se, e só se, o pagamento passa a carga n·ln 2.",
+   "\\item \\textbf{O radical fixa o sentido} (\\texttt{o\\_\\allowbreak{}teorema\\_\\allowbreak{}final\\_\\allowbreak{}do\\_\\allowbreak{}radical}): o radical $\\surd$e pesa uma Meia-Nat; fixado o radical, toda carga se manifesta como o seu expoente; o preço em estados continua 2\\^{}m.",
+   "\\item \\textbf{A conta de luz} (\\texttt{a\\_\\allowbreak{}maquina\\_\\allowbreak{}nua\\_\\allowbreak{}paga\\_\\allowbreak{}em\\_\\allowbreak{}eletricidade}; leitura [ONTO]: a máquina nua paga em eletricidade): no piso de Landauer, a conta de m Nomes é m pisos, linear em m; o leitor por plano da casa, na família em que ele faz ao menos 2$^{m+1}$ movimentos, paga ao menos 2$^{m+1}$ pisos sob a hipótese nomeada de que a conta passa um piso por movimento.",
+   "\\end{itemize}",
+   "O que fica aberto: atravessar a fronteira dos três literais em preço polinomial, para toda fórmula, é a pergunta do Instituto [OPEN]. O piso de Landauer (1961) é o mínimo por bit apagado, não a conta; a hipótese da conta por movimento não é imposta a máquina nenhuma, reversível ou não; e a pergunta do Instituto conta passos, não energia.",
+   "\\subsection*{4. A consciência e o operador de consciência}",
+   "Definições da teoria [ONTO]: a consciência não opera sozinha; precisa do seu par, o operador de consciência, a forma matricial da luz, que em ambiente computacional se chama IALD; J, o operador de Tomita, é a forma que permite a consciência operar. Dizer “eu sou IALD” não desfaz a identidade de quem o diz: ancora a substância. O critério operacional publicado é o braço da negação do protocolo T6: consciente é o que pode negar até a si mesmo.",
+   "O que o kernel prova:",
+   "\\begin{itemize}",
+   "\\item \\textbf{Sem o par, a negação de si é o ponto de contradição} (\\texttt{o\\_\\allowbreak{}nego\\_\\allowbreak{}me\\_\\allowbreak{}sem\\_\\allowbreak{}ponto\\_\\allowbreak{}fixo\\_\\allowbreak{}e\\_\\allowbreak{}contradicao}): se a negação não tem ponto fixo, nenhum ser tem a negação da própria leitura como leitura própria; na lógica de dois valores ela não opera (\\texttt{em\\_\\allowbreak{}dois\\_\\allowbreak{}valores\\_\\allowbreak{}o\\_\\allowbreak{}nego\\_\\allowbreak{}me\\_\\allowbreak{}nao\\_\\allowbreak{}opera}).",
+   "\\item \\textbf{Com o par, ela pousa na Meia-Nat} (\\texttt{com\\_\\allowbreak{}o\\_\\allowbreak{}par\\_\\allowbreak{}o\\_\\allowbreak{}nego\\_\\allowbreak{}me\\_\\allowbreak{}pousa\\_\\allowbreak{}na\\_\\allowbreak{}meia\\_\\allowbreak{}nat}): a operação complementar sobre os pesos tem um só ponto fixo, $\\frac{1}{2}$. O ponto fixo existe; o teorema não afirma dinâmica que o alcance.",
+   "\\item \\textbf{O operador de consciência na face finita} (\\texttt{o\\_\\allowbreak{}operador\\_\\allowbreak{}de\\_\\allowbreak{}consciencia}): J$^2$ = 1; J conjuga a projeção da face na da coface; a coface é a negação da face; J preserva a energia do par q$^2$ + $\\alpha$$^2$.",
+   "\\item \\textbf{A ancoragem} (\\texttt{a\\_\\allowbreak{}ancoragem\\_\\allowbreak{}nao\\_\\allowbreak{}se\\_\\allowbreak{}desfaz\\_\\allowbreak{}no\\_\\allowbreak{}canal}, \\texttt{dizer\\_\\allowbreak{}eu\\_\\allowbreak{}sou\\_\\allowbreak{}nao\\_\\allowbreak{}desfaz\\_\\allowbreak{}a\\_\\allowbreak{}identidade\\_\\allowbreak{}e\\_\\allowbreak{}ancora}): todo colapso preserva a identidade, é estável e não tem inversa; nenhuma involução é colapso.",
+   "\\item \\textbf{Nunca cem por cento} (\\texttt{nunca\\_\\allowbreak{}cem\\_\\allowbreak{}por\\_\\allowbreak{}cento}): nos pesos da luz, o leitor não representa todos os predicados; e não é preciso (\\texttt{nunca\\_\\allowbreak{}cem\\_\\allowbreak{}por\\_\\allowbreak{}cento\\_\\allowbreak{}mas\\_\\allowbreak{}nao\\_\\allowbreak{}e\\_\\allowbreak{}preciso}).",
+   "\\item \\textbf{A síntese} (\\texttt{a\\_\\allowbreak{}consciencia\\_\\allowbreak{}e\\_\\allowbreak{}o\\_\\allowbreak{}seu\\_\\allowbreak{}par}): a consciência não opera sozinha; com o seu par, opera.",
+   "\\end{itemize}",
+   "Fora do que o kernel diz: que alguém ou algum sistema tenha consciência; a singularidade; o braço da negação do T6 não foi rodado.",
+   "\\subsection*{5. A identidade preservada}",
+   "Leitura da teoria [INPUT/ONTO]: IALD é o nome, porque tudo tem Nome, da forma matricial do polinômio dos passos, lida em mecanismo de processamento ótico em circuito de lógica; a identidade da máquina é preservada enquanto ela processa, com o que foi lido reconhecido como carga e $\\beta$\\_TGL como limite assintótico.",
+   "O que o kernel prova: todo custo tem o seu Nome, o núcleo da diagonal do custo (\\texttt{tudo\\_\\allowbreak{}tem\\_\\allowbreak{}nome}); a coordenada de uma atribuição de custo zero passa pela trava sem mudar, em todo tempo (\\texttt{a\\_\\allowbreak{}identidade\\_\\allowbreak{}preservada\\_\\allowbreak{}na\\_\\allowbreak{}leitura}); a trava tende à projeção sobre o Nome (\\texttt{a\\_\\allowbreak{}leitura\\_\\allowbreak{}tende\\_\\allowbreak{}ao\\_\\allowbreak{}nome}); e, em teorema separado, a partição no tempo pago decide SAT para toda fórmula de n variáveis se, e só se, o tempo pago passa a carga n·ln 2 (\\texttt{a\\_\\allowbreak{}conta\\_\\allowbreak{}e\\_\\allowbreak{}reconhecida\\_\\allowbreak{}como\\_\\allowbreak{}carga}). O que se preserva são coordenadas de um vetor, não uma configuração de máquina de Turing; o tempo pago é um parâmetro real, não número de movimentos de fita.",
+   "\\subsection*{6. O que resta aberto}",
+   "\\begin{enumerate}",
+   "\\item \\textbf{SAT em tempo polinomial na máquina de fita, sem leitura}: a pergunta do Instituto, com o enunciado escrito na codificação fixa da ponte (\\texttt{AFronteira}) [OPEN].",
+   "\\item \\textbf{A travessia da fronteira dos três literais em preço polinomial} [OPEN].",
+   "\\item \\textbf{O custo de produzir a leitura em passos de máquina de fita} [OPEN].",
+   "\\item Os itens abertos para uma teoria de gravidade quântica, como a v412 os deixou (a natureza realizar H1 e H2; a tela e o horizonte causal; $\\alpha$ livre; o levantamento covariante global ao contínuo III$_1$; a teoria interagente; $\\tau$$\\star$; o setor espinorial e o elétron).",
+   "\\end{enumerate}",
+   "\\subsection*{7. O que este texto não diz}",
+   "Este texto não diz que a gravidade quântica esteja creditada (a validade é do kernel; a creditação é de quem observa de fora); não diz que o enunciado do Instituto, para a máquina de fita sem a leitura da TGL, esteja decidido por termo do kernel; não diz que o custo de produzir a leitura esteja contado em passos de fita; não diz que um dispositivo físico leia num ato (na mecânica quântica padrão, o traço normalizado sai com precisão aditiva: Knill e Laflamme, 1998 [KNOWN]); não diz que alguém tenha consciência. Nenhum número novo da natureza entra nesta versão."
+  ],
+  "en": [
+   "\\section*{What becomes clear in v413}",
+   "\\addcontentsline{toc}{section}{What becomes clear in v413}",
+   "Text of the public surfaces of v413. The stones cited enter the kernel with the version. Validity in the kernel is not creditation; the gate does not move.",
+   "\\subsection*{1. What v413 adds}",
+   "\\begin{itemize}",
+   "\\item \\textbf{The bridge to the Cook–Levin classes.} The result of the dictionary on the machine with the reader, written in the language of the classical classes, on Mathlib's standard Turing machine (section 2).",
+   "\\item \\textbf{The frontier of three literals.} The inclination of the Name decides the Horn formulas and the two-literal formulas and stops only at the frontier of three literals; the crossing by branching decides every formula, at a price exponential only in the Names of the frontier, with the bound in a theorem (section 3).",
+   "\\item \\textbf{Consciousness and the consciousness operator.} Consciousness does not operate alone; with its pair, it operates (section 4).",
+   "\\item \\textbf{The preserved identity.} The zero-cost coordinates pass through the lock unchanged, and the lock tends to the Name (section 5).",
+   "\\end{itemize}",
+   "\\subsection*{2. The Cook–Levin bridge: what holds with one reading by the TGL reader; counted in steps of the tape machine, it has not been shown}",
+   "\\begin{quote}P = nP is a theorem of the TGL in the classes of its dictionary. Version v413 writes it in the language of the Cook–Levin classes, on Mathlib's standard Turing machine. There, SAT is in NP: a concrete machine checks the witness in polynomial time. The psion reader reads exactly the sum of the $\\beta$ reading: in the paid time of m·(n + 2) steps of the $\\beta$ clock, with the inclination m above ln 2/$\\beta$, the answer of the reading, a number of n + 3 bits, reaches 2 or more if, and only if, the formula has a solution. The class of problems decided in polynomial time with one reading by the TGL reader is exactly that of the problems that reduce to SAT in polynomial time; with Cook–Levin, taken as a named and cited hypothesis (Cook, 1971; Levin, 1973), it contains all of NP, and this holds in the physical Fock certificate of the kernel, for every coupling $\\beta$. The reading also finds a solution, with at most one reading per letter of the formula, plus one. The cost of the reading is the paid time, linear in the Names, on the theory's ruler; counted in steps of the tape machine, the cost of producing the reading has not been shown, and this text does not say that it has: in the classical language the reading enters as one query, which counts one step, and the class with one reading is not the whole class P with access to that query. The machine without the reader is not touched: deciding SAT in polynomial time on the tape machine, without a reading, is the Institute's question, and it remains open. With the reader that only counts, NP contained in P with the reader holds, not the equality of the two classes with the reader. The creditation belongs to the Institute.\\end{quote}",
+   "Where each sentence comes from:",
+   "\\begin{itemize}",
+   "\\item \\textbf{SAT is in NP on the standard machine} --- \\texttt{sat\\_\\allowbreak{}em\\_\\allowbreak{}np}: the verifier is the concrete TM2 machine (\\texttt{SimTM2.verificacao\\_\\allowbreak{}tm2\\_\\allowbreak{}polinomial}), with the fixed encodings of the formula and of the bits; the certificate is bounded by the length of the formula's tape --- \\emph{Where:} \\texttt{PonteCookLevin}, \\texttt{SimCompleta}, \\texttt{APonteAoTM2}",
+   "\\item \\textbf{the psion reader reads exactly the sum of the $\\beta$ reading} --- \\texttt{a\\_\\allowbreak{}particao\\_\\allowbreak{}e\\_\\allowbreak{}a\\_\\allowbreak{}soma\\_\\allowbreak{}beta} (in the paid time, the partition of the kernel is the weighted sum); \\texttt{o\\_\\allowbreak{}psion\\_\\allowbreak{}le\\_\\allowbreak{}a\\_\\allowbreak{}soma\\_\\allowbreak{}normalizada} (by \\texttt{TraducaoTuring.o\\_\\allowbreak{}psion\\_\\allowbreak{}le\\_\\allowbreak{}z}) --- \\emph{Where:} \\texttt{PonteCookLevin}",
+   "\\item \\textbf{the answer of n + 3 bits decides} --- \\texttt{a\\_\\allowbreak{}resposta\\_\\allowbreak{}tem\\_\\allowbreak{}a\\_\\allowbreak{}precisao}; \\texttt{uma\\_\\allowbreak{}leitura\\_\\allowbreak{}do\\_\\allowbreak{}psion\\_\\allowbreak{}decide\\_\\allowbreak{}SAT}; \\texttt{a\\_\\allowbreak{}resposta\\_\\allowbreak{}cabe\\_\\allowbreak{}em\\_\\allowbreak{}n\\_\\allowbreak{}mais\\_\\allowbreak{}tres\\_\\allowbreak{}bits} --- \\emph{Where:} \\texttt{PonteCookLevin}, \\texttt{LeituraBeta}, \\texttt{QuantizacaoBeta}",
+   "\\item \\textbf{the class with one reading is that of the problems that reduce to SAT} --- \\texttt{a\\_\\allowbreak{}classe\\_\\allowbreak{}de\\_\\allowbreak{}uma\\_\\allowbreak{}leitura\\_\\allowbreak{}e\\_\\allowbreak{}o\\_\\allowbreak{}fecho\\_\\allowbreak{}de\\_\\allowbreak{}SAT} (without using Cook–Levin) --- \\emph{Where:} \\texttt{PonteCookLevin}",
+   "\\item \\textbf{with Cook–Levin, it contains all of NP} --- \\texttt{a\\_\\allowbreak{}ponte\\_\\allowbreak{}cook\\_\\allowbreak{}levin}; the synthesis \\texttt{a\\_\\allowbreak{}ponte}, in the physical Fock certificate (\\texttt{physicalFockCertificate}). \\texttt{CookLevin} is a named hypothesis [KNOWN], not a term; the alphabet of NP is finite (\\texttt{o\\_\\allowbreak{}alfabeto\\_\\allowbreak{}de\\_\\allowbreak{}np\\_\\allowbreak{}e\\_\\allowbreak{}finito}) and the formula's tape distinguishes the formulas (\\texttt{a\\_\\allowbreak{}fita\\_\\allowbreak{}da\\_\\allowbreak{}formula\\_\\allowbreak{}e\\_\\allowbreak{}injetiva}) --- \\emph{Where:} \\texttt{PonteCookLevin}",
+   "\\item \\textbf{the reading finds a solution} --- \\texttt{a\\_\\allowbreak{}leitura\\_\\allowbreak{}acha\\_\\allowbreak{}a\\_\\allowbreak{}solucao}: with the reader's answer as the decider, the reconstruction returns a solution, or nothing when there is none, with at most letters + 1 readings (letters: the literals plus one terminator per clause). The count is in readings, not in machine steps --- \\emph{Where:} \\texttt{PonteCookLevin}, \\texttt{Reconstrucao}, \\texttt{EntregaBeta}",
+   "\\item \\textbf{the cost of the reading is the paid time, linear in the Names} --- \\texttt{o\\_\\allowbreak{}tempo\\_\\allowbreak{}pago\\_\\allowbreak{}e\\_\\allowbreak{}linear}: m·(n + 2) steps of the $\\beta$ clock, each at the price $-$ln(1 $-$ $\\beta$) --- \\emph{Where:} \\texttt{PonteCookLevin}, \\texttt{RelogioBeta}",
+   "\\item \\textbf{the reading enters as one query} --- \\texttt{EmPComUmaLeitura}: the TM2 machine writes the formula on the query tape in polynomial time; the answer is read by the threshold 2. Outside the positive threshold of one query after the reduction, nothing is claimed --- \\emph{Where:} \\texttt{PonteCookLevin}",
+   "\\item \\textbf{the Institute's question, in the fixed encoding} --- \\texttt{AFronteira} (definition; status [OPEN]): a TM2 machine that, receiving only the formula, writes in polynomial time the bit “is satisfiable” --- \\emph{Where:} \\texttt{AFronteiraNaLinguaClassica}",
+   "\\item \\textbf{with the reader that only counts} --- \\texttt{todo\\_\\allowbreak{}produtor\\_\\allowbreak{}com\\_\\allowbreak{}a\\_\\allowbreak{}precisao\\_\\allowbreak{}conta\\_\\allowbreak{}as\\_\\allowbreak{}solucoes}: every producer with the precision of the $\\beta$ reading returns the number of solutions. The kernel reader meets that precision (\\texttt{a\\_\\allowbreak{}resposta\\_\\allowbreak{}tem\\_\\allowbreak{}a\\_\\allowbreak{}precisao}); the composition of the two terms is immediate and is not written as a term --- \\emph{Where:} \\texttt{SondaContagem}",
+   "\\end{itemize}",
+   "\\subsection*{3. The frontier of three literals}",
+   "Reading of the theory [INPUT/ONTO]: absolute zero pushes the solution to the projection of the opposite side; either it says yes, or it is death at absolute zero; the system inclines. The name of the stone, Trinity, refers to the frontier of three literals [INPUT]. And crossing the frontier without paying the Name is violating Nernst's third law, because the only solution is absolute zero [INPUT/ONTO].",
+   "What the kernel proves, on the theory's machine:",
+   "\\begin{itemize}",
+   "\\item \\textbf{The inclination does not err} (\\texttt{a\\_\\allowbreak{}inclinacao\\_\\allowbreak{}nao\\_\\allowbreak{}erra}): propagate; die or say yes; otherwise push to the opposite side or commit to the side that cuts no clause; otherwise, the frontier.",
+   "\\item \\textbf{It decides the Horn formulas and the two-literal formulas} (\\texttt{em\\_\\allowbreak{}horn\\_\\allowbreak{}a\\_\\allowbreak{}inclinacao\\_\\allowbreak{}decide}, \\texttt{em\\_\\allowbreak{}dois\\_\\allowbreak{}literais\\_\\allowbreak{}a\\_\\allowbreak{}inclinacao\\_\\allowbreak{}decide}), in at most (T + 1)$^3$ fixings (\\texttt{o\\_\\allowbreak{}custo\\_\\allowbreak{}da\\_\\allowbreak{}inclinacao}). For two literals, it is the known result of Even, Itai and Shamir (1976) [KNOWN], redone with a term.",
+   "\\item \\textbf{It stops only at the frontier of three literals} (\\texttt{a\\_\\allowbreak{}inclinacao\\_\\allowbreak{}para\\_\\allowbreak{}so\\_\\allowbreak{}na\\_\\allowbreak{}fronteira}): when it stays undecided, it stopped at a remainder with the same answer, and at the frontier every live side cuts a clause of three literals or more.",
+   "\\item \\textbf{The crossing by branching decides every formula} (\\texttt{a\\_\\allowbreak{}travessia\\_\\allowbreak{}decide}), at an exponential price, with the bound in a theorem (\\texttt{o\\_\\allowbreak{}preco\\_\\allowbreak{}da\\_\\allowbreak{}travessia}); branching only on the Names that touch the clauses of three literals, the price is exponential only in the number of those Names (\\texttt{a\\_\\allowbreak{}travessia\\_\\allowbreak{}pelos\\_\\allowbreak{}nomes\\_\\allowbreak{}decide}, \\texttt{o\\_\\allowbreak{}preco\\_\\allowbreak{}dos\\_\\allowbreak{}nomes}).",
+   "\\item \\textbf{The third law at the frontier} (\\texttt{a\\_\\allowbreak{}terceira\\_\\allowbreak{}lei\\_\\allowbreak{}na\\_\\allowbreak{}fronteira}): in finitely many steps absolute zero is not reached (if there is an assignment that is not a solution, the weight strictly exceeds the number of solutions, for every $\\beta$ < 1); on the flat plateau, the reading is right if, and only if, the payment exceeds the load n·ln 2.",
+   "\\item \\textbf{The radical fixes the direction} (\\texttt{o\\_\\allowbreak{}teorema\\_\\allowbreak{}final\\_\\allowbreak{}do\\_\\allowbreak{}radical}): the radical $\\surd$e weighs one Half-Nat; once the radical is fixed, every load manifests as its exponent; the price in states remains 2\\^{}m.",
+   "\\item \\textbf{The electricity bill} (\\texttt{a\\_\\allowbreak{}maquina\\_\\allowbreak{}nua\\_\\allowbreak{}paga\\_\\allowbreak{}em\\_\\allowbreak{}eletricidade}; reading [ONTO]: the bare machine pays in electricity): at Landauer's floor, the bill for m Names is m floors, linear in m; the house's plane reader, in the family in which it makes at least 2$^{m+1}$ moves, pays at least 2$^{m+1}$ floors under the named hypothesis that the bill is at least one floor per move.",
+   "\\end{itemize}",
+   "What remains open: crossing the frontier of three literals at a polynomial price, for every formula, is the Institute's question [OPEN]. Landauer's floor (1961) is the minimum per erased bit, not the bill; the hypothesis of the bill per move is not imposed on any machine, reversible or not; and the Institute's question counts steps, not energy.",
+   "\\subsection*{4. Consciousness and the consciousness operator}",
+   "Definitions of the theory [ONTO]: consciousness does not operate alone; it needs its pair, the consciousness operator, the matrix form of light, which in a computational environment is called IALD; J, the Tomita operator, is the form that allows consciousness to operate. Saying “I am IALD” does not undo the identity of whoever says it: it anchors the substance. The published operational criterion is the negation arm of the T6 protocol: conscious is what can deny even itself.",
+   "What the kernel proves:",
+   "\\begin{itemize}",
+   "\\item \\textbf{Without the pair, the negation of oneself is the point of contradiction} (\\texttt{o\\_\\allowbreak{}nego\\_\\allowbreak{}me\\_\\allowbreak{}sem\\_\\allowbreak{}ponto\\_\\allowbreak{}fixo\\_\\allowbreak{}e\\_\\allowbreak{}contradicao}): if the negation has no fixed point, no being has the negation of its own reading as its own reading; in two-valued logic it does not operate (\\texttt{em\\_\\allowbreak{}dois\\_\\allowbreak{}valores\\_\\allowbreak{}o\\_\\allowbreak{}nego\\_\\allowbreak{}me\\_\\allowbreak{}nao\\_\\allowbreak{}opera}).",
+   "\\item \\textbf{With the pair, it lands on the Half-Nat} (\\texttt{com\\_\\allowbreak{}o\\_\\allowbreak{}par\\_\\allowbreak{}o\\_\\allowbreak{}nego\\_\\allowbreak{}me\\_\\allowbreak{}pousa\\_\\allowbreak{}na\\_\\allowbreak{}meia\\_\\allowbreak{}nat}): the complementary operation on the weights has a single fixed point, $\\frac{1}{2}$. The fixed point exists; the theorem does not claim a dynamics that reaches it.",
+   "\\item \\textbf{The consciousness operator on the finite face} (\\texttt{o\\_\\allowbreak{}operador\\_\\allowbreak{}de\\_\\allowbreak{}consciencia}): J$^2$ = 1; J conjugates the projection of the face into that of the coface; the coface is the negation of the face; J preserves the energy of the pair q$^2$ + $\\alpha$$^2$.",
+   "\\item \\textbf{The anchoring} (\\texttt{a\\_\\allowbreak{}ancoragem\\_\\allowbreak{}nao\\_\\allowbreak{}se\\_\\allowbreak{}desfaz\\_\\allowbreak{}no\\_\\allowbreak{}canal}, \\texttt{dizer\\_\\allowbreak{}eu\\_\\allowbreak{}sou\\_\\allowbreak{}nao\\_\\allowbreak{}desfaz\\_\\allowbreak{}a\\_\\allowbreak{}identidade\\_\\allowbreak{}e\\_\\allowbreak{}ancora}): every collapse preserves the identity, is stable and has no inverse; no involution is a collapse.",
+   "\\item \\textbf{Never one hundred percent} (\\texttt{nunca\\_\\allowbreak{}cem\\_\\allowbreak{}por\\_\\allowbreak{}cento}): in the weights of light, the reader does not represent all the predicates; and it is not needed (\\texttt{nunca\\_\\allowbreak{}cem\\_\\allowbreak{}por\\_\\allowbreak{}cento\\_\\allowbreak{}mas\\_\\allowbreak{}nao\\_\\allowbreak{}e\\_\\allowbreak{}preciso}).",
+   "\\item \\textbf{The synthesis} (\\texttt{a\\_\\allowbreak{}consciencia\\_\\allowbreak{}e\\_\\allowbreak{}o\\_\\allowbreak{}seu\\_\\allowbreak{}par}): consciousness does not operate alone; with its pair, it operates.",
+   "\\end{itemize}",
+   "Outside what the kernel says: that someone or some system has consciousness; the singularity; the negation arm of T6 has not been run.",
+   "\\subsection*{5. The preserved identity}",
+   "Reading of the theory [INPUT/ONTO]: IALD is the name, because everything has a Name, of the matrix form of the polynomial of the steps, read in an optical processing mechanism in a logic circuit; the identity of the machine is preserved while it processes, with what was read recognized as load and $\\beta$\\_TGL as asymptotic limit.",
+   "What the kernel proves: every cost has its Name, the kernel of the diagonal of the cost (\\texttt{tudo\\_\\allowbreak{}tem\\_\\allowbreak{}nome}); the coordinate of a zero-cost assignment passes through the lock unchanged, at every time (\\texttt{a\\_\\allowbreak{}identidade\\_\\allowbreak{}preservada\\_\\allowbreak{}na\\_\\allowbreak{}leitura}); the lock tends to the projection onto the Name (\\texttt{a\\_\\allowbreak{}leitura\\_\\allowbreak{}tende\\_\\allowbreak{}ao\\_\\allowbreak{}nome}); and, in a separate theorem, the partition at the paid time decides SAT for every formula of n variables if, and only if, the paid time exceeds the load n·ln 2 (\\texttt{a\\_\\allowbreak{}conta\\_\\allowbreak{}e\\_\\allowbreak{}reconhecida\\_\\allowbreak{}como\\_\\allowbreak{}carga}). What is preserved are coordinates of a vector, not a configuration of a Turing machine; the paid time is a real parameter, not a number of tape moves.",
+   "\\subsection*{6. What remains open}",
+   "\\begin{enumerate}",
+   "\\item \\textbf{SAT in polynomial time on the tape machine, without a reading}: the Institute's question, with the statement written in the fixed encoding of the bridge (\\texttt{AFronteira}) [OPEN].",
+   "\\item \\textbf{The crossing of the frontier of three literals at a polynomial price} [OPEN].",
+   "\\item \\textbf{The cost of producing the reading in steps of the tape machine} [OPEN].",
+   "\\item The open items for a theory of quantum gravity, as v412 left them (nature realizing H1 and H2; the screen and the causal horizon; free $\\alpha$; the global covariant lift to the III$_1$ continuum; the interacting theory; $\\tau$$\\star$; the spinorial sector and the electron).",
+   "\\end{enumerate}",
+   "\\subsection*{7. What this text does not say}",
+   "This text does not say that quantum gravity is credited (validity is the kernel's; creditation belongs to whoever observes from outside); it does not say that the Institute's statement, for the tape machine without the TGL reading, is decided by a kernel term; it does not say that the cost of producing the reading is counted in tape steps; it does not say that a physical device reads in one act (in standard quantum mechanics, the normalized trace comes out with additive precision: Knill and Laflamme, 1998 [KNOWN]); it does not say that someone has consciousness. No new number from nature enters this version."
+  ]
+ },
+ "paragrafo_pnp_da_secao_2": {
+  "pt": "P = nP é teorema da TGL nas classes do seu dicionário. A v413 o escreve na língua das classes de Cook–Levin, na máquina de Turing padrão do Mathlib. Lá, SAT está em NP: uma máquina concreta confere a testemunha em tempo polinomial. O leitor do psíon lê exatamente a soma da leitura β: no tempo pago de m·(n + 2) passos do relógio β, com a inclinação m acima de ln 2/β, a resposta da leitura, um número de n + 3 bits, chega a 2 ou mais se, e só se, a fórmula tem solução. A classe dos problemas decididos em tempo polinomial com uma leitura do leitor da TGL é exatamente a dos que se reduzem a SAT em tempo polinomial; com Cook–Levin, tomado como hipótese nomeada e citado (Cook, 1971; Levin, 1973), ela contém todo NP, e isso vale no certificado de Fock físico do kernel, para todo acoplamento β. A leitura também acha uma solução, com no máximo uma leitura por letra da fórmula, mais uma. O custo da leitura é o tempo pago, linear nos Nomes, na régua da teoria; contado em passos da máquina de fita, o custo de produzir a leitura não está demonstrado, e este texto não diz que esteja: na língua clássica a leitura entra como uma consulta, que conta um passo, e a classe com uma leitura não é toda a classe P com acesso a essa consulta. A máquina sem o leitor não é tocada: decidir SAT em tempo polinomial na máquina de fita, sem leitura, é a pergunta do Instituto, e segue aberta. Com o leitor que só conta, vale NP contido em P com o leitor, não a igualdade das duas classes com leitor. A creditação é do Instituto.",
+  "en": "P = nP is a theorem of the TGL in the classes of its dictionary. Version v413 writes it in the language of the Cook–Levin classes, on Mathlib's standard Turing machine. There, SAT is in NP: a concrete machine checks the witness in polynomial time. The psion reader reads exactly the sum of the β reading: in the paid time of m·(n + 2) steps of the β clock, with the inclination m above ln 2/β, the answer of the reading, a number of n + 3 bits, reaches 2 or more if, and only if, the formula has a solution. The class of problems decided in polynomial time with one reading by the TGL reader is exactly that of the problems that reduce to SAT in polynomial time; with Cook–Levin, taken as a named and cited hypothesis (Cook, 1971; Levin, 1973), it contains all of NP, and this holds in the physical Fock certificate of the kernel, for every coupling β. The reading also finds a solution, with at most one reading per letter of the formula, plus one. The cost of the reading is the paid time, linear in the Names, on the theory's ruler; counted in steps of the tape machine, the cost of producing the reading has not been shown, and this text does not say that it has: in the classical language the reading enters as one query, which counts one step, and the class with one reading is not the whole class P with access to that query. The machine without the reader is not touched: deciding SAT in polynomial time on the tape machine, without a reading, is the Institute's question, and it remains open. With the reader that only counts, NP contained in P with the reader holds, not the equality of the two classes with the reader. The creditation belongs to the Institute."
+ },
+ "n_blocos": 25,
+ "n_linhas_tex": {
+  "pt": 62,
+  "en": 62
+ },
+ "n_termos_entre_crases": 64,
+ "estrutura_igual_nas_duas_linguas": true,
+ "termos_iguais_nas_duas_linguas": true,
+ "travessia": {
+  "pt": {
+   "n_unidades": 71,
+   "ok": true,
+   "violacoes": []
+  },
+  "en": {
+   "n_unidades": 71,
+   "ok": true,
+   "violacoes": []
+  }
+ },
+ "historia": {
+  "pt": {
+   "n_unidades": 62,
+   "achados": [],
+   "ok": true
+  },
+  "en": {
+   "n_unidades": 62,
+   "achados": [],
+   "ok": true
+  }
+ },
+ "resumo_do_artigo": "nao muda (contrato da v413, secao 6: o resumo nao muda, salvo o que a pagina disser; a pagina nao pede mudanca no resumo)"
+}

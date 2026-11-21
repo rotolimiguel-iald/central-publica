@@ -1,0 +1,35 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\APonteAoTM2.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\APonteAoTM2.lean
+@@ -8,10 +8,10 @@
+ set_option maxHeartbeats 800000
+ 
+ /-!
+-# Ponte ao TM2, revisão com codificações fixas
+-
+-Verificação semântica e recursividade da R1 do Kimi. Alfabeto e gramática extraídos da máquina em construção.
+-A revisão acrescenta o decodificador, a cota de tamanho e a especificação concreta da saída.
++# Ponte ao TM2, com codificações fixas
++
++Verificação semântica e recursividade; alfabeto e gramática da fita; o decodificador, a cota de tamanho e a
++especificação concreta da saída.
+ -/
+ 
+ namespace TGLExt.APonteAoTM2
+@@ -102,7 +102,7 @@
+     exact Bool.eq_false_iff.mpr fun hXt => hP (hiff.mp hXt)
+ 
+ /-- ★ **A FITA TEM AS LETRAS**: o comprimento da fórmula na fita (os literais) mais um terminador por cláusula é
+-exatamente `letras φ` — a fita desta pedra é a fita da irmã `APonteDeCookLevin`. -/
++exatamente `letras φ`, a contagem definida em `APonteDeCookLevin`. -/
+ theorem a_fita_tem_as_letras (φ : CNF n) :
+     (aFormulaNaFita φ).flatten.length + φ.length = letras φ := by
+   induction φ with
+@@ -158,7 +158,7 @@
+     | cons p l ih => simp only [List.any_cons, List.foldr_cons, ih]
+ 
+ /-- ★ **A VERIFICAÇÃO É RECURSIVA PRIMITIVA**: a leitura do certificado está nas funções primitivas recursivas —
+-total, sem busca, só dobradura sobre a fita. É o piso de Hilbert desta frente: a verificação não é apenas
++total, sem busca, só dobradura sobre a fita. É o piso de Hilbert: a verificação não é apenas
+ computável, é das funções mais simples que a computação clássica conhece acima das básicas. -/
+ theorem a_verificacao_e_recursiva_primitiva : Primrec₂ verificaNaFita := by
+   have hpasso : Primrec₂ fun (q : List (List (ℕ × Bool)) × List Bool) (ps : List (ℕ × Bool) × Bool) =>

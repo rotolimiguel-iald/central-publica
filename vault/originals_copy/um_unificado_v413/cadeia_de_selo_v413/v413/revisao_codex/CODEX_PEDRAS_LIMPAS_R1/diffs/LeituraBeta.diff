@@ -1,0 +1,28 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\LeituraBeta.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\LeituraBeta.lean
+@@ -3,12 +3,11 @@
+ set_option maxHeartbeats 1000000
+ 
+ /-!
+-Leitura com folga finita, condicionada a uma aproximação racional entregue.
++Leitura com folga finita, condicionada a uma aproximação racional dada.
+ Esta pedra não implementa a aproximação nem afirma custo polinomial de obtê-la.
+-Os nomes e limites desta candidata não alteram o kernel canônico.
+-Antecedente: v412/revisao_orquestrador/psibit_leitor_direto_Codex/LeiturasComFolga.lean
+-já demonstra a folga real. O delta aqui é a especialização ao β fixo, o
+-comparador racional executável e o transporte da precisão pela normalização.
++A folga real está demonstrada em `TGLExt.LeiturasComFolga` (`IALD.LeiturasComFolga.leitura_com_folga`). Este
++módulo traz a folga real especializada ao β fixo, o comparador racional executável
++e o transporte da precisão pela normalização.
+ -/
+ namespace Codex.LeituraBeta
+ 
+@@ -77,7 +76,7 @@
+   rw [a_soma_depois_de_k_passos φ c.beta c.beta_lt_one k]
+   exact lt_of_le_of_lt hsum htail
+ 
+-/-- O comparador é executável; seu argumento racional ainda precisa ser produzido. -/
++/-- O comparador é executável; seu argumento racional não é produzido aqui. -/
+ def readBit (r : ℚ) : Bool := decide ((1 / 2 : ℚ) ≤ r)
+ 
+ theorem rational_reader_correct {n : ℕ} (c : TGLCoupling) (k : ℕ) (φ : CNF n)

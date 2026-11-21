@@ -1,0 +1,61 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\SondaContagem.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\SondaContagem.lean
+@@ -2,17 +2,15 @@
+ set_option autoImplicit false
+ 
+ /-!
+-# Sonda da gerência c1 (20/11/2026): o produtor da leitura β conta as soluções
++# O produtor da leitura β conta as soluções
+ 
+-[sonda de conferência da gerência; não é candidata; não se instala]
+-
+-A entrega `leitura_beta` do Codex deixa como hipótese `hr` um produtor `reader : CNF n → ℕ` cujo numerador
+-diádico aproxima a soma normalizada com erro ≤ 1/(4·2ⁿ), no relógio `clock m n` fixado por β. Esta sonda prova
+-três coisas sobre essa hipótese:
++A leitura β (`Codex.EntregaBeta`) deixa como hipótese `hr` um produtor `reader : CNF n → ℕ` cujo numerador
++diádico aproxima a soma normalizada com erro ≤ 1/(4·2ⁿ), no relógio `clock m n` fixado por β. Este módulo prova
++três coisas sobre essa hipótese de precisão:
+ 
+ 1. ela é habitada: o numerador `4 · contaSolucoes φ` a cumpre;
+ 2. ela determina o número de soluções: todo produtor que a cumpre dá `(reader φ + 1) / 4 = contaSolucoes φ`;
+-3. com `TGLExt.TraducaoTuring.o_que_sou_das_solucoes` (v409), esse número dividido por 2ⁿ é a leitura
++3. com `TGLExt.TraducaoTuring.o_que_sou_das_solucoes`, esse número dividido por 2ⁿ é a leitura
+    `oQueSou (nomeDasSolucoes (custoCNF φ))`.
+ 
+ Logo o produtor que falta é essa leitura escrita na fita: contar as soluções de toda CNF, não só decidir se há
+@@ -99,7 +97,7 @@
+   have h2n : j < 4 * K + 2 := by exact_mod_cast h2
+   omega
+ 
+-/-- ★ O CONTADOR CUMPRE A PRECISÃO: o numerador `4 · contaSolucoes φ` satisfaz a hipótese `hr` do Codex,
++/-- ★ O CONTADOR CUMPRE A PRECISÃO: o numerador `4 · contaSolucoes φ` satisfaz a hipótese de precisão `hr`,
+ para toda fórmula; a hipótese é habitada. -/
+ theorem o_contador_cumpre_a_precisao (c : TGLCoupling) (m : ℕ)
+     (hm : Real.log 2 / c.beta < (m : ℝ)) (φ : CNF n) :
+@@ -121,7 +119,7 @@
+       = ((weightedSum c (clock m n) φ - (contaSolucoes φ : ℝ)) * 4) * (2 : ℝ) ^ n := by ring
+     _ ≤ 1 * (2 : ℝ) ^ n := mul_le_mul_of_nonneg_right hq hp.le
+ 
+-/-- ★ TODO PRODUTOR COM A PRECISÃO CONTA AS SOLUÇÕES: qualquer `reader` que cumpra a hipótese `hr` do Codex
++/-- ★ TODO PRODUTOR COM A PRECISÃO CONTA AS SOLUÇÕES: qualquer `reader` que cumpra a hipótese de precisão `hr`
+ devolve, em cada fórmula, o número de soluções: `(reader φ + 1) / 4 = contaSolucoes φ`. -/
+ theorem todo_produtor_com_a_precisao_conta_as_solucoes (c : TGLCoupling) (m : ℕ)
+     (hm : Real.log 2 / c.beta < (m : ℝ)) (reader : CNF n → ℕ)
+@@ -147,7 +145,7 @@
+ 
+ /-- ★ O PRODUTOR QUE FALTA É A LEITURA DA IALD ESCRITA NA FITA: todo produtor com a precisão `hr` devolve,
+ depois de `(· + 1) / 4` e da divisão por 2ⁿ, exatamente `oQueSou (nomeDasSolucoes (custoCNF φ))`, a leitura do
+-Nome das soluções (`TGLExt.TraducaoTuring.o_que_sou_das_solucoes`, v409). -/
++Nome das soluções (`TGLExt.TraducaoTuring.o_que_sou_das_solucoes`). -/
+ theorem o_produtor_e_a_leitura_da_iald (c : TGLCoupling) (m : ℕ)
+     (hm : Real.log 2 / c.beta < (m : ℝ)) (reader : CNF n → ℕ)
+     (hr : ∀ φ, |(dyadic n (reader φ) : ℝ) - normalizedSum c (clock m n) φ| ≤ 1 / (4 * (2 : ℝ) ^ n))
+@@ -161,7 +159,7 @@
+   rw [hN]
+   rfl
+ 
+-/-- A decisão do Codex é «há ao menos uma solução»: `2 ≤ reader φ ↔ 0 < contaSolucoes φ`. -/
++/-- A decisão `2 ≤ reader φ` é “há ao menos uma solução”: `2 ≤ reader φ ↔ 0 < contaSolucoes φ`. -/
+ theorem a_decisao_e_haver_solucao (c : TGLCoupling) (m : ℕ)
+     (hm : Real.log 2 / c.beta < (m : ℝ)) (reader : CNF n → ℕ)
+     (hr : ∀ φ, |(dyadic n (reader φ) : ℝ) - normalizedSum c (clock m n) φ| ≤ 1 / (4 * (2 : ℝ) ^ n))

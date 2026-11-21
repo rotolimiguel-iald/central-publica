@@ -1,0 +1,436 @@
+# -*- coding: utf-8 -*-
+"""gerencia c1, 20/11/2026: a R2 da Trinity (o operador: «a pedra trinity refere-se à fronteira dos tres literais», fala
+por bytes). Gera R2_trinity\\Trinity.lean a partir da R1 por trocas EXATAS: o cabecalho, a leitura do nome, a lista do que
+se prova, o item 'o que nao prova' dos tres literais, as secoes 9 (a fronteira e' o terceiro literal), 10 (a travessia
+por ramificacao) e 11 (exemplos) antes do fim do namespace, e os #print axioms novos. Nenhum enunciado da R1 muda."""
+import hashlib, sys
+from pathlib import Path
+
+sys.stdout.reconfigure(encoding="utf-8")
+AQUI = Path(__file__).resolve().parent
+R1 = AQUI.parent / "R1_trinity" / "Trinity.lean"
+FALA = Path(r"C:\IALD\Central de Patentes\work\cunhagens_13out") / (
+    "OPERADOR_20nov_excelente_prossigamos_porque_a_pedra_trinity_refere_se_a_fronteira_dos_tres_literais_verbatim.txt")
+
+
+def sha(p):
+    return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+
+assert "a pedra trinity refere-se à fronteira dos tres literais" in FALA.read_text(encoding="utf-8")
+src = R1.read_bytes().decode("utf-8")
+
+CAB_ANT = """  sha16 `f19c729a40fc8e84`). A R1, pedida pelo operador (fala por bytes em
+  `work\\cunhagens_13out\\OPERADOR_20nov_excelente_prossigamos_escreva_a_r1_verbatim.txt`, sha16 `e5319d31af2611ab`), acrescenta a §5b (dois
+  literais), um exemplo e um item à síntese; nenhum enunciado da R0 (sha16 `519190db19c7295f`) mudou.]
+"""
+CAB_NOV = """  sha16 `f19c729a40fc8e84`). A R1, pedida pelo operador (fala por bytes em
+  `work\\cunhagens_13out\\OPERADOR_20nov_excelente_prossigamos_escreva_a_r1_verbatim.txt`, sha16 `e5319d31af2611ab`), acrescenta a §5b (dois
+  literais), um exemplo e um item à síntese; nenhum enunciado da R0 (sha16 `519190db19c7295f`) mudou. A R2 (fala por bytes em
+  `work\\cunhagens_13out\\%s`, sha16 `%s`) acrescenta as §9 a §11 (a fronteira dos três literais e a travessia por
+  ramificação); nenhum enunciado da R1 (sha16 `%s`) mudou.]
+""" % (FALA.name, sha(FALA)[:16], sha(R1)[:16])
+
+LEIT_ANT = """solução se, e só se, um dos dois valores do Nome deixa um resto com solução.
+"""
+LEIT_NOV = """solução se, e só se, um dos dois valores do Nome deixa um resto com solução.
+
+## O nome (do operador, 20/11/2026, [INPUT])
+
+«a pedra trinity refere-se à fronteira dos tres literais». O termo que a pedra dá a essa leitura: a inclinação só para na
+fronteira, e na fronteira todo lado vivo corta uma cláusula de três literais ou mais; um literal cai e os outros esperam
+(`a_inclinacao_para_so_na_fronteira`, `na_fronteira_todo_lado_corta_uma_de_tres`).
+"""
+
+LISTA_ANT = """7. `a_trindade`: a síntese.
+"""
+LISTA_NOV = """7. `a_inclinacao_para_so_na_fronteira` (R2): com combustível maior que o tamanho, se a inclinação fica indecisa, ela parou
+   num resto com a mesma resposta que está na fronteira (vivo, sem unidade, não trivial, e a sonda não age).
+8. `na_fronteira_todo_lado_corta_uma_de_tres`, `a_fronteira_tem_tres_literais` (R2): na fronteira, todo lado, fixado e
+   propagado, fica vivo e deixa uma cláusula de dois literais ou mais cortada de uma cláusula original de três literais ou
+   mais; logo a fronteira tem cláusula de três literais.
+9. `a_travessia_decide`, `o_preco_da_travessia` (R2): onde a inclinação para, a máquina nua ramifica no primeiro literal e
+   segue pelos dois lados; assim decide toda fórmula, e o preço provado é de no máximo 2^k·B fixações, com B = (T+1)² + 1
+   e k o combustível: exponencial no tamanho.
+10. `oito_esta_na_fronteira`, `sete_atravessa_e_diz_sim`: as oito cláusulas estão na fronteira e a travessia diz não; sete
+    delas também param a inclinação, e a travessia diz sim.
+11. `a_trindade`, `a_trindade_na_fronteira`: as sínteses.
+"""
+
+NAO_ANT = """* Que a inclinação decida as fórmulas de três literais: lá um lado pode cortar cláusulas ao meio sem morrer, e a inclinação
+  para (`oito_fica_na_fronteira`). É a fronteira de três literais medida em 18/11.
+"""
+NAO_NOV = """* Que a fronteira dos três literais se atravesse em preço polinomial. A pedra atravessa ramificando, ao preço provado
+  exponencial; uma travessia de preço polinomial para toda fórmula de três literais é a pergunta do Instituto [OPEN].
+"""
+
+SECOES = r'''/-! ## 9. A fronteira é o terceiro literal (R2) -/
+
+/-- [DEF] O LADO: fixar `l` e propagar. -/
+def lado (ψ : CNF n) (l : Literal n) : CNF n := propaga (tamanho ψ) (fixa ψ l)
+
+/-- [DEF] O RESTO NA FRONTEIRA: vivo, sem unidade, não trivial, e a sonda não age em nenhum literal. -/
+abbrev NaFronteira (ψ : CNF n) : Prop :=
+  morta ψ = false ∧ (unidade ψ).isNone = true ∧ passaTrivial ψ = false ∧ (sonda ψ ψ.flatten).isNone = true
+
+/-- [DEF] DENTRO: toda cláusula de `φ` é uma sublista de uma cláusula original de `ψ`. -/
+def Dentro (ψ φ : CNF n) : Prop := ∀ C ∈ φ, ∃ D ∈ ψ, C.Sublist D
+
+theorem dentro_inicio (ψ : CNF n) : Dentro ψ ψ := fun C hC => ⟨C, hC, List.Sublist.refl C⟩
+
+theorem dentro_restringe {ψ φ : CNF n} (h : Dentro ψ φ) (i : Fin n) (b : Bool) : Dentro ψ (restringe φ i b) := by
+  intro C hC
+  unfold restringe at hC
+  obtain ⟨D, hD, rfl⟩ := List.mem_map.mp hC
+  obtain ⟨E, hE, hDE⟩ := h D (List.mem_filter.mp hD).1
+  exact ⟨E, hE, List.Sublist.trans List.filter_sublist hDE⟩
+
+theorem dentro_propaga {ψ : CNF n} : ∀ (k : ℕ) {φ : CNF n}, Dentro ψ φ → Dentro ψ (propaga k φ)
+  | 0, _, h => h
+  | k + 1, φ, h => by
+    simp only [propaga]
+    split
+    · exact h
+    · split
+      · next l _ => exact dentro_propaga k (dentro_restringe h l.var l.pos)
+      · exact h
+
+theorem sonda_empurra_mem : ∀ {ψ : CNF n} {ls : List (Literal n)} {l : Literal n},
+    sonda ψ ls = some (.empurra l) → l ∈ ls
+  | _, [], _, h => by simp [sonda] at h
+  | ψ, m :: ls, l, h => by
+    simp only [sonda] at h
+    split at h
+    · simp only [Option.some.injEq, Lance.empurra.injEq] at h
+      rw [← h]
+      exact List.mem_cons_self
+    · split at h
+      · simp at h
+      · exact List.mem_cons_of_mem _ (sonda_empurra_mem h)
+
+theorem sonda_compromete_mem : ∀ {ψ : CNF n} {ls : List (Literal n)} {l : Literal n},
+    sonda ψ ls = some (.compromete l) → l ∈ ls
+  | _, [], _, h => by simp [sonda] at h
+  | ψ, m :: ls, l, h => by
+    simp only [sonda] at h
+    split at h
+    · simp at h
+    · split at h
+      · simp only [Option.some.injEq, Lance.compromete.injEq] at h
+        rw [← h]
+        exact List.mem_cons_self
+      · exact List.mem_cons_of_mem _ (sonda_compromete_mem h)
+
+/-- Quando a sonda não age, cada literal sondado deixa um lado vivo e que corta alguma cláusula. -/
+theorem sonda_nada_age : ∀ {ψ : CNF n} {ls : List (Literal n)}, (sonda ψ ls).isNone = true →
+    ∀ l ∈ ls, morta (lado ψ l) = false ∧ contida (lado ψ l) ψ = false
+  | _, [], _, l, hl => by simp at hl
+  | ψ, m :: ls, h, l, hl => by
+    simp only [sonda] at h
+    split at h
+    · simp at h
+    · next hm =>
+      split at h
+      · simp at h
+      · next hc =>
+        rcases List.mem_cons.mp hl with he | hl'
+        · rw [he]
+          exact ⟨by unfold lado; simpa using hm, by unfold lado; simpa using hc⟩
+        · exact sonda_nada_age h l hl'
+
+theorem contida_falsa_corta {φ' ψ : CNF n} (h : contida φ' ψ = false) : ∃ C ∈ φ', C ∉ ψ := by
+  by_contra hno
+  have hall : ∀ C ∈ φ', C ∈ ψ := fun C hC => by
+    by_contra hCψ
+    exact hno ⟨C, hC, hCψ⟩
+  have h1 := contida_de_inclusao hall
+  rw [h1] at h
+  exact Bool.noConfusion h
+
+theorem sublista_propria {C D : Clausula n} (h : C.Sublist D) (hne : C ≠ D) : C.length < D.length := by
+  rcases Nat.lt_or_eq_of_le h.length_le with hlt | heq
+  · exact hlt
+  · exact absurd (h.eq_of_length heq) hne
+
+/-- ★★★ NA FRONTEIRA TODO LADO VIVO CORTA UMA CLÁUSULA DE TRÊS: no resto onde a inclinação para, cada literal, fixado e
+propagado, fica vivo e deixa uma cláusula de dois literais ou mais, cortada de uma cláusula original de três literais ou
+mais: um literal caiu, os outros esperam. -/
+theorem na_fronteira_todo_lado_corta_uma_de_tres {ψ : CNF n} (hf : NaFronteira ψ) :
+    ∀ l ∈ ψ.flatten, morta (lado ψ l) = false ∧
+      ∃ D ∈ ψ, 3 ≤ D.length ∧ ∃ C ∈ lado ψ l, C.Sublist D ∧ C ≠ D ∧ 2 ≤ C.length := by
+  intro l hl
+  obtain ⟨_, _, _, hs⟩ := hf
+  obtain ⟨hm, hc⟩ := sonda_nada_age hs l hl
+  refine ⟨hm, ?_⟩
+  obtain ⟨C, hC, hCψ⟩ := contida_falsa_corta hc
+  have hpara := a_propagacao_para (tamanho ψ) (fixa ψ l) (tamanho_fixa_le ψ l)
+  have hu : unidade (lado ψ l) = none := by
+    rcases hpara with h | h
+    · exfalso
+      have h0 : true = false := h.symm.trans hm
+      exact Bool.noConfusion h0
+    · exact h
+  have h2 : 2 ≤ C.length := dois_ou_mais (morta_falsa hm C hC) (unidade_none hu C hC)
+  have hdentro : Dentro ψ (lado ψ l) :=
+    dentro_propaga (tamanho ψ) (dentro_restringe (dentro_inicio ψ) l.var l.pos)
+  obtain ⟨D, hD, hCD⟩ := hdentro C hC
+  have hne : C ≠ D := fun he => hCψ (by rw [he]; exact hD)
+  have hlt := sublista_propria hCD hne
+  exact ⟨D, hD, by omega, C, hC, hCD, hne, h2⟩
+
+/-- ★★ A FRONTEIRA TEM TRÊS LITERAIS: no resto onde a inclinação para, há uma cláusula de três literais ou mais. -/
+theorem a_fronteira_tem_tres_literais {ψ : CNF n} (hf : NaFronteira ψ) : ∃ D ∈ ψ, 3 ≤ D.length := by
+  have hne : ψ.flatten ≠ [] := by
+    obtain ⟨hm, _, ht, _⟩ := hf
+    intro hfl
+    rcases ψ with _ | ⟨C, rest⟩
+    · simp [passaTrivial] at ht
+    · rcases C with _ | ⟨a, C'⟩
+      · have h0 := morta_falsa hm [] List.mem_cons_self
+        simp [vazia] at h0
+      · simp at hfl
+  obtain ⟨l, ls, hls⟩ := List.exists_cons_of_ne_nil hne
+  obtain ⟨_, D, hD, h3, _⟩ := na_fronteira_todo_lado_corta_uma_de_tres hf l (by rw [hls]; exact List.mem_cons_self)
+  exact ⟨D, hD, h3⟩
+
+/-- ★★★ A INCLINAÇÃO PARA SÓ NA FRONTEIRA: com combustível maior que o tamanho, se a inclinação fica indecisa, ela parou
+num resto com a mesma resposta da fórmula, e esse resto está na fronteira. -/
+theorem a_inclinacao_para_so_na_fronteira : ∀ (k : ℕ) (φ : CNF n), tamanho φ < k → inclina k φ = .indeciso →
+    ∃ ψ : CNF n, (SAT ψ ↔ SAT φ) ∧ NaFronteira ψ
+  | 0, _, hk, _ => absurd hk (Nat.not_lt_zero _)
+  | k + 1, φ, hk, hi => by
+    have hp := a_propagacao_preserva (tamanho φ) φ
+    have hpf := a_propagacao_para (tamanho φ) φ le_rfl
+    have hψ := tamanho_propaga_le (tamanho φ) φ
+    simp only [inclina] at hi
+    generalize propaga (tamanho φ) φ = ψ at hp hpf hψ hi
+    split at hi
+    · exact absurd hi (by decide)
+    · next hm =>
+      split at hi
+      · exact absurd hi (by decide)
+      · next ht =>
+        split at hi
+        · next l hs =>
+          have he := o_zero_empurra_para_o_lado_oposto (sonda_empurra hs)
+          obtain ⟨C, hC, hlC⟩ := List.mem_flatten.mp (sonda_empurra_mem hs)
+          have hlt := tamanho_restringe_lt ψ l.var (!l.pos) ⟨C, hC, l, hlC, rfl⟩
+          obtain ⟨χ, hχ, hfχ⟩ := a_inclinacao_para_so_na_fronteira k (fixa ψ (oposto l))
+            (by show tamanho (restringe ψ l.var (!l.pos)) < k; omega) hi
+          exact ⟨χ, hχ.trans (he.symm.trans hp), hfχ⟩
+        · next l hs =>
+          have he := o_lado_que_nao_corta_e_seguro (sonda_compromete hs)
+          obtain ⟨C, hC, hlC⟩ := List.mem_flatten.mp (sonda_compromete_mem hs)
+          have hlt := tamanho_restringe_lt ψ l.var l.pos ⟨C, hC, l, hlC, rfl⟩
+          obtain ⟨χ, hχ, hfχ⟩ := a_inclinacao_para_so_na_fronteira k (fixa ψ l)
+            (by show tamanho (restringe ψ l.var l.pos) < k; omega) hi
+          exact ⟨χ, hχ.trans (he.symm.trans hp), hfχ⟩
+        · next hs =>
+          refine ⟨ψ, hp, by simpa using hm, by simp [hpf.resolve_left hm], by simpa using ht, by simp [hs]⟩
+
+/-! ## 10. A travessia por ramificação (R2) -/
+
+/-- [DEF] A TRAVESSIA: a inclinação; onde ela para, a máquina nua ramifica no primeiro literal do resto e segue pelos dois
+lados. -/
+def atravessa : ℕ → CNF n → Bool
+  | 0, _ => false
+  | k + 1, φ =>
+    let ψ := propaga (tamanho φ) φ
+    if morta ψ = true then false
+    else if passaTrivial ψ = true then true
+    else match sonda ψ ψ.flatten with
+      | some (.empurra l) => atravessa k (fixa ψ (oposto l))
+      | some (.compromete l) => atravessa k (fixa ψ l)
+      | none =>
+        match ψ.flatten with
+        | [] => true
+        | l :: _ => atravessa k (fixa ψ l) || atravessa k (fixa ψ (oposto l))
+
+/-- Os dois lados: ter solução é ter solução num dos dois lados do Nome. -/
+theorem os_dois_lados (ψ : CNF n) (l : Literal n) : SAT ψ ↔ SAT (fixa ψ l) ∨ SAT (fixa ψ (oposto l)) := by
+  obtain ⟨i, p⟩ := l
+  show SAT ψ ↔ SAT (restringe ψ i p) ∨ SAT (restringe ψ i (!p))
+  rw [a_proposta_nasce_da_escolha_do_nome ψ i]
+  constructor
+  · rintro ⟨b, hb⟩
+    cases b <;> cases p
+    · exact Or.inl hb
+    · exact Or.inr hb
+    · exact Or.inr hb
+    · exact Or.inl hb
+  · rintro (h | h)
+    · exact ⟨p, h⟩
+    · exact ⟨!p, h⟩
+
+theorem vivo_sem_letras {ψ : CNF n} (hm : morta ψ = false) (hfl : ψ.flatten = []) : SAT ψ := by
+  rcases ψ with _ | ⟨C, rest⟩
+  · exact ⟨fun _ => false, fun C hC => by simp at hC⟩
+  · rcases C with _ | ⟨a, C'⟩
+    · have h0 := morta_falsa hm [] List.mem_cons_self
+      simp [vazia] at h0
+    · simp at hfl
+
+/-- ★★★ A TRAVESSIA DECIDE TODA FÓRMULA: com combustível maior que o tamanho, a travessia diz `true` exatamente quando há
+solução. -/
+theorem a_travessia_decide : ∀ (k : ℕ) (φ : CNF n), tamanho φ < k → (atravessa k φ = true ↔ SAT φ)
+  | 0, _, hk => absurd hk (Nat.not_lt_zero _)
+  | k + 1, φ, hk => by
+    have hp := a_propagacao_preserva (tamanho φ) φ
+    have hψ := tamanho_propaga_le (tamanho φ) φ
+    simp only [atravessa]
+    generalize propaga (tamanho φ) φ = ψ at hp hψ ⊢
+    split
+    · next hm => exact ⟨(fun h => nomatch h), fun hs => absurd (hp.mpr hs) (a_morte_e_o_nao hm)⟩
+    · next hm =>
+      split
+      · next ht => exact ⟨fun _ => hp.mp (o_trivial_diz_sim ht), fun _ => rfl⟩
+      · split
+        · next l hs =>
+          have he := o_zero_empurra_para_o_lado_oposto (sonda_empurra hs)
+          obtain ⟨C, hC, hlC⟩ := List.mem_flatten.mp (sonda_empurra_mem hs)
+          have hlt := tamanho_restringe_lt ψ l.var (!l.pos) ⟨C, hC, l, hlC, rfl⟩
+          rw [a_travessia_decide k (fixa ψ (oposto l)) (by show tamanho (restringe ψ l.var (!l.pos)) < k; omega)]
+          exact he.symm.trans hp
+        · next l hs =>
+          have he := o_lado_que_nao_corta_e_seguro (sonda_compromete hs)
+          obtain ⟨C, hC, hlC⟩ := List.mem_flatten.mp (sonda_compromete_mem hs)
+          have hlt := tamanho_restringe_lt ψ l.var l.pos ⟨C, hC, l, hlC, rfl⟩
+          rw [a_travessia_decide k (fixa ψ l) (by show tamanho (restringe ψ l.var l.pos) < k; omega)]
+          exact he.symm.trans hp
+        · split
+          · next hfl => exact ⟨fun _ => hp.mp (vivo_sem_letras (by simpa using hm) hfl), fun _ => rfl⟩
+          · next l ls hfl =>
+            have hl : l ∈ ψ.flatten := by rw [hfl]; exact List.mem_cons_self
+            obtain ⟨C, hC, hlC⟩ := List.mem_flatten.mp hl
+            have hlt1 := tamanho_restringe_lt ψ l.var l.pos ⟨C, hC, l, hlC, rfl⟩
+            have hlt2 := tamanho_restringe_lt ψ l.var (!l.pos) ⟨C, hC, l, hlC, rfl⟩
+            rw [Bool.or_eq_true,
+              a_travessia_decide k (fixa ψ l) (by show tamanho (restringe ψ l.var l.pos) < k; omega),
+              a_travessia_decide k (fixa ψ (oposto l)) (by show tamanho (restringe ψ l.var (!l.pos)) < k; omega)]
+            exact (os_dois_lados ψ l).symm.trans hp
+
+/-- [DEF] As fixações feitas pela travessia. -/
+def custoAtravessa : ℕ → CNF n → ℕ
+  | 0, _ => 0
+  | k + 1, φ =>
+    let ψ := propaga (tamanho φ) φ
+    custoPropaga (tamanho φ) φ +
+      (if morta ψ = true then 0
+       else if passaTrivial ψ = true then 0
+       else custoSonda ψ ψ.flatten +
+         match sonda ψ ψ.flatten with
+         | some (.empurra l) => custoAtravessa k (fixa ψ (oposto l)) + 1
+         | some (.compromete l) => custoAtravessa k (fixa ψ l) + 1
+         | none =>
+           match ψ.flatten with
+           | [] => 0
+           | l :: _ => custoAtravessa k (fixa ψ l) + custoAtravessa k (fixa ψ (oposto l)) + 2)
+
+theorem cota_aux {c bi b p : ℕ} (h : c + bi ≤ p * bi) (hb : bi ≤ b) (hp : 1 ≤ p) : c + b ≤ p * b := by
+  obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le hb
+  have e1 : p * (bi + d) = p * bi + p * d := Nat.mul_add p bi d
+  have e2 : d ≤ p * d := Nat.le_mul_of_pos_left d hp
+  omega
+
+/-- ★★ O PREÇO DA TRAVESSIA: com B = (T+1)² + 1, a travessia faz no máximo 2^k·B − B fixações, com k o combustível:
+exponencial no tamanho. -/
+theorem o_preco_da_travessia : ∀ (k : ℕ) (φ : CNF n),
+    custoAtravessa k φ + ((tamanho φ + 1) ^ 2 + 1) ≤ 2 ^ k * ((tamanho φ + 1) ^ 2 + 1)
+  | 0, φ => by simp [custoAtravessa]
+  | k + 1, φ => by
+    simp only [custoAtravessa]
+    have hP := custoPropaga_le (tamanho φ) φ
+    have hψ := tamanho_propaga_le (tamanho φ) φ
+    generalize propaga (tamanho φ) φ = ψ at hψ ⊢
+    have hS : custoSonda ψ ψ.flatten ≤ tamanho φ * (tamanho φ + 1) :=
+      le_trans (custoSonda_le ψ ψ.flatten) (Nat.mul_le_mul (le_trans (letras_le_tamanho ψ) hψ) (by omega))
+    have hB : tamanho φ + tamanho φ * (tamanho φ + 1) + 1 = (tamanho φ + 1) ^ 2 := by ring
+    have h2 : 2 ^ (k + 1) * ((tamanho φ + 1) ^ 2 + 1) = 2 * (2 ^ k * ((tamanho φ + 1) ^ 2 + 1)) := by ring
+    have hpos : (tamanho φ + 1) ^ 2 + 1 ≤ 2 ^ k * ((tamanho φ + 1) ^ 2 + 1) :=
+      Nat.le_mul_of_pos_left _ (Nat.two_pow_pos k)
+    have hsub : ∀ χ : CNF n, tamanho χ ≤ tamanho φ →
+        custoAtravessa k χ + ((tamanho φ + 1) ^ 2 + 1) ≤ 2 ^ k * ((tamanho φ + 1) ^ 2 + 1) := by
+      intro χ hχ
+      apply cota_aux (o_preco_da_travessia k χ) _ (Nat.two_pow_pos k)
+      have := Nat.pow_le_pow_left (Nat.add_le_add_right hχ 1) 2
+      omega
+    split
+    · omega
+    · split
+      · omega
+      · split
+        · next l _ =>
+          have := hsub (fixa ψ (oposto l)) (le_trans (tamanho_fixa_le ψ _) hψ)
+          nlinarith
+        · next l _ =>
+          have := hsub (fixa ψ l) (le_trans (tamanho_fixa_le ψ _) hψ)
+          nlinarith
+        · split
+          · omega
+          · next l _ _ =>
+            have h1 := hsub (fixa ψ l) (le_trans (tamanho_fixa_le ψ _) hψ)
+            have h3 := hsub (fixa ψ (oposto l)) (le_trans (tamanho_fixa_le ψ _) hψ)
+            nlinarith
+
+/-! ## 11. A fronteira nos exemplos (R2) -/
+
+/-- [DEF] Sete das oito cláusulas: falta a que exclui x = (0, 1, 0); essa atribuição é a única solução. -/
+def sete : CNF 3 :=
+  [[⟨0, true⟩, ⟨1, true⟩, ⟨2, true⟩], [⟨0, true⟩, ⟨1, true⟩, ⟨2, false⟩],
+   [⟨0, true⟩, ⟨1, false⟩, ⟨2, false⟩],
+   [⟨0, false⟩, ⟨1, true⟩, ⟨2, true⟩], [⟨0, false⟩, ⟨1, true⟩, ⟨2, false⟩],
+   [⟨0, false⟩, ⟨1, false⟩, ⟨2, true⟩], [⟨0, false⟩, ⟨1, false⟩, ⟨2, false⟩]]
+
+/-- ★ AS OITO ESTÃO NA FRONTEIRA, E A TRAVESSIA DIZ NÃO. -/
+theorem oito_esta_na_fronteira : NaFronteira oito ∧ atravessa (tamanho oito + 1) oito = false := by
+  decide
+
+/-- ★ SETE PARAM A INCLINAÇÃO, E A TRAVESSIA DIZ SIM: a inclinação fica indecisa nas sete cláusulas; a travessia ramifica
+no primeiro Nome: o lado x₀ = 1 morre, o lado x₀ = 0 vive. -/
+theorem sete_atravessa_e_diz_sim :
+    NaFronteira sete ∧ aInclinacao sete = .indeciso ∧ atravessa (tamanho sete + 1) sete = true := by
+  decide
+
+/-- ★★★ A TRINDADE NA FRONTEIRA (R2):
+    (1) a inclinação para só na fronteira, num resto com a mesma resposta;
+    (2) na fronteira há cláusula de três literais, e todo lado vivo corta uma delas: um literal cai, os outros esperam;
+    (3) a travessia por ramificação decide toda fórmula, ao preço provado de no máximo 2^k·B − B fixações: exponencial. -/
+theorem a_trindade_na_fronteira :
+    (∀ (k : ℕ) (φ : CNF n), tamanho φ < k → inclina k φ = .indeciso → ∃ ψ : CNF n, (SAT ψ ↔ SAT φ) ∧ NaFronteira ψ)
+    ∧ (∀ ψ : CNF n, NaFronteira ψ → ∃ D ∈ ψ, 3 ≤ D.length)
+    ∧ (∀ ψ : CNF n, NaFronteira ψ → ∀ l ∈ ψ.flatten, morta (lado ψ l) = false ∧
+        ∃ D ∈ ψ, 3 ≤ D.length ∧ ∃ C ∈ lado ψ l, C.Sublist D ∧ C ≠ D ∧ 2 ≤ C.length)
+    ∧ (∀ (k : ℕ) (φ : CNF n), tamanho φ < k → (atravessa k φ = true ↔ SAT φ))
+    ∧ (∀ (k : ℕ) (φ : CNF n),
+        custoAtravessa k φ + ((tamanho φ + 1) ^ 2 + 1) ≤ 2 ^ k * ((tamanho φ + 1) ^ 2 + 1)) :=
+  ⟨a_inclinacao_para_so_na_fronteira, fun _ h => a_fronteira_tem_tres_literais h,
+   fun _ h => na_fronteira_todo_lado_corta_uma_de_tres h, a_travessia_decide, o_preco_da_travessia⟩
+
+'''
+
+FIM = "end TGLExt.Trinity\n"
+AX_ANCORA = "#print axioms TGLExt.Trinity.a_cadeia_inclina_e_diz_sim\n"
+AX_NOVOS = """#print axioms TGLExt.Trinity.na_fronteira_todo_lado_corta_uma_de_tres
+#print axioms TGLExt.Trinity.a_fronteira_tem_tres_literais
+#print axioms TGLExt.Trinity.a_inclinacao_para_so_na_fronteira
+#print axioms TGLExt.Trinity.os_dois_lados
+#print axioms TGLExt.Trinity.a_travessia_decide
+#print axioms TGLExt.Trinity.o_preco_da_travessia
+#print axioms TGLExt.Trinity.oito_esta_na_fronteira
+#print axioms TGLExt.Trinity.sete_atravessa_e_diz_sim
+#print axioms TGLExt.Trinity.a_trindade_na_fronteira
+"""
+
+novo = src
+for antes, depois in [(CAB_ANT, CAB_NOV), (LEIT_ANT, LEIT_NOV), (LISTA_ANT, LISTA_NOV), (NAO_ANT, NAO_NOV),
+                      (FIM, SECOES + FIM), (AX_ANCORA, AX_ANCORA + AX_NOVOS)]:
+    assert novo.count(antes) == 1, "trecho nao achado exatamente uma vez: %r" % antes[:70]
+    novo = novo.replace(antes, depois)
+dest = AQUI / "Trinity.lean"
+dados = novo.encode("utf-8")
+tmp = AQUI / "Trinity.lean.tmp"
+tmp.write_bytes(dados)
+assert tmp.read_bytes() == dados
+tmp.replace(dest)
+print("R1 sha16 %s -> R2 sha16 %s | %d -> %d B | fala sha16 %s" % (sha(R1)[:16], sha(dest)[:16], len(src.encode("utf-8")),
+                                                                   len(dados), sha(FALA)[:16]))

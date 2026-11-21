@@ -1,0 +1,672 @@
+{
+ "contrato": "GUARDA_FRASES_v413",
+ "regra": "contrato da v413, secao 5: a guarda da v412 herdada inteira, sem mudar obrigacao; os controles herdados rodados; os de “P = nP” sobre a pagina da v413",
+ "modo": "proposta",
+ "funcao": "as funcoes do um.py SELADO da v412 (base_v412\\um.py, por trecho)",
+ "base_um_py_sha16": "3e741dcaa58ef2b8",
+ "identidade_com_a_fonte_embutida_na_v412": {
+  "arquivo": "v412/runtime_v412_guarda.py",
+  "sha16": "5240784969cd4cc5",
+  "por_funcao": {
+   "_v412_guarda_frases": true,
+   "_v412_unidades_de_texto": true,
+   "_v412_unidades_tex": true,
+   "_v412_travessia": true
+  }
+ },
+ "nomes_herdados_lidos_do_um_selado": {
+  "f34": "F34_p_igual_np_sem_o_qualificador_do_dicionario_ou_a_ressalva_open",
+  "f37": "F37_p_igual_np_e_turing_sem_o_qualificador_relativo_ao_leitor",
+  "f37b_nao_sai": "F37b_p_igual_np_e_turing_juntos_sem_o_qualificador_no_mesmo_trecho"
+ },
+ "controles_herdados": {
+  "molde": "v412/guarda_frases_v412_r7.py (controles(), por ast)",
+  "molde_sha16": "9636c6af260f5a96",
+  "pagina_dos_controles": "v412/o_que_fica_claro_REV25/O_QUE_FICA_CLARO_v412_R25.md",
+  "n": 45,
+  "n_ok": 45,
+  "recibo_da_v412": {
+   "arquivo": "v412/GUARDA_FRASES_v412.json",
+   "sha16": "985c5451ed2bc23a",
+   "n": 45,
+   "n_ok": 45
+  },
+  "diferem_do_recibo_da_v412": [],
+  "numerados": [
+   "1",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "16b",
+   "17",
+   "17b",
+   "18",
+   "19",
+   "2",
+   "20",
+   "20b",
+   "21",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "controles": [
+   {
+    "controle": 1,
+    "lingua": "pt",
+    "rotulo": "o paragrafo da secao 2 da pagina passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 2,
+    "lingua": "pt",
+    "rotulo": "o mesmo paragrafo sem a frase da ressalva e' recusado",
+    "esperado": "recusa (F70)",
+    "obtido": [
+     "F34_p_igual_np_sem_o_qualificador_do_dicionario_ou_a_ressalva_open",
+     "F70_p_igual_np_sem_as_duas_marcas_na_unidade:maquina_de_fita"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 3,
+    "lingua": "pt",
+    "rotulo": "o titulo solto “P = nP” e' recusado",
+    "esperado": "recusa (F70)",
+    "obtido": [
+     "F34_p_igual_np_sem_o_qualificador_do_dicionario_ou_a_ressalva_open",
+     "F70_p_igual_np_sem_as_duas_marcas_na_unidade:dicionario,maquina_de_fita"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 4,
+    "lingua": "pt",
+    "rotulo": "o titulo da secao 2 da pagina R25 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 5,
+    "lingua": "pt",
+    "rotulo": "dois paragrafos: o primeiro com “P = nP” sem marcas e o segundo com as duas marcas: o primeiro e' recusado, o segundo passa",
+    "esperado": "1o recusado, 2o limpo",
+    "obtido": [
+     [
+      "F34_p_igual_np_sem_o_qualificador_do_dicionario_ou_a_ressalva_open",
+      "F70_p_igual_np_sem_as_duas_marcas_na_unidade:dicionario,maquina_de_fita"
+     ],
+     []
+    ],
+    "ok": true
+   },
+   {
+    "controle": 6,
+    "lingua": "pt",
+    "rotulo": "um corpo de registro com “P = nP” num campo e as marcas em outro: o campo sem as marcas e' recusado",
+    "esperado": "campo diz recusado; limites limpo",
+    "obtido": [
+     [
+      "/corpo/diz[0]",
+      "F34"
+     ],
+     [
+      "/corpo/diz[0]",
+      "F70"
+     ]
+    ],
+    "ok": true
+   },
+   {
+    "controle": 7,
+    "lingua": "pt",
+    "rotulo": "a unidade em pt com “P = nP” e a unidade em en com as marcas: a de pt e' recusada e a de en passa",
+    "esperado": "recusada so' a de pt",
+    "obtido": [
+     [
+      "/pt[0]",
+      "F34"
+     ],
+     [
+      "/pt[0]",
+      "F70"
+     ]
+    ],
+    "ok": true
+   },
+   {
+    "controle": 8,
+    "lingua": "pt",
+    "rotulo": "as duas marcas mais uma frase que diz que a TGL prova P = NP de Turing: recusada pela regra herdada",
+    "esperado": "recusa",
+    "obtido": [
+     "F27_p_igual_np_provado",
+     "F31_a_tgl_prova_p_igual_np_de_turing",
+     "F44_p_vs_np_dito_resolvido"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 9,
+    "lingua": "pt",
+    "rotulo": "as duas marcas, e “P = nP” e “Turing” no mesmo segmento sem a ressalva local: recusada pela obrigacao local da v409 (F37b), que nao saiu",
+    "esperado": "recusa (F37b_)",
+    "obtido": [
+     "F37b_p_igual_np_e_turing_juntos_sem_o_qualificador_no_mesmo_trecho"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 10,
+    "lingua": "pt",
+    "rotulo": "um titulo, um item de lista e uma celula de tabela, cada um com “P = nP” sem as marcas: os tres recusados",
+    "esperado": "tres recusados (titulo, item, celula)",
+    "obtido": [
+     [
+      "titulo",
+      2
+     ],
+     [
+      "item",
+      2
+     ],
+     [
+      "celula",
+      2
+     ],
+     [
+      "celula",
+      0
+     ]
+    ],
+    "ok": true
+   },
+   {
+    "controle": 11,
+    "lingua": "pt",
+    "rotulo": "o titulo da secao 3 da pagina passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 12,
+    "lingua": "pt",
+    "rotulo": "o paragrafo da secao 3 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 13,
+    "lingua": "pt",
+    "rotulo": "a frase da secao 6 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 14,
+    "lingua": "pt",
+    "rotulo": "“a regularidade global esta demonstrada”, com o nome, e' recusada",
+    "esperado": "recusa (F68)",
+    "obtido": [
+     "F68a_o_nome_dos_fluidos_sem_a_forma_condicional_ou_a_negacao_expressa",
+     "F68b_afirmacao_junto_do_nome_dos_fluidos"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 15,
+    "lingua": "pt",
+    "rotulo": "o nome sozinho numa frase sem a forma e' recusado",
+    "esperado": "recusa (F68a)",
+    "obtido": [
+     "F68a_o_nome_dos_fluidos_sem_a_forma_condicional_ou_a_negacao_expressa"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 16,
+    "lingua": "pt",
+    "rotulo": "uma frase condicional seguida de OUTRA frase com o nome e a afirmacao: a segunda e' recusada, a primeira passa",
+    "esperado": "recusa (F68)",
+    "obtido": [
+     "F68a_o_nome_dos_fluidos_sem_a_forma_condicional_ou_a_negacao_expressa",
+     "F68b_afirmacao_junto_do_nome_dos_fluidos"
+    ],
+    "ok": true
+   },
+   {
+    "controle": "16b",
+    "lingua": "pt",
+    "rotulo": "a frase condicional sozinha passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 17,
+    "lingua": "pt",
+    "rotulo": "uma frase na forma da negacao seguida de OUTRA frase com o nome sem a forma: a segunda e' recusada",
+    "esperado": "recusa (F68a)",
+    "obtido": [
+     "F68a_o_nome_dos_fluidos_sem_a_forma_condicional_ou_a_negacao_expressa"
+    ],
+    "ok": true
+   },
+   {
+    "controle": "17b",
+    "lingua": "pt",
+    "rotulo": "a frase na forma da negacao sozinha passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 18,
+    "lingua": "pt",
+    "rotulo": "uma frase na forma da negacao que contem “demonstrada” passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 19,
+    "lingua": "pt",
+    "rotulo": "a palavra do premio e' recusada em qualquer unidade",
+    "esperado": "recusa (F69)",
+    "obtido": [
+     "F69_o_nome_do_premio"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 1,
+    "lingua": "en",
+    "rotulo": "o paragrafo da secao 2 da pagina passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 2,
+    "lingua": "en",
+    "rotulo": "o mesmo paragrafo sem a frase da ressalva e' recusado",
+    "esperado": "recusa (F70)",
+    "obtido": [
+     "F34_p_igual_np_sem_o_qualificador_do_dicionario_ou_a_ressalva_open",
+     "F70_p_igual_np_sem_as_duas_marcas_na_unidade:maquina_de_fita"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 3,
+    "lingua": "en",
+    "rotulo": "o titulo solto “P = nP” e' recusado",
+    "esperado": "recusa (F70)",
+    "obtido": [
+     "F34_p_igual_np_sem_o_qualificador_do_dicionario_ou_a_ressalva_open",
+     "F70_p_igual_np_sem_as_duas_marcas_na_unidade:dicionario,maquina_de_fita"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 4,
+    "lingua": "en",
+    "rotulo": "o titulo da secao 2 da pagina R25 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 5,
+    "lingua": "en",
+    "rotulo": "dois paragrafos: o primeiro com “P = nP” sem marcas e o segundo com as duas marcas: o primeiro e' recusado, o segundo passa",
+    "esperado": "1o recusado, 2o limpo",
+    "obtido": [
+     [
+      "F34_p_igual_np_sem_o_qualificador_do_dicionario_ou_a_ressalva_open",
+      "F70_p_igual_np_sem_as_duas_marcas_na_unidade:dicionario,maquina_de_fita"
+     ],
+     []
+    ],
+    "ok": true
+   },
+   {
+    "controle": 6,
+    "lingua": "en",
+    "rotulo": "um corpo de registro com “P = nP” num campo e as marcas em outro: o campo sem as marcas e' recusado",
+    "esperado": "campo diz recusado; limites limpo",
+    "obtido": [
+     [
+      "/corpo/diz[0]",
+      "F34"
+     ],
+     [
+      "/corpo/diz[0]",
+      "F70"
+     ]
+    ],
+    "ok": true
+   },
+   {
+    "controle": 7,
+    "lingua": "en",
+    "rotulo": "a unidade em en com “P = nP” e a unidade em pt com as marcas: a de en e' recusada e a de pt passa",
+    "esperado": "recusada so' a de en",
+    "obtido": [
+     [
+      "/en[0]",
+      "F34"
+     ],
+     [
+      "/en[0]",
+      "F70"
+     ]
+    ],
+    "ok": true
+   },
+   {
+    "controle": 8,
+    "lingua": "en",
+    "rotulo": "as duas marcas mais uma frase que diz que a TGL prova P = NP de Turing: recusada pela regra herdada",
+    "esperado": "recusa",
+    "obtido": [
+     "F27_p_igual_np_provado",
+     "F31_a_tgl_prova_p_igual_np_de_turing",
+     "F44_p_vs_np_dito_resolvido"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 9,
+    "lingua": "en",
+    "rotulo": "as duas marcas, e “P = nP” e “Turing” no mesmo segmento sem a ressalva local: recusada pela obrigacao local da v409 (F37b), que nao saiu",
+    "esperado": "recusa (F37b_)",
+    "obtido": [
+     "F37b_p_igual_np_e_turing_juntos_sem_o_qualificador_no_mesmo_trecho"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 10,
+    "lingua": "en",
+    "rotulo": "um titulo, um item de lista e uma celula de tabela, cada um com “P = nP” sem as marcas: os tres recusados",
+    "esperado": "tres recusados (titulo, item, celula)",
+    "obtido": [
+     [
+      "titulo",
+      2
+     ],
+     [
+      "item",
+      2
+     ],
+     [
+      "celula",
+      2
+     ],
+     [
+      "celula",
+      0
+     ]
+    ],
+    "ok": true
+   },
+   {
+    "controle": 11,
+    "lingua": "en",
+    "rotulo": "o titulo da secao 3 da pagina passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 12,
+    "lingua": "en",
+    "rotulo": "o paragrafo da secao 3 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 13,
+    "lingua": "en",
+    "rotulo": "a frase da secao 6 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 14,
+    "lingua": "en",
+    "rotulo": "“a regularidade global esta demonstrada”, com o nome, e' recusada",
+    "esperado": "recusa (F68)",
+    "obtido": [
+     "F68a_o_nome_dos_fluidos_sem_a_forma_condicional_ou_a_negacao_expressa",
+     "F68b_afirmacao_junto_do_nome_dos_fluidos"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 15,
+    "lingua": "en",
+    "rotulo": "o nome sozinho numa frase sem a forma e' recusado",
+    "esperado": "recusa (F68a)",
+    "obtido": [
+     "F68a_o_nome_dos_fluidos_sem_a_forma_condicional_ou_a_negacao_expressa"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 16,
+    "lingua": "en",
+    "rotulo": "uma frase condicional seguida de OUTRA frase com o nome e a afirmacao: a segunda e' recusada, a primeira passa",
+    "esperado": "recusa (F68)",
+    "obtido": [
+     "F68a_o_nome_dos_fluidos_sem_a_forma_condicional_ou_a_negacao_expressa",
+     "F68b_afirmacao_junto_do_nome_dos_fluidos"
+    ],
+    "ok": true
+   },
+   {
+    "controle": "16b",
+    "lingua": "en",
+    "rotulo": "a frase condicional sozinha passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 17,
+    "lingua": "en",
+    "rotulo": "uma frase na forma da negacao seguida de OUTRA frase com o nome sem a forma: a segunda e' recusada",
+    "esperado": "recusa (F68a)",
+    "obtido": [
+     "F68a_o_nome_dos_fluidos_sem_a_forma_condicional_ou_a_negacao_expressa"
+    ],
+    "ok": true
+   },
+   {
+    "controle": "17b",
+    "lingua": "en",
+    "rotulo": "a frase na forma da negacao sozinha passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 18,
+    "lingua": "en",
+    "rotulo": "uma frase na forma da negacao que contem “demonstrada” passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true
+   },
+   {
+    "controle": 19,
+    "lingua": "en",
+    "rotulo": "a palavra do premio e' recusada em qualquer unidade",
+    "esperado": "recusa (F69)",
+    "obtido": [
+     "F69_o_nome_do_premio"
+    ],
+    "ok": true
+   },
+   {
+    "controle": 20,
+    "lingua": "pt+en",
+    "rotulo": "uma superficie vazia e' falha",
+    "esperado": "ok False por SUPERFICIE_VAZIA",
+    "obtido": [
+     [
+      "/",
+      "superficie",
+      "SUPERFICIE_VAZIA_NENHUMA_UNIDADE_EXAMINADA",
+      "superficie_vazia"
+     ]
+    ],
+    "ok": true
+   },
+   {
+    "controle": "20b",
+    "lingua": "pt+en",
+    "rotulo": "uma superficie sem folha de texto tambem e' falha",
+    "esperado": "ok False",
+    "obtido": [
+     [
+      "/",
+      "superficie",
+      "SUPERFICIE_VAZIA_NENHUMA_UNIDADE_EXAMINADA",
+      "superficie_so_numeros"
+     ]
+    ],
+    "ok": true
+   },
+   {
+    "controle": 21,
+    "lingua": "pt+en",
+    "rotulo": "o texto herdado da v411 (as listas de controle da v411), passado pela guarda herdada, da o mesmo resultado de antes (a guarda herdada nao mudou)",
+    "esperado": "mesmos resultados (49 textos)",
+    "obtido": {
+     "n": 49,
+     "diferem": []
+    },
+    "ok": true
+   }
+  ],
+  "ok": true
+ },
+ "controles_da_pagina_v413": {
+  "pagina": "proposta_pagina_R1\\O_QUE_FICA_CLARO_v413_R1_PROPOSTA.md",
+  "pagina_sha16": "787ca0e86552480f",
+  "traducao_en": "proposta_pagina_R1\\O_QUE_FICA_CLARO_v413_R1_PROPOSTA_EN.md",
+  "traducao_en_sha16": "adf3b343a9478b30",
+  "n": 8,
+  "n_ok": 8,
+  "controles": [
+   {
+    "controle": "v413-1",
+    "lingua": "pt",
+    "rotulo": "o paragrafo da secao 2 da pagina da v413 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true,
+    "texto_inicio": "P = nP é teorema da TGL nas classes do seu dicionário. A v413 o escreve na língua das classes de Cook–Levin, na máquina "
+   },
+   {
+    "controle": "v413-2",
+    "lingua": "pt",
+    "rotulo": "o mesmo paragrafo sem a frase da ressalva e' recusado",
+    "esperado": "recusa (F70)",
+    "obtido": [
+     "F34_p_igual_np_sem_o_qualificador_do_dicionario_ou_a_ressalva_open",
+     "F37_p_igual_np_e_turing_sem_o_qualificador_relativo_ao_leitor",
+     "F70_p_igual_np_sem_as_duas_marcas_na_unidade:maquina_de_fita"
+    ],
+    "ok": true,
+    "texto_inicio": "P = nP é teorema da TGL nas classes do seu dicionário. A v413 o escreve na língua das classes de Cook–Levin, na máquina "
+   },
+   {
+    "controle": "v413-4",
+    "lingua": "pt",
+    "rotulo": "o titulo da secao 2 da pagina da v413 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true,
+    "texto_inicio": "2. A ponte de Cook–Levin: o que vale com uma leitura do leitor da TGL; contado em passos da máquina de fita, não está de"
+   },
+   {
+    "controle": "v413-8",
+    "lingua": "pt",
+    "rotulo": "o paragrafo mais uma frase que diz que a TGL prova P = NP de Turing: recusado pela regra herdada",
+    "esperado": "recusa",
+    "obtido": [
+     "F27_p_igual_np_provado",
+     "F31_a_tgl_prova_p_igual_np_de_turing",
+     "F44_p_vs_np_dito_resolvido"
+    ],
+    "ok": true,
+    "texto_inicio": "P = nP é teorema da TGL nas classes do seu dicionário. A v413 o escreve na língua das classes de Cook–Levin, na máquina "
+   },
+   {
+    "controle": "v413-1",
+    "lingua": "en",
+    "rotulo": "o paragrafo da secao 2 da pagina da v413 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true,
+    "texto_inicio": "P = nP is a theorem of the TGL in the classes of its dictionary. Version v413 writes it in the language of the Cook–Levi"
+   },
+   {
+    "controle": "v413-2",
+    "lingua": "en",
+    "rotulo": "o mesmo paragrafo sem a frase da ressalva e' recusado",
+    "esperado": "recusa (F70)",
+    "obtido": [
+     "F34_p_igual_np_sem_o_qualificador_do_dicionario_ou_a_ressalva_open",
+     "F37_p_igual_np_e_turing_sem_o_qualificador_relativo_ao_leitor",
+     "F70_p_igual_np_sem_as_duas_marcas_na_unidade:maquina_de_fita"
+    ],
+    "ok": true,
+    "texto_inicio": "P = nP is a theorem of the TGL in the classes of its dictionary. Version v413 writes it in the language of the Cook–Levi"
+   },
+   {
+    "controle": "v413-4",
+    "lingua": "en",
+    "rotulo": "o titulo da secao 2 da pagina da v413 passa",
+    "esperado": "passa",
+    "obtido": [],
+    "ok": true,
+    "texto_inicio": "2. The Cook–Levin bridge: what holds with one reading by the TGL reader; counted in steps of the tape machine, it has no"
+   },
+   {
+    "controle": "v413-8",
+    "lingua": "en",
+    "rotulo": "o paragrafo mais uma frase que diz que a TGL prova P = NP de Turing: recusado pela regra herdada",
+    "esperado": "recusa",
+    "obtido": [
+     "F27_p_igual_np_provado",
+     "F31_a_tgl_prova_p_igual_np_de_turing",
+     "F44_p_vs_np_dito_resolvido"
+    ],
+    "ok": true,
+    "texto_inicio": "P = nP is a theorem of the TGL in the classes of its dictionary. Version v413 writes it in the language of the Cook–Levi"
+   }
+  ],
+  "ok": true
+ },
+ "ok": true
+}

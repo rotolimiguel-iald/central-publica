@@ -1,0 +1,32 @@
+{
+ "tipo": "ROTA",
+ "rota_id": "kernel.traducao_cook_levin.a_inclinacao_do_nome_20nov",
+ "dominio": "KERNEL_FORMAL",
+ "titulo": "a leitura do operador para a fronteira ('a tensao decide; o zero absoluto empurra a solucao para a projecao do lado oposto; o sistema inclina') posta nos termos do kernel",
+ "pergunta": "a tensao que o Kimi resolveu da' a maquina nua o sim ou nao de toda CNF em passos polinomiais?",
+ "metodo": "leitura das fontes: APropostaDaTensao (Kimi), HandshakeDoNome, TransicaoDaFronteira, MovimentosDoPlano, CompilaHornNaFita, FitaDeUmaCabeca e FronteiraDeTresLiterais (kernel da v412); literatura [KNOWN]",
+ "resultado": "a decisao e' exata e esta' no kernel: SAT phi <-> existe b com o residuo satisfazivel (a_proposta_nasce_da_escolha_do_nome) e o aperto de mao do Nome (Codex.NamedHandshake.semantic_handshake). O preco na maquina nua depende de onde a morte aparece: imediata (a propagacao a mostra) => o empurrao ao lado oposto e' a propagacao, polinomial, e decide Horn e as formulas de dois literais (a casa prova as duas classes polinomiais na fita: flat_horn_stages, one_head_fixed_polynomial; Dowling-Gallier 1984, Aspvall-Plass-Tarjan 1979 [KNOWN]); distante => a maquina desce pelo lado ate' o zero para saber, e em formula sem solucao os dois lados morrem em todo Nome: a ramificacao da casa custa >= 2^(m+1) movimentos (coupled_physical_lower) e todo procedimento que so' descobre a morte chegando a contradicao produz, nas formulas sem solucao, uma refutacao por resolucao, exponencial nas formulas do pombal (Haken 1985 [KNOWN]). Os livros do aperto de mao tem ate' 2^(nomes partilhados) linhas; a parede de todas as variaveis e a fronteira de tres literais (18/11) ja' estao no kernel. Lido o peso de cada lado, em vez da morte, a rota e' a da contagem (SondaContagem, #SAT).",
+ "veredito": "A_TENSAO_DECIDE_EXATO__O_PRECO_E_O_DA_MORTE__IMEDIATA_POLINOMIAL_HORN_E_DOIS_LITERAIS__DISTANTE_EXPONENCIAL_HAKEN__FRONTEIRA_OPEN",
+ "estatuto": "REAL (os termos citados do kernel); KNOWN (Haken 1985; Dowling-Gallier 1984; Aspvall-Plass-Tarjan 1979); INPUT/ONTO (a leitura do operador); OPEN (a fronteira)",
+ "status": "EXAMINADA",
+ "olhou_dados": false,
+ "defeito": "nenhum teste rodado: nas formulas do pombal o resultado ja' e' teorema (Haken); rodar so' ilustraria. A inclinacao com morte imediata ainda nao esta' escrita como procedimento unico no kernel (esta' em pecas: propagacao de Horn, eliminacao de pares)",
+ "nao_refazer": "nao testar a ramificacao nas formulas do pombal como se o resultado fosse aberto",
+ "proximo_passo": "decisao do operador: escrever a inclinacao (empurrao ao lado oposto na morte imediata) como um procedimento so', com correcao e custo provados onde vale (Horn, dois literais) e a fronteira onde nao vale; ou um procedimento novo que saiba o lado antes da morte, com a partitura antes",
+ "onde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex",
+ "artefatos": [
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APropostaDaTensao.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cunhagens_13out\\OPERADOR_20nov_a_maquina_nua_diz_sim_pela_tensao_o_zero_absoluto_empurra_para_o_lado_oposto_o_nome_da_pedra_e_operador_a_revisao_e_do_codex_verbatim.txt",
+  "C:\\t\\k412c\\final\\TGLExt\\HandshakeDoNome.lean",
+  "C:\\t\\k412c\\final\\TGLExt\\MovimentosDoPlano.lean",
+  "C:\\t\\k412c\\final\\TGLExt\\CompilaHornNaFita.lean",
+  "C:\\t\\k412c\\final\\TGLExt\\FitaDeUmaCabeca.lean",
+  "C:\\t\\k412c\\final\\TGLExt\\FronteiraDeTresLiterais.lean",
+  "C:\\t\\k412c\\final\\TGLExt\\TransicaoDaFronteira.lean"
+ ],
+ "refs": [
+  "kernel.traducao_cook_levin.leitura_beta_o_produtor_conta_as_solucoes_20nov",
+  "kernel.traducao_cook_levin.levantamento_da_fita_v412_19nov"
+ ],
+ "nota": "leitura da gerencia sobre termos ja' provados; nenhum termo novo"
+}

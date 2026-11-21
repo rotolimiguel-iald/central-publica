@@ -1,0 +1,230 @@
+{
+ "contrato": "PRECONDICOES_BN_v413",
+ "quando": "2026-11-20T22:39:59",
+ "veredito": "NENHUMA FALHA, 7 PENDENTE(S)",
+ "n_checagens": 30,
+ "n_ok": 23,
+ "n_falhas": 0,
+ "n_pendentes": 7,
+ "pendentes": [
+  {
+   "checagem": "PINOS_BN_v413.json: o pino delta esta' pendente",
+   "motivo": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino candidato esta' pendente",
+   "motivo": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino kernel_recibo esta' pendente",
+   "motivo": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino esperados esta' pendente",
+   "motivo": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino pins_do_candidato esta' pendente",
+   "motivo": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino DIFF_KERNEL_v413.txt esta' pendente",
+   "motivo": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino DIFF_v412_v413.diff esta' pendente",
+   "motivo": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  }
+ ],
+ "checagens": [
+  {
+   "checagem": "o esboco R3.6 pinado em PINOS_BN_v411.json existe e tem o sha256 do pino",
+   "ok": true,
+   "detalhe": "bf5ad5c99d05fa57"
+  },
+  {
+   "checagem": "a Bancada de producao pina o B20 da v411 (antes do APLICAR) ou o B21 da v413 (depois): o delta_bn o confere ao ser importado (N5)",
+   "ok": true,
+   "detalhe": {
+    "version": "v411",
+    "deployment_id": "B20-v411-20261113-R1",
+    "n": 20
+   }
+  },
+  {
+   "checagem": "o Nos tem um selo que pina o um.py do disco (v412 antes da instalacao da v413; v413 depois)",
+   "ok": true,
+   "detalhe": {
+    "um_version": "v412",
+    "um_py_sha16": "3e741dcaa58ef2b8"
+   }
+  },
+  {
+   "checagem": "N6: v412\\base_v411 e' a v411 selada (o selo diz v411 e pina o um.py e o kernel da copia): o anterior da BANCADA",
+   "ok": true,
+   "detalhe": {
+    "um_py": "1203b1f9202020d6",
+    "kernel": "4047eb456795ae86"
+   }
+  },
+  {
+   "checagem": "N6: v413\\base_v412 e' a v412 selada (o selo diz v412 e pina o um.py e o kernel da copia): o anterior do UM.PY",
+   "ok": true,
+   "detalhe": {
+    "um_py": "3e741dcaa58ef2b8",
+    "kernel": "1ef88a6bb8c1971b"
+   }
+  },
+  {
+   "checagem": "antes da instalacao da v413: v413\\base_v412 == o Nos (um.py, selo, kernel), byte a byte por sha256",
+   "ok": true,
+   "detalhe": null
+  },
+  {
+   "checagem": "a Bancada (B20) pina o um.py, o selo e o kernel de v412\\base_v411",
+   "ok": true,
+   "detalhe": "B20-v411-20261113-R1"
+  },
+  {
+   "checagem": "M4: existem v413\\base_v412 e v412\\base_v411 (os tres arquivos de cada), a pasta da cadeia de selos (a cadeia e o pino), a bateria da v412 (bateria, pino ao lado, pino do um.py) e, quando ha' pino, o recibo pre-selo e o ensaio_1",
+   "ok": true,
+   "detalhe": {
+    "faltam": []
+   }
+  },
+  {
+   "checagem": "a cadeia de selos: arquivo == pino; CARREGADA PELO ESBOCO R3.6 (copias de bytes, selos, registro do instalador e backups do Nos de 18/11, N3); v411 -> v412",
+   "ok": true,
+   "detalhe": {
+    "sha16": "c8a584001185c599",
+    "versoes": [
+     "v411",
+     "v412"
+    ]
+   }
+  },
+  {
+   "checagem": "o fim da cadeia e' a v412 de v413\\base_v412 (um.py, selo, kernel)",
+   "ok": true,
+   "detalhe": null
+  },
+  {
+   "checagem": "o inicio da cadeia e' o que a Bancada pina agora (conferir_cadeia_com_a_bancada do esboco)",
+   "ok": true,
+   "detalhe": "B20-v411-20261113-R1"
+  },
+  {
+   "checagem": "N3: os backups de 18/11 que a cadeia usa existem no Nos (so' leitura; nunca mover) e tem os sha da cadeia",
+   "ok": true,
+   "detalhe": null
+  },
+  {
+   "checagem": "a bateria da v412: arquivo == pino ao lado; carregada pelo esboco (sha de cada teste); pinos_da_versao == a v412 da base",
+   "ok": true,
+   "detalhe": {
+    "sha16": "8dccef6d92d6f9a9",
+    "testes": 14
+   }
+  },
+  {
+   "checagem": "a pasta da bateria da v412 NAO e' ancestral da --saida do ensaio (SAIDA_NA_PASTA_DE_FONTES)",
+   "ok": true,
+   "detalhe": null
+  },
+  {
+   "checagem": "o recibo pre-selo do salto: arquivo == pino; utilizavel; veredito EXATO (REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA); versao_nos v412; a Bancada que ele viu e' o B20; a cadeia dele == a pinada",
+   "ok": true,
+   "detalhe": {
+    "veredito": "REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA",
+    "utilizavel": true
+   }
+  },
+  {
+   "checagem": "N1: o recibo pre-selo foi gerado com o Nos na v412, ANTES da instalacao da v413 (lido do recibo e do APLICADO_AO_CANONICO da v413, se ja existe)",
+   "ok": true,
+   "detalhe": {
+    "inicio_utc": "2026-11-21T01:38:26.293799+00:00",
+    "instalacao_v413": "ainda nao houve"
+   }
+  },
+  {
+   "checagem": "a Bancada AINDA pina o que o recibo pre-selo viu (deployment, manifesto POR SHA256, versao, um.py, selo): o salto embute o sha do manifesto",
+   "ok": true,
+   "detalhe": "B20-v411-20261113-R1"
+  },
+  {
+   "checagem": "a prova de que a producao so' foi lida no pre-selo: producao_intacta True",
+   "ok": true,
+   "detalhe": null
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: todo pino com arquivo confere com o disco; a cadeia, os anteriores da v412, o delta_bn e o util_bn presentes e iguais aos de hoje; o anterior da Bancada e' o B20",
+   "ok": true,
+   "detalhe": {
+    "divergem": [],
+    "faltam": []
+   }
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino delta esta' pendente",
+   "ok": null,
+   "pendente": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino candidato esta' pendente",
+   "ok": null,
+   "pendente": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino kernel_recibo esta' pendente",
+   "ok": null,
+   "pendente": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino esperados esta' pendente",
+   "ok": null,
+   "pendente": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino pins_do_candidato esta' pendente",
+   "ok": null,
+   "pendente": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino DIFF_KERNEL_v413.txt esta' pendente",
+   "ok": null,
+   "pendente": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "PINOS_BN_v413.json: o pino DIFF_v412_v413.diff esta' pendente",
+   "ok": null,
+   "pendente": "diff_e_pinos_bn_v413.py de novo quando o insumo existir (o FINAL antes do APLICAR: --delta <delta principal da v413>)"
+  },
+  {
+   "checagem": "N8/M1: o sandbox curto vem do delta_bn (C:\\t\\vb<digitos>) e nao e' o de outra versao (vb22, vb23) nem o das guardas estaticas da Etapa 2 (vb25)",
+   "ok": true,
+   "detalhe": "C:\\t\\vb24"
+  },
+  {
+   "checagem": "N4: o livro do quadro conferido INTEIRO (2.2); os eventos 1687 (autorizacao do ciclo) e 1689 (salto na v413) conferem por hash com os arquivos que nomeiam; a fala do operador de 20/11 existe",
+   "ok": true,
+   "detalhe": {
+    "n_elos": 1710,
+    "hash16_1687": "9aa0c94656828380",
+    "hash16_1689": "2a6975de28ad6b85",
+    "fala_20nov_sha16": "29c5cffc50a2f8bf"
+   }
+  },
+  {
+   "checagem": "os scripts do B(n) existem, compilam (sem gravar .pyc), passam em `sh -n`, sem marca de adaptacao pendente e sem `python -c`",
+   "ok": true,
+   "detalhe": []
+  },
+  {
+   "checagem": "D135: nenhum .tmp nas pastas do B(n)",
+   "ok": true,
+   "detalhe": []
+  }
+ ],
+ "escopo": "so leitura; o B(n) do salto v411 -> v413; NOT_FALSIFIED nao e' creditacao; o gate nao se move"
+}

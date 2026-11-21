@@ -1,0 +1,23 @@
+    avisos = {}; avisos_antigos = {}
+    for st, md, s_, L in blocos:
+        if st not in ("Built", "Replayed"):
+            continue
+        rel_ = md.replace(".", "/") + ".lean"
+        ws = [l for l in L if l.startswith("warning:")]
+        reg_ = {"n": len(ws), "do_proprio_arquivo": sum(1 for l in ws if l.startswith("warning: " + rel_ + ":")), "linhas": ws[:20], "bloco": st}
+        if md in NEWMODS or md in KCMODS:
+            if st == "Built" or md not in avisos:   # (o bloco Built manda; o Replayed de outra invocacao repete o aviso e nao se conta duas vezes)
+                avisos[md] = reg_
+        elif ws and (st == "Built" or md not in avisos_antigos):
+            avisos_antigos[md] = reg_
+    for m in KCMODS + NEWMODS:
+        avisos.setdefault(m, {"n": 0, "do_proprio_arquivo": 0, "linhas": [], "nota": "sem bloco Built nem Replayed neste log (sem mensagem)" if (modo.get(m) if m in modo else modo_kc.get(m)) is None else None})
+    # o aviso conhecido e preexistente da TowerWedgeIndex: na v413 ela e' modulo ANTIGO (da v412); o aviso volta no bloco Replayed (ou Built, se o lake a recompilar)
+    av_conhecido = avisos_antigos.get(MOD_AVISO_CONHECIDO, {})
+    conhecido_ok = av_conhecido.get("n", 0) >= 1 and all(("change" in l or "never executed" in l or "does nothing" in l or "unused" in l.lower()) for l in av_conhecido.get("linhas", []))
+    outros = {m: v["n"] for m, v in avisos.items() if v["n"]}
+    chk("(informativo) avisos: nenhum modulo novo nem o corrigido com aviso; o conhecido e preexistente da TowerWedgeIndex (modulo antigo) registrado, nao consertado", not outros and conhecido_ok,
+        {"TowerWedgeIndex": av_conhecido.get("linhas", [])[:3], "outros": outros}, informativo=True)
+    antigos_com_aviso = {m: v["n"] for m, v in avisos_antigos.items()}
+    chk("(informativo) modulos ANTIGOS com aviso neste log (preexistentes; mensagens repetidas pelo lake; nada se conserta): %d" % len(antigos_com_aviso), True,
+        {"n_modulos": len(antigos_com_aviso), "n_avisos": sum(antigos_com_aviso.values())}, informativo=True)

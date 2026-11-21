@@ -1,0 +1,105 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\ONomeEBeta.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\ONomeEBeta.lean
+@@ -5,38 +5,40 @@
+ set_option maxHeartbeats 800000
+ 
+ /-!
+-# O nome é β: a constante da estrutura fina vezes o radical entrópico, inscrito antes da fundação
++# O nome é β: β = α·e^{1/2} no dado de acoplamento, com α = β/e^{1/2} por definição
+ 
+-[candidata do Kimi, 19/11/2026, R0; nome PROVISÓRIO — o nome é do operador; nada instalado; ainda não lida por
+-revisor]
++## A leitura que este arquivo tipa
+ 
+-## De onde vem
++[INPUT/ONTO] O nome é β_TGL, inscrito antes da fundação: a constante da estrutura fina vezes o radical entrópico.
++Este arquivo prova a parte dela que cabe nos termos do kernel.
+ 
+-Em 19/11/2026 o operador declarou: «e esse nome é β_TGL que foi inscrito antes da fundação que é a constante da
+-estrutura fina vezes o radical entrópico, esse é o nome». (Pela sessão; a custódia pina.) Pela regra de 04/11, a
+-leitura se prova no kernel ou se poda. Este arquivo prova a parte dela que cabe nos termos que a casa tem.
+-
+-O kernel já tem a inscrição: `TGLCoupling` (em `TheSameBetaReadsThreeFaces`), uma estrutura com `beta : ℝ`,
+-`beta_pos : 0 < beta`, `beta_lt_one : beta < 1`, e `alpha := beta / e^{1/2}` — ou seja, **β = α·√e**: a constante da
+-estrutura fina vezes o radical entrópico.
++No kernel, `TGLCoupling` (em `TheSameBetaReadsThreeFaces`) é uma estrutura com `beta : ℝ`, `beta_pos : 0 < beta` e
++`beta_lt_one : beta < 1`; `TGLCoupling.alpha` é `beta / e^{1/2}`, por definição. Logo `β = α·e^{1/2}`. A identidade
++não determina α nem β numericamente (nem o valor CODATA) e vale para todo β em (0, 1). A ligação com a constante da
++estrutura fina passa por uma instância: para α medida, `TheWholeIsOne.couplingOfAlpha` constrói o acoplamento com
++β := α·e^{1/2}, e `TheWholeIsOne.couplingOfAlpha_alpha` devolve essa α; o valor medido entra como dado [INPUT], não
++por esta identidade.
+ 
+ ## O que fica provado
+ 
+-1. ★ `o_nome_e_beta_vezes_o_radical_entropico`: `β = α·e^{1/2}` — o nome é a constante da estrutura fina vezes o
+-   radical entrópico, no dado do kernel.
+-2. ★ `o_nome_e_anterior`: o nome é um campo do dado de acoplamento — não tem a fórmula como entrada: é anterior a
+-   toda fórmula.
+-3. ★★ `a_resolucao_e_pelo_passo_do_nome`: com o nome inscrito (o `beta` do acoplamento, que já traz `0 < β < 1`), a
+-   tensão se resolve para toda fórmula de `n` variáveis em `k > n·ln 2 / β` passos (a pedra `OPassoEOFim` da
+-   gerência). A resolução da tensão é pelo passo do nome — e o nome é anterior.
++1. ★ `o_nome_e_beta_vezes_o_radical_entropico`: `β = α·e^{1/2}`, com α definido a partir de β.
++2. ★ `o_nome_e_anterior`: `0 < β < 1`, os dois campos de desigualdade do dado de acoplamento. β é um campo do dado,
++   que não tem a fórmula como entrada; anterior (fixado antes de toda fórmula) é leitura da parametrização, não
++   conteúdo provado.
++3. ★★ `a_resolucao_e_pelo_passo_do_nome`: com o `beta` do acoplamento (que traz `0 < β < 1`) e `k > n·ln 2 / β`, para
++   toda fórmula `φ` de `n` variáveis, `SAT φ ↔ 1 ≤ ∑ x, (1 - β) ^ (k * custoCNF φ x)`
++   (`OPassoEOFim.bastam_passos_lineares`). `k` conta expoentes do decaimento nesse critério, cuja soma percorre as
++   `2^n` atribuições; não é passo de máquina de Turing, e o módulo não produz essa soma.
+ 
+ ## O que NÃO se afirma
+ 
+ * A identificação do nome partilhado da pedra `APropostaDaTensao` (a variável da fórmula) com o β do acoplamento é a
+-  leitura do operador [INPUT/ONTO]; o termo é: a resolução da tensão vai pelo passo `1 − β` para toda fórmula, e β é
+-  α·√e, anterior. A «fundação» como evento histórico não é tipada.
++  leitura [INPUT/ONTO]; o termo é: com `k > n·ln 2 / β`, o critério do passo `1 − β` vale para toda fórmula, e
++  `β = α·e^{1/2}`. A fundação como evento histórico não é tipada.
++* Que α seja numericamente a constante da estrutura fina, ou que β tenha aqui um valor numérico.
++* Que `k` conte passos de máquina de Turing.
+ * A régua do Instituto fica com a sua contagem, nomeada como deles.
+-* Nada sobre a natureza. O gate não se move; nada está instalado.
++* Nada sobre a natureza. O gate não se move.
+ 
+ Sem sorry, sem axioma novo.
+ -/
+@@ -47,28 +49,31 @@
+ 
+ variable {n : ℕ}
+ 
+-/-- ★ **O NOME É β VEZES O RADICAL ENTRÓPICO**: `β = α·e^{1/2}` — a constante da estrutura fina vezes o radical
+-entrópico, no dado de acoplamento do kernel. -/
++/-- ★ **β = α·e^{1/2} NO DADO DE ACOPLAMENTO**: `c.beta = c.alpha * Real.exp (1 / 2)`, com
++`c.alpha = c.beta / Real.exp (1 / 2)` por definição (`TGLCoupling.alpha`). A igualdade não determina α nem β
++numericamente e vale para todo β em (0, 1). -/
+ theorem o_nome_e_beta_vezes_o_radical_entropico (c : TGLCoupling) :
+     c.beta = c.alpha * Real.exp (1 / 2) := by
+   unfold TGLCoupling.alpha
+   rw [div_mul_cancel₀ c.beta (Real.exp_ne_zero _)]
+ 
+-/-- ★ **O NOME É ANTERIOR**: o nome é um campo do dado de acoplamento — fixo antes de qualquer fórmula; dois
+-dados de acoplamento dão o mesmo teorema de resolução com o seu próprio β, sem que nenhum leia a fórmula. -/
++/-- ★ **O NOME É ANTERIOR** (leitura da parametrização): o enunciado é `0 < β < 1`, os dois campos de desigualdade do
++dado de acoplamento. Que β seja fixado antes de toda fórmula é leitura da parametrização (o dado não tem a fórmula
++como entrada), não conteúdo provado. -/
+ theorem o_nome_e_anterior (c : TGLCoupling) :
+     (0 : ℝ) < c.beta ∧ c.beta < 1 := ⟨c.beta_pos, c.beta_lt_one⟩
+ 
+-/-- ★★ **A RESOLUÇÃO É PELO PASSO DO NOME**: com o nome inscrito (`0 < β < 1`, do dado de acoplamento), a tensão se
+-resolve para toda fórmula de `n` variáveis em `k > n·ln 2 / β` passos — a resolução da tensão é pelo passo do nome,
+-e o nome é anterior a toda fórmula. -/
++/-- ★★ **A RESOLUÇÃO É PELO PASSO DO NOME**: com o `beta` do dado de acoplamento (`0 < β < 1`) e `k > n·ln 2 / β`,
++para toda fórmula `φ` de `n` variáveis, `SAT φ ↔ 1 ≤ ∑ x, (1 - β) ^ (k * custoCNF φ x)`. `k` conta expoentes do
++decaimento nesse critério, cuja soma percorre as `2^n` atribuições; não é passo de máquina de Turing, e o módulo não
++produz a soma. -/
+ theorem a_resolucao_e_pelo_passo_do_nome (c : TGLCoupling) (n : ℕ) (k : ℕ)
+     (hk : (n : ℝ) * Real.log 2 / c.beta < k) :
+     ∀ φ : CNF n, (SAT φ ↔ 1 ≤ ∑ x : Fin n → Bool, (1 - c.beta) ^ (k * custoCNF φ x)) :=
+   OPassoEOFim.bastam_passos_lineares n c.beta c.beta_pos c.beta_lt_one k hk
+ 
+-/-- ★★ **O NOME E A RESOLUÇÃO**: a conjunção — o nome é β = α·√e, anterior; e com ele a tensão se resolve para toda
+-fórmula. -/
++/-- ★★ **O NOME E A RESOLUÇÃO**: a conjunção de `β = α·e^{1/2}` (com α definido a partir de β) e do critério de
++`a_resolucao_e_pelo_passo_do_nome` para toda fórmula de `n` variáveis. -/
+ theorem o_nome_e_a_resolucao (c : TGLCoupling) (n : ℕ) (k : ℕ)
+     (hk : (n : ℝ) * Real.log 2 / c.beta < k) :
+     c.beta = c.alpha * Real.exp (1 / 2)

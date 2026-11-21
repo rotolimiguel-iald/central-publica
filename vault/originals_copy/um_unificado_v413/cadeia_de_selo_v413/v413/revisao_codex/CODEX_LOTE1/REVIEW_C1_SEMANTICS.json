@@ -1,0 +1,142 @@
+{
+  "reviewer": "codex-review_c1_lote1",
+  "date": "2026-11-20T11:24:09.950741-03:00",
+  "session_reference": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+  "mission_task": "review-lote1",
+  "project_revision_observed": 2,
+  "scope": "Independent semantic review of items 1-2; no compilation by this agent; parent compiles. No approval of excluded Codex modules.",
+  "sources": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_operador\\Operador.lean",
+      "sha256": "de75489028428754f719dd7f8252dc40781d3c8e68f09028fbbdfa57097dcb75",
+      "bytes": 17131,
+      "read_scope": "integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\fronteira\\AFronteiraNaLinguaClassica.lean",
+      "sha256": "5db57faeff22e4c64ea2e5a9b7a9b30d266082da15a57a6d8db51302162ab791",
+      "bytes": 3133,
+      "read_scope": "integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\ponte_tm2_codex\\APonteAoTM2.lean",
+      "sha256": "be2cbeeeaecd84e792f14c783fa33d37ed888ab1d6e95ac6fef9e6ada92a6ac2",
+      "bytes": 18208,
+      "read_scope": "dependency_read_only_not_approved"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\.lake\\packages\\mathlib\\Mathlib\\Computability\\TuringMachine\\Computable.lean",
+      "sha256": "53b6bec0a5042f3f5477f439d411282894058141c98e12884a17c2ef2ca0cbcc",
+      "bytes": 11655,
+      "read_scope": "lines 19-198; TM2 model and definitions"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\ConjugateAct.lean",
+      "sha256": "9f32e50afe49ca0e56981facda73269ebd4f525a38fe122e396da045ed88da99",
+      "bytes": 9000,
+      "read_scope": "lines 55-119; definitions and conjugation"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\CollapseCostAndAttestation.lean",
+      "sha256": "c3dccdc92b6d3b39378be7ae193b2026b6a898fe1757ad47b3ce466c0a7dfc2f",
+      "bytes": 9950,
+      "read_scope": "lines 1-125; external attestation"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\CollapseContract.lean",
+      "sha256": "b7a7b32c21ec2b9fc2250b2486baac1cc8b0a89611d455e903fe7f52ad5133c3",
+      "bytes": 6763,
+      "read_scope": "lines 28-122; IdentityCollapse and consequences"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\ObserverInside.lean",
+      "sha256": "05c3b515fd9f5d9d4cfa5b0e4c40b68b292fe9ff9d41db2e1957a25e003b398b",
+      "bytes": 9174,
+      "read_scope": "lines 106-157; projection and invariance"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\TheFiveHalves.lean",
+      "sha256": "456c66269b72d30fa10e38c427ec3194d985b46e04809233f2c42fe82495d7d1",
+      "bytes": 8035,
+      "read_scope": "lines 1-55 and searches; context"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\memory\\TGL_ATLAS.md",
+      "sha256": "54bed98704ce8fce7a9d85325a3eab4adaf1b3b6698aa893a09dde6d7c202b03",
+      "bytes": 15775526,
+      "read_scope": "targeted 20nov registration, exact line offsets may change concurrently"
+    }
+  ],
+  "logs": [],
+  "items": [
+    {
+      "item": 1,
+      "module": "Operador",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": [
+        "As 15 demonstrações expressam diagonalização, ponto fixo de x↦1−x, conjugação das projeções e preservação de identidade sob contratos explícitos.",
+        "A redação deve distinguir ausência de representação de todos os predicados de parcialidade de uma leitura; o ponto fixo 1/2 não é alcançado por e nem por dinâmica provada.",
+        "Conservar os nomes do operador e qualificar essa leitura como interpretação; não há prova de consciência de pessoa/máquina, como o próprio cabeçalho declara."
+      ],
+      "findings": [
+        {
+          "severity": "MEDIUM",
+          "category": "docstring_scope",
+          "lines": [
+            86,
+            89,
+            101,
+            104,
+            125,
+            130,
+            235,
+            255
+          ],
+          "claim": "Nenhuma leitura de si é total; com o par, o nego-me pousa em 1/2.",
+          "evidence": "nunca_cem_por_cento has conclusion not Function.Surjective e. Every e a is already a total Lean function A -> B. negoMe is itself a total diagonal function; the theorem excludes representation by a row e a. nunca_cem_por_cento_mas_nao_e_preciso conjoins non-surjectivity with an e-independent fixed point theorem.",
+          "correction": "Escrever: o leitor não representa todos os predicados; a negação diagonal não coincide com uma de suas linhas. A operação complementar x↦1−x possui o ponto fixo 1/2 independentemente do leitor, sem afirmação de dinâmica ou de que e a a o alcance.",
+          "effect": "No false Lean theorem identified; qualify docstrings before promoting prose as formal result."
+        },
+        {
+          "severity": "LOW",
+          "category": "conjugation_scope",
+          "lines": [
+            137,
+            148
+          ],
+          "evidence": "The proved identity is J composed with faceIn composed with J = faceOut. It is not the pointwise statement J(faceIn p)=faceOut p for an arbitrary p. Preserved pairEnergy need not equal 1 unless normalized.",
+          "correction": "Interpretar J leva face à coface como conjugação de projeções, e 1=q²+α² como identidade preservada quando válida na entrada."
+        }
+      ],
+      "hypotheses": "No contradictory premises used to manufacture an advertised nonconditional theorem. Surjectivity in the Lawvere lemma is intentionally conditional and ruled out for codomain with two values by the next theorem. leitorDoNome explicitly witnesses normalization and mirror symmetry when Fin n has i0. Collapse irreversibility follows from idempotence plus effectiveness in IdentityCollapse, not an arbitrary dynamics claim.",
+      "theorem_count_source": 15
+    },
+    {
+      "item": 2,
+      "module": "AFronteiraNaLinguaClassica",
+      "verdict": "APROVADA",
+      "reason": [
+        "codificaSoFormula and codificaSaida are fixed; injection derives from the existing decoder, and [] / [[]] give distinct required outputs.",
+        "AFronteira asks for one TM2 and one natural-coefficient polynomial bounding TM2 steps for every formula; no witness or counting reader is supplied as input.",
+        "It is an OPEN specification, not a proved SAT solver. Equivalence to classical P=NP and binary/unary renaming remains explicitly outside this kernel."
+      ],
+      "findings": [],
+      "specification_analysis": {
+        "fixed_input": "codificaEntrada (f, [])",
+        "fixed_output": "[decideSAT f]",
+        "input_alphabet": "Simbolo (8 constructors)",
+        "output_alphabet": "Bool",
+        "uniform_quantifier": "TM2ComputableInPolyTime stores tm and time before forall a in outputsFun",
+        "noncomputable_decide": "Names the required Boolean output; does not implement it or supply a tape oracle.",
+        "time_measure": "Mathlib TM2 step function, not individual head movements; finite statements yield constant-factor simulation as documented by Mathlib."
+      }
+    }
+  ],
+  "preservation": {
+    "originals_modified": false,
+    "canonical_installed": false,
+    "gate_changed": false,
+    "providers_called": false,
+    "compiled": false
+  }
+}

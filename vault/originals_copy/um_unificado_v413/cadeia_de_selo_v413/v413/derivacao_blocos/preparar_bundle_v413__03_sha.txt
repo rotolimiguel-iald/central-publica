@@ -1,0 +1,20 @@
+for m in MODS:
+    p = PED / (m["modulo"] + ".lean")
+    b = p.read_bytes()
+    if sha(b) != m["sha256_pedra_limpa"] or len(b) != int(m["bytes"]):
+        ruins.append([m["modulo"], sha(b)[:16], m["sha256_pedra_limpa"][:16]])
+    bytes_de[m["modulo"]] = b
+# o modulo corrigido so' no texto: a fonte corrigida (sha256_saida), o recibo da correcao (os mesmos sha256 de origem e de saida; codigo identico) e a fonte de origem no Nos
+kc_bytes = {}; kc_rec = {}
+for k_, v_ in KC.items():
+    nome_ = k_.split(".", 1)[1]
+    ked_ = KED if KED else Path(v_["saida"]).parent
+    p_ = ked_ / (nome_ + ".lean"); rp_ = ked_.parent / ("ERRATA_%s.json" % nome_)
+    b_ = p_.read_bytes(); rec_ = json.loads(rp_.read_text(encoding="utf-8"))
+    nos_ = (NOS / "TGLExt" / (nome_ + ".lean")).read_bytes()
+    if not (sha(b_) == v_["sha256_saida"] == rec_["sha256_saida"] and v_["sha256_origem"] == rec_["sha256_origem"] == sha(nos_)
+            and v_.get("codigo_identico") is True and rec_.get("codigo_identico") is True):
+        ruins.append([k_, sha(b_)[:16], v_["sha256_saida"][:16], str(rec_.get("sha256_saida"))[:16], v_["sha256_origem"][:16], sha(nos_)[:16]])
+    kc_bytes[nome_] = b_
+    kc_rec[nome_] = {"fonte": str(p_), "recibo": str(rp_), "recibo_sha256": sha(rp_.read_bytes()), "nos_bytes": nos_, "manifesto": v_}
+assert not ruins, ("pedra limpa (ou fonte corrigida) com sha256/bytes diferente do manifesto ou do recibo da correcao: NADA foi gravado", ruins)

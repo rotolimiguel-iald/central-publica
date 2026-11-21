@@ -1,21 +1,21 @@
-# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v411)
+# TGL — ÍNDICE VIVO DO ARCO DO TÚNEL (v311 → v413)
 
-> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 13/11/2026 03:50.
+> Índice **derivado**, regenerado por script (`atlas_indice.py`) a cada selo; números e hashes lidos do disco. Aponta para as fontes; não substitui o Atlas nem o diário. Regenerado em 21/11/2026 04:04.
 
 ## 0. Estado
 
 | item | valor lido |
 |---|---|
-| versão | **v411** |
-| `um.py` sha16 | `1203b1f9202020d6` |
-| teoremas | **12308/12308** |
+| versão | **v413** |
+| `um.py` sha16 | `c2e67bf2657a063e` |
+| teoremas | **18498/18498** |
 | gate | `TGL_QG_MODEL_FORMALLY_CLOSED__NATURE_TEST_COMPLETED_WITHIN_LOCAL_BULK_AT_AVAILABLE_SENSITIVITY__MORE_SENSITIVE_DATA_COULD_REVISE` |
 | selftest | `FAIL_CLOSED_SELFTEST_PASSED` |
 | identidade | `1=1=VERDADEIRO=HAJA_LUZ` |
 | contorno | `[]` |
 | rodada | COMPLETA |
-| última rodada COMPLETA | v411 (`1203b1f9202020d6`, 12308/12308) — custódia: HANDOFF_v411 emitido |
-| relatório de axiomas | 34300 termos; fora do trio: 0 |
+| última rodada COMPLETA | v413 (`c2e67bf2657a063e`, 18498/18498) — custódia: HANDOFF_v413 emitido |
+| relatório de axiomas | 44676 termos; fora do trio: 0 |
 
 ## 1. As versões do arco (hash do `um.py` lido dos backups de bytes; teoremas lidos do stdout)
 
@@ -114,7 +114,8 @@
 | v408 | `—` | 12029 | 4 | bancada |
 | v409 | `—` | 12187 | 2 | bancada |
 | v410 | `—` | 12308 | 2 | bancada |
-| v411 | `1203b1f9202020d6` | 12308 | 0 | fiação |
+| v412 | `—` | 17786 | 154 | bancada |
+| v413 | `c2e67bf2657a063e` | 18498 | 21 | bancada |
 
 > Fonte do hash (04/10/2026): o cabeçalho de selo do diário («**vNNN SELADA …** `sha16`»), ou a frase «**A vNNN** (`sha16`»; a versão corrente, do disco. **†** = sem nenhuma das duas fontes: valor da regra antiga (backup ↔ diário por proximidade), **não conferido** — essa regra deslocava uma versão (ver a errata de 04/10/2026 no §7).
 
@@ -260,6 +261,10 @@
 
 **v410** (2 pedras, 92 teoremas): `IALD2`(22) · `AEscala`(70)
 
+**v412** (154 pedras, 1592 teoremas): `CamadaCientifica`(34) · `MinimoFuncionalDeEnergia`(17) · `OLeitorEALei`(6) · `AContagemEACarga`(8) · `AMaquinaEALeitura`(9) · `OPassoEORetorno`(8) · `OHabitanteDoNome`(54) · `NomeComoCodigo`(12) · `CopiadorEImpostor`(118) · `OTempoEACauda`(6) · `AFitaEACauda`(5) · `AMedidaEOIf`(17) · `AEsperancaEOIf`(25) · `ErgodicidadeDeMautner`(48) · `T1GaussianSpectrum`(7) · `T1CompostoFinito`(13) · `T1PontesAoKernel`(33) · `MontagemDasGamas`(55) · `BoostEDissipador`(11) · `OParFixaORelogio`(8) · `OHamiltonianoOcultoEOCusto`(10) · `OTestemunhoDeTakesakiEmCasa`(2) · `FockCharacters`(1) · `PhysicalCoreCenter`(4) · `PhysicalCoreMultipliers`(6) · `PhysicalCoreFactor`(7) · `TowerWedgeIndex`(24) · `TipoIIIUmSoBoost`(3) · `WedgeFactor`(3) · `WedgeHorizonObserver`(24) · `TransportCenter`(8) · `VinculoCriterion`(1) · `Classificacao`(2) · `TransportPair`(3) · `ObserverClassification`(4) · `TipoIIIControles`(29) · `ProdutoFinito`(9) · `ProdutoTresUm`(4) · `ConjugacaoFinita`(9) · `SpinorToSolder`(12) · `Token2`(16) · `AMaquina`(6) · `OPassoEOFim`(5) · `OPsibitEACompressao`(5) · `AFitaEOIndice`(5) · `LeitorDaFormula`(12) · `CorrelacoesDistintas`(8) · `CorteDosPares`(5) · `CorteDosParesCruzados`(6) · `InformacaoDoResumo`(7) · `AParedeDoNome`(4) · `LeiturasComFolga`(7) · `OCustoEAIsometria`(4) · `OPolinomioFixoEBeta`(3) · `ORazaoDoColapsoEBeta`(3) · `OResumoEPsiBit`(18) · `AClausulaExemplificativa`(6) · `AFronteiraEOUnicoPortao`(5) · `DivisaoUniforme`(1) · `OPsiBitDaFormula`(17) · `ACurvaEAEstado`(9) · `CorteDosParesIntercalados`(2) · `ImplicacoesCruzadas`(16) · `EscolhasGlobais`(11) · `FitaHornEsparsa`(3) · `FechoNaFita`(12) · `OSeparadorNoPercurso`(3) · `PalavrasResiduais`(8) · `ParPonderado`(7) · `ParesIndependentes`(25) · `CruzamentosUniversais`(11) · `BuscaEmCruzamentos`(10) · `PolinomioPorEscolha`(11) · `ChecagemHorn`(6) · `CompilaHornNaFita`(25) · `GuardasNaFita`(20) · `PontePalavraVerbo`(7) · `FitaComCusto`(20) · `CadeiasDeBolsas`(21) · `ClausulaComoResposta`(13) · `FitaCruzada`(20) · `ProjecaoDaFronteira`(5) · `Reagrupar`(5) · `RedesDeCadeias`(4) · `FitaDeUmaCabeca`(12) · `RedeComoCNF`(9) · `RelacaoEmFase`(19) · `RelacaoFronteira`(10) · `CustoDaTabela`(7) · `PsiBitNaFronteira`(9) · `ConsultasRotuladas`(7) · `ConsultaPonderada`(4) · `MascarasDistintas`(6) · `RestricaoGlobal`(4) · `CaudaDisjunta`(3) · `AtalhosNaFita`(6) · `BlocosIndependentes`(9) · `FitaDoResiduo`(3) · `CircuitoNaFita`(5) · `LeitorGlobal`(3) · `AtualizaONome`(11) · `LimiteDasProjecoes`(11) · `LimiteDoCacheExplicito`(15) · `FatoresIndependentes`(7) · `ClausulaNoSeparador`(16) · `ARecusaTemConteudo`(3) · `HandshakeDoNome`(5) · `PerfilDeSinais`(5) · `CustoDaBuscaLiteral`(8) · `CacheDeRamos`(10) · `DuasPassagens`(5) · `EcoDaAtribuicao`(3) · `EliminacaoDePares`(7) · `FronteiraDeTresLiterais`(4) · `GuardaDoPerfil`(3) · `LocalizaARecusa`(2) · `ObrigacoesJaSatisfeitas`(7) · `CapacidadeDosRotulos`(6) · `PlanoDaFormula`(6) · `CustoDoPlano`(4) · `LeituraIntegrada`(6) · `LeitorDaFamilia`(9) · `LeituraDosPares`(5) · `CadeiaNaFita`(8) · `ConteudoNaFita`(7) · `MovimentosDoPlano`(2) · `LimiteDoLeitor`(1) · `PrecisaoDaChave`(9) · `CustoDaFaseDensa`(3) · `RotulosAfins`(23) · `CoberturaAfin`(7) · `RotulosCompartilhados`(18) · `FatoresCruzados`(22) · `SegundaLeitura`(10) · `LeitorDeReuso`(14) · `LeituraCertificada`(16) · `DespachoDeReuso`(8) · `CamadaAlcancada`(15) · `LimiteDoReuso`(7) · `LeituraComReuso`(4) · `ReguaNaFita`(5) · `SeletorCompartilhado`(7) · `TamanhoDoEco`(4) · `TrabalhoPorCorte`(8) · `TransicaoDaFronteira`(3) · `TransicaoPorConsulta`(7) · `TransporteDaInscricao`(7) · `CanalDaClausula`(3) · `DesafioNaFitaOriginal`(4) · `UmaChaveAngular`(5) · `DuasPontasLivres`(4) · `VerboNaFita`(5) · `FitaPlanaAnterior`(3) · `PolinomioDoPsiBit`(3)
+
+**v413** (21 pedras, 264 teoremas): `AIdentidadePreservada`(6) · `APonteDeCookLevin`(9) · `APropostaDaTensao`(4) · `ONomeEBeta`(4) · `Operador`(15) · `APonteAoTM2`(16) · `LeituraBeta`(7) · `Reconstrucao`(18) · `RelogioBeta`(6) · `Trinity`(115) · `AFronteiraNaLinguaClassica`(3) · `AMaquinaTM2DaVerificacao`(3) · `PonteLeituraBeta`(5) · `QuantizacaoBeta`(4) · `EntregaBeta`(4) · `SimBase`(4) · `SimExterior`(3) · `SimLiteral`(1) · `SondaContagem`(9) · `SimCompleta`(3) · `PonteCookLevin`(25)
+
 ## 3. O TÚNEL — ordens e entregas
 
 - ORDENS (gerência → bancada): ORDEM_001, ORDEM_002, ORDEM_003, ORDEM_004, ORDEM_005, ORDEM_006, ORDEM_007, ORDEM_008, ORDEM_009, ORDEM_010, ORDEM_011, ORDEM_012, ORDEM_012, ORDEM_012, ORDEM_013, ORDEM_013, ORDEM_015, ORDEM_016, ORDEM_017, ORDEM_018, ORDEM_018, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_019, ORDEM_020, ORDEM_021, ORDEM_021, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_022, ORDEM_023, ORDEM_024, ORDEM_024, ORDEM_025, ORDEM_025, ORDEM_026, ORDEM_026, ORDEM_026, ORDEM_026, ORDEM_026, ORDEM_026, ORDEM_027, ORDEM_028, ORDEM_028, ORDEM_029
@@ -283,7 +288,7 @@
 4j. **A busca de longo atraso (v348)** — o `search_for_echoes` de 2025 herdado e completado (fundo, injeções √β, padrão τ/M): NOT_FALSIFIED_UNDERPOWERED (N_on 1 vs fundo 3.00; eficiência para √β 0.000). Uma busca de picos a 3σ não vê um eco de 0,11 do primário; o desenho de 2025 é retirado como sem poder.
 4k. **O D1 via CAMB (v349)** — a V1 (script de maio intocado) expôs um bug de integração de distância (autópsia por hash); emenda V2 com o worker corrigido em cópia: Δχ² (TGL − ΛCDM) = 9.699 → D1_TENSION_2_TO_5_SIGMA; β livre = -0.01705 ± 0.00753 → D1_BETA_TENSION. Fundo, não perturbação; conjugado do Nível 2.
 4l. **A reprodução de H2 (v350)** — com pycbc e dados reais, o E_res/E_total → α² de jan/fev era o quadrado do nível de ruído do gerador sintético (0.0099 com ruído 0,1; segue noise²); no dado real é a fração de ruído (0.9937 branqueado, 0.9956 fora da fonte): H2_IDENTITY_RETIRED. A lista dos cinco testes que aguardavam o instrumento está fechada.
-4m. **A oitava cláusula (v351)** — J M J = M′ na torre produto; montagem 8/8 (`EIGHT_CLAUSES_VERIFIED__ACT_III_CERTIFICATE_CONSTRUCTED_ON_T…`); 1764 fontes formais; alcance PRODUCT_TOWER, não horizonte físico.
+4m. **A oitava cláusula (v351)** — J M J = M′ na torre produto; montagem 8/8 (`EIGHT_CLAUSES_VERIFIED__ACT_III_CERTIFICATE_CONSTRUCTED_ON_T…`); 1941 fontes formais; alcance PRODUCT_TOWER, não horizonte físico.
 4n. **A probabilidade conjunta (v352)** — p conjunta 0.55 sobre 3 canais admissíveis de 35; saída da função booleana False; o 10⁻³⁰ é produto de resíduos de identidades (inválido).
 5. **Lei de área geral / liberdade radiativa** — shear livre (v320); 4ª ordem impõe relógio (v326).
 6. **Globalização / Lema 3** — **PAGO NA TORRE para TODO perfil** (046: `the_lift_fires_on_the_aperiodic_tower`; v329: `modularHorizon`; 045: `swapHorizon`; v331: o GRUPO dos horizontes e a RAIZ `the_root_of_the_proof_tree`). Restam: a passagem a uma álgebra de von Neumann geral ([KNOWN, Takesaki]), andares → regiões, o shift (não construído).
@@ -300,7 +305,7 @@
 
 ## 6. Onde vive cada coisa
 
-- Canônico: `C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\um.py` · kernel `tgl_kernel\TGLExt` (1089 módulos) · stdout `rodada_vNNN_stdout.txt` · árvore `A_PROVA_DA_QG_TGL_arvore.md` · diário `MEMORIA_DA_LINHAGEM.md` · desenho `DESENHO_DO_FECHAMENTO_QG.md` · handoffs `HANDOFF_vNNN_*.md` · `DA_IRMA.md`.
+- Canônico: `C:\IALD\Artigo\Haja_Luz\A Ponte e o Um\Nós\um.py` · kernel `tgl_kernel\TGLExt` (1266 módulos) · stdout `rodada_vNNN_stdout.txt` · árvore `A_PROVA_DA_QG_TGL_arvore.md` · diário `MEMORIA_DA_LINHAGEM.md` · desenho `DESENHO_DO_FECHAMENTO_QG.md` · handoffs `HANDOFF_vNNN_*.md` · `DA_IRMA.md`.
 - Atlas: `Central de Patentes\memory\TGL_ATLAS.md` (append datado; II.★★ verbetes; III.D pedras; IX remissivo) · este índice · `MEMORY.md` · espelho derivado `C:\LAR_MIGUEL\ESPELHO.md` (porta_memoria.py).
 - Espelho público: `C:\IALD\Artigo\the_boundary` (direção da sessão do site desde 11/09/2026; irreversíveis do operador) · backups `the_boundary_BACKUPS`.
 

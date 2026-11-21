@@ -1,0 +1,356 @@
+{
+  "schema": "iald.documentary-review/v1",
+  "reviewer": "codex-limpeza-kimi",
+  "created_at": "2026-11-20T20:06:39.130070-03:00",
+  "status": "APROVADA_COM_RESSALVAS",
+  "scope": "Seis módulos limpos e uma docstring; fidelidade documental, não falsificação da teoria. Sem instalação, edição de fontes, Lean, publicação ou mudança de gate. Não se exige custo TM2 do leitor, alheio ao alvo.",
+  "mission_reference": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+  "mission_receipt": {
+    "context_id": "9c2cd9b5-af16-5f82-beb9-03e5cc4b919b",
+    "scope": {
+      "house": "IALD",
+      "principal": "luiz"
+    },
+    "revision": 28,
+    "event_id": "pedras-limpas-v413-claim",
+    "event_hash": "f9bfc4331952fd0e40afb8c9cfebeaf9bcac96e9b27347809adb49dfcb52659a",
+    "objective_sha256": "dd0049670146cdbc26d6fdb8d5ac05d5886206fbb6f743df53f5fcdf53b7dd59",
+    "anchor_sha256": "a03666d9bbd1fd543a7294a2f7ad2d3a9a8aec518eba360a5114b0b7519a60ac",
+    "state_sha256": "d6904f1d3bdbdfe83aae2e9ae211a662cdbbcb5ab99425ead9926aba8b9ed927",
+    "replayed": false
+  },
+  "task_id": "review-pedras-limpas-v413",
+  "lease_id": "23405aa3-fe4b-4deb-8419-4873066d3670",
+  "preflight_owner": "codex-coordenadora",
+  "preflight_note": "Preflight e reivindicação executados pelo coordenador; subagente fez project somente leitura, sem mutar missão.",
+  "method": "Arquivos completos lidos para diff origem/saída; todos os comentários/docstrings das seis saídas, seus deltas e enunciados foram percorridos. Trinity foi percorrida por extração integral de comentários e enunciados, sem nova auditoria dos corpos de prova. Código/logs são conferência mecânica separada do coordenador. Literatura citada foi comparada quanto a preservação, não revalidada externamente.",
+  "kimi_corrections": {
+    "AIdentidadePreservada": "ATENDIDA: conjunção2+4; carga separada; vetor não TM2.",
+    "APonteDeCookLevin": "ATENDIDA: mov abstrato; atribuição dada; c=1; ponte TM2 remetida a módulo próprio.",
+    "APropostaDaTensao": "ATENDIDA: h conjunta e _hA/_hB ociosas; iff sem computar escolha.",
+    "ONomeEBeta": "ATENDIDA: α definido; sem valor numérico; k expoente; anterior leitura."
+  },
+  "reviews": [
+    {
+      "module": "TGLExt.AIdentidadePreservada",
+      "verdict": "APROVADA",
+      "reason": "A conjunção final contém apenas preservação e Tendsto; a carga está no teorema separado. Vetor EuclideanSpace e parâmetros reais são distinguidos de configuração/passos de fita; remissões ficaram mais específicas.",
+      "findings": []
+    },
+    {
+      "module": "TGLExt.APonteDeCookLevin",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": "mov é identificado como custo abstrato por definição; o registro verifica uma atribuição e c=1 é explicitado. Restaurar somente a remissão técnica ao enunciado da máquina levantada, distinguindo seu objeto.",
+      "findings": [
+        "KIMI-L01"
+      ]
+    },
+    {
+      "module": "TGLExt.APropostaDaTensao",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": "SAT conjunta é hipótese e _hA/_hB são explicitamente ociosas; o iff não computa a escolha nem remove enumeração. Resta restaurar o caminho da fonte científica.",
+      "findings": [
+        "KIMI-L02"
+      ]
+    },
+    {
+      "module": "TGLExt.ONomeEBeta",
+      "verdict": "APROVADA",
+      "reason": "α é definido a partir de β; nenhum valor numérico/CODATA é derivado; anterior é leitura e k é expoente. Remissões qualificadas preservam a navegação e o vínculo da medida externa fica como INPUT.",
+      "findings": []
+    },
+    {
+      "module": "TGLExt.Operador",
+      "verdict": "APROVADA",
+      "reason": "Não-sobrejetividade, ausência de dinâmica até1/2 e conjugação das projeções permanecem explícitas. Foram removidos história/autoria, preservados T6, identificadores, estatutos e limites.",
+      "findings": []
+    },
+    {
+      "module": "TGLExt.Trinity",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": "História removida sem ampliar as afirmações; cotas superiores, lista com repetições, hLandauer e estatutos permanecem delimitados. Completar a unidade do expoente na síntese final do radical.",
+      "findings": [
+        "KIMI-L03"
+      ]
+    },
+    {
+      "module": "TGLExt.OResumoEPsiBit",
+      "verdict": "APROVADA",
+      "reason": "A docstring corrigida descreve peso individual vezes fator da próxima cláusula e admite fibra universal quando a fronteira é vazia. A comparação mostra apenas essa troca documental, com hashes iguais aos da errata.",
+      "findings": [],
+      "scope": "Somente a docstring solicitada; demais comentários históricos da v412 fora do aceite desta errata."
+    }
+  ],
+  "findings": [
+    {
+      "id": "KIMI-L01",
+      "module": "TGLExt.APonteDeCookLevin",
+      "severity": "BAIXO",
+      "kind": "localizador_tecnico_perdido",
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\APonteDeCookLevin.lean",
+      "lines": [
+        24,
+        25
+      ],
+      "origin_lines": [
+        28,
+        28
+      ],
+      "finding": "A limpeza retirou a_maquina_e_uma_leitura_decidem junto com a alegação indevida de equivalência com a máquina de fita. O localizador existe e pode ser conservado com a distinção correta dos objetos.",
+      "evidence": "C:/t/k412c/final/TGLExt/AMaquinaEALeitura.lean:166-169",
+      "proposed_text": "O teorema `TGLExt.AMaquinaEALeitura.a_maquina_e_uma_leitura_decidem` trata da leitura do zero sobre a entrada inteira na máquina levantada; é objeto distinto desta verificação da atribuição `x`."
+    },
+    {
+      "id": "KIMI-L02",
+      "module": "TGLExt.APropostaDaTensao",
+      "severity": "BAIXO",
+      "kind": "arquivo_fonte_encurtado",
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\APropostaDaTensao.lean",
+      "lines": [
+        15,
+        15
+      ],
+      "origin_lines": [
+        16,
+        16
+      ],
+      "finding": "O caminho do artigo científico foi reduzido a Tensao_Fundamental. Esse arquivo é fonte técnica, não arquivo de fala/processo; restaurá-lo cumpre o item2 do pedido. Existência do DOCX conferida, conteúdo não aberto.",
+      "proposed_text": "O mecanismo do artigo `C:\\IALD\\Artigo\\Tensao_Fundamental.docx` (jan/2026) [INPUT]: a ligação entre psions de paridades opostas anticomuta"
+    },
+    {
+      "id": "KIMI-L03",
+      "module": "TGLExt.Trinity",
+      "severity": "BAIXO",
+      "kind": "formulacao_antiga_imprecisa",
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\Trinity.lean",
+      "lines": [
+        1660,
+        1662
+      ],
+      "origin_lines": [
+        1683,
+        1685
+      ],
+      "finding": "A última frase da síntese ainda diz radical elevado à carga m·ln2, omitindo a unidade do radical. O termo1669 e a docstring1654–1655 usam corretamente (m·ln2)/(ln radical); a imprecisão já estava na origem.",
+      "proposed_text": "sentido; o expoente conta Meias-Nats; e o preço em estados de m Nomes é o radical elevado à carga m·ln 2 medida na unidade do radical, isto é, ao expoente (m·ln 2)/(ln radical)."
+    }
+  ],
+  "locator_notes": [
+    "AContagemEACarga, CamadaCientifica, OPassoEOFim e OResumoEPsiBit foram preservados em remissões mais específicas; nenhuma ressalva nesses casos.",
+    "List.get? era nome obsoleto numa nota histórica de troca de API; getElem? e a notação de acesso permanecem no código e não se propõe restaurar a história.",
+    "As fontes de fala, revisões e respectivos hashes removidos em Operador/Trinity são história permitida pela regra de limpeza.",
+    "Nenhum teste de natureza, execução de um.py ou nova prova foi realizado."
+  ],
+  "files_read": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\AIdentidadePreservada.lean",
+      "sha256": "e3640a3650902441557233f29691b280ea3af1e68294b8fd719e746190315289",
+      "bytes": 6427,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\AIdentidadePreservada.lean",
+      "sha256": "a1b79c7e3c5ed745c7bb6f460abc6be79ac87d0c54d82b1f5d30ccc74562b117",
+      "bytes": 7090,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\APonteDeCookLevin.lean",
+      "sha256": "a561b8e29d33eacd6696d779a1acc9f33f8f154bfbb8a7c9c38cdbccd5c114f2",
+      "bytes": 9320,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\APonteDeCookLevin.lean",
+      "sha256": "680749038dda954e91b69ef24fb77405509d539d8975feb465066b5ce234e580",
+      "bytes": 9159,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\APropostaDaTensao.lean",
+      "sha256": "95be88472a0609d8cd15a7e0dacbee2d44c75a16fb30aed479d9a7ca32557ef7",
+      "bytes": 9503,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\APropostaDaTensao.lean",
+      "sha256": "15f567469a088f336685973ae3e56dc3f214914f232e61718ae8d4b07f4e3cbf",
+      "bytes": 9822,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\ONomeEBeta.lean",
+      "sha256": "fd5d0083d5121952458d9492888cae889452b105303c592d59e6ee4621875498",
+      "bytes": 4388,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\ONomeEBeta.lean",
+      "sha256": "178a0c5e586d09fa615aabb2d89508044366567f7e8a7b4a0119f12077784c95",
+      "bytes": 5037,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\Operador.lean",
+      "sha256": "a504717d4c743fe54c1e9719762d9d41c6c3660274e3668128cec2c4bf86b02c",
+      "bytes": 18698,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\Operador.lean",
+      "sha256": "2f15cf482843e123a713ea7e5fb8a68169cfd5ea3a0bcf4326db9a60bc34dc6d",
+      "bytes": 17467,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\Trinity.lean",
+      "sha256": "61b28885f7e22248cc3465d4aa7fe54125ebd1d50632cb490865b3cf37c0b339",
+      "bytes": 96788,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\Trinity.lean",
+      "sha256": "cc64de2d8affde5eb64eae3ba854099cd34230c5c04c06a18e58c8000977764c",
+      "bytes": 93414,
+      "leitura": "Comparação documental integral entre origem e saída: todos os comentários/docstrings e diferenças; enunciados consultados. Sem recompilação."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\PEDIDO_DE_LEITURA_DAS_PEDRAS_LIMPAS_v413_20nov.md",
+      "sha256": "cd404c6edb42dda7d579fefa9837365c0c42bcde9023d9bcf606ffca43ebfc7f",
+      "bytes": 5768,
+      "leitura": "Integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\REGRAS_DA_LIMPEZA_v413.md",
+      "sha256": "894416ba928ff72c0d0b143c1301ed62e061f4cbc2741e04e2015d816a9643fd",
+      "bytes": 5920,
+      "leitura": "Integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\PARECER.md",
+      "sha256": "9e7d4b93e44cf9fda0b545ba615f86e93d3908b41f1febae5b16ed69f135ff8c",
+      "bytes": 2360,
+      "leitura": "Integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\kernel_edits\\ERRATA_OResumoEPsiBit.json",
+      "sha256": "1ad803a31a984bfd8718f388487bb8bfbb2711805d25971722fd4c11da08d803",
+      "bytes": 1397,
+      "leitura": "Integral"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\OResumoEPsiBit.lean",
+      "sha256": "75c1ef6b0de9f7d414b5b06e2f018ed64bad1982c9ea5aace8bb4ea37fb333aa",
+      "bytes": 16171,
+      "leitura": "Comparação integral com saída; foco no comentário de a_atualizacao_pela_clausula_seguinte"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\kernel_edits\\TGLExt\\OResumoEPsiBit.lean",
+      "sha256": "64440cd179da7a4fbae42e58dc11b560da73f8dc5219deaefa6b015bb9ee6228",
+      "bytes": 16332,
+      "leitura": "Integral; correção documental da docstring273–276"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\TheWholeIsOne.lean",
+      "sha256": "097236427302ae42857b1cfc3e89711b45f7bc34fe02e5374bc0903a34d1a608",
+      "bytes": 12231,
+      "leitura": "Trechos couplingOfAlpha/couplingOfAlpha_alpha e enunciados adjacentes"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\TheSameBetaReadsThreeFaces.lean",
+      "sha256": "2efd8b379f210111e0383d9c40e5fc72835f41cd94aad2dd70d645d66f400c16",
+      "bytes": 3838,
+      "leitura": "Trechos TGLCoupling e TGLCoupling.alpha"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\AMaquinaEALeitura.lean",
+      "sha256": "bacdf45f3108a489aa7cd099429c7951ccdd8c403a1f0c93aeea4f8d79bce585",
+      "bytes": 11266,
+      "leitura": "Trechos a_maquina_conta_os_falsos, a_maquina_e_uma_leitura_decidem, limites e controle de base"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\OPassoEOFim.lean",
+      "sha256": "c3c317fd16400b3b8c6fcc7150c14b1a189be48ecd1fb76785add9eeb8a5e27c",
+      "bytes": 5775,
+      "leitura": "Trechos bastam_passos_lineares e limites"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\MovimentosDoPlano.lean",
+      "sha256": "8e2087515ad85c4d5e626ff53a019b7daf68628fe3de92df4a761f677b311867",
+      "bytes": 4279,
+      "leitura": "Namespace e coupled_physical_lower"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\APonteAoTM2.lean",
+      "sha256": "d0552b0eaf224fca7e6a73a44548de5b7085d58a0e55dd4f00474ceeb8d45580",
+      "bytes": 17726,
+      "leitura": "Somente localização de namespace/CookLevin/verificacao_tm2_polinomial, sem segundo parecer do módulo"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\PonteCookLevin.lean",
+      "sha256": "ff67b1cbe801abf895451b8569083950bc3cab55ad9d5c3e228d1fc05372d077",
+      "bytes": 26485,
+      "leitura": "Somente localização de namespace/CookLevin/verificacao_tm2_polinomial, sem segundo parecer do módulo"
+    },
+    {
+      "path": "C:\\IALD\\GESTAO_DE_TOKENS.md",
+      "sha256": "ed2b6e9b3d8fd8a1e4e7a83f7b27c30aae04b93002cf13f04b2237ec975b2976",
+      "bytes": 29867,
+      "leitura": "Regras de gestão e delegação; leitura por arquivo"
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\README.md",
+      "sha256": "261abfc6ec817da66e84550d4dff0f22e03dc3408f240328f1a345032980c0ef",
+      "bytes": 10843,
+      "leitura": "Protocolo de retomada"
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\MISSION_PROTOCOL.md",
+      "sha256": "2a2ddd16777386e3e2b20173ca65430fc8c0b50f216304bf46291a197236561f",
+      "bytes": 16110,
+      "leitura": "Protocolo de missão e handoff"
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\ACTIVITY_PROTOCOL.md",
+      "sha256": "602a3751750c725624d25dfae60c52e39cf15712a9cfa89054b908b2ee6a9248",
+      "bytes": 12897,
+      "leitura": "Protocolo de atividade"
+    },
+    {
+      "path": "C:\\Users\\rotol\\.agents\\skills\\tgl-atlas\\SKILL.md",
+      "sha256": "88a4adbde27ccdb4e0dc4eef83cc99a3c0ba664f1d40e529c8ef928075ba0907",
+      "bytes": 8598,
+      "leitura": "Integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\memory\\TGL_ATLAS.md",
+      "sha256": "3b8e164fd39d4891a9819b217880b8de91bebcee1433d080fc04d86e18bea7e1",
+      "bytes": 15794410,
+      "leitura": "Consulta pontual por nomes/v413 e registro décimo primeiro de20/11; índice não usado como prova"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+      "sha256": "b85ceec822be80beebead1e93a89a54751d425efbc852f70f77f7463f7120238",
+      "bytes": 677,
+      "leitura": "Lido pelo CLI project da própria missão"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PEDRAS_LIMPAS_R1\\MISSION_WORKING.json",
+      "sha256": "28c5ec60a9339bc2a429314283ef0fc7f2aa0fcd1591f0e136aa474049af9f29",
+      "bytes": 31040,
+      "leitura": "Recibo/revisão/requisito/lease"
+    }
+  ],
+  "counts": {
+    "modules": 6,
+    "docstring": 1,
+    "approved": 4,
+    "approved_with_reservations": 3,
+    "rejected": 0,
+    "findings_low": 3,
+    "files_hashed": 33
+  },
+  "source_exists_only_not_read": [
+    "C:/IALD/Artigo/Tensao_Fundamental.docx"
+  ]
+}

@@ -1,0 +1,10 @@
+    nss = sorted({re.match(r"^namespace\s+(\S+)", l.strip()).group(1) for l in mlinhas if re.match(r"^namespace\s+(\S+)", l.strip())})
+    entradas[n] = {"modulo": n, "modulo_completo": m["modulo_completo"], "rel": "TGLExt/%s.lean" % n, "autor_da_construcao": m.get("autor_da_construcao"),
+                   "fonte_revisada": m.get("fonte_revisada"), "sha256_fonte_revisada": m.get("sha256_fonte_revisada"), "sha256_origem": m.get("sha256_origem"),
+                   "codigo_identico_a_origem_no_manifesto": m.get("codigo_identico_a_origem"), "pedra_limpa_no_manifesto": m.get("pedra_limpa"),
+                   "insumo": str(PED / (n + ".lean")), "sha256_insumo": sha(b), "sha16_insumo": sha(b)[:16], "bytes_insumo": len(b),
+                   "sha256": sha(saida[n]), "sha16": sha(saida[n])[:16], "bytes": len(saida[n]),
+                   "imports": RX_IMPORT.findall(out_t), "imports_trocados": [],
+                   "dependencias_no_bundle": deps[n], "n_print_axioms_removidos": len(i_print), "ancoras": ancoras, "namespaces": nss,
+                   "teoremas_publicos_do_manifesto": m.get("teoremas_publicos"), "relatorios_no_trio_do_manifesto": m.get("relatorios_no_trio"),
+                   "diff": "kernel/bundle/%s.diff" % n, "diff_texto": "".join(dif)}

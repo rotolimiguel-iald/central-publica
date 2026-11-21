@@ -1,0 +1,813 @@
+{
+ "contrato": "RESULTADO_ENSAIO_HERMETICO_BN_v413",
+ "quando": "2026-11-20T21:27:34-03:00",
+ "script": {
+  "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\bancada\\ensaio_hermetico\\ensaio_hermetico_bn_v413.py",
+  "sha256": "1ff16e30d992501724286be281b252e04739591faeae16dcada1174fbeb1b6de"
+ },
+ "mundo_falso": {
+  "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\bancada\\ensaio_hermetico\\mundo_falso_bn_v413.py",
+  "sha256": "ab58452e0cb4adbb5fb4b9276a5cfe07c220995b1f7d7d8717e23ca7161818fd",
+  "pasta_de_ensaio": "C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3"
+ },
+ "n_testes": 70,
+ "n_passaram": 68,
+ "n_negativos": 29,
+ "testes": [
+  {
+   "teste": "mundo falso montado (Nos v412, Bancada B20-v411 pinando a v411, cadeia de selo, quadro com 1687 e 1689, copias dos scripts com o delta_bn reapontado)",
+   "ok": true,
+   "observado": "C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3",
+   "esperado": null
+  },
+  {
+   "teste": "A1 gerar_e_pinar_cadeia_v413 (copia): o gerador REAL da R3.4 gera a cadeia v411 -> v412 do mundo falso e o esboco R3.6 REAL a confere (Bancada no inicio, Nos no fim); o pino e' gravado",
+   "ok": true,
+   "observado": [
+    0,
+    "\"versoes\": [\"v411\", \"v412\"], \"pino\": \"C:\\\\Users\\\\rotol\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\b4ca26c934d2167f\\\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\\\scratchpad\\\\herm3\\\\work\\\\cadeia_de_selo\\\\v413\\\\cadeia_de_selos_v411_v412\\\\PINO_CADEIA_DE_SELOS_v411_v412.json\", \"pino_sha256\": \"f37477b29d03a162d23f0c9f7a24dd2be51c999829ac1ad78482b8df18ea6a9b\", \"salto_de\": \"B20-v411-20261113-R1\", \"proxima_a_selar\": \"v413\"}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "A2 gerar_bateria_v412_pre_selo_v413 (copia): o gerador REAL da bateria, com o pino minimo do candidato, gera a bateria da v412; conferida pelo esboco (carregar_bateria, pinos da versao)",
+   "ok": true,
+   "observado": [
+    0,
+    "a\\\\Local\\\\Temp\\\\claude\\\\b4ca26c934d2167f\\\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\\\scratchpad\\\\herm3\\\\work\\\\cadeia_de_selo\\\\v413\\\\bateria_v412_pre_selo\\\\PINOS_BATERIA_v412.json\", \"pino_minimo\": \"C:\\\\Users\\\\rotol\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\b4ca26c934d2167f\\\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\\\scratchpad\\\\herm3\\\\work\\\\cadeia_de_selo\\\\v413\\\\bateria_v412_pre_selo\\\\PINO_MINIMO_CANDIDATO_v412.json\"}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "as arvores falsas estabilizadas antes da fotografia 'antes' (mtime de pasta do scandir == os.stat)",
+   "ok": true,
+   "observado": null,
+   "esperado": null
+  },
+  {
+   "teste": "A3a snap antes (copia): fotografa a Bancada falsa e o Nos falso",
+   "ok": true,
+   "observado": [
+    0,
+    "ad1d869f81f83bd\", \"segundos\": 0.0}, \"erros\": 0, \"chaves\": {\"bancada/canonical_contracts.json\": \"da57b9141746fb3d\", \"nos/um.py\": \"964501202ddb3f03\", \"nos/um_absoluto_selo.json\": \"f454ce8cd2d026e1\", \"nos/tgl_kernel_proof_manifest.json\": \"b3de9e790b4183d9\", \"nos/um_absoluto.json\": \"8ae36313fd40d883\"}}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "A3b o esboco R3.6 REAL (--sandbox --sem-bateria) contra a Bancada FALSA atrasada: veredito do salto REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA (o mundo falso e' aceito pelo esboco)",
+   "ok": true,
+   "observado": [
+    0,
+    "REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA",
+    null
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "A3c snap depois (copia)",
+   "ok": true,
+   "observado": [
+    0,
+    "ad1d869f81f83bd\", \"segundos\": 0.0}, \"erros\": 0, \"chaves\": {\"bancada/canonical_contracts.json\": \"da57b9141746fb3d\", \"nos/um.py\": \"964501202ddb3f03\", \"nos/um_absoluto_selo.json\": \"f454ce8cd2d026e1\", \"nos/tgl_kernel_proof_manifest.json\": \"b3de9e790b4183d9\", \"nos/um_absoluto.json\": \"8ae36313fd40d883\"}}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "A4 conferir_recibo_pre_selo_salto_v413 (C.1): o esboco ACEITA o recibo do salto com a cadeia; todas as condicoes passam; os 9 controles negativos recusam pelo codigo certo",
+   "ok": true,
+   "observado": [
+    0,
+    26,
+    26,
+    9,
+    [],
+    "da8f00d-d44f-4888-a88d-fc9f73eead3d\\\\scratchpad\\\\herm3\\\\work\\\\cadeia_de_selo\\\\v413\\\\bateria_pre_selo\\\\conferencia_pelo_esboco_v413.json\", \"sha16\": \"8d0e665d0c255ead\", \"esboco_aceita\": true, \"recusa\": null, \"condicoes_ok\": \"26/26\", \"controles_como_esperado\": \"9/9\", \"utilizavel\": true, \"motivos\": []}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "A5 snap final (copia)",
+   "ok": true,
+   "observado": [
+    0,
+    "ad1d869f81f83bd\", \"segundos\": 0.0}, \"erros\": 0, \"chaves\": {\"bancada/canonical_contracts.json\": \"da57b9141746fb3d\", \"nos/um.py\": \"964501202ddb3f03\", \"nos/um_absoluto_selo.json\": \"f454ce8cd2d026e1\", \"nos/tgl_kernel_proof_manifest.json\": \"b3de9e790b4183d9\", \"nos/um_absoluto.json\": \"8ae36313fd40d883\"}}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "A6 gerar_pino_recibo_pre_selo_v413 (1.1): veredito EXATO do salto, producao intacta, recibo desta rodada: utilizavel e rc 0; o pino traz a cadeia e o salto",
+   "ok": true,
+   "observado": [
+    0,
+    true,
+    [],
+    "v413_pre_selo.json 65557ff8229b62f06ffe8ffa3ed6a5ee09331e8428ff34d7819ada09797b83d4\n{\"n\": 3, \"passa\": 2, \"falha\": 0, \"nao_executado\": 1, \"veredito_bateria\": \"BATERIA_PASSA\"} REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA utilizavel=True producao_intacta=True recibo_desta_rodada=True\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NA conferir com o recibo de veredito JA_SINCRONIZADA: rc 1, nao utilizavel, a condicao veredito_exato_do_salto falha e o esboco recusa",
+   "ok": true,
+   "observado": [
+    1,
+    [
+     "veredito_exato_do_salto"
+    ],
+    "RECIBO_PRE_SELO_NAO_CORRESPONDE: veredito='JA_SINCRONIZADA__ENSAIO__NADA_GRAVADO_NA_BANCADA' (exigido REPINADA_B21__SALTO_v411_v412__ENSAIO...) (R3.4)"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NA conferir com o recibo de salto.de.deployment_id adulterado: rc 1, nao utilizavel, a condicao salto_do_recibo_igual_ao_que_a_cadeia_e_a_bancada_dizem falha e o esboco recusa",
+   "ok": true,
+   "observado": [
+    1,
+    [
+     "salto_do_recibo_igual_ao_que_a_cadeia_e_a_bancada_dizem",
+     "salto_de_e_a_bancada"
+    ],
+    "RECIBO_PRE_SELO_NAO_CORRESPONDE: o salto que o recibo declara nao e o que a cadeia de selos 15cec07b8711eca4 e a Bancada dizem (de v411, ate v412, puladas ['v412']) (R3.4)"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NA gerar_pino com a producao alterada entre as fotos: rc 1, producao NAO intacta, nao utilizavel",
+   "ok": true,
+   "observado": [
+    1,
+    [
+     "a producao NAO esta intacta: ver PROVA_PRODUCAO_INTACTA_v413_pre_selo.json"
+    ],
+    "13_pre_selo.json 387bb3012c40aba5307827576481f3ab01e95300d6c8876b74f7b369526e7302\n{\"n\": 3, \"passa\": 2, \"falha\": 0, \"nao_executado\": 1, \"veredito_bateria\": \"BATERIA_PASSA\"} REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA utilizavel=False producao_intacta=False recibo_desta_rodada=True\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "A7 limpar_sandbox_vb24 (copia): apaga o sandbox curto LIDO do delta_bn (aqui C:\\t\\vb99), sem juncao, sem mexer nos irmaos",
+   "ok": true,
+   "observado": [
+    0,
+    "s que valem como prova estao copiadas em C:\\\\Users\\\\rotol\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\b4ca26c934d2167f\\\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\\\scratchpad\\\\herm3\\\\work\\\\cadeia_de_selo\\\\v413\\\\bateria_pre_selo\\\\prova_producao (gerar_pino_recibo_pre_selo_v413.py); o resto do sandbox era descartavel\"}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "A8 diff_e_pinos_bn_v413 sem --delta (1.4, N6): o PINOS_BN traz a cadeia, o recibo pre-selo do salto, os anteriores v412 (um.py) e v411 (Bancada), o delta_bn e o util por sha; o que depende do candidato fica em pendentes",
+   "ok": true,
+   "observado": [
+    0,
+    [
+     "delta",
+     "candidato",
+     "kernel_recibo",
+     "esperados",
+     "pins_do_candidato",
+     "criterios",
+     "DIFF_KERNEL_v413.txt",
+     "DIFF_v412_v413.diff"
+    ],
+    "os': 'NAO_PREPARADO'}\nPINOS_BN: C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\PINOS_BN_v413.json 34a39d761a9a45b5 | backup do anterior: None | B(n) do salto: B21 | pendentes: ['delta', 'candidato', 'kernel_recibo', 'esperados', 'pins_do_candidato', 'criterios', 'DIFF_KERNEL_v413.txt', 'DIFF_v412_v413.diff']\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NA diff_e_pinos com o pino do recibo pre-selo NAO utilizavel: PARA (rc 1) sem regravar o PINOS_BN",
+   "ok": true,
+   "observado": [
+    1,
+    "PARO: o recibo pre-selo pinado NAO serve ao B(n) do salto (utilizavel False, veredito 'REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA', versao_nos 'v412', cadeia '15cec07b8711eca4'): nada foi gravado\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "A9 p00_precondicoes_bn_v413: nenhuma FALHA e so' os pendentes do candidato (rc 3); a cadeia carregada pelo esboco, a bateria, o prazo, o recibo, a prova, o PINOS_BN, a autorizacao e a forma dos scripts conferidos",
+   "ok": true,
+   "observado": [
+    3,
+    "NENHUMA FALHA, 8 PENDENTE(S)",
+    [],
+    "endente e sem `python -c` \nOK    D135: nenhum .tmp nas pastas do B(n) \nNENHUMA FALHA, 8 PENDENTE(S) | 22 ok, 0 falha(s), 8 pendente(s) | C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\PRECONDICOES_BN_v413.json\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B1 b3_recibo_v413 ensaio (2.4): o salto exigido (cadeia == o pino, de v411/B20 ate v412, proxima v413), o veredito exato, o manifesto anterior == o do pre-selo, B21-v413: rc 0",
+   "ok": true,
+   "observado": [
+    0,
+    "B(n) ensaio: veredito=REPINADA_B21__SALTO_v411_v413__ENSAIO__NADA_GRAVADO_NA_BANCADA bateria=BATERIA_PASSA recibo=C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bancada_B3_ensaio_20261121_000000\\RECIBO_SINCRONIZACAO_v413_20261121_000000.json sha16=623b80fd917536fb manifesto_novo=60210bdcae9abe0b anterior=B20-v411-20261113-R1 salto=v411->v413 puladas=['v412']\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB b3_recibo com sem o bloco salto: rc 1",
+   "ok": true,
+   "observado": [
+    1,
+    " recibo nao e' o do recibo pre_selo pinado (o pos-selo confere o bloco declarado byte a byte)\n  PROBLEMA: o recibo nao declara o salto (contrato SALTO_R3_4): a Bancada pinava a v411 e o Nos e' a v413\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB b3_recibo com veredito sem __SALTO_: rc 1",
+   "ok": true,
+   "observado": [
+    1,
+    "20261113-R1 salto=v411->v413 puladas=['v412']\n  PROBLEMA: o veredito 'REPINADA_B21__ENSAIO__NADA_GRAVADO_NA_BANCADA' nao e' o esperado 'REPINADA_B21__SALTO_v411_v413__ENSAIO__NADA_GRAVADO_NA_BANCADA'\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB b3_recibo com manifesto anterior mudado desde o pre-selo: rc 1",
+   "ok": true,
+   "observado": [
+    1,
+    "  PROBLEMA: o manifesto anterior do recibo (B20-v411-20261113-R1 0000000000000000) != o do recibo pre_selo pinado (B20-v411-20261113-R1 da57b9141746fb3d): a Bancada de producao mudou desde o pre_selo\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB b3_recibo com deployment B22: rc 1",
+   "ok": true,
+   "observado": [
+    1,
+    "6db1d024a manifesto_novo=60210bdcae9abe0b anterior=B20-v411-20261113-R1 salto=v411->v413 puladas=['v412']\n  PROBLEMA: manifesto_novo.deployment_id='B22-v413-20261121-R1' (esperado B21-v413-<data>-R1)\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB b3_recibo com cadeia errada no 3o argumento: rc 1",
+   "ok": true,
+   "observado": [
+    1,
+    "ROBLEMA: a cadeia de selos do salto no recibo ('15cec07b8711eca44bf76367e3236b2d745d2a6ff543146b9eaac0aba8ebcf0d') nao e' a pinada ('1111111111111111111111111111111111111111111111111111111111111111')\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB b3_recibo com sem o 3o argumento: rc 1",
+   "ok": true,
+   "observado": [
+    1,
+    "uso: b3_recibo_v413.py <stdout> ensaio|aplicar <sha256 da cadeia de selos (64 hex)>   (o terceiro argumento e' obrigatorio: a v413 e' o salto v411 -> v413)\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB evento_c1_b3 com o iald.py saindo rc 1: o evento PARA (assert do rc)",
+   "ok": true,
+   "observado": [
+    1,
+    "; conferir o livro antes de repetir\" % r.returncode\n           ^^^^^^^^^^^^^^^^^\nAssertionError: o iald.py anotar saiu com rc 1: nao se sabe se o evento foi anotado; conferir o livro antes de repetir\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB evento_c1_b3 sem o stdout do ENSAIO: nada e' anotado (assert antes do subprocess)",
+   "ok": true,
+   "observado": [
+    1,
+    "aude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bn_pos_selo\\b3_ensaio_out.txt): a ordem e' ENSAIO -> evento -> APLICAR; nada foi anotado no quadro\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B3 evento_c1_b3_v413 (2.6): ENSAIO conferido antes, o candidato conferido, o rc e o retorno do iald.py lidos, o elo conferido no livro inteiro e posterior ao ensaio; imprime EVENTO=<seq> EVENTO_HASH=<hash16>",
+   "ok": true,
+   "observado": [
+    0,
+    [
+     "EVENTO=1690 EVENTO_HASH=e8d3b0f226bb58a5"
+    ],
+    "{\"ok\": true, \"evento\": 1690, \"hash\": \"e8d3b0f226bb58a5\"} \nEVENTO=1690 EVENTO_HASH=e8d3b0f226bb58a5\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B3b util evento_depois_do_ensaio (o portao do 10b): o evento anotado confere e e' posterior ao fim do ensaio: rc 0",
+   "ok": true,
+   "observado": [
+    0,
+    "evento 1690 quando 2026-11-20T21:26:15-03:00 | fim do ensaio 2026-11-21T00:25:14.264214+00:00 | posterior: True\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB util evento_depois_do_ensaio com o hash errado: rc 1",
+   "ok": true,
+   "observado": [
+    1,
+    "o evento 1690 nao esta' no livro, nao confere o hash dado ou nao e' SINCRONIZACAO_BANCADA da claude-c1\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B2 b3_recibo_v413 aplicar: pos_conferencia ok, versao v413, o sha do manifesto novo; o salto e o veredito exato do APLICAR: rc 0",
+   "ok": true,
+   "observado": [
+    0,
+    "1_v413__APLICADA__SERVICO_DEVE_SER_REINICIADO_COM_RECIBO bateria=BATERIA_PASSA recibo=C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bancada_B3\\RECIBO_SINCRONIZACAO_v413_20261121_010101.json sha16=1bbc200ab974f4a7 manifesto_novo=60210bdcae9abe0b anterior=B20-v411-20261113-R1 salto=v411->v413 puladas=['v412']\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B4a saude_bancada (conferencia A) sobre a Bancada falsa com a porta fechada: FORA_DO_AR_APOS_REINICIO (o boot real e' depois do religamento falso da v411), rc 3",
+   "ok": true,
+   "observado": [
+    3,
+    {
+     "veredito": "FORA_DO_AR_APOS_REINICIO",
+     "recibo": "C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bn_pos_selo\\saude\\SAUDE_BANCADA_20261120_212615.json",
+     "sha256": "54ae387ec2fe81951685df0a00045d2a5bf7eeb0e6907a2f38b911cff9e4cf12",
+     "porta_aberta": false,
+     "contrato_em_disco": "OK",
+     "anomalias": []
+    },
+    ""
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB recibo_parada com o AUT sem a fala de 20/11: recusa (AssertionError), nada gravado",
+   "ok": true,
+   "observado": [
+    1,
+    "iclo da v413 (exige no texto: os eventos 1687 e 1689 com os hash16 lidos do livro, o sha16 e a resposta do recibo do 1687, a decisao e o sha16 da fala do 1689, a fala de 20/11 inteira e o sha16 dela)\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB recibo_parada com V413_PID_PARADO no ja_fora_do_ar: recusa (AssertionError), nada gravado",
+   "ok": true,
+   "observado": [
+    1,
+    "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: no modo ja_fora_do_ar nenhum PID foi parado: V413_PID_PARADO e V413_PID_PARADO_CRIADO nao podem estar definidos\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB recibo_parada com o sha256 da conferencia A errado: recusa (AssertionError), nada gravado",
+   "ok": true,
+   "observado": [
+    1,
+    "= SA_PINO, \"a conferencia A diverge do sha256 que a gerencia passou\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: a conferencia A diverge do sha256 que a gerencia passou\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB recibo_parada com sem V413_PARADA: recusa (AssertionError), nada gravado",
+   "ok": true,
+   "observado": [
+    1,
+    "13_PARADA=pelo_pid (o servico estava no ar e foi parado pelo PID lido da porta; com V413_PID_PARADO e V413_PID_PARADO_CRIADO) ou V413_PARADA=ja_fora_do_ar (nada foi parado): o script nao presume qual\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB recibo_parada com uma linha ILEGIVEL no quadro (2.2, M11 dinamico): recusa EVENTOS_JSONL_ILEGIVEL, nada gravado",
+   "ok": true,
+   "observado": [
+    1,
+    "bn_v413.py\", line 93, in livro_conferido\n    raise ValueError(\"EVENTOS_JSONL_ILEGIVEL: linha %d: %s\" % (i, exc))\nValueError: EVENTOS_JSONL_ILEGIVEL: linha 3: Expecting value: line 1 column 1 (char 0)\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B4 recibo_parada_v413 ja_fora_do_ar (2.2, N4, N6): o livro inteiro, 1687 e 1689 por hash, a fala de 20/11, a conferencia A pinada, a porta fechada e nenhum processo: o recibo nasce com as chaves da v411 + as da v413",
+   "ok": true,
+   "observado": [
+    0,
+    "ok C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bancada_B3_servico\\RECIBO_PARADA_v413.json modo ja_fora_do_ar pid 23688 pid_recibo_v411 23688 processos 0\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB recibo_religamento sem a fala do modo da placa: AGUARDA (rc 20), nada lancado",
+   "ok": true,
+   "observado": [
+    20,
+    "sers\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cunhagens_13out) e o modo escolhido (V413_MODO_PLACA = cpu | normal); nada foi lancado\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B5 recibo_religamento_v413 (2.3, N4, N6, N9; modo cpu): o APLICAR achado, o servidor LANCADO destacado com os logs em estado\\, CUDA_VISIBLE_DEVICES=-1 no processo, a identidade de /api/contratos conferida, o PID da porta == o lancado",
+   "ok": true,
+   "observado": [
+    0,
+    "-1",
+    "ok C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bancada_B3_servico\\RECIBO_RELIGAMENTO_v413.json pid 110180 v413 60210bdcae9abe0b um.py 0db093c32828a12b modo da placa cpu\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB recibo_religamento com o recibo ja existente: recusa ANTES de lancar (nao sobe um segundo servico)",
+   "ok": true,
+   "observado": [
+    1,
+    "not os.path.exists(P_REC), \"o recibo ja existe: nao sobrescrevo (e nao religo de novo)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: o recibo ja existe: nao sobrescrevo (e nao religo de novo)\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB fechar_bn sem o recibo da parada: rc 2 e NADA gravado",
+   "ok": true,
+   "observado": [
+    2,
+    "USADO -- o elo B(n) da Bancada nao esta' completo (nada foi gravado):\n  - sem o recibo da PARADA do servico (10-bis-a): C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bancada_B3_servico\\RECIBO_PARADA_v413.json\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B6 fechar_bn_v413 (2.1): os tres recibos juntos (o APLICAR do salto, a parada, o religamento com o PID VIVO), o evento no livro, o pino conjunto, a reconferencia e as copias na pasta do evento 1687",
+   "ok": true,
+   "observado": [
+    0,
+    "da8f00d-d44f-4888-a88d-fc9f73eead3d\\\\scratchpad\\\\herm3\\\\work\\\\cadeia_de_selo\\\\v413\\\\bn_pos_selo\\\\PINO_RECIBOS_B21_v413.json\", \"para\": \"C:\\\\Users\\\\rotol\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\b4ca26c934d2167f\\\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\\\scratchpad\\\\herm3\\\\work\\\\iald_v412_20261119\\\\bench\\\\PINO_RECIBOS_B21_v413.json\", \"sha256\": \"f23e27de7f5858bd483d9dfead6585abe090efa0421c7caeb3ccacf8793156f1\"}]}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B6b fechar_bn de novo: idempotente (o pino conjunto ja existe igual; as copias iguais), rc 0",
+   "ok": true,
+   "observado": [
+    0,
+    "\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\\\scratchpad\\\\herm3\\\\work\\\\iald_v412_20261119\\\\bench\\\\PINO_RECIBOS_B21_v413.json\", \"sha256\": \"f23e27de7f5858bd483d9dfead6585abe090efa0421c7caeb3ccacf8793156f1\"}]}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B7a saude_bancada com o servidor falso no ar e o contrato em dia: NO_AR_EM_DIA, rc 0",
+   "ok": true,
+   "observado": [
+    0,
+    {
+     "veredito": "NO_AR_EM_DIA",
+     "recibo": "C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bn_pos_selo\\saude\\SAUDE_BANCADA_20261120_212637.json",
+     "sha256": "1a4b7a4bcbf899297784a432bc43a71a90998bed0a34bba4ebe05a63a9d2b916",
+     "porta_aberta": true,
+     "contrato_em_disco": "OK",
+     "anomalias": []
+    },
+    ""
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B7b saude_bancada com o servidor no ar recusando o contrato: NO_AR_CONTRATO_VELHO, rc 3",
+   "ok": true,
+   "observado": [
+    3,
+    {
+     "veredito": "NO_AR_CONTRATO_VELHO",
+     "recibo": "C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bn_pos_selo\\saude\\SAUDE_BANCADA_20261120_212641.json",
+     "sha256": "e88fbc2579b09a6b75e51ae0155ba55e596492e740ce637f3f34cbc1ee2fe799",
+     "porta_aberta": true,
+     "contrato_em_disco": "OK",
+     "anomalias": []
+    }
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB fechar_bn com o servico religado ja morto (o PID do recibo nao esta' vivo): portao C, rc 2",
+   "ok": true,
+   "observado": [
+    2,
+    "FECHAR RECUSADO -- o elo B(n) da Bancada nao esta' completo (nada foi gravado):\n  - portao C: o PID do recibo do religamento (110180) nao esta' vivo como um_bancada.py\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB recibo_religamento com a versao servida errada: RELIGAMENTO_RECUSADO, recusa gravada com o PID, nenhum recibo de religamento",
+   "ok": true,
+   "observado": [
+    1,
+    "RECUSADO (o processo 101216 ficou; recusa em C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bancada_B3_servico\\RECUSA_RELIGAMENTO_v413_20261120_212652.json): canonical_version servido 'v412' != esperado 'v413'\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B7c saude_bancada com a porta aberta por OUTRO programa: INDETERMINADO, rc 1 (fail-closed)",
+   "ok": true,
+   "observado": [
+    1,
+    {
+     "veredito": "INDETERMINADO",
+     "recibo": "C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bn_pos_selo\\saude\\SAUDE_BANCADA_20261120_212703.json",
+     "sha256": "5fdf3a7b918e15d31d751bc73b2d7b9286f0899e0b92723a1157f4263c62c94f",
+     "porta_aberta": true,
+     "contrato_em_disco": "OK",
+     "anomalias": [
+      "a porta 18799 esta' aberta, mas quem escuta nao e' o um_bancada.py desta Bancada ({'pid': 91856, 'nome': 'python.exe', 'criado': '2026-11-20T21:27:03', 'linha_de_comando': 'C:\\\\Python314\\\\python.exe -I -B C:\\\\Users\\\\rotol\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\b4ca26c934d2167f\\\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\\\scratchpad\\\\herm3\\\\outro\\\\outro_servidor.py'})"
+     ]
+    }
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B7d saude_bancada com a porta fechada e um religamento DEPOIS do boot: FORA_DO_AR, rc 3",
+   "ok": true,
+   "observado": [
+    3,
+    {
+     "veredito": "FORA_DO_AR",
+     "recibo": "C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bn_pos_selo\\saude\\SAUDE_BANCADA_20261120_212709.json",
+     "sha256": "ef36e2deefc3c32585ce6a29b047ef796f5a880c6808ca7ff9f9ad0353d78305",
+     "porta_aberta": false,
+     "contrato_em_disco": "OK",
+     "anomalias": []
+    }
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "B7e util saude_do_dia (o portao C do passo 10): ha' conferencia A de hoje na pasta: rc 0",
+   "ok": true,
+   "observado": [
+    0,
+    ":\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\work\\cadeia_de_selo\\v413\\bn_pos_selo\\saude\\SAUDE_BANCADA_20261120_212709.json FORA_DO_AR\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB util saude_do_dia numa pasta sem conferencia de hoje: rc 1 (o passo 10 AGUARDA)",
+   "ok": true,
+   "observado": [
+    1,
+    "nenhuma conferencia A de hoje (20261120) em C:\\Users\\rotol\\AppData\\Local\\Temp\\claude\\b4ca26c934d2167f\\6da8f00d-d44f-4888-a88d-fc9f73eead3d\\scratchpad\\herm3\\pasta_sem_saude\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NB util pendentes_vazios no PINOS_BN do pre-selo (com pendentes): rc 1 (o 10b AGUARDA, 2.7)",
+   "ok": true,
+   "observado": [
+    1,
+    "_recibo\", \"esperados\", \"pins_do_candidato\", \"criterios\", \"DIFF_KERNEL_v413.txt\", \"DIFF_v412_v413.diff\"], \"pinos_sem_sha256\": [\"candidato\", \"criterios\", \"delta\", \"kernel_recibo\", \"pins_do_candidato\"]}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "util pendentes_vazios num PINOS_BN final (sem pendentes e sem pino sem sha): rc 0",
+   "ok": true,
+   "observado": [
+    0,
+    "{\"pendentes\": [], \"pinos_sem_sha256\": []}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "C1 delta_bn_v413 REAL (so' leitura): a Bancada pina o B20 fixado; o delta_v411 carregado por fonte com o BANCADA_PINA_HOJE da v411 FIXADO; o delta_v412_r7 carregado por fonte com esse delta_v411; B21; vb24",
+   "ok": true,
+   "observado": [
+    0,
+    {
+     "pina_hoje": {
+      "version": "v411",
+      "deployment_id": "B20-v411-20261113-R1",
+      "n": 20
+     },
+     "fixada": {
+      "version": "v411",
+      "deployment_id": "B20-v411-20261113-R1",
+      "n": 20
+     },
+     "n": 21,
+     "sandbox": "C:\\t\\vb24",
+     "d11_versao": "v411",
+     "d11_pina": {
+      "version": "v411",
+      "deployment_id": "B20-v411-20261113-R1",
+      "n": 20
+     },
+     "d12_versao": "v412",
+     "d12_d11_e_o_fixado": true,
+     "d12_pina": {
+      "version": "v411",
+      "deployment_id": "B20-v411-20261113-R1",
+      "n": 20
+     },
+     "veredito_pre": "REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA",
+     "veredito_aplicar": "REPINADA_B21__SALTO_v411_v413__APLICADA__SERVICO_DEVE_SER_REINICIADO_COM_RECIBO"
+    },
+    ""
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "C2 delta_bn com a Bancada (falsa) em B21-v413 (depois do APLICAR): importa, BANCADA_JA_APLICADA True, e o delta_v411 fixado ainda carrega (N5 consertado)",
+   "ok": true,
+   "observado": [
+    0,
+    "{\"pina\": {\"version\": \"v413\", \"deployment_id\": \"B21-v413-20261121-R1\", \"n\": 21}, \"aplicada\": true, \"d11\": \"v411\"}\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NC delta_bn com a Bancada (falsa) em B22-v413-20261121-R1: o import recusa (assert)",
+   "ok": true,
+   "observado": [
+    1,
+    " (B%d-v413-<data>-R1)\" % N_DO_SALTO, dep_)\n           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^\nAssertionError: ('a Bancada pina a v413, mas nao a geracao do salto (B21-v413-<data>-R1)', 'B22-v413-20261121-R1')\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NC delta_bn com a Bancada (falsa) em B20-v411-20261113-R2: o import recusa (assert)",
+   "ok": true,
+   "observado": [
+    1,
+    "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('a Bancada pina a v411, mas nao o deployment que o religamento da v411 deixou', 'B20-v411-20261113-R2', 'B20-v411-20261113-R1')\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NC delta_bn com a Bancada (falsa) em B19-v410-20261111-R1: o import recusa (assert)",
+   "ok": true,
+   "observado": [
+    1,
+    "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('a Bancada de producao nao pina nem a v411 (B20) nem a v413 (B21): o B(n) da v413 nao seria o salto v411 -> v413', 'B19-v410-20261111-R1')\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "NC delta_bn com a Bancada (falsa) em B21-v412-20261121-R1: o import recusa (assert)",
+   "ok": true,
+   "observado": [
+    1,
+    "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('a Bancada de producao nao pina nem a v411 (B20) nem a v413 (B21): o B(n) da v413 nao seria o salto v411 -> v413', 'B21-v412-20261121-R1')\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "C3 N5 demonstrado: o delta_v411 VIVO (sem o conserto) quebra na importacao com a Bancada em B21-v413 (AssertionError do _bancada_pina_hoje dele)",
+   "ok": false,
+   "observado": [
+    1,
+    "^^^^^^^^^\n  File \"C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v411\\delta_v411.py\", line 96\n    BANCADA_PINA_HOJE = _bancada_pina_hoje()\n                         ^^^^^^^^^^^^^^^^^^^\nSyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \\UXXXXXXXX escape\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "C4 util livro_conferido (2.2): cadeia valida OK; linha ilegivel, elo fora da cadeia e seq repetida RECUSADOS pelo codigo certo; o quadro REAL confere inteiro (so' leitura)",
+   "ok": true,
+   "observado": [
+    0,
+    {
+     "valido": "OK 3",
+     "ilegivel": "EVENTOS_JSONL_ILEGIVEL",
+     "quebrado": "EVENTOS_CADEIA_QUEBRADA",
+     "seq_duplicada": "EVENTO_SEQ_DUPLICADO",
+     "quadro_real": "OK 1710"
+    },
+    ""
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "C5 util (real, so' leitura) const SANDBOX_CURTO == C:\\t\\vb24",
+   "ok": true,
+   "observado": [
+    0,
+    "C:\\t\\vb24"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "C5 util (real, so' leitura) porta_fechada (a porta real da Bancada esta' fechada)",
+   "ok": true,
+   "observado": [
+    0,
+    ""
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "C5 util (real, so' leitura) nos_versao (o Nos real na v412 com o selo pinando o um.py)",
+   "ok": true,
+   "observado": [
+    0,
+    "v412 SELO_PINA_O_UM_PY"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "C5 util (real, so' leitura) subcomando desconhecido: rc 2",
+   "ok": true,
+   "observado": [
+    2,
+    "subcomando desconhecido ou argumentos errados: ['subcomando_que_nao_existe']"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "D1 saude_bancada contra a Bancada REAL (so' leitura; porta fechada; nunca /api/estado): FORA_DO_AR_APOS_REINICIO (o boot de 16/11 depois do religamento de 13/11), rc 3",
+   "ok": true,
+   "observado": [
+    3,
+    {
+     "veredito": "FORA_DO_AR_APOS_REINICIO",
+     "recibo": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\bancada\\ensaio_hermetico\\saidas_20261120_212716\\saude_real\\SAUDE_BANCADA_20261120_212716.json",
+     "sha256": "fc50d31a31a4b5017fbb02a9288cadbcb9f7b37365bf439b9cdd35b0446c7c27",
+     "porta_aberta": false,
+     "contrato_em_disco": "PIN_CHANGED",
+     "anomalias": []
+    },
+    ""
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "D2 sentinela_boot_bancada (B preparada; nenhuma tarefa criada) contra a Bancada REAL: o aviso de fora do ar depois do reinicio e' gravado em arquivo",
+   "ok": true,
+   "observado": [
+    0,
+    "_hermetico\\saidas_20261120_212716\\sentinela_real\\conferencias\\SAUDE_BANCADA_20261120_212719.json\nSENTINELA: AVISO gravado: C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\bancada\\ensaio_hermetico\\saidas_20261120_212716\\sentinela_real\\avisos\\AVISO_BANCADA_FORA_APOS_REINICIO_20261120_212723.json\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "D3 sentinela de novo no mesmo boot: nao repete o aviso",
+   "ok": true,
+   "observado": [
+    0,
+    "11-16T13:57:46-03:00): C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\bancada\\ensaio_hermetico\\saidas_20261120_212716\\sentinela_real\\avisos\\AVISO_BANCADA_FORA_APOS_REINICIO_20261120_212723.json\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "D4 controle negativo do conferidor (2.8; scripts REAIS so' lidos, copias em pasta temporaria): o controle sem mutacao passa e as 13 mutacoes M1-M11 (M10 em tres) sao pegas pela condicao certa",
+   "ok": false,
+   "observado": [
+    1,
+    {
+     "rc": 1,
+     "esperado_rc": 0,
+     "n_condicoes": 48,
+     "n_condicoes_ok": 44,
+     "condicoes_que_falharam": [
+      {
+       "nome": "recibo_parada_v413.py: nenhuma data dd/mm/aaaa nem hash de 16+ hex digitado no script",
+       "observado": [
+        [
+         "20/11/2026"
+        ],
+        []
+       ]
+      },
+      {
+       "nome": "recibo_religamento_v413.py: V413_AUTORIZACAO_OPERADOR aparece 2 vezes (leitura e mensagem do assert)",
+       "observado": 3
+      },
+      {
+       "nome": "recibo_religamento_v413.py: nenhuma data dd/mm/aaaa nem hash de 16+ hex digitado no script",
+       "observado": [
+        [
+         "20/11/2026"
+        ],
+        []
+       ]
+      },
+      {
+       "nome": "evento: nenhum hash literal (16 a 64 hex entre aspas) e nenhuma data dd/mm/aaaa",
+       "observado": []
+      }
+     ]
+    },
+    {
+     "M1_assert_AUT_depois_da_sonda_da_porta": true,
+     "M2_nome_da_v412_na_variavel": true,
+     "M3_assert_do_ESPERADOS_depois_do_subprocess": true,
+     "M4_sem_o_conteudo_do_AUT": true,
+     "M5_data_de_ordem_anterior_no_script": true,
+     "M6_fala_de_20nov_inexistente_no_delta_bn": true,
+     "M7_ja_fora_do_ar_aceita_pid_parado": true,
+     "M8_conferencia_A_sem_o_sha256": true,
+     "M9_ultimo_pid_vivo_com_um_bancada_aceito": true,
+     "M10a_chave_porta_fechada_renomeada": true,
+     "M10b_chave_religar_retirada": true,
+     "M10c_chave_versao_servida_renomeada": true,
+     "M11_livro_pula_linha_ilegivel": true
+    },
+    "u(aram) | pegou a esperada: True\n  M10a_chave_porta_fechada_renomeada -> rc 1 | 5 condicao(oes) falhou(aram) | pegou a esperada: True\n  M10b_chave_religar_retirada -> rc 1 | 5 condicao(oes) falhou(aram) | pegou a esperada: True\n  M10c_chave_versao_servida_renomeada -> rc 1 | 5 condicao(oes) falhou(aram) | pegou a esperada: True\n  M11_livro_pula_linha_ilegivel -> rc 1 | 5 condicao(oes) falhou(aram) | pegou a esperada: True\nC:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\bancada\\ensaio_hermetico\\saidas_20261120_212716\\controle_negativo\\RESULTADO_CONTROLE_NEGATIVO_v413.json ec183043223a5b98\n"
+   ],
+   "esperado": null
+  },
+  {
+   "teste": "limpeza: nenhum processo criado por este ensaio ficou vivo (parados pelo PID); a porta de ensaio fechada; o sandbox de ensaio apagado",
+   "ok": true,
+   "observado": [
+    [],
+    [
+     110180,
+     101216,
+     91856
+    ]
+   ],
+   "esperado": null
+  }
+ ],
+ "saidas_reais_lidas": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\bancada\\ensaio_hermetico\\saidas_20261120_212716",
+ "escopo": "copias e dados de mentira; nenhum servico real ligado ou parado; nada gravado na Bancada, no Nos, na v412, nos sandboxes do kernel nem no quadro real; NOT_FALSIFIED nao e' creditacao; o gate nao se move"
+}

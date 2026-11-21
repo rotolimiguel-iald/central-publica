@@ -1,0 +1,31 @@
+rels = ["TGLExt/%s.lean" % x for x in ordem]
+modulos = []
+for x in ordem:
+    e = dict(entradas[x]); e.pop("diff_texto"); modulos.append(e)
+kcl = []
+for x in kc:
+    e = dict(kc[x]); e.pop("diff_texto"); kcl.append(e)
+grava_txt(PK / "kernel_modulos_novos_v413.json", json.dumps({"novos": rels, "n": len(rels), "root_suffix": ROOT_SUFFIX, "ordem_topologica": ordem, "gerado": TS,
+                                                             "kernel_corrigido": ["TGLExt/%s.lean" % x for x in kc]}, ensure_ascii=False, indent=1))
+grava_txt(PK / "BUNDLE_v413.json", json.dumps({
+    "contrato": "BUNDLE_v413", "gerado": TS, "n": len(modulos), "manifesto": str(MAN_P), "manifesto_sha256": sha(MAN_P.read_bytes()), "manifesto_gerado_em": MAN.get("gerado_em"),
+    "pedras": str(PED), "normalizacao": "so' a mudanca permitida (ordem da Etapa 1 da v413, item 2): as linhas #print axioms saem do corpo instalado (como na v412) e o fim do arquivo fica com uma quebra "
+                                         "de linha; os imports ja vinham como TGLExt.<Nome> (nenhum trocado); as fontes ja eram LF; nenhuma prova tocada; o modulo corrigido entra com os bytes do insumo "
+                                         "(sem #print axioms; codigo identico ao da origem)",
+    "root_suffix": ROOT_SUFFIX, "ordem_topologica": ordem, "ordem_topologica_sugerida": SUG_NOMES, "ordem_topologica_igual_a_sugerida": ORDEM_IGUAL_A_SUGERIDA, "dependentes": dependentes,
+    "retirados_do_sandbox_e_da_pedra": retirados_hist + retirados, "quarentena": str(QUAR) if QUAR.exists() else (bd_prev or {}).get("quarentena"), "quarentenas": quarentenas,
+    "modulos": modulos, "kernel_corrigido": kcl}, ensure_ascii=False, indent=1))
+sha_mod = {x: {"sha256_insumo": entradas[x]["sha256_insumo"], "sha256_instalado_no_sandbox": entradas[x]["sha256"], "diff": entradas[x]["diff"],
+               "n_print_axioms_removidos": entradas[x]["n_print_axioms_removidos"], "imports_trocados": entradas[x]["imports_trocados"]} for x in ordem}
+for x in kc:
+    sha_mod[x] = {"kernel_corrigido": True, "sha256_insumo": kc[x]["sha256_insumo"], "sha256_instalado_no_sandbox": kc[x]["sha256"], "sha256_origem_no_nos": kc[x]["sha256_origem"],
+                  "diff": kc[x]["diff"], "n_print_axioms_removidos": 0, "imports_trocados": []}
+grava_txt(BD / "SHA256_POR_MODULO_v413.json", json.dumps(sha_mod, ensure_ascii=False, indent=1))
+novos_do_kc = sorted({y for x in kc_mudados for y in kc[x]["novos_que_dependem_dele"]})
+reconstruir = fecho_dependentes(sorted(set(mudados) | set(novos_do_kc)))
+grava_txt(KD / "ULTIMA_INSTALACAO_v413.json", json.dumps({"quando": TS, "manifesto_sha256": sha(MAN_P.read_bytes()), "mudados_no_sandbox": mudados, "kernel_corrigido_mudado": kc_mudados,
+                                                          "raiz_mudou": raiz_mudou,
+                                                          "o_lake_recompila": reconstruir + (["TGLExt (raiz)", "TGL.Audit"] if (mudados or raiz_mudou or kc_mudados) else []),
+                                                          "kernel_corrigido_recompila": ["TGLExt." + x for x in kc_mudados],
+                                                          "dependentes_antigos_do_corrigido_que_o_lake_recompila": sorted({y for x in kc_mudados for y in kc[x]["dependentes_antigos_no_kernel"]}),
+                                                          "retirados": retirados}, ensure_ascii=False, indent=1))

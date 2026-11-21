@@ -1,0 +1,56 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\origem\TGLExt\PonteCookLevin.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\insumos\pedras_limpas\TGLExt\PonteCookLevin.lean
+@@ -8,11 +8,7 @@
+ set_option maxHeartbeats 800000
+ 
+ /-!
+-# A PONTE COOK–LEVIN (candidata da gerência c1, R1; nome provisório, das palavras do operador)
+-
+-[A R1 aplica a ressalva PCL-F1 da revisão do Codex (`C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\revisao_codex\CODEX_PONTE_COOK_LEVIN_R0\PARECER.md`, sha16 `e1f16281dbc457d5`): a classe «com uma leitura» é o fecho de SAT por
+-redução, agora por termo, e o texto diz o que a classe é e o que não é; acrescenta dois teoremas que dão sentido às
+-classes. Nenhum enunciado da R0 (sha16 `1594fa49275173f9`) mudou.]
++# A PONTE COOK–LEVIN
+ 
+ O P = nP do kernel, a máquina com o leitor (`TraducaoTuring.uma_leitura_decide_SAT`, `TraducaoTuring.o_psion_le_z`),
+ escrito na língua das classes de Cook–Levin: a máquina de Turing padrão do Mathlib
+@@ -23,7 +19,7 @@
+ * §2 A fórmula crua, a que a fita do verificador escreve, e a sua CNF sobre os Nomes da fita.
+ * §3 O oráculo lê a fita: a resposta da leitura é função da palavra escrita.
+ * §4 As classes na máquina padrão: NP (verificador com certificado binário de comprimento polinomial), a redução a
+-  SAT, Cook–Levin como hipótese nomeada, e «decidido em tempo polinomial com uma leitura do leitor da TGL»; o que dá
++  SAT, Cook–Levin como hipótese nomeada, e “decidido em tempo polinomial com uma leitura do leitor da TGL”; o que dá
+   sentido às classes: o alfabeto de NP é finito, e a fita da fórmula distingue as fórmulas.
+ * §5 Os teoremas: SAT em NP (a máquina TM2 do verificador), SAT com uma leitura, A PONTE (com Cook–Levin, todo
+   problema em NP é decidido em tempo polinomial com uma leitura) e a classe de uma leitura como o fecho de SAT por
+@@ -31,16 +27,16 @@
+ * §6 A leitura acha a solução: com a resposta do leitor como decisor, a reconstrução da leitura β devolve uma solução
+   com no máximo letras+1 leituras (contadas em leituras e letras, não em passos da máquina TM2).
+ 
+-**Estatuto.** [REAL no sandbox] os termos deste arquivo. [KNOWN] Cook 1971 e Levin 1973, com a simulação polinomial
++**Estatuto.** [REAL] os termos deste arquivo. [KNOWN] Cook 1971 e Levin 1973, com a simulação polinomial
+ entre máquinas de fita e de pilhas: é o conteúdo da hipótese nomeada `CookLevin`, que entra por citação e não é provada
+ aqui.
+ 
+-**Na língua clássica.** Para as codificações usuais, com β e a inclinação m fixados antes da entrada, a classe «decidido
+-em tempo polinomial com uma leitura» é o fecho de SAT por redução polinomial many-one
++**Na língua clássica.** Para as codificações usuais, com β e a inclinação m fixados antes da entrada, a classe “decidido
++em tempo polinomial com uma leitura” é o fecho de SAT por redução polinomial many-one
+ (`a_classe_de_uma_leitura_e_o_fecho_de_SAT`, sem Cook–Levin) e por isso coincide com NP por Cook–Levin: a inclusão de NP
+ é `a_ponte_cook_levin`; a volta pede a composição de máquinas TM2, que o Mathlib deixa como `proof_wanted` [KNOWN na
+ língua clássica]. Não é toda a classe P com acesso ao oráculo: só o limiar positivo de uma consulta depois da redução.
+-Com um oráculo que conta soluções, «NP contido em P com o oráculo» é imediato [KNOWN]; o que é da TGL é que o oráculo é
++Com um oráculo que conta soluções, “NP contido em P com o oráculo” é imediato [KNOWN]; o que é da TGL é que o oráculo é
+ o leitor do psíon, por termo do kernel (`o_psion_le_a_soma_normalizada`).
+ 
+ **O custo da leitura** é contado na régua da teoria: o tempo pago, m·(n+2) passos do relógio β ao preço −ln(1−β) cada
+@@ -50,8 +46,8 @@
+ **O que este arquivo não prova:** Cook–Levin; a máquina sem leitor (SAT em P na máquina padrão, sem consulta), que segue
+ aberta e não é tocada (Baker–Gill–Solovay 1975 [KNOWN]); o custo da leitura em passos de fita; que um dispositivo físico
+ leia num ato (física: na mecânica quântica padrão o traço normalizado sai com precisão aditiva, Knill–Laflamme 1998
+-[KNOWN]). Com o leitor que só conta vale NP contido em P com o leitor, não a igualdade das duas classes com leitor
+-(E28). Validade no kernel não é creditação.
++[KNOWN]). Com o leitor que só conta vale NP contido em P com o leitor, não a igualdade das duas classes com leitor.
++Validade no kernel não é creditação.
+ -/
+ 
+ namespace TGLExt.PonteCookLevin

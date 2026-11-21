@@ -1,0 +1,5 @@
+import TGLExt.AFronteiraNaLinguaClassica
+
+#print axioms TGLExt.AFronteiraNaLinguaClassica.codificaSoFormula_injetiva
+#print axioms TGLExt.AFronteiraNaLinguaClassica.decideSAT_da_formula_vazia
+#print axioms TGLExt.AFronteiraNaLinguaClassica.decideSAT_da_clausula_vazia

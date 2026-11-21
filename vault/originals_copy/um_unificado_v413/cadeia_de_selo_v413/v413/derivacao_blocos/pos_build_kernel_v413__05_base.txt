@@ -1,0 +1,4 @@
+    _selo = json.load(open(os.path.join(NOS, "um_absoluto_selo.json"), encoding="utf-8")); _esp = json.load(open(os.path.join(V412, "ESPERADOS_v412.json"), encoding="utf-8"))
+    chk("a base_v412\\um.py e' a v412 SELADA (o sha256 == o que o selo do Nos pina; o selo diz v412; o sha16 == o candidato_sha16 de v412\\ESPERADOS_v412.json; lidos dos arquivos)",
+        _selo.get("um_version") == "v412" and sha(um_b) == (_selo.get("sha256") or {}).get("um.py") and sha(um_b)[:16] == _esp.get("candidato_sha16"),
+        [sha(um_b)[:16], _esp.get("candidato_sha16"), _selo.get("um_version")])

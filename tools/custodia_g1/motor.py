@@ -282,16 +282,28 @@ def _pre_de(ctx, p):
 
 # =================================================================== plano
 def montar_plano(ctx):
-    """Todos os passos das quatro pernas, na ORDEM de execução (fase A: local; fase B: depois do espelho publicado)."""
+    """Todos os passos, na ORDEM de execução.
+
+    AO LADO (20/11/2026, claude-site-custodia), a ORDEM DO OPERADOR (verbatim por bytes em
+    work\\custodia_v413_preparo_20nov\\OPERADOR_20nov_ordem_de_atualizacao_e_handoff_desassistido_v413_verbatim.txt; o sha256 está em
+    work\\custodia_G1\\decisoes\\ORDEM_DE_ATUALIZACAO_20nov.json): «comece atualizando sempre nesta ordem: repositório do the_boundary;
+    depois readme; site; portas e todas as conexões; app; bancada; central privada, central pública». No mesmo dia: «se conflita, pode
+    ser bancada antes do app» e «a gerência já estava corrigindo a bancada para quando vc rodar a v413 estar tudo certo».
+    Até 20/11 a Central local (C1, C3..C12) rodava ANTES do commit do espelho; agora o espelho e o site vão primeiro. As PORTAS nascem
+    com o repositório (E06, E08), porque uma porta não pode apontar arquivo que ainda não está no commit, nem a porta velha seguir
+    apontando a versão anterior; as CONEXÕES são conferidas depois do site (E12 lê o raw; E19, o leitor de IA, percorre site -> llms.txt
+    -> repositório). O B(n) da Bancada é da gerência, na cadeia, antes da entrega (os três recibos entram no espelho pelo E03); B1 confere.
+    O atributo `fase` dos passos ficou descritivo (A = local, B = depois do espelho publicado); nada na execução depende dele."""
     from . import central, espelho, publica, quadro, site
     passos = []
-    passos += espelho.passos_fase_a(ctx)       # E00..E09
-    passos += central.passos_fase_a(ctx)       # C1, C3..C12 (C5 em segundo plano)
-    passos += espelho.passos_fase_b(ctx)       # E10..E12
-    passos += site.passos(ctx)                 # E13..E19
-    passos += central.passos_fase_b(ctx)       # C2, C13..C17
-    passos += publica.passos(ctx)              # C18
-    passos += quadro.passos(ctx)               # C19, C20
+    passos += espelho.passos_fase_a(ctx)        # 1 repositório do the_boundary (E00..E05); 2 README, com as portas geradas junto (E06..E09)
+    passos += espelho.passos_fase_b(ctx)        #   commit e push do repositório (E10, E11); E12 confere o raw
+    passos += site.passos(ctx)                  # 3 site (E13..E18); 4 as conexões conferidas a partir do site (E19, o leitor de IA)
+    passos += quadro.passos_app_e_bancada(ctx)  # 5 app (A1: o pedido ao dono do app; C21 confere a instalação no fim); 6 Bancada (B1: só confere)
+    passos += central.passos_fase_a(ctx)        # 7 Central privada, local (C1, C5, C3..C12; C5 em segundo plano)
+    passos += central.passos_fase_b(ctx)        # 7 Central privada: ACOM, registros, commit e push, conferência final (C2, C13, C17A, C14, C15, C16, C17B)
+    passos += publica.passos(ctx)               # 8 Central pública (C18)
+    passos += quadro.passos(ctx)                # a medida final: C19, C20, C21, C17C
     return passos
 
 

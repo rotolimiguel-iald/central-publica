@@ -1,0 +1,4 @@
+if not mudados and not raiz_mudou and not kc_mudados and bd_prev and bd_prev.get("manifesto_sha256") == sha(MAN_P.read_bytes()) \
+        and [m_["sha256"] for m_ in bd_prev.get("modulos", [])] == [entradas[x]["sha256"] for x in ordem] \
+        and [m_["sha256"] for m_ in bd_prev.get("kernel_corrigido", [])] == [kc[x]["sha256"] for x in kc]:
+    print("NADA MUDOU no sandbox (os %d modulos novos, o corrigido e a raiz ja sao os do manifesto): BUNDLE_v413.json, kernel_modulos_novos_v413.json, kernel\\ULTIMA_INSTALACAO_v413.json e construir_kernel_v413.sh ficam como estao" % len(ordem))

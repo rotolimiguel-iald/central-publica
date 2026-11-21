@@ -1,0 +1,10 @@
+    chk("(informativo) TODOS os %d modulos novos foram compilados neste build (a frio, como o do rito)" % N_NOVOS, todos_a_frio, {k: v for k, v in modo.items() if v != "Built"}, informativo=True)
+    modo_kc = {m: ("Built" if any(st == "Built" for st, _ in jobs.get(m, [])) else "Replayed" if jobs.get(m) else None) for m in KCMODS}
+    exig_kc = list(ULT.get("kernel_corrigido_recompila") or [])
+    chk("o modulo corrigido que ESTE build tinha de compilar (kernel\\ULTIMA_INSTALACAO_v413.json, kernel_corrigido_recompila) tem linha Built", set(exig_kc) <= set(KCMODS) and all(modo_kc.get(m) == "Built" for m in exig_kc),
+        {"exigidos": exig_kc, "modo": modo_kc})
+    dep_ant = list(ULT.get("dependentes_antigos_do_corrigido_que_o_lake_recompila") or [])
+    dep_ant_mod = [m for m in dep_ant if m not in ("TGLExt", "TGL", "TGL.Audit")]
+    dep_sem_built = [m for m in dep_ant_mod if not any(st == "Built" for st, _ in jobs.get(m, []))]
+    chk("(informativo) os modulos ANTIGOS que dependem do corrigido foram recompilados neste build (linha Built): %d de %d" % (len(dep_ant_mod) - len(dep_sem_built), len(dep_ant_mod)), not dep_sem_built,
+        dep_sem_built[:8], informativo=True)

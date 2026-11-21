@@ -1,0 +1,30 @@
+--- carimbar_stdout_v412.py
++++ carimbar_stdout_v413.py
+@@ -1,14 +1,12 @@
+ # -*- coding: utf-8 -*-
+-# [ADAPTADO v412, 18/11/2026, gerencia c1 (Etapa 3 enxuta; PLANO_ETAPA3_ENXUTA_v412.md; adaptar_rito_e_carimbo_v412.py)] o corpo e' generico (um tee que carimba a hora de cada linha e confere o sha256 do stdout gravado): nada depende de modulo novo
+-# [ADAPTADO v411, 12/11/2026, claude-construtor-v411 (retomada, fork A)] conferido: o corpo e' o carimbador do stdout (le bytes, grava identico, carimba por linha), independente de versao e de bundle; so' o rotulo v411 e o nome do arquivo canonico (rodada_v411_stdout.txt)
+-# [ADAPTADO v410, 06/11/2026, claude-construtor-v410] o carimbador do stdout do rito: corpo da v409, rotulo v410; conferido e adaptado em 06/11/2026 pelo fork B do claude-construtor-v410 (_adapt_forkB_*_v410.py)
+-"""carimbar_stdout_v412.py -- [copia na cadeia v412, 12/11/2026, claude-construtor-v412: o corpo e' o do carimbador da v411 (sha16 do arquivo da v411, lido pelo adaptador de 12/11: fd8d88dae063b429; a subida de 06/11 dizia o da v409); so' o rotulo da versao sobe no texto] o CARIMBADOR do stdout do rito (gerencia c1, 03/11/2026; pedido do gerente central do LAR para o filme em par; a v406 saiu sem ele).
+-Le o stdout do um.py em BYTES (stdin binario), grava-o IDENTICO em bytes no arquivo canonico (rodada_v412_stdout.txt) e, ao lado, um JSONL com uma linha por linha do stdout:
++# [DERIVADO v413, 20/11/2026, Etapa 3 da v413] de v412\carimbar_stdout_v412.py por etapa3\derivar_rito_e_carimbo_v413.py: o corpo e' generico (um tee que carimba a hora de cada linha e confere o sha256 do stdout gravado); mudam so' os rotulos
++"""carimbar_stdout_v413.py -- [copia na cadeia v413: o corpo e' o do carimbador do molde selado (ver a marca do cabecalho); so' o rotulo da versao sobe no texto] o CARIMBADOR do stdout do rito (gerencia c1, 03/11/2026; pedido do gerente central do LAR para o filme em par; a v406 saiu sem ele).
++Le o stdout do um.py em BYTES (stdin binario), grava-o IDENTICO em bytes no arquivo canonico (rodada_v413_stdout.txt) e, ao lado, um JSONL com uma linha por linha do stdout:
+ {"linha": n, "hora_utc": "...", "bytes": k}  (k = bytes da linha, inclusive o terminador), mais um registro final {"fim": true, "hora_utc", "linhas", "bytes_total", "sha256"} com o sha256 do
+ stdout ANTES do trailer RITO_RC (que o rito acrescenta depois). Nada e' decodificado, reencodado ou reordenado: o arquivo canonico sai byte a byte igual ao que o um.py escreveu. O carimbo e' o
+ instante em que a linha CHEGOU ao carimbador: com PYTHONUNBUFFERED=1 no ambiente do um.py (so' no subshell do rito), e' o instante em que o um.py a escreveu, a menos do pipe.
+ Fail-closed: se o arquivo gravado nao tiver os bytes recebidos, sai 3 (e o rito, com pipefail, le isso). Nunca toca o Nos fora dos dois arquivos que recebe por argumento.
+-uso (dentro do rito): echo 1 | python um.py 2>&1 | python -u carimbar_stdout_v412.py rodada_v412_stdout.txt rodada_v412_stdout_tempos.jsonl"""
++uso (dentro do rito): echo 1 | python um.py 2>&1 | python -u carimbar_stdout_v413.py rodada_v413_stdout.txt rodada_v413_stdout_tempos.jsonl"""
+ import datetime, hashlib, json, os, sys
+ 
+ CHUNK = 65536
+@@ -20,7 +18,7 @@
+ 
+ def main(argv):
+     if len(argv) != 3:
+-        sys.stderr.write("uso: carimbar_stdout_v412.py <stdout_canonico> <tempos.jsonl>\n"); return 2
++        sys.stderr.write("uso: carimbar_stdout_v413.py <stdout_canonico> <tempos.jsonl>\n"); return 2
+     out_p, jl_p = argv[1], argv[2]
+     h = hashlib.sha256(); n_lin = 0; total = 0; resto = b""
+     with open(out_p, "wb") as out, open(jl_p, "w", encoding="utf-8", newline="\n") as jl:

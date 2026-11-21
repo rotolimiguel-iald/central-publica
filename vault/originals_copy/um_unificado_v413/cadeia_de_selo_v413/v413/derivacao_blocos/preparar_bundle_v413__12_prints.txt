@@ -1,0 +1,11 @@
+print("bundle:", len(ordem), "modulos novos | mudados no sandbox nesta rodada:", len(mudados), "| corrigidos trocados:", kc_mudados, "| raiz mudou:", raiz_mudou, "| o lake recompila:", len(reconstruir),
+      "modulos novos + raiz + Audit" if (mudados or raiz_mudou or kc_mudados) else "(nada)")
+print("ordem:", " ".join(ordem), "| igual a sugerida do manifesto:", ORDEM_IGUAL_A_SUGERIDA)
+for x in ordem:
+    e = entradas[x]
+    print("  %-28s insumo %s -> instalado %s | #print axioms removidos %3d | irmaos %d" % (x, e["sha16_insumo"], e["sha16"], e["n_print_axioms_removidos"], len(e["dependencias_no_bundle"])))
+for x, e in kc.items():
+    print("  corrigido %-18s origem %s -> instalado %s | novos que dependem dele %d | dependentes antigos no kernel %d" % (x, e["sha256_origem"][:16], e["sha16"], len(e["novos_que_dependem_dele"]),
+                                                                                                                       len(e["dependentes_antigos_no_kernel"])))
+for r_ in retirados:
+    print("  retirado (com backup):", r_["arquivo"], "->", r_["backup"])

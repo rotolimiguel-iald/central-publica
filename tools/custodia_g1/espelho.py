@@ -404,6 +404,19 @@ def _ap_e03(ctx):
     P = EP.montar_pares(ctx)
     if P.faltas:
         raise Parar("insumos do espelho ausentes", P.faltas)
+    # AO LADO (19/11/2026, claude-site-custodia; sugestão da gerência c1; ordem do autor para a v413: todo .md emitido mostra a versão certa): o
+    # documento DECLARADO cujo título traz «(vNNN)» tem de trazer a versão do selo. A v412 subiu a árvore da prova com o título «(v411)» porque o
+    # pós-rito não rodou o arvore_da_prova.py; esta guarda PARA antes de copiar. Os documentos vivos sem versão no título (diário, desenho) não mudam.
+    rot_velho = []
+    for src, _dst, _tipo in P.lista:
+        if src.name in EP.DECLARADOS and src.suffix.lower() == ".md" and src.is_file():
+            with open(src, encoding="utf-8", errors="replace") as fh:
+                tit = fh.readline().strip()
+            mv = re.search(r"\((v\d{3})\)\s*$", tit)
+            if mv and mv.group(1) != v:
+                rot_velho.append("%s: título «%s» (o selo é %s)" % (src.name, tit[-60:], v))
+    if rot_velho:
+        raise Parar("documento declarado com o rótulo de outra versão no título — regerar antes de custodiar (ex.: arvore_da_prova.py %s)" % v, rot_velho)
     R = {"gerado_em": util.agora_iso(), "versao": v, "modo": "copiar"}
     bk, _ = backup_valido(ctx, ctx.anterior_espelho)
     bm = util.ler_json(bk / "BACKUP_MANIFEST.json")

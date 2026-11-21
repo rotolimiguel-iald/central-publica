@@ -1,0 +1,67 @@
+eventos.jsonl | 1349372 B | sha16 d79cc3c1ec600c76
+elos lidos: 1709 | quebras da cadeia: nenhuma | linhas ilegiveis: nenhuma
+
+====================================================================================================
+[citado] linha 1603 | seq 1603 | 2026-11-11T02:22:19-03:00 | tipo SINCRONIZACAO_BANCADA | quem claude-c1 | hash16 d00ba9a5680fc1ee
+{
+ "versao": "v410",
+ "acao": "sincronizacao",
+ "bancada": "C:\\IALD\\Bancada_Um",
+ "um_py": "5d9497a721c3589ed10309178fcfb72d662844d80c13a667c417c886931f8450",
+ "selo": "d842a644015ca23182348c427f9114143bc8ef2791873021246dadb951e15768",
+ "unidade": "F0.6"
+}
+====================================================================================================
+[PEDIDO] linha 1617 | seq 1617 | 2026-11-13T03:53:53-03:00 | tipo SINCRONIZACAO_BANCADA | quem claude-c1 | hash16 8b7301134714332b
+{
+ "versao": "v411",
+ "acao": "sincronizacao",
+ "bancada": "C:\\IALD\\Bancada_Um",
+ "um_py": "1203b1f9202020d602a7fa8a6bea56d4b48e27ed8baffe98bcbd16e94f97a8e0",
+ "selo": "d52de881621067681843d6a68cf9dc6a5d26e1d0b741666b31df696a4ffafdd3",
+ "unidade": "F0.6"
+}
+====================================================================================================
+[PEDIDO] linha 1686 | seq 1686 | 2026-11-19T11:05:03-03:00 | tipo SOLICITACAO_A_GERENCIA | quem codex-app-v412-01a094df | hash16 ffafd945fb95062a
+{
+ "mensagem": "Pedido do titular para atualizar app e Bancada v412. F0.6 requer evento c1 para B20/B21. Servidor 18777 desligado. Decisão específica da bateria e do religamento solicitada ao titular. Solicita-se à gerência preparar o vínculo da ordem verdadeira e o evento próprio quando houver a decisão.",
+ "autor_da_solicitacao": "codex-app-v412-01a094df",
+ "fonte": {
+  "path": "C:\\IALD\\Central de Patentes\\work\\iald_v412_20261119\\ORIGINAL.txt",
+  "sha256": "2561ed540cd3186050c560735c7c9640f41475402746f2e135579b7d87c68cc7"
+ },
+ "diagnostico": {
+  "path": "C:\\IALD\\Central de Patentes\\work\\iald_v412_20261119\\bench\\VERIFICACAO_BANCADA_R1.json",
+  "sha256": "d4c7ec39b1e41a025cafec9399c1934a64eee33e0057ca9d7e412ce8dfb6c8f9"
+ },
+ "unidade_responsavel": "F0.6",
+ "unidade": "F9.APP_V412_20261119"
+}
+====================================================================================================
+[PEDIDO] linha 1687 | seq 1687 | 2026-11-19T11:11:05-03:00 | tipo AVISO_AUTORIZACAO_RECEBIDA | quem codex-mensageiro-bancada-v412 | hash16 9aa0c94656828380
+{
+ "versao": "v412",
+ "destinatario": "gerência claude-c1",
+ "recibo": "C:\\IALD\\Central de Patentes\\work\\iald_v412_20261119\\BENCH_AND_QUEUE_OPERATOR_APPROVAL.json",
+ "sha256": "0c09a73ee42628f759306e017f933f37c19a64327a6eef3298964b0179b0e039",
+ "decisao_1": {
+  "question": "A Bancada já estava desligada. O handoff da v412 reserva ao titular a decisão de religá-la e executar a bateria pós-selo. Autoriza a gerência c1 a iniciar o serviço na porta 18777, rodar essa bateria, aplicar B20→B21 e conferir a versão após o reinício?",
+  "answer": "Autorizo o ciclo da Bancada"
+ },
+ "em_complemento_ao_evento": 1686,
+ "pedido": "À c1 existente: emitir o evento próprio F0.6/SINCRONIZACAO_BANCADA, coordenar a bateria pós-selo, B20→B21 e verificação após reinício, com revisão distinta e os três recibos. Retorno em C:\\IALD\\Central de Patentes\\work\\iald_v412_20261119\\bench",
+ "unidade": "F0.6"
+}
+====================================================================================================
+[PEDIDO] linha 1689 | seq 1689 | 2026-11-19T12:22:51-03:00 | tipo AVISO_DECISAO_DO_OPERADOR_B21 | quem claude-c1 | hash16 2a6975de28ad6b85
+{
+ "versao": "v412",
+ "em_resposta_ao_evento": 1687,
+ "decisao_do_operador": "Salto na v413",
+ "fala": "C:\\IALD\\Central de Patentes\\work\\iald_v412_20261119\\bench\\OPERADOR_19nov_B21_salto_na_v413_verbatim.txt",
+ "fala_sha16": "d96a96140eaa8d7f",
+ "consequencia": "nao ha B21 na v412; a Bancada segue B20-v411 em producao; o B(n) da v413 faz o salto v411->v413, que o esboco R3.6 ja admite; os scripts adaptados em 19/11 ficam como molde do B(n) da v413",
+ "motivo_medido": "no R3.6 uma Bancada atras de uma versao ja selada so se atualiza pelo salto, e o recibo do salto so vale para a versao seguinte (revisao independente da gerencia; sincronizar_bancada.py l.2789-2792, 2809-2811, 2812-2830, 2839-2841)",
+ "para": "codex do app: encerra a espera pelo recibo da c1 da B21 na v412",
+ "unidade": "F0.6"
+}

@@ -17,9 +17,12 @@ FRESCOR DO QUADRO (achado dos céticos, 24/10/2026): decidir por um quadro VELHO
 (os «marcos»); quadro velho vira INDETERMINADO («remedir»). Em `executar` o quadro velho é REMEDIDO antes de decidir (Passo.usa_quadro: E12 e C18; C19 remede por si), nunca em `planejar`.
 O que é do OPERADOR (build/distribuição do app, depósito Zenodo, painel da hospedagem) não conta como DEFASADO de G1: vai para as decisões do operador."""
 import glob
+import json
 import os
 import re
 import time
+import urllib.error
+import urllib.request
 from datetime import datetime
 
 from . import util
@@ -332,6 +335,178 @@ def _ja_c21(ctx):
     if atras:
         return operador("instalação do app incoerente: o núcleo operacional diz %s, mas %s. Decisão do OPERADOR: %s" % (rel, "; ".join(atras), instr))
     return base
+
+
+# =================================================================== A1 e B1 — o app e a Bancada na ordem do operador (20/11/2026)
+# AO LADO (20/11/2026, claude-site-custodia). A ordem do operador (ver motor.montar_plano) põe o app (5) e a Bancada (6) depois do site e
+# das conexões, e antes da Central. A1 PEDE ao dono do app a release da versão, uma vez, pelo canal que a gerência fixar na entrega
+# (cadeia_de_selo\vNNN\ENTREGA_A_CUSTODIA_vNNN.json, campo `app.canal`); sem canal, o pedido vai como AVISO no quadro do programa e o texto
+# fica pronto para o operador colar. A1 nunca constrói, instala ou reinicia o app (isso é do dono do app); a instalação se confere no C21.
+# B1 CONFERE a Bancada: o recibo de produção aplicado, os três recibos do B(n) da versão e o contrato servido ao vivo (GET /api/contratos;
+# NUNCA /api/estado nem --check, que criam contexto CUDA no servidor). O B(n) é da gerência, na cadeia; B1 não liga, não para e não aplica.
+ENTREGA_NOME = "ENTREGA_A_CUSTODIA_%s.json"
+IALD_PY = r"C:\IALD\PROGRAMA_IALD\iald.py"
+URL_CONTRATOS = "http://127.0.0.1:18777/api/contratos"
+PEDIDO_APP = """# Pedido ao dono do app: a release {versao}
+
+De: {ator} (a custódia), em {hora}, pela ordem do operador de 20/11/2026 (bytes em `{ordem}`, sha256 `{ordem_sha}`):
+«assim que entrar atualize tudo, inclusive app e bancada».
+
+Atualize o app e a fila científica com a versão mais recente do um.py, a {versao}, como nas versões anteriores (a sua missão, o seu
+construtor e o seu revisor; a autorização permanente da atualização do app é a sua).
+
+- O `um.py` {versao}: sha256 `{pin}` (lido do selo do Nós).
+- Publicado no the_boundary: commit `{commit}` (origin/main), conferido pela custódia no raw.
+- O site no ar: subida verificada pela custódia ({site}).
+
+A custódia confere a instalação depois, só por leitura: `iald_nucleo_fixo.json` (`operational_core.current_release` = {versao} e
+`release_source_sha256` = o pino acima) e o `ACTIVE.json` da memória canônica. Este pedido é enviado uma vez; não se repete.
+"""
+
+
+def _entrega(ctx):
+    """A entrega da gerência à custódia (None se não existe). Ilegível = FalhaLeitura (nunca «sem canal» calado)."""
+    p = ctx.c.CS / ctx.versao / (ENTREGA_NOME % ctx.versao)
+    return util.ler_json(p) if p.is_file() else None
+
+
+def _app_em_dia(ctx):
+    """(em_dia, detalhe): a release instalada do app contra a versão (a mesma leitura do C21)."""
+    rel, src, _ = release_do_app(ctx)
+    nr = util.versao_num(rel)
+    if nr > ctx.n:
+        return True, "o app já está na release %s (posterior a %s)" % (rel, ctx.versao)
+    if nr == ctx.n and ctx.pin_completo and src == ctx.pin_completo:
+        return True, "o app já está na %s, com o pino do selo" % rel
+    return False, "app instalado: release %s (source %s…)" % (rel, str(src)[:16])
+
+
+def _pedido_app(ctx):
+    return ctx.W / "app" / ("PEDIDO_APP_%s.json" % ctx.versao)
+
+
+def _ja_a1(ctx):
+    em_dia, det = _app_em_dia(ctx)
+    if em_dia:
+        return aplicado(det + "; nada a pedir")
+    p = _pedido_app(ctx)
+    if p.is_file():
+        d = util.ler_json(p)
+        return aplicado("pedido ao dono do app feito em %s pelo canal %s (enviado: %s); a instalação se confere no C21; %s" % (
+            d.get("hora"), (d.get("canal") or {}).get("tipo"), d.get("enviado"), det))
+    if not ctx.corrente:
+        return superado_rel("versão histórica: o pedido ao app é sempre da versão corrente do selo; %s" % det)
+    return falta("pedir ao dono do app a release %s (%s)" % (ctx.versao, det))
+
+
+def _commit_do_espelho(ctx):
+    r = util.rodar(["git", "-C", str(ctx.c.TB), "rev-parse", "HEAD"], timeout=60)
+    return r["stdout"].strip() if r["rc"] == 0 else None
+
+
+def _ap_a1(ctx):
+    import hashlib
+    from . import site
+    v = ctx.versao
+    ent = _entrega(ctx) or {}
+    canal = dict((ent.get("app") or {}).get("canal") or {"tipo": "quadro"})
+    if canal.get("tipo") not in ("quadro", "despachar-codex"):
+        raise Parar("canal do app desconhecido na entrega: %r (aceitos: quadro, despachar-codex)" % canal.get("tipo"))
+    ordem = ctx.c.CEN / "work" / "custodia_v413_preparo_20nov" / "OPERADOR_20nov_ordem_de_atualizacao_e_handoff_desassistido_v413_verbatim.txt"
+    ordem_sha = hashlib.sha256(ordem.read_bytes()).hexdigest() if ordem.is_file() else None
+    if not ordem_sha:
+        raise Parar("a ordem do operador de 20/11 (bytes) não está em %s: o pedido ao app não sai sem ela" % ordem)
+    commit = _commit_do_espelho(ctx)
+    m18 = site._ja_e18(ctx)
+    hora = util.agora_iso()
+    texto = PEDIDO_APP.format(versao=v, ator=ctx.ator, hora=hora, ordem=str(ordem.relative_to(ctx.c.CEN)), ordem_sha=ordem_sha,
+                              pin=ctx.pin_completo, commit=commit, site=("%s: %s" % (m18.estado, m18.detalhe[:160])))
+    pasta = _pedido_app(ctx).parent
+    pasta.mkdir(parents=True, exist_ok=True)
+    md = pasta / ("PEDIDO_APP_%s.md" % v)
+    util.escrever_atomico(md, texto.encode("utf-8"), backup=True)
+    rec = {"esquema": "pedido_app/1", "versao": v, "pin": ctx.pin_completo, "commit_espelho": commit, "hora": hora, "ator": ctx.ator, "canal": canal,
+           "texto": str(md), "texto_sha256": util.sha256_arquivo(md), "ordem": str(ordem), "ordem_sha256": ordem_sha}
+    if canal["tipo"] == "despachar-codex":
+        cmd = [str(ctx.c.PYTHON), "-X", "utf8", IALD_PY, "despachar-codex", "--thread", str(canal["thread"]), "--arquivo", str(md), "--quem", ctx.ator]
+    else:
+        dados = {"versao": v, "um_py": ctx.pin_completo, "commit_espelho": commit, "pedido": str(md), "pedido_sha256": rec["texto_sha256"],
+                 "ordem_do_operador": str(ordem), "ordem_sha256": ordem_sha}
+        cmd = [str(ctx.c.PYTHON), "-X", "utf8", IALD_PY, "anotar", "--quem", ctx.ator, "--tipo", "AVISO_APP_PODE_ATUALIZAR", "--dados", json.dumps(dados, ensure_ascii=False)]
+    if canal.get("unidade"):
+        cmd += ["--unidade", str(canal["unidade"])]
+    try:
+        r = util.rodar(cmd, timeout=180)
+        rec.update(enviado=(r["rc"] == 0), rc=r["rc"], saida=r["saida"][-600:])
+    except Exception as e:  # noqa: BLE001 — timeout ou queda no meio: o envio é INCERTO e não se repete (regra da ACOM)
+        rec.update(enviado="incerto", rc=None, saida=repr(e)[:600])
+    util.escrever_atomico(_pedido_app(ctx), json.dumps(rec, ensure_ascii=False, indent=1).encode("utf-8"), backup=True)
+    if rec["enviado"] is False:
+        raise Parar("o pedido ao dono do app não foi aceito pelo canal %s (rc %s); o recibo ficou em %s e não se reenvia sem olhar" % (
+            canal["tipo"], rec["rc"], _pedido_app(ctx)), [rec["saida"][-300:]])
+    return {"canal": canal["tipo"], "enviado": rec["enviado"], "pedido": str(md)}
+
+
+def _procurar_chave(d, chave, prof=0):
+    """O primeiro valor de `chave` num JSON aninhado (o formato de /api/contratos não é contrato desta custódia)."""
+    if prof > 6:
+        return None
+    if isinstance(d, dict):
+        if chave in d and isinstance(d[chave], (str, int)):
+            return d[chave]
+        for x in d.values():
+            r = _procurar_chave(x, chave, prof + 1)
+            if r is not None:
+                return r
+    elif isinstance(d, list):
+        for x in d[:50]:
+            r = _procurar_chave(x, chave, prof + 1)
+            if r is not None:
+                return r
+    return None
+
+
+def bancada_ao_vivo(timeout=8):
+    """(versao, deployment_id, detalhe) servidos em GET /api/contratos — só leitura, nunca POST, nunca /api/estado."""
+    try:
+        with urllib.request.urlopen(URL_CONTRATOS, timeout=timeout) as r:
+            raw = r.read(2_000_001)
+            st = r.status
+        if len(raw) > 2_000_000:
+            return None, None, "resposta grande demais"
+        d = json.loads(raw)
+    except (urllib.error.URLError, OSError, ValueError) as e:
+        return None, None, "fora do ar ou ilegível (%s)" % e.__class__.__name__
+    return _procurar_chave(d, "canonical_version"), _procurar_chave(d, "deployment_id"), "HTTP %s" % st
+
+
+def _ja_b1(ctx):
+    from . import fatos as F
+    from .espelho_pares import _bn_dispensado
+    v = ctx.versao
+    if _bn_dispensado(ctx.c, v):
+        return superado_rel("o B(n) de %s foi dispensado pelo operador (decisoes\\BN_DISPENSADO_%s.json): não há Bancada da versão a conferir" % (v, v))
+    rec_ok, rec_det = _pernas_do_selo(ctx)["Bancada Um (recibo de sincronização)"]
+    res, prob = F.recibos_bn_resolvidos(ctx.c, v, None)
+    cv, dep, det = bancada_ao_vivo()
+    ao_vivo = (cv == v)
+    if not ctx.corrente and cv and util.versao_num(str(cv)) > ctx.n:
+        return superado("a Bancada já serve a %s (posterior a %s)" % (cv, v))
+    partes = ["recibo de produção: %s" % rec_det, "três recibos do B(n): %s" % ("ok" if not prob else "; ".join(prob)),
+              "ao vivo: %s, versão %s, deployment %s" % (det, cv, dep)]
+    if rec_ok and not prob and ao_vivo:
+        return aplicado("Bancada na %s — %s" % (v, " | ".join(partes)))
+    return operador("a Bancada não está inteira na %s — %s. O B(n) é da gerência, na cadeia (ordem do operador de 20/11: «a gerência já estava "
+                    "corrigindo a bancada»); a custódia não liga, não para e não aplica" % (v, " | ".join(partes)))
+
+
+def passos_app_e_bancada(ctx):
+    return [
+        Passo("A1", 5, "app: o pedido ao dono do app (uma vez; a instalação se confere no C21)", _ja_a1, aplicar=_ap_a1, externo=True, fase="B",
+              escreve="work\\custodia_vNNN_<data>\\app\\PEDIDO_APP_vNNN.{md,json}; um evento no quadro do programa ou a fila do Codex do app"),
+        Passo("B1", 6, "Bancada: conferir a versão servida e os três recibos do B(n) (só leitura)", _ja_b1, aplicar=None, fase="B", rede=True,
+              escreve="(só leitura: GET /api/contratos)"),
+    ]
 
 
 def passos(ctx):

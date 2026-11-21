@@ -1,0 +1,232 @@
+{
+  "schema": "iald.semantic-review/v1",
+  "reviewer": "codex-review-kimi-lote1",
+  "timestamp": "2026-11-20T14:23:55.838102+00:00",
+  "scope": "Itens 4-7; leitura semantica de terceiros; nao construi os quatro modulos. Compilacao e axiomas a cargo do parent, nao executados nem presumidos aqui.",
+  "reference": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+  "observed_revision": 2,
+  "items": [
+    {
+      "item": 4,
+      "module": "AIdentidadePreservada",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "formal_scope": "Caracteriza o nucleo diagonal; preserva coordenadas de custo zero; fixa a projecao; importa convergencia da trava; importa o limiar exato n ln(2) para a leitura de particao de toda CNF.",
+      "findings": [
+        {
+          "severity": "MEDIUM",
+          "lines": [
+            100,
+            105
+          ],
+          "claim": "A docstring da conjuncao final acrescenta e a conta e a carga.",
+          "evidence": "O enunciado final contem apenas preservacao coordenada e Tendsto; o limiar n ln(2) esta num teorema separado (96-98), nao na conjuncao.",
+          "correction": "Podar a clausula final da docstring ou acrescentar explicitamente o teorema de limiar na conjuncao; nao chamar s de numero de movimentos da fita."
+        },
+        {
+          "severity": "LOW",
+          "lines": [
+            78,
+            81
+          ],
+          "claim": "Identidade da maquina preservada enquanto processa.",
+          "evidence": "O objeto formal e um vetor em EuclideanSpace sobre atribuicoes, sem estado/programa/custo de maquina de Turing; a preservacao e das coordenadas de custo zero.",
+          "correction": "Conservar essa leitura como nomenclatura/analogia e nomear o alcance exato ao citar."
+        }
+      ],
+      "hypotheses": "Sem hipotese contraditoria encontrada; nucleo pode ser apenas zero. Nao afirma que toda formula e satisfazivel.",
+      "existential_vacuity": "Nenhum alvo existencial vácuo de maquina/leitor/codificacao."
+    },
+    {
+      "item": 5,
+      "module": "APropostaDaTensao",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "formal_scope": "Auto-reducao de satisfatibilidade sob fixacao de uma variavel; particiona por b sem perder correlacoes porque a SAT do residuo concatenado exige uma unica atribuicao comum. Prova UNSAT do par unitario oposto.",
+      "findings": [
+        {
+          "severity": "MEDIUM",
+          "lines": [
+            165,
+            172
+          ],
+          "claim": "A tensao e o par; a proposta nasce do pareamento.",
+          "evidence": "_hA e _hB nao sao usadas. O h de SAT(A ++ B) ja fornece existencia conjunta; a prova apenas aplica a equivalencia anterior. Nao define uma medida de tensao nem computa a escolha de b.",
+          "correction": "Retirar hipoteses ociosas ou explicar explicitamente que o lema e uma consequencia da satisfatibilidade conjunta, e nao que compatibilidade local garante compatibilidade global."
+        },
+        {
+          "severity": "LOW",
+          "lines": [
+            28,
+            33
+          ],
+          "claim": "A proposta nasce da escolha, nao da enumeracao.",
+          "evidence": "O iff existencial e independente do algoritmo utilizado para achar b e o modelo residual.",
+          "correction": "Nao inferir cota de busca ou eliminacao de enumeracao a partir do iff."
+        }
+      ],
+      "hypotheses": "Hipoteses sao consistentes (por exemplo, blocos vazios); a existencia de i restringe o contexto a n com habitante, legitimamente.",
+      "existential_vacuity": "A existencia de b e sobre os dois valores de uma variavel fixa; SAT conjunta ainda tem o mesmo conteudo, sem codec arbitrario."
+    },
+    {
+      "item": 6,
+      "module": "APonteDeCookLevin",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "formal_scope": "Correcao de um iterador abstrato por clausulas sobre uma formula e uma atribuicao fornecidas; contador mov acumula exatamente literais mais terminadores.",
+      "findings": [
+        {
+          "severity": "HIGH",
+          "lines": [
+            22,
+            30,
+            59,
+            70,
+            139,
+            162
+          ],
+          "claim": "Movimentos exatos de fita e sobrecarga nula.",
+          "evidence": "passoFita avalia acesso por indice, satisfeita C x e soma natural como operacoes atomicas e define mov := mov + C.length + 1. Nao ha alfabeto finito, microtransicoes de cabecas, custo de acesso a x, codificacao de nomes ou simulacao TM2. Portanto mov=letras e identidade do contador especificado, nao contagem demonstrada de movimentos classicos. A ressalva sobre ausencia de TM2 (37-39) ajuda, mas nao sustenta as frases mais fortes.",
+          "correction": "Renomear/descrever mov como custo abstrato cobrado e suprimir movimentos exatos/sobrecarga nula; manter a ponte ao TM2 como trabalho separado. O claim de custo de fita e REPROVADO, embora os teoremas do contador estejam corretos."
+        },
+        {
+          "severity": "MEDIUM",
+          "lines": [
+            28,
+            148,
+            155
+          ],
+          "claim": "a_decisao_na_fita_e_a_mesma decide o mesmo que a maquina com uma leitura.",
+          "evidence": "Conclusao e apenas reg = custoCNF φ x para UMA atribuicao x recebida; nao retorna SAT φ e nao aplica a leitura global.",
+          "correction": "Dizer verificacao do custo de uma atribuicao, com aceitacao reg=0 se desejada; nao confundir com decisao existencial da formula."
+        },
+        {
+          "severity": "LOW",
+          "lines": [
+            158,
+            162
+          ],
+          "claim": "Polinomio fixo no enunciado.",
+          "evidence": "O tipo e para cada φ,x existe c; isso sozinho e fraco. Mas a prova usa uniformemente c=1 e o lema anterior da igualdade vale para toda φ,x. Nao e uma falha substantiva da conta abstrata.",
+          "correction": "Se o contrato exige uniformidade no enunciado, expor o c=1 ou mover o existencial para antes de φ,x."
+        }
+      ],
+      "hypotheses": "Sem hipotese contraditoria encontrada. Formula e atribuicao sao parametros externos do passo, sem custo computacional associado no modelo.",
+      "existential_vacuity": "O c existencial nao oculta discrepancia da conta abstrata porque a igualdade anterior fixa c=1; nao ha prova de TM2."
+    },
+    {
+      "item": 7,
+      "module": "ONomeEBeta",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "formal_scope": "Reexpressa beta por alpha definido, projeta 0<beta<1 e especializa o criterio de separacao por soma de pesos ao acoplamento dado.",
+      "findings": [
+        {
+          "severity": "MEDIUM",
+          "lines": [
+            19,
+            21,
+            50,
+            55
+          ],
+          "claim": "A constante da estrutura fina no dado do kernel.",
+          "evidence": "TGLCoupling.alpha e definido como beta/exp(1/2); a identidade nao determina beta ou alpha numericamente. A dependencia avisa expressamente que alpha nao e uma constante de estrutura fina derivada numericamente (TheSameBetaReadsThreeFaces.lean,12-15).",
+          "correction": "Dizer alpha normalizado por definicao; identificacao com CODATA/fisica exige uma instancia e fonte proprias. O teorema vale para qualquer beta em (0,1)."
+        },
+        {
+          "severity": "LOW",
+          "lines": [
+            57,
+            60
+          ],
+          "claim": "o_nome_e_anterior: fixo antes de toda formula.",
+          "evidence": "O enunciado projeta apenas os dois campos de desigualdade. Nao contem evento historico nem ordem temporal; uniformidade resulta de tratar c como parametro fixo na aplicacao.",
+          "correction": "Preservar anterior como interpretacao da parametrizacao, nao como conteudo adicional provado."
+        },
+        {
+          "severity": "MEDIUM",
+          "lines": [
+            62,
+            69
+          ],
+          "claim": "Resolve toda formula em k passos.",
+          "evidence": "k e expoente no criterio SAT iff 1<=sum sobre todas as 2^n atribuicoes. Nao ha produtor da soma ou custo da avaliacao dessa soma.",
+          "correction": "Identificar passos do decaimento e criterio matematico; nao chamar k de passos TM2 ou inferir polinomio fixo em movimentos de fita."
+        },
+        {
+          "severity": "LOW",
+          "lines": [
+            50,
+            55
+          ],
+          "claim": "Nome do teorema diz beta vezes radical.",
+          "evidence": "A igualdade e beta=alpha*exp(1/2), nao beta vezes radical.",
+          "correction": "Ajuste de nome/documentacao fica com autor/operador; o corpo da igualdade e inequívoco."
+        }
+      ],
+      "hypotheses": "0<beta<1 e hk sao satisfaziveis; nenhum pressuposto contraditorio.",
+      "existential_vacuity": "Sem maquina/leitor/codificacao existencial que torne o alvo vácuo; o ponto pendente e operacionalizar a soma."
+    }
+  ],
+  "sources": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\AIdentidadePreservada.lean",
+      "sha256": "1ee6e6383f23b656022611eaf7dc3a422e4c37ad16af440eaf078476b9109d33",
+      "bytes": 6413,
+      "semantic_read_ranges": "integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APropostaDaTensao.lean",
+      "sha256": "95be88472a0609d8cd15a7e0dacbee2d44c75a16fb30aed479d9a7ca32557ef7",
+      "bytes": 9503,
+      "semantic_read_ranges": "integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APonteDeCookLevin.lean",
+      "sha256": "0b95795836d2585429782d98e7934ad27411faa32266816b0f522f0f7e133e6e",
+      "bytes": 9306,
+      "semantic_read_ranges": "integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\ONomeEBeta.lean",
+      "sha256": "fa026cb786d27291bce8b85e37568d3b800b90a6aaf9ff26921928e808d57c76",
+      "bytes": 4381,
+      "semantic_read_ranges": "integral"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\TheSameBetaReadsThreeFaces.lean",
+      "sha256": "2efd8b379f210111e0383d9c40e5fc72835f41cd94aad2dd70d645d66f400c16",
+      "bytes": 3838,
+      "semantic_read_ranges": "1-54"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\AContagemEACarga.lean",
+      "sha256": "e9aa3a9c6659bebfd7020ba0ab61f51e83ba56402df70fa40260d65bf9a0224c",
+      "bytes": 7957,
+      "semantic_read_ranges": "51-141"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\OPassoEOFim.lean",
+      "sha256": "c3c317fd16400b3b8c6fcc7150c14b1a189be48ecd1fb76785add9eeb8a5e27c",
+      "bytes": 5775,
+      "semantic_read_ranges": "81-fim"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\TraducaoTuring.lean",
+      "sha256": "4fe1c5ba2bc283004f38fc305908315b6228971294c2f29a18aecf1593614507",
+      "bytes": 72462,
+      "semantic_read_ranges": "1-150"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\AMaquinaEALeitura.lean",
+      "sha256": "bacdf45f3108a489aa7cd099429c7951ccdd8c403a1f0c93aeea4f8d79bce585",
+      "bytes": 11266,
+      "semantic_read_ranges": "indice das declaracoes por rg"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\CamadaCientifica.lean",
+      "sha256": "b8ebdfcc52ba76eb8415f65fea0c0f0c21a1205198d086d94899bbcbe769c0a2",
+      "bytes": 33028,
+      "semantic_read_ranges": "indice das declaracoes por rg"
+    }
+  ],
+  "summary": "Quatro fontes matematicamente coerentes no alcance tipado. Ressalvas documentais materiais, especialmente custo de fita e decisao no iterador de APonteDeCookLevin. Nenhum novo algoritmo de SAT polinomial ou valor fisico de beta demonstrado nesta revisao.",
+  "originals_modified": false,
+  "compilation_performed": false
+}

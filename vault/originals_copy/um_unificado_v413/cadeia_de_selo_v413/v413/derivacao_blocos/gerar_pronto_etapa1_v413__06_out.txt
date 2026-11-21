@@ -1,0 +1,146 @@
+# ---------------------------------------------------------------- as checagens do fecho (no molde de v412\gerar_pronto_kernel_r7_v412.py): cada uma diz quantos itens examinou
+CH = []
+
+
+def chk(nome, ok, n_itens, detalhe=None):
+    CH.append({"checagem": nome, "ok": bool(ok), "n_itens_examinados": n_itens, "detalhe": detalhe})
+
+
+modo = pos.get("modo_dos_modulos_no_build") or {}
+kcp = pos.get("kernel_corrigido") or {}
+n_kc = len(kcp.get("modulos") or [])
+n_marcas = len(re.findall(r"(?m)^modulo=\S+ rc=0 s=\d+$", marcas))
+chk("todos os modulos com saida zero nas marcas (o corrigido e os %d novos), rc final 0, sem parou_em" % n_mod,
+    n_mod > 0 and n_kc > 0 and n_marcas == n_mod + n_kc and bool(re.search(r"(?m)^rc=0$", marcas)) and not re.search(r"(?m)^parou_em=", marcas), n_marcas)
+chk("o pos_build esta verde (nenhuma falha que nao seja informativa)", pos.get("ok") is True and not pos.get("falhas"), len(pos.get("sinais") or []), pos.get("falhas"))
+chk("compilacao A FRIO dos modulos novos (linha Built para todos) e o corrigido com linha Built", pos.get("todos_os_modulos_a_frio") is True and len(modo) == n_mod
+    and n_kc > 0 and all(v == "Built" for v in (kcp.get("modo_no_build") or {}).values()), len(modo) + n_kc, {k: v for k, v in modo.items() if v != "Built"})
+lt = pos.get("linha_TOTAL") or {}
+chk("fora dos tres axiomas: zero declaracoes (linha TOTAL e criterio j1); zero sorry e zero erro no recibo do kernel",
+    lt.get("fora_do_trio") == 0 and (pos.get("criterios") or {}).get("j1_fora_do_trio") == 0 and rec.get("sorry") == 0 and rec.get("erros") == 0, lt.get("decl"))
+ca = pos.get("chaves_antigas") or {}
+chk("nenhuma chave antiga muda de literal", not ca.get("mudam") and (ca.get("n") or 0) > 0, ca.get("n"))
+pref = flg.get("prefixos") or {}
+chk("os prefixos das bandeiras novas sao ext_<modulo em minusculas>_413_ e distintos entre si",
+    len(set(pref.values())) == len(pref) == n_mod and all(p == "ext_%s_413_" % m.split(".")[-1].lower() for m, p in pref.items()), len(pref))
+sem_flag = sorted(m for m, n in (flg.get("n_por_modulo") or {}).items() if n == 0)
+chk("(informativo) todo modulo novo tem pelo menos uma bandeira (declaracao nomeada publica): %d sem" % len(sem_flag), True, len(flg.get("n_por_modulo") or {}), sem_flag)
+outros_av = {m: v.get("n") for m, v in avisos.items() if v.get("n")}
+chk("nenhum modulo novo nem o corrigido com aviso; o aviso conhecido e preexistente da TowerWedgeIndex (modulo antigo) registrado, nao consertado",
+    not outros_av and (pos.get("aviso_conhecido_TowerWedgeIndex") or {}).get("parece_o_conhecido") is True, len(avisos), outros_av)
+esc = flg.get("escada") or []
+chk("a escada medida: [antes, depois] = [a da v412 (core da base), mais as bandeiras novas]",
+    len(esc) == 2 and esc[1] == esc[0] + int(flg.get("n_flags") or -1) and (kh.get("linha_TOTAL") or {}).get("decl") == lt.get("decl") and pos.get("E412") == esc[0], flg.get("n_flags"), esc)
+kd_ = kcp.get("declaracoes") or {}
+chk("o modulo corrigido: as mesmas declaracoes da v412 com os mesmos axiomas; ANTES == o manifesto v412 pinado == sha256_origem; DEPOIS == o instalado pelo preparo",
+    bool(kd_) and all(v.get("iguais") and v.get("mesmos_axiomas") for v in kd_.values())
+    and bool(kcp.get("antes_depois")) and all(v.get("formal_files_v412") == v.get("sha256_origem") and v.get("depois_na_arvore") == v.get("instalado_pelo_preparo") for v in (kcp.get("antes_depois") or {}).values()),
+    len(kd_), kd_)
+chk("a pre-conferencia de nomes nao achou colisao (nome exato, prefixo de estrutura, entre os novos); o corrigido so' declara nomes que o kernel ja tem; as fontes do k412c eram as do Nos",
+    not prec.get("colisao_com_o_kernel_nome_exato") and not prec.get("colisao_com_o_kernel_prefixo_de_estrutura") and not prec.get("colisao_entre_os_modulos_da_lista")
+    and prec.get("kernel_corrigido_ok") is True and not prec.get("sha256_fora_do_manifesto") and conf.get("identico") is True and conf.get("sem_colisao_de_nome_de_modulo") is True
+    and conf.get("kernel_corrigido_origem_igual_no_nos_e_no_sandbox") is True, prec.get("n_nomes_lidos"))
+man_sha_ = hashlib.sha256(open(man_p, "rb").read()).hexdigest() if os.path.exists(man_p) else None
+chk("a unica transformacao no texto das fontes: as linhas #print axioms retiradas; nenhum import trocado; o preparo pinou cada sha256 (BUNDLE com o manifesto atual)",
+    bd.get("manifesto_sha256") == man_sha_ and sum(len(m_.get("imports_trocados") or []) for m_ in (bd.get("modulos") or [])) == 0 and n_mod > 0, n_mod,
+    {"print_axioms_retirados": sum(m_.get("n_print_axioms_removidos", 0) for m_ in (bd.get("modulos") or []))})
+# o Nos intacto (so' leitura): o um.py e' o que o selo v412 pina; nenhum modulo novo no kernel do Nos; o corrigido do Nos ainda e' o de origem
+NOS_ = os.path.join("C:" + os.sep, "IALD", "Artigo", "Haja_Luz", "A Ponte e o Um", "Nós")
+selo_ = lj(os.path.join(NOS_, "um_absoluto_selo.json")) or {}
+um_nos = sha(open(os.path.join(NOS_, "um.py"), "rb").read())
+novos_no_nos = [m_["rel"] for m_ in (bd.get("modulos") or []) if os.path.exists(os.path.join(NOS_, "tgl_kernel", *m_["rel"].split("/")))]
+kc_nos = {k_["rel"]: sha(open(os.path.join(NOS_, "tgl_kernel", *k_["rel"].split("/")), "rb").read()) == k_["sha256_origem"] for k_ in (bd.get("kernel_corrigido") or [])}
+chk("o Nos intacto: o um.py e' o que o selo v412 pina; nenhum modulo novo no kernel do Nos; o modulo corrigido do Nos ainda e' o de origem",
+    selo_.get("um_version") == "v412" and um_nos == (selo_.get("sha256") or {}).get("um.py") and not novos_no_nos and bool(kc_nos) and all(kc_nos.values()),
+    1 + n_mod + len(kc_nos), {"um_py_sha16": um_nos[:16], "novos_no_nos": novos_no_nos, "corrigido_do_nos_igual_a_origem": kc_nos})
+ITEM4 = ["preparar_bundle_v413.py", "run_build.py", "pos_build_kernel_v413.py", "copiar_logs_do_kernel_v413.py", "reconstruir_kernel_v413.py", "gerar_pronto_etapa1_v413.py"]
+chk("os scripts da Etapa 1 derivados (o preparador, o run_build, o pos-build, a copia dos logs, o comando unico e este fecho; o construtor do kernel e' gerado pelo preparo) com o sha16 do registro == o do disco",
+    all(n_ in derivados and derivados[n_]["destino_sha16_registrado"] == derivados[n_]["destino_sha16_em_disco"] for n_ in ITEM4) and os.path.exists(os.path.join(HERE, "construir_kernel_v413.sh")),
+    len(derivados), {n_: (derivados.get(n_) or {}).get("destino_sha16_em_disco") for n_ in ITEM4})
+chk("o inventario dos demais scripts da cadeia da v412 (candidato, instalar, reverter, rito, conferidor, handoff) existe e descreve cada um",
+    bool(inv.get("papeis")) and all(e_.get("o_que_muda") not in (None, "(a descrever)") for v_ in inv["papeis"].values() for e_ in v_.values() if not e_.get("ausente")),
+    sum(len(v_) for v_ in (inv.get("papeis") or {}).values()))
+om_ = pil.get("o_que_a_v413_muda") or {}
+chk("o portao do pilar respondido por leitura de codigo: nada do que a v413 muda entra no fecho da chave nem no da decisao de reuso",
+    pil.get("resposta") is not None and not om_.get("entra_no_fecho_da_chave") and not om_.get("nomes_de_registro_ou_artigo_no_fecho_da_chave") and not om_.get("entra_no_fecho_da_decisao_de_reuso"),
+    len(pil.get("fecho_dos_nomes_de_topo_da_chave") or []))
+r_logs = subprocess.run([sys.executable, "-I", "-B", "-X", "utf8", os.path.join(HERE, "copiar_logs_do_kernel_v413.py")], capture_output=True, text=True, encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL)
+chk("o conferidor dos logs (copiar_logs_do_kernel_v413.py, so' leitura) confere", r_logs.returncode == 0, 1, (r_logs.stdout or "").strip().splitlines()[-1:])
+tmps = [os.path.join(d_, f_) for d_ in (HERE, KD, os.path.join(KD, "bundle"), T13) if os.path.isdir(d_) for f_ in os.listdir(d_) if f_.endswith(".tmp") or ".tmp_" in f_]
+chk("nenhum .tmp deixado (pasta da v413, kernel\\, kernel\\bundle\\ e C:\\t\\k413c)", not tmps, 4, tmps[:5])
+etapa_ok = kernel_ok and all(c_["ok"] for c_ in CH)
+out = {
+    "contrato": "PRONTO_PARA_CANDIDATO_v413",
+    "quando": datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+    "agente": "claude-construtor-v413, a servico da gerencia c1",
+    "estado": ("ETAPA 1 CONCLUIDA: sandbox k413c, os %d modulos novos e o modulo corrigido instalados e compilados no sandbox, Audit medido, scripts da Etapa 1 derivados, inventario feito, portao do pilar "
+               "respondido por leitura de codigo; PAROU aqui: nada de registros, artigo, guarda de frases nem candidato (ordem da Etapa 1 da v413, item 6)" % n_mod) if etapa_ok else
+              ("ETAPA 1 NAO FECHOU: ver as checagens que falharam (%s); kernel\\POS_BUILD_v413.json: parou_em=%s; nada foi consertado em prova nem em nome" % ([c_["checagem"] for c_ in CH if not c_["ok"]], pos.get("parou_em"))),
+    "etapa_1_fechou": etapa_ok,
+    "checagens": CH,
+    "ordem": {"arquivo": "ORDEM_ETAPA_1_v413.md", "sha16": sh16(os.path.join(HERE, "ORDEM_ETAPA_1_v413.md"))},
+    "manifesto": {"arquivo": "insumos/MANIFESTO_PEDRAS_v413.json", "sha16": sh16(man_p), "gerado_em": man.get("gerado_em"), "n_modulos_novos": man.get("n_modulos_novos"),
+                  "teoremas_publicos_novos": man.get("teoremas_publicos_novos"), "kernel_corrigido": sorted((man.get("kernel_corrigido") or {}).keys())},
+    "base_v412": {"um_py_sha16": base.get("base_sha16"), "selo": base.get("selo_um_version"), "copia": "base_v412\\ (BASE_V412_COPIA.json, sha16 %s)" % sh16(os.path.join(HERE, "BASE_V412_COPIA.json"))},
+    "kernel_k413c": {
+        "sandbox": os.path.join(T13, "final"), "origem": conf.get("sandbox_origem"),
+        "origem_medida_antes_da_copia": {"bytes_sem_juncoes": conf.get("origem_bytes_sem_juncoes"), "gb": conf.get("origem_gb_sem_juncoes"), "arquivos": conf.get("origem_arquivos")},
+        "disco_C_livre_gb_na_ultima_conferencia": conf.get("disco_C_livre_gb"),
+        "medicao_de_antes_da_copia": "[DECLARADO] a primeira rodada da conferencia, antes da copia, foi sobrescrita pela segunda (ver desvios_desta_ordem); o arquivo guarda a ultima rodada",
+        "copia": "robocopy SEM /PURGE (copiar_k413c.sh), juncao .lake\\packages -> C:\\t\\k404c\\final\\.lake\\packages; fontes da origem conferidas contra o Nos v412 (CONFERENCIA_FONTES_K412C_v413.json: %s de %s iguais; diferentes %s; so' num lado: %s e %s)" % (
+            conf.get("n_comuns"), conf.get("n_nos"), conf.get("n_diferentes"), len(conf.get("so_no_nos") or []), len(conf.get("so_no_sandbox") or [])),
+        "marcas": dict(l.split("=", 1) for l in marcas.splitlines() if "=" in l and not l.startswith("modulo=")),
+        "por_modulo": pos.get("por_modulo_marcas"), "modulos_compilados_rc0": compilaram, "n_modulos_novos": n_mod, "n_modulos_corrigidos": n_kc, "parou_em": pos.get("parou_em"),
+        "duracao_build_s": pos.get("duracao_build_s"), "duracao_audit_s": pos.get("duracao_audit_s"),
+        "linha_TOTAL": pos.get("linha_TOTAL"), "linha_TOTAL_v412": pos.get("linha_TOTAL_v412"), "delta_vs_v412": pos.get("delta_vs_v412"),
+        "declaracoes_no_relatorio_de_axiomas": pos.get("n_decl_audit"), "todas_no_trio": (pos.get("criterios") or {}).get("declaracoes_novas_no_trio"),
+        "escada_de_teoremas_e_bandeiras": pos.get("escada"), "n_bandeiras_novas": pos.get("n_flags"), "n_ancoras_print_axioms": pos.get("n_ancoras"),
+        "chaves_antigas": pos.get("chaves_antigas"), "todos_os_modulos_a_frio": pos.get("todos_os_modulos_a_frio"),
+        "avisos_por_modulo": {k: v.get("n") for k, v in avisos.items()}, "aviso_conhecido_TowerWedgeIndex": pos.get("aviso_conhecido_TowerWedgeIndex"),
+        "avisos_modulos_antigos": {k: v for k, v in (pos.get("avisos_modulos_antigos") or {}).items() if k != "por_modulo"},
+        "kernel_corrigido": kcp, "dependentes_antigos_do_corrigido_recompilados": {"n": len(ult.get("dependentes_antigos_do_corrigido_que_o_lake_recompila") or []),
+                                                                                     "sem_linha_Built": kcp.get("dependentes_antigos_sem_linha_Built")},
+        "falhas": pos.get("falhas"), "falhas_informativas": pos.get("falhas_informativas"),
+        "colisoes": {"nome_de_modulo_sem_caixa": conf.get("colisoes_de_nome_de_modulo_sem_caixa"),
+                     "pre_conferencia_de_declaracoes": {k: prec.get(k) for k in ("colisao_com_o_kernel_nome_exato", "colisao_com_o_kernel_prefixo_de_estrutura", "colisao_entre_os_modulos_da_lista", "kernel_corrigido")},
+                     "juiz_definitivo": "o build da raiz no sandbox (o Lean recusa ambiente com nome repetido): %s" % ("passou" if kernel_ok else "ver POS_BUILD")},
+        "recibo": {"arquivo": "kernel/KERNEL_RECIBO_v413.json", "sha16": sh16(os.path.join(KD, "KERNEL_RECIBO_v413.json")), "rc": rec.get("rc"), "sorry": rec.get("sorry"), "erros": rec.get("erros"),
+                   "contrato": rec.get("contrato"), "campo_novo": "kernel_corrigido" if rec.get("kernel_corrigido") else None},
+        "POS_BUILD_sha16": sh16(os.path.join(KD, "POS_BUILD_v413.json")), "FLAGS_sha16": sh16(os.path.join(KD, "FLAGS_v413.json")), "KH_N1_sha16": sh16(os.path.join(KD, "KH_N1_v413.json")),
+        "LOGS_COPIADOS_sha16": sh16(os.path.join(KD, "LOGS_COPIADOS_v413.json")), "CRITERIOS_sha16": sh16(os.path.join(HERE, "vinculo", "CRITERIOS_v413.json")),
+        "lake_build_log": {"bytes": os.path.getsize(os.path.join(KD, "lake_build.log")) if os.path.exists(os.path.join(KD, "lake_build.log")) else None, "sha16": sh16(os.path.join(KD, "lake_build.log"))},
+        "audit_log": {"bytes": kh.get("audit_log_bytes"), "sha16": (kh.get("audit_log_sha256") or "")[:16]},
+        "criterios": pos.get("criterios"),
+        "copias_do_kernel_fora_de_work": [os.path.join(T13, "final") + " (o sandbox)", os.path.join(T13, "arvore") + " (a arvore so-fontes do recibo)"] + [k for k in criados if "quarentena_" in k]},
+    "bundle": {"arquivo": "BUNDLE_v413.json", "sha16": sh16(os.path.join(HERE, "BUNDLE_v413.json")), "ordem_topologica": bd.get("ordem_topologica"),
+               "ordem_topologica_igual_a_sugerida": bd.get("ordem_topologica_igual_a_sugerida"), "root_suffix_linhas": len((bd.get("root_suffix") or "").splitlines()),
+               "mudancas_no_texto": bd.get("normalizacao"),
+               "por_modulo": {m["modulo"]: {"sha256_insumo": m["sha256_insumo"], "sha256_instalado": m["sha256"], "print_axioms_removidos": m["n_print_axioms_removidos"],
+                                            "imports_trocados": len(m["imports_trocados"]), "diff": m["diff"]} for m in (bd.get("modulos") or [])},
+               "kernel_corrigido": {k_["modulo"]: {"sha256_origem": k_["sha256_origem"], "sha256_insumo": k_["sha256_insumo"], "sha256_instalado": k_["sha256"], "diff": k_["diff"],
+                                                   "novos_que_dependem_dele": k_.get("novos_que_dependem_dele"), "n_dependentes_antigos_no_kernel": len(k_.get("dependentes_antigos_no_kernel") or [])}
+                                    for k_ in (bd.get("kernel_corrigido") or [])},
+               "sha256_por_modulo": "kernel/bundle/SHA256_POR_MODULO_v413.json (sha16 %s)" % sh16(os.path.join(KD, "bundle", "SHA256_POR_MODULO_v413.json")),
+               "trocar_uma_fonte": "um comando: C:\\Python314\\python.exe -B -X utf8 reconstruir_kernel_v413.py --manifesto <json> --pedras <pasta> [--kernel-edits <pasta>] (preparo idempotente; o lake recompila so' o modulo trocado e os dependentes, mais a raiz e o Audit; kernel\\ULTIMA_INSTALACAO_v413.json diz quais)"},
+    "scripts_da_etapa_sha16": scripts, "lancadores_em_C_t_k413c_sha16": runners,
+    "derivacao": {"arquivo": "DERIVACAO_ETAPA1_v413.json", "sha16": sh16(os.path.join(HERE, "DERIVACAO_ETAPA1_v413.json")), "derivador": "derivar_scripts_etapa1_v413.py",
+                  "diffs": "bump\\ (um .diff por destino)", "blocos": "derivacao_blocos\\ (os textos novos das trocas em bloco, lidos em bytes; sha256 de cada um no registro)",
+                  "regra": "trocas de texto EXATO com contagem EXATA (ou bloco entre marcas unicas), registradas; subida simultanea dos rotulos (v412->v413, v411->v412, k412c->k413c, _412_->_413_); as marcas historicas de cabecalho e a autoria claude-construtor-v412 nao sobem",
+                  "derivados": derivados},
+    "inventario": {"arquivo": "INVENTARIO_CADEIA_v413.json", "sha16": sh16(os.path.join(HERE, "INVENTARIO_CADEIA_v413.json")), "bancada_medida": inv.get("bancada_medida"),
+                   "o_que_muda": {papel: {rel: e_.get("o_que_muda") for rel, e_ in v_.items()} for papel, v_ in (inv.get("papeis") or {}).items()}},
+    "portao_do_pilar": {"arquivo": "PORTAO_DO_PILAR_v413.json", "sha16": sh16(os.path.join(HERE, "PORTAO_DO_PILAR_v413.json")), "resposta": pil.get("resposta"),
+                        "entradas_da_chave": pil.get("entradas_da_chave"), "fecho": pil.get("fecho_dos_nomes_de_topo_da_chave"), "o_que_a_v413_muda": pil.get("o_que_a_v413_muda"),
+                        "chave_do_ultimo_rito_v412": (pil.get("estado_lido") or {}).get("chaves_no_stdout_v412"), "o_reuso_usa_a_placa": pil.get("o_reuso_toca_a_placa_de_leve")},
+    "falta_para_a_etapa_2": [
+        "a gerencia: a leitura de terceiro (Codex) dos textos limpos; se mudar docstring, regerar o manifesto e rodar reconstruir_kernel_v413.py --manifesto <json> --pedras <pasta> (um comando; so' o que depende da fonte recompila; a fonte corrigida vem do manifesto ou de --kernel-edits)",
+        "a gerencia: o contrato da v413 (registros por especificacao, secao do artigo, guarda de frases, pagina publica) e os prefixos das bandeiras (proposta em kernel\\FLAGS_v413.json: ext_<modulo>_413_NNNN; nenhuma chave antiga muda)",
+        "Etapa 2 (NOVO na v413): o gerador do candidato tem de SUBSTITUIR o texto embutido de TGLExt/OResumoEPsiBit.lean em _EMBEDDED_KERNEL_FILES (o da v412 so' acrescenta modulos); o instalador tem de conferir e guardar backup de bytes de tgl_kernel\\TGLExt\\OResumoEPsiBit.lean e o reverter restaura-lo; o conferidor pos-rito confere o sha256_saida no Nos e as mesmas declaracoes (INVENTARIO_CADEIA_v413.json, o_que_muda)",
+        "Etapa 2: o B(n) le o recibo do kernel (KERNEL_RECIBO_R3_2): pela leitura de verificar_kernel_recibo (R3_6), N1l exige pedras == os arquivos formais NOVOS OU MUDADOS do manifesto pinado pelo selo; o corrigido ja' entrou nas pedras, com as declaracoes (N1k), e o campo kernel_corrigido (antes e depois) nao e' conferido pela ferramenta; rodar a ferramenta depois do selo, como sempre",
+        "Etapa 2: as ancoras dos registros (as declaracoes que os registros da v413 citam); os #print axioms das fontes ja' conferiram como ancoras no Audit (n_ancoras_print_axioms)",
+        "Etapa 2: o portao do pilar NO CANDIDATO (os textos do fecho da chave com o sha256 de PORTAO_DO_PILAR_v413.json) e, antes do rito, o ambiente da placa igual ao do cache (senao PARAR e avisar o operador)",
+        "Etapa 2: os scripts do inventario (candidato, instalar, reverter, rito, conferidor, handoff), adaptados do molde da v412 com o caso do modulo corrigido; a v412 usou a Etapa 3 enxuta (conferir_pos_rito_v412_foco.py, esperados_v412_foco.py): decisao da gerencia se repete",
+        "a gerencia: a tarefa agendada (C:\\t\\k413c\\run_pos_treino.py ja' existe e aponta para orquestrador\\pos_treino_v413.py, que ainda nao existe), instalar, o rito, a custodia"],
+    "desvios_desta_ordem": DESVIOS,
+    "estatuto": "[REAL] medido no sandbox C:\\t\\k413c\\final; nada instalado no Nos; o rito nao rodou; validade no kernel nao e' creditacao; o gate nao se move",
+}

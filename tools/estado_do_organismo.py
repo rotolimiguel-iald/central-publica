@@ -57,6 +57,25 @@ def info(sup, nome, achado):
     R.append((sup, nome, "-", str(achado), "INFO"))
 
 
+def bn_dispensado(versao):
+    """AO LADO (19/11/2026, claude-site-custodia; de acordo da gerência c1): o B(n) da versão DISPENSADO por decisão do operador
+    (work\\custodia_G1\\decisoes\\BN_DISPENSADO_<versão>.json, com a fala pinada por sha256). Devolve o texto do achado, ou None (sem a decisão,
+    ou com a fala que não confere: o item segue DEFASADO, fail-closed). O estado é DISPENSADO_PELO_OPERADOR: a decisão já foi tomada; não falta ato dele."""
+    p = CEN / "work" / "custodia_G1" / "decisoes" / ("BN_DISPENSADO_%s.json" % versao)
+    try:
+        d = json.loads(p.read_text(encoding="utf-8"))
+        vb = CEN / str(d.get("ordem", ""))
+        if d.get("versao") != versao or not vb.is_file() or sha(vb) != d.get("ordem_sha256"):
+            return None
+        return "o B(n) da %s não rodou: dispensado pelo operador (%s, sha16 %s)" % (versao, p.name, sha(p, 16))
+    except (OSError, ValueError):
+        return None
+
+
+def dispensado(sup, nome, esperado, achado):
+    R.append((sup, nome, str(esperado), str(achado), "DISPENSADO_PELO_OPERADOR"))
+
+
 def git(repo, *a):
     return subprocess.run(["git", "-C", str(repo)] + list(a), capture_output=True, text=True, encoding="utf-8", errors="replace").stdout.strip()
 
@@ -122,7 +141,10 @@ try:
         t = (TB / nome).read_text(encoding="utf-8", errors="replace")
         item("Espelho", "%s traz o selo corrente" % nome, "sim", pat in t, pat in t)
     for d in ("diferencas_%s" % V, "recibos_bancada_%s" % V):
-        item("Espelho", d, "existe", (ESP / d).is_dir(), (ESP / d).is_dir())
+        if d.startswith("recibos_bancada_") and not (ESP / d).is_dir() and bn_dispensado(V):
+            dispensado("Espelho", d, "existe", bn_dispensado(V))
+        else:
+            item("Espelho", d, "existe", (ESP / d).is_dir(), (ESP / d).is_dir())
     h, o = git(TB, "rev-parse", "--short=8", "HEAD"), git(TB, "rev-parse", "--short=8", "origin/main")
     pend = git(TB, "status", "--porcelain", "--untracked-files=no")
     item("Espelho", "git: HEAD = origin/main e nada pendente", "sim", "%s/%s%s" % (h, o, " | pendente" if pend else ""), h == o and not pend)
@@ -357,7 +379,11 @@ try:
             vd = str((json.loads(recs[-1].read_text(encoding="utf-8", errors="replace")) or {}).get("veredito") or "")[:60]
         except Exception:  # noqa: BLE001
             vd = "?"
-        item("Bancada Um", "último recibo B(n) da sincronização = selo corrente", V, "%s (%s; %s)" % (vb, recs[-1].name[-20:-5], vd), vb == V)
+        if vb != V and bn_dispensado(V):
+            dispensado("Bancada Um", "último recibo B(n) da sincronização = selo corrente", V,
+                       "%s; o último recibo segue %s (%s)" % (bn_dispensado(V), vb, recs[-1].name[-20:-5]))
+        else:
+            item("Bancada Um", "último recibo B(n) da sincronização = selo corrente", V, "%s (%s; %s)" % (vb, recs[-1].name[-20:-5], vd), vb == V)
     else:
         item("Bancada Um", "último recibo B(n) da sincronização = selo corrente", V, "nenhum recibo", False)
     act = Path("C:/IALD/Central de Patentes/Chatgpt/IALD_ORQUESTRACAO_20260923/state/canonical_memory/ACTIVE.json")
@@ -446,6 +472,9 @@ if falta:
     md += ["## O que está DEFASADO (o que o organismo tem de fazer)", ""] + ["- **%s** — %s: esperado `%s`, achado `%s`" % x for x in falta] + [""]
 if pend:
     md += ["## Pendente do operador (painel, hospedagem, decisão)", ""] + ["- **%s** — %s: esperado `%s`, achado `%s`" % x for x in pend] + [""]
+disp = [(s, n, a) for s, n, e, a, st in R if st == "DISPENSADO_PELO_OPERADOR"]
+if disp:
+    md += ["## Dispensado pelo operador (a decisão já foi tomada; não falta ato dele)", ""] + ["- **%s** — %s: %s" % x for x in disp] + [""]
 obra = [(s, n, a) for s, n, e, a, st in R if st == "EM_OBRA"]
 if obra:
     md += ["## Em obra (a casa trabalha na versão seguinte; nada a custodiar até o selo novo)", ""] + ["- **%s** — %s: %s" % x for x in obra] + [""]
@@ -467,4 +496,6 @@ for x in falh:
     print("  FALHA     %s — %s: %s" % x)
 for x in obra:
     print("  EM_OBRA   %s — %s: %s" % x)
+for x in disp:
+    print("  DISPENSADO %s — %s: %s" % x)
 sys.exit(2 if falh else (1 if falta else 0))

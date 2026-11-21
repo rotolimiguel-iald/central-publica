@@ -1,0 +1,144 @@
+{
+ "quando": "2026-11-20 22:23:16",
+ "testes": [
+  {
+   "teste": "T1 vigia do pilar: reuso -> REUSO_OK (rc 0)",
+   "ok": true,
+   "detalhe": [
+    0,
+    "REUSO_OK 75dc30bc9cc8d330e31f99ca\n"
+   ]
+  },
+  {
+   "teste": "T1 vigia do pilar: outra_chave -> CHAVE_ERRADA (rc 4)",
+   "ok": true,
+   "detalhe": [
+    4,
+    "CHAVE_ERRADA ffffffffffffffffffffffff\n"
+   ]
+  },
+  {
+   "teste": "T1 vigia do pilar: calculo -> CALCULA (rc 3)",
+   "ok": true,
+   "detalhe": [
+    3,
+    "CALCULA pilar quantico: o trabalhador da GPU foi lancado (PID 7), em paralelo com o kernel; chave 75dc30bc9cc8d330e31f99ca\n\n"
+   ]
+  },
+  {
+   "teste": "T1 vigia do pilar: ainda_nao -> AINDA_NAO (rc 1)",
+   "ok": true,
+   "detalhe": [
+    1,
+    "AINDA_NAO\n"
+   ]
+  },
+  {
+   "teste": "T1 vigia do pilar: sem arquivo -> ERRO (rc 2)",
+   "ok": true,
+   "detalhe": [
+    2,
+    "ERRO FileNotFoundError(2, 'No such file or directory')\n"
+   ]
+  },
+  {
+   "teste": "T2 o laco do vigia do pilar (extraido do rito): calculo",
+   "ok": true,
+   "detalhe": {
+    "rc": 0,
+    "parada": true,
+    "lancador_recebeu_TERM": true,
+    "log": "22:23:17 VIGIA DO PILAR: CALCULA pilar quantico: o trabalhador da GPU foi lancado (PID 7), em paralelo com o kernel; chave 75dc30bc9cc8d330e31f99ca -- o pilar NAO foi reaproveitado; ha treino em curso na placa: PARO o rito e aviso\n",
+    "saida": ""
+   }
+  },
+  {
+   "teste": "T2 o laco do vigia do pilar (extraido do rito): reuso",
+   "ok": true,
+   "detalhe": {
+    "rc": 0,
+    "parada": false,
+    "lancador_recebeu_TERM": true,
+    "log": "22:23:22 VIGIA DO PILAR: REUSO_OK 75dc30bc9cc8d330e31f99ca (o pilar foi reaproveitado pela chave do cache; nada na placa alem do autoteste do motor)\nLANCADOR_VIVO\n",
+    "saida": ""
+   }
+  },
+  {
+   "teste": "T3 o portao do pilar (real; nao toca a placa) roda e diz o veredito de hoje: PORTAO_PILAR_OK",
+   "ok": true,
+   "detalhe": {
+    "rc": 0,
+    "saida": "PORTAO_PILAR_OK: o ambiente presente (torch 2.11.0+cu128, cuda 12.8, numpy 2.4.3, scipy 1.18.0, python 3.14.3, placa NVIDIA GeForce RTX 5090) e' o do cache do pilar (chave 75dc30bc9cc8d330e31f99ca)\n",
+    "diferencas": {}
+   }
+  },
+  {
+   "teste": "T3 o portao do pilar RECUSA um cache com o ambiente trocado (rc 19)",
+   "ok": true,
+   "detalhe": [
+    19,
+    "PORTAO_PILAR_RECUSA: o ambiente presente difere do cache do pilar em ['numpy'] -- o um.py CALCULARIA o pilar na placa (ha treino em curso): PARAR e avisar o operador\n"
+   ]
+  },
+  {
+   "teste": "T4 sh -n rito_v413.sh",
+   "ok": true,
+   "detalhe": ""
+  },
+  {
+   "teste": "T4 sh -n cadeia_pos_rito_v413.sh",
+   "ok": true,
+   "detalhe": ""
+  },
+  {
+   "teste": "T5 diffs_v413.py --reproduzir-v412: os dois diffs publicados da v412, byte a byte",
+   "ok": true,
+   "detalhe": "embutidos: v411 1763 | v412 1919 | novos 156 | removidos 0 | mudados 1 | lista dos novos 156\nREPRODUCAO DA v412: OS DOIS DIFFS SAO OS PUBLICADOS, BYTE A BYTE | kernel True | diff -u True\n"
+  },
+  {
+   "teste": "T6 a guarda do titulo passa no Nos de hoje com v412",
+   "ok": true,
+   "detalhe": "ivo\": \"NOTA_DE_CUSTODIA.md\",\n   \"titulo\": \"# NOTA DE CUSTÓDIA — a cadeia dos selos (20/08/2026)\",\n   \"versao_no_titulo\": null\n  },\n  {\n   \"arquivo\": \"HANDOFF_v412_CUSTODIA.md\",\n   \"titulo\": \"# HANDOFF v412 — CUSTÓDIA (19/11/2026)\"\n  }\n ],\n \"recusas\": [],\n \"ok\": true\n}\nGUARDA DO TITULO (v412): LIMPA\n"
+  },
+  {
+   "teste": "T6 a guarda do titulo RECUSA o Nos de hoje com v413 (a arvore diz v412)",
+   "ok": true,
+   "detalhe": "lo «GRAVITAÇÃO QUÂNTICA DA TGL — a árvore, lida do kernel (v412)» (o selo e' v413)\",\n  \"A_PROVA_DA_QG_TGL_arvore.md: o titulo nao termina em (v413): «GRAVITAÇÃO QUÂNTICA DA TGL — a árvore, lida do kernel (v412)» -- rode arvore_da_prova.py v413\"\n ],\n \"ok\": false\n}\nGUARDA DO TITULO (v413): RECUSA (2)\n"
+  },
+  {
+   "teste": "T7 o esperados sem o fecho da Etapa 2 recusa (rc 2) e nao grava",
+   "ok": true,
+   "detalhe": "RECUSO (esperados_v413_foco.py): a Etapa 2 ainda nao fechou: falta C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\PREPARACAO_v413_PRONTA.json (o fecho da Etapa 2 traz o candidato; sem ele nao ha esperados)\n"
+  },
+  {
+   "teste": "T8 os .py da Etapa 3 compilam",
+   "ok": true,
+   "detalhe": []
+  }
+ ],
+ "ok": true,
+ "portao_de_hoje": {
+  "rc": 0,
+  "veredito": "PORTAO_PILAR_OK",
+  "diferencas": {},
+  "cache": {
+   "torch": "2.11.0+cu128",
+   "cuda": "12.8",
+   "numpy": "2.4.3",
+   "scipy": "1.18.0",
+   "python": "3.14.3",
+   "gpu": "NVIDIA GeForce RTX 5090"
+  },
+  "agora": {
+   "torch": "2.11.0+cu128",
+   "cuda": "12.8",
+   "numpy": "2.4.3",
+   "scipy": "1.18.0",
+   "python": "3.14.3",
+   "gpu_nomes_do_windows": [
+    "NVIDIA GeForce RTX 5090"
+   ]
+  }
+ },
+ "temporarios_apagados": true
+}

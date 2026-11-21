@@ -1,0 +1,6 @@
+    soltos = [x for _, x in imp_txt if x in NOMES]
+    assert not soltos, ("import SOLTO de modulo irmao: a fonte nao esta na forma do kernel (import TGLExt.<Nome>); PARE e pergunte a gerencia", n, soltos)
+    trocar = {}   # (v413: as pedras limpas ja vem com import TGLExt.<Nome>; nenhuma linha de import se troca)
+    irmaos = sorted({x[len("TGLExt."):] for _, x in imp_txt if x.startswith("TGLExt.") and x[len("TGLExt."):] in NOMES})
+    assert irmaos == sorted(m["imports_tglext"]), ("os imports de modulo irmao da fonte nao sao os do manifesto (imports_tglext)", n, irmaos, m["imports_tglext"])
+    deps[n] = irmaos

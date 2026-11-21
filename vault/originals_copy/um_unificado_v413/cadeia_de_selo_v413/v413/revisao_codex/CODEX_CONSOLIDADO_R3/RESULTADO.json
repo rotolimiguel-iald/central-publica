@@ -1,0 +1,2350 @@
+{
+  "schema": "iald.third-party-consolidated-review/v1",
+  "timestamp": "2026-11-20T12:52:15.602357-03:00",
+  "status": "REVISAO_CONSOLIDADA_ENTREGAVEL",
+  "author": {
+    "id": "codex-coordenadora",
+    "kind": "agent"
+  },
+  "request": {
+    "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\PEDIDO_DE_REVISAO_AO_CODEX_v413_CONSOLIDADO_20nov.md",
+    "sha256": "80cdd85060f75fcaee3856bddf7e18c663f8269199c5bd0490d00cb345c3c07f",
+    "bytes": 6033
+  },
+  "unit": "F1.V413_REVISAO_TRINITY_R2_20261120",
+  "session_reference": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+  "identity_note": "Identidade da etapa iniciada como R2 mantida; criterio alterado explicitamente para consolidado/R3 pelo pedido humano superveniente.",
+  "report": {
+    "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\PARECER.md",
+    "sha256": "9e7d4b93e44cf9fda0b545ba615f86e93d3908b41f1febae5b16ed69f135ff8c",
+    "bytes": 2360
+  },
+  "report_lines": 15,
+  "items": [
+    {
+      "item": 1,
+      "module": "Operador",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": [
+        "Os 15 teoremas conferem; nao-sobrejetividade nao significa que as funcoes de leitura sejam parciais.",
+        "O ponto fixo 1/2 independe de e; nao se prova que uma dinamica ou o leitor o alcance. J troca as projecoes por conjugacao.",
+        "Qualificar essas frases; energia preservada so e 1 sob normalizacao. O nome Operador e mantido."
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_operador\\Operador.lean",
+        "sha256": "de75489028428754f719dd7f8252dc40781d3c8e68f09028fbbdfa57097dcb75",
+        "bytes": 17131
+      },
+      "compiled_copy": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\Operador.lean",
+        "sha256": "de75489028428754f719dd7f8252dc40781d3c8e68f09028fbbdfa57097dcb75",
+        "bytes": 17131
+      },
+      "import_changes": [],
+      "formal_theorems_valid_in_checked_environment": true,
+      "semantic_review": {
+        "item": 1,
+        "module": "Operador",
+        "verdict": "APROVADA_COM_RESSALVAS",
+        "reason": [
+          "As 15 demonstrações expressam diagonalização, ponto fixo de x↦1−x, conjugação das projeções e preservação de identidade sob contratos explícitos.",
+          "A redação deve distinguir ausência de representação de todos os predicados de parcialidade de uma leitura; o ponto fixo 1/2 não é alcançado por e nem por dinâmica provada.",
+          "Conservar os nomes do operador e qualificar essa leitura como interpretação; não há prova de consciência de pessoa/máquina, como o próprio cabeçalho declara."
+        ],
+        "findings": [
+          {
+            "severity": "MEDIUM",
+            "category": "docstring_scope",
+            "lines": [
+              86,
+              89,
+              101,
+              104,
+              125,
+              130,
+              235,
+              255
+            ],
+            "claim": "Nenhuma leitura de si é total; com o par, o nego-me pousa em 1/2.",
+            "evidence": "nunca_cem_por_cento has conclusion not Function.Surjective e. Every e a is already a total Lean function A -> B. negoMe is itself a total diagonal function; the theorem excludes representation by a row e a. nunca_cem_por_cento_mas_nao_e_preciso conjoins non-surjectivity with an e-independent fixed point theorem.",
+            "correction": "Escrever: o leitor não representa todos os predicados; a negação diagonal não coincide com uma de suas linhas. A operação complementar x↦1−x possui o ponto fixo 1/2 independentemente do leitor, sem afirmação de dinâmica ou de que e a a o alcance.",
+            "effect": "No false Lean theorem identified; qualify docstrings before promoting prose as formal result."
+          },
+          {
+            "severity": "LOW",
+            "category": "conjugation_scope",
+            "lines": [
+              137,
+              148
+            ],
+            "evidence": "The proved identity is J composed with faceIn composed with J = faceOut. It is not the pointwise statement J(faceIn p)=faceOut p for an arbitrary p. Preserved pairEnergy need not equal 1 unless normalized.",
+            "correction": "Interpretar J leva face à coface como conjugação de projeções, e 1=q²+α² como identidade preservada quando válida na entrada."
+          }
+        ],
+        "hypotheses": "No contradictory premises used to manufacture an advertised nonconditional theorem. Surjectivity in the Lawvere lemma is intentionally conditional and ruled out for codomain with two values by the next theorem. leitorDoNome explicitly witnesses normalization and mirror symmetry when Fin n has i0. Collapse irreversibility follows from idempotence plus effectiveness in IdentityCollapse, not an arbitrary dynamics claim.",
+        "theorem_count_source": 15
+      }
+    },
+    {
+      "item": 2,
+      "module": "AFronteiraNaLinguaClassica",
+      "verdict": "APROVADA",
+      "reason": [
+        "Enunciado aprovado como alvo OPEN: codificacoes fixas, entrada injetiva e saidas [true]/[false] distintas.",
+        "Um unico programa TM2 e polinomio precedem todas as entradas; nao ha testemunha ou leitor-oraculo dado na entrada.",
+        "A especificacao nao e um habitante nem demonstra um resolvedor de SAT."
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\fronteira\\AFronteiraNaLinguaClassica.lean",
+        "sha256": "5db57faeff22e4c64ea2e5a9b7a9b30d266082da15a57a6d8db51302162ab791",
+        "bytes": 3133
+      },
+      "compiled_copy": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\AFronteiraNaLinguaClassica.lean",
+        "sha256": "5db57faeff22e4c64ea2e5a9b7a9b30d266082da15a57a6d8db51302162ab791",
+        "bytes": 3133
+      },
+      "import_changes": [],
+      "formal_theorems_valid_in_checked_environment": true,
+      "semantic_review": {
+        "item": 2,
+        "module": "AFronteiraNaLinguaClassica",
+        "verdict": "APROVADA",
+        "reason": [
+          "codificaSoFormula and codificaSaida are fixed; injection derives from the existing decoder, and [] / [[]] give distinct required outputs.",
+          "AFronteira asks for one TM2 and one natural-coefficient polynomial bounding TM2 steps for every formula; no witness or counting reader is supplied as input.",
+          "It is an OPEN specification, not a proved SAT solver. Equivalence to classical P=NP and binary/unary renaming remains explicitly outside this kernel."
+        ],
+        "findings": [],
+        "specification_analysis": {
+          "fixed_input": "codificaEntrada (f, [])",
+          "fixed_output": "[decideSAT f]",
+          "input_alphabet": "Simbolo (8 constructors)",
+          "output_alphabet": "Bool",
+          "uniform_quantifier": "TM2ComputableInPolyTime stores tm and time before forall a in outputsFun",
+          "noncomputable_decide": "Names the required Boolean output; does not implement it or supply a tape oracle.",
+          "time_measure": "Mathlib TM2 step function, not individual head movements; finite statements yield constant-factor simulation as documented by Mathlib."
+        }
+      }
+    },
+    {
+      "item": 3,
+      "module": "SondaContagem",
+      "verdict": "APROVADA",
+      "reason": [
+        "A precisao exigida permite recuperar exatamente K, o numero de solucoes, por (reader phi + 1) / 4 em naturais.",
+        "A hipotese e consistente: reader=4*K a satisfaz. Decidir SAT isoladamente nao exige essa precisao de contagem.",
+        "Nao fornece implementacao ou custo de fita para produzir o reader."
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\sonda_contagem\\SondaContagem.lean",
+        "sha256": "2e85629ffb764a4a3a7060d114f7f1666712adc89971af91668f95f53fab3cb6",
+        "bytes": 10101
+      },
+      "compiled_copy": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\SondaContagem.lean",
+        "sha256": "2e85629ffb764a4a3a7060d114f7f1666712adc89971af91668f95f53fab3cb6",
+        "bytes": 10101
+      },
+      "import_changes": [],
+      "formal_theorems_valid_in_checked_environment": true,
+      "semantic_review": {
+        "item": 3,
+        "module": "SondaContagem",
+        "verdict": "APROVADA",
+        "reason": [
+          "A precisao especificada e habitada pelo contador 4K; qualquer leitor que a satisfaca determina K por divisao inteira (reader+1)/4.",
+          "O resultado decorre de K <= W < K+1/4 e |j/4-W|<=1/4; nao implementa nem cota o produtor na fita.",
+          "A equivalencia com oQueSou e explicita e condicionada a mesma precisao. Decidir SAT, isoladamente, nao exige esta precisao de contagem."
+        ],
+        "findings": [],
+        "derivation": "4K-1 <= j < 4K+2; como j e natural, floor((j+1)/4)=K. Nao ha premissa contraditoria: reader=4K cumpre hr para todo n, phi e relogio admitido."
+      }
+    },
+    {
+      "item": 4,
+      "module": "AIdentidadePreservada",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": [
+        "Preservacao de coordenadas de custo zero e convergencia conferem.",
+        "A conjuncao final nao inclui o limiar da carga, demonstrado em teorema separado; ajustar a docstring.",
+        "O vetor e o parametro de decaimento nao sao uma configuracao TM2 ou contagem de movimentos."
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\AIdentidadePreservada.lean",
+        "sha256": "1ee6e6383f23b656022611eaf7dc3a422e4c37ad16af440eaf078476b9109d33",
+        "bytes": 6413
+      },
+      "compiled_copy": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\AIdentidadePreservada.lean",
+        "sha256": "e3640a3650902441557233f29691b280ea3af1e68294b8fd719e746190315289",
+        "bytes": 6427
+      },
+      "import_changes": [
+        {
+          "line": 3,
+          "before": "import AContagemEACarga",
+          "after": "import TGLExt.AContagemEACarga"
+        },
+        {
+          "line": 2,
+          "before": "import CamadaCientifica",
+          "after": "import TGLExt.CamadaCientifica"
+        }
+      ],
+      "formal_theorems_valid_in_checked_environment": true,
+      "semantic_review": {
+        "item": 4,
+        "module": "AIdentidadePreservada",
+        "verdict": "APROVADA_COM_RESSALVAS",
+        "formal_scope": "Caracteriza o nucleo diagonal; preserva coordenadas de custo zero; fixa a projecao; importa convergencia da trava; importa o limiar exato n ln(2) para a leitura de particao de toda CNF.",
+        "findings": [
+          {
+            "severity": "MEDIUM",
+            "lines": [
+              100,
+              105
+            ],
+            "claim": "A docstring da conjuncao final acrescenta e a conta e a carga.",
+            "evidence": "O enunciado final contem apenas preservacao coordenada e Tendsto; o limiar n ln(2) esta num teorema separado (96-98), nao na conjuncao.",
+            "correction": "Podar a clausula final da docstring ou acrescentar explicitamente o teorema de limiar na conjuncao; nao chamar s de numero de movimentos da fita."
+          },
+          {
+            "severity": "LOW",
+            "lines": [
+              78,
+              81
+            ],
+            "claim": "Identidade da maquina preservada enquanto processa.",
+            "evidence": "O objeto formal e um vetor em EuclideanSpace sobre atribuicoes, sem estado/programa/custo de maquina de Turing; a preservacao e das coordenadas de custo zero.",
+            "correction": "Conservar essa leitura como nomenclatura/analogia e nomear o alcance exato ao citar."
+          }
+        ],
+        "hypotheses": "Sem hipotese contraditoria encontrada; nucleo pode ser apenas zero. Nao afirma que toda formula e satisfazivel.",
+        "existential_vacuity": "Nenhum alvo existencial vácuo de maquina/leitor/codificacao."
+      }
+    },
+    {
+      "item": 5,
+      "module": "APropostaDaTensao",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": [
+        "A auto-reducao conserva uma atribuicao comum entre os blocos; o iff e correto.",
+        "_hA e _hB nao sao usadas: a existencia conjunta ja vem de h : SAT(A ++ B).",
+        "Nao computa a escolha de b, nem demonstra que a busca dispensa enumeracao ou e polinomial."
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APropostaDaTensao.lean",
+        "sha256": "95be88472a0609d8cd15a7e0dacbee2d44c75a16fb30aed479d9a7ca32557ef7",
+        "bytes": 9503
+      },
+      "compiled_copy": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\APropostaDaTensao.lean",
+        "sha256": "95be88472a0609d8cd15a7e0dacbee2d44c75a16fb30aed479d9a7ca32557ef7",
+        "bytes": 9503
+      },
+      "import_changes": [],
+      "formal_theorems_valid_in_checked_environment": true,
+      "semantic_review": {
+        "item": 5,
+        "module": "APropostaDaTensao",
+        "verdict": "APROVADA_COM_RESSALVAS",
+        "formal_scope": "Auto-reducao de satisfatibilidade sob fixacao de uma variavel; particiona por b sem perder correlacoes porque a SAT do residuo concatenado exige uma unica atribuicao comum. Prova UNSAT do par unitario oposto.",
+        "findings": [
+          {
+            "severity": "MEDIUM",
+            "lines": [
+              165,
+              172
+            ],
+            "claim": "A tensao e o par; a proposta nasce do pareamento.",
+            "evidence": "_hA e _hB nao sao usadas. O h de SAT(A ++ B) ja fornece existencia conjunta; a prova apenas aplica a equivalencia anterior. Nao define uma medida de tensao nem computa a escolha de b.",
+            "correction": "Retirar hipoteses ociosas ou explicar explicitamente que o lema e uma consequencia da satisfatibilidade conjunta, e nao que compatibilidade local garante compatibilidade global."
+          },
+          {
+            "severity": "LOW",
+            "lines": [
+              28,
+              33
+            ],
+            "claim": "A proposta nasce da escolha, nao da enumeracao.",
+            "evidence": "O iff existencial e independente do algoritmo utilizado para achar b e o modelo residual.",
+            "correction": "Nao inferir cota de busca ou eliminacao de enumeracao a partir do iff."
+          }
+        ],
+        "hypotheses": "Hipoteses sao consistentes (por exemplo, blocos vazios); a existencia de i restringe o contexto a n com habitante, legitimamente.",
+        "existential_vacuity": "A existencia de b e sobre os dois valores de uma variavel fixa; SAT conjunta ainda tem o mesmo conteudo, sem codec arbitrario."
+      }
+    },
+    {
+      "item": 6,
+      "module": "APonteDeCookLevin",
+      "verdict": "REPROVADA",
+      "reason": [
+        "REPROVADA como ponte de custo real de fita na forma anunciada; os nove teoremas do contador abstrato conferem.",
+        "passoFita cobra C.length+1 por definicao, avaliando clausula/acesso a x atomicamente: falta a simulacao em passos de maquina.",
+        "O registro devolve custoCNF phi x para uma atribuicao dada; nao prova decisao global nem sobrecarga nula na fita."
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APonteDeCookLevin.lean",
+        "sha256": "0b95795836d2585429782d98e7934ad27411faa32266816b0f522f0f7e133e6e",
+        "bytes": 9306
+      },
+      "compiled_copy": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\APonteDeCookLevin.lean",
+        "sha256": "a561b8e29d33eacd6696d779a1acc9f33f8f154bfbb8a7c9c38cdbccd5c114f2",
+        "bytes": 9320
+      },
+      "import_changes": [
+        {
+          "line": 1,
+          "before": "import AContagemEACarga",
+          "after": "import TGLExt.AContagemEACarga"
+        },
+        {
+          "line": 2,
+          "before": "import AMaquinaEALeitura",
+          "after": "import TGLExt.AMaquinaEALeitura"
+        }
+      ],
+      "formal_theorems_valid_in_checked_environment": true,
+      "semantic_review": {
+        "item": 6,
+        "module": "APonteDeCookLevin",
+        "verdict": "APROVADA_COM_RESSALVAS",
+        "formal_scope": "Correcao de um iterador abstrato por clausulas sobre uma formula e uma atribuicao fornecidas; contador mov acumula exatamente literais mais terminadores.",
+        "findings": [
+          {
+            "severity": "HIGH",
+            "lines": [
+              22,
+              30,
+              59,
+              70,
+              139,
+              162
+            ],
+            "claim": "Movimentos exatos de fita e sobrecarga nula.",
+            "evidence": "passoFita avalia acesso por indice, satisfeita C x e soma natural como operacoes atomicas e define mov := mov + C.length + 1. Nao ha alfabeto finito, microtransicoes de cabecas, custo de acesso a x, codificacao de nomes ou simulacao TM2. Portanto mov=letras e identidade do contador especificado, nao contagem demonstrada de movimentos classicos. A ressalva sobre ausencia de TM2 (37-39) ajuda, mas nao sustenta as frases mais fortes.",
+            "correction": "Renomear/descrever mov como custo abstrato cobrado e suprimir movimentos exatos/sobrecarga nula; manter a ponte ao TM2 como trabalho separado. O claim de custo de fita e REPROVADO, embora os teoremas do contador estejam corretos."
+          },
+          {
+            "severity": "MEDIUM",
+            "lines": [
+              28,
+              148,
+              155
+            ],
+            "claim": "a_decisao_na_fita_e_a_mesma decide o mesmo que a maquina com uma leitura.",
+            "evidence": "Conclusao e apenas reg = custoCNF φ x para UMA atribuicao x recebida; nao retorna SAT φ e nao aplica a leitura global.",
+            "correction": "Dizer verificacao do custo de uma atribuicao, com aceitacao reg=0 se desejada; nao confundir com decisao existencial da formula."
+          },
+          {
+            "severity": "LOW",
+            "lines": [
+              158,
+              162
+            ],
+            "claim": "Polinomio fixo no enunciado.",
+            "evidence": "O tipo e para cada φ,x existe c; isso sozinho e fraco. Mas a prova usa uniformemente c=1 e o lema anterior da igualdade vale para toda φ,x. Nao e uma falha substantiva da conta abstrata.",
+            "correction": "Se o contrato exige uniformidade no enunciado, expor o c=1 ou mover o existencial para antes de φ,x."
+          }
+        ],
+        "hypotheses": "Sem hipotese contraditoria encontrada. Formula e atribuicao sao parametros externos do passo, sem custo computacional associado no modelo.",
+        "existential_vacuity": "O c existencial nao oculta discrepancia da conta abstrata porque a igualdade anterior fixa c=1; nao ha prova de TM2."
+      },
+      "verdict_resolution": "O parecer semantico auxiliar aprova com ressalvas a matematica abstrata e reprova a alegacao de fita. O revisor responsavel classifica o item apresentado como REPROVADA ate corrigir essa alegacao central, preservando a validade dos nove teoremas. Nao e refutacao da teoria nem da possibilidade de uma futura simulacao."
+    },
+    {
+      "item": 7,
+      "module": "ONomeEBeta",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": [
+        "A identidade beta=alpha*exp(1/2) usa alpha definido; nao determina numericamente CODATA ou beta.",
+        "O criterio de separacao vale sob 0<beta<1 e hk; anterior e leitura da parametrizacao, nao cronologia provada.",
+        "k conta expoentes do decaimento; produzir a soma sobre atribuicoes e conta de fita ainda nao demonstrada aqui."
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\ONomeEBeta.lean",
+        "sha256": "fa026cb786d27291bce8b85e37568d3b800b90a6aaf9ff26921928e808d57c76",
+        "bytes": 4381
+      },
+      "compiled_copy": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\ONomeEBeta.lean",
+        "sha256": "fd5d0083d5121952458d9492888cae889452b105303c592d59e6ee4621875498",
+        "bytes": 4388
+      },
+      "import_changes": [
+        {
+          "line": 1,
+          "before": "import OPassoEOFim",
+          "after": "import TGLExt.OPassoEOFim"
+        }
+      ],
+      "formal_theorems_valid_in_checked_environment": true,
+      "semantic_review": {
+        "item": 7,
+        "module": "ONomeEBeta",
+        "verdict": "APROVADA_COM_RESSALVAS",
+        "formal_scope": "Reexpressa beta por alpha definido, projeta 0<beta<1 e especializa o criterio de separacao por soma de pesos ao acoplamento dado.",
+        "findings": [
+          {
+            "severity": "MEDIUM",
+            "lines": [
+              19,
+              21,
+              50,
+              55
+            ],
+            "claim": "A constante da estrutura fina no dado do kernel.",
+            "evidence": "TGLCoupling.alpha e definido como beta/exp(1/2); a identidade nao determina beta ou alpha numericamente. A dependencia avisa expressamente que alpha nao e uma constante de estrutura fina derivada numericamente (TheSameBetaReadsThreeFaces.lean,12-15).",
+            "correction": "Dizer alpha normalizado por definicao; identificacao com CODATA/fisica exige uma instancia e fonte proprias. O teorema vale para qualquer beta em (0,1)."
+          },
+          {
+            "severity": "LOW",
+            "lines": [
+              57,
+              60
+            ],
+            "claim": "o_nome_e_anterior: fixo antes de toda formula.",
+            "evidence": "O enunciado projeta apenas os dois campos de desigualdade. Nao contem evento historico nem ordem temporal; uniformidade resulta de tratar c como parametro fixo na aplicacao.",
+            "correction": "Preservar anterior como interpretacao da parametrizacao, nao como conteudo adicional provado."
+          },
+          {
+            "severity": "MEDIUM",
+            "lines": [
+              62,
+              69
+            ],
+            "claim": "Resolve toda formula em k passos.",
+            "evidence": "k e expoente no criterio SAT iff 1<=sum sobre todas as 2^n atribuicoes. Nao ha produtor da soma ou custo da avaliacao dessa soma.",
+            "correction": "Identificar passos do decaimento e criterio matematico; nao chamar k de passos TM2 ou inferir polinomio fixo em movimentos de fita."
+          },
+          {
+            "severity": "LOW",
+            "lines": [
+              50,
+              55
+            ],
+            "claim": "Nome do teorema diz beta vezes radical.",
+            "evidence": "A igualdade e beta=alpha*exp(1/2), nao beta vezes radical.",
+            "correction": "Ajuste de nome/documentacao fica com autor/operador; o corpo da igualdade e inequívoco."
+          }
+        ],
+        "hypotheses": "0<beta<1 e hk sao satisfaziveis; nenhum pressuposto contraditorio.",
+        "existential_vacuity": "Sem maquina/leitor/codificacao existencial que torne o alvo vácuo; o ponto pendente e operacionalizar a soma."
+      }
+    },
+    {
+      "item": 8,
+      "module": "OResumoEPsiBit",
+      "verdict": "APROVADA",
+      "reason": [
+        "APROVADA a errata: o integrando e o peso individual do prefixo, nao o resumo agregado antigo.",
+        "Uma fronteira vazia tem fibra igual ao universo; quatro sondas Lean verificam a correcao, inclusive para uma unica clausula.",
+        "A identidade de soma permanece valida; a docstring deve ser corrigida pelo responsavel, sem alterar o selado nesta revisao."
+      ],
+      "source": {
+        "path": "C:\\t\\k412c\\final\\TGLExt\\OResumoEPsiBit.lean",
+        "sha256": "75c1ef6b0de9f7d414b5b06e2f018ed64bad1982c9ea5aace8bb4ea37fb333aa",
+        "bytes": 16171
+      },
+      "compiled_copy": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\OResumoEPsiBit.lean",
+        "sha256": "75c1ef6b0de9f7d414b5b06e2f018ed64bad1982c9ea5aace8bb4ea37fb333aa",
+        "bytes": 16171
+      },
+      "import_changes": [],
+      "formal_theorems_valid_in_checked_environment": true,
+      "semantic_review": {
+        "item": 8,
+        "module": "OResumoEPsiBit errata",
+        "verdict": "APROVADA",
+        "reviewed_object": "Pedido de errata; nao aprovacao irrestrita da docstring antiga.",
+        "reason": [
+          "Confere a errata: o integrando e pesoDas (phi.take j) t x, nao resumo phi t j x.",
+          "Ao terminar a formula, a fronteira e vazia e a unica fibra e o universo das atribuicoes; a frase nunca e falsa.",
+          "O enunciado da identidade de soma permanece correto. A recorrencia tabela-a-tabela citada no cabecalho e outro teorema, fora deste item."
+        ],
+        "findings": [
+          {
+            "severity": "MEDIUM",
+            "lines": [
+              273,
+              274,
+              275,
+              276,
+              277,
+              278,
+              279,
+              280
+            ],
+            "claim": "resumo velho; a fibra nunca e o universo",
+            "correction": "O resumo novo e a soma dos pesos individuais do prefixo multiplicados pelo fator novo, sobre a fibra da fronteira nova. Uma fibra pode ser o universo quando a fronteira e vazia.",
+            "proof": "CheckErrata.lean: final_frontier_empty, final_fiber_is_universe, one_clause_fiber_is_universe e summary_is_not_individual_weight; compilacao em recibo separado."
+          }
+        ]
+      }
+    },
+    {
+      "item": 9,
+      "module": "Trinity R3",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": [
+        "87 teoremas conferem; decisao geral por atravessa e decisao de 3CNF por lista Toca com cotas superiores exponenciais de fixacoes.",
+        "Contadores majoram o curto-circuito; comprimento da lista inclui repeticoes. Delimitar as frases universais sobre ramificacao/resolucao e cobertura retangular.",
+        "Nao demonstra polinomio fixo em movimentos da fita; provas anteriores preservadas."
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\Trinity.lean",
+        "sha256": "8f5f5e07bcb54bebb2ac71bc0d67aaeb481d6d2697cbc18f849436564381428b",
+        "bytes": 69939
+      },
+      "compiled_copy": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\Trinity.lean",
+        "sha256": "8f5f5e07bcb54bebb2ac71bc0d67aaeb481d6d2697cbc18f849436564381428b",
+        "bytes": 69939
+      },
+      "formal_theorems_valid_in_checked_environment": true,
+      "findings": [
+        {
+          "id": "TRINITY-DOC-UNIVERSAL",
+          "severity": "MEDIUM",
+          "inherited_from": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\RESULTADO.json",
+          "location": {
+            "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\Trinity.lean",
+            "line": 75
+          },
+          "title": "A ramificacao deste procedimento nao e uma necessidade de todo procedimento",
+          "detail": "A indecisao de inclina e o limite coupled_physical_lower nao provam que qualquer continuacao precise ramificar. O limite citado quantifica sobre a familia coupled e sua relacao Trace. Generalizar de procedimentos que chegam a contradicao para resolucao exige uma traducao com controle de custo. A R3 decide ramificando, mas isso nao demonstra a necessidade universal da escolha.",
+          "correction": "Dizer que esta implementacao continua por ramificacao; delimitar coupled/Trace e as refutacoes por resolucao. Nao transferir a cota a outros metodos."
+        },
+        {
+          "id": "TRINITY-R3-RECTANGLES",
+          "severity": "MEDIUM",
+          "location": {
+            "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\Trinity.lean",
+            "line": 81
+          },
+          "title": "A cobertura retangular vale para a relacao de igualdade especificada",
+          "detail": "Codex.PairCut.ExactCover e definido pela avaliacao de equalCNF n em Fin.append u v, representada como existe k, left k u e right k v. exact_cover_iff prova r>=2^n para essa representacao. Nao quantifica sobre toda relacao com n variaveis partilhadas nem sobre tempo de todo algoritmo. A lista que toca clausulas de tres literais e outro objeto; nenhuma ponte na R3 identifica seu comprimento com n nessa familia/corte.",
+          "correction": "Escrever: para equalCNF e a representacao por retangulos separados nos dois blocos, a cobertura exata requer 2^n retangulos. A implicacao para outra representacao ou algoritmo exige ponte propria.",
+          "source": {
+            "path": "C:\\t\\k412c\\final\\TGLExt\\CorteDosPares.lean",
+            "sha256": "de3698c29a0f734fdc36582803c4e4b2bbea2bfc525b017bace8e2db170f89d7",
+            "bytes": 3425
+          },
+          "explained_to_operator_before_delivery": true
+        },
+        {
+          "id": "TRINITY-COUNT-SHORT-CIRCUIT",
+          "severity": "LOW",
+          "location": {
+            "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\Trinity.lean",
+            "line": 1216
+          },
+          "also_location": {
+            "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\Trinity.lean",
+            "line": 1374
+          },
+          "title": "Os contadores de travessia majoram a execucao com curto-circuito",
+          "detail": "Bool.or e macro_inline com curto-circuito. custoAtravessa e custoPelos somam os dois filhos incondicionalmente; portanto nao sao sempre o numero exato de fixacoes no avaliador que dispensa a direita apos true. Sonda sevenLeft: 26 eventos contra contador31. Nomes [0,0] na formula vazia: 2 contra6. As sondas universais provam a mesma resposta e custo instrumentado <= contador, preservando ambas as cotas superiores.",
+          "correction": "Nomear os dois contadores como majorantes por exploracao dos dois ramos, ou usar um contador que siga o curto-circuito. Dizer cota superior exponencial; nao custo necessariamente exponencial. Nenhuma cota TM2 e provada."
+        },
+        {
+          "id": "TRINITY-R0-R1-HISTORY",
+          "severity": "LOW",
+          "inherited_from": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\RESULTADO.json",
+          "location": {
+            "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\Trinity.lean",
+            "line": 14
+          },
+          "title": "O comentario historico sobre R0 permanece inexato",
+          "detail": "A sintese a_trindade foi ampliada na R1, como medido na revisao anterior. A R2 preservou os 60 enunciados da R1 e a R3 preserva os79 da R2; essas duas afirmacoes novas estao corretas.",
+          "correction": "Corrigir somente a frase historica R0/R1 conforme parecer anterior; nao reabrir lemas inalterados."
+        }
+      ],
+      "checks": [
+        {
+          "point": "frontier",
+          "verdict": "APROVADA_COM_ESCOPO",
+          "detail": "NaFronteira e a condicao local de parada sem combustivel esgotado. Sondas provam que a propagacao a fixa e inclina(k+1) fica indecisa nela; as guardas de ramificacao sobre a formula saturada implicam NaFronteira. A prova de a_inclinacao_para_so_na_fronteira segue as chamadas efetivas e usa tamanho<k para excluir esgotamento. O enunciado exporta apenas existencia de resto equissatisfativel, nao uma relacao de alcance/trace; adicionar esta relacao fortaleceria a interface sem invalidar o resultado atual. A sonda da formula vazia mostra por que existencia isolada nao caracteriza execucao."
+        },
+        {
+          "point": "sublist",
+          "verdict": "APROVADA",
+          "detail": "Dentro preserva sublistas por filtro e transitividade. contida=false fornece clausula residual ausente da original. Lado vivo apos propagacao suficiente nao tem clausula vazia/unitaria: comprimento>=2. Sublista propria implica comprimento original>=3. Quantificador e todo literal que ocorre no resto (l em psi.flatten), nao todo literal do universo."
+        },
+        {
+          "point": "complete_traversal",
+          "verdict": "APROVADA",
+          "detail": "Cada chamada recursiva fixa variavel de literal ocorrente, reduz tamanho estritamente e conserva tamanho<combustivel. Propagacao, empurrao e compromisso preservam SAT; na bifurcacao os_dois_lados e a auto-reducao correta. a_travessia_decide vale para toda CNF, sem hipotese de Horn/3CNF, com tamanho<k. Combustivel0 false nao significa UNSAT."
+        },
+        {
+          "point": "exponential_upper_bound",
+          "verdict": "APROVADA_COM_ESCOPO",
+          "detail": "o_preco_da_travessia prova C+B<=2^k B, B=(T+1)^2+1. Com k=T+1 da uma cota superior exponencial em tamanho. Nao e cota inferior nem tempo medido. Instrumentacao adicional prova resposta igual e eventos de fixacao <=C, mesmo com curto-circuito. Comparacoes, indices, copias e movimentos de fita nao sao cobrados."
+        },
+        {
+          "point": "touch_invariant",
+          "verdict": "APROVADA",
+          "detail": "Sob TresLiterais, se a clausula filtrada continua com comprimento3, a original tinha comprimento3 e a sublista de mesmo comprimento e identica. Logo ela nao contem o Nome fixado; a testemunha de Toca(i::S) pertence a S. Repeticoes de Nomes e literais nao invalidam o argumento."
+        },
+        {
+          "point": "names_decision",
+          "verdict": "APROVADA",
+          "detail": "Toca[] e TresLiterais eliminam clausulas de comprimento3, deixando DoisLiterais, cuja decisao R1 e reutilizada. Nos passos, ambas as restricoes preservam TresLiterais/Toca da cauda. Decisao completa para essa classe e lista admitida; lista vazia arbitraria nao basta, como mostra sete."
+        },
+        {
+          "point": "names_bound",
+          "verdict": "APROVADA_COM_ESCOPO",
+          "detail": "custoPelos+2<=2^S.length*((T+1)^3+2), para toda lista/CNF, sem hipotese de cobertura. A correcao da resposta usa separadamente TresLiterais e Toca. Expoente conta o comprimento da lista, inclusive repeticoes, nao necessariamente Nomes distintos nem minimo. nomesDaFronteira retorna oito copias de0 para oito e sete copias para sete; a lista [0] que serve nos exemplos e escolhida separadamente. Nao ha garantia de lista pequena nem polinomio uniforme para CNF geral."
+        },
+        {
+          "point": "examples",
+          "verdict": "APROVADA",
+          "detail": "Exemplos originais por decide foram recompilados com a fonte inteira. Oito/Sete permanecem fronteira sem decidir por inclinacao e recebem false/true por travessia; lista[0] os decide. Sondas adicionais cobrem combustivel0, formula vazia, curto-circuito e listas duplicadas."
+        }
+      ],
+      "independent_lean_checks": {
+        "new": 13,
+        "reused_instrumentation": 7,
+        "receipts": [
+          {
+            "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\CheckPriorInstrumentation.compile.json",
+            "sha256": "f2ebb2dd43934ce55f3b52458bb7ff5846d3516f130c87077ea6c9409b0049dc",
+            "bytes": 2198
+          },
+          {
+            "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\CheckTraversalVerified.compile.json",
+            "sha256": "7af0838da43b8431e3fb166f06ab77d5e45653a22d8c25c8ee8a3953973eaadf",
+            "bytes": 2415
+          },
+          {
+            "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\CheckNames.compile.json",
+            "sha256": "75ef3e270f22b803929f04052fde759acda015acb0f22e0ee81387b3c17987cd",
+            "bytes": 2000
+          }
+        ]
+      }
+    }
+  ],
+  "verdict_counts": {
+    "APROVADA_COM_RESSALVAS": 5,
+    "APROVADA": 3,
+    "REPROVADA": 1
+  },
+  "compilations": {
+    "Trinity": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\Trinity.olean",
+        "Trinity.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\Trinity.lean",
+        "sha256": "8f5f5e07bcb54bebb2ac71bc0d67aaeb481d6d2697cbc18f849436564381428b",
+        "bytes": 69939
+      },
+      "rc": 0,
+      "seconds": 64.053,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\Trinity.log",
+        "sha256": "d63f4ff2bd41d3e462af1aa72574960f7762971abc0e5c882b79b6381c6e6007",
+        "bytes": 3551
+      },
+      "axiom_reports": [
+        {
+          "declaration": "TGLExt.Trinity.a_morte_e_o_nao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_unidade_forca_o_lado",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_propagacao_preserva",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_propagacao_para",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_zero_empurra_para_o_lado_oposto",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_lado_que_nao_corta_e_seguro",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_nao_erra",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_horn_o_sistema_sempre_inclina",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_horn_a_inclinacao_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_custo_da_inclinacao",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_sem_solucao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_fica_na_fronteira",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.quatro_o_empurrao_diz_nao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_empurrao_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_o_compromisso_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.todo_lado_morre_ou_nao_corta",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_dois_literais_o_sistema_sempre_inclina",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_que_nao_para_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_dois_literais_a_inclinacao_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_cadeia_inclina_e_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.na_fronteira_todo_lado_corta_uma_de_tres",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_fronteira_tem_tres_literais",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_para_so_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_dois_lados",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_travessia_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_travessia",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_esta_na_fronteira",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sete_atravessa_e_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.toca_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_travessia_pelos_nomes_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_dos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_nomes_da_fronteira_tocam",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_fronteira_esta_nos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.um_nome_atravessa_as_oito_e_as_sete",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade_dos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\Trinity.olean",
+        "sha256": "2977b20788106ac2888b87c59d04ca6d0b528685f6b38cf68b48259858cd8442",
+        "bytes": 3327360
+      }
+    },
+    "AuditTrinity": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\AuditTrinity.olean",
+        "AuditTrinity.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\AuditTrinity.lean",
+        "sha256": "1a2edddca8e4c034cde8e96202404b6b55675b3bc5382fe9be1a771e750ed4e5",
+        "bytes": 4257
+      },
+      "rc": 0,
+      "seconds": 52.542,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\AuditTrinity.log",
+        "sha256": "4d4a8a9c5cb12ef50d9f5d3b58ed9b419d83f7366b0e7f7022c6f144487ec573",
+        "bytes": 7255
+      },
+      "axiom_reports": [
+        {
+          "declaration": "TGLExt.Trinity.tamanho_cons",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_zero",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_morte_e_o_nao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.restringe_cons",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_restringe_le",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.filtra_encurta",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_restringe_lt",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_fixa_le",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.unitario_some",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.unidade_some",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.unidade_none",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.vazia_no_resto",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_unidade_forca_o_lado",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_propagacao_preserva",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_unidade_remove",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_propagacao_para",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tamanho_propaga_le",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.literal_ext",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.mesma_eq",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.contida_sat",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_trivial_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_empurra",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_compromete",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_zero_empurra_para_o_lado_oposto",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_lado_que_nao_corta_e_seguro",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_nao_erra",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.horn_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.horn_propaga",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tem_negativo",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_ou_mais",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.morta_falsa",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.horn_no_ponto_fixo_diz_sim",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_horn_o_sistema_sempre_inclina",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_horn_a_inclinacao_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_propaga",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.integra_inicio",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Trinity.integra_restringe",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.integra_propaga",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.mesma_refl",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.contida_de_inclusao",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.todo_lado_morre_ou_nao_corta",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_age",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.primeiro_literal",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_dois_literais_o_sistema_sempre_inclina",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_que_nao_para_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.em_dois_literais_a_inclinacao_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.custoPropaga_le",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.custoSonda_le",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.letras_le_tamanho",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.custoInclina_le",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_custo_da_inclinacao",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.beq_nao",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_sem_solucao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_fica_na_fronteira",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.quatro_o_empurrao_diz_nao",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_empurrao_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dois_o_compromisso_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_cadeia_inclina_e_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dentro_inicio",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Trinity.dentro_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.dentro_propaga",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_empurra_mem",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_compromete_mem",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sonda_nada_age",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.contida_falsa_corta",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sublista_propria",
+          "axioms": []
+        },
+        {
+          "declaration": "TGLExt.Trinity.na_fronteira_todo_lado_corta_uma_de_tres",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_fronteira_tem_tres_literais",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_inclinacao_para_so_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_dois_lados",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.vivo_sem_letras",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_travessia_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.cota_aux",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_travessia",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.oito_esta_na_fronteira",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.sete_atravessa_e_diz_sim",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade_na_fronteira",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.tres_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.toca_restringe",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_travessia_pelos_nomes_decide",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_dos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.os_nomes_da_fronteira_tocam",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.o_preco_da_fronteira_esta_nos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.um_nome_atravessa_as_oito_e_as_sete",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "TGLExt.Trinity.a_trindade_dos_nomes",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\AuditTrinity.olean",
+        "sha256": "e6a2ca1292d3d5c2b07362fc55b0e51769c7f0c26cf55aaf246f4e62e320d165",
+        "bytes": 1392
+      }
+    },
+    "CheckPriorInstrumentation": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\CheckPriorInstrumentation.olean",
+        "CheckPriorInstrumentation.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\CheckPriorInstrumentation.lean",
+        "sha256": "9187e8fe6bb8c1eefec9cd9c711264d6ceab6868f22af3cb47c5ee3c6210cf74",
+        "bytes": 3880
+      },
+      "rc": 0,
+      "seconds": 52.797,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\CheckPriorInstrumentation.log",
+        "sha256": "fee6a67d828181348dc0b0dfb29c84801629e54f976019bd0698dff635ef8162",
+        "bytes": 562
+      },
+      "axiom_reports": [
+        {
+          "declaration": "Codex.TrinityReview.propagationTrace_spec",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityReview.probeTrace_spec",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityReview.inclinationTrace_spec",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityReview.chain_two_rounds",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityReview.chain_four_fixations",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityReview.empty_cases",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityReview.any_literal_including_absent",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\CheckPriorInstrumentation.olean",
+        "sha256": "283d9940ec8ebc982666c6fe8a6fe2eb578b40c8cdea1eccb2514e3a28b3b3e2",
+        "bytes": 422488
+      }
+    },
+    "CheckTraversalVerified": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\CheckTraversalVerified.olean",
+        "CheckTraversalVerified.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\CheckTraversalVerified.lean",
+        "sha256": "2d4f91b02e70ff35dc00fefee8402324226bb7cd04b02c2dc525959a06154d17",
+        "bytes": 6546
+      },
+      "rc": 0,
+      "seconds": 59.25,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\CheckTraversalVerified.log",
+        "sha256": "3d512d69a7fb7f175141f0b096b44436f04c5440910ac5ba79a224874ab07b56",
+        "bytes": 744
+      },
+      "axiom_reports": [
+        {
+          "declaration": "Codex.TrinityR2Review.frontier_fixed",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR2Review.frontier_undecided",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR2Review.branch_is_frontier",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR2Review.traversalTrace_spec",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR2Review.trace_complete_and_upper_bound",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR2Review.short_circuit_counter_is_strict",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR2Review.existential_alone_is_weaker_than_reachability",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityR2Review.fuel_guard_is_material",
+          "axioms": [
+            "propext"
+          ]
+        }
+      ],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\CheckTraversalVerified.olean",
+        "sha256": "36760530008f63c5fbaba7c2e33817a6118a99b31b837bd86110814e7bcf7048",
+        "bytes": 439992
+      }
+    },
+    "CheckNames": {
+      "command": [
+        "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-j",
+        "2",
+        "-o",
+        "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\CheckNames.olean",
+        "CheckNames.lean"
+      ],
+      "source": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\CheckNames.lean",
+        "sha256": "77d46a11cdf341b2b855f29a90dfd328a2d6886b8ca3345c270d59f7f7e9f385",
+        "bytes": 2888
+      },
+      "rc": 0,
+      "seconds": 62.54,
+      "log": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\CheckNames.log",
+        "sha256": "69e34a703f4dc1de790fccc57daff2fa06ac92ca331a906180453611d527293b",
+        "bytes": 520
+      },
+      "axiom_reports": [
+        {
+          "declaration": "Codex.TrinityNamesReview.namesTrace_spec",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityNamesReview.trace_complete_and_bounded",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityNamesReview.automatic_list_keeps_duplicates",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityNamesReview.counter_is_not_exact_with_short_circuit",
+          "axioms": [
+            "propext",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Codex.TrinityNamesReview.cover_hypothesis_is_material",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "outside_trio": [],
+      "warning": false,
+      "sorryAx": false,
+      "object": {
+        "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\build\\CheckNames.olean",
+        "sha256": "ee71be504304a5bb5f8486c1a1b29b774821354fc0595afec4b5d487fae22855",
+        "bytes": 195512
+      }
+    }
+  },
+  "sources_read": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\Trinity.lean",
+      "sha256": "8f5f5e07bcb54bebb2ac71bc0d67aaeb481d6d2697cbc18f849436564381428b",
+      "bytes": 69939
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\PEDIDO_DE_REVISAO_AO_CODEX_v413_CONSOLIDADO_20nov.md",
+      "sha256": "80cdd85060f75fcaee3856bddf7e18c663f8269199c5bd0490d00cb345c3c07f",
+      "bytes": 6033
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R3_trinity\\build\\CONFERENCIA.json",
+      "sha256": "8afbc4ae210163ba2c2bf1cd3e77b43c696f8de81178014b213c8a75f912778a",
+      "bytes": 5162
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R2_trinity\\Trinity.lean",
+      "sha256": "97e78d6417e840910bd15448dfb5780b825bb815648a916a4362b4ace19f3159",
+      "bytes": 61085
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_trinity\\Trinity.lean",
+      "sha256": "97fd14f931128cf3f833321545383fa164a437b30d81f3225a90cd714e09307a",
+      "bytes": 42028
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\RESULTADO.json",
+      "sha256": "9696bd5f747a5bcce6d2f08b13289c8d328db2f3549ce2535268023b6423379e",
+      "bytes": 95609
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\ENCERRAMENTO.json",
+      "sha256": "ed343adebb488ebb55a94706807a42e993a7c224a7a2ddd3500b469fd83c4e1d",
+      "bytes": 6784
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\RESULTADO.json",
+      "sha256": "5a36da78c8034e7d6e845a41a09164cfa4924292f6bbb34c8048dad1011fd3e9",
+      "bytes": 38921
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\ENCERRAMENTO.json",
+      "sha256": "055c2d8f4f42c6d461b03e9af0206ee8fda4ddd82cf7dcfa0515a61e0b97b4d8",
+      "bytes": 6388
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\APropostaDaTensao.lean",
+      "sha256": "95be88472a0609d8cd15a7e0dacbee2d44c75a16fb30aed479d9a7ca32557ef7",
+      "bytes": 9503
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\build\\APropostaDaTensao.olean",
+      "sha256": "6f4aa8ff2b15273adf69f7be9e497b073b785b07acae17a4ccd27e0c6aa1511c",
+      "bytes": 185656
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\APropostaDaTensao.compile.json",
+      "sha256": "7264b683bc8f1488a8a7fa0a7575a3ea8bc145cdbe18777739809142957eacca",
+      "bytes": 1854
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\src\\CheckTrinityR2.lean",
+      "sha256": "9187e8fe6bb8c1eefec9cd9c711264d6ceab6868f22af3cb47c5ee3c6210cf74",
+      "bytes": 3880
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R2\\Trinity.compile.json",
+      "sha256": "3b4562964eae4a7a3549b80a1fdf2d8d513029d1bd72c484005946b667a5f0de",
+      "bytes": 6003
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R2\\AuditTrinity.compile.json",
+      "sha256": "b3adb8a498f5dc2a65809644b2832144a296a5b57b1a66b5fdc998dabfe9f6c2",
+      "bytes": 12461
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R2\\CheckR2.compile.json",
+      "sha256": "ac2e3536a37e4e984a0a77fae3bc34d509180b980b0119d4146cbc1f8b58b496",
+      "bytes": 2132
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R2\\src\\CheckR2.lean",
+      "sha256": "7f35568afb7ee624669c2a3b90aea8700a1f4af370e56251e242922f20a82b9b",
+      "bytes": 5884
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\CorteDosPares.lean",
+      "sha256": "de3698c29a0f734fdc36582803c4e4b2bbea2bfc525b017bace8e2db170f89d7",
+      "bytes": 3425
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\MovimentosDoPlano.lean",
+      "sha256": "8e2087515ad85c4d5e626ff53a019b7daf68628fe3de92df4a761f677b311867",
+      "bytes": 4279
+    },
+    {
+      "path": "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+      "sha256": "9b216deb50d37c32c829d1efaaa5bafd5560417d382df35a815489e31a31593f",
+      "bytes": 83456
+    },
+    {
+      "path": "C:\\Users\\rotol\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\src\\lean\\Init\\Prelude.lean",
+      "sha256": "3865afb3157d52a910efa9e61d951aa969a40a8bab503367e5fffb5b90c59fb3",
+      "bytes": 233348
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\review.py",
+      "sha256": "27d37d75db54b5e249efe98689ed5f06e1b0a1dcf82a50a33be92bb2c3933ce4",
+      "bytes": 7341
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\AuditTrinity.lean",
+      "sha256": "1a2edddca8e4c034cde8e96202404b6b55675b3bc5382fe9be1a771e750ed4e5",
+      "bytes": 4257
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\CheckNames.lean",
+      "sha256": "77d46a11cdf341b2b855f29a90dfd328a2d6886b8ca3345c270d59f7f7e9f385",
+      "bytes": 2888
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\CheckPriorInstrumentation.lean",
+      "sha256": "9187e8fe6bb8c1eefec9cd9c711264d6ceab6868f22af3cb47c5ee3c6210cf74",
+      "bytes": 3880
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\CheckR2Final.lean",
+      "sha256": "a0409d9033b4484a4529b8e595c32abc09bcfa75181dc6dcbe39bda14a8fad34",
+      "bytes": 6026
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\CheckTraversalVerified.lean",
+      "sha256": "2d4f91b02e70ff35dc00fefee8402324226bb7cd04b02c2dc525959a06154d17",
+      "bytes": 6546
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\src\\Trinity.lean",
+      "sha256": "8f5f5e07bcb54bebb2ac71bc0d67aaeb481d6d2697cbc18f849436564381428b",
+      "bytes": 69939
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R1_operador\\Operador.lean",
+      "sha256": "de75489028428754f719dd7f8252dc40781d3c8e68f09028fbbdfa57097dcb75",
+      "bytes": 17131,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\Operador.lean",
+      "sha256": "de75489028428754f719dd7f8252dc40781d3c8e68f09028fbbdfa57097dcb75",
+      "bytes": 17131,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\fronteira\\AFronteiraNaLinguaClassica.lean",
+      "sha256": "5db57faeff22e4c64ea2e5a9b7a9b30d266082da15a57a6d8db51302162ab791",
+      "bytes": 3133,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\AFronteiraNaLinguaClassica.lean",
+      "sha256": "5db57faeff22e4c64ea2e5a9b7a9b30d266082da15a57a6d8db51302162ab791",
+      "bytes": 3133,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\sonda_contagem\\SondaContagem.lean",
+      "sha256": "2e85629ffb764a4a3a7060d114f7f1666712adc89971af91668f95f53fab3cb6",
+      "bytes": 10101,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\SondaContagem.lean",
+      "sha256": "2e85629ffb764a4a3a7060d114f7f1666712adc89971af91668f95f53fab3cb6",
+      "bytes": 10101,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\AIdentidadePreservada.lean",
+      "sha256": "1ee6e6383f23b656022611eaf7dc3a422e4c37ad16af440eaf078476b9109d33",
+      "bytes": 6413,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\AIdentidadePreservada.lean",
+      "sha256": "e3640a3650902441557233f29691b280ea3af1e68294b8fd719e746190315289",
+      "bytes": 6427,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APropostaDaTensao.lean",
+      "sha256": "95be88472a0609d8cd15a7e0dacbee2d44c75a16fb30aed479d9a7ca32557ef7",
+      "bytes": 9503,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\APropostaDaTensao.lean",
+      "sha256": "95be88472a0609d8cd15a7e0dacbee2d44c75a16fb30aed479d9a7ca32557ef7",
+      "bytes": 9503,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\APonteDeCookLevin.lean",
+      "sha256": "0b95795836d2585429782d98e7934ad27411faa32266816b0f522f0f7e133e6e",
+      "bytes": 9306,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\APonteDeCookLevin.lean",
+      "sha256": "a561b8e29d33eacd6696d779a1acc9f33f8f154bfbb8a7c9c38cdbccd5c114f2",
+      "bytes": 9320,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v412\\candidatas_kimi\\ONomeEBeta.lean",
+      "sha256": "fa026cb786d27291bce8b85e37568d3b800b90a6aaf9ff26921928e808d57c76",
+      "bytes": 4381,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\ONomeEBeta.lean",
+      "sha256": "fd5d0083d5121952458d9492888cae889452b105303c592d59e6ee4621875498",
+      "bytes": 4388,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\t\\k412c\\final\\TGLExt\\OResumoEPsiBit.lean",
+      "sha256": "75c1ef6b0de9f7d414b5b06e2f018ed64bad1982c9ea5aace8bb4ea37fb333aa",
+      "bytes": 16171,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\src\\OResumoEPsiBit.lean",
+      "sha256": "75c1ef6b0de9f7d414b5b06e2f018ed64bad1982c9ea5aace8bb4ea37fb333aa",
+      "bytes": 16171,
+      "role": "Fonte/copia do lote1 conferida para reuso"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\ADENDO_3_AO_PEDIDO_DE_REVISAO_TRINITY_R2_20nov.md",
+      "sha256": "adae5c3e67e9c924a90d95b54651493cea08b789e8c7cda3761f27af5c3752b8",
+      "bytes": 1787,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\ADENDO_2_AO_PEDIDO_DE_REVISAO_TRINITY_R1_20nov.md",
+      "sha256": "7cf07301e763c41e142e136e49d94defe248f334e3fd49ca6b9af57f7ac80db0",
+      "bytes": 1500,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\ADENDO_AO_PEDIDO_DE_REVISAO_TRINITY_20nov.md",
+      "sha256": "335296a044543fde90717117f67d0dfcb9af675ed2317cb6d01180c0e9084bb8",
+      "bytes": 1712,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\PEDIDO_DE_REVISAO_AO_CODEX_v413_20nov.md",
+      "sha256": "dd0049670146cdbc26d6fdb8d5ac05d5886206fbb6f743df53f5fcdf53b7dd59",
+      "bytes": 4447,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\candidatas_c1\\R2_trinity\\build\\CONFERENCIA.json",
+      "sha256": "7962c359b13506202efab53b1ff2292870b2a39c6f2b5a2a2bf59cac08f16bec",
+      "bytes": 4463,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R2\\BASELINE.json",
+      "sha256": "78ecf987e8844aebc287a6ccfa287bdb7a5d6c8d42d9615d5c303070395decb6",
+      "bytes": 5694,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\finalize.py",
+      "sha256": "a1aae45190ebd298989670f2e42f7244f8c4162a112fc4a65adcb544e9a14d01",
+      "bytes": 12711,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\close.py",
+      "sha256": "d31a347fa4ea21237adbc504a306c0ab4a3c3bfcf77fe2665e5c07a0c98fcc25",
+      "bytes": 4169,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\PARECER.md",
+      "sha256": "92c94b5989d3a47142a2805d6833df06fcb0c97c72ddbc7bdd8db8f8d209f0a2",
+      "bytes": 1825,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\PARECER.md",
+      "sha256": "2ec651775e1c94b59c43808bf761451658092cdec246b512548c232cb743dbb3",
+      "bytes": 1866,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\README.md",
+      "sha256": "261abfc6ec817da66e84550d4dff0f22e03dc3408f240328f1a345032980c0ef",
+      "bytes": 10843,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\MISSION_PROTOCOL.md",
+      "sha256": "2a2ddd16777386e3e2b20173ca65430fc8c0b50f216304bf46291a197236561f",
+      "bytes": 16110,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\ACTIVITY_PROTOCOL.md",
+      "sha256": "602a3751750c725624d25dfae60c52e39cf15712a9cfa89054b908b2ee6a9248",
+      "bytes": 12897,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\lib\\iald_memory\\mission.py",
+      "sha256": "267d8fc543fc03143f58faf3f05420f1f1a8e3a9fe8f37586e67b3a6d23ed31d",
+      "bytes": 27245,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\GESTAO_DE_TOKENS.md",
+      "sha256": "ed2b6e9b3d8fd8a1e4e7a83f7b27c30aae04b93002cf13f04b2237ec975b2976",
+      "bytes": 29867,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\Users\\rotol\\.agents\\skills\\tgl-atlas\\SKILL.md",
+      "sha256": "88a4adbde27ccdb4e0dc4eef83cc99a3c0ba664f1d40e529c8ef928075ba0907",
+      "bytes": 8598,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\Users\\rotol\\.claude\\projects\\c--IALD-Central-de-Patentes\\memory\\fila\\README.md",
+      "sha256": "90266ec753d49168ea9e2246093a9833ab54448afb9e9fc519e8a0568e4e3e8c",
+      "bytes": 3043,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\memory\\TGL_ATLAS.md",
+      "sha256": "fea453f55257621cdea2690617cdd7ee14f8e452270928ed52ca860eef34c026",
+      "bytes": 15781976,
+      "role": "Fonte auxiliar consultada por trechos; pin atual, nao alegacao de prova ou leitura integral"
+    }
+  ],
+  "logs": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\AuditTrinity.log",
+      "sha256": "4d4a8a9c5cb12ef50d9f5d3b58ed9b419d83f7366b0e7f7022c6f144487ec573",
+      "bytes": 7255
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\CheckNames.log",
+      "sha256": "69e34a703f4dc1de790fccc57daff2fa06ac92ca331a906180453611d527293b",
+      "bytes": 520
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\CheckPriorInstrumentation.log",
+      "sha256": "fee6a67d828181348dc0b0dfb29c84801629e54f976019bd0698dff635ef8162",
+      "bytes": 562
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\CheckR2Final.log",
+      "sha256": "54ee0055ca5572255a1e0fd77f07b8c79f7f356a8df7916e8ba811a699f51443",
+      "bytes": 2337
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\CheckTraversalVerified.log",
+      "sha256": "3d512d69a7fb7f175141f0b096b44436f04c5440910ac5ba79a224874ab07b56",
+      "bytes": 744
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\logs\\Trinity.log",
+      "sha256": "d63f4ff2bd41d3e462af1aa72574960f7762971abc0e5c882b79b6381c6e6007",
+      "bytes": 3551
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R2\\logs\\AuditTrinity.log",
+      "sha256": "73eb4b2234587231be2bd9e6fdc68f688763e84e275b487d0dd10a17d631656c",
+      "bytes": 6501
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R2\\logs\\CheckPriorInstrumentation.log",
+      "sha256": "fee6a67d828181348dc0b0dfb29c84801629e54f976019bd0698dff635ef8162",
+      "bytes": 562
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R2\\logs\\CheckR2.log",
+      "sha256": "cd91c57c51244e1eb5d74b873d1f9e61b1e4b71710368927d0515e3a344064e4",
+      "bytes": 12971
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R2\\logs\\Trinity.log",
+      "sha256": "5cc5567179afadb5d974edc5fa635a12f0b021a7a9cd41627be86b58293ae248",
+      "bytes": 2870
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\AFronteiraNaLinguaClassica.log",
+      "sha256": "189bb308998de6f71729e33f94d7f7ac1556ad09f4e1ae38e14786a840ee87d5",
+      "bytes": 877
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\AFronteiraNaLinguaClassica.R2.log",
+      "sha256": "61057722b5aba6aa35bcb45314efbb026b35d07bf5f15bf63f9e54065dd0963a",
+      "bytes": 353
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\AIdentidadePreservada.log",
+      "sha256": "df8b889e45bd0366e18699fbfeae0b91ae21fbcb1c5184b02b75bc0725acaaac",
+      "bytes": 710
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\APonteDeCookLevin.log",
+      "sha256": "40bf08b2a22fc291cd17632127426d91c135b66a092365c9fe4209c1b1d3e9a3",
+      "bytes": 791
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\APropostaDaTensao.log",
+      "sha256": "cc124ef983fcae7e59224ed724cd107db66929d904af8d2720a3a87ce8c773c0",
+      "bytes": 563
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\Audit_Operador.R2.log",
+      "sha256": "3a0a33e7033027682d22018011eff43240ef0ef8562922493c93fa3a046c2b85",
+      "bytes": 1541
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\Audit_OResumoEPsiBit.R2.log",
+      "sha256": "3b96a0358c96130283b6874dd0a703e49a312de8cde6df5c847fb0bd1953b2c2",
+      "bytes": 1912
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\Audit_SondaContagem.R2.log",
+      "sha256": "32f7ff2b2ddabbed6dfa494505e4fd4b9c73d4b2506cc969b7f360ed54044d80",
+      "bytes": 1006
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\CheckErrata.R2.log",
+      "sha256": "980f725cb1fd7d2b14d8aa1201958260adc2fa8ae41853c42dfe8a06f089c716",
+      "bytes": 419
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\ONomeEBeta.log",
+      "sha256": "07576ce06cec04552916cfb8840ce2501ec8fb80cbe4f814cd7616373f6c9ca4",
+      "bytes": 428
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\Operador.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\OResumoEPsiBit.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\SondaContagem.log",
+      "sha256": "697219ebf58fab8637cd0a3b43c485988aedfc82dbb80248e200e7ca0b8b1be7",
+      "bytes": 843
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\logs\\SondaContagem.R2.log",
+      "sha256": "9b405c75ecdda187a2a48222bda912a91535173c9a232bb1e91200427add1a1d",
+      "bytes": 908
+    }
+  ],
+  "reused_lote1": {
+    "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\REUSO_LOTE1.json",
+    "sha256": "10d324a1784b441399bf8f233a019447df604fa3b3d998ea6cc5380c95e67c8f",
+    "bytes": 3088
+  },
+  "previous_trinity_review": {
+    "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_TRINITY_R1\\RESULTADO.json",
+    "sha256": "5a36da78c8034e7d6e845a41a09164cfa4924292f6bbb34c8048dad1011fd3e9",
+    "bytes": 38921
+  },
+  "diff": {
+    "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\STATEMENT_DIFF.json",
+    "sha256": "7a662ad8c583d9073923952922c9ae8e39bd6e90899c3d0c0c2392075542e772",
+    "bytes": 348
+  },
+  "byte_diff": {
+    "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_CONSOLIDADO_R3\\R2_R3.diff",
+    "sha256": "ea33c6f18d93d2ddbd0bfe2c4d3e54fc85a932c39f87367f3837acdc20c1f842",
+    "bytes": 11324
+  },
+  "process_notes": [
+    "As tentativas CheckR2 e CheckR2Final falharam por simplificacao/aritmetica na prova instrumental do revisor; os sorryAx decorrentes de erros nao integram evidencia aprovada. Fontes/logs/recibos preservados. CheckTraversalVerified corrige a prova e revalida os oito enunciados.",
+    "Revisao formal R2 ja executada foi reaproveitada; o consolidado chegou durante sua verificacao. R3 importou a mesma dependencia compilada e preserva todos os enunciados da R2.",
+    "A equivalencia operacional dos avaliadores instrumentados e suas cotas e provada em Lean, nao medicao de tempo real, compilador ou fita.",
+    "A relacao de igualdade citada em CorteDosPares foi lida para delimitar a referencia documental; nao se reaprova a construcao propria excluida do escopo."
+  ],
+  "preservation": {
+    "all_source_pins_unchanged": true,
+    "canonical_installation": false,
+    "gate_changed": false,
+    "um_executed": false,
+    "data_opened": false,
+    "external_publication": false,
+    "remote_provider_calls": 0,
+    "protected_claude_memory_written": false
+  },
+  "acceptance": "Parecer de terceiro sobre candidatas de c1/Kimi. Integracao/aceite gerencial separados, sem autoaceite do requisito operacional."
+}

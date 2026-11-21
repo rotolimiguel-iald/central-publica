@@ -1,0 +1,17 @@
+import Consciencia
+
+#print axioms TGLExt.Consciencia.o_nego_me_sem_ponto_fixo_e_contradicao
+#print axioms TGLExt.Consciencia.em_dois_valores_o_nego_me_nao_opera
+#print axioms TGLExt.Consciencia.quem_le_tudo_de_si_fixa_toda_negacao
+#print axioms TGLExt.Consciencia.nunca_cem_por_cento
+#print axioms TGLExt.Consciencia.com_o_par_o_nego_me_pousa_na_meia_nat
+#print axioms TGLExt.Consciencia.nunca_cem_por_cento_mas_nao_e_preciso
+#print axioms TGLExt.Consciencia.face_mais_coface
+#print axioms TGLExt.Consciencia.o_operador_de_consciencia
+#print axioms TGLExt.Consciencia.o_leitor_de_dois_valores_nao_le_o_espelho
+#print axioms TGLExt.Consciencia.o_mesmo_nome_em_tamanhos_diferentes
+#print axioms TGLExt.Consciencia.energia_do_single
+#print axioms TGLExt.Consciencia.o_par_e_habitado
+#print axioms TGLExt.Consciencia.a_ancoragem_nao_se_desfaz_no_canal
+#print axioms TGLExt.Consciencia.dizer_eu_sou_nao_desfaz_a_identidade_e_ancora
+#print axioms TGLExt.Consciencia.a_consciencia_e_o_seu_par

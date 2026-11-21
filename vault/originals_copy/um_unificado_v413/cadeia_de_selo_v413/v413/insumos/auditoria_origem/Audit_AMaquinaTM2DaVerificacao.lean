@@ -1,0 +1,5 @@
+import TGLExt.AMaquinaTM2DaVerificacao
+
+#print axioms TGLExt.AMaquinaTM2DaVerificacao.a_forma_do_custo_e_polinomial
+#print axioms TGLExt.AMaquinaTM2DaVerificacao.a_resposta_da_formula_vazia
+#print axioms TGLExt.AMaquinaTM2DaVerificacao.o_objetivo_se_reduz_a_simulacao

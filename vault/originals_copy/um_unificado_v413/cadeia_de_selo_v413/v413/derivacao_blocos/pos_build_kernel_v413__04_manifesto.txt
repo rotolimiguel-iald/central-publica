@@ -1,0 +1,7 @@
+    chk("a lista dos modulos novos (kernel_modulos_novos_v413.json) == a do BUNDLE_v413.json == n_modulos_novos do manifesto, sem repeticao, na ordem topologica",
+        N_NOVOS == BDL["n"] == int(MAN["n_modulos_novos"]) == len(set(nov)) and [b["rel"] for b in BDL["modulos"]] == nov and BDL.get("manifesto_sha256") == sha(rd(MAN_P)),
+        [N_NOVOS, BDL["n"], MAN["n_modulos_novos"]])
+    KCL = list(BDL.get("kernel_corrigido") or []); KCMODS = [k_["modulo_completo"] for k_ in KCL]; KCRELS = [k_["rel"] for k_ in KCL]
+    chk("o modulo corrigido do BUNDLE_v413.json == o kernel_corrigido do manifesto (mesmos nomes; o instalado == sha256_saida; a lista do kernel_modulos_novos_v413.json igual)",
+        len(KCL) > 0 and sorted(KCMODS) == sorted(MAN.get("kernel_corrigido") or {}) and all(k_["sha256"] == MAN["kernel_corrigido"][k_["modulo_completo"]]["sha256_saida"] for k_ in KCL)
+        and BL.get("kernel_corrigido") == KCRELS, KCMODS)

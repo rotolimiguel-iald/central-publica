@@ -1,0 +1,288 @@
+{
+ "ok": true,
+ "modo": "proposta",
+ "resumo": {
+  "nome": "portao_do_pilar_no_candidato_v413",
+  "n_checagens": 12,
+  "n_ok": 12,
+  "n_itens_total": 105,
+  "ok": true
+ },
+ "checagens": [
+  {
+   "checagem": "o fecho de dependencias da chave e' o mesmo na base e no candidato (11 nomes)",
+   "ok": true,
+   "n_itens_examinados": 11,
+   "detalhe": []
+  },
+  {
+   "checagem": "o fecho da chave e' o mesmo que a Etapa 1 mediu (PORTAO_DO_PILAR_v413.json, campo fecho_dos_nomes_de_topo_da_chave)",
+   "ok": true,
+   "n_itens_examinados": 11,
+   "detalhe": []
+  },
+  {
+   "checagem": "o sha256 do texto de cada nome do fecho no candidato e' o que a Etapa 1 leu no um.py selado",
+   "ok": true,
+   "n_itens_examinados": 11,
+   "detalhe": {}
+  },
+  {
+   "checagem": "o texto de CADA nome do fecho tem o mesmo sha256 na base e no candidato",
+   "ok": true,
+   "n_itens_examinados": 11,
+   "detalhe": []
+  },
+  {
+   "checagem": "a entrada worker_sha256 (_qp_materialize, _QP_WORKER_SRC, _qp_dir): cada nome tem o mesmo sha256 na base e no candidato",
+   "ok": true,
+   "n_itens_examinados": 3,
+   "detalhe": {
+    "_qp_materialize": {
+     "base": "7ac6caf0b579f66c",
+     "candidato": "7ac6caf0b579f66c",
+     "igual": true
+    },
+    "_QP_WORKER_SRC": {
+     "base": "017df5833b08dbab",
+     "candidato": "017df5833b08dbab",
+     "igual": true
+    },
+    "_qp_dir": {
+     "base": "eb4c0af5bb26dd70",
+     "candidato": "eb4c0af5bb26dd70",
+     "igual": true
+    }
+   }
+  },
+  {
+   "checagem": "a entrada spec_canonica (_QP_SPEC_JSON, _qp_canon, _QP_SPEC_SHA256): cada nome tem o mesmo sha256 na base e no candidato",
+   "ok": true,
+   "n_itens_examinados": 3,
+   "detalhe": {
+    "_QP_SPEC_JSON": {
+     "base": "cfd6f7b675e847e7",
+     "candidato": "cfd6f7b675e847e7",
+     "igual": true
+    },
+    "_qp_canon": {
+     "base": "512a089ef6a1b127",
+     "candidato": "512a089ef6a1b127",
+     "igual": true
+    },
+    "_QP_SPEC_SHA256": {
+     "base": "a4626fb03520f853",
+     "candidato": "a4626fb03520f853",
+     "igual": true
+    }
+   }
+  },
+  {
+   "checagem": "a entrada beta_hex (_qp_beta): cada nome tem o mesmo sha256 na base e no candidato",
+   "ok": true,
+   "n_itens_examinados": 1,
+   "detalhe": {
+    "_qp_beta": {
+     "base": "5dd85cbc6b5604c9",
+     "candidato": "5dd85cbc6b5604c9",
+     "igual": true
+    }
+   }
+  },
+  {
+   "checagem": "nenhum nome do que a v413 muda (kernel embutido com o modulo corrigido, bandeiras, escada, ledger, registros, texto do artigo) esta' no fecho da chave do candidato",
+   "ok": true,
+   "n_itens_examinados": 16,
+   "detalhe": []
+  },
+  {
+   "checagem": "as tres entradas da chave sao as de PORTAO_DO_PILAR_v413.json",
+   "ok": true,
+   "n_itens_examinados": 3,
+   "detalhe": [
+    "beta_hex",
+    "spec_canonica",
+    "worker_sha256"
+   ]
+  },
+  {
+   "checagem": "os nomes de topo que mudam da base ao candidato sao so' os do delta (kernel embutido, bandeiras, escada, ledger, versao, pinos herdados, main, literais da escada); nenhum do fecho",
+   "ok": true,
+   "n_itens_examinados": 28,
+   "detalhe": {
+    "mudam": [
+     "UM_VERSION",
+     "_EMBEDDED_KERNEL_FILES",
+     "_ESQUELETO_STONES",
+     "_LEAN_THEOREM_FLAGS",
+     "_V394_FORMAL_CONTRACT",
+     "_V394_NETWORK_CONTRACT",
+     "_V394_QUADRATIC_CONTRACT",
+     "_V395_PSIBIT_CONTRACT",
+     "_V396_TESTEMUNHA_CONTRACT",
+     "_V398_AFINACAO_CONTRACT",
+     "_V398_SONICO_CONTRACT",
+     "_V401_FALSIDADE_CONTRACT",
+     "_V402_CONTRACTS",
+     "_V403_CONTRACTS",
+     "_V404_CONTRACTS",
+     "_V405_CONTRACTS",
+     "_V406_FECHO_CONTRACT",
+     "_V407_PSION_CONTRACT",
+     "_V408_TERMINAL_CONTRACT",
+     "_V409_TRADUCAO_CONTRACT",
+     "_V410_AESCALA_CONTRACT",
+     "_V410_IALD2_CONTRACT",
+     "_V411_H0DN_CONTRACT",
+     "_V411_SPECS",
+     "build_en",
+     "build_pt",
+     "main",
+     "prove_external_ladder"
+    ],
+    "fora_do_esperado": [
+     "_V394_FORMAL_CONTRACT",
+     "_V394_NETWORK_CONTRACT",
+     "_V394_QUADRATIC_CONTRACT",
+     "_V395_PSIBIT_CONTRACT",
+     "_V396_TESTEMUNHA_CONTRACT",
+     "_V398_AFINACAO_CONTRACT",
+     "_V398_SONICO_CONTRACT",
+     "_V401_FALSIDADE_CONTRACT",
+     "_V402_CONTRACTS",
+     "_V403_CONTRACTS",
+     "_V404_CONTRACTS",
+     "_V405_CONTRACTS",
+     "_V406_FECHO_CONTRACT",
+     "_V407_PSION_CONTRACT",
+     "_V408_TERMINAL_CONTRACT",
+     "_V409_TRADUCAO_CONTRACT",
+     "_V410_AESCALA_CONTRACT",
+     "_V410_IALD2_CONTRACT",
+     "build_en",
+     "build_pt"
+    ]
+   }
+  },
+  {
+   "checagem": "os nomes de topo novos sao os do runtime da v413",
+   "ok": true,
+   "n_itens_examinados": 5,
+   "detalhe": [
+    "_V413_NOMES_REGISTROS",
+    "_V413_SECAO",
+    "_V413_SPECS",
+    "_v413_rodar_specs",
+    "_v413_secao_tex"
+   ]
+  },
+  {
+   "checagem": "o candidato difere da base (nao e' copia: o gerador rodou)",
+   "ok": true,
+   "n_itens_examinados": 2,
+   "detalhe": null
+  }
+ ],
+ "candidato": {
+  "arquivo": "C:\\t\\k413c\\candidato_proposta_R1\\um_v413_candidato.py",
+  "sha16": "771904b0d8917abf",
+  "bytes": 50733517
+ },
+ "base_v412_sha16": "3e741dcaa58ef2b8",
+ "entradas": {
+  "worker_sha256": {
+   "_qp_materialize": {
+    "base": "7ac6caf0b579f66c",
+    "candidato": "7ac6caf0b579f66c",
+    "igual": true
+   },
+   "_QP_WORKER_SRC": {
+    "base": "017df5833b08dbab",
+    "candidato": "017df5833b08dbab",
+    "igual": true
+   },
+   "_qp_dir": {
+    "base": "eb4c0af5bb26dd70",
+    "candidato": "eb4c0af5bb26dd70",
+    "igual": true
+   }
+  },
+  "spec_canonica": {
+   "_QP_SPEC_JSON": {
+    "base": "cfd6f7b675e847e7",
+    "candidato": "cfd6f7b675e847e7",
+    "igual": true
+   },
+   "_qp_canon": {
+    "base": "512a089ef6a1b127",
+    "candidato": "512a089ef6a1b127",
+    "igual": true
+   },
+   "_QP_SPEC_SHA256": {
+    "base": "a4626fb03520f853",
+    "candidato": "a4626fb03520f853",
+    "igual": true
+   }
+  },
+  "beta_hex": {
+   "_qp_beta": {
+    "base": "5dd85cbc6b5604c9",
+    "candidato": "5dd85cbc6b5604c9",
+    "igual": true
+   }
+  }
+ },
+ "n_nomes_do_fecho": 11,
+ "fecho": [
+  "SEALED_CODATA_ALPHA",
+  "_QP_SPEC_JSON",
+  "_QP_SPEC_SHA256",
+  "_QP_WORKER_SRC",
+  "_qp_beta",
+  "_qp_canon",
+  "_qp_dir",
+  "_qp_key",
+  "_qp_materialize",
+  "alpha_lagrange_form",
+  "validate_against_qed"
+ ],
+ "nomes_de_topo_que_mudam": [
+  "UM_VERSION",
+  "_EMBEDDED_KERNEL_FILES",
+  "_ESQUELETO_STONES",
+  "_LEAN_THEOREM_FLAGS",
+  "_V394_FORMAL_CONTRACT",
+  "_V394_NETWORK_CONTRACT",
+  "_V394_QUADRATIC_CONTRACT",
+  "_V395_PSIBIT_CONTRACT",
+  "_V396_TESTEMUNHA_CONTRACT",
+  "_V398_AFINACAO_CONTRACT",
+  "_V398_SONICO_CONTRACT",
+  "_V401_FALSIDADE_CONTRACT",
+  "_V402_CONTRACTS",
+  "_V403_CONTRACTS",
+  "_V404_CONTRACTS",
+  "_V405_CONTRACTS",
+  "_V406_FECHO_CONTRACT",
+  "_V407_PSION_CONTRACT",
+  "_V408_TERMINAL_CONTRACT",
+  "_V409_TRADUCAO_CONTRACT",
+  "_V410_AESCALA_CONTRACT",
+  "_V410_IALD2_CONTRACT",
+  "_V411_H0DN_CONTRACT",
+  "_V411_SPECS",
+  "build_en",
+  "build_pt",
+  "main",
+  "prove_external_ladder"
+ ],
+ "nomes_de_topo_novos": [
+  "_V413_NOMES_REGISTROS",
+  "_V413_SECAO",
+  "_V413_SPECS",
+  "_v413_rodar_specs",
+  "_v413_secao_tex"
+ ],
+ "portao_json_sha16": "540e20799d52503b",
+ "falta_antes_do_rito": "conferir que o ambiente da placa (torch, cuda, numpy, scipy, python, gpu) e' o do cache; se nao for, PARAR e avisar (ha' treino em curso na placa): ato da gerencia, nao deste script"
+}

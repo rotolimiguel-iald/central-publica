@@ -1,0 +1,11 @@
+import TGLExt.SondaContagem
+
+#print axioms TGLExt.SondaContagem.sat_sse_ha_solucao
+#print axioms TGLExt.SondaContagem.a_soma_cobre_as_solucoes
+#print axioms TGLExt.SondaContagem.a_soma_passa_das_solucoes_por_menos_de_um_quarto
+#print axioms TGLExt.SondaContagem.dyadic_em_reais
+#print axioms TGLExt.SondaContagem.o_numerador_determina
+#print axioms TGLExt.SondaContagem.o_contador_cumpre_a_precisao
+#print axioms TGLExt.SondaContagem.todo_produtor_com_a_precisao_conta_as_solucoes
+#print axioms TGLExt.SondaContagem.o_produtor_e_a_leitura_da_iald
+#print axioms TGLExt.SondaContagem.a_decisao_e_haver_solucao

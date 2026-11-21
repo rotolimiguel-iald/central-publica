@@ -1,0 +1,25 @@
+"""preparar_bundle_v413.py -- v413, Etapa 1, item 2 (claude-construtor-v413, 20/11/2026, a servico da gerencia c1; derivado de v412\\preparar_bundle_v412.py): instala no sandbox
+C:\\t\\k413c\\final, em TGLExt\\, os modulos novos da v413 a partir das pedras limpas (insumos\\pedras_limpas\\TGLExt\\, ja na forma do kernel: imports TGLExt.<Nome>, fim de linha LF) e do
+manifesto insumos\\MANIFESTO_PEDRAS_v413.json (gerados pela gerencia; nunca editados aqui), e troca o modulo que a v413 corrige so' no texto (campo kernel_corrigido do manifesto; recibo
+insumos\\kernel_edits\\ERRATA_<Nome>.json), com o arquivo antigo do sandbox guardado na quarentena antes da troca.
+
+O que faz, para cada modulo novo (tudo conferido, nada digitado):
+  1. CONFERE o sha256 e os bytes da pedra limpa contra o manifesto (fail-closed: um so' diferente aborta tudo, nada e' gravado);
+  2. a UNICA mudanca permitida no texto (ordem da Etapa 1 da v413, item 2): as linhas `#print axioms` SAEM do corpo instalado (a linha inteira; as ancoras sao LIDAS delas antes, com a pilha
+     de namespace da linha, para o pos_build conferir no Audit) e o fim do arquivo fica com UMA quebra de linha (rstrip + "\\n", como na v412). Os imports ja vem como TGLExt.<Nome>: nenhuma linha
+     de import se troca (import SOLTO de modulo irmao PARA o preparo). Nenhuma prova e' tocada. As fontes ja sao LF (se houvesse CR, o script PARA);
+  3. confere por RECONSTRUCAO independente que o instalado == insumo menos as linhas `#print axioms`; grava o diff unificado e os dois sha256 em kernel\\bundle\\;
+  4. confere que todo import TGLExt.*/TGL.* existe no kernel do Nos v412 ou no proprio bundle, e todo import Mathlib.* existe na mathlib do sandbox; que os imports de modulo irmao sao os do
+     manifesto (imports_tglext); que nenhuma linha `#print axioms` estava dentro de comentario; que nao ha `sorry`, `#eval`, `#print` nem `axiom` no CODIGO (comentarios e cadeias mascarados);
+e, para o modulo corrigido: confere a fonte (sha256_saida do manifesto == o do recibo da correcao), que a fonte de origem (sha256_origem) e' a do Nos e a do sandbox (ou que o sandbox ja tem a
+corrigida, se o preparo rodou antes), que o CODIGO e' identico ao da origem (comentarios fora, cadeias dentro) e que nao ha linha `#print axioms` (o instalado == o insumo); grava o diff contra a
+origem e lista quem depende dele no kernel (pelo grafo de imports do sandbox: os modulos novos e os antigos que o lake vai recompilar).
+Grava, na ordem TOPOLOGICA das dependencias (desempate: a ordem_topologica_sugerida do manifesto): pedra\\origem\\<Nome>.lean (os bytes do insumo), pedra\\<Nome>.lean (o instalado), o sandbox
+TGLExt\\<Nome>.lean; a raiz TGLExt.lean do sandbox = a do Nos v412 + um import por modulo novo (na ordem topologica); kernel_modulos_novos_v413.json, BUNDLE_v413.json,
+kernel\\bundle\\SHA256_POR_MODULO_v413.json, kernel\\ULTIMA_INSTALACAO_v413.json e o construir_kernel_v413.sh (build POR MODULO: o corrigido primeiro, depois os novos na ordem topologica,
+parando no primeiro que nao compilar; depois o build inteiro e o Audit).
+
+TROCAR UMA FONTE (a leitura de terceiro pode mudar docstrings; a gerencia regera o manifesto): rodar `reconstruir_kernel_v413.py --manifesto <json> --pedras <pasta>` (este preparo + o build +
+o pos_build). O preparo e' idempotente: so' o que mudou e' regravado (o arquivo antigo do sandbox vai para C:\\t\\k413c\\quarentena_<data>, conferido), e o lake recompila so' o modulo trocado e
+os que dependem dele (mais a raiz e o Audit). O que mudou e quem depende dele fica em kernel\\ULTIMA_INSTALACAO_v413.json.
+Nada toca o Nos (so' leitura). Uso: C:\\Python314\\python.exe -B -X utf8 preparar_bundle_v413.py [--seco] [--manifesto <json>] [--pedras <pasta>] [--kernel-edits <pasta>]"""

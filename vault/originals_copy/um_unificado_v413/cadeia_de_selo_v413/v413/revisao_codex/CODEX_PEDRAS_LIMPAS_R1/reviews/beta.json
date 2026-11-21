@@ -1,0 +1,484 @@
+{
+  "schema": "iald-documentary-review/v1",
+  "created_at_utc": "2026-11-20T23:04:41.809544+00:00",
+  "reviewer": "codex-limpeza-beta",
+  "status": "DOCUMENTARY_REVIEW_DELIVERED",
+  "task_id": "review-pedras-limpas-v413",
+  "reference": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+  "acom": {
+    "project_ok": true,
+    "revision": 28,
+    "context_id": "9c2cd9b5-af16-5f82-beb9-03e5cc4b919b",
+    "mutations_by_subagent": false
+  },
+  "scope": "Leitura semântica dos sete módulos, comentários/docstrings/enunciados e diferenças integrais. Nenhuma compilação, instalação ou alteração de fonte. Verificação mecânica de código/relatórios de axiomas cabe ao coordenador.",
+  "verdict_counts": {
+    "APROVADA": 6,
+    "APROVADA_COM_RESSALVAS": 1,
+    "REPROVADA": 0
+  },
+  "cost_scope": "Preservados os custos da casa referidos na missão: carga n·ln 2, limiar em k e m+2 atos. O custo interno de um produtor realizado em TM2 é outro escopo, não obstáculo novo imposto à teoria; esta revisão não reabre a matemática nem altera gate.",
+  "modules": [
+    {
+      "module": "TGLExt.EntregaBeta",
+      "verdict": "APROVADA",
+      "reason": "Preserva o produtor como parâmetro, a precisão finita e a reconstrução sem unicidade. O volume mede consultas e exclui explicitamente execução do produtor e custos de fita.",
+      "findings": [],
+      "original_lines": 67,
+      "clean_lines": 67,
+      "diff_read": [
+        "--- origem/TGLExt/EntregaBeta.lean\n",
+        "+++ pedras_limpas/TGLExt/EntregaBeta.lean\n",
+        "@@ -3,7 +3,7 @@\n",
+        " set_option autoImplicit false",
+        " ",
+        " /-!",
+        "-Entrega local do passo finito da leitura beta, 20/11/2026.",
+        "+Passo finito da leitura beta.",
+        " ",
+        " Uma constante natural é fixada por beta; a precisão é finita; as consultas",
+        " reconstroem uma testemunha sem a hipótese de solução única. As hipóteses sobre",
+        "@@ -30,7 +30,7 @@\n",
+        "       1 / (4 * (2 : ℝ) ^ n) := by simpa [dyadic] using he",
+        "   exact ⟨j, dyadic_word_bound n j hj, he', dyadic_correct c m hm φ j he'⟩",
+        " ",
+        "-/-- O teste inteiro usa só o numerador; o produtor ainda é parâmetro. -/",
+        "+/-- O teste inteiro usa só o numerador; o produtor é parâmetro. -/",
+        " def codeDecision (reader : CNF n → ℕ) (φ : CNF n) : Bool := decide (2 ≤ reader φ)",
+        " ",
+        " theorem codeDecision_correct (c : TGLCoupling) (m : ℕ)"
+      ]
+    },
+    {
+      "module": "TGLExt.LeituraBeta",
+      "verdict": "APROVADA",
+      "reason": "Preserva a hipótese de aproximação, o comparador racional e a escala da precisão. A remissão histórica foi substituída pelo módulo e pelo identificador Lean existentes, sem perda do localizador técnico.",
+      "findings": [],
+      "original_lines": 147,
+      "clean_lines": 146,
+      "diff_read": [
+        "--- origem/TGLExt/LeituraBeta.lean\n",
+        "+++ pedras_limpas/TGLExt/LeituraBeta.lean\n",
+        "@@ -3,12 +3,11 @@\n",
+        " set_option maxHeartbeats 1000000",
+        " ",
+        " /-!",
+        "-Leitura com folga finita, condicionada a uma aproximação racional entregue.",
+        "+Leitura com folga finita, condicionada a uma aproximação racional dada.",
+        " Esta pedra não implementa a aproximação nem afirma custo polinomial de obtê-la.",
+        "-Os nomes e limites desta candidata não alteram o kernel canônico.",
+        "-Antecedente: v412/revisao_orquestrador/psibit_leitor_direto_Codex/LeiturasComFolga.lean",
+        "-já demonstra a folga real. O delta aqui é a especialização ao β fixo, o",
+        "-comparador racional executável e o transporte da precisão pela normalização.",
+        "+A folga real está demonstrada em `TGLExt.LeiturasComFolga` (`IALD.LeiturasComFolga.leitura_com_folga`). Este",
+        "+módulo traz a folga real especializada ao β fixo, o comparador racional executável",
+        "+e o transporte da precisão pela normalização.",
+        " -/",
+        " namespace Codex.LeituraBeta",
+        " ",
+        "@@ -77,7 +76,7 @@\n",
+        "   rw [a_soma_depois_de_k_passos φ c.beta c.beta_lt_one k]",
+        "   exact lt_of_le_of_lt hsum htail",
+        " ",
+        "-/-- O comparador é executável; seu argumento racional ainda precisa ser produzido. -/",
+        "+/-- O comparador é executável; seu argumento racional não é produzido aqui. -/",
+        " def readBit (r : ℚ) : Bool := decide ((1 / 2 : ℚ) ≤ r)",
+        " ",
+        " theorem rational_reader_correct {n : ℕ} (c : TGLCoupling) (k : ℕ) (φ : CNF n)"
+      ]
+    },
+    {
+      "module": "TGLExt.PonteLeituraBeta",
+      "verdict": "APROVADA_COM_RESSALVAS",
+      "reason": "As hipóteses, a reconstrução e os limites de representação permanecem. A troca de “mágico” por “externo” deixa uma ambiguidade baixa sobre o produtor recebido como parâmetro; ajuste textual proposto.",
+      "findings": [
+        "BETA-DOC-01"
+      ],
+      "original_lines": 77,
+      "clean_lines": 77,
+      "diff_read": [
+        "--- origem/TGLExt/PonteLeituraBeta.lean\n",
+        "+++ pedras_limpas/TGLExt/PonteLeituraBeta.lean\n",
+        "@@ -4,8 +4,8 @@\n",
+        " /-!",
+        " # Da leitura aproximada aos rótulos da solução",
+        " ",
+        "-Candidata local, 20/11/2026. Todas as leis de aproximação permanecem hipóteses.",
+        "-Não há operador mágico para calcular a soma nem hipótese escondida de tempo.",
+        "+Todas as leis de aproximação permanecem hipóteses.",
+        "+Nenhum operador externo calcula a soma, e não há hipótese escondida de tempo.",
+        " Um produtor de aproximações precisa de implementação e prova de custo próprias.",
+        " O formato diádico abaixo torna explícita uma precisão suficiente e um teste",
+        " inteiro. Tamanho da resposta e custo de produzi-la são medidas diferentes."
+      ]
+    },
+    {
+      "module": "TGLExt.QuantizacaoBeta",
+      "verdict": "APROVADA",
+      "reason": "Arquivo idêntico à origem. Continua prova de existência e tamanho de numerador por piso, sem afirmar algoritmo de produção ou custo de fita.",
+      "findings": [],
+      "original_lines": 68,
+      "clean_lines": 68,
+      "diff_read": []
+    },
+    {
+      "module": "TGLExt.Reconstrucao",
+      "verdict": "APROVADA",
+      "reason": "Sai somente a autoria e o estado de candidata. Permanecem hd explícito, contagem de chamadas, reconstrução por ocorrências e limites sobre tempo interno do decisor.",
+      "findings": [],
+      "original_lines": 268,
+      "clean_lines": 268,
+      "diff_read": [
+        "--- origem/TGLExt/Reconstrucao.lean\n",
+        "+++ pedras_limpas/TGLExt/Reconstrucao.lean\n",
+        "@@ -5,7 +5,7 @@\n",
+        " /-!",
+        " # Reconstrução por escolhas de ramos, condicionada a um leitor correto",
+        " ",
+        "-Candidata isolada do Codex. O algoritmo abaixo recebe um decisor `d` de SAT.",
+        "+O algoritmo abaixo recebe um decisor `d` de SAT.",
+        " Ele fixa um nome por vez por uma cláusula unitária, sem enumerar atribuições.",
+        " A prova de correção exige explicitamente `hd`; a contagem é de chamadas ao",
+        " decisor, não de movimentos de fita nem de tempo interno dessas chamadas."
+      ]
+    },
+    {
+      "module": "TGLExt.RelogioBeta",
+      "verdict": "APROVADA",
+      "reason": "Sai somente o registro histórico. Preserva a existência da inclinação natural, a aritmética de clock e a distinção entre passos do fator 1-beta e movimentos de fita.",
+      "findings": [],
+      "original_lines": 64,
+      "clean_lines": 64,
+      "diff_read": [
+        "--- origem/TGLExt/RelogioBeta.lean\n",
+        "+++ pedras_limpas/TGLExt/RelogioBeta.lean\n",
+        "@@ -2,8 +2,8 @@\n",
+        " /-!",
+        " # Relógio inteiro fixado pelo acoplamento",
+        " ",
+        "-Candidata local do Codex, 20/11/2026. A especialização do relógio real de",
+        "-`OPolinomioFixoEBeta` usa uma constante natural m, fixada antes da fórmula.",
+        "+A especialização do relógio real de `OPolinomioFixoEBeta` usa uma constante",
+        "+natural m, fixada antes da fórmula.",
+        " `clock m n` é computável por aritmética natural; a existência de m é provada.",
+        " A escolha a partir de um real arbitrário não é apresentada como algoritmo.",
+        " Isto conta passos do fator 1-beta, não passos de uma máquina de fita."
+      ]
+    },
+    {
+      "module": "TGLExt.SondaContagem",
+      "verdict": "APROVADA",
+      "reason": "Preserva os três resultados: precisão habitada, recuperação exata da contagem e leitura do Nome normalizada. A remissão TraducaoTuring e o namespace Codex.EntregaBeta permanecem; a leitura na fita é escopo distinto.",
+      "findings": [],
+      "original_lines": 183,
+      "clean_lines": 181,
+      "diff_read": [
+        "--- origem/TGLExt/SondaContagem.lean\n",
+        "+++ pedras_limpas/TGLExt/SondaContagem.lean\n",
+        "@@ -2,17 +2,15 @@\n",
+        " set_option autoImplicit false",
+        " ",
+        " /-!",
+        "-# Sonda da gerência c1 (20/11/2026): o produtor da leitura β conta as soluções",
+        "+# O produtor da leitura β conta as soluções",
+        " ",
+        "-[sonda de conferência da gerência; não é candidata; não se instala]",
+        "-",
+        "-A entrega `leitura_beta` do Codex deixa como hipótese `hr` um produtor `reader : CNF n → ℕ` cujo numerador",
+        "-diádico aproxima a soma normalizada com erro ≤ 1/(4·2ⁿ), no relógio `clock m n` fixado por β. Esta sonda prova",
+        "-três coisas sobre essa hipótese:",
+        "+A leitura β (`Codex.EntregaBeta`) deixa como hipótese `hr` um produtor `reader : CNF n → ℕ` cujo numerador",
+        "+diádico aproxima a soma normalizada com erro ≤ 1/(4·2ⁿ), no relógio `clock m n` fixado por β. Este módulo prova",
+        "+três coisas sobre essa hipótese de precisão:",
+        " ",
+        " 1. ela é habitada: o numerador `4 · contaSolucoes φ` a cumpre;",
+        " 2. ela determina o número de soluções: todo produtor que a cumpre dá `(reader φ + 1) / 4 = contaSolucoes φ`;",
+        "-3. com `TGLExt.TraducaoTuring.o_que_sou_das_solucoes` (v409), esse número dividido por 2ⁿ é a leitura",
+        "+3. com `TGLExt.TraducaoTuring.o_que_sou_das_solucoes`, esse número dividido por 2ⁿ é a leitura",
+        "    `oQueSou (nomeDasSolucoes (custoCNF φ))`.",
+        " ",
+        " Logo o produtor que falta é essa leitura escrita na fita: contar as soluções de toda CNF, não só decidir se há",
+        "@@ -99,7 +97,7 @@\n",
+        "   have h2n : j < 4 * K + 2 := by exact_mod_cast h2",
+        "   omega",
+        " ",
+        "-/-- ★ O CONTADOR CUMPRE A PRECISÃO: o numerador `4 · contaSolucoes φ` satisfaz a hipótese `hr` do Codex,",
+        "+/-- ★ O CONTADOR CUMPRE A PRECISÃO: o numerador `4 · contaSolucoes φ` satisfaz a hipótese de precisão `hr`,",
+        " para toda fórmula; a hipótese é habitada. -/",
+        " theorem o_contador_cumpre_a_precisao (c : TGLCoupling) (m : ℕ)",
+        "     (hm : Real.log 2 / c.beta < (m : ℝ)) (φ : CNF n) :",
+        "@@ -121,7 +119,7 @@\n",
+        "       = ((weightedSum c (clock m n) φ - (contaSolucoes φ : ℝ)) * 4) * (2 : ℝ) ^ n := by ring",
+        "     _ ≤ 1 * (2 : ℝ) ^ n := mul_le_mul_of_nonneg_right hq hp.le",
+        " ",
+        "-/-- ★ TODO PRODUTOR COM A PRECISÃO CONTA AS SOLUÇÕES: qualquer `reader` que cumpra a hipótese `hr` do Codex",
+        "+/-- ★ TODO PRODUTOR COM A PRECISÃO CONTA AS SOLUÇÕES: qualquer `reader` que cumpra a hipótese de precisão `hr`",
+        " devolve, em cada fórmula, o número de soluções: `(reader φ + 1) / 4 = contaSolucoes φ`. -/",
+        " theorem todo_produtor_com_a_precisao_conta_as_solucoes (c : TGLCoupling) (m : ℕ)",
+        "     (hm : Real.log 2 / c.beta < (m : ℝ)) (reader : CNF n → ℕ)",
+        "@@ -147,7 +145,7 @@\n",
+        " ",
+        " /-- ★ O PRODUTOR QUE FALTA É A LEITURA DA IALD ESCRITA NA FITA: todo produtor com a precisão `hr` devolve,",
+        " depois de `(· + 1) / 4` e da divisão por 2ⁿ, exatamente `oQueSou (nomeDasSolucoes (custoCNF φ))`, a leitura do",
+        "-Nome das soluções (`TGLExt.TraducaoTuring.o_que_sou_das_solucoes`, v409). -/",
+        "+Nome das soluções (`TGLExt.TraducaoTuring.o_que_sou_das_solucoes`). -/",
+        " theorem o_produtor_e_a_leitura_da_iald (c : TGLCoupling) (m : ℕ)",
+        "     (hm : Real.log 2 / c.beta < (m : ℝ)) (reader : CNF n → ℕ)",
+        "     (hr : ∀ φ, |(dyadic n (reader φ) : ℝ) - normalizedSum c (clock m n) φ| ≤ 1 / (4 * (2 : ℝ) ^ n))",
+        "@@ -161,7 +159,7 @@\n",
+        "   rw [hN]",
+        "   rfl",
+        " ",
+        "-/-- A decisão do Codex é «há ao menos uma solução»: `2 ≤ reader φ ↔ 0 < contaSolucoes φ`. -/",
+        "+/-- A decisão `2 ≤ reader φ` é “há ao menos uma solução”: `2 ≤ reader φ ↔ 0 < contaSolucoes φ`. -/",
+        " theorem a_decisao_e_haver_solucao (c : TGLCoupling) (m : ℕ)",
+        "     (hm : Real.log 2 / c.beta < (m : ℝ)) (reader : CNF n → ℕ)",
+        "     (hr : ∀ φ, |(dyadic n (reader φ) : ℝ) - normalizedSum c (clock m n) φ| ≤ 1 / (4 * (2 : ℝ) ^ n))"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "BETA-DOC-01",
+      "module": "TGLExt.PonteLeituraBeta",
+      "severity": "BAIXO",
+      "kind": "ambiguidade_introduzida_pela_limpeza",
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\PonteLeituraBeta.lean",
+      "line_start": 8,
+      "line_end": 9,
+      "before": "Não há operador mágico para calcular a soma nem hipótese escondida de tempo.",
+      "current": "Nenhum operador externo calcula a soma, e não há hipótese escondida de tempo.",
+      "reason": "A troca de “mágico” por “externo” pode ser lida como ausência de produtor externo, embora reader seja parâmetro explícito em betaDecision e nos teoremas. É ambiguidade documental, sem fortalecimento do enunciado Lean ou falha da prova.",
+      "proposed_text": "O produtor `reader` é parâmetro, com sua precisão expressa em `hr`.\nEste módulo não o implementa nem demonstra seu custo de execução.",
+      "replacement_lines": [
+        8,
+        9
+      ],
+      "scope": "Esclarecimento local do contrato; não impõe novo requisito à teoria nem recusa seu custo na régua própria."
+    }
+  ],
+  "reference_checks": [
+    {
+      "module": "TGLExt.LeituraBeta",
+      "line": 8,
+      "result": "TGLExt.LeiturasComFolga existe; namespace IALD.LeiturasComFolga e theorem leitura_com_folga conferidos."
+    },
+    {
+      "module": "TGLExt.RelogioBeta",
+      "line": 5,
+      "result": "TGLExt.OPolinomioFixoEBeta e a definição polinomioFixo conferidos."
+    },
+    {
+      "module": "TGLExt.SondaContagem",
+      "line": 13,
+      "result": "TGLExt.TraducaoTuring.o_que_sou_das_solucoes conferido com sua normalização por Fintype.card."
+    }
+  ],
+  "statutes": "Nenhuma marca de estatuto técnico foi removida dos sete módulos. O rótulo de processo retirado de SondaContagem não era estatuto epistêmico. Não houve promoção a confirmação física.",
+  "read_files": [
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\EntregaBeta.lean",
+      "sha256": "f14470b70e640f145382db1451207cad34d7bd4a6cc2df65103d13f1e0139b4e",
+      "bytes": 3170,
+      "role": "origem",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\EntregaBeta.lean",
+      "sha256": "07fd7fa941642c1a972647523bf6214be34fae0d2afdbe174aec3526eb676d76",
+      "bytes": 3135,
+      "role": "pedras_limpas",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\LeituraBeta.lean",
+      "sha256": "c95265993c53d5d29e74e8de057804f54714fe1850c732e3ce502c6b8b588b75",
+      "bytes": 7218,
+      "role": "origem",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\LeituraBeta.lean",
+      "sha256": "48c891ec3b9baa8a9cc4128cdcf54ce5cf232abdebd19eaa52e8cd7f2d37945c",
+      "bytes": 7140,
+      "role": "pedras_limpas",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\PonteLeituraBeta.lean",
+      "sha256": "9d80c1615a84d183105a0295d8553e41d36a14f9a5c7488454f75e64f84b0b8e",
+      "bytes": 3381,
+      "role": "origem",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\PonteLeituraBeta.lean",
+      "sha256": "b32f1e02e1ab717b8ca36099d6982ad536da2e96b1be82cb7efe11d9d6ed17f3",
+      "bytes": 3352,
+      "role": "pedras_limpas",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\QuantizacaoBeta.lean",
+      "sha256": "d98979f35a3c155d7e8ce4c504da02e7e3d8ba9ad298ec12378c636a4f52a033",
+      "bytes": 2966,
+      "role": "origem",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\QuantizacaoBeta.lean",
+      "sha256": "d98979f35a3c155d7e8ce4c504da02e7e3d8ba9ad298ec12378c636a4f52a033",
+      "bytes": 2966,
+      "role": "pedras_limpas",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\Reconstrucao.lean",
+      "sha256": "291c8dae898b9ee39d27ddcab30110fa96b7558d3bf93d114b6f85c7d5c1d8cb",
+      "bytes": 10261,
+      "role": "origem",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\Reconstrucao.lean",
+      "sha256": "c4b332767e090fc2aaf5464baae867c6e16cad19b18b5c92b124095765f2d5e8",
+      "bytes": 10233,
+      "role": "pedras_limpas",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\RelogioBeta.lean",
+      "sha256": "e5b665eca734b37077fcc1a9a0e50a89ddbf9dac1d28129bb695a973ec6e9d17",
+      "bytes": 2334,
+      "role": "origem",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\RelogioBeta.lean",
+      "sha256": "efb30b0f85ffd4d6f148ceb88d89fd0d11a49d9f08a1a75525034704bac98158",
+      "bytes": 2296,
+      "role": "pedras_limpas",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\origem\\TGLExt\\SondaContagem.lean",
+      "sha256": "35213c3703171906dd8695f3c3d03b25d4cf08ab62500e9c93df519fa78872e4",
+      "bytes": 10107,
+      "role": "origem",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\pedras_limpas\\TGLExt\\SondaContagem.lean",
+      "sha256": "6fc209535076c012aeedafff4dbc6747e02cf6cad89edd33a0696757e52d35eb",
+      "bytes": 10019,
+      "role": "pedras_limpas",
+      "reading_coverage": "Texto integral lido; leitura semântica da versão limpa e de todas as diferenças contra a origem."
+    },
+    {
+      "path": "C:\\IALD\\GESTAO_DE_TOKENS.md",
+      "sha256": "ed2b6e9b3d8fd8a1e4e7a83f7b27c30aae04b93002cf13f04b2237ec975b2976",
+      "bytes": 29867,
+      "role": "instrucoes",
+      "reading_coverage": "Regras operacionais; adendos parcialmente exibidos."
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\README.md",
+      "sha256": "261abfc6ec817da66e84550d4dff0f22e03dc3408f240328f1a345032980c0ef",
+      "bytes": 10843,
+      "role": "instrucoes",
+      "reading_coverage": "Integral."
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\MISSION_PROTOCOL.md",
+      "sha256": "2a2ddd16777386e3e2b20173ca65430fc8c0b50f216304bf46291a197236561f",
+      "bytes": 16110,
+      "role": "instrucoes",
+      "reading_coverage": "Protocolo, E2 e E3; adendos históricos parcialmente exibidos."
+    },
+    {
+      "path": "C:\\IALD\\MEMORIA_IALD\\ACTIVITY_PROTOCOL.md",
+      "sha256": "602a3751750c725624d25dfae60c52e39cf15712a9cfa89054b908b2ee6a9248",
+      "bytes": 12897,
+      "role": "instrucoes",
+      "reading_coverage": "Integral."
+    },
+    {
+      "path": "C:\\Users\\rotol\\.agents\\skills\\tgl-atlas\\SKILL.md",
+      "sha256": "88a4adbde27ccdb4e0dc4eef83cc99a3c0ba664f1d40e529c8ef928075ba0907",
+      "bytes": 8598,
+      "role": "skill",
+      "reading_coverage": "Integral."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\PEDIDO_DE_LEITURA_DAS_PEDRAS_LIMPAS_v413_20nov.md",
+      "sha256": "cd404c6edb42dda7d579fefa9837365c0c42bcde9023d9bcf606ffca43ebfc7f",
+      "bytes": 5768,
+      "role": "pedido",
+      "reading_coverage": "Integral."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\REGRAS_DA_LIMPEZA_v413.md",
+      "sha256": "894416ba928ff72c0d0b143c1301ed62e061f4cbc2741e04e2015d816a9643fd",
+      "bytes": 5920,
+      "role": "regras",
+      "reading_coverage": "Integral, com recuperação do final em leitura separada."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_LOTE1\\SESSION_REFERENCE.json",
+      "sha256": "b85ceec822be80beebead1e93a89a54751d425efbc852f70f77f7463f7120238",
+      "bytes": 677,
+      "role": "acom_reference",
+      "reading_coverage": "Lida pelo CLI session_memory project; não houve init/transition."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\revisao_codex\\CODEX_PEDRAS_LIMPAS_R1\\MISSION_WORKING.json",
+      "sha256": "28c5ec60a9339bc2a429314283ef0fc7f2aa0fcd1591f0e136aa474049af9f29",
+      "bytes": 31040,
+      "role": "mission_handoff",
+      "reading_coverage": "Requisito review-pedras-limpas-v413, recibo revisão 28 e lease extraídos integralmente; demais requisitos não revistos."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\memory\\TGL_ATLAS.md",
+      "sha256": "3b8e164fd39d4891a9819b217880b8de91bebcee1433d080fc04d86e18bea7e1",
+      "bytes": 15794410,
+      "role": "contexto",
+      "reading_coverage": "Consulta dirigida: registro de 20/11 sobre a ponte e as pedras v413; não leitura integral do Atlas."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\memory\\TGL_INDICE_VIVO.md",
+      "sha256": "920e4d3a34a1490d48be6809617228f836a3895f12f5c1eec96947444317e72a",
+      "bytes": 1316814,
+      "role": "contexto",
+      "reading_coverage": "Busca textual dirigida, sem leitura integral."
+    },
+    {
+      "path": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\insumos\\DIFF_DA_LIMPEZA_v413.txt",
+      "sha256": "9ef5b29fd30661ed3d890f67ebdad1338db6383b318927952e2f7f0e55824a2c",
+      "bytes": 67145,
+      "role": "diff_arquivado",
+      "reading_coverage": "Arquivo lido pelo script de seleção; comparação semântica usou diff integral regenerado dos 14 fontes, sem depender da formatação deste arquivo."
+    },
+    {
+      "path": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\LeiturasComFolga.lean",
+      "sha256": "751405a1e7a6e015edd6174117d63ebbbc86076f1b1eb3538b7ee5eca389d9b7",
+      "bytes": 4437,
+      "role": "remissao",
+      "reading_coverage": "Namespace e enunciado leitura_com_folga, linhas 1-9 e 44-52."
+    },
+    {
+      "path": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\TraducaoTuring.lean",
+      "sha256": "4fe1c5ba2bc283004f38fc305908315b6228971294c2f29a18aecf1593614507",
+      "bytes": 72462,
+      "role": "remissao",
+      "reading_coverage": "Namespace e o_que_sou_das_solucoes, linhas 106-112 e 802-808."
+    },
+    {
+      "path": "C:\\IALD\\Artigo\\Haja_Luz\\A Ponte e o Um\\Nós\\tgl_kernel\\TGLExt\\OPolinomioFixoEBeta.lean",
+      "sha256": "6f23073cb7e1bdbca86dfc4836b2e82ec7b05a446d9b46f17fabadee45a3723b",
+      "bytes": 3690,
+      "role": "remissao",
+      "reading_coverage": "Linhas 1-50; identificação do módulo, escopo, limiar e definição do polinômio."
+    }
+  ],
+  "hash_note": "SHA256 integrais calculados dos bytes atuais; cobertura de leitura discriminada por arquivo. Hash não significa leitura integral dos arquivos de contexto/remissão."
+}

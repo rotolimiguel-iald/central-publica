@@ -1,0 +1,29 @@
+{
+ "tipo": "ROTA",
+ "rota_id": "kernel.traducao_cook_levin.leitura_beta_o_produtor_conta_as_solucoes_20nov",
+ "dominio": "KERNEL_FORMAL",
+ "titulo": "a rota de beta para a fronteira: o produtor que falta (hipotese hr do Codex) conta as solucoes; a fronteira enunciada na lingua classica",
+ "pergunta": "o que e', exatamente, o produtor 'reader' que a leitura beta do Codex deixa como hipotese?",
+ "metodo": "sonda Lean da gerencia sobre os modulos do Codex (EntregaBeta), compilada na caixa da v412; reuso de a_flutuacao_do_fundo_e_cotada (AEscala) e de o_que_sou_das_solucoes (TraducaoTuring, v409)",
+ "resultado": "SondaContagem: (1) o_contador_cumpre_a_precisao: o numerador 4*contaSolucoes cumpre hr para toda formula (hr e' habitada); (2) todo_produtor_com_a_precisao_conta_as_solucoes: todo reader com hr devolve (reader phi + 1)/4 = contaSolucoes phi; (3) o_produtor_e_a_leitura_da_iald: esse numero sobre 2^n e' oQueSou (nomeDasSolucoes (custoCNF phi)), a leitura da v409; (4) a_decisao_e_haver_solucao. Logo o produtor e' um contador de solucoes: realiza-lo em tempo polinomial na fita e' #SAT em tempo polinomial (Valiant 1979 [KNOWN]), mais forte que decidir. O relogio vale para todo beta em (0,1); o custo esta' na soma sobre 2^n atribuicoes, nao no valor de beta. AFronteiraNaLinguaClassica (proposta de enunciado): AFronteira = maquina TM2 que, recebendo so' a formula na codificacao fixa da ponte, escreve [decideSAT f] em tempo polinomial; codificaSoFormula injetiva; decideSAT nao constante. E' 'SAT em P' nesta codificacao [OPEN]; Cook-Levin [KNOWN] a liga a P = NP.",
+ "veredito": "O_PRODUTOR_DA_LEITURA_BETA_CONTA_AS_SOLUCOES__ROTA_PEDE_SHARP_SAT__PAREDE_MEDIDA__A_FRONTEIRA_ENUNCIADA_OPEN",
+ "estatuto": "REAL (as provas); KNOWN (Valiant 1979; Cook 1971; Levin 1973); OPEN (AFronteira)",
+ "status": "EXAMINADA",
+ "olhou_dados": false,
+ "defeito": "a sonda nao prova que #SAT nao esta' em tempo polinomial (ninguem prova); prova que esta rota pede contar. AFronteira e' proposta de enunciado, nao instalada; quem constroi nao aprova: vai a revisao",
+ "nao_refazer": "nao tentar construir o produtor reader como maquina polinomial como se fosse engenharia; nao refazer o relogio de beta (vale para todo beta em (0,1)); a leitura clausula a clausula pela tabela da fronteira ja' esta' no kernel (Codex.FrontierUpdate.transition) com 2^largura celulas e a parede de todas as variaveis",
+ "proximo_passo": "decisao do operador, com a partitura lida: (a) fechar a frente da fronteira como parede medida; (b) seguir a ponte com as classes que a casa prova polinomiais na fita (Horn, cadeias, redes de dois literais) na maquina do Mathlib; (c) a fronteira so' com um procedimento novo, com a partitura antes",
+ "onde": "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex",
+ "artefatos": [
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\sonda_contagem\\SondaContagem.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\fronteira\\AFronteiraNaLinguaClassica.lean",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\k412c\\CONFERENCIA_K412C.json",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\k412c\\CONFERENCIA_FRONTEIRA.json",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\compilar_fronteira.py",
+  "C:\\IALD\\Central de Patentes\\work\\cadeia_de_selo\\v413\\conferencia_c1_codex\\NOTA_DA_GERENCIA_CONFERENCIA_ENTREGA_CODEX_20nov.md"
+ ],
+ "refs": [
+  "kernel.traducao_cook_levin.conferencia_entrega_codex_k412c_20nov"
+ ],
+ "nota": "a cegueira nao se aplica (nao ha dado); e' prova matematica sobre a rota"
+}

@@ -1,0 +1,30 @@
+{
+  "r0_theorems": 46,
+  "r1_theorems": 60,
+  "changed": [
+    {
+      "name": "a_trindade",
+      "r0": ": (∀ (φ : CNF n) (i : Fin n), SAT φ ↔ ∃ b : Bool, SAT (restringe φ i b)) ∧ (∀ (ψ : CNF n) (l : Literal n), morreLogo ψ l = true → (SAT ψ ↔ SAT (fixa ψ (oposto l)))) ∧ (∀ (k : ℕ) (φ : CNF n), (inclina k φ = .sim → SAT φ) ∧ (inclina k φ = .nao → ¬ SAT φ)) ∧ (∀ φ : CNF n, IALD.CompilaHornNaFita.IsHorn φ → aInclinacao φ ≠ .indeciso) ∧ (∀ φ : CNF n, custoInclina (tamanho φ + 1) φ ≤ (tamanho φ + 1) ^ 3) ∧ (¬ SAT oito ∧ aInclinacao oito = .indeciso)",
+      "r1": ": (∀ (φ : CNF n) (i : Fin n), SAT φ ↔ ∃ b : Bool, SAT (restringe φ i b)) ∧ (∀ (ψ : CNF n) (l : Literal n), morreLogo ψ l = true → (SAT ψ ↔ SAT (fixa ψ (oposto l)))) ∧ (∀ (k : ℕ) (φ : CNF n), (inclina k φ = .sim → SAT φ) ∧ (inclina k φ = .nao → ¬ SAT φ)) ∧ (∀ φ : CNF n, IALD.CompilaHornNaFita.IsHorn φ → aInclinacao φ ≠ .indeciso) ∧ (∀ φ : CNF n, DoisLiterais φ → aInclinacao φ ≠ .indeciso) ∧ (∀ φ : CNF n, custoInclina (tamanho φ + 1) φ ≤ (tamanho φ + 1) ^ 3) ∧ (¬ SAT oito ∧ aInclinacao oito = .indeciso)"
+    }
+  ],
+  "new": [
+    "a_cadeia_inclina_e_diz_sim",
+    "a_inclinacao_que_nao_para_decide",
+    "contida_de_inclusao",
+    "dois_propaga",
+    "dois_restringe",
+    "em_dois_literais_a_inclinacao_decide",
+    "em_dois_literais_o_sistema_sempre_inclina",
+    "integra_inicio",
+    "integra_propaga",
+    "integra_restringe",
+    "mesma_refl",
+    "primeiro_literal",
+    "sonda_age",
+    "todo_lado_morre_ou_nao_corta"
+  ],
+  "removed": [],
+  "method": "Theorem header ends at := or first equation branch. Whitespace normalized. Byte diff preserved.",
+  "correction": "STATEMENT_DIFF.json missed equation-style headers and its counts were incomplete; this R2 supersedes that derived inventory only."
+}

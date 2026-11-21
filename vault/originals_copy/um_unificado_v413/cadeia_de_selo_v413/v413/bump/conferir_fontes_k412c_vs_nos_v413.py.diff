@@ -1,0 +1,56 @@
+--- C:/IALD/Central de Patentes/work/cadeia_de_selo/v412/conferir_fontes_k411c_vs_nos_v412.py
++++ C:/IALD/Central de Patentes/work/cadeia_de_selo/v413/conferir_fontes_k412c_vs_nos_v413.py
+@@ -1,9 +1,10 @@
+ # -*- coding: utf-8 -*-
+-"""conferir_fontes_k411c_vs_nos_v412.py -- (claude-construtor-v412, 17/11/2026) ANTES de copiar o sandbox: (1) MEDE o tamanho da origem C:\\t\\k411c\\final (sem seguir juncoes:
++# [DERIVADO v413, claude-construtor-v413 (Etapa 1, 20/11/2026)] copia de C:\IALD\Central de Patentes\work\cadeia_de_selo\v412\conferir_fontes_k411c_vs_nos_v412.py; trocas de texto exato com contagem registrada em DERIVACAO_ETAPA1_v413.json (derivador: derivar_scripts_etapa1_v413.py) e subida dos rotulos de versao (v412->v413, v411->v412); o molde fica intacto.
++"""conferir_fontes_k412c_vs_nos_v413.py -- (claude-construtor-v412; derivado para a v413 em 20/11/2026) ANTES de copiar o sandbox: (1) MEDE o tamanho da origem C:\\t\\k412c\\final (sem seguir juncoes:
+ a juncao .lake\\packages aponta para a mathlib compilada do k404c e NAO e' copiada) e o espaco livre do disco C:; (2) confere por sha256 que as FONTES do sandbox de origem
+-(todo .lean fora de .lake, a raiz TGLExt.lean, TGL.lean, lakefile.toml, lean-toolchain, lake-manifest.json) sao as do kernel do Nos v411 SELADO (so' leitura nos dois);
+-(3) confere que NENHUM dos 34 modulos do manifesto da v412 existe no Nos nem na origem (fonte ou objeto compilado em .lake\\build), comparando sem caixa (o disco do Windows nao
+-distingue caixa). Arquivo que so' existe num dos lados e' listado (nao e' erro por si). Grava CONFERENCIA_FONTES_K411C_v412.json. Molde: v411\\conferir_fontes_k410c_vs_nos_v411.py
+-(so' os rotulos sobem; a medicao do tamanho e a conferencia dos 34 nomes sao novas). Nada e' escrito fora desta pasta.
+-uso: C:\\Python314\\python.exe -B -X utf8 conferir_fontes_k411c_vs_nos_v412.py"""
++(todo .lean fora de .lake, a raiz TGLExt.lean, TGL.lean, lakefile.toml, lean-toolchain, lake-manifest.json) sao as do kernel do Nos v412 SELADO (so' leitura nos dois);
++(3) confere que NENHUM dos modulos novos do manifesto da v413 existe no Nos nem na origem (fonte ou objeto compilado em .lake\\build), comparando sem caixa (o disco do Windows nao
++distingue caixa). Arquivo que so' existe num dos lados e' listado (nao e' erro por si). Grava CONFERENCIA_FONTES_K412C_v413.json. Molde: v412\\conferir_fontes_k411c_vs_nos_v412.py
++(so' os rotulos sobem e o manifesto da v413 e' lido no formato dele: modulos_novos, chaves TGLExt.<Nome>; mais: o modulo que a v413 corrige so' no texto, kernel_corrigido, tem de ser igual no Nos e na origem). Nada e' escrito fora desta pasta.
++uso: C:\\Python314\\python.exe -B -X utf8 conferir_fontes_k412c_vs_nos_v413.py"""
+ import hashlib, json, os, shutil, sys
+@@ -12,5 +13,5 @@
+ NOS_K = os.path.join("C:" + os.sep, "IALD", "Artigo", "Haja_Luz", "A Ponte e o Um", "Nós", "tgl_kernel")
+-SB = os.path.join("C:" + os.sep, "t", "k411c", "final")
+-MAN = os.path.join(HERE, "insumos", "MANIFESTO_PEDRAS_v412.json")
+-SAIDA = os.path.join(HERE, "CONFERENCIA_FONTES_K411C_v412.json")
++SB = os.path.join("C:" + os.sep, "t", "k412c", "final")
++MAN = os.path.join(HERE, "insumos", "MANIFESTO_PEDRAS_v413.json")
++SAIDA = os.path.join(HERE, "CONFERENCIA_FONTES_K412C_v413.json")
+ EXTRA = ["TGLExt.lean", "TGL.lean", "lakefile.toml", "lean-toolchain", "lake-manifest.json"]
+@@ -58,5 +59,11 @@
+ man = json.load(open(MAN, encoding="utf-8"))
+-nomes = [m["modulo"] for m in man["modulos"]]
++nomes = [k_.split(".", 1)[1] for k_ in man["modulos_novos"]]
++assert len(nomes) == len(set(nomes)) == int(man["n_modulos_novos"]), ("o manifesto nao tem n_modulos_novos nomes distintos", len(nomes), man.get("n_modulos_novos"))
++# o modulo que a v413 corrige so' no texto: a fonte de origem (sha256_origem do manifesto) tem de ser a do Nos e a da origem do sandbox
++corr = {}
++for k_, v_ in (man.get("kernel_corrigido") or {}).items():
++    rel_ = k_.replace(".", "/") + ".lean"
++    corr[rel_] = {"sha256_origem_do_manifesto": v_["sha256_origem"], "nos": a.get(rel_), "sandbox_origem": b.get(rel_), "igual": a.get(rel_) == b.get(rel_) == v_["sha256_origem"]}
+ colide = {}
+-for raiz, rot in ((NOS_K, "nos"), (SB, "k411c")):
++for raiz, rot in ((NOS_K, "nos"), (SB, "k412c")):
+     d_ = os.path.join(raiz, "TGLExt")
+@@ -76,6 +83,10 @@
+        "identico": (not dif and not so_nos and not so_sb),
+-       "modulos_v412": len(nomes), "colisoes_de_nome_de_modulo_sem_caixa": colide, "sem_colisao_de_nome_de_modulo": not colide}
+-open(SAIDA + ".tmp", "w", encoding="utf-8").write(json.dumps(rep, ensure_ascii=False, indent=1)); os.replace(SAIDA + ".tmp", SAIDA)
++       "modulos_v413": len(nomes), "colisoes_de_nome_de_modulo_sem_caixa": colide, "sem_colisao_de_nome_de_modulo": not colide,
++       "kernel_corrigido": corr, "kernel_corrigido_origem_igual_no_nos_e_no_sandbox": all(v_["igual"] for v_ in corr.values()) and len(corr) > 0}
++_b = json.dumps(rep, ensure_ascii=False, indent=1).encode("utf-8")
++if os.path.exists(SAIDA):   # [v413] backup de BYTES antes de regravar a saida (o molde gravava por cima)
++    _bk = SAIDA + ".bak_" + __import__("datetime").datetime.now().strftime("%Y%m%d_%H%M%S"); open(_bk, "wb").write(open(SAIDA, "rb").read()); assert open(_bk, "rb").read() == open(SAIDA, "rb").read()
++open(SAIDA + ".tmp", "wb").write(_b); assert os.path.getsize(SAIDA + ".tmp") == len(_b); os.replace(SAIDA + ".tmp", SAIDA)
+ print(json.dumps({k: v for k, v in rep.items() if k not in ("diferentes",)}, ensure_ascii=False, indent=1)[:3000])
+-ok = rep["selo_um_version"] == "v411" and rep["todas_as_comuns_iguais"] and rep["todas_as_do_nos_no_sandbox"] and not colide and rep["folga_depois_da_copia_gb"] > 20
++ok = rep["selo_um_version"] == "v412" and rep["todas_as_comuns_iguais"] and rep["todas_as_do_nos_no_sandbox"] and not colide and rep["folga_depois_da_copia_gb"] > 20 and rep["kernel_corrigido_origem_igual_no_nos_e_no_sandbox"]
+ print("CONFERENCIA:", "OK" if ok else "FALHA")

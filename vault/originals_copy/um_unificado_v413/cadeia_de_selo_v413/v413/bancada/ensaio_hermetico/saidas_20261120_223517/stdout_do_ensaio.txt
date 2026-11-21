@@ -1,0 +1,96 @@
+PASSA  mundo falso montado (Nos v412, Bancada B20-v411 pinando a v411, cadeia de selo, quadro com 1687 e 1689, copias dos scripts com o delta_bn reapontado) 
+PASSA  A1 gerar_e_pinar_cadeia_v413 (copia): o gerador REAL da R3.4 gera a cadeia v411 -> v412 do mundo falso e o esboco R3.6 REAL a confere (Bancada no inicio, Nos no fim); o pino e' gravado 
+PASSA  A2 gerar_bateria_v412_pre_selo_v413 (copia): o gerador REAL da bateria, com o pino minimo do candidato, gera a bateria da v412; conferida pelo esboco (carregar_bateria, pinos da versao) 
+PASSA  as arvores falsas estabilizadas antes da fotografia 'antes' (mtime de pasta do scandir == os.stat) 
+PASSA  A3a snap antes (copia): fotografa a Bancada falsa e o Nos falso 
+PASSA  A3b o esboco R3.6 REAL (--sandbox --sem-bateria) contra a Bancada FALSA atrasada: veredito do salto REPINADA_B21__SALTO_v411_v412__ENSAIO__NADA_GRAVADO_NA_BANCADA (o mundo falso e' aceito pelo esboco) 
+PASSA  A3c snap depois (copia) 
+PASSA  A4 conferir_recibo_pre_selo_salto_v413 (C.1): o esboco ACEITA o recibo do salto com a cadeia; todas as condicoes passam; os 9 controles negativos recusam pelo codigo certo 
+PASSA  A5 snap final (copia) 
+PASSA  A6 gerar_pino_recibo_pre_selo_v413 (1.1): veredito EXATO do salto, producao intacta, recibo desta rodada: utilizavel e rc 0; o pino traz a cadeia e o salto 
+PASSA  NA conferir com o recibo de veredito JA_SINCRONIZADA: rc 1, nao utilizavel, a condicao veredito_exato_do_salto falha e o esboco recusa 
+PASSA  NA conferir com o recibo de salto.de.deployment_id adulterado: rc 1, nao utilizavel, a condicao salto_do_recibo_igual_ao_que_a_cadeia_e_a_bancada_dizem falha e o esboco recusa 
+PASSA  NA gerar_pino com a producao alterada entre as fotos: rc 1, producao NAO intacta, nao utilizavel 
+PASSA  A7 limpar_sandbox_vb24 (copia): apaga o sandbox curto LIDO do delta_bn (aqui C:\t\vb99), sem juncao, sem mexer nos irmaos 
+PASSA  A8 diff_e_pinos_bn_v413 sem --delta (1.4, N6): o PINOS_BN traz a cadeia, o recibo pre-selo do salto, os anteriores v412 (um.py) e v411 (Bancada), o delta_bn e o util por sha; o que depende do candidato fica em pendentes 
+PASSA  NA diff_e_pinos com o pino do recibo pre-selo NAO utilizavel: PARA (rc 1) sem regravar o PINOS_BN 
+PASSA  A9 p00_precondicoes_bn_v413: nenhuma FALHA e so' os pendentes do candidato (rc 3); a cadeia carregada pelo esboco, a bateria, o prazo, o recibo, a prova, o PINOS_BN, a autorizacao e a forma dos scripts conferidos 
+PASSA  E7 rodar_bn_pre_selo (revisao B2): so' o LIMPEZA_SANDBOX_vb99.json de uma rodada anterior sobrou: o runner recusa na guarda de restos (rc 9), nada roda 
+PASSA  E8 rodar_bn_pre_selo (revisao B1): o veredito final le o rc do p00 (0 ou 3 passam; 1 falha) 
+PASSA  B0a (revisao M3 ii) o esboco R3.6 REAL em pos_selo ensaio do salto (--sandbox --sem-bateria), com o recibo pre-selo do A3b, a cadeia e o selo e o kernel da v412: REPINADA_B21__SALTO_v411_v413__ENSAIO__NADA_GRAVADO_NA_BANCADA 
+PASSA  B0b o b3_recibo_v413 confere o recibo do pos-selo FEITO PELO ESBOCO (o salto no pos-selo, o regenerar com salto, o formato; so' o bloco da bateria sintetico): rc 0 
+PASSA  B1 b3_recibo_v413 ensaio (2.4): o salto exigido (cadeia == o pino, de v411/B20 ate v412, proxima v413), o veredito exato, o manifesto anterior == o do pre-selo, B21-v413: rc 0 
+PASSA  NB b3_recibo com sem o bloco salto: rc 1 
+PASSA  NB b3_recibo com veredito sem __SALTO_: rc 1 
+PASSA  NB b3_recibo com manifesto anterior mudado desde o pre-selo: rc 1 
+PASSA  NB b3_recibo com deployment B22: rc 1 
+PASSA  NB b3_recibo com cadeia errada no 3o argumento: rc 1 
+PASSA  NB b3_recibo com sem o 3o argumento: rc 1 
+PASSA  B1c (revisao B3) o conferidor de exigencias depois do passo 10 (com bancada_B3_ensaio_* no disco): a condicao do APLICAR passa; as unicas falhas sao as duas do mundo falso por desenho (o sandbox vb99 e a porta de ensaio contra o recibo da v411 copiado do real, que traz 18777), cada uma conferida pela causa 
+PASSA  NB evento_c1_b3 com o iald.py saindo rc 1: o evento PARA (assert do rc) 
+PASSA  NB evento_c1_b3 sem o stdout do ENSAIO: nada e' anotado (assert antes do subprocess) 
+PASSA  B3 evento_c1_b3_v413 (2.6): ENSAIO conferido antes, o candidato conferido, o rc e o retorno do iald.py lidos, o elo conferido no livro inteiro e posterior ao ensaio; imprime EVENTO=<seq> EVENTO_HASH=<hash16> 
+PASSA  B3b util evento_depois_do_ensaio (o portao do 10b): o evento anotado confere e e' posterior ao fim do ensaio: rc 0 
+PASSA  NB util evento_depois_do_ensaio com o hash errado: rc 1 
+PASSA  B3c (revisao B6) o evento rodado de novo depois deste ensaio: nada e' anotado (o mesmo EVENTO= do livro), rc 0 
+PASSA  B2 b3_recibo_v413 aplicar: pos_conferencia ok, versao v413, o sha do manifesto novo; o salto e o veredito exato do APLICAR: rc 0 
+PASSA  B4a saude_bancada (conferencia A) sobre a Bancada falsa com a porta fechada: FORA_DO_AR_APOS_REINICIO (o boot real e' depois do religamento falso da v411), rc 3 
+PASSA  B5a (revisao B5) montar_autorizacao_v413 (copia) monta o texto dos eventos 1687 e 1689 e da fala de 20/11 (hashes lidos por script) e grava AUTORIZACAO_v413.txt com o recibo; o texto e' o que os recibos aceitam 
+PASSA  B5b montar_autorizacao de novo, com os mesmos arquivos: idempotente (nao regrava), rc 0 
+PASSA  NB recibo_parada com o AUT sem a fala de 20/11: recusa (AssertionError), nada gravado 
+PASSA  NB recibo_parada com V413_PID_PARADO no ja_fora_do_ar: recusa (AssertionError), nada gravado 
+PASSA  NB recibo_parada com o sha256 da conferencia A errado: recusa (AssertionError), nada gravado 
+PASSA  NB recibo_parada com sem V413_PARADA: recusa (AssertionError), nada gravado 
+PASSA  NB recibo_parada com uma linha ILEGIVEL no quadro (2.2, M11 dinamico): recusa EVENTOS_JSONL_ILEGIVEL, nada gravado 
+PASSA  B4 recibo_parada_v413 ja_fora_do_ar (2.2, N4, N6): o livro inteiro, 1687 e 1689 por hash, a fala de 20/11, a conferencia A pinada, a porta fechada e nenhum processo: o recibo nasce com as chaves da v411 + as da v413 
+PASSA  B5c montar_autorizacao com a fala do modo da placa e o modo cpu: AUTORIZACAO_v413_RELIGAMENTO_cpu.txt, com a fala, o sha16 e 'modo da placa: cpu' 
+PASSA  NB recibo_religamento sem a fala do modo da placa: AGUARDA (rc 20), nada lancado 
+PASSA  B5 recibo_religamento_v413 (2.3, N4, N6, N9; modo cpu): o APLICAR achado, o servidor LANCADO destacado com os logs em estado\, CUDA_VISIBLE_DEVICES=-1 no processo, a identidade de /api/contratos conferida, o PID da porta == o lancado 
+PASSA  NB recibo_religamento com o recibo ja existente: recusa ANTES de lancar (nao sobe um segundo servico) 
+PASSA  NB fechar_bn sem o recibo da parada: rc 2 e NADA gravado 
+PASSA  B6 fechar_bn_v413 (2.1): os tres recibos juntos (o APLICAR do salto, a parada, o religamento com o PID VIVO), o evento no livro, o pino conjunto, a reconferencia e as copias na pasta do evento 1687 
+PASSA  B6b fechar_bn de novo: idempotente (o pino conjunto ja existe igual; as copias iguais), rc 0 
+PASSA  B6c (revisao B4) aviso_f06_v413 (copia): anota o aviso F0.6 com o pino conjunto e as copias dos tres recibos na pasta do evento 1687 (conferidos por sha256); AVISO=<seq> 
+PASSA  B6d o aviso F0.6 de novo: nao anota duas vezes (devolve o elo do livro), rc 0 
+PASSA  B7a saude_bancada com o servidor falso no ar e o contrato em dia: NO_AR_EM_DIA, rc 0 
+PASSA  B7b saude_bancada com o servidor no ar recusando o contrato: NO_AR_CONTRATO_VELHO, rc 3 
+PASSA  NB fechar_bn com o servico religado ja morto (o PID do recibo nao esta' vivo): portao C, rc 2 
+PASSA  NB recibo_religamento com a versao servida errada: RELIGAMENTO_RECUSADO, recusa gravada com o PID, nenhum recibo de religamento 
+PASSA  B7c saude_bancada com a porta aberta por OUTRO programa: INDETERMINADO, rc 1 (fail-closed) 
+PASSA  B7d saude_bancada com a porta fechada e um religamento DEPOIS do boot: FORA_DO_AR, rc 3 
+PASSA  B7e util saude_do_dia (o portao C do passo 10): ha' conferencia A de hoje na pasta: rc 0 
+PASSA  NB util saude_do_dia numa pasta sem conferencia de hoje: rc 1 (o passo 10 AGUARDA) 
+PASSA  NB util saude_do_dia (revisao B10) com so' uma conferencia A INDETERMINADO de hoje: rc 1 
+PASSA  NB util saude_do_dia (revisao B10) com uma conferencia A de hoje de OUTRA Bancada: rc 1 
+PASSA  NB util pendentes_vazios no PINOS_BN do pre-selo (com pendentes): rc 1 (o 10b AGUARDA, 2.7) 
+PASSA  util pendentes_vazios num PINOS_BN final (sem pendentes e sem pino sem sha): rc 0 
+PASSA  E1 bn_v413.sh passo 10 sem conferencia A de hoje: portao C, AGUARDA (rc 20) antes de qualquer pino 
+PASSA  E2 bn_v413.sh passo 10 com a conferencia A de hoje e o PINOS_BN com pino pendente: AGUARDA (rc 20) no b3_prepara, nao traceback (2.4) 
+PASSA  E3 bn_v413.sh passo 10a com o recibo da parada e a porta fechada: rc 0 
+PASSA  E4 bn_v413.sh passo 10b sem B3_AUTORIZADO: AGUARDA (rc 20) 
+PASSA  E4b bn_v413.sh passo 10b (revisao B11) com o recibo da parada sem modo valido: PARADA (rc 1) antes do APLICAR 
+PASSA  E4c bn_v413.sh passo 10b (revisao B11) com o recibo da parada que nao conferiu a decisao 1689: PARADA (rc 1) 
+PASSA  E5 bn_v413.sh passo 11 com o recibo do religamento cujo PID ja morreu: portao C, PARADA (rc 1) 
+PASSA  E6 rodar_bn_pre_selo_v413.sh com o Nos ja na v413: PRAZO_DO_PRE_SELO_PERDIDO (N1), rc 9, nada rodado 
+PASSA  C1 delta_bn_v413 REAL (so' leitura): a Bancada pina o B20 fixado; o delta_v411 carregado por fonte com o BANCADA_PINA_HOJE da v411 FIXADO; o delta_v412_r7 carregado por fonte com esse delta_v411; B21; vb24 
+PASSA  C2 delta_bn com a Bancada (falsa) em B21-v413 (depois do APLICAR): importa, BANCADA_JA_APLICADA True, e o delta_v411 fixado ainda carrega (N5 consertado) 
+PASSA  NC delta_bn com a Bancada (falsa) em B22-v413-20261121-R1: o import recusa (assert) 
+PASSA  NC delta_bn com a Bancada (falsa) em B20-v411-20261113-R2: o import recusa (assert) 
+PASSA  NC delta_bn com a Bancada (falsa) em B19-v410-20261111-R1: o import recusa (assert) 
+PASSA  NC delta_bn com a Bancada (falsa) em B21-v412-20261121-R1: o import recusa (assert) 
+PASSA  C3 N5 demonstrado: o delta_v411 VIVO (sem o conserto) quebra na importacao com a Bancada em B21-v413 (AssertionError do _bancada_pina_hoje dele) 
+PASSA  C4 util livro_conferido (2.2): cadeia valida OK; linha ilegivel, elo fora da cadeia e seq repetida RECUSADOS pelo codigo certo; o quadro REAL confere inteiro (so' leitura) 
+PASSA  C5 util (real, so' leitura) const SANDBOX_CURTO == C:\t\vb24 
+PASSA  C5 util (real, so' leitura) porta_fechada (a porta real da Bancada esta' fechada) 
+PASSA  C5 util (real, so' leitura) nos_versao (o Nos real na v412 com o selo pinando o um.py) 
+PASSA  C5 util (real, so' leitura) subcomando desconhecido: rc 2 
+PASSA  D1 saude_bancada contra a Bancada REAL (so' leitura; porta fechada; nunca /api/estado): FORA_DO_AR_APOS_REINICIO (o boot de 16/11 depois do religamento de 13/11), rc 3 
+PASSA  D2 sentinela_boot_bancada (B preparada; nenhuma tarefa criada) contra a Bancada REAL: o aviso de fora do ar depois do reinicio e' gravado em arquivo 
+PASSA  D3 sentinela de novo no mesmo boot: nao repete o aviso 
+PASSA  D4 controle negativo do conferidor (2.8; scripts REAIS so' lidos, copias em pasta temporaria): o controle sem mutacao passa e as 13 mutacoes M1-M11 (M10 em tres) sao pegas pela condicao certa 
+PASSA  D4b (revisao M1) o controle negativo apontado para C:\t\vb24 RECUSA antes de criar qualquer coisa (vb24 e' exclusivo do pre-selo real) 
+PASSA  D5 (revisao B5) montar_autorizacao sobre o quadro e as falas REAIS (copia; grava so' numa pasta temporaria): o texto e' o que o conferidor aceitou no D4 (425 caracteres) 
+PASSA  F0 as entradas falsas do ensaio a seco (um segundo mundo falso, com a cadeia e a bateria da v412 geradas pelos geradores reais) 
+PASSA  F1 ensaio_a_seco_pos_selo_v413 (auto-teste, --sem-bateria): o mundo, o pre-selo do salto e o passo 10 pelo esboco REAL em --sandbox, o b3_recibo, a conferencia A, o montar_autorizacao, a parada e o evento, todos OK; o APLICAR, o religamento e o fechar nao rodam sem bateria (ditos NAO_EXECUTADO); o mundo e o sandbox apagados; nenhum processo vivo 
+PASSA  limpeza: nenhum processo criado por este ensaio ficou vivo (parados pelo PID); a porta de ensaio fechada; o sandbox de ensaio apagado 
+95/95 testes passaram (31 negativos) -> C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\bancada\ensaio_hermetico\RESULTADO_ENSAIO_HERMETICO_BN_v413.json

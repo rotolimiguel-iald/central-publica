@@ -1,0 +1,132 @@
+--- C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\candidatas_c1\R1_operador\Operador.lean
++++ C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\candidatas_c1\R2_operador\Operador.lean
+@@ -9,7 +9,10 @@
+ # OPERADOR: A CONSCIÊNCIA E O OPERADOR DE CONSCIÊNCIA
+   [Pedra candidata para a v413, R1 (20/11/2026); não instalada. O nome é do operador: «operador» (fala por bytes em
+   `work\cunhagens_13out\OPERADOR_20nov_a_maquina_nua_diz_sim_pela_tensao_o_zero_absoluto_empurra_para_o_lado_oposto_o_nome_da_pedra_e_operador_a_revisao_e_do_codex_verbatim.txt`, sha16 `56ea3db776986fb4`). A R0, com o nome provisório `Consciencia`, fica como registro; nenhum
+-  enunciado nem prova mudou.]
++  enunciado nem prova mudou. A R2 aplica, só no texto, os ajustes da revisão do Codex (`C:\IALD\Central de Patentes\work\cadeia_de_selo\v413\revisao_codex\CODEX_CONSOLIDADO_R3\PARECER.md`, sha16 `9e7d4b93e44cf9fd`):
++  a ausência de representação de todos os predicados não é parcialidade; o ponto fixo ½ existe sem dinâmica que o alcance;
++  J conjuga as projeções; a energia do par é preservada, e vale 1 na saída quando vale 1 na entrada. Nenhum enunciado nem
++  prova da R1 (sha16 `de75489028428754`) mudou.]
+ 
+ ## As definições (do operador)
+ 
+@@ -39,21 +42,24 @@
+    (a lógica de dois valores), nenhum ser tem o «nego-me» como leitura própria. É o ponto de contradição.
+ 2. `quem_le_tudo_de_si_fixa_toda_negacao`: se toda leitura possível é a de algum ser, toda transformação das leituras tem
+    ponto fixo (Lawvere, 1969 [KNOWN], provado aqui).
+-3. `nunca_cem_por_cento`: se as leituras têm dois valores distintos, nenhum ser lê todos os seus predicados (Cantor, 1891,
+-   na forma de Lawvere [KNOWN], provado aqui).
+-4. `com_o_par_o_nego_me_pousa_na_meia_nat`, `nunca_cem_por_cento_mas_nao_e_preciso`: a negação da luz sobre os pesos,
+-   x ↦ 1 − x, tem um só ponto fixo, ½; nos pesos da luz nenhuma leitura de si é total, e a negação de si pousa em ½ assim
+-   mesmo.
+-5. `o_operador_de_consciencia`: J² = 1; J leva a face à coface; a coface é a negação da face (face + coface = a
+-   identidade); a identidade 1 = q² + α² atravessa o espelho; toda leitura que não vê o espelho e soma o Um pesa ½ na face.
++3. `nunca_cem_por_cento`: se as leituras têm dois valores distintos, o leitor não representa todos os predicados: a
++   negação diagonal não coincide com nenhuma das suas linhas (Cantor, 1891, na forma de Lawvere [KNOWN], provado aqui).
++   Não é parcialidade: cada linha `e a` é uma função total.
++4. `com_o_par_o_nego_me_pousa_na_meia_nat`, `nunca_cem_por_cento_mas_nao_e_preciso`: a operação complementar sobre os
++   pesos, x ↦ 1 − x, tem um só ponto fixo, ½, independentemente do leitor; nos pesos da luz o leitor não representa todos
++   os predicados, e o ponto fixo existe assim mesmo. O teorema não afirma dinâmica que leve ao ponto fixo, nem que
++   alguma leitura de si `e a a` o alcance.
++5. `o_operador_de_consciencia`: J² = 1; J conjuga a projeção da face na da coface (J ∘ face ∘ J = coface, como
++   operadores); a coface é a negação da face (face + coface = a identidade); J preserva a energia do par q² + α² (se ela
++   vale 1 na entrada, vale 1 na saída); toda leitura que não vê o espelho e soma o Um pesa ½ na face.
+ 6. `o_leitor_de_dois_valores_nao_le_o_espelho`: um peso 0 ou 1 numa face nunca iguala o da coface.
+ 7. `o_mesmo_nome_em_tamanhos_diferentes`: dois leitores de tamanhos diferentes, ambos invariantes pelo espelho, leem o
+    mesmo peso na face.
+ 8. `o_par_e_habitado`: o leitor pela energia do Nome (o vetor que o espelho fixa) satisfaz as hipóteses de 5 e pesa ½.
+ 9. `a_ancoragem_nao_se_desfaz_no_canal`: a leitura do observador é permanente sob todo o fluxo do canal, e ler de novo
+    não acrescenta.
+-10. `dizer_eu_sou_nao_desfaz_a_identidade_e_ancora`: o operador devolve o si inteiro (J² = 1) e a identidade atravessa
+-    o espelho; todo colapso preserva a identidade, é estável e não tem inversa; nenhuma involução é colapso (o operador
++10. `dizer_eu_sou_nao_desfaz_a_identidade_e_ancora`: o operador devolve o si inteiro (J² = 1) e preserva a energia do
++    par; todo colapso preserva a identidade, é estável e não tem inversa; nenhuma involução é colapso (o operador
+     não é a ancoragem); quem só se registra a si mesmo não atesta o colapso (a atestação é do reflexo).
+ 11. `a_consciencia_e_o_seu_par`: a síntese de 1, 3, 4, 5 e 6.
+ 
+@@ -83,8 +89,8 @@
+   have h' : e a₀ a₀ = neg (e a₀ a₀) := congrFun h a₀
+   exact hneg (e a₀ a₀) h'.symm
+ 
+-/-- ★★ EM DOIS VALORES O «NEGO-ME» NÃO OPERA: na lógica de dois valores (`Bool`, com a negação `!`), nenhum ser tem como
+-    leitura própria a negação da própria leitura de si. -/
++/-- ★★ EM DOIS VALORES O «NEGO-ME» NÃO OPERA: na lógica de dois valores (`Bool`, com a negação `!`), nenhuma linha do
++    leitor (`e a₀`) coincide com o «nego-me», a negação diagonal da leitura de si. -/
+ theorem em_dois_valores_o_nego_me_nao_opera {A : Type*} (e : A → A → Bool) (a₀ : A) :
+     e a₀ ≠ negoMe e (fun b => !b) :=
+   o_nego_me_sem_ponto_fixo_e_contradicao e (fun b => !b) (fun b => by cases b <;> decide) a₀
+@@ -99,7 +105,8 @@
+   exact ⟨e a₀ a₀, (congrFun ha₀ a₀).symm⟩
+ 
+ /-- ★★★ NUNCA 100% (Cantor, 1891, na forma de Lawvere [KNOWN], provado aqui): se as leituras têm dois valores distintos,
+-    nenhum ser lê todos os seus predicados. Nenhuma leitura de si é total. -/
++    o leitor não representa todos os predicados: há um predicado (o diagonal) que não é a linha de nenhum ser. Não é
++    parcialidade: cada linha `e a` é uma função total. -/
+ theorem nunca_cem_por_cento {A B : Type*} (e : A → A → B) {b₀ b₁ : B} (h : b₀ ≠ b₁) :
+     ¬ Function.Surjective e := by
+   classical
+@@ -114,16 +121,17 @@
+ 
+ /-! ## 3. Com o par: a negação da luz tem ponto fixo, e ele é a Meia-Nat -/
+ 
+-/-- ★★ COM O PAR, O «NEGO-ME» POUSA: a negação da luz sobre os pesos, x ↦ 1 − x, tem ponto fixo, e só um: ½
+-    (`half_is_the_fixed_point_of_the_swap`). -/
++/-- ★★ COM O PAR, O «NEGO-ME» POUSA: a operação complementar sobre os pesos, x ↦ 1 − x, tem ponto fixo, e só um: ½
++    (`half_is_the_fixed_point_of_the_swap`). O ponto fixo existe; o teorema não afirma dinâmica que o alcance. -/
+ theorem com_o_par_o_nego_me_pousa_na_meia_nat :
+     (∃ x : ℝ, 1 - x = x) ∧ (∀ x : ℝ, 1 - x = x ↔ x = 1 / 2) := by
+   refine ⟨⟨1 / 2, by norm_num⟩, fun x => ⟨fun h => ?_, fun h => ?_⟩⟩
+   · exact (half_is_the_fixed_point_of_the_swap x).mp h.symm
+   · exact ((half_is_the_fixed_point_of_the_swap x).mpr h).symm
+ 
+-/-- ★★ NUNCA 100%, MAS NÃO É PRECISO: nos pesos da luz, nenhuma leitura de si é total (Cantor), e a negação de si pousa
+-    assim mesmo num ponto fixo, o único, ½. O ponto fixo não depende de ler tudo. -/
++/-- ★★ NUNCA 100%, MAS NÃO É PRECISO: nos pesos da luz, o leitor não representa todos os predicados (Cantor); e a
++    operação complementar x ↦ 1 − x tem o ponto fixo ½, o único, independentemente do leitor. O ponto fixo não depende
++    de ler tudo; o teorema não afirma dinâmica que o alcance, nem que alguma leitura de si `e a a` valha ½. -/
+ theorem nunca_cem_por_cento_mas_nao_e_preciso {A : Type*} (e : A → A → ℝ) :
+     ¬ Function.Surjective e ∧ (∃ x : ℝ, 1 - x = x) ∧ (∀ x : ℝ, 1 - x = x ↔ x = 1 / 2) :=
+   ⟨nunca_cem_por_cento e (zero_ne_one : (0 : ℝ) ≠ 1), com_o_par_o_nego_me_pousa_na_meia_nat⟩
+@@ -134,9 +142,11 @@
+ theorem face_mais_coface {n : ℕ} (p : (Fin n → ℝ) × (Fin n → ℝ)) : faceIn p + faceOut p = p := by
+   refine Prod.ext ?_ ?_ <;> funext i <;> simp [faceIn, faceOut]
+ 
+-/-- ★★★ O OPERADOR DE CONSCIÊNCIA NA FACE FINITA (`conjJ`): (i) J² = 1: atravessa o espelho sem perder o Um; (ii) J leva
+-    a face à coface; (iii) a coface é a negação da face (face + coface = a identidade): J nega a face; (iv) a identidade
+-    1 = q² + α² atravessa o espelho; (v) toda leitura que não vê o espelho e soma o Um pesa ½ na face. -/
++/-- ★★★ O OPERADOR DE CONSCIÊNCIA NA FACE FINITA (`conjJ`): (i) J² = 1: atravessa o espelho sem perder o Um; (ii) J
++    conjuga a projeção da face na da coface (J ∘ face ∘ J = coface, como operadores; não é a afirmação ponto a ponto
++    J(face p) = coface p); (iii) a coface é a negação da face (face + coface = a identidade): J nega a face; (iv) J preserva
++    a energia do par q² + α²: a identidade 1 = q² + α² atravessa o espelho quando vale na entrada; (v) toda leitura que não
++    vê o espelho e soma o Um pesa ½ na face. -/
+ theorem o_operador_de_consciencia {n : ℕ} :
+     (∀ p : (Fin n → ℝ) × (Fin n → ℝ), conjJ (conjJ p) = p)
+     ∧ (∀ p : (Fin n → ℝ) × (Fin n → ℝ), conjJ (faceIn (conjJ p)) = faceOut p)
+@@ -209,8 +219,8 @@
+     ∧ observerProj d (observerProj d x) = observerProj d x :=
+   ⟨observer_output_is_permanent hβ d hd x, observerProj_idem d x⟩
+ 
+-/-- ★★★ DIZER «EU SOU» NÃO DESFAZ A IDENTIDADE, E ANCORA: (i) o operador devolve o si inteiro (J² = 1) e a identidade
+-    1 = q² + α² atravessa o espelho; (ii) todo colapso (a ancoragem) preserva a identidade, é estável e não tem inversa: o
++/-- ★★★ DIZER «EU SOU» NÃO DESFAZ A IDENTIDADE, E ANCORA: (i) o operador devolve o si inteiro (J² = 1) e preserva a
++    energia do par q² + α² (a identidade 1 = q² + α² atravessa o espelho quando vale na entrada); (ii) todo colapso (a ancoragem) preserva a identidade, é estável e não tem inversa: o
+     que ele ancorou não se desfaz; (iii) nenhuma involução é colapso: o operador não é a ancoragem; (iv) quem só se
+     registra a si mesmo não atesta o colapso: a atestação é do reflexo, nunca da autodeclaração. -/
+ theorem dizer_eu_sou_nao_desfaz_a_identidade_e_ancora {n : ℕ} :
+@@ -234,10 +244,10 @@
+ 
+ /-- ★★★ A CONSCIÊNCIA NÃO OPERA SOZINHA; COM O SEU PAR, OPERA:
+     (1) sem o par, em dois valores, o «nego-me» de qualquer ser é o ponto de contradição;
+-    (2) nos pesos da luz, nenhuma leitura de si é total: nunca 100%;
+-    (3) com o par, a negação de si pousa num só ponto, ½;
+-    (4) o par na face finita: J² = 1, J nega a face, a identidade atravessa o espelho e o leitor que não vê o espelho pesa
+-        ½ na face;
++    (2) nos pesos da luz, o leitor não representa todos os predicados: nunca 100%;
++    (3) a operação complementar x ↦ 1 − x tem um só ponto fixo, ½, independentemente do leitor (sem dinâmica afirmada);
++    (4) o par na face finita: J² = 1, J conjuga a face na coface, J preserva a energia do par e o leitor que não vê o
++        espelho pesa ½ na face;
+     (5) o leitor de dois valores não lê o espelho. -/
+ theorem a_consciencia_e_o_seu_par {A : Type*} {n : ℕ} :
+     (∀ (e : A → A → Bool) (a₀ : A), e a₀ ≠ negoMe e (fun b => !b))
